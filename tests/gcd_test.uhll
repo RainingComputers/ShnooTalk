@@ -1,0 +1,19 @@
+# 15
+
+use math
+
+fn gcd(a:int, b:int) -> int
+{
+    # Find the minimum
+    var min:int = math::minInt(a, b)
+    
+    # Loop through all possibilites 
+    for(var x:int = min; x >= 1; x -= 1)
+        if(a % x == 0 and b % x == 0)
+            return x
+}
+
+fn main()
+{
+    println(gcd(45, 60)) # 15
+}

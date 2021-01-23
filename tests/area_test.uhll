@@ -1,0 +1,17 @@
+# 50.24
+
+use math
+
+from math use PI
+
+fn area(r:float) -> float
+{
+    return PI*r*r
+}
+
+fn main()
+{
+    var r:int = 4
+
+    println(area(float'r))
+}

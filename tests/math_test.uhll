@@ -1,0 +1,20 @@
+# 0.479426
+# 32
+# 2
+# 5
+# 5
+# 2
+# 2
+
+use math
+
+fn main()
+{
+    println(math::sin(0.5))
+    println(math::pow(2, 5))
+    println(math::abs(-2.0))
+    println(math::max(2.0, 5.0))
+    println(math::maxInt(2, 5))
+    println(math::min(2.0, 5.0))
+    println(math::minInt(2, 5))
+}

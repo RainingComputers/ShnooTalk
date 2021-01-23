@@ -1,0 +1,33 @@
+# 3
+# 5
+# 7
+# 11
+# 13
+# 17
+# 19
+# 23
+# 29
+# 31
+# 37
+# 41
+# 43
+# 47
+
+fn is_prime(num:int) -> int
+{
+    if(num % 2 == 0) return false
+        
+    # If odd, check if any number between 3 and itself divide
+    for(var i:int = 3; i < num; i += 1)
+        if(num % i == 0) return false
+        
+    return true
+}
+
+fn main() 
+{   
+    # Start finding primenumbers
+    for(var num:int = 3; num <= 50; num += 1)
+        if(is_prime(num) == true) println(num)
+
+}

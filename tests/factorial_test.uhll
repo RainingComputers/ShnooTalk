@@ -1,0 +1,23 @@
+# 2
+# 6
+# 24
+# 120
+
+
+fn factorial(num:int) -> int
+{
+    var prod:int = 1
+    
+    for(var i:int = 2; i <= num; i += 1)
+        prod *= i
+        
+    return prod
+}
+
+fn main() 
+{
+    println(factorial(2))
+    println(factorial(3))
+    println(factorial(4))
+    println(factorial(5))
+}

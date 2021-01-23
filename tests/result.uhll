@@ -1,0 +1,86 @@
+# Library for error handling and returning 
+# success or failure results
+
+struct Result
+{
+    var _val:int, err:bool
+}
+
+fn val(this:Result) -> int
+{
+    # Return the value if error flag is not set,
+    # other wise print an error message and exit
+
+    if(this.err == true) 
+    {
+        println("ERROR: Called val() on result with error")
+        exit
+    }
+    else return this._val
+}
+
+fn fail() -> Result
+{
+    # Factory function for creating a failure result
+    
+    var res:Result
+    
+    res.err = true
+
+    return res
+}
+
+fn success(value:int) -> Result
+{
+    # Factory function for creating a success result
+    
+    var res:Result
+    
+    res.err = false
+    res._val = value
+    
+    return res
+}
+
+struct FloatResult
+{
+    var _fVal:float, err:bool
+}
+
+fn floatVal(this:FloatResult) -> float
+{
+    # Return the value if error flag is not set,
+    # other wise print an error message and exit
+    
+    if(this.err == true)
+    {
+        println("ERROR: Called val() on floatResult with error")
+        exit
+    }
+    else return this._fVal
+    
+}
+
+fn floatFail() -> FloatResult
+{
+    # Factory function for creating a success result
+
+    var res:FloatResult
+    
+    res.err = true
+
+    return res
+}
+
+fn floatSuccess(value:float) -> FloatResult
+{
+    # Factory function for creating a success result
+
+    var res:FloatResult
+    
+    res.err = false
+    res._fVal = value
+    
+    return res
+}
+

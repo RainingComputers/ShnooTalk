@@ -1,0 +1,28 @@
+# 2
+# 2
+# 6
+# 7
+
+var globalFoo:int
+
+fn foobar(x:int)
+{
+    println(globalFoo)
+
+    globalFoo += x + globalFoo/2
+}
+
+fn main()
+{
+    globalFoo = 2
+
+    println(globalFoo)
+
+    foobar(3)
+
+    println(globalFoo)
+
+    globalFoo += 1
+
+    println(globalFoo)
+}

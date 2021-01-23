@@ -1,0 +1,18 @@
+# 2
+# 6
+# 24
+# 120
+
+fn factorial(num:int) -> int
+{
+    if(num <= 1) return 1
+    else return num * factorial(num - 1)
+}
+
+fn main() 
+{
+    println(factorial(2))
+    println(factorial(3))
+    println(factorial(4))
+    println(factorial(5))
+}

@@ -1,0 +1,62 @@
+# x: 1 y: 2
+# x: 3 y: 4
+# x: 5 y: 6
+# x: 7 y: 8
+# 
+# x: 10 y: 20
+# x: 30 y: 40
+# x: 50 y: 60
+# x: 70 y: 80
+# 
+# x: 1 y: 2
+# x: 3 y: 4
+# x: 5 y: 6
+# x: 7 y: 8
+# 
+# x: 10 y: 20
+# x: 30 y: 40
+# x: 50 y: 60
+# x: 70 y: 80
+# 
+
+use vec
+from vec use Vec
+
+struct foobar
+{
+    var foo:Vec[4]
+    var bar:Vec[4]
+}
+
+fn newVec(x:int, y:int) -> Vec
+{
+    var new:Vec
+
+    new.setVec(x, y)
+
+    return new
+}
+
+fn printarr(arr:Vec[4])
+{
+    for(var i:int = 0; i < 4; i += 1)
+        arr[i].printVec()
+
+    println("")
+}
+
+fn main()
+{
+    var test:foobar
+
+    test.foo = [newVec(1, 2), newVec(3, 4), newVec(5, 6), newVec(7, 8)]
+    test.bar = [newVec(10, 20), newVec(30, 40), newVec(50, 60), newVec(70, 80)]
+
+    printarr(test.foo)
+    printarr(test.bar)
+
+    var test2:foobar = test
+
+    printarr(test2.foo)
+    printarr(test2.bar)
+}

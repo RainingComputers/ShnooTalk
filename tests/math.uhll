@@ -1,0 +1,61 @@
+use vec
+
+def PI 3.14
+
+fn pow(num:int, power:int) -> int
+{    
+    if(power <= 0) return 1
+
+    var res:int = num
+    
+    for(var i:int = 2; i <= power; i += 1)
+        res *= num
+
+    return res
+}
+
+fn sin(x:float) -> float
+{
+    
+    var t:float = x
+
+    var sum:float = t
+    
+    for(var k:int = 1; k < 10; k += 1)
+    {
+        t = t * (-x * x )/((2.0 * float'k) * (2.0 * float'k + 1.0))
+        sum += t
+    }
+    
+    return sum
+}
+
+fn abs(x:float) -> float
+{
+    if(x < 0.0) return -1.0 * x
+    else return x
+}
+
+fn max(a:float, b:float) -> float
+{
+    if(a > b) return a
+    else return b
+}
+
+fn maxInt(a:int, b:int) -> int
+{
+    if(a > b) return a
+    else return b
+}
+
+fn min(a:float, b:float) -> float
+{
+    if(a < b) return a
+    else return b
+}
+
+fn minInt(a:int, b:int) -> int
+{
+    if(a < b) return a
+    else return b
+}

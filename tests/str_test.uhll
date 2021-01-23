@@ -1,0 +1,41 @@
+# 6
+# foobar
+# 6
+# 1.234
+# 23
+# lo Wo
+# Yes
+
+use string
+use result
+
+from string use String
+from result use Result, FloatResult
+
+fn main()
+{
+    var foo:int[80] = "1.234"
+
+    var a:String a.copy(foo)
+    var b:String b.copy("23")
+    var c:String c.copy("Hello World")
+    var d:String d.copy("foo")
+    var e:String e.copy("bar")
+    
+    println(c.find(0, 'W').val())
+    
+    var f:String = d.cat(e.arr)
+    println(f.arr)
+
+    println(f.len())
+    
+    println(a.floating().floatVal())
+    
+    println(b.integer().val())
+    
+    var g:String = c.subString(3, 8)
+    println(g.arr)
+    
+    var h:String h.copy("lo Wo")
+    if(h.strcmp(g.arr) == 0) println("Yes")
+}

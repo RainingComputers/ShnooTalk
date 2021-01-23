@@ -1,0 +1,10 @@
+# 3.4
+
+fn main()
+{
+    var f:float = 3.4
+
+    var c:int = 1
+
+    println(f)
+}

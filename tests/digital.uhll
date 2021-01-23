@@ -1,0 +1,7 @@
+enum [LOW, HIGH]
+
+fn digitalWrite(pin:int, val:int)
+{
+    if(val == LOW) println("Pin", pin, "low")
+    else println("Pin", pin, "high")
+}

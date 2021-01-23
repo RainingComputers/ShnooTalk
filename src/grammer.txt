@@ -1,0 +1,76 @@
+program = {import} {from} {function | structdef | enumdef | varlist | def} end_of_file
+
+use = "use" ident {"," ident}
+
+from = "from" use
+
+enumdef = "enum" "[" ident {"," ident} "]"
+
+def = "def" ident literal
+
+termvar = ident {"[" expr | literal "]"}
+
+varname = ident ":" [ident "::"] termvar
+
+exprvar = termvar {"." termvar}
+
+initializerlist = "[" expr {"," expr} ]
+
+varassign = varname ["=" expr|initializerlist ]
+
+varlist = "var" varassign {"," [var] varassign}
+
+structvarlist = "var" varname {"," [var] varname}
+
+structdef = "struct" ident "begin" structvarlist {structvarlist} "end"
+
+paramlist = ["mut"] varname {"," ["mut"] varname}
+
+function = "function" ident "(" [paramlist] ")" ["->" ident] block
+
+funccall = ident "(" [expr | str_literal {"," expr | str_literal}] ")"
+
+assignopr  = "=" | "+=" | "-=" | "/=" | "*=" | "|=" | "&=" | "^="
+
+unaryopr = "!"
+
+binopr = "+" | "-" | "|" | "^" | ">>" | "<<" | "||"  |  ">" 
+       | "<" | ">=" | "<=" | "==" | "!=" | "*" | "/" | "&" | "&&" 
+
+sizeof = "sizeof" "(" ident {"::" ident} ")"
+
+print = print "(" expr | str_literal {"," expr | str_literal} ")" 
+
+println = println "(" expr | str_literal {"," expr | str_literal} ")"
+
+input = "input" "(" term ")"
+
+struct_funccall = {"." funccall}
+
+term = exprvar struct_funccall
+     | unaryopr term
+     | ident "'" term
+     | literal
+     | "(" expr ")"
+     | funccall
+     | ident "::" term
+
+expr = term {binopr term}
+
+assignment = exprvar assignopr expr | exprvar struct_funccall | exprvar assignopr str_literal
+
+statement = varlist
+          | "if" expr block {"elseif" expr block} ["else" block] 
+          | "while" expr block
+          | "for" ["("] varlist | assignment ";" expr ";" assignment [")"] block
+          | "break"
+          | "continue"
+          | assignment
+          | "return" expr
+          | funccall
+          | ident "::" funccall
+          | print
+          | println
+          | input
+
+block = {statement} "end"

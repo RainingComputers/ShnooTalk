@@ -1,0 +1,32 @@
+# 1.44225
+
+use math
+
+fn f(x:float) -> float 
+{
+    return (x * x * x) - 3.0
+}
+
+fn main()
+{
+    # Intial xL and xR values
+    var xL:float = 0.0, xR:float = 3.0 
+    
+    # Accuracy 
+    var epsilon:float = 0.000001
+
+    # Bisection algorithm 
+    while(math::abs(xR-xL) >= epsilon) 
+    {
+        # Get midpoint 
+        var xM:float = (xL + xR) / 2.0
+        
+        # if f(xM) has the same sign as f(xL) 
+        if((f(xM) <= 0.0 and f(xL) <= 0.0) or (f(xM) > 0.0 and f(xL) > 0.0))
+            xL = xM
+        else
+            xR = xM
+    }
+    
+    println(xL) # 1.44225
+}

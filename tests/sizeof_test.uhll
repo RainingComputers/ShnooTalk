@@ -1,0 +1,23 @@
+# 1
+# 1
+# 2
+# 3
+
+use math
+
+var glbalfoobar:int
+
+struct sprite
+{
+    var id:int
+    var pos:math::vec::Vec
+}
+
+
+fn main()
+{
+    println(sizeof(int))
+    println(sizeof(glbalfoobar))
+    println(sizeof(math::vec::Vec))
+    println(sizeof(sprite))
+}

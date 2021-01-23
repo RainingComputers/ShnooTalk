@@ -1,0 +1,31 @@
+# 3
+# 6
+# 54
+# 8
+
+fn foobar()
+{
+    var a:int = 2
+    var b:int = 3
+
+    println(a*b)
+
+    return void
+}
+
+fn main()
+{
+    var c:int = 3
+
+    println(c) # 3
+
+    foobar() # 6
+
+    c *= 3
+
+    var b:int = 2+3
+
+    println(c*2*3) # 54
+
+    println(b+3) # 8
+}

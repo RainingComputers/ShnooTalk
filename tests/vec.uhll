@@ -1,0 +1,31 @@
+struct Vec 
+{
+    var x:int, y:int
+}
+
+fn setVec(mut this:Vec, x:int, y:int) -> Vec
+{
+    this.x = x 
+    this.y = y
+}
+
+fn add(this:Vec, other:Vec) -> Vec
+{    
+    var res:Vec
+
+    res.x = this.x + other.x
+    res.y = this.y + other.y
+
+    return res
+}
+
+fn dot(this:Vec, other:Vec) -> int 
+{
+    return this.x * other.x + this.y * other.y
+}
+
+fn printVec(vector:Vec)
+{
+    println("x:", vector.x, "y:", vector.y)
+}
+

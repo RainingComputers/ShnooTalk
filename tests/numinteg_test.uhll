@@ -1,0 +1,29 @@
+# 4.5
+
+fn f(x:float) -> float 
+{
+    return x
+}
+
+fn integrate(a:float, b:float, n:float) -> float
+{
+    # variable for holding integration i.e sum of rectangles
+    var sum:float = 0.0
+    
+    # width of each reactangle, n is no. of rectangles 
+    var w:float = (b - a) / n
+    
+    # loop thorugh the rectangles, add their area i.e integrate
+    for(var i:int = 0; i < int'n; i += 1)
+    {
+        var area:float = w * f(a + (float'i + 0.5) * w)
+        sum+=area
+    }
+    
+    return sum
+}
+
+fn main()
+{
+    println(integrate(0.0, 3.0, 10000.0)) # 4.5
+}

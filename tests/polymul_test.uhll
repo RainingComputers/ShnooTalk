@@ -1,0 +1,35 @@
+# 1
+# 5
+# 7
+# 9
+# 2
+
+fn multipy_poly(mut c:int[5], a:int[3], b:int[3], degree:int)
+{
+    for(var k:int = 0; k <= 2 * degree; k += 1)
+    {
+        c[k] = 0
+        
+        for(var i:int = 0; i <= degree; i += 1)
+            for(var j:int = 0; j <= degree; j += 1)
+                if(i + j == k)
+                    c[k] += a[i] * b[j]
+    }
+
+}
+
+fn main()
+{
+    # 1 + x + 2*(x^2)
+    var a:int[3] = [1, 1, 2]
+    
+    # 1 + 4*x + x^2 
+    var b:int[3] = [1, 4, 1]
+    
+    var c:int[5]
+    
+    multipy_poly(c, a, b, 2)
+    
+    # prints 1 5 7 9 2 
+    for(var i:int = 0; i < 5; i += 1) println(c[i])
+}

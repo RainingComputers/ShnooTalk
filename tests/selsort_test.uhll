@@ -1,0 +1,44 @@
+# 1
+# 2
+# 23
+# 43
+# 45
+# 55
+# 64
+# 65
+# 74
+# 75
+
+fn maxPos(a:int[10], n:int) -> int
+{
+    var pos:int = 0
+    
+    for(var i:int = 0; i < n; i += 1)
+        if(a[i] > a[pos])
+            pos = i
+    
+    return pos
+}
+
+fn selSort(mut a:int[10]) -> int
+{
+    var n:int = 10
+
+    for(var i:int = n; i > 1; i -= 1)
+    {
+        var pos:int = maxPos(a, i)
+        var maxval:int = a[pos]
+        a[pos] = a[i - 1]
+        a[i - 1] = maxval
+    }
+}
+
+fn main()
+{
+    var a:int[10] = [2, 45, 64, 23, 65, 1, 75, 74, 43, 55]
+    selSort(a)
+    
+    # 1 2 23 43 45 55 64 65 74 75 
+    for(var i:int = 0; i < 10 ; i += 1)
+        println(a[i])
+}

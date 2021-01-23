@@ -1,0 +1,16 @@
+# 25
+
+use math
+
+from math use vec
+from vec use Vec
+
+fn main()
+{
+    var a:Vec, b:Vec
+    
+    a.setVec(1, 2)
+    b.setVec(5, 10)
+    
+    println(a.dot(b))
+}
