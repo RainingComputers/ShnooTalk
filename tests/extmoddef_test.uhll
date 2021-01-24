@@ -1,0 +1,10 @@
+# -0.958933
+
+use math
+
+def BLEH 5
+
+fn main()
+{
+    println(math::sin(float'BLEH))
+}

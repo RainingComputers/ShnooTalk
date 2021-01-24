@@ -1,0 +1,19 @@
+# Shnoo
+# Bob
+# Alice
+# Shnoo
+# Robby
+# Alice
+
+fn main()
+{
+    var name:int[3][10] = ["Shnoo", "Bob", "Alice"]
+
+    for(var i:int = 0; i < 3; i += 1)
+        println(name[i])
+
+    name[1] = "Robby"
+
+    for(i = 0; i < 3; i += 1)
+        println(name[i])
+}

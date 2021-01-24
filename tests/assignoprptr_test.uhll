@@ -1,0 +1,13 @@
+# 3
+# 4
+
+fn main()
+{
+    var a:int[4] = [1, 2, 3, 4]
+
+    println(a[2])
+
+    a[2] += a[0]
+
+    println(a[2])
+}

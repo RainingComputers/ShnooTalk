@@ -1,0 +1,29 @@
+# 8
+# 4294967263
+# 0
+# 32
+# 2
+# 0
+
+fn main()
+{
+    var foo:uint = 32
+
+    println(foo >> 2)
+    println(~foo)
+    println(foo ^ foo)
+
+    foo ^= foo
+
+    foo = foo | 32
+
+    println(foo)
+
+    foo /= 16
+
+    println(foo)
+
+    foo &= 4
+
+    println(foo)
+}

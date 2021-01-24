@@ -1,0 +1,8 @@
+fn main()
+{
+    var a:int = 1
+    var b:int = 2
+
+    if not (a > 0 or b < 1)
+        println("lolol")
+}

@@ -1,0 +1,39 @@
+# shadow
+# color
+
+def BORDER 0
+def SHADOW 1
+def COLOR  2
+
+struct Flags
+{
+    var f:uint
+}
+
+fn setFlag(mut flags:Flags, prop:int)
+{
+    flags.f |= (1 << prop)
+}
+
+fn checkFlag(flags:Flags, prop:int) -> bool
+{
+    if(flags.f & (1 << prop) > 0) return true
+    else return false
+}
+
+fn main()
+{
+    var flags:Flags
+
+    flags.f = 0
+
+    flags.setFlag(COLOR)
+    flags.setFlag(SHADOW)
+
+    if(flags.checkFlag(BORDER) == true) println("border")
+
+    if(flags.checkFlag(SHADOW) == true) println("shadow")
+
+    if(flags.checkFlag(COLOR) == true) println("color")
+
+}

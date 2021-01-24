@@ -1,0 +1,16 @@
+# newline
+# backspace
+# tab
+# backslash
+# null
+
+fn main()
+{
+    var foobar:int[10] = "\n\b\t\\\0"
+
+    if(foobar[0] == '\n') println("newline")
+    if(foobar[1] == '\b') println("backspace")
+    if(foobar[2] == '\t') println("tab")
+    if(foobar[3] == '\\') println("backslash")
+    if(foobar[4] == '\0') println("null")
+}

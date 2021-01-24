@@ -1698,7 +1698,7 @@ namespace irgen
         /* Check if type matches */
         if (!icode::type_eq(var.second, expr.second))
         {
-            log::type_error(module.name, file, root.tok, var.second, expr.second);
+            log::type_error(module.name, file, root.children[2].tok, var.second, expr.second);
             throw log::compile_error();
         }
 

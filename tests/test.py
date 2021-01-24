@@ -69,9 +69,10 @@ def run_all_tests(exec_path, obj_dir, src_dir, testinfo_dir):
                 print(" 🕒", file, "timedout")
 
     # Generate report
+    print("Preparing coverage report...")
     add_files = " ".join([f"-a {info_file}" for info_file in glob.glob(f"{testinfo_dir}*.info")])
-    os.system(f"lcov {add_files} -o {testinfo_dir}total.info")
-    os.system(f"genhtml {testinfo_dir}total.info -o {testinfo_dir}")
+    os.system(f"lcov {add_files} -o {testinfo_dir}total.info > /dev/null")
+    os.system(f"genhtml {testinfo_dir}total.info -o {testinfo_dir} > /dev/null")
 
     # Open report
     os.system(f"xdg-open {testinfo_dir}index.html")

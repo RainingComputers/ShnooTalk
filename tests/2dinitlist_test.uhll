@@ -1,0 +1,46 @@
+# x: 1 y: 2
+# x: 3 y: 4
+# x: 5 y: 6
+# 
+# x: 7 y: 8
+# x: 9 y: 10
+# x: 11 y: 12
+# 
+# x: 13 y: 14
+# x: 15 y: 16
+# x: 17 y: 18
+# 
+
+use vec
+
+from vec use Vec
+
+fn newVec(x:int, y:int) -> Vec
+{
+    var new:Vec
+
+    new.setVec(x, y)
+
+    return new
+}
+
+fn printVecArray(foo:Vec[3])
+{
+    for(var i:int = 0; i < 3; i += 1)
+        foo[i].printVec()
+}
+
+fn main()
+{
+    var bar:Vec[3][3] = [
+        [newVec(1, 2), newVec(3, 4), newVec(5, 6)],
+        [newVec(7, 8), newVec(9, 10), newVec(11, 12)], 
+        [newVec(13, 14), newVec(15, 16), newVec(17, 18)]
+    ]
+
+    for(var i:int = 0; i < 3; i += 1)
+    {
+        printVecArray(bar[i])
+        println("")
+    }   
+}

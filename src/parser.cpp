@@ -750,8 +750,8 @@ namespace parser
                                          token::INT_LITERAL,   token::CHAR_LITERAL,
                                          token::FLOAT_LITERAL, token::HEX_LITERAL,
                                          token::BIN_LITERAL,   token::LPAREN,
-                                         token::SIZEOF };
-        expect(expected, 9);
+                                         token::SIZEOF,        token::NOT };
+        expect(expected, 10);
 
         if (accept(token::STR_LITERAL))
             add_node(node::STR_LITERAL);
@@ -762,7 +762,7 @@ namespace parser
         {
             next();
 
-            expect(expected, 9);
+            expect(expected, 10);
 
             if (accept(token::STR_LITERAL))
                 add_node(node::STR_LITERAL);

@@ -1,0 +1,17 @@
+# MODULE typeerr3_test
+# ERROR in Line 16 Col 12
+# 
+#     foobar(2.0)
+#            ^
+# Type error, did not expect float,
+# expected int
+
+fn foobar(i:int)
+{
+    println(i)
+}
+
+fn main()
+{
+    foobar(2.0)
+}
