@@ -1,0 +1,13 @@
+# MODULE termerr4_test
+# ERROR in Line 12 Col 9
+# 
+#     b = ~a
+#         ^
+# Unary operator NOT not allowed on FLOAT
+
+fn main()
+{
+    var a:float, b:float
+
+    b = ~a
+}

@@ -1,0 +1,11 @@
+# MODULE initlisterr1_test
+# ERROR in Line 10 Col 17
+# 
+#     var a:int = [1, 2, 3]
+#                 ^
+# Cannot initialize a NON-ARRAY with initializer list
+
+fn main()
+{
+    var a:int = [1, 2, 3]
+}

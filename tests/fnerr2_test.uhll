@@ -1,0 +1,13 @@
+# MODULE fnerr2_test
+# ERROR in Line 10 Col 11
+# 
+# fn foobar(vec:int)
+#           ^
+# Symbol already defined
+
+use vec
+
+fn foobar(vec:int)
+{
+
+}

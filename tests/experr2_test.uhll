@@ -1,0 +1,13 @@
+# MODULE experr2_test
+# ERROR in Line 15 Col 11
+# 
+#     a = b | c
+#           ^
+# Bitwise operations not allowed on FLOAT
+
+fn main()
+{
+    var a:float, b:float, c:float
+
+    a = b | c
+}

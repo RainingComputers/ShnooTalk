@@ -1,0 +1,11 @@
+# MODULE funccallerr1_test
+# ERROR in Line 10 Col 5
+# 
+#     foo()
+#     ^
+# Function does not exist
+
+fn main()
+{
+    foo()
+}

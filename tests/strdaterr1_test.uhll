@@ -1,0 +1,11 @@
+# MODULE strdaterr1_test
+# ERROR in Line 10 Col 17
+# 
+#     var a:int = "lol"
+#                 ^
+# String assignment only allowed on 1D INT ARRAY
+
+fn main()
+{
+    var a:int = "lol"
+}

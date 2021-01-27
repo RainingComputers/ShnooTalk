@@ -1,0 +1,16 @@
+# MODULE funccallerr4_test
+# ERROR in Line 15 Col 9
+# 
+#     foo("Hello")
+#         ^
+# Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE
+
+fn foo(mut a:int[6])
+{
+    println(a)
+}
+
+fn main()
+{
+    foo("Hello")
+}

@@ -1,0 +1,13 @@
+# MODULE varaccerr3_test
+# ERROR in Line 12 Col 17
+# 
+#     var a:int = LED0[2]
+#                 ^
+# Invalid use of DEF
+
+def LED0 0
+
+fn main()
+{
+    var a:int = LED0[2]
+}

@@ -1,0 +1,14 @@
+# MODULE fnerr1_test
+# ERROR in Line 11 Col 4
+# 
+# fn vec() -> int
+#    ^
+# Symbol already defined
+
+use math
+from math use vec
+
+fn vec() -> int
+{
+    return 0
+}

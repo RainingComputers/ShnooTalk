@@ -1204,7 +1204,7 @@ namespace uhllvmgen
             /* Check if value held by accumulator is use by current
              * instruction/entry
              */
-            if (acc == e.op1 || acc == e.op2 || acc == e.op3)
+            if ((acc == e.op1 && icode::is_ptr(acc.optype)) || acc == e.op2 || acc == e.op3)
                 acc_in_ir = true;
             else
                 acc_in_ir = false;

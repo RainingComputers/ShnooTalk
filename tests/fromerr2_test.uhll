@@ -1,0 +1,11 @@
+# MODULE fromerr2_test
+# ERROR in Line 11 Col 15
+# 
+# from math use vec
+#               ^
+# Symbol already defined in current module
+
+use math
+use vec
+
+from math use vec

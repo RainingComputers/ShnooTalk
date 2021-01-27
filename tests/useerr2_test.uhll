@@ -1,0 +1,9 @@
+# MODULE useerr2_test
+# ERROR in Line 9 Col 5
+# 
+# use math
+#     ^
+# Multiple imports detected
+
+use math
+use math

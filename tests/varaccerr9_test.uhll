@@ -1,0 +1,16 @@
+# MODULE varaccerr9_test
+# ERROR in Line 15 Col 17
+# 
+#     println(foo.z)
+#                 ^
+# Undefined STRUCT field
+
+use vec
+from vec use Vec
+
+fn main()
+{
+    var foo:Vec
+
+    println(foo.z)
+}

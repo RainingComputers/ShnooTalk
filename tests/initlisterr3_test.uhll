@@ -1,0 +1,11 @@
+# MODULE initlisterr3_test
+# ERROR in Line 10 Col 40
+# 
+#     var a:int[2][2] = [[1, 2], [3, 4], [5, 6]]
+#                                        ^
+# Dimension size too big
+
+fn main()
+{
+    var a:int[2][2] = [[1, 2], [3, 4], [5, 6]]
+}

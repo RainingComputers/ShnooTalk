@@ -1,0 +1,13 @@
+# MODULE termerr7_test
+# ERROR in Line 12 Col 13
+# 
+#     println(vec::1)
+#             ^
+# Invalid use of MODULE ACCESS
+
+use vec
+
+fn main()
+{
+    println(vec::1)
+}

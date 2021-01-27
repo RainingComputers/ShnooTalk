@@ -1,0 +1,10 @@
+# MODULE deferr1_test
+# ERROR in Line 10 Col 5
+# 
+# def vec 0
+#     ^
+# Symbol already exists
+
+use vec
+
+def vec 0

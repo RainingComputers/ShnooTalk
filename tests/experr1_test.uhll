@@ -1,0 +1,16 @@
+# MODULE experr1_test
+# ERROR in Line 15 Col 11
+# 
+#     a = b + c
+#           ^
+# Operator not allowed on STRUCT or ARRAY
+
+use vec
+from vec use Vec
+
+fn main()
+{
+    var a:Vec, b:Vec, c:Vec
+
+    a = b + c
+}

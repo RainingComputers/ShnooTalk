@@ -1,0 +1,18 @@
+# MODULE funccallerr3_test
+# ERROR in Line 17 Col 9
+# 
+#     foo(a+1)
+#         ^
+# Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE
+
+fn foo(mut a:int)
+{
+    println(a)
+}
+
+fn main()
+{
+    var a:int = 2
+
+    foo(a+1)
+}

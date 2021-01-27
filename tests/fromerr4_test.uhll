@@ -1,0 +1,9 @@
+# MODULE fromerr4_test
+# ERROR in Line 9 Col 15
+# 
+# from math use doesNotExist
+#               ^
+# Symbol does not exist
+
+use math 
+from math use doesNotExist

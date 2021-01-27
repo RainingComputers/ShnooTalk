@@ -1,0 +1,8 @@
+# MODULE useerr3_test
+# ERROR in Line 8 Col 5
+# 
+# use useerr3_test
+#     ^
+# Self import not allowed
+
+use useerr3_test

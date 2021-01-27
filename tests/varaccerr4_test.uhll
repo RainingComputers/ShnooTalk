@@ -1,0 +1,13 @@
+# MODULE varaccerr4_test
+# ERROR in Line 12 Col 17
+# 
+#     var a:int = LED0.pin
+#                 ^
+# Invalid use of DEF
+
+def LED0 0
+
+fn main()
+{
+    var a:int = LED0.pin
+}

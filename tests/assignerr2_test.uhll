@@ -1,0 +1,11 @@
+# MODULE assignerr2_test
+# ERROR in Line 10 Col 5
+# 
+#     a = 2
+#     ^
+# Cannot modify IMMUTABLE variable or parameter
+
+fn foo(a:int)
+{
+    a = 2
+}

@@ -1,0 +1,13 @@
+# MODULE termerr5_test
+# ERROR in Line 12 Col 17
+# 
+#     var b:int = not a
+#                 ^
+# Did not expect CONDN_NOT,
+# expected INT_LITERAL or CHAR_LITERAL or HEX_LITERAL or FLOAT_LITERAL or STR_LITERAL or BIN_LITERAL or IDENTIFIER or OPEN_SQAURE or MINUS or PLUS or LPAREN
+
+fn main()
+{
+    var a:int
+    var b:int = not a
+}

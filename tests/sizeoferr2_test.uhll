@@ -1,0 +1,11 @@
+# MODULE sizeoferr2_test
+# ERROR in Line 10 Col 13
+# 
+#     println(sizeof(doesnotexist))
+#             ^
+# Symbol not found
+
+fn main()
+{
+    println(sizeof(doesnotexist))
+}

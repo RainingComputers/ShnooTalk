@@ -1,0 +1,14 @@
+# MODULE structerr1_test
+# ERROR in Line 11 Col 8
+# 
+# struct vec
+#        ^
+# Symbol already defined
+
+use math
+from math use vec
+
+struct vec
+{
+    var x:int, y:int
+}

@@ -1,0 +1,9 @@
+# MODULE useerr1_test
+# ERROR in Line 8 Col 5
+# 
+# use does_not_exist
+#     ^
+# Module or Package does not exist
+
+use does_not_exist
+

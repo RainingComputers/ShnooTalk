@@ -1,0 +1,11 @@
+# MODULE varerr2_test
+# ERROR in Line 10 Col 20
+# 
+#     var a:int[3] = 2
+#                    ^
+# Initializer list required to initialize array
+
+fn main()
+{
+    var a:int[3] = 2
+}

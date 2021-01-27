@@ -1,0 +1,14 @@
+# MODULE structerr3_test
+# ERROR in Line 13 Col 9
+# 
+#     var vec:int
+#         ^
+# Symbol already defined
+
+use math
+from math use vec
+
+struct foo
+{
+    var vec:int
+}

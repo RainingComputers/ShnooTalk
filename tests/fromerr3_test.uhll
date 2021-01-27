@@ -1,0 +1,9 @@
+# MODULE fromerr3_test
+# ERROR in Line 9 Col 15
+# 
+# from math use sin
+#               ^
+# Cannot import functions
+
+use math 
+from math use sin

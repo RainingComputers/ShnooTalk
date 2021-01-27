@@ -1,0 +1,11 @@
+# MODULE varaccerr5_test
+# ERROR in Line 10 Col 17
+# 
+#     var a:int = b
+#                 ^
+# Symbol does not exist
+
+fn main()
+{
+    var a:int = b
+}

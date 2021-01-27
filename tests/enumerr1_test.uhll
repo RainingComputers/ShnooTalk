@@ -1,0 +1,10 @@
+# MODULE enumerr1_test
+# ERROR in Line 10 Col 7
+# 
+# enum [math, phsysics, chemistry, csc]
+#       ^
+# Symbol already defined
+
+use math
+
+enum [math, phsysics, chemistry, csc]

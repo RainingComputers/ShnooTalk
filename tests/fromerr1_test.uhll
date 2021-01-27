@@ -1,0 +1,8 @@
+# MODULE fromerr1_test
+# ERROR in Line 8 Col 6
+# 
+# from math use vec
+#      ^
+# Module not imported
+
+from math use vec

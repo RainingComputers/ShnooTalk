@@ -1,0 +1,13 @@
+# MODULE varaccerr2_test
+# ERROR in Line 12 Col 17
+# 
+#     var a:int = LED0.pin
+#                 ^
+# Invalid use of ENUM
+
+enum [LED0, LED1]
+
+fn main()
+{
+    var a:int = LED0.pin
+}
