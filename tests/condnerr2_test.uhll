@@ -1,0 +1,17 @@
+# MODULE condnerr2_test
+# ERROR in Line 15 Col 10
+# 
+#     if(a > b) println("lol")
+#          ^
+# Cannot compare STRUCT or ARRAYS
+
+use vec 
+from vec use Vec
+
+fn main()
+{
+    var a:Vec, b:Vec
+
+    if(a > b) println("lol")
+}
+

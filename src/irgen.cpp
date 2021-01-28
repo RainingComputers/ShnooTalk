@@ -1960,8 +1960,8 @@ namespace irgen
                             comp_entry.opcode = icode::NEQ;
                             break;
                         default:
-                            log::internal_error_tok(module.name, file, expr_opr);
-                            throw log::internal_bug_error();
+                            log::error_tok(module.name, "Invalid conditional expression", file, expr_opr);
+                            throw log::compile_error();
                     }
 
                     /* Create icode entry for comparing two expressions */

@@ -1,5 +1,5 @@
 # MODULE experr2_test
-# ERROR in Line 15 Col 11
+# ERROR in Line 12 Col 11
 # 
 #     a = b | c
 #           ^

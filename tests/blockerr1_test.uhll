@@ -1,0 +1,11 @@
+# MODULE blockerr1_test
+# ERROR in Line 10 Col 5
+# 
+#     doesnotexist::foo()
+#     ^
+# Module does not exist
+
+fn main()
+{
+    doesnotexist::foo()
+}
