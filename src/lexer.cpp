@@ -365,10 +365,6 @@ namespace lexer
                             prec_type = token::ENUM;
                         else if (prec_token_str == "def")
                             prec_type = token::DEF;
-                        else if (prec_token_str == "begin")
-                            prec_type = token::BEGIN;
-                        else if (prec_token_str == "end")
-                            prec_type = token::END;
                         else if (prec_token_str == "var")
                             prec_type = token::VAR;
                         else if (prec_token_str == "const")

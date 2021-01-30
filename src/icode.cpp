@@ -127,6 +127,8 @@ namespace icode
 
     void var_info::set_prop(var_prop prop) { properties |= (1 << prop); }
 
+    void var_info::clear_prop(var_prop prop) { properties &= ~(1 << prop); }
+
     bool var_info::check(var_prop prop) { return properties & (1 << prop); }
 
     /*

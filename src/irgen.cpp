@@ -620,7 +620,8 @@ namespace irgen
             if (right.second.dtype == icode::STRUCT)
             {
                 /* Copy struct from right to left */
-                copy_struct(curr_offset_left, op_var_pair(curr_offset_right, right.second));
+                copy_struct(curr_offset_left,
+                            op_var_pair(curr_offset_right, right.second));
             }
             else
             {
@@ -998,7 +999,13 @@ namespace irgen
                         if (struct_desc.field_exists(child.tok.str))
                         {
                             /* If it does, update offset */
+                            bool is_mut = current_var_info.check(icode::IS_MUT);
                             current_var_info = struct_desc.fields[child.tok.str];
+
+                            /* If the struct is immutable, fields are automatically
+                             * immutable */
+                            if (!is_mut)
+                                current_var_info.clear_prop(icode::IS_MUT);
 
                             /* Add offset */
                             icode::entry entry;
@@ -1698,7 +1705,8 @@ namespace irgen
         /* Check if type matches */
         if (!icode::type_eq(var.second, expr.second))
         {
-            log::type_error(module.name, file, root.children[2].tok, var.second, expr.second);
+            log::type_error(
+              module.name, file, root.children[2].tok, var.second, expr.second);
             throw log::compile_error();
         }
 
@@ -1960,7 +1968,10 @@ namespace irgen
                             comp_entry.opcode = icode::NEQ;
                             break;
                         default:
-                            log::error_tok(module.name, "Invalid conditional expression", file, expr_opr);
+                            log::error_tok(module.name,
+                                           "Invalid conditional expression",
+                                           file,
+                                           expr_opr);
                             throw log::compile_error();
                     }
 

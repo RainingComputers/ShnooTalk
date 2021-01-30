@@ -27,7 +27,7 @@ fn len(this:String) -> int
     return 80
 }
 
-fn copy(this:String, arr:int[80])
+fn copy(mut this:String, arr:int[80])
 {
     # Copy int array into struct
 
@@ -38,7 +38,7 @@ fn copy(this:String, arr:int[80])
     this.arr[i] = '\0'
 }
 
-fn copyChar(this:String, char:int)
+fn copyChar(mut this:String, char:int)
 {
     # Copy char into string
     
