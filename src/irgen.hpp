@@ -37,6 +37,31 @@ namespace irgen
         void clear_scope();
         bool in_scope(unsigned int scope_id);
 
+        void copy(icode::operand op1, icode::operand op2);
+
+        icode::operand binop(icode::instruction instr, icode::operand op1, icode::operand op2, icode::operand op3);
+
+        icode::operand uniop(icode::instruction instr, icode::operand op1, icode::operand op2);
+
+        icode::operand cast(icode::data_type cast_dtype, icode::operand op);
+
+        void cmpop(icode::instruction instr, icode::operand op1, icode::operand op2);
+
+        icode::operand
+        addrop(icode::instruction instr, icode::operand op2, icode::operand op3);
+
+        icode::operand ensure_not_ptr(icode::operand op);
+
+        void label(icode::operand op);
+
+        void goto_label(icode::instruction instr, icode::operand op);
+
+        void printop(icode::instruction printop, icode::operand op);
+
+        void inputop(icode::instruction instr, icode::operand op, unsigned int size = 0);
+
+        void opir(icode::instruction instr);
+
         bool get_def(const std::string& name, icode::def& def);
 
         bool get_func(const std::string& name, icode::func_desc& func);

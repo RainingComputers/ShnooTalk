@@ -42,6 +42,128 @@ namespace irgen
                scope_id_stack.end();
     }
 
+    void ir_generator::copy(icode::operand op1, icode::operand op2)
+    {
+        icode::entry copy_entry;
+
+        copy_entry.op1 = op1;
+        copy_entry.op2 = op2;
+        copy_entry.opcode = icode::EQUAL;
+        (*current_func_desc).icode_table.push_back(copy_entry);
+    }
+
+    icode::operand ir_generator::binop(icode::instruction instr, icode::operand op1, icode::operand op2, icode::operand op3)
+    {
+        icode::entry entry;
+        entry.opcode = instr;
+        entry.op1 = op1;
+        entry.op2 = op2;
+        entry.op3 = op3;
+        (*current_func_desc).icode_table.push_back(entry);
+
+        return entry.op1;
+    }
+
+    icode::operand ir_generator::uniop(icode::instruction instr, icode::operand op1, icode::operand op2)
+    {
+        icode::entry entry;
+        entry.opcode = instr;
+        entry.op1 = op1;
+        entry.op2 = op2;
+        (*current_func_desc).icode_table.push_back(entry);
+
+        return entry.op1;
+    }
+
+    icode::operand ir_generator::cast(icode::data_type cast_dtype, icode::operand op)
+    {
+        unsigned int cast_size = icode::dtype_size[cast_dtype];
+        icode::entry entry;
+        entry.opcode = icode::CAST;
+        entry.op1 = icode::gen_temp_opr(cast_dtype, cast_size, id());
+        entry.op2 = op;
+        entry.op3 = icode::gen_dtype_opr(cast_dtype, id());
+        (*current_func_desc).icode_table.push_back(entry);
+    
+        return entry.op1;
+    }
+
+    void ir_generator::cmpop(icode::instruction instr, icode::operand op1, icode::operand op2)
+    {
+        icode::entry entry;
+        entry.opcode = instr;
+        entry.op1 = op1;
+        entry.op2 = op2;
+        (*current_func_desc).icode_table.push_back(entry);
+    }
+
+    icode::operand
+    ir_generator::addrop(icode::instruction instr, icode::operand op2, icode::operand op3)
+    {
+        icode::entry entry;
+        entry.op1 = icode::gen_temp_ptr_opr(op3.dtype, id());
+        entry.op2 = op2;
+        entry.op3 = op3;
+        entry.opcode = instr;
+        (*current_func_desc).icode_table.push_back(entry);
+
+        return entry.op1;
+    }
+
+    icode::operand ir_generator::ensure_not_ptr(icode::operand op)
+    {
+        if (icode::is_ptr(op.optype))
+        {
+            icode::entry read_entry;
+            icode::operand temp =
+              icode::gen_temp_opr(op.dtype, icode::dtype_size[op.dtype], id());
+            copy(temp, op);
+            return temp;
+        }
+        else
+            return op;
+    }
+
+    void ir_generator::label(icode::operand op)
+    {
+        icode::entry label_entry;
+        label_entry.op1 = op;
+        label_entry.opcode = icode::CREATE_LABEL;
+        (*current_func_desc).icode_table.push_back(label_entry); 
+    }
+
+    void ir_generator::goto_label(icode::instruction instr, icode::operand op)
+    {
+        icode::entry goto_entry;
+        goto_entry.op1 = op;
+        goto_entry.opcode = instr;
+        (*current_func_desc).icode_table.push_back(goto_entry);
+    }
+
+    void ir_generator::printop(icode::instruction printop, icode::operand op)
+    {
+        icode::entry print_entry;
+        print_entry.op1 = op;
+        print_entry.opcode = printop;
+        (*current_func_desc).icode_table.push_back(print_entry);
+    }
+
+    void ir_generator::inputop(icode::instruction instr, icode::operand op, unsigned int size)
+    {
+        icode::entry input_entry;
+        input_entry.op1 = op;
+        input_entry.op2 = icode::gen_literal_opr(icode::INT, (int)size, id());
+        input_entry.opcode = instr;
+        (*current_func_desc).icode_table.push_back(input_entry);
+    }
+
+    void ir_generator::opir(icode::instruction instr)
+    {
+        icode::entry entry;
+        entry.opcode = instr;
+        (*current_func_desc).icode_table.push_back(entry);
+    }
+
     bool ir_generator::get_def(const std::string& name, icode::def& def)
     {
         if (target.get_def(name, def))
@@ -586,22 +708,15 @@ namespace irgen
             int character = str_int[i];
 
             /* Write to current offset */
-            icode::entry write_entry;
-            write_entry.op1 = curr_offset;
-            write_entry.op2 = icode::gen_literal_opr(target.default_int, character, id());
-            write_entry.opcode = icode::EQUAL;
-            (*current_func_desc).icode_table.push_back(write_entry);
+            copy(curr_offset,
+                 icode::gen_literal_opr(target.default_int, character, id()));
 
             /* Update offset */
             if (i != str_int.size() - 1)
             {
-                icode::entry offset_entry;
-                offset_entry.op1 = icode::gen_temp_ptr_opr(var.second.dtype, id());
-                offset_entry.op2 = curr_offset;
-                offset_entry.op3 = icode::gen_addr_opr(var.second.dtype_size, id());
-                offset_entry.opcode = icode::ADDR_ADD;
-                (*current_func_desc).icode_table.push_back(offset_entry);
-                curr_offset = offset_entry.op1;
+                curr_offset = addrop(icode::ADDR_ADD,
+                                     curr_offset,
+                                     icode::gen_addr_opr(var.second.dtype_size, id()));
             }
         }
     }
@@ -626,33 +741,15 @@ namespace irgen
             else
             {
                 /* Copy element from right to left */
-                icode::entry read_entry;
-                read_entry.op1 = curr_offset_left;
-                read_entry.op2 = curr_offset_right;
-                read_entry.opcode = icode::EQUAL;
-                (*current_func_desc).icode_table.push_back(read_entry);
+                copy(curr_offset_left, curr_offset_right);
             }
 
             /* Update offset */
             if (i != size - dtype_size)
             {
                 icode::operand update = icode::gen_addr_opr(dtype_size, id());
-
-                icode::entry left_update;
-                left_update.op1 = icode::gen_temp_ptr_opr(right.second.dtype, id());
-                left_update.op2 = curr_offset_left;
-                left_update.op3 = update;
-                left_update.opcode = icode::ADDR_ADD;
-                (*current_func_desc).icode_table.push_back(left_update);
-                curr_offset_left = left_update.op1;
-
-                icode::entry right_update;
-                right_update.op1 = icode::gen_temp_ptr_opr(right.second.dtype, id());
-                right_update.op2 = curr_offset_right;
-                right_update.op3 = update;
-                right_update.opcode = icode::ADDR_ADD;
-                (*current_func_desc).icode_table.push_back(right_update);
-                curr_offset_right = right_update.op1;
+                curr_offset_left = addrop(icode::ADDR_ADD, curr_offset_left, update);
+                curr_offset_right = addrop(icode::ADDR_ADD, curr_offset_right, update);
             }
         }
     }
@@ -671,21 +768,8 @@ namespace irgen
 
             if (count != 0)
             {
-                icode::entry left_update;
-                left_update.op1 = icode::gen_temp_ptr_opr(field_info.dtype, id());
-                left_update.op2 = curr_offset_left;
-                left_update.op3 = update;
-                left_update.opcode = icode::ADDR_ADD;
-                (*current_func_desc).icode_table.push_back(left_update);
-                curr_offset_left = left_update.op1;
-
-                icode::entry right_update;
-                right_update.op1 = icode::gen_temp_ptr_opr(field_info.dtype, id());
-                right_update.op2 = curr_offset_right;
-                right_update.op3 = update;
-                right_update.opcode = icode::ADDR_ADD;
-                (*current_func_desc).icode_table.push_back(right_update);
-                curr_offset_right = right_update.op1;
+                curr_offset_left = addrop(icode::ADDR_ADD, curr_offset_left, update);
+                curr_offset_right = addrop(icode::ADDR_ADD, curr_offset_right, update);
             }
 
             /* Copy field */
@@ -696,11 +780,7 @@ namespace irgen
             else if (field_info.dtype != icode::STRUCT)
             {
                 /* Copy field from right into left */
-                icode::entry read_entry;
-                read_entry.op1 = curr_offset_left;
-                read_entry.op2 = curr_offset_right;
-                read_entry.opcode = icode::EQUAL;
-                (*current_func_desc).icode_table.push_back(read_entry);
+                copy(curr_offset_left, curr_offset_right);
             }
             else
             {
@@ -767,11 +847,7 @@ namespace irgen
                 if (element_expr.second.dtype != icode::STRUCT)
                 {
                     /* Write to current offset if not a struct */
-                    icode::entry write_entry;
-                    write_entry.op1 = curr_offset;
-                    write_entry.op2 = element_expr.first;
-                    write_entry.opcode = icode::EQUAL;
-                    (*current_func_desc).icode_table.push_back(write_entry);
+                    copy(curr_offset, element_expr.first);
                 }
                 else
                 {
@@ -792,13 +868,9 @@ namespace irgen
             /* Update offset */
             if (i != root.children.size() - 1)
             {
-                icode::entry offset_entry;
-                offset_entry.op1 = icode::gen_temp_ptr_opr(element_var.dtype, id());
-                offset_entry.op2 = curr_offset;
-                offset_entry.op3 = icode::gen_addr_opr(element_var.size, id());
-                offset_entry.opcode = icode::ADDR_ADD;
-                (*current_func_desc).icode_table.push_back(offset_entry);
-                curr_offset = offset_entry.op1;
+                curr_offset = addrop(icode::ADDR_ADD,
+                                     curr_offset,
+                                     icode::gen_addr_opr(element_var.size, id()));
             }
         }
 
@@ -858,11 +930,7 @@ namespace irgen
             if (var.second.dtype != icode::STRUCT)
             {
                 /* Create EQUAL icode entry is not a STRUCT */
-                icode::entry entry;
-                entry.op1 = left;
-                entry.op2 = init_exp.first;
-                entry.opcode = icode::EQUAL;
-                (*current_func_desc).icode_table.push_back(entry);
+                copy(left, init_exp.first);
             }
             else
             {
@@ -1008,17 +1076,10 @@ namespace irgen
                                 current_var_info.clear_prop(icode::IS_MUT);
 
                             /* Add offset */
-                            icode::entry entry;
-                            entry.op1 =
-                              icode::gen_temp_ptr_opr(current_var_info.dtype, id());
-                            entry.op2 = current_offset_temp;
-                            entry.op3 =
-                              icode::gen_addr_opr(current_var_info.offset, id());
-                            entry.opcode = icode::ADDR_ADD;
-
-                            (*current_func_desc).icode_table.push_back(entry);
-
-                            current_offset_temp = entry.op1;
+                            current_offset_temp =
+                              addrop(icode::ADDR_ADD,
+                                     current_offset_temp,
+                                     icode::gen_addr_opr(current_var_info.offset, id()));
 
                             dim_count = 0;
                         }
@@ -1055,15 +1116,8 @@ namespace irgen
                             throw log::compile_error();
                         }
 
-                        icode::entry subs_entry;
-
                         /* Operand to store result of expression */
                         op_var_pair subs_expr = expression(child.children[0]);
-                        subs_entry.op2 = subs_expr.first;
-
-                        /* Operand to store offset */
-                        subs_entry.op1 =
-                          icode::gen_temp_ptr_opr(subs_expr.first.dtype, id());
 
                         /* Check if int expression */
                         if (!icode::is_int(subs_expr.second.dtype) ||
@@ -1076,27 +1130,18 @@ namespace irgen
                             throw log::compile_error();
                         }
 
-                        /* Get element width multiplier */
-                        subs_entry.op3 = icode::gen_addr_opr(elem_width, id());
+                        /* Entry for subscript expression */
+                        icode::operand subs_op =
+                          addrop(icode::ADDR_MUL,
+                                 subs_expr.first,
+                                 icode::gen_addr_opr(elem_width, id()));
 
                         if (dim_count != current_var_info.dimensions.size())
                             elem_width /= current_var_info.dimensions[dim_count];
 
-                        subs_entry.opcode = icode::ADDR_MUL;
-
                         /* Create entry for adding to the current offset */
-                        icode::entry offset_entry;
-                        offset_entry.op1 =
-                          icode::gen_temp_ptr_opr(subs_expr.first.dtype, id());
-                        offset_entry.op2 = current_offset_temp;
-                        offset_entry.op3 = subs_entry.op1;
-                        offset_entry.opcode = icode::ADDR_ADD;
-
-                        /* Update icode table */
-                        (*current_func_desc).icode_table.push_back(subs_entry);
-                        (*current_func_desc).icode_table.push_back(offset_entry);
-
-                        current_offset_temp = offset_entry.op1;
+                        current_offset_temp =
+                          addrop(icode::ADDR_ADD, current_offset_temp, subs_op);
 
                         if (i < root.children.size() - 1)
                         {
@@ -1129,16 +1174,14 @@ namespace irgen
         }
 
         /* Add var to offset */
-        icode::entry add_entry;
-        add_entry.op1 = icode::gen_temp_ptr_opr(current_var_info.dtype, id());
-        add_entry.op2 = current_offset_temp;
-        add_entry.op3 =
-          icode::gen_var_opr(current_var_info.dtype, ident_name, id(), is_global, is_ptr);
-        add_entry.opcode = icode::ADDR_ADD;
-        (*current_func_desc).icode_table.push_back(add_entry);
+        icode::operand var_op =
+          addrop(icode::ADDR_ADD,
+                 current_offset_temp,
+                 icode::gen_var_opr(
+                   current_var_info.dtype, ident_name, id(), is_global, is_ptr));
 
         /* Return var */
-        return op_var_pair(add_entry.op1, current_var_info);
+        return op_var_pair(var_op, current_var_info);
     }
 
     op_var_pair ir_generator::funccall(const node::node& root)
@@ -1406,13 +1449,6 @@ namespace irgen
                 icode::data_type cast_dtype =
                   icode::from_dtype_str(child.tok.str, target);
 
-                unsigned int cast_size = icode::dtype_size[cast_dtype];
-
-                /* Create icode entry for casting */
-                icode::entry entry;
-                entry.opcode = icode::CAST;
-                entry.op1 = icode::gen_temp_opr(cast_dtype, cast_size, id());
-
                 op_var_pair cast_term = term(child.children[0]);
 
                 /* Cannot cast ARRAY */
@@ -1424,22 +1460,18 @@ namespace irgen
                     throw log::compile_error();
                 }
 
-                entry.op2 = cast_term.first;
-                entry.op3 = icode::gen_dtype_opr(cast_dtype, id());
-                (*current_func_desc).icode_table.push_back(entry);
+                /* Create icode entry for casting */
+                icode::operand res_temp = cast(cast_dtype, cast_term.first);
 
                 /* Return temp */
-                return op_var_pair(entry.op1, icode::var_from_dtype(cast_dtype, target));
+                return op_var_pair(res_temp, icode::var_from_dtype(cast_dtype, target));
             }
             case node::UNARY_OPR:
             {
-                icode::entry entry;
-
                 op_var_pair term_var = term(child.children[0]);
 
                 icode::data_type dtype = term_var.second.dtype;
                 unsigned int size = icode::dtype_size[dtype];
-                entry.op1 = icode::gen_temp_opr(dtype, size, id());
 
                 /* Unary operator not allowed on ARRAY */
                 if (term_var.second.dimensions.size() != 0)
@@ -1471,15 +1503,14 @@ namespace irgen
                     throw log::compile_error();
                 }
 
-                entry.op2 = term_var.first;
-
+                icode::instruction opcode;
                 switch (child.tok.type)
                 {
                     case token::MINUS:
-                        entry.opcode = icode::UNARY_MINUS;
+                        opcode = icode::UNARY_MINUS;
                         break;
                     case token::NOT:
-                        entry.opcode = icode::NOT;
+                        opcode = icode::NOT;
                         break;
                     case token::CONDN_NOT:
                         log::error_tok(
@@ -1490,10 +1521,10 @@ namespace irgen
                         throw log::internal_bug_error();
                 }
 
-                (*current_func_desc).icode_table.push_back(entry);
+                icode::operand res_temp = uniop(opcode, icode::gen_temp_opr(dtype, size, id()), term_var.first);
 
                 /* Return temp */
-                return op_var_pair(entry.op1, term_var.second);
+                return op_var_pair(res_temp, term_var.second);
             }
             case node::EXPRESSION:
             {
@@ -1563,11 +1594,8 @@ namespace irgen
         {
             token::token expr_opr = root.children[1].tok;
 
-            icode::entry entry;
-
             /* First operand */
             op_var_pair first_operand = expression(root.children[0]);
-            entry.op2 = first_operand.first;
             icode::data_type dtype = first_operand.second.dtype;
             unsigned int size = icode::dtype_size[dtype];
 
@@ -1581,7 +1609,6 @@ namespace irgen
 
             /* Second operand */
             op_var_pair second_operand = expression(root.children[2]);
-            entry.op3 = second_operand.first;
 
             /* Type check */
             if (!icode::type_eq(first_operand.second, second_operand.second))
@@ -1609,53 +1636,39 @@ namespace irgen
                 }
             }
 
-            /* If second operand is a ptr, read it into a temp */
-            if (entry.op3.optype == icode::PTR || entry.op3.optype == icode::TEMP_PTR)
-            {
-                icode::entry read_entry;
-                read_entry.op1 = icode::gen_temp_opr(dtype, size, id());
-                read_entry.op2 = entry.op3;
-                read_entry.opcode = icode::EQUAL;
-                (*current_func_desc).icode_table.push_back(read_entry);
-
-                entry.op3 = read_entry.op1;
-            }
-
-            /* Temp operand to store the result */
-            entry.op1 = icode::gen_temp_opr(dtype, size, id());
-
             /* Generate corresponding opcode for operator */
+            icode::instruction opcode;
             switch (expr_opr.type)
             {
                 case token::MULTIPLY:
-                    entry.opcode = icode::MUL;
+                    opcode = icode::MUL;
                     break;
                 case token::DIVIDE:
-                    entry.opcode = icode::DIV;
+                    opcode = icode::DIV;
                     break;
                 case token::MOD:
-                    entry.opcode = icode::MOD;
+                    opcode = icode::MOD;
                     break;
                 case token::PLUS:
-                    entry.opcode = icode::ADD;
+                    opcode = icode::ADD;
                     break;
                 case token::MINUS:
-                    entry.opcode = icode::SUB;
+                    opcode = icode::SUB;
                     break;
                 case token::RIGHT_SHIFT:
-                    entry.opcode = icode::RSH;
+                    opcode = icode::RSH;
                     break;
                 case token::LEFT_SHIFT:
-                    entry.opcode = icode::LSH;
+                    opcode = icode::LSH;
                     break;
                 case token::BITWISE_AND:
-                    entry.opcode = icode::BWA;
+                    opcode = icode::BWA;
                     break;
                 case token::BITWISE_XOR:
-                    entry.opcode = icode::BWX;
+                    opcode = icode::BWX;
                     break;
                 case token::BITWISE_OR:
-                    entry.opcode = icode::BWO;
+                    opcode = icode::BWO;
                     break;
                 case token::CONDN_AND:
                 case token::CONDN_OR:
@@ -1676,10 +1689,10 @@ namespace irgen
                     throw log::internal_bug_error();
             }
 
-            (*current_func_desc).icode_table.push_back(entry);
+            icode::operand res_temp = binop(opcode, icode::gen_temp_opr(dtype, size, id()), first_operand.first, ensure_not_ptr(second_operand.first));
 
             /* Return the operand where final result is stored */
-            return op_var_pair(entry.op1, first_operand.second);
+            return op_var_pair(res_temp, first_operand.second);
         }
     }
 
@@ -1751,34 +1764,34 @@ namespace irgen
         }
 
         /* Create icode entry */
-        icode::entry entry;
+        icode::instruction opcode;
 
         /* Convert token type to opcode */
         switch (assign_opr.type)
         {
             case token::EQUAL:
-                entry.opcode = icode::EQUAL;
+                opcode = icode::EQUAL;
                 break;
             case token::PLUS_EQUAL:
-                entry.opcode = icode::ADD;
+                opcode = icode::ADD;
                 break;
             case token::MINUS_EQUAL:
-                entry.opcode = icode::SUB;
+                opcode = icode::SUB;
                 break;
             case token::DIVIDE_EQUAL:
-                entry.opcode = icode::DIV;
+                opcode = icode::DIV;
                 break;
             case token::MULTIPLY_EQUAL:
-                entry.opcode = icode::MUL;
+                opcode = icode::MUL;
                 break;
             case token::OR_EQUAL:
-                entry.opcode = icode::BWO;
+                opcode = icode::BWO;
                 break;
             case token::AND_EQUAL:
-                entry.opcode = icode::BWA;
+                opcode = icode::BWA;
                 break;
             case token::XOR_EQUAL:
-                entry.opcode = icode::BWX;
+                opcode = icode::BWX;
                 break;
             default:
                 log::internal_error_tok(module.name, file, assign_opr);
@@ -1795,16 +1808,11 @@ namespace irgen
         {
             if (assign_opr.type == token::EQUAL)
             {
-                entry.op1 = var.first;
-                entry.op2 = expr.first;
-                (*current_func_desc).icode_table.push_back(entry);
+                copy(var.first, expr.first);
             }
             else
             {
-                entry.op1 = var.first;
-                entry.op2 = var.first;
-                entry.op3 = expr.first;
-                (*current_func_desc).icode_table.push_back(entry);
+                binop(opcode, var.first, var.first, expr.first);
             }
         }
         /* If a pointer */
@@ -1812,35 +1820,13 @@ namespace irgen
         {
             if (assign_opr.type == token::EQUAL)
             {
-                entry.op1 = var.first;
-                entry.op2 = expr.first;
-                entry.opcode = icode::EQUAL;
-                (*current_func_desc).icode_table.push_back(entry);
+                copy(var.first, expr.first);
             }
             else
             {
                 /* Add the read temp value to expr and store it in
                     another temp */
-                entry.op1 = var.first;
-                entry.op2 = var.first;
-
-                if (expr.first.optype == icode::PTR ||
-                    expr.first.optype == icode::TEMP_PTR)
-                {
-                    /* If pointer read into a temp */
-                    icode::entry read_entry;
-                    unsigned int size = icode::dtype_size[expr.first.dtype];
-                    read_entry.op1 = icode::gen_temp_opr(expr.first.dtype, size, id());
-                    read_entry.op2 = expr.first;
-                    read_entry.opcode = icode::EQUAL;
-                    (*current_func_desc).icode_table.push_back(read_entry);
-
-                    entry.op3 = read_entry.op1;
-                }
-                else
-                    entry.op3 = expr.first;
-
-                (*current_func_desc).icode_table.push_back(entry);
+                binop(opcode, var.first, var.first, ensure_not_ptr(expr.first));
             }
         }
     }
@@ -1911,10 +1897,7 @@ namespace irgen
 
                     if (f_fall)
                     {
-                        icode::entry label_entry;
-                        label_entry.op1 = new_f_label;
-                        label_entry.opcode = icode::CREATE_LABEL;
-                        (*current_func_desc).icode_table.push_back(label_entry);
+                        label(new_f_label);
                     }
 
                     break;
@@ -1935,37 +1918,34 @@ namespace irgen
 
                     if (t_fall)
                     {
-                        icode::entry label_entry;
-                        label_entry.op1 = new_t_label;
-                        label_entry.opcode = icode::CREATE_LABEL;
-                        (*current_func_desc).icode_table.push_back(label_entry);
+                        label(new_t_label);
                     }
 
                     break;
                 }
                 default:
                 {
-                    icode::entry comp_entry;
+                    icode::instruction opcode;
 
                     switch (expr_opr.type)
                     {
                         case token::LESS_THAN:
-                            comp_entry.opcode = icode::LT;
+                            opcode = icode::LT;
                             break;
                         case token::LESS_THAN_EQUAL:
-                            comp_entry.opcode = icode::LTE;
+                            opcode = icode::LTE;
                             break;
                         case token::GREATER_THAN:
-                            comp_entry.opcode = icode::GT;
+                            opcode = icode::GT;
                             break;
                         case token::GREATER_THAN_EQUAL:
-                            comp_entry.opcode = icode::GTE;
+                            opcode = icode::GTE;
                             break;
                         case token::CONDN_EQUAL:
-                            comp_entry.opcode = icode::EQ;
+                            opcode = icode::EQ;
                             break;
                         case token::CONDN_NOT_EQUAL:
-                            comp_entry.opcode = icode::NEQ;
+                            opcode = icode::NEQ;
                             break;
                         default:
                             log::error_tok(module.name,
@@ -1977,7 +1957,6 @@ namespace irgen
 
                     /* Create icode entry for comparing two expressions */
                     op_var_pair first_operand = expression(root.children[0]);
-                    comp_entry.op1 = first_operand.first;
 
                     /* Cannot compare structs and arrays */
                     if (first_operand.second.dtype == icode::STRUCT ||
@@ -1989,7 +1968,6 @@ namespace irgen
                     }
 
                     op_var_pair second_operand = expression(root.children[2]);
-                    comp_entry.op2 = second_operand.first;
 
                     /* Type check */
                     if (!icode::type_eq(first_operand.second, second_operand.second))
@@ -2003,39 +1981,19 @@ namespace irgen
                     }
 
                     /* If second operand is a ptr, read it into a temp */
-                    if (comp_entry.op2.optype == icode::PTR ||
-                        comp_entry.op2.optype == icode::TEMP_PTR)
-                    {
-                        icode::entry read_entry;
-                        unsigned int size = icode::dtype_size[comp_entry.op2.dtype];
-                        read_entry.op1 =
-                          icode::gen_temp_opr(comp_entry.op2.dtype, size, id());
-                        read_entry.op2 = comp_entry.op2;
-                        read_entry.opcode = icode::EQUAL;
-                        (*current_func_desc).icode_table.push_back(read_entry);
-
-                        comp_entry.op2 = read_entry.op1;
-                    }
-
-                    /* Add to icode */
-                    (*current_func_desc).icode_table.push_back(comp_entry);
+                    cmpop(opcode, first_operand.first, ensure_not_ptr(second_operand.first));
 
                     /* Create icode entry for goto */
-                    icode::entry goto_entry;
 
                     if (!t_fall)
                     {
-                        goto_entry.op1 = t_label;
-                        goto_entry.opcode = icode::IF_TRUE_GOTO;
+                        goto_label(icode::GOTO, t_label);
                     }
 
                     if (!f_fall)
                     {
-                        goto_entry.op1 = f_label;
-                        goto_entry.opcode = icode::IF_FALSE_GOTO;
+                        goto_label(icode::IF_FALSE_GOTO, f_label);
                     }
-
-                    (*current_func_desc).icode_table.push_back(goto_entry);
                 }
             }
         }
@@ -2069,17 +2027,11 @@ namespace irgen
                 if (i != root.children.size() - 1)
                 {
                     /* Go to end */
-                    icode::entry goto_entry;
-                    goto_entry.op1 = end_label;
-                    goto_entry.opcode = icode::GOTO;
-                    (*current_func_desc).icode_table.push_back(goto_entry);
+                    goto_label(icode::GOTO, end_label);
                 }
 
                 /* Create label to skip block */
-                icode::entry label_entry;
-                label_entry.op1 = new_f_label;
-                label_entry.opcode = icode::CREATE_LABEL;
-                (*current_func_desc).icode_table.push_back(label_entry);
+                label(new_f_label);
             }
             else
             {
@@ -2090,10 +2042,7 @@ namespace irgen
         if (root.children.size() != 1)
         {
             /* Create label for end of if statement */
-            icode::entry end_entry;
-            end_entry.op1 = end_label;
-            end_entry.opcode = icode::CREATE_LABEL;
-            (*current_func_desc).icode_table.push_back(end_entry);
+            label(end_label);
         }
     }
 
@@ -2103,10 +2052,7 @@ namespace irgen
         icode::operand new_f_label = gen_label(root.tok, false, "while");
 
         /* Create label for looping */
-        icode::entry loop_entry;
-        loop_entry.op1 = new_t_label;
-        loop_entry.opcode = icode::CREATE_LABEL;
-        (*current_func_desc).icode_table.push_back(loop_entry);
+        label(new_t_label);
 
         /* Process conditional expression */
         condn_expression(root.children[0], new_t_label, new_f_label, true, false);
@@ -2115,16 +2061,10 @@ namespace irgen
         block(root.children[1], true, new_t_label, new_f_label, new_t_label);
 
         /* Go back to beginning */
-        icode::entry goto_entry;
-        goto_entry.op1 = new_t_label;
-        goto_entry.opcode = icode::GOTO;
-        (*current_func_desc).icode_table.push_back(goto_entry);
+        goto_label(icode::GOTO, new_t_label);
 
         /* Create label to skip block */
-        icode::entry skip_entry;
-        skip_entry.op1 = new_f_label;
-        skip_entry.opcode = icode::CREATE_LABEL;
-        (*current_func_desc).icode_table.push_back(skip_entry);
+        label(new_f_label);
     }
 
     void ir_generator::forloop(const node::node& root)
@@ -2141,10 +2081,7 @@ namespace irgen
         icode::operand cont_label = gen_label(root.tok, true, "for_cont");
 
         /* Create label for looping */
-        icode::entry loop_entry;
-        loop_entry.op1 = new_t_label;
-        loop_entry.opcode = icode::CREATE_LABEL;
-        (*current_func_desc).icode_table.push_back(loop_entry);
+        label(new_t_label);
 
         /* Process conditional expression */
         condn_expression(root.children[1], new_t_label, new_f_label, true, false);
@@ -2153,25 +2090,16 @@ namespace irgen
         block(root.children[3], true, new_t_label, new_f_label, cont_label);
 
         /* Create label for continue */
-        icode::entry cont_entry;
-        cont_entry.op1 = cont_label;
-        cont_entry.opcode = icode::CREATE_LABEL;
-        (*current_func_desc).icode_table.push_back(cont_entry);
+        label(cont_label);
 
         /* Process assignment */
         assignment(root.children[2]);
 
         /* Go back to beginning */
-        icode::entry goto_entry;
-        goto_entry.op1 = new_t_label;
-        goto_entry.opcode = icode::GOTO;
-        (*current_func_desc).icode_table.push_back(goto_entry);
+        goto_label(icode::GOTO, new_t_label);
 
         /* Create label to skip block */
-        icode::entry skip_entry;
-        skip_entry.op1 = new_f_label;
-        skip_entry.opcode = icode::CREATE_LABEL;
-        (*current_func_desc).icode_table.push_back(skip_entry);
+        label(new_f_label);
     }
 
     void ir_generator::print(const node::node& root)
@@ -2179,8 +2107,6 @@ namespace irgen
         for (size_t i = 0; i < root.children.size(); i++)
         {
             node::node child = root.children[i];
-
-            icode::entry print_entry;
 
             /* If string literal, create temp string an print it */
             if (child.type == node::STR_LITERAL)
@@ -2195,9 +2121,7 @@ namespace irgen
                 print_var.dimensions.push_back(str_len);
                 print_var.size = str_size;
 
-                print_entry.op1 = gen_str_dat(child.tok, print_var).first;
-
-                print_entry.opcode = icode::PRINT_STR;
+                printop(icode::PRINT_STR, gen_str_dat(child.tok, print_var).first);
             }
             /* Else expression */
             else
@@ -2215,41 +2139,25 @@ namespace irgen
                     throw log::compile_error();
                 }
 
-                print_entry.op1 = print_var.first;
-
                 if (print_var.second.dimensions.size() != 0)
-                    print_entry.opcode = icode::PRINT_STR;
+                    printop(icode::PRINT_STR, print_var.first);
                 else
-                    print_entry.opcode = icode::PRINT;
+                    printop(icode::PRINT, print_var.first);
             }
-
-            (*current_func_desc).icode_table.push_back(print_entry);
 
             /* Add space after printing (except for the last print) */
             if (i != root.children.size() - 1)
-            {
-                icode::entry space_entry;
-                space_entry.opcode = icode::SPACE;
-                (*current_func_desc).icode_table.push_back(space_entry);
-            }
+                opir(icode::SPACE);
 
             /* If println, the last print should add new line */
             if (i == root.children.size() - 1 && root.type == node::PRINTLN)
-            {
-                icode::entry newln_entry;
-                newln_entry.opcode = icode::NEWLN;
-                (*current_func_desc).icode_table.push_back(newln_entry);
-            }
+                opir(icode::NEWLN);
         }
     }
 
     void ir_generator::input(const node::node& root)
     {
         op_var_pair input_var = expression(root.children[0]);
-
-        /* Creare icode entry */
-        icode::entry input_entry;
-        input_entry.op1 = input_var.first;
 
         /* Check if the input var is writable */
         if (!(input_var.first.optype == icode::VAR ||
@@ -2283,17 +2191,12 @@ namespace irgen
             throw log::compile_error();
         }
 
-        /* INPUT or INPUT_STR */
-        if (input_var.second.dimensions.size() == 0)
-            input_entry.opcode = icode::INPUT;
-        else
-        {
-            input_entry.opcode = icode::INPUT_STR;
-            input_entry.op2 = icode::gen_literal_opr(
-              icode::INT, (int)input_var.second.dimensions[0], id());
-        }
 
-        (*current_func_desc).icode_table.push_back(input_entry);
+        /* Create INPUT or INPUT_STR entry */
+        if (input_var.second.dimensions.size() == 0)
+            inputop(icode::INPUT, input_var.first);
+        else
+            inputop(icode::INPUT_STR, input_var.first, input_var.second.dimensions[0]);
     }
 
     void ir_generator::block(const node::node& root,
@@ -2379,10 +2282,7 @@ namespace irgen
                     }
 
                     /* Go to end */
-                    icode::entry goto_entry;
-                    goto_entry.op1 = break_label;
-                    goto_entry.opcode = icode::GOTO;
-                    (*current_func_desc).icode_table.push_back(goto_entry);
+                    goto_label(icode::GOTO, break_label);
 
                     break;
                 }
@@ -2396,10 +2296,7 @@ namespace irgen
                     }
 
                     /* Go to end */
-                    icode::entry goto_entry;
-                    goto_entry.op1 = cont_label;
-                    goto_entry.opcode = icode::GOTO;
-                    (*current_func_desc).icode_table.push_back(goto_entry);
+                    goto_label(icode::GOTO, cont_label);
 
                     break;
                 }
@@ -2429,11 +2326,7 @@ namespace irgen
                             copy_struct(ret_ptr, ret_val);
                         else
                         {
-                            icode::entry ret_eq_entry;
-                            ret_eq_entry.opcode = icode::EQUAL;
-                            ret_eq_entry.op1 = ret_ptr;
-                            ret_eq_entry.op2 = ret_val.first;
-                            (*current_func_desc).icode_table.push_back(ret_eq_entry);
+                            copy(ret_ptr, ret_val.first);
                         }
                     }
                     else if ((*current_func_desc).func_info.dtype != icode::VOID)
@@ -2444,9 +2337,7 @@ namespace irgen
                     }
 
                     /* Add return to icode */
-                    icode::entry ret_entry;
-                    ret_entry.opcode = icode::RET;
-                    (*current_func_desc).icode_table.push_back(ret_entry);
+                    opir(icode::RET);
 
                     break;
                 }
@@ -2459,9 +2350,7 @@ namespace irgen
                     break;
                 case node::EXIT:
                 {
-                    icode::entry ret_entry;
-                    ret_entry.opcode = icode::EXIT;
-                    (*current_func_desc).icode_table.push_back(ret_entry);
+                    opir(icode::EXIT);
                     break;
                 }
                 default:
@@ -2543,14 +2432,11 @@ namespace irgen
                       icode::gen_label_opr("", 0));
 
                 /* Generate ret instruction for function */
-                icode::entry ret_entry;
 
                 if (func_name == "main")
-                    ret_entry.opcode = icode::EXIT;
+                    opir(icode::EXIT);
                 else
-                    ret_entry.opcode = icode::RET;
-
-                (*current_func_desc).icode_table.push_back(ret_entry);
+                    opir(icode::RET);
             }
         }
     }
