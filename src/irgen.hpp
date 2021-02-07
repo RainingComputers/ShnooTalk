@@ -39,9 +39,15 @@ namespace irgen
 
         void copy(icode::operand op1, icode::operand op2);
 
-        icode::operand binop(icode::instruction instr, icode::operand op1, icode::operand op2, icode::operand op3);
+        icode::operand ensure_not_ptr(icode::operand op);
 
-        icode::operand uniop(icode::instruction instr, icode::operand op1, icode::operand op2);
+        icode::operand binop(icode::instruction instr,
+                             icode::operand op1,
+                             icode::operand op2,
+                             icode::operand op3);
+
+        icode::operand
+        uniop(icode::instruction instr, icode::operand op1, icode::operand op2);
 
         icode::operand cast(icode::data_type cast_dtype, icode::operand op);
 
@@ -50,8 +56,6 @@ namespace irgen
         icode::operand
         addrop(icode::instruction instr, icode::operand op2, icode::operand op3);
 
-        icode::operand ensure_not_ptr(icode::operand op);
-
         void label(icode::operand op);
 
         void goto_label(icode::instruction instr, icode::operand op);
@@ -59,6 +63,14 @@ namespace irgen
         void printop(icode::instruction printop, icode::operand op);
 
         void inputop(icode::instruction instr, icode::operand op, unsigned int size = 0);
+
+        void pass(icode::instruction pass_instr,
+                  icode::operand op,
+                  const std::string& func_name,
+                  const icode::func_desc& func_desc);
+
+        icode::operand
+        call(const std::string& func_name, const icode::func_desc& func_desc);
 
         void opir(icode::instruction instr);
 

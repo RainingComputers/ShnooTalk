@@ -1212,7 +1212,7 @@ namespace uhllvmgen
             /* Keep track which parameter is being passed */
             if (e.opcode == icode::PASS || e.opcode == icode::PASS_ADDR)
                 param_count++;
-            else
+            else if (e.opcode == icode::CALL)
                 param_count = -1;
 
             /* Generate instruction */
