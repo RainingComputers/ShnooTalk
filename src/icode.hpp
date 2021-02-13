@@ -95,6 +95,8 @@ namespace icode
         ADDR_ADD,
         ADDR_MUL,
         EQUAL,
+        READ,
+        WRITE,
         CAST,
         UNARY_MINUS,
         NOT,

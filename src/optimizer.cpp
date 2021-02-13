@@ -127,6 +127,8 @@ namespace opt
                 case icode::BWO:
                 case icode::INPUT:
                 case icode::EQUAL:
+                case icode::READ:
+                case icode::WRITE:
                     /* op1 <- op2 instr op3 */
                     symbol_table.set_use_write_val(entry, func_use_info, i);
                     symbol_table.set_use_read(entry.op2, func_use_info, i);

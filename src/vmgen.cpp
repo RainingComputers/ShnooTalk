@@ -1248,6 +1248,8 @@ namespace uhllvmgen
                     uniop(e);
                     break;
                 case icode::EQUAL:
+                case icode::READ:
+                case icode::WRITE:
                     eq(e);
                     break;
                 case icode::PRINT:

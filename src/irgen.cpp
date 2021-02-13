@@ -44,12 +44,28 @@ namespace irgen
 
     void ir_generator::copy(icode::operand op1, icode::operand op2)
     {
-        icode::entry copy_entry;
+        if (icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
+        {
+            icode::operand temp =
+              icode::gen_temp_opr(op2.dtype, icode::dtype_size[target.default_int], id());
+            copy(temp, op2);
+            copy(op1, temp);    
+        }
+        else
+        {
+            icode::entry copy_entry;
+            copy_entry.op1 = op1;
+            copy_entry.op2 = op2;
 
-        copy_entry.op1 = op1;
-        copy_entry.op2 = op2;
-        copy_entry.opcode = icode::EQUAL;
-        (*current_func_desc).icode_table.push_back(copy_entry);
+            if (icode::is_ptr(op1.optype) && !icode::is_ptr(op2.optype))
+                copy_entry.opcode = icode::WRITE;
+            else if (!icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
+                copy_entry.opcode = icode::READ;
+            else if (!icode::is_ptr(op1.optype) && !icode::is_ptr(op2.optype))
+                copy_entry.opcode = icode::EQUAL;
+
+            (*current_func_desc).icode_table.push_back(copy_entry);
+        }
     }
 
     icode::operand ir_generator::ensure_not_ptr(icode::operand op)
