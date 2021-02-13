@@ -37,9 +37,13 @@ namespace irgen
         void clear_scope();
         bool in_scope(unsigned int scope_id);
 
+        void push_ir(icode::entry entry);
+
         void copy(icode::operand op1, icode::operand op2);
 
         icode::operand ensure_not_ptr(icode::operand op);
+
+        icode::operand push_ir_ensure_no_write_ptr(icode::entry entry);
 
         icode::operand binop(icode::instruction instr,
                              icode::operand op1,

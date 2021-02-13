@@ -42,8 +42,18 @@ namespace irgen
                scope_id_stack.end();
     }
 
+    void ir_generator::push_ir(icode::entry entry)
+    {
+        /* Push an ir entry to the current function's icode table */
+
+        (*current_func_desc).icode_table.push_back(entry);
+    }
+
     void ir_generator::copy(icode::operand op1, icode::operand op2)
     {
+        /* Copy one operand value to another, use READ and WRITE instruction
+            if pointers are involved */
+
         if (icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
         {
             icode::operand temp =
@@ -64,12 +74,15 @@ namespace irgen
             else if (!icode::is_ptr(op1.optype) && !icode::is_ptr(op2.optype))
                 copy_entry.opcode = icode::EQUAL;
 
-            (*current_func_desc).icode_table.push_back(copy_entry);
+            push_ir(copy_entry);
         }
     }
 
     icode::operand ir_generator::ensure_not_ptr(icode::operand op)
     {
+        /* Make sure the operand is not a pointer, if it is a pointer,
+            converts it to a temp using the READ instruction */
+
         if (icode::is_ptr(op.optype))
         {
             icode::entry read_entry;
@@ -82,6 +95,36 @@ namespace irgen
             return op;
     }
 
+    icode::operand ir_generator::push_ir_ensure_no_write_ptr(icode::entry entry)
+    {
+        /* Push an ir entry to the current function's icode table,
+            but ensures entry.op1 is not a pointer */
+
+        if(!icode::is_ptr(entry.op1.optype)) 
+        {
+            push_ir(entry);
+            return entry.op1;
+        }
+
+        /* If entry.op1 is a pointer, repleace it with a temp and
+            write that temp to the pointer */
+
+        icode::operand ptr_op = entry.op1;
+        icode::operand temp = icode::gen_temp_opr(ptr_op.dtype, icode::dtype_size[target.default_int], id());
+    
+        icode::entry mod_entry = entry;
+        mod_entry.op1 = temp;
+        push_ir(mod_entry);
+
+        icode::entry write_entry;
+        write_entry.op1 = ptr_op;
+        write_entry.op2 = temp;
+        write_entry.opcode = icode::WRITE;
+        push_ir(write_entry);
+    
+        return temp;
+    }
+
     icode::operand ir_generator::binop(icode::instruction instr,
                                        icode::operand op1,
                                        icode::operand op2,
@@ -90,11 +133,10 @@ namespace irgen
         icode::entry entry;
         entry.opcode = instr;
         entry.op1 = op1;
-        entry.op2 = op2;
-        entry.op3 = op3;
-        (*current_func_desc).icode_table.push_back(entry);
-
-        return entry.op1;
+        entry.op2 = ensure_not_ptr(op2);
+        entry.op3 = ensure_not_ptr(op3);
+        
+        return push_ir_ensure_no_write_ptr(entry);
     }
 
     icode::operand
@@ -103,10 +145,9 @@ namespace irgen
         icode::entry entry;
         entry.opcode = instr;
         entry.op1 = op1;
-        entry.op2 = op2;
-        (*current_func_desc).icode_table.push_back(entry);
-
-        return entry.op1;
+        entry.op2 = ensure_not_ptr(op2);
+        
+        return push_ir_ensure_no_write_ptr(entry);
     }
 
     icode::operand ir_generator::cast(icode::data_type cast_dtype, icode::operand op)
@@ -115,11 +156,10 @@ namespace irgen
         icode::entry entry;
         entry.opcode = icode::CAST;
         entry.op1 = icode::gen_temp_opr(cast_dtype, cast_size, id());
-        entry.op2 = op;
+        entry.op2 = ensure_not_ptr(op);
         entry.op3 = icode::gen_dtype_opr(cast_dtype, id());
-        (*current_func_desc).icode_table.push_back(entry);
-
-        return entry.op1;
+        
+        return push_ir_ensure_no_write_ptr(entry);
     }
 
     void
@@ -127,9 +167,10 @@ namespace irgen
     {
         icode::entry entry;
         entry.opcode = instr;
-        entry.op1 = op1;
-        entry.op2 = op2;
-        (*current_func_desc).icode_table.push_back(entry);
+        entry.op1 = ensure_not_ptr(op1);
+        entry.op2 = ensure_not_ptr(op2);
+
+        push_ir(entry);
     }
 
     icode::operand
@@ -140,7 +181,7 @@ namespace irgen
         entry.op2 = op2;
         entry.op3 = op3;
         entry.opcode = instr;
-        (*current_func_desc).icode_table.push_back(entry);
+        push_ir(entry);
 
         return entry.op1;
     }
@@ -150,7 +191,7 @@ namespace irgen
         icode::entry label_entry;
         label_entry.op1 = op;
         label_entry.opcode = icode::CREATE_LABEL;
-        (*current_func_desc).icode_table.push_back(label_entry);
+        push_ir(label_entry);
     }
 
     void ir_generator::goto_label(icode::instruction instr, icode::operand op)
@@ -158,7 +199,7 @@ namespace irgen
         icode::entry goto_entry;
         goto_entry.op1 = op;
         goto_entry.opcode = instr;
-        (*current_func_desc).icode_table.push_back(goto_entry);
+        push_ir(goto_entry);
     }
 
     void ir_generator::printop(icode::instruction printop, icode::operand op)
@@ -166,7 +207,7 @@ namespace irgen
         icode::entry print_entry;
         print_entry.op1 = op;
         print_entry.opcode = printop;
-        (*current_func_desc).icode_table.push_back(print_entry);
+        push_ir(print_entry);
     }
 
     void
@@ -176,7 +217,7 @@ namespace irgen
         input_entry.op1 = op;
         input_entry.op2 = icode::gen_literal_opr(icode::INT, (int)size, id());
         input_entry.opcode = instr;
-        (*current_func_desc).icode_table.push_back(input_entry);
+        push_ir(input_entry);
     }
 
     void ir_generator::pass(icode::instruction pass_instr,
@@ -190,7 +231,7 @@ namespace irgen
         entry.op2 = icode::gen_var_opr(func_dtype, func_name, id());
         entry.op3 = icode::gen_module_opr(func_desc.module_name, id());
         entry.opcode = pass_instr;
-        (*current_func_desc).icode_table.push_back(entry);
+        push_ir(entry);
     }
 
     icode::operand
@@ -205,7 +246,7 @@ namespace irgen
         call_entry.op3 = icode::gen_module_opr(func_desc.module_name, id());
         call_entry.opcode = icode::CALL;
 
-        (*current_func_desc).icode_table.push_back(call_entry);
+        push_ir(call_entry);
 
         return call_entry.op1;
     }
@@ -214,7 +255,7 @@ namespace irgen
     {
         icode::entry entry;
         entry.opcode = instr;
-        (*current_func_desc).icode_table.push_back(entry);
+        push_ir(entry);
     }
 
     bool ir_generator::get_def(const std::string& name, icode::def& def)
@@ -1720,7 +1761,7 @@ namespace irgen
             icode::operand res_temp = binop(opcode,
                                             icode::gen_temp_opr(dtype, size, id()),
                                             first_operand.first,
-                                            ensure_not_ptr(second_operand.first));
+                                            second_operand.first);
 
             /* Return the operand where final result is stored */
             return op_var_pair(res_temp, first_operand.second);
@@ -1857,7 +1898,7 @@ namespace irgen
             {
                 /* Add the read temp value to expr and store it in
                     another temp */
-                binop(opcode, var.first, var.first, ensure_not_ptr(expr.first));
+                binop(opcode, var.first, var.first, expr.first);
             }
         }
     }
@@ -2013,7 +2054,7 @@ namespace irgen
 
                     /* If second operand is a ptr, read it into a temp */
                     cmpop(
-                      opcode, first_operand.first, ensure_not_ptr(second_operand.first));
+                      opcode, first_operand.first, second_operand.first);
 
                     /* Create icode entry for goto */
 
