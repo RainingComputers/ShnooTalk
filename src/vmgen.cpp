@@ -306,8 +306,7 @@ namespace uhllvmgen
         {
             /* Commutative operation, order does not matter
                 Load non literal or existing into accumulator preferably */
-            if (icode::is_ltrl(e.op3.optype) || icode::is_ptr(e.op2.optype) ||
-                (acc == e.op1 && !acc_is_addr))
+            if (icode::is_ltrl(e.op3.optype) || (acc == e.op2 && !acc_is_addr))
             {
                 load(e.op2);
                 addop = e.op3;
@@ -631,7 +630,7 @@ namespace uhllvmgen
         {
             /* Commutative operation, order does not matter
                 Load non literal into accumulator preferably */
-            if (icode::is_ltrl(e.op2.optype) || icode::is_ptr(e.op1.optype))
+            if (icode::is_ltrl(e.op2.optype) || (acc == e.op1 && !acc_is_addr))
             {
                 load(e.op1, false);
                 addop = e.op2;

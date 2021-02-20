@@ -11,7 +11,10 @@ namespace icode
 
     bool operand::operator<(const operand& other) const
     {
-        return temp_id < other.temp_id;
+       if (*this == other)
+            return false;
+        else
+            return temp_id < other.temp_id;
     }
 
     bool operand::operator==(const operand& other) const
@@ -217,7 +220,7 @@ namespace icode
     bool is_ltrl(operand_type optype)
     {
         return optype == icode::LITERAL || optype == icode::ADDR || optype == DTYPE ||
-               optype == LABEL || optype == MODULE || optype == NONE;
+               optype == LABEL || optype == MODULE || optype == STR_DATA || optype == NONE;
     }
 
     bool is_ptr(operand_type optype)
