@@ -54,6 +54,8 @@ namespace opt
                                         icode_use_info& func_use_info,
                                         int i)
     {
+        if(func_use_info[i].find(op) != func_use_info[i].end()) return;
+
         if (!icode::is_ltrl(op.optype))
         {
             func_use_info[i][op] = get(op);
@@ -61,20 +63,23 @@ namespace opt
         }
     }
 
-    void use_map_symtable::set_use_write_addr(const icode::entry& entry,
-                                              icode_use_info& func_use_info,
-                                              int i)
+    void use_map_symtable::set_use_write(const icode::operand& op,
+                                        icode_use_info& func_use_info,
+                                        int i)
     {
-        func_use_info[i][entry.op1] = get(entry.op1);
-        set(entry.op1, false, NO_NEXT_USE);
+        func_use_info[i][op] = get(op);
+        set(op, false, NO_NEXT_USE);
     }
 
-    void use_map_symtable::set_use_write_val(const icode::entry& entry,
-                                             icode_use_info& func_use_info,
-                                             int i)
+    void use_map_symtable::set_use_read_ptr(const icode::operand& op,
+                                        icode_use_info& func_use_info,
+                                        int i)
     {
-        set(entry.op1, true, i);
-        func_use_info[i][entry.op1] = get(entry.op1);
+        if (icode::is_ptr(op.optype))
+        {
+            func_use_info[i][op] = get(op);
+            set(op, true, i);
+        }
     }
 
     void optimizer::construct_use_info(const std::string& module_name,
@@ -104,11 +109,10 @@ namespace opt
                     break;
                 case icode::CALL:
                 case icode::NEWLN:
+                case icode::RET:
                     break;
                 case icode::PASS:
-                case icode::PASS_ADDR:
                 case icode::PRINT:
-                case icode::RET:
                     /* instr op1 */
                     symbol_table.set_use_read(entry.op1, func_use_info, i);
                     break;
@@ -125,21 +129,28 @@ namespace opt
                 case icode::BWA:
                 case icode::BWX:
                 case icode::BWO:
-                case icode::INPUT:
                 case icode::EQUAL:
                 case icode::READ:
-                case icode::WRITE:
                     /* op1 <- op2 instr op3 */
-                    symbol_table.set_use_write_val(entry, func_use_info, i);
+                    symbol_table.set_use_write(entry.op1, func_use_info, i);
                     symbol_table.set_use_read(entry.op2, func_use_info, i);
                     symbol_table.set_use_read(entry.op3, func_use_info, i);
                     break;
                 case icode::ADDR_ADD:
                 case icode::ADDR_MUL:
-                    /* op1 <- op2 instr op3 */
-                    symbol_table.set_use_write_addr(entry, func_use_info, i);
-                    symbol_table.set_use_read(entry.op2, func_use_info, i);
-                    symbol_table.set_use_read(entry.op3, func_use_info, i);
+                    symbol_table.set_use_write(entry.op1, func_use_info, i);
+                    symbol_table.set_use_read_ptr(entry.op2, func_use_info, i);
+                    symbol_table.set_use_read_ptr(entry.op3, func_use_info, i);                
+                    break;
+                case icode::PASS_ADDR:
+                    symbol_table.set_use_read_ptr(entry.op1, func_use_info, i);
+                    break;
+                case icode::INPUT:
+                case icode::WRITE:
+                    if(icode::is_ptr(entry.op1.optype)) 
+                        symbol_table.set_use_read(entry.op1, func_use_info, i);
+                    else
+                        symbol_table.set_use_write(entry.op1, func_use_info, i);
                     break;
                 case icode::LT:
                 case icode::LTE:

@@ -177,7 +177,7 @@ namespace irgen
     ir_generator::addrop(icode::instruction instr, icode::operand op2, icode::operand op3)
     {
         icode::entry entry;
-        entry.op1 = icode::gen_temp_ptr_opr(op3.dtype, id());
+        entry.op1 = icode::gen_temp_ptr_opr(op2.dtype, id());
         entry.op2 = op2;
         entry.op3 = op3;
         entry.opcode = instr;
@@ -205,7 +205,12 @@ namespace irgen
     void ir_generator::printop(icode::instruction printop, icode::operand op)
     {
         icode::entry print_entry;
-        print_entry.op1 = op;
+
+        if(printop == icode::PRINT)
+            print_entry.op1 = ensure_not_ptr(op);
+        else
+            print_entry.op1 = op;
+        
         print_entry.opcode = printop;
         push_ir(print_entry);
     }
@@ -227,7 +232,12 @@ namespace irgen
     {
         icode::data_type func_dtype = func_desc.func_info.dtype;
         icode::entry entry;
-        entry.op1 = op;
+
+        if(pass_instr == icode::PASS)
+            entry.op1 = ensure_not_ptr(op);
+        else 
+            entry.op1 = op;
+
         entry.op2 = icode::gen_var_opr(func_dtype, func_name, id());
         entry.op3 = icode::gen_module_opr(func_desc.module_name, id());
         entry.opcode = pass_instr;
@@ -1050,7 +1060,7 @@ namespace irgen
 
     op_var_pair ir_generator::var_access(const node::node& root)
     {
-        icode::operand current_offset_temp = icode::gen_addr_opr(0, id());
+        icode::operand current_offset_temp;
         icode::var_info current_var_info;
         std::string ident_name;
         unsigned int dim_count = 0;
@@ -1124,6 +1134,8 @@ namespace irgen
               current_var_info.dtype, ident_name, id(), is_global, is_ptr);
             return op_var_pair(op, current_var_info);
         }
+
+        current_offset_temp = icode::gen_var_opr(current_var_info.dtype, ident_name, id(), is_global, is_ptr);
 
         /* Go through struct fields and subsripts */
         for (size_t i = 1; i < root.children.size();)
@@ -1267,15 +1279,8 @@ namespace irgen
             }
         }
 
-        /* Add var to offset */
-        icode::operand var_op =
-          addrop(icode::ADDR_ADD,
-                 current_offset_temp,
-                 icode::gen_var_opr(
-                   current_var_info.dtype, ident_name, id(), is_global, is_ptr));
-
         /* Return var */
-        return op_var_pair(var_op, current_var_info);
+        return op_var_pair(current_offset_temp, current_var_info);
     }
 
     op_var_pair ir_generator::funccall(const node::node& root)
@@ -1884,7 +1889,9 @@ namespace irgen
             }
             else
             {
-                binop(opcode, var.first, var.first, expr.first);
+                icode::operand temp = icode::gen_temp_opr(var.second.dtype, icode::dtype_size[var.second.dtype], id());
+                copy(temp, var.first);
+                binop(opcode, var.first, temp, expr.first);
             }
         }
         /* If a pointer */

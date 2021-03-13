@@ -40,12 +40,8 @@ namespace opt
         void clear();
 
         void set_use_read(const icode::operand& op, icode_use_info& func_use_info, int i);
-        void set_use_write_val(const icode::entry& entry,
-                               icode_use_info& func_use_info,
-                               int i);
-        void set_use_write_addr(const icode::entry& entry,
-                                icode_use_info& func_use_info,
-                                int i);
+        void set_use_write(const icode::operand& op, icode_use_info& func_use_info, int i);
+        void set_use_read_ptr(const icode::operand& op, icode_use_info& func_use_info, int i);
     };
 
     /* Optimizer class */

@@ -100,34 +100,27 @@ namespace uhllvmgen
     void uhllvm_generator::save()
     {
         /* If acc is none, dont save */
-        if (acc.optype == icode::NONE || !acc_mod)
+        if (icode::is_ltrl(acc.optype)) //|| !acc_mod)
             return;
 
-        /* Write accumulator to address */
-        unsigned int frame_addr = get_frame_addr(acc);
-
-        if (icode::is_ptr(acc.optype) && !acc_is_addr)
-            vm.create_instr_ui(vm::STPTR, frame_addr);
-        else if (acc_is_addr && !icode::is_ptr(acc.optype))
-            return;
-        else
+        if(acc_is_live || acc_in_ir)
+        {
+            /* Write accumulator to address */
+            unsigned int frame_addr = get_frame_addr(acc);
             vm.create_instr_ui(vm::ST, frame_addr);
+        }
     }
 
     void uhllvm_generator::save_acc_val()
     {
-        if (acc.optype == icode::STR_DATA)
-            return;
-
-        if (icode::is_ptr(acc.optype) || acc_in_ir || acc_is_live)
-            save();
+        save();
     }
 
     void uhllvm_generator::load(const icode::operand& op, bool mod)
     {
         /* If the accumulator is not going to be modified and
             it has the operand already, return */
-        if (acc == op && !acc_is_addr && !mod)
+        if (acc == op && !mod)
             return;
 
         /* Save accumulator if req */
@@ -135,8 +128,7 @@ namespace uhllvmgen
         acc_mod = mod;
 
         /* If accumulator already has the operand return */
-        if (acc == op && !acc_is_addr)
-            return;
+        if (acc == op) return;
 
         if (op.optype == icode::LITERAL)
         {
@@ -157,26 +149,21 @@ namespace uhllvmgen
         else
         {
             unsigned int frame_addr = get_frame_addr(op);
-
-            if (icode::is_ptr(op.optype))
-                vm.create_instr_ui(vm::LDPTR, frame_addr);
-            else
-                vm.create_instr_ui(vm::LD, frame_addr);
+            vm.create_instr_ui(vm::LD, frame_addr);
         }
 
         acc = op;
-        acc_is_addr = false;
     }
 
     void uhllvm_generator::load_addr(const icode::operand& op)
     {
-        /* If accumulator already has the operand return */
-        if (acc == op && acc_is_addr)
-            return;
+        /* Save accumulator if req */
+        save_acc_val();
+        acc_mod = true;
 
         /* Save accumulator if req */
-        if ((icode::is_ptr(acc.optype) && !acc_is_addr) || acc_is_live)
-            save();
+        if (acc == op && icode::is_ptr(acc.optype))
+            return;
 
         if (op.optype == icode::ADDR || op.optype == icode::LITERAL)
         {
@@ -195,8 +182,6 @@ namespace uhllvmgen
         }
 
         acc = op;
-        acc_is_addr = true;
-        acc_mod = true;
     }
 
     void uhllvm_generator::eq(const icode::entry& e)
@@ -206,6 +191,21 @@ namespace uhllvmgen
 
         /* Accumulator now has that variable */
         acc = e.op1;
+    }
+
+    void uhllvm_generator::read(const icode::entry& e)
+    {
+        save_acc_val();
+        unsigned int frame_addr = get_frame_addr(e.op2);
+        vm.create_instr_ui(vm::LDPTR, frame_addr);
+        acc = e.op1;
+    }
+
+    void uhllvm_generator::write(const icode::entry& e)
+    {
+        load(e.op2);
+        unsigned int frame_addr = get_frame_addr(e.op1);
+        vm.create_instr_ui(vm::STPTR, frame_addr);
     }
 
     void uhllvm_generator::addrop(const icode::entry& e)
@@ -973,9 +973,6 @@ namespace uhllvmgen
         }
         else if (icode::is_ptr(e.op1.optype))
         {
-            /* If acc has address, save it to memory */
-            save_acc_val();
-
             unsigned int frame_addr = get_frame_addr(e.op1);
             vm.create_instr_ui(vm::PRINTptr, frame_addr);
         }
@@ -1184,7 +1181,7 @@ namespace uhllvmgen
 
         /* Accumulator does not hold anything at start */
         acc_is_live = false;
-        acc_mod = false;
+        acc_mod = true;
         acc_is_addr = false;
         acc.optype = icode::NONE;
 
@@ -1247,9 +1244,13 @@ namespace uhllvmgen
                     uniop(e);
                     break;
                 case icode::EQUAL:
-                case icode::READ:
-                case icode::WRITE:
                     eq(e);
+                    break;
+                case icode::READ:
+                    read(e);
+                    break;
+                case icode::WRITE:
+                    write(e);
                     break;
                 case icode::PRINT:
                     print(e);

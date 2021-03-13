@@ -77,6 +77,10 @@ def run_all_tests(exec_path, obj_dir, src_dir, testinfo_dir):
             elif(res == TestResult.TIMEDOUT):
                 print(" 🕒", file, "timedout")
 
+    # Print number of tests that passed
+    print(f"{len(failed)} tests failed.")
+    print(f"{len(passed)} tests passed.")
+
     # Generate report
     print("Preparing coverage report...")
     add_files = " ".join(

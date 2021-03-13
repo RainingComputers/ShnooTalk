@@ -56,6 +56,10 @@ namespace uhllvmgen
 
         void eq(const icode::entry& e);
 
+        void read(const icode::entry& e);
+
+        void write(const icode::entry& e);
+
         void addrop(const icode::entry& e);
 
         void binop(const icode::entry& e);
