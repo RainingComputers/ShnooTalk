@@ -54,8 +54,6 @@ namespace opt
                                         icode_use_info& func_use_info,
                                         int i)
     {
-        if(func_use_info[i].find(op) != func_use_info[i].end()) return;
-
         if (!icode::is_ltrl(op.optype))
         {
             func_use_info[i][op] = get(op);
