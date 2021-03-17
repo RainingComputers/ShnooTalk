@@ -4,12 +4,11 @@
 #include "icode.hpp"
 #include "irgen.hpp"
 #include "lexer.hpp"
+#include "llvmgen.hpp"
 #include "log.hpp"
-#include "optimizer.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
 #include "token.hpp"
-#include "vmgen.hpp"
 
 void print_usage()
 {
@@ -69,8 +68,7 @@ int main(int argc, char* argv[])
     {
         option = argv[2];
 
-        if (option != "-ir" && option != "-asm" && option != "-run" && option != "-ast" &&
-            option != "-use")
+        if (option != "-ir" && option != "-asm" && option != "-run" && option != "-ast")
         {
             print_usage();
             return EXIT_FAILURE;
@@ -79,9 +77,6 @@ int main(int argc, char* argv[])
 
     /* Map for holding all the compiled module in intermediate representation */
     icode::module_desc_map modules;
-
-    /* uhll vm */
-    vm::uhllvm vm;
 
     /* Compile program */
     try
@@ -101,7 +96,7 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        icode::target_desc target = uhllvmgen::target_desc();
+        icode::target_desc target = llvmgen::target_desc();
 
         ir_gen(file_name, target, modules);
 
@@ -116,28 +111,13 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        opt::optimizer opt(target, modules);
+        // uhllvmgen::uhllvm_generator vmgen(vm, modules, opt);
 
-        if (option == "-use")
-        {
-            for (auto pair : modules)
-            {
-                log::print_module_desc(pair.second);
-                log::println("");
-            }
-
-            log::print_use_map(opt.prog_use_map);
-
-            return 0;
-        }
-
-        uhllvmgen::uhllvm_generator vmgen(vm, modules, opt);
-
-        if (option == "-asm")
-        {
-            log::print_vm(vm);
-            return 0;
-        }
+        // if (option == "-asm")
+        //{
+        //    log::print_vm(vm);
+        //    return 0;
+        //}
     }
     catch (const log::compile_error& e)
     {
@@ -154,14 +134,7 @@ int main(int argc, char* argv[])
     }
 
     /* Run program */
-    try
-    {
-        vm.run();
-    }
-    catch (const vm::vm_error& e)
-    {
-        return EXIT_FAILURE;
-    }
+    // TODO
 
     return 0;
 }

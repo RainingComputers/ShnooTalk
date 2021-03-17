@@ -270,7 +270,7 @@ namespace icode
         Helper functions for generating icode operands
     */
 
-    operand temp_opr(data_type dtype, unsigned int size, unsigned int id);
+    operand temp_opr(data_type dtype, unsigned int id);
     operand temp_ptr_opr(data_type dtype, unsigned int id);
     operand str_dat_opr(const std::string& name, unsigned int size, unsigned int id);
     operand var_opr(data_type dtype,

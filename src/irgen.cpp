@@ -1322,7 +1322,6 @@ namespace irgen
                 op_var_pair term_var = term(child.children[0]);
 
                 icode::data_type dtype = term_var.second.dtype;
-                unsigned int size = icode::dtype_size[dtype];
 
                 /* Unary operator not allowed on ARRAY */
                 if (term_var.second.dimensions.size() != 0)
@@ -1372,8 +1371,8 @@ namespace irgen
                         throw log::internal_bug_error();
                 }
 
-                icode::operand res_temp = builder.uniop(
-                  opcode, icode::temp_opr(dtype, size, id()), term_var.first);
+                icode::operand res_temp =
+                  builder.uniop(opcode, icode::temp_opr(dtype, id()), term_var.first);
 
                 /* Return temp */
                 return op_var_pair(res_temp, term_var.second);
@@ -1449,7 +1448,6 @@ namespace irgen
             /* First operand */
             op_var_pair first_operand = expression(root.children[0]);
             icode::data_type dtype = first_operand.second.dtype;
-            unsigned int size = icode::dtype_size[dtype];
 
             /* Expression not allowed on arrays or struct */
             if (dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
@@ -1542,7 +1540,7 @@ namespace irgen
             }
 
             icode::operand res_temp = builder.binop(opcode,
-                                                    icode::temp_opr(dtype, size, id()),
+                                                    icode::temp_opr(dtype, id()),
                                                     first_operand.first,
                                                     second_operand.first);
 
@@ -1667,8 +1665,7 @@ namespace irgen
             }
             else
             {
-                icode::operand temp = icode::temp_opr(
-                  var.second.dtype, icode::dtype_size[var.second.dtype], id());
+                icode::operand temp = icode::temp_opr(var.second.dtype, id());
                 builder.copy(temp, var.first);
                 builder.binop(opcode, var.first, temp, expr.first);
             }

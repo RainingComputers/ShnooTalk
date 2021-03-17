@@ -7,9 +7,7 @@
 
 #include "icode.hpp"
 #include "node.hpp"
-#include "optimizer.hpp"
 #include "token.hpp"
-#include "vm.hpp"
 
 namespace log
 {
@@ -75,14 +73,6 @@ namespace log
     void print_func_desc(const icode::func_desc& func_desc, int ilvl = 0);
 
     void print_module_desc(const icode::module_desc& module_desc, int ilvl = 0);
-
-    void print_use_info(opt::use_info info);
-
-    void print_icode_use_info(opt::icode_use_info& icode_use_info, int ilvl = 0);
-
-    void print_use_map(opt::use_map& use_map, int ilvl = 0);
-
-    void print_vm(vm::uhllvm& vm);
 }
 
 #endif

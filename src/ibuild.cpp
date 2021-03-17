@@ -25,8 +25,7 @@ namespace ibuild
 
         if (icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
         {
-            icode::operand temp =
-              icode::temp_opr(op2.dtype, icode::dtype_size[op2.dtype], id());
+            icode::operand temp = icode::temp_opr(op2.dtype, id());
             copy(temp, op2);
             copy(op1, temp);
         }
@@ -55,8 +54,7 @@ namespace ibuild
         if (icode::is_ptr(op.optype))
         {
             icode::entry read_entry;
-            icode::operand temp =
-              icode::temp_opr(op.dtype, icode::dtype_size[op.dtype], id());
+            icode::operand temp = icode::temp_opr(op.dtype, id());
             copy(temp, op);
             return temp;
         }
@@ -79,8 +77,7 @@ namespace ibuild
             write that temp to the pointer */
 
         icode::operand ptr_op = entry.op1;
-        icode::operand temp =
-          icode::temp_opr(ptr_op.dtype, icode::dtype_size[ptr_op.dtype], id());
+        icode::operand temp = icode::temp_opr(ptr_op.dtype, id());
 
         icode::entry mod_entry = entry;
         mod_entry.op1 = temp;
@@ -122,10 +119,9 @@ namespace ibuild
 
     icode::operand ir_builder::cast(icode::data_type cast_dtype, icode::operand op)
     {
-        unsigned int cast_size = icode::dtype_size[cast_dtype];
         icode::entry entry;
         entry.opcode = icode::CAST;
-        entry.op1 = icode::temp_opr(cast_dtype, cast_size, id());
+        entry.op1 = icode::temp_opr(cast_dtype, id());
         entry.op2 = ensure_not_ptr(op);
         entry.op3 = icode::dtype_opr(cast_dtype, id());
 
@@ -218,10 +214,9 @@ namespace ibuild
     ir_builder::call(const std::string& func_name, const icode::func_desc& func_desc)
     {
         icode::data_type func_dtype = func_desc.func_info.dtype;
-        unsigned int return_size = func_desc.func_info.size;
 
         icode::entry call_entry;
-        call_entry.op1 = icode::temp_opr(func_dtype, return_size, id());
+        call_entry.op1 = icode::temp_opr(func_dtype, id());
         call_entry.op2 = icode::var_opr(func_dtype, func_name, id());
         call_entry.op3 = icode::module_opr(func_desc.module_name, id());
         call_entry.opcode = icode::CALL;

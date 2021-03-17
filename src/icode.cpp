@@ -234,13 +234,12 @@ namespace icode
         Helper functions for generating icode operands
     */
 
-    operand temp_opr(data_type dtype, unsigned int size, unsigned int id)
+    operand temp_opr(data_type dtype, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
         temp.dtype = dtype;
         temp.optype = TEMP;
-        temp.val.size = size;
 
         return temp;
     }
