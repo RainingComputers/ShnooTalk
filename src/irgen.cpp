@@ -21,7 +21,7 @@ namespace irgen
         module.name = file_name;
     }
 
-    unsigned int ir_generator::id() { return id_counter++; }
+    unsigned int ir_generator::id() { return builder.id(); }
 
     unsigned int ir_generator::get_scope_id() { return scope_id_stack.back(); }
 
@@ -40,232 +40,6 @@ namespace irgen
     {
         return std::find(scope_id_stack.begin(), scope_id_stack.end(), scope_id) !=
                scope_id_stack.end();
-    }
-
-    void ir_generator::push_ir(icode::entry entry)
-    {
-        /* Push an ir entry to the current function's icode table */
-
-        (*current_func_desc).icode_table.push_back(entry);
-    }
-
-    void ir_generator::copy(icode::operand op1, icode::operand op2)
-    {
-        /* Copy one operand value to another, use READ and WRITE instruction
-            if pointers are involved */
-
-        if (icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
-        {
-            icode::operand temp =
-              icode::gen_temp_opr(op2.dtype, icode::dtype_size[op2.dtype], id());
-            copy(temp, op2);
-            copy(op1, temp);    
-        }
-        else
-        {
-            icode::entry copy_entry;
-            copy_entry.op1 = op1;
-            copy_entry.op2 = op2;
-
-            if (icode::is_ptr(op1.optype) && !icode::is_ptr(op2.optype))
-                copy_entry.opcode = icode::WRITE;
-            else if (!icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
-                copy_entry.opcode = icode::READ;
-            else if (!icode::is_ptr(op1.optype) && !icode::is_ptr(op2.optype))
-                copy_entry.opcode = icode::EQUAL;
-
-            push_ir(copy_entry);
-        }
-    }
-
-    icode::operand ir_generator::ensure_not_ptr(icode::operand op)
-    {
-        /* Make sure the operand is not a pointer, if it is a pointer,
-            converts it to a temp using the READ instruction */
-
-        if (icode::is_ptr(op.optype))
-        {
-            icode::entry read_entry;
-            icode::operand temp =
-              icode::gen_temp_opr(op.dtype, icode::dtype_size[op.dtype], id());
-            copy(temp, op);
-            return temp;
-        }
-        else
-            return op;
-    }
-
-    icode::operand ir_generator::push_ir_ensure_no_write_ptr(icode::entry entry)
-    {
-        /* Push an ir entry to the current function's icode table,
-            but ensures entry.op1 is not a pointer */
-
-        if(!icode::is_ptr(entry.op1.optype)) 
-        {
-            push_ir(entry);
-            return entry.op1;
-        }
-
-        /* If entry.op1 is a pointer, repleace it with a temp and
-            write that temp to the pointer */
-
-        icode::operand ptr_op = entry.op1;
-        icode::operand temp = icode::gen_temp_opr(ptr_op.dtype, icode::dtype_size[ptr_op.dtype], id());
-    
-        icode::entry mod_entry = entry;
-        mod_entry.op1 = temp;
-        push_ir(mod_entry);
-
-        icode::entry write_entry;
-        write_entry.op1 = ptr_op;
-        write_entry.op2 = temp;
-        write_entry.opcode = icode::WRITE;
-        push_ir(write_entry);
-    
-        return temp;
-    }
-
-    icode::operand ir_generator::binop(icode::instruction instr,
-                                       icode::operand op1,
-                                       icode::operand op2,
-                                       icode::operand op3)
-    {
-        icode::entry entry;
-        entry.opcode = instr;
-        entry.op1 = op1;
-        entry.op2 = ensure_not_ptr(op2);
-        entry.op3 = ensure_not_ptr(op3);
-        
-        return push_ir_ensure_no_write_ptr(entry);
-    }
-
-    icode::operand
-    ir_generator::uniop(icode::instruction instr, icode::operand op1, icode::operand op2)
-    {
-        icode::entry entry;
-        entry.opcode = instr;
-        entry.op1 = op1;
-        entry.op2 = ensure_not_ptr(op2);
-        
-        return push_ir_ensure_no_write_ptr(entry);
-    }
-
-    icode::operand ir_generator::cast(icode::data_type cast_dtype, icode::operand op)
-    {
-        unsigned int cast_size = icode::dtype_size[cast_dtype];
-        icode::entry entry;
-        entry.opcode = icode::CAST;
-        entry.op1 = icode::gen_temp_opr(cast_dtype, cast_size, id());
-        entry.op2 = ensure_not_ptr(op);
-        entry.op3 = icode::gen_dtype_opr(cast_dtype, id());
-        
-        return push_ir_ensure_no_write_ptr(entry);
-    }
-
-    void
-    ir_generator::cmpop(icode::instruction instr, icode::operand op1, icode::operand op2)
-    {
-        icode::entry entry;
-        entry.opcode = instr;
-        entry.op1 = ensure_not_ptr(op1);
-        entry.op2 = ensure_not_ptr(op2);
-
-        push_ir(entry);
-    }
-
-    icode::operand
-    ir_generator::addrop(icode::instruction instr, icode::operand op2, icode::operand op3)
-    {
-        icode::entry entry;
-        entry.op1 = icode::gen_temp_ptr_opr(op2.dtype, id());
-        entry.op2 = op2;
-        entry.op3 = op3;
-        entry.opcode = instr;
-        push_ir(entry);
-
-        return entry.op1;
-    }
-
-    void ir_generator::label(icode::operand op)
-    {
-        icode::entry label_entry;
-        label_entry.op1 = op;
-        label_entry.opcode = icode::CREATE_LABEL;
-        push_ir(label_entry);
-    }
-
-    void ir_generator::goto_label(icode::instruction instr, icode::operand op)
-    {
-        icode::entry goto_entry;
-        goto_entry.op1 = op;
-        goto_entry.opcode = instr;
-        push_ir(goto_entry);
-    }
-
-    void ir_generator::printop(icode::instruction printop, icode::operand op)
-    {
-        icode::entry print_entry;
-
-        if(printop == icode::PRINT)
-            print_entry.op1 = ensure_not_ptr(op);
-        else
-            print_entry.op1 = op;
-        
-        print_entry.opcode = printop;
-        push_ir(print_entry);
-    }
-
-    void
-    ir_generator::inputop(icode::instruction instr, icode::operand op, unsigned int size)
-    {
-        icode::entry input_entry;
-        input_entry.op1 = op;
-        input_entry.op2 = icode::gen_literal_opr(icode::INT, (int)size, id());
-        input_entry.opcode = instr;
-        push_ir(input_entry);
-    }
-
-    void ir_generator::pass(icode::instruction pass_instr,
-                            icode::operand op,
-                            const std::string& func_name,
-                            const icode::func_desc& func_desc)
-    {
-        icode::data_type func_dtype = func_desc.func_info.dtype;
-        icode::entry entry;
-
-        if(pass_instr == icode::PASS)
-            entry.op1 = ensure_not_ptr(op);
-        else 
-            entry.op1 = op;
-
-        entry.op2 = icode::gen_var_opr(func_dtype, func_name, id());
-        entry.op3 = icode::gen_module_opr(func_desc.module_name, id());
-        entry.opcode = pass_instr;
-        push_ir(entry);
-    }
-
-    icode::operand
-    ir_generator::call(const std::string& func_name, const icode::func_desc& func_desc)
-    {
-        icode::data_type func_dtype = func_desc.func_info.dtype;
-        unsigned int return_size = func_desc.func_info.size;
-
-        icode::entry call_entry;
-        call_entry.op1 = icode::gen_temp_opr(func_dtype, return_size, id());
-        call_entry.op2 = icode::gen_var_opr(func_dtype, func_name, id());
-        call_entry.op3 = icode::gen_module_opr(func_desc.module_name, id());
-        call_entry.opcode = icode::CALL;
-
-        push_ir(call_entry);
-
-        return call_entry.op1;
-    }
-
-    void ir_generator::opir(icode::instruction instr)
-    {
-        icode::entry entry;
-        entry.opcode = instr;
-        push_ir(entry);
     }
 
     bool ir_generator::get_def(const std::string& name, icode::def& def)
@@ -776,7 +550,7 @@ namespace irgen
         }
 
         /* Create icode::operand */
-        icode::operand opr = icode::gen_str_dat_opr(name, size, id());
+        icode::operand opr = icode::str_dat_opr(name, size, id());
 
         return op_var_pair(opr, var);
     }
@@ -812,15 +586,16 @@ namespace irgen
             int character = str_int[i];
 
             /* Write to current offset */
-            copy(curr_offset,
-                 icode::gen_literal_opr(target.default_int, character, id()));
+            builder.copy(curr_offset,
+                         icode::literal_opr(target.default_int, character, id()));
 
             /* Update offset */
             if (i != str_int.size() - 1)
             {
-                curr_offset = addrop(icode::ADDR_ADD,
-                                     curr_offset,
-                                     icode::gen_addr_opr(var.second.dtype_size, id()));
+                curr_offset =
+                  builder.addrop(icode::ADDR_ADD,
+                                 curr_offset,
+                                 icode::addr_opr(var.second.dtype_size, id()));
             }
         }
     }
@@ -845,15 +620,17 @@ namespace irgen
             else
             {
                 /* Copy element from right to left */
-                copy(curr_offset_left, curr_offset_right);
+                builder.copy(curr_offset_left, curr_offset_right);
             }
 
             /* Update offset */
             if (i != size - dtype_size)
             {
-                icode::operand update = icode::gen_addr_opr(dtype_size, id());
-                curr_offset_left = addrop(icode::ADDR_ADD, curr_offset_left, update);
-                curr_offset_right = addrop(icode::ADDR_ADD, curr_offset_right, update);
+                icode::operand update = icode::addr_opr(dtype_size, id());
+                curr_offset_left =
+                  builder.addrop(icode::ADDR_ADD, curr_offset_left, update);
+                curr_offset_right =
+                  builder.addrop(icode::ADDR_ADD, curr_offset_right, update);
             }
         }
     }
@@ -872,8 +649,10 @@ namespace irgen
 
             if (count != 0)
             {
-                curr_offset_left = addrop(icode::ADDR_ADD, curr_offset_left, update);
-                curr_offset_right = addrop(icode::ADDR_ADD, curr_offset_right, update);
+                curr_offset_left =
+                  builder.addrop(icode::ADDR_ADD, curr_offset_left, update);
+                curr_offset_right =
+                  builder.addrop(icode::ADDR_ADD, curr_offset_right, update);
             }
 
             /* Copy field */
@@ -884,14 +663,14 @@ namespace irgen
             else if (field_info.dtype != icode::STRUCT)
             {
                 /* Copy field from right into left */
-                copy(curr_offset_left, curr_offset_right);
+                builder.copy(curr_offset_left, curr_offset_right);
             }
             else
             {
                 copy_struct(curr_offset_left, op_var_pair(curr_offset_right, field_info));
             }
 
-            update = icode::gen_addr_opr(field_info.size, id());
+            update = icode::addr_opr(field_info.size, id());
 
             count++;
         }
@@ -951,7 +730,7 @@ namespace irgen
                 if (element_expr.second.dtype != icode::STRUCT)
                 {
                     /* Write to current offset if not a struct */
-                    copy(curr_offset, element_expr.first);
+                    builder.copy(curr_offset, element_expr.first);
                 }
                 else
                 {
@@ -972,9 +751,8 @@ namespace irgen
             /* Update offset */
             if (i != root.children.size() - 1)
             {
-                curr_offset = addrop(icode::ADDR_ADD,
-                                     curr_offset,
-                                     icode::gen_addr_opr(element_var.size, id()));
+                curr_offset = builder.addrop(
+                  icode::ADDR_ADD, curr_offset, icode::addr_opr(element_var.size, id()));
             }
         }
 
@@ -1018,8 +796,7 @@ namespace irgen
 
             /* Create icode operands, one for variable other for temp
                 to hold result of initialization expression */
-            icode::operand left =
-              icode::gen_var_opr(var.second.dtype, var.first.str, id());
+            icode::operand left = icode::var_opr(var.second.dtype, var.first.str, id());
 
             op_var_pair init_exp = expression(last_node);
 
@@ -1034,7 +811,7 @@ namespace irgen
             if (var.second.dtype != icode::STRUCT)
             {
                 /* Create EQUAL icode entry is not a STRUCT */
-                copy(left, init_exp.first);
+                builder.copy(left, init_exp.first);
             }
             else
             {
@@ -1044,13 +821,13 @@ namespace irgen
         else if (last_node.type == node::STR_LITERAL)
         {
             op_var_pair var_pair = op_var_pair(
-              icode::gen_var_opr(var.second.dtype, var.first.str, id()), var.second);
+              icode::var_opr(var.second.dtype, var.first.str, id()), var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
             op_var_pair var_pair = op_var_pair(
-              icode::gen_var_opr(var.second.dtype, var.first.str, id()), var.second);
+              icode::var_opr(var.second.dtype, var.first.str, id()), var.second);
             assign_init_list_tovar(var_pair, last_node);
         }
 
@@ -1091,7 +868,7 @@ namespace irgen
                 throw log::compile_error();
             }
 
-            icode::operand op = icode::gen_literal_opr(icode::INT, enum_val, id());
+            icode::operand op = icode::literal_opr(icode::INT, enum_val, id());
             icode::var_info var = icode::var_from_dtype(icode::INT, target);
             return op_var_pair(op, var);
         }
@@ -1107,9 +884,9 @@ namespace irgen
             icode::operand op;
 
             if (def.dtype == icode::INT)
-                op = icode::gen_literal_opr(icode::INT, def.val.integer, id());
+                op = icode::literal_opr(icode::INT, def.val.integer, id());
             else
-                op = icode::gen_literal_opr(icode::FLOAT, def.val.floating, id());
+                op = icode::literal_opr(icode::FLOAT, def.val.floating, id());
 
             icode::var_info var = icode::var_from_dtype(def.dtype, target);
             return op_var_pair(op, var);
@@ -1130,12 +907,13 @@ namespace irgen
         /* If no struct or subscript */
         if (root.children.size() == 1)
         {
-            icode::operand op = icode::gen_var_opr(
-              current_var_info.dtype, ident_name, id(), is_global, is_ptr);
+            icode::operand op =
+              icode::var_opr(current_var_info.dtype, ident_name, id(), is_global, is_ptr);
             return op_var_pair(op, current_var_info);
         }
 
-        current_offset_temp = icode::gen_var_opr(current_var_info.dtype, ident_name, id(), is_global, is_ptr);
+        current_offset_temp =
+          icode::var_opr(current_var_info.dtype, ident_name, id(), is_global, is_ptr);
 
         /* Go through struct fields and subsripts */
         for (size_t i = 1; i < root.children.size();)
@@ -1182,10 +960,10 @@ namespace irgen
                                 current_var_info.clear_prop(icode::IS_MUT);
 
                             /* Add offset */
-                            current_offset_temp =
-                              addrop(icode::ADDR_ADD,
-                                     current_offset_temp,
-                                     icode::gen_addr_opr(current_var_info.offset, id()));
+                            current_offset_temp = builder.addrop(
+                              icode::ADDR_ADD,
+                              current_offset_temp,
+                              icode::addr_opr(current_var_info.offset, id()));
 
                             dim_count = 0;
                         }
@@ -1238,16 +1016,16 @@ namespace irgen
 
                         /* Entry for subscript expression */
                         icode::operand subs_op =
-                          addrop(icode::ADDR_MUL,
-                                 subs_expr.first,
-                                 icode::gen_addr_opr(elem_width, id()));
+                          builder.addrop(icode::ADDR_MUL,
+                                         subs_expr.first,
+                                         icode::addr_opr(elem_width, id()));
 
                         if (dim_count != current_var_info.dimensions.size())
                             elem_width /= current_var_info.dimensions[dim_count];
 
                         /* Create entry for adding to the current offset */
                         current_offset_temp =
-                          addrop(icode::ADDR_ADD, current_offset_temp, subs_op);
+                          builder.addrop(icode::ADDR_ADD, current_offset_temp, subs_op);
 
                         if (i < root.children.size() - 1)
                         {
@@ -1369,14 +1147,14 @@ namespace irgen
 
             /* If mut or struct or array, pass by ref */
             if (mut || param.dtype == icode::STRUCT || param.dimensions.size() != 0)
-                pass(icode::PASS_ADDR, arg.first, func_name, func_desc);
+                builder.pass(icode::PASS_ADDR, arg.first, func_name, func_desc);
             /* Else pass by value */
             else
-                pass(icode::PASS, arg.first, func_name, func_desc);
+                builder.pass(icode::PASS, arg.first, func_name, func_desc);
         }
 
         /* Call function */
-        icode::operand ret_temp = call(func_name, func_desc);
+        icode::operand ret_temp = builder.call(func_name, func_desc);
 
         /* Switch back to current module if ext_mod was modified */
         if (root.type == node::STRUCT_FUNCCALL)
@@ -1436,7 +1214,7 @@ namespace irgen
         }
 
         /* return a icode::INT literal  */
-        return op_var_pair(icode::gen_literal_opr(icode::INT, size, id()),
+        return op_var_pair(icode::literal_opr(icode::INT, size, id()),
                            icode::var_from_dtype(icode::INT, target));
     }
 
@@ -1456,7 +1234,7 @@ namespace irgen
                         /* Return literal icode operand */
                         int literal = std::stoi(child.tok.str);
                         icode::data_type dtype = icode::INT;
-                        return op_var_pair(gen_literal_opr(dtype, literal, id()),
+                        return op_var_pair(icode::literal_opr(dtype, literal, id()),
                                            icode::var_from_dtype(dtype, target));
 
                         break;
@@ -1493,7 +1271,7 @@ namespace irgen
                         }
 
                         icode::data_type dtype = icode::INT;
-                        return op_var_pair(gen_literal_opr(dtype, character, id()),
+                        return op_var_pair(icode::literal_opr(dtype, character, id()),
                                            icode::var_from_dtype(dtype, target));
                     }
                     case token::FLOAT_LITERAL:
@@ -1501,7 +1279,7 @@ namespace irgen
                         /* Return literal icode operand */
                         icode::data_type dtype = icode::FLOAT;
                         float literal = (float)stof(child.tok.str);
-                        return op_var_pair(gen_literal_opr(dtype, literal, id()),
+                        return op_var_pair(icode::literal_opr(dtype, literal, id()),
                                            icode::var_from_dtype(dtype, target));
 
                         break;
@@ -1534,7 +1312,7 @@ namespace irgen
                 }
 
                 /* Create icode entry for casting */
-                icode::operand res_temp = cast(cast_dtype, cast_term.first);
+                icode::operand res_temp = builder.cast(cast_dtype, cast_term.first);
 
                 /* Return temp */
                 return op_var_pair(res_temp, icode::var_from_dtype(cast_dtype, target));
@@ -1594,8 +1372,8 @@ namespace irgen
                         throw log::internal_bug_error();
                 }
 
-                icode::operand res_temp =
-                  uniop(opcode, icode::gen_temp_opr(dtype, size, id()), term_var.first);
+                icode::operand res_temp = builder.uniop(
+                  opcode, icode::temp_opr(dtype, size, id()), term_var.first);
 
                 /* Return temp */
                 return op_var_pair(res_temp, term_var.second);
@@ -1763,10 +1541,10 @@ namespace irgen
                     throw log::internal_bug_error();
             }
 
-            icode::operand res_temp = binop(opcode,
-                                            icode::gen_temp_opr(dtype, size, id()),
-                                            first_operand.first,
-                                            second_operand.first);
+            icode::operand res_temp = builder.binop(opcode,
+                                                    icode::temp_opr(dtype, size, id()),
+                                                    first_operand.first,
+                                                    second_operand.first);
 
             /* Return the operand where final result is stored */
             return op_var_pair(res_temp, first_operand.second);
@@ -1885,13 +1663,14 @@ namespace irgen
         {
             if (assign_opr.type == token::EQUAL)
             {
-                copy(var.first, expr.first);
+                builder.copy(var.first, expr.first);
             }
             else
             {
-                icode::operand temp = icode::gen_temp_opr(var.second.dtype, icode::dtype_size[var.second.dtype], id());
-                copy(temp, var.first);
-                binop(opcode, var.first, temp, expr.first);
+                icode::operand temp = icode::temp_opr(
+                  var.second.dtype, icode::dtype_size[var.second.dtype], id());
+                builder.copy(temp, var.first);
+                builder.binop(opcode, var.first, temp, expr.first);
             }
         }
         /* If a pointer */
@@ -1899,13 +1678,13 @@ namespace irgen
         {
             if (assign_opr.type == token::EQUAL)
             {
-                copy(var.first, expr.first);
+                builder.copy(var.first, expr.first);
             }
             else
             {
                 /* Add the read temp value to expr and store it in
                     another temp */
-                binop(opcode, var.first, var.first, expr.first);
+                builder.binop(opcode, var.first, var.first, expr.first);
             }
         }
     }
@@ -1919,9 +1698,9 @@ namespace irgen
           "_l" + std::to_string(tok.lineno) + "_c" + std::to_string(tok.col);
 
         if (true_label)
-            return icode::gen_label_opr("_" + prefix + "_true" + label_name, id());
+            return icode::label_opr("_" + prefix + "_true" + label_name, id());
         else
-            return icode::gen_label_opr("_" + prefix + "_false" + label_name, id());
+            return icode::label_opr("_" + prefix + "_false" + label_name, id());
     }
 
     void ir_generator::condn_expression(const node::node& root,
@@ -1976,7 +1755,7 @@ namespace irgen
 
                     if (f_fall)
                     {
-                        label(new_f_label);
+                        builder.label(new_f_label);
                     }
 
                     break;
@@ -1997,7 +1776,7 @@ namespace irgen
 
                     if (t_fall)
                     {
-                        label(new_t_label);
+                        builder.label(new_t_label);
                     }
 
                     break;
@@ -2060,19 +1839,18 @@ namespace irgen
                     }
 
                     /* If second operand is a ptr, read it into a temp */
-                    cmpop(
-                      opcode, first_operand.first, second_operand.first);
+                    builder.cmpop(opcode, first_operand.first, second_operand.first);
 
                     /* Create icode entry for goto */
 
                     if (!t_fall)
                     {
-                        goto_label(icode::GOTO, t_label);
+                        builder.goto_label(icode::GOTO, t_label);
                     }
 
                     if (!f_fall)
                     {
-                        goto_label(icode::IF_FALSE_GOTO, f_label);
+                        builder.goto_label(icode::IF_FALSE_GOTO, f_label);
                     }
                 }
             }
@@ -2107,11 +1885,11 @@ namespace irgen
                 if (i != root.children.size() - 1)
                 {
                     /* Go to end */
-                    goto_label(icode::GOTO, end_label);
+                    builder.goto_label(icode::GOTO, end_label);
                 }
 
                 /* Create label to skip block */
-                label(new_f_label);
+                builder.label(new_f_label);
             }
             else
             {
@@ -2122,7 +1900,7 @@ namespace irgen
         if (root.children.size() != 1)
         {
             /* Create label for end of if statement */
-            label(end_label);
+            builder.label(end_label);
         }
     }
 
@@ -2132,7 +1910,7 @@ namespace irgen
         icode::operand new_f_label = gen_label(root.tok, false, "while");
 
         /* Create label for looping */
-        label(new_t_label);
+        builder.label(new_t_label);
 
         /* Process conditional expression */
         condn_expression(root.children[0], new_t_label, new_f_label, true, false);
@@ -2141,10 +1919,10 @@ namespace irgen
         block(root.children[1], true, new_t_label, new_f_label, new_t_label);
 
         /* Go back to beginning */
-        goto_label(icode::GOTO, new_t_label);
+        builder.goto_label(icode::GOTO, new_t_label);
 
         /* Create label to skip block */
-        label(new_f_label);
+        builder.label(new_f_label);
     }
 
     void ir_generator::forloop(const node::node& root)
@@ -2161,7 +1939,7 @@ namespace irgen
         icode::operand cont_label = gen_label(root.tok, true, "for_cont");
 
         /* Create label for looping */
-        label(new_t_label);
+        builder.label(new_t_label);
 
         /* Process conditional expression */
         condn_expression(root.children[1], new_t_label, new_f_label, true, false);
@@ -2170,16 +1948,16 @@ namespace irgen
         block(root.children[3], true, new_t_label, new_f_label, cont_label);
 
         /* Create label for continue */
-        label(cont_label);
+        builder.label(cont_label);
 
         /* Process assignment */
         assignment(root.children[2]);
 
         /* Go back to beginning */
-        goto_label(icode::GOTO, new_t_label);
+        builder.goto_label(icode::GOTO, new_t_label);
 
         /* Create label to skip block */
-        label(new_f_label);
+        builder.label(new_f_label);
     }
 
     void ir_generator::print(const node::node& root)
@@ -2201,7 +1979,8 @@ namespace irgen
                 print_var.dimensions.push_back(str_len);
                 print_var.size = str_size;
 
-                printop(icode::PRINT_STR, gen_str_dat(child.tok, print_var).first);
+                builder.printop(icode::PRINT_STR,
+                                gen_str_dat(child.tok, print_var).first);
             }
             /* Else expression */
             else
@@ -2220,18 +1999,18 @@ namespace irgen
                 }
 
                 if (print_var.second.dimensions.size() != 0)
-                    printop(icode::PRINT_STR, print_var.first);
+                    builder.printop(icode::PRINT_STR, print_var.first);
                 else
-                    printop(icode::PRINT, print_var.first);
+                    builder.printop(icode::PRINT, print_var.first);
             }
 
             /* Add space after printing (except for the last print) */
             if (i != root.children.size() - 1)
-                opir(icode::SPACE);
+                builder.opir(icode::SPACE);
 
             /* If println, the last print should add new line */
             if (i == root.children.size() - 1 && root.type == node::PRINTLN)
-                opir(icode::NEWLN);
+                builder.opir(icode::NEWLN);
         }
     }
 
@@ -2273,9 +2052,10 @@ namespace irgen
 
         /* Create INPUT or INPUT_STR entry */
         if (input_var.second.dimensions.size() == 0)
-            inputop(icode::INPUT, input_var.first);
+            builder.inputop(icode::INPUT, input_var.first);
         else
-            inputop(icode::INPUT_STR, input_var.first, input_var.second.dimensions[0]);
+            builder.inputop(
+              icode::INPUT_STR, input_var.first, input_var.second.dimensions[0]);
     }
 
     void ir_generator::block(const node::node& root,
@@ -2361,7 +2141,7 @@ namespace irgen
                     }
 
                     /* Go to end */
-                    goto_label(icode::GOTO, break_label);
+                    builder.goto_label(icode::GOTO, break_label);
 
                     break;
                 }
@@ -2375,7 +2155,7 @@ namespace irgen
                     }
 
                     /* Go to end */
-                    goto_label(icode::GOTO, cont_label);
+                    builder.goto_label(icode::GOTO, cont_label);
 
                     break;
                 }
@@ -2399,13 +2179,13 @@ namespace irgen
                         }
 
                         /* Assign return value to return pointer */
-                        icode::operand ret_ptr = icode::gen_ret_ptr_opr(id());
+                        icode::operand ret_ptr = icode::ret_ptr_opr(id());
 
                         if (ret_val.second.dtype == icode::STRUCT)
                             copy_struct(ret_ptr, ret_val);
                         else
                         {
-                            copy(ret_ptr, ret_val.first);
+                            builder.copy(ret_ptr, ret_val.first);
                         }
                     }
                     else if ((*current_func_desc).func_info.dtype != icode::VOID)
@@ -2416,7 +2196,7 @@ namespace irgen
                     }
 
                     /* Add return to icode */
-                    opir(icode::RET);
+                    builder.opir(icode::RET);
 
                     break;
                 }
@@ -2429,7 +2209,7 @@ namespace irgen
                     break;
                 case node::EXIT:
                 {
-                    opir(icode::EXIT);
+                    builder.opir(icode::EXIT);
                     break;
                 }
                 default:
@@ -2499,6 +2279,7 @@ namespace irgen
 
                 /* Switch symbol and icode table */
                 current_func_desc = &module.functions[func_name];
+                builder.set_func_desc(current_func_desc);
 
                 /* Clear scope */
                 clear_scope();
@@ -2506,16 +2287,16 @@ namespace irgen
                 /* Process block */
                 block(child.children.back(),
                       false,
-                      icode::gen_label_opr("", 0),
-                      icode::gen_label_opr("", 0),
-                      icode::gen_label_opr("", 0));
+                      icode::label_opr("", 0),
+                      icode::label_opr("", 0),
+                      icode::label_opr("", 0));
 
                 /* Generate ret instruction for function */
 
                 if (func_name == "main")
-                    opir(icode::EXIT);
+                    builder.opir(icode::EXIT);
                 else
-                    opir(icode::RET);
+                    builder.opir(icode::RET);
             }
         }
     }

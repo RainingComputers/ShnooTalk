@@ -11,7 +11,7 @@ namespace icode
 
     bool operand::operator<(const operand& other) const
     {
-       if (*this == other)
+        if (*this == other)
             return false;
         else
             return temp_id < other.temp_id;
@@ -220,7 +220,8 @@ namespace icode
     bool is_ltrl(operand_type optype)
     {
         return optype == icode::LITERAL || optype == icode::ADDR || optype == DTYPE ||
-               optype == LABEL || optype == MODULE || optype == STR_DATA || optype == NONE;
+               optype == LABEL || optype == MODULE || optype == STR_DATA ||
+               optype == NONE;
     }
 
     bool is_ptr(operand_type optype)
@@ -233,7 +234,7 @@ namespace icode
         Helper functions for generating icode operands
     */
 
-    operand gen_temp_opr(data_type dtype, unsigned int size, unsigned int id)
+    operand temp_opr(data_type dtype, unsigned int size, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -244,7 +245,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_temp_ptr_opr(data_type dtype, unsigned int id)
+    operand temp_ptr_opr(data_type dtype, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -254,7 +255,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_str_dat_opr(const std::string& name, unsigned int size, unsigned int id)
+    operand str_dat_opr(const std::string& name, unsigned int size, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -266,7 +267,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_addr_opr(unsigned int address, unsigned int id)
+    operand addr_opr(unsigned int address, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -276,7 +277,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_gbl_addr_opr(unsigned int address, unsigned int id)
+    operand gbl_addr_opr(unsigned int address, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -286,7 +287,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_fp_addr_opr(unsigned int address, unsigned int id)
+    operand fp_addr_opr(unsigned int address, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -296,11 +297,11 @@ namespace icode
         return temp;
     }
 
-    operand gen_var_opr(data_type dtype,
-                        const std::string& symbol,
-                        unsigned int id,
-                        bool global,
-                        bool ptr)
+    operand var_opr(data_type dtype,
+                    const std::string& symbol,
+                    unsigned int id,
+                    bool global,
+                    bool ptr)
     {
         operand temp;
         temp.temp_id = id;
@@ -317,7 +318,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_ret_ptr_opr(unsigned int id)
+    operand ret_ptr_opr(unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -325,7 +326,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_literal_opr(data_type dtype, float literal, unsigned int id)
+    operand literal_opr(data_type dtype, float literal, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -336,7 +337,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_literal_opr(data_type dtype, int literal, unsigned int id)
+    operand literal_opr(data_type dtype, int literal, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -347,7 +348,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_dtype_opr(data_type dtype, unsigned int id)
+    operand dtype_opr(data_type dtype, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -357,7 +358,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_label_opr(const std::string& label, unsigned int id)
+    operand label_opr(const std::string& label, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
@@ -367,7 +368,7 @@ namespace icode
         return temp;
     }
 
-    operand gen_module_opr(const std::string& module, unsigned int id)
+    operand module_opr(const std::string& module, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;

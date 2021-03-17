@@ -103,7 +103,7 @@ namespace uhllvmgen
         if (icode::is_ltrl(acc.optype)) //|| !acc_mod)
             return;
 
-        if(acc_is_live || acc_in_ir)
+        if (acc_is_live || acc_in_ir)
         {
             /* Write accumulator to address */
             unsigned int frame_addr = get_frame_addr(acc);
@@ -111,10 +111,7 @@ namespace uhllvmgen
         }
     }
 
-    void uhllvm_generator::save_acc_val()
-    {
-        save();
-    }
+    void uhllvm_generator::save_acc_val() { save(); }
 
     void uhllvm_generator::load(const icode::operand& op, bool mod)
     {
@@ -128,7 +125,8 @@ namespace uhllvmgen
         acc_mod = mod;
 
         /* If accumulator already has the operand return */
-        if (acc == op) return;
+        if (acc == op)
+            return;
 
         if (op.optype == icode::LITERAL)
         {
