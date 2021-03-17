@@ -57,7 +57,7 @@ namespace irgen
         if (icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
         {
             icode::operand temp =
-              icode::gen_temp_opr(op2.dtype, icode::dtype_size[target.default_int], id());
+              icode::gen_temp_opr(op2.dtype, icode::dtype_size[op2.dtype], id());
             copy(temp, op2);
             copy(op1, temp);    
         }
@@ -110,7 +110,7 @@ namespace irgen
             write that temp to the pointer */
 
         icode::operand ptr_op = entry.op1;
-        icode::operand temp = icode::gen_temp_opr(ptr_op.dtype, icode::dtype_size[target.default_int], id());
+        icode::operand temp = icode::gen_temp_opr(ptr_op.dtype, icode::dtype_size[ptr_op.dtype], id());
     
         icode::entry mod_entry = entry;
         mod_entry.op1 = temp;
