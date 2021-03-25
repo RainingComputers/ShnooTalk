@@ -284,10 +284,10 @@ namespace lexer
 
                             if (end_idx == std::string::npos)
                             {
-                                log::println("MODULE " + file_name);
-                                log::error_line(
+                                miklog::println("MODULE " + file_name);
+                                miklog::error_line(
                                   "Invalid STRING LITERAL", line, lineno, i);
-                                throw log::compile_error();
+                                throw miklog::compile_error();
                             }
 
                             if (line[end_idx - 1] != '\\')

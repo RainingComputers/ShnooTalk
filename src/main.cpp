@@ -12,12 +12,12 @@
 
 void print_usage()
 {
-    log::println("USAGE: uhllc MODULE [OPTION]");
-    log::println("\nAvailable options:");
-    log::println("\t-ast\tPrint parse tree");
-    log::println("\t-ir\tPrint intermediate code representation");
-    log::println("\t-asm\tPrint uhllvm assembly");
-    log::println("\t-run\tExecute program (default)");
+    miklog::println("USAGE: uhllc MODULE [OPTION]");
+    miklog::println("\nAvailable options:");
+    miklog::println("\t-ast\tPrint parse tree");
+    miklog::println("\t-ir\tPrint intermediate code representation");
+    miklog::println("\t-llvm\tPrint uhllvm assembly");
+    miklog::println("\t-run\tExecute program (default)");
 }
 
 void ir_gen(const std::string& file_name,
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
     {
         option = argv[2];
 
-        if (option != "-ir" && option != "-asm" && option != "-run" && option != "-ast")
+        if (option != "-ir" && option != "-llvm" && option != "-run" && option != "-ast")
         {
             print_usage();
             return EXIT_FAILURE;
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
             lexer::lexical_analyser lex(file_name, ifile);
             parser::rd_parser parse(lex, file_name, ifile);
 
-            log::print_node(parse.ast);
+            miklog::print_node(parse.ast);
 
             return 0;
         }
@@ -104,32 +104,34 @@ int main(int argc, char* argv[])
         {
             for (auto pair : modules)
             {
-                log::print_module_desc(pair.second);
-                log::println("");
+                miklog::print_module_desc(pair.second);
+                miklog::println("");
             }
 
             return 0;
         }
 
-        // uhllvmgen::uhllvm_generator vmgen(vm, modules, opt);
+        llvmgen::llvm_generator llvm_gen;
 
-        // if (option == "-asm")
+        for (auto pair : modules)
+            llvm_gen.gen_module(pair.second);
+        // if (option == "-llvm")
         //{
-        //    log::print_vm(vm);
+        //    miklog::print_vm(vm);
         //    return 0;
         //}
     }
-    catch (const log::compile_error& e)
+    catch (const miklog::compile_error& e)
     {
         return EXIT_FAILURE;
     }
-    catch (const log::internal_bug_error& e)
+    catch (const miklog::internal_bug_error& e)
     {
         return EXIT_FAILURE;
     }
     catch (const std::ifstream::failure& e)
     {
-        log::println("File I/O error");
+        miklog::println("File I/O error");
         return EXIT_FAILURE;
     }
 

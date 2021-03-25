@@ -19,7 +19,7 @@ help :
 EXEC_NAME = uhll
 
 # C++ compiler
-CXX ?= g++
+CXX ?= clang
 
 # Get platform
 ifeq ($(OS), Windows_NT)
@@ -50,6 +50,9 @@ else
 	BUILD_TYPE = release_$(PLATFORM)
 endif
 
+CXXFLAGS := $(CXXFLAGS) `llvm-config-11 --cxxflags` -fexceptions
+LDFLAGS = `llvm-config-11 --ldflags --system-libs --libs all`
+
 # Find all .cpp files in src/
 SOURCES = $(shell find src/ -name '*.cpp')
 # Set object file names, all object files are in obj/
@@ -75,7 +78,7 @@ dirs:
 
 # Linking all object files to executable 
 bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS)
+	$(CXX) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS) $(LDFLAGS)
 
 all: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME) 
 

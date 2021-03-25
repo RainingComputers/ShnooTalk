@@ -1,6 +1,6 @@
 #include "log.hpp"
 
-namespace log
+namespace miklog
 {
     static std::string token_type_strs[] = { "NONE",
                                              "SPACE",

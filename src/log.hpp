@@ -9,7 +9,7 @@
 #include "node.hpp"
 #include "token.hpp"
 
-namespace log
+namespace miklog
 {
     struct compile_error
     {
