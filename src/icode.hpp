@@ -55,10 +55,6 @@ namespace icode
         LABEL,
         MODULE,
         NONE,
-
-        /* These types are used by the optimizer */
-        GBL_ADDR,
-        FP_ADDR
     };
 
     struct operand

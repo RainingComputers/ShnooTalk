@@ -36,8 +36,6 @@ namespace icode
             case MODULE:
                 return name == other.name;
             case ADDR:
-            case GBL_ADDR:
-            case FP_ADDR:
             case LITERAL:
                 return val.size == other.val.size;
             case DTYPE:
@@ -219,9 +217,7 @@ namespace icode
     */
     bool is_ltrl(operand_type optype)
     {
-        return optype == icode::LITERAL || optype == icode::ADDR || optype == DTYPE ||
-               optype == LABEL || optype == MODULE || optype == STR_DATA ||
-               optype == NONE;
+        return optype == icode::LITERAL || optype == icode::ADDR;
     }
 
     bool is_ptr(operand_type optype)
@@ -272,26 +268,6 @@ namespace icode
         temp.temp_id = id;
         temp.val.address = address;
         temp.optype = ADDR;
-
-        return temp;
-    }
-
-    operand gbl_addr_opr(unsigned int address, unsigned int id)
-    {
-        operand temp;
-        temp.temp_id = id;
-        temp.val.address = address;
-        temp.optype = GBL_ADDR;
-
-        return temp;
-    }
-
-    operand fp_addr_opr(unsigned int address, unsigned int id)
-    {
-        operand temp;
-        temp.temp_id = id;
-        temp.val.address = address;
-        temp.optype = FP_ADDR;
 
         return temp;
     }

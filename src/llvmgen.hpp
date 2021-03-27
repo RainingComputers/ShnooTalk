@@ -40,11 +40,22 @@ namespace llvmgen
 
         std::map<std::string, llvm::AllocaInst*> alloca_inst_map;
         std::map<std::string, llvm::Function*> llvm_function_map;
+        std::map<icode::operand, llvm::Value*> operand_value_map;
 
+        icode::module_desc& module;
+
+        llvm::Value* gen_ltrl(icode::operand& op);
+        llvm::Value* gen_addr(icode::operand& op);
+        llvm::Value* get_llvm_value(icode::operand& op, bool write = false);
         void symbol_alloca(icode::var_info& var_info, const std::string& name);
+        
+        void eq(icode::entry& e);
+        void binop(icode::entry& e);
+
+        void gen_function(icode::func_desc& func, const std::string& name);
 
       public:
-        void gen_module(icode::module_desc& module);
+        llvm_generator(icode::module_desc& module_desc);
     };
 
 }

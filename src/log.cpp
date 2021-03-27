@@ -326,12 +326,6 @@ namespace miklog
             case icode::ADDR:
                 std::cout << "Addr(" << op.val.address;
                 break;
-            case icode::GBL_ADDR:
-                std::cout << "GblAddr(" << op.val.address;
-                break;
-            case icode::FP_ADDR:
-                std::cout << "FpAddr(" << op.val.address;
-                break;
             case icode::VAR:
                 std::cout << "Var(" << op.name << ":" << data_type_strs[op.dtype];
                 break;

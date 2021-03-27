@@ -111,10 +111,8 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        llvmgen::llvm_generator llvm_gen;
-
         for (auto pair : modules)
-            llvm_gen.gen_module(pair.second);
+            llvmgen::llvm_generator llvm_gen(pair.second);
         // if (option == "-llvm")
         //{
         //    miklog::print_vm(vm);
