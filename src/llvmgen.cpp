@@ -5,13 +5,6 @@ using namespace llvm::sys;
 
 namespace llvmgen
 {
-    std::string get_format_string(icode::data_type dtype)
-    {
-        if (icode::is_uint(dtype)) return "%u\n";
-        else if (icode::is_int(dtype)) return "%d\n";
-        else if (icode::is_float(dtype)) return "%.2f\n";
-    }
-
     icode::target_desc target_desc()
     {
         /* Target descroption for uhllvm */
@@ -39,6 +32,50 @@ namespace llvmgen
         return uhlltarget;
     }
 
+    std::string get_format_string(icode::data_type dtype)
+    {
+        if (icode::is_uint(dtype))
+            return "%u\n";
+        else if (icode::is_int(dtype))
+            return "%d\n";
+        else if (icode::is_float(dtype))
+            return "%.2f\n";
+    }
+
+    Type* llvm_generator::to_llvm_type(icode::data_type dtype)
+    {
+        switch (dtype)
+        {
+            case icode::I32:
+            case icode::UI32:
+                return Type::getInt32Ty(*llvm_context);
+            case icode::I8:
+                return Type::getInt8Ty(*llvm_context);
+            case icode::F32:
+                return Type::getFloatTy(*llvm_context);
+            default:
+                miklog::internal_error(module.name);
+                throw miklog::internal_bug_error();
+        }
+    }
+
+    llvm::Type* llvm_generator::to_llvm_ptr_type(icode::data_type dtype)
+    {
+        switch (dtype)
+        {
+            case icode::I32:
+            case icode::UI32:
+                return Type::getInt32PtrTy(*llvm_context);
+            case icode::I8:
+                return Type::getInt8PtrTy(*llvm_context);
+            case icode::F32:
+                return Type::getFloatPtrTy(*llvm_context);
+            default:
+                miklog::internal_error(module.name);
+                throw miklog::internal_bug_error();
+        }        
+    }
+
     Value* llvm_generator::gen_ltrl(icode::operand& op)
     {
         Value* llvm_value;
@@ -47,16 +84,13 @@ namespace llvmgen
         {
             case icode::I32:
             case icode::UI32:
-                llvm_value =
-                  ConstantInt::get(Type::getInt32Ty(*llvm_context), op.val.integer);
-                break;
             case icode::I8:
                 llvm_value =
-                  ConstantInt::get(Type::getInt8Ty(*llvm_context), op.val.integer);
+                  ConstantInt::get(to_llvm_type(op.dtype), op.val.integer);
                 break;
             case icode::F32:
                 llvm_value =
-                  ConstantFP::get(Type::getFloatTy(*llvm_context), op.val.floating);
+                  ConstantFP::get(to_llvm_type(op.dtype), op.val.floating);
                 break;
             default:
                 miklog::internal_error(module.name);
@@ -79,16 +113,14 @@ namespace llvmgen
         {
             case icode::I32:
             case icode::UI32:
-                alloca_inst = llvm_builder->CreateAlloca(
-                  Type::getInt32Ty(*llvm_context), nullptr, name);
-                break;
             case icode::I8:
-                alloca_inst = llvm_builder->CreateAlloca(
-                  Type::getInt8Ty(*llvm_context), nullptr, name);
-                break;
             case icode::F32:
                 alloca_inst = llvm_builder->CreateAlloca(
-                  Type::getFloatTy(*llvm_context), nullptr, name);
+                  to_llvm_type(var_info.dtype), nullptr, name);
+                break;
+            case icode::STRUCT:
+                alloca_inst = llvm_builder->CreateAlloca(
+                  ArrayType::get(Type::getInt8Ty(*llvm_context), var_info.size), nullptr, name);
                 break;
             default:
                 miklog::internal_error(module.name);
@@ -100,7 +132,18 @@ namespace llvmgen
 
     Value* llvm_generator::get_llvm_alloca(icode::operand& op)
     {
-        return alloca_inst_map[op.name];
+        switch (op.optype)
+        {
+            case icode::VAR:
+                return alloca_inst_map[op.name];
+                break;
+            case icode::TEMP_PTR:
+                return operand_value_map[op];
+                break;
+            default:
+                miklog::internal_error(module.name);
+                throw miklog::internal_bug_error();
+        }
     }
 
     Value* llvm_generator::get_llvm_value(icode::operand& op)
@@ -127,9 +170,9 @@ namespace llvmgen
     void llvm_generator::eq(icode::entry& e)
     {
         Value* what_to_store = get_llvm_value(e.op2);
-        Value* where_to_Store = get_llvm_alloca(e.op1);
+        Value* where_to_store = get_llvm_alloca(e.op1);
 
-        llvm_builder->CreateStore(what_to_store, where_to_Store);
+        llvm_builder->CreateStore(what_to_store, where_to_store);
     }
 
     void llvm_generator::binop(icode::entry& e)
@@ -292,17 +335,18 @@ namespace llvmgen
     void llvm_generator::print(icode::entry& e)
     {
         Value* value = get_llvm_value(e.op1);
-        
+
         /* Cast value to double if float */
-        if(icode::is_float(e.op1.dtype))
+        if (icode::is_float(e.op1.dtype))
             value = llvm_builder->CreateFPCast(value, Type::getDoubleTy(*llvm_context));
         else
             value = llvm_builder->CreateSExt(value, Type::getInt32Ty(*llvm_context));
 
-        Value* format_str = llvm_builder->CreateGlobalStringPtr(get_format_string(e.op1.dtype));
+        Value* format_str =
+          llvm_builder->CreateGlobalStringPtr(get_format_string(e.op1.dtype));
 
         /* Set up printf arguments*/
-        std::vector<Value *> printArgs;
+        std::vector<Value*> printArgs;
         printArgs.push_back(format_str);
         printArgs.push_back(value);
 
@@ -349,6 +393,15 @@ namespace llvmgen
                 case icode::BWO:
                 case icode::BWX:
                     binop(e);
+                    break;
+                case icode::ADDR_ADD:
+                    addrop(e);
+                    break;
+                case icode::READ:
+                    read(e);
+                    break;
+                case icode::WRITE:
+                    write(e);
                     break;
                 case icode::PRINT:
                     print(e);

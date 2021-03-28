@@ -47,6 +47,9 @@ namespace llvmgen
 
         icode::module_desc& module;
 
+        llvm::Type* to_llvm_type(icode::data_type dtype);
+        llvm::Type* to_llvm_ptr_type(icode::data_type dtype);
+
         llvm::Value* gen_ltrl(icode::operand& op);
         llvm::Value* gen_addr(icode::operand& op);
         llvm::Value* get_llvm_alloca(icode::operand& op);
@@ -55,6 +58,9 @@ namespace llvmgen
 
         void eq(icode::entry& e);
         void binop(icode::entry& e);
+        void addrop(icode::entry& e);
+        void read(icode::entry& e);
+        void write(icode::entry& e);
         void print(icode::entry& e);
 
         void gen_function(icode::func_desc& func, const std::string& name);

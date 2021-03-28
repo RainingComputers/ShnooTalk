@@ -963,6 +963,9 @@ namespace irgen
                             if (!is_mut)
                                 current_var_info.clear_prop(icode::IS_MUT);
 
+                            /* Update pointer dtype */
+                            current_offset_temp.dtype = current_var_info.dtype;
+
                             /* Add offset */
                             current_offset_temp = builder.addrop(
                               icode::ADDR_ADD,
