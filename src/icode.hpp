@@ -34,7 +34,7 @@ namespace icode
         VOID
     };
 
-    const int dtype_size[] = { 1, 2, 4, 4, 4, 1, 1, 1, 1, 1, 0, 0 };
+    const int dtype_size[] = { 1, 2, 4, 4, 4, 1, 1, 1, 0, 0, 0, 0 };
 
     /*
         Icode operand types and struct

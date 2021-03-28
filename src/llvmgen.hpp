@@ -42,17 +42,24 @@ namespace llvmgen
         std::map<std::string, llvm::Function*> llvm_function_map;
         std::map<icode::operand, llvm::Value*> operand_value_map;
 
+        llvm::Value* int_format_str;
+        llvm::Value* float_format_str;
+
         icode::module_desc& module;
 
         llvm::Value* gen_ltrl(icode::operand& op);
         llvm::Value* gen_addr(icode::operand& op);
-        llvm::Value* get_llvm_value(icode::operand& op, bool write = false);
+        llvm::Value* get_llvm_alloca(icode::operand& op);
+        llvm::Value* get_llvm_value(icode::operand& op);
         void symbol_alloca(icode::var_info& var_info, const std::string& name);
-        
+
         void eq(icode::entry& e);
         void binop(icode::entry& e);
+        void print(icode::entry& e);
 
         void gen_function(icode::func_desc& func, const std::string& name);
+
+        void setup_printf();
 
       public:
         llvm_generator(icode::module_desc& module_desc);

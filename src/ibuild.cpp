@@ -20,6 +20,11 @@ namespace ibuild
 
     void ir_builder::copy(icode::operand op1, icode::operand op2)
     {
+        /* If op2 is a literal, change  generic dtypes like icode::INT and icode::FLOAT
+            to correct specific dtype */
+        if(op2.optype == icode::LITERAL)
+            op2.dtype = op1.dtype;
+
         /* Copy one operand value to another, use READ and WRITE instruction
             if pointers are involved */
 

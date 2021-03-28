@@ -5,6 +5,13 @@ using namespace llvm::sys;
 
 namespace llvmgen
 {
+    std::string get_format_string(icode::data_type dtype)
+    {
+        if (icode::is_uint(dtype)) return "%u\n";
+        else if (icode::is_int(dtype)) return "%d\n";
+        else if (icode::is_float(dtype)) return "%.2f\n";
+    }
+
     icode::target_desc target_desc()
     {
         /* Target descroption for uhllvm */
@@ -40,15 +47,16 @@ namespace llvmgen
         {
             case icode::I32:
             case icode::UI32:
-            case icode::INT:
-                llvm_value = ConstantInt::get(Type::getInt32Ty(*llvm_context), op.val.integer);
+                llvm_value =
+                  ConstantInt::get(Type::getInt32Ty(*llvm_context), op.val.integer);
                 break;
             case icode::I8:
-                llvm_value = ConstantInt::get(Type::getInt8Ty(*llvm_context), op.val.integer);
+                llvm_value =
+                  ConstantInt::get(Type::getInt8Ty(*llvm_context), op.val.integer);
                 break;
             case icode::F32:
-            case icode::FLOAT:
-                llvm_value = ConstantFP::get(Type::getFloatTy(*llvm_context), op.val.floating);
+                llvm_value =
+                  ConstantFP::get(Type::getFloatTy(*llvm_context), op.val.floating);
                 break;
             default:
                 miklog::internal_error(module.name);
@@ -63,20 +71,50 @@ namespace llvmgen
         return ConstantInt::get(Type::getInt32Ty(*llvm_context), op.val.integer);
     }
 
-    Value* llvm_generator::get_llvm_value(icode::operand& op, bool write)
+    void llvm_generator::symbol_alloca(icode::var_info& var_info, const std::string& name)
+    {
+        AllocaInst* alloca_inst;
+
+        switch (var_info.dtype)
+        {
+            case icode::I32:
+            case icode::UI32:
+                alloca_inst = llvm_builder->CreateAlloca(
+                  Type::getInt32Ty(*llvm_context), nullptr, name);
+                break;
+            case icode::I8:
+                alloca_inst = llvm_builder->CreateAlloca(
+                  Type::getInt8Ty(*llvm_context), nullptr, name);
+                break;
+            case icode::F32:
+                alloca_inst = llvm_builder->CreateAlloca(
+                  Type::getFloatTy(*llvm_context), nullptr, name);
+                break;
+            default:
+                miklog::internal_error(module.name);
+                throw miklog::internal_bug_error();
+        }
+
+        alloca_inst_map[name] = alloca_inst;
+    }
+
+    Value* llvm_generator::get_llvm_alloca(icode::operand& op)
+    {
+        return alloca_inst_map[op.name];
+    }
+
+    Value* llvm_generator::get_llvm_value(icode::operand& op)
     {
         switch (op.optype)
         {
-            case icode::LITERAL: 
+            case icode::LITERAL:
                 return gen_ltrl(op);
-            case icode::ADDR: 
+            case icode::ADDR:
                 return gen_addr(op);
             case icode::VAR:
             {
                 AllocaInst* alloca_value = alloca_inst_map[op.name];
-
-                if(write) return alloca_value;
-                else return llvm_builder->CreateLoad(alloca_value, op.name.c_str());
+                return llvm_builder->CreateLoad(alloca_value, op.name.c_str());
             }
             case icode::TEMP:
                 return operand_value_map[op];
@@ -89,7 +127,7 @@ namespace llvmgen
     void llvm_generator::eq(icode::entry& e)
     {
         Value* what_to_store = get_llvm_value(e.op2);
-        Value* where_to_Store = get_llvm_value(e.op1, true);
+        Value* where_to_Store = get_llvm_alloca(e.op1);
 
         llvm_builder->CreateStore(what_to_store, where_to_Store);
     }
@@ -249,38 +287,31 @@ namespace llvmgen
 
         /* Store result llvm in map so it can be used by other llvm trnaslations */
         operand_value_map[e.op1] = result;
-
     }
 
-    void llvm_generator::symbol_alloca(icode::var_info& var_info, const std::string& name)
+    void llvm_generator::print(icode::entry& e)
     {
-        AllocaInst* alloca_inst;
+        Value* value = get_llvm_value(e.op1);
+        
+        /* Cast value to double if float */
+        if(icode::is_float(e.op1.dtype))
+            value = llvm_builder->CreateFPCast(value, Type::getDoubleTy(*llvm_context));
+        else
+            value = llvm_builder->CreateSExt(value, Type::getInt32Ty(*llvm_context));
 
-        switch (var_info.dtype)
-        {
-            case icode::I32:
-            case icode::UI32:
-                alloca_inst = llvm_builder->CreateAlloca(
-                  Type::getInt32Ty(*llvm_context), nullptr, name);
-                break;
-            case icode::I8:
-                alloca_inst = llvm_builder->CreateAlloca(
-                  Type::getInt8Ty(*llvm_context), nullptr, name);
-                break;
-            case icode::F32:
-                alloca_inst = llvm_builder->CreateAlloca(
-                  Type::getFloatTy(*llvm_context), nullptr, name);
-                break;
-            default:
-                miklog::internal_error(module.name);
-                throw miklog::internal_bug_error();
-                
-        }
+        Value* format_str = llvm_builder->CreateGlobalStringPtr(get_format_string(e.op1.dtype));
 
-        alloca_inst_map[name] = alloca_inst;
+        /* Set up printf arguments*/
+        std::vector<Value *> printArgs;
+        printArgs.push_back(format_str);
+        printArgs.push_back(value);
+
+        /* Call printf */
+        llvm_builder->CreateCall(llvm_module->getFunction("printf"), printArgs);
     }
 
-    void llvm_generator::gen_function(icode::func_desc& func_desc, const std::string& name)
+    void
+    llvm_generator::gen_function(icode::func_desc& func_desc, const std::string& name)
     {
         /* Setup llvm function */
         std::vector<Type*> types;
@@ -319,6 +350,9 @@ namespace llvmgen
                 case icode::BWX:
                     binop(e);
                     break;
+                case icode::PRINT:
+                    print(e);
+                    break;
                 case icode::RET:
                 case icode::EXIT:
                     break;
@@ -327,19 +361,32 @@ namespace llvmgen
                     throw miklog::internal_bug_error();
             }
         }
-        
 
         /* Terminate function */
         llvm_builder->CreateRetVoid();
         verifyFunction(*F);
     }
 
-    llvm_generator::llvm_generator(icode::module_desc& module_desc) : module(module_desc)
-    {  
+    void llvm_generator::setup_printf()
+    {
+        std::vector<Type*> args;
+        args.push_back(Type::getInt8PtrTy(*llvm_context));
+        FunctionType* printf_type =
+          FunctionType::get(llvm_builder->getInt32Ty(), args, true);
+        Function::Create(
+          printf_type, Function::ExternalLinkage, "printf", llvm_module.get());
+    }
+
+    llvm_generator::llvm_generator(icode::module_desc& module_desc)
+      : module(module_desc)
+    {
         /* Setup LLVM context, module and builder */
         llvm_context = std::make_unique<LLVMContext>();
         llvm_module = std::make_unique<Module>(module.name, *llvm_context);
         llvm_builder = std::make_unique<IRBuilder<>>(*llvm_context);
+
+        /* Declare that printf exists and has signature int (i8*, ...) */
+        setup_printf();
 
         /* Loop through each function and convert mikuro IR to llvm IR */
         for (auto func : module.functions)
@@ -347,7 +394,7 @@ namespace llvmgen
             gen_function(func.second, func.first);
         }
 
-        errs() << *llvm_module;
+        outs() << *llvm_module;
 
         /* Initialize the target registry etc */
         InitializeAllTargetInfos();
@@ -402,6 +449,7 @@ namespace llvmgen
         }
 
         pass.run(*llvm_module);
+
         dest.flush();
     }
 }
