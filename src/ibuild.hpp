@@ -10,6 +10,7 @@ namespace ibuild
         unsigned int id_counter;
 
         icode::func_desc* current_func_desc;
+        icode::module_desc& module;
 
       public:
         unsigned int id();
@@ -17,6 +18,8 @@ namespace ibuild
         void set_func_desc(icode::func_desc* func_desc);
 
         void push_ir(icode::entry entry);
+
+        icode::operand create_ptr(const icode::operand& op);
 
         void copy(icode::operand op1, icode::operand op2);
 
@@ -57,7 +60,7 @@ namespace ibuild
 
         void opir(icode::instruction instr);
 
-        ir_builder();
+        ir_builder(icode::module_desc& module_desc);
     };
 }
 

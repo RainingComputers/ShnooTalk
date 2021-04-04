@@ -46,11 +46,14 @@ namespace llvmgen
     {
         switch (dtype)
         {
-            case icode::I32:
-            case icode::UI32:
-                return Type::getInt32Ty(*llvm_context);
             case icode::I8:
                 return Type::getInt8Ty(*llvm_context);
+            case icode::I32:
+            case icode::UI32:
+            case icode::INT:
+                return Type::getInt32Ty(*llvm_context);
+            case icode::I64:
+                return Type::getInt64Ty(*llvm_context);
             case icode::F32:
                 return Type::getFloatTy(*llvm_context);
             default:
@@ -63,17 +66,19 @@ namespace llvmgen
     {
         switch (dtype)
         {
+            case icode::I8:
+                return Type::getInt8PtrTy(*llvm_context);
             case icode::I32:
             case icode::UI32:
                 return Type::getInt32PtrTy(*llvm_context);
-            case icode::I8:
-                return Type::getInt8PtrTy(*llvm_context);
+            case icode::I64:
+                return Type::getInt64PtrTy(*llvm_context);
             case icode::F32:
                 return Type::getFloatPtrTy(*llvm_context);
             default:
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
-        }        
+        }
     }
 
     Value* llvm_generator::gen_ltrl(icode::operand& op)
@@ -85,12 +90,11 @@ namespace llvmgen
             case icode::I32:
             case icode::UI32:
             case icode::I8:
-                llvm_value =
-                  ConstantInt::get(to_llvm_type(op.dtype), op.val.integer);
+            case icode::INT:
+                llvm_value = ConstantInt::get(to_llvm_type(op.dtype), op.val.integer);
                 break;
             case icode::F32:
-                llvm_value =
-                  ConstantFP::get(to_llvm_type(op.dtype), op.val.floating);
+                llvm_value = ConstantFP::get(to_llvm_type(op.dtype), op.val.floating);
                 break;
             default:
                 miklog::internal_error(module.name);
@@ -102,29 +106,24 @@ namespace llvmgen
 
     Value* llvm_generator::gen_addr(icode::operand& op)
     {
-        return ConstantInt::get(Type::getInt32Ty(*llvm_context), op.val.integer);
+        return ConstantInt::get(Type::getInt64Ty(*llvm_context), op.val.integer);
     }
 
     void llvm_generator::symbol_alloca(icode::var_info& var_info, const std::string& name)
     {
         AllocaInst* alloca_inst;
 
-        switch (var_info.dtype)
+        if (var_info.dimensions.size() > 0 || var_info.dtype == icode::STRUCT)
         {
-            case icode::I32:
-            case icode::UI32:
-            case icode::I8:
-            case icode::F32:
-                alloca_inst = llvm_builder->CreateAlloca(
-                  to_llvm_type(var_info.dtype), nullptr, name);
-                break;
-            case icode::STRUCT:
-                alloca_inst = llvm_builder->CreateAlloca(
-                  ArrayType::get(Type::getInt8Ty(*llvm_context), var_info.size), nullptr, name);
-                break;
-            default:
-                miklog::internal_error(module.name);
-                throw miklog::internal_bug_error();
+            alloca_inst = llvm_builder->CreateAlloca(
+              ArrayType::get(Type::getInt8Ty(*llvm_context), var_info.size),
+              nullptr,
+              name);
+        }
+        else
+        {
+            alloca_inst =
+              llvm_builder->CreateAlloca(to_llvm_type(var_info.dtype), nullptr, name);
         }
 
         alloca_inst_map[name] = alloca_inst;
@@ -136,9 +135,6 @@ namespace llvmgen
         {
             case icode::VAR:
                 return alloca_inst_map[op.name];
-                break;
-            case icode::TEMP_PTR:
-                return operand_value_map[op];
                 break;
             default:
                 miklog::internal_error(module.name);
@@ -159,6 +155,7 @@ namespace llvmgen
                 AllocaInst* alloca_value = alloca_inst_map[op.name];
                 return llvm_builder->CreateLoad(alloca_value, op.name.c_str());
             }
+            case icode::TEMP_PTR:
             case icode::TEMP:
                 return operand_value_map[op];
             default:
@@ -173,6 +170,61 @@ namespace llvmgen
         Value* where_to_store = get_llvm_alloca(e.op1);
 
         llvm_builder->CreateStore(what_to_store, where_to_store);
+    }
+
+    void llvm_generator::create_ptr(icode::entry& e)
+    {
+        Value* alloca = get_llvm_alloca(e.op2);
+        operand_value_map[e.op1] =
+          llvm_builder->CreatePtrToInt(alloca, to_llvm_type(icode::I64));
+    }
+
+    void llvm_generator::read(icode::entry& e)
+    {
+        Value* ptr = llvm_builder->CreateIntToPtr(get_llvm_value(e.op2),
+                                                  to_llvm_ptr_type(e.op1.dtype));
+        Value* value = llvm_builder->CreateLoad(ptr);
+
+        if (e.op1.optype == icode::TEMP)
+        {
+            operand_value_map[e.op1] = value;
+        }
+        else
+        {
+            Value* where_to_store = get_llvm_alloca(e.op1);
+            llvm_builder->CreateStore(value, where_to_store);
+        }
+    }
+
+    void llvm_generator::write(icode::entry& e)
+    {
+        Value* where_to_store = llvm_builder->CreateIntToPtr(
+          get_llvm_value(e.op1), to_llvm_ptr_type(e.op2.dtype));
+        Value* what_to_stor = get_llvm_value(e.op2);
+        llvm_builder->CreateStore(what_to_stor, where_to_store);
+    }
+
+    void llvm_generator::addrop(icode::entry& e)
+    {
+        Value* result;
+        Value* LHS = get_llvm_value(e.op2);
+        Value* RHS = get_llvm_value(e.op3);
+
+        switch (e.opcode)
+        {
+            case icode::ADDR_ADD:
+                result = llvm_builder->CreateNUWAdd(LHS, RHS);
+                break;
+            case icode::ADDR_MUL:
+                result = llvm_builder->CreateNUWMul(LHS, RHS);
+                break;
+            default:
+                miklog::internal_error(module.name);
+                throw miklog::internal_bug_error();
+        }
+
+        /* Store result llvm in map so it can be used by other llvm trnaslations */
+        operand_value_map[e.op1] = result;
     }
 
     void llvm_generator::binop(icode::entry& e)
@@ -394,7 +446,11 @@ namespace llvmgen
                 case icode::BWX:
                     binop(e);
                     break;
+                case icode::CREATE_PTR:
+                    create_ptr(e);
+                    break;
                 case icode::ADDR_ADD:
+                case icode::ADDR_MUL:
                     addrop(e);
                     break;
                 case icode::READ:

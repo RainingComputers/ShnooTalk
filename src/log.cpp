@@ -128,19 +128,20 @@ namespace miklog
                                             "INPUT",
                                             "EXIT" };
 
-    static std::string data_type_strs[] = { "I8",  "I16",    "I32",     "UI32",
-                                            "F32", "VM_INT", "VM_UINT", "VM_FLOAT",
-                                            "INT", "FLOAT",  "STRUCT",  "VOID" };
+    static std::string data_type_strs[] = { "I8",       "I16", "I32",    "I64",
+                                            "UI32",     "F32", "VM_INT", "VM_UINT",
+                                            "VM_FLOAT", "INT", "FLOAT",  "STRUCT",
+                                            "VOID" };
 
     static std::string instruction_strs[] = {
-        "PASS",          "PASS_ADDR",    "CALL",      "RET",       "ADDR_ADD",
-        "ADDR_MUL",      "EQUAL",        "READ",      "WRITE",     "CAST",
-        "UNARY_MINUS",   "NOT",          "MUL",       "DIV",       "MOD",
-        "ADD",           "SUB",          "RSH",       "LSH",       "LT",
-        "LTE",           "GT",           "GTE",       "EQ",        "NEQ",
-        "BWA",           "BWX",          "BWO",       "GOTO",      "IF_TRUE_GOTO",
-        "IF_FALSE_GOTO", "CREATE_LABEL", "PRINT",     "PRINT_STR", "SPACE",
-        "NEWLN",         "INPUT",        "INPUT_STR", "EXIT"
+        "PASS",         "PASS_ADDR",     "CALL",         "RET",       "ADDR_ADD",
+        "ADDR_MUL",     "EQUAL",         "READ",         "WRITE",     "CREATE_PTR",
+        "CAST",         "UNARY_MINUS",   "NOT",          "MUL",       "DIV",
+        "MOD",          "ADD",           "SUB",          "RSH",       "LSH",
+        "LT",           "LTE",           "GT",           "GTE",       "EQ",
+        "NEQ",          "BWA",           "BWX",          "BWO",       "GOTO",
+        "IF_TRUE_GOTO", "IF_FALSE_GOTO", "CREATE_LABEL", "PRINT",     "PRINT_STR",
+        "SPACE",        "NEWLN",         "INPUT",        "INPUT_STR", "EXIT"
     };
 
     void print_token(const token::token& symbol)
@@ -317,8 +318,7 @@ namespace miklog
                 std::cout << "Temp(id_" << op.temp_id << ":" << data_type_strs[op.dtype];
                 break;
             case icode::TEMP_PTR:
-                std::cout << "TempPtr(id_" << op.temp_id << ":"
-                          << data_type_strs[op.dtype];
+                std::cout << "TempPtr(id_" << op.temp_id;
                 break;
             case icode::STR_DATA:
                 std::cout << "StrDat(name=" << op.name << " size=" << op.val.size;

@@ -1,8 +1,14 @@
 #include "ibuild.hpp"
 
+#include "log.hpp"
+
 namespace ibuild
 {
-    ir_builder::ir_builder() { id_counter = 0; }
+    ir_builder::ir_builder(icode::module_desc& module_desc)
+      : module(module_desc)
+    {
+        id_counter = 0;
+    }
 
     unsigned int ir_builder::id() { return id_counter++; }
 
@@ -16,6 +22,19 @@ namespace ibuild
         /* Push an ir entry to the current function's icode table */
 
         (*current_func_desc).icode_table.push_back(entry);
+    }
+
+    icode::operand ir_builder::create_ptr(const icode::operand& op)
+    {
+        icode::operand ptr_op = icode::temp_ptr_opr(op.dtype, id());
+
+        icode::entry create_ptr_entry;
+        create_ptr_entry.op1 = ptr_op;
+        create_ptr_entry.op2 = op;
+        create_ptr_entry.opcode = icode::CREATE_PTR;
+        push_ir(create_ptr_entry);
+
+        return ptr_op;
     }
 
     void ir_builder::copy(icode::operand op1, icode::operand op2)

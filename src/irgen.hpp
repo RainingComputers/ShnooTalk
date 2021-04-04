@@ -24,14 +24,14 @@ namespace irgen
         icode::module_desc& module;
         std::ifstream& file;
 
+        ibuild::ir_builder builder;
+
         icode::func_desc* current_func_desc;
         icode::module_desc* current_ext_module;
 
         unsigned int id_counter;
         unsigned int scope_id_counter;
         std::vector<unsigned int> scope_id_stack;
-
-        ibuild::ir_builder builder;
 
         unsigned int id();
 

@@ -52,15 +52,18 @@ namespace llvmgen
 
         llvm::Value* gen_ltrl(icode::operand& op);
         llvm::Value* gen_addr(icode::operand& op);
+
         llvm::Value* get_llvm_alloca(icode::operand& op);
         llvm::Value* get_llvm_value(icode::operand& op);
         void symbol_alloca(icode::var_info& var_info, const std::string& name);
 
         void eq(icode::entry& e);
-        void binop(icode::entry& e);
-        void addrop(icode::entry& e);
+        void create_ptr(icode::entry& e);
         void read(icode::entry& e);
         void write(icode::entry& e);
+        void addrop(icode::entry& e);
+        void binop(icode::entry& e);
+
         void print(icode::entry& e);
 
         void gen_function(icode::func_desc& func, const std::string& name);

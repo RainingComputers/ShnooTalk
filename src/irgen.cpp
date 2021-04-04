@@ -11,6 +11,7 @@ namespace irgen
       , ext_modules_map(modules_map)
       , module(modules_map[file_name])
       , file(ifile)
+      , builder(modules_map[file_name])
     {
         current_func_desc = nullptr;
         current_ext_module = &module;
@@ -919,6 +920,10 @@ namespace irgen
         current_offset_temp =
           icode::var_opr(current_var_info.dtype, ident_name, id(), is_global, is_ptr);
 
+        /* Ensure current_offset_temp is a pointer */
+        if (!icode::is_ptr(current_offset_temp.optype))
+            current_offset_temp = builder.create_ptr(current_offset_temp);
+
         /* Go through struct fields and subsripts */
         for (size_t i = 1; i < root.children.size();)
         {
@@ -956,6 +961,8 @@ namespace irgen
                         {
                             /* If it does, update offset */
                             bool is_mut = current_var_info.check(icode::IS_MUT);
+
+                            /* Update var info to struct field */
                             current_var_info = struct_desc.fields[child.tok.str];
 
                             /* If the struct is immutable, fields are automatically
@@ -1667,7 +1674,7 @@ namespace irgen
             copy_struct(var.first, expr);
         }
         /* If not a struct field */
-        else if (var.first.optype == icode::VAR || var.first.optype == icode::GBL_VAR)
+        else
         {
             if (assign_opr.type == token::EQUAL)
             {
@@ -1678,20 +1685,6 @@ namespace irgen
                 icode::operand temp = icode::temp_opr(var.second.dtype, id());
                 builder.copy(temp, var.first);
                 builder.binop(opcode, var.first, temp, expr.first);
-            }
-        }
-        /* If a pointer */
-        else
-        {
-            if (assign_opr.type == token::EQUAL)
-            {
-                builder.copy(var.first, expr.first);
-            }
-            else
-            {
-                /* Add the read temp value to expr and store it in
-                    another temp */
-                builder.binop(opcode, var.first, var.first, expr.first);
             }
         }
     }
