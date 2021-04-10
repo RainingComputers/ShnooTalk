@@ -128,11 +128,6 @@ namespace miklog
                                             "INPUT",
                                             "EXIT" };
 
-    static std::string data_type_strs[] = { "I8",       "I16", "I32",    "I64",
-                                            "UI32",     "F32", "VM_INT", "VM_UINT",
-                                            "VM_FLOAT", "INT", "FLOAT",  "STRUCT",
-                                            "VOID" };
-
     static std::string instruction_strs[] = {
         "PASS",         "PASS_ADDR",     "CALL",         "RET",       "ADDR_ADD",
         "ADDR_MUL",     "EQUAL",         "READ",         "WRITE",     "CREATE_PTR",
@@ -315,10 +310,10 @@ namespace miklog
         switch (op.optype)
         {
             case icode::TEMP:
-                std::cout << "Temp(id_" << op.temp_id << ":" << data_type_strs[op.dtype];
+                std::cout << "Temp(id_" << op.temp_id << ":" << op.dtype_name;
                 break;
             case icode::TEMP_PTR:
-                std::cout << "TempPtr(id_" << op.temp_id;
+                std::cout << "TempPtr(id_" << op.temp_id << ":" << op.dtype_name;
                 break;
             case icode::STR_DATA:
                 std::cout << "StrDat(name=" << op.name << " size=" << op.val.size;
@@ -327,13 +322,13 @@ namespace miklog
                 std::cout << "Addr(" << op.val.address;
                 break;
             case icode::VAR:
-                std::cout << "Var(" << op.name << ":" << data_type_strs[op.dtype];
+                std::cout << "Var(" << op.name << ":" << op.dtype_name;
                 break;
             case icode::GBL_VAR:
-                std::cout << "GblVar(" << op.name << ":" << data_type_strs[op.dtype];
+                std::cout << "GblVar(" << op.name << ":" << op.dtype_name;
                 break;
             case icode::PTR:
-                std::cout << "Ptr(" << op.name << ":" << data_type_strs[op.dtype];
+                std::cout << "Ptr(" << op.name << ":" << op.dtype_name;
                 break;
             case icode::RET_PTR:
                 std::cout << "RetPtr("
@@ -344,23 +339,23 @@ namespace miklog
                 if (icode::is_uint(op.dtype))
                 {
                     std::cout << "Ltrl(" << op.val.size << ":"
-                              << data_type_strs[op.dtype];
+                              << icode::data_type_strs[op.dtype];
                 }
                 else if (icode::is_int(op.dtype))
                 {
                     std::cout << "Ltrl(" << op.val.integer << ":"
-                              << data_type_strs[op.dtype];
+                              << icode::data_type_strs[op.dtype];
                 }
                 else
                 {
                     std::cout << "Ltrl(" << op.val.floating << ":"
-                              << data_type_strs[op.dtype];
+                              << icode::data_type_strs[op.dtype];
                 }
 
                 break;
             }
             case icode::DTYPE:
-                std::cout << "Dtype(" << data_type_strs[op.dtype];
+                std::cout << "Dtype(" << icode::data_type_strs[op.dtype];
                 break;
             case icode::LABEL:
                 std::cout << "Label(" << op.name;
@@ -391,7 +386,7 @@ namespace miklog
         std::cout << "Var(";
         std::cout << "dtype="
                   << "\"" << var_info.dtype_name << "\":";
-        std::cout << data_type_strs[var_info.dtype];
+        std::cout << icode::data_type_strs[var_info.dtype];
         std::cout << " dtypesize=" << var_info.dtype_size;
         std::cout << " mod="
                   << "\"" << var_info.module_name << "\"";
@@ -438,7 +433,7 @@ namespace miklog
         else
             std::cout << definition.val.floating;
 
-        std::cout << ":" << data_type_strs[definition.dtype] << ")";
+        std::cout << ":" << icode::data_type_strs[definition.dtype] << ")";
     }
 
     void print_func_desc(const icode::func_desc& func_desc, int ilvl)

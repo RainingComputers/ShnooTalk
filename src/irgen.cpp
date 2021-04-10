@@ -596,10 +596,8 @@ namespace irgen
             /* Update offset */
             if (i != str_int.size() - 1)
             {
-                curr_offset =
-                  builder.addrop(icode::ADDR_ADD,
-                                 curr_offset,
-                                 icode::addr_opr(var.second.dtype_size, id()));
+                curr_offset = builder.addr_add(
+                  curr_offset, icode::addr_opr(var.second.dtype_size, id()));
             }
         }
     }
@@ -631,10 +629,8 @@ namespace irgen
             if (i != size - dtype_size)
             {
                 icode::operand update = icode::addr_opr(dtype_size, id());
-                curr_offset_left =
-                  builder.addrop(icode::ADDR_ADD, curr_offset_left, update);
-                curr_offset_right =
-                  builder.addrop(icode::ADDR_ADD, curr_offset_right, update);
+                curr_offset_left = builder.addr_add(curr_offset_left, update);
+                curr_offset_right = builder.addr_add(curr_offset_right, update);
             }
         }
     }
@@ -653,10 +649,8 @@ namespace irgen
 
             if (count != 0)
             {
-                curr_offset_left =
-                  builder.addrop(icode::ADDR_ADD, curr_offset_left, update);
-                curr_offset_right =
-                  builder.addrop(icode::ADDR_ADD, curr_offset_right, update);
+                curr_offset_left = builder.addr_add(curr_offset_left, update);
+                curr_offset_right = builder.addr_add(curr_offset_right, update);
             }
 
             /* Copy field */
@@ -756,8 +750,8 @@ namespace irgen
             /* Update offset */
             if (i != root.children.size() - 1)
             {
-                curr_offset = builder.addrop(
-                  icode::ADDR_ADD, curr_offset, icode::addr_opr(element_var.size, id()));
+                curr_offset =
+                  builder.addr_add(curr_offset, icode::addr_opr(element_var.size, id()));
             }
         }
 
@@ -801,7 +795,8 @@ namespace irgen
 
             /* Create icode operands, one for variable other for temp
                 to hold result of initialization expression */
-            icode::operand left = icode::var_opr(var.second.dtype, var.first.str, id());
+            icode::operand left = icode::var_opr(
+              var.second.dtype, var.second.dtype_name, var.first.str, id());
 
             op_var_pair init_exp = expression(last_node);
 
@@ -825,14 +820,18 @@ namespace irgen
         }
         else if (last_node.type == node::STR_LITERAL)
         {
-            op_var_pair var_pair = op_var_pair(
-              icode::var_opr(var.second.dtype, var.first.str, id()), var.second);
+            op_var_pair var_pair =
+              op_var_pair(icode::var_opr(
+                            var.second.dtype, var.second.dtype_name, var.first.str, id()),
+                          var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
-            op_var_pair var_pair = op_var_pair(
-              icode::var_opr(var.second.dtype, var.first.str, id()), var.second);
+            op_var_pair var_pair =
+              op_var_pair(icode::var_opr(
+                            var.second.dtype, var.second.dtype_name, var.first.str, id()),
+                          var.second);
             assign_init_list_tovar(var_pair, last_node);
         }
 
@@ -912,13 +911,21 @@ namespace irgen
         /* If no struct or subscript */
         if (root.children.size() == 1)
         {
-            icode::operand op =
-              icode::var_opr(current_var_info.dtype, ident_name, id(), is_global, is_ptr);
+            icode::operand op = icode::var_opr(current_var_info.dtype,
+                                               current_var_info.dtype_name,
+                                               ident_name,
+                                               id(),
+                                               is_global,
+                                               is_ptr);
             return op_var_pair(op, current_var_info);
         }
 
-        current_offset_temp =
-          icode::var_opr(current_var_info.dtype, ident_name, id(), is_global, is_ptr);
+        current_offset_temp = icode::var_opr(current_var_info.dtype,
+                                             current_var_info.dtype_name,
+                                             ident_name,
+                                             id(),
+                                             is_global,
+                                             is_ptr);
 
         /* Ensure current_offset_temp is a pointer */
         if (!icode::is_ptr(current_offset_temp.optype))
@@ -972,10 +979,10 @@ namespace irgen
 
                             /* Update pointer dtype */
                             current_offset_temp.dtype = current_var_info.dtype;
+                            current_offset_temp.dtype_name = current_var_info.dtype_name;
 
                             /* Add offset */
-                            current_offset_temp = builder.addrop(
-                              icode::ADDR_ADD,
+                            current_offset_temp = builder.addr_add(
                               current_offset_temp,
                               icode::addr_opr(current_var_info.offset, id()));
 
@@ -1029,17 +1036,15 @@ namespace irgen
                         }
 
                         /* Entry for subscript expression */
-                        icode::operand subs_op =
-                          builder.addrop(icode::ADDR_MUL,
-                                         subs_expr.first,
-                                         icode::addr_opr(elem_width, id()));
+                        icode::operand subs_op = builder.addr_mul(
+                          subs_expr.first, icode::addr_opr(elem_width, id()));
 
                         if (dim_count != current_var_info.dimensions.size())
                             elem_width /= current_var_info.dimensions[dim_count];
 
                         /* Create entry for adding to the current offset */
                         current_offset_temp =
-                          builder.addrop(icode::ADDR_ADD, current_offset_temp, subs_op);
+                          builder.addr_add(current_offset_temp, subs_op);
 
                         if (i < root.children.size() - 1)
                         {
@@ -1338,6 +1343,7 @@ namespace irgen
                 op_var_pair term_var = term(child.children[0]);
 
                 icode::data_type dtype = term_var.second.dtype;
+                std::string dtype_name = term_var.second.dtype_name;
 
                 /* Unary operator not allowed on ARRAY */
                 if (term_var.second.dimensions.size() != 0)
@@ -1387,8 +1393,8 @@ namespace irgen
                         throw miklog::internal_bug_error();
                 }
 
-                icode::operand res_temp =
-                  builder.uniop(opcode, icode::temp_opr(dtype, id()), term_var.first);
+                icode::operand res_temp = builder.uniop(
+                  opcode, icode::temp_opr(dtype, dtype_name, id()), term_var.first);
 
                 /* Return temp */
                 return op_var_pair(res_temp, term_var.second);
@@ -1465,6 +1471,7 @@ namespace irgen
             /* First operand */
             op_var_pair first_operand = expression(root.children[0]);
             icode::data_type dtype = first_operand.second.dtype;
+            std::string dtype_name = first_operand.second.dtype_name;
 
             /* Expression not allowed on arrays or struct */
             if (dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
@@ -1556,10 +1563,11 @@ namespace irgen
                     throw miklog::internal_bug_error();
             }
 
-            icode::operand res_temp = builder.binop(opcode,
-                                                    icode::temp_opr(dtype, id()),
-                                                    first_operand.first,
-                                                    second_operand.first);
+            icode::operand res_temp =
+              builder.binop(opcode,
+                            icode::temp_opr(dtype, dtype_name, id()),
+                            first_operand.first,
+                            second_operand.first);
 
             /* Return the operand where final result is stored */
             return op_var_pair(res_temp, first_operand.second);
@@ -1682,7 +1690,8 @@ namespace irgen
             }
             else
             {
-                icode::operand temp = icode::temp_opr(var.second.dtype, id());
+                icode::operand temp =
+                  icode::temp_opr(var.second.dtype, var.second.dtype_name, id());
                 builder.copy(temp, var.first);
                 builder.binop(opcode, var.first, temp, expr.first);
             }

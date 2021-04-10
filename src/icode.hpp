@@ -37,6 +37,8 @@ namespace icode
 
     const int dtype_size[] = { 1, 2, 4, 4, 4, 1, 1, 1, 0, 0, 0, 0 };
 
+    extern std::string data_type_strs[];
+
     /*
         Icode operand types and struct
     */
@@ -72,6 +74,7 @@ namespace icode
 
         std::string name;
         data_type dtype;
+        std::string dtype_name;
         operand_type optype;
 
         bool operator<(const operand& other) const;
@@ -268,10 +271,11 @@ namespace icode
         Helper functions for generating icode operands
     */
 
-    operand temp_opr(data_type dtype, unsigned int id);
-    operand temp_ptr_opr(data_type dtype, unsigned int id);
+    operand temp_opr(data_type dtype, const std::string& dtype_name, unsigned int id);
+    operand temp_ptr_opr(data_type dtype, const std::string& dtype_name, unsigned int id);
     operand str_dat_opr(const std::string& name, unsigned int size, unsigned int id);
     operand var_opr(data_type dtype,
+                    const std::string& dtype_name,
                     const std::string& symbol,
                     unsigned int id,
                     bool global = false,

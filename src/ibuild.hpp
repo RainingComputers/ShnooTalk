@@ -39,8 +39,9 @@ namespace ibuild
 
         void cmpop(icode::instruction instr, icode::operand op1, icode::operand op2);
 
-        icode::operand
-        addrop(icode::instruction instr, icode::operand op2, icode::operand op3);
+        icode::operand addr_add(icode::operand op2, icode::operand op3);
+
+        icode::operand addr_mul(icode::operand op2, icode::operand op3);
 
         void label(icode::operand op);
 

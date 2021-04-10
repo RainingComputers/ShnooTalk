@@ -2,6 +2,10 @@
 
 namespace icode
 {
+    std::string data_type_strs[] = { "I8",    "I16",    "I32",     "I64",      "UI32",
+                                     "F32",   "VM_INT", "VM_UINT", "VM_FLOAT", "INT",
+                                     "FLOAT", "STRUCT", "VOID" };
+
     entry::entry()
     {
         op1.optype = NONE;
@@ -230,21 +234,23 @@ namespace icode
         Helper functions for generating icode operands
     */
 
-    operand temp_opr(data_type dtype, unsigned int id)
+    operand temp_opr(data_type dtype, const std::string& dtype_name, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
         temp.dtype = dtype;
+        temp.dtype_name = dtype_name;
         temp.optype = TEMP;
 
         return temp;
     }
 
-    operand temp_ptr_opr(data_type dtype, unsigned int id)
+    operand temp_ptr_opr(data_type dtype, const std::string& dtype_name, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
         temp.dtype = dtype;
+        temp.dtype_name = dtype_name;
         temp.optype = TEMP_PTR;
 
         return temp;
@@ -273,6 +279,7 @@ namespace icode
     }
 
     operand var_opr(data_type dtype,
+                    const std::string& dtype_name,
                     const std::string& symbol,
                     unsigned int id,
                     bool global,
@@ -282,6 +289,7 @@ namespace icode
         temp.temp_id = id;
         temp.name = symbol;
         temp.dtype = dtype;
+        temp.dtype_name = dtype_name;
 
         if (global)
             temp.optype = GBL_VAR;
