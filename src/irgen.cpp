@@ -604,8 +604,8 @@ namespace irgen
 
     void ir_generator::copy_array(icode::operand& left, op_var_pair right)
     {
-        icode::operand curr_offset_left = left;
-        icode::operand curr_offset_right = right.first;
+        icode::operand curr_offset_left = builder.create_ptr(left);
+        icode::operand curr_offset_right = builder.create_ptr(right.first);
 
         unsigned int size = right.second.size;
         unsigned int dtype_size = right.second.dtype_size;

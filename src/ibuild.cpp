@@ -198,7 +198,7 @@ namespace ibuild
           icode::temp_ptr_opr(icode::INT, icode::data_type_strs[icode::INT], id());
         entry.op2 = op2;
         entry.op3 = op3;
-        entry.opcode = icode::ADDR_ADD;
+        entry.opcode = icode::ADDR_MUL;
         push_ir(entry);
 
         return entry.op1;
