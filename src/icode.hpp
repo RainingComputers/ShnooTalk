@@ -40,6 +40,57 @@ namespace icode
     extern std::string data_type_strs[];
 
     /*
+        The following structs are used to describe a
+        variables, structs, function parameters, defs
+    */
+
+    enum var_prop
+    {
+        IS_MUT,
+        IS_PTR
+    };
+
+    struct var_info
+    {
+        icode::data_type dtype;
+        std::string dtype_name;
+        std::string module_name;
+        unsigned int dtype_size;
+        unsigned int offset;
+        unsigned int size;
+        std::vector<unsigned int> dimensions;
+        unsigned int scope_id;
+
+        unsigned int properties;
+
+        var_info();
+
+        void set_prop(var_prop prop);
+        void clear_prop(var_prop prop);
+        bool check(var_prop prop);
+    };
+
+    struct struct_desc
+    {
+        std::map<std::string, var_info> fields;
+        unsigned int size;
+        std::string module_name;
+
+        bool field_exists(const std::string&);
+    };
+
+    struct def
+    {
+        union
+        {
+            int integer;
+            float floating;
+        } val;
+
+        data_type dtype;
+    };
+
+    /*
         Icode operand types and struct
     */
 
@@ -139,57 +190,6 @@ namespace icode
         operand op3;
 
         entry();
-    };
-
-    /*
-        The following structs are used to describe a
-        variables, structs, function parameters, defs
-    */
-
-    enum var_prop
-    {
-        IS_MUT,
-        IS_PTR
-    };
-
-    struct var_info
-    {
-        icode::data_type dtype;
-        std::string dtype_name;
-        std::string module_name;
-        unsigned int dtype_size;
-        unsigned int offset;
-        unsigned int size;
-        std::vector<unsigned int> dimensions;
-        unsigned int scope_id;
-
-        unsigned int properties;
-
-        var_info();
-
-        void set_prop(var_prop prop);
-        void clear_prop(var_prop prop);
-        bool check(var_prop prop);
-    };
-
-    struct struct_desc
-    {
-        std::map<std::string, var_info> fields;
-        unsigned int size;
-        std::string module_name;
-
-        bool field_exists(const std::string&);
-    };
-
-    struct def
-    {
-        union
-        {
-            int integer;
-            float floating;
-        } val;
-
-        data_type dtype;
     };
 
     /*
