@@ -80,6 +80,7 @@ namespace icode
         bool operator<(const operand& other) const;
         bool operator==(const operand& other) const;
         bool operator!=(const operand& other) const;
+        void update_dtype(const var_info& var);
     };
 
     /*

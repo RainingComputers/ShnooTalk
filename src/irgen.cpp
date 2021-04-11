@@ -637,8 +637,8 @@ namespace irgen
 
     void ir_generator::copy_struct(icode::operand& left, op_var_pair right)
     {
-        icode::operand curr_offset_left = left;
-        icode::operand curr_offset_right = right.first;
+        icode::operand curr_offset_left = builder.create_ptr(left);
+        icode::operand curr_offset_right = builder.create_ptr(right.first);
 
         /* Loop through each field and copy them */
         unsigned int count = 0;
@@ -649,6 +649,9 @@ namespace irgen
 
             if (count != 0)
             {
+                curr_offset_left.update_dtype(field.second);
+                curr_offset_right.update_dtype(field.second);
+
                 curr_offset_left = builder.addr_add(curr_offset_left, update);
                 curr_offset_right = builder.addr_add(curr_offset_right, update);
             }
@@ -978,8 +981,7 @@ namespace irgen
                                 current_var_info.clear_prop(icode::IS_MUT);
 
                             /* Update pointer dtype */
-                            current_offset_temp.dtype = current_var_info.dtype;
-                            current_offset_temp.dtype_name = current_var_info.dtype_name;
+                            current_offset_temp.update_dtype(current_var_info);
 
                             /* Add offset */
                             current_offset_temp = builder.addr_add(

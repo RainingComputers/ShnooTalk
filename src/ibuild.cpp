@@ -26,7 +26,23 @@ namespace ibuild
 
     icode::operand ir_builder::create_ptr(const icode::operand& op)
     {
-        icode::operand ptr_op = icode::temp_ptr_opr(op.dtype, op.dtype_name, id());
+        icode::data_type ptr_dtype;
+        std::string ptr_dtype_name;
+
+        if (op.dtype == icode::STRUCT)
+        {
+            icode::var_info first_field_info =
+              module.structures[op.dtype_name].fields.begin()->second;
+            ptr_dtype = first_field_info.dtype;
+            ptr_dtype_name = first_field_info.dtype_name;
+        }
+        else
+        {
+            ptr_dtype = op.dtype;
+            ptr_dtype_name = op.dtype_name;
+        }
+
+        icode::operand ptr_op = icode::temp_ptr_opr(ptr_dtype, ptr_dtype_name, id());
 
         icode::entry create_ptr_entry;
         create_ptr_entry.op1 = ptr_op;

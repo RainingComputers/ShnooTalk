@@ -174,9 +174,25 @@ namespace llvmgen
 
     void llvm_generator::create_ptr(icode::entry& e)
     {
-        Value* alloca = get_llvm_alloca(e.op2);
-        operand_value_map[e.op1] =
-          llvm_builder->CreatePtrToInt(alloca, to_llvm_type(icode::I64));
+        switch (e.op2.optype)
+        {
+            case icode::TEMP_PTR:
+            case icode::PTR:
+            {
+                operand_value_map[e.op1] = operand_value_map[e.op2];
+                break;
+            }
+            case icode::VAR:
+            case icode::GBL_VAR:
+            {
+                Value* alloca = get_llvm_alloca(e.op2);
+                operand_value_map[e.op1] = llvm_builder->CreatePtrToInt(alloca, to_llvm_type(icode::I64));
+                break;
+            }
+            default:
+                miklog::internal_error(module.name);
+                throw miklog::internal_bug_error();
+        }
     }
 
     void llvm_generator::read(icode::entry& e)
@@ -200,8 +216,8 @@ namespace llvmgen
     {
         Value* where_to_store = llvm_builder->CreateIntToPtr(
           get_llvm_value(e.op1), to_llvm_ptr_type(e.op2.dtype));
-        Value* what_to_stor = get_llvm_value(e.op2);
-        llvm_builder->CreateStore(what_to_stor, where_to_store);
+        Value* what_to_store = get_llvm_value(e.op2);
+        llvm_builder->CreateStore(what_to_store, where_to_store);
     }
 
     void llvm_generator::addrop(icode::entry& e)

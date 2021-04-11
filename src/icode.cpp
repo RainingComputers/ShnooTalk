@@ -53,6 +53,12 @@ namespace icode
 
     bool operand::operator!=(const operand& other) const { return !(*this == other); }
 
+    void operand::update_dtype(const var_info& var)
+    {
+        dtype = var.dtype;
+        dtype_name = var.dtype_name;
+    }
+
     /*
         Helper functions for type checking and other data type operations.
     */

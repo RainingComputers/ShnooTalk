@@ -3,3 +3,4 @@ bin/*
 tests/testinfo/*
 /*.uhll
 todo.txt
+.cccc/*
