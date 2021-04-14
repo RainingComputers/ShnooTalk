@@ -689,7 +689,7 @@ namespace irgen
             throw miklog::compile_error();
         }
 
-        icode::operand curr_offset = var.first;
+        icode::operand curr_offset = builder.create_ptr(var.first);
 
         /* Create var info for the elements inside the list */
         icode::var_info element_var = var.second;
