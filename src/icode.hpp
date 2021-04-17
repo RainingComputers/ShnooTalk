@@ -21,11 +21,15 @@ namespace icode
     enum data_type
     {
         I8,
+        UI8,
         I16,
+        UI16,
         I32,
-        I64,
         UI32,
+        I64,
+        UI64,
         F32,
+        F64,
         VM_INT,
         VM_UINT,
         VM_FLOAT,
@@ -35,7 +39,7 @@ namespace icode
         VOID
     };
 
-    const int dtype_size[] = { 1, 2, 4, 4, 4, 1, 1, 1, 0, 0, 0, 0 };
+    const int dtype_size[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 1, 1, 1, 0, 0, 0, 0 };
 
     extern std::string data_type_strs[];
 
@@ -255,8 +259,9 @@ namespace icode
         Helper functions for type checking and other data type operations.
     */
 
-    bool is_int(data_type);
+    bool is_sint(data_type);
     bool is_uint(data_type);
+    bool is_int(data_type);
     bool is_float(data_type);
     bool type_eq(var_info var1, var_info var2);
     var_info var_from_dtype(data_type dtype, target_desc& target);

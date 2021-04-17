@@ -2,9 +2,23 @@
 
 namespace icode
 {
-    std::string data_type_strs[] = { "I8",    "I16",    "I32",     "I64",      "UI32",
-                                     "F32",   "VM_INT", "VM_UINT", "VM_FLOAT", "INT",
-                                     "FLOAT", "STRUCT", "VOID" };
+    std::string data_type_strs[] = { "I8",
+                                     "UI8",
+                                     "I16",
+                                     "UI16",
+                                     "I32",
+                                     "UI32"
+                                     "I64",
+                                     "UI64",
+                                     "F32",
+                                     "F64"
+                                     "VM_INT",
+                                     "VM_UINT",
+                                     "VM_FLOAT",
+                                     "INT",
+                                     "FLOAT",
+                                     "STRUCT",
+                                     "VOID" };
 
     entry::entry()
     {
@@ -63,25 +77,35 @@ namespace icode
         Helper functions for type checking and other data type operations.
     */
 
-    bool is_int(data_type dtype)
+    bool is_sint(data_type dtype)
     {
-        return (dtype == I32 || dtype == I16 || dtype == I8 || dtype == INT ||
-                dtype == VM_INT || dtype == VM_UINT);
+        return (dtype == I8 || dtype == I16 ||
+                dtype == I32 || dtype == I64 ||
+                dtype == VM_INT || dtype == INT);
     }
 
-    bool is_uint(data_type dtype) { return (dtype == VM_UINT); }
+    bool is_uint(data_type dtype)
+    {
+        return (dtype == UI8 || dtype == UI16 || dtype == UI32 || dtype == UI64 ||
+                dtype == VM_UINT);
+    }
+
+    bool is_int(data_type dtype)
+    {
+        return is_sint(dtype) || is_uint(dtype);
+    }
 
     bool is_float(data_type dtype)
     {
-        return (dtype == F32 || dtype == FLOAT || dtype == VM_FLOAT);
+        return (dtype == F32 || dtype == F64 || dtype == FLOAT || dtype == VM_FLOAT);
     }
 
     bool dtype_eq(data_type dtype1, data_type dtype2)
     {
         return dtype1 == dtype2 || (dtype1 == INT && is_int(dtype2)) ||
-               (dtype2 == INT && is_int(dtype1)) ||
+               (is_int(dtype1) && dtype2 == INT) ||
                (dtype1 == FLOAT && is_float(dtype2)) ||
-               (dtype2 == FLOAT && is_float(dtype1));
+               (is_float(dtype1) && dtype2 == FLOAT);
     }
 
     bool type_eq(var_info var1, var_info var2)

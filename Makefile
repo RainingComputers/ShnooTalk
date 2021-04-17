@@ -63,6 +63,7 @@ clean:
 	rm -f -r bin/
 	rm -f -r obj/
 	rm -f -r tests/testinfo/
+	rm -f -r .cccc/
 
 # For compiling .cpp files in src/ to .o object files in obj/
 obj/$(BUILD_TYPE)/%.o: src/%.cpp src/%.hpp
@@ -88,6 +89,9 @@ build: all
 format:
 	clang-format -i src/*.cpp
 	clang-format -i src/*.hpp
+
+qaulity:
+	cccc src/*.cpp
 
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin

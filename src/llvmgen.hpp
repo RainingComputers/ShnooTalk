@@ -2,6 +2,7 @@
 #define LLVMGEN_HPP
 
 #include <map>
+#include <queue>
 
 #include "llvm/ADT/APFloat.h"
 #include "llvm/ADT/Optional.h"
@@ -32,6 +33,9 @@ namespace llvmgen
 {
     icode::target_desc target_desc();
 
+    typedef std::pair<llvm::BasicBlock*, llvm::BasicBlock::iterator> llvm_bb_it_pair;
+    typedef std::pair<size_t, icode::entry> entry_idx_pair;
+
     class llvm_generator
     {
         std::unique_ptr<llvm::LLVMContext> llvm_context;
@@ -42,27 +46,38 @@ namespace llvmgen
         std::map<std::string, llvm::Function*> llvm_function_map;
         std::map<icode::operand, llvm::Value*> operand_value_map;
 
-        llvm::Value* int_format_str;
-        llvm::Value* float_format_str;
+        std::map<icode::operand, llvm::BasicBlock*> label_block_map;
+        std::map<size_t, llvm::BasicBlock*> fall_block_map;
+        std::queue<llvm::Value*> cmp_flag_q;
+        std::map<size_t, llvm_bb_it_pair> backpatch_point_map;
+        std::vector<entry_idx_pair> backpatch_entry_q;
+
+        bool prev_instr_branch;
 
         icode::module_desc& module;
 
-        llvm::Type* to_llvm_type(icode::data_type dtype);
-        llvm::Type* to_llvm_ptr_type(icode::data_type dtype);
+        llvm::Type* to_llvm_type(const icode::data_type dtype);
+        llvm::Type* to_llvm_ptr_type(const icode::data_type dtype);
 
-        llvm::Value* gen_ltrl(icode::operand& op);
-        llvm::Value* gen_addr(icode::operand& op);
+        llvm::Value* gen_ltrl(const icode::operand& op);
+        llvm::Value* gen_addr(const icode::operand& op);
 
-        llvm::Value* get_llvm_alloca(icode::operand& op);
-        llvm::Value* get_llvm_value(icode::operand& op);
+        llvm::Value* get_llvm_alloca(const icode::operand& op);
+        llvm::Value* get_llvm_value(const icode::operand& op);
+        void set_llvm_value(const icode::operand& op, llvm::Value* value);
         void symbol_alloca(icode::var_info& var_info, const std::string& name);
 
-        void eq(icode::entry& e);
-        void create_ptr(icode::entry& e);
-        void read(icode::entry& e);
-        void write(icode::entry& e);
-        void addrop(icode::entry& e);
-        void binop(icode::entry& e);
+        void create_ptr(const icode::entry& e);
+        void eq(const icode::entry& e);
+        void read(const icode::entry& e);
+        void write(const icode::entry& e);
+        void addrop(const icode::entry& e);
+        void binop(const icode::entry& e);
+        void cmpop(const icode::entry& e, size_t entry_idx);
+
+        void create_backpatch(const icode::entry& e, llvm::Function* F, size_t entry_idx);
+
+        void create_label(const icode::entry& e, llvm::Function* F);
 
         void print(icode::entry& e);
 
