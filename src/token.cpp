@@ -54,10 +54,7 @@ namespace token
         return 0;
     }
 
-    token::token(std::string token_str,
-                 token_type tok_type,
-                 unsigned int column,
-                 unsigned int linenumber)
+    token::token(std::string token_str, token_type tok_type, unsigned int column, unsigned int linenumber)
     {
         str = token_str;
         type = tok_type;

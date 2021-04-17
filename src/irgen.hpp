@@ -89,8 +89,7 @@ namespace irgen
 
         void assignment(const node::node& root);
 
-        icode::operand
-        gen_label(token::token tok, bool true_label, std::string prefix = "");
+        icode::operand gen_label(token::token tok, bool true_label, std::string prefix = "");
 
         void condn_expression(const node::node& root,
                               const icode::operand& t_label,

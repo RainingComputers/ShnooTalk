@@ -20,9 +20,7 @@ void print_usage()
     miklog::println("\t-run\tExecute program (default)");
 }
 
-void ir_gen(const std::string& file_name,
-            icode::target_desc& target,
-            icode::module_desc_map& modules)
+void ir_gen(const std::string& file_name, icode::target_desc& target, icode::module_desc_map& modules)
 {
     /* Open file */
     std::ifstream ifile;
@@ -58,8 +56,7 @@ int main(int argc, char* argv[])
     std::string file_name = argv[1];
 
     std::string ext = ".uhll";
-    if (file_name.size() > ext.size() &&
-        file_name.substr(file_name.size() - ext.size()) == ext)
+    if (file_name.size() > ext.size() && file_name.substr(file_name.size() - ext.size()) == ext)
         file_name = file_name.substr(0, file_name.size() - ext.size());
 
     /* Get option passed by user, (if present) */

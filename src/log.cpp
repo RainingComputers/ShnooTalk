@@ -129,22 +129,21 @@ namespace miklog
                                             "EXIT" };
 
     static std::string instruction_strs[] = {
-        "PASS",         "PASS_ADDR",     "CALL",         "RET",       "ADDR_ADD",
-        "ADDR_MUL",     "EQUAL",         "READ",         "WRITE",     "CREATE_PTR",
-        "CAST",         "UNARY_MINUS",   "NOT",          "MUL",       "DIV",
-        "MOD",          "ADD",           "SUB",          "RSH",       "LSH",
-        "LT",           "LTE",           "GT",           "GTE",       "EQ",
-        "NEQ",          "BWA",           "BWX",          "BWO",       "GOTO",
-        "IF_TRUE_GOTO", "IF_FALSE_GOTO", "CREATE_LABEL", "PRINT",     "PRINT_STR",
-        "SPACE",        "NEWLN",         "INPUT",        "INPUT_STR", "EXIT"
+        "PASS",         "PASS_ADDR",     "CALL",         "RET",        "ADDR_ADD",  "ADDR_MUL",
+        "EQUAL",        "READ",          "WRITE",        "CREATE_PTR", "CAST",      "UNARY_MINUS",
+        "NOT",          "MUL",           "DIV",          "MOD",        "ADD",       "SUB",
+        "RSH",          "LSH",           "LT",           "LTE",        "GT",        "GTE",
+        "EQ",           "NEQ",           "BWA",          "BWX",        "BWO",       "GOTO",
+        "IF_TRUE_GOTO", "IF_FALSE_GOTO", "CREATE_LABEL", "PRINT",      "PRINT_STR", "SPACE",
+        "NEWLN",        "INPUT",         "INPUT_STR",    "EXIT"
     };
 
     void print_token(const token::token& symbol)
     {
         /* Prints token and its properties */
 
-        std::cout << "Token(\"" << symbol.str << "\", " << token_type_strs[symbol.type]
-                  << ", line=" << symbol.lineno << ", col=" << symbol.col << ")";
+        std::cout << "Token(\"" << symbol.str << "\", " << token_type_strs[symbol.type] << ", line=" << symbol.lineno
+                  << ", col=" << symbol.col << ")";
     }
 
     void print_node(const node::node& node, int depth)
@@ -192,8 +191,7 @@ namespace miklog
         std::cout << msg << std::endl;
     }
 
-    void
-    error_line(const std::string& error_msg, const std::string& line, int lineno, int col)
+    void error_line(const std::string& error_msg, const std::string& line, int lineno, int col)
     {
         /* Accepts line as string and column, prints line and '^' symbol at col
             along with error message */
@@ -234,10 +232,7 @@ namespace miklog
         error_line(error_msg, line, tok.lineno, tok.col);
     }
 
-    void parse_error(const std::string& mod_name,
-                     token::token_type expected,
-                     token::token& found,
-                     std::ifstream& file)
+    void parse_error(const std::string& mod_name, token::token_type expected, token::token& found, std::ifstream& file)
     {
         /* Used by parser when it finds some other token type than expected */
 
@@ -293,17 +288,12 @@ namespace miklog
         error_tok(mod_name, expect_msg, file, tok);
     }
 
-    void internal_error_tok(const std::string& mod_name,
-                            std::ifstream& file,
-                            const token::token& tok)
+    void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::token& tok)
     {
         error_tok(mod_name, "Internal compiler error, REPORT THIS BUG", file, tok);
     }
 
-    void internal_error(const std::string& mod_name)
-    {
-        error(mod_name, "Internal compiler error, REPORT THIS BUG");
-    }
+    void internal_error(const std::string& mod_name) { error(mod_name, "Internal compiler error, REPORT THIS BUG"); }
 
     void print_operand(const icode::operand& op)
     {
@@ -338,18 +328,15 @@ namespace miklog
             {
                 if (icode::is_uint(op.dtype))
                 {
-                    std::cout << "Ltrl(" << op.val.size << ":"
-                              << icode::data_type_strs[op.dtype];
+                    std::cout << "Ltrl(" << op.val.size << ":" << icode::data_type_strs[op.dtype];
                 }
                 else if (icode::is_int(op.dtype))
                 {
-                    std::cout << "Ltrl(" << op.val.integer << ":"
-                              << icode::data_type_strs[op.dtype];
+                    std::cout << "Ltrl(" << op.val.integer << ":" << icode::data_type_strs[op.dtype];
                 }
                 else
                 {
-                    std::cout << "Ltrl(" << op.val.floating << ":"
-                              << icode::data_type_strs[op.dtype];
+                    std::cout << "Ltrl(" << op.val.floating << ":" << icode::data_type_strs[op.dtype];
                 }
 
                 break;
@@ -415,11 +402,9 @@ namespace miklog
         }
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
-        std::cout << std::string(ilvl + 3, ' ') << "Size=" << struct_desc.size
-                  << std::endl;
+        std::cout << std::string(ilvl + 3, ' ') << "Size=" << struct_desc.size << std::endl;
 
-        std::cout << std::string(ilvl + 3, ' ') << "Module=" << struct_desc.size
-                  << std::endl;
+        std::cout << std::string(ilvl + 3, ' ') << "Module=" << struct_desc.size << std::endl;
 
         std::cout << std::string(ilvl, ' ') << ")" << std::endl;
     }

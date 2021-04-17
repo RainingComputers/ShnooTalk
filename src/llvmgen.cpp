@@ -1,13 +1,13 @@
 #include "llvmgen.hpp"
 
 using namespace llvm;
-using namespace llvm::sys;
+using namespace sys;
 
 namespace llvmgen
 {
     icode::target_desc target_desc()
     {
-        /* Target descroption for uhllvm */
+        /* Target description for mikuro-llvm */
         icode::target_desc uhlltarget;
 
         uhlltarget.dtype_strings_map = { { "int", icode::I32 },
@@ -27,7 +27,7 @@ namespace llvmgen
 
         uhlltarget.defines = { { "true", true_def }, { "false", false_def } };
 
-        /* default int or word */
+        /* Default int or word */
         uhlltarget.default_int = icode::I32;
 
         return uhlltarget;
@@ -37,14 +37,18 @@ namespace llvmgen
     {
         if (icode::is_uint(dtype))
             return "%u\n";
-        else if (icode::is_int(dtype))
+
+        if (icode::is_sint(dtype))
             return "%d\n";
-        else if (icode::is_float(dtype))
+
+        if (icode::is_float(dtype))
             return "%.2f\n";
     }
 
     Type* llvm_generator::to_llvm_type(icode::data_type dtype)
     {
+        /* Converts mikuro ir icode::data_type to llvm type */
+
         switch (dtype)
         {
             case icode::I8:
@@ -70,8 +74,10 @@ namespace llvmgen
         }
     }
 
-    llvm::Type* llvm_generator::to_llvm_ptr_type(icode::data_type dtype)
+    Type* llvm_generator::to_llvm_ptr_type(icode::data_type dtype)
     {
+        /* Converts mikuro ir icode::data_type to llvm pointer type */
+
         switch (dtype)
         {
             case icode::I8:
@@ -99,47 +105,39 @@ namespace llvmgen
 
     Value* llvm_generator::gen_ltrl(const icode::operand& op)
     {
-        Value* llvm_value;
+        /* Convetrs mikuro icode::LITERAL operand type to llvm value  */
 
-        switch (op.dtype)
-        {
-            case icode::I32:
-            case icode::UI32:
-            case icode::I8:
-            case icode::INT:
-                llvm_value = ConstantInt::get(to_llvm_type(op.dtype), op.val.integer);
-                break;
-            case icode::F32:
-                llvm_value = ConstantFP::get(to_llvm_type(op.dtype), op.val.floating);
-                break;
-            default:
-                miklog::internal_error(module.name);
-                throw miklog::internal_bug_error();
-        }
+        if (icode::is_int(op.dtype))
+            return ConstantInt::get(to_llvm_type(op.dtype), op.val.integer);
 
-        return llvm_value;
+        if (icode::is_float(op.dtype))
+            return ConstantFP::get(to_llvm_type(op.dtype), op.val.floating);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
     }
 
     Value* llvm_generator::gen_addr(const icode::operand& op)
     {
+        /* Converts mikuro icode::ADDR operand to llvm value */
+
         return ConstantInt::get(Type::getInt64Ty(*llvm_context), op.val.integer);
     }
 
     void llvm_generator::symbol_alloca(icode::var_info& var_info, const std::string& name)
     {
+        /* Creates llvm alloca instruction for icode::var_info symbols in symbol tables */
+
         AllocaInst* alloca_inst;
 
         if (var_info.dimensions.size() > 0 || var_info.dtype == icode::STRUCT)
         {
-            alloca_inst = llvm_builder->CreateAlloca(
-              ArrayType::get(Type::getInt8Ty(*llvm_context), var_info.size),
-              nullptr,
-              name);
+            alloca_inst =
+              llvm_builder->CreateAlloca(ArrayType::get(Type::getInt8Ty(*llvm_context), var_info.size), nullptr, name);
         }
         else
         {
-            alloca_inst =
-              llvm_builder->CreateAlloca(to_llvm_type(var_info.dtype), nullptr, name);
+            alloca_inst = llvm_builder->CreateAlloca(to_llvm_type(var_info.dtype), nullptr, name);
         }
 
         alloca_inst_map[name] = alloca_inst;
@@ -147,19 +145,19 @@ namespace llvmgen
 
     Value* llvm_generator::get_llvm_alloca(const icode::operand& op)
     {
-        switch (op.optype)
-        {
-            case icode::VAR:
-                return alloca_inst_map[op.name];
-                break;
-            default:
-                miklog::internal_error(module.name);
-                throw miklog::internal_bug_error();
-        }
+        /* Returns llvm value allocated by symbol_alloca */
+
+        if (op.optype == icode::VAR || op.optype == icode::GBL_VAR)
+            return alloca_inst_map[op.name];
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
     }
 
     Value* llvm_generator::get_llvm_value(const icode::operand& op)
     {
+        /* Convertes mikuro icode::operand to llvm value */
+
         switch (op.optype)
         {
             case icode::LITERAL:
@@ -167,10 +165,8 @@ namespace llvmgen
             case icode::ADDR:
                 return gen_addr(op);
             case icode::VAR:
-            {
-                AllocaInst* alloca_value = alloca_inst_map[op.name];
-                return llvm_builder->CreateLoad(alloca_value, op.name.c_str());
-            }
+            case icode::GBL_VAR:
+                return llvm_builder->CreateLoad(alloca_inst_map[op.name], op.name.c_str());
             case icode::TEMP_PTR:
             case icode::TEMP:
                 return operand_value_map[op];
@@ -180,8 +176,10 @@ namespace llvmgen
         }
     }
 
-    void llvm_generator::set_llvm_value(const icode::operand& op, llvm::Value* value)
+    void llvm_generator::set_llvm_value(const icode::operand& op, Value* value)
     {
+        /* Assigns llvm value to a mikuro icode::operand */
+
         switch (op.optype)
         {
             case icode::TEMP:
@@ -190,11 +188,8 @@ namespace llvmgen
                 break;
             case icode::VAR:
             case icode::GBL_VAR:
-            {
-                Value* where_to_store = get_llvm_alloca(op);
-                llvm_builder->CreateStore(value, where_to_store);
+                llvm_builder->CreateStore(value, get_llvm_alloca(op));
                 break;
-            }
             default:
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
@@ -203,22 +198,19 @@ namespace llvmgen
 
     void llvm_generator::create_ptr(const icode::entry& e)
     {
+        /* Converts mikuro CREATE_PTR to llvm ir */
+
         switch (e.op2.optype)
         {
             case icode::TEMP_PTR:
             case icode::PTR:
-            {
                 operand_value_map[e.op1] = operand_value_map[e.op2];
                 break;
-            }
             case icode::VAR:
             case icode::GBL_VAR:
-            {
-                Value* alloca = get_llvm_alloca(e.op2);
                 operand_value_map[e.op1] =
-                  llvm_builder->CreatePtrToInt(alloca, to_llvm_type(icode::I64));
+                  llvm_builder->CreatePtrToInt(get_llvm_alloca(e.op2), to_llvm_type(icode::I64));
                 break;
-            }
             default:
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
@@ -227,14 +219,17 @@ namespace llvmgen
 
     void llvm_generator::eq(const icode::entry& e)
     {
+        /* Converts mikuro EQUAL to llvm ir */
+
         Value* what_to_store = get_llvm_value(e.op2);
         set_llvm_value(e.op1, what_to_store);
     }
 
     void llvm_generator::read(const icode::entry& e)
     {
-        Value* ptr = llvm_builder->CreateIntToPtr(get_llvm_value(e.op2),
-                                                  to_llvm_ptr_type(e.op1.dtype));
+        /* Converts mikuro READ to llvm ir */
+
+        Value* ptr = llvm_builder->CreateIntToPtr(get_llvm_value(e.op2), to_llvm_ptr_type(e.op1.dtype));
         Value* value = llvm_builder->CreateLoad(ptr);
 
         set_llvm_value(e.op1, value);
@@ -242,14 +237,19 @@ namespace llvmgen
 
     void llvm_generator::write(const icode::entry& e)
     {
-        Value* where_to_store = llvm_builder->CreateIntToPtr(
-          get_llvm_value(e.op1), to_llvm_ptr_type(e.op2.dtype));
+        /* Converts mikuro WRITE to llvm ir */
+
+        Value* where_to_store = llvm_builder->CreateIntToPtr(get_llvm_value(e.op1), to_llvm_ptr_type(e.op2.dtype));
+
         Value* what_to_store = get_llvm_value(e.op2);
+
         llvm_builder->CreateStore(what_to_store, where_to_store);
     }
 
     void llvm_generator::addrop(const icode::entry& e)
     {
+        /* Converts mikuro ADDR_ADD and ADDR_MUL to llvm ir */
+
         Value* result;
         Value* LHS = get_llvm_value(e.op2);
         Value* RHS = get_llvm_value(e.op3);
@@ -271,310 +271,322 @@ namespace llvmgen
         set_llvm_value(e.op1, result);
     }
 
+    Value* llvm_generator::add(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro ADD to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateNSWAdd(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateNUWAdd(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFAdd(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::sub(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro SUB to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateNSWSub(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateNUWSub(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFSub(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::mul(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro MUL to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateNSWMul(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateNUWMul(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFMul(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::div(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro DIV to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateSDiv(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateUDiv(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFDiv(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::mod(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro MOD to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateSRem(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateURem(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFRem(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::rsh(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro RSH to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateAShr(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateLShr(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::lsh(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro LSH to llvm ir */
+
+        if (icode::is_int(dtype))
+            llvm_builder->CreateShl(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::bwa(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro BWA to llvm ir */
+
+        if (icode::is_int(dtype))
+            llvm_builder->CreateAnd(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::bwo(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro BWO to llvm ir */
+
+        if (icode::is_int(dtype))
+            llvm_builder->CreateOr(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::bwx(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro BWX to llvm ir */
+
+        if (icode::is_int(dtype))
+            llvm_builder->CreateXor(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
     void llvm_generator::binop(const icode::entry& e)
     {
-        Value* result;
         Value* LHS = get_llvm_value(e.op2);
         Value* RHS = get_llvm_value(e.op3);
+        icode::data_type dtype = e.op1.dtype;
 
         switch (e.opcode)
         {
             case icode::ADD:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateNSWAdd(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateNUWAdd(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFAdd(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                set_llvm_value(e.op1, add(LHS, RHS, dtype));
                 break;
-            }
             case icode::SUB:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateNSWSub(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateNUWSub(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFSub(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                set_llvm_value(e.op1, sub(LHS, RHS, dtype));
                 break;
-            }
             case icode::MUL:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateNSWMul(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateNUWMul(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFMul(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                set_llvm_value(e.op1, mul(LHS, RHS, dtype));
                 break;
-            }
             case icode::DIV:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateSDiv(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateUDiv(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFDiv(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                set_llvm_value(e.op1, div(LHS, RHS, dtype));
                 break;
-            }
             case icode::MOD:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateSRem(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateURem(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFRem(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                set_llvm_value(e.op1, mod(LHS, RHS, dtype));
                 break;
-            }
             case icode::RSH:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateAShr(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateLShr(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                set_llvm_value(e.op1, rsh(LHS, RHS, dtype));
                 break;
-            }
             case icode::LSH:
-                result = llvm_builder->CreateShl(LHS, RHS);
+                set_llvm_value(e.op1, lsh(LHS, RHS, dtype));
                 break;
             case icode::BWA:
-                result = llvm_builder->CreateAnd(LHS, RHS);
+                set_llvm_value(e.op1, bwa(LHS, RHS, dtype));
                 break;
             case icode::BWO:
-                result = llvm_builder->CreateOr(LHS, RHS);
+                set_llvm_value(e.op1, bwo(LHS, RHS, dtype));
                 break;
             case icode::BWX:
-                result = llvm_builder->CreateXor(LHS, RHS);
+                set_llvm_value(e.op1, bwx(LHS, RHS, dtype));
                 break;
             default:
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
         }
+    }
 
-        /* Store result llvm in map so it can be used by other llvm trnaslations */
-        set_llvm_value(e.op1, result);
+    Value* llvm_generator::eq(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro EQ to llvm ir */
+
+        if (icode::is_int(dtype))
+            return llvm_builder->CreateICmpEQ(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFCmpUEQ(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::neq(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro NEQ to llvm ir */
+
+        if (icode::is_int(dtype))
+            return llvm_builder->CreateICmpNE(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFCmpUNE(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::lt(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro LT to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateICmpSLT(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateICmpULT(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFCmpULT(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::lte(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro LTE to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateICmpSLE(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateICmpULE(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFCmpULE(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::gt(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro GT to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateICmpSGT(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateICmpUGT(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFCmpUGT(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::gte(Value* LHS, Value* RHS, const icode::data_type dtype)
+    {
+        /* Converts mikuro GTE to llvm ir */
+
+        if (icode::is_sint(dtype))
+            return llvm_builder->CreateICmpSGE(LHS, RHS);
+
+        if (icode::is_uint(dtype))
+            return llvm_builder->CreateICmpUGE(LHS, RHS);
+
+        if (icode::is_float(dtype))
+            return llvm_builder->CreateFCmpUGE(LHS, RHS);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
     }
 
     void llvm_generator::cmpop(const icode::entry& e, size_t entry_idx)
     {
-        Value* result;
         Value* LHS = get_llvm_value(e.op1);
         Value* RHS = get_llvm_value(e.op2);
+        icode::data_type dtype = e.op1.dtype;
 
         switch (e.opcode)
         {
             case icode::EQ:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                    case icode::UI32:
-                        result = llvm_builder->CreateICmpEQ(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFCmpUEQ(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                cmp_flag_q.push(eq(LHS, RHS, dtype));
                 break;
-            }
             case icode::NEQ:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                    case icode::UI32:
-                        result = llvm_builder->CreateICmpNE(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFCmpUNE(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                cmp_flag_q.push(neq(LHS, RHS, dtype));
                 break;
-            }
             case icode::LT:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateICmpSLT(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateICmpULT(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFCmpULT(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                cmp_flag_q.push(lt(LHS, RHS, dtype));
                 break;
-            }
             case icode::LTE:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateICmpSLE(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateICmpULE(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFCmpULE(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                cmp_flag_q.push(lte(LHS, RHS, dtype));
                 break;
-            }
             case icode::GT:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateICmpSGT(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateICmpUGT(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFCmpUGT(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                cmp_flag_q.push(gt(LHS, RHS, dtype));
                 break;
-            }
             case icode::GTE:
-            {
-                switch (e.op1.dtype)
-                {
-                    case icode::I8:
-                    case icode::I32:
-                    case icode::INT:
-                        result = llvm_builder->CreateICmpSGE(LHS, RHS);
-                        break;
-                    case icode::UI32:
-                        result = llvm_builder->CreateICmpUGE(LHS, RHS);
-                        break;
-                    case icode::FLOAT:
-                    case icode::F32:
-                        result = llvm_builder->CreateFCmpUGE(LHS, RHS);
-                        break;
-                    default:
-                        miklog::internal_error(module.name);
-                        throw miklog::internal_bug_error();
-                }
+                cmp_flag_q.push(gte(LHS, RHS, dtype));
                 break;
-            }
             default:
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
         }
-
-        /* Store result llvm in map so it can be used by goto/jump llvm trnaslations */
-        cmp_flag_q.push(result);
     }
 
-    void
-    llvm_generator::create_backpatch(const icode::entry& e, Function* F, size_t entry_idx)
+    void llvm_generator::create_backpatch(const icode::entry& e, Function* F, size_t entry_idx)
     {
         BasicBlock* block = llvm_builder->GetInsertBlock();
         BasicBlock::iterator insert_point = llvm_builder->GetInsertPoint()++;
@@ -586,8 +598,7 @@ namespace llvmgen
         if (e.opcode == icode::GOTO)
             return;
 
-        BasicBlock* fall_block =
-          BasicBlock::Create(*llvm_context, "_fall_e" + std::to_string(entry_idx), F);
+        BasicBlock* fall_block = BasicBlock::Create(*llvm_context, "_fall_e" + std::to_string(entry_idx), F);
 
         fall_block_map[entry_idx] = fall_block;
 
@@ -616,8 +627,7 @@ namespace llvmgen
         else
             value = llvm_builder->CreateSExt(value, Type::getInt32Ty(*llvm_context));
 
-        Value* format_str =
-          llvm_builder->CreateGlobalStringPtr(get_format_string(e.op1.dtype));
+        Value* format_str = llvm_builder->CreateGlobalStringPtr(get_format_string(e.op1.dtype));
 
         /* Set up printf arguments*/
         std::vector<Value*> printArgs;
@@ -628,16 +638,13 @@ namespace llvmgen
         llvm_builder->CreateCall(llvm_module->getFunction("printf"), printArgs);
     }
 
-    void
-    llvm_generator::gen_function(icode::func_desc& func_desc, const std::string& name)
+    void llvm_generator::gen_function(icode::func_desc& func_desc, const std::string& name)
     {
         /* Setup llvm function */
         std::vector<Type*> types;
-        FunctionType* FT =
-          FunctionType::get(Type::getVoidTy(*llvm_context), types, false);
+        FunctionType* FT = FunctionType::get(Type::getVoidTy(*llvm_context), types, false);
 
-        Function* F =
-          Function::Create(FT, Function::ExternalLinkage, name, llvm_module.get());
+        Function* F = Function::Create(FT, Function::ExternalLinkage, name, llvm_module.get());
 
         BasicBlock* BB = BasicBlock::Create(*llvm_context, "entry", F);
         llvm_builder->SetInsertPoint(BB);
@@ -710,9 +717,8 @@ namespace llvmgen
                     throw miklog::internal_bug_error();
             }
 
-            prev_instr_branch = e.opcode == icode::GOTO ||
-                                e.opcode == icode::IF_TRUE_GOTO ||
-                                e.opcode == icode::IF_FALSE_GOTO;
+            prev_instr_branch =
+              e.opcode == icode::GOTO || e.opcode == icode::IF_TRUE_GOTO || e.opcode == icode::IF_FALSE_GOTO;
         }
 
         /* Terminate function */
@@ -762,10 +768,8 @@ namespace llvmgen
     {
         std::vector<Type*> args;
         args.push_back(Type::getInt8PtrTy(*llvm_context));
-        FunctionType* printf_type =
-          FunctionType::get(llvm_builder->getInt32Ty(), args, true);
-        Function::Create(
-          printf_type, Function::ExternalLinkage, "printf", llvm_module.get());
+        FunctionType* printf_type = FunctionType::get(llvm_builder->getInt32Ty(), args, true);
+        Function::Create(printf_type, Function::ExternalLinkage, "printf", llvm_module.get());
     }
 
     llvm_generator::llvm_generator(icode::module_desc& module_desc)
@@ -814,8 +818,7 @@ namespace llvmgen
 
         TargetOptions opt;
         auto RM = Optional<Reloc::Model>();
-        auto target_machine =
-          Target->createTargetMachine(target_triple, CPU, features, opt, RM);
+        auto target_machine = Target->createTargetMachine(target_triple, CPU, features, opt, RM);
 
         llvm_module->setDataLayout(target_machine->createDataLayout());
 

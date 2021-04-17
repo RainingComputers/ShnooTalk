@@ -12,10 +12,7 @@ namespace ibuild
 
     unsigned int ir_builder::id() { return id_counter++; }
 
-    void ir_builder::set_func_desc(icode::func_desc* func_desc)
-    {
-        current_func_desc = func_desc;
-    }
+    void ir_builder::set_func_desc(icode::func_desc* func_desc) { current_func_desc = func_desc; }
 
     void ir_builder::push_ir(icode::entry entry)
     {
@@ -31,8 +28,7 @@ namespace ibuild
 
         if (op.dtype == icode::STRUCT)
         {
-            icode::var_info first_field_info =
-              module.structures[op.dtype_name].fields.begin()->second;
+            icode::var_info first_field_info = module.structures[op.dtype_name].fields.begin()->second;
             ptr_dtype = first_field_info.dtype;
             ptr_dtype_name = first_field_info.dtype_name;
         }
@@ -146,8 +142,7 @@ namespace ibuild
         return push_ir_ensure_no_write_ptr(entry);
     }
 
-    icode::operand
-    ir_builder::uniop(icode::instruction instr, icode::operand op1, icode::operand op2)
+    icode::operand ir_builder::uniop(icode::instruction instr, icode::operand op1, icode::operand op2)
     {
         icode::entry entry;
         entry.opcode = instr;
@@ -168,8 +163,7 @@ namespace ibuild
         return push_ir_ensure_no_write_ptr(entry);
     }
 
-    void
-    ir_builder::cmpop(icode::instruction instr, icode::operand op1, icode::operand op2)
+    void ir_builder::cmpop(icode::instruction instr, icode::operand op1, icode::operand op2)
     {
         icode::entry entry;
         entry.opcode = instr;
@@ -194,8 +188,7 @@ namespace ibuild
     icode::operand ir_builder::addr_mul(icode::operand op2, icode::operand op3)
     {
         icode::entry entry;
-        entry.op1 =
-          icode::temp_ptr_opr(icode::INT, icode::data_type_strs[icode::INT], id());
+        entry.op1 = icode::temp_ptr_opr(icode::INT, icode::data_type_strs[icode::INT], id());
         entry.op2 = op2;
         entry.op3 = op3;
         entry.opcode = icode::ADDR_MUL;
@@ -233,8 +226,7 @@ namespace ibuild
         push_ir(print_entry);
     }
 
-    void
-    ir_builder::inputop(icode::instruction instr, icode::operand op, unsigned int size)
+    void ir_builder::inputop(icode::instruction instr, icode::operand op, unsigned int size)
     {
         icode::entry input_entry;
         input_entry.op1 = op;
@@ -263,8 +255,7 @@ namespace ibuild
         push_ir(entry);
     }
 
-    icode::operand
-    ir_builder::call(const std::string& func_name, const icode::func_desc& func_desc)
+    icode::operand ir_builder::call(const std::string& func_name, const icode::func_desc& func_desc)
     {
         icode::data_type func_dtype = func_desc.func_info.dtype;
         std::string func_dtype_name = func_desc.func_info.dtype_name;

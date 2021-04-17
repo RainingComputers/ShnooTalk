@@ -90,7 +90,7 @@ format:
 	clang-format -i src/*.cpp
 	clang-format -i src/*.hpp
 
-qaulity:
+quality:
 	cccc src/*.cpp
 
 install:

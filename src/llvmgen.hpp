@@ -72,7 +72,25 @@ namespace llvmgen
         void read(const icode::entry& e);
         void write(const icode::entry& e);
         void addrop(const icode::entry& e);
+
+        llvm::Value* add(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* sub(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* mul(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* div(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* mod(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* rsh(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* lsh(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* bwa(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* bwo(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* bwx(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
         void binop(const icode::entry& e);
+
+        llvm::Value* eq(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* neq(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* lt(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* lte(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* gt(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* gte(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
         void cmpop(const icode::entry& e, size_t entry_idx);
 
         void create_backpatch(const icode::entry& e, llvm::Function* F, size_t entry_idx);

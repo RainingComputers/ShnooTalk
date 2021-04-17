@@ -7,9 +7,7 @@
 
 namespace parser
 {
-    rd_parser::rd_parser(lexer::lexical_analyser& lexer,
-                         const std::string& name,
-                         std::ifstream& ifile)
+    rd_parser::rd_parser(lexer::lexical_analyser& lexer, const std::string& name, std::ifstream& ifile)
       : lex(lexer)
       , file(ifile)
       , ast(node::PROGRAM)
@@ -113,8 +111,6 @@ namespace parser
         std::swap(current_node->children, new_node.children);
 
         current_node->children.push_back(new_node);
-
-        // current_node = &current_node->children.back();
     }
 
     void rd_parser::duplicate_node()
@@ -149,9 +145,8 @@ namespace parser
 
     void rd_parser::program()
     {
-        token::token_type expected[] = { token::STRUCT, token::FUNCTION,
-                                         token::ENUM,   token::DEF,
-                                         token::VAR,    token::END_OF_FILE };
+        token::token_type expected[] = { token::STRUCT, token::FUNCTION, token::ENUM,
+                                         token::DEF,    token::VAR,      token::END_OF_FILE };
 
         while (accept(token::USE))
             use();
@@ -222,9 +217,7 @@ namespace parser
         expect(token::IDENTIFIER);
         add_node(node::IDENTIFIER);
 
-        token::token_type expected[] = { token::INT_LITERAL,
-                                         token::FLOAT_LITERAL,
-                                         token::CHAR_LITERAL };
+        token::token_type expected[] = { token::INT_LITERAL, token::FLOAT_LITERAL, token::CHAR_LITERAL };
 
         expect(expected, 3);
 
@@ -299,11 +292,10 @@ namespace parser
 
         add_node(node::INITLIST, true);
 
-        token::token_type expected[] = { token::INT_LITERAL, token::CHAR_LITERAL,
-                                         token::HEX_LITERAL, token::FLOAT_LITERAL,
-                                         token::STR_LITERAL, token::BIN_LITERAL,
-                                         token::OPEN_SQAURE, token::IDENTIFIER,
-                                         token::MINUS,       token::STR_LITERAL };
+        token::token_type expected[] = { token::INT_LITERAL,   token::CHAR_LITERAL, token::HEX_LITERAL,
+                                         token::FLOAT_LITERAL, token::STR_LITERAL,  token::BIN_LITERAL,
+                                         token::OPEN_SQAURE,   token::IDENTIFIER,   token::MINUS,
+                                         token::STR_LITERAL };
 
         expect(expected, 10);
 
@@ -344,10 +336,9 @@ namespace parser
             next();
 
             token::token_type expected[] = {
-                token::INT_LITERAL,   token::CHAR_LITERAL, token::HEX_LITERAL,
-                token::FLOAT_LITERAL, token::STR_LITERAL,  token::BIN_LITERAL,
-                token::IDENTIFIER,    token::OPEN_SQAURE,  token::MINUS,
-                token::PLUS,          token::LPAREN,
+                token::INT_LITERAL, token::CHAR_LITERAL, token::HEX_LITERAL, token::FLOAT_LITERAL,
+                token::STR_LITERAL, token::BIN_LITERAL,  token::IDENTIFIER,  token::OPEN_SQAURE,
+                token::MINUS,       token::PLUS,         token::LPAREN,
             };
 
             expect(expected, 11);
@@ -574,12 +565,10 @@ namespace parser
 
         add_node(node::TERM, true, false);
 
-        token::token_type expected[] = { token::IDENTIFIER,    token::NOT,
-                                         token::LPAREN,        token::INT_LITERAL,
-                                         token::CHAR_LITERAL,  token::HEX_LITERAL,
-                                         token::FLOAT_LITERAL, token::BIN_LITERAL,
-                                         token::MINUS,         token::CONDN_NOT,
-                                         token::SIZEOF };
+        token::token_type expected[] = { token::IDENTIFIER,    token::NOT,          token::LPAREN,
+                                         token::INT_LITERAL,   token::CHAR_LITERAL, token::HEX_LITERAL,
+                                         token::FLOAT_LITERAL, token::BIN_LITERAL,  token::MINUS,
+                                         token::CONDN_NOT,     token::SIZEOF };
 
         expect(expected, 11);
 
@@ -718,11 +707,9 @@ namespace parser
             {
                 insert_node(node::ASSIGNMENT);
 
-                token::token_type expected[] = {
-                    token::PLUS_EQUAL,     token::MINUS_EQUAL, token::DIVIDE_EQUAL,
-                    token::MULTIPLY_EQUAL, token::OR_EQUAL,    token::AND_EQUAL,
-                    token::XOR_EQUAL,      token::EQUAL
-                };
+                token::token_type expected[] = { token::PLUS_EQUAL,     token::MINUS_EQUAL, token::DIVIDE_EQUAL,
+                                                 token::MULTIPLY_EQUAL, token::OR_EQUAL,    token::AND_EQUAL,
+                                                 token::XOR_EQUAL,      token::EQUAL };
 
                 expect(expected, 8);
                 add_node(node::ASSIGN_OPERATOR);
@@ -746,11 +733,10 @@ namespace parser
         expect(token::LPAREN);
         next();
 
-        token::token_type expected[] = { token::IDENTIFIER,    token::STR_LITERAL,
-                                         token::INT_LITERAL,   token::CHAR_LITERAL,
-                                         token::FLOAT_LITERAL, token::HEX_LITERAL,
-                                         token::BIN_LITERAL,   token::LPAREN,
-                                         token::SIZEOF,        token::NOT };
+        token::token_type expected[] = { token::IDENTIFIER,   token::STR_LITERAL,   token::INT_LITERAL,
+                                         token::CHAR_LITERAL, token::FLOAT_LITERAL, token::HEX_LITERAL,
+                                         token::BIN_LITERAL,  token::LPAREN,        token::SIZEOF,
+                                         token::NOT };
         expect(expected, 10);
 
         if (accept(token::STR_LITERAL))
@@ -945,12 +931,10 @@ namespace parser
 
         add_node(node::BLOCK, true, false);
 
-        token::token_type expected[] = {
-            token::CLOSE_BRACE, token::VAR,    token::CONST, token::IF,
-            token::WHILE,       token::FOR,    token::BREAK, token::CONTINUE,
-            token::IDENTIFIER,  token::RETURN, token::PRINT, token::PRINTLN,
-            token::INPUT,       token::EXIT
-        };
+        token::token_type expected[] = { token::CLOSE_BRACE, token::VAR,    token::CONST, token::IF,
+                                         token::WHILE,       token::FOR,    token::BREAK, token::CONTINUE,
+                                         token::IDENTIFIER,  token::RETURN, token::PRINT, token::PRINTLN,
+                                         token::INPUT,       token::EXIT };
 
         if (accept(token::OPEN_BRACE))
         {

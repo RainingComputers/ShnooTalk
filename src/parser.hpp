@@ -32,8 +32,7 @@ namespace parser
 
         void push_node();
         void pop_node();
-        void
-        add_node(node::node_type node_type, bool traverse = false, bool nexttoken = true);
+        void add_node(node::node_type node_type, bool traverse = false, bool nexttoken = true);
         void insert_node(node::node_type node_type);
         void insert_node_beg(node::node_type node_type);
         void duplicate_node();
@@ -69,9 +68,7 @@ namespace parser
 
       public:
         node::node ast;
-        rd_parser(lexer::lexical_analyser& lexer,
-                  const std::string& name,
-                  std::ifstream& ifile);
+        rd_parser(lexer::lexical_analyser& lexer, const std::string& name, std::ifstream& ifile);
     };
 }
 

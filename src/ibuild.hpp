@@ -27,13 +27,9 @@ namespace ibuild
 
         icode::operand push_ir_ensure_no_write_ptr(icode::entry entry);
 
-        icode::operand binop(icode::instruction instr,
-                             icode::operand op1,
-                             icode::operand op2,
-                             icode::operand op3);
+        icode::operand binop(icode::instruction instr, icode::operand op1, icode::operand op2, icode::operand op3);
 
-        icode::operand
-        uniop(icode::instruction instr, icode::operand op1, icode::operand op2);
+        icode::operand uniop(icode::instruction instr, icode::operand op1, icode::operand op2);
 
         icode::operand cast(icode::data_type cast_dtype, icode::operand op);
 
@@ -56,8 +52,7 @@ namespace ibuild
                   const std::string& func_name,
                   const icode::func_desc& func_desc);
 
-        icode::operand
-        call(const std::string& func_name, const icode::func_desc& func_desc);
+        icode::operand call(const std::string& func_name, const icode::func_desc& func_desc);
 
         void opir(icode::instruction instr);
 

@@ -8,10 +8,7 @@ static std::regex float_regex(R"([0-9]*\.[0-9]+)");
 
 namespace lexer
 {
-    lexical_analyser::lexical_analyser(const std::string& name, std::ifstream& ifile)
-    {
-        feed(name, ifile);
-    }
+    lexical_analyser::lexical_analyser(const std::string& name, std::ifstream& ifile) { feed(name, ifile); }
 
     void lexical_analyser::feed(const std::string& name, std::ifstream& ifile)
     {
@@ -285,8 +282,7 @@ namespace lexer
                             if (end_idx == std::string::npos)
                             {
                                 miklog::println("MODULE " + file_name);
-                                miklog::error_line(
-                                  "Invalid STRING LITERAL", line, lineno, i);
+                                miklog::error_line("Invalid STRING LITERAL", line, lineno, i);
                                 throw miklog::compile_error();
                             }
 
@@ -314,8 +310,7 @@ namespace lexer
                     /* Get the token preceding the dot */
                     if (start_idx != i)
                     {
-                        std::string prec_token_str =
-                          line.substr(start_idx, i - start_idx);
+                        std::string prec_token_str = line.substr(start_idx, i - start_idx);
                         token::token_type prec_type = token::NONE;
 
                         /* Check if identifier */
@@ -327,8 +322,7 @@ namespace lexer
 
                         /* If identifier was found, push it */
                         if (push_dot)
-                            token_q.push_back(
-                              token::token(prec_token_str, prec_type, start_idx, lineno));
+                            token_q.push_back(token::token(prec_token_str, prec_type, start_idx, lineno));
                     }
                     else
                         push_dot = true;
@@ -336,8 +330,7 @@ namespace lexer
                     /* If preceding token was an identifier, push dot */
                     if (push_dot)
                     {
-                        token_q.push_back(
-                          token::token(line.substr(i, len), type, i, lineno));
+                        token_q.push_back(token::token(line.substr(i, len), type, i, lineno));
                         token_start = false;
                     }
                 }
@@ -346,8 +339,7 @@ namespace lexer
                     /* Get the token preceding the punctuator/space */
                     if (start_idx != i)
                     {
-                        std::string prec_token_str =
-                          line.substr(start_idx, i - start_idx);
+                        std::string prec_token_str = line.substr(start_idx, i - start_idx);
                         token::token_type prec_type = token::NONE;
 
                         /* Check for keywords */
@@ -424,14 +416,12 @@ namespace lexer
                         else
                             prec_type = token::INVALID;
 
-                        token_q.push_back(
-                          token::token(prec_token_str, prec_type, start_idx, lineno));
+                        token_q.push_back(token::token(prec_token_str, prec_type, start_idx, lineno));
                     }
 
                     /* Add punctuator token to queue */
                     if (type != token::SPACE)
-                        token_q.push_back(
-                          token::token(line.substr(i, len), type, i, lineno));
+                        token_q.push_back(token::token(line.substr(i, len), type, i, lineno));
 
                     token_start = false;
                 }

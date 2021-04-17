@@ -31,8 +31,8 @@ namespace icode
     {
         if (*this == other)
             return false;
-        else
-            return temp_id < other.temp_id;
+
+        return temp_id < other.temp_id;
     }
 
     bool operand::operator==(const operand& other) const
@@ -79,44 +79,31 @@ namespace icode
 
     bool is_sint(data_type dtype)
     {
-        return (dtype == I8 || dtype == I16 ||
-                dtype == I32 || dtype == I64 ||
-                dtype == VM_INT || dtype == INT);
+        return (dtype == I8 || dtype == I16 || dtype == I32 || dtype == I64 || dtype == VM_INT || dtype == INT);
     }
 
     bool is_uint(data_type dtype)
     {
-        return (dtype == UI8 || dtype == UI16 || dtype == UI32 || dtype == UI64 ||
-                dtype == VM_UINT);
+        return (dtype == UI8 || dtype == UI16 || dtype == UI32 || dtype == UI64 || dtype == VM_UINT);
     }
 
-    bool is_int(data_type dtype)
-    {
-        return is_sint(dtype) || is_uint(dtype);
-    }
+    bool is_int(data_type dtype) { return is_sint(dtype) || is_uint(dtype); }
 
-    bool is_float(data_type dtype)
-    {
-        return (dtype == F32 || dtype == F64 || dtype == FLOAT || dtype == VM_FLOAT);
-    }
+    bool is_float(data_type dtype) { return (dtype == F32 || dtype == F64 || dtype == FLOAT || dtype == VM_FLOAT); }
 
     bool dtype_eq(data_type dtype1, data_type dtype2)
     {
-        return dtype1 == dtype2 || (dtype1 == INT && is_int(dtype2)) ||
-               (is_int(dtype1) && dtype2 == INT) ||
-               (dtype1 == FLOAT && is_float(dtype2)) ||
-               (is_float(dtype1) && dtype2 == FLOAT);
+        return dtype1 == dtype2 || (dtype1 == INT && is_int(dtype2)) || (is_int(dtype1) && dtype2 == INT) ||
+               (dtype1 == FLOAT && is_float(dtype2)) || (is_float(dtype1) && dtype2 == FLOAT);
     }
 
     bool type_eq(var_info var1, var_info var2)
     {
         if (var1.dtype == STRUCT || var2.dtype == STRUCT)
-            return (var1.dtype_name == var2.dtype_name &&
-                    var1.dimensions == var2.dimensions &&
+            return (var1.dtype_name == var2.dtype_name && var1.dimensions == var2.dimensions &&
                     var1.module_name == var2.module_name);
         else
-            return (dtype_eq(var1.dtype, var2.dtype) &&
-                    var1.dimensions == var2.dimensions);
+            return (dtype_eq(var1.dtype, var2.dtype) && var1.dimensions == var2.dimensions);
     }
 
     var_info var_from_dtype(data_type dtype, target_desc& target)
@@ -150,8 +137,8 @@ namespace icode
     {
         if (target.dtype_strings_map.find(dtype_name) != target.dtype_strings_map.end())
             return target.dtype_strings_map[dtype_name];
-        else
-            return STRUCT;
+
+        return STRUCT;
     }
 
     /*
@@ -181,19 +168,13 @@ namespace icode
             val = pair->second;
             return true;
         }
-        else
-            return false;
+
+        return false;
     }
 
-    bool struct_desc::field_exists(const std::string& name)
-    {
-        return fields.find(name) != fields.end();
-    }
+    bool struct_desc::field_exists(const std::string& name) { return fields.find(name) != fields.end(); }
 
-    bool func_desc::symbol_exists(const std::string& name)
-    {
-        return symbols.find(name) != symbols.end();
-    }
+    bool func_desc::symbol_exists(const std::string& name) { return symbols.find(name) != symbols.end(); }
 
     bool func_desc::get_symbol(const std::string& name, var_info& val)
     {
@@ -232,13 +213,10 @@ namespace icode
 
     bool module_desc::symbol_exists(const std::string& name, target_desc& target)
     {
-        return structures.find(name) != structures.end() ||
-               functions.find(name) != functions.end() || use_exists(name) ||
-               from_dtype_str(name, target) != STRUCT ||
-               enumerations.find(name) != enumerations.end() ||
-               globals.find(name) != globals.end() ||
-               defines.find(name) != defines.end() ||
-               target.defines.find(name) != target.defines.end();
+        return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
+               use_exists(name) || from_dtype_str(name, target) != STRUCT ||
+               enumerations.find(name) != enumerations.end() || globals.find(name) != globals.end() ||
+               defines.find(name) != defines.end() || target.defines.find(name) != target.defines.end();
     }
 
     bool target_desc::get_def(const std::string& name, def& val)
@@ -249,15 +227,11 @@ namespace icode
     /*
         Helper functions for optimizer
     */
-    bool is_ltrl(operand_type optype)
-    {
-        return optype == icode::LITERAL || optype == icode::ADDR;
-    }
+    bool is_ltrl(operand_type optype) { return optype == icode::LITERAL || optype == icode::ADDR; }
 
     bool is_ptr(operand_type optype)
     {
-        return optype == icode::PTR || optype == icode::TEMP_PTR ||
-               optype == icode::RET_PTR;
+        return optype == icode::PTR || optype == icode::TEMP_PTR || optype == icode::RET_PTR;
     }
 
     /*

@@ -25,10 +25,7 @@ namespace miklog
 
     void println(const std::string& msg);
 
-    void error_line(const std::string& error_msg,
-                    const std::string& line,
-                    int lineno,
-                    int col);
+    void error_line(const std::string& error_msg, const std::string& line, int lineno, int col);
 
     void error(const std::string& mod_name, const std::string& error_msg);
 
@@ -37,10 +34,7 @@ namespace miklog
                    std::ifstream& file,
                    const token::token& tok);
 
-    void parse_error(const std::string& mod_name,
-                     token::token_type expected,
-                     token::token& found,
-                     std::ifstream& file);
+    void parse_error(const std::string& mod_name, token::token_type expected, token::token& found, std::ifstream& file);
 
     void parse_error_mult(const std::string& mod_name,
                           const token::token_type* expected,
@@ -54,9 +48,7 @@ namespace miklog
                     icode::var_info& expected,
                     icode::var_info& found);
 
-    void internal_error_tok(const std::string& mod_name,
-                            std::ifstream& file,
-                            const token::token& tok);
+    void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::token& tok);
 
     void internal_error(const std::string& mod_name);
 
