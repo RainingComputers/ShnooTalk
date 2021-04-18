@@ -588,9 +588,12 @@ namespace llvmgen
 
     void llvm_generator::create_backpatch(const icode::entry& e, Function* F, size_t entry_idx)
     {
+        /* All branch instructions GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO are backpatched,
+            i.e the task is stores in a queue and instructions are create in second pass */
+
+        /* Save llvm insertions point */
         BasicBlock* block = llvm_builder->GetInsertBlock();
         BasicBlock::iterator insert_point = llvm_builder->GetInsertPoint()++;
-
         backpatch_point_map[entry_idx] = llvm_bb_it_pair(block, insert_point);
 
         backpatch_entry_q.push_back(entry_idx_pair(entry_idx, e));
@@ -598,26 +601,31 @@ namespace llvmgen
         if (e.opcode == icode::GOTO)
             return;
 
+        /* Create basic block for fall through for IF_TRUE_GOTO, IF_FALSE_GOTO */
         BasicBlock* fall_block = BasicBlock::Create(*llvm_context, "_fall_e" + std::to_string(entry_idx), F);
 
         fall_block_map[entry_idx] = fall_block;
 
+        /* Start inserstion in fall through block */
         llvm_builder->SetInsertPoint(fall_block);
     }
 
     void llvm_generator::create_label(const icode::entry& e, Function* F)
     {
+        /* Converts mikuro CREATE_LABEL to llvm basic block  */
         BasicBlock* llvm_bb = BasicBlock::Create(*llvm_context, e.op1.name, F);
 
         label_block_map[e.op1] = llvm_bb;
 
+        /* Make sure every block has a terminator */
         if (!prev_instr_branch)
             llvm_builder->CreateBr(llvm_bb);
 
+        /* Start inserting ir into new block */
         llvm_builder->SetInsertPoint(llvm_bb);
     }
 
-    void llvm_generator::print(icode::entry& e)
+    void llvm_generator::print(const icode::entry& e)
     {
         Value* value = get_llvm_value(e.op1);
 
@@ -638,27 +646,21 @@ namespace llvmgen
         llvm_builder->CreateCall(llvm_module->getFunction("printf"), printArgs);
     }
 
-    void llvm_generator::gen_function(icode::func_desc& func_desc, const std::string& name)
+    void llvm_generator::local_symbol_alloca(const icode::func_desc& func_desc)
     {
-        /* Setup llvm function */
-        std::vector<Type*> types;
-        FunctionType* FT = FunctionType::get(Type::getVoidTy(*llvm_context), types, false);
-
-        Function* F = Function::Create(FT, Function::ExternalLinkage, name, llvm_module.get());
-
-        BasicBlock* BB = BasicBlock::Create(*llvm_context, "entry", F);
-        llvm_builder->SetInsertPoint(BB);
-
         /* Go through the symbol table and create alloc instructions */
         for (auto symbol : func_desc.symbols)
         {
             symbol_alloca(symbol.second, symbol.first);
         }
+    }
 
+    void llvm_generator::gen_func_icode(const icode::func_desc& func_desc, Function* F)
+    {
         /* Go through icode and generate llvm ir */
         for (size_t i = 0; i < func_desc.icode_table.size(); i++)
         {
-            icode::entry& e = func_desc.icode_table[i];
+            icode::entry e = func_desc.icode_table[i];
 
             switch (e.opcode)
             {
@@ -719,49 +721,74 @@ namespace llvmgen
 
             prev_instr_branch =
               e.opcode == icode::GOTO || e.opcode == icode::IF_TRUE_GOTO || e.opcode == icode::IF_FALSE_GOTO;
-        }
+        }        
+    }
 
-        /* Terminate function */
-        llvm_builder->CreateRetVoid();
-        verifyFunction(*F);
-
+    void llvm_generator::process_goto_backpatch()
+    {
         /* Go through backpatch queue */
         for (size_t i = 0; i < backpatch_entry_q.size(); i++)
         {
+            /* Get the entry from backpatch q */
             entry_idx_pair& q = backpatch_entry_q[i];
 
             size_t entry_idx = q.first;
             icode::entry& e = q.second;
 
+            /* Get branch flags and blocks for the goto */
             BasicBlock* goto_bb = label_block_map[e.op1];
             BasicBlock* fall_bb = fall_block_map[entry_idx];
-            llvm_bb_it_pair insert_point = backpatch_point_map[entry_idx];
             Value* goto_flag = cmp_flag_q.front();
 
+            /* Get insertion point corresponding to the entry */
+            llvm_bb_it_pair insert_point = backpatch_point_map[entry_idx];
             llvm_builder->SetInsertPoint(insert_point.first, insert_point.second);
 
+            /* Convert mikuro GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO int llvm ir  */
             switch (e.opcode)
             {
                 case icode::GOTO:
                     llvm_builder->CreateBr(goto_bb);
                     break;
                 case icode::IF_TRUE_GOTO:
-                {
                     cmp_flag_q.pop();
                     llvm_builder->CreateCondBr(goto_flag, goto_bb, fall_bb);
                     break;
-                }
                 case icode::IF_FALSE_GOTO:
-                {
                     cmp_flag_q.pop();
                     llvm_builder->CreateCondBr(goto_flag, fall_bb, goto_bb);
                     break;
-                }
                 default:
                     miklog::internal_error(module.name);
                     throw miklog::internal_bug_error();
             }
         }
+    }
+
+    void llvm_generator::gen_function(const icode::func_desc& func_desc, const std::string& name)
+    {
+        /* Setup llvm function */
+        std::vector<Type*> types;
+        FunctionType* FT = FunctionType::get(Type::getVoidTy(*llvm_context), types, false);
+
+        Function* F = Function::Create(FT, Function::ExternalLinkage, name, llvm_module.get());
+
+        BasicBlock* BB = BasicBlock::Create(*llvm_context, "entry", F);
+        llvm_builder->SetInsertPoint(BB);
+
+        /* Allocate stack space for local variables */
+        local_symbol_alloca(func_desc);
+
+        /* Convert mikuro function ir to llvm ir */
+        gen_func_icode(func_desc, F);
+
+        /* Terminate function */
+        llvm_builder->CreateRetVoid();
+
+        /* Process goto backpathing */
+        process_goto_backpatch();
+
+        verifyFunction(*F);
     }
 
     void llvm_generator::setup_printf()

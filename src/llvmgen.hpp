@@ -97,9 +97,15 @@ namespace llvmgen
 
         void create_label(const icode::entry& e, llvm::Function* F);
 
-        void print(icode::entry& e);
+        void print(const icode::entry& e);
 
-        void gen_function(icode::func_desc& func, const std::string& name);
+        void local_symbol_alloca(const icode::func_desc& func);
+
+        void gen_func_icode(const icode::func_desc& func_desc, llvm::Function* F);
+
+        void process_goto_backpatch();
+
+        void gen_function(const icode::func_desc& func_desc, const std::string& name);
 
         void setup_printf();
 

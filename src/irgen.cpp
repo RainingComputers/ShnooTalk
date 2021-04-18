@@ -46,9 +46,11 @@ namespace irgen
     {
         if (target.get_def(name, def))
             return true;
-        else if ((*current_ext_module).get_def(name, def))
+        
+        if ((*current_ext_module).get_def(name, def))
             return true;
-        else if (module.get_def(name, def))
+        
+        if (module.get_def(name, def))
             return true;
 
         return false;
@@ -58,7 +60,8 @@ namespace irgen
     {
         if ((*current_ext_module).get_func(name, func))
             return true;
-        else if (module.get_func(name, func))
+        
+        if (module.get_func(name, func))
             return true;
 
         return false;
@@ -68,7 +71,8 @@ namespace irgen
     {
         if (module.get_enum(name, val))
             return true;
-        else if ((*current_ext_module).get_enum(name, val))
+        
+        if ((*current_ext_module).get_enum(name, val))
             return true;
 
         return false;
@@ -1893,17 +1897,20 @@ namespace irgen
             miklog::error_tok(module.name, "Invalid term for INPUT", file, root.children[0].tok);
             throw miklog::compile_error();
         }
-        else if (input_var.second.dtype == icode::STRUCT)
+        
+        if (input_var.second.dtype == icode::STRUCT)
         {
             miklog::error_tok(module.name, "Cannot INPUT STRUCT", file, root.children[0].tok);
             throw miklog::compile_error();
         }
-        else if (input_var.second.dimensions.size() > 1)
+        
+        if (input_var.second.dimensions.size() > 1)
         {
             miklog::error_tok(module.name, "Cannot INPUT more than 1D ARRAY", file, root.children[0].tok);
             throw miklog::compile_error();
         }
-        else if (input_var.second.dimensions.size() == 1 && !icode::is_int(input_var.first.dtype))
+        
+        if (input_var.second.dimensions.size() == 1 && !icode::is_int(input_var.first.dtype))
         {
             miklog::error_tok(module.name, "String input requires 1D INT ARRAY", file, root.children[0].tok);
             throw miklog::compile_error();

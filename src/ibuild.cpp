@@ -94,8 +94,8 @@ namespace ibuild
             copy(temp, op);
             return temp;
         }
-        else
-            return op;
+    
+        return op;
     }
 
     icode::operand ir_builder::push_ir_ensure_no_write_ptr(icode::entry entry)
