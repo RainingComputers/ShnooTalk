@@ -23,9 +23,13 @@ namespace ibuild
 
     icode::operand ir_builder::create_ptr(const icode::operand& op)
     {
+        /* Converts op to TEMP_PTR using the CREATE_PTR instruction */
+
         icode::data_type ptr_dtype;
         std::string ptr_dtype_name;
 
+        /* If the op is a struct, the ptr dtype will be the dtype of the first field of the struct
+            else it would be the same as op */
         if (op.dtype == icode::STRUCT)
         {
             icode::var_info first_field_info = module.structures[op.dtype_name].fields.begin()->second;
@@ -38,8 +42,10 @@ namespace ibuild
             ptr_dtype_name = op.dtype_name;
         }
 
+        /* Converted TEMP_PTR */
         icode::operand ptr_op = icode::temp_ptr_opr(ptr_dtype, ptr_dtype_name, id());
 
+        /* Construct CREATE_PTR incstruction */
         icode::entry create_ptr_entry;
         create_ptr_entry.op1 = ptr_op;
         create_ptr_entry.op2 = op;
@@ -51,7 +57,7 @@ namespace ibuild
 
     void ir_builder::copy(icode::operand op1, icode::operand op2)
     {
-        /* If op2 is a literal, change  generic dtypes like icode::INT and icode::FLOAT
+        /* If op2 is a literal, change generic dtypes like icode::INT and icode::FLOAT
             to correct specific dtype */
         if (op2.optype == icode::LITERAL)
             op2.dtype = op1.dtype;
@@ -112,13 +118,16 @@ namespace ibuild
         /* If entry.op1 is a pointer, repleace it with a temp and
             write that temp to the pointer */
 
+        /* Create corresponding TEMP to TEMP_PTR  */
         icode::operand ptr_op = entry.op1;
         icode::operand temp = icode::temp_opr(ptr_op.dtype, ptr_op.dtype_name, id());
 
+        /* Replace TEMP_PTR with TEMP */
         icode::entry mod_entry = entry;
         mod_entry.op1 = temp;
         push_ir(mod_entry);
 
+        /* Create WRITE instruction to write the TEMP to TEMP_PTR */
         icode::entry write_entry;
         write_entry.op1 = ptr_op;
         write_entry.op2 = temp;
@@ -133,6 +142,9 @@ namespace ibuild
                                      icode::operand op2,
                                      icode::operand op3)
     {
+        /* Construct icode instruction for binary operator instructions,
+            ADD, SUB, MUL, DIV, MOD, RSH, LSH, BWA, BWO, BWX */
+
         icode::entry entry;
         entry.opcode = instr;
         entry.op1 = op1;
@@ -144,6 +156,9 @@ namespace ibuild
 
     icode::operand ir_builder::uniop(icode::instruction instr, icode::operand op1, icode::operand op2)
     {
+        /* Construct icode for unary operator instructions,
+            UNARY_MINUS  */
+
         icode::entry entry;
         entry.opcode = instr;
         entry.op1 = op1;
@@ -154,6 +169,8 @@ namespace ibuild
 
     icode::operand ir_builder::cast(icode::data_type cast_dtype, icode::operand op)
     {
+        /* Construct icode for CAST */
+
         icode::entry entry;
         entry.opcode = icode::CAST;
         entry.op1 = icode::temp_opr(cast_dtype, icode::data_type_strs[cast_dtype], id());
@@ -165,6 +182,9 @@ namespace ibuild
 
     void ir_builder::cmpop(icode::instruction instr, icode::operand op1, icode::operand op2)
     {
+        /* Construct icode for comparator operator instructions, 
+            EQ, NEQ, LT, LTE, GT, GTE  */
+
         icode::entry entry;
         entry.opcode = instr;
         entry.op1 = ensure_not_ptr(op1);
@@ -175,6 +195,8 @@ namespace ibuild
 
     icode::operand ir_builder::addr_add(icode::operand op2, icode::operand op3)
     {
+        /* Construct icode for ADDR_ADD */
+
         icode::entry entry;
         entry.op1 = icode::temp_ptr_opr(op2.dtype, op2.dtype_name, id());
         entry.op2 = op2;
@@ -187,6 +209,8 @@ namespace ibuild
 
     icode::operand ir_builder::addr_mul(icode::operand op2, icode::operand op3)
     {
+        /* Construct icode for ADDR_MUL */
+
         icode::entry entry;
         entry.op1 = icode::temp_ptr_opr(icode::INT, icode::data_type_strs[icode::INT], id());
         entry.op2 = op2;
@@ -199,6 +223,8 @@ namespace ibuild
 
     void ir_builder::label(icode::operand op)
     {
+        /* Construct CREATE_LABEL */
+
         icode::entry label_entry;
         label_entry.op1 = op;
         label_entry.opcode = icode::CREATE_LABEL;
@@ -207,6 +233,8 @@ namespace ibuild
 
     void ir_builder::goto_label(icode::instruction instr, icode::operand op)
     {
+        /* Construct icode for GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO */
+
         icode::entry goto_entry;
         goto_entry.op1 = op;
         goto_entry.opcode = instr;
@@ -215,6 +243,8 @@ namespace ibuild
 
     void ir_builder::printop(icode::instruction printop, icode::operand op)
     {
+        /* Construct icode for PRINT, PRINT_STR */
+
         icode::entry print_entry;
 
         if (printop == icode::PRINT)
@@ -228,6 +258,8 @@ namespace ibuild
 
     void ir_builder::inputop(icode::instruction instr, icode::operand op, unsigned int size)
     {
+        /* Construct icode for INPUT, INPUT_STR */
+
         icode::entry input_entry;
         input_entry.op1 = op;
         input_entry.op2 = icode::literal_opr(icode::INT, (int)size, id());
@@ -240,6 +272,8 @@ namespace ibuild
                           const std::string& func_name,
                           const icode::func_desc& func_desc)
     {
+        /* Construct icode for PASS and PASS_ADDR instructions */
+
         icode::data_type func_dtype = func_desc.func_info.dtype;
         std::string func_dtype_name = func_desc.func_info.dtype_name;
         icode::entry entry;
@@ -257,6 +291,8 @@ namespace ibuild
 
     icode::operand ir_builder::call(const std::string& func_name, const icode::func_desc& func_desc)
     {
+        /* Construct icode for CALL instruction */
+
         icode::data_type func_dtype = func_desc.func_info.dtype;
         std::string func_dtype_name = func_desc.func_info.dtype_name;
 
@@ -273,6 +309,9 @@ namespace ibuild
 
     void ir_builder::opir(icode::instruction instr)
     {
+        /* Construct icode for instructions with no arguments,
+            RET, SPACE, NEWLN, EXIT */
+
         icode::entry entry;
         entry.opcode = instr;
         push_ir(entry);
