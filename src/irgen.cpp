@@ -46,10 +46,10 @@ namespace irgen
     {
         if (target.get_def(name, def))
             return true;
-        
+
         if ((*current_ext_module).get_def(name, def))
             return true;
-        
+
         if (module.get_def(name, def))
             return true;
 
@@ -60,7 +60,7 @@ namespace irgen
     {
         if ((*current_ext_module).get_func(name, func))
             return true;
-        
+
         if (module.get_func(name, func))
             return true;
 
@@ -71,7 +71,7 @@ namespace irgen
     {
         if (module.get_enum(name, val))
             return true;
-        
+
         if ((*current_ext_module).get_enum(name, val))
             return true;
 
@@ -1365,107 +1365,97 @@ namespace irgen
     op_var_pair ir_generator::expression(const node::node& root)
     {
         if (root.type == node::TERM)
-        {
-            /* Single child, no operator, process term */
             return term(root);
-        }
-        else if (root.children.size() == 1)
-        {
+
+        if (root.children.size() == 1)
             return expression(root.children[0]);
-        }
-        else
+
+        token::token expr_opr = root.children[1].tok;
+
+        /* First operand */
+        op_var_pair first_operand = expression(root.children[0]);
+        icode::data_type dtype = first_operand.second.dtype;
+        std::string dtype_name = first_operand.second.dtype_name;
+
+        /* Expression not allowed on arrays or struct */
+        if (dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
         {
-            token::token expr_opr = root.children[1].tok;
-
-            /* First operand */
-            op_var_pair first_operand = expression(root.children[0]);
-            icode::data_type dtype = first_operand.second.dtype;
-            std::string dtype_name = first_operand.second.dtype_name;
-
-            /* Expression not allowed on arrays or struct */
-            if (dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
-            {
-                miklog::error_tok(module.name, "Operator not allowed on STRUCT or ARRAY", file, expr_opr);
-                throw miklog::compile_error();
-            }
-
-            /* Second operand */
-            op_var_pair second_operand = expression(root.children[2]);
-
-            /* Type check */
-            if (!icode::type_eq(first_operand.second, second_operand.second))
-            {
-                miklog::type_error(module.name, file, root.children[2].tok, first_operand.second, second_operand.second);
-                throw miklog::compile_error();
-            }
-
-            /* If bitwise operator, dtype has to be int */
-            if (expr_opr.type == token::BITWISE_OR || expr_opr.type == token::BITWISE_AND ||
-                expr_opr.type == token::BITWISE_XOR)
-            {
-                if (!icode::is_int(dtype))
-                {
-                    miklog::error_tok(module.name, "Bitwise operations not allowed on FLOAT", file, expr_opr);
-                    throw miklog::compile_error();
-                }
-            }
-
-            /* Generate corresponding opcode for operator */
-            icode::instruction opcode;
-            switch (expr_opr.type)
-            {
-                case token::MULTIPLY:
-                    opcode = icode::MUL;
-                    break;
-                case token::DIVIDE:
-                    opcode = icode::DIV;
-                    break;
-                case token::MOD:
-                    opcode = icode::MOD;
-                    break;
-                case token::PLUS:
-                    opcode = icode::ADD;
-                    break;
-                case token::MINUS:
-                    opcode = icode::SUB;
-                    break;
-                case token::RIGHT_SHIFT:
-                    opcode = icode::RSH;
-                    break;
-                case token::LEFT_SHIFT:
-                    opcode = icode::LSH;
-                    break;
-                case token::BITWISE_AND:
-                    opcode = icode::BWA;
-                    break;
-                case token::BITWISE_XOR:
-                    opcode = icode::BWX;
-                    break;
-                case token::BITWISE_OR:
-                    opcode = icode::BWO;
-                    break;
-                case token::CONDN_AND:
-                case token::CONDN_OR:
-                case token::LESS_THAN:
-                case token::LESS_THAN_EQUAL:
-                case token::GREATER_THAN:
-                case token::GREATER_THAN_EQUAL:
-                case token::CONDN_EQUAL:
-                case token::CONDN_NOT_EQUAL:
-                    miklog::error_tok(module.name, "Did not expect conditional operator", file, root.children[1].tok);
-                    throw miklog::compile_error();
-                    break;
-                default:
-                    miklog::internal_error_tok(module.name, file, expr_opr);
-                    throw miklog::internal_bug_error();
-            }
-
-            icode::operand res_temp =
-              builder.binop(opcode, icode::temp_opr(dtype, dtype_name, id()), first_operand.first, second_operand.first);
-
-            /* Return the operand where final result is stored */
-            return op_var_pair(res_temp, first_operand.second);
+            miklog::error_tok(module.name, "Operator not allowed on STRUCT or ARRAY", file, expr_opr);
+            throw miklog::compile_error();
         }
+
+        /* Second operand */
+        op_var_pair second_operand = expression(root.children[2]);
+
+        /* Type check */
+        if (!icode::type_eq(first_operand.second, second_operand.second))
+        {
+            miklog::type_error(module.name, file, root.children[2].tok, first_operand.second, second_operand.second);
+            throw miklog::compile_error();
+        }
+
+        /* If bitwise operator, dtype has to be int */
+        if ((expr_opr.type == token::BITWISE_OR || expr_opr.type == token::BITWISE_AND ||
+             expr_opr.type == token::BITWISE_XOR) &&
+            !icode::is_int(dtype))
+        {
+            miklog::error_tok(module.name, "Bitwise operations not allowed on FLOAT", file, expr_opr);
+            throw miklog::compile_error();
+        }
+
+        /* Generate corresponding opcode for operator */
+        icode::instruction opcode;
+        switch (expr_opr.type)
+        {
+            case token::MULTIPLY:
+                opcode = icode::MUL;
+                break;
+            case token::DIVIDE:
+                opcode = icode::DIV;
+                break;
+            case token::MOD:
+                opcode = icode::MOD;
+                break;
+            case token::PLUS:
+                opcode = icode::ADD;
+                break;
+            case token::MINUS:
+                opcode = icode::SUB;
+                break;
+            case token::RIGHT_SHIFT:
+                opcode = icode::RSH;
+                break;
+            case token::LEFT_SHIFT:
+                opcode = icode::LSH;
+                break;
+            case token::BITWISE_AND:
+                opcode = icode::BWA;
+                break;
+            case token::BITWISE_XOR:
+                opcode = icode::BWX;
+                break;
+            case token::BITWISE_OR:
+                opcode = icode::BWO;
+                break;
+            case token::CONDN_AND:
+            case token::CONDN_OR:
+            case token::LESS_THAN:
+            case token::LESS_THAN_EQUAL:
+            case token::GREATER_THAN:
+            case token::GREATER_THAN_EQUAL:
+            case token::CONDN_EQUAL:
+            case token::CONDN_NOT_EQUAL:
+                miklog::error_tok(module.name, "Did not expect conditional operator", file, root.children[1].tok);
+            default:
+                miklog::internal_error_tok(module.name, file, expr_opr);
+                throw miklog::internal_bug_error();
+        }
+
+        icode::operand res_temp =
+          builder.binop(opcode, icode::temp_opr(dtype, dtype_name, id()), first_operand.first, second_operand.first);
+
+        /* Return the operand where final result is stored */
+        return op_var_pair(res_temp, first_operand.second);
     }
 
     void ir_generator::assignment(const node::node& root)
@@ -1515,14 +1505,12 @@ namespace irgen
         }
 
         /* If bitwise operator, dtype has to be int */
-        if (assign_opr.type == token::OR_EQUAL || assign_opr.type == token::AND_EQUAL ||
-            assign_opr.type == token::XOR_EQUAL)
+        if ((assign_opr.type == token::OR_EQUAL || assign_opr.type == token::AND_EQUAL ||
+             assign_opr.type == token::XOR_EQUAL) &&
+            !icode::is_int(var.second.dtype))
         {
-            if (!icode::is_int(var.second.dtype))
-            {
-                miklog::error_tok(module.name, "Bitwise operation not allowed on FLOAT", file, assign_opr);
-                throw miklog::compile_error();
-            }
+            miklog::error_tok(module.name, "Bitwise operation not allowed on FLOAT", file, assign_opr);
+            throw miklog::compile_error();
         }
 
         /* Create icode entry */
@@ -1897,19 +1885,19 @@ namespace irgen
             miklog::error_tok(module.name, "Invalid term for INPUT", file, root.children[0].tok);
             throw miklog::compile_error();
         }
-        
+
         if (input_var.second.dtype == icode::STRUCT)
         {
             miklog::error_tok(module.name, "Cannot INPUT STRUCT", file, root.children[0].tok);
             throw miklog::compile_error();
         }
-        
+
         if (input_var.second.dimensions.size() > 1)
         {
             miklog::error_tok(module.name, "Cannot INPUT more than 1D ARRAY", file, root.children[0].tok);
             throw miklog::compile_error();
         }
-        
+
         if (input_var.second.dimensions.size() == 1 && !icode::is_int(input_var.first.dtype))
         {
             miklog::error_tok(module.name, "String input requires 1D INT ARRAY", file, root.children[0].tok);

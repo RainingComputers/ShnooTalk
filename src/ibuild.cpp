@@ -100,7 +100,7 @@ namespace ibuild
             copy(temp, op);
             return temp;
         }
-    
+
         return op;
     }
 
@@ -157,7 +157,7 @@ namespace ibuild
     icode::operand ir_builder::uniop(icode::instruction instr, icode::operand op1, icode::operand op2)
     {
         /* Construct icode for unary operator instructions,
-            UNARY_MINUS  */
+            UNARY_MINUS and NOT  */
 
         icode::entry entry;
         entry.opcode = instr;
@@ -182,7 +182,7 @@ namespace ibuild
 
     void ir_builder::cmpop(icode::instruction instr, icode::operand op1, icode::operand op2)
     {
-        /* Construct icode for comparator operator instructions, 
+        /* Construct icode for comparator operator instructions,
             EQ, NEQ, LT, LTE, GT, GTE  */
 
         icode::entry entry;
@@ -212,7 +212,7 @@ namespace ibuild
         /* Construct icode for ADDR_MUL */
 
         icode::entry entry;
-        entry.op1 = icode::temp_ptr_opr(icode::INT, icode::data_type_strs[icode::INT], id());
+        entry.op1 = icode::temp_ptr_opr(icode::INT, icode::data_type_strs[icode::I8], id());
         entry.op2 = op2;
         entry.op3 = op3;
         entry.opcode = icode::ADDR_MUL;

@@ -102,8 +102,8 @@ namespace icode
         if (var1.dtype == STRUCT || var2.dtype == STRUCT)
             return (var1.dtype_name == var2.dtype_name && var1.dimensions == var2.dimensions &&
                     var1.module_name == var2.module_name);
-        else
-            return (dtype_eq(var1.dtype, var2.dtype) && var1.dimensions == var2.dimensions);
+
+        return (dtype_eq(var1.dtype, var2.dtype) && var1.dimensions == var2.dimensions);
     }
 
     var_info var_from_dtype(data_type dtype, target_desc& target)
