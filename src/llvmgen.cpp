@@ -10,11 +10,10 @@ namespace llvmgen
         /* Target description for mikuro-llvm */
         icode::target_desc uhlltarget;
 
-        uhlltarget.dtype_strings_map = {
-            { "byte", icode::I8 },   { "ubyte", icode::UI8 },  { "short", icode::I16 }, { "ushort", icode::UI16 },
-            { "int", icode::I32 },   { "uint", icode::UI32 },  { "long", icode::I64 },  { "ulong", icode::UI64 },
-            { "float", icode::F32 }, { "double", icode::F64 },
-        };
+        uhlltarget.dtype_strings_map = { { "byte", icode::I8 },     { "ubyte", icode::UI8 },  { "short", icode::I16 },
+                                         { "ushort", icode::UI16 }, { "int", icode::I32 },    { "uint", icode::UI32 },
+                                         { "long", icode::I64 },    { "ulong", icode::UI64 }, { "float", icode::F32 },
+                                         { "double", icode::F64 },  { "char", icode::UI8 } };
 
         /* true and false defines */
         icode::def true_def;
@@ -29,6 +28,7 @@ namespace llvmgen
 
         /* Default int or word */
         uhlltarget.default_int = icode::I32;
+        uhlltarget.str_int = icode::UI8;
 
         return uhlltarget;
     }
@@ -105,7 +105,7 @@ namespace llvmgen
 
     Type* llvm_generator::vinfo_to_llvm_type(const icode::var_info& var_info)
     {
-        if(var_info.dimensions.size() > 0 || var_info.dtype == icode::STRUCT)
+        if (var_info.dimensions.size() > 0 || var_info.dtype == icode::STRUCT)
             return ArrayType::get(Type::getInt8Ty(*llvm_context), var_info.size);
 
         return to_llvm_type(var_info.dtype);
@@ -144,12 +144,8 @@ namespace llvmgen
         GlobalVariable* global_value;
         Type* global_type = vinfo_to_llvm_type(var_info);
 
-        global_value = new GlobalVariable(*llvm_module,
-                                         global_type,
-                                         false,
-                                         GlobalVariable::CommonLinkage,
-                                         nullptr,
-                                         name);
+        global_value =
+          new GlobalVariable(*llvm_module, global_type, false, GlobalVariable::CommonLinkage, nullptr, name);
 
         global_value->setInitializer(Constant::getNullValue(global_type));
 
@@ -160,11 +156,17 @@ namespace llvmgen
     {
         /* Returns llvm value allocated by symbol_alloca */
 
-        if (op.optype == icode::VAR)
-            return alloca_inst_map[op.name];
-
-        if(op.optype == icode::GBL_VAR)
-            return llvm_global_map[op.name];
+        switch (op.optype)
+        {
+            case icode::VAR:
+                return alloca_inst_map[op.name];
+            case icode::GBL_VAR:
+                return llvm_global_map[op.name];
+            case icode::STR_DATA:
+                return llvm_builder->CreateGlobalStringPtr(module.str_data[op.name]);
+            default:
+                break;
+        }
 
         miklog::internal_error(module.name);
         throw miklog::internal_bug_error();
@@ -663,6 +665,18 @@ namespace llvmgen
         llvm_builder->CreateCall(llvm_module->getFunction("printf"), printArgs);
     }
 
+    void llvm_generator::print_str(const icode::entry& e)
+    {
+        Value* str_value = get_llvm_alloca(e.op1);
+
+        /* Set up printf arguments*/
+        std::vector<Value*> printArgs;
+        printArgs.push_back(str_value);
+
+        /* Call printf */
+        llvm_builder->CreateCall(llvm_module->getFunction("printf"), printArgs);
+    }
+
     void llvm_generator::create_symbols(const icode::func_desc& func_desc)
     {
         /* Go through the symbol table and create alloc instructions */
@@ -725,6 +739,9 @@ namespace llvmgen
                     break;
                 case icode::PRINT:
                     print(e);
+                    break;
+                case icode::PRINT_STR:
+                    print_str(e);
                     break;
                 case icode::RET:
                 case icode::EXIT:

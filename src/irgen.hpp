@@ -63,9 +63,9 @@ namespace irgen
 
         void global_var(const node::node& root);
 
-        std::vector<int> str_literal_toint(const token::token& str_token);
+        icode::operand gen_str_dat(const token::token& str_token, size_t char_count, icode::data_type dtype);
 
-        op_var_pair gen_str_dat(const token::token& str_token, icode::var_info var);
+        op_var_pair var_info_to_str_dat(const token::token& str_token, icode::var_info var);
 
         void assign_str_literal_tovar(op_var_pair var, node::node& root);
 

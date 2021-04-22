@@ -90,6 +90,8 @@ namespace token
 
     int get_precedence(token_type type);
 
+    char to_backspace_char(char c);
+
     struct token
     {
         std::string str;

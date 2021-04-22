@@ -225,6 +225,7 @@ namespace icode
         std::map<std::string, data_type> dtype_strings_map;
         std::map<std::string, def> defines;
         data_type default_int;
+        data_type str_int;
 
         bool get_def(const std::string&, def&);
     };
@@ -242,7 +243,7 @@ namespace icode
         std::map<std::string, int> enumerations;
         std::map<std::string, def> defines;
         std::map<std::string, var_info> globals;
-        std::map<std::string, std::vector<int>> str_data;
+        std::map<std::string, std::string> str_data;
 
         bool use_exists(const std::string&);
         bool get_struct(const std::string&, struct_desc&);

@@ -94,7 +94,12 @@ namespace lexer
                         type = token::COMMA;
                         break;
                     case '\'':
-                        if (line[i + 2] == '\'')
+                        if (line[i + 1] == '\\' && line[i + 2] == '\'')
+                        {
+                            type = token::INVALID;
+                            len = 3;
+                        }
+                        else if (line[i + 2] == '\'')
                         {
                             type = token::CHAR_LITERAL;
                             len = 3;

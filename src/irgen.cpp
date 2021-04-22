@@ -359,7 +359,8 @@ namespace irgen
                 miklog::error_tok(module.name, "Field already defined", file, var.first);
                 throw miklog::compile_error();
             }
-            else if (module.symbol_exists(var.first.str, target))
+
+            if (module.symbol_exists(var.first.str, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, var.first);
                 throw miklog::compile_error();
@@ -451,127 +452,79 @@ namespace irgen
         module.globals[var.first.str] = var.second;
     }
 
-    std::vector<int> ir_generator::str_literal_toint(const token::token& str_token)
+    icode::operand ir_generator::gen_str_dat(const token::token& str_token, size_t char_count, icode::data_type dtype)
     {
-        std::vector<int> str_int;
+        /* Append string data */
+        std::string name = "_str_l" + std::to_string(str_token.lineno) + "_c" + std::to_string(str_token.col);
+        module.str_data[name] = str_token.str;
 
-        /* Loop through each character, convert them to ASCII and append
-            them to int vector */
-        bool backslash = false;
-        for (size_t i = 1; i < str_token.str.size() - 1; i++)
-        {
-            char c = str_token.str[i];
-            int character;
-            /* Process character */
-            if (c == '\\' && !backslash)
-            {
-                backslash = true;
-                continue;
-            }
-            else if (backslash)
-            {
-                switch (c)
-                {
-                    case 'n':
-                        character = (int)'\n';
-                        break;
-                    case 'b':
-                        character = (int)'\b';
-                        break;
-                    case 't':
-                        character = (int)'\t';
-                        break;
-                    case '0':
-                        character = 0;
-                        break;
-                    default:
-                        character = (int)c;
-                        break;
-                }
+        /* Create icode::operand */
+        size_t size = char_count * icode::dtype_size[dtype];
+        icode::operand opr = icode::str_dat_opr(name, size, id());
 
-                backslash = false;
-            }
-            else
-            {
-                character = (int)c;
-            }
-
-            str_int.push_back(character);
-        }
-
-        /* Append null character */
-        str_int.push_back(0);
-
-        return str_int;
+        return opr;
     }
 
-    op_var_pair ir_generator::gen_str_dat(const token::token& str_token, icode::var_info var)
+    op_var_pair ir_generator::var_info_to_str_dat(const token::token& str_token, icode::var_info var)
     {
-        if (var.dimensions.size() != 1 || !icode::is_int(var.dtype))
+        if (var.dimensions.size() != 1 || var.dtype != icode::UI8)
         {
-            miklog::error_tok(module.name, "String assignment only allowed on 1D INT ARRAY", file, str_token);
+            miklog::error_tok(module.name, "String assignment only allowed on 1D CHAR ARRAY", file, str_token);
             throw miklog::compile_error();
         }
 
-        std::string name = "_str_l" + std::to_string(str_token.lineno) + "_c" + std::to_string(str_token.col);
+        /* Check dimensions */
+        size_t char_count = str_token.str.length();
 
-        /* Convert string to int ASCII list, get size */
-        std::vector<int> str_int = str_literal_toint(str_token);
-        size_t char_count = str_int.size();
-        size_t size = char_count * icode::dtype_size[var.dtype];
-
-        /* Append string data */
-        module.str_data[name] = str_int;
-
-        /* Check size */
         if (char_count > var.dimensions[0])
         {
             miklog::error_tok(module.name, "String too big", file, str_token);
             throw miklog::compile_error();
         }
 
-        /* Create icode::operand */
-        icode::operand opr = icode::str_dat_opr(name, size, id());
+        /* Create STR_DAT operand */
+        icode::operand opr = gen_str_dat(str_token, char_count, var.dtype);
 
         return op_var_pair(opr, var);
     }
 
     void ir_generator::assign_str_literal_tovar(op_var_pair var, node::node& root)
     {
-        if (var.second.dimensions.size() != 1 || !icode::is_int(var.second.dtype))
+        if (var.second.dimensions.size() != 1 || var.second.dtype != icode::UI8)
         {
             miklog::error_tok(module.name, "String assignment only allowed on 1D INT ARRAY", file, root.tok);
             throw miklog::compile_error();
         }
 
-        /* Create Addr Temp */
-        icode::operand curr_offset = var.first;
-
-        /* Convert string literal to vector of ASCII ints */
-        std::vector<int> str_int = str_literal_toint(root.tok);
-        int char_count = str_int.size();
-
         /* Check size */
+        size_t char_count = root.tok.str.size() - 2;
+
         if (char_count > var.second.dimensions[0])
         {
             miklog::error_tok(module.name, "String too big", file, root.tok);
             throw miklog::compile_error();
         }
 
+        /* Create Addr Temp */
+        icode::operand curr_offset = builder.create_ptr(var.first);
+
         /* Loop through int and initialize string */
-        for (size_t i = 0; i < str_int.size(); i++)
+        for (size_t i = 1; i < char_count; i++)
         {
-            int character = str_int[i];
+            char character = root.tok.str[i];
+
+            /* Process escape sequence */
+            if (character == '\\')
+                character = token::to_backspace_char(root.tok.str[++i]);
 
             /* Write to current offset */
-            builder.copy(curr_offset, icode::literal_opr(target.default_int, character, id()));
+            builder.copy(curr_offset, icode::literal_opr(target.str_int, character, id()));
 
-            /* Update offset */
-            if (i != str_int.size() - 1)
-            {
-                curr_offset = builder.addr_add(curr_offset, icode::addr_opr(var.second.dtype_size, id()));
-            }
+            curr_offset = builder.addr_add(curr_offset, icode::addr_opr(var.second.dtype_size, id()));
         }
+
+        /* Copy null character */
+        builder.copy(curr_offset, icode::literal_opr(target.str_int, 0, id()));
     }
 
     void ir_generator::copy_array(icode::operand& left, op_var_pair right)
@@ -1057,7 +1010,7 @@ namespace irgen
             op_var_pair arg;
             if (root.children[i].type == node::STR_LITERAL)
             {
-                arg = gen_str_dat(root.children[i].tok, param);
+                arg = var_info_to_str_dat(root.children[i].tok, param);
             }
             else if (i == 0 && root.children[0].type != node::STR_LITERAL)
                 arg = first_arg;
@@ -1186,33 +1139,13 @@ namespace irgen
                     }
                     case token::CHAR_LITERAL:
                     {
-                        int character;
                         char c = child.tok.str[1];
+                        int character = (int)c;
 
-                        if (c != '\\')
-                            character = (int)c;
-                        else
+                        if (c == '\\')
                         {
                             c = child.tok.str[2];
-
-                            switch (c)
-                            {
-                                case 'n':
-                                    character = (int)'\n';
-                                    break;
-                                case 'b':
-                                    character = (int)'\b';
-                                    break;
-                                case 't':
-                                    character = (int)'\t';
-                                    break;
-                                case '0':
-                                    character = 0;
-                                    break;
-                                default:
-                                    character = (int)c;
-                                    break;
-                            }
+                            character = token::to_backspace_char(c);
                         }
 
                         icode::data_type dtype = icode::INT;
@@ -1552,20 +1485,19 @@ namespace irgen
         if (var.second.dtype == icode::STRUCT)
         {
             copy_struct(var.first, expr);
+            return;
         }
+
         /* If not a struct field */
+        if (assign_opr.type == token::EQUAL)
+        {
+            builder.copy(var.first, expr.first);
+        }
         else
         {
-            if (assign_opr.type == token::EQUAL)
-            {
-                builder.copy(var.first, expr.first);
-            }
-            else
-            {
-                icode::operand temp = icode::temp_opr(var.second.dtype, var.second.dtype_name, id());
-                builder.copy(temp, var.first);
-                builder.binop(opcode, var.first, temp, expr.first);
-            }
+            icode::operand temp = icode::temp_opr(var.second.dtype, var.second.dtype_name, id());
+            builder.copy(temp, var.first);
+            builder.binop(opcode, var.first, temp, expr.first);
         }
     }
 
@@ -1577,8 +1509,8 @@ namespace irgen
 
         if (true_label)
             return icode::label_opr("_" + prefix + "_true" + label_name, id());
-        else
-            return icode::label_opr("_" + prefix + "_false" + label_name, id());
+
+        return icode::label_opr("_" + prefix + "_false" + label_name, id());
     }
 
     void ir_generator::condn_expression(const node::node& root,
@@ -1595,7 +1527,8 @@ namespace irgen
                 condn_expression(root.children[0], t_label, f_label, t_fall, f_fall);
                 return;
             }
-            else if (root.children[0].tok.type != token::CONDN_NOT)
+
+            if (root.children[0].tok.type != token::CONDN_NOT)
             {
                 miklog::error_tok(module.name, "Invalid conditional expression", file, root.tok);
                 throw miklog::compile_error();
@@ -1836,15 +1769,11 @@ namespace irgen
             if (child.type == node::STR_LITERAL)
             {
                 /* Get str len and str size */
-                int str_len = child.tok.str.length();
-                int str_size = str_len * icode::dtype_size[target.default_int];
+                int char_count = child.tok.str.length();
 
-                /* Generate temp string operand */
-                icode::var_info print_var = icode::var_from_dtype(target.default_int, target);
-                print_var.dimensions.push_back(str_len);
-                print_var.size = str_size;
+                icode::operand str_dat_opr = gen_str_dat(child.tok, char_count, target.str_int);
 
-                builder.printop(icode::PRINT_STR, gen_str_dat(child.tok, print_var).first);
+                builder.printop(icode::PRINT_STR, str_dat_opr);
             }
             /* Else expression */
             else

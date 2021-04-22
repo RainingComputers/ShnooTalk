@@ -102,6 +102,8 @@ namespace llvmgen
 
         void print(const icode::entry& e);
 
+        void print_str(const icode::entry& e);
+
         void create_symbols(const icode::func_desc& func);
 
         void gen_func_icode(const icode::func_desc& func_desc, llvm::Function* F);

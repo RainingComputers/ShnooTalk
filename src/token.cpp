@@ -54,6 +54,25 @@ namespace token
         return 0;
     }
 
+    char to_backspace_char(char c)
+    {
+        switch (c)
+        {
+            case 'n':
+                return '\n';
+            case 'b':
+                return '\b';
+            case 't':
+                return '\t';
+            case '0':
+                return '\0';
+            case '\\':
+                return '\\';
+            default:
+                return c;
+        }
+    }
+
     token::token(std::string token_str, token_type tok_type, unsigned int column, unsigned int linenumber)
     {
         str = token_str;
