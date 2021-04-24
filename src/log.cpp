@@ -321,8 +321,10 @@ namespace miklog
                 std::cout << "Ptr(" << op.name << ":" << op.dtype_name;
                 break;
             case icode::RET_PTR:
-                std::cout << "RetPtr("
-                          << "id_" << op.temp_id;
+                std::cout << "RetPtr(id_" << op.temp_id << ":" << op.dtype_name;
+                break;
+            case icode::RET_VAL:
+                std::cout << "RetVal(id_" << op.temp_id << ":" << op.dtype_name;
                 break;
             case icode::LITERAL:
             {
@@ -341,9 +343,6 @@ namespace miklog
 
                 break;
             }
-            case icode::DTYPE:
-                std::cout << "Dtype(" << icode::data_type_strs[op.dtype];
-                break;
             case icode::LABEL:
                 std::cout << "Label(" << op.name;
                 break;

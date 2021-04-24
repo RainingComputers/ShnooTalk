@@ -1941,24 +1941,22 @@ namespace irgen
                 }
                 case node::RETURN:
                 {
+                    icode::var_info ret_info = (*current_func_desc).func_info;
+
                     /* Get return value */
                     if (stmt.children.size() != 0)
                     {
                         op_var_pair ret_val = expression(stmt.children[0]);
 
                         /* Type check */
-                        if (!icode::type_eq((*current_func_desc).func_info, ret_val.second))
+                        if (!icode::type_eq(ret_info, ret_val.second))
                         {
-                            miklog::type_error(module.name,
-                                               file,
-                                               stmt.children[0].tok,
-                                               (*current_func_desc).func_info,
-                                               ret_val.second);
+                            miklog::type_error(module.name, file, stmt.children[0].tok, ret_info, ret_val.second);
                             throw miklog::compile_error();
                         }
 
                         /* Assign return value to return pointer */
-                        icode::operand ret_ptr = icode::ret_ptr_opr(id());
+                        icode::operand ret_ptr = icode::ret_ptr_opr(ret_info.dtype, ret_info.dtype_name, id());
 
                         if (ret_val.second.dtype == icode::STRUCT)
                             copy_struct(ret_ptr, ret_val);
@@ -1967,7 +1965,7 @@ namespace irgen
                             builder.copy(ret_ptr, ret_val.first);
                         }
                     }
-                    else if ((*current_func_desc).func_info.dtype != icode::VOID)
+                    else if (ret_info.dtype != icode::VOID)
                     {
                         miklog::error_tok(module.name, "Ret type is not VOID", file, stmt.tok);
                         throw miklog::compile_error();
@@ -2070,11 +2068,11 @@ namespace irgen
                       icode::label_opr("", 0));
 
                 /* Generate ret instruction for function */
-
-                if (func_name == "main")
-                    builder.opir(icode::EXIT);
-                else
-                    builder.opir(icode::RET);
+                //TODO
+                //if (func_name == "main")
+                //    builder.opir(icode::EXIT);
+                //else
+                //    builder.opir(icode::RET);
             }
         }
     }

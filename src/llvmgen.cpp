@@ -56,6 +56,8 @@ namespace llvmgen
                 return Type::getFloatTy(*llvm_context);
             case icode::F64:
                 return Type::getDoubleTy(*llvm_context);
+            case icode::VOID:
+                return Type::getVoidTy(*llvm_context);
             default:
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
@@ -120,7 +122,7 @@ namespace llvmgen
         return ConstantInt::get(Type::getInt64Ty(*llvm_context), op.val.integer);
     }
 
-    void llvm_generator::local_symbol_alloca(icode::var_info& var_info, const std::string& name)
+    void llvm_generator::local_symbol_alloca(const icode::var_info& var_info, const std::string& name)
     {
         /* Creates llvm alloca instruction for icode::var_info symbols in symbol tables */
 
@@ -152,6 +154,8 @@ namespace llvmgen
                 return llvm_global_map[op.name];
             case icode::STR_DATA:
                 return llvm_builder->CreateGlobalStringPtr(module.str_data[op.name]);
+            case icode::RET_PTR:
+                return current_ret_value;
             default:
                 break;
         }
@@ -176,7 +180,10 @@ namespace llvmgen
                 return llvm_builder->CreateLoad(alloca_inst_map[op.name], op.name.c_str());
             case icode::TEMP_PTR:
             case icode::TEMP:
+            case icode::RET_VAL:
                 return operand_value_map[op];
+            case icode::RET_PTR:
+                return llvm_builder->CreatePtrToInt(current_ret_value, to_llvm_type(icode::I64));
             default:
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
@@ -191,6 +198,7 @@ namespace llvmgen
         {
             case icode::TEMP:
             case icode::TEMP_PTR:
+            case icode::RET_VAL:
                 operand_value_map[op] = value;
                 break;
             case icode::VAR:
@@ -201,6 +209,15 @@ namespace llvmgen
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
         }
+    }
+
+    Value* llvm_generator::get_ret_val_ptr(const icode::operand& op)
+    {
+        Value* ret_val = operand_value_map[op];
+        Value* ret_val_ptr = llvm_builder->CreateAlloca(ret_val->getType());
+        llvm_builder->CreateStore(ret_val, ret_val_ptr);
+
+        return ret_val_ptr;
     }
 
     void llvm_generator::create_ptr(const icode::entry& e)
@@ -217,6 +234,12 @@ namespace llvmgen
             case icode::GBL_VAR:
                 operand_value_map[e.op1] =
                   llvm_builder->CreatePtrToInt(get_llvm_alloca(e.op2), to_llvm_type(icode::I64));
+                break;
+            case icode::RET_VAL:
+                operand_value_map[e.op1] = get_ret_val_ptr(e.op2);
+                break;
+            case icode::RET_PTR:
+                operand_value_map[e.op1] = current_ret_value;
                 break;
             default:
                 miklog::internal_error(module.name);
@@ -764,6 +787,21 @@ namespace llvmgen
         call_printf(str_value);
     }
 
+    void llvm_generator::call(const icode::entry& e)
+    {
+        Value* result = llvm_builder->CreateCall(llvm_module->getFunction(e.op2.name));
+
+        set_llvm_value(e.op1, result);
+    }
+
+    void llvm_generator::ret(const icode::entry& e, icode::data_type dtype)
+    {
+        if (dtype == icode::VOID)
+            llvm_builder->CreateRetVoid();
+        else
+            llvm_builder->CreateRet(llvm_builder->CreateLoad(current_ret_value));
+    }
+
     void llvm_generator::create_symbols(const icode::func_desc& func_desc)
     {
         /* Go through the symbol table and create alloc instructions */
@@ -845,7 +883,12 @@ namespace llvmgen
                 case icode::SPACE:
                     call_printf(space_format_str);
                     break;
+                case icode::CALL:
+                    call(e);
+                    break;
                 case icode::RET:
+                    ret(e, func_desc.func_info.dtype);
+                    break;
                 case icode::EXIT:
                     break;
                 default:
@@ -903,21 +946,23 @@ namespace llvmgen
     {
         /* Setup llvm function */
         std::vector<Type*> types;
-        FunctionType* FT = FunctionType::get(Type::getVoidTy(*llvm_context), types, false);
+        FunctionType* FT = FunctionType::get(vinfo_to_llvm_type(func_desc.func_info), types, false);
 
+        /* Create function */
         Function* F = Function::Create(FT, Function::ExternalLinkage, name, llvm_module.get());
 
         BasicBlock* BB = BasicBlock::Create(*llvm_context, "entry", F);
         llvm_builder->SetInsertPoint(BB);
+
+        /* Set ret ptr */
+        if(func_desc.func_info.dtype != icode::VOID)
+            current_ret_value = llvm_builder->CreateAlloca(vinfo_to_llvm_type(func_desc.func_info), nullptr);
 
         /* Allocate stack space for local variables */
         create_symbols(func_desc);
 
         /* Convert mikuro function ir to llvm ir */
         gen_func_icode(func_desc, F);
-
-        /* Terminate function */
-        llvm_builder->CreateRetVoid();
 
         /* Process goto backpathing */
         process_goto_backpatch();

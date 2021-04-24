@@ -108,8 +108,8 @@ namespace icode
         GBL_VAR,
         PTR,
         RET_PTR,
+        RET_VAL,
         LITERAL,
-        DTYPE,
         LABEL,
         MODULE,
         NONE,
@@ -287,7 +287,8 @@ namespace icode
                     unsigned int id,
                     bool global = false,
                     bool ptr = false);
-    operand ret_ptr_opr(unsigned int id);
+    operand ret_ptr_opr(data_type dtype, const std::string& dtype_name, unsigned int id);
+    operand ret_val_opr(data_type dtype, const std::string& dtype_name, unsigned int id);
     operand literal_opr(data_type dtype, float literal, unsigned int id);
     operand literal_opr(data_type dtype, int literal, unsigned int id);
     operand addr_opr(unsigned int address, unsigned int id);

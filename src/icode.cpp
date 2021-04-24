@@ -56,8 +56,6 @@ namespace icode
             case ADDR:
             case LITERAL:
                 return val.size == other.val.size;
-            case DTYPE:
-                return dtype == other.dtype;
             case NONE:
                 return false;
         }
@@ -265,7 +263,7 @@ namespace icode
         operand temp;
         temp.temp_id = id;
         temp.name = name;
-        temp.dtype = icode::INT;
+        temp.dtype = icode::UI8;
         temp.optype = STR_DATA;
         temp.val.size = size;
 
@@ -305,11 +303,25 @@ namespace icode
         return temp;
     }
 
-    operand ret_ptr_opr(unsigned int id)
+    operand ret_ptr_opr(data_type dtype, const std::string& dtype_name, unsigned int id)
     {
         operand temp;
         temp.temp_id = id;
-        temp.optype = icode::RET_PTR;
+        temp.dtype = dtype;
+        temp.dtype_name = dtype_name;
+        temp.optype = RET_PTR;
+
+        return temp;
+    }
+
+    operand ret_val_opr(data_type dtype, const std::string& dtype_name, unsigned int id)
+    {
+        operand temp;
+        temp.temp_id = id;
+        temp.dtype = dtype;
+        temp.dtype_name = dtype_name;
+        temp.optype = RET_VAL;
+
         return temp;
     }
 
@@ -331,16 +343,6 @@ namespace icode
         temp.val.integer = literal;
         temp.dtype = dtype;
         temp.optype = LITERAL;
-
-        return temp;
-    }
-
-    operand dtype_opr(data_type dtype, unsigned int id)
-    {
-        operand temp;
-        temp.temp_id = id;
-        temp.dtype = dtype;
-        temp.optype = DTYPE;
 
         return temp;
     }

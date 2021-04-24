@@ -296,7 +296,7 @@ namespace ibuild
         std::string func_dtype_name = func_desc.func_info.dtype_name;
 
         icode::entry call_entry;
-        call_entry.op1 = icode::temp_opr(func_dtype, func_dtype_name, id());
+        call_entry.op1 = icode::ret_val_opr(func_dtype, func_dtype_name, id());
         call_entry.op2 = icode::var_opr(func_dtype, func_dtype_name, func_name, id());
         call_entry.op3 = icode::module_opr(func_desc.module_name, id());
         call_entry.opcode = icode::CALL;

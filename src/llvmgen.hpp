@@ -60,6 +60,8 @@ namespace llvmgen
         llvm::Value* newln_format_str;
         llvm::Value* space_format_str;
 
+        llvm::Value* current_ret_value;
+
         bool prev_instr_branch;
 
         icode::module_desc& module;
@@ -74,9 +76,10 @@ namespace llvmgen
         llvm::Value* get_llvm_alloca(const icode::operand& op);
         llvm::Value* get_llvm_value(const icode::operand& op);
         void set_llvm_value(const icode::operand& op, llvm::Value* value);
-        void local_symbol_alloca(icode::var_info& var_info, const std::string& name);
+        void local_symbol_alloca(const icode::var_info& var_info, const std::string& name);
         void global_symbol_alloca(icode::var_info& var_info, const std::string& name);
 
+        llvm::Value* get_ret_val_ptr(const icode::operand& op);
         void create_ptr(const icode::entry& e);
         void eq(const icode::entry& e);
         void read(const icode::entry& e);
@@ -118,6 +121,9 @@ namespace llvmgen
         void call_printf(llvm::Value* format_str, llvm::Value* value = nullptr);
         void print(const icode::entry& e);
         void print_str(const icode::entry& e);
+
+        void call(const icode::entry& e);
+        void ret(const icode::entry& e, icode::data_type dtype);
 
         void create_symbols(const icode::func_desc& func);
 
