@@ -33,18 +33,6 @@ namespace llvmgen
         return uhlltarget;
     }
 
-    std::string get_format_string(icode::data_type dtype)
-    {
-        if (icode::is_uint(dtype))
-            return "%u\n";
-
-        if (icode::is_sint(dtype))
-            return "%d\n";
-
-        if (icode::is_float(dtype))
-            return "%.2f\n";
-    }
-
     Type* llvm_generator::to_llvm_type(icode::data_type dtype)
     {
         /* Converts mikuro ir icode::data_type to llvm type */
@@ -644,6 +632,33 @@ namespace llvmgen
         llvm_builder->SetInsertPoint(llvm_bb);
     }
 
+    Value* llvm_generator::get_format_string(icode::data_type dtype)
+    {
+        if (icode::is_uint(dtype))
+            return uint_format_str;
+
+        if (icode::is_sint(dtype))
+            return int_format_str;
+
+        if (icode::is_float(dtype))
+            return float_format_str;
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    void llvm_generator::call_printf(Value* format_str, Value* value)
+    {
+        /* Set up printf arguments*/
+        std::vector<Value*> printArgs;
+        printArgs.push_back(format_str);
+        if (value)
+            printArgs.push_back(value);
+
+        /* Call printf */
+        llvm_builder->CreateCall(llvm_module->getFunction("printf"), printArgs);
+    }
+
     void llvm_generator::print(const icode::entry& e)
     {
         Value* value = get_llvm_value(e.op1);
@@ -654,27 +669,14 @@ namespace llvmgen
         else
             value = llvm_builder->CreateSExt(value, Type::getInt32Ty(*llvm_context));
 
-        Value* format_str = llvm_builder->CreateGlobalStringPtr(get_format_string(e.op1.dtype));
-
-        /* Set up printf arguments*/
-        std::vector<Value*> printArgs;
-        printArgs.push_back(format_str);
-        printArgs.push_back(value);
-
-        /* Call printf */
-        llvm_builder->CreateCall(llvm_module->getFunction("printf"), printArgs);
+        call_printf(get_format_string(e.op1.dtype), value);
     }
 
     void llvm_generator::print_str(const icode::entry& e)
     {
         Value* str_value = get_llvm_alloca(e.op1);
 
-        /* Set up printf arguments*/
-        std::vector<Value*> printArgs;
-        printArgs.push_back(str_value);
-
-        /* Call printf */
-        llvm_builder->CreateCall(llvm_module->getFunction("printf"), printArgs);
+        call_printf(str_value);
     }
 
     void llvm_generator::create_symbols(const icode::func_desc& func_desc)
@@ -742,6 +744,12 @@ namespace llvmgen
                     break;
                 case icode::PRINT_STR:
                     print_str(e);
+                    break;
+                case icode::NEWLN:
+                    call_printf(newln_format_str);
+                    break;
+                case icode::SPACE:
+                    call_printf(space_format_str);
                     break;
                 case icode::RET:
                 case icode::EXIT:
@@ -831,10 +839,18 @@ namespace llvmgen
 
     void llvm_generator::setup_printf()
     {
+        /* Declare printf function */
         std::vector<Type*> args;
         args.push_back(Type::getInt8PtrTy(*llvm_context));
         FunctionType* printf_type = FunctionType::get(llvm_builder->getInt32Ty(), args, true);
         Function::Create(printf_type, Function::ExternalLinkage, "printf", llvm_module.get());
+
+        /* Setup global format strings */
+        int_format_str = llvm_builder->CreateGlobalString("%d", "int_format_str", 0U, llvm_module.get());
+        uint_format_str = llvm_builder->CreateGlobalString("%s", "uint_format_str", 0U, llvm_module.get());
+        float_format_str = llvm_builder->CreateGlobalString("%.2f", "float_format_str", 0U, llvm_module.get());
+        newln_format_str = llvm_builder->CreateGlobalString("\n", "newln", 0U, llvm_module.get());
+        space_format_str = llvm_builder->CreateGlobalString(" ", "space", 0U, llvm_module.get());
     }
 
     llvm_generator::llvm_generator(icode::module_desc& module_desc)
@@ -846,11 +862,11 @@ namespace llvmgen
         llvm_builder = std::make_unique<IRBuilder<>>(*llvm_context);
         prev_instr_branch = false;
 
-        /* Declare that printf exists and has signature int (i8*, ...) */
-        setup_printf();
-
         /* Generate global variables */
         gen_globals();
+
+        /* Declare that printf exists and has signature int (i8*, ...) */
+        setup_printf();
 
         /* Loop through each function and convert mikuro IR to llvm IR */
         for (auto func : module.functions)

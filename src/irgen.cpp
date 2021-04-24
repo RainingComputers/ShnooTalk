@@ -456,7 +456,7 @@ namespace irgen
     {
         /* Append string data */
         std::string name = "_str_l" + std::to_string(str_token.lineno) + "_c" + std::to_string(str_token.col);
-        module.str_data[name] = str_token.str;
+        module.str_data[name] = str_token.unescaped_str;
 
         /* Create icode::operand */
         size_t size = char_count * icode::dtype_size[dtype];
@@ -474,7 +474,7 @@ namespace irgen
         }
 
         /* Check dimensions */
-        size_t char_count = str_token.str.length();
+        size_t char_count = str_token.unescaped_str.length();
 
         if (char_count > var.dimensions[0])
         {
@@ -497,7 +497,7 @@ namespace irgen
         }
 
         /* Check size */
-        size_t char_count = root.tok.str.size() - 2;
+        size_t char_count = root.tok.unescaped_str.length();
 
         if (char_count > var.second.dimensions[0])
         {
@@ -511,11 +511,11 @@ namespace irgen
         /* Loop through int and initialize string */
         for (size_t i = 1; i < char_count; i++)
         {
-            char character = root.tok.str[i];
+            char character = root.tok.unescaped_str[i];
 
             /* Process escape sequence */
             if (character == '\\')
-                character = token::to_backspace_char(root.tok.str[++i]);
+                character = token::to_backspace_char(root.tok.unescaped_str[++i]);
 
             /* Write to current offset */
             builder.copy(curr_offset, icode::literal_opr(target.str_int, character, id()));
@@ -1769,7 +1769,7 @@ namespace irgen
             if (child.type == node::STR_LITERAL)
             {
                 /* Get str len and str size */
-                int char_count = child.tok.str.length();
+                int char_count = child.tok.unescaped_str.length();
 
                 icode::operand str_dat_opr = gen_str_dat(child.tok, char_count, target.str_int);
 

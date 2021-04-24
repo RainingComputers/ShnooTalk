@@ -3,6 +3,7 @@
 
 #include <map>
 #include <queue>
+#include <string>
 
 #include "llvm/ADT/APFloat.h"
 #include "llvm/ADT/Optional.h"
@@ -53,6 +54,12 @@ namespace llvmgen
         std::map<size_t, llvm_bb_it_pair> backpatch_point_map;
         std::vector<entry_idx_pair> backpatch_entry_q;
 
+        llvm::Value* uint_format_str;
+        llvm::Value* int_format_str;
+        llvm::Value* float_format_str;
+        llvm::Value* newln_format_str;
+        llvm::Value* space_format_str;
+
         bool prev_instr_branch;
 
         icode::module_desc& module;
@@ -97,11 +104,11 @@ namespace llvmgen
         void cmpop(const icode::entry& e, size_t entry_idx);
 
         void create_backpatch(const icode::entry& e, llvm::Function* F, size_t entry_idx);
-
         void create_label(const icode::entry& e, llvm::Function* F);
 
+        llvm::Value* get_format_string(icode::data_type dtype);
+        void call_printf(llvm::Value* format_str, llvm::Value* value = nullptr);
         void print(const icode::entry& e);
-
         void print_str(const icode::entry& e);
 
         void create_symbols(const icode::func_desc& func);

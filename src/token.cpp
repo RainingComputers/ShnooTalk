@@ -2,7 +2,18 @@
 
 namespace token
 {
-    int get_precedence(token_type type)
+    token::token(std::string token_str, token_type tok_type, unsigned int column, unsigned int linenumber)
+    {
+        str = token_str;
+        type = tok_type;
+        col = column;
+        lineno = linenumber;
+
+        if (type == STR_LITERAL || type == CHAR_LITERAL)
+            unescape();
+    }
+
+    int token::precedence() const
     {
         switch (type)
         {
@@ -73,11 +84,14 @@ namespace token
         }
     }
 
-    token::token(std::string token_str, token_type tok_type, unsigned int column, unsigned int linenumber)
+    void token::unescape()
     {
-        str = token_str;
-        type = tok_type;
-        col = column;
-        lineno = linenumber;
+        for (size_t i = 1; i < str.length() - 1; i++)
+        {
+            if (str[i] == '\\')
+                unescaped_str += to_backspace_char(str[++i]);
+            else
+                unescaped_str += str[i];
+        }
     }
 } // namespace token

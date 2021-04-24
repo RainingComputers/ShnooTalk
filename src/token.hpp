@@ -88,21 +88,24 @@ namespace token
         EXIT
     };
 
-    int get_precedence(token_type type);
-
     char to_backspace_char(char c);
 
     struct token
     {
         std::string str;
+        std::string unescaped_str;
         token_type type;
         unsigned int col;
         unsigned int lineno;
+
+        int precedence() const;
+        void unescape();
 
         token(std::string token_str = "",
               token_type tok_type = NONE,
               unsigned int column = 0,
               unsigned int linenumber = 0);
+
     };
 }
 
