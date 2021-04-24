@@ -175,7 +175,6 @@ namespace ibuild
         entry.opcode = icode::CAST;
         entry.op1 = icode::temp_opr(cast_dtype, icode::data_type_strs[cast_dtype], id());
         entry.op2 = ensure_not_ptr(op);
-        entry.op3 = icode::dtype_opr(cast_dtype, id());
 
         return push_ir_ensure_no_write_ptr(entry);
     }

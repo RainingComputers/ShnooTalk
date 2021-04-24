@@ -288,7 +288,6 @@ namespace icode
                     bool global = false,
                     bool ptr = false);
     operand ret_ptr_opr(unsigned int id);
-    operand dtype_opr(data_type dtype, unsigned int id);
     operand literal_opr(data_type dtype, float literal, unsigned int id);
     operand literal_opr(data_type dtype, int literal, unsigned int id);
     operand addr_opr(unsigned int address, unsigned int id);

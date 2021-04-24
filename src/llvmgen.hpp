@@ -95,6 +95,14 @@ namespace llvmgen
         llvm::Value* bwx(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
         void binop(const icode::entry& e);
 
+        void bwnot(const icode::entry& e);
+        void minus(const icode::entry& e);
+
+        llvm::Value* cast_to_sint(const icode::entry& e, llvm::Type* destination_type);
+        llvm::Value* cast_to_uint(const icode::entry& e, llvm::Type* destination_type);
+        llvm::Value* cast_to_float(const icode::entry& e, llvm::Type* destination_type);
+        void cast(const icode::entry& e);
+
         llvm::Value* eq(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
         llvm::Value* neq(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
         llvm::Value* lt(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);

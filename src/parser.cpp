@@ -736,8 +736,8 @@ namespace parser
         token::token_type expected[] = { token::IDENTIFIER,   token::STR_LITERAL,   token::INT_LITERAL,
                                          token::CHAR_LITERAL, token::FLOAT_LITERAL, token::HEX_LITERAL,
                                          token::BIN_LITERAL,  token::LPAREN,        token::SIZEOF,
-                                         token::NOT };
-        expect(expected, 10);
+                                         token::NOT,          token::MINUS };
+        expect(expected, 11);
 
         if (accept(token::STR_LITERAL))
             add_node(node::STR_LITERAL);
@@ -748,7 +748,7 @@ namespace parser
         {
             next();
 
-            expect(expected, 10);
+            expect(expected, 11);
 
             if (accept(token::STR_LITERAL))
                 add_node(node::STR_LITERAL);

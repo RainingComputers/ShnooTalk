@@ -465,6 +465,91 @@ namespace llvmgen
         }
     }
 
+    void llvm_generator::bwnot(const icode::entry& e)
+    {
+        Value* result = llvm_builder->CreateNot(get_llvm_value(e.op2));
+
+        set_llvm_value(e.op1, result);
+    }
+
+    void llvm_generator::minus(const icode::entry& e)
+    {
+        Value* result = llvm_builder->CreateNeg(get_llvm_value(e.op2));
+
+        set_llvm_value(e.op1, result);
+    }
+
+    Value* llvm_generator::cast_to_sint(const icode::entry& e, Type* destination_type)
+    {
+        if (icode::is_sint(e.op2.dtype))
+            return llvm_builder->CreateSExtOrTrunc(get_llvm_value(e.op2), destination_type);
+
+        if (icode::is_uint(e.op2.dtype))
+            return llvm_builder->CreateZExtOrTrunc(get_llvm_value(e.op2), destination_type);
+
+        if (icode::is_float(e.op2.dtype))
+            return llvm_builder->CreateFPToSI(get_llvm_value(e.op2), destination_type);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::cast_to_uint(const icode::entry& e, Type* destination_type)
+    {
+        if (icode::is_int(e.op2.dtype))
+            return llvm_builder->CreateZExtOrTrunc(get_llvm_value(e.op2), destination_type);
+
+        if (icode::is_float(e.op2.dtype))
+            return llvm_builder->CreateFPToUI(get_llvm_value(e.op2), destination_type);
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* llvm_generator::cast_to_float(const icode::entry& e, Type* destination_type)
+    {
+        if (icode::is_sint(e.op2.dtype))
+            return llvm_builder->CreateSIToFP(get_llvm_value(e.op2), destination_type);
+
+        if (icode::is_uint(e.op2.dtype))
+            return llvm_builder->CreateUIToFP(get_llvm_value(e.op2), destination_type);
+
+        if (icode::is_float(e.op2.dtype))
+        {
+            if (icode::dtype_size[e.op1.dtype] > icode::dtype_size[e.op2.dtype])
+                return llvm_builder->CreateFPExt(get_llvm_value(e.op2), destination_type);
+
+            if (icode::dtype_size[e.op1.dtype] < icode::dtype_size[e.op2.dtype])
+                return llvm_builder->CreateFPTrunc(get_llvm_value(e.op2), destination_type);
+
+            if (icode::dtype_size[e.op1.dtype] == icode::dtype_size[e.op2.dtype])
+                return get_llvm_value(e.op2);
+        }
+
+        miklog::internal_error(module.name);
+        throw miklog::internal_bug_error();
+    }
+
+    void llvm_generator::cast(const icode::entry& e)
+    {
+        Type* destination_type = to_llvm_type(e.op1.dtype);
+        Value* result;
+
+        if (icode::is_sint(e.op1.dtype))
+            result = cast_to_sint(e, destination_type);
+        else if (icode::is_uint(e.op1.dtype))
+            result = cast_to_uint(e, destination_type);
+        else if (icode::is_float(e.op1.dtype))
+            result = cast_to_float(e, destination_type);
+        else
+        {
+            miklog::internal_error(module.name);
+            throw miklog::internal_bug_error();
+        }
+
+        set_llvm_value(e.op1, result);
+    }
+
     Value* llvm_generator::eq(Value* LHS, Value* RHS, const icode::data_type dtype)
     {
         /* Converts mikuro EQ to llvm ir */
@@ -709,6 +794,15 @@ namespace llvmgen
                 case icode::BWO:
                 case icode::BWX:
                     binop(e);
+                    break;
+                case icode::NOT:
+                    bwnot(e);
+                    break;
+                case icode::UNARY_MINUS:
+                    minus(e);
+                    break;
+                case icode::CAST:
+                    cast(e);
                     break;
                 case icode::EQ:
                 case icode::NEQ:

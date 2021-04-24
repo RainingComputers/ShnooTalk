@@ -105,7 +105,6 @@ namespace token
               token_type tok_type = NONE,
               unsigned int column = 0,
               unsigned int linenumber = 0);
-
     };
 }
 
