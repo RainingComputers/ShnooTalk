@@ -71,7 +71,7 @@ namespace icode
 
         void set_prop(var_prop prop);
         void clear_prop(var_prop prop);
-        bool check(var_prop prop);
+        bool check(var_prop prop) const;
     };
 
     struct struct_desc

@@ -53,6 +53,7 @@ namespace llvmgen
             case icode::UI64:
                 return Type::getInt64Ty(*llvm_context);
             case icode::F32:
+            case icode::FLOAT:
                 return Type::getFloatTy(*llvm_context);
             case icode::F64:
                 return Type::getDoubleTy(*llvm_context);
@@ -95,10 +96,30 @@ namespace llvmgen
 
     Type* llvm_generator::vinfo_to_llvm_type(const icode::var_info& var_info)
     {
+        if (var_info.check(icode::IS_PTR))
+            return to_llvm_ptr_type(var_info.dtype);
+
         if (var_info.dimensions.size() > 0 || var_info.dtype == icode::STRUCT)
             return ArrayType::get(Type::getInt8Ty(*llvm_context), var_info.size);
 
         return to_llvm_type(var_info.dtype);
+    }
+
+    FunctionType* llvm_generator::fdesc_to_llvm_type(icode::func_desc& func_desc)
+    {
+        std::vector<Type*> arg_types;
+
+        /* Set the types vector */
+        for (std::string param : func_desc.params)
+        {
+            Type* param_type = vinfo_to_llvm_type(func_desc.symbols[param]);
+            arg_types.push_back(param_type);
+        }
+
+        /* Setup llvm function */
+        FunctionType* FT = FunctionType::get(vinfo_to_llvm_type(func_desc.func_info), arg_types, false);
+    
+        return FT;
     }
 
     Value* llvm_generator::gen_ltrl(const icode::operand& op)
@@ -148,6 +169,7 @@ namespace llvmgen
 
         switch (op.optype)
         {
+            case icode::PTR:
             case icode::VAR:
                 return alloca_inst_map[op.name];
             case icode::GBL_VAR:
@@ -177,6 +199,7 @@ namespace llvmgen
             case icode::GBL_VAR:
                 return llvm_builder->CreateLoad(llvm_global_map[op.name], op.name.c_str());
             case icode::VAR:
+            case icode::PTR:
                 return llvm_builder->CreateLoad(alloca_inst_map[op.name], op.name.c_str());
             case icode::TEMP_PTR:
             case icode::TEMP:
@@ -789,9 +812,11 @@ namespace llvmgen
 
     void llvm_generator::call(const icode::entry& e)
     {
-        Value* result = llvm_builder->CreateCall(llvm_module->getFunction(e.op2.name));
+        Value* result = llvm_builder->CreateCall(llvm_module->getFunction(e.op2.name), params);
 
         set_llvm_value(e.op1, result);
+
+        params.clear();
     }
 
     void llvm_generator::ret(const icode::entry& e, icode::data_type dtype)
@@ -802,12 +827,9 @@ namespace llvmgen
             llvm_builder->CreateRet(llvm_builder->CreateLoad(current_ret_value));
     }
 
-    void llvm_generator::create_symbols(const icode::func_desc& func_desc)
-    {
-        /* Go through the symbol table and create alloc instructions */
-        for (auto symbol : func_desc.symbols)
-            local_symbol_alloca(symbol.second, symbol.first);
-    }
+    void llvm_generator::pass(const icode::entry& e) { params.push_back(get_llvm_value(e.op1)); }
+
+    void llvm_generator::pass_addr(const icode::entry& e) { params.push_back(get_llvm_alloca(e.op1)); }
 
     void llvm_generator::gen_func_icode(const icode::func_desc& func_desc, Function* F)
     {
@@ -883,6 +905,12 @@ namespace llvmgen
                 case icode::SPACE:
                     call_printf(space_format_str);
                     break;
+                case icode::PASS:
+                    pass(e);
+                    break;
+                case icode::PASS_ADDR:
+                    pass_addr(e);
+                    break;
                 case icode::CALL:
                     call(e);
                     break;
@@ -942,24 +970,47 @@ namespace llvmgen
         }
     }
 
-    void llvm_generator::gen_function(const icode::func_desc& func_desc, const std::string& name)
+    void llvm_generator::reset_state()
     {
-        /* Setup llvm function */
-        std::vector<Type*> types;
-        FunctionType* FT = FunctionType::get(vinfo_to_llvm_type(func_desc.func_info), types, false);
+        alloca_inst_map.clear();
+        operand_value_map.clear();
+
+        label_block_map.clear();
+        fall_block_map.clear();
+        backpatch_point_map.clear();
+        backpatch_entry_q.clear();
+
+        params.clear();
+    }
+
+    void llvm_generator::gen_function(icode::func_desc& func_desc, const std::string& name)
+    {
+        reset_state();
 
         /* Create function */
-        Function* F = Function::Create(FT, Function::ExternalLinkage, name, llvm_module.get());
+        Function* F = Function::Create(fdesc_to_llvm_type(func_desc), Function::ExternalLinkage, name, llvm_module.get());
 
+        /* Set insertion point to function body */
         BasicBlock* BB = BasicBlock::Create(*llvm_context, "entry", F);
         llvm_builder->SetInsertPoint(BB);
 
-        /* Set ret ptr */
-        if(func_desc.func_info.dtype != icode::VOID)
-            current_ret_value = llvm_builder->CreateAlloca(vinfo_to_llvm_type(func_desc.func_info), nullptr);
-
         /* Allocate stack space for local variables */
-        create_symbols(func_desc);
+        /* Go through the symbol table and create alloc instructions */
+        for (auto symbol : func_desc.symbols)
+            local_symbol_alloca(symbol.second, symbol.first);
+
+        /* Assign passed function args */
+        unsigned int i = 0;
+        for (auto& Arg : F->args())
+        {
+            Arg.setName(func_desc.params[i]);
+            llvm_builder->CreateStore(&Arg, alloca_inst_map[func_desc.params[i]]);
+            i++;
+        }
+
+        /* Set ret ptr */
+        if (func_desc.func_info.dtype != icode::VOID)
+            current_ret_value = llvm_builder->CreateAlloca(vinfo_to_llvm_type(func_desc.func_info), nullptr);
 
         /* Convert mikuro function ir to llvm ir */
         gen_func_icode(func_desc, F);

@@ -149,7 +149,7 @@ namespace icode
 
     void var_info::clear_prop(var_prop prop) { properties &= ~(1 << prop); }
 
-    bool var_info::check(var_prop prop) { return properties & (1 << prop); }
+    bool var_info::check(var_prop prop) const { return properties & (1 << prop); }
 
     /*
         Helper functions to check for existence of symbols
