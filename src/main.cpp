@@ -17,7 +17,7 @@ void print_usage()
     miklog::println("\t-ast\tPrint parse tree");
     miklog::println("\t-ir\tPrint intermediate code representation");
     miklog::println("\t-llvm\tPrint uhllvm assembly");
-    miklog::println("\t-run\tExecute program (default)");
+    miklog::println("\t-c\tCompile program (default)");
 }
 
 void ir_gen(const std::string& file_name, icode::target_desc& target, icode::module_desc_map& modules)
@@ -43,6 +43,21 @@ void ir_gen(const std::string& file_name, icode::target_desc& target, icode::mod
     gen.program(parse.ast);
 }
 
+std::string strip_file_ext(const std::string& file_name)
+{
+    /* Get module name, if .uhll is present, strip it */
+
+    std::string stripped_file_name;
+    std::string ext = ".uhll";
+    
+    if (file_name.size() > ext.size() && file_name.substr(file_name.size() - ext.size()) == ext)
+        stripped_file_name = file_name.substr(0, file_name.size() - ext.size());
+    else
+        stripped_file_name = file_name;
+
+    return stripped_file_name;
+}
+
 int main(int argc, char* argv[])
 {
     /* Check for correct usage */
@@ -52,12 +67,8 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    /* Get module name, if .uhll is present, strip it */
-    std::string file_name = argv[1];
-
-    std::string ext = ".uhll";
-    if (file_name.size() > ext.size() && file_name.substr(file_name.size() - ext.size()) == ext)
-        file_name = file_name.substr(0, file_name.size() - ext.size());
+    /* Get module name */
+    std::string file_name = strip_file_ext(argv[1]);
 
     /* Get option passed by user, (if present) */
     std::string option;
@@ -65,7 +76,7 @@ int main(int argc, char* argv[])
     {
         option = argv[2];
 
-        if (option != "-ir" && option != "-llvm" && option != "-run" && option != "-ast")
+        if (option != "-ir" && option != "-llvm" && option != "-c" && option != "-ast")
         {
             print_usage();
             return EXIT_FAILURE;
@@ -108,13 +119,17 @@ int main(int argc, char* argv[])
             return 0;
         }
 
+        if (option == "-llvm")
+        {
+            llvmgen::llvm_generator llvm_gen(modules[file_name]);
+            miklog::println(llvm_gen.get_llvm_str());
+            return 0;
+        }
+
         for (auto pair : modules)
             llvmgen::llvm_generator llvm_gen(pair.second);
-        // if (option == "-llvm")
-        //{
-        //    miklog::print_vm(vm);
-        //    return 0;
-        //}
+        
+
     }
     catch (const miklog::compile_error& e)
     {
@@ -124,14 +139,7 @@ int main(int argc, char* argv[])
     {
         return EXIT_FAILURE;
     }
-    catch (const std::ifstream::failure& e)
-    {
-        miklog::println("File I/O error");
-        return EXIT_FAILURE;
-    }
 
-    /* Run program */
-    // TODO
 
     return 0;
 }

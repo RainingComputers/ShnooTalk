@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/uhll",
-            "args": ["test", "-run"],
+            "args": ["test", "-llvm"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/",
             "environment": [],

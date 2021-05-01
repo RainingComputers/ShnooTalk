@@ -83,6 +83,7 @@ namespace llvmgen
         
         void local_symbol_alloca(const icode::var_info& var_info, const std::string& name);
         void global_symbol_alloca(icode::var_info& var_info, const std::string& name);
+        void param_symbol_alloca(const icode::var_info& var_info, const std::string& name, llvm::Value* arg);
 
         llvm::Value* get_ret_val_ptr(const icode::operand& op);
         void create_ptr(const icode::entry& e);
@@ -145,9 +146,12 @@ namespace llvmgen
 
         void gen_globals();
 
+        void declare_functions();
+
         void setup_printf();
 
       public:
+        std::string get_llvm_str();
         llvm_generator(icode::module_desc& module_desc);
     };
 

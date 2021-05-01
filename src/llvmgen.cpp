@@ -163,6 +163,23 @@ namespace llvmgen
         llvm_global_map[name] = global_value;
     }
 
+    void llvm_generator::param_symbol_alloca(const icode::var_info& var_info, const std::string& name, Value* arg)
+    {
+        /* If mutable parameters, stores the pointer as int, else allocate space and stores arg */
+
+        if (!var_info.check(icode::IS_PTR))
+        {
+            Value* alloca = llvm_builder->CreateAlloca(vinfo_to_llvm_type(var_info), nullptr, name);
+            llvm_builder->CreateStore(arg, alloca);
+            alloca_inst_map[name] = alloca;
+        }
+        else
+        {
+            alloca_inst_map[name] = arg;
+            ptr_val_map[name] = llvm_builder->CreatePtrToInt(arg, to_llvm_type(icode::I64));
+        }
+    }
+
     Value* llvm_generator::get_llvm_alloca(const icode::operand& op)
     {
         /* Returns llvm value allocated by symbol_alloca */
@@ -1003,24 +1020,11 @@ namespace llvmgen
 
         /* Assign passed function args */
         unsigned int i = 0;
-        for (auto& Arg : F->args())
+        for (auto& arg : F->args())
         {
-            Arg.setName(func_desc.params[i]);
-
-            if (!func_desc.symbols[func_desc.params[i]].check(icode::IS_PTR))
-            {
-                Value* alloca = llvm_builder->CreateAlloca(vinfo_to_llvm_type(func_desc.symbols[func_desc.params[i]]),
-                                                           nullptr,
-                                                           func_desc.params[i]);
-                llvm_builder->CreateStore(&Arg, alloca);
-                alloca_inst_map[func_desc.params[i]] = alloca;
-            }
-            else
-            {
-                alloca_inst_map[func_desc.params[i]] = &Arg; 
-                ptr_val_map[func_desc.params[i]] = llvm_builder->CreatePtrToInt(&Arg, to_llvm_type(icode::I64));
-            }
-
+            std::string& symbol_name = func_desc.params[i];
+            arg.setName(symbol_name);
+            param_symbol_alloca(func_desc.symbols[symbol_name], symbol_name, &arg);
             i++;
         }
     }
@@ -1030,33 +1034,45 @@ namespace llvmgen
         reset_state();
 
         /* Create function */
-        Function* F =
-          Function::Create(fdesc_to_llvm_type(func_desc), Function::ExternalLinkage, name, llvm_module.get());
+        Function* llvm_func = llvm_function_map[name];
 
         /* Set insertion point to function body */
-        BasicBlock* BB = BasicBlock::Create(*llvm_context, "entry", F);
+        BasicBlock* BB = BasicBlock::Create(*llvm_context, "entry", llvm_func);
         llvm_builder->SetInsertPoint(BB);
 
         /* Allocate stack space for local variables */
-        setup_func_stack(func_desc, F);
+        setup_func_stack(func_desc, llvm_func);
 
         /* Set ret ptr */
         if (func_desc.func_info.dtype != icode::VOID)
             current_ret_value = llvm_builder->CreateAlloca(vinfo_to_llvm_type(func_desc.func_info), nullptr);
 
         /* Convert mikuro function ir to llvm ir */
-        gen_func_icode(func_desc, F);
+        gen_func_icode(func_desc, llvm_func);
 
         /* Process goto backpathing */
         process_goto_backpatch();
 
-        verifyFunction(*F);
+        verifyFunction(*llvm_func);
     }
 
     void llvm_generator::gen_globals()
     {
         for (auto symbol : module.globals)
             global_symbol_alloca(symbol.second, symbol.first);
+    }
+
+    void llvm_generator::declare_functions()
+    {
+        for (auto func : module.functions)
+        {
+            Function* llvm_func = Function::Create(fdesc_to_llvm_type(func.second),
+                                                   Function::ExternalLinkage,
+                                                   func.first,
+                                                   llvm_module.get());
+
+            llvm_function_map[func.first] = llvm_func;
+        }
     }
 
     void llvm_generator::setup_printf()
@@ -1087,6 +1103,9 @@ namespace llvmgen
         /* Generate global variables */
         gen_globals();
 
+        /* Declare all the functions */
+        declare_functions();
+
         /* Declare that printf exists and has signature int (i8*, ...) */
         setup_printf();
 
@@ -1095,8 +1114,6 @@ namespace llvmgen
         {
             gen_function(func.second, func.first);
         }
-
-        outs() << *llvm_module;
 
         /* Initialize the target registry etc */
         InitializeAllTargetInfos();
@@ -1135,8 +1152,7 @@ namespace llvmgen
 
         if (EC)
         {
-            // TODO: change this
-            miklog::println("Could not open file: " + EC.message());
+            miklog::println("LLVM ERROR: Could not open file: " + EC.message());
             throw miklog::internal_bug_error();
         }
 
@@ -1145,12 +1161,22 @@ namespace llvmgen
 
         if (target_machine->addPassesToEmitFile(pass, dest, nullptr, FileType))
         {
-            miklog::println("LLVM target machine can't emit a file of this type");
+            miklog::println("LLVM ERROR: LLVM target machine can't emit a file of this type");
             throw miklog::internal_bug_error();
         }
 
         pass.run(*llvm_module);
 
         dest.flush();
+    }
+
+    std::string llvm_generator::get_llvm_str()
+    {
+        std::string mod_string;
+        raw_string_ostream OS(mod_string);
+        OS << *llvm_module;
+        OS.flush();
+
+        return mod_string;
     }
 }
