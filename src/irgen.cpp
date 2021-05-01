@@ -2067,12 +2067,20 @@ namespace irgen
                       icode::label_opr("", 0),
                       icode::label_opr("", 0));
 
-                /* Generate ret instruction for function */
-                //TODO
-                //if (func_name == "main")
-                //    builder.opir(icode::EXIT);
-                //else
-                //    builder.opir(icode::RET);
+                /* Last instruction must be return */
+                if(current_func_desc->icode_table.back().opcode != icode::RET)
+                {
+                    if(current_func_desc->func_info.dtype != icode::VOID)
+                    {
+                        miklog::error_tok(module.name, "Missing RETURN for this FUNCTION", file, child.tok);
+                        throw miklog::compile_error();   
+                    }
+                    else
+                    {
+                        builder.opir(icode::RET);
+                    }
+                }
+                    
             }
         }
     }

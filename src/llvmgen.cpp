@@ -755,7 +755,7 @@ namespace llvmgen
     void llvm_generator::create_backpatch(const icode::entry& e, Function* F, size_t entry_idx)
     {
         /* All branch instructions GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO are backpatched,
-            i.e the task is stores in a queue and instructions are create in second pass */
+            i.e the task is stored in a queue and instructions are created in a second pass */
 
         /* Save llvm insertions point */
         BasicBlock* block = llvm_builder->GetInsertBlock();
