@@ -51,7 +51,8 @@ namespace icode
     enum var_prop
     {
         IS_MUT,
-        IS_PTR
+        IS_PTR,
+        IS_PARAM,
     };
 
     struct var_info

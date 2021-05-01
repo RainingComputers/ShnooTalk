@@ -44,6 +44,7 @@ namespace llvmgen
         std::unique_ptr<llvm::IRBuilder<>> llvm_builder;
 
         std::map<std::string, llvm::Value*> alloca_inst_map;
+        std::map<std::string, llvm::Value*> ptr_val_map;
         std::map<std::string, llvm::GlobalVariable*> llvm_global_map;
         std::map<std::string, llvm::Function*> llvm_function_map;
         std::map<icode::operand, llvm::Value*> operand_value_map;
@@ -88,6 +89,7 @@ namespace llvmgen
         void eq(const icode::entry& e);
         void read(const icode::entry& e);
         void write(const icode::entry& e);
+        llvm::Value* ensure_i64(llvm::Value* value);
         void addrop(const icode::entry& e);
 
         llvm::Value* add(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
@@ -136,6 +138,8 @@ namespace llvmgen
         void process_goto_backpatch();
 
         void reset_state();
+
+        void setup_func_stack(icode::func_desc& func_desc, llvm::Function* F);
 
         void gen_function(icode::func_desc& func_desc, const std::string& name);
 

@@ -409,6 +409,7 @@ namespace irgen
                 break;
 
             std::pair<token::token, icode::var_info> param_var = var_from_node(root.children[i]);
+            param_var.second.set_prop(icode::IS_PARAM);
 
             if (mut)
                 param_var.second.set_prop(icode::IS_MUT);
@@ -831,8 +832,7 @@ namespace irgen
           icode::var_opr(current_var_info.dtype, current_var_info.dtype_name, ident_name, id(), is_global, is_ptr);
 
         /* Ensure current_offset_temp is a pointer */
-        if (!icode::is_ptr(current_offset_temp.optype))
-            current_offset_temp = builder.create_ptr(current_offset_temp);
+        current_offset_temp = builder.create_ptr(current_offset_temp);
 
         /* Go through struct fields and subsripts */
         for (size_t i = 1; i < root.children.size();)
