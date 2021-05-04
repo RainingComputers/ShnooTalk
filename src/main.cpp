@@ -121,13 +121,13 @@ int main(int argc, char* argv[])
 
         if (option == "-llvm")
         {
-            llvmgen::llvm_generator llvm_gen(modules[file_name]);
+            llvmgen::llvm_generator llvm_gen(modules[file_name], modules);
             miklog::println(llvm_gen.get_llvm_str());
             return 0;
         }
 
         for (auto pair : modules)
-            llvmgen::llvm_generator llvm_gen(pair.second);
+            llvmgen::llvm_generator llvm_gen(pair.second, modules);
         
 
     }

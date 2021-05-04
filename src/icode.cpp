@@ -2,23 +2,8 @@
 
 namespace icode
 {
-    std::string data_type_strs[] = { "I8",
-                                     "UI8",
-                                     "I16",
-                                     "UI16",
-                                     "I32",
-                                     "UI32"
-                                     "I64",
-                                     "UI64",
-                                     "F32",
-                                     "F64"
-                                     "VM_INT",
-                                     "VM_UINT",
-                                     "VM_FLOAT",
-                                     "INT",
-                                     "FLOAT",
-                                     "STRUCT",
-                                     "VOID" };
+    std::string data_type_strs[] = { "I8",  "UI8",    "I16",     "UI16",     "I32", "UI32",  "I64",    "UI64", "F32",
+                                     "F64", "VM_INT", "VM_UINT", "VM_FLOAT", "INT", "FLOAT", "STRUCT", "VOID" };
 
     entry::entry()
     {

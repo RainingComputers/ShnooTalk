@@ -11,6 +11,8 @@ fn gcd(a:int, b:int) -> int
     for(var x:int = min; x >= 1; x -= 1)
         if(a % x == 0 and b % x == 0)
             return x
+
+    return -1
 }
 
 fn main()

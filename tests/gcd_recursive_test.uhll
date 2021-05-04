@@ -3,7 +3,8 @@
 fn gcd(m:int, n:int) -> int
 {
     if(m % n  == 0) return n
-    else return gcd(n, m % n)
+    
+    return gcd(n, m % n)
 }
 
 fn main()

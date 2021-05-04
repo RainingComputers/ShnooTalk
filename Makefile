@@ -43,6 +43,7 @@ else ifeq ($(GPROF), 1)
     CXXFLAGS = -pg -g
 	BUILD_TYPE = debug
 else ifeq ($(GCOV), 1)
+    LDFLAGS = -lgcov --coverage
     CXXFLAGS = -fprofile-arcs -ftest-coverage -g
 	BUILD_TYPE = debug
 else
@@ -51,7 +52,7 @@ else
 endif
 
 CXXFLAGS := $(CXXFLAGS) `llvm-config-11 --cxxflags` -fexceptions
-LDFLAGS = `llvm-config-11 --ldflags --system-libs --libs all`
+LDFLAGS := $(LDFLAGS) `llvm-config-11 --ldflags --system-libs --libs all`
 
 # Find all .cpp files in src/
 SOURCES = $(shell find src/ -name '*.cpp')

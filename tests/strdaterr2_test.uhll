@@ -1,11 +1,11 @@
 # MODULE strdaterr2_test
-# ERROR in Line 10 Col 20
+# ERROR in Line 10 Col 21
 # 
-#     var a:int[2] = "lol"
-#                    ^
+#     var a:char[2] = "lol"
+#                     ^
 # String too big
 
 fn main()
 {
-    var a:int[2] = "lol"
+    var a:char[2] = "lol"
 }

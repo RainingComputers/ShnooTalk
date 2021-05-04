@@ -6,14 +6,14 @@ from result use Result, FloatResult
 
 struct String
 {
-    var arr:int[80]
+    var arr:char[80]
 }
 
-fn isDigit(char:int) -> bool 
+fn isDigit(c:char) -> bool 
 {
     # Chaeck if char is digit or not
 
-    if(char >= '0' and char <= '9') return true
+    if(c >= '0' and c <= '9') return true
     else return false
 }
 

@@ -1148,7 +1148,7 @@ namespace irgen
                             character = token::to_backspace_char(c);
                         }
 
-                        icode::data_type dtype = icode::INT;
+                        icode::data_type dtype = icode::I8;
                         return op_var_pair(icode::literal_opr(dtype, character, id()),
                                            icode::var_from_dtype(dtype, target));
                     }
@@ -2009,6 +2009,18 @@ namespace irgen
         }
     }
 
+    bool ir_generator::current_function_terminates()
+    {
+        if((*current_func_desc).icode_table.size() < 1) return false;
+
+        icode::instruction last_opcode = (*current_func_desc).icode_table.back().opcode;
+
+        if (last_opcode == icode::RET)
+            return true;
+
+        return false;
+    }
+
     void ir_generator::program(const node::node& root)
     {
         /* Setup scope */
@@ -2068,17 +2080,15 @@ namespace irgen
                       icode::label_opr("", 0));
 
                 /* Last instruction must be return */
-                if(current_func_desc->icode_table.back().opcode != icode::RET)
+                if(!current_function_terminates())
                 {
                     if(current_func_desc->func_info.dtype != icode::VOID)
                     {
                         miklog::error_tok(module.name, "Missing RETURN for this FUNCTION", file, child.tok);
                         throw miklog::compile_error();   
                     }
-                    else
-                    {
-                        builder.opir(icode::RET);
-                    }
+
+                    builder.opir(icode::RET);
                 }
                     
             }

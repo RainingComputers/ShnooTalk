@@ -33,29 +33,29 @@ fn sin(x:float) -> float
 fn abs(x:float) -> float
 {
     if(x < 0.0) return -1.0 * x
-    else return x
+    return x
 }
 
 fn max(a:float, b:float) -> float
 {
     if(a > b) return a
-    else return b
+    return b
 }
 
 fn maxInt(a:int, b:int) -> int
 {
     if(a > b) return a
-    else return b
+    return b
 }
 
 fn min(a:float, b:float) -> float
 {
     if(a < b) return a
-    else return b
+    return b
 }
 
 fn minInt(a:int, b:int) -> int
 {
     if(a < b) return a
-    else return b
+    return b
 }

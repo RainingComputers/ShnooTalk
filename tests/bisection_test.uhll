@@ -1,4 +1,4 @@
-# 1.44225
+# 1.499999
 
 use math
 
@@ -28,5 +28,5 @@ fn main()
             xR = xM
     }
     
-    println(xL) # 1.44225
+    println(xL) # 1.499999
 }

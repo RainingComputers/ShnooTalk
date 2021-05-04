@@ -13,7 +13,7 @@ namespace llvmgen
         uhlltarget.dtype_strings_map = { { "byte", icode::I8 },     { "ubyte", icode::UI8 },  { "short", icode::I16 },
                                          { "ushort", icode::UI16 }, { "int", icode::I32 },    { "uint", icode::UI32 },
                                          { "long", icode::I64 },    { "ulong", icode::UI64 }, { "float", icode::F32 },
-                                         { "double", icode::F64 },  { "char", icode::UI8 } };
+                                         { "double", icode::F64 },  { "char", icode::UI8 },   { "bool", icode::UI8 } };
 
         /* true and false defines */
         icode::def true_def;
@@ -73,6 +73,7 @@ namespace llvmgen
         {
             case icode::I8:
             case icode::UI8:
+            case icode::STRUCT:
                 return Type::getInt8PtrTy(*llvm_context);
             case icode::I16:
             case icode::UI16:
@@ -85,6 +86,7 @@ namespace llvmgen
             case icode::UI64:
                 return Type::getInt64PtrTy(*llvm_context);
             case icode::F32:
+            case icode::FLOAT:
                 return Type::getFloatPtrTy(*llvm_context);
             case icode::F64:
                 return Type::getDoublePtrTy(*llvm_context);
@@ -178,6 +180,25 @@ namespace llvmgen
             alloca_inst_map[name] = arg;
             ptr_val_map[name] = llvm_builder->CreatePtrToInt(arg, to_llvm_type(icode::I64));
         }
+    }
+
+    std::string get_function_name(const std::string& func_name, const std::string& mod_name)
+    {
+        if (func_name == "main")
+            return "main";
+
+        return mod_name + "." + func_name;
+    }
+
+    Function* llvm_generator::get_llvm_function(const std::string& func_name, const std::string& mod_name)
+    {
+        std::string expanded_func_name = get_function_name(func_name, mod_name);
+
+        if (auto* F = llvm_module->getFunction(expanded_func_name))
+            return F;
+
+        FunctionType* func_type = fdesc_to_llvm_type(ext_modules_map[mod_name].functions[func_name]);
+        return Function::Create(func_type, Function::ExternalLinkage, expanded_func_name, *llvm_module);
     }
 
     Value* llvm_generator::get_llvm_alloca(const icode::operand& op)
@@ -276,7 +297,7 @@ namespace llvmgen
                   llvm_builder->CreatePtrToInt(get_llvm_alloca(e.op2), to_llvm_type(icode::I64));
                 break;
             case icode::PTR:
-                operand_value_map[e.op1] = alloca_inst_map[e.op2.name];
+                operand_value_map[e.op1] = ptr_val_map[e.op2.name];
                 break;
             case icode::RET_VAL:
                 operand_value_map[e.op1] = get_ret_val_ptr(e.op2);
@@ -548,7 +569,12 @@ namespace llvmgen
 
     void llvm_generator::minus(const icode::entry& e)
     {
-        Value* result = llvm_builder->CreateNeg(get_llvm_value(e.op2));
+        Value* result;
+
+        if (icode::is_int(e.op2.dtype))
+            result = llvm_builder->CreateNeg(get_llvm_value(e.op2));
+        else
+            result = llvm_builder->CreateFNeg(get_llvm_value(e.op2));
 
         set_llvm_value(e.op1, result);
     }
@@ -757,6 +783,8 @@ namespace llvmgen
         /* All branch instructions GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO are backpatched,
             i.e the task is stored in a queue and instructions are created in a second pass */
 
+        if(prev_instr_branch) return;
+
         /* Save llvm insertions point */
         BasicBlock* block = llvm_builder->GetInsertBlock();
         BasicBlock::iterator insert_point = llvm_builder->GetInsertPoint()++;
@@ -840,7 +868,7 @@ namespace llvmgen
 
     void llvm_generator::call(const icode::entry& e)
     {
-        Value* result = llvm_builder->CreateCall(llvm_module->getFunction(e.op2.name), params);
+        Value* result = llvm_builder->CreateCall(get_llvm_function(e.op2.name, e.op3.name), params);
 
         set_llvm_value(e.op1, result);
 
@@ -952,8 +980,7 @@ namespace llvmgen
                     throw miklog::internal_bug_error();
             }
 
-            prev_instr_branch =
-              e.opcode == icode::GOTO || e.opcode == icode::IF_TRUE_GOTO || e.opcode == icode::IF_FALSE_GOTO;
+            prev_instr_branch = e.opcode == icode::GOTO || e.opcode == icode::RET;
         }
     }
 
@@ -1034,7 +1061,7 @@ namespace llvmgen
         reset_state();
 
         /* Create function */
-        Function* llvm_func = llvm_function_map[name];
+        Function* llvm_func = get_llvm_function(name, module.name);
 
         /* Set insertion point to function body */
         BasicBlock* BB = BasicBlock::Create(*llvm_context, "entry", llvm_func);
@@ -1045,7 +1072,7 @@ namespace llvmgen
 
         /* Set ret ptr */
         if (func_desc.func_info.dtype != icode::VOID)
-            current_ret_value = llvm_builder->CreateAlloca(vinfo_to_llvm_type(func_desc.func_info), nullptr);
+            current_ret_value = llvm_builder->CreateAlloca(vinfo_to_llvm_type(func_desc.func_info), nullptr, name+".retval");
 
         /* Convert mikuro function ir to llvm ir */
         gen_func_icode(func_desc, llvm_func);
@@ -1062,19 +1089,6 @@ namespace llvmgen
             global_symbol_alloca(symbol.second, symbol.first);
     }
 
-    void llvm_generator::declare_functions()
-    {
-        for (auto func : module.functions)
-        {
-            Function* llvm_func = Function::Create(fdesc_to_llvm_type(func.second),
-                                                   Function::ExternalLinkage,
-                                                   func.first,
-                                                   llvm_module.get());
-
-            llvm_function_map[func.first] = llvm_func;
-        }
-    }
-
     void llvm_generator::setup_printf()
     {
         /* Declare printf function */
@@ -1086,13 +1100,14 @@ namespace llvmgen
         /* Setup global format strings */
         int_format_str = llvm_builder->CreateGlobalString("%d", "int_format_str", 0U, llvm_module.get());
         uint_format_str = llvm_builder->CreateGlobalString("%s", "uint_format_str", 0U, llvm_module.get());
-        float_format_str = llvm_builder->CreateGlobalString("%.2f", "float_format_str", 0U, llvm_module.get());
+        float_format_str = llvm_builder->CreateGlobalString("%f", "float_format_str", 0U, llvm_module.get());
         newln_format_str = llvm_builder->CreateGlobalString("\n", "newln", 0U, llvm_module.get());
         space_format_str = llvm_builder->CreateGlobalString(" ", "space", 0U, llvm_module.get());
     }
 
-    llvm_generator::llvm_generator(icode::module_desc& module_desc)
+    llvm_generator::llvm_generator(icode::module_desc& module_desc, icode::module_desc_map& modules_map)
       : module(module_desc)
+      , ext_modules_map(modules_map)
     {
         /* Setup LLVM context, module and builder */
         llvm_context = std::make_unique<LLVMContext>();
@@ -1102,9 +1117,6 @@ namespace llvmgen
 
         /* Generate global variables */
         gen_globals();
-
-        /* Declare all the functions */
-        declare_functions();
 
         /* Declare that printf exists and has signature int (i8*, ...) */
         setup_printf();

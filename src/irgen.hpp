@@ -120,6 +120,8 @@ namespace irgen
       public:
         void initgen(const node::node& ast);
 
+        bool current_function_terminates();
+
         void program(const node::node& root);
 
         ir_generator(icode::target_desc& target_desc,

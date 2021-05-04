@@ -1,13 +1,13 @@
 # MODULE globalerr1_test
 # ERROR in Line 10 Col 5
 # 
-# var string:int[10]
+# var string:char[10]
 #     ^
 # Symbol already defined
 
 use string
 
-var string:int[10]
+var string:char[10]
 
 fn main()
 {

@@ -5,7 +5,7 @@
 #         ^
 # Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE
 
-fn foo(mut a:int[6])
+fn foo(mut a:char[6])
 {
     println(a)
 }

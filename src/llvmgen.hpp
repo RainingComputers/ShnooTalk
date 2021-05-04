@@ -46,7 +46,6 @@ namespace llvmgen
         std::map<std::string, llvm::Value*> alloca_inst_map;
         std::map<std::string, llvm::Value*> ptr_val_map;
         std::map<std::string, llvm::GlobalVariable*> llvm_global_map;
-        std::map<std::string, llvm::Function*> llvm_function_map;
         std::map<icode::operand, llvm::Value*> operand_value_map;
 
         std::map<icode::operand, llvm::BasicBlock*> label_block_map;
@@ -68,6 +67,7 @@ namespace llvmgen
         bool prev_instr_branch;
 
         icode::module_desc& module;
+        icode::module_desc_map& ext_modules_map;
 
         llvm::Type* to_llvm_type(const icode::data_type dtype);
         llvm::Type* to_llvm_ptr_type(const icode::data_type dtype);
@@ -77,6 +77,7 @@ namespace llvmgen
         llvm::Value* gen_ltrl(const icode::operand& op);
         llvm::Value* gen_addr(const icode::operand& op);
 
+        llvm::Function* get_llvm_function(const std::string& func_name, const std::string& mod_name);
         llvm::Value* get_llvm_alloca(const icode::operand& op);
         llvm::Value* get_llvm_value(const icode::operand& op);
         void set_llvm_value(const icode::operand& op, llvm::Value* value);
@@ -146,13 +147,11 @@ namespace llvmgen
 
         void gen_globals();
 
-        void declare_functions();
-
         void setup_printf();
 
       public:
         std::string get_llvm_str();
-        llvm_generator(icode::module_desc& module_desc);
+        llvm_generator(icode::module_desc& module_desc, icode::module_desc_map& modules_map);
     };
 
 }

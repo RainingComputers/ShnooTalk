@@ -4,3 +4,4 @@ tests/testinfo/*
 /*.uhll
 todo.txt
 .cccc/*
+tests/log.txt

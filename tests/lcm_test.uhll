@@ -11,6 +11,8 @@ fn lcm(a:int, b:int) -> int
     for(var x:int = max; x <= a * b; x += 1)
         if(x % a == 0 and x % b == 0)
             return x
+
+    return -1
 }
 
 fn main()
