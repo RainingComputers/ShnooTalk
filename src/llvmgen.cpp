@@ -201,6 +201,15 @@ namespace llvmgen
         return Function::Create(func_type, Function::ExternalLinkage, expanded_func_name, *llvm_module);
     }
 
+    Value* llvm_generator::get_ret_val_ptr(const icode::operand& op)
+    {
+        Value* ret_val = operand_value_map[op];
+        Value* ret_val_ptr = llvm_builder->CreateAlloca(ret_val->getType());
+        llvm_builder->CreateStore(ret_val, ret_val_ptr);
+
+        return ret_val_ptr;
+    }
+
     Value* llvm_generator::get_llvm_alloca(const icode::operand& op)
     {
         /* Returns llvm value allocated by symbol_alloca */
@@ -216,6 +225,10 @@ namespace llvmgen
                 return llvm_builder->CreateGlobalStringPtr(module.str_data[op.name]);
             case icode::RET_PTR:
                 return current_ret_value;
+            case icode::TEMP_PTR:
+                return llvm_builder->CreateIntToPtr(get_llvm_value(op), to_llvm_ptr_type(op.dtype));
+            case icode::RET_VAL:
+                return get_ret_val_ptr(op);
             default:
                 break;
         }
@@ -271,15 +284,6 @@ namespace llvmgen
                 miklog::internal_error(module.name);
                 throw miklog::internal_bug_error();
         }
-    }
-
-    Value* llvm_generator::get_ret_val_ptr(const icode::operand& op)
-    {
-        Value* ret_val = operand_value_map[op];
-        Value* ret_val_ptr = llvm_builder->CreateAlloca(ret_val->getType());
-        llvm_builder->CreateStore(ret_val, ret_val_ptr);
-
-        return ret_val_ptr;
     }
 
     void llvm_generator::create_ptr(const icode::entry& e)
@@ -477,7 +481,7 @@ namespace llvmgen
         /* Converts mikuro LSH to llvm ir */
 
         if (icode::is_int(dtype))
-            llvm_builder->CreateShl(LHS, RHS);
+            return llvm_builder->CreateShl(LHS, RHS);
 
         miklog::internal_error(module.name);
         throw miklog::internal_bug_error();
@@ -488,7 +492,7 @@ namespace llvmgen
         /* Converts mikuro BWA to llvm ir */
 
         if (icode::is_int(dtype))
-            llvm_builder->CreateAnd(LHS, RHS);
+            return llvm_builder->CreateAnd(LHS, RHS);
 
         miklog::internal_error(module.name);
         throw miklog::internal_bug_error();
@@ -499,7 +503,7 @@ namespace llvmgen
         /* Converts mikuro BWO to llvm ir */
 
         if (icode::is_int(dtype))
-            llvm_builder->CreateOr(LHS, RHS);
+            return llvm_builder->CreateOr(LHS, RHS);
 
         miklog::internal_error(module.name);
         throw miklog::internal_bug_error();
@@ -510,7 +514,7 @@ namespace llvmgen
         /* Converts mikuro BWX to llvm ir */
 
         if (icode::is_int(dtype))
-            llvm_builder->CreateXor(LHS, RHS);
+            return llvm_builder->CreateXor(LHS, RHS);
 
         miklog::internal_error(module.name);
         throw miklog::internal_bug_error();
@@ -1099,7 +1103,7 @@ namespace llvmgen
 
         /* Setup global format strings */
         int_format_str = llvm_builder->CreateGlobalString("%d", "int_format_str", 0U, llvm_module.get());
-        uint_format_str = llvm_builder->CreateGlobalString("%s", "uint_format_str", 0U, llvm_module.get());
+        uint_format_str = llvm_builder->CreateGlobalString("%u", "uint_format_str", 0U, llvm_module.get());
         float_format_str = llvm_builder->CreateGlobalString("%f", "float_format_str", 0U, llvm_module.get());
         newln_format_str = llvm_builder->CreateGlobalString("\n", "newln", 0U, llvm_module.get());
         space_format_str = llvm_builder->CreateGlobalString(" ", "space", 0U, llvm_module.get());

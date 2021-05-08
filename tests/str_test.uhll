@@ -1,7 +1,7 @@
 # 6
 # foobar
 # 6
-# 1.234
+# 1.234000
 # 23
 # lo Wo
 # Yes
@@ -14,7 +14,7 @@ from result use Result, FloatResult
 
 fn main()
 {
-    var foo:int[80] = "1.234"
+    var foo:char[80] = "1.234"
 
     var a:String a.copy(foo)
     var b:String b.copy("23")

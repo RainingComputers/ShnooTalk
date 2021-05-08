@@ -10,6 +10,7 @@ class TestResult(Enum):
     PASSED = 0
     FAILED = 1
     TIMEDOUT = 2
+    SKIPPED = 3
 
 
 def get_test_output(file_name):
@@ -37,12 +38,13 @@ def compare_outputs(test_output, actual_output):
 def run_subprocess(command):
     try:
         subp = subprocess.run(command,
-                              stdout=subprocess.PIPE, timeout=15)
+                              stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=15)
         console_output = subp.stdout.decode('utf-8')
+        console_err_output = subp.stderr.decode('utf-8')
     except subprocess.TimeoutExpired:
         return True, None, None
 
-    return False, console_output, subp.returncode
+    return False, console_output+console_err_output, subp.returncode
 
 
 def run_test(file_name, compiler_exec_path):
@@ -77,6 +79,34 @@ def run_test(file_name, compiler_exec_path):
 
     # If the program/executable did not timeout, return program output 
     return compare_outputs(test_output, exec_output)
+
+
+def run_test_llc(file_name, compiler_exec_path):
+    # Run the compiler
+    compile_command = [compiler_exec_path, file_name, '-llvm']
+    timedout, compiler_output, compiler_retcode = run_subprocess(
+        compile_command)
+
+    if(timedout):
+        return TestResult.TIMEDOUT, None
+
+    if(compiler_retcode != 0):
+        return TestResult.SKIPPED, None
+
+    # Run llc
+    llc_file = file_name + ".llc"
+
+    with open(llc_file, "w") as f:
+        f.write(compiler_output)
+    
+    timedout, llc_output, llc_retcode = run_subprocess(
+        ["llc", llc_file])
+
+    # Return test result
+    if(llc_retcode != 0):
+        return TestResult.FAILED, llc_output
+
+    return TestResult.PASSED, None
 
 
 def prepare_coverage_report(testinfo_dir):
@@ -138,5 +168,31 @@ def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
     prepare_coverage_report(testinfo_dir)
 
 
+def run_all_llc_tests(compiler_exec_path):
+    os.system('rm -f ./*.llc')
+
+    for file in os.listdir():
+        if not file.endswith("_test.uhll"):
+            continue
+
+        res, llc_output = run_test_llc(file, compiler_exec_path)
+
+        if(res == TestResult.PASSED):
+            print(" 👌", file, "passed")
+        elif(res == TestResult.FAILED):
+            print(" ❌", file, "failed\n")
+            print("[LLC output]")
+            print(llc_output)
+        elif(res == TestResult.TIMEDOUT):
+            print(" 🕒", file, "timedout")
+
+    os.system('rm -f *.o')
+    os.system('rm -f *.llc.s')
+
 if __name__ == "__main__":
+    print("--=[Running uHLL compiler tests]=--")
     run_all_tests("../bin/debug/uhll", "../obj/debug/", "../src/", "testinfo/")
+    
+
+    print("--=[Running LLVM LLC tests]=--")
+    run_all_llc_tests("../bin/debug/uhll")

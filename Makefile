@@ -65,6 +65,9 @@ clean:
 	rm -f -r obj/
 	rm -f -r tests/testinfo/
 	rm -f -r .cccc/
+	rm -f tests/*.llc
+	rm -f tests/*.llc.s
+	rm -f tests/*.o
 
 # For compiling .cpp files in src/ to .o object files in obj/
 obj/$(BUILD_TYPE)/%.o: src/%.cpp src/%.hpp

@@ -181,6 +181,11 @@ namespace ibuild
 
     void ir_builder::cmpop(icode::instruction instr, icode::operand op1, icode::operand op2)
     {
+        /* If op2 is a literal, change generic dtypes like icode::INT and icode::FLOAT
+            to correct specific dtype */
+        if (op2.optype == icode::LITERAL)
+            op2.dtype = op1.dtype;
+
         /* Construct icode for comparator operator instructions,
             EQ, NEQ, LT, LTE, GT, GTE  */
 

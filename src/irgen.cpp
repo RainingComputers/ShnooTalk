@@ -510,13 +510,9 @@ namespace irgen
         icode::operand curr_offset = builder.create_ptr(var.first);
 
         /* Loop through int and initialize string */
-        for (size_t i = 1; i < char_count; i++)
+        for (size_t i = 0; i < char_count; i++)
         {
             char character = root.tok.unescaped_str[i];
-
-            /* Process escape sequence */
-            if (character == '\\')
-                character = token::to_backspace_char(root.tok.unescaped_str[++i]);
 
             /* Write to current offset */
             builder.copy(curr_offset, icode::literal_opr(target.str_int, character, id()));
@@ -1148,7 +1144,7 @@ namespace irgen
                             character = token::to_backspace_char(c);
                         }
 
-                        icode::data_type dtype = icode::I8;
+                        icode::data_type dtype = icode::UI8;
                         return op_var_pair(icode::literal_opr(dtype, character, id()),
                                            icode::var_from_dtype(dtype, target));
                     }
@@ -1645,7 +1641,7 @@ namespace irgen
 
                     if (!t_fall)
                     {
-                        builder.goto_label(icode::GOTO, t_label);
+                        builder.goto_label(icode::IF_TRUE_GOTO, t_label);
                     }
 
                     if (!f_fall)

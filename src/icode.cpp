@@ -30,6 +30,7 @@ namespace icode
             case TEMP:
             case TEMP_PTR:
             case RET_PTR:
+            case RET_VAL:
                 return temp_id == other.temp_id;
             case VAR:
             case GBL_VAR:
@@ -70,7 +71,7 @@ namespace icode
         return (dtype == UI8 || dtype == UI16 || dtype == UI32 || dtype == UI64 || dtype == VM_UINT);
     }
 
-    bool is_int(data_type dtype) { return is_sint(dtype) || is_uint(dtype); }
+    bool is_int(data_type dtype) { return (is_sint(dtype) || is_uint(dtype)); }
 
     bool is_float(data_type dtype) { return (dtype == F32 || dtype == F64 || dtype == FLOAT || dtype == VM_FLOAT); }
 

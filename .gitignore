@@ -5,3 +5,8 @@ tests/testinfo/*
 todo.txt
 .cccc/*
 tests/log.txt
+*.llc
+*.llc.s
+*.o
+test
+test.o
