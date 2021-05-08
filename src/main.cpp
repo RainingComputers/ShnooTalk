@@ -49,7 +49,7 @@ std::string strip_file_ext(const std::string& file_name)
 
     std::string stripped_file_name;
     std::string ext = ".uhll";
-    
+
     if (file_name.size() > ext.size() && file_name.substr(file_name.size() - ext.size()) == ext)
         stripped_file_name = file_name.substr(0, file_name.size() - ext.size());
     else
@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        icode::target_desc target = llvmgen::target_desc();
+        icode::target_desc target = llvmgen::getTargetDescription();
 
         ir_gen(file_name, target, modules);
 
@@ -121,15 +121,13 @@ int main(int argc, char* argv[])
 
         if (option == "-llvm")
         {
-            llvmgen::llvm_generator llvm_gen(modules[file_name], modules);
-            miklog::println(llvm_gen.get_llvm_str());
+            llvmgen::LLVMTranslator llvm_gen(modules[file_name], modules);
+            miklog::println(llvm_gen.getLLVMModuleString());
             return 0;
         }
 
         for (auto pair : modules)
-            llvmgen::llvm_generator llvm_gen(pair.second, modules);
-        
-
+            llvmgen::LLVMTranslator llvm_gen(pair.second, modules);
     }
     catch (const miklog::compile_error& e)
     {
@@ -139,7 +137,6 @@ int main(int argc, char* argv[])
     {
         return EXIT_FAILURE;
     }
-
 
     return 0;
 }

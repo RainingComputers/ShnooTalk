@@ -32,126 +32,127 @@
 
 namespace llvmgen
 {
-    icode::target_desc target_desc();
+    typedef std::pair<llvm::BasicBlock*, llvm::BasicBlock::iterator> InsertionPoint;
+    typedef std::pair<size_t, icode::entry> EnumeratedEntry;
 
-    typedef std::pair<llvm::BasicBlock*, llvm::BasicBlock::iterator> llvm_bb_it_pair;
-    typedef std::pair<size_t, icode::entry> entry_idx_pair;
+    icode::target_desc getTargetDescription();
 
-    class llvm_generator
+    class LLVMTranslator
     {
-        std::unique_ptr<llvm::LLVMContext> llvm_context;
-        std::unique_ptr<llvm::Module> llvm_module;
-        std::unique_ptr<llvm::IRBuilder<>> llvm_builder;
+        std::unique_ptr<llvm::LLVMContext> context;
+        std::unique_ptr<llvm::Module> LLVMModule;
+        std::unique_ptr<llvm::IRBuilder<>> builder;
 
-        std::map<std::string, llvm::Value*> alloca_inst_map;
-        std::map<std::string, llvm::Value*> ptr_val_map;
-        std::map<std::string, llvm::GlobalVariable*> llvm_global_map;
-        std::map<icode::operand, llvm::Value*> operand_value_map;
+        std::map<std::string, llvm::Value*> symbolNamePointersMap;
+        std::map<std::string, llvm::Value*> symbolNamePointerIntMap;
+        std::map<std::string, llvm::GlobalVariable*> symbolNameGlobalsMap;
+        std::map<icode::operand, llvm::Value*> operandValueMap;
 
-        std::map<icode::operand, llvm::BasicBlock*> label_block_map;
-        std::map<size_t, llvm::BasicBlock*> fall_block_map;
-        std::queue<llvm::Value*> cmp_flag_q;
-        std::map<size_t, llvm_bb_it_pair> backpatch_point_map;
-        std::vector<entry_idx_pair> backpatch_entry_q;
+        std::map<icode::operand, llvm::BasicBlock*> labelToBasicBlockMap;
+        std::map<size_t, llvm::BasicBlock*> fallBlocks;
+        std::queue<llvm::Value*> branchFlags;
+        std::map<size_t, InsertionPoint> insertionPoints;
+        std::vector<EnumeratedEntry> backpatchQueue;
 
         std::vector<llvm::Value*> params;
 
-        llvm::Value* uint_format_str;
-        llvm::Value* int_format_str;
-        llvm::Value* float_format_str;
-        llvm::Value* newln_format_str;
-        llvm::Value* space_format_str;
+        llvm::Value* uintFormatString;
+        llvm::Value* intFormatString;
+        llvm::Value* floatFormatString;
+        llvm::Value* newLineString;
+        llvm::Value* spaceString;
 
-        llvm::Value* current_ret_value;
+        llvm::Value* currentFunctionReturnValue;
 
-        bool prev_instr_branch;
+        bool prevInstructionGotoOrRet;
 
-        icode::module_desc& module;
-        icode::module_desc_map& ext_modules_map;
+        icode::module_desc& moduleDescription;
+        icode::module_desc_map& externalModulesRef;
 
-        llvm::Type* to_llvm_type(const icode::data_type dtype);
-        llvm::Type* to_llvm_ptr_type(const icode::data_type dtype);
-        llvm::Type* vinfo_to_llvm_type(const icode::var_info& var_info);
-        llvm::FunctionType* fdesc_to_llvm_type(icode::func_desc& func_desc);
+        llvm::Type* dataTypeToLLVMType(const icode::data_type dtype);
+        llvm::Type* dataTypeToLLVMPointerType(const icode::data_type dtype);
+        llvm::Type* varDescriptionToLLVMType(const icode::var_info& varDesc);
+        llvm::FunctionType* funcDescriptionToLLVMType(icode::func_desc& funcDescription);
 
-        llvm::Value* gen_ltrl(const icode::operand& op);
-        llvm::Value* gen_addr(const icode::operand& op);
+        llvm::Value* getLLVMConstant(const icode::operand& op);
+        llvm::Function* getLLVMFunction(const std::string& functionName, const std::string& moduleName);
+        llvm::Value* getCurrentRetValuePointer(const icode::operand& op);
+        llvm::Value* getLLVMPointer(const icode::operand& op);
+        llvm::Value* getLLVMValue(const icode::operand& op);
+        void setLLVMValue(const icode::operand& op, llvm::Value* value);
 
-        llvm::Function* get_llvm_function(const std::string& func_name, const std::string& mod_name);
-        llvm::Value* get_llvm_alloca(const icode::operand& op);
-        llvm::Value* get_llvm_value(const icode::operand& op);
-        void set_llvm_value(const icode::operand& op, llvm::Value* value);
-        
-        void local_symbol_alloca(const icode::var_info& var_info, const std::string& name);
-        void global_symbol_alloca(icode::var_info& var_info, const std::string& name);
-        void param_symbol_alloca(const icode::var_info& var_info, const std::string& name, llvm::Value* arg);
+        void createLocalSymbol(const icode::var_info& varDescription, const std::string& name);
+        void createGlobalSymbol(icode::var_info& varDescription, const std::string& name);
+        void createFunctionParameter(const icode::var_info& varDescription, const std::string& name, llvm::Value* arg);
 
-        llvm::Value* get_ret_val_ptr(const icode::operand& op);
-        void create_ptr(const icode::entry& e);
-        void eq(const icode::entry& e);
+        void createPointer(const icode::entry& e);
+        void copy(const icode::entry& e);
         void read(const icode::entry& e);
         void write(const icode::entry& e);
-        llvm::Value* ensure_i64(llvm::Value* value);
-        void addrop(const icode::entry& e);
+        llvm::Value* ensureI64(llvm::Value* value);
+        void addressBinaryOperator(const icode::entry& e);
 
         llvm::Value* add(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* sub(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* mul(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* div(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* mod(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* rsh(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* lsh(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* bwa(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* bwo(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* bwx(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        void binop(const icode::entry& e);
+        llvm::Value* subtract(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* multiply(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* divide(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* remainder(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* rightShift(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* leftShift(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* bitwiseAnd(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* bitwiseOr(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* bitwiseXor(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        void binaryOperator(const icode::entry& e);
 
-        void bwnot(const icode::entry& e);
-        void minus(const icode::entry& e);
+        void bitwiseNot(const icode::entry& e);
+        void unaryMinus(const icode::entry& e);
 
-        llvm::Value* cast_to_sint(const icode::entry& e, llvm::Type* destination_type);
-        llvm::Value* cast_to_uint(const icode::entry& e, llvm::Type* destination_type);
-        llvm::Value* cast_to_float(const icode::entry& e, llvm::Type* destination_type);
+        llvm::Value* castToSignedInt(const icode::entry& e, llvm::Type* destType);
+        llvm::Value* castToUnsignedInt(const icode::entry& e, llvm::Type* destType);
+        llvm::Value* castToFloat(const icode::entry& e, llvm::Type* destType);
         void cast(const icode::entry& e);
 
-        llvm::Value* eq(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* neq(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* lt(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* lte(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* gt(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* gte(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        void cmpop(const icode::entry& e, size_t entry_idx);
+        llvm::Value* eqaul(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* notEqual(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* lessThan(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* lessThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* greaterThan(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        llvm::Value* greaterThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
+        void compareOperator(const icode::entry& e);
 
-        void create_backpatch(const icode::entry& e, llvm::Function* F, size_t entry_idx);
-        void create_label(const icode::entry& e, llvm::Function* F);
+        void createLabel(const icode::entry& e, llvm::Function* function);
+        void createGotoBackpatch(const icode::entry& e, llvm::Function* F, size_t entryIndex);
+        void createBranch(const icode::entry& e,
+                          llvm::Value* flag,
+                          llvm::BasicBlock* gotoBlock,
+                          llvm::BasicBlock* fallBlock);
+        void processGotoBackpatches();
 
-        llvm::Value* get_format_string(icode::data_type dtype);
-        void call_printf(llvm::Value* format_str, llvm::Value* value = nullptr);
+        llvm::Value* getFromatString(icode::data_type dtype);
+        void callPrintf(llvm::Value* format_str, llvm::Value* value = nullptr);
         void print(const icode::entry& e);
-        void print_str(const icode::entry& e);
+        void printString(const icode::entry& e);
 
         void call(const icode::entry& e);
         void ret(const icode::entry& e, icode::data_type dtype);
         void pass(const icode::entry& e);
-        void pass_addr(const icode::entry& e);
+        void passPointer(const icode::entry& e);
 
-        void gen_func_icode(const icode::func_desc& func_desc, llvm::Function* F);
+        void translateFunctionIcode(const icode::func_desc& funcDescription, llvm::Function* F);
 
-        void process_goto_backpatch();
+        void resetState();
 
-        void reset_state();
+        void setupFunctionStack(icode::func_desc& funcDescription, llvm::Function* F);
 
-        void setup_func_stack(icode::func_desc& func_desc, llvm::Function* F);
+        void generateFunction(icode::func_desc& funcDescription, const std::string& name);
 
-        void gen_function(icode::func_desc& func_desc, const std::string& name);
+        void generateGlobals();
 
-        void gen_globals();
-
-        void setup_printf();
+        void setupPrintf();
 
       public:
-        std::string get_llvm_str();
-        llvm_generator(icode::module_desc& module_desc, icode::module_desc_map& modules_map);
+        std::string getLLVMModuleString();
+        LLVMTranslator(icode::module_desc& modDesc, icode::module_desc_map& modulesMap);
     };
 
 }

@@ -2007,7 +2007,8 @@ namespace irgen
 
     bool ir_generator::current_function_terminates()
     {
-        if((*current_func_desc).icode_table.size() < 1) return false;
+        if ((*current_func_desc).icode_table.size() < 1)
+            return false;
 
         icode::instruction last_opcode = (*current_func_desc).icode_table.back().opcode;
 
@@ -2076,17 +2077,16 @@ namespace irgen
                       icode::label_opr("", 0));
 
                 /* Last instruction must be return */
-                if(!current_function_terminates())
+                if (!current_function_terminates())
                 {
-                    if(current_func_desc->func_info.dtype != icode::VOID)
+                    if (current_func_desc->func_info.dtype != icode::VOID)
                     {
                         miklog::error_tok(module.name, "Missing RETURN for this FUNCTION", file, child.tok);
-                        throw miklog::compile_error();   
+                        throw miklog::compile_error();
                     }
 
                     builder.opir(icode::RET);
                 }
-                    
             }
         }
     }
