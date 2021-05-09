@@ -1061,7 +1061,7 @@ namespace llvmgen
         params.clear();
     }
 
-    void LLVMTranslator::setupFunctionStack(icode::FunctionDescription& functionDesc, Function* F)
+    void LLVMTranslator::setupFunctionStack(const icode::FunctionDescription& functionDesc, Function* F)
     {
         /* Allocate space for local variables */
         for (auto symbol : functionDesc.symbols)
@@ -1072,14 +1072,14 @@ namespace llvmgen
         unsigned int argumentCounter = 0;
         for (auto& arg : F->args())
         {
-            std::string& argumentName = functionDesc.parameters[argumentCounter];
+            const std::string& argumentName = functionDesc.parameters[argumentCounter];
             arg.setName(argumentName);
-            createFunctionParameter(functionDesc.symbols[argumentName], argumentName, &arg);
+            createFunctionParameter(functionDesc.symbols.at(argumentName), argumentName, &arg);
             argumentCounter++;
         }
     }
 
-    void LLVMTranslator::generateFunction(icode::FunctionDescription& functionDesc, const std::string& name)
+    void LLVMTranslator::generateFunction(const icode::FunctionDescription& functionDesc, const std::string& name)
     {
         resetState();
 

@@ -94,16 +94,16 @@ namespace llvmgen
         llvm::Value* ensureI64(llvm::Value* value);
         void addressBinaryOperator(const icode::Entry& e);
 
-        llvm::Value* add(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* subtract(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* multiply(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* divide(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* remainder(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* rightShift(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* leftShift(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* bitwiseAnd(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* bitwiseOr(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* bitwiseXor(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* add(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* subtract(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* multiply(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* divide(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* remainder(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* rightShift(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* leftShift(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* bitwiseAnd(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* bitwiseOr(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* bitwiseXor(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
         void binaryOperator(const icode::Entry& e);
 
         void bitwiseNot(const icode::Entry& e);
@@ -116,12 +116,12 @@ namespace llvmgen
         llvm::Value* castToFloat(const icode::Entry& e, llvm::Type* destType);
         void cast(const icode::Entry& e);
 
-        llvm::Value* equal(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* notEqual(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* lessThan(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* lessThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* greaterThan(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
-        llvm::Value* greaterThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* equal(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* notEqual(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* lessThan(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* lessThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* greaterThan(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
+        llvm::Value* greaterThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, icode::DataType dtype);
         void compareOperator(const icode::Entry& e);
 
         void createLabel(const icode::Entry& e, llvm::Function* function);
@@ -146,9 +146,9 @@ namespace llvmgen
 
         void resetState();
 
-        void setupFunctionStack(icode::FunctionDescription& functionDesc, llvm::Function* function);
+        void setupFunctionStack(const icode::FunctionDescription& functionDesc, llvm::Function* function);
 
-        void generateFunction(icode::FunctionDescription& functionDesc, const std::string& name);
+        void generateFunction(const icode::FunctionDescription& functionDesc, const std::string& name);
 
         void setupPrintf();
 
