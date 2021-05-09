@@ -18,7 +18,7 @@ namespace icode
         Depending on the target, one word may or may not be a byte.
     */
 
-    enum data_type
+    enum DataType
     {
         I8,
         UI8,
@@ -39,52 +39,48 @@ namespace icode
         VOID
     };
 
-    const int dtype_size[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 1, 1, 1, 0, 0, 0, 0 };
-
-    extern std::string data_type_strs[];
-
     /*
         The following structs are used to describe a
         variables, structs, function parameters, defs
     */
 
-    enum var_prop
+    enum VariableProperty
     {
         IS_MUT,
         IS_PTR,
         IS_PARAM,
     };
 
-    struct var_info
+    struct VariableDescription
     {
-        icode::data_type dtype;
-        std::string dtype_name;
-        std::string module_name;
-        unsigned int dtype_size;
+        icode::DataType dtype;
+        std::string dtypeName;
+        std::string moduleName;
+        unsigned int dtypeSize;
         unsigned int offset;
         unsigned int size;
         std::vector<unsigned int> dimensions;
-        unsigned int scope_id;
+        unsigned int scopeId;
 
         unsigned int properties;
 
-        var_info();
+        VariableDescription();
 
-        void set_prop(var_prop prop);
-        void clear_prop(var_prop prop);
-        bool check(var_prop prop) const;
+        void setProperty(VariableProperty prop);
+        void clearProperty(VariableProperty prop);
+        bool checkProperty(VariableProperty prop) const;
     };
 
-    struct struct_desc
+    struct StructDescription
     {
-        std::map<std::string, var_info> fields;
+        std::map<std::string, VariableDescription> structFields;
         unsigned int size;
-        std::string module_name;
+        std::string moduleName;
 
-        bool field_exists(const std::string&);
+        bool fieldExists(const std::string&);
     };
 
-    struct def
+    struct Define
     {
         union
         {
@@ -92,14 +88,14 @@ namespace icode
             float floating;
         } val;
 
-        data_type dtype;
+        DataType dtype;
     };
 
     /*
         Icode operand types and struct
     */
 
-    enum operand_type
+    enum OperandType
     {
         TEMP,
         TEMP_PTR,
@@ -109,16 +105,16 @@ namespace icode
         GBL_VAR,
         PTR,
         RET_PTR,
-        RET_VAL,
+        CALLEE_RET_VAL,
         LITERAL,
         LABEL,
         MODULE,
         NONE,
     };
 
-    struct operand
+    struct Operand
     {
-        unsigned int temp_id;
+        unsigned int operandId;
 
         union
         {
@@ -129,21 +125,21 @@ namespace icode
         } val;
 
         std::string name;
-        data_type dtype;
-        std::string dtype_name;
-        operand_type optype;
+        DataType dtype;
+        std::string dtypeName;
+        OperandType operandType;
 
-        bool operator<(const operand& other) const;
-        bool operator==(const operand& other) const;
-        bool operator!=(const operand& other) const;
-        void update_dtype(const var_info& var);
+        bool operator<(const Operand& other) const;
+        bool operator==(const Operand& other) const;
+        void update_dtype(const VariableDescription& var);
+        bool isPointer();
     };
 
     /*
         List of icode instructions and icode entry
     */
 
-    enum instruction
+    enum Instruction
     {
         PASS,
         PASS_ADDR,
@@ -187,14 +183,14 @@ namespace icode
         EXIT
     };
 
-    struct entry
+    struct Entry
     {
-        instruction opcode;
-        operand op1;
-        operand op2;
-        operand op3;
+        Instruction opcode;
+        Operand op1;
+        Operand op2;
+        Operand op3;
 
-        entry();
+        Entry();
     };
 
     /*
@@ -203,16 +199,16 @@ namespace icode
         list of local symbols, and icode for the function
     */
 
-    struct func_desc
+    struct FunctionDescription
     {
-        var_info func_info;
-        std::vector<std::string> params;
-        std::map<std::string, var_info> symbols;
-        std::vector<icode::entry> icode_table;
-        std::string module_name;
+        VariableDescription functionReturnDescription;
+        std::vector<std::string> parameters;
+        std::map<std::string, VariableDescription> symbols;
+        std::vector<icode::Entry> icodeTable;
+        std::string moduleName;
 
-        bool symbol_exists(const std::string&);
-        bool get_symbol(const std::string&, icode::var_info&);
+        bool symbolExists(const std::string&);
+        bool getSymbol(const std::string&, icode::VariableDescription&);
     };
 
     /*
@@ -221,82 +217,75 @@ namespace icode
         or "i8" strings to data_type enum.
     */
 
-    struct target_desc
+    struct TargetDescription
     {
-        std::map<std::string, data_type> dtype_strings_map;
-        std::map<std::string, def> defines;
-        data_type default_int;
-        data_type str_int;
+        std::map<std::string, DataType> dataTypeNames;
+        std::map<std::string, Define> defines;
+        DataType characterInt;
 
-        bool get_def(const std::string&, def&);
+        bool get_def(const std::string&, Define&);
     };
 
     /*
         This struct describes a uhll module, or one file
     */
 
-    struct module_desc
+    struct ModuleDescription
     {
         std::string name;
         std::vector<std::string> uses;
-        std::map<std::string, struct_desc> structures;
-        std::map<std::string, func_desc> functions;
+        std::map<std::string, StructDescription> structures;
+        std::map<std::string, FunctionDescription> functions;
         std::map<std::string, int> enumerations;
-        std::map<std::string, def> defines;
-        std::map<std::string, var_info> globals;
+        std::map<std::string, Define> defines;
+        std::map<std::string, VariableDescription> globals;
         std::map<std::string, std::string> str_data;
 
         bool use_exists(const std::string&);
-        bool get_struct(const std::string&, struct_desc&);
-        bool get_func(const std::string&, func_desc&);
+        bool get_struct(const std::string&, StructDescription&);
+        bool get_func(const std::string&, FunctionDescription&);
         bool get_enum(const std::string&, int&);
-        bool get_def(const std::string&, def&);
-        bool get_global(const std::string&, var_info&);
-        bool symbol_exists(const std::string&, target_desc& target);
+        bool get_def(const std::string&, Define&);
+        bool get_global(const std::string&, VariableDescription&);
+        bool symbol_exists(const std::string&, TargetDescription& target);
     };
 
-    typedef std::map<std::string, module_desc> module_desc_map;
+    typedef std::map<std::string, ModuleDescription> StringModulesMap;
 
     /*
         Helper functions for type checking and other data type operations.
     */
 
-    bool is_sint(data_type);
-    bool is_uint(data_type);
-    bool is_int(data_type);
-    bool is_float(data_type);
-    bool type_eq(var_info var1, var_info var2);
-    var_info var_from_dtype(data_type dtype, target_desc& target);
-    data_type from_dtype_str(const std::string& dtype_name, target_desc& target);
-
-    /*
-        Helper functions for optimizer
-    */
-    bool is_ltrl(operand_type optype);
-    bool is_ptr(operand_type optype);
+    bool isSignedInteger(DataType);
+    bool isUnsignedInteger(DataType);
+    bool isInteger(DataType);
+    bool isFloat(DataType);
+    bool isSameType(VariableDescription var1, VariableDescription var2);
+    VariableDescription variableDescriptionFromDataType(DataType dtype, TargetDescription& target);
+    DataType dataTypeFromString(const std::string& dtype_name, TargetDescription& target);
+    std::string dataTypeToString(const DataType dtype);
+    int getDataTypeSize(const DataType dtype);
 
     /*
         Helper functions for generating icode operands
     */
 
-    operand temp_opr(data_type dtype, const std::string& dtype_name, unsigned int id);
-    operand temp_ptr_opr(data_type dtype, const std::string& dtype_name, unsigned int id);
-    operand str_dat_opr(const std::string& name, unsigned int size, unsigned int id);
-    operand var_opr(data_type dtype,
-                    const std::string& dtype_name,
-                    const std::string& symbol,
-                    unsigned int id,
-                    bool global = false,
-                    bool ptr = false);
-    operand ret_ptr_opr(data_type dtype, const std::string& dtype_name, unsigned int id);
-    operand ret_val_opr(data_type dtype, const std::string& dtype_name, unsigned int id);
-    operand literal_opr(data_type dtype, float literal, unsigned int id);
-    operand literal_opr(data_type dtype, int literal, unsigned int id);
-    operand addr_opr(unsigned int address, unsigned int id);
-    operand gbl_addr_opr(unsigned int address, unsigned int id);
-    operand fp_addr_opr(unsigned int address, unsigned int id);
-    operand label_opr(const std::string& label, unsigned int id);
-    operand module_opr(const std::string& module, unsigned int id);
+    Operand createTempOperand(DataType dtype, const std::string& dtype_name, unsigned int id);
+    Operand createPointerOperand(DataType dtype, const std::string& dtype_name, unsigned int id);
+    Operand createStringDataOperand(const std::string& name, unsigned int size, unsigned int id);
+    Operand createVarOperand(DataType dtype,
+                             const std::string& dtype_name,
+                             const std::string& symbol,
+                             unsigned int id,
+                             bool global = false,
+                             bool ptr = false);
+    Operand createRetPointerOperand(DataType dtype, const std::string& dtype_name, unsigned int id);
+    Operand createCalleeRetValOperand(DataType dtype, const std::string& dtype_name, unsigned int id);
+    Operand createLiteralOperand(DataType dtype, float literal, unsigned int id);
+    Operand createLiteralOperand(DataType dtype, int literal, unsigned int id);
+    Operand createLiteralAddressOperand(unsigned int address, unsigned int id);
+    Operand createLabelOperand(const std::string& label, unsigned int id);
+    Operand createModuleOperand(const std::string& module, unsigned int id);
 }
 
 #endif

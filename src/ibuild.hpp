@@ -9,54 +9,54 @@ namespace ibuild
     {
         unsigned int id_counter;
 
-        icode::func_desc* current_func_desc;
-        icode::module_desc& module;
+        icode::FunctionDescription* current_func_desc;
+        icode::ModuleDescription& module;
 
       public:
         unsigned int id();
 
-        void set_func_desc(icode::func_desc* func_desc);
+        void set_func_desc(icode::FunctionDescription* func_desc);
 
-        void push_ir(icode::entry entry);
+        void push_ir(icode::Entry entry);
 
-        icode::operand create_ptr(const icode::operand& op);
+        icode::Operand create_ptr(const icode::Operand& op);
 
-        void copy(icode::operand op1, icode::operand op2);
+        void copy(icode::Operand op1, icode::Operand op2);
 
-        icode::operand ensure_not_ptr(icode::operand op);
+        icode::Operand ensure_not_ptr(icode::Operand op);
 
-        icode::operand push_ir_ensure_no_write_ptr(icode::entry entry);
+        icode::Operand push_ir_ensure_no_write_ptr(icode::Entry entry);
 
-        icode::operand binop(icode::instruction instr, icode::operand op1, icode::operand op2, icode::operand op3);
+        icode::Operand binop(icode::Instruction instr, icode::Operand op1, icode::Operand op2, icode::Operand op3);
 
-        icode::operand uniop(icode::instruction instr, icode::operand op1, icode::operand op2);
+        icode::Operand uniop(icode::Instruction instr, icode::Operand op1, icode::Operand op2);
 
-        icode::operand cast(icode::data_type cast_dtype, icode::operand op);
+        icode::Operand cast(icode::DataType cast_dtype, icode::Operand op);
 
-        void cmpop(icode::instruction instr, icode::operand op1, icode::operand op2);
+        void cmpop(icode::Instruction instr, icode::Operand op1, icode::Operand op2);
 
-        icode::operand addr_add(icode::operand op2, icode::operand op3);
+        icode::Operand addr_add(icode::Operand op2, icode::Operand op3);
 
-        icode::operand addr_mul(icode::operand op2, icode::operand op3);
+        icode::Operand addr_mul(icode::Operand op2, icode::Operand op3);
 
-        void label(icode::operand op);
+        void label(icode::Operand op);
 
-        void goto_label(icode::instruction instr, icode::operand op);
+        void goto_label(icode::Instruction instr, icode::Operand op);
 
-        void printop(icode::instruction printop, icode::operand op);
+        void printop(icode::Instruction printop, icode::Operand op);
 
-        void inputop(icode::instruction instr, icode::operand op, unsigned int size = 0);
+        void inputop(icode::Instruction instr, icode::Operand op, unsigned int size = 0);
 
-        void pass(icode::instruction pass_instr,
-                  icode::operand op,
+        void pass(icode::Instruction pass_instr,
+                  icode::Operand op,
                   const std::string& func_name,
-                  const icode::func_desc& func_desc);
+                  const icode::FunctionDescription& func_desc);
 
-        icode::operand call(const std::string& func_name, const icode::func_desc& func_desc);
+        icode::Operand call(const std::string& func_name, const icode::FunctionDescription& func_desc);
 
-        void opir(icode::instruction instr);
+        void opir(icode::Instruction instr);
 
-        ir_builder(icode::module_desc& module_desc);
+        ir_builder(icode::ModuleDescription& module_desc);
     };
 }
 

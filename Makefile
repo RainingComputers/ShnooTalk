@@ -1,4 +1,4 @@
-.PHONY : help clean all build dirs install
+.PHONY : help clean all build dirs install uninstall format quality test
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
@@ -9,11 +9,19 @@ help :
 	@echo "build DEBUG=1"
 	@echo "      Build executable for debugging."
 	@echo "build GPROF=1"
-	@echo "      Build executable for gprof."
+	@echo "      Build executable for gprof (code profiling)."
 	@echo "build GCOV=1"
-	@echo "      Build executable for gcov."
+	@echo "      Build executable for gcov (code coverage)."
 	@echo "install"
-	@echo "      Installs the executable to PATH. Execute 'make build' first."
+	@echo "      Installs the executable to /usr/local/bin directory. Execute 'make build' first."
+	@echo "uninstall"
+	@echo "      Uninstalls the executable from /usr/local/bin directory."
+	@echo "format"
+	@echo "      Run clang-format."
+	@echo "quality"
+	@echo "      Prepare code quality report and dump it to .cccc/ folder"
+	@echo "test"
+	@echo "      Run tests, execute make build GCOV=1 first"
 
 # Name of the executable
 EXEC_NAME = uhll
@@ -63,11 +71,12 @@ OBJECTS = $(SOURCES:src/%.cpp=obj/$(BUILD_TYPE)/%.o)
 clean:
 	rm -f -r bin/
 	rm -f -r obj/
-	rm -f -r tests/testinfo/
+	rm -f -r testinfo/
 	rm -f -r .cccc/
 	rm -f tests/*.llc
 	rm -f tests/*.llc.s
 	rm -f tests/*.o
+	rm -f tests/test
 
 # For compiling .cpp files in src/ to .o object files in obj/
 obj/$(BUILD_TYPE)/%.o: src/%.cpp src/%.hpp
@@ -103,3 +112,6 @@ install:
 
 uninstall:
 	rm /usr/local/bin/$(EXEC_NAME)
+
+test:
+	python3 test.py

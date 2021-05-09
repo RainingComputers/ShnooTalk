@@ -4,7 +4,7 @@
 
 namespace ibuild
 {
-    ir_builder::ir_builder(icode::module_desc& module_desc)
+    ir_builder::ir_builder(icode::ModuleDescription& module_desc)
       : module(module_desc)
     {
         id_counter = 0;
@@ -12,41 +12,41 @@ namespace ibuild
 
     unsigned int ir_builder::id() { return id_counter++; }
 
-    void ir_builder::set_func_desc(icode::func_desc* func_desc) { current_func_desc = func_desc; }
+    void ir_builder::set_func_desc(icode::FunctionDescription* func_desc) { current_func_desc = func_desc; }
 
-    void ir_builder::push_ir(icode::entry entry)
+    void ir_builder::push_ir(icode::Entry entry)
     {
         /* Push an ir entry to the current function's icode table */
 
-        (*current_func_desc).icode_table.push_back(entry);
+        (*current_func_desc).icodeTable.push_back(entry);
     }
 
-    icode::operand ir_builder::create_ptr(const icode::operand& op)
+    icode::Operand ir_builder::create_ptr(const icode::Operand& op)
     {
         /* Converts op to TEMP_PTR using the CREATE_PTR instruction */
 
-        icode::data_type ptr_dtype;
+        icode::DataType ptr_dtype;
         std::string ptr_dtype_name;
 
         /* If the op is a struct, the ptr dtype will be the dtype of the first field of the struct
             else it would be the same as op */
         if (op.dtype == icode::STRUCT)
         {
-            icode::var_info first_field_info = module.structures[op.dtype_name].fields.begin()->second;
+            icode::VariableDescription first_field_info = module.structures[op.dtypeName].structFields.begin()->second;
             ptr_dtype = first_field_info.dtype;
-            ptr_dtype_name = first_field_info.dtype_name;
+            ptr_dtype_name = first_field_info.dtypeName;
         }
         else
         {
             ptr_dtype = op.dtype;
-            ptr_dtype_name = op.dtype_name;
+            ptr_dtype_name = op.dtypeName;
         }
 
         /* Converted TEMP_PTR */
-        icode::operand ptr_op = icode::temp_ptr_opr(ptr_dtype, ptr_dtype_name, id());
+        icode::Operand ptr_op = icode::createPointerOperand(ptr_dtype, ptr_dtype_name, id());
 
         /* Construct CREATE_PTR incstruction */
-        icode::entry create_ptr_entry;
+        icode::Entry create_ptr_entry;
         create_ptr_entry.op1 = ptr_op;
         create_ptr_entry.op2 = op;
         create_ptr_entry.opcode = icode::CREATE_PTR;
@@ -55,48 +55,48 @@ namespace ibuild
         return ptr_op;
     }
 
-    void ir_builder::copy(icode::operand op1, icode::operand op2)
+    void ir_builder::copy(icode::Operand op1, icode::Operand op2)
     {
         /* If op2 is a literal, change generic dtypes like icode::INT and icode::FLOAT
             to correct specific dtype */
-        if (op2.optype == icode::LITERAL)
+        if (op2.operandType == icode::LITERAL)
             op2.dtype = op1.dtype;
 
         /* Copy one operand value to another, use READ and WRITE instruction
             if pointers are involved */
 
-        if (icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
+        if (op1.isPointer() && op2.isPointer())
         {
-            icode::operand temp = icode::temp_opr(op2.dtype, op2.dtype_name, id());
+            icode::Operand temp = icode::createTempOperand(op2.dtype, op2.dtypeName, id());
             copy(temp, op2);
             copy(op1, temp);
         }
         else
         {
-            icode::entry copy_entry;
+            icode::Entry copy_entry;
             copy_entry.op1 = op1;
             copy_entry.op2 = op2;
 
-            if (icode::is_ptr(op1.optype) && !icode::is_ptr(op2.optype))
+            if (op1.isPointer() && !op2.isPointer())
                 copy_entry.opcode = icode::WRITE;
-            else if (!icode::is_ptr(op1.optype) && icode::is_ptr(op2.optype))
+            else if (!op1.isPointer() && op2.isPointer())
                 copy_entry.opcode = icode::READ;
-            else if (!icode::is_ptr(op1.optype) && !icode::is_ptr(op2.optype))
+            else if (!op1.isPointer() && !op2.isPointer())
                 copy_entry.opcode = icode::EQUAL;
 
             push_ir(copy_entry);
         }
     }
 
-    icode::operand ir_builder::ensure_not_ptr(icode::operand op)
+    icode::Operand ir_builder::ensure_not_ptr(icode::Operand op)
     {
         /* Make sure the operand is not a pointer, if it is a pointer,
             converts it to a temp using the READ instruction */
 
-        if (icode::is_ptr(op.optype))
+        if (op.isPointer())
         {
-            icode::entry read_entry;
-            icode::operand temp = icode::temp_opr(op.dtype, op.dtype_name, id());
+            icode::Entry read_entry;
+            icode::Operand temp = icode::createTempOperand(op.dtype, op.dtypeName, id());
             copy(temp, op);
             return temp;
         }
@@ -104,12 +104,12 @@ namespace ibuild
         return op;
     }
 
-    icode::operand ir_builder::push_ir_ensure_no_write_ptr(icode::entry entry)
+    icode::Operand ir_builder::push_ir_ensure_no_write_ptr(icode::Entry entry)
     {
         /* Push an ir entry to the current function's icode table,
             but ensures entry.op1 is not a pointer */
 
-        if (!icode::is_ptr(entry.op1.optype))
+        if (!entry.op1.isPointer())
         {
             push_ir(entry);
             return entry.op1;
@@ -119,16 +119,16 @@ namespace ibuild
             write that temp to the pointer */
 
         /* Create corresponding TEMP to TEMP_PTR  */
-        icode::operand ptr_op = entry.op1;
-        icode::operand temp = icode::temp_opr(ptr_op.dtype, ptr_op.dtype_name, id());
+        icode::Operand ptr_op = entry.op1;
+        icode::Operand temp = icode::createTempOperand(ptr_op.dtype, ptr_op.dtypeName, id());
 
         /* Replace TEMP_PTR with TEMP */
-        icode::entry mod_entry = entry;
+        icode::Entry mod_entry = entry;
         mod_entry.op1 = temp;
         push_ir(mod_entry);
 
         /* Create WRITE instruction to write the TEMP to TEMP_PTR */
-        icode::entry write_entry;
+        icode::Entry write_entry;
         write_entry.op1 = ptr_op;
         write_entry.op2 = temp;
         write_entry.opcode = icode::WRITE;
@@ -137,15 +137,15 @@ namespace ibuild
         return temp;
     }
 
-    icode::operand ir_builder::binop(icode::instruction instr,
-                                     icode::operand op1,
-                                     icode::operand op2,
-                                     icode::operand op3)
+    icode::Operand ir_builder::binop(icode::Instruction instr,
+                                     icode::Operand op1,
+                                     icode::Operand op2,
+                                     icode::Operand op3)
     {
         /* Construct icode instruction for binary operator instructions,
             ADD, SUB, MUL, DIV, MOD, RSH, LSH, BWA, BWO, BWX */
 
-        icode::entry entry;
+        icode::Entry entry;
         entry.opcode = instr;
         entry.op1 = op1;
         entry.op2 = ensure_not_ptr(op2);
@@ -154,12 +154,12 @@ namespace ibuild
         return push_ir_ensure_no_write_ptr(entry);
     }
 
-    icode::operand ir_builder::uniop(icode::instruction instr, icode::operand op1, icode::operand op2)
+    icode::Operand ir_builder::uniop(icode::Instruction instr, icode::Operand op1, icode::Operand op2)
     {
         /* Construct icode for unary operator instructions,
             UNARY_MINUS and NOT  */
 
-        icode::entry entry;
+        icode::Entry entry;
         entry.opcode = instr;
         entry.op1 = op1;
         entry.op2 = ensure_not_ptr(op2);
@@ -167,29 +167,29 @@ namespace ibuild
         return push_ir_ensure_no_write_ptr(entry);
     }
 
-    icode::operand ir_builder::cast(icode::data_type cast_dtype, icode::operand op)
+    icode::Operand ir_builder::cast(icode::DataType cast_dtype, icode::Operand op)
     {
         /* Construct icode for CAST */
 
-        icode::entry entry;
+        icode::Entry entry;
         entry.opcode = icode::CAST;
-        entry.op1 = icode::temp_opr(cast_dtype, icode::data_type_strs[cast_dtype], id());
+        entry.op1 = icode::createTempOperand(cast_dtype, icode::dataTypeToString(cast_dtype), id());
         entry.op2 = ensure_not_ptr(op);
 
         return push_ir_ensure_no_write_ptr(entry);
     }
 
-    void ir_builder::cmpop(icode::instruction instr, icode::operand op1, icode::operand op2)
+    void ir_builder::cmpop(icode::Instruction instr, icode::Operand op1, icode::Operand op2)
     {
         /* If op2 is a literal, change generic dtypes like icode::INT and icode::FLOAT
             to correct specific dtype */
-        if (op2.optype == icode::LITERAL)
+        if (op2.operandType == icode::LITERAL)
             op2.dtype = op1.dtype;
 
         /* Construct icode for comparator operator instructions,
             EQ, NEQ, LT, LTE, GT, GTE  */
 
-        icode::entry entry;
+        icode::Entry entry;
         entry.opcode = instr;
         entry.op1 = ensure_not_ptr(op1);
         entry.op2 = ensure_not_ptr(op2);
@@ -197,12 +197,12 @@ namespace ibuild
         push_ir(entry);
     }
 
-    icode::operand ir_builder::addr_add(icode::operand op2, icode::operand op3)
+    icode::Operand ir_builder::addr_add(icode::Operand op2, icode::Operand op3)
     {
         /* Construct icode for ADDR_ADD */
 
-        icode::entry entry;
-        entry.op1 = icode::temp_ptr_opr(op2.dtype, op2.dtype_name, id());
+        icode::Entry entry;
+        entry.op1 = icode::createPointerOperand(op2.dtype, op2.dtypeName, id());
         entry.op2 = op2;
         entry.op3 = op3;
         entry.opcode = icode::ADDR_ADD;
@@ -211,12 +211,12 @@ namespace ibuild
         return entry.op1;
     }
 
-    icode::operand ir_builder::addr_mul(icode::operand op2, icode::operand op3)
+    icode::Operand ir_builder::addr_mul(icode::Operand op2, icode::Operand op3)
     {
         /* Construct icode for ADDR_MUL */
 
-        icode::entry entry;
-        entry.op1 = icode::temp_ptr_opr(icode::INT, icode::data_type_strs[icode::I8], id());
+        icode::Entry entry;
+        entry.op1 = icode::createPointerOperand(icode::INT, icode::dataTypeToString(icode::I8), id());
         entry.op2 = op2;
         entry.op3 = op3;
         entry.opcode = icode::ADDR_MUL;
@@ -225,31 +225,31 @@ namespace ibuild
         return entry.op1;
     }
 
-    void ir_builder::label(icode::operand op)
+    void ir_builder::label(icode::Operand op)
     {
         /* Construct CREATE_LABEL */
 
-        icode::entry label_entry;
+        icode::Entry label_entry;
         label_entry.op1 = op;
         label_entry.opcode = icode::CREATE_LABEL;
         push_ir(label_entry);
     }
 
-    void ir_builder::goto_label(icode::instruction instr, icode::operand op)
+    void ir_builder::goto_label(icode::Instruction instr, icode::Operand op)
     {
         /* Construct icode for GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO */
 
-        icode::entry goto_entry;
+        icode::Entry goto_entry;
         goto_entry.op1 = op;
         goto_entry.opcode = instr;
         push_ir(goto_entry);
     }
 
-    void ir_builder::printop(icode::instruction printop, icode::operand op)
+    void ir_builder::printop(icode::Instruction printop, icode::Operand op)
     {
         /* Construct icode for PRINT, PRINT_STR */
 
-        icode::entry print_entry;
+        icode::Entry print_entry;
 
         if (printop == icode::PRINT)
             print_entry.op1 = ensure_not_ptr(op);
@@ -260,50 +260,50 @@ namespace ibuild
         push_ir(print_entry);
     }
 
-    void ir_builder::inputop(icode::instruction instr, icode::operand op, unsigned int size)
+    void ir_builder::inputop(icode::Instruction instr, icode::Operand op, unsigned int size)
     {
         /* Construct icode for INPUT, INPUT_STR */
 
-        icode::entry input_entry;
+        icode::Entry input_entry;
         input_entry.op1 = op;
-        input_entry.op2 = icode::literal_opr(icode::INT, (int)size, id());
+        input_entry.op2 = icode::createLiteralOperand(icode::INT, (int)size, id());
         input_entry.opcode = instr;
         push_ir(input_entry);
     }
 
-    void ir_builder::pass(icode::instruction pass_instr,
-                          icode::operand op,
+    void ir_builder::pass(icode::Instruction pass_instr,
+                          icode::Operand op,
                           const std::string& func_name,
-                          const icode::func_desc& func_desc)
+                          const icode::FunctionDescription& func_desc)
     {
         /* Construct icode for PASS and PASS_ADDR instructions */
 
-        icode::data_type func_dtype = func_desc.func_info.dtype;
-        std::string func_dtype_name = func_desc.func_info.dtype_name;
-        icode::entry entry;
+        icode::DataType func_dtype = func_desc.functionReturnDescription.dtype;
+        std::string func_dtype_name = func_desc.functionReturnDescription.dtypeName;
+        icode::Entry entry;
 
         if (pass_instr == icode::PASS)
             entry.op1 = ensure_not_ptr(op);
         else
             entry.op1 = op;
 
-        entry.op2 = icode::var_opr(func_dtype, func_dtype_name, func_name, id());
-        entry.op3 = icode::module_opr(func_desc.module_name, id());
+        entry.op2 = icode::createVarOperand(func_dtype, func_dtype_name, func_name, id());
+        entry.op3 = icode::createModuleOperand(func_desc.moduleName, id());
         entry.opcode = pass_instr;
         push_ir(entry);
     }
 
-    icode::operand ir_builder::call(const std::string& func_name, const icode::func_desc& func_desc)
+    icode::Operand ir_builder::call(const std::string& func_name, const icode::FunctionDescription& func_desc)
     {
         /* Construct icode for CALL instruction */
 
-        icode::data_type func_dtype = func_desc.func_info.dtype;
-        std::string func_dtype_name = func_desc.func_info.dtype_name;
+        icode::DataType func_dtype = func_desc.functionReturnDescription.dtype;
+        std::string func_dtype_name = func_desc.functionReturnDescription.dtypeName;
 
-        icode::entry call_entry;
-        call_entry.op1 = icode::ret_val_opr(func_dtype, func_dtype_name, id());
-        call_entry.op2 = icode::var_opr(func_dtype, func_dtype_name, func_name, id());
-        call_entry.op3 = icode::module_opr(func_desc.module_name, id());
+        icode::Entry call_entry;
+        call_entry.op1 = icode::createCalleeRetValOperand(func_dtype, func_dtype_name, id());
+        call_entry.op2 = icode::createVarOperand(func_dtype, func_dtype_name, func_name, id());
+        call_entry.op3 = icode::createModuleOperand(func_desc.moduleName, id());
         call_entry.opcode = icode::CALL;
 
         push_ir(call_entry);
@@ -311,12 +311,12 @@ namespace ibuild
         return call_entry.op1;
     }
 
-    void ir_builder::opir(icode::instruction instr)
+    void ir_builder::opir(icode::Instruction instr)
     {
         /* Construct icode for instructions with no arguments,
             RET, SPACE, NEWLN, EXIT */
 
-        icode::entry entry;
+        icode::Entry entry;
         entry.opcode = instr;
         push_ir(entry);
     }

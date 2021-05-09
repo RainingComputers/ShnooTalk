@@ -15,19 +15,19 @@
 
 namespace irgen
 {
-    typedef std::pair<icode::operand, icode::var_info> op_var_pair;
+    typedef std::pair<icode::Operand, icode::VariableDescription> OperandDescriptionPair;
 
     class ir_generator
     {
-        icode::target_desc& target;
-        icode::module_desc_map& ext_modules_map;
-        icode::module_desc& module;
+        icode::TargetDescription& target;
+        icode::StringModulesMap& ext_modules_map;
+        icode::ModuleDescription& module;
         std::ifstream& file;
 
         ibuild::ir_builder builder;
 
-        icode::func_desc* current_func_desc;
-        icode::module_desc* current_ext_module;
+        icode::FunctionDescription* current_func_desc;
+        icode::ModuleDescription* current_ext_module;
 
         unsigned int id_counter;
         unsigned int scope_id_counter;
@@ -41,13 +41,13 @@ namespace irgen
         void clear_scope();
         bool in_scope(unsigned int scope_id);
 
-        bool get_def(const std::string& name, icode::def& def);
+        bool get_def(const std::string& name, icode::Define& def);
 
-        bool get_func(const std::string& name, icode::func_desc& func);
+        bool get_func(const std::string& name, icode::FunctionDescription& func);
 
         bool get_enum(const std::string& name, int& val);
 
-        std::pair<token::token, icode::var_info> var_from_node(const node::node& root);
+        std::pair<token::token, icode::VariableDescription> var_from_node(const node::node& root);
 
         void use(const node::node& root);
 
@@ -63,45 +63,45 @@ namespace irgen
 
         void global_var(const node::node& root);
 
-        icode::operand gen_str_dat(const token::token& str_token, size_t char_count, icode::data_type dtype);
+        icode::Operand gen_str_dat(const token::token& str_token, size_t char_count, icode::DataType dtype);
 
-        op_var_pair var_info_to_str_dat(const token::token& str_token, icode::var_info var);
+        OperandDescriptionPair var_info_to_str_dat(const token::token& str_token, icode::VariableDescription var);
 
-        void assign_str_literal_tovar(op_var_pair var, node::node& root);
+        void assign_str_literal_tovar(OperandDescriptionPair var, node::node& root);
 
-        void assign_init_list_tovar(op_var_pair var, node::node& root);
+        void assign_init_list_tovar(OperandDescriptionPair var, node::node& root);
 
-        void copy_array(icode::operand& left, op_var_pair right);
+        void copy_array(icode::Operand& left, OperandDescriptionPair right);
 
-        void copy_struct(icode::operand& left, op_var_pair right);
+        void copy_struct(icode::Operand& left, OperandDescriptionPair right);
 
         void var(const node::node& root);
 
-        op_var_pair var_access(const node::node& root);
+        OperandDescriptionPair var_access(const node::node& root);
 
-        op_var_pair funccall(const node::node& root);
+        OperandDescriptionPair funccall(const node::node& root);
 
-        op_var_pair size_of(const node::node& root);
+        OperandDescriptionPair size_of(const node::node& root);
 
-        op_var_pair term(const node::node& root);
+        OperandDescriptionPair term(const node::node& root);
 
-        op_var_pair expression(const node::node& root);
+        OperandDescriptionPair expression(const node::node& root);
 
         void assignment(const node::node& root);
 
-        icode::operand gen_label(token::token tok, bool true_label, std::string prefix = "");
+        icode::Operand gen_label(token::token tok, bool true_label, std::string prefix = "");
 
         void condn_expression(const node::node& root,
-                              const icode::operand& t_label,
-                              const icode::operand& f_label,
+                              const icode::Operand& t_label,
+                              const icode::Operand& f_label,
                               bool t_fall,
                               bool f_fall);
 
         void ifstmt(const node::node& root,
                     bool loop,
-                    const icode::operand& start_label,
-                    const icode::operand& break_label,
-                    const icode::operand& cont_label);
+                    const icode::Operand& start_label,
+                    const icode::Operand& break_label,
+                    const icode::Operand& cont_label);
 
         void whileloop(const node::node& root);
 
@@ -113,9 +113,9 @@ namespace irgen
 
         void block(const node::node& root,
                    bool loop,
-                   const icode::operand& start_label,
-                   const icode::operand& break_label,
-                   const icode::operand& cont_label);
+                   const icode::Operand& start_label,
+                   const icode::Operand& break_label,
+                   const icode::Operand& cont_label);
 
       public:
         void initgen(const node::node& ast);
@@ -124,8 +124,8 @@ namespace irgen
 
         void program(const node::node& root);
 
-        ir_generator(icode::target_desc& target_desc,
-                     icode::module_desc_map& modules_map,
+        ir_generator(icode::TargetDescription& target_desc,
+                     icode::StringModulesMap& modules_map,
                      const std::string& file_name,
                      std::ifstream& ifile);
     };

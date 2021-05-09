@@ -33,9 +33,9 @@
 namespace llvmgen
 {
     typedef std::pair<llvm::BasicBlock*, llvm::BasicBlock::iterator> InsertionPoint;
-    typedef std::pair<size_t, icode::entry> EnumeratedEntry;
+    typedef std::pair<size_t, icode::Entry> EnumeratedEntry;
 
-    icode::target_desc getTargetDescription();
+    icode::TargetDescription getTargetDescription();
 
     class LLVMTranslator
     {
@@ -46,9 +46,9 @@ namespace llvmgen
         std::map<std::string, llvm::Value*> symbolNamePointersMap;
         std::map<std::string, llvm::Value*> symbolNamePointerIntMap;
         std::map<std::string, llvm::GlobalVariable*> symbolNameGlobalsMap;
-        std::map<icode::operand, llvm::Value*> operandValueMap;
+        std::map<icode::Operand, llvm::Value*> operandValueMap;
 
-        std::map<icode::operand, llvm::BasicBlock*> labelToBasicBlockMap;
+        std::map<icode::Operand, llvm::BasicBlock*> labelToBasicBlockMap;
         std::map<size_t, llvm::BasicBlock*> fallBlocks;
         std::queue<llvm::Value*> branchFlags;
         std::map<size_t, InsertionPoint> insertionPoints;
@@ -62,97 +62,107 @@ namespace llvmgen
         llvm::Value* newLineString;
         llvm::Value* spaceString;
 
-        llvm::Value* currentFunctionReturnValue;
+        llvm::Value* currentFunctionReturnPointer;
 
         bool prevInstructionGotoOrRet;
 
-        icode::module_desc& moduleDescription;
-        icode::module_desc_map& externalModulesRef;
+        icode::ModuleDescription& moduleDescription;
+        icode::StringModulesMap& externalModulesRef;
 
-        llvm::Type* dataTypeToLLVMType(const icode::data_type dtype);
-        llvm::Type* dataTypeToLLVMPointerType(const icode::data_type dtype);
-        llvm::Type* varDescriptionToLLVMType(const icode::var_info& varDesc);
-        llvm::FunctionType* funcDescriptionToLLVMType(icode::func_desc& funcDescription);
+        llvm::Type* dataTypeToLLVMType(const icode::DataType dtype);
+        llvm::Type* dataTypeToLLVMPointerType(const icode::DataType dtype);
+        llvm::Type* variableDescriptionToLLVMType(const icode::VariableDescription& variableDesc);
+        llvm::FunctionType* funcDescriptionToLLVMType(icode::FunctionDescription& functionDesc);
 
-        llvm::Value* getLLVMConstant(const icode::operand& op);
+        llvm::Value* getLLVMConstant(const icode::Operand& op);
         llvm::Function* getLLVMFunction(const std::string& functionName, const std::string& moduleName);
-        llvm::Value* getCurrentRetValuePointer(const icode::operand& op);
-        llvm::Value* getLLVMPointer(const icode::operand& op);
-        llvm::Value* getLLVMValue(const icode::operand& op);
-        void setLLVMValue(const icode::operand& op, llvm::Value* value);
+        llvm::Value* getCalleeRetValuePointer(const icode::Operand& op);
+        llvm::Value* getLLVMPointer(const icode::Operand& op);
+        llvm::Value* getLLVMValue(const icode::Operand& op);
+        void setLLVMValue(const icode::Operand& op, llvm::Value* value);
 
-        void createLocalSymbol(const icode::var_info& varDescription, const std::string& name);
-        void createGlobalSymbol(icode::var_info& varDescription, const std::string& name);
-        void createFunctionParameter(const icode::var_info& varDescription, const std::string& name, llvm::Value* arg);
+        void createLocalSymbol(const icode::VariableDescription& variableDesc, const std::string& name);
+        void createGlobalSymbol(icode::VariableDescription& variableDesc, const std::string& name);
+        void createFunctionParameter(const icode::VariableDescription& variableDesc,
+                                     const std::string& name,
+                                     llvm::Value* arg);
 
-        void createPointer(const icode::entry& e);
-        void copy(const icode::entry& e);
-        void read(const icode::entry& e);
-        void write(const icode::entry& e);
+        void createPointer(const icode::Entry& e);
+        void copy(const icode::Entry& e);
+        void read(const icode::Entry& e);
+        void write(const icode::Entry& e);
         llvm::Value* ensureI64(llvm::Value* value);
-        void addressBinaryOperator(const icode::entry& e);
+        void addressBinaryOperator(const icode::Entry& e);
 
-        llvm::Value* add(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* subtract(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* multiply(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* divide(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* remainder(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* rightShift(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* leftShift(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* bitwiseAnd(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* bitwiseOr(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* bitwiseXor(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        void binaryOperator(const icode::entry& e);
+        llvm::Value* add(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* subtract(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* multiply(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* divide(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* remainder(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* rightShift(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* leftShift(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* bitwiseAnd(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* bitwiseOr(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* bitwiseXor(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        void binaryOperator(const icode::Entry& e);
 
-        void bitwiseNot(const icode::entry& e);
-        void unaryMinus(const icode::entry& e);
+        void bitwiseNot(const icode::Entry& e);
+        void unaryMinus(const icode::Entry& e);
 
-        llvm::Value* castToSignedInt(const icode::entry& e, llvm::Type* destType);
-        llvm::Value* castToUnsignedInt(const icode::entry& e, llvm::Type* destType);
-        llvm::Value* castToFloat(const icode::entry& e, llvm::Type* destType);
-        void cast(const icode::entry& e);
+        llvm::Value* castToSignedInt(const icode::Entry& e, llvm::Type* destType);
+        llvm::Value* castToUnsignedInt(const icode::Entry& e, llvm::Type* destType);
+        llvm::Value* castToFloatFromInt(const icode::Entry& e, llvm::Type* destType);
+        llvm::Value* castToFloatFromFloat(const icode::Entry& e, llvm::Type* destType);
+        llvm::Value* castToFloat(const icode::Entry& e, llvm::Type* destType);
+        void cast(const icode::Entry& e);
 
-        llvm::Value* eqaul(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* notEqual(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* lessThan(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* lessThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* greaterThan(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        llvm::Value* greaterThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, const icode::data_type dtype);
-        void compareOperator(const icode::entry& e);
+        llvm::Value* equal(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* notEqual(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* lessThan(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* lessThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* greaterThan(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        llvm::Value* greaterThanOrEqualTo(llvm::Value* LHS, llvm::Value* RHS, const icode::DataType dtype);
+        void compareOperator(const icode::Entry& e);
 
-        void createLabel(const icode::entry& e, llvm::Function* function);
-        void createGotoBackpatch(const icode::entry& e, llvm::Function* F, size_t entryIndex);
-        void createBranch(const icode::entry& e,
+        void createLabel(const icode::Entry& e, llvm::Function* function);
+        void createGotoBackpatch(const icode::Entry& e, llvm::Function* F, size_t entryIndex);
+        void createBranch(const icode::Entry& e,
                           llvm::Value* flag,
                           llvm::BasicBlock* gotoBlock,
                           llvm::BasicBlock* fallBlock);
         void processGotoBackpatches();
 
-        llvm::Value* getFromatString(icode::data_type dtype);
-        void callPrintf(llvm::Value* format_str, llvm::Value* value = nullptr);
-        void print(const icode::entry& e);
-        void printString(const icode::entry& e);
+        llvm::Value* getFromatString(icode::DataType dtype);
+        void callPrintf(llvm::Value* formatString, llvm::Value* value = nullptr);
+        void print(const icode::Entry& e);
+        void printString(const icode::Entry& e);
 
-        void call(const icode::entry& e);
-        void ret(const icode::entry& e, icode::data_type dtype);
-        void pass(const icode::entry& e);
-        void passPointer(const icode::entry& e);
+        void call(const icode::Entry& e);
+        void ret(const icode::Entry& e, icode::DataType dtype);
+        void pass(const icode::Entry& e);
+        void passPointer(const icode::Entry& e);
 
-        void translateFunctionIcode(const icode::func_desc& funcDescription, llvm::Function* F);
+        void translateFunctionIcode(const icode::FunctionDescription& functionDesc, llvm::Function* function);
 
         void resetState();
 
-        void setupFunctionStack(icode::func_desc& funcDescription, llvm::Function* F);
+        void setupFunctionStack(icode::FunctionDescription& functionDesc, llvm::Function* function);
 
-        void generateFunction(icode::func_desc& funcDescription, const std::string& name);
-
-        void generateGlobals();
+        void generateFunction(icode::FunctionDescription& functionDesc, const std::string& name);
 
         void setupPrintf();
 
+        void setupContextAndModule();
+
+        void generateModule();
+
+        void initializeTargetRegistry();
+        llvm::TargetMachine* setupTargetTripleAndDataLayout();
+        void setupPassManagerAndCreateObject(llvm::TargetMachine* targetMachine);
+
       public:
         std::string getLLVMModuleString();
-        LLVMTranslator(icode::module_desc& modDesc, icode::module_desc_map& modulesMap);
+        LLVMTranslator(icode::ModuleDescription& modDesc, icode::StringModulesMap& modulesMap);
     };
 
 }

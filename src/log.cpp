@@ -261,9 +261,9 @@ namespace miklog
         error_tok(mod_name, error_msg, file, found);
     }
 
-    std::string str_var_info(icode::var_info& var)
+    std::string str_var_info(icode::VariableDescription& var)
     {
-        std::string var_str = var.dtype_name;
+        std::string var_str = var.dtypeName;
 
         for (unsigned int dim : var.dimensions)
             var_str += "[" + std::to_string(dim) + "]";
@@ -274,8 +274,8 @@ namespace miklog
     void type_error(const std::string& mod_name,
                     std::ifstream& file,
                     const token::token& tok,
-                    icode::var_info& expected,
-                    icode::var_info& found)
+                    icode::VariableDescription& expected,
+                    icode::VariableDescription& found)
     {
         /* Used by ir generator for type errors */
 
@@ -295,15 +295,15 @@ namespace miklog
 
     void internal_error(const std::string& mod_name) { error(mod_name, "Internal compiler error, REPORT THIS BUG"); }
 
-    void print_operand(const icode::operand& op)
+    void print_operand(const icode::Operand& op)
     {
-        switch (op.optype)
+        switch (op.operandType)
         {
             case icode::TEMP:
-                std::cout << "Temp(id_" << op.temp_id << ":" << op.dtype_name;
+                std::cout << "Temp(id_" << op.operandId << ":" << op.dtypeName;
                 break;
             case icode::TEMP_PTR:
-                std::cout << "TempPtr(id_" << op.temp_id << ":" << op.dtype_name;
+                std::cout << "TempPtr(id_" << op.operandId << ":" << op.dtypeName;
                 break;
             case icode::STR_DATA:
                 std::cout << "StrDat(name=" << op.name << " size=" << op.val.size;
@@ -312,33 +312,33 @@ namespace miklog
                 std::cout << "Addr(" << op.val.address;
                 break;
             case icode::VAR:
-                std::cout << "Var(" << op.name << ":" << op.dtype_name;
+                std::cout << "Var(" << op.name << ":" << op.dtypeName;
                 break;
             case icode::GBL_VAR:
-                std::cout << "GblVar(" << op.name << ":" << op.dtype_name;
+                std::cout << "GblVar(" << op.name << ":" << op.dtypeName;
                 break;
             case icode::PTR:
-                std::cout << "Ptr(" << op.name << ":" << op.dtype_name;
+                std::cout << "Ptr(" << op.name << ":" << op.dtypeName;
                 break;
             case icode::RET_PTR:
-                std::cout << "RetPtr(id_" << op.temp_id << ":" << op.dtype_name;
+                std::cout << "RetPtr(id_" << op.operandId << ":" << op.dtypeName;
                 break;
-            case icode::RET_VAL:
-                std::cout << "RetVal(id_" << op.temp_id << ":" << op.dtype_name;
+            case icode::CALLEE_RET_VAL:
+                std::cout << "CalleeRetVal(id_" << op.operandId << ":" << op.dtypeName;
                 break;
             case icode::LITERAL:
             {
-                if (icode::is_uint(op.dtype))
+                if (icode::isUnsignedInteger(op.dtype))
                 {
-                    std::cout << "Ltrl(" << op.val.size << ":" << icode::data_type_strs[op.dtype];
+                    std::cout << "Ltrl(" << op.val.size << ":" << icode::dataTypeToString(op.dtype);
                 }
-                else if (icode::is_int(op.dtype))
+                else if (icode::isInteger(op.dtype))
                 {
-                    std::cout << "Ltrl(" << op.val.integer << ":" << icode::data_type_strs[op.dtype];
+                    std::cout << "Ltrl(" << op.val.integer << ":" << icode::dataTypeToString(op.dtype);
                 }
                 else
                 {
-                    std::cout << "Ltrl(" << op.val.floating << ":" << icode::data_type_strs[op.dtype];
+                    std::cout << "Ltrl(" << op.val.floating << ":" << icode::dataTypeToString(op.dtype);
                 }
 
                 break;
@@ -357,7 +357,7 @@ namespace miklog
         std::cout << ")";
     }
 
-    void print_entry(const icode::entry& entry)
+    void print_entry(const icode::Entry& entry)
     {
         std::cout << instruction_strs[entry.opcode] << " ";
         print_operand(entry.op1);
@@ -367,15 +367,15 @@ namespace miklog
         print_operand(entry.op3);
     }
 
-    void print_var_info(const icode::var_info& var_info)
+    void print_var_info(const icode::VariableDescription& var_info)
     {
         std::cout << "Var(";
         std::cout << "dtype="
-                  << "\"" << var_info.dtype_name << "\":";
-        std::cout << icode::data_type_strs[var_info.dtype];
-        std::cout << " dtypesize=" << var_info.dtype_size;
+                  << "\"" << var_info.dtypeName << "\":";
+        std::cout << icode::dataTypeToString(var_info.dtype);
+        std::cout << " dtypesize=" << var_info.dtypeSize;
         std::cout << " mod="
-                  << "\"" << var_info.module_name << "\"";
+                  << "\"" << var_info.moduleName << "\"";
         std::cout << " offset=" << var_info.offset;
         std::cout << " size=" << var_info.size;
 
@@ -387,12 +387,12 @@ namespace miklog
         std::cout << ")";
     }
 
-    void print_struct_desc(const icode::struct_desc& struct_desc, int ilvl)
+    void print_struct_desc(const icode::StructDescription& struct_desc, int ilvl)
     {
         std::cout << "Struct(" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Fields={" << std::endl;
-        for (auto field : struct_desc.fields)
+        for (auto field : struct_desc.structFields)
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << field.first << ":";
@@ -408,7 +408,7 @@ namespace miklog
         std::cout << std::string(ilvl, ' ') << ")" << std::endl;
     }
 
-    void print_def(const icode::def& definition)
+    void print_def(const icode::Define& definition)
     {
         std::cout << "Def(";
 
@@ -417,20 +417,20 @@ namespace miklog
         else
             std::cout << definition.val.floating;
 
-        std::cout << ":" << icode::data_type_strs[definition.dtype] << ")";
+        std::cout << ":" << icode::dataTypeToString(definition.dtype) << ")";
     }
 
-    void print_func_desc(const icode::func_desc& func_desc, int ilvl)
+    void print_func_desc(const icode::FunctionDescription& func_desc, int ilvl)
     {
         std::cout << "Func(" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Params=[";
-        for (std::string param : func_desc.params)
+        for (std::string param : func_desc.parameters)
             std::cout << param << ", ";
         std::cout << "]" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Retinfo=";
-        print_var_info(func_desc.func_info);
+        print_var_info(func_desc.functionReturnDescription);
         std::cout << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Symbols={" << std::endl;
@@ -444,7 +444,7 @@ namespace miklog
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "icode=[" << std::endl;
-        for (icode::entry i : func_desc.icode_table)
+        for (icode::Entry i : func_desc.icodeTable)
         {
             std::cout << std::string(ilvl + 6, ' ');
             print_entry(i);
@@ -455,7 +455,7 @@ namespace miklog
         std::cout << std::string(ilvl, ' ') << ")" << std::endl;
     }
 
-    void print_module_desc(const icode::module_desc& module_desc, int ilvl)
+    void print_module_desc(const icode::ModuleDescription& module_desc, int ilvl)
     {
         std::cout << "Module(" << std::endl;
 

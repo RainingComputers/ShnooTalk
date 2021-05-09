@@ -5,37 +5,36 @@ using namespace sys;
 
 namespace llvmgen
 {
-    icode::target_desc getTargetDescription()
+    icode::TargetDescription getTargetDescription()
     {
         /* Target description for mikuro-llvm */
-        icode::target_desc target;
+        icode::TargetDescription target;
 
-        target.dtype_strings_map = { { "byte", icode::I8 },     { "ubyte", icode::UI8 },  { "short", icode::I16 },
+        target.dataTypeNames = { { "byte", icode::I8 },     { "ubyte", icode::UI8 },  { "short", icode::I16 },
                                      { "ushort", icode::UI16 }, { "int", icode::I32 },    { "uint", icode::UI32 },
                                      { "long", icode::I64 },    { "ulong", icode::UI64 }, { "float", icode::F32 },
                                      { "double", icode::F64 },  { "char", icode::UI8 },   { "bool", icode::UI8 } };
 
         /* true and false defines */
-        icode::def trueDef;
+        icode::Define trueDef;
         trueDef.dtype = icode::INT;
         trueDef.val.integer = 1;
 
-        icode::def falseDef;
+        icode::Define falseDef;
         falseDef.dtype = icode::INT;
         falseDef.val.integer = 0;
 
         target.defines = { { "true", trueDef }, { "false", falseDef } };
 
         /* Default int or word */
-        target.default_int = icode::I32;
-        target.str_int = icode::UI8;
+        target.characterInt = icode::UI8;
 
         return target;
     }
 
-    Type* LLVMTranslator::dataTypeToLLVMType(icode::data_type dtype)
+    Type* LLVMTranslator::dataTypeToLLVMType(icode::DataType dtype)
     {
-        /* Converts mikuro ir icode::data_type to llvm type */
+        /* Converts mikuro ir icode::dataType to llvm type */
 
         switch (dtype)
         {
@@ -65,9 +64,9 @@ namespace llvmgen
         }
     }
 
-    Type* LLVMTranslator::dataTypeToLLVMPointerType(icode::data_type dtype)
+    Type* LLVMTranslator::dataTypeToLLVMPointerType(icode::DataType dtype)
     {
-        /* Converts mikuro ir icode::data_type to llvm pointer type */
+        /* Converts mikuro ir icode::dataType to llvm pointer type */
 
         switch (dtype)
         {
@@ -96,46 +95,47 @@ namespace llvmgen
         }
     }
 
-    Type* LLVMTranslator::varDescriptionToLLVMType(const icode::var_info& varDescription)
+    Type* LLVMTranslator::variableDescriptionToLLVMType(const icode::VariableDescription& variableDesc)
     {
-        if (varDescription.check(icode::IS_PTR))
-            return dataTypeToLLVMPointerType(varDescription.dtype);
+        if (variableDesc.checkProperty(icode::IS_PTR))
+            return dataTypeToLLVMPointerType(variableDesc.dtype);
 
-        if (varDescription.dimensions.size() > 0 || varDescription.dtype == icode::STRUCT)
-            return ArrayType::get(Type::getInt8Ty(*context), varDescription.size);
+        if (variableDesc.dimensions.size() > 0 || variableDesc.dtype == icode::STRUCT)
+            return ArrayType::get(Type::getInt8Ty(*context), variableDesc.size);
 
-        return dataTypeToLLVMType(varDescription.dtype);
+        return dataTypeToLLVMType(variableDesc.dtype);
     }
 
-    FunctionType* LLVMTranslator::funcDescriptionToLLVMType(icode::func_desc& funcDescription)
+    FunctionType* LLVMTranslator::funcDescriptionToLLVMType(icode::FunctionDescription& functionDesc)
     {
         std::vector<Type*> parameterTypes;
 
         /* Set the types vector */
-        for (std::string paramString : funcDescription.params)
+        for (std::string paramString : functionDesc.parameters)
         {
-            Type* type = varDescriptionToLLVMType(funcDescription.symbols[paramString]);
+            Type* type = variableDescriptionToLLVMType(functionDesc.symbols[paramString]);
             parameterTypes.push_back(type);
         }
 
         /* Setup llvm function */
-        FunctionType* FT =
-          FunctionType::get(varDescriptionToLLVMType(funcDescription.func_info), parameterTypes, false);
+        FunctionType* FT = FunctionType::get(variableDescriptionToLLVMType(functionDesc.functionReturnDescription),
+                                             parameterTypes,
+                                             false);
 
         return FT;
     }
 
-    Value* LLVMTranslator::getLLVMConstant(const icode::operand& op)
+    Value* LLVMTranslator::getLLVMConstant(const icode::Operand& op)
     {
         /* Convetrs mikuro icode::LITERAL operand type to llvm value  */
 
-        if (op.optype == icode::ADDR)
+        if (op.operandType == icode::ADDR)
             return ConstantInt::get(Type::getInt64Ty(*context), op.val.integer);
 
-        if (icode::is_int(op.dtype))
+        if (icode::isInteger(op.dtype))
             return ConstantInt::get(dataTypeToLLVMType(op.dtype), op.val.integer);
 
-        if (icode::is_float(op.dtype))
+        if (icode::isFloat(op.dtype))
             return ConstantFP::get(dataTypeToLLVMType(op.dtype), op.val.floating);
 
         miklog::internal_error(moduleDescription.name);
@@ -152,16 +152,16 @@ namespace llvmgen
 
     Function* LLVMTranslator::getLLVMFunction(const std::string& functionName, const std::string& moduleName)
     {
-        std::string expandedFunctionName = getFullFunctionName(functionName, moduleName);
+        std::string fullFunctionName = getFullFunctionName(functionName, moduleName);
 
-        if (auto* F = LLVMModule->getFunction(expandedFunctionName))
+        if (auto* F = LLVMModule->getFunction(fullFunctionName))
             return F;
 
         FunctionType* functionType = funcDescriptionToLLVMType(externalModulesRef[moduleName].functions[functionName]);
-        return Function::Create(functionType, Function::ExternalLinkage, expandedFunctionName, *LLVMModule);
+        return Function::Create(functionType, Function::ExternalLinkage, fullFunctionName, *LLVMModule);
     }
 
-    Value* LLVMTranslator::getCurrentRetValuePointer(const icode::operand& op)
+    Value* LLVMTranslator::getCalleeRetValuePointer(const icode::Operand& op)
     {
         Value* returnValue = operandValueMap[op];
         Value* returnValuePointer = builder->CreateAlloca(returnValue->getType());
@@ -170,11 +170,11 @@ namespace llvmgen
         return returnValuePointer;
     }
 
-    Value* LLVMTranslator::getLLVMPointer(const icode::operand& op)
+    Value* LLVMTranslator::getLLVMPointer(const icode::Operand& op)
     {
         /* Returns llvm value allocated by symbol_alloca */
 
-        switch (op.optype)
+        switch (op.operandType)
         {
             case icode::PTR:
             case icode::VAR:
@@ -184,11 +184,11 @@ namespace llvmgen
             case icode::STR_DATA:
                 return builder->CreateGlobalStringPtr(moduleDescription.str_data[op.name]);
             case icode::RET_PTR:
-                return currentFunctionReturnValue;
+                return currentFunctionReturnPointer;
             case icode::TEMP_PTR:
                 return builder->CreateIntToPtr(getLLVMValue(op), dataTypeToLLVMPointerType(op.dtype));
-            case icode::RET_VAL:
-                return getCurrentRetValuePointer(op);
+            case icode::CALLEE_RET_VAL:
+                return getCalleeRetValuePointer(op);
             default:
                 break;
         }
@@ -197,11 +197,11 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::getLLVMValue(const icode::operand& op)
+    Value* LLVMTranslator::getLLVMValue(const icode::Operand& op)
     {
         /* Convertes mikuro icode::operand to llvm value */
 
-        switch (op.optype)
+        switch (op.operandType)
         {
             case icode::LITERAL:
             case icode::ADDR:
@@ -213,10 +213,10 @@ namespace llvmgen
                 return builder->CreateLoad(symbolNamePointersMap.at(op.name), op.name.c_str());
             case icode::TEMP_PTR:
             case icode::TEMP:
-            case icode::RET_VAL:
+            case icode::CALLEE_RET_VAL:
                 return operandValueMap[op];
             case icode::RET_PTR:
-                return builder->CreatePtrToInt(currentFunctionReturnValue, dataTypeToLLVMType(icode::I64));
+                return builder->CreatePtrToInt(currentFunctionReturnPointer, dataTypeToLLVMType(icode::I64));
             case icode::PTR:
                 return symbolNamePointerIntMap[op.name];
             default:
@@ -225,15 +225,15 @@ namespace llvmgen
         }
     }
 
-    void LLVMTranslator::setLLVMValue(const icode::operand& op, Value* value)
+    void LLVMTranslator::setLLVMValue(const icode::Operand& op, Value* value)
     {
         /* Assigns llvm value to a mikuro icode::operand */
 
-        switch (op.optype)
+        switch (op.operandType)
         {
             case icode::TEMP:
             case icode::TEMP_PTR:
-            case icode::RET_VAL:
+            case icode::CALLEE_RET_VAL:
                 operandValueMap[op] = value;
                 break;
             case icode::VAR:
@@ -246,17 +246,18 @@ namespace llvmgen
         }
     }
 
-    void LLVMTranslator::createLocalSymbol(const icode::var_info& varDescription, const std::string& name)
+    void LLVMTranslator::createLocalSymbol(const icode::VariableDescription& variableDesc, const std::string& name)
     {
         /* Creates llvm alloca instruction for icode::var_info symbols in symbol tables */
 
-        symbolNamePointersMap[name] = builder->CreateAlloca(varDescriptionToLLVMType(varDescription), nullptr, name);
+        symbolNamePointersMap[name] =
+          builder->CreateAlloca(variableDescriptionToLLVMType(variableDesc), nullptr, name);
     }
 
-    void LLVMTranslator::createGlobalSymbol(icode::var_info& varDescription, const std::string& name)
+    void LLVMTranslator::createGlobalSymbol(icode::VariableDescription& varDescription, const std::string& name)
     {
         GlobalVariable* global;
-        Type* type = varDescriptionToLLVMType(varDescription);
+        Type* type = variableDescriptionToLLVMType(varDescription);
 
         global = new GlobalVariable(*LLVMModule, type, false, GlobalVariable::CommonLinkage, nullptr, name);
 
@@ -265,13 +266,15 @@ namespace llvmgen
         symbolNameGlobalsMap[name] = global;
     }
 
-    void LLVMTranslator::createFunctionParameter(const icode::var_info& varDescription, const std::string& name, Value* arg)
+    void LLVMTranslator::createFunctionParameter(const icode::VariableDescription& variableDesc,
+                                                 const std::string& name,
+                                                 Value* arg)
     {
         /* If mutable parameters, stores the pointer as int, else allocate space and stores arg */
 
-        if (!varDescription.check(icode::IS_PTR))
+        if (!variableDesc.checkProperty(icode::IS_PTR))
         {
-            Value* alloca = builder->CreateAlloca(varDescriptionToLLVMType(varDescription), nullptr, name);
+            Value* alloca = builder->CreateAlloca(variableDescriptionToLLVMType(variableDesc), nullptr, name);
             builder->CreateStore(arg, alloca);
             symbolNamePointersMap[name] = alloca;
         }
@@ -282,11 +285,11 @@ namespace llvmgen
         }
     }
 
-    void LLVMTranslator::createPointer(const icode::entry& e)
+    void LLVMTranslator::createPointer(const icode::Entry& e)
     {
         /* Converts mikuro CREATE_PTR to llvm ir */
 
-        switch (e.op2.optype)
+        switch (e.op2.operandType)
         {
             case icode::TEMP_PTR:
                 operandValueMap[e.op1] = operandValueMap[e.op2];
@@ -299,11 +302,11 @@ namespace llvmgen
             case icode::PTR:
                 operandValueMap[e.op1] = symbolNamePointerIntMap[e.op2.name];
                 break;
-            case icode::RET_VAL:
-                operandValueMap[e.op1] = getCurrentRetValuePointer(e.op2);
+            case icode::CALLEE_RET_VAL:
+                operandValueMap[e.op1] = getCalleeRetValuePointer(e.op2);
                 break;
             case icode::RET_PTR:
-                operandValueMap[e.op1] = currentFunctionReturnValue;
+                operandValueMap[e.op1] = currentFunctionReturnPointer;
                 break;
             default:
                 miklog::internal_error(moduleDescription.name);
@@ -311,7 +314,7 @@ namespace llvmgen
         }
     }
 
-    void LLVMTranslator::copy(const icode::entry& e)
+    void LLVMTranslator::copy(const icode::Entry& e)
     {
         /* Converts mikuro EQUAL to llvm ir */
 
@@ -319,7 +322,7 @@ namespace llvmgen
         setLLVMValue(e.op1, sourceValue);
     }
 
-    void LLVMTranslator::read(const icode::entry& e)
+    void LLVMTranslator::read(const icode::Entry& e)
     {
         /* Converts mikuro READ to llvm ir */
 
@@ -329,7 +332,7 @@ namespace llvmgen
         setLLVMValue(e.op1, sourceValue);
     }
 
-    void LLVMTranslator::write(const icode::entry& e)
+    void LLVMTranslator::write(const icode::Entry& e)
     {
         /* Converts mikuro WRITE to llvm ir */
 
@@ -347,7 +350,7 @@ namespace llvmgen
         return builder->CreateZExtOrTrunc(value, dataTypeToLLVMType(icode::I64));
     }
 
-    void LLVMTranslator::addressBinaryOperator(const icode::entry& e)
+    void LLVMTranslator::addressBinaryOperator(const icode::Entry& e)
     {
         /* Converts mikuro ADDR_ADD and ADDR_MUL to llvm ir */
 
@@ -372,154 +375,154 @@ namespace llvmgen
         setLLVMValue(e.op1, result);
     }
 
-    Value* LLVMTranslator::add(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::add(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro ADD to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateNSWAdd(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateNUWAdd(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFAdd(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::subtract(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::subtract(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro SUB to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateNSWSub(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateNUWSub(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFSub(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::multiply(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::multiply(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro MUL to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateNSWMul(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateNUWMul(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFMul(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::divide(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::divide(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro DIV to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateSDiv(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateUDiv(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFDiv(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::remainder(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::remainder(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro MOD to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateSRem(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateURem(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFRem(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::rightShift(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::rightShift(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro RSH to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateAShr(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateLShr(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::leftShift(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::leftShift(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro LSH to llvm ir */
 
-        if (icode::is_int(dtype))
+        if (icode::isInteger(dtype))
             return builder->CreateShl(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::bitwiseAnd(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::bitwiseAnd(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro BWA to llvm ir */
 
-        if (icode::is_int(dtype))
+        if (icode::isInteger(dtype))
             return builder->CreateAnd(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::bitwiseOr(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::bitwiseOr(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro BWO to llvm ir */
 
-        if (icode::is_int(dtype))
+        if (icode::isInteger(dtype))
             return builder->CreateOr(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::bitwiseXor(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::bitwiseXor(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro BWX to llvm ir */
 
-        if (icode::is_int(dtype))
+        if (icode::isInteger(dtype))
             return builder->CreateXor(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    void LLVMTranslator::binaryOperator(const icode::entry& e)
+    void LLVMTranslator::binaryOperator(const icode::Entry& e)
     {
         Value* LHS = getLLVMValue(e.op2);
         Value* RHS = getLLVMValue(e.op3);
-        icode::data_type dtype = e.op1.dtype;
+        icode::DataType dtype = e.op1.dtype;
 
         switch (e.opcode)
         {
@@ -559,18 +562,18 @@ namespace llvmgen
         }
     }
 
-    void LLVMTranslator::bitwiseNot(const icode::entry& e)
+    void LLVMTranslator::bitwiseNot(const icode::Entry& e)
     {
         Value* result = builder->CreateNot(getLLVMValue(e.op2));
 
         setLLVMValue(e.op1, result);
     }
 
-    void LLVMTranslator::unaryMinus(const icode::entry& e)
+    void LLVMTranslator::unaryMinus(const icode::Entry& e)
     {
         Value* result;
 
-        if (icode::is_int(e.op2.dtype))
+        if (icode::isInteger(e.op2.dtype))
             result = builder->CreateNeg(getLLVMValue(e.op2));
         else
             result = builder->CreateFNeg(getLLVMValue(e.op2));
@@ -578,67 +581,82 @@ namespace llvmgen
         setLLVMValue(e.op1, result);
     }
 
-    Value* LLVMTranslator::castToSignedInt(const icode::entry& e, Type* destType)
+    Value* LLVMTranslator::castToSignedInt(const icode::Entry& e, Type* destType)
     {
-        if (icode::is_sint(e.op2.dtype))
+        if (icode::isSignedInteger(e.op2.dtype))
             return builder->CreateSExtOrTrunc(getLLVMValue(e.op2), destType);
 
-        if (icode::is_uint(e.op2.dtype))
+        if (icode::isUnsignedInteger(e.op2.dtype))
             return builder->CreateZExtOrTrunc(getLLVMValue(e.op2), destType);
 
-        if (icode::is_float(e.op2.dtype))
+        if (icode::isFloat(e.op2.dtype))
             return builder->CreateFPToSI(getLLVMValue(e.op2), destType);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::castToUnsignedInt(const icode::entry& e, Type* destType)
+    Value* LLVMTranslator::castToUnsignedInt(const icode::Entry& e, Type* destType)
     {
-        if (icode::is_int(e.op2.dtype))
+        if (icode::isInteger(e.op2.dtype))
             return builder->CreateZExtOrTrunc(getLLVMValue(e.op2), destType);
 
-        if (icode::is_float(e.op2.dtype))
+        if (icode::isFloat(e.op2.dtype))
             return builder->CreateFPToUI(getLLVMValue(e.op2), destType);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::castToFloat(const icode::entry& e, Type* destType)
+    Value* LLVMTranslator::castToFloatFromInt(const icode::Entry& e, Type* destType)
     {
-        if (icode::is_sint(e.op2.dtype))
+        if (icode::isSignedInteger(e.op2.dtype))
             return builder->CreateSIToFP(getLLVMValue(e.op2), destType);
 
-        if (icode::is_uint(e.op2.dtype))
+        if (icode::isUnsignedInteger(e.op2.dtype))
             return builder->CreateUIToFP(getLLVMValue(e.op2), destType);
-
-        if (icode::is_float(e.op2.dtype))
-        {
-            if (icode::dtype_size[e.op1.dtype] > icode::dtype_size[e.op2.dtype])
-                return builder->CreateFPExt(getLLVMValue(e.op2), destType);
-
-            if (icode::dtype_size[e.op1.dtype] < icode::dtype_size[e.op2.dtype])
-                return builder->CreateFPTrunc(getLLVMValue(e.op2), destType);
-
-            if (icode::dtype_size[e.op1.dtype] == icode::dtype_size[e.op2.dtype])
-                return getLLVMValue(e.op2);
-        }
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    void LLVMTranslator::cast(const icode::entry& e)
+    Value* LLVMTranslator::castToFloatFromFloat(const icode::Entry& e, Type* destType)
+    {
+        if (icode::getDataTypeSize(e.op1.dtype) > icode::getDataTypeSize(e.op2.dtype))
+            return builder->CreateFPExt(getLLVMValue(e.op2), destType);
+
+        if (icode::getDataTypeSize(e.op1.dtype) < icode::getDataTypeSize(e.op2.dtype))
+            return builder->CreateFPTrunc(getLLVMValue(e.op2), destType);
+
+        if (icode::getDataTypeSize(e.op1.dtype) == icode::getDataTypeSize(e.op2.dtype))
+            return getLLVMValue(e.op2);
+    
+        miklog::internal_error(moduleDescription.name);
+        throw miklog::internal_bug_error();
+    }
+
+    Value* LLVMTranslator::castToFloat(const icode::Entry& e, Type* destType)
+    {
+        if (icode::isInteger(e.op2.dtype))
+            return castToFloatFromInt(e, destType);
+
+        if (icode::isFloat(e.op2.dtype))
+            return castToFloatFromFloat(e, destType);
+
+        miklog::internal_error(moduleDescription.name);
+        throw miklog::internal_bug_error();
+    }
+
+    void LLVMTranslator::cast(const icode::Entry& e)
     {
         Type* destType = dataTypeToLLVMType(e.op1.dtype);
         Value* result;
 
-        if (icode::is_sint(e.op1.dtype))
+        if (icode::isSignedInteger(e.op1.dtype))
             result = castToSignedInt(e, destType);
-        else if (icode::is_uint(e.op1.dtype))
+        else if (icode::isUnsignedInteger(e.op1.dtype))
             result = castToUnsignedInt(e, destType);
-        else if (icode::is_float(e.op1.dtype))
+        else if (icode::isFloat(e.op1.dtype))
             result = castToFloat(e, destType);
         else
         {
@@ -649,112 +667,112 @@ namespace llvmgen
         setLLVMValue(e.op1, result);
     }
 
-    Value* LLVMTranslator::eqaul(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::equal(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro EQ to llvm ir */
 
-        if (icode::is_int(dtype))
+        if (icode::isInteger(dtype))
             return builder->CreateICmpEQ(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFCmpUEQ(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::notEqual(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::notEqual(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro NEQ to llvm ir */
 
-        if (icode::is_int(dtype))
+        if (icode::isInteger(dtype))
             return builder->CreateICmpNE(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFCmpUNE(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::lessThan(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::lessThan(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro LT to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateICmpSLT(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateICmpULT(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFCmpULT(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::lessThanOrEqualTo(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::lessThanOrEqualTo(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro LTE to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateICmpSLE(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateICmpULE(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFCmpULE(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::greaterThan(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::greaterThan(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro GT to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateICmpSGT(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateICmpUGT(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFCmpUGT(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::greaterThanOrEqualTo(Value* LHS, Value* RHS, const icode::data_type dtype)
+    Value* LLVMTranslator::greaterThanOrEqualTo(Value* LHS, Value* RHS, const icode::DataType dtype)
     {
         /* Converts mikuro GTE to llvm ir */
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return builder->CreateICmpSGE(LHS, RHS);
 
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return builder->CreateICmpUGE(LHS, RHS);
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return builder->CreateFCmpUGE(LHS, RHS);
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    void LLVMTranslator::compareOperator(const icode::entry& e)
+    void LLVMTranslator::compareOperator(const icode::Entry& e)
     {
         Value* LHS = getLLVMValue(e.op1);
         Value* RHS = getLLVMValue(e.op2);
-        icode::data_type dtype = e.op1.dtype;
+        icode::DataType dtype = e.op1.dtype;
 
         switch (e.opcode)
         {
             case icode::EQ:
-                branchFlags.push(eqaul(LHS, RHS, dtype));
+                branchFlags.push(equal(LHS, RHS, dtype));
                 break;
             case icode::NEQ:
                 branchFlags.push(notEqual(LHS, RHS, dtype));
@@ -777,7 +795,7 @@ namespace llvmgen
         }
     }
 
-    void LLVMTranslator::createLabel(const icode::entry& e, Function* function)
+    void LLVMTranslator::createLabel(const icode::Entry& e, Function* function)
     {
         /* Converts mikuro CREATE_LABEL to llvm basic block  */
         BasicBlock* newBlock = BasicBlock::Create(*context, e.op1.name, function);
@@ -788,22 +806,22 @@ namespace llvmgen
         if (!prevInstructionGotoOrRet)
             builder->CreateBr(newBlock);
 
-        /* Start inserting ir into new block */
         builder->SetInsertPoint(newBlock);
     }
 
-    void LLVMTranslator::createGotoBackpatch(const icode::entry& e, Function* F, size_t entryIndex)
+    void LLVMTranslator::createGotoBackpatch(const icode::Entry& e, Function* F, size_t entryIndex)
     {
         /* All branch instructions GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO are backpatched,
             i.e the task is stored in a queue and instructions are created in a second pass */
 
+        /* To prevent duplicate block terminators */
         if (prevInstructionGotoOrRet)
             return;
 
         /* Save llvm insertion point corresponding to this entry */
         insertionPoints[entryIndex] = InsertionPoint(builder->GetInsertBlock(), builder->GetInsertPoint()++);
 
-        /* Append to backpath queue */
+        /* Append to backpatch queue */
         backpatchQueue.push_back(EnumeratedEntry(entryIndex, e));
 
         if (e.opcode == icode::GOTO)
@@ -818,7 +836,7 @@ namespace llvmgen
         builder->SetInsertPoint(fallBlock);
     }
 
-    void LLVMTranslator::createBranch(const icode::entry& e, Value* flag, BasicBlock* gotoBlock, BasicBlock* fallBlock)
+    void LLVMTranslator::createBranch(const icode::Entry& e, Value* flag, BasicBlock* gotoBlock, BasicBlock* fallBlock)
     {
         /* Convert mikuro GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO int llvm ir  */
 
@@ -847,7 +865,7 @@ namespace llvmgen
             /* Get the entry from backpatch q */
             EnumeratedEntry& enumeratedEntry = backpatchQueue[i];
             size_t entryIndex = enumeratedEntry.first;
-            icode::entry& e = enumeratedEntry.second;
+            icode::Entry& e = enumeratedEntry.second;
 
             /* Get branch flags and blocks for the goto */
             BasicBlock* gotoBlock = labelToBasicBlockMap[e.op1];
@@ -858,7 +876,7 @@ namespace llvmgen
             InsertionPoint insertPoint = insertionPoints[entryIndex];
             builder->SetInsertPoint(insertPoint.first, insertPoint.second);
 
-            /* Create branch */
+            /* Create branch in the ^ insertion point */
             createBranch(e, flag, gotoBlock, fallBlock);
 
             /* Pop from flags queue after processing branch */
@@ -867,26 +885,26 @@ namespace llvmgen
         }
     }
 
-    Value* LLVMTranslator::getFromatString(icode::data_type dtype)
+    Value* LLVMTranslator::getFromatString(icode::DataType dtype)
     {
-        if (icode::is_uint(dtype))
+        if (icode::isUnsignedInteger(dtype))
             return uintFormatString;
 
-        if (icode::is_sint(dtype))
+        if (icode::isSignedInteger(dtype))
             return intFormatString;
 
-        if (icode::is_float(dtype))
+        if (icode::isFloat(dtype))
             return floatFormatString;
 
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 
-    void LLVMTranslator::callPrintf(Value* format_str, Value* value)
+    void LLVMTranslator::callPrintf(Value* formatString, Value* value)
     {
         /* Set up printf arguments*/
         std::vector<Value*> printArgs;
-        printArgs.push_back(format_str);
+        printArgs.push_back(formatString);
         if (value)
             printArgs.push_back(value);
 
@@ -894,12 +912,12 @@ namespace llvmgen
         builder->CreateCall(LLVMModule->getFunction("printf"), printArgs);
     }
 
-    void LLVMTranslator::print(const icode::entry& e)
+    void LLVMTranslator::print(const icode::Entry& e)
     {
         Value* value = getLLVMValue(e.op1);
 
         /* Cast value to double if float */
-        if (icode::is_float(e.op1.dtype))
+        if (icode::isFloat(e.op1.dtype))
             value = builder->CreateFPCast(value, Type::getDoubleTy(*context));
         else
             value = builder->CreateSExt(value, Type::getInt32Ty(*context));
@@ -907,14 +925,14 @@ namespace llvmgen
         callPrintf(getFromatString(e.op1.dtype), value);
     }
 
-    void LLVMTranslator::printString(const icode::entry& e)
+    void LLVMTranslator::printString(const icode::Entry& e)
     {
         Value* str_value = getLLVMPointer(e.op1);
 
         callPrintf(str_value);
     }
 
-    void LLVMTranslator::call(const icode::entry& e)
+    void LLVMTranslator::call(const icode::Entry& e)
     {
         Value* result = builder->CreateCall(getLLVMFunction(e.op2.name, e.op3.name), params);
 
@@ -923,24 +941,24 @@ namespace llvmgen
         params.clear();
     }
 
-    void LLVMTranslator::ret(const icode::entry& e, icode::data_type dtype)
+    void LLVMTranslator::ret(const icode::Entry& e, icode::DataType dtype)
     {
         if (dtype == icode::VOID)
             builder->CreateRetVoid();
         else
-            builder->CreateRet(builder->CreateLoad(currentFunctionReturnValue));
+            builder->CreateRet(builder->CreateLoad(currentFunctionReturnPointer));
     }
 
-    void LLVMTranslator::pass(const icode::entry& e) { params.push_back(getLLVMValue(e.op1)); }
+    void LLVMTranslator::pass(const icode::Entry& e) { params.push_back(getLLVMValue(e.op1)); }
 
-    void LLVMTranslator::passPointer(const icode::entry& e) { params.push_back(getLLVMPointer(e.op1)); }
+    void LLVMTranslator::passPointer(const icode::Entry& e) { params.push_back(getLLVMPointer(e.op1)); }
 
-    void LLVMTranslator::translateFunctionIcode(const icode::func_desc& funcDesc, Function* F)
+    void LLVMTranslator::translateFunctionIcode(const icode::FunctionDescription& functionDesc, Function* F)
     {
         /* Go through icode and generate llvm ir */
-        for (size_t i = 0; i < funcDesc.icode_table.size(); i++)
+        for (size_t i = 0; i < functionDesc.icodeTable.size(); i++)
         {
-            icode::entry e = funcDesc.icode_table[i];
+            icode::Entry e = functionDesc.icodeTable[i];
 
             switch (e.opcode)
             {
@@ -1019,7 +1037,7 @@ namespace llvmgen
                     call(e);
                     break;
                 case icode::RET:
-                    ret(e, funcDesc.func_info.dtype);
+                    ret(e, functionDesc.functionReturnDescription.dtype);
                     break;
                 case icode::EXIT:
                     break;
@@ -1043,56 +1061,50 @@ namespace llvmgen
         params.clear();
     }
 
-    void LLVMTranslator::setupFunctionStack(icode::func_desc& funcDescription, Function* F)
+    void LLVMTranslator::setupFunctionStack(icode::FunctionDescription& functionDesc, Function* F)
     {
         /* Allocate space for local variables */
-        for (auto symbol : funcDescription.symbols)
-            if (!symbol.second.check(icode::IS_PARAM))
+        for (auto symbol : functionDesc.symbols)
+            if (!symbol.second.checkProperty(icode::IS_PARAM))
                 createLocalSymbol(symbol.second, symbol.first);
 
         /* Assign passed function args */
-        unsigned int i = 0;
+        unsigned int argumentCounter = 0;
         for (auto& arg : F->args())
         {
-            std::string& symbol_name = funcDescription.params[i];
-            arg.setName(symbol_name);
-            createFunctionParameter(funcDescription.symbols[symbol_name], symbol_name, &arg);
-            i++;
+            std::string& argumentName = functionDesc.parameters[argumentCounter];
+            arg.setName(argumentName);
+            createFunctionParameter(functionDesc.symbols[argumentName], argumentName, &arg);
+            argumentCounter++;
         }
     }
 
-    void LLVMTranslator::generateFunction(icode::func_desc& funcDescription, const std::string& name)
+    void LLVMTranslator::generateFunction(icode::FunctionDescription& functionDesc, const std::string& name)
     {
         resetState();
 
-        /* Create function */
         Function* function = getLLVMFunction(name, moduleDescription.name);
 
         /* Set insertion point to function body */
         BasicBlock* functionBlock = BasicBlock::Create(*context, "entry", function);
         builder->SetInsertPoint(functionBlock);
 
-        /* Allocate stack space for local variables */
-        setupFunctionStack(funcDescription, function);
+        setupFunctionStack(functionDesc, function);
 
         /* Set ret ptr */
-        if (funcDescription.func_info.dtype != icode::VOID)
-            currentFunctionReturnValue =
-              builder->CreateAlloca(varDescriptionToLLVMType(funcDescription.func_info), nullptr, name + ".retval");
+        if (functionDesc.functionReturnDescription.dtype != icode::VOID)
+            currentFunctionReturnPointer =
+              builder->CreateAlloca(variableDescriptionToLLVMType(functionDesc.functionReturnDescription),
+                                    nullptr,
+                                    name + ".retPointer");
 
         /* Convert mikuro function ir to llvm ir */
-        translateFunctionIcode(funcDescription, function);
+        translateFunctionIcode(functionDesc, function);
 
-        /* Process goto backpathing */
+        /* Process goto backpacthing */
         processGotoBackpatches();
 
         verifyFunction(*function);
-    }
-
-    void LLVMTranslator::generateGlobals()
-    {
-        for (auto symbol : moduleDescription.globals)
-            createGlobalSymbol(symbol.second, symbol.first);
     }
 
     void LLVMTranslator::setupPrintf()
@@ -1111,36 +1123,36 @@ namespace llvmgen
         spaceString = builder->CreateGlobalString(" ", "space", 0U, LLVMModule.get());
     }
 
-    LLVMTranslator::LLVMTranslator(icode::module_desc& modDescription, icode::module_desc_map& modulesMap)
-      : moduleDescription(modDescription)
-      , externalModulesRef(modulesMap)
+    void LLVMTranslator::setupContextAndModule()
     {
-        /* Setup LLVM context, module and builder */
         context = std::make_unique<LLVMContext>();
-        LLVMModule = std::make_unique<Module>(modDescription.name, *context);
+        LLVMModule = std::make_unique<Module>(moduleDescription.name, *context);
         builder = std::make_unique<IRBuilder<>>(*context);
         prevInstructionGotoOrRet = false;
+    }
 
-        /* Generate global variables */
-        generateGlobals();
+    void LLVMTranslator::generateModule()
+    {
+        for (auto symbol : moduleDescription.globals)
+            createGlobalSymbol(symbol.second, symbol.first);
 
-        /* Declare that printf exists and has signature int (i8*, ...) */
         setupPrintf();
 
-        /* Loop through each function and convert mikuro IR to llvm IR */
-        for (auto func : modDescription.functions)
-        {
+        for (auto func : moduleDescription.functions)
             generateFunction(func.second, func.first);
-        }
+    }
 
-        /* Initialize the target registry etc */
+    void LLVMTranslator::initializeTargetRegistry()
+    {
         InitializeAllTargetInfos();
         InitializeAllTargets();
         InitializeAllTargetMCs();
         InitializeAllAsmParsers();
         InitializeAllAsmPrinters();
+    }
 
-        /* Setup LLVM target triple */
+    TargetMachine* LLVMTranslator::setupTargetTripleAndDataLayout()
+    {
         auto targetTriple = sys::getDefaultTargetTriple();
         LLVMModule->setTargetTriple(targetTriple);
 
@@ -1153,7 +1165,6 @@ namespace llvmgen
             throw miklog::internal_bug_error();
         }
 
-        /* Setup LLVM data layout */
         std::string CPU = "generic";
         std::string features = "";
 
@@ -1163,8 +1174,12 @@ namespace llvmgen
 
         LLVMModule->setDataLayout(targetMachine->createDataLayout());
 
-        /* Setup output object file and pass manager */
-        auto filename = modDescription.name + ".o";
+        return targetMachine;
+    }
+
+    void LLVMTranslator::setupPassManagerAndCreateObject(TargetMachine* targetMachine)
+    {
+        auto filename = moduleDescription.name + ".o";
         std::error_code EC;
         raw_fd_ostream dest(filename, EC, sys::fs::OF_None);
 
@@ -1184,8 +1199,19 @@ namespace llvmgen
         }
 
         pass.run(*LLVMModule);
-
         dest.flush();
+    }
+
+    LLVMTranslator::LLVMTranslator(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& modulesMap)
+      : moduleDescription(moduleDesc)
+      , externalModulesRef(modulesMap)
+    {
+        setupContextAndModule();
+        setupPrintf();
+        generateModule();
+        initializeTargetRegistry();
+        TargetMachine* targetMachine = setupTargetTripleAndDataLayout();
+        setupPassManagerAndCreateObject(targetMachine);
     }
 
     std::string LLVMTranslator::getLLVMModuleString()

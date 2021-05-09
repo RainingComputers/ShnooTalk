@@ -20,7 +20,7 @@ void print_usage()
     miklog::println("\t-c\tCompile program (default)");
 }
 
-void ir_gen(const std::string& file_name, icode::target_desc& target, icode::module_desc_map& modules)
+void ir_gen(const std::string& file_name, icode::TargetDescription& target, icode::StringModulesMap& modules)
 {
     /* Open file */
     std::ifstream ifile;
@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
     }
 
     /* Map for holding all the compiled module in intermediate representation */
-    icode::module_desc_map modules;
+    icode::StringModulesMap modules;
 
     /* Compile program */
     try
@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        icode::target_desc target = llvmgen::getTargetDescription();
+        icode::TargetDescription target = llvmgen::getTargetDescription();
 
         ir_gen(file_name, target, modules);
 

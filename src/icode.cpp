@@ -2,36 +2,36 @@
 
 namespace icode
 {
-    std::string data_type_strs[] = { "I8",  "UI8",    "I16",     "UI16",     "I32", "UI32",  "I64",    "UI64", "F32",
+    static std::string dataTypeStringsArray[] = { "I8",  "UI8",    "I16",     "UI16",     "I32", "UI32",  "I64",    "UI64", "F32",
                                      "F64", "VM_INT", "VM_UINT", "VM_FLOAT", "INT", "FLOAT", "STRUCT", "VOID" };
 
-    entry::entry()
+    Entry::Entry()
     {
-        op1.optype = NONE;
-        op2.optype = NONE;
-        op3.optype = NONE;
+        op1.operandType = NONE;
+        op2.operandType = NONE;
+        op3.operandType = NONE;
     }
 
-    bool operand::operator<(const operand& other) const
+    bool Operand::operator<(const Operand& other) const
     {
         if (*this == other)
             return false;
 
-        return temp_id < other.temp_id;
+        return operandId < other.operandId;
     }
 
-    bool operand::operator==(const operand& other) const
+    bool Operand::operator==(const Operand& other) const
     {
-        if (optype != other.optype)
+        if (operandType != other.operandType)
             return false;
 
-        switch (optype)
+        switch (operandType)
         {
             case TEMP:
             case TEMP_PTR:
             case RET_PTR:
-            case RET_VAL:
-                return temp_id == other.temp_id;
+            case CALLEE_RET_VAL:
+                return operandId == other.operandId;
             case VAR:
             case GBL_VAR:
             case PTR:
@@ -49,93 +49,108 @@ namespace icode
         return false;
     }
 
-    bool operand::operator!=(const operand& other) const { return !(*this == other); }
-
-    void operand::update_dtype(const var_info& var)
+    void Operand::update_dtype(const VariableDescription& var)
     {
         dtype = var.dtype;
-        dtype_name = var.dtype_name;
+        dtypeName = var.dtypeName;
     }
+
+    bool Operand::isPointer()
+    {
+        return operandType == icode::PTR || operandType == icode::TEMP_PTR || operandType == icode::RET_PTR;
+    }
+
 
     /*
         Helper functions for type checking and other data type operations.
     */
 
-    bool is_sint(data_type dtype)
+    bool isSignedInteger(DataType dtype)
     {
         return (dtype == I8 || dtype == I16 || dtype == I32 || dtype == I64 || dtype == VM_INT || dtype == INT);
     }
 
-    bool is_uint(data_type dtype)
+    bool isUnsignedInteger(DataType dtype)
     {
         return (dtype == UI8 || dtype == UI16 || dtype == UI32 || dtype == UI64 || dtype == VM_UINT);
     }
 
-    bool is_int(data_type dtype) { return (is_sint(dtype) || is_uint(dtype)); }
+    bool isInteger(DataType dtype) { return (isSignedInteger(dtype) || isUnsignedInteger(dtype)); }
 
-    bool is_float(data_type dtype) { return (dtype == F32 || dtype == F64 || dtype == FLOAT || dtype == VM_FLOAT); }
+    bool isFloat(DataType dtype) { return (dtype == F32 || dtype == F64 || dtype == FLOAT || dtype == VM_FLOAT); }
 
-    bool dtype_eq(data_type dtype1, data_type dtype2)
+    bool dtype_eq(DataType dtype1, DataType dtype2)
     {
-        return dtype1 == dtype2 || (dtype1 == INT && is_int(dtype2)) || (is_int(dtype1) && dtype2 == INT) ||
-               (dtype1 == FLOAT && is_float(dtype2)) || (is_float(dtype1) && dtype2 == FLOAT);
+        return dtype1 == dtype2 || (dtype1 == INT && isInteger(dtype2)) || (isInteger(dtype1) && dtype2 == INT) ||
+               (dtype1 == FLOAT && isFloat(dtype2)) || (isFloat(dtype1) && dtype2 == FLOAT);
     }
 
-    bool type_eq(var_info var1, var_info var2)
+    bool isSameType(VariableDescription var1, VariableDescription var2)
     {
         if (var1.dtype == STRUCT || var2.dtype == STRUCT)
-            return (var1.dtype_name == var2.dtype_name && var1.dimensions == var2.dimensions &&
-                    var1.module_name == var2.module_name);
+            return (var1.dtypeName == var2.dtypeName && var1.dimensions == var2.dimensions &&
+                    var1.moduleName == var2.moduleName);
 
         return (dtype_eq(var1.dtype, var2.dtype) && var1.dimensions == var2.dimensions);
     }
 
-    var_info var_from_dtype(data_type dtype, target_desc& target)
+    VariableDescription variableDescriptionFromDataType(DataType dtype, TargetDescription& target)
     {
-        var_info var;
+        VariableDescription var;
 
         var.dtype = dtype;
 
         if (dtype == INT)
-            var.dtype_name = "int";
+            var.dtypeName = "int";
         else if (dtype == FLOAT)
-            var.dtype_name = "float";
+            var.dtypeName = "float";
         else if (dtype == VOID)
-            var.dtype_name = "void";
+            var.dtypeName = "void";
         else
         {
-            for (auto pair : target.dtype_strings_map)
+            for (auto pair : target.dataTypeNames)
                 if (pair.second == dtype)
-                    var.dtype_name = pair.first;
+                    var.dtypeName = pair.first;
         }
 
-        var.dtype_size = dtype_size[dtype];
-        var.size = var.dtype_size;
+        var.dtypeSize = getDataTypeSize(dtype);
+        var.size = var.dtypeSize;
         var.offset = 0;
-        var.scope_id = 0;
+        var.scopeId = 0;
 
         return var;
     }
 
-    data_type from_dtype_str(const std::string& dtype_name, target_desc& target)
+    DataType dataTypeFromString(const std::string& dtype_name, TargetDescription& target)
     {
-        if (target.dtype_strings_map.find(dtype_name) != target.dtype_strings_map.end())
-            return target.dtype_strings_map[dtype_name];
+        if (target.dataTypeNames.find(dtype_name) != target.dataTypeNames.end())
+            return target.dataTypeNames[dtype_name];
 
         return STRUCT;
+    }
+
+    std::string dataTypeToString(const DataType dtype)
+    {
+        return dataTypeStringsArray[dtype];
+    }
+
+    int getDataTypeSize(const DataType dtype)
+    {
+        const int dataTypeSizesArray[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 1, 1, 1, 0, 0, 0, 0 };
+        return dataTypeSizesArray[dtype];
     }
 
     /*
         Helper functions to get and set variable properties
     */
 
-    var_info::var_info() { properties = 0; }
+    VariableDescription::VariableDescription() { properties = 0; }
 
-    void var_info::set_prop(var_prop prop) { properties |= (1 << prop); }
+    void VariableDescription::setProperty(VariableProperty prop) { properties |= (1 << prop); }
 
-    void var_info::clear_prop(var_prop prop) { properties &= ~(1 << prop); }
+    void VariableDescription::clearProperty(VariableProperty prop) { properties &= ~(1 << prop); }
 
-    bool var_info::check(var_prop prop) const { return properties & (1 << prop); }
+    bool VariableDescription::checkProperty(VariableProperty prop) const { return properties & (1 << prop); }
 
     /*
         Helper functions to check for existence of symbols
@@ -156,199 +171,192 @@ namespace icode
         return false;
     }
 
-    bool struct_desc::field_exists(const std::string& name) { return fields.find(name) != fields.end(); }
-
-    bool func_desc::symbol_exists(const std::string& name) { return symbols.find(name) != symbols.end(); }
-
-    bool func_desc::get_symbol(const std::string& name, var_info& val)
+    bool StructDescription::fieldExists(const std::string& name)
     {
-        return get_elem<std::string, var_info>(symbols, name, val);
+        return structFields.find(name) != structFields.end();
     }
 
-    bool module_desc::use_exists(const std::string& name)
+    bool FunctionDescription::symbolExists(const std::string& name) { return symbols.find(name) != symbols.end(); }
+
+    bool FunctionDescription::getSymbol(const std::string& name, VariableDescription& val)
+    {
+        return get_elem<std::string, VariableDescription>(symbols, name, val);
+    }
+
+    bool ModuleDescription::use_exists(const std::string& name)
     {
         return std::find(uses.begin(), uses.end(), name) != uses.end();
     }
 
-    bool module_desc::get_struct(const std::string& name, struct_desc& val)
+    bool ModuleDescription::get_struct(const std::string& name, StructDescription& val)
     {
-        return get_elem<std::string, struct_desc>(structures, name, val);
+        return get_elem<std::string, StructDescription>(structures, name, val);
     }
 
-    bool module_desc::get_func(const std::string& name, func_desc& val)
+    bool ModuleDescription::get_func(const std::string& name, FunctionDescription& val)
     {
-        return get_elem<std::string, func_desc>(functions, name, val);
+        return get_elem<std::string, FunctionDescription>(functions, name, val);
     }
 
-    bool module_desc::get_enum(const std::string& name, int& val)
+    bool ModuleDescription::get_enum(const std::string& name, int& val)
     {
         return get_elem<std::string, int>(enumerations, name, val);
     }
 
-    bool module_desc::get_def(const std::string& name, def& val)
+    bool ModuleDescription::get_def(const std::string& name, Define& val)
     {
-        return get_elem<std::string, def>(defines, name, val);
+        return get_elem<std::string, Define>(defines, name, val);
     }
 
-    bool module_desc::get_global(const std::string& name, var_info& val)
+    bool ModuleDescription::get_global(const std::string& name, VariableDescription& val)
     {
-        return get_elem<std::string, var_info>(globals, name, val);
+        return get_elem<std::string, VariableDescription>(globals, name, val);
     }
 
-    bool module_desc::symbol_exists(const std::string& name, target_desc& target)
+    bool ModuleDescription::symbol_exists(const std::string& name, TargetDescription& target)
     {
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
-               use_exists(name) || from_dtype_str(name, target) != STRUCT ||
+               use_exists(name) || dataTypeFromString(name, target) != STRUCT ||
                enumerations.find(name) != enumerations.end() || globals.find(name) != globals.end() ||
                defines.find(name) != defines.end() || target.defines.find(name) != target.defines.end();
     }
 
-    bool target_desc::get_def(const std::string& name, def& val)
+    bool TargetDescription::get_def(const std::string& name, Define& val)
     {
-        return get_elem<std::string, def>(defines, name, val);
-    }
-
-    /*
-        Helper functions for optimizer
-    */
-    bool is_ltrl(operand_type optype) { return optype == icode::LITERAL || optype == icode::ADDR; }
-
-    bool is_ptr(operand_type optype)
-    {
-        return optype == icode::PTR || optype == icode::TEMP_PTR || optype == icode::RET_PTR;
+        return get_elem<std::string, Define>(defines, name, val);
     }
 
     /*
         Helper functions for generating icode operands
     */
 
-    operand temp_opr(data_type dtype, const std::string& dtype_name, unsigned int id)
+    Operand createTempOperand(DataType dtype, const std::string& dtype_name, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.dtype = dtype;
-        temp.dtype_name = dtype_name;
-        temp.optype = TEMP;
+        temp.dtypeName = dtype_name;
+        temp.operandType = TEMP;
 
         return temp;
     }
 
-    operand temp_ptr_opr(data_type dtype, const std::string& dtype_name, unsigned int id)
+    Operand createPointerOperand(DataType dtype, const std::string& dtype_name, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.dtype = dtype;
-        temp.dtype_name = dtype_name;
-        temp.optype = TEMP_PTR;
+        temp.dtypeName = dtype_name;
+        temp.operandType = TEMP_PTR;
 
         return temp;
     }
 
-    operand str_dat_opr(const std::string& name, unsigned int size, unsigned int id)
+    Operand createStringDataOperand(const std::string& name, unsigned int size, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.name = name;
         temp.dtype = icode::UI8;
-        temp.optype = STR_DATA;
+        temp.operandType = STR_DATA;
         temp.val.size = size;
 
         return temp;
     }
 
-    operand addr_opr(unsigned int address, unsigned int id)
+    Operand createLiteralAddressOperand(unsigned int address, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.val.address = address;
-        temp.optype = ADDR;
+        temp.operandType = ADDR;
 
         return temp;
     }
 
-    operand var_opr(data_type dtype,
-                    const std::string& dtype_name,
-                    const std::string& symbol,
-                    unsigned int id,
-                    bool global,
-                    bool ptr)
+    Operand createVarOperand(DataType dtype,
+                             const std::string& dtype_name,
+                             const std::string& symbol,
+                             unsigned int id,
+                             bool global,
+                             bool ptr)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.name = symbol;
         temp.dtype = dtype;
-        temp.dtype_name = dtype_name;
+        temp.dtypeName = dtype_name;
 
         if (global)
-            temp.optype = GBL_VAR;
+            temp.operandType = GBL_VAR;
         else if (ptr)
-            temp.optype = PTR;
+            temp.operandType = PTR;
         else
-            temp.optype = VAR;
+            temp.operandType = VAR;
 
         return temp;
     }
 
-    operand ret_ptr_opr(data_type dtype, const std::string& dtype_name, unsigned int id)
+    Operand createRetPointerOperand(DataType dtype, const std::string& dtype_name, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.dtype = dtype;
-        temp.dtype_name = dtype_name;
-        temp.optype = RET_PTR;
+        temp.dtypeName = dtype_name;
+        temp.operandType = RET_PTR;
 
         return temp;
     }
 
-    operand ret_val_opr(data_type dtype, const std::string& dtype_name, unsigned int id)
+    Operand createCalleeRetValOperand(DataType dtype, const std::string& dtype_name, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.dtype = dtype;
-        temp.dtype_name = dtype_name;
-        temp.optype = RET_VAL;
+        temp.dtypeName = dtype_name;
+        temp.operandType = CALLEE_RET_VAL;
 
         return temp;
     }
 
-    operand literal_opr(data_type dtype, float literal, unsigned int id)
+    Operand createLiteralOperand(DataType dtype, float literal, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.val.floating = literal;
         temp.dtype = dtype;
-        temp.optype = LITERAL;
+        temp.operandType = LITERAL;
 
         return temp;
     }
 
-    operand literal_opr(data_type dtype, int literal, unsigned int id)
+    Operand createLiteralOperand(DataType dtype, int literal, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.val.integer = literal;
         temp.dtype = dtype;
-        temp.optype = LITERAL;
+        temp.operandType = LITERAL;
 
         return temp;
     }
 
-    operand label_opr(const std::string& label, unsigned int id)
+    Operand createLabelOperand(const std::string& label, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.name = label;
-        temp.optype = LABEL;
+        temp.operandType = LABEL;
 
         return temp;
     }
 
-    operand module_opr(const std::string& module, unsigned int id)
+    Operand createModuleOperand(const std::string& module, unsigned int id)
     {
-        operand temp;
-        temp.temp_id = id;
+        Operand temp;
+        temp.operandId = id;
         temp.name = module;
-        temp.optype = MODULE;
+        temp.operandType = MODULE;
 
         return temp;
     }

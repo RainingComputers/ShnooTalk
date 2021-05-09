@@ -45,26 +45,26 @@ namespace miklog
     void type_error(const std::string& mod_name,
                     std::ifstream& file,
                     const token::token& tok,
-                    icode::var_info& expected,
-                    icode::var_info& found);
+                    icode::VariableDescription& expected,
+                    icode::VariableDescription& found);
 
     void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::token& tok);
 
     void internal_error(const std::string& mod_name);
 
-    void print_operand(const icode::operand& op);
+    void print_operand(const icode::Operand& op);
 
-    void print_entry(const icode::entry& entry);
+    void print_entry(const icode::Entry& entry);
 
-    void print_var_info(const icode::var_info& var_info);
+    void print_var_info(const icode::VariableDescription& var_info);
 
-    void print_struct_desc(const icode::struct_desc& struct_desc, int ilvl = 0);
+    void print_struct_desc(const icode::StructDescription& struct_desc, int ilvl = 0);
 
-    void print_def(const icode::def& definition);
+    void print_def(const icode::Define& definition);
 
-    void print_func_desc(const icode::func_desc& func_desc, int ilvl = 0);
+    void print_func_desc(const icode::FunctionDescription& func_desc, int ilvl = 0);
 
-    void print_module_desc(const icode::module_desc& module_desc, int ilvl = 0);
+    void print_module_desc(const icode::ModuleDescription& module_desc, int ilvl = 0);
 }
 
 #endif

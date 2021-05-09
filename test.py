@@ -68,7 +68,7 @@ def run_test(file_name, compiler_exec_path):
     if(compiler_retcode != 0):
         return compare_outputs(test_output, compiler_output)
 
-    # Link pbject file int an execuatable
+    # Link object file into an execuatable
     os.system('clang *.o -o test')
 
     # Run the executable and return the output from the executable
@@ -127,9 +127,6 @@ def setup_test(obj_dir, src_dir, testinfo_dir):
     os.system(f"rm -rf {testinfo_dir}")
     os.system(f"mkdir -p {testinfo_dir}")
 
-    # Copy source files
-    os.system(f"cp {src_dir}*.cpp {obj_dir}")
-
 
 def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
     setup_test(obj_dir, src_dir, testinfo_dir)
@@ -149,7 +146,7 @@ def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
             passed.append(file)
             # Process .gcda and .gcno files with lcov
             os.system(
-                f"lcov -c -d {obj_dir} -o {testinfo_dir}{file}.info > /dev/null")
+                f"lcov -c  -b ../ -d {obj_dir} -o {testinfo_dir}{file}.info > /dev/null")
         elif(res == TestResult.FAILED):
             print(" ❌", file, "failed\n")
             print("[Program output]")
@@ -190,9 +187,10 @@ def run_all_llc_tests(compiler_exec_path):
     os.system('rm -f *.llc.s')
 
 if __name__ == "__main__":
+    os.chdir('tests/')
+
     print("--=[Running uHLL compiler tests]=--")
     run_all_tests("../bin/debug/uhll", "../obj/debug/", "../src/", "testinfo/")
-    
 
     print("--=[Running LLVM LLC tests]=--")
     run_all_llc_tests("../bin/debug/uhll")
