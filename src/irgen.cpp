@@ -466,7 +466,8 @@ namespace irgen
         return opr;
     }
 
-    OperandDescriptionPair ir_generator::var_info_to_str_dat(const token::token& str_token, icode::VariableDescription var)
+    OperandDescriptionPair ir_generator::var_info_to_str_dat(const token::token& str_token,
+                                                             icode::VariableDescription var)
     {
         if (var.dimensions.size() != 1 || var.dtype != icode::UI8)
         {
@@ -734,16 +735,16 @@ namespace irgen
         }
         else if (last_node.type == node::STR_LITERAL)
         {
-            OperandDescriptionPair var_pair =
-              OperandDescriptionPair(icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.str, id()),
-                          var.second);
+            OperandDescriptionPair var_pair = OperandDescriptionPair(
+              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.str, id()),
+              var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
-            OperandDescriptionPair var_pair =
-              OperandDescriptionPair(icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.str, id()),
-                          var.second);
+            OperandDescriptionPair var_pair = OperandDescriptionPair(
+              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.str, id()),
+              var.second);
             assign_init_list_tovar(var_pair, last_node);
         }
 
@@ -1124,7 +1125,7 @@ namespace irgen
 
         /* return a icode::INT literal  */
         return OperandDescriptionPair(icode::createLiteralOperand(icode::INT, size, id()),
-                           icode::variableDescriptionFromDataType(icode::INT, target));
+                                      icode::variableDescriptionFromDataType(icode::INT, target));
     }
 
     OperandDescriptionPair ir_generator::term(const node::node& root)
@@ -1144,7 +1145,7 @@ namespace irgen
                         int literal = std::stoi(child.tok.str);
                         icode::DataType dtype = icode::INT;
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, literal, id()),
-                                           icode::variableDescriptionFromDataType(dtype, target));
+                                                      icode::variableDescriptionFromDataType(dtype, target));
 
                         break;
                     }
@@ -1161,7 +1162,7 @@ namespace irgen
 
                         icode::DataType dtype = icode::UI8;
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, character, id()),
-                                           icode::variableDescriptionFromDataType(dtype, target));
+                                                      icode::variableDescriptionFromDataType(dtype, target));
                     }
                     case token::FLOAT_LITERAL:
                     {
@@ -1169,7 +1170,7 @@ namespace irgen
                         icode::DataType dtype = icode::FLOAT;
                         float literal = (float)stof(child.tok.str);
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, literal, id()),
-                                           icode::variableDescriptionFromDataType(dtype, target));
+                                                      icode::variableDescriptionFromDataType(dtype, target));
 
                         break;
                     }

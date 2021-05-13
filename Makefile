@@ -27,7 +27,7 @@ help :
 EXEC_NAME = uhll
 
 # C++ compiler
-CXX ?= clang
+CXX ?= clang++
 
 # Get platform
 ifeq ($(OS), Windows_NT)
@@ -80,6 +80,7 @@ clean:
 
 # For compiling .cpp files in src/ to .o object files in obj/
 obj/$(BUILD_TYPE)/%.o: src/%.cpp src/%.hpp
+	mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -Wall -c $< -o $@
 
 obj/$(BUILD_TYPE)/%.o: src/%.cpp

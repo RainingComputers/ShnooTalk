@@ -2,8 +2,9 @@
 
 namespace icode
 {
-    static std::string dataTypeStringsArray[] = { "I8",  "UI8",    "I16",     "UI16",     "I32", "UI32",  "I64",    "UI64", "F32",
-                                     "F64", "VM_INT", "VM_UINT", "VM_FLOAT", "INT", "FLOAT", "STRUCT", "VOID" };
+    static std::string dataTypeStringsArray[] = { "I8",       "UI8",  "I16",   "UI16",   "I32",    "UI32",
+                                                  "I64",      "UI64", "F32",   "F64",    "VM_INT", "VM_UINT",
+                                                  "VM_FLOAT", "INT",  "FLOAT", "STRUCT", "VOID" };
 
     Entry::Entry()
     {
@@ -59,7 +60,6 @@ namespace icode
     {
         return operandType == icode::PTR || operandType == icode::TEMP_PTR || operandType == icode::RET_PTR;
     }
-
 
     /*
         Helper functions for type checking and other data type operations.
@@ -129,10 +129,7 @@ namespace icode
         return STRUCT;
     }
 
-    std::string dataTypeToString(const DataType dtype)
-    {
-        return dataTypeStringsArray[dtype];
-    }
+    std::string dataTypeToString(const DataType dtype) { return dataTypeStringsArray[dtype]; }
 
     int getDataTypeSize(const DataType dtype)
     {

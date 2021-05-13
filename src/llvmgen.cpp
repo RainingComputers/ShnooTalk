@@ -11,9 +11,9 @@ namespace llvmgen
         icode::TargetDescription target;
 
         target.dataTypeNames = { { "byte", icode::I8 },     { "ubyte", icode::UI8 },  { "short", icode::I16 },
-                                     { "ushort", icode::UI16 }, { "int", icode::I32 },    { "uint", icode::UI32 },
-                                     { "long", icode::I64 },    { "ulong", icode::UI64 }, { "float", icode::F32 },
-                                     { "double", icode::F64 },  { "char", icode::UI8 },   { "bool", icode::UI8 } };
+                                 { "ushort", icode::UI16 }, { "int", icode::I32 },    { "uint", icode::UI32 },
+                                 { "long", icode::I64 },    { "ulong", icode::UI64 }, { "float", icode::F32 },
+                                 { "double", icode::F64 },  { "char", icode::UI8 },   { "bool", icode::UI8 } };
 
         /* true and false defines */
         icode::Define trueDef;
@@ -375,7 +375,7 @@ namespace llvmgen
         setLLVMValue(e.op1, result);
     }
 
-    Value* LLVMTranslator::add(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::add(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro ADD to llvm ir */
 
@@ -392,7 +392,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::subtract(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::subtract(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro SUB to llvm ir */
 
@@ -409,7 +409,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::multiply(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::multiply(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro MUL to llvm ir */
 
@@ -426,7 +426,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::divide(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::divide(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro DIV to llvm ir */
 
@@ -443,7 +443,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::remainder(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::remainder(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro MOD to llvm ir */
 
@@ -460,7 +460,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::rightShift(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::rightShift(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro RSH to llvm ir */
 
@@ -474,7 +474,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::leftShift(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::leftShift(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro LSH to llvm ir */
 
@@ -485,7 +485,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::bitwiseAnd(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::bitwiseAnd(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro BWA to llvm ir */
 
@@ -496,7 +496,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::bitwiseOr(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::bitwiseOr(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro BWO to llvm ir */
 
@@ -507,7 +507,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::bitwiseXor(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::bitwiseXor(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro BWX to llvm ir */
 
@@ -630,7 +630,7 @@ namespace llvmgen
 
         if (icode::getDataTypeSize(e.op1.dtype) == icode::getDataTypeSize(e.op2.dtype))
             return getLLVMValue(e.op2);
-    
+
         miklog::internal_error(moduleDescription.name);
         throw miklog::internal_bug_error();
     }
@@ -667,7 +667,7 @@ namespace llvmgen
         setLLVMValue(e.op1, result);
     }
 
-    Value* LLVMTranslator::equal(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::equal(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro EQ to llvm ir */
 
@@ -681,7 +681,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::notEqual(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::notEqual(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro NEQ to llvm ir */
 
@@ -695,7 +695,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::lessThan(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::lessThan(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro LT to llvm ir */
 
@@ -712,7 +712,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::lessThanOrEqualTo(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::lessThanOrEqualTo(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro LTE to llvm ir */
 
@@ -729,7 +729,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::greaterThan(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::greaterThan(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro GT to llvm ir */
 
@@ -746,7 +746,7 @@ namespace llvmgen
         throw miklog::internal_bug_error();
     }
 
-    Value* LLVMTranslator::greaterThanOrEqualTo(Value* LHS, Value* RHS, const icode::DataType dtype)
+    Value* LLVMTranslator::greaterThanOrEqualTo(Value* LHS, Value* RHS, icode::DataType dtype)
     {
         /* Converts mikuro GTE to llvm ir */
 
