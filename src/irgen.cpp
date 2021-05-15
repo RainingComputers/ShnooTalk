@@ -61,10 +61,10 @@ namespace irgen
         if (target.get_def(name, def))
             return true;
 
-        if ((*current_ext_module).get_def(name, def))
+        if ((*current_ext_module).getDefine(name, def))
             return true;
 
-        if (module.get_def(name, def))
+        if (module.getDefine(name, def))
             return true;
 
         return false;
@@ -72,10 +72,10 @@ namespace irgen
 
     bool ir_generator::get_func(const std::string& name, icode::FunctionDescription& func)
     {
-        if ((*current_ext_module).get_func(name, func))
+        if ((*current_ext_module).getFunction(name, func))
             return true;
 
-        if (module.get_func(name, func))
+        if (module.getFunction(name, func))
             return true;
 
         return false;
@@ -83,10 +83,10 @@ namespace irgen
 
     bool ir_generator::get_enum(const std::string& name, int& val)
     {
-        if (module.get_enum(name, val))
+        if (module.getEnum(name, val))
             return true;
 
-        if ((*current_ext_module).get_enum(name, val))
+        if ((*current_ext_module).getEnum(name, val))
             return true;
 
         return false;
@@ -116,7 +116,7 @@ namespace irgen
             if (root.children[i].type == node::MODULE)
             {
                 /* Check if module exists */
-                if (!(*var_module).use_exists(root.children[i].tok.str))
+                if (!(*var_module).useExists(root.children[i].tok.str))
                 {
                     miklog::error_tok(module.name, "Module does not exist", file, root.children[i].tok);
                     throw miklog::compile_error();
@@ -150,7 +150,7 @@ namespace irgen
         {
             icode::StructDescription struct_desc;
 
-            if (!(*var_module).get_struct(dtype_token.str, struct_desc))
+            if (!(*var_module).getStruct(dtype_token.str, struct_desc))
             {
                 miklog::error_tok(module.name, "Symbol does not exist", file, dtype_token);
                 throw miklog::compile_error();
@@ -177,7 +177,7 @@ namespace irgen
         var_info.scopeId = get_scope_id();
 
         /* Add external module */
-        if (var_info.moduleName != module.name && !module.use_exists(var_info.moduleName))
+        if (var_info.moduleName != module.name && !module.useExists(var_info.moduleName))
             module.uses.push_back(var_info.moduleName);
 
         /* Get array dimensions */
@@ -224,14 +224,14 @@ namespace irgen
             }
 
             /* Check for multiple imports */
-            if (module.use_exists(name_token.str))
+            if (module.useExists(name_token.str))
             {
                 miklog::error_tok(module.name, "Multiple imports detected", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for name conflict */
-            if (module.symbol_exists(name_token.str, target))
+            if (module.symbolExists(name_token.str, target))
             {
                 miklog::error_tok(module.name, "Name conflict, symbol already exists", file, name_token);
                 throw miklog::compile_error();
@@ -257,7 +257,7 @@ namespace irgen
         int enum_val;
 
         /* Get ext module */
-        if (!module.use_exists(root.children[0].tok.str))
+        if (!module.useExists(root.children[0].tok.str))
         {
             miklog::error_tok(module.name, "Module not imported", file, root.children[0].tok);
             throw miklog::compile_error();
@@ -268,29 +268,29 @@ namespace irgen
         for (node::node child : root.children[1].children)
         {
             /* Check if symbol exists */
-            if (module.symbol_exists(child.tok.str, target))
+            if (module.symbolExists(child.tok.str, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined in current module", file, child.tok);
                 throw miklog::compile_error();
             }
 
             /* If it is struct */
-            if ((*ext_module).get_struct(child.tok.str, struct_desc))
+            if ((*ext_module).getStruct(child.tok.str, struct_desc))
                 module.structures[child.tok.str] = struct_desc;
             /* If it a function */
-            else if ((*ext_module).get_func(child.tok.str, func_desc))
+            else if ((*ext_module).getFunction(child.tok.str, func_desc))
             {
                 miklog::error_tok(module.name, "Cannot import functions", file, child.tok);
                 throw miklog::compile_error();
             }
             /* If is a def */
-            else if ((*ext_module).get_def(child.tok.str, def))
+            else if ((*ext_module).getDefine(child.tok.str, def))
                 module.defines[child.tok.str] = def;
             /* If it is a enum */
-            else if ((*ext_module).get_enum(child.tok.str, enum_val))
+            else if ((*ext_module).getEnum(child.tok.str, enum_val))
                 module.enumerations[child.tok.str] = enum_val;
             /* Check if use exists */
-            else if ((*ext_module).use_exists(child.tok.str))
+            else if ((*ext_module).useExists(child.tok.str))
                 module.uses.push_back(child.tok.str);
             /* Does not exist */
             else
@@ -307,7 +307,7 @@ namespace irgen
         {
             token::token enum_tok = root.children[i].tok;
 
-            if (module.symbol_exists(enum_tok.str, target))
+            if (module.symbolExists(enum_tok.str, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, enum_tok);
                 throw miklog::compile_error();
@@ -323,7 +323,7 @@ namespace irgen
         token::token ltrl_token = root.children[1].tok;
 
         /* Check if the symbol already exists */
-        if (module.symbol_exists(root.children[0].tok.str, target))
+        if (module.symbolExists(root.children[0].tok.str, target))
         {
             miklog::error_tok(module.name, "Symbol already exists", file, root.children[0].tok);
             throw miklog::compile_error();
@@ -353,7 +353,7 @@ namespace irgen
         token::token name_token = root.children[0].tok;
 
         /* Check if symbol exists */
-        if (module.symbol_exists(name_token.str, target))
+        if (module.symbolExists(name_token.str, target))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, name_token);
             throw miklog::compile_error();
@@ -374,7 +374,7 @@ namespace irgen
                 throw miklog::compile_error();
             }
 
-            if (module.symbol_exists(var.first.str, target))
+            if (module.symbolExists(var.first.str, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, var.first);
                 throw miklog::compile_error();
@@ -405,7 +405,7 @@ namespace irgen
         func_desc.functionReturnDescription = var.second;
 
         /* Check if function name symbol already exists */
-        if (module.symbol_exists(func_name, target))
+        if (module.symbolExists(func_name, target))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, root.children[0].tok);
             throw miklog::compile_error();
@@ -432,7 +432,7 @@ namespace irgen
                 param_var.second.setProperty(icode::IS_PTR);
 
             /* Check if symbol is already defined */
-            if (module.symbol_exists(param_var.first.str, target))
+            if (module.symbolExists(param_var.first.str, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, param_var.first);
                 throw miklog::compile_error();
@@ -457,7 +457,7 @@ namespace irgen
         var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbol_exists(var.first.str, target))
+        if (module.symbolExists(var.first.str, target))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
@@ -586,8 +586,8 @@ namespace irgen
 
             if (count != 0)
             {
-                curr_offset_left.update_dtype(field.second);
-                curr_offset_right.update_dtype(field.second);
+                curr_offset_left.updateDtype(field.second);
+                curr_offset_right.updateDtype(field.second);
 
                 curr_offset_left = builder.addr_add(curr_offset_left, update);
                 curr_offset_right = builder.addr_add(curr_offset_right, update);
@@ -706,7 +706,7 @@ namespace irgen
             var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbol_exists(var.first.str, target) || (*current_func_desc).symbolExists(var.first.str))
+        if (module.symbolExists(var.first.str, target) || (*current_func_desc).symbolExists(var.first.str))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
@@ -786,7 +786,7 @@ namespace irgen
         {
             is_ptr = current_var_info.checkProperty(icode::IS_PTR);
         }
-        else if (module.get_global(ident_name, current_var_info))
+        else if (module.getGlobal(ident_name, current_var_info))
         {
             is_global = true;
         }
@@ -900,7 +900,7 @@ namespace irgen
                                 current_var_info.clearProperty(icode::IS_MUT);
 
                             /* Update pointer dtype */
-                            current_offset_temp.update_dtype(current_var_info);
+                            current_offset_temp.updateDtype(current_var_info);
 
                             /* Add offset */
                             current_offset_temp =
@@ -1102,7 +1102,7 @@ namespace irgen
             std::string mod_name = mod_node.tok.str;
 
             /* Check if module exists */
-            if (!(*current_module).use_exists(mod_name))
+            if (!(*current_module).useExists(mod_name))
             {
                 miklog::error_tok(module.name, "Module does not exist", file, mod_node.tok);
                 throw miklog::compile_error();
@@ -1125,9 +1125,9 @@ namespace irgen
 
         if (dtype != icode::STRUCT)
             size = icode::getDataTypeSize(dtype);
-        else if ((*current_module).get_struct(ident, struct_desc))
+        else if ((*current_module).getStruct(ident, struct_desc))
             size = struct_desc.size;
-        else if ((*current_module).get_global(ident, global))
+        else if ((*current_module).getGlobal(ident, global))
             size = global.size;
         else if ((*current_func_desc).getSymbol(ident, symbol))
             size = symbol.dtypeSize;
@@ -1292,7 +1292,7 @@ namespace irgen
                 icode::ModuleDescription* temp = current_ext_module;
 
                 /* Check if the module exists */
-                if (!(*current_ext_module).use_exists(child.tok.str))
+                if (!(*current_ext_module).useExists(child.tok.str))
                 {
                     miklog::error_tok(module.name, "Module does not exist", file, child.tok);
                     throw miklog::compile_error();
@@ -1915,7 +1915,7 @@ namespace irgen
                 case node::MODULE:
                 {
                     /* Check if the module exists */
-                    if (!(*current_ext_module).use_exists(stmt.tok.str))
+                    if (!(*current_ext_module).useExists(stmt.tok.str))
                     {
                         miklog::error_tok(module.name, "Module does not exist", file, stmt.tok);
                         throw miklog::compile_error();

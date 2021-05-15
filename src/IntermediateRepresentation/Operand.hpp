@@ -43,7 +43,7 @@ namespace icode
 
         bool operator<(const Operand& other) const;
         bool operator==(const Operand& other) const;
-        void update_dtype(const VariableDescription& var);
+        void updateDtype(const VariableDescription& var);
         bool isPointer();
     };
 

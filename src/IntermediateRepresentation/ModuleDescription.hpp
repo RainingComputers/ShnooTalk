@@ -23,13 +23,13 @@ namespace icode
         std::map<std::string, VariableDescription> globals;
         std::map<std::string, std::string> str_data;
 
-        bool use_exists(const std::string&);
-        bool get_struct(const std::string&, StructDescription&);
-        bool get_func(const std::string&, FunctionDescription&);
-        bool get_enum(const std::string&, int&);
-        bool get_def(const std::string&, Define&);
-        bool get_global(const std::string&, VariableDescription&);
-        bool symbol_exists(const std::string&, TargetDescription& target);
+        bool useExists(const std::string&);
+        bool getStruct(const std::string&, StructDescription&);
+        bool getFunction(const std::string&, FunctionDescription&);
+        bool getEnum(const std::string&, int&);
+        bool getDefine(const std::string&, Define&);
+        bool getGlobal(const std::string&, VariableDescription&);
+        bool symbolExists(const std::string&, TargetDescription& target);
     };
 
     typedef std::map<std::string, ModuleDescription> StringModulesMap;
