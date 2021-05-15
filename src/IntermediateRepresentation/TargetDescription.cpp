@@ -39,7 +39,7 @@ namespace icode
         return STRUCT;
     }
 
-    bool TargetDescription::get_def(const std::string& name, Define& val)
+    bool TargetDescription::getDefine(const std::string& name, Define& val)
     {
         return GetMapElement<std::string, Define>(defines, name, val);
     }

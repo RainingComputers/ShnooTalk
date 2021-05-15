@@ -15,7 +15,7 @@ namespace icode
         std::map<std::string, Define> defines;
         DataType characterInt;
 
-        bool get_def(const std::string&, Define&);
+        bool getDefine(const std::string&, Define&);
     };
 
     DataType dataTypeFromString(const std::string& dtype_name, TargetDescription& target);

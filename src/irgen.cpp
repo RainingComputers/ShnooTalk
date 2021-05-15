@@ -58,7 +58,7 @@ namespace irgen
 
     bool ir_generator::get_def(const std::string& name, icode::Define& def)
     {
-        if (target.get_def(name, def))
+        if (target.getDefine(name, def))
             return true;
 
         if ((*current_ext_module).getDefine(name, def))
