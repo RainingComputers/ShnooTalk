@@ -10,9 +10,15 @@ namespace ibuild
         id_counter = 0;
     }
 
-    unsigned int ir_builder::id() { return id_counter++; }
+    unsigned int ir_builder::id()
+    {
+        return id_counter++;
+    }
 
-    void ir_builder::set_func_desc(icode::FunctionDescription* func_desc) { current_func_desc = func_desc; }
+    void ir_builder::set_func_desc(icode::FunctionDescription* func_desc)
+    {
+        current_func_desc = func_desc;
+    }
 
     void ir_builder::push_ir(icode::Entry entry)
     {

@@ -45,7 +45,10 @@ namespace parser
         return type == symbol.type;
     }
 
-    int rd_parser::get_operator_prec() { return symbol.precedence(); }
+    int rd_parser::get_operator_prec()
+    {
+        return symbol.precedence();
+    }
 
     void rd_parser::expect(token::token_type type)
     {

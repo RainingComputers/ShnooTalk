@@ -293,7 +293,10 @@ namespace miklog
         error_tok(mod_name, "Internal compiler error, REPORT THIS BUG", file, tok);
     }
 
-    void internal_error(const std::string& mod_name) { error(mod_name, "Internal compiler error, REPORT THIS BUG"); }
+    void internal_error(const std::string& mod_name)
+    {
+        error(mod_name, "Internal compiler error, REPORT THIS BUG");
+    }
 
     void print_operand(const icode::Operand& op)
     {

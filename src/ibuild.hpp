@@ -1,7 +1,7 @@
 #ifndef IBUILD_HPP
 #define IBUILD_HPP
 
-#include "icode.hpp"
+#include "IntermediateRepresentation/All.hpp"
 
 namespace ibuild
 {

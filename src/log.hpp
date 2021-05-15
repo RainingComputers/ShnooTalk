@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-#include "icode.hpp"
+#include "IntermediateRepresentation/All.hpp"
 #include "node.hpp"
 #include "token.hpp"
 

@@ -1,10 +1,9 @@
 #include <fstream>
 #include <iostream>
 
-#include "icode.hpp"
+#include "LLVMTranslator/LLVMTranslator.hpp"
 #include "irgen.hpp"
 #include "lexer.hpp"
-#include "llvmgen.hpp"
 #include "log.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
@@ -121,13 +120,13 @@ int main(int argc, char* argv[])
 
         if (option == "-llvm")
         {
-            llvmgen::LLVMTranslator llvm_gen(modules[file_name], modules);
-            miklog::println(llvm_gen.getLLVMModuleString());
+            std::string llvm_module = llvmgen::generateObjectFile(modules[file_name], modules);
+            miklog::println(llvm_module);
             return 0;
         }
 
         for (auto pair : modules)
-            llvmgen::LLVMTranslator llvm_gen(pair.second, modules);
+            llvmgen::generateObjectFile(pair.second, modules);
     }
     catch (const miklog::compile_error& e)
     {

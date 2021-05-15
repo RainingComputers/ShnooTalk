@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "irgen.hpp"
 
 namespace irgen
@@ -22,13 +24,25 @@ namespace irgen
         module.name = file_name;
     }
 
-    unsigned int ir_generator::id() { return builder.id(); }
+    unsigned int ir_generator::id()
+    {
+        return builder.id();
+    }
 
-    unsigned int ir_generator::get_scope_id() { return scope_id_stack.back(); }
+    unsigned int ir_generator::get_scope_id()
+    {
+        return scope_id_stack.back();
+    }
 
-    void ir_generator::enter_scope() { scope_id_stack.push_back(++scope_id_counter); }
+    void ir_generator::enter_scope()
+    {
+        scope_id_stack.push_back(++scope_id_counter);
+    }
 
-    void ir_generator::exit_scope() { scope_id_stack.pop_back(); }
+    void ir_generator::exit_scope()
+    {
+        scope_id_stack.pop_back();
+    }
 
     void ir_generator::clear_scope()
     {

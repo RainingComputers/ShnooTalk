@@ -6,8 +6,8 @@
 #include <numeric>
 #include <string>
 
+#include "IntermediateRepresentation/All.hpp"
 #include "ibuild.hpp"
-#include "icode.hpp"
 #include "log.hpp"
 #include "node.hpp"
 #include "pathchk.hpp"
