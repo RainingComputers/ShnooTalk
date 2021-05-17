@@ -19,7 +19,7 @@ namespace miklog
     {
     };
 
-    void print_token(const token::token& symbol);
+    void print_token(const token::Token& symbol);
 
     void print_node(const node::node& node, int depth = 1);
 
@@ -32,23 +32,23 @@ namespace miklog
     void error_tok(const std::string& mod_name,
                    const std::string& error_msg,
                    std::ifstream& file,
-                   const token::token& tok);
+                   const token::Token& tok);
 
-    void parse_error(const std::string& mod_name, token::token_type expected, token::token& found, std::ifstream& file);
+    void parse_error(const std::string& mod_name, token::tokenType expected, token::Token& found, std::ifstream& file);
 
     void parse_error_mult(const std::string& mod_name,
-                          const token::token_type* expected,
+                          const token::tokenType* expected,
                           int ntoks,
-                          const token::token& found,
+                          const token::Token& found,
                           std::ifstream& file);
 
     void type_error(const std::string& mod_name,
                     std::ifstream& file,
-                    const token::token& tok,
+                    const token::Token& tok,
                     icode::VariableDescription& expected,
                     icode::VariableDescription& found);
 
-    void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::token& tok);
+    void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::Token& tok);
 
     void internal_error(const std::string& mod_name);
 

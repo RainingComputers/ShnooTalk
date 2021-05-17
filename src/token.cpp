@@ -2,18 +2,18 @@
 
 namespace token
 {
-    token::token(std::string token_str, token_type tok_type, unsigned int column, unsigned int linenumber)
+    Token::Token(std::string tokenString, tokenType tokenType, unsigned int columnNumber, unsigned int lineNumber)
     {
-        str = token_str;
-        type = tok_type;
-        col = column;
-        lineno = linenumber;
+        string = tokenString;
+        type = tokenType;
+        column = columnNumber;
+        line = lineNumber;
 
         if (type == STR_LITERAL || type == CHAR_LITERAL)
-            unescape();
+            initializeUnescapedString();
     }
 
-    int token::precedence() const
+    int Token::getPrecedence() const
     {
         switch (type)
         {
@@ -65,7 +65,7 @@ namespace token
         return 0;
     }
 
-    char to_backspace_char(char c)
+    char toEscapedCharacter(char c)
     {
         switch (c)
         {
@@ -84,14 +84,20 @@ namespace token
         }
     }
 
-    void token::unescape()
+    void Token::initializeUnescapedString()
     {
-        for (size_t i = 1; i < str.length() - 1; i++)
+        for (size_t i = 1; i < string.length() - 1; i++)
         {
-            if (str[i] == '\\')
-                unescaped_str += to_backspace_char(str[++i]);
+            if (string[i] == '\\')
+                unescapedString += toEscapedCharacter(string[++i]);
             else
-                unescaped_str += str[i];
+                unescapedString += string[i];
         }
+    }
+
+    bool Token::isBitwiseOperation() const
+    {
+        return type == BITWISE_AND || type == BITWISE_OR || type == BITWISE_XOR || type == AND_EQUAL ||
+               type == OR_EQUAL || type == XOR_EQUAL;
     }
 } // namespace token

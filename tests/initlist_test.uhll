@@ -1,0 +1,36 @@
+# 1
+# 2
+# 3
+# 4
+# 5
+# 6
+
+struct foo
+{
+    var x:int, y:int
+}
+
+fn main()
+{
+    var elem1:foo
+    elem1.x = 1
+    elem1.y = 2
+
+    var elem2:foo
+    elem2.x = 3
+    elem2.y = 4
+
+    var elem3:foo
+    elem3.x = 5
+    elem3.y = 6
+
+    var a:foo[3] = [elem1, elem2, elem3]
+
+    println(elem1.x)
+    println(elem1.y)
+    println(elem2.x)
+    println(elem2.y)
+    println(elem3.x)
+    println(elem3.y)
+
+}

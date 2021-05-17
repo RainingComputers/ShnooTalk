@@ -35,7 +35,7 @@ namespace lexer
             feed_line(line, lineno);
         }
 
-        token_q.push_back(token::token("", token::END_OF_FILE, line.length(), lineno));
+        token_q.push_back(token::Token("", token::END_OF_FILE, line.length(), lineno));
     }
 
     void lexical_analyser::feed_line(std::string& line, int lineno)
@@ -64,7 +64,7 @@ namespace lexer
             else
             {
                 /* Check for punctuator/operator/space */
-                token::token_type type = token::INVALID;
+                token::tokenType type = token::INVALID;
                 size_t len = 1;
 
                 switch (line[i])
@@ -319,7 +319,7 @@ namespace lexer
                     if (start_idx != i)
                     {
                         std::string prec_token_str = line.substr(start_idx, i - start_idx);
-                        token::token_type prec_type = token::NONE;
+                        token::tokenType prec_type = token::NONE;
 
                         /* Check if identifier */
                         if (std::regex_match(prec_token_str, identifier_regex))
@@ -330,7 +330,7 @@ namespace lexer
 
                         /* If identifier was found, push it */
                         if (push_dot)
-                            token_q.push_back(token::token(prec_token_str, prec_type, start_idx, lineno));
+                            token_q.push_back(token::Token(prec_token_str, prec_type, start_idx, lineno));
                     }
                     else
                         push_dot = true;
@@ -338,7 +338,7 @@ namespace lexer
                     /* If preceding token was an identifier, push dot */
                     if (push_dot)
                     {
-                        token_q.push_back(token::token(line.substr(i, len), type, i, lineno));
+                        token_q.push_back(token::Token(line.substr(i, len), type, i, lineno));
                         token_start = false;
                     }
                 }
@@ -348,7 +348,7 @@ namespace lexer
                     if (start_idx != i)
                     {
                         std::string prec_token_str = line.substr(start_idx, i - start_idx);
-                        token::token_type prec_type = token::NONE;
+                        token::tokenType prec_type = token::NONE;
 
                         /* Check for keywords */
                         if (prec_token_str == "use")
@@ -424,12 +424,12 @@ namespace lexer
                         else
                             prec_type = token::INVALID;
 
-                        token_q.push_back(token::token(prec_token_str, prec_type, start_idx, lineno));
+                        token_q.push_back(token::Token(prec_token_str, prec_type, start_idx, lineno));
                     }
 
                     /* Add punctuator token to queue */
                     if (type != token::SPACE)
-                        token_q.push_back(token::token(line.substr(i, len), type, i, lineno));
+                        token_q.push_back(token::Token(line.substr(i, len), type, i, lineno));
 
                     token_start = false;
                 }
@@ -440,7 +440,7 @@ namespace lexer
         }
     }
 
-    bool lexical_analyser::get_token(token::token& symbol)
+    bool lexical_analyser::get_token(token::Token& symbol)
     {
         /* Return latest token from queue
             and pop it */
@@ -452,13 +452,13 @@ namespace lexer
         return true;
     }
 
-    token::token lexical_analyser::peek_token()
+    token::Token lexical_analyser::peek_token()
     {
         /* Return latest token without popping */
         return token_q[front_idx];
     }
 
-    token::token lexical_analyser::dpeek_token()
+    token::Token lexical_analyser::dpeek_token()
     {
         return token_q[front_idx + 1];
     }

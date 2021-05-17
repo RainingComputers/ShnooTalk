@@ -21,7 +21,7 @@ namespace icode
         std::map<std::string, int> enumerations;
         std::map<std::string, Define> defines;
         std::map<std::string, VariableDescription> globals;
-        std::map<std::string, std::string> str_data;
+        std::map<std::string, std::string> stringsData;
 
         bool useExists(const std::string&);
         bool getStruct(const std::string&, StructDescription&);

@@ -92,14 +92,14 @@ namespace irgen
         return false;
     }
 
-    std::pair<token::token, icode::VariableDescription> ir_generator::var_from_node(const node::node& root)
+    std::pair<token::Token, icode::VariableDescription> ir_generator::var_from_node(const node::node& root)
     {
         unsigned int i = 1;
 
         icode::VariableDescription var_info;
 
-        token::token name_token = root.children[0].tok;
-        token::token dtype_token;
+        token::Token name_token = root.children[0].tok;
+        token::Token dtype_token;
 
         icode::ModuleDescription* var_module = &module;
 
@@ -116,14 +116,14 @@ namespace irgen
             if (root.children[i].type == node::MODULE)
             {
                 /* Check if module exists */
-                if (!(*var_module).useExists(root.children[i].tok.str))
+                if (!(*var_module).useExists(root.children[i].tok.string))
                 {
                     miklog::error_tok(module.name, "Module does not exist", file, root.children[i].tok);
                     throw miklog::compile_error();
                 }
 
                 /* Switch module */
-                var_module = &ext_modules_map[root.children[i].tok.str];
+                var_module = &ext_modules_map[root.children[i].tok.string];
             }
 
             if (root.children[i].type != node::IDENTIFIER)
@@ -142,7 +142,7 @@ namespace irgen
         if (is_void)
             dtype = icode::VOID;
         else
-            dtype = icode::dataTypeFromString(dtype_token.str, target);
+            dtype = icode::dataTypeFromString(dtype_token.string, target);
 
         /* Check if data type exists and get size */
         unsigned int size;
@@ -150,7 +150,7 @@ namespace irgen
         {
             icode::StructDescription struct_desc;
 
-            if (!(*var_module).getStruct(dtype_token.str, struct_desc))
+            if (!(*var_module).getStruct(dtype_token.string, struct_desc))
             {
                 miklog::error_tok(module.name, "Symbol does not exist", file, dtype_token);
                 throw miklog::compile_error();
@@ -169,7 +169,7 @@ namespace irgen
         if (is_void)
             var_info.dtypeName = "void";
         else
-            var_info.dtypeName = dtype_token.str;
+            var_info.dtypeName = dtype_token.string;
         var_info.dtype = dtype;
         var_info.offset = 0;
         var_info.dtypeSize = size;
@@ -186,7 +186,7 @@ namespace irgen
             if (root.children[i].type != node::SUBSCRIPT)
                 break;
 
-            std::string literal_str = root.children[i].children[0].tok.str;
+            std::string literal_str = root.children[i].children[0].tok.string;
             unsigned int dim = std::stoi(literal_str);
             var_info.dimensions.push_back(dim);
 
@@ -196,7 +196,7 @@ namespace irgen
             i++;
         }
 
-        return std::pair<token::token, icode::VariableDescription>(name_token, var_info);
+        return std::pair<token::Token, icode::VariableDescription>(name_token, var_info);
     }
 
     void ir_generator::use(const node::node& root)
@@ -204,10 +204,10 @@ namespace irgen
         for (node::node child : root.children)
         {
             /* Get module name */
-            token::token name_token = child.tok;
+            token::Token name_token = child.tok;
 
-            bool is_module = pathchk::file_exists(name_token.str + ".uhll");
-            bool is_package = pathchk::dir_exists(name_token.str);
+            bool is_module = pathchk::file_exists(name_token.string + ".uhll");
+            bool is_package = pathchk::dir_exists(name_token.string);
 
             /* Check if file exists */
             if (!(is_module || is_package))
@@ -224,28 +224,28 @@ namespace irgen
             }
 
             /* Check for multiple imports */
-            if (module.useExists(name_token.str))
+            if (module.useExists(name_token.string))
             {
                 miklog::error_tok(module.name, "Multiple imports detected", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for name conflict */
-            if (module.symbolExists(name_token.str, target))
+            if (module.symbolExists(name_token.string, target))
             {
                 miklog::error_tok(module.name, "Name conflict, symbol already exists", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for self import */
-            if (module.name == name_token.str)
+            if (module.name == name_token.string)
             {
                 miklog::error_tok(module.name, "Self import not allowed", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Add to icode */
-            module.uses.push_back(name_token.str);
+            module.uses.push_back(name_token.string);
         }
     }
 
@@ -257,41 +257,41 @@ namespace irgen
         int enum_val;
 
         /* Get ext module */
-        if (!module.useExists(root.children[0].tok.str))
+        if (!module.useExists(root.children[0].tok.string))
         {
             miklog::error_tok(module.name, "Module not imported", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
-        icode::ModuleDescription* ext_module = &ext_modules_map[root.children[0].tok.str];
+        icode::ModuleDescription* ext_module = &ext_modules_map[root.children[0].tok.string];
 
         for (node::node child : root.children[1].children)
         {
             /* Check if symbol exists */
-            if (module.symbolExists(child.tok.str, target))
+            if (module.symbolExists(child.tok.string, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined in current module", file, child.tok);
                 throw miklog::compile_error();
             }
 
             /* If it is struct */
-            if ((*ext_module).getStruct(child.tok.str, struct_desc))
-                module.structures[child.tok.str] = struct_desc;
+            if ((*ext_module).getStruct(child.tok.string, struct_desc))
+                module.structures[child.tok.string] = struct_desc;
             /* If it a function */
-            else if ((*ext_module).getFunction(child.tok.str, func_desc))
+            else if ((*ext_module).getFunction(child.tok.string, func_desc))
             {
                 miklog::error_tok(module.name, "Cannot import functions", file, child.tok);
                 throw miklog::compile_error();
             }
             /* If is a def */
-            else if ((*ext_module).getDefine(child.tok.str, def))
-                module.defines[child.tok.str] = def;
+            else if ((*ext_module).getDefine(child.tok.string, def))
+                module.defines[child.tok.string] = def;
             /* If it is a enum */
-            else if ((*ext_module).getEnum(child.tok.str, enum_val))
-                module.enumerations[child.tok.str] = enum_val;
+            else if ((*ext_module).getEnum(child.tok.string, enum_val))
+                module.enumerations[child.tok.string] = enum_val;
             /* Check if use exists */
-            else if ((*ext_module).useExists(child.tok.str))
-                module.uses.push_back(child.tok.str);
+            else if ((*ext_module).useExists(child.tok.string))
+                module.uses.push_back(child.tok.string);
             /* Does not exist */
             else
             {
@@ -305,25 +305,25 @@ namespace irgen
     {
         for (size_t i = 0; i < root.children.size(); i++)
         {
-            token::token enum_tok = root.children[i].tok;
+            token::Token enum_tok = root.children[i].tok;
 
-            if (module.symbolExists(enum_tok.str, target))
+            if (module.symbolExists(enum_tok.string, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, enum_tok);
                 throw miklog::compile_error();
             }
 
-            module.enumerations[enum_tok.str] = i;
+            module.enumerations[enum_tok.string] = i;
         }
     }
 
     void ir_generator::def(const node::node& root)
     {
         icode::Define definition;
-        token::token ltrl_token = root.children[1].tok;
+        token::Token ltrl_token = root.children[1].tok;
 
         /* Check if the symbol already exists */
-        if (module.symbolExists(root.children[0].tok.str, target))
+        if (module.symbolExists(root.children[0].tok.string, target))
         {
             miklog::error_tok(module.name, "Symbol already exists", file, root.children[0].tok);
             throw miklog::compile_error();
@@ -332,17 +332,17 @@ namespace irgen
         /* Extract literal value */
         if (ltrl_token.type == token::INT_LITERAL)
         {
-            definition.val.integer = std::stoi(ltrl_token.str);
+            definition.val.integer = std::stoi(ltrl_token.string);
             definition.dtype = icode::INT;
         }
         else
         {
-            definition.val.floating = (float)std::stof(ltrl_token.str);
+            definition.val.floating = (float)std::stof(ltrl_token.string);
             definition.dtype = icode::FLOAT;
         }
 
         /* Add to definitions */
-        module.defines[root.children[0].tok.str] = definition;
+        module.defines[root.children[0].tok.string] = definition;
     }
 
     void ir_generator::structure(const node::node& root)
@@ -350,10 +350,10 @@ namespace irgen
         icode::StructDescription struct_desc;
         struct_desc.size = 0;
 
-        token::token name_token = root.children[0].tok;
+        token::Token name_token = root.children[0].tok;
 
         /* Check if symbol exists */
-        if (module.symbolExists(name_token.str, target))
+        if (module.symbolExists(name_token.string, target))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, name_token);
             throw miklog::compile_error();
@@ -362,19 +362,19 @@ namespace irgen
         /* Go through field of structure */
         for (node::node field : root.children[0].children)
         {
-            std::pair<token::token, icode::VariableDescription> var = var_from_node(field);
+            std::pair<token::Token, icode::VariableDescription> var = var_from_node(field);
 
             /* Set mutable for var */
             var.second.setProperty(icode::IS_MUT);
 
             /* Check if the name is already a field */
-            if (struct_desc.fieldExists(var.first.str))
+            if (struct_desc.fieldExists(var.first.string))
             {
                 miklog::error_tok(module.name, "Field already defined", file, var.first);
                 throw miklog::compile_error();
             }
 
-            if (module.symbolExists(var.first.str, target))
+            if (module.symbolExists(var.first.string, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, var.first);
                 throw miklog::compile_error();
@@ -385,14 +385,14 @@ namespace irgen
             struct_desc.size += var.second.size;
 
             /* Append to feilds map */
-            struct_desc.structFields[var.first.str] = var.second;
+            struct_desc.structFields[var.first.string] = var.second;
 
             /* Module name */
             struct_desc.moduleName = module.name;
         }
 
         /* Add strucuture definition to module */
-        module.structures[name_token.str] = struct_desc;
+        module.structures[name_token.string] = struct_desc;
     }
 
     void ir_generator::fn(const node::node& root)
@@ -400,8 +400,8 @@ namespace irgen
         icode::FunctionDescription func_desc;
         std::string func_name;
 
-        std::pair<token::token, icode::VariableDescription> var = var_from_node(root);
-        func_name = var.first.str;
+        std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
+        func_name = var.first.string;
         func_desc.functionReturnDescription = var.second;
 
         /* Check if function name symbol already exists */
@@ -422,7 +422,7 @@ namespace irgen
             else
                 break;
 
-            std::pair<token::token, icode::VariableDescription> param_var = var_from_node(root.children[i]);
+            std::pair<token::Token, icode::VariableDescription> param_var = var_from_node(root.children[i]);
             param_var.second.setProperty(icode::IS_PARAM);
 
             if (mut)
@@ -432,15 +432,15 @@ namespace irgen
                 param_var.second.setProperty(icode::IS_PTR);
 
             /* Check if symbol is already defined */
-            if (module.symbolExists(param_var.first.str, target))
+            if (module.symbolExists(param_var.first.string, target))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, param_var.first);
                 throw miklog::compile_error();
             }
 
             /* Append to symbol table */
-            func_desc.parameters.push_back(param_var.first.str);
-            func_desc.symbols[param_var.first.str] = param_var.second;
+            func_desc.parameters.push_back(param_var.first.string);
+            func_desc.symbols[param_var.first.string] = param_var.second;
         }
 
         func_desc.moduleName = module.name;
@@ -451,27 +451,27 @@ namespace irgen
 
     void ir_generator::global_var(const node::node& root)
     {
-        std::pair<token::token, icode::VariableDescription> var = var_from_node(root);
+        std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
 
         /* Set mut for var */
         var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbolExists(var.first.str, target))
+        if (module.symbolExists(var.first.string, target))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
         }
 
         /* Add to symbol table */
-        module.globals[var.first.str] = var.second;
+        module.globals[var.first.string] = var.second;
     }
 
-    icode::Operand ir_generator::gen_str_dat(const token::token& str_token, size_t char_count, icode::DataType dtype)
+    icode::Operand ir_generator::gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype)
     {
         /* Append string data */
-        std::string name = "_str_l" + std::to_string(str_token.lineno) + "_c" + std::to_string(str_token.col);
-        module.str_data[name] = str_token.unescaped_str;
+        std::string name = "_str_l" + std::to_string(str_token.line) + "_c" + std::to_string(str_token.column);
+        module.stringsData[name] = str_token.unescapedString;
 
         /* Create icode::operand */
         size_t size = char_count * icode::getDataTypeSize(dtype);
@@ -480,7 +480,7 @@ namespace irgen
         return opr;
     }
 
-    OperandDescriptionPair ir_generator::var_info_to_str_dat(const token::token& str_token,
+    OperandDescriptionPair ir_generator::var_info_to_str_dat(const token::Token& str_token,
                                                              icode::VariableDescription var)
     {
         if (var.dimensions.size() != 1 || var.dtype != icode::UI8)
@@ -490,7 +490,7 @@ namespace irgen
         }
 
         /* Check dimensions */
-        size_t char_count = str_token.unescaped_str.length();
+        size_t char_count = str_token.unescapedString.length();
 
         if (char_count > var.dimensions[0])
         {
@@ -513,7 +513,7 @@ namespace irgen
         }
 
         /* Check size */
-        size_t char_count = root.tok.unescaped_str.length();
+        size_t char_count = root.tok.unescapedString.length();
 
         if (char_count > var.second.dimensions[0])
         {
@@ -522,18 +522,18 @@ namespace irgen
         }
 
         /* Create Addr Temp */
-        icode::Operand curr_offset = builder.create_ptr(var.first);
+        icode::Operand curr_offset = builder.createPointer(var.first);
 
         /* Loop through int and initialize string */
         for (size_t i = 0; i < char_count; i++)
         {
-            char character = root.tok.unescaped_str[i];
+            char character = root.tok.unescapedString[i];
 
             /* Write to current offset */
             builder.copy(curr_offset, icode::createLiteralOperand(target.characterInt, character, id()));
 
             curr_offset =
-              builder.addr_add(curr_offset, icode::createLiteralAddressOperand(var.second.dtypeSize, id()));
+              builder.addressAddOperator(curr_offset, icode::createLiteralAddressOperand(var.second.dtypeSize, id()));
         }
 
         /* Copy null character */
@@ -542,8 +542,8 @@ namespace irgen
 
     void ir_generator::copy_array(icode::Operand& left, OperandDescriptionPair right)
     {
-        icode::Operand curr_offset_left = builder.create_ptr(left);
-        icode::Operand curr_offset_right = builder.create_ptr(right.first);
+        icode::Operand curr_offset_left = builder.createPointer(left);
+        icode::Operand curr_offset_right = builder.createPointer(right.first);
 
         unsigned int size = right.second.size;
         unsigned int dtype_size = right.second.dtypeSize;
@@ -566,16 +566,16 @@ namespace irgen
             if (i != size - dtype_size)
             {
                 icode::Operand update = icode::createLiteralAddressOperand(dtype_size, id());
-                curr_offset_left = builder.addr_add(curr_offset_left, update);
-                curr_offset_right = builder.addr_add(curr_offset_right, update);
+                curr_offset_left = builder.addressAddOperator(curr_offset_left, update);
+                curr_offset_right = builder.addressAddOperator(curr_offset_right, update);
             }
         }
     }
 
     void ir_generator::copy_struct(icode::Operand& left, OperandDescriptionPair right)
     {
-        icode::Operand curr_offset_left = builder.create_ptr(left);
-        icode::Operand curr_offset_right = builder.create_ptr(right.first);
+        icode::Operand curr_offset_left = builder.createPointer(left);
+        icode::Operand curr_offset_right = builder.createPointer(right.first);
 
         /* Loop through each field and copy them */
         unsigned int count = 0;
@@ -589,8 +589,8 @@ namespace irgen
                 curr_offset_left.updateDtype(field.second);
                 curr_offset_right.updateDtype(field.second);
 
-                curr_offset_left = builder.addr_add(curr_offset_left, update);
-                curr_offset_right = builder.addr_add(curr_offset_right, update);
+                curr_offset_left = builder.addressAddOperator(curr_offset_left, update);
+                curr_offset_right = builder.addressAddOperator(curr_offset_right, update);
             }
 
             /* Copy field */
@@ -623,7 +623,7 @@ namespace irgen
             throw miklog::compile_error();
         }
 
-        icode::Operand curr_offset = builder.create_ptr(var.first);
+        icode::Operand curr_offset = builder.createPointer(var.first);
 
         /* Create var info for the elements inside the list */
         icode::VariableDescription element_var = var.second;
@@ -686,7 +686,7 @@ namespace irgen
             if (i != root.children.size() - 1)
             {
                 curr_offset =
-                  builder.addr_add(curr_offset, icode::createLiteralAddressOperand(element_var.size, id()));
+                  builder.addressAddOperator(curr_offset, icode::createLiteralAddressOperand(element_var.size, id()));
             }
         }
 
@@ -699,14 +699,14 @@ namespace irgen
 
     void ir_generator::var(const node::node& root)
     {
-        std::pair<token::token, icode::VariableDescription> var = var_from_node(root);
+        std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
 
         /* Set mutable for var */
         if (root.type == node::VAR)
             var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbolExists(var.first.str, target) || (*current_func_desc).symbolExists(var.first.str))
+        if (module.symbolExists(var.first.string, target) || (*current_func_desc).symbolExists(var.first.string))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
@@ -726,7 +726,8 @@ namespace irgen
 
             /* Create icode operands, one for variable other for temp
                 to hold result of initialization expression */
-            icode::Operand left = icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.str, id());
+            icode::Operand left =
+              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.string, id());
 
             OperandDescriptionPair init_exp = expression(last_node);
 
@@ -750,20 +751,20 @@ namespace irgen
         else if (last_node.type == node::STR_LITERAL)
         {
             OperandDescriptionPair var_pair = OperandDescriptionPair(
-              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.str, id()),
+              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.string, id()),
               var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
             OperandDescriptionPair var_pair = OperandDescriptionPair(
-              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.str, id()),
+              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.string, id()),
               var.second);
             assign_init_list_tovar(var_pair, last_node);
         }
 
         /* Add to symbol table */
-        (*current_func_desc).symbols[var.first.str] = var.second;
+        (*current_func_desc).symbols[var.first.string] = var.second;
     }
 
     OperandDescriptionPair ir_generator::var_access(const node::node& root)
@@ -781,7 +782,7 @@ namespace irgen
 
         /* Check if identifier exists and get dtype and size */
         node::node child = root.children[0];
-        ident_name = child.tok.str;
+        ident_name = child.tok.string;
         if ((*current_func_desc).getSymbol(ident_name, current_var_info))
         {
             is_ptr = current_var_info.checkProperty(icode::IS_PTR);
@@ -855,7 +856,7 @@ namespace irgen
                                                       is_ptr);
 
         /* Ensure current_offset_temp is a pointer */
-        current_offset_temp = builder.create_ptr(current_offset_temp);
+        current_offset_temp = builder.createPointer(current_offset_temp);
 
         /* Go through struct fields and subsripts */
         for (size_t i = 1; i < root.children.size();)
@@ -886,13 +887,13 @@ namespace irgen
                           ext_modules_map[current_var_info.moduleName].structures[current_var_info.dtypeName];
 
                         /* Check if field exists */
-                        if (struct_desc.fieldExists(child.tok.str))
+                        if (struct_desc.fieldExists(child.tok.string))
                         {
                             /* If it does, update offset */
                             bool is_mut = current_var_info.checkProperty(icode::IS_MUT);
 
                             /* Update var info to struct field */
-                            current_var_info = struct_desc.structFields[child.tok.str];
+                            current_var_info = struct_desc.structFields[child.tok.string];
 
                             /* If the struct is immutable, fields are automatically
                              * immutable */
@@ -903,9 +904,9 @@ namespace irgen
                             current_offset_temp.updateDtype(current_var_info);
 
                             /* Add offset */
-                            current_offset_temp =
-                              builder.addr_add(current_offset_temp,
-                                               icode::createLiteralAddressOperand(current_var_info.offset, id()));
+                            current_offset_temp = builder.addressAddOperator(
+                              current_offset_temp,
+                              icode::createLiteralAddressOperand(current_var_info.offset, id()));
 
                             dim_count = 0;
                         }
@@ -950,13 +951,14 @@ namespace irgen
 
                         /* Entry for subscript expression */
                         icode::Operand subs_op =
-                          builder.addr_mul(subs_expr.first, icode::createLiteralAddressOperand(elem_width, id()));
+                          builder.addressMultiplyOperator(subs_expr.first,
+                                                          icode::createLiteralAddressOperand(elem_width, id()));
 
                         if (dim_count != current_var_info.dimensions.size())
                             elem_width /= current_var_info.dimensions[dim_count];
 
                         /* Create entry for adding to the current offset */
-                        current_offset_temp = builder.addr_add(current_offset_temp, subs_op);
+                        current_offset_temp = builder.addressAddOperator(current_offset_temp, subs_op);
 
                         if (i < root.children.size() - 1)
                         {
@@ -1009,7 +1011,7 @@ namespace irgen
 
         /* Check if function exits */
         icode::FunctionDescription func_desc;
-        std::string func_name = root.tok.str;
+        std::string func_name = root.tok.string;
 
         if (!get_func(func_name, func_desc))
         {
@@ -1089,7 +1091,7 @@ namespace irgen
 
     OperandDescriptionPair ir_generator::size_of(const node::node& root)
     {
-        std::string ident = root.children.back().tok.str;
+        std::string ident = root.children.back().tok.string;
 
         /* Enter the specified ext module */
         icode::ModuleDescription* current_module = &module;
@@ -1099,7 +1101,7 @@ namespace irgen
         int i = 0;
         while (mod_node.type == node::MODULE)
         {
-            std::string mod_name = mod_node.tok.str;
+            std::string mod_name = mod_node.tok.string;
 
             /* Check if module exists */
             if (!(*current_module).useExists(mod_name))
@@ -1156,7 +1158,7 @@ namespace irgen
                     case token::BIN_LITERAL:
                     {
                         /* Return literal icode operand */
-                        int literal = std::stoi(child.tok.str);
+                        int literal = std::stoi(child.tok.string);
                         icode::DataType dtype = icode::INT;
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, literal, id()),
                                                       icode::variableDescriptionFromDataType(dtype, target));
@@ -1165,24 +1167,17 @@ namespace irgen
                     }
                     case token::CHAR_LITERAL:
                     {
-                        char c = child.tok.str[1];
-                        int character = (int)c;
-
-                        if (c == '\\')
-                        {
-                            c = child.tok.str[2];
-                            character = token::to_backspace_char(c);
-                        }
+                        char c = child.tok.unescapedString[0];
 
                         icode::DataType dtype = icode::UI8;
-                        return OperandDescriptionPair(icode::createLiteralOperand(dtype, character, id()),
+                        return OperandDescriptionPair(icode::createLiteralOperand(dtype, c, id()),
                                                       icode::variableDescriptionFromDataType(dtype, target));
                     }
                     case token::FLOAT_LITERAL:
                     {
                         /* Return literal icode operand */
                         icode::DataType dtype = icode::FLOAT;
-                        float literal = (float)stof(child.tok.str);
+                        float literal = (float)stof(child.tok.string);
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, literal, id()),
                                                       icode::variableDescriptionFromDataType(dtype, target));
 
@@ -1201,7 +1196,7 @@ namespace irgen
             }
             case node::CAST:
             {
-                icode::DataType cast_dtype = icode::dataTypeFromString(child.tok.str, target);
+                icode::DataType cast_dtype = icode::dataTypeFromString(child.tok.string, target);
 
                 OperandDescriptionPair cast_term = term(child.children[0]);
 
@@ -1213,7 +1208,7 @@ namespace irgen
                 }
 
                 /* Create icode entry for casting */
-                icode::Operand res_temp = builder.cast(cast_dtype, cast_term.first);
+                icode::Operand res_temp = builder.castOperator(cast_dtype, cast_term.first);
 
                 /* Return temp */
                 return OperandDescriptionPair(res_temp, icode::variableDescriptionFromDataType(cast_dtype, target));
@@ -1264,7 +1259,7 @@ namespace irgen
                 }
 
                 icode::Operand res_temp =
-                  builder.uniop(opcode, icode::createTempOperand(dtype, dtype_name, id()), term_var.first);
+                  builder.unaryOperator(opcode, icode::createTempOperand(dtype, dtype_name, id()), term_var.first);
 
                 /* Return temp */
                 return OperandDescriptionPair(res_temp, term_var.second);
@@ -1292,13 +1287,13 @@ namespace irgen
                 icode::ModuleDescription* temp = current_ext_module;
 
                 /* Check if the module exists */
-                if (!(*current_ext_module).useExists(child.tok.str))
+                if (!(*current_ext_module).useExists(child.tok.string))
                 {
                     miklog::error_tok(module.name, "Module does not exist", file, child.tok);
                     throw miklog::compile_error();
                 }
 
-                current_ext_module = &ext_modules_map[child.tok.str];
+                current_ext_module = &ext_modules_map[child.tok.string];
 
                 OperandDescriptionPair ret_val = term(child.children[0]);
 
@@ -1321,6 +1316,45 @@ namespace irgen
         return OperandDescriptionPair(icode::Operand(), icode::variableDescriptionFromDataType(icode::VOID, target));
     }
 
+    icode::Instruction ir_generator::tokenToBinaryOperator(const token::Token tok)
+    {
+        switch (tok.type)
+        {
+            case token::MULTIPLY:
+                return icode::MUL;
+            case token::DIVIDE:
+                return icode::DIV;
+            case token::MOD:
+                return icode::MOD;
+            case token::PLUS:
+                return icode::ADD;
+            case token::MINUS:
+                return icode::SUB;
+            case token::RIGHT_SHIFT:
+                return icode::RSH;
+            case token::LEFT_SHIFT:
+                return icode::LSH;
+            case token::BITWISE_AND:
+                return icode::BWA;
+            case token::BITWISE_XOR:
+                return icode::BWX;
+            case token::BITWISE_OR:
+                return icode::BWO;
+            case token::CONDN_AND:
+            case token::CONDN_OR:
+            case token::LESS_THAN:
+            case token::LESS_THAN_EQUAL:
+            case token::GREATER_THAN:
+            case token::GREATER_THAN_EQUAL:
+            case token::CONDN_EQUAL:
+            case token::CONDN_NOT_EQUAL:
+                miklog::error_tok(module.name, "Did not expect conditional operator", file, tok);
+            default:
+                miklog::internal_error_tok(module.name, file, tok);
+                throw miklog::internal_bug_error();
+        }
+    }
+
     OperandDescriptionPair ir_generator::expression(const node::node& root)
     {
         if (root.type == node::TERM)
@@ -1329,7 +1363,7 @@ namespace irgen
         if (root.children.size() == 1)
             return expression(root.children[0]);
 
-        token::token expr_opr = root.children[1].tok;
+        token::Token expr_opr = root.children[1].tok;
 
         /* First operand */
         OperandDescriptionPair first_operand = expression(root.children[0]);
@@ -1354,69 +1388,49 @@ namespace irgen
         }
 
         /* If bitwise operator, dtype has to be int */
-        if ((expr_opr.type == token::BITWISE_OR || expr_opr.type == token::BITWISE_AND ||
-             expr_opr.type == token::BITWISE_XOR) &&
-            !icode::isInteger(dtype))
+        if (expr_opr.isBitwiseOperation() && !icode::isInteger(dtype))
         {
             miklog::error_tok(module.name, "Bitwise operations not allowed on FLOAT", file, expr_opr);
             throw miklog::compile_error();
         }
 
         /* Generate corresponding opcode for operator */
-        icode::Instruction opcode;
-        switch (expr_opr.type)
-        {
-            case token::MULTIPLY:
-                opcode = icode::MUL;
-                break;
-            case token::DIVIDE:
-                opcode = icode::DIV;
-                break;
-            case token::MOD:
-                opcode = icode::MOD;
-                break;
-            case token::PLUS:
-                opcode = icode::ADD;
-                break;
-            case token::MINUS:
-                opcode = icode::SUB;
-                break;
-            case token::RIGHT_SHIFT:
-                opcode = icode::RSH;
-                break;
-            case token::LEFT_SHIFT:
-                opcode = icode::LSH;
-                break;
-            case token::BITWISE_AND:
-                opcode = icode::BWA;
-                break;
-            case token::BITWISE_XOR:
-                opcode = icode::BWX;
-                break;
-            case token::BITWISE_OR:
-                opcode = icode::BWO;
-                break;
-            case token::CONDN_AND:
-            case token::CONDN_OR:
-            case token::LESS_THAN:
-            case token::LESS_THAN_EQUAL:
-            case token::GREATER_THAN:
-            case token::GREATER_THAN_EQUAL:
-            case token::CONDN_EQUAL:
-            case token::CONDN_NOT_EQUAL:
-                miklog::error_tok(module.name, "Did not expect conditional operator", file, root.children[1].tok);
-            default:
-                miklog::internal_error_tok(module.name, file, expr_opr);
-                throw miklog::internal_bug_error();
-        }
+        icode::Instruction opcode = tokenToBinaryOperator(expr_opr);
 
-        icode::Operand res_temp = builder.binop(opcode,
-                                                icode::createTempOperand(dtype, dtype_name, id()),
-                                                first_operand.first,
-                                                second_operand.first);
+        icode::Operand res_temp = builder.binaryOperator(opcode,
+                                                         icode::createTempOperand(dtype, dtype_name, id()),
+                                                         first_operand.first,
+                                                         second_operand.first);
 
         /* Return the operand where final result is stored */
         return OperandDescriptionPair(res_temp, first_operand.second);
+    }
+
+    icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const token::Token tok)
+    {
+        /* Convert token type to opcode */
+        switch (tok.type)
+        {
+            case token::EQUAL:
+                return icode::EQUAL;
+            case token::PLUS_EQUAL:
+                return icode::ADD;
+            case token::MINUS_EQUAL:
+                return icode::SUB;
+            case token::DIVIDE_EQUAL:
+                return icode::DIV;
+            case token::MULTIPLY_EQUAL:
+                return icode::MUL;
+            case token::OR_EQUAL:
+                return icode::BWO;
+            case token::AND_EQUAL:
+                return icode::BWA;
+            case token::XOR_EQUAL:
+                return icode::BWX;
+            default:
+                miklog::internal_error_tok(module.name, file, tok);
+                throw miklog::internal_bug_error();
+        }
     }
 
     void ir_generator::assignment(const node::node& root)
@@ -1428,7 +1442,7 @@ namespace irgen
         OperandDescriptionPair expr = expression(root.children[2]);
 
         /* Assignement operator */
-        token::token assign_opr = root.children[1].tok;
+        token::Token assign_opr = root.children[1].tok;
 
         /* Var connot be enum of a def */
         if (var.first.operandType == icode::LITERAL)
@@ -1466,48 +1480,14 @@ namespace irgen
         }
 
         /* If bitwise operator, dtype has to be int */
-        if ((assign_opr.type == token::OR_EQUAL || assign_opr.type == token::AND_EQUAL ||
-             assign_opr.type == token::XOR_EQUAL) &&
-            !icode::isInteger(var.second.dtype))
+        if (assign_opr.isBitwiseOperation() && !icode::isInteger(var.second.dtype))
         {
             miklog::error_tok(module.name, "Bitwise operation not allowed on FLOAT", file, assign_opr);
             throw miklog::compile_error();
         }
 
         /* Create icode entry */
-        icode::Instruction opcode;
-
-        /* Convert token type to opcode */
-        switch (assign_opr.type)
-        {
-            case token::EQUAL:
-                opcode = icode::EQUAL;
-                break;
-            case token::PLUS_EQUAL:
-                opcode = icode::ADD;
-                break;
-            case token::MINUS_EQUAL:
-                opcode = icode::SUB;
-                break;
-            case token::DIVIDE_EQUAL:
-                opcode = icode::DIV;
-                break;
-            case token::MULTIPLY_EQUAL:
-                opcode = icode::MUL;
-                break;
-            case token::OR_EQUAL:
-                opcode = icode::BWO;
-                break;
-            case token::AND_EQUAL:
-                opcode = icode::BWA;
-                break;
-            case token::XOR_EQUAL:
-                opcode = icode::BWX;
-                break;
-            default:
-                miklog::internal_error_tok(module.name, file, assign_opr);
-                throw miklog::internal_bug_error();
-        }
+        icode::Instruction opcode = assignmentTokenToBinaryOperator(assign_opr);
 
         /* If struct */
         if (var.second.dtype == icode::STRUCT)
@@ -1525,20 +1505,42 @@ namespace irgen
         {
             icode::Operand temp = icode::createTempOperand(var.second.dtype, var.second.dtypeName, id());
             builder.copy(temp, var.first);
-            builder.binop(opcode, var.first, temp, expr.first);
+            builder.binaryOperator(opcode, var.first, temp, expr.first);
         }
     }
 
-    icode::Operand ir_generator::gen_label(token::token tok, bool true_label, std::string prefix)
+    icode::Operand ir_generator::gen_label(token::Token tok, bool true_label, std::string prefix)
     {
         /* Generate label using token's line and col number */
 
-        std::string label_name = "_l" + std::to_string(tok.lineno) + "_c" + std::to_string(tok.col);
+        std::string label_name = "_l" + std::to_string(tok.line) + "_c" + std::to_string(tok.column);
 
         if (true_label)
             return icode::createLabelOperand("_" + prefix + "_true" + label_name, id());
 
         return icode::createLabelOperand("_" + prefix + "_false" + label_name, id());
+    }
+
+    icode::Instruction ir_generator::tokenToCompareOperator(const token::Token tok)
+    {
+        switch (tok.type)
+        {
+            case token::LESS_THAN:
+                return icode::LT;
+            case token::LESS_THAN_EQUAL:
+                return icode::LTE;
+            case token::GREATER_THAN:
+                return icode::GT;
+            case token::GREATER_THAN_EQUAL:
+                return icode::GTE;
+            case token::CONDN_EQUAL:
+                return icode::EQ;
+            case token::CONDN_NOT_EQUAL:
+                return icode::NEQ;
+            default:
+                miklog::error_tok(module.name, "Invalid conditional expression", file, tok);
+                throw miklog::compile_error();
+        }
     }
 
     void ir_generator::condn_expression(const node::node& root,
@@ -1570,7 +1572,7 @@ namespace irgen
         }
         else
         {
-            token::token expr_opr = root.children[1].tok;
+            token::Token expr_opr = root.children[1].tok;
 
             /* See the dragon book, Figure 6.39 and Figure 6.40 */
 
@@ -1616,32 +1618,7 @@ namespace irgen
                 }
                 default:
                 {
-                    icode::Instruction opcode;
-
-                    switch (expr_opr.type)
-                    {
-                        case token::LESS_THAN:
-                            opcode = icode::LT;
-                            break;
-                        case token::LESS_THAN_EQUAL:
-                            opcode = icode::LTE;
-                            break;
-                        case token::GREATER_THAN:
-                            opcode = icode::GT;
-                            break;
-                        case token::GREATER_THAN_EQUAL:
-                            opcode = icode::GTE;
-                            break;
-                        case token::CONDN_EQUAL:
-                            opcode = icode::EQ;
-                            break;
-                        case token::CONDN_NOT_EQUAL:
-                            opcode = icode::NEQ;
-                            break;
-                        default:
-                            miklog::error_tok(module.name, "Invalid conditional expression", file, expr_opr);
-                            throw miklog::compile_error();
-                    }
+                    icode::Instruction opcode = tokenToCompareOperator(expr_opr);
 
                     /* Create icode entry for comparing two expressions */
                     OperandDescriptionPair first_operand = expression(root.children[0]);
@@ -1667,18 +1644,18 @@ namespace irgen
                     }
 
                     /* If second operand is a ptr, read it into a temp */
-                    builder.cmpop(opcode, first_operand.first, second_operand.first);
+                    builder.compareOperator(opcode, first_operand.first, second_operand.first);
 
                     /* Create icode entry for goto */
 
                     if (!t_fall)
                     {
-                        builder.goto_label(icode::IF_TRUE_GOTO, t_label);
+                        builder.createBranch(icode::IF_TRUE_GOTO, t_label);
                     }
 
                     if (!f_fall)
                     {
-                        builder.goto_label(icode::IF_FALSE_GOTO, f_label);
+                        builder.createBranch(icode::IF_FALSE_GOTO, f_label);
                     }
                 }
             }
@@ -1712,7 +1689,7 @@ namespace irgen
                 if (i != root.children.size() - 1)
                 {
                     /* Go to end */
-                    builder.goto_label(icode::GOTO, end_label);
+                    builder.createBranch(icode::GOTO, end_label);
                 }
 
                 /* Create label to skip block */
@@ -1746,7 +1723,7 @@ namespace irgen
         block(root.children[1], true, new_t_label, new_f_label, new_t_label);
 
         /* Go back to beginning */
-        builder.goto_label(icode::GOTO, new_t_label);
+        builder.createBranch(icode::GOTO, new_t_label);
 
         /* Create label to skip block */
         builder.label(new_f_label);
@@ -1781,7 +1758,7 @@ namespace irgen
         assignment(root.children[2]);
 
         /* Go back to beginning */
-        builder.goto_label(icode::GOTO, new_t_label);
+        builder.createBranch(icode::GOTO, new_t_label);
 
         /* Create label to skip block */
         builder.label(new_f_label);
@@ -1797,11 +1774,11 @@ namespace irgen
             if (child.type == node::STR_LITERAL)
             {
                 /* Get str len and str size */
-                int char_count = child.tok.unescaped_str.length();
+                int char_count = child.tok.unescapedString.length();
 
                 icode::Operand str_dat_opr = gen_str_dat(child.tok, char_count, target.characterInt);
 
-                builder.printop(icode::PRINT_STR, str_dat_opr);
+                builder.printOperator(icode::PRINT_STR, str_dat_opr);
             }
             /* Else expression */
             else
@@ -1816,18 +1793,18 @@ namespace irgen
                 }
 
                 if (print_var.second.dimensions.size() != 0)
-                    builder.printop(icode::PRINT_STR, print_var.first);
+                    builder.printOperator(icode::PRINT_STR, print_var.first);
                 else
-                    builder.printop(icode::PRINT, print_var.first);
+                    builder.printOperator(icode::PRINT, print_var.first);
             }
 
             /* Add space after printing (except for the last print) */
             if (i != root.children.size() - 1)
-                builder.opir(icode::SPACE);
+                builder.noArgumentEntry(icode::SPACE);
 
             /* If println, the last print should add new line */
             if (i == root.children.size() - 1 && root.type == node::PRINTLN)
-                builder.opir(icode::NEWLN);
+                builder.noArgumentEntry(icode::NEWLN);
         }
     }
 
@@ -1863,9 +1840,9 @@ namespace irgen
 
         /* Create INPUT or INPUT_STR entry */
         if (input_var.second.dimensions.size() == 0)
-            builder.inputop(icode::INPUT, input_var.first);
+            builder.inputOperator(icode::INPUT, input_var.first);
         else
-            builder.inputop(icode::INPUT_STR, input_var.first, input_var.second.dimensions[0]);
+            builder.inputOperator(icode::INPUT_STR, input_var.first, input_var.second.dimensions[0]);
     }
 
     void ir_generator::block(const node::node& root,
@@ -1915,7 +1892,7 @@ namespace irgen
                 case node::MODULE:
                 {
                     /* Check if the module exists */
-                    if (!(*current_ext_module).useExists(stmt.tok.str))
+                    if (!(*current_ext_module).useExists(stmt.tok.string))
                     {
                         miklog::error_tok(module.name, "Module does not exist", file, stmt.tok);
                         throw miklog::compile_error();
@@ -1923,7 +1900,7 @@ namespace irgen
 
                     /* Switch to external module */
                     icode::ModuleDescription* temp = current_ext_module;
-                    current_ext_module = &ext_modules_map[stmt.tok.str];
+                    current_ext_module = &ext_modules_map[stmt.tok.string];
 
                     OperandDescriptionPair ret_val = funccall(stmt.children[0]);
 
@@ -1950,7 +1927,7 @@ namespace irgen
                     }
 
                     /* Go to end */
-                    builder.goto_label(icode::GOTO, break_label);
+                    builder.createBranch(icode::GOTO, break_label);
 
                     break;
                 }
@@ -1963,7 +1940,7 @@ namespace irgen
                     }
 
                     /* Go to end */
-                    builder.goto_label(icode::GOTO, cont_label);
+                    builder.createBranch(icode::GOTO, cont_label);
 
                     break;
                 }
@@ -2001,7 +1978,7 @@ namespace irgen
                     }
 
                     /* Add return to icode */
-                    builder.opir(icode::RET);
+                    builder.noArgumentEntry(icode::RET);
 
                     break;
                 }
@@ -2014,7 +1991,7 @@ namespace irgen
                     break;
                 case node::EXIT:
                 {
-                    builder.opir(icode::EXIT);
+                    builder.noArgumentEntry(icode::EXIT);
                     break;
                 }
                 default:
@@ -2093,11 +2070,11 @@ namespace irgen
             if (child.type == node::FUNCTION)
             {
                 /* Get function name */
-                std::string func_name = child.children[0].tok.str;
+                std::string func_name = child.children[0].tok.string;
 
                 /* Switch symbol and icode table */
                 current_func_desc = &module.functions[func_name];
-                builder.set_func_desc(current_func_desc);
+                builder.setFunctionDescription(current_func_desc);
 
                 /* Clear scope */
                 clear_scope();
@@ -2118,7 +2095,7 @@ namespace irgen
                         throw miklog::compile_error();
                     }
 
-                    builder.opir(icode::RET);
+                    builder.noArgumentEntry(icode::RET);
                 }
             }
         }

@@ -19,7 +19,7 @@ namespace icode
     };
 
     DataType dataTypeFromString(const std::string& dtype_name, TargetDescription& target);
-    
+
     VariableDescription variableDescriptionFromDataType(DataType dtype, TargetDescription& target);
 }
 

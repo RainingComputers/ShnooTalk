@@ -5,7 +5,7 @@
 
 namespace token
 {
-    enum token_type
+    enum tokenType
     {
         NONE,
         SPACE,
@@ -88,21 +88,21 @@ namespace token
         EXIT
     };
 
-    char to_backspace_char(char c);
-
-    struct token
+    struct Token
     {
-        std::string str;
-        std::string unescaped_str;
-        token_type type;
-        unsigned int col;
-        unsigned int lineno;
+        std::string string;
+        std::string unescapedString;
+        tokenType type;
+        unsigned int column;
+        unsigned int line;
 
-        int precedence() const;
-        void unescape();
+        void initializeUnescapedString();
 
-        token(std::string token_str = "",
-              token_type tok_type = NONE,
+        int getPrecedence() const;
+        bool isBitwiseOperation() const;
+
+        Token(std::string token_str = "",
+              tokenType tok_type = NONE,
               unsigned int column = 0,
               unsigned int linenumber = 0);
     };

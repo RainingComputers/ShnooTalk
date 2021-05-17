@@ -6,8 +6,8 @@
 #include <numeric>
 #include <string>
 
+#include "IRBuilder/IRBuilder.hpp"
 #include "IntermediateRepresentation/All.hpp"
-#include "ibuild.hpp"
 #include "log.hpp"
 #include "node.hpp"
 #include "pathchk.hpp"
@@ -24,7 +24,7 @@ namespace irgen
         icode::ModuleDescription& module;
         std::ifstream& file;
 
-        ibuild::ir_builder builder;
+        ibuild::IRBuilder builder;
 
         icode::FunctionDescription* current_func_desc;
         icode::ModuleDescription* current_ext_module;
@@ -47,7 +47,7 @@ namespace irgen
 
         bool get_enum(const std::string& name, int& val);
 
-        std::pair<token::token, icode::VariableDescription> var_from_node(const node::node& root);
+        std::pair<token::Token, icode::VariableDescription> var_from_node(const node::node& root);
 
         void use(const node::node& root);
 
@@ -63,9 +63,9 @@ namespace irgen
 
         void global_var(const node::node& root);
 
-        icode::Operand gen_str_dat(const token::token& str_token, size_t char_count, icode::DataType dtype);
+        icode::Operand gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype);
 
-        OperandDescriptionPair var_info_to_str_dat(const token::token& str_token, icode::VariableDescription var);
+        OperandDescriptionPair var_info_to_str_dat(const token::Token& str_token, icode::VariableDescription var);
 
         void assign_str_literal_tovar(OperandDescriptionPair var, node::node& root);
 
@@ -85,11 +85,17 @@ namespace irgen
 
         OperandDescriptionPair term(const node::node& root);
 
+        icode::Instruction tokenToBinaryOperator(const token::Token tok);
+
         OperandDescriptionPair expression(const node::node& root);
+
+        icode::Instruction assignmentTokenToBinaryOperator(const token::Token tok);
 
         void assignment(const node::node& root);
 
-        icode::Operand gen_label(token::token tok, bool true_label, std::string prefix = "");
+        icode::Operand gen_label(token::Token tok, bool true_label, std::string prefix = "");
+
+        icode::Instruction tokenToCompareOperator(const token::Token tok);
 
         void condn_expression(const node::node& root,
                               const icode::Operand& t_label,

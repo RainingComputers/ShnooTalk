@@ -58,10 +58,10 @@ namespace node
     struct node
     {
         node_type type;
-        token::token tok;
+        token::Token tok;
         std::vector<node> children;
 
-        node(node_type ntype, token::token tok);
+        node(node_type ntype, token::Token tok);
         node(node_type ntype);
     };
 }

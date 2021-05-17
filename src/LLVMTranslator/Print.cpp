@@ -2,6 +2,7 @@
 
 #include "GetAndSetLLVM.hpp"
 #include "Print.hpp"
+#include "ToLLVMType.hpp"
 
 using namespace llvm;
 
@@ -67,11 +68,11 @@ void print(const ModuleContext& ctx, const FormatStringsContext& formatStringsCo
 {
     Value* value = getLLVMValue(ctx, e.op1);
 
-    /* Cast value to double if float */
+    /* Cast value to double if float, int64 if int */
     if (icode::isFloat(e.op1.dtype))
-        value = ctx.builder->CreateFPCast(value, Type::getDoubleTy(*ctx.context));
+        value = ctx.builder->CreateFPCast(value, dataTypeToLLVMType(ctx, icode::F64));
     else
-        value = ctx.builder->CreateSExt(value, Type::getInt32Ty(*ctx.context));
+        value = ctx.builder->CreateSExt(value, dataTypeToLLVMType(ctx, icode::I64));
 
     callPrintf(ctx, getFromatString(ctx, formatStringsContext, e.op1.dtype), value);
 }

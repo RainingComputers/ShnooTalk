@@ -17,8 +17,8 @@ namespace icode
         std::vector<icode::Entry> icodeTable;
         std::string moduleName;
 
-        bool symbolExists(const std::string&);
-        bool getSymbol(const std::string&, icode::VariableDescription&);
+        bool symbolExists(const std::string& name);
+        bool getSymbol(const std::string& name, icode::VariableDescription& variableDesc);
     };
 }
 

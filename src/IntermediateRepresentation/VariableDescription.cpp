@@ -7,19 +7,19 @@ namespace icode
         properties = 0;
     }
 
-    void VariableDescription::setProperty(VariableProperty prop)
+    void VariableDescription::setProperty(VariableProperty property)
     {
-        properties |= (1 << prop);
+        properties |= (1 << property);
     }
 
-    void VariableDescription::clearProperty(VariableProperty prop)
+    void VariableDescription::clearProperty(VariableProperty property)
     {
-        properties &= ~(1 << prop);
+        properties &= ~(1 << property);
     }
 
-    bool VariableDescription::checkProperty(VariableProperty prop) const
+    bool VariableDescription::checkProperty(VariableProperty property) const
     {
-        return properties & (1 << prop);
+        return properties & (1 << property);
     }
 
     bool isSameType(VariableDescription var1, VariableDescription var2)

@@ -155,6 +155,7 @@
        <keyword>ulong</keyword>
        <keyword>float</keyword>
        <keyword>double</keyword>
+       <keyword>bool</keyword> 
     </context>
 
 

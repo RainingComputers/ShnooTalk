@@ -44,7 +44,7 @@ namespace icode
         bool operator<(const Operand& other) const;
         bool operator==(const Operand& other) const;
         void updateDtype(const VariableDescription& var);
-        bool isPointer();
+        bool isPointer() const;
     };
 
     Operand createTempOperand(DataType dtype, const std::string& dtype_name, unsigned int id);

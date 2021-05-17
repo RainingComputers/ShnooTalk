@@ -86,7 +86,7 @@ Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
         case icode::GBL_VAR:
             return ctx.symbolNameGlobalsMap.at(op.name);
         case icode::STR_DATA:
-            return ctx.builder->CreateGlobalStringPtr(ctx.moduleDescription.str_data[op.name]);
+            return ctx.builder->CreateGlobalStringPtr(ctx.moduleDescription.stringsData[op.name]);
         case icode::RET_PTR:
             return ctx.currentFunctionReturnPointer;
         case icode::TEMP_PTR:

@@ -1,0 +1,45 @@
+# 16
+# 32
+# 64
+# 128
+# 256
+# 512
+# 1024
+# 2048
+
+
+struct bar 
+{
+    var x:int, y:int
+}
+
+struct foo 
+{
+    var x:int, y:int
+    var z:bar[3]
+}
+
+fn main()
+{
+    var a:foo, b:foo
+
+    a.x = 16
+    a.y = 32
+    a.z[0].x = 64
+    a.z[0].y = 128
+    a.z[1].x = 256
+    a.z[1].y = 512
+    a.z[2].x = 1024
+    a.z[2].y = 2048
+
+    b = a
+
+    println(b.x)
+    println(b.y)
+    println(b.z[0].x)
+    println(b.z[0].y)
+    println(b.z[1].x)
+    println(b.z[1].y)
+    println(b.z[2].x)
+    println(b.z[2].y)
+}

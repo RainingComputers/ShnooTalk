@@ -15,7 +15,7 @@ void print_usage()
     miklog::println("\nAvailable options:");
     miklog::println("\t-ast\tPrint parse tree");
     miklog::println("\t-ir\tPrint intermediate code representation");
-    miklog::println("\t-llvm\tPrint uhllvm assembly");
+    miklog::println("\t-llvm\tPrint llvm ir");
     miklog::println("\t-c\tCompile program (default)");
 }
 
@@ -120,13 +120,13 @@ int main(int argc, char* argv[])
 
         if (option == "-llvm")
         {
-            std::string llvm_module = llvmgen::generateObjectFile(modules[file_name], modules);
+            std::string llvm_module = llvmgen::generateLLVMModule(modules[file_name], modules, false);
             miklog::println(llvm_module);
             return 0;
         }
 
         for (auto pair : modules)
-            llvmgen::generateObjectFile(pair.second, modules);
+            llvmgen::generateLLVMModule(pair.second, modules, true);
     }
     catch (const miklog::compile_error& e)
     {

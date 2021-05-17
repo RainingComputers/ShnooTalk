@@ -13,7 +13,7 @@ namespace lexer
 {
     class lexical_analyser
     {
-        std::vector<token::token> token_q;
+        std::vector<token::Token> token_q;
         std::string file_name;
         size_t front_idx;
 
@@ -22,9 +22,9 @@ namespace lexer
 
       public:
         lexical_analyser(const std::string& name, std::ifstream& ifile);
-        bool get_token(token::token& symbol);
-        token::token peek_token();
-        token::token dpeek_token();
+        bool get_token(token::Token& symbol);
+        token::Token peek_token();
+        token::Token dpeek_token();
     };
 }
 

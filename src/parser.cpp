@@ -27,19 +27,19 @@ namespace parser
         lex.get_token(symbol);
     }
 
-    bool rd_parser::peek(token::token_type type)
+    bool rd_parser::peek(token::tokenType type)
     {
         /* Peek into token queue without popping it */
         return type == lex.peek_token().type;
     }
 
-    bool rd_parser::dpeek(token::token_type type)
+    bool rd_parser::dpeek(token::tokenType type)
     {
         /* Peek into token queue without popping it */
         return type == lex.dpeek_token().type;
     }
 
-    bool rd_parser::accept(token::token_type type)
+    bool rd_parser::accept(token::tokenType type)
     {
         /* Check if symbol is equal to type passed as argument */
         return type == symbol.type;
@@ -47,10 +47,10 @@ namespace parser
 
     int rd_parser::get_operator_prec()
     {
-        return symbol.precedence();
+        return symbol.getPrecedence();
     }
 
-    void rd_parser::expect(token::token_type type)
+    void rd_parser::expect(token::tokenType type)
     {
         /* If symbol is not equal to type passed as argument,
             throw exception*/
@@ -61,7 +61,7 @@ namespace parser
         }
     }
 
-    void rd_parser::expect(token::token_type* types, int ntypes)
+    void rd_parser::expect(token::tokenType* types, int ntypes)
     {
         /* If symbol is not equal to atleast one of the types
             passed as argument, throw exception */
@@ -148,8 +148,8 @@ namespace parser
 
     void rd_parser::program()
     {
-        token::token_type expected[] = { token::STRUCT, token::FUNCTION, token::ENUM,
-                                         token::DEF,    token::VAR,      token::END_OF_FILE };
+        token::tokenType expected[] = { token::STRUCT, token::FUNCTION, token::ENUM,
+                                        token::DEF,    token::VAR,      token::END_OF_FILE };
 
         while (accept(token::USE))
             use();
@@ -220,7 +220,7 @@ namespace parser
         expect(token::IDENTIFIER);
         add_node(node::IDENTIFIER);
 
-        token::token_type expected[] = { token::INT_LITERAL, token::FLOAT_LITERAL, token::CHAR_LITERAL };
+        token::tokenType expected[] = { token::INT_LITERAL, token::FLOAT_LITERAL, token::CHAR_LITERAL };
 
         expect(expected, 3);
 
@@ -295,10 +295,10 @@ namespace parser
 
         add_node(node::INITLIST, true);
 
-        token::token_type expected[] = { token::INT_LITERAL,   token::CHAR_LITERAL, token::HEX_LITERAL,
-                                         token::FLOAT_LITERAL, token::STR_LITERAL,  token::BIN_LITERAL,
-                                         token::OPEN_SQAURE,   token::IDENTIFIER,   token::MINUS,
-                                         token::STR_LITERAL };
+        token::tokenType expected[] = { token::INT_LITERAL,   token::CHAR_LITERAL, token::HEX_LITERAL,
+                                        token::FLOAT_LITERAL, token::STR_LITERAL,  token::BIN_LITERAL,
+                                        token::OPEN_SQAURE,   token::IDENTIFIER,   token::MINUS,
+                                        token::STR_LITERAL };
 
         expect(expected, 10);
 
@@ -338,7 +338,7 @@ namespace parser
         {
             next();
 
-            token::token_type expected[] = {
+            token::tokenType expected[] = {
                 token::INT_LITERAL, token::CHAR_LITERAL, token::HEX_LITERAL, token::FLOAT_LITERAL,
                 token::STR_LITERAL, token::BIN_LITERAL,  token::IDENTIFIER,  token::OPEN_SQAURE,
                 token::MINUS,       token::PLUS,         token::LPAREN,
@@ -470,11 +470,11 @@ namespace parser
 
     void rd_parser::term_literal()
     {
-        token::token_type literals[] = { token::INT_LITERAL,
-                                         token::CHAR_LITERAL,
-                                         token::FLOAT_LITERAL,
-                                         token::HEX_LITERAL,
-                                         token::BIN_LITERAL };
+        token::tokenType literals[] = { token::INT_LITERAL,
+                                        token::CHAR_LITERAL,
+                                        token::FLOAT_LITERAL,
+                                        token::HEX_LITERAL,
+                                        token::BIN_LITERAL };
 
         if (accept(token::MINUS) | accept(token::PLUS))
         {
@@ -568,10 +568,10 @@ namespace parser
 
         add_node(node::TERM, true, false);
 
-        token::token_type expected[] = { token::IDENTIFIER,    token::NOT,          token::LPAREN,
-                                         token::INT_LITERAL,   token::CHAR_LITERAL, token::HEX_LITERAL,
-                                         token::FLOAT_LITERAL, token::BIN_LITERAL,  token::MINUS,
-                                         token::CONDN_NOT,     token::SIZEOF };
+        token::tokenType expected[] = { token::IDENTIFIER,    token::NOT,          token::LPAREN,
+                                        token::INT_LITERAL,   token::CHAR_LITERAL, token::HEX_LITERAL,
+                                        token::FLOAT_LITERAL, token::BIN_LITERAL,  token::MINUS,
+                                        token::CONDN_NOT,     token::SIZEOF };
 
         expect(expected, 11);
 
@@ -710,9 +710,9 @@ namespace parser
             {
                 insert_node(node::ASSIGNMENT);
 
-                token::token_type expected[] = { token::PLUS_EQUAL,     token::MINUS_EQUAL, token::DIVIDE_EQUAL,
-                                                 token::MULTIPLY_EQUAL, token::OR_EQUAL,    token::AND_EQUAL,
-                                                 token::XOR_EQUAL,      token::EQUAL };
+                token::tokenType expected[] = { token::PLUS_EQUAL,     token::MINUS_EQUAL, token::DIVIDE_EQUAL,
+                                                token::MULTIPLY_EQUAL, token::OR_EQUAL,    token::AND_EQUAL,
+                                                token::XOR_EQUAL,      token::EQUAL };
 
                 expect(expected, 8);
                 add_node(node::ASSIGN_OPERATOR);
@@ -736,10 +736,10 @@ namespace parser
         expect(token::LPAREN);
         next();
 
-        token::token_type expected[] = { token::IDENTIFIER,   token::STR_LITERAL,   token::INT_LITERAL,
-                                         token::CHAR_LITERAL, token::FLOAT_LITERAL, token::HEX_LITERAL,
-                                         token::BIN_LITERAL,  token::LPAREN,        token::SIZEOF,
-                                         token::NOT,          token::MINUS };
+        token::tokenType expected[] = { token::IDENTIFIER,   token::STR_LITERAL,   token::INT_LITERAL,
+                                        token::CHAR_LITERAL, token::FLOAT_LITERAL, token::HEX_LITERAL,
+                                        token::BIN_LITERAL,  token::LPAREN,        token::SIZEOF,
+                                        token::NOT,          token::MINUS };
         expect(expected, 11);
 
         if (accept(token::STR_LITERAL))
@@ -934,10 +934,10 @@ namespace parser
 
         add_node(node::BLOCK, true, false);
 
-        token::token_type expected[] = { token::CLOSE_BRACE, token::VAR,    token::CONST, token::IF,
-                                         token::WHILE,       token::FOR,    token::BREAK, token::CONTINUE,
-                                         token::IDENTIFIER,  token::RETURN, token::PRINT, token::PRINTLN,
-                                         token::INPUT,       token::EXIT };
+        token::tokenType expected[] = { token::CLOSE_BRACE, token::VAR,    token::CONST, token::IF,
+                                        token::WHILE,       token::FOR,    token::BREAK, token::CONTINUE,
+                                        token::IDENTIFIER,  token::RETURN, token::PRINT, token::PRINTLN,
+                                        token::INPUT,       token::EXIT };
 
         if (accept(token::OPEN_BRACE))
         {

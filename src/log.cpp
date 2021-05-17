@@ -138,12 +138,12 @@ namespace miklog
         "NEWLN",        "INPUT",         "INPUT_STR",    "EXIT"
     };
 
-    void print_token(const token::token& symbol)
+    void print_token(const token::Token& symbol)
     {
         /* Prints token and its properties */
 
-        std::cout << "Token(\"" << symbol.str << "\", " << token_type_strs[symbol.type] << ", line=" << symbol.lineno
-                  << ", col=" << symbol.col << ")";
+        std::cout << "Token(\"" << symbol.string << "\", " << token_type_strs[symbol.type] << ", line=" << symbol.line
+                  << ", col=" << symbol.column << ")";
     }
 
     void print_node(const node::node& node, int depth)
@@ -214,7 +214,7 @@ namespace miklog
     void error_tok(const std::string& mod_name,
                    const std::string& error_msg,
                    std::ifstream& file,
-                   const token::token& tok)
+                   const token::Token& tok)
     {
         /* Prints the exact line from file using tok.lineno,
             and error message */
@@ -225,14 +225,14 @@ namespace miklog
 
         /* Get line */
         std::string line;
-        for (size_t i = 0; i < tok.lineno; i++)
+        for (size_t i = 0; i < tok.line; i++)
             getline(file, line);
 
         println("MODULE " + mod_name);
-        error_line(error_msg, line, tok.lineno, tok.col);
+        error_line(error_msg, line, tok.line, tok.column);
     }
 
-    void parse_error(const std::string& mod_name, token::token_type expected, token::token& found, std::ifstream& file)
+    void parse_error(const std::string& mod_name, token::tokenType expected, token::Token& found, std::ifstream& file)
     {
         /* Used by parser when it finds some other token type than expected */
 
@@ -242,9 +242,9 @@ namespace miklog
     }
 
     void parse_error_mult(const std::string& mod_name,
-                          const token::token_type* expected,
+                          const token::tokenType* expected,
                           int ntoks,
-                          const token::token& found,
+                          const token::Token& found,
                           std::ifstream& file)
     {
         /* Used by parser when if finds a token type that does not match
@@ -273,7 +273,7 @@ namespace miklog
 
     void type_error(const std::string& mod_name,
                     std::ifstream& file,
-                    const token::token& tok,
+                    const token::Token& tok,
                     icode::VariableDescription& expected,
                     icode::VariableDescription& found)
     {
@@ -288,7 +288,7 @@ namespace miklog
         error_tok(mod_name, expect_msg, file, tok);
     }
 
-    void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::token& tok)
+    void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::Token& tok)
     {
         error_tok(mod_name, "Internal compiler error, REPORT THIS BUG", file, tok);
     }

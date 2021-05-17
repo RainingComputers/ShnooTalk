@@ -20,15 +20,15 @@ namespace parser
         node::node* current_node;
         std::vector<node::node*> node_stack;
 
-        token::token symbol;
+        token::Token symbol;
 
         void next();
-        bool peek(token::token_type type);
-        bool dpeek(token::token_type type);
-        bool accept(token::token_type type);
+        bool peek(token::tokenType type);
+        bool dpeek(token::tokenType type);
+        bool accept(token::tokenType type);
         int get_operator_prec();
-        void expect(token::token_type type);
-        void expect(token::token_type* types, int ntypes);
+        void expect(token::tokenType type);
+        void expect(token::tokenType* types, int ntypes);
 
         void push_node();
         void pop_node();

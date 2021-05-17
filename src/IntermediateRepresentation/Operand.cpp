@@ -45,7 +45,7 @@ namespace icode
         dtypeName = var.dtypeName;
     }
 
-    bool Operand::isPointer()
+    bool Operand::isPointer() const
     {
         return operandType == icode::PTR || operandType == icode::TEMP_PTR || operandType == icode::RET_PTR;
     }
