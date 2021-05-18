@@ -9,6 +9,7 @@
 #include "FunctionCall.hpp"
 #include "GetAndSetLLVM.hpp"
 #include "Print.hpp"
+#include "Input.hpp"
 #include "ReadWriteCopy.hpp"
 #include "ToLLVMType.hpp"
 #include "UnaryOperator.hpp"
@@ -106,6 +107,12 @@ void translateFunctionIcode(ModuleContext& ctx,
                 break;
             case icode::RET:
                 ret(ctx, e, functionDesc.functionReturnDescription.dtype);
+                break;
+            case icode::INPUT:
+                input(ctx, formatStringsContext, e);
+                break;
+            case icode::INPUT_STR:
+                inputString(ctx, e);
                 break;
             case icode::EXIT:
                 break;

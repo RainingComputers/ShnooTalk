@@ -56,7 +56,6 @@ std::string llvmgen::generateLLVMModule(icode::ModuleDescription& modDesc,
     BranchContext branchContext;
     FormatStringsContext formatStringsContext;
 
-    setupPrintf(moduleContext, formatStringsContext);
     generateModule(moduleContext, branchContext, formatStringsContext);
 
     if (createObject)

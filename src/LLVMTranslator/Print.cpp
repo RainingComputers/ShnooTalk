@@ -6,50 +6,13 @@
 
 using namespace llvm;
 
-void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& formatStringsContext)
+void setupPrintf(const ModuleContext& ctx)
 {
-    /* Setup global format strings */
-    formatStringsContext.intFormatString =
-      ctx.builder->CreateGlobalString("%d", "intFormatString", 0U, ctx.LLVMModule.get());
-
-    formatStringsContext.uintFormatString =
-      ctx.builder->CreateGlobalString("%u", "uintFormatString", 0U, ctx.LLVMModule.get());
-
-    formatStringsContext.floatFormatString =
-      ctx.builder->CreateGlobalString("%f", "floatFormatString", 0U, ctx.LLVMModule.get());
-
-    formatStringsContext.newLineString = ctx.builder->CreateGlobalString("\n", "newln", 0U, ctx.LLVMModule.get());
-
-    formatStringsContext.spaceString = ctx.builder->CreateGlobalString(" ", "space", 0U, ctx.LLVMModule.get());
-}
-
-Value* getFromatString(const ModuleContext& ctx,
-                       const FormatStringsContext& formatStringsContext,
-                       icode::DataType dtype)
-{
-    if (icode::isUnsignedInteger(dtype))
-        return formatStringsContext.uintFormatString;
-
-    if (icode::isSignedInteger(dtype))
-        return formatStringsContext.intFormatString;
-
-    if (icode::isFloat(dtype))
-        return formatStringsContext.floatFormatString;
-
-    miklog::internal_error(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
-}
-
-void setupPrintf(const ModuleContext& ctx, FormatStringsContext& formatStringsContext)
-{
-
     /* Declare printf function */
     std::vector<Type*> args;
     args.push_back(Type::getInt8PtrTy(*ctx.context));
-    FunctionType* printf_type = FunctionType::get(ctx.builder->getInt32Ty(), args, true);
-    Function::Create(printf_type, Function::ExternalLinkage, "printf", ctx.LLVMModule.get());
-
-    setupFormatStringsContext(ctx, formatStringsContext);
+    FunctionType* printfFunctionType = FunctionType::get(ctx.builder->getInt32Ty(), args, true);
+    Function::Create(printfFunctionType, Function::ExternalLinkage, "printf", ctx.LLVMModule.get());
 }
 
 void callPrintf(const ModuleContext& ctx, Value* formatString, Value* value)
