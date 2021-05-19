@@ -1,0 +1,20 @@
+# 0.479426
+# 3
+
+use math
+
+fn foobar(a:float, b:int)
+{
+    println(a)
+    println(b)
+}
+
+fn sum(a:int, b:int) -> int
+{
+    return a + b
+}
+
+fn main()
+{
+    foobar(math::sin(0.5), sum(1, 2))
+}

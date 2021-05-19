@@ -6,6 +6,8 @@ using namespace llvm;
 
 void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& formatStringsContext)
 {
+    // TODO: Change this to a map
+
     /* Setup global format strings */
     formatStringsContext.byteFormatString = ctx.builder->CreateGlobalString("%c", "byte", 0U, ctx.LLVMModule.get());
 

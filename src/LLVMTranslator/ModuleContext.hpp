@@ -26,7 +26,7 @@ struct ModuleContext
     icode::ModuleDescription& moduleDescription;
     icode::StringModulesMap& externalModulesRef;
 
-    std::vector<llvm::Value*> params;
+    std::map<std::string, std::map<std::string, std::vector<llvm::Value*>>> params;
     llvm::Value* currentFunctionReturnPointer;
 
     ModuleContext(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& modulesMap);
