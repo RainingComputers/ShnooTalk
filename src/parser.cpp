@@ -341,10 +341,10 @@ namespace parser
             token::tokenType expected[] = {
                 token::INT_LITERAL, token::CHAR_LITERAL, token::HEX_LITERAL, token::FLOAT_LITERAL,
                 token::STR_LITERAL, token::BIN_LITERAL,  token::IDENTIFIER,  token::OPEN_SQAURE,
-                token::MINUS,       token::PLUS,         token::LPAREN,
+                token::MINUS,       token::PLUS,         token::LPAREN,      token::SIZEOF,
             };
 
-            expect(expected, 11);
+            expect(expected, 12);
 
             if (accept(token::OPEN_SQAURE))
                 initializerlist();

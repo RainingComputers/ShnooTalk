@@ -586,8 +586,8 @@ namespace irgen
 
             if (count != 0)
             {
-                curr_offset_left.updateDtype(field.second);
-                curr_offset_right.updateDtype(field.second);
+                curr_offset_left.updateDataType(field.second);
+                curr_offset_right.updateDataType(field.second);
 
                 curr_offset_left = builder.addressAddOperator(curr_offset_left, update);
                 curr_offset_right = builder.addressAddOperator(curr_offset_right, update);
@@ -901,7 +901,7 @@ namespace irgen
                                 current_var_info.clearProperty(icode::IS_MUT);
 
                             /* Update pointer dtype */
-                            current_offset_temp.updateDtype(current_var_info);
+                            current_offset_temp.updateDataType(current_var_info);
 
                             /* Add offset */
                             current_offset_temp = builder.addressAddOperator(
@@ -1349,6 +1349,7 @@ namespace irgen
             case token::CONDN_EQUAL:
             case token::CONDN_NOT_EQUAL:
                 miklog::error_tok(module.name, "Did not expect conditional operator", file, tok);
+                throw miklog::compile_error();
             default:
                 miklog::internal_error_tok(module.name, file, tok);
                 throw miklog::internal_bug_error();
