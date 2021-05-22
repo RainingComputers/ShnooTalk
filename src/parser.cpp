@@ -615,9 +615,11 @@ namespace parser
             }
             else if (peek(token::DOUBLE_COLON))
             {
-                add_node(node::MODULE, true);
-
-                next();
+                while (peek(token::DOUBLE_COLON))
+                {
+                    add_node(node::MODULE);
+                    next();
+                }
 
                 term();
             }

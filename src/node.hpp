@@ -63,6 +63,8 @@ namespace node
 
         node(node_type ntype, token::Token tok);
         node(node_type ntype);
+        bool isNthChild(node_type ntype, size_t index) const;
+        bool isNthChildFromLast(node_type ntype, size_t N) const;
     };
 }
 

@@ -30,4 +30,32 @@ namespace icode
 
         return (dataTypeIsEqual(var1.dtype, var2.dtype) && var1.dimensions == var2.dimensions);
     }
+
+    // TODO remove this
+    VariableDescription variableDescriptionFromDataType(DataType dtype, TargetDescription& target)
+    {
+        VariableDescription var;
+
+        var.dtype = dtype;
+
+        if (dtype == INT)
+            var.dtypeName = "int";
+        else if (dtype == FLOAT)
+            var.dtypeName = "float";
+        else if (dtype == VOID)
+            var.dtypeName = "void";
+        else
+        {
+            for (auto pair : target.dataTypeNames)
+                if (pair.second == dtype)
+                    var.dtypeName = pair.first;
+        }
+
+        var.dtypeSize = getDataTypeSize(dtype);
+        var.size = var.dtypeSize;
+        var.offset = 0;
+        var.scopeId = 0;
+
+        return var;
+    }
 }

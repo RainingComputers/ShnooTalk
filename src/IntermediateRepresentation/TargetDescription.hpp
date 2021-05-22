@@ -5,7 +5,6 @@
 
 #include "DataType.hpp"
 #include "Define.hpp"
-#include "VariableDescription.hpp"
 
 namespace icode
 {
@@ -19,8 +18,6 @@ namespace icode
     };
 
     DataType dataTypeFromString(const std::string& dtype_name, TargetDescription& target);
-
-    VariableDescription variableDescriptionFromDataType(DataType dtype, TargetDescription& target);
 }
 
 #endif

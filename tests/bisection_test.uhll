@@ -9,7 +9,7 @@ fn f(x:float) -> float
 
 fn main()
 {
-    # Intial xL and xR values
+    # Initial xL and xR values
     var xL:float = 0.0, xR:float = 3.0 
     
     # Accuracy 

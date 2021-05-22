@@ -11,6 +11,7 @@ namespace ibuild
 
         icode::FunctionDescription* functionDescriptionPointer;
         icode::ModuleDescription& module;
+        icode::StringModulesMap moduleMap;
 
         icode::Operand ensureNotPointer(icode::Operand op);
 
@@ -61,7 +62,7 @@ namespace ibuild
 
         void noArgumentEntry(icode::Instruction instruction);
 
-        IRBuilder(icode::ModuleDescription& moduleDesc);
+        IRBuilder(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& moduleDescMap);
     };
 }
 

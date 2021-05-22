@@ -1,0 +1,14 @@
+# This is a failing text, TODO: Fix this compiler bug
+
+use math
+
+fn main()
+{
+    var a:math::vec::Vec
+
+    a.setVec(1, 2)
+
+    a.printVec()
+
+    println(a.x)
+}

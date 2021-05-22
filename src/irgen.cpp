@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "irgen.hpp"
+#include "IRGenerator/VariableDescriptionFromNode.hpp"
 
 namespace irgen
 {
@@ -13,7 +14,7 @@ namespace irgen
       , ext_modules_map(modules_map)
       , module(modules_map[file_name])
       , file(ifile)
-      , builder(modules_map[file_name])
+      , builder(modules_map[file_name], ext_modules_map)
     {
         current_func_desc = nullptr;
         current_ext_module = &module;
@@ -56,6 +57,11 @@ namespace irgen
         return std::find(scope_id_stack.begin(), scope_id_stack.end(), scope_id) != scope_id_stack.end();
     }
 
+    void ir_generator::resetCurrentExternalModule()
+    {
+        current_ext_module = &module;
+    }
+
     bool ir_generator::get_def(const std::string& name, icode::Define& def)
     {
         if (target.getDefine(name, def))
@@ -94,109 +100,7 @@ namespace irgen
 
     std::pair<token::Token, icode::VariableDescription> ir_generator::var_from_node(const node::node& root)
     {
-        unsigned int i = 1;
-
-        icode::VariableDescription var_info;
-
-        token::Token name_token = root.children[0].tok;
-        token::Token dtype_token;
-
-        icode::ModuleDescription* var_module = &module;
-
-        /* Get token that specifies the type */
-        bool is_void = false;
-        while (true)
-        {
-            if (i == root.children.size())
-            {
-                is_void = true;
-                break;
-            }
-
-            if (root.children[i].type == node::MODULE)
-            {
-                /* Check if module exists */
-                if (!(*var_module).useExists(root.children[i].tok.string))
-                {
-                    miklog::error_tok(module.name, "Module does not exist", file, root.children[i].tok);
-                    throw miklog::compile_error();
-                }
-
-                /* Switch module */
-                var_module = &ext_modules_map[root.children[i].tok.string];
-            }
-
-            if (root.children[i].type != node::IDENTIFIER)
-            {
-                i++;
-                continue;
-            }
-
-            dtype_token = root.children[i].tok;
-            i++;
-            break;
-        }
-
-        icode::DataType dtype;
-
-        if (is_void)
-            dtype = icode::VOID;
-        else
-            dtype = icode::dataTypeFromString(dtype_token.string, target);
-
-        /* Check if data type exists and get size */
-        unsigned int size;
-        if (dtype == icode::STRUCT)
-        {
-            icode::StructDescription struct_desc;
-
-            if (!(*var_module).getStruct(dtype_token.string, struct_desc))
-            {
-                miklog::error_tok(module.name, "Symbol does not exist", file, dtype_token);
-                throw miklog::compile_error();
-            }
-
-            size = struct_desc.size;
-            var_info.moduleName = struct_desc.moduleName;
-        }
-        else
-        {
-            size = icode::getDataTypeSize(dtype);
-            var_info.moduleName = (*var_module).name;
-        }
-
-        /* Construct var info */
-        if (is_void)
-            var_info.dtypeName = "void";
-        else
-            var_info.dtypeName = dtype_token.string;
-        var_info.dtype = dtype;
-        var_info.offset = 0;
-        var_info.dtypeSize = size;
-        var_info.size = size;
-        var_info.scopeId = get_scope_id();
-
-        /* Add external module */
-        if (var_info.moduleName != module.name && !module.useExists(var_info.moduleName))
-            module.uses.push_back(var_info.moduleName);
-
-        /* Get array dimensions */
-        while (i < root.children.size())
-        {
-            if (root.children[i].type != node::SUBSCRIPT)
-                break;
-
-            std::string literal_str = root.children[i].children[0].tok.string;
-            unsigned int dim = std::stoi(literal_str);
-            var_info.dimensions.push_back(dim);
-
-            /* Update size if an array */
-            var_info.size *= dim;
-
-            i++;
-        }
-
-        return std::pair<token::Token, icode::VariableDescription>(name_token, var_info);
+        return variableDescriptionFromNode(*this, root);
     }
 
     void ir_generator::use(const node::node& root)
@@ -1275,30 +1179,41 @@ namespace irgen
             }
             case node::MODULE:
             {
-                node::node_type mod_child_type = child.children[0].children[0].type;
-                if (mod_child_type != node::FUNCCALL && mod_child_type != node::IDENTIFIER &&
-                    mod_child_type != node::MODULE)
+                /* Enter the specified ext module */
+                icode::ModuleDescription* current_module = &module;
+
+                node::node mod_node = root.children[0];
+
+                int i = 0;
+                while (mod_node.type == node::MODULE)
+                {
+                    std::string mod_name = mod_node.tok.string;
+
+                    /* Check if module exists */
+                    if (!(*current_module).useExists(mod_name))
+                    {
+                        miklog::error_tok(module.name, "Module does not exist", file, mod_node.tok);
+                        throw miklog::compile_error();
+                    }
+
+                    /* Swtich to module */
+                    current_module = &ext_modules_map[mod_name];
+
+                    i++;
+                    mod_node = root.children[i];
+                }
+
+                if (root.children[i].tok.type != token::IDENTIFIER)
                 {
                     miklog::error_tok(module.name, "Invalid use of MODULE ACCESS", file, child.tok);
                     throw miklog::compile_error();
                 }
 
-                /* Switch to external module */
-                icode::ModuleDescription* temp = current_ext_module;
+                current_ext_module = current_module;
 
-                /* Check if the module exists */
-                if (!(*current_ext_module).useExists(child.tok.string))
-                {
-                    miklog::error_tok(module.name, "Module does not exist", file, child.tok);
-                    throw miklog::compile_error();
-                }
+                OperandDescriptionPair ret_val = term(root.children[i]);
 
-                current_ext_module = &ext_modules_map[child.tok.string];
-
-                OperandDescriptionPair ret_val = term(child.children[0]);
-
-                /* Switch back to self */
-                current_ext_module = temp;
+                current_ext_module = &module;
 
                 return ret_val;
             }

@@ -13,12 +13,17 @@
 #include "pathchk.hpp"
 #include "token.hpp"
 
+typedef std::pair<icode::Operand, icode::VariableDescription> OperandDescriptionPair;
+typedef std::pair<token::Token, icode::VariableDescription> TokenDescriptionPair;
+typedef std::pair<icode::ModuleDescription*, size_t> ModuleIndexPair;
+typedef std::pair<icode::DataType, int> DataTypeSizePair;
+typedef std::pair<std::vector<int>, int> LiteralDimensionsIndexPair;
+
 namespace irgen
 {
-    typedef std::pair<icode::Operand, icode::VariableDescription> OperandDescriptionPair;
-
     class ir_generator
     {
+    public:
         icode::TargetDescription& target;
         icode::StringModulesMap& ext_modules_map;
         icode::ModuleDescription& module;
@@ -40,6 +45,7 @@ namespace irgen
         void exit_scope();
         void clear_scope();
         bool in_scope(unsigned int scope_id);
+        void resetCurrentExternalModule();
 
         bool get_def(const std::string& name, icode::Define& def);
 
@@ -123,7 +129,7 @@ namespace irgen
                    const icode::Operand& break_label,
                    const icode::Operand& cont_label);
 
-      public:
+      
         void initgen(const node::node& ast);
 
         bool current_function_terminates();
