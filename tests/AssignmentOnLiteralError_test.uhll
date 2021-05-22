@@ -1,0 +1,15 @@
+# MODULE AssignmentOnLiteralError_test
+# ERROR in Line 12 Col 5
+# 
+#     a = 2
+#     ^
+# Cannot assign to LITERAL
+
+def a 5
+
+fn main() -> int
+{
+    a = 2
+
+    return 0
+}

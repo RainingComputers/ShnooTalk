@@ -1,16 +1,22 @@
 import os
 import glob
 import subprocess
-
-from difflib import ndiff
-from enum import Enum
+import sys
 
 
-class TestResult(Enum):
+class TestResult:
     PASSED = 0
     FAILED = 1
     TIMEDOUT = 2
     SKIPPED = 3
+
+
+def coverge_enabled():
+    if(len(sys.argv) == 1):
+        return False
+    if(sys.argv[1] == "--gcov"):
+        return True
+    return False
 
 
 def get_test_output(file_name):
@@ -73,11 +79,11 @@ def run_test(file_name, compiler_exec_path):
 
     # Run the executable and return the output from the executable
     timedout, exec_output, _ = run_subprocess(['./test'])
-    
+
     if(timedout):
         return TestResult.TIMEDOUT, None, test_output
 
-    # If the program/executable did not timeout, return program output 
+    # If the program/executable did not timeout, return program output
     return compare_outputs(test_output, exec_output)
 
 
@@ -98,7 +104,7 @@ def run_test_llc(file_name, compiler_exec_path):
 
     with open(llc_file, "w") as f:
         f.write(compiler_output)
-    
+
     timedout, llc_output, llc_retcode = run_subprocess(
         ["llc", llc_file])
 
@@ -109,12 +115,21 @@ def run_test_llc(file_name, compiler_exec_path):
     return TestResult.PASSED, None
 
 
+def generate_info_files(obj_dir, testinfo_dir, passed_test_files):
+    for file in passed_test_files:
+        os.system(
+            f"lcov -c  -b ../ -d {obj_dir} -o {testinfo_dir}{file}.info > /dev/null")
+
+
 def prepare_coverage_report(testinfo_dir):
     # Generate report
     print("Preparing coverage report...")
+
     add_files = " ".join(
         [f"-a {info_file}" for info_file in glob.glob(f"{testinfo_dir}*.info")])
+
     os.system(f"lcov {add_files} -o {testinfo_dir}total.info > /dev/null")
+
     os.system(
         f"genhtml {testinfo_dir}total.info -o {testinfo_dir} > /dev/null")
 
@@ -144,9 +159,6 @@ def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
         if(res == TestResult.PASSED):
             print(" 👌", file, "passed")
             passed.append(file)
-            # Process .gcda and .gcno files with lcov
-            os.system(
-                f"lcov -c  -b ../ -d {obj_dir} -o {testinfo_dir}{file}.info > /dev/null")
         elif(res == TestResult.FAILED):
             print(" ❌", file, "failed\n")
             print("[Program output]")
@@ -162,7 +174,9 @@ def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
     print(f"{len(passed)} tests passed.")
 
     # Use lcov and open report in browser
-    prepare_coverage_report(testinfo_dir)
+    if(coverge_enabled()):
+        generate_info_files(obj_dir, testinfo_dir, passed)
+        prepare_coverage_report(testinfo_dir)
 
 
 def run_all_llc_tests(compiler_exec_path):
@@ -186,11 +200,18 @@ def run_all_llc_tests(compiler_exec_path):
     os.system('rm -f *.o')
     os.system('rm -f *.llc.s')
 
+
 if __name__ == "__main__":
+    if(coverge_enabled()):
+        build_type = "gcov"
+    else:
+        build_type = "debug"
+
     os.chdir('tests/')
 
     print("--=[Running uHLL compiler tests]=--")
-    run_all_tests("../bin/debug/uhll", "../obj/debug/", "../src/", "testinfo/")
+    run_all_tests(f"../bin/{build_type}/uhll",
+                  f"../obj/{build_type}/", "../src/", "testinfo/")
 
     print("--=[Running LLVM LLC tests]=--")
-    run_all_llc_tests("../bin/debug/uhll")
+    run_all_llc_tests("../bin/gcov/uhll")

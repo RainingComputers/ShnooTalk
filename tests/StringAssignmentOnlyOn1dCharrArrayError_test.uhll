@@ -1,0 +1,13 @@
+# MODULE StringAssignmentOnlyOn1dCharrArrayError_test
+# ERROR in Line 10 Col 21
+# 
+#     var a:int[10] = "Hello"
+#                     ^
+# String assignment only allowed on 1D INT ARRAY
+
+fn main() -> int
+{
+    var a:int[10] = "Hello"
+
+    return 0
+}

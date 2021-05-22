@@ -1,4 +1,4 @@
-.PHONY : help clean all build dirs install uninstall format quality test
+.PHONY : help clean all build dirs install uninstall format quality test coverage
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
@@ -21,7 +21,11 @@ help :
 	@echo "quality"
 	@echo "      Prepare code quality report and dump it to .cccc/ folder"
 	@echo "test"
-	@echo "      Run tests, execute make build GCOV=1 first"
+	@echo "      Run tests, run make build DEBUG=1 first"
+	@echo "coverage"
+	@echo "      Run test and prepare code coverage report, run make build GCOV=1"
+	@echo ""
+	@echo "[Note] To speed up repeated compiles, use CXX=ccache\\ g++"
 
 # Name of the executable
 EXEC_NAME = uhll
@@ -49,11 +53,11 @@ ifeq ($(DEBUG), 1)
 	BUILD_TYPE = debug
 else ifeq ($(GPROF), 1)
     CXXFLAGS = -pg -g
-	BUILD_TYPE = debug
+	BUILD_TYPE = gprof
 else ifeq ($(GCOV), 1)
     LDFLAGS = -lgcov --coverage
     CXXFLAGS = -fprofile-arcs -ftest-coverage -g
-	BUILD_TYPE = debug
+	BUILD_TYPE = gcov
 else
     CXXFLAGS = -O3
 	BUILD_TYPE = release_$(PLATFORM)
@@ -79,11 +83,8 @@ clean:
 	rm -f tests/test
 
 # For compiling .cpp files in src/ to .o object files in obj/
-obj/$(BUILD_TYPE)/%.o: src/%.cpp src/%.hpp
+obj/$(BUILD_TYPE)/%.o: src/%.cpp src/*.hpp
 	mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -Wall -c $< -o $@
-
-obj/$(BUILD_TYPE)/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -Wall -c $< -o $@
 
 # For creting directories required for linking and building executable
@@ -118,3 +119,6 @@ uninstall:
 
 test:
 	python3 test.py
+
+coverage:
+	python3 test.py --gcov

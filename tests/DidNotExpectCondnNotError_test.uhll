@@ -1,13 +1,15 @@
-# MODULE termerr5_test
+# MODULE DidNotExpectCondnNotError_test
 # ERROR in Line 12 Col 17
 # 
-#     var b:int = not a
+#     var b:int = not a > 3
 #                 ^
 # Did not expect CONDN_NOT,
 # expected INT_LITERAL or CHAR_LITERAL or HEX_LITERAL or FLOAT_LITERAL or STR_LITERAL or BIN_LITERAL or IDENTIFIER or OPEN_SQAURE or MINUS or PLUS or LPAREN or SIZEOF
 
-fn main()
+fn main() -> int
 {
-    var a:int
-    var b:int = not a
+    var a:int = 2
+    var b:int = not a > 3
+
+    return 0
 }

@@ -1,0 +1,13 @@
+# MODULE StringTooBigError_test
+# ERROR in Line 10 Col 21
+# 
+#     var a:char[4] = "Hello"
+#                     ^
+# String too big
+
+fn main() -> int
+{
+    var a:char[4] = "Hello"
+
+    return 0
+}
