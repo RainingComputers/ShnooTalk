@@ -1,4 +1,4 @@
-#include "CreateDescription.hpp"
+#include "CreateVariableDescription.hpp"
 
 using namespace icode;
 
@@ -63,7 +63,7 @@ VariableDescription variableDescFromDataTypeToken(irgen::ir_generator& ctx, cons
     return variableDescription;
 }
 
-VariableDescription addDimensionToDescription(const VariableDescription& variableDesc, std::vector<int>& dimensions)
+VariableDescription addDimensionToVariableDesc(const VariableDescription& variableDesc, std::vector<int>& dimensions)
 {
     VariableDescription modifiedVariableDesc = variableDesc;
 

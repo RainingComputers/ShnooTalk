@@ -1,4 +1,4 @@
-#include "CreateDescription.hpp"
+#include "CreateVariableDescription.hpp"
 #include "Module.hpp"
 #include "Subscript.hpp"
 
@@ -15,7 +15,7 @@ bool isVoidFunction(const node::node& root)
     return false;
 }
 
-TokenDescriptionPair variableDescriptionFromFunction(ir_generator& ctx, const node::node& root)
+TokenDescriptionPair variableDescriptionFromFunctionNode(ir_generator& ctx, const node::node& root)
 {
     const token::Token& symbolNameToken = root.children[0].tok;
 
@@ -49,7 +49,7 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
     {
         LiteralDimensionsIndexPair literalDimensionsIndexPair = getLiteralDimensionFromNode(root, childNodeCounter);
 
-        variableDescription = addDimensionToDescription(variableDescription, literalDimensionsIndexPair.first);
+        variableDescription = addDimensionToVariableDesc(variableDescription, literalDimensionsIndexPair.first);
         childNodeCounter = literalDimensionsIndexPair.second;
     }
 
@@ -61,7 +61,7 @@ TokenDescriptionPair variableDescriptionFromNode(ir_generator& ctx, const node::
     ctx.resetCurrentExternalModule();
 
     if (root.type == node::FUNCTION)
-        return variableDescriptionFromFunction(ctx, root);
+        return variableDescriptionFromFunctionNode(ctx, root);
 
     return variableDescriptionFromVarOrParamNode(ctx, root);
 }
