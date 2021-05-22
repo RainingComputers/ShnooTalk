@@ -116,6 +116,8 @@ def run_test_llc(file_name, compiler_exec_path):
 
 
 def generate_info_files(obj_dir, testinfo_dir, passed_test_files):
+    print("Generating info files...")
+
     for file in passed_test_files:
         os.system(
             f"lcov -c  -b ../ -d {obj_dir} -o {testinfo_dir}{file}.info > /dev/null")
@@ -214,4 +216,4 @@ if __name__ == "__main__":
                   f"../obj/{build_type}/", "../src/", "testinfo/")
 
     print("--=[Running LLVM LLC tests]=--")
-    run_all_llc_tests("../bin/gcov/uhll")
+    run_all_llc_tests(f"../bin/{build_type}/uhll")
