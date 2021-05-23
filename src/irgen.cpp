@@ -2,6 +2,7 @@
 
 #include "irgen.hpp"
 #include "IRGenerator/VariableDescriptionFromNode.hpp"
+#include "IRGenerator/EnumFromNode.hpp"
 
 namespace irgen
 {
@@ -207,18 +208,7 @@ namespace irgen
 
     void ir_generator::enumeration(const node::node& root)
     {
-        for (size_t i = 0; i < root.children.size(); i++)
-        {
-            token::Token enum_tok = root.children[i].tok;
-
-            if (module.symbolExists(enum_tok.string, target))
-            {
-                miklog::error_tok(module.name, "Symbol already defined", file, enum_tok);
-                throw miklog::compile_error();
-            }
-
-            module.enumerations[enum_tok.string] = i;
-        }
+        enumFromNode(*this, root);
     }
 
     void ir_generator::def(const node::node& root)
