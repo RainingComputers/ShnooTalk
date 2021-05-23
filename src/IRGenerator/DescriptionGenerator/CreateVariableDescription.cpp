@@ -24,7 +24,7 @@ std::pair<int, std::string> getSizeAndModuleName(irgen::ir_generator& ctx, const
         return std::pair<int, std::string>(getDataTypeSize(dtype), ctx.current_ext_module->name);
 
     icode::StructDescription structDesc;
-    if(!ctx.current_ext_module->getStruct(dataTypeToken.string, structDesc))
+    if(!ctx.current_ext_module->getStruct(dataTypeToken.toString(), structDesc))
     {
         miklog::error_tok(ctx.module.name, "Symbol does not exist", ctx.file, dataTypeToken);
         throw miklog::compile_error();
@@ -35,14 +35,14 @@ std::pair<int, std::string> getSizeAndModuleName(irgen::ir_generator& ctx, const
 
 VariableDescription createVariableDescription(irgen::ir_generator& ctx, const token::Token& dataTypeToken)
 {
-    icode::DataType dtype = ctx.module.dataTypeFromString(dataTypeToken.string);
+    icode::DataType dtype = ctx.module.dataTypeFromString(dataTypeToken.toString());
 
     std::pair<int, std::string> sizeAndModuleName = getSizeAndModuleName(ctx, dataTypeToken, dtype);
 
     VariableDescription variableDescription;
 
     variableDescription.dtype = dtype;
-    variableDescription.dtypeName = dataTypeToken.string;
+    variableDescription.dtypeName = dataTypeToken.toString();
     variableDescription.dtypeSize = sizeAndModuleName.first;
     variableDescription.size = variableDescription.dtypeSize;
     variableDescription.offset = 0;

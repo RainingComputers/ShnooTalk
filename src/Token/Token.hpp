@@ -88,7 +88,7 @@ namespace token
         EXIT
     };
 
-    struct Token
+    class Token
     {
         std::string string;
         std::string unescapedString;
@@ -98,10 +98,18 @@ namespace token
 
         void initializeUnescapedString();
 
+      public:
         int getPrecedence() const;
         bool isBitwiseOperation() const;
         int toInt() const;
         float toFloat() const;
+        std::string toString() const;
+        std::string toUnescapedString() const;
+        tokenType getType() const;
+        std::string getLineColString() const;
+
+        int getLine() const;
+        int getColumn() const;
 
         Token(std::string token_str = "",
               tokenType tok_type = NONE,

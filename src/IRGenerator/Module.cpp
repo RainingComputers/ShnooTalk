@@ -8,7 +8,7 @@ ModuleIndexPair getModuleFromNode(const irgen::ir_generator& ctx, const node::No
     for (nodeCounter = startIndex; root.isNthChild(node::MODULE, nodeCounter); nodeCounter++)
     {
         const token::Token& moduleNameToken = root.children[nodeCounter].tok;
-        const std::string& moduleName = moduleNameToken.string;
+        const std::string& moduleName = moduleNameToken.toString();
 
         if (!(*currentModule).useExists(moduleName))
         {

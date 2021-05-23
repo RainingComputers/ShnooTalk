@@ -30,19 +30,19 @@ namespace parser
     bool rd_parser::peek(token::tokenType type)
     {
         /* Peek into token queue without popping it */
-        return type == lex.peek_token().type;
+        return type == lex.peek_token().getType();
     }
 
     bool rd_parser::dpeek(token::tokenType type)
     {
         /* Peek into token queue without popping it */
-        return type == lex.dpeek_token().type;
+        return type == lex.dpeek_token().getType();
     }
 
     bool rd_parser::accept(token::tokenType type)
     {
         /* Check if symbol is equal to type passed as argument */
-        return type == symbol.type;
+        return type == symbol.getType();
     }
 
     int rd_parser::get_operator_prec()

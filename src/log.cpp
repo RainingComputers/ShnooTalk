@@ -142,8 +142,8 @@ namespace miklog
     {
         /* Prints token and its properties */
 
-        std::cout << "Token(\"" << symbol.string << "\", " << token_type_strs[symbol.type] << ", line=" << symbol.line
-                  << ", col=" << symbol.column << ")";
+        std::cout << "Token(\"" << symbol.toString() << "\", " << token_type_strs[symbol.getType()]
+                  << ", line=" << symbol.getLine() << ", col=" << symbol.getColumn() << ")";
     }
 
     void print_node(const node::Node& node, int depth)
@@ -216,7 +216,7 @@ namespace miklog
                    std::ifstream& file,
                    const token::Token& tok)
     {
-        /* Prints the exact line from file using tok.lineno,
+        /* Prints the exact line from file using tok
             and error message */
 
         /* Goto beginning */
@@ -225,18 +225,18 @@ namespace miklog
 
         /* Get line */
         std::string line;
-        for (size_t i = 0; i < tok.line; i++)
+        for (size_t i = 0; i < tok.getLine(); i++)
             getline(file, line);
 
         println("MODULE " + mod_name);
-        error_line(error_msg, line, tok.line, tok.column);
+        error_line(error_msg, line, tok.getLine(), tok.getColumn());
     }
 
     void parse_error(const std::string& mod_name, token::tokenType expected, token::Token& found, std::ifstream& file)
     {
         /* Used by parser when it finds some other token type than expected */
 
-        std::string error_msg = "Did not expect " + token_type_strs[found.type];
+        std::string error_msg = "Did not expect " + token_type_strs[found.getType()];
         error_msg += ",\nexpected " + token_type_strs[expected];
         error_tok(mod_name, error_msg, file, found);
     }
@@ -250,7 +250,7 @@ namespace miklog
         /* Used by parser when if finds a token type that does not match
            multiple token types expected */
 
-        std::string error_msg = "Did not expect " + token_type_strs[found.type];
+        std::string error_msg = "Did not expect " + token_type_strs[found.getType()];
         error_msg += ",\nexpected ";
 
         for (size_t i = 0; i < ntoks - 1; i++)

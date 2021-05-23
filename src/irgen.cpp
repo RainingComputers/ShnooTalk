@@ -110,8 +110,8 @@ namespace irgen
             /* Get module name */
             token::Token name_token = child.tok;
 
-            bool is_module = pathchk::file_exists(name_token.string + ".uhll");
-            bool is_package = pathchk::dir_exists(name_token.string);
+            bool is_module = pathchk::file_exists(name_token.toString() + ".uhll");
+            bool is_package = pathchk::dir_exists(name_token.toString());
 
             /* Check if file exists */
             if (!(is_module || is_package))
@@ -128,28 +128,28 @@ namespace irgen
             }
 
             /* Check for multiple imports */
-            if (module.useExists(name_token.string))
+            if (module.useExists(name_token.toString()))
             {
                 miklog::error_tok(module.name, "Multiple imports detected", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for name conflict */
-            if (module.symbolExists(name_token.string))
+            if (module.symbolExists(name_token.toString()))
             {
                 miklog::error_tok(module.name, "Name conflict, symbol already exists", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for self import */
-            if (module.name == name_token.string)
+            if (module.name == name_token.toString())
             {
                 miklog::error_tok(module.name, "Self import not allowed", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Add to icode */
-            module.uses.push_back(name_token.string);
+            module.uses.push_back(name_token.toString());
         }
     }
 
@@ -161,41 +161,41 @@ namespace irgen
         int enum_val;
 
         /* Get ext module */
-        if (!module.useExists(root.children[0].tok.string))
+        if (!module.useExists(root.children[0].tok.toString()))
         {
             miklog::error_tok(module.name, "Module not imported", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
-        icode::ModuleDescription* ext_module = &ext_modules_map[root.children[0].tok.string];
+        icode::ModuleDescription* ext_module = &ext_modules_map[root.children[0].tok.toString()];
 
         for (node::Node child : root.children[1].children)
         {
             /* Check if symbol exists */
-            if (module.symbolExists(child.tok.string))
+            if (module.symbolExists(child.tok.toString()))
             {
                 miklog::error_tok(module.name, "Symbol already defined in current module", file, child.tok);
                 throw miklog::compile_error();
             }
 
             /* If it is struct */
-            if ((*ext_module).getStruct(child.tok.string, struct_desc))
-                module.structures[child.tok.string] = struct_desc;
+            if ((*ext_module).getStruct(child.tok.toString(), struct_desc))
+                module.structures[child.tok.toString()] = struct_desc;
             /* If it a function */
-            else if ((*ext_module).getFunction(child.tok.string, func_desc))
+            else if ((*ext_module).getFunction(child.tok.toString(), func_desc))
             {
                 miklog::error_tok(module.name, "Cannot import functions", file, child.tok);
                 throw miklog::compile_error();
             }
             /* If is a def */
-            else if ((*ext_module).getDefine(child.tok.string, def))
-                module.defines[child.tok.string] = def;
+            else if ((*ext_module).getDefine(child.tok.toString(), def))
+                module.defines[child.tok.toString()] = def;
             /* If it is a enum */
-            else if ((*ext_module).getEnum(child.tok.string, enum_val))
-                module.enumerations[child.tok.string] = enum_val;
+            else if ((*ext_module).getEnum(child.tok.toString(), enum_val))
+                module.enumerations[child.tok.toString()] = enum_val;
             /* Check if use exists */
-            else if ((*ext_module).useExists(child.tok.string))
-                module.uses.push_back(child.tok.string);
+            else if ((*ext_module).useExists(child.tok.toString()))
+                module.uses.push_back(child.tok.toString());
             /* Does not exist */
             else
             {
@@ -223,7 +223,7 @@ namespace irgen
         token::Token name_token = root.children[0].tok;
 
         /* Check if symbol exists */
-        if (module.symbolExists(name_token.string))
+        if (module.symbolExists(name_token.toString()))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, name_token);
             throw miklog::compile_error();
@@ -238,13 +238,13 @@ namespace irgen
             var.second.setProperty(icode::IS_MUT);
 
             /* Check if the name is already a field */
-            if (struct_desc.fieldExists(var.first.string))
+            if (struct_desc.fieldExists(var.first.toString()))
             {
                 miklog::error_tok(module.name, "Field already defined", file, var.first);
                 throw miklog::compile_error();
             }
 
-            if (module.symbolExists(var.first.string))
+            if (module.symbolExists(var.first.toString()))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, var.first);
                 throw miklog::compile_error();
@@ -255,14 +255,14 @@ namespace irgen
             struct_desc.size += var.second.size;
 
             /* Append to feilds map */
-            struct_desc.structFields[var.first.string] = var.second;
+            struct_desc.structFields[var.first.toString()] = var.second;
 
             /* Module name */
             struct_desc.moduleName = module.name;
         }
 
         /* Add strucuture definition to module */
-        module.structures[name_token.string] = struct_desc;
+        module.structures[name_token.toString()] = struct_desc;
     }
 
     void ir_generator::fn(const node::Node& root)
@@ -271,7 +271,7 @@ namespace irgen
         std::string func_name;
 
         std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
-        func_name = var.first.string;
+        func_name = var.first.toString();
         func_desc.functionReturnDescription = var.second;
 
         /* Check if function name symbol already exists */
@@ -302,15 +302,15 @@ namespace irgen
                 param_var.second.setProperty(icode::IS_PTR);
 
             /* Check if symbol is already defined */
-            if (module.symbolExists(param_var.first.string))
+            if (module.symbolExists(param_var.first.toString()))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, param_var.first);
                 throw miklog::compile_error();
             }
 
             /* Append to symbol table */
-            func_desc.parameters.push_back(param_var.first.string);
-            func_desc.symbols[param_var.first.string] = param_var.second;
+            func_desc.parameters.push_back(param_var.first.toString());
+            func_desc.symbols[param_var.first.toString()] = param_var.second;
         }
 
         func_desc.moduleName = module.name;
@@ -327,21 +327,21 @@ namespace irgen
         var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbolExists(var.first.string))
+        if (module.symbolExists(var.first.toString()))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
         }
 
         /* Add to symbol table */
-        module.globals[var.first.string] = var.second;
+        module.globals[var.first.toString()] = var.second;
     }
 
     icode::Operand ir_generator::gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype)
     {
         /* Append string data */
-        std::string name = "_str_l" + std::to_string(str_token.line) + "_c" + std::to_string(str_token.column);
-        module.stringsData[name] = str_token.unescapedString;
+        std::string name = "_str" + str_token.getLineColString();
+        module.stringsData[name] = str_token.toUnescapedString();
 
         /* Create icode::operand */
         size_t size = char_count * icode::getDataTypeSize(dtype);
@@ -360,7 +360,7 @@ namespace irgen
         }
 
         /* Check dimensions */
-        size_t char_count = str_token.unescapedString.length();
+        size_t char_count = str_token.toUnescapedString().length();
 
         if (char_count > var.dimensions[0])
         {
@@ -383,7 +383,7 @@ namespace irgen
         }
 
         /* Check size */
-        size_t char_count = root.tok.unescapedString.length();
+        size_t char_count = root.tok.toUnescapedString().length();
 
         if (char_count > var.second.dimensions[0])
         {
@@ -397,7 +397,7 @@ namespace irgen
         /* Loop through int and initialize string */
         for (size_t i = 0; i < char_count; i++)
         {
-            char character = root.tok.unescapedString[i];
+            char character = root.tok.toUnescapedString()[i];
 
             /* Write to current offset */
             builder.copy(curr_offset, icode::createLiteralOperand(icode::UI8, character, id()));
@@ -576,7 +576,7 @@ namespace irgen
             var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbolExists(var.first.string) || (*current_func_desc).symbolExists(var.first.string))
+        if (module.symbolExists(var.first.toString()) || (*current_func_desc).symbolExists(var.first.toString()))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
@@ -597,7 +597,7 @@ namespace irgen
             /* Create icode operands, one for variable other for temp
                 to hold result of initialization expression */
             icode::Operand left =
-              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.string, id());
+              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString(), id());
 
             OperandDescriptionPair init_exp = expression(last_node);
 
@@ -621,20 +621,20 @@ namespace irgen
         else if (last_node.type == node::STR_LITERAL)
         {
             OperandDescriptionPair var_pair = OperandDescriptionPair(
-              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.string, id()),
+              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString(), id()),
               var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
             OperandDescriptionPair var_pair = OperandDescriptionPair(
-              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.string, id()),
+              icode::createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString(), id()),
               var.second);
             assign_init_list_tovar(var_pair, last_node);
         }
 
         /* Add to symbol table */
-        (*current_func_desc).symbols[var.first.string] = var.second;
+        (*current_func_desc).symbols[var.first.toString()] = var.second;
     }
 
     OperandDescriptionPair ir_generator::var_access(const node::Node& root)
@@ -652,7 +652,7 @@ namespace irgen
 
         /* Check if identifier exists and get dtype and size */
         node::Node child = root.children[0];
-        ident_name = child.tok.string;
+        ident_name = child.tok.toString();
         if ((*current_func_desc).getSymbol(ident_name, current_var_info))
         {
             is_ptr = current_var_info.checkProperty(icode::IS_PTR);
@@ -757,13 +757,13 @@ namespace irgen
                           ext_modules_map[current_var_info.moduleName].structures[current_var_info.dtypeName];
 
                         /* Check if field exists */
-                        if (struct_desc.fieldExists(child.tok.string))
+                        if (struct_desc.fieldExists(child.tok.toString()))
                         {
                             /* If it does, update offset */
                             bool is_mut = current_var_info.checkProperty(icode::IS_MUT);
 
                             /* Update var info to struct field */
-                            current_var_info = struct_desc.structFields[child.tok.string];
+                            current_var_info = struct_desc.structFields[child.tok.toString()];
 
                             /* If the struct is immutable, fields are automatically
                              * immutable */
@@ -881,7 +881,7 @@ namespace irgen
 
         /* Check if function exits */
         icode::FunctionDescription func_desc;
-        std::string func_name = root.tok.string;
+        std::string func_name = root.tok.toString();
 
         if (!get_func(func_name, func_desc))
         {
@@ -961,7 +961,7 @@ namespace irgen
 
     OperandDescriptionPair ir_generator::size_of(const node::Node& root)
     {
-        std::string ident = root.children.back().tok.string;
+        std::string ident = root.children.back().tok.toString();
 
         /* Enter the specified ext module */
         icode::ModuleDescription* current_module = &module;
@@ -971,7 +971,7 @@ namespace irgen
         int i = 0;
         while (mod_node.type == node::MODULE)
         {
-            std::string mod_name = mod_node.tok.string;
+            std::string mod_name = mod_node.tok.toString();
 
             /* Check if module exists */
             if (!(*current_module).useExists(mod_name))
@@ -1021,14 +1021,14 @@ namespace irgen
         {
             case node::LITERAL:
             {
-                switch (child.tok.type)
+                switch (child.tok.getType())
                 {
                     case token::INT_LITERAL:
                     case token::HEX_LITERAL:
                     case token::BIN_LITERAL:
                     {
                         /* Return literal icode operand */
-                        int literal = std::stoi(child.tok.string);
+                        int literal = std::stoi(child.tok.toString());
                         icode::DataType dtype = icode::INT;
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, literal, id()),
                                                       icode::variableDescriptionFromDataType(dtype, target));
@@ -1037,7 +1037,7 @@ namespace irgen
                     }
                     case token::CHAR_LITERAL:
                     {
-                        char c = child.tok.unescapedString[0];
+                        char c = child.tok.toUnescapedString()[0];
 
                         icode::DataType dtype = icode::UI8;
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, c, id()),
@@ -1047,7 +1047,7 @@ namespace irgen
                     {
                         /* Return literal icode operand */
                         icode::DataType dtype = icode::FLOAT;
-                        float literal = (float)stof(child.tok.string);
+                        float literal = (float)stof(child.tok.toString());
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, literal, id()),
                                                       icode::variableDescriptionFromDataType(dtype, target));
 
@@ -1066,7 +1066,7 @@ namespace irgen
             }
             case node::CAST:
             {
-                icode::DataType cast_dtype = module.dataTypeFromString(child.tok.string);
+                icode::DataType cast_dtype = module.dataTypeFromString(child.tok.toString());
 
                 OperandDescriptionPair cast_term = term(child.children[0]);
 
@@ -1105,14 +1105,14 @@ namespace irgen
                 }
 
                 /* NOT operator not allowed on float */
-                if (!icode::isInteger(dtype) && child.tok.type == token::NOT)
+                if (!icode::isInteger(dtype) && child.tok.getType() == token::NOT)
                 {
                     miklog::error_tok(module.name, "Unary operator NOT not allowed on FLOAT", file, child.tok);
                     throw miklog::compile_error();
                 }
 
                 icode::Instruction opcode;
-                switch (child.tok.type)
+                switch (child.tok.getType())
                 {
                     case token::MINUS:
                         opcode = icode::UNARY_MINUS;
@@ -1153,7 +1153,7 @@ namespace irgen
                 int i = 0;
                 while (mod_node.type == node::MODULE)
                 {
-                    std::string mod_name = mod_node.tok.string;
+                    std::string mod_name = mod_node.tok.toString();
 
                     /* Check if module exists */
                     if (!(*current_module).useExists(mod_name))
@@ -1169,7 +1169,7 @@ namespace irgen
                     mod_node = root.children[i];
                 }
 
-                if (root.children[i].tok.type != token::IDENTIFIER)
+                if (root.children[i].tok.getType() != token::IDENTIFIER)
                 {
                     miklog::error_tok(module.name, "Invalid use of MODULE ACCESS", file, child.tok);
                     throw miklog::compile_error();
@@ -1199,7 +1199,7 @@ namespace irgen
 
     icode::Instruction ir_generator::tokenToBinaryOperator(const token::Token tok)
     {
-        switch (tok.type)
+        switch (tok.getType())
         {
             case token::MULTIPLY:
                 return icode::MUL;
@@ -1291,7 +1291,7 @@ namespace irgen
     icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const token::Token tok)
     {
         /* Convert token type to opcode */
-        switch (tok.type)
+        switch (tok.getType())
         {
             case token::EQUAL:
                 return icode::EQUAL;
@@ -1355,7 +1355,7 @@ namespace irgen
         }
 
         /* Only EQUAL operator allowed on STRUCT */
-        if (var.second.dtype == icode::STRUCT && assign_opr.type != token::EQUAL)
+        if (var.second.dtype == icode::STRUCT && assign_opr.getType() != token::EQUAL)
         {
             miklog::error_tok(module.name, "Only EQUAL operator allowed on STRUCT", file, assign_opr);
             throw miklog::compile_error();
@@ -1379,7 +1379,7 @@ namespace irgen
         }
 
         /* If not a struct field */
-        if (assign_opr.type == token::EQUAL)
+        if (assign_opr.getType() == token::EQUAL)
         {
             builder.copy(var.first, expr.first);
         }
@@ -1395,7 +1395,7 @@ namespace irgen
     {
         /* Generate label using token's line and col number */
 
-        std::string label_name = "_l" + std::to_string(tok.line) + "_c" + std::to_string(tok.column);
+        std::string label_name = tok.getLineColString();
 
         if (true_label)
             return icode::createLabelOperand("_" + prefix + "_true" + label_name, id());
@@ -1405,7 +1405,7 @@ namespace irgen
 
     icode::Instruction ir_generator::tokenToCompareOperator(const token::Token tok)
     {
-        switch (tok.type)
+        switch (tok.getType())
         {
             case token::LESS_THAN:
                 return icode::LT;
@@ -1440,7 +1440,7 @@ namespace irgen
                 return;
             }
 
-            if (root.children[0].tok.type != token::CONDN_NOT)
+            if (root.children[0].tok.getType() != token::CONDN_NOT)
             {
                 miklog::error_tok(module.name, "Invalid conditional expression", file, root.tok);
                 throw miklog::compile_error();
@@ -1458,7 +1458,7 @@ namespace irgen
 
             /* See the dragon book, Figure 6.39 and Figure 6.40 */
 
-            switch (expr_opr.type)
+            switch (expr_opr.getType())
             {
                 case token::CONDN_AND:
                 {
@@ -1656,7 +1656,7 @@ namespace irgen
             if (child.type == node::STR_LITERAL)
             {
                 /* Get str len and str size */
-                int char_count = child.tok.unescapedString.length();
+                int char_count = child.tok.toUnescapedString().length();
 
                 icode::Operand str_dat_opr = gen_str_dat(child.tok, char_count, icode::UI8);
 
@@ -1774,7 +1774,7 @@ namespace irgen
                 case node::MODULE:
                 {
                     /* Check if the module exists */
-                    if (!(*current_ext_module).useExists(stmt.tok.string))
+                    if (!(*current_ext_module).useExists(stmt.tok.toString()))
                     {
                         miklog::error_tok(module.name, "Module does not exist", file, stmt.tok);
                         throw miklog::compile_error();
@@ -1782,7 +1782,7 @@ namespace irgen
 
                     /* Switch to external module */
                     icode::ModuleDescription* temp = current_ext_module;
-                    current_ext_module = &ext_modules_map[stmt.tok.string];
+                    current_ext_module = &ext_modules_map[stmt.tok.toString()];
 
                     OperandDescriptionPair ret_val = funccall(stmt.children[0]);
 
@@ -1952,7 +1952,7 @@ namespace irgen
             if (child.type == node::FUNCTION)
             {
                 /* Get function name */
-                std::string func_name = child.children[0].tok.string;
+                std::string func_name = child.children[0].tok.toString();
 
                 /* Switch symbol and icode table */
                 current_func_desc = &module.functions[func_name];

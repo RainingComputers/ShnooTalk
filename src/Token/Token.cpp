@@ -1,4 +1,4 @@
-#include "token.hpp"
+#include "Token.hpp"
 
 namespace token
 {
@@ -85,8 +85,6 @@ namespace token
             case CONDN_OR:
                 return 1;
                 break;
-            /* Not an operator */
-            /* Assignments like =, +=, -= etc. also don't count as operators */
             default:
                 return 0;
                 break;
@@ -109,5 +107,35 @@ namespace token
     float Token::toFloat() const
     {
         return std::stof(string);
+    }
+
+    std::string Token::toString() const
+    {
+        return string;
+    }
+
+    std::string Token::toUnescapedString() const
+    {
+        return unescapedString;
+    }
+
+    tokenType Token::getType() const
+    {
+        return type;
+    }
+
+    std::string Token::getLineColString() const
+    {
+        return "_l" + std::to_string(line) + "_c" + std::to_string(column);
+    }
+
+    int Token::getLine() const
+    {
+        return line;
+    }
+
+    int Token::getColumn() const
+    {
+        return column;
     }
 } // namespace token
