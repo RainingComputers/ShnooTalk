@@ -50,11 +50,11 @@ namespace icode
         return GetMapElement<std::string, VariableDescription>(globals, name, val);
     }
 
-    bool ModuleDescription::symbolExists(const std::string& name, TargetDescription& target)
+    bool ModuleDescription::symbolExists(const std::string& name)
     {
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
                useExists(name) || dataTypeFromString(name) != STRUCT ||
                enumerations.find(name) != enumerations.end() || globals.find(name) != globals.end() ||
-               defines.find(name) != defines.end() || target.defines.find(name) != target.defines.end();
+               defines.find(name) != defines.end();
     }
 }

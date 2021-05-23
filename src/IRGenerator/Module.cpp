@@ -7,10 +7,10 @@ ModuleIndexPair getModuleFromNode(const irgen::ir_generator& ctx, const node::no
 
     for (nodeCounter = startIndex; root.isNthChild(node::MODULE, nodeCounter); nodeCounter++)
     {
-        const token::Token& moduleNameToken = root.children[nodeCounter].tok; 
+        const token::Token& moduleNameToken = root.children[nodeCounter].tok;
         const std::string& moduleName = moduleNameToken.string;
 
-        if(!(*currentModule).useExists(moduleName))
+        if (!(*currentModule).useExists(moduleName))
         {
             miklog::error_tok(ctx.module.name, "Module does not exist", ctx.file, moduleNameToken);
             throw miklog::compile_error();

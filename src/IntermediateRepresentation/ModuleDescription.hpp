@@ -33,7 +33,7 @@ namespace icode
         bool getEnum(const std::string&, int&);
         bool getDefine(const std::string&, Define&);
         bool getGlobal(const std::string&, VariableDescription&);
-        bool symbolExists(const std::string&, TargetDescription& target);
+        bool symbolExists(const std::string&);
     };
 
     typedef std::map<std::string, ModuleDescription> StringModulesMap;

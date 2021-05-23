@@ -5,7 +5,8 @@
 namespace ibuild
 {
     IRBuilder::IRBuilder(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& moduleDescMap)
-      : module(moduleDesc), moduleMap(moduleDescMap)
+      : module(moduleDesc)
+      , moduleMap(moduleDescMap)
     {
         idCounter = 0;
     }

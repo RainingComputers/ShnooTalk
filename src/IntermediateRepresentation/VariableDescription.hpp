@@ -36,7 +36,7 @@ namespace icode
     };
 
     bool isSameType(VariableDescription var1, VariableDescription var2);
-    
+
     // TODO Remove this
     VariableDescription variableDescriptionFromDataType(DataType dtype, TargetDescription& target);
 }

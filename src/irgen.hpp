@@ -23,7 +23,7 @@ namespace irgen
 {
     class ir_generator
     {
-    public:
+      public:
         icode::TargetDescription& target;
         icode::StringModulesMap& ext_modules_map;
         icode::ModuleDescription& module;
@@ -129,7 +129,6 @@ namespace irgen
                    const icode::Operand& break_label,
                    const icode::Operand& cont_label);
 
-      
         void initgen(const node::node& ast);
 
         bool current_function_terminates();

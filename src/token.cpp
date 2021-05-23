@@ -2,6 +2,36 @@
 
 namespace token
 {
+    char toEscapedCharacter(char c)
+    {
+        switch (c)
+        {
+            case 'n':
+                return '\n';
+            case 'b':
+                return '\b';
+            case 't':
+                return '\t';
+            case '0':
+                return '\0';
+            case '\\':
+                return '\\';
+            default:
+                return c;
+        }
+    }
+
+    void Token::initializeUnescapedString()
+    {
+        for (size_t i = 1; i < string.length() - 1; i++)
+        {
+            if (string[i] == '\\')
+                unescapedString += toEscapedCharacter(string[++i]);
+            else
+                unescapedString += string[i];
+        }
+    }
+
     Token::Token(std::string tokenString, tokenType tokenType, unsigned int columnNumber, unsigned int lineNumber)
     {
         string = tokenString;
@@ -56,7 +86,7 @@ namespace token
                 return 1;
                 break;
             /* Not an operator */
-            /* Addignments like =, +=, -= etc. also don't count as operators */
+            /* Assignments like =, +=, -= etc. also don't count as operators */
             default:
                 return 0;
                 break;
@@ -65,39 +95,19 @@ namespace token
         return 0;
     }
 
-    char toEscapedCharacter(char c)
-    {
-        switch (c)
-        {
-            case 'n':
-                return '\n';
-            case 'b':
-                return '\b';
-            case 't':
-                return '\t';
-            case '0':
-                return '\0';
-            case '\\':
-                return '\\';
-            default:
-                return c;
-        }
-    }
-
-    void Token::initializeUnescapedString()
-    {
-        for (size_t i = 1; i < string.length() - 1; i++)
-        {
-            if (string[i] == '\\')
-                unescapedString += toEscapedCharacter(string[++i]);
-            else
-                unescapedString += string[i];
-        }
-    }
-
     bool Token::isBitwiseOperation() const
     {
         return type == BITWISE_AND || type == BITWISE_OR || type == BITWISE_XOR || type == AND_EQUAL ||
                type == OR_EQUAL || type == XOR_EQUAL;
+    }
+
+    int Token::toInt() const
+    {
+        return std::stoi(string);
+    }
+
+    float Token::toFloat() const
+    {
+        return std::stof(string);
     }
 } // namespace token

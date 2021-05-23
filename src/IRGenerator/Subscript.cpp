@@ -8,8 +8,8 @@ LiteralDimensionsIndexPair getLiteralDimensionFromNode(const node::node& root, s
 
     for (nodeCounter = startIndex; root.isNthChild(node::SUBSCRIPT, nodeCounter); nodeCounter++)
     {
-        const std::string& subscriptString = root.children[nodeCounter].children[0].tok.string;
-        dimensions.push_back(std::stoi(subscriptString));
+        const int subscriptInt = root.children[nodeCounter].children[0].tok.toInt();
+        dimensions.push_back(subscriptInt);
     }
 
     return LiteralDimensionsIndexPair(dimensions, nodeCounter);

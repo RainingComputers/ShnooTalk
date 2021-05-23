@@ -15,6 +15,9 @@ namespace icode
 
         DataType dtype;
     };
+
+    Define createIntDefine(int val, DataType dtype);
+    Define createFloatDefine(float val, DataType dtype);
 }
 
 #endif

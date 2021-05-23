@@ -1,8 +1,9 @@
 #include <algorithm>
 
-#include "irgen.hpp"
-#include "IRGenerator/VariableDescriptionFromNode.hpp"
+#include "IRGenerator/DefineFromNode.hpp"
 #include "IRGenerator/EnumFromNode.hpp"
+#include "IRGenerator/VariableDescriptionFromNode.hpp"
+#include "irgen.hpp"
 
 namespace irgen
 {
@@ -134,7 +135,7 @@ namespace irgen
             }
 
             /* Check for name conflict */
-            if (module.symbolExists(name_token.string, target))
+            if (module.symbolExists(name_token.string))
             {
                 miklog::error_tok(module.name, "Name conflict, symbol already exists", file, name_token);
                 throw miklog::compile_error();
@@ -171,7 +172,7 @@ namespace irgen
         for (node::node child : root.children[1].children)
         {
             /* Check if symbol exists */
-            if (module.symbolExists(child.tok.string, target))
+            if (module.symbolExists(child.tok.string))
             {
                 miklog::error_tok(module.name, "Symbol already defined in current module", file, child.tok);
                 throw miklog::compile_error();
@@ -211,30 +212,7 @@ namespace irgen
 
     void ir_generator::def(const node::node& root)
     {
-        icode::Define definition;
-        token::Token ltrl_token = root.children[1].tok;
-
-        /* Check if the symbol already exists */
-        if (module.symbolExists(root.children[0].tok.string, target))
-        {
-            miklog::error_tok(module.name, "Symbol already exists", file, root.children[0].tok);
-            throw miklog::compile_error();
-        }
-
-        /* Extract literal value */
-        if (ltrl_token.type == token::INT_LITERAL)
-        {
-            definition.val.integer = std::stoi(ltrl_token.string);
-            definition.dtype = icode::INT;
-        }
-        else
-        {
-            definition.val.floating = (float)std::stof(ltrl_token.string);
-            definition.dtype = icode::FLOAT;
-        }
-
-        /* Add to definitions */
-        module.defines[root.children[0].tok.string] = definition;
+        defineFromNode(*this, root);
     }
 
     void ir_generator::structure(const node::node& root)
@@ -245,7 +223,7 @@ namespace irgen
         token::Token name_token = root.children[0].tok;
 
         /* Check if symbol exists */
-        if (module.symbolExists(name_token.string, target))
+        if (module.symbolExists(name_token.string))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, name_token);
             throw miklog::compile_error();
@@ -266,7 +244,7 @@ namespace irgen
                 throw miklog::compile_error();
             }
 
-            if (module.symbolExists(var.first.string, target))
+            if (module.symbolExists(var.first.string))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, var.first);
                 throw miklog::compile_error();
@@ -297,7 +275,7 @@ namespace irgen
         func_desc.functionReturnDescription = var.second;
 
         /* Check if function name symbol already exists */
-        if (module.symbolExists(func_name, target))
+        if (module.symbolExists(func_name))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, root.children[0].tok);
             throw miklog::compile_error();
@@ -324,7 +302,7 @@ namespace irgen
                 param_var.second.setProperty(icode::IS_PTR);
 
             /* Check if symbol is already defined */
-            if (module.symbolExists(param_var.first.string, target))
+            if (module.symbolExists(param_var.first.string))
             {
                 miklog::error_tok(module.name, "Symbol already defined", file, param_var.first);
                 throw miklog::compile_error();
@@ -349,7 +327,7 @@ namespace irgen
         var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbolExists(var.first.string, target))
+        if (module.symbolExists(var.first.string))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
@@ -598,7 +576,7 @@ namespace irgen
             var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbolExists(var.first.string, target) || (*current_func_desc).symbolExists(var.first.string))
+        if (module.symbolExists(var.first.string) || (*current_func_desc).symbolExists(var.first.string))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();

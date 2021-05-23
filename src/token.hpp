@@ -100,6 +100,8 @@ namespace token
 
         int getPrecedence() const;
         bool isBitwiseOperation() const;
+        int toInt() const;
+        float toFloat() const;
 
         Token(std::string token_str = "",
               tokenType tok_type = NONE,
