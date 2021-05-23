@@ -6,7 +6,7 @@
 #include <string>
 
 #include "IntermediateRepresentation/All.hpp"
-#include "node.hpp"
+#include "Node/Node.hpp"
 #include "token.hpp"
 
 namespace miklog
@@ -21,7 +21,7 @@ namespace miklog
 
     void print_token(const token::Token& symbol);
 
-    void print_node(const node::node& node, int depth = 1);
+    void print_node(const node::Node& node, int depth = 1);
 
     void println(const std::string& msg);
 

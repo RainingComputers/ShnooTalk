@@ -146,7 +146,7 @@ namespace miklog
                   << ", col=" << symbol.column << ")";
     }
 
-    void print_node(const node::node& node, int depth)
+    void print_node(const node::Node& node, int depth)
     {
         /* Recursively prints tree, used to print AST */
 

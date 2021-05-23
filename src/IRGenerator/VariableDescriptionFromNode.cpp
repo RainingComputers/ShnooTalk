@@ -7,7 +7,7 @@
 using namespace irgen;
 using namespace icode;
 
-bool isVoidFunction(const node::node& root)
+bool isVoidFunction(const node::Node& root)
 {
     if (!root.isNthChildFromLast(node::IDENTIFIER, 2))
         return true;
@@ -15,7 +15,7 @@ bool isVoidFunction(const node::node& root)
     return false;
 }
 
-TokenDescriptionPair variableDescriptionFromFunctionNode(ir_generator& ctx, const node::node& root)
+TokenDescriptionPair variableDescriptionFromFunctionNode(ir_generator& ctx, const node::Node& root)
 {
     const token::Token& symbolNameToken = root.children[0].tok;
 
@@ -27,7 +27,7 @@ TokenDescriptionPair variableDescriptionFromFunctionNode(ir_generator& ctx, cons
     return TokenDescriptionPair(symbolNameToken, createVariableDescription(ctx, dataTypeToken));
 }
 
-TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, const node::node& root)
+TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, const node::Node& root)
 {
     const token::Token& symbolNameToken = root.getNthChildToken(0);
 
@@ -56,7 +56,7 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
     return TokenDescriptionPair(symbolNameToken, variableDescription);
 }
 
-TokenDescriptionPair variableDescriptionFromNode(ir_generator& ctx, const node::node& root)
+TokenDescriptionPair variableDescriptionFromNode(ir_generator& ctx, const node::Node& root)
 {
     ctx.resetCurrentExternalModule();
 

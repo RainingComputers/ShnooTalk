@@ -98,14 +98,14 @@ namespace irgen
         return false;
     }
 
-    std::pair<token::Token, icode::VariableDescription> ir_generator::var_from_node(const node::node& root)
+    std::pair<token::Token, icode::VariableDescription> ir_generator::var_from_node(const node::Node& root)
     {
         return variableDescriptionFromNode(*this, root);
     }
 
-    void ir_generator::use(const node::node& root)
+    void ir_generator::use(const node::Node& root)
     {
-        for (node::node child : root.children)
+        for (node::Node child : root.children)
         {
             /* Get module name */
             token::Token name_token = child.tok;
@@ -153,7 +153,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::from(const node::node& root)
+    void ir_generator::from(const node::Node& root)
     {
         icode::StructDescription struct_desc;
         icode::FunctionDescription func_desc;
@@ -169,7 +169,7 @@ namespace irgen
 
         icode::ModuleDescription* ext_module = &ext_modules_map[root.children[0].tok.string];
 
-        for (node::node child : root.children[1].children)
+        for (node::Node child : root.children[1].children)
         {
             /* Check if symbol exists */
             if (module.symbolExists(child.tok.string))
@@ -205,17 +205,17 @@ namespace irgen
         }
     }
 
-    void ir_generator::enumeration(const node::node& root)
+    void ir_generator::enumeration(const node::Node& root)
     {
         enumFromNode(*this, root);
     }
 
-    void ir_generator::def(const node::node& root)
+    void ir_generator::def(const node::Node& root)
     {
         defineFromNode(*this, root);
     }
 
-    void ir_generator::structure(const node::node& root)
+    void ir_generator::structure(const node::Node& root)
     {
         icode::StructDescription struct_desc;
         struct_desc.size = 0;
@@ -230,7 +230,7 @@ namespace irgen
         }
 
         /* Go through field of structure */
-        for (node::node field : root.children[0].children)
+        for (node::Node field : root.children[0].children)
         {
             std::pair<token::Token, icode::VariableDescription> var = var_from_node(field);
 
@@ -265,7 +265,7 @@ namespace irgen
         module.structures[name_token.string] = struct_desc;
     }
 
-    void ir_generator::fn(const node::node& root)
+    void ir_generator::fn(const node::Node& root)
     {
         icode::FunctionDescription func_desc;
         std::string func_name;
@@ -319,7 +319,7 @@ namespace irgen
         module.functions[func_name] = func_desc;
     }
 
-    void ir_generator::global_var(const node::node& root)
+    void ir_generator::global_var(const node::Node& root)
     {
         std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
 
@@ -374,7 +374,7 @@ namespace irgen
         return OperandDescriptionPair(opr, var);
     }
 
-    void ir_generator::assign_str_literal_tovar(OperandDescriptionPair var, node::node& root)
+    void ir_generator::assign_str_literal_tovar(OperandDescriptionPair var, node::Node& root)
     {
         if (var.second.dimensions.size() != 1 || var.second.dtype != icode::UI8)
         {
@@ -484,7 +484,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::assign_init_list_tovar(OperandDescriptionPair var, node::node& root)
+    void ir_generator::assign_init_list_tovar(OperandDescriptionPair var, node::Node& root)
     {
         /* Cannot use initializer list to assign to var */
         if (var.second.dimensions.size() == 0)
@@ -505,7 +505,7 @@ namespace irgen
 
         for (size_t i = 0; i < root.children.size(); i++)
         {
-            node::node child = root.children[i];
+            node::Node child = root.children[i];
 
             if (dim_count >= var.second.dimensions[0])
             {
@@ -567,7 +567,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::var(const node::node& root)
+    void ir_generator::var(const node::Node& root)
     {
         std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
 
@@ -583,7 +583,7 @@ namespace irgen
         }
 
         /* Check for initialization expression or initializer list */
-        node::node last_node = root.children.back();
+        node::Node last_node = root.children.back();
 
         if (last_node.type == node::EXPRESSION || last_node.type == node::TERM)
         {
@@ -637,7 +637,7 @@ namespace irgen
         (*current_func_desc).symbols[var.first.string] = var.second;
     }
 
-    OperandDescriptionPair ir_generator::var_access(const node::node& root)
+    OperandDescriptionPair ir_generator::var_access(const node::Node& root)
     {
         icode::Operand current_offset_temp;
         icode::VariableDescription current_var_info;
@@ -651,7 +651,7 @@ namespace irgen
         icode::Define def;
 
         /* Check if identifier exists and get dtype and size */
-        node::node child = root.children[0];
+        node::Node child = root.children[0];
         ident_name = child.tok.string;
         if ((*current_func_desc).getSymbol(ident_name, current_var_info))
         {
@@ -731,7 +731,7 @@ namespace irgen
         /* Go through struct fields and subsripts */
         for (size_t i = 1; i < root.children.size();)
         {
-            node::node child = root.children[i];
+            node::Node child = root.children[i];
 
             switch (child.type)
             {
@@ -863,7 +863,7 @@ namespace irgen
         return OperandDescriptionPair(current_offset_temp, current_var_info);
     }
 
-    OperandDescriptionPair ir_generator::funccall(const node::node& root)
+    OperandDescriptionPair ir_generator::funccall(const node::Node& root)
     {
         icode::ModuleDescription* temp = current_ext_module;
 
@@ -959,14 +959,14 @@ namespace irgen
         return OperandDescriptionPair(ret_temp, func_desc.functionReturnDescription);
     }
 
-    OperandDescriptionPair ir_generator::size_of(const node::node& root)
+    OperandDescriptionPair ir_generator::size_of(const node::Node& root)
     {
         std::string ident = root.children.back().tok.string;
 
         /* Enter the specified ext module */
         icode::ModuleDescription* current_module = &module;
 
-        node::node mod_node = root.children[0];
+        node::Node mod_node = root.children[0];
 
         int i = 0;
         while (mod_node.type == node::MODULE)
@@ -1014,9 +1014,9 @@ namespace irgen
                                       icode::variableDescriptionFromDataType(icode::INT, target));
     }
 
-    OperandDescriptionPair ir_generator::term(const node::node& root)
+    OperandDescriptionPair ir_generator::term(const node::Node& root)
     {
-        node::node child = root.children[0];
+        node::Node child = root.children[0];
         switch (child.type)
         {
             case node::LITERAL:
@@ -1148,7 +1148,7 @@ namespace irgen
                 /* Enter the specified ext module */
                 icode::ModuleDescription* current_module = &module;
 
-                node::node mod_node = root.children[0];
+                node::Node mod_node = root.children[0];
 
                 int i = 0;
                 while (mod_node.type == node::MODULE)
@@ -1237,7 +1237,7 @@ namespace irgen
         }
     }
 
-    OperandDescriptionPair ir_generator::expression(const node::node& root)
+    OperandDescriptionPair ir_generator::expression(const node::Node& root)
     {
         if (root.type == node::TERM)
             return term(root);
@@ -1315,7 +1315,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::assignment(const node::node& root)
+    void ir_generator::assignment(const node::Node& root)
     {
         /* The variable to write to */
         OperandDescriptionPair var = var_access(root.children[0]);
@@ -1425,7 +1425,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::condn_expression(const node::node& root,
+    void ir_generator::condn_expression(const node::Node& root,
                                         const icode::Operand& t_label,
                                         const icode::Operand& f_label,
                                         bool t_fall,
@@ -1544,7 +1544,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::ifstmt(const node::node& root,
+    void ir_generator::ifstmt(const node::Node& root,
                               bool loop,
                               const icode::Operand& start_label,
                               const icode::Operand& break_label,
@@ -1555,7 +1555,7 @@ namespace irgen
 
         for (size_t i = 0; i < root.children.size(); i++)
         {
-            node::node child = root.children[i];
+            node::Node child = root.children[i];
 
             icode::Operand new_t_label = gen_label(child.tok, true, "if");
             icode::Operand new_f_label = gen_label(child.tok, false, "if");
@@ -1590,7 +1590,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::whileloop(const node::node& root)
+    void ir_generator::whileloop(const node::Node& root)
     {
         icode::Operand new_t_label = gen_label(root.tok, true, "while");
         icode::Operand new_f_label = gen_label(root.tok, false, "while");
@@ -1611,7 +1611,7 @@ namespace irgen
         builder.label(new_f_label);
     }
 
-    void ir_generator::forloop(const node::node& root)
+    void ir_generator::forloop(const node::Node& root)
     {
         /* Process initialization */
         if (root.children[0].type == node::VAR)
@@ -1646,11 +1646,11 @@ namespace irgen
         builder.label(new_f_label);
     }
 
-    void ir_generator::print(const node::node& root)
+    void ir_generator::print(const node::Node& root)
     {
         for (size_t i = 0; i < root.children.size(); i++)
         {
-            node::node child = root.children[i];
+            node::Node child = root.children[i];
 
             /* If string literal, create temp string an print it */
             if (child.type == node::STR_LITERAL)
@@ -1690,7 +1690,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::input(const node::node& root)
+    void ir_generator::input(const node::Node& root)
     {
         OperandDescriptionPair input_var = expression(root.children[0]);
 
@@ -1727,7 +1727,7 @@ namespace irgen
             builder.inputOperator(icode::INPUT_STR, input_var.first, input_var.second.dimensions[0]);
     }
 
-    void ir_generator::block(const node::node& root,
+    void ir_generator::block(const node::Node& root,
                              bool loop,
                              const icode::Operand& start_label,
                              const icode::Operand& break_label,
@@ -1736,7 +1736,7 @@ namespace irgen
         /* Setup scope */
         enter_scope();
 
-        for (node::node stmt : root.children)
+        for (node::Node stmt : root.children)
         {
             switch (stmt.type)
             {
@@ -1885,10 +1885,10 @@ namespace irgen
         exit_scope();
     }
 
-    void ir_generator::initgen(const node::node& root)
+    void ir_generator::initgen(const node::Node& root)
     {
         /* Get uses */
-        for (node::node child : root.children)
+        for (node::Node child : root.children)
         {
             if (child.type == node::USE)
                 use(child);
@@ -1910,13 +1910,13 @@ namespace irgen
         return false;
     }
 
-    void ir_generator::program(const node::node& root)
+    void ir_generator::program(const node::Node& root)
     {
         /* Setup scope */
         clear_scope();
 
         /* Build symbol table */
-        for (node::node child : root.children)
+        for (node::Node child : root.children)
         {
             switch (child.type)
             {
@@ -1947,7 +1947,7 @@ namespace irgen
         }
 
         /* Process function blocks */
-        for (node::node child : root.children)
+        for (node::Node child : root.children)
         {
             if (child.type == node::FUNCTION)
             {

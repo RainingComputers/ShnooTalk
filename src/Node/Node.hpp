@@ -1,7 +1,7 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
-#include "token.hpp"
+#include "../token.hpp"
 #include <vector>
 
 namespace node
@@ -55,16 +55,16 @@ namespace node
         EXIT
     };
 
-    struct node
+    struct Node
     {
         NodeType type;
         token::Token tok;
-        std::vector<node> children;
+        std::vector<Node> children;
 
-        node(NodeType ntype, token::Token tok);
-        node(NodeType ntype);
-        bool isNthChild(NodeType ntype, size_t index) const;
-        bool isNthChildFromLast(NodeType ntype, size_t N) const;
+        Node(NodeType nodeType, token::Token token);
+        Node(NodeType nodeType);
+        bool isNthChild(NodeType nodeType, size_t index) const;
+        bool isNthChildFromLast(NodeType nodeType, size_t N) const;
         token::Token getNthChildToken(size_t N) const;
         token::Token getNthChildTokenFromLast(size_t N) const;
     };

@@ -1,3 +1,3 @@
 #include "../irgen.hpp"
 
-LiteralDimensionsIndexPair getLiteralDimensionFromNode(const node::node& root, size_t startIndex);
+LiteralDimensionsIndexPair getLiteralDimensionFromNode(const node::Node& root, size_t startIndex);

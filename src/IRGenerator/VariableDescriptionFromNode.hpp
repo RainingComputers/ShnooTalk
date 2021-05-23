@@ -1,3 +1,3 @@
 #include "../irgen.hpp"
 
-TokenDescriptionPair variableDescriptionFromNode(irgen::ir_generator& ctx, const node::node& root);
+TokenDescriptionPair variableDescriptionFromNode(irgen::ir_generator& ctx, const node::Node& root);

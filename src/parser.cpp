@@ -83,7 +83,7 @@ namespace parser
         /* Add child node to current node, if traverse iw true
             make current node the child node */
         /* Also fetch next symbol, if nexttoken is true */
-        current_node->children.push_back(node::node(type, symbol));
+        current_node->children.push_back(node::Node(type, symbol));
 
         if (traverse)
             current_node = &current_node->children.back();
@@ -96,7 +96,7 @@ namespace parser
         /* Adopts last child of current node
             and becomes the last child of current node */
 
-        node::node new_node(type, current_node->children.back().tok);
+        node::Node new_node(type, current_node->children.back().tok);
 
         new_node.children.push_back(current_node->children.back());
 
@@ -109,7 +109,7 @@ namespace parser
 
     void rd_parser::insert_node_beg(node::NodeType type)
     {
-        node::node new_node(type, current_node->children.back().tok);
+        node::Node new_node(type, current_node->children.back().tok);
 
         std::swap(current_node->children, new_node.children);
 
@@ -122,7 +122,7 @@ namespace parser
             it to a new duplicate of the current node. The duplicate
             node becomes the child of the current node */
 
-        node::node new_node(current_node->type, symbol);
+        node::Node new_node(current_node->type, symbol);
 
         new_node.children = current_node->children;
 

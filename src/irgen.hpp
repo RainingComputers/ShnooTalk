@@ -8,8 +8,8 @@
 
 #include "IRBuilder/IRBuilder.hpp"
 #include "IntermediateRepresentation/All.hpp"
+#include "Node/Node.hpp"
 #include "log.hpp"
-#include "node.hpp"
 #include "pathchk.hpp"
 #include "token.hpp"
 
@@ -53,87 +53,87 @@ namespace irgen
 
         bool get_enum(const std::string& name, int& val);
 
-        std::pair<token::Token, icode::VariableDescription> var_from_node(const node::node& root);
+        std::pair<token::Token, icode::VariableDescription> var_from_node(const node::Node& root);
 
-        void use(const node::node& root);
+        void use(const node::Node& root);
 
-        void from(const node::node& root);
+        void from(const node::Node& root);
 
-        void enumeration(const node::node& root);
+        void enumeration(const node::Node& root);
 
-        void def(const node::node& root);
+        void def(const node::Node& root);
 
-        void structure(const node::node& root);
+        void structure(const node::Node& root);
 
-        void fn(const node::node& root);
+        void fn(const node::Node& root);
 
-        void global_var(const node::node& root);
+        void global_var(const node::Node& root);
 
         icode::Operand gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype);
 
         OperandDescriptionPair var_info_to_str_dat(const token::Token& str_token, icode::VariableDescription var);
 
-        void assign_str_literal_tovar(OperandDescriptionPair var, node::node& root);
+        void assign_str_literal_tovar(OperandDescriptionPair var, node::Node& root);
 
-        void assign_init_list_tovar(OperandDescriptionPair var, node::node& root);
+        void assign_init_list_tovar(OperandDescriptionPair var, node::Node& root);
 
         void copy_array(icode::Operand& left, OperandDescriptionPair right);
 
         void copy_struct(icode::Operand& left, OperandDescriptionPair right);
 
-        void var(const node::node& root);
+        void var(const node::Node& root);
 
-        OperandDescriptionPair var_access(const node::node& root);
+        OperandDescriptionPair var_access(const node::Node& root);
 
-        OperandDescriptionPair funccall(const node::node& root);
+        OperandDescriptionPair funccall(const node::Node& root);
 
-        OperandDescriptionPair size_of(const node::node& root);
+        OperandDescriptionPair size_of(const node::Node& root);
 
-        OperandDescriptionPair term(const node::node& root);
+        OperandDescriptionPair term(const node::Node& root);
 
         icode::Instruction tokenToBinaryOperator(const token::Token tok);
 
-        OperandDescriptionPair expression(const node::node& root);
+        OperandDescriptionPair expression(const node::Node& root);
 
         icode::Instruction assignmentTokenToBinaryOperator(const token::Token tok);
 
-        void assignment(const node::node& root);
+        void assignment(const node::Node& root);
 
         icode::Operand gen_label(token::Token tok, bool true_label, std::string prefix = "");
 
         icode::Instruction tokenToCompareOperator(const token::Token tok);
 
-        void condn_expression(const node::node& root,
+        void condn_expression(const node::Node& root,
                               const icode::Operand& t_label,
                               const icode::Operand& f_label,
                               bool t_fall,
                               bool f_fall);
 
-        void ifstmt(const node::node& root,
+        void ifstmt(const node::Node& root,
                     bool loop,
                     const icode::Operand& start_label,
                     const icode::Operand& break_label,
                     const icode::Operand& cont_label);
 
-        void whileloop(const node::node& root);
+        void whileloop(const node::Node& root);
 
-        void forloop(const node::node& root);
+        void forloop(const node::Node& root);
 
-        void print(const node::node& root);
+        void print(const node::Node& root);
 
-        void input(const node::node& root);
+        void input(const node::Node& root);
 
-        void block(const node::node& root,
+        void block(const node::Node& root,
                    bool loop,
                    const icode::Operand& start_label,
                    const icode::Operand& break_label,
                    const icode::Operand& cont_label);
 
-        void initgen(const node::node& ast);
+        void initgen(const node::Node& ast);
 
         bool current_function_terminates();
 
-        void program(const node::node& root);
+        void program(const node::Node& root);
 
         ir_generator(icode::TargetDescription& target_desc,
                      icode::StringModulesMap& modules_map,

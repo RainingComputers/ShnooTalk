@@ -4,9 +4,9 @@
 #include <fstream>
 #include <vector>
 
+#include "Node/Node.hpp"
 #include "lexer.hpp"
 #include "log.hpp"
-#include "node.hpp"
 #include "token.hpp"
 
 namespace parser
@@ -17,8 +17,8 @@ namespace parser
         std::ifstream& file;
         std::string file_name;
 
-        node::node* current_node;
-        std::vector<node::node*> node_stack;
+        node::Node* current_node;
+        std::vector<node::Node*> node_stack;
 
         token::Token symbol;
 
@@ -67,7 +67,7 @@ namespace parser
         void funccall();
 
       public:
-        node::node ast;
+        node::Node ast;
         rd_parser(lexer::lexical_analyser& lexer, const std::string& name, std::ifstream& ifile);
     };
 }
