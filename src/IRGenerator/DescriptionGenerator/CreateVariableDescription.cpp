@@ -35,7 +35,7 @@ std::pair<int, std::string> getSizeAndModuleName(irgen::ir_generator& ctx, const
 
 VariableDescription createVariableDescription(irgen::ir_generator& ctx, const token::Token& dataTypeToken)
 {
-    icode::DataType dtype = dataTypeFromString(dataTypeToken.string, ctx.target);
+    icode::DataType dtype = ctx.module.dataTypeFromString(dataTypeToken.string);
 
     std::pair<int, std::string> sizeAndModuleName = getSizeAndModuleName(ctx, dataTypeToken, dtype);
 

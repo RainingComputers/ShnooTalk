@@ -32,9 +32,6 @@ icode::TargetDescription llvmgen::getTargetDescription()
 
     target.defines = { { "true", trueDef }, { "false", falseDef } };
 
-    /* Default int or word */
-    target.characterInt = icode::UI8;
-
     return target;
 }
 

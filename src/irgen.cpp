@@ -24,6 +24,7 @@ namespace irgen
         scope_id_counter = 0;
 
         module.name = file_name;
+        module.initializeTargetInfo(target_desc);
     }
 
     unsigned int ir_generator::id()
@@ -65,9 +66,6 @@ namespace irgen
 
     bool ir_generator::get_def(const std::string& name, icode::Define& def)
     {
-        if (target.getDefine(name, def))
-            return true;
-
         if ((*current_ext_module).getDefine(name, def))
             return true;
 
@@ -424,14 +422,14 @@ namespace irgen
             char character = root.tok.unescapedString[i];
 
             /* Write to current offset */
-            builder.copy(curr_offset, icode::createLiteralOperand(target.characterInt, character, id()));
+            builder.copy(curr_offset, icode::createLiteralOperand(icode::UI8, character, id()));
 
             curr_offset =
               builder.addressAddOperator(curr_offset, icode::createLiteralAddressOperand(var.second.dtypeSize, id()));
         }
 
         /* Copy null character */
-        builder.copy(curr_offset, icode::createLiteralOperand(target.characterInt, 0, id()));
+        builder.copy(curr_offset, icode::createLiteralOperand(icode::UI8, 0, id()));
     }
 
     void ir_generator::copy_array(icode::Operand& left, OperandDescriptionPair right)
@@ -1013,7 +1011,7 @@ namespace irgen
 
         /* Get size of type */
         int size = 0;
-        icode::DataType dtype = icode::dataTypeFromString(ident, target);
+        icode::DataType dtype = module.dataTypeFromString(ident);
 
         icode::StructDescription struct_desc;
         icode::VariableDescription global;
@@ -1090,7 +1088,7 @@ namespace irgen
             }
             case node::CAST:
             {
-                icode::DataType cast_dtype = icode::dataTypeFromString(child.tok.string, target);
+                icode::DataType cast_dtype = module.dataTypeFromString(child.tok.string);
 
                 OperandDescriptionPair cast_term = term(child.children[0]);
 
@@ -1682,7 +1680,7 @@ namespace irgen
                 /* Get str len and str size */
                 int char_count = child.tok.unescapedString.length();
 
-                icode::Operand str_dat_opr = gen_str_dat(child.tok, char_count, target.characterInt);
+                icode::Operand str_dat_opr = gen_str_dat(child.tok, char_count, icode::UI8);
 
                 builder.printOperator(icode::PRINT_STR, str_dat_opr);
             }

@@ -12,12 +12,7 @@ namespace icode
     {
         std::map<std::string, DataType> dataTypeNames;
         std::map<std::string, Define> defines;
-        DataType characterInt;
-
-        bool getDefine(const std::string&, Define&);
     };
-
-    DataType dataTypeFromString(const std::string& dtype_name, TargetDescription& target);
 }
 
 #endif
