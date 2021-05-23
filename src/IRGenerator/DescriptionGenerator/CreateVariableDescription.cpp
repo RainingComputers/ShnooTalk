@@ -2,7 +2,7 @@
 
 using namespace icode;
 
-VariableDescription constructVoidVariableDesc(const irgen::ir_generator& ctx)
+VariableDescription createVoidVariableDescription(const irgen::ir_generator& ctx)
 {
     VariableDescription voidVariableDescription;
 
@@ -18,52 +18,42 @@ VariableDescription constructVoidVariableDesc(const irgen::ir_generator& ctx)
     return voidVariableDescription;
 }
 
-VariableDescription variableDescFromStructDataTypeToken(irgen::ir_generator& ctx, const token::Token& dataTypeToken) 
+std::pair<int, std::string> getSizeAndModuleName(irgen::ir_generator& ctx, const token::Token& dataTypeToken, DataType dtype)
 {
+    if(dtype != icode::STRUCT)
+        return std::pair<int, std::string>(getDataTypeSize(dtype), ctx.current_ext_module->name);
+
     icode::StructDescription structDesc;
     if(!ctx.current_ext_module->getStruct(dataTypeToken.string, structDesc))
     {
         miklog::error_tok(ctx.module.name, "Symbol does not exist", ctx.file, dataTypeToken);
         throw miklog::compile_error();
-    }
+    }  
 
-    VariableDescription variableDescription;
-
-    variableDescription.dtype = icode::STRUCT;
-    variableDescription.dtypeName = dataTypeToken.string;
-    variableDescription.dtypeSize = structDesc.size;
-    variableDescription.size = variableDescription.dtypeSize;
-    variableDescription.offset = 0;
-    variableDescription.scopeId = ctx.get_scope_id();
-    variableDescription.properties = 0;
-    variableDescription.moduleName = structDesc.moduleName;
-
-    return variableDescription;
-
+    return std::pair<int, std::string>(structDesc.size, structDesc.moduleName);
 }
 
-VariableDescription variableDescFromDataTypeToken(irgen::ir_generator& ctx, const token::Token& dataTypeToken)
+VariableDescription createVariableDescription(irgen::ir_generator& ctx, const token::Token& dataTypeToken)
 {
     icode::DataType dtype = dataTypeFromString(dataTypeToken.string, ctx.target);
 
-    if (dtype == icode::STRUCT)
-        return variableDescFromStructDataTypeToken(ctx, dataTypeToken);
+    std::pair<int, std::string> sizeAndModuleName = getSizeAndModuleName(ctx, dataTypeToken, dtype);
 
     VariableDescription variableDescription;
 
     variableDescription.dtype = dtype;
     variableDescription.dtypeName = dataTypeToken.string;
-    variableDescription.dtypeSize = getDataTypeSize(dtype);
+    variableDescription.dtypeSize = sizeAndModuleName.first;
     variableDescription.size = variableDescription.dtypeSize;
     variableDescription.offset = 0;
     variableDescription.scopeId = ctx.get_scope_id();
     variableDescription.properties = 0;
-    variableDescription.moduleName = ctx.current_ext_module->name;
+    variableDescription.moduleName = sizeAndModuleName.second;
 
     return variableDescription;
 }
 
-VariableDescription addDimensionToVariableDesc(const VariableDescription& variableDesc, std::vector<int>& dimensions)
+VariableDescription createArrayVariableDescription(const VariableDescription& variableDesc, std::vector<int>& dimensions)
 {
     VariableDescription modifiedVariableDesc = variableDesc;
 

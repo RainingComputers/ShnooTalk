@@ -78,7 +78,7 @@ namespace parser
         }
     }
 
-    void rd_parser::add_node(node::node_type type, bool traverse, bool nexttoken)
+    void rd_parser::add_node(node::NodeType type, bool traverse, bool nexttoken)
     {
         /* Add child node to current node, if traverse iw true
             make current node the child node */
@@ -91,7 +91,7 @@ namespace parser
             next();
     }
 
-    void rd_parser::insert_node(node::node_type type)
+    void rd_parser::insert_node(node::NodeType type)
     {
         /* Adopts last child of current node
             and becomes the last child of current node */
@@ -107,7 +107,7 @@ namespace parser
         current_node = &current_node->children.back();
     }
 
-    void rd_parser::insert_node_beg(node::node_type type)
+    void rd_parser::insert_node_beg(node::NodeType type)
     {
         node::node new_node(type, current_node->children.back().tok);
 

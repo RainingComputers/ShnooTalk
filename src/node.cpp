@@ -2,19 +2,19 @@
 
 namespace node
 {
-    node::node(node_type ntype, token::Token token)
+    node::node(NodeType ntype, token::Token token)
     {
         type = ntype;
         tok = token;
     }
 
-    node::node(node_type ntype)
+    node::node(NodeType ntype)
     {
         type = ntype;
         tok = token::Token();
     }
 
-    bool node::isNthChild(node_type ntype, size_t N) const
+    bool node::isNthChild(NodeType ntype, size_t N) const
     {
         if(N < children.size())
             if(children[N].type == ntype)
@@ -23,7 +23,7 @@ namespace node
         return false;
     }
 
-    bool node::isNthChildFromLast(node_type ntype, size_t N) const
+    bool node::isNthChildFromLast(NodeType ntype, size_t N) const
     {
         size_t index = children.size() -  N;
 
@@ -32,5 +32,15 @@ namespace node
                 return true;
 
         return false;
+    }
+
+    token::Token node::getNthChildToken(size_t N) const
+    {
+        return children[N].tok;
+    }
+
+    token::Token node::getNthChildTokenFromLast(size_t N) const
+    {
+        return children[children.size() - N].tok;
     }
 } // namespace node

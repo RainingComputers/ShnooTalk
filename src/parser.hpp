@@ -32,9 +32,9 @@ namespace parser
 
         void push_node();
         void pop_node();
-        void add_node(node::node_type node_type, bool traverse = false, bool nexttoken = true);
-        void insert_node(node::node_type node_type);
-        void insert_node_beg(node::node_type node_type);
+        void add_node(node::NodeType NodeType, bool traverse = false, bool nexttoken = true);
+        void insert_node(node::NodeType NodeType);
+        void insert_node_beg(node::NodeType NodeType);
         void duplicate_node();
 
         void program();

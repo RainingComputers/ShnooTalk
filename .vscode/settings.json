@@ -61,10 +61,11 @@
         "*.inc": "cpp"
     },
     "cSpell.words": [
-        "ibuild",
-        "mikuro",
         "dtype",
+        "ibuild",
         "icode",
+        "irgen",
+        "mikuro",
         "println"
     ]
 }

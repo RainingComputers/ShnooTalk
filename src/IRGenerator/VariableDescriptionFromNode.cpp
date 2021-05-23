@@ -1,4 +1,4 @@
-#include "CreateVariableDescription.hpp"
+#include "DescriptionGenerator/CreateVariableDescription.hpp"
 #include "Module.hpp"
 #include "Subscript.hpp"
 
@@ -20,16 +20,16 @@ TokenDescriptionPair variableDescriptionFromFunctionNode(ir_generator& ctx, cons
     const token::Token& symbolNameToken = root.children[0].tok;
 
     if (isVoidFunction(root))
-        return TokenDescriptionPair(symbolNameToken, constructVoidVariableDesc(ctx));
+        return TokenDescriptionPair(symbolNameToken, createVoidVariableDescription(ctx));
 
-    token::Token dataTypeToken = root.children[root.children.size() - 2].tok;
+    token::Token dataTypeToken = root.getNthChildTokenFromLast(2);
 
-    return TokenDescriptionPair(symbolNameToken, variableDescFromDataTypeToken(ctx, dataTypeToken));
+    return TokenDescriptionPair(symbolNameToken, createVariableDescription(ctx, dataTypeToken));
 }
 
 TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, const node::node& root)
 {
-    const token::Token& symbolNameToken = root.children[0].tok;
+    const token::Token& symbolNameToken = root.getNthChildToken(0);
 
     size_t childNodeCounter = 1;
 
@@ -41,15 +41,15 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
         childNodeCounter = moduleIndexPair.second;
     }
 
-    const token::Token& dataTypeToken = root.children[childNodeCounter].tok;
-    VariableDescription variableDescription = variableDescFromDataTypeToken(ctx, dataTypeToken);
+    const token::Token& dataTypeToken = root.getNthChildToken(childNodeCounter);
+    VariableDescription variableDescription = createVariableDescription(ctx, dataTypeToken);
 
     childNodeCounter++;
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
     {
         LiteralDimensionsIndexPair literalDimensionsIndexPair = getLiteralDimensionFromNode(root, childNodeCounter);
 
-        variableDescription = addDimensionToVariableDesc(variableDescription, literalDimensionsIndexPair.first);
+        variableDescription = createArrayVariableDescription(variableDescription, literalDimensionsIndexPair.first);
         childNodeCounter = literalDimensionsIndexPair.second;
     }
 

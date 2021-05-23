@@ -6,7 +6,7 @@
 
 namespace node
 {
-    enum node_type
+    enum NodeType
     {
         PROGRAM,
         USE,
@@ -57,14 +57,16 @@ namespace node
 
     struct node
     {
-        node_type type;
+        NodeType type;
         token::Token tok;
         std::vector<node> children;
 
-        node(node_type ntype, token::Token tok);
-        node(node_type ntype);
-        bool isNthChild(node_type ntype, size_t index) const;
-        bool isNthChildFromLast(node_type ntype, size_t N) const;
+        node(NodeType ntype, token::Token tok);
+        node(NodeType ntype);
+        bool isNthChild(NodeType ntype, size_t index) const;
+        bool isNthChildFromLast(NodeType ntype, size_t N) const;
+        token::Token getNthChildToken(size_t N) const;
+        token::Token getNthChildTokenFromLast(size_t N) const;
     };
 }
 
