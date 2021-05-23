@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "log.hpp"
-#include "token.hpp"
+#include "Token/Token.hpp"
 
 namespace lexer
 {

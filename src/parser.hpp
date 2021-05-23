@@ -7,7 +7,7 @@
 #include "Node/Node.hpp"
 #include "lexer.hpp"
 #include "log.hpp"
-#include "token.hpp"
+#include "Token/Token.hpp"
 
 namespace parser
 {

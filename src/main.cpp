@@ -7,7 +7,7 @@
 #include "log.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
-#include "token.hpp"
+#include "Token/Token.hpp"
 
 void print_usage()
 {

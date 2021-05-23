@@ -7,7 +7,7 @@
 
 #include "IntermediateRepresentation/All.hpp"
 #include "Node/Node.hpp"
-#include "token.hpp"
+#include "Token/Token.hpp"
 
 namespace miklog
 {

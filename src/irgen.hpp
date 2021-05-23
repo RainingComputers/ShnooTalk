@@ -11,7 +11,7 @@
 #include "Node/Node.hpp"
 #include "log.hpp"
 #include "pathchk.hpp"
-#include "token.hpp"
+#include "Token/Token.hpp"
 
 typedef std::pair<icode::Operand, icode::VariableDescription> OperandDescriptionPair;
 typedef std::pair<token::Token, icode::VariableDescription> TokenDescriptionPair;

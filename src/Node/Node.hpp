@@ -1,7 +1,7 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
-#include "../token.hpp"
+#include "../Token/Token.hpp"
 #include <vector>
 
 namespace node
