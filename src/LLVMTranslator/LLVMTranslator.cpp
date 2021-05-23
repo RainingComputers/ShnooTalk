@@ -13,7 +13,6 @@ using namespace llvm;
 
 icode::TargetDescription llvmgen::getTargetDescription()
 {
-    /* Target description for mikuro-llvm */
     icode::TargetDescription target;
 
     target.dataTypeNames = { { "byte", icode::I8 },     { "ubyte", icode::UI8 },  { "short", icode::I16 },
@@ -21,16 +20,8 @@ icode::TargetDescription llvmgen::getTargetDescription()
                              { "long", icode::I64 },    { "ulong", icode::UI64 }, { "float", icode::F32 },
                              { "double", icode::F64 },  { "char", icode::UI8 },   { "bool", icode::UI8 } };
 
-    /* true and false defines */
-    icode::Define trueDef;
-    trueDef.dtype = icode::INT;
-    trueDef.val.integer = 1;
-
-    icode::Define falseDef;
-    falseDef.dtype = icode::INT;
-    falseDef.val.integer = 0;
-
-    target.defines = { { "true", trueDef }, { "false", falseDef } };
+    target.defines = { { "true", icode::createIntDefine(1, icode::INT) },
+                       { "false", icode::createIntDefine(0, icode::INT) } };
 
     return target;
 }
