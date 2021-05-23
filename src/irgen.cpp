@@ -1,7 +1,8 @@
 #include <algorithm>
 
-#include "IRGenerator/DefineFromNode.hpp"
-#include "IRGenerator/EnumFromNode.hpp"
+#include "IRGenerator/Define.hpp"
+#include "IRGenerator/Enum.hpp"
+#include "IRGenerator/Global.hpp"
 #include "IRGenerator/VariableDescriptionFromNode.hpp"
 #include "irgen.hpp"
 
@@ -18,8 +19,8 @@ namespace irgen
       , file(ifile)
       , builder(modules_map[file_name], ext_modules_map)
     {
-        current_func_desc = nullptr;
-        current_ext_module = &module;
+        workingFunction = nullptr;
+        workingModule = &module;
 
         id_counter = 0;
         scope_id_counter = 0;
@@ -60,14 +61,19 @@ namespace irgen
         return std::find(scope_id_stack.begin(), scope_id_stack.end(), scope_id) != scope_id_stack.end();
     }
 
-    void ir_generator::resetCurrentExternalModule()
+    void ir_generator::resetWorkingModule()
     {
-        current_ext_module = &module;
+        workingModule = &module;
+    }
+
+    void ir_generator::setWorkingModule(icode::ModuleDescription* moduleDescription)
+    {
+        workingModule = moduleDescription;
     }
 
     bool ir_generator::get_def(const std::string& name, icode::Define& def)
     {
-        if ((*current_ext_module).getDefine(name, def))
+        if ((*workingModule).getDefine(name, def))
             return true;
 
         if (module.getDefine(name, def))
@@ -78,7 +84,7 @@ namespace irgen
 
     bool ir_generator::get_func(const std::string& name, icode::FunctionDescription& func)
     {
-        if ((*current_ext_module).getFunction(name, func))
+        if ((*workingModule).getFunction(name, func))
             return true;
 
         if (module.getFunction(name, func))
@@ -92,7 +98,7 @@ namespace irgen
         if (module.getEnum(name, val))
             return true;
 
-        if ((*current_ext_module).getEnum(name, val))
+        if ((*workingModule).getEnum(name, val))
             return true;
 
         return false;
@@ -321,20 +327,7 @@ namespace irgen
 
     void ir_generator::global_var(const node::Node& root)
     {
-        std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
-
-        /* Set mut for var */
-        var.second.setProperty(icode::IS_MUT);
-
-        /* Check if symbol already exists */
-        if (module.symbolExists(var.first.toString()))
-        {
-            miklog::error_tok(module.name, "Symbol already defined", file, var.first);
-            throw miklog::compile_error();
-        }
-
-        /* Add to symbol table */
-        module.globals[var.first.toString()] = var.second;
+        globalFromNode(*this, root);
     }
 
     icode::Operand ir_generator::gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype)
@@ -576,7 +569,7 @@ namespace irgen
             var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbolExists(var.first.toString()) || (*current_func_desc).symbolExists(var.first.toString()))
+        if (module.symbolExists(var.first.toString()) || (*workingFunction).symbolExists(var.first.toString()))
         {
             miklog::error_tok(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
@@ -634,7 +627,7 @@ namespace irgen
         }
 
         /* Add to symbol table */
-        (*current_func_desc).symbols[var.first.toString()] = var.second;
+        (*workingFunction).symbols[var.first.toString()] = var.second;
     }
 
     OperandDescriptionPair ir_generator::var_access(const node::Node& root)
@@ -653,7 +646,7 @@ namespace irgen
         /* Check if identifier exists and get dtype and size */
         node::Node child = root.children[0];
         ident_name = child.tok.toString();
-        if ((*current_func_desc).getSymbol(ident_name, current_var_info))
+        if ((*workingFunction).getSymbol(ident_name, current_var_info))
         {
             is_ptr = current_var_info.checkProperty(icode::IS_PTR);
         }
@@ -865,7 +858,7 @@ namespace irgen
 
     OperandDescriptionPair ir_generator::funccall(const node::Node& root)
     {
-        icode::ModuleDescription* temp = current_ext_module;
+        icode::ModuleDescription* temp = workingModule;
 
         /* Get the first argument (if not a string literal) */
         OperandDescriptionPair first_arg;
@@ -876,7 +869,7 @@ namespace irgen
 
             /* If struct funccall, switch to struct's (first arg's) module */
             if (root.type == node::STRUCT_FUNCCALL)
-                current_ext_module = &ext_modules_map[first_arg.second.moduleName];
+                workingModule = &ext_modules_map[first_arg.second.moduleName];
         }
 
         /* Check if function exits */
@@ -954,7 +947,7 @@ namespace irgen
 
         /* Switch back to current module if ext_mod was modified */
         if (root.type == node::STRUCT_FUNCCALL)
-            current_ext_module = temp;
+            workingModule = temp;
 
         return OperandDescriptionPair(ret_temp, func_desc.functionReturnDescription);
     }
@@ -1001,7 +994,7 @@ namespace irgen
             size = struct_desc.size;
         else if ((*current_module).getGlobal(ident, global))
             size = global.size;
-        else if ((*current_func_desc).getSymbol(ident, symbol))
+        else if ((*workingFunction).getSymbol(ident, symbol))
             size = symbol.dtypeSize;
         else
         {
@@ -1175,11 +1168,11 @@ namespace irgen
                     throw miklog::compile_error();
                 }
 
-                current_ext_module = current_module;
+                workingModule = current_module;
 
                 OperandDescriptionPair ret_val = term(root.children[i]);
 
-                current_ext_module = &module;
+                workingModule = &module;
 
                 return ret_val;
             }
@@ -1774,20 +1767,20 @@ namespace irgen
                 case node::MODULE:
                 {
                     /* Check if the module exists */
-                    if (!(*current_ext_module).useExists(stmt.tok.toString()))
+                    if (!(*workingModule).useExists(stmt.tok.toString()))
                     {
                         miklog::error_tok(module.name, "Module does not exist", file, stmt.tok);
                         throw miklog::compile_error();
                     }
 
                     /* Switch to external module */
-                    icode::ModuleDescription* temp = current_ext_module;
-                    current_ext_module = &ext_modules_map[stmt.tok.toString()];
+                    icode::ModuleDescription* temp = workingModule;
+                    workingModule = &ext_modules_map[stmt.tok.toString()];
 
                     OperandDescriptionPair ret_val = funccall(stmt.children[0]);
 
                     /* Switch back to self */
-                    current_ext_module = temp;
+                    workingModule = temp;
 
                     break;
                 }
@@ -1828,7 +1821,7 @@ namespace irgen
                 }
                 case node::RETURN:
                 {
-                    icode::VariableDescription ret_info = (*current_func_desc).functionReturnDescription;
+                    icode::VariableDescription ret_info = (*workingFunction).functionReturnDescription;
 
                     /* Get return value */
                     if (stmt.children.size() != 0)
@@ -1899,10 +1892,10 @@ namespace irgen
 
     bool ir_generator::current_function_terminates()
     {
-        if ((*current_func_desc).icodeTable.size() < 1)
+        if ((*workingFunction).icodeTable.size() < 1)
             return false;
 
-        icode::Instruction last_opcode = (*current_func_desc).icodeTable.back().opcode;
+        icode::Instruction last_opcode = (*workingFunction).icodeTable.back().opcode;
 
         if (last_opcode == icode::RET)
             return true;
@@ -1955,8 +1948,8 @@ namespace irgen
                 std::string func_name = child.children[0].tok.toString();
 
                 /* Switch symbol and icode table */
-                current_func_desc = &module.functions[func_name];
-                builder.setFunctionDescription(current_func_desc);
+                workingFunction = &module.functions[func_name];
+                builder.setFunctionDescription(workingFunction);
 
                 /* Clear scope */
                 clear_scope();
@@ -1971,7 +1964,7 @@ namespace irgen
                 /* Last instruction must be return */
                 if (!current_function_terminates())
                 {
-                    if (current_func_desc->functionReturnDescription.dtype != icode::VOID)
+                    if (workingFunction->functionReturnDescription.dtype != icode::VOID)
                     {
                         miklog::error_tok(module.name, "Missing RETURN for this FUNCTION", file, child.tok);
                         throw miklog::compile_error();

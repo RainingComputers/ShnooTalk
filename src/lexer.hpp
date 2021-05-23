@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 
-#include "log.hpp"
 #include "Token/Token.hpp"
+#include "log.hpp"
 
 namespace lexer
 {

@@ -1,6 +1,6 @@
 #include "DescriptionGenerator/CreateEnum.hpp"
 
-#include "EnumFromNode.hpp"
+#include "Enum.hpp"
 
 void enumFromNode(irgen::ir_generator& ctx, const node::Node& root)
 {

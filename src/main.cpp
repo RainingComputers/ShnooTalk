@@ -2,12 +2,12 @@
 #include <iostream>
 
 #include "LLVMTranslator/LLVMTranslator.hpp"
+#include "Token/Token.hpp"
 #include "irgen.hpp"
 #include "lexer.hpp"
 #include "log.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
-#include "Token/Token.hpp"
 
 void print_usage()
 {

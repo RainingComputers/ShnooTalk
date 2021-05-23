@@ -13,22 +13,24 @@ VariableDescription createVoidVariableDescription(const irgen::ir_generator& ctx
     voidVariableDescription.offset = 0;
     voidVariableDescription.scopeId = 0;
     voidVariableDescription.properties = 0;
-    voidVariableDescription.moduleName = ctx.current_ext_module->name;
+    voidVariableDescription.moduleName = ctx.workingModule->name;
 
     return voidVariableDescription;
 }
 
-std::pair<int, std::string> getSizeAndModuleName(irgen::ir_generator& ctx, const token::Token& dataTypeToken, DataType dtype)
+std::pair<int, std::string> getSizeAndModuleName(irgen::ir_generator& ctx,
+                                                 const token::Token& dataTypeToken,
+                                                 DataType dtype)
 {
-    if(dtype != icode::STRUCT)
-        return std::pair<int, std::string>(getDataTypeSize(dtype), ctx.current_ext_module->name);
+    if (dtype != icode::STRUCT)
+        return std::pair<int, std::string>(getDataTypeSize(dtype), ctx.workingModule->name);
 
     icode::StructDescription structDesc;
-    if(!ctx.current_ext_module->getStruct(dataTypeToken.toString(), structDesc))
+    if (!ctx.workingModule->getStruct(dataTypeToken.toString(), structDesc))
     {
         miklog::error_tok(ctx.module.name, "Symbol does not exist", ctx.file, dataTypeToken);
         throw miklog::compile_error();
-    }  
+    }
 
     return std::pair<int, std::string>(structDesc.size, structDesc.moduleName);
 }
@@ -53,7 +55,8 @@ VariableDescription createVariableDescription(irgen::ir_generator& ctx, const to
     return variableDescription;
 }
 
-VariableDescription createArrayVariableDescription(const VariableDescription& variableDesc, std::vector<int>& dimensions)
+VariableDescription createArrayVariableDescription(const VariableDescription& variableDesc,
+                                                   std::vector<int>& dimensions)
 {
     VariableDescription modifiedVariableDesc = variableDesc;
 

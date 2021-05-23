@@ -8,13 +8,13 @@ icode::Define defineFromToken(const token::Token& valueToken)
     return icode::createFloatDefine(valueToken.toFloat(), icode::FLOAT);
 }
 
-void createDefine(const irgen::ir_generator& ctx, const token::Token& nameToken, const token::Token& valueToken) 
+void createDefine(const irgen::ir_generator& ctx, const token::Token& nameToken, const token::Token& valueToken)
 {
-    if (ctx.module.symbolExists(nameToken.toString()))
+    if (ctx.workingModule->symbolExists(nameToken.toString()))
     {
         miklog::error_tok(ctx.module.name, "Symbol already exists", ctx.file, nameToken);
         throw miklog::compile_error();
     }
 
-    ctx.module.defines[nameToken.toString()] = defineFromToken(valueToken);
+    ctx.workingModule->defines[nameToken.toString()] = defineFromToken(valueToken);
 }

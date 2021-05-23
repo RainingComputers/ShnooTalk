@@ -37,7 +37,7 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
     {
         ModuleIndexPair moduleIndexPair = getModuleFromNode(ctx, root, childNodeCounter);
 
-        ctx.current_ext_module = moduleIndexPair.first;
+        ctx.setWorkingModule(moduleIndexPair.first);
         childNodeCounter = moduleIndexPair.second;
     }
 
@@ -58,10 +58,10 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
 
 TokenDescriptionPair variableDescriptionFromNode(ir_generator& ctx, const node::Node& root)
 {
-    ctx.resetCurrentExternalModule();
-
     if (root.type == node::FUNCTION)
         return variableDescriptionFromFunctionNode(ctx, root);
 
     return variableDescriptionFromVarOrParamNode(ctx, root);
+
+    ctx.resetWorkingModule();
 }

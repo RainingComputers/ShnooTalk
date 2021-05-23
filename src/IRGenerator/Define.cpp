@@ -1,6 +1,6 @@
 #include "DescriptionGenerator/CreateDefine.hpp"
 
-#include "DefineFromNode.hpp"
+#include "Define.hpp"
 
 void defineFromNode(irgen::ir_generator& ctx, const node::Node& root)
 {

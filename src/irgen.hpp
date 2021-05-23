@@ -9,9 +9,9 @@
 #include "IRBuilder/IRBuilder.hpp"
 #include "IntermediateRepresentation/All.hpp"
 #include "Node/Node.hpp"
+#include "Token/Token.hpp"
 #include "log.hpp"
 #include "pathchk.hpp"
-#include "Token/Token.hpp"
 
 typedef std::pair<icode::Operand, icode::VariableDescription> OperandDescriptionPair;
 typedef std::pair<token::Token, icode::VariableDescription> TokenDescriptionPair;
@@ -31,8 +31,8 @@ namespace irgen
 
         ibuild::IRBuilder builder;
 
-        icode::FunctionDescription* current_func_desc;
-        icode::ModuleDescription* current_ext_module;
+        icode::FunctionDescription* workingFunction;
+        icode::ModuleDescription* workingModule;
 
         unsigned int id_counter;
         unsigned int scope_id_counter;
@@ -45,7 +45,8 @@ namespace irgen
         void exit_scope();
         void clear_scope();
         bool in_scope(unsigned int scope_id);
-        void resetCurrentExternalModule();
+        void resetWorkingModule();
+        void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
         bool get_def(const std::string& name, icode::Define& def);
 
