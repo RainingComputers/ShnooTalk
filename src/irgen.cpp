@@ -4,6 +4,7 @@
 #include "IRGenerator/Enum.hpp"
 #include "IRGenerator/Global.hpp"
 #include "IRGenerator/VariableDescriptionFromNode.hpp"
+#include "IRGenerator/Structure.hpp"
 #include "irgen.hpp"
 
 namespace irgen
@@ -223,52 +224,7 @@ namespace irgen
 
     void ir_generator::structure(const node::Node& root)
     {
-        icode::StructDescription struct_desc;
-        struct_desc.size = 0;
-
-        token::Token name_token = root.children[0].tok;
-
-        /* Check if symbol exists */
-        if (module.symbolExists(name_token.toString()))
-        {
-            miklog::error_tok(module.name, "Symbol already defined", file, name_token);
-            throw miklog::compile_error();
-        }
-
-        /* Go through field of structure */
-        for (node::Node field : root.children[0].children)
-        {
-            std::pair<token::Token, icode::VariableDescription> var = var_from_node(field);
-
-            /* Set mutable for var */
-            var.second.setProperty(icode::IS_MUT);
-
-            /* Check if the name is already a field */
-            if (struct_desc.fieldExists(var.first.toString()))
-            {
-                miklog::error_tok(module.name, "Field already defined", file, var.first);
-                throw miklog::compile_error();
-            }
-
-            if (module.symbolExists(var.first.toString()))
-            {
-                miklog::error_tok(module.name, "Symbol already defined", file, var.first);
-                throw miklog::compile_error();
-            }
-
-            /* Update struct size and offset */
-            var.second.offset = struct_desc.size;
-            struct_desc.size += var.second.size;
-
-            /* Append to feilds map */
-            struct_desc.structFields[var.first.toString()] = var.second;
-
-            /* Module name */
-            struct_desc.moduleName = module.name;
-        }
-
-        /* Add strucuture definition to module */
-        module.structures[name_token.toString()] = struct_desc;
+        structFromNode(*this, root);
     }
 
     void ir_generator::fn(const node::Node& root)

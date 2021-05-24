@@ -53,6 +53,8 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
         childNodeCounter = literalDimensionsIndexPair.second;
     }
 
+    ctx.resetWorkingModule();
+
     return TokenDescriptionPair(symbolNameToken, variableDescription);
 }
 
@@ -62,6 +64,4 @@ TokenDescriptionPair variableDescriptionFromNode(ir_generator& ctx, const node::
         return variableDescriptionFromFunctionNode(ctx, root);
 
     return variableDescriptionFromVarOrParamNode(ctx, root);
-
-    ctx.resetWorkingModule();
 }
