@@ -33,6 +33,10 @@ namespace icode
         void setProperty(VariableProperty prop);
         void clearProperty(VariableProperty prop);
         bool checkProperty(VariableProperty prop) const;
+
+        bool isSameType() const;
+        bool isStruct() const;
+        bool isArray() const;
     };
 
     bool isSameType(VariableDescription var1, VariableDescription var2);

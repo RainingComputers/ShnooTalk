@@ -22,6 +22,16 @@ namespace icode
         return properties & (1 << property);
     }
 
+    bool VariableDescription::isStruct() const
+    {
+        return dtype == STRUCT;
+    }
+
+    bool VariableDescription::isArray() const
+    {
+        return dimensions.size() > 0;
+    }
+
     bool isSameType(VariableDescription var1, VariableDescription var2)
     {
         if (var1.dtype == STRUCT || var2.dtype == STRUCT)

@@ -5,6 +5,7 @@
 #include "IRGenerator/Global.hpp"
 #include "IRGenerator/VariableDescriptionFromNode.hpp"
 #include "IRGenerator/Structure.hpp"
+#include "IRGenerator/Function.hpp"
 #include "irgen.hpp"
 
 namespace irgen
@@ -229,56 +230,7 @@ namespace irgen
 
     void ir_generator::fn(const node::Node& root)
     {
-        icode::FunctionDescription func_desc;
-        std::string func_name;
-
-        std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
-        func_name = var.first.toString();
-        func_desc.functionReturnDescription = var.second;
-
-        /* Check if function name symbol already exists */
-        if (module.symbolExists(func_name))
-        {
-            miklog::error_tok(module.name, "Symbol already defined", file, root.children[0].tok);
-            throw miklog::compile_error();
-        }
-
-        /* Process function parameters */
-        for (size_t i = 1;; i++)
-        {
-            bool mut;
-            if (root.children[i].type == node::PARAM)
-                mut = false;
-            else if (root.children[i].type == node::MUT_PARAM)
-                mut = true;
-            else
-                break;
-
-            std::pair<token::Token, icode::VariableDescription> param_var = var_from_node(root.children[i]);
-            param_var.second.setProperty(icode::IS_PARAM);
-
-            if (mut)
-                param_var.second.setProperty(icode::IS_MUT);
-
-            if (mut || param_var.second.dtype == icode::STRUCT || param_var.second.dimensions.size() != 0)
-                param_var.second.setProperty(icode::IS_PTR);
-
-            /* Check if symbol is already defined */
-            if (module.symbolExists(param_var.first.toString()))
-            {
-                miklog::error_tok(module.name, "Symbol already defined", file, param_var.first);
-                throw miklog::compile_error();
-            }
-
-            /* Append to symbol table */
-            func_desc.parameters.push_back(param_var.first.toString());
-            func_desc.symbols[param_var.first.toString()] = param_var.second;
-        }
-
-        func_desc.moduleName = module.name;
-
-        /* Add function definition to module */
-        module.functions[func_name] = func_desc;
+        createFunctionFromNode(*this, root);
     }
 
     void ir_generator::global_var(const node::Node& root)

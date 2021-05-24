@@ -39,7 +39,6 @@ void createStructDescription(irgen::ir_generator& ctx,
 
         icode::VariableDescription field = fieldTypes[i];
         field.offset = structDescription.size;
-        field.setProperty(icode::IS_MUT);
 
         structDescription.size += field.size;
 

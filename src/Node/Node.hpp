@@ -63,6 +63,7 @@ namespace node
 
         Node(NodeType nodeType, token::Token token);
         Node(NodeType nodeType);
+        bool isNodeType(NodeType nodeType) const;
         bool isNthChild(NodeType nodeType, size_t index) const;
         bool isNthChildFromLast(NodeType nodeType, size_t N) const;
         token::Token getNthChildToken(size_t N) const;
