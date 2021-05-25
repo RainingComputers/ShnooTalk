@@ -28,7 +28,7 @@ std::pair<int, std::string> getSizeAndModuleName(irgen::ir_generator& ctx,
     icode::StructDescription structDesc;
     if (!ctx.workingModule->getStruct(dataTypeToken.toString(), structDesc))
     {
-        miklog::error_tok(ctx.module.name, "Symbol does not exist", ctx.file, dataTypeToken);
+        miklog::errorOnToken(ctx.module.name, "Symbol does not exist", ctx.file, dataTypeToken);
         throw miklog::compile_error();
     }
 

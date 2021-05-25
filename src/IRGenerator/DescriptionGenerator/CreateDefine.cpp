@@ -12,7 +12,7 @@ void createDefine(const irgen::ir_generator& ctx, const token::Token& nameToken,
 {
     if (ctx.workingModule->symbolExists(nameToken.toString()))
     {
-        miklog::error_tok(ctx.module.name, "Symbol already exists", ctx.file, nameToken);
+        miklog::errorOnToken(ctx.module.name, "Symbol already exists", ctx.file, nameToken);
         throw miklog::compile_error();
     }
 

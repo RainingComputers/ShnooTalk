@@ -30,7 +30,7 @@ Type* dataTypeToLLVMType(const ModuleContext& ctx, const icode::DataType dtype)
         case icode::VOID:
             return Type::getVoidTy(*ctx.context);
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 }
@@ -59,7 +59,7 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
         case icode::F64:
             return Type::getDoublePtrTy(*ctx.context);
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 }

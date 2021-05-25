@@ -12,7 +12,7 @@ ModuleIndexPair getModuleFromNode(const irgen::ir_generator& ctx, const node::No
 
         if (!(*currentModule).useExists(moduleName))
         {
-            miklog::error_tok(ctx.module.name, "Module does not exist", ctx.file, moduleNameToken);
+            miklog::errorOnToken(ctx.module.name, "Module does not exist", ctx.file, moduleNameToken);
             throw miklog::compile_error();
         }
 

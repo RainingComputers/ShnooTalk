@@ -56,7 +56,7 @@ namespace parser
             throw exception*/
         if (!accept(type))
         {
-            miklog::parse_error(file_name, type, symbol, file);
+            miklog::parserError(file_name, type, symbol, file);
             throw miklog::compile_error();
         }
     }
@@ -73,7 +73,7 @@ namespace parser
 
         if (!accepted)
         {
-            miklog::parse_error_mult(file_name, types, ntypes, symbol, file);
+            miklog::parserErrorMultiple(file_name, types, ntypes, symbol, file);
             throw miklog::compile_error();
         }
     }

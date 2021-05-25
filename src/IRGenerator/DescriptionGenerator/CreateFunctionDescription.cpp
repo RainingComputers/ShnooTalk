@@ -8,7 +8,7 @@ void createFunctionDescription(irgen::ir_generator& ctx,
 {
     if (ctx.workingModule->symbolExists(nameToken.toString()))
     {
-        miklog::error_tok(ctx.module.name, "Symbol already defined", ctx.file, nameToken);
+        miklog::errorOnToken(ctx.module.name, "Symbol already defined", ctx.file, nameToken);
         throw miklog::compile_error();
     }
 
@@ -20,7 +20,7 @@ void createFunctionDescription(irgen::ir_generator& ctx,
     {
         if (ctx.workingModule->symbolExists(paramNames[i].toString()))
         {
-            miklog::error_tok(ctx.module.name, "Symbol already defined", ctx.file, paramNames[i]);
+            miklog::errorOnToken(ctx.module.name, "Symbol already defined", ctx.file, paramNames[i]);
             throw miklog::compile_error();
         }
 

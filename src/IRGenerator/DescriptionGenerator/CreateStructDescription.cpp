@@ -17,7 +17,7 @@ void createStructDescription(irgen::ir_generator& ctx,
 {
     if(ctx.workingModule->symbolExists(nameToken.toString()))
     {
-        miklog::error_tok(ctx.module.name, "Symbol already defined", ctx.file, nameToken);
+        miklog::errorOnToken(ctx.module.name, "Symbol already defined", ctx.file, nameToken);
         throw miklog::compile_error();
     }    
 
@@ -27,13 +27,13 @@ void createStructDescription(irgen::ir_generator& ctx,
     {
         if(ctx.workingModule->symbolExists(fieldNames[i].toString()))
         {
-            miklog::error_tok(ctx.module.name, "Symbol already defined", ctx.file, fieldNames[i]);
+            miklog::errorOnToken(ctx.module.name, "Symbol already defined", ctx.file, fieldNames[i]);
             throw miklog::compile_error();
         }    
 
         if(structDescription.fieldExists(fieldNames[i].toString()))
         {
-            miklog::error_tok(ctx.module.name, "Field already defined", ctx.file, fieldNames[i]);
+            miklog::errorOnToken(ctx.module.name, "Field already defined", ctx.file, fieldNames[i]);
             throw miklog::compile_error();            
         }
 

@@ -117,7 +117,7 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::EXIT:
                 break;
             default:
-                miklog::internal_error(ctx.moduleDescription.name);
+                miklog::internalCompileError(ctx.moduleDescription.name);
                 throw miklog::internal_bug_error();
         }
 

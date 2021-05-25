@@ -6,7 +6,7 @@ void createGlobal(irgen::ir_generator& ctx,
 {
     if (ctx.workingModule->symbolExists(globalNameToken.toString()))
     {
-        miklog::error_tok(ctx.module.name, "Symbol already defined", ctx.file, globalNameToken);
+        miklog::errorOnToken(ctx.module.name, "Symbol already defined", ctx.file, globalNameToken);
         throw miklog::compile_error();
     }
 

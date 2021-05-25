@@ -98,7 +98,7 @@ int main(int argc, char* argv[])
             lexer::lexical_analyser lex(file_name, ifile);
             parser::rd_parser parse(lex, file_name, ifile);
 
-            miklog::print_node(parse.ast);
+            miklog::printNode(parse.ast);
 
             return 0;
         }

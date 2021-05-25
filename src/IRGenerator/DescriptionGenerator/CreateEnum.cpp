@@ -6,7 +6,7 @@ void createEnum(irgen::ir_generator& ctx, const std::vector<token::Token>& enums
     {
         if (ctx.workingModule->symbolExists(enums[i].toString()))
         {
-            miklog::error_tok(ctx.module.name, "Symbol already defined", ctx.file, enums[i]);
+            miklog::errorOnToken(ctx.module.name, "Symbol already defined", ctx.file, enums[i]);
             throw miklog::compile_error();
         }
 

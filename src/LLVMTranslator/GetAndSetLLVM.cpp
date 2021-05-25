@@ -17,7 +17,7 @@ Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op)
     if (icode::isFloat(op.dtype))
         return ConstantFP::get(dataTypeToLLVMType(ctx, op.dtype), op.val.floating);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -71,7 +71,7 @@ Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op)
         case icode::PTR:
             return ctx.symbolNamePointerIntMap.at(op.name);
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 }
@@ -94,7 +94,7 @@ Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
         case icode::CALLEE_RET_VAL:
             return getCalleeRetValuePointer(ctx, op);
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 }
@@ -113,7 +113,7 @@ void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, Value* value)
             ctx.builder->CreateStore(value, getLLVMPointer(ctx, op));
             break;
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 }

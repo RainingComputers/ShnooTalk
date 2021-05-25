@@ -30,7 +30,7 @@ void createPointer(ModuleContext& ctx, const icode::Entry& e)
             ctx.operandValueMap[e.op1] = ctx.currentFunctionReturnPointer;
             break;
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 }
@@ -88,7 +88,7 @@ void addressBinaryOperator(ModuleContext& ctx, const icode::Entry& e)
             result = ctx.builder->CreateNUWMul(ensureI64(ctx, LHS), RHS);
             break;
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 

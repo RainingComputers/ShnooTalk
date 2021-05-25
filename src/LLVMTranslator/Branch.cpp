@@ -73,7 +73,7 @@ void createBranch(const ModuleContext& ctx,
             ctx.builder->CreateCondBr(flag, fallBlock, gotoBlock);
             break;
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 }

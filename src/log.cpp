@@ -138,7 +138,7 @@ namespace miklog
         "NEWLN",        "INPUT",         "INPUT_STR",    "EXIT"
     };
 
-    void print_token(const token::Token& symbol)
+    void printToken(const token::Token& symbol)
     {
         /* Prints token and its properties */
 
@@ -146,14 +146,14 @@ namespace miklog
                   << ", line=" << symbol.getLine() << ", col=" << symbol.getColumn() << ")";
     }
 
-    void print_node(const node::Node& node, int depth)
+    void printNode(const node::Node& node, int depth)
     {
         /* Recursively prints tree, used to print AST */
 
         static std::vector<bool> last_child;
 
         std::cout << "Node(" << node_type_strs[node.type] << ", ";
-        print_token(node.tok);
+        printToken(node.tok);
         std::cout << ")" << std::endl;
 
         last_child.push_back(false);
@@ -178,7 +178,7 @@ namespace miklog
             if (i == node.children.size() - 1)
                 last_child[depth - 1] = true;
 
-            print_node(node.children[i], depth + 1);
+            printNode(node.children[i], depth + 1);
         }
 
         last_child.pop_back();
@@ -191,7 +191,7 @@ namespace miklog
         std::cout << msg << std::endl;
     }
 
-    void error_line(const std::string& error_msg, const std::string& line, int lineno, int col)
+    void errorOnLine(const std::string& error_msg, const std::string& line, int lineno, int col)
     {
         /* Accepts line as string and column, prints line and '^' symbol at col
             along with error message */
@@ -211,7 +211,7 @@ namespace miklog
         println(error_msg);
     }
 
-    void error_tok(const std::string& mod_name,
+    void errorOnToken(const std::string& mod_name,
                    const std::string& error_msg,
                    std::ifstream& file,
                    const token::Token& tok)
@@ -229,19 +229,19 @@ namespace miklog
             getline(file, line);
 
         println("MODULE " + mod_name);
-        error_line(error_msg, line, tok.getLine(), tok.getColumn());
+        errorOnLine(error_msg, line, tok.getLine(), tok.getColumn());
     }
 
-    void parse_error(const std::string& mod_name, token::tokenType expected, token::Token& found, std::ifstream& file)
+    void parserError(const std::string& mod_name, token::tokenType expected, token::Token& found, std::ifstream& file)
     {
         /* Used by parser when it finds some other token type than expected */
 
         std::string error_msg = "Did not expect " + token_type_strs[found.getType()];
         error_msg += ",\nexpected " + token_type_strs[expected];
-        error_tok(mod_name, error_msg, file, found);
+        errorOnToken(mod_name, error_msg, file, found);
     }
 
-    void parse_error_mult(const std::string& mod_name,
+    void parserErrorMultiple(const std::string& mod_name,
                           const token::tokenType* expected,
                           int ntoks,
                           const token::Token& found,
@@ -258,7 +258,7 @@ namespace miklog
 
         error_msg += token_type_strs[expected[ntoks - 1]];
 
-        error_tok(mod_name, error_msg, file, found);
+        errorOnToken(mod_name, error_msg, file, found);
     }
 
     std::string str_var_info(icode::VariableDescription& var)
@@ -271,7 +271,7 @@ namespace miklog
         return var_str;
     }
 
-    void type_error(const std::string& mod_name,
+    void typeError(const std::string& mod_name,
                     std::ifstream& file,
                     const token::Token& tok,
                     icode::VariableDescription& expected,
@@ -285,15 +285,15 @@ namespace miklog
         std::string expect_msg = "Type error, did not expect " + found_str;
         expect_msg += ",\nexpected " + expected_str;
 
-        error_tok(mod_name, expect_msg, file, tok);
+        errorOnToken(mod_name, expect_msg, file, tok);
     }
 
-    void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::Token& tok)
+    void internalCompilerErrorToken(const std::string& mod_name, std::ifstream& file, const token::Token& tok)
     {
-        error_tok(mod_name, "Internal compiler error, REPORT THIS BUG", file, tok);
+        errorOnToken(mod_name, "Internal compiler error, REPORT THIS BUG", file, tok);
     }
 
-    void internal_error(const std::string& mod_name)
+    void internalCompileError(const std::string& mod_name)
     {
         error(mod_name, "Internal compiler error, REPORT THIS BUG");
     }

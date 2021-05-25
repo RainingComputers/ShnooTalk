@@ -17,7 +17,7 @@ Value* castToSignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* de
     if (icode::isFloat(e.op2.dtype))
         return ctx.builder->CreateFPToSI(getLLVMValue(ctx, e.op2), destType);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -29,7 +29,7 @@ Value* castToUnsignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* 
     if (icode::isFloat(e.op2.dtype))
         return ctx.builder->CreateFPToUI(getLLVMValue(ctx, e.op2), destType);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -41,7 +41,7 @@ Value* castToFloatFromInt(const ModuleContext& ctx, const icode::Entry& e, Type*
     if (icode::isUnsignedInteger(e.op2.dtype))
         return ctx.builder->CreateUIToFP(getLLVMValue(ctx, e.op2), destType);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -56,7 +56,7 @@ Value* castToFloatFromFloat(const ModuleContext& ctx, const icode::Entry& e, Typ
     if (icode::getDataTypeSize(e.op1.dtype) == icode::getDataTypeSize(e.op2.dtype))
         return getLLVMValue(ctx, e.op2);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -68,7 +68,7 @@ Value* castToFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destTy
     if (icode::isFloat(e.op2.dtype))
         return castToFloatFromFloat(ctx, e, destType);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -85,7 +85,7 @@ void castOperator(ModuleContext& ctx, const icode::Entry& e)
         result = castToFloat(ctx, e, destType);
     else
     {
-        miklog::internal_error(ctx.moduleDescription.name);
+        miklog::internalCompileError(ctx.moduleDescription.name);
         throw miklog::internal_bug_error();
     }
 

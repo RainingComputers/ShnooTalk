@@ -124,35 +124,35 @@ namespace irgen
             /* Check if file exists */
             if (!(is_module || is_package))
             {
-                miklog::error_tok(module.name, "Module or Package does not exist", file, name_token);
+                miklog::errorOnToken(module.name, "Module or Package does not exist", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for conflicts */
             if (is_module && is_package)
             {
-                miklog::error_tok(module.name, "Module and Package exists with same name", file, name_token);
+                miklog::errorOnToken(module.name, "Module and Package exists with same name", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for multiple imports */
             if (module.useExists(name_token.toString()))
             {
-                miklog::error_tok(module.name, "Multiple imports detected", file, name_token);
+                miklog::errorOnToken(module.name, "Multiple imports detected", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for name conflict */
             if (module.symbolExists(name_token.toString()))
             {
-                miklog::error_tok(module.name, "Name conflict, symbol already exists", file, name_token);
+                miklog::errorOnToken(module.name, "Name conflict, symbol already exists", file, name_token);
                 throw miklog::compile_error();
             }
 
             /* Check for self import */
             if (module.name == name_token.toString())
             {
-                miklog::error_tok(module.name, "Self import not allowed", file, name_token);
+                miklog::errorOnToken(module.name, "Self import not allowed", file, name_token);
                 throw miklog::compile_error();
             }
 
@@ -171,7 +171,7 @@ namespace irgen
         /* Get ext module */
         if (!module.useExists(root.children[0].tok.toString()))
         {
-            miklog::error_tok(module.name, "Module not imported", file, root.children[0].tok);
+            miklog::errorOnToken(module.name, "Module not imported", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
@@ -182,7 +182,7 @@ namespace irgen
             /* Check if symbol exists */
             if (module.symbolExists(child.tok.toString()))
             {
-                miklog::error_tok(module.name, "Symbol already defined in current module", file, child.tok);
+                miklog::errorOnToken(module.name, "Symbol already defined in current module", file, child.tok);
                 throw miklog::compile_error();
             }
 
@@ -192,7 +192,7 @@ namespace irgen
             /* If it a function */
             else if ((*ext_module).getFunction(child.tok.toString(), func_desc))
             {
-                miklog::error_tok(module.name, "Cannot import functions", file, child.tok);
+                miklog::errorOnToken(module.name, "Cannot import functions", file, child.tok);
                 throw miklog::compile_error();
             }
             /* If is a def */
@@ -207,7 +207,7 @@ namespace irgen
             /* Does not exist */
             else
             {
-                miklog::error_tok(module.name, "Symbol does not exist", file, child.tok);
+                miklog::errorOnToken(module.name, "Symbol does not exist", file, child.tok);
                 throw miklog::compile_error();
             }
         }
@@ -256,7 +256,7 @@ namespace irgen
     {
         if (var.dimensions.size() != 1 || var.dtype != icode::UI8)
         {
-            miklog::error_tok(module.name, "String assignment only allowed on 1D CHAR ARRAY", file, str_token);
+            miklog::errorOnToken(module.name, "String assignment only allowed on 1D CHAR ARRAY", file, str_token);
             throw miklog::compile_error();
         }
 
@@ -265,7 +265,7 @@ namespace irgen
 
         if (char_count > var.dimensions[0])
         {
-            miklog::error_tok(module.name, "String too big", file, str_token);
+            miklog::errorOnToken(module.name, "String too big", file, str_token);
             throw miklog::compile_error();
         }
 
@@ -279,7 +279,7 @@ namespace irgen
     {
         if (var.second.dimensions.size() != 1 || var.second.dtype != icode::UI8)
         {
-            miklog::error_tok(module.name, "String assignment only allowed on 1D INT ARRAY", file, root.tok);
+            miklog::errorOnToken(module.name, "String assignment only allowed on 1D INT ARRAY", file, root.tok);
             throw miklog::compile_error();
         }
 
@@ -288,7 +288,7 @@ namespace irgen
 
         if (char_count > var.second.dimensions[0])
         {
-            miklog::error_tok(module.name, "String too big", file, root.tok);
+            miklog::errorOnToken(module.name, "String too big", file, root.tok);
             throw miklog::compile_error();
         }
 
@@ -390,7 +390,7 @@ namespace irgen
         /* Cannot use initializer list to assign to var */
         if (var.second.dimensions.size() == 0)
         {
-            miklog::error_tok(module.name, "Cannot initialize a NON-ARRAY with initializer list", file, root.tok);
+            miklog::errorOnToken(module.name, "Cannot initialize a NON-ARRAY with initializer list", file, root.tok);
             throw miklog::compile_error();
         }
 
@@ -410,7 +410,7 @@ namespace irgen
 
             if (dim_count >= var.second.dimensions[0])
             {
-                miklog::error_tok(module.name, "Dimension size too big", file, child.tok);
+                miklog::errorOnToken(module.name, "Dimension size too big", file, child.tok);
                 throw miklog::compile_error();
             }
 
@@ -419,7 +419,7 @@ namespace irgen
                 /* Check if expression */
                 if (child.type != node::TERM && child.type != node::EXPRESSION)
                 {
-                    miklog::error_tok(module.name, "Incorrect dimensions", file, child.tok);
+                    miklog::errorOnToken(module.name, "Incorrect dimensions", file, child.tok);
                     throw miklog::compile_error();
                 }
 
@@ -428,7 +428,7 @@ namespace irgen
                 /* Type check */
                 if (!icode::isSameType(element_var, element_expr.second))
                 {
-                    miklog::type_error(module.name, file, child.tok, element_var, element_expr.second);
+                    miklog::typeError(module.name, file, child.tok, element_var, element_expr.second);
                     throw miklog::compile_error();
                 }
 
@@ -463,7 +463,7 @@ namespace irgen
 
         if (dim_count < var.second.dimensions[0])
         {
-            miklog::error_tok(module.name, "Dimension size too small", file, root.tok);
+            miklog::errorOnToken(module.name, "Dimension size too small", file, root.tok);
             throw miklog::compile_error();
         }
     }
@@ -479,7 +479,7 @@ namespace irgen
         /* Check if symbol already exists */
         if (module.symbolExists(var.first.toString()) || (*workingFunction).symbolExists(var.first.toString()))
         {
-            miklog::error_tok(module.name, "Symbol already defined", file, var.first);
+            miklog::errorOnToken(module.name, "Symbol already defined", file, var.first);
             throw miklog::compile_error();
         }
 
@@ -491,7 +491,7 @@ namespace irgen
             /* If an array requires initializer list */
             if (var.second.dimensions.size() != 0)
             {
-                miklog::error_tok(module.name, "Initializer list required to initialize array", file, last_node.tok);
+                miklog::errorOnToken(module.name, "Initializer list required to initialize array", file, last_node.tok);
                 throw miklog::compile_error();
             }
 
@@ -505,7 +505,7 @@ namespace irgen
             /* Check if the type match */
             if (!icode::isSameType(var.second, init_exp.second))
             {
-                miklog::type_error(module.name, file, last_node.tok, var.second, init_exp.second);
+                miklog::typeError(module.name, file, last_node.tok, var.second, init_exp.second);
                 throw miklog::compile_error();
             }
 
@@ -567,7 +567,7 @@ namespace irgen
             /* Check if there is STRUCT or ARRAY access of enum */
             if (root.children.size() > 1)
             {
-                miklog::error_tok(module.name, "Invalid use of ENUM", file, child.tok);
+                miklog::errorOnToken(module.name, "Invalid use of ENUM", file, child.tok);
                 throw miklog::compile_error();
             }
 
@@ -580,7 +580,7 @@ namespace irgen
             /* Check if there is STRUCT or ARRAY access of def */
             if (root.children.size() > 1)
             {
-                miklog::error_tok(module.name, "Invalid use of DEF", file, child.tok);
+                miklog::errorOnToken(module.name, "Invalid use of DEF", file, child.tok);
                 throw miklog::compile_error();
             }
 
@@ -596,14 +596,14 @@ namespace irgen
         }
         else
         {
-            miklog::error_tok(module.name, "Symbol does not exist", file, child.tok);
+            miklog::errorOnToken(module.name, "Symbol does not exist", file, child.tok);
             throw miklog::compile_error();
         }
 
         /* Check if the variable is available in the current scope */
         if (!in_scope(current_var_info.scopeId))
         {
-            miklog::error_tok(module.name, "Symbol not in scope", file, child.tok);
+            miklog::errorOnToken(module.name, "Symbol not in scope", file, child.tok);
             throw miklog::compile_error();
         }
 
@@ -642,12 +642,12 @@ namespace irgen
 
                     if (current_var_info.dtype != icode::STRUCT)
                     {
-                        miklog::error_tok(module.name, "STRUCT access on a NON-STRUCT data type", file, child.tok);
+                        miklog::errorOnToken(module.name, "STRUCT access on a NON-STRUCT data type", file, child.tok);
                         throw miklog::compile_error();
                     }
                     else if (dim_count == 0 && current_var_info.dimensions.size() != 0)
                     {
-                        miklog::error_tok(module.name, "STRUCT access on an ARRAY", file, child.tok);
+                        miklog::errorOnToken(module.name, "STRUCT access on an ARRAY", file, child.tok);
                         throw miklog::compile_error();
                     }
                     else
@@ -683,7 +683,7 @@ namespace irgen
                         }
                         else
                         {
-                            miklog::error_tok(module.name, "Undefined STRUCT field", file, child.tok);
+                            miklog::errorOnToken(module.name, "Undefined STRUCT field", file, child.tok);
                             throw miklog::compile_error();
                         }
                     }
@@ -696,7 +696,7 @@ namespace irgen
 
                     if (current_var_info.dimensions.size() == 0)
                     {
-                        miklog::error_tok(module.name, "ARRAY access on a NON ARRAY", file, child.tok);
+                        miklog::errorOnToken(module.name, "ARRAY access on a NON ARRAY", file, child.tok);
                         throw miklog::compile_error();
                     }
 
@@ -706,7 +706,7 @@ namespace irgen
                     {
                         if (dim_count > current_var_info.dimensions.size())
                         {
-                            miklog::error_tok(module.name, "Too many subscripts", file, child.tok);
+                            miklog::errorOnToken(module.name, "Too many subscripts", file, child.tok);
                             throw miklog::compile_error();
                         }
 
@@ -716,7 +716,7 @@ namespace irgen
                         /* Check if int expression */
                         if (!icode::isInteger(subs_expr.second.dtype) || subs_expr.second.dimensions.size() != 0)
                         {
-                            miklog::error_tok(module.name, "Index must be an integer", file, child.children[0].tok);
+                            miklog::errorOnToken(module.name, "Index must be an integer", file, child.children[0].tok);
                             throw miklog::compile_error();
                         }
 
@@ -754,7 +754,7 @@ namespace irgen
                 }
                 default:
                 {
-                    miklog::internal_error_tok(module.name, file, child.tok);
+                    miklog::internalCompilerErrorToken(module.name, file, child.tok);
                     throw miklog::internal_bug_error();
                 }
             }
@@ -786,14 +786,14 @@ namespace irgen
 
         if (!get_func(func_name, func_desc))
         {
-            miklog::error_tok(module.name, "Function does not exist", file, root.tok);
+            miklog::errorOnToken(module.name, "Function does not exist", file, root.tok);
             throw miklog::compile_error();
         }
 
         /* Check number of parameters */
         if (root.children.size() != func_desc.parameters.size())
         {
-            miklog::error_tok(module.name, "Number of parameters don't match", file, root.tok);
+            miklog::errorOnToken(module.name, "Number of parameters don't match", file, root.tok);
             throw miklog::compile_error();
         }
 
@@ -818,7 +818,7 @@ namespace irgen
             /* Type check */
             if (!icode::isSameType(param, arg.second))
             {
-                miklog::type_error(module.name, file, root.children[i].tok, param, arg.second);
+                miklog::typeError(module.name, file, root.children[i].tok, param, arg.second);
                 throw miklog::compile_error();
             }
 
@@ -826,7 +826,7 @@ namespace irgen
             if (mut && (arg.first.operandType == icode::TEMP || arg.first.operandType == icode::STR_DATA ||
                         arg.first.operandType == icode::LITERAL))
             {
-                miklog::error_tok(module.name,
+                miklog::errorOnToken(module.name,
                                   "Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE",
                                   file,
                                   root.children[i].tok);
@@ -836,7 +836,7 @@ namespace irgen
             /* If param is mut, arg has to be mutable to */
             if (mut && !arg.second.checkProperty(icode::IS_MUT))
             {
-                miklog::error_tok(module.name, "Cannot pass IMMUTABLE as MUTABLE", file, root.children[i].tok);
+                miklog::errorOnToken(module.name, "Cannot pass IMMUTABLE as MUTABLE", file, root.children[i].tok);
                 throw miklog::compile_error();
             }
 
@@ -877,7 +877,7 @@ namespace irgen
             /* Check if module exists */
             if (!(*current_module).useExists(mod_name))
             {
-                miklog::error_tok(module.name, "Module does not exist", file, mod_node.tok);
+                miklog::errorOnToken(module.name, "Module does not exist", file, mod_node.tok);
                 throw miklog::compile_error();
             }
 
@@ -906,7 +906,7 @@ namespace irgen
             size = symbol.dtypeSize;
         else
         {
-            miklog::error_tok(module.name, "Symbol not found", file, root.tok);
+            miklog::errorOnToken(module.name, "Symbol not found", file, root.tok);
             throw miklog::compile_error();
         }
 
@@ -956,7 +956,7 @@ namespace irgen
                     }
                     default:
                     {
-                        miklog::internal_error_tok(module.name, file, child.tok);
+                        miklog::internalCompilerErrorToken(module.name, file, child.tok);
                         throw miklog::internal_bug_error();
                     }
                 }
@@ -974,7 +974,7 @@ namespace irgen
                 /* Cannot cast ARRAY */
                 if (cast_term.second.dimensions.size() != 0 || cast_term.second.dtype == icode::STRUCT)
                 {
-                    miklog::error_tok(module.name, "Cannot cast STRUCT or ARRAY", file, child.tok);
+                    miklog::errorOnToken(module.name, "Cannot cast STRUCT or ARRAY", file, child.tok);
                     throw miklog::compile_error();
                 }
 
@@ -994,21 +994,21 @@ namespace irgen
                 /* Unary operator not allowed on ARRAY */
                 if (term_var.second.dimensions.size() != 0)
                 {
-                    miklog::error_tok(module.name, "Unary operator not allowed on ARRAY", file, child.tok);
+                    miklog::errorOnToken(module.name, "Unary operator not allowed on ARRAY", file, child.tok);
                     throw miklog::compile_error();
                 }
 
                 /* Unary operator not allowed on STRUCT */
                 if (dtype == icode::STRUCT)
                 {
-                    miklog::error_tok(module.name, "Unary operator not allowed on STRUCT", file, child.tok);
+                    miklog::errorOnToken(module.name, "Unary operator not allowed on STRUCT", file, child.tok);
                     throw miklog::compile_error();
                 }
 
                 /* NOT operator not allowed on float */
                 if (!icode::isInteger(dtype) && child.tok.getType() == token::NOT)
                 {
-                    miklog::error_tok(module.name, "Unary operator NOT not allowed on FLOAT", file, child.tok);
+                    miklog::errorOnToken(module.name, "Unary operator NOT not allowed on FLOAT", file, child.tok);
                     throw miklog::compile_error();
                 }
 
@@ -1022,10 +1022,10 @@ namespace irgen
                         opcode = icode::NOT;
                         break;
                     case token::CONDN_NOT:
-                        miklog::error_tok(module.name, "Did not expect CONDN NOT", file, child.tok);
+                        miklog::errorOnToken(module.name, "Did not expect CONDN NOT", file, child.tok);
                         throw miklog::compile_error();
                     default:
-                        miklog::internal_error_tok(module.name, file, child.tok);
+                        miklog::internalCompilerErrorToken(module.name, file, child.tok);
                         throw miklog::internal_bug_error();
                 }
 
@@ -1059,7 +1059,7 @@ namespace irgen
                     /* Check if module exists */
                     if (!(*current_module).useExists(mod_name))
                     {
-                        miklog::error_tok(module.name, "Module does not exist", file, mod_node.tok);
+                        miklog::errorOnToken(module.name, "Module does not exist", file, mod_node.tok);
                         throw miklog::compile_error();
                     }
 
@@ -1072,7 +1072,7 @@ namespace irgen
 
                 if (root.children[i].tok.getType() != token::IDENTIFIER)
                 {
-                    miklog::error_tok(module.name, "Invalid use of MODULE ACCESS", file, child.tok);
+                    miklog::errorOnToken(module.name, "Invalid use of MODULE ACCESS", file, child.tok);
                     throw miklog::compile_error();
                 }
 
@@ -1090,7 +1090,7 @@ namespace irgen
             }
             default:
             {
-                miklog::internal_error_tok(module.name, file, child.tok);
+                miklog::internalCompilerErrorToken(module.name, file, child.tok);
                 throw miklog::internal_bug_error();
             }
         }
@@ -1130,10 +1130,10 @@ namespace irgen
             case token::GREATER_THAN_EQUAL:
             case token::CONDN_EQUAL:
             case token::CONDN_NOT_EQUAL:
-                miklog::error_tok(module.name, "Did not expect conditional operator", file, tok);
+                miklog::errorOnToken(module.name, "Did not expect conditional operator", file, tok);
                 throw miklog::compile_error();
             default:
-                miklog::internal_error_tok(module.name, file, tok);
+                miklog::internalCompilerErrorToken(module.name, file, tok);
                 throw miklog::internal_bug_error();
         }
     }
@@ -1156,7 +1156,7 @@ namespace irgen
         /* Expression not allowed on arrays or struct */
         if (dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
         {
-            miklog::error_tok(module.name, "Operator not allowed on STRUCT or ARRAY", file, expr_opr);
+            miklog::errorOnToken(module.name, "Operator not allowed on STRUCT or ARRAY", file, expr_opr);
             throw miklog::compile_error();
         }
 
@@ -1166,14 +1166,14 @@ namespace irgen
         /* Type check */
         if (!icode::isSameType(first_operand.second, second_operand.second))
         {
-            miklog::type_error(module.name, file, root.children[2].tok, first_operand.second, second_operand.second);
+            miklog::typeError(module.name, file, root.children[2].tok, first_operand.second, second_operand.second);
             throw miklog::compile_error();
         }
 
         /* If bitwise operator, dtype has to be int */
         if (expr_opr.isBitwiseOperation() && !icode::isInteger(dtype))
         {
-            miklog::error_tok(module.name, "Bitwise operations not allowed on FLOAT", file, expr_opr);
+            miklog::errorOnToken(module.name, "Bitwise operations not allowed on FLOAT", file, expr_opr);
             throw miklog::compile_error();
         }
 
@@ -1211,7 +1211,7 @@ namespace irgen
             case token::XOR_EQUAL:
                 return icode::BWX;
             default:
-                miklog::internal_error_tok(module.name, file, tok);
+                miklog::internalCompilerErrorToken(module.name, file, tok);
                 throw miklog::internal_bug_error();
         }
     }
@@ -1230,42 +1230,42 @@ namespace irgen
         /* Var connot be enum of a def */
         if (var.first.operandType == icode::LITERAL)
         {
-            miklog::error_tok(module.name, "Cannot assign to LITERAL", file, root.children[0].tok);
+            miklog::errorOnToken(module.name, "Cannot assign to LITERAL", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
         /* Check if type matches */
         if (!icode::isSameType(var.second, expr.second))
         {
-            miklog::type_error(module.name, file, root.children[2].tok, var.second, expr.second);
+            miklog::typeError(module.name, file, root.children[2].tok, var.second, expr.second);
             throw miklog::compile_error();
         }
 
         /* Check if mutable */
         if (!var.second.checkProperty(icode::IS_MUT))
         {
-            miklog::error_tok(module.name, "Cannot modify IMMUTABLE variable or parameter", file, root.children[0].tok);
+            miklog::errorOnToken(module.name, "Cannot modify IMMUTABLE variable or parameter", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
         /* Assignment operator not allowed on arrays */
         if (var.second.dimensions.size() != 0)
         {
-            miklog::error_tok(module.name, "Assignment operators not allowed on ARRAY", file, assign_opr);
+            miklog::errorOnToken(module.name, "Assignment operators not allowed on ARRAY", file, assign_opr);
             throw miklog::compile_error();
         }
 
         /* Only EQUAL operator allowed on STRUCT */
         if (var.second.dtype == icode::STRUCT && assign_opr.getType() != token::EQUAL)
         {
-            miklog::error_tok(module.name, "Only EQUAL operator allowed on STRUCT", file, assign_opr);
+            miklog::errorOnToken(module.name, "Only EQUAL operator allowed on STRUCT", file, assign_opr);
             throw miklog::compile_error();
         }
 
         /* If bitwise operator, dtype has to be int */
         if (assign_opr.isBitwiseOperation() && !icode::isInteger(var.second.dtype))
         {
-            miklog::error_tok(module.name, "Bitwise operation not allowed on FLOAT", file, assign_opr);
+            miklog::errorOnToken(module.name, "Bitwise operation not allowed on FLOAT", file, assign_opr);
             throw miklog::compile_error();
         }
 
@@ -1321,7 +1321,7 @@ namespace irgen
             case token::CONDN_NOT_EQUAL:
                 return icode::NEQ;
             default:
-                miklog::error_tok(module.name, "Invalid conditional expression", file, tok);
+                miklog::errorOnToken(module.name, "Invalid conditional expression", file, tok);
                 throw miklog::compile_error();
         }
     }
@@ -1343,7 +1343,7 @@ namespace irgen
 
             if (root.children[0].tok.getType() != token::CONDN_NOT)
             {
-                miklog::error_tok(module.name, "Invalid conditional expression", file, root.tok);
+                miklog::errorOnToken(module.name, "Invalid conditional expression", file, root.tok);
                 throw miklog::compile_error();
             }
 
@@ -1409,7 +1409,7 @@ namespace irgen
                     /* Cannot compare structs and arrays */
                     if (first_operand.second.dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
                     {
-                        miklog::error_tok(module.name, "Cannot compare STRUCT or ARRAYS", file, expr_opr);
+                        miklog::errorOnToken(module.name, "Cannot compare STRUCT or ARRAYS", file, expr_opr);
                         throw miklog::compile_error();
                     }
 
@@ -1418,7 +1418,7 @@ namespace irgen
                     /* Type check */
                     if (!icode::isSameType(first_operand.second, second_operand.second))
                     {
-                        miklog::type_error(module.name,
+                        miklog::typeError(module.name,
                                            file,
                                            root.children[2].tok,
                                            first_operand.second,
@@ -1571,7 +1571,7 @@ namespace irgen
                 /* Cannot peint struct or arrays */
                 if (print_var.second.dtype == icode::STRUCT || print_var.second.dimensions.size() > 1)
                 {
-                    miklog::error_tok(module.name, "Cannot print STRUCT or multi-dimensional ARRAY", file, child.tok);
+                    miklog::errorOnToken(module.name, "Cannot print STRUCT or multi-dimensional ARRAY", file, child.tok);
                     throw miklog::compile_error();
                 }
 
@@ -1599,25 +1599,25 @@ namespace irgen
         if (!(input_var.first.operandType == icode::VAR || input_var.first.operandType == icode::GBL_VAR ||
               input_var.first.operandType == icode::TEMP_PTR || input_var.first.operandType == icode::PTR))
         {
-            miklog::error_tok(module.name, "Invalid term for INPUT", file, root.children[0].tok);
+            miklog::errorOnToken(module.name, "Invalid term for INPUT", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
         if (input_var.second.dtype == icode::STRUCT)
         {
-            miklog::error_tok(module.name, "Cannot INPUT STRUCT", file, root.children[0].tok);
+            miklog::errorOnToken(module.name, "Cannot INPUT STRUCT", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
         if (input_var.second.dimensions.size() > 1)
         {
-            miklog::error_tok(module.name, "Cannot INPUT more than 1D ARRAY", file, root.children[0].tok);
+            miklog::errorOnToken(module.name, "Cannot INPUT more than 1D ARRAY", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
         if (input_var.second.dimensions.size() == 1 && !icode::isInteger(input_var.first.dtype))
         {
-            miklog::error_tok(module.name, "String input requires 1D INT ARRAY", file, root.children[0].tok);
+            miklog::errorOnToken(module.name, "String input requires 1D INT ARRAY", file, root.children[0].tok);
             throw miklog::compile_error();
         }
 
@@ -1677,7 +1677,7 @@ namespace irgen
                     /* Check if the module exists */
                     if (!(*workingModule).useExists(stmt.tok.toString()))
                     {
-                        miklog::error_tok(module.name, "Module does not exist", file, stmt.tok);
+                        miklog::errorOnToken(module.name, "Module does not exist", file, stmt.tok);
                         throw miklog::compile_error();
                     }
 
@@ -1705,7 +1705,7 @@ namespace irgen
                 {
                     if (!loop)
                     {
-                        miklog::error_tok(module.name, "BREAK outside loop", file, stmt.tok);
+                        miklog::errorOnToken(module.name, "BREAK outside loop", file, stmt.tok);
                         throw miklog::compile_error();
                     }
 
@@ -1718,7 +1718,7 @@ namespace irgen
                 {
                     if (!loop)
                     {
-                        miklog::error_tok(module.name, "CONTINUE outside loop", file, stmt.tok);
+                        miklog::errorOnToken(module.name, "CONTINUE outside loop", file, stmt.tok);
                         throw miklog::compile_error();
                     }
 
@@ -1739,7 +1739,7 @@ namespace irgen
                         /* Type check */
                         if (!icode::isSameType(ret_info, ret_val.second))
                         {
-                            miklog::type_error(module.name, file, stmt.children[0].tok, ret_info, ret_val.second);
+                            miklog::typeError(module.name, file, stmt.children[0].tok, ret_info, ret_val.second);
                             throw miklog::compile_error();
                         }
 
@@ -1756,7 +1756,7 @@ namespace irgen
                     }
                     else if (ret_info.dtype != icode::VOID)
                     {
-                        miklog::error_tok(module.name, "Ret type is not VOID", file, stmt.tok);
+                        miklog::errorOnToken(module.name, "Ret type is not VOID", file, stmt.tok);
                         throw miklog::compile_error();
                     }
 
@@ -1778,7 +1778,7 @@ namespace irgen
                     break;
                 }
                 default:
-                    miklog::internal_error_tok(module.name, file, stmt.tok);
+                    miklog::internalCompilerErrorToken(module.name, file, stmt.tok);
                     throw miklog::internal_bug_error();
             }
         }
@@ -1842,7 +1842,7 @@ namespace irgen
                     global_var(child);
                     break;
                 default:
-                    miklog::internal_error_tok(module.name, file, child.tok);
+                    miklog::internalCompilerErrorToken(module.name, file, child.tok);
                     throw miklog::internal_bug_error();
             }
         }
@@ -1874,7 +1874,7 @@ namespace irgen
                 {
                     if (workingFunction->functionReturnDescription.dtype != icode::VOID)
                     {
-                        miklog::error_tok(module.name, "Missing RETURN for this FUNCTION", file, child.tok);
+                        miklog::errorOnToken(module.name, "Missing RETURN for this FUNCTION", file, child.tok);
                         throw miklog::compile_error();
                     }
 

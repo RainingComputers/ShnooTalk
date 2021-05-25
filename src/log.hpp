@@ -19,38 +19,38 @@ namespace miklog
     {
     };
 
-    void print_token(const token::Token& symbol);
+    void printToken(const token::Token& symbol);
 
-    void print_node(const node::Node& node, int depth = 1);
+    void printNode(const node::Node& node, int depth = 1);
 
     void println(const std::string& msg);
 
-    void error_line(const std::string& error_msg, const std::string& line, int lineno, int col);
+    void errorOnLine(const std::string& error_msg, const std::string& line, int lineno, int col);
 
     void error(const std::string& mod_name, const std::string& error_msg);
 
-    void error_tok(const std::string& mod_name,
+    void errorOnToken(const std::string& mod_name,
                    const std::string& error_msg,
                    std::ifstream& file,
                    const token::Token& tok);
 
-    void parse_error(const std::string& mod_name, token::tokenType expected, token::Token& found, std::ifstream& file);
+    void parserError(const std::string& mod_name, token::tokenType expected, token::Token& found, std::ifstream& file);
 
-    void parse_error_mult(const std::string& mod_name,
+    void parserErrorMultiple(const std::string& mod_name,
                           const token::tokenType* expected,
                           int ntoks,
                           const token::Token& found,
                           std::ifstream& file);
 
-    void type_error(const std::string& mod_name,
+    void typeError(const std::string& mod_name,
                     std::ifstream& file,
                     const token::Token& tok,
                     icode::VariableDescription& expected,
                     icode::VariableDescription& found);
 
-    void internal_error_tok(const std::string& mod_name, std::ifstream& file, const token::Token& tok);
+    void internalCompilerErrorToken(const std::string& mod_name, std::ifstream& file, const token::Token& tok);
 
-    void internal_error(const std::string& mod_name);
+    void internalCompileError(const std::string& mod_name);
 
     void print_operand(const icode::Operand& op);
 

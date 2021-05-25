@@ -15,7 +15,7 @@ Value* equal(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType d
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUEQ(LHS, RHS);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -29,7 +29,7 @@ Value* notEqual(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUNE(LHS, RHS);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -46,7 +46,7 @@ Value* lessThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpULT(LHS, RHS);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -63,7 +63,7 @@ Value* lessThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpULE(LHS, RHS);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -80,7 +80,7 @@ Value* greaterThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::Data
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUGT(LHS, RHS);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -97,7 +97,7 @@ Value* greaterThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, ic
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUGE(LHS, RHS);
 
-    miklog::internal_error(ctx.moduleDescription.name);
+    miklog::internalCompileError(ctx.moduleDescription.name);
     throw miklog::internal_bug_error();
 }
 
@@ -122,7 +122,7 @@ Value* getCompareOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
         case icode::GTE:
             return greaterThanOrEqualTo(ctx, LHS, RHS, dtype);
         default:
-            miklog::internal_error(ctx.moduleDescription.name);
+            miklog::internalCompileError(ctx.moduleDescription.name);
             throw miklog::internal_bug_error();
     }
 }
