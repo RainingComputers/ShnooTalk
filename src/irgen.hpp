@@ -6,11 +6,11 @@
 #include <numeric>
 #include <string>
 
+#include "Console/Console.hpp"
 #include "IRBuilder/IRBuilder.hpp"
 #include "IntermediateRepresentation/All.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"
-#include "log.hpp"
 #include "pathchk.hpp"
 
 typedef std::pair<icode::Operand, icode::VariableDescription> OperandDescriptionPair;
@@ -27,7 +27,7 @@ namespace irgen
         icode::TargetDescription& target;
         icode::StringModulesMap& ext_modules_map;
         icode::ModuleDescription& module;
-        std::ifstream& file;
+        Console& console;
 
         ibuild::IRBuilder builder;
 
@@ -139,7 +139,7 @@ namespace irgen
         ir_generator(icode::TargetDescription& target_desc,
                      icode::StringModulesMap& modules_map,
                      const std::string& file_name,
-                     std::ifstream& ifile);
+                     Console& console);
     };
 }
 

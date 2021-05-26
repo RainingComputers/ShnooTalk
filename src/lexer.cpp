@@ -8,7 +8,8 @@ static std::regex float_regex(R"([0-9]*\.[0-9]+)");
 
 namespace lexer
 {
-    lexical_analyser::lexical_analyser(const std::string& name, std::ifstream& ifile)
+    lexical_analyser::lexical_analyser(const std::string& name, std::ifstream& ifile, Console& consoleRef)
+      : console(consoleRef)
     {
         feed(name, ifile);
     }
@@ -288,11 +289,7 @@ namespace lexer
                             end_idx = line.find("\"", quote_pos + 1);
 
                             if (end_idx == std::string::npos)
-                            {
-                                miklog::println("MODULE " + file_name);
-                                miklog::errorOnLine("Invalid STRING LITERAL", line, lineno, i);
-                                throw miklog::compile_error();
-                            }
+                                console.lexerError("Invalid STRING LITERAL", line, lineno, i);
 
                             if (line[end_idx - 1] != '\\')
                                 break;

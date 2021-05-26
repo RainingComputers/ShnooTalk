@@ -11,10 +11,7 @@ ModuleIndexPair getModuleFromNode(const irgen::ir_generator& ctx, const node::No
         const std::string& moduleName = moduleNameToken.toString();
 
         if (!(*currentModule).useExists(moduleName))
-        {
-            miklog::errorOnToken(ctx.module.name, "Module does not exist", ctx.file, moduleNameToken);
-            throw miklog::compile_error();
-        }
+            ctx.console.compileErrorOnToken("Module does not exist", moduleNameToken);
 
         currentModule = &ctx.ext_modules_map[moduleName];
     }

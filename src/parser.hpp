@@ -4,17 +4,17 @@
 #include <fstream>
 #include <vector>
 
+#include "Console/Console.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"
 #include "lexer.hpp"
-#include "log.hpp"
 
 namespace parser
 {
     class rd_parser
     {
         lexer::lexical_analyser& lex;
-        std::ifstream& file;
+        Console& console;
         std::string file_name;
 
         node::Node* current_node;
@@ -68,7 +68,7 @@ namespace parser
 
       public:
         node::Node ast;
-        rd_parser(lexer::lexical_analyser& lexer, const std::string& name, std::ifstream& ifile);
+        rd_parser(lexer::lexical_analyser& lexer, const std::string& name, Console& consoleRef);
     };
 }
 

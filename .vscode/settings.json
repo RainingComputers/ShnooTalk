@@ -65,6 +65,7 @@
         "ibuild",
         "icode",
         "irgen",
+        "mikpp",
         "mikuro",
         "println"
     ]

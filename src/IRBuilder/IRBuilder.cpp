@@ -1,7 +1,5 @@
 #include "IRBuilder.hpp"
 
-#include "../log.hpp"
-
 namespace ibuild
 {
     IRBuilder::IRBuilder(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& moduleDescMap)

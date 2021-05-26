@@ -7,9 +7,9 @@
 
 namespace parser
 {
-    rd_parser::rd_parser(lexer::lexical_analyser& lexer, const std::string& name, std::ifstream& ifile)
+    rd_parser::rd_parser(lexer::lexical_analyser& lexer, const std::string& name, Console& consoleRef)
       : lex(lexer)
-      , file(ifile)
+      , console(consoleRef)
       , ast(node::PROGRAM)
     {
         current_node = &ast;
@@ -55,10 +55,7 @@ namespace parser
         /* If symbol is not equal to type passed as argument,
             throw exception*/
         if (!accept(type))
-        {
-            miklog::parserError(file_name, type, symbol, file);
-            throw miklog::compile_error();
-        }
+            console.parseError(type, symbol);
     }
 
     void rd_parser::expect(token::tokenType* types, int ntypes)
@@ -72,10 +69,7 @@ namespace parser
                 accepted = true;
 
         if (!accepted)
-        {
-            miklog::parserErrorMultiple(file_name, types, ntypes, symbol, file);
-            throw miklog::compile_error();
-        }
+            console.parserErrorMultiple(types, ntypes, symbol);
     }
 
     void rd_parser::add_node(node::NodeType type, bool traverse, bool nexttoken)

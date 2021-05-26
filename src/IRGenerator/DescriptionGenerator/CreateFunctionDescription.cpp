@@ -7,10 +7,7 @@ void createFunctionDescription(irgen::ir_generator& ctx,
                                const std::vector<icode::VariableDescription>& paramTypes)
 {
     if (ctx.workingModule->symbolExists(nameToken.toString()))
-    {
-        miklog::errorOnToken(ctx.module.name, "Symbol already defined", ctx.file, nameToken);
-        throw miklog::compile_error();
-    }
+        ctx.console.compileErrorOnToken("Symbol already defined", nameToken);
 
     icode::FunctionDescription functionDescription;
     functionDescription.functionReturnDescription = returnType;
@@ -19,10 +16,7 @@ void createFunctionDescription(irgen::ir_generator& ctx,
     for (size_t i = 0; i < paramNames.size(); i++)
     {
         if (ctx.workingModule->symbolExists(paramNames[i].toString()))
-        {
-            miklog::errorOnToken(ctx.module.name, "Symbol already defined", ctx.file, paramNames[i]);
-            throw miklog::compile_error();
-        }
+            ctx.console.compileErrorOnToken("Symbol already defined", paramNames[i]);
 
         /* Append to symbol table */
         functionDescription.parameters.push_back(paramNames[i].toString());

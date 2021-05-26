@@ -1,6 +1,6 @@
-#include "log.hpp"
+#include "PrettyPrint.hpp"
 
-namespace miklog
+namespace mikpp
 {
     static std::string token_type_strs[] = { "NONE",
                                              "SPACE",
@@ -191,11 +191,15 @@ namespace miklog
         std::cout << msg << std::endl;
     }
 
-    void errorOnLine(const std::string& error_msg, const std::string& line, int lineno, int col)
+    void errorOnLine(const std::string& moduleName,
+                     const std::string& error_msg,
+                     const std::string& line,
+                     int lineno,
+                     int col)
     {
         /* Accepts line as string and column, prints line and '^' symbol at col
             along with error message */
-
+        std::cout << "MODULE " + moduleName << std::endl;
         std::cout << "ERROR in ";
         std::cout << "Line " << lineno;
         std::cout << " Col " << col + 1 << std::endl;
@@ -228,8 +232,7 @@ namespace miklog
         for (size_t i = 0; i < tok.getLine(); i++)
             getline(file, line);
 
-        println("MODULE " + mod_name);
-        errorOnLine(error_msg, line, tok.getLine(), tok.getColumn());
+        errorOnLine(mod_name, error_msg, line, tok.getLine(), tok.getColumn());
     }
 
     void parserError(const std::string& mod_name, token::tokenType expected, token::Token& found, std::ifstream& file)

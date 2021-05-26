@@ -1,15 +1,15 @@
-#ifndef LOG_HPP
-#define LOG_HPP
+#ifndef PRETTY_PRINT_HPP
+#define PRETTY_PRINT_HPP
 
 #include <fstream>
 #include <iostream>
 #include <string>
 
-#include "IntermediateRepresentation/All.hpp"
-#include "Node/Node.hpp"
-#include "Token/Token.hpp"
+#include "../IntermediateRepresentation/All.hpp"
+#include "../Node/Node.hpp"
+#include "../Token/Token.hpp"
 
-namespace miklog
+namespace mikpp
 {
     struct compile_error
     {
@@ -25,7 +25,11 @@ namespace miklog
 
     void println(const std::string& msg);
 
-    void errorOnLine(const std::string& error_msg, const std::string& line, int lineno, int col);
+    void errorOnLine(const std::string& moduleName,
+                     const std::string& error_msg,
+                     const std::string& line,
+                     int lineno,
+                     int col);
 
     void error(const std::string& mod_name, const std::string& error_msg);
 

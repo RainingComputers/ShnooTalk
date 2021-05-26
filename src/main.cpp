@@ -1,34 +1,37 @@
 #include <fstream>
 #include <iostream>
 
+#include "Console/Console.hpp"
 #include "LLVMTranslator/LLVMTranslator.hpp"
 #include "Token/Token.hpp"
 #include "irgen.hpp"
 #include "lexer.hpp"
-#include "log.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
 
 void print_usage()
 {
-    miklog::println("USAGE: uhllc MODULE [OPTION]");
-    miklog::println("\nAvailable options:");
-    miklog::println("\t-ast\tPrint parse tree");
-    miklog::println("\t-ir\tPrint intermediate code representation");
-    miklog::println("\t-llvm\tPrint llvm ir");
-    miklog::println("\t-c\tCompile program (default)");
+    mikpp::println("USAGE: uhllc MODULE [OPTION]");
+    mikpp::println("\nAvailable options:");
+    mikpp::println("\t-ast\tPrint parse tree");
+    mikpp::println("\t-ir\tPrint intermediate code representation");
+    mikpp::println("\t-llvm\tPrint llvm ir");
+    mikpp::println("\t-c\tCompile program (default)");
 }
 
-void ir_gen(const std::string& file_name, icode::TargetDescription& target, icode::StringModulesMap& modules)
+void ir_gen(std::string& file_name, icode::TargetDescription& target, icode::StringModulesMap& modules)
 {
     /* Open file */
     std::ifstream ifile;
     ifile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-    ifile.open(file_name + ".uhll");
+    std::string file_name_full = file_name + ".uhll";
+    ifile.open(file_name_full);
 
-    lexer::lexical_analyser lex(file_name, ifile);
-    parser::rd_parser parse(lex, file_name, ifile);
-    irgen::ir_generator gen(target, modules, file_name, ifile);
+    Console console(file_name, ifile);
+
+    lexer::lexical_analyser lex(file_name, ifile, console);
+    parser::rd_parser parse(lex, file_name, console);
+    irgen::ir_generator gen(target, modules, file_name, console);
 
     /* Intermediate code generation */
     gen.initgen(parse.ast);
@@ -68,6 +71,7 @@ int main(int argc, char* argv[])
 
     /* Get module name */
     std::string file_name = strip_file_ext(argv[1]);
+    std::string file_name_full = file_name + ".uhll";
 
     /* Get option passed by user, (if present) */
     std::string option;
@@ -93,12 +97,14 @@ int main(int argc, char* argv[])
             /* Open file */
             std::ifstream ifile;
             ifile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-            ifile.open(file_name + ".uhll");
+            ifile.open(file_name_full);
 
-            lexer::lexical_analyser lex(file_name, ifile);
-            parser::rd_parser parse(lex, file_name, ifile);
+            Console console(file_name, ifile);
 
-            miklog::printNode(parse.ast);
+            lexer::lexical_analyser lex(file_name, ifile, console);
+            parser::rd_parser parse(lex, file_name, console);
+
+            mikpp::printNode(parse.ast);
 
             return 0;
         }
@@ -111,8 +117,8 @@ int main(int argc, char* argv[])
         {
             for (auto pair : modules)
             {
-                miklog::print_module_desc(pair.second);
-                miklog::println("");
+                mikpp::print_module_desc(pair.second);
+                mikpp::println("");
             }
 
             return 0;
@@ -121,18 +127,26 @@ int main(int argc, char* argv[])
         if (option == "-llvm")
         {
             std::string llvm_module = llvmgen::generateLLVMModule(modules[file_name], modules, false);
-            miklog::println(llvm_module);
+            mikpp::println(llvm_module);
             return 0;
         }
 
         for (auto pair : modules)
             llvmgen::generateLLVMModule(pair.second, modules, true);
     }
-    catch (const miklog::compile_error& e)
+    catch (const mikpp::compile_error& e)
     {
         return EXIT_FAILURE;
     }
-    catch (const miklog::internal_bug_error& e)
+    catch (const CompileError& e)
+    {
+        return EXIT_FAILURE;
+    }
+    catch (const InternalBugError& e)
+    {
+        return EXIT_FAILURE;
+    }
+    catch (const mikpp::internal_bug_error& e)
     {
         return EXIT_FAILURE;
     }

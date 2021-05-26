@@ -11,10 +11,7 @@ icode::Define defineFromToken(const token::Token& valueToken)
 void createDefine(const irgen::ir_generator& ctx, const token::Token& nameToken, const token::Token& valueToken)
 {
     if (ctx.workingModule->symbolExists(nameToken.toString()))
-    {
-        miklog::errorOnToken(ctx.module.name, "Symbol already exists", ctx.file, nameToken);
-        throw miklog::compile_error();
-    }
+        ctx.console.compileErrorOnToken("Symbol already exists", nameToken);
 
     ctx.workingModule->defines[nameToken.toString()] = defineFromToken(valueToken);
 }
