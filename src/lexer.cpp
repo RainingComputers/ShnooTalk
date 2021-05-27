@@ -8,15 +8,14 @@ static std::regex float_regex(R"([0-9]*\.[0-9]+)");
 
 namespace lexer
 {
-    lexical_analyser::lexical_analyser(const std::string& name, std::ifstream& ifile, Console& consoleRef)
+    lexical_analyser::lexical_analyser(std::ifstream& ifile, Console& consoleRef)
       : console(consoleRef)
     {
-        feed(name, ifile);
+        feed(ifile);
     }
 
-    void lexical_analyser::feed(const std::string& name, std::ifstream& ifile)
+    void lexical_analyser::feed(std::ifstream& ifile)
     {
-        file_name = name;
         front_idx = 0;
 
         std::string line;

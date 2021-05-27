@@ -7,13 +7,12 @@
 
 namespace parser
 {
-    rd_parser::rd_parser(lexer::lexical_analyser& lexer, const std::string& name, Console& consoleRef)
+    rd_parser::rd_parser(lexer::lexical_analyser& lexer, Console& consoleRef)
       : lex(lexer)
       , console(consoleRef)
       , ast(node::PROGRAM)
     {
         current_node = &ast;
-        file_name = name;
 
         /* Start recursive descent parsing */
         /* Start with current node as PROGRAM */

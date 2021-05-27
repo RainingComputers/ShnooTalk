@@ -16,7 +16,7 @@ struct InternalBugError
 class Console
 {
     const std::string fileName;
-    std::ifstream& file;
+    std::ifstream* file;
 
   public:
     void compileErrorOnToken(const std::string& message, const token::Token& tok);
@@ -35,7 +35,9 @@ class Console
 
     void lexerError(const std::string& errorMessage, const std::string& line, int lineno, int col);
 
-    Console(const std::string& fileName, std::ifstream& file);
+    std::ifstream* getStream();
+
+    Console(const std::string& fileName, std::ifstream* file);
 };
 
 #endif

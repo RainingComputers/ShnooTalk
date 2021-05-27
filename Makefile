@@ -124,3 +124,6 @@ test:
 
 coverage:
 	python3 test.py --gcov
+
+tidy:
+	clang-ti

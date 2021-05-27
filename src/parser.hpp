@@ -15,7 +15,6 @@ namespace parser
     {
         lexer::lexical_analyser& lex;
         Console& console;
-        std::string file_name;
 
         node::Node* current_node;
         std::vector<node::Node*> node_stack;
@@ -68,7 +67,7 @@ namespace parser
 
       public:
         node::Node ast;
-        rd_parser(lexer::lexical_analyser& lexer, const std::string& name, Console& consoleRef);
+        rd_parser(lexer::lexical_analyser& lexer, Console& consoleRef);
     };
 }
 

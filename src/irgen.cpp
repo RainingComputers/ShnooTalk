@@ -1,6 +1,5 @@
 #include <algorithm>
 
-#include "Console/Console.hpp"
 #include "IRGenerator/Define.hpp"
 #include "IRGenerator/Enum.hpp"
 #include "IRGenerator/Function.hpp"

@@ -9,145 +9,135 @@
 #include "parser.hpp"
 #include "pathchk.hpp"
 
-void print_usage()
+void printCLIUsage()
 {
-    mikpp::println("USAGE: uhllc MODULE [OPTION]");
+    mikpp::println("USAGE: uhllc FILE OPTION");
     mikpp::println("\nAvailable options:");
+    mikpp::println("\t-c\tCompile program");
     mikpp::println("\t-ast\tPrint parse tree");
     mikpp::println("\t-ir\tPrint intermediate code representation");
     mikpp::println("\t-llvm\tPrint llvm ir");
-    mikpp::println("\t-c\tCompile program (default)");
 }
 
-void ir_gen(std::string& file_name, icode::TargetDescription& target, icode::StringModulesMap& modules)
+std::string removeFileExtension(const std::string& fileName)
 {
-    /* Open file */
-    std::ifstream ifile;
-    ifile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-    std::string file_name_full = file_name + ".uhll";
-    ifile.open(file_name_full);
+    return fileName.substr(0, fileName.find_last_of("."));
+}
 
-    Console console(file_name, ifile);
+Console getStreamAndConsole(const std::string& fileName, std::ifstream& fileStream)
+{
+    fileStream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    fileStream.open(fileName);
 
-    lexer::lexical_analyser lex(file_name, ifile, console);
-    parser::rd_parser parse(lex, file_name, console);
-    irgen::ir_generator gen(target, modules, file_name, console);
+    Console console(fileName, &fileStream);
 
-    /* Intermediate code generation */
-    gen.initgen(parse.ast);
+    return console;
+}
 
-    /* Compile external modules that the module uses/imports */
-    for (std::string use : modules[file_name].uses)
-        if (modules.find(use) == modules.end())
-            ir_gen(use, target, modules);
+node::Node generateAST(Console& console)
+{
+    lexer::lexical_analyser lex(*console.getStream(), console);
+    parser::rd_parser parse(lex, console);
+    
+    return parse.ast;
+}
+
+void generateIR(Console& console,
+                const std::string& moduleName,
+                icode::TargetDescription& target,
+                icode::StringModulesMap& modulesMap)
+{
+
+    node::Node ast = generateAST(console);
+
+    irgen::ir_generator gen(target, modulesMap, moduleName, console);
+
+    gen.initgen(ast);
+
+    for (std::string use : modulesMap[moduleName].uses)
+        if (modulesMap.find(use) == modulesMap.end())
+        {
+            std::ifstream fileStream;
+            std::string useWithExt = use + ".uhll";
+            Console console = getStreamAndConsole(useWithExt, fileStream);
+            generateIR(console, use, target, modulesMap);
+        }
 
     /* Generate icode */
-    gen.program(parse.ast);
-}
-
-std::string strip_file_ext(const std::string& file_name)
-{
-    /* Get module name, if .uhll is present, strip it */
-
-    std::string stripped_file_name;
-    std::string ext = ".uhll";
-
-    if (file_name.size() > ext.size() && file_name.substr(file_name.size() - ext.size()) == ext)
-        stripped_file_name = file_name.substr(0, file_name.size() - ext.size());
-    else
-        stripped_file_name = file_name;
-
-    return stripped_file_name;
+    gen.program(ast);
 }
 
 int main(int argc, char* argv[])
 {
-    /* Check for correct usage */
-    if (argc < 2 || argc > 3)
+    if (argc != 3)
     {
-        print_usage();
+        printCLIUsage();
         return EXIT_FAILURE;
     }
 
-    /* Get module name */
-    std::string file_name = strip_file_ext(argv[1]);
-    std::string file_name_full = file_name + ".uhll";
+    std::string fileName = argv[1];
+    std::string moduleName = removeFileExtension(fileName);
+    std::string option = argv[2];
 
-    /* Get option passed by user, (if present) */
-    std::string option;
-    if (argc == 3)
-    {
-        option = argv[2];
-
-        if (option != "-ir" && option != "-llvm" && option != "-c" && option != "-ast")
-        {
-            print_usage();
-            return EXIT_FAILURE;
-        }
-    }
-
-    /* Map for holding all the compiled module in intermediate representation */
-    icode::StringModulesMap modules;
+    std::ifstream fileStream;
+    Console console = getStreamAndConsole(fileName, fileStream);
 
     /* Compile program */
     try
     {
         if (option == "-ast")
         {
-            /* Open file */
-            std::ifstream ifile;
-            ifile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-            ifile.open(file_name_full);
-
-            Console console(file_name, ifile);
-
-            lexer::lexical_analyser lex(file_name, ifile, console);
-            parser::rd_parser parse(lex, file_name, console);
-
-            mikpp::printNode(parse.ast);
-
+            generateAST(console);
             return 0;
         }
 
+        icode::StringModulesMap modulesMap;
         icode::TargetDescription target = llvmgen::getTargetDescription();
-
-        ir_gen(file_name, target, modules);
+        generateIR(console, moduleName, target, modulesMap);
 
         if (option == "-ir")
         {
-            for (auto pair : modules)
-            {
-                mikpp::print_module_desc(pair.second);
-                mikpp::println("");
-            }
-
+            mikpp::print_module_desc(modulesMap[moduleName]);
             return 0;
         }
 
         if (option == "-llvm")
         {
-            std::string llvm_module = llvmgen::generateLLVMModule(modules[file_name], modules, false);
+            std::string llvm_module = llvmgen::generateLLVMModule(modulesMap[moduleName], modulesMap, false);
             mikpp::println(llvm_module);
             return 0;
         }
 
-        for (auto pair : modules)
-            llvmgen::generateLLVMModule(pair.second, modules, true);
+        if (option == "-c")
+        {
+            for (auto pair : modulesMap)
+                llvmgen::generateLLVMModule(pair.second, modulesMap, true);
+            
+            return 0;
+        }
+
+        printCLIUsage();
+        return EXIT_FAILURE;
     }
-    catch (const mikpp::compile_error& e)
+    catch (const mikpp::compile_error)
     {
         return EXIT_FAILURE;
     }
-    catch (const CompileError& e)
+    catch (const CompileError)
     {
         return EXIT_FAILURE;
     }
-    catch (const InternalBugError& e)
+    catch (const InternalBugError)
     {
         return EXIT_FAILURE;
     }
-    catch (const mikpp::internal_bug_error& e)
+    catch (const mikpp::internal_bug_error)
     {
+        return EXIT_FAILURE;
+    }
+    catch (const std::ifstream::failure)
+    {
+        mikpp::println("File I/O error");
         return EXIT_FAILURE;
     }
 
