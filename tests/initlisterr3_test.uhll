@@ -1,4 +1,4 @@
-# MODULE initlisterr3_test
+# MODULE initlisterr3_test.uhll
 # ERROR in Line 10 Col 40
 # 
 #     var a:int[2][2] = [[1, 2], [3, 4], [5, 6]]

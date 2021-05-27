@@ -1,4 +1,4 @@
-# MODULE varaccerr10_test
+# MODULE varaccerr10_test.uhll
 # ERROR in Line 11 Col 14
 # 
 #     println(a[2])

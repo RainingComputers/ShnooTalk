@@ -1,4 +1,4 @@
-# MODULE IncorrectDimensions_test
+# MODULE IncorrectDimensions_test.uhll
 # ERROR in Line 10 Col 38
 # 
 #     var a:int[3][3] = [[4, 5, 6], 1+2+3, [7, 8, 9]]

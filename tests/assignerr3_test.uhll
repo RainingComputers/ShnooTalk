@@ -1,4 +1,4 @@
-# MODULE assignerr3_test
+# MODULE assignerr3_test.uhll
 # ERROR in Line 15 Col 7
 # 
 #     a += b

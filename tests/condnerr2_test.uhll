@@ -1,4 +1,4 @@
-# MODULE condnerr2_test
+# MODULE condnerr2_test.uhll
 # ERROR in Line 15 Col 10
 # 
 #     if(a > b) println("lol")

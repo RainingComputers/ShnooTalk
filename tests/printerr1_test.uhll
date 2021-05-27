@@ -1,4 +1,4 @@
-# MODULE printerr1_test
+# MODULE printerr1_test.uhll
 # ERROR in Line 12 Col 13
 # 
 #     println(a)

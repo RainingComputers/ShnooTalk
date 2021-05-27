@@ -1,4 +1,4 @@
-# MODULE varaccerr5_test
+# MODULE varaccerr5_test.uhll
 # ERROR in Line 10 Col 17
 # 
 #     var a:int = b

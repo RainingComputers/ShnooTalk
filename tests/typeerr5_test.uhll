@@ -1,4 +1,4 @@
-# MODULE typeerr5_test
+# MODULE typeerr5_test.uhll
 # ERROR in Line 14 Col 10
 # 
 #     a += f

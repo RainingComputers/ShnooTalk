@@ -1,4 +1,4 @@
-# MODULE typeerr6_test
+# MODULE typeerr6_test.uhll
 # ERROR in Line 14 Col 12
 # 
 #     if(a < b) print("lol a < b")

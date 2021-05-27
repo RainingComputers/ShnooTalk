@@ -1,4 +1,4 @@
-# MODULE typeerr2_test
+# MODULE typeerr2_test.uhll
 # ERROR in Line 11 Col 17
 # 
 #     var i:int = 2.0

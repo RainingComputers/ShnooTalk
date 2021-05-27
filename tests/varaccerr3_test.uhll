@@ -1,4 +1,4 @@
-# MODULE varaccerr3_test
+# MODULE varaccerr3_test.uhll
 # ERROR in Line 12 Col 17
 # 
 #     var a:int = LED0[2]

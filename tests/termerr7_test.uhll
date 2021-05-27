@@ -1,4 +1,4 @@
-# MODULE termerr7_test
+# MODULE termerr7_test.uhll
 # ERROR in Line 12 Col 13
 # 
 #     println(vec::1)

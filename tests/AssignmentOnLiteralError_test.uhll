@@ -1,4 +1,4 @@
-# MODULE AssignmentOnLiteralError_test
+# MODULE AssignmentOnLiteralError_test.uhll
 # ERROR in Line 12 Col 5
 # 
 #     a = 2

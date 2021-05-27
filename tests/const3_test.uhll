@@ -1,4 +1,4 @@
-# MODULE const3_test
+# MODULE const3_test.uhll
 # ERROR in Line 12 Col 5
 # 
 #     a = 3

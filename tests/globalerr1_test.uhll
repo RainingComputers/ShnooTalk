@@ -1,4 +1,4 @@
-# MODULE globalerr1_test
+# MODULE globalerr1_test.uhll
 # ERROR in Line 10 Col 5
 # 
 # var string:char[10]

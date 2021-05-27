@@ -1,4 +1,4 @@
-# MODULE typeerr7_test
+# MODULE typeerr7_test.uhll
 # ERROR in Line 13 Col 12
 # 
 #     return a

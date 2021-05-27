@@ -1,4 +1,4 @@
-# MODULE AssignmentOnArrayError_test
+# MODULE AssignmentOnArrayError_test.uhll
 # ERROR in Line 12 Col 7
 # 
 #     a += b

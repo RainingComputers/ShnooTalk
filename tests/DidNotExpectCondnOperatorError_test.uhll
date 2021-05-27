@@ -1,4 +1,4 @@
-# MODULE DidNotExpectCondnOperatorError_test
+# MODULE DidNotExpectCondnOperatorError_test.uhll
 # ERROR in Line 11 Col 19
 # 
 #     var b:int = a > 5

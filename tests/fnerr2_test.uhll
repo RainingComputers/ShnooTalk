@@ -1,4 +1,4 @@
-# MODULE fnerr2_test
+# MODULE fnerr2_test.uhll
 # ERROR in Line 10 Col 11
 # 
 # fn foobar(vec:int)

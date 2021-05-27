@@ -1,4 +1,4 @@
-# MODULE StringAssignmentOnlyOn1dCharrArrayError_test
+# MODULE StringAssignmentOnlyOn1dCharrArrayError_test.uhll
 # ERROR in Line 10 Col 21
 # 
 #     var a:int[10] = "Hello"

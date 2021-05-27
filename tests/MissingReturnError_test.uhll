@@ -1,4 +1,4 @@
-# MODULE MissingReturnError_test
+# MODULE MissingReturnError_test.uhll
 # ERROR in Line 8 Col 1
 # 
 # fn isAdult(age:int) -> bool

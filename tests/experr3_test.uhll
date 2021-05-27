@@ -1,4 +1,4 @@
-# MODULE experr3_test
+# MODULE experr3_test.uhll
 # ERROR in Line 13 Col 11
 # 
 #     a = b not c

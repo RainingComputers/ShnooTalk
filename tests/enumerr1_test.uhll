@@ -1,4 +1,4 @@
-# MODULE enumerr1_test
+# MODULE enumerr1_test.uhll
 # ERROR in Line 10 Col 7
 # 
 # enum [math, phsysics, chemistry, csc]

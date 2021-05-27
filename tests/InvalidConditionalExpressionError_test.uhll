@@ -1,4 +1,4 @@
-# MODULE InvalidConditionalExpressionError_test
+# MODULE InvalidConditionalExpressionError_test.uhll
 # ERROR in Line 12 Col 10
 # 
 #     if(a + 1) print("foo")

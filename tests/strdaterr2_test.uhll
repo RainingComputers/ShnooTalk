@@ -1,4 +1,4 @@
-# MODULE strdaterr2_test
+# MODULE strdaterr2_test.uhll
 # ERROR in Line 10 Col 21
 # 
 #     var a:char[2] = "lol"

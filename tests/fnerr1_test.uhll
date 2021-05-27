@@ -1,4 +1,4 @@
-# MODULE fnerr1_test
+# MODULE fnerr1_test.uhll
 # ERROR in Line 11 Col 4
 # 
 # fn vec() -> int

@@ -1,4 +1,4 @@
-# MODULE initlisterr1_test
+# MODULE initlisterr1_test.uhll
 # ERROR in Line 10 Col 17
 # 
 #     var a:int = [1, 2, 3]

@@ -1,4 +1,4 @@
-# MODULE experr2_test
+# MODULE experr2_test.uhll
 # ERROR in Line 12 Col 11
 # 
 #     a = b | c

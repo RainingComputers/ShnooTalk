@@ -1,4 +1,4 @@
-# MODULE structerr2_test
+# MODULE structerr2_test.uhll
 # ERROR in Line 10 Col 18
 # 
 #     var foo:int, foo:int

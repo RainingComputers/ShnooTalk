@@ -1,4 +1,4 @@
-# MODULE DidNotExpectCondnNotError_test
+# MODULE DidNotExpectCondnNotError_test.uhll
 # ERROR in Line 12 Col 17
 # 
 #     var b:int = not a > 3

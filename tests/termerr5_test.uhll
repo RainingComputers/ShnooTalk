@@ -1,4 +1,4 @@
-# MODULE termerr5_test
+# MODULE termerr5_test.uhll
 # ERROR in Line 12 Col 17
 # 
 #     var b:int = not a

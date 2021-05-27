@@ -1,4 +1,4 @@
-# MODULE sizeoferr1_test
+# MODULE sizeoferr1_test.uhll
 # ERROR in Line 10 Col 20
 # 
 #     println(sizeof(doesnotexist::foo))

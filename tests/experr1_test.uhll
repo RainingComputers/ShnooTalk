@@ -1,4 +1,4 @@
-# MODULE experr1_test
+# MODULE experr1_test.uhll
 # ERROR in Line 15 Col 11
 # 
 #     a = b + c
