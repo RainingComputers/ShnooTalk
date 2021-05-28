@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Console/Console.hpp"
+#include "PrettyPrint/IRPrinter.hpp"
 #include "LLVMTranslator/LLVMTranslator.hpp"
 #include "Token/Token.hpp"
 #include "irgen.hpp"
@@ -97,7 +98,7 @@ int main(int argc, char* argv[])
 
         if (option == "-ir")
         {
-            mikpp::print_module_desc(modulesMap[moduleName]);
+            mikpp::printModuleDescription(modulesMap[moduleName]);
             return 0;
         }
 

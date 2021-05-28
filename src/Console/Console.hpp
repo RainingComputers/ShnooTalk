@@ -3,7 +3,7 @@
 
 #include <fstream>
 
-#include "../PrettyPrint/PrettyPrint.hpp"
+#include "../PrettyPrint/Errors.hpp"
 
 struct CompileError
 {

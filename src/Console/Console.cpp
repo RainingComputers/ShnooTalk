@@ -22,7 +22,7 @@ void Console::internalBugErrorOnToken(const token::Token& tok)
 
 void Console::internalBugError()
 {
-    mikpp::error(fileName, "Internal compiler error, REPORT THIS BUG");
+    mikpp::errorOnModuleName(fileName, "Internal compiler error, REPORT THIS BUG");
     throw InternalBugError();
 }
 
