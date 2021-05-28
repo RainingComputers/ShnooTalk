@@ -7,7 +7,7 @@
 #include <string>
 
 #include "Console/Console.hpp"
-#include "IRBuilder/IRBuilder.hpp"
+#include "IRBuilder_old/IRBuilder.hpp"
 #include "IntermediateRepresentation/All.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"

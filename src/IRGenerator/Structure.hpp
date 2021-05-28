@@ -1,3 +1,8 @@
-#include "../irgen.hpp"
+#ifndef IRGEN_STRUCTURE_HPP
+#define IRGEN_STRUCTURE_HPP
+
+#include "../irgen_old.hpp"
 
 void structFromNode(irgen::ir_generator& ctx, const node::Node& root);
+
+#endif

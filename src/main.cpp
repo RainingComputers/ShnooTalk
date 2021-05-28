@@ -5,7 +5,7 @@
 #include "PrettyPrint/IRPrinter.hpp"
 #include "LLVMTranslator/LLVMTranslator.hpp"
 #include "Token/Token.hpp"
-#include "irgen.hpp"
+#include "irgen_old.hpp"
 #include "lexer.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"

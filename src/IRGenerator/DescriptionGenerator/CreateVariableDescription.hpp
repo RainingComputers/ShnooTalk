@@ -1,4 +1,4 @@
-#include "../../irgen.hpp"
+#include "../../irgen_old.hpp"
 
 icode::VariableDescription createVoidVariableDescription(const irgen::ir_generator& ctx);
 icode::VariableDescription createVariableDescription(irgen::ir_generator& ctx, const token::Token& dataTypeToken);

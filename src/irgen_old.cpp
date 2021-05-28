@@ -6,7 +6,7 @@
 #include "IRGenerator/Global.hpp"
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/VariableDescriptionFromNode.hpp"
-#include "irgen.hpp"
+#include "irgen_old.hpp"
 
 namespace irgen
 {
