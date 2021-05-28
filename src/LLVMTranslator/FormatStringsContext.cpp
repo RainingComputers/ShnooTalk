@@ -1,5 +1,3 @@
-#include "../log.hpp"
-
 #include "FormatStringsContext.hpp"
 
 using namespace llvm;

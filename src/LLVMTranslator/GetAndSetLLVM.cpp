@@ -1,5 +1,4 @@
 #include "../IntermediateRepresentation/All.hpp"
-#include "../log.hpp"
 #include "ToLLVMType.hpp"
 
 #include "GetAndSetLLVM.hpp"
@@ -17,8 +16,7 @@ Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op)
     if (icode::isFloat(op.dtype))
         return ConstantFP::get(dataTypeToLLVMType(ctx, op.dtype), op.val.floating);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 std::string getFullFunctionName(const std::string& functionName, const std::string& moduleName)
@@ -71,8 +69,7 @@ Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op)
         case icode::PTR:
             return ctx.symbolNamePointerIntMap.at(op.name);
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            return (Value*)ctx.console.controlReachedEndError();
     }
 }
 
@@ -94,8 +91,7 @@ Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
         case icode::CALLEE_RET_VAL:
             return getCalleeRetValuePointer(ctx, op);
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            return (Value*)ctx.console.controlReachedEndError();
     }
 }
 
@@ -113,7 +109,6 @@ void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, Value* value)
             ctx.builder->CreateStore(value, getLLVMPointer(ctx, op));
             break;
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            ctx.console.internalBugError();
     }
 }

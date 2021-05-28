@@ -1,5 +1,3 @@
-#include "../log.hpp"
-
 #include "ToLLVMType.hpp"
 
 using namespace llvm;
@@ -30,8 +28,7 @@ Type* dataTypeToLLVMType(const ModuleContext& ctx, const icode::DataType dtype)
         case icode::VOID:
             return Type::getVoidTy(*ctx.context);
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            return (Type*)ctx.console.controlReachedEndError();
     }
 }
 
@@ -59,8 +56,7 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
         case icode::F64:
             return Type::getDoublePtrTy(*ctx.context);
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            return (Type*)ctx.console.controlReachedEndError();
     }
 }
 

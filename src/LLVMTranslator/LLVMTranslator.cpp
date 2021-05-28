@@ -36,22 +36,30 @@ std::string getLLVMModuleString(const Module& LLVMModule)
     return moduleString;
 }
 
-std::string llvmgen::generateLLVMModule(icode::ModuleDescription& modDesc,
-                                        icode::StringModulesMap& modulesMap,
-                                        bool createObject)
+void llvmgen::generateLLVMModuleObject(icode::ModuleDescription& modDesc,
+                                       icode::StringModulesMap& modulesMap,
+                                       Console& console)
 {
-    ModuleContext moduleContext(modDesc, modulesMap);
+    ModuleContext moduleContext(modDesc, modulesMap, console);
     BranchContext branchContext;
     FormatStringsContext formatStringsContext;
 
     generateModule(moduleContext, branchContext, formatStringsContext);
 
-    if (createObject)
-    {
-        initializeTargetRegistry();
-        TargetMachine* targetMachine = setupTargetTripleAndDataLayout(moduleContext);
-        setupPassManagerAndCreateObject(moduleContext, targetMachine);
-    }
+    initializeTargetRegistry();
+    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(moduleContext);
+    setupPassManagerAndCreateObject(moduleContext, targetMachine);
+}
+
+std::string llvmgen::generateLLVMModuleString(icode::ModuleDescription& modDesc,
+                                              icode::StringModulesMap& modulesMap,
+                                              Console& console)
+{
+    ModuleContext moduleContext(modDesc, modulesMap, console);
+    BranchContext branchContext;
+    FormatStringsContext formatStringsContext;
+
+    generateModule(moduleContext, branchContext, formatStringsContext);
 
     return getLLVMModuleString(*moduleContext.LLVMModule);
 }

@@ -10,6 +10,7 @@
 #include "llvm/IR/LLVMContext.h"
 #include "llvm/IR/Module.h"
 
+#include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"
 
 struct ModuleContext
@@ -29,7 +30,9 @@ struct ModuleContext
     std::map<std::string, std::map<std::string, std::vector<llvm::Value*>>> params;
     llvm::Value* currentFunctionReturnPointer;
 
-    ModuleContext(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& modulesMap);
+    Console& console;
+
+    ModuleContext(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& modulesMap, Console& console);
 
     void clear();
 };

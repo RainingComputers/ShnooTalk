@@ -1,6 +1,5 @@
 #include "llvm/IR/Verifier.h"
 
-#include "../log.hpp"
 #include "BinaryOperator.hpp"
 #include "Branch.hpp"
 #include "CastOperator.hpp"
@@ -117,8 +116,7 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::EXIT:
                 break;
             default:
-                miklog::internalCompileError(ctx.moduleDescription.name);
-                throw miklog::internal_bug_error();
+                ctx.console.internalBugError();
         }
 
         branchContext.prevInstructionGotoOrRet = e.opcode == icode::GOTO || e.opcode == icode::RET;

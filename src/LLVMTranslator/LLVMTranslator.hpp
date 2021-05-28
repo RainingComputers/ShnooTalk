@@ -6,9 +6,12 @@
 namespace llvmgen
 {
     icode::TargetDescription getTargetDescription();
-    std::string generateLLVMModule(icode::ModuleDescription& modDesc,
-                                   icode::StringModulesMap& modulesMap,
-                                   bool createObject);
+    void generateLLVMModuleObject(icode::ModuleDescription& modDesc,
+                                  icode::StringModulesMap& modulesMap,
+                                  Console& console);
+    std::string generateLLVMModuleString(icode::ModuleDescription& modDesc,
+                                         icode::StringModulesMap& modulesMap,
+                                         Console& console);
 }
 
 #endif

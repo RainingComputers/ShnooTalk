@@ -11,14 +11,6 @@
 
 namespace mikpp
 {
-    struct compile_error
-    {
-    };
-
-    struct internal_bug_error
-    {
-    };
-
     void printToken(const token::Token& symbol);
 
     void printNode(const node::Node& node, int depth = 1);

@@ -29,6 +29,8 @@ class Console
 
     void internalBugErrorMessage(const std::string& message);
 
+    void* controlReachedEndError();
+
     void parseError(token::tokenType& expected, token::Token& found);
 
     void parserErrorMultiple(const token::tokenType* expected, int ntoks, const token::Token& found);

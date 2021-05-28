@@ -4,9 +4,12 @@
 
 using namespace llvm;
 
-ModuleContext::ModuleContext(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& modulesMap)
+ModuleContext::ModuleContext(icode::ModuleDescription& moduleDesc,
+                             icode::StringModulesMap& modulesMap,
+                             Console& console)
   : moduleDescription(moduleDesc)
   , externalModulesRef(modulesMap)
+  , console(console)
 {
     context = std::make_unique<LLVMContext>();
     LLVMModule = std::make_unique<Module>(moduleDescription.name, *context);

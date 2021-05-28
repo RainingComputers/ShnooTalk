@@ -1,5 +1,3 @@
-#include "../log.hpp"
-
 #include "Branch.hpp"
 
 using namespace llvm;
@@ -73,8 +71,7 @@ void createBranch(const ModuleContext& ctx,
             ctx.builder->CreateCondBr(flag, fallBlock, gotoBlock);
             break;
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            ctx.console.internalBugError();
     }
 }
 

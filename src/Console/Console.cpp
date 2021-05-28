@@ -32,6 +32,11 @@ void Console::internalBugErrorMessage(const std::string& message)
     throw InternalBugError();
 }
 
+void* Console::controlReachedEndError()
+{
+    throw InternalBugError();
+}
+
 void Console::parseError(token::tokenType& expected, token::Token& found)
 {
     mikpp::parserError(fileName, expected, found, *file);

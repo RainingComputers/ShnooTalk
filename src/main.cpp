@@ -38,7 +38,7 @@ node::Node generateAST(Console& console)
 {
     lexer::lexical_analyser lex(*console.getStream(), console);
     parser::rd_parser parse(lex, console);
-    
+
     return parse.ast;
 }
 
@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
     {
         if (option == "-ast")
         {
-            generateAST(console);
+            mikpp::printNode(generateAST(console));
             return 0;
         }
 
@@ -103,24 +103,19 @@ int main(int argc, char* argv[])
 
         if (option == "-llvm")
         {
-            std::string llvm_module = llvmgen::generateLLVMModule(modulesMap[moduleName], modulesMap, false);
-            mikpp::println(llvm_module);
+            mikpp::println(llvmgen::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
             return 0;
         }
 
         if (option == "-c")
         {
-            for (auto pair : modulesMap)
-                llvmgen::generateLLVMModule(pair.second, modulesMap, true);
-            
+            for (auto stringModulePair : modulesMap)
+                llvmgen::generateLLVMModuleObject(stringModulePair.second, modulesMap, console);
+
             return 0;
         }
 
         printCLIUsage();
-        return EXIT_FAILURE;
-    }
-    catch (const mikpp::compile_error)
-    {
         return EXIT_FAILURE;
     }
     catch (const CompileError)
@@ -128,10 +123,6 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
     catch (const InternalBugError)
-    {
-        return EXIT_FAILURE;
-    }
-    catch (const mikpp::internal_bug_error)
     {
         return EXIT_FAILURE;
     }

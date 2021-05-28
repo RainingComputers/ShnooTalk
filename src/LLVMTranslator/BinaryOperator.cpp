@@ -1,4 +1,3 @@
-#include "../log.hpp"
 #include "GetAndSetLLVM.hpp"
 
 #include "BinaryOperator.hpp"
@@ -18,8 +17,7 @@ Value* add(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dty
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFAdd(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* subtract(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -35,8 +33,7 @@ Value* subtract(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFSub(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* multiply(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -52,8 +49,7 @@ Value* multiply(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFMul(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* divide(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -69,8 +65,7 @@ Value* divide(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType 
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFDiv(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* remainder(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -86,8 +81,7 @@ Value* remainder(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFRem(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* rightShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -100,8 +94,7 @@ Value* rightShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
     if (icode::isUnsignedInteger(dtype))
         return ctx.builder->CreateLShr(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* leftShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -111,8 +104,7 @@ Value* leftShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
     if (icode::isInteger(dtype))
         return ctx.builder->CreateShl(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* bitwiseAnd(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -122,8 +114,7 @@ Value* bitwiseAnd(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
     if (icode::isInteger(dtype))
         return ctx.builder->CreateAnd(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* bitwiseOr(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -133,8 +124,7 @@ Value* bitwiseOr(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
     if (icode::isInteger(dtype))
         return ctx.builder->CreateOr(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* bitwiseXor(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -144,8 +134,7 @@ Value* bitwiseXor(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
     if (icode::isInteger(dtype))
         return ctx.builder->CreateXor(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* getBinaryOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
@@ -177,8 +166,7 @@ Value* getBinaryOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
         case icode::BWX:
             return bitwiseXor(ctx, LHS, RHS, dtype);
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            return (Value*)ctx.console.controlReachedEndError();
     }
 }
 

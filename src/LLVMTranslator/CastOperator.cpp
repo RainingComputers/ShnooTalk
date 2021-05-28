@@ -1,4 +1,3 @@
-#include "../log.hpp"
 #include "GetAndSetLLVM.hpp"
 #include "ToLLVMType.hpp"
 
@@ -17,8 +16,7 @@ Value* castToSignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* de
     if (icode::isFloat(e.op2.dtype))
         return ctx.builder->CreateFPToSI(getLLVMValue(ctx, e.op2), destType);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* castToUnsignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
@@ -29,8 +27,7 @@ Value* castToUnsignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* 
     if (icode::isFloat(e.op2.dtype))
         return ctx.builder->CreateFPToUI(getLLVMValue(ctx, e.op2), destType);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* castToFloatFromInt(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
@@ -41,8 +38,7 @@ Value* castToFloatFromInt(const ModuleContext& ctx, const icode::Entry& e, Type*
     if (icode::isUnsignedInteger(e.op2.dtype))
         return ctx.builder->CreateUIToFP(getLLVMValue(ctx, e.op2), destType);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* castToFloatFromFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
@@ -56,8 +52,7 @@ Value* castToFloatFromFloat(const ModuleContext& ctx, const icode::Entry& e, Typ
     if (icode::getDataTypeSize(e.op1.dtype) == icode::getDataTypeSize(e.op2.dtype))
         return getLLVMValue(ctx, e.op2);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* castToFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
@@ -68,8 +63,7 @@ Value* castToFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destTy
     if (icode::isFloat(e.op2.dtype))
         return castToFloatFromFloat(ctx, e, destType);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 void castOperator(ModuleContext& ctx, const icode::Entry& e)
@@ -84,10 +78,7 @@ void castOperator(ModuleContext& ctx, const icode::Entry& e)
     else if (icode::isFloat(e.op1.dtype))
         result = castToFloat(ctx, e, destType);
     else
-    {
-        miklog::internalCompileError(ctx.moduleDescription.name);
-        throw miklog::internal_bug_error();
-    }
+        ctx.console.internalBugError();
 
     setLLVMValue(ctx, e.op1, result);
 }

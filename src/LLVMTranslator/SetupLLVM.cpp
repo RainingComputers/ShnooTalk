@@ -8,7 +8,6 @@
 #include "llvm/Support/TargetSelect.h"
 #include "llvm/Target/TargetMachine.h"
 
-#include "../log.hpp"
 #include "SetupLLVM.hpp"
 
 using namespace llvm;
@@ -33,10 +32,7 @@ TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx)
     auto Target = TargetRegistry::lookupTarget(targetTriple, error);
 
     if (!Target)
-    {
-        miklog::println(error);
-        throw miklog::internal_bug_error();
-    }
+        ctx.console.internalBugErrorMessage("LLVM ERROR: " + error);
 
     std::string CPU = "generic";
     std::string features = "";
@@ -57,19 +53,13 @@ void setupPassManagerAndCreateObject(ModuleContext& ctx, TargetMachine* targetMa
     raw_fd_ostream dest(filename, EC, sys::fs::OF_None);
 
     if (EC)
-    {
-        miklog::println("LLVM ERROR: Could not open file: " + EC.message());
-        throw miklog::internal_bug_error();
-    }
+        ctx.console.internalBugErrorMessage("LLVM ERROR: Could not open file: " + EC.message());
 
     legacy::PassManager pass;
     auto FileType = CGFT_ObjectFile;
 
     if (targetMachine->addPassesToEmitFile(pass, dest, nullptr, FileType))
-    {
-        miklog::println("LLVM ERROR: LLVM target machine can't emit a file of this type");
-        throw miklog::internal_bug_error();
-    }
+        ctx.console.internalBugErrorMessage("LLVM ERROR: LLVM target machine can't emit a file of this type");
 
     pass.run(*ctx.LLVMModule);
     dest.flush();

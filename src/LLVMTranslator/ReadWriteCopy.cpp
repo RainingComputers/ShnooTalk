@@ -1,4 +1,3 @@
-#include "../log.hpp"
 #include "GetAndSetLLVM.hpp"
 #include "ToLLVMType.hpp"
 
@@ -30,8 +29,7 @@ void createPointer(ModuleContext& ctx, const icode::Entry& e)
             ctx.operandValueMap[e.op1] = ctx.currentFunctionReturnPointer;
             break;
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            ctx.console.internalBugError();
     }
 }
 
@@ -88,8 +86,7 @@ void addressBinaryOperator(ModuleContext& ctx, const icode::Entry& e)
             result = ctx.builder->CreateNUWMul(ensureI64(ctx, LHS), RHS);
             break;
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            ctx.console.internalBugError();
     }
 
     /* Store result llvm in map so it can be used by other llvm tranlations */

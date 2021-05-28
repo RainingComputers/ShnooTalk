@@ -1,4 +1,3 @@
-#include "../log.hpp"
 #include "GetAndSetLLVM.hpp"
 
 #include "CompareOperator.hpp"
@@ -15,8 +14,7 @@ Value* equal(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType d
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUEQ(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* notEqual(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -29,8 +27,7 @@ Value* notEqual(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUNE(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* lessThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -46,8 +43,7 @@ Value* lessThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpULT(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* lessThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -63,8 +59,7 @@ Value* lessThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpULE(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* greaterThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -80,8 +75,7 @@ Value* greaterThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::Data
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUGT(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* greaterThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -97,8 +91,7 @@ Value* greaterThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, ic
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUGE(LHS, RHS);
 
-    miklog::internalCompileError(ctx.moduleDescription.name);
-    throw miklog::internal_bug_error();
+    return (Value*)ctx.console.controlReachedEndError();
 }
 
 Value* getCompareOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
@@ -122,8 +115,7 @@ Value* getCompareOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
         case icode::GTE:
             return greaterThanOrEqualTo(ctx, LHS, RHS, dtype);
         default:
-            miklog::internalCompileError(ctx.moduleDescription.name);
-            throw miklog::internal_bug_error();
+            return (Value*)ctx.console.controlReachedEndError();
     }
 }
 

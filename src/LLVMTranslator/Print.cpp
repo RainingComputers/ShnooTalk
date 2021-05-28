@@ -1,5 +1,3 @@
-#include "../log.hpp"
-
 #include "GetAndSetLLVM.hpp"
 #include "Print.hpp"
 #include "ToLLVMType.hpp"
