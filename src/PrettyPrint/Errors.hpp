@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include "../Token/Token.hpp"
 #include "../IntermediateRepresentation/VariableDescription.hpp"
+#include "../Token/Token.hpp"
 
 namespace mikpp
 {
@@ -23,7 +23,10 @@ namespace mikpp
                       std::ifstream& file,
                       const token::Token& token);
 
-    void parserError(const std::string& moduleName, token::tokenType expected, token::Token& found, std::ifstream& file);
+    void parserError(const std::string& moduleName,
+                     token::tokenType expected,
+                     token::Token& found,
+                     std::ifstream& file);
 
     void parserErrorMultiple(const std::string& moduleName,
                              const token::tokenType* expected,

@@ -3,6 +3,6 @@
 
 #include "../irgen_old.hpp"
 
-void structFromNode(irgen::ir_generator& ctx, const node::Node& root);
+void createStructFromNode(irgen::ir_generator& ctx, const node::Node& root);
 
 #endif

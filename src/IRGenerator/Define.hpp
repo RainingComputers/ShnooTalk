@@ -3,6 +3,6 @@
 
 #include "../irgen_old.hpp"
 
-void defineFromNode(irgen::ir_generator& ctx, const node::Node& root);
+void createDefineFromNode(irgen::ir_generator& ctx, const node::Node& root);
 
 #endif

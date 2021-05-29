@@ -1,5 +1,4 @@
 #include "Function.hpp"
-#include "DescriptionGenerator/CreateFunctionDescription.hpp"
 
 #include "VariableDescriptionFromNode.hpp"
 
@@ -40,5 +39,5 @@ void createFunctionFromNode(irgen::ir_generator& ctx, const node::Node& root)
         paramTypes.push_back(tokenDescriptionPair.second);
     }
 
-    createFunctionDescription(ctx, nameToken, returnType, paramNames, paramTypes);
+    ctx.descriptionBuilder.createFunctionDescription(nameToken, returnType, paramNames, paramTypes);
 }

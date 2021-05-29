@@ -3,6 +3,6 @@
 
 #include "../irgen_old.hpp"
 
-void enumFromNode(irgen::ir_generator& ctx, const node::Node& root);
+void createEnumFromNode(irgen::ir_generator& ctx, const node::Node& root);
 
 #endif

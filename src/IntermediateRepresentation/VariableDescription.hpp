@@ -24,7 +24,6 @@ namespace icode
         unsigned int offset;
         unsigned int size;
         std::vector<unsigned int> dimensions;
-        unsigned int scopeId;
 
         unsigned int properties;
 

@@ -3,6 +3,6 @@
 
 #include "../irgen_old.hpp"
 
-void globalFromNode(irgen::ir_generator& ctx, const node::Node& root);
+void createGlobalFromNode(irgen::ir_generator& ctx, const node::Node& root);
 
 #endif

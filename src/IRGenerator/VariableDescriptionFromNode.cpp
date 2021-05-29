@@ -1,4 +1,3 @@
-#include "DescriptionGenerator/CreateVariableDescription.hpp"
 #include "Module.hpp"
 #include "Subscript.hpp"
 
@@ -20,11 +19,11 @@ TokenDescriptionPair variableDescriptionFromFunctionNode(ir_generator& ctx, cons
     const token::Token& symbolNameToken = root.children[0].tok;
 
     if (isVoidFunction(root))
-        return TokenDescriptionPair(symbolNameToken, createVoidVariableDescription(ctx));
+        return TokenDescriptionPair(symbolNameToken, ctx.descriptionBuilder.createVoidVariableDescription());
 
     token::Token dataTypeToken = root.getNthChildTokenFromLast(2);
 
-    return TokenDescriptionPair(symbolNameToken, createVariableDescription(ctx, dataTypeToken));
+    return TokenDescriptionPair(symbolNameToken, ctx.descriptionBuilder.createVariableDescription(dataTypeToken));
 }
 
 TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, const node::Node& root)
@@ -42,18 +41,22 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
     }
 
     const token::Token& dataTypeToken = root.getNthChildToken(childNodeCounter);
-    VariableDescription variableDescription = createVariableDescription(ctx, dataTypeToken);
+    VariableDescription variableDescription = ctx.descriptionBuilder.createVariableDescription(dataTypeToken);
 
     childNodeCounter++;
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
     {
         LiteralDimensionsIndexPair literalDimensionsIndexPair = getLiteralDimensionFromNode(root, childNodeCounter);
 
-        variableDescription = createArrayVariableDescription(variableDescription, literalDimensionsIndexPair.first);
+        variableDescription =
+          ctx.descriptionBuilder.createArrayVariableDescription(variableDescription, literalDimensionsIndexPair.first);
+
         childNodeCounter = literalDimensionsIndexPair.second;
     }
 
     ctx.resetWorkingModule();
+
+    ctx.scope.putInCurrentScope(symbolNameToken);
 
     return TokenDescriptionPair(symbolNameToken, variableDescription);
 }

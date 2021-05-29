@@ -1,13 +1,14 @@
-#include "DescriptionGenerator/CreateEnum.hpp"
-
 #include "Enum.hpp"
 
-void enumFromNode(irgen::ir_generator& ctx, const node::Node& root)
+void createEnumFromNode(irgen::ir_generator& ctx, const node::Node& root)
 {
     std::vector<token::Token> enums;
 
     for (const node::Node& node : root.children)
+    {
         enums.push_back(node.tok);
+        ctx.scope.putInGlobalScope(node.tok);
+    }
 
-    createEnum(ctx, enums);
+    ctx.descriptionBuilder.createEnum(enums);
 }

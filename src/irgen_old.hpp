@@ -1,14 +1,12 @@
 #ifndef IRGEN_HPP
 #define IRGEN_HPP
 
-#include <fstream>
-#include <map>
-#include <numeric>
-#include <string>
 
+#include "Builder/DescriptionBuilder.hpp"
 #include "Console/Console.hpp"
 #include "IRBuilder_old/IRBuilder.hpp"
 #include "IntermediateRepresentation/All.hpp"
+#include "IRGenerator/ScopeTracker.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"
 #include "pathchk.hpp"
@@ -34,17 +32,12 @@ namespace irgen
         icode::FunctionDescription* workingFunction;
         icode::ModuleDescription* workingModule;
 
-        unsigned int id_counter;
-        unsigned int scope_id_counter;
-        std::vector<unsigned int> scope_id_stack;
-
         unsigned int id();
 
-        unsigned int get_scope_id();
-        void enter_scope();
-        void exit_scope();
-        void clear_scope();
-        bool in_scope(unsigned int scope_id);
+        DescriptionBuilder descriptionBuilder;
+
+        ScopeTracker scope;
+
         void resetWorkingModule();
         void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
@@ -59,16 +52,6 @@ namespace irgen
         void use(const node::Node& root);
 
         void from(const node::Node& root);
-
-        void enumeration(const node::Node& root);
-
-        void def(const node::Node& root);
-
-        void structure(const node::Node& root);
-
-        void fn(const node::Node& root);
-
-        void global_var(const node::Node& root);
 
         icode::Operand gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype);
 

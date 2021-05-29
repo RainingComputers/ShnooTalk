@@ -4,6 +4,7 @@
 #include "IRGenerator/Enum.hpp"
 #include "IRGenerator/Function.hpp"
 #include "IRGenerator/Global.hpp"
+#include "IRGenerator/Module.hpp"
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/VariableDescriptionFromNode.hpp"
 #include "irgen_old.hpp"
@@ -20,15 +21,15 @@ namespace irgen
       , module(modules_map[file_name])
       , console(console)
       , builder(modules_map[file_name], ext_modules_map)
+      , descriptionBuilder(console)
     {
         workingFunction = nullptr;
         workingModule = &module;
 
-        id_counter = 0;
-        scope_id_counter = 0;
-
         module.name = file_name;
         module.initializeTargetInfo(target_desc);
+
+        descriptionBuilder.setWorkingModule(workingModule);
     }
 
     unsigned int ir_generator::id()
@@ -36,41 +37,16 @@ namespace irgen
         return builder.id();
     }
 
-    unsigned int ir_generator::get_scope_id()
-    {
-        return scope_id_stack.back();
-    }
-
-    void ir_generator::enter_scope()
-    {
-        scope_id_stack.push_back(++scope_id_counter);
-    }
-
-    void ir_generator::exit_scope()
-    {
-        scope_id_stack.pop_back();
-    }
-
-    void ir_generator::clear_scope()
-    {
-        scope_id_counter = 0;
-        scope_id_stack.clear();
-        scope_id_stack.push_back(0);
-    }
-
-    bool ir_generator::in_scope(unsigned int scope_id)
-    {
-        return std::find(scope_id_stack.begin(), scope_id_stack.end(), scope_id) != scope_id_stack.end();
-    }
-
     void ir_generator::resetWorkingModule()
     {
         workingModule = &module;
+        descriptionBuilder.setWorkingModule(&module);
     }
 
     void ir_generator::setWorkingModule(icode::ModuleDescription* moduleDescription)
     {
         workingModule = moduleDescription;
+        descriptionBuilder.setWorkingModule(moduleDescription);
     }
 
     bool ir_generator::get_def(const std::string& name, icode::Define& def)
@@ -184,31 +160,6 @@ namespace irgen
             else
                 console.compileErrorOnToken("Symbol does not exist", child.tok);
         }
-    }
-
-    void ir_generator::enumeration(const node::Node& root)
-    {
-        enumFromNode(*this, root);
-    }
-
-    void ir_generator::def(const node::Node& root)
-    {
-        defineFromNode(*this, root);
-    }
-
-    void ir_generator::structure(const node::Node& root)
-    {
-        structFromNode(*this, root);
-    }
-
-    void ir_generator::fn(const node::Node& root)
-    {
-        createFunctionFromNode(*this, root);
-    }
-
-    void ir_generator::global_var(const node::Node& root)
-    {
-        globalFromNode(*this, root);
     }
 
     icode::Operand ir_generator::gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype)
@@ -529,7 +480,7 @@ namespace irgen
             console.compileErrorOnToken("Symbol does not exist", child.tok);
 
         /* Check if the variable is available in the current scope */
-        if (!in_scope(current_var_info.scopeId))
+        if (!scope.isInCurrentScope(child.tok))
             console.compileErrorOnToken("Symbol not in scope", child.tok);
 
         /* If no struct or subscript */
@@ -752,25 +703,8 @@ namespace irgen
         std::string ident = root.children.back().tok.toString();
 
         /* Enter the specified ext module */
-        icode::ModuleDescription* current_module = &module;
-
-        node::Node mod_node = root.children[0];
-
-        int i = 0;
-        while (mod_node.type == node::MODULE)
-        {
-            std::string mod_name = mod_node.tok.toString();
-
-            /* Check if module exists */
-            if (!(*current_module).useExists(mod_name))
-                console.compileErrorOnToken("Module does not exist", mod_node.tok);
-
-            /* Swtich to module */
-            current_module = &ext_modules_map[mod_name];
-
-            i++;
-            mod_node = root.children[i];
-        }
+        ModuleIndexPair moduleIndexPair = getModuleFromNode(*this, root, 0);
+        icode::ModuleDescription* current_module = moduleIndexPair.first;
 
         /* Get size of type */
         int size = 0;
@@ -1428,7 +1362,7 @@ namespace irgen
                              const icode::Operand& cont_label)
     {
         /* Setup scope */
-        enter_scope();
+        scope.createScope();
 
         for (node::Node stmt : root.children)
         {
@@ -1560,7 +1494,7 @@ namespace irgen
             }
         }
 
-        exit_scope();
+        scope.exitScope();
     }
 
     void ir_generator::initgen(const node::Node& root)
@@ -1591,7 +1525,7 @@ namespace irgen
     void ir_generator::program(const node::Node& root)
     {
         /* Setup scope */
-        clear_scope();
+        scope.globalScope();
 
         /* Build symbol table */
         for (node::Node child : root.children)
@@ -1604,19 +1538,19 @@ namespace irgen
                     from(child);
                     break;
                 case node::STRUCT:
-                    structure(child);
+                    createStructFromNode(*this, child);
                     break;
                 case node::FUNCTION:
-                    fn(child);
+                    createFunctionFromNode(*this, child);
                     break;
                 case node::ENUM:
-                    enumeration(child);
+                    createEnumFromNode(*this, child);
                     break;
                 case node::DEF:
-                    def(child);
+                    createDefineFromNode(*this, child);
                     break;
                 case node::VAR:
-                    global_var(child);
+                    createGlobalFromNode(*this, child);
                     break;
                 default:
                     console.internalBugErrorOnToken(child.tok);
@@ -1636,7 +1570,7 @@ namespace irgen
                 builder.setFunctionDescription(workingFunction);
 
                 /* Clear scope */
-                clear_scope();
+                scope.globalScope();
 
                 /* Process block */
                 block(child.children.back(),

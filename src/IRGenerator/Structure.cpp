@@ -1,9 +1,8 @@
-#include "DescriptionGenerator/CreateStructDescription.hpp"
 #include "VariableDescriptionFromNode.hpp"
 
 #include "Structure.hpp"
 
-void structFromNode(irgen::ir_generator& ctx, const node::Node& root)
+void createStructFromNode(irgen::ir_generator& ctx, const node::Node& root)
 {
     const token::Token& nameToken = root.getNthChildToken(0);
 
@@ -18,5 +17,5 @@ void structFromNode(irgen::ir_generator& ctx, const node::Node& root)
         fieldTypes.push_back(tokenDescriptionPair.second);
     }
 
-    createStructDescription(ctx, nameToken, fieldNames, fieldTypes);
+    ctx.descriptionBuilder.createStructDescription(nameToken, fieldNames, fieldTypes);
 }

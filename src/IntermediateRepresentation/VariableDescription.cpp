@@ -64,7 +64,6 @@ namespace icode
         var.dtypeSize = getDataTypeSize(dtype);
         var.size = var.dtypeSize;
         var.offset = 0;
-        var.scopeId = 0;
 
         return var;
     }
