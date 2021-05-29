@@ -33,12 +33,7 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
     size_t childNodeCounter = 1;
 
     if (root.isNthChild(node::MODULE, childNodeCounter))
-    {
-        ModuleIndexPair moduleIndexPair = getModuleFromNode(ctx, root, childNodeCounter);
-
-        ctx.setWorkingModule(moduleIndexPair.first);
-        childNodeCounter = moduleIndexPair.second;
-    }
+        childNodeCounter = setWorkingModuleFromNode(ctx, root, childNodeCounter);
 
     const token::Token& dataTypeToken = root.getNthChildToken(childNodeCounter);
     VariableDescription variableDescription = ctx.descriptionBuilder.createVariableDescription(dataTypeToken);

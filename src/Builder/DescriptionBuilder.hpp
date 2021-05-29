@@ -16,6 +16,9 @@ class DescriptionBuilder
   public:
     void setWorkingModule(icode::ModuleDescription* moduleDesc);
 
+    icode::ModuleDescription* getModuleFromToken(const token::Token& moduleNameToken,
+                                                 icode::StringModulesMap& modulesMap);
+
     icode::VariableDescription createVoidVariableDescription();
 
     icode::VariableDescription createVariableDescription(const token::Token& dataTypeToken);

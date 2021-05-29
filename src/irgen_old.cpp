@@ -18,16 +18,16 @@ namespace irgen
 
       : target(target_desc)
       , ext_modules_map(modules_map)
-      , module(modules_map[file_name])
+      , rootModule(modules_map[file_name])
       , console(console)
       , builder(modules_map[file_name], ext_modules_map)
       , descriptionBuilder(console)
     {
         workingFunction = nullptr;
-        workingModule = &module;
+        workingModule = &rootModule;
 
-        module.name = file_name;
-        module.initializeTargetInfo(target_desc);
+        rootModule.name = file_name;
+        rootModule.initializeTargetInfo(target_desc);
 
         descriptionBuilder.setWorkingModule(workingModule);
     }
@@ -39,8 +39,8 @@ namespace irgen
 
     void ir_generator::resetWorkingModule()
     {
-        workingModule = &module;
-        descriptionBuilder.setWorkingModule(&module);
+        workingModule = &rootModule;
+        descriptionBuilder.setWorkingModule(&rootModule);
     }
 
     void ir_generator::setWorkingModule(icode::ModuleDescription* moduleDescription)
@@ -54,7 +54,7 @@ namespace irgen
         if ((*workingModule).getDefine(name, def))
             return true;
 
-        if (module.getDefine(name, def))
+        if (rootModule.getDefine(name, def))
             return true;
 
         return false;
@@ -65,7 +65,7 @@ namespace irgen
         if ((*workingModule).getFunction(name, func))
             return true;
 
-        if (module.getFunction(name, func))
+        if (rootModule.getFunction(name, func))
             return true;
 
         return false;
@@ -73,10 +73,10 @@ namespace irgen
 
     bool ir_generator::get_enum(const std::string& name, int& val)
     {
-        if (module.getEnum(name, val))
+        if ((*workingModule).getEnum(name, val))
             return true;
 
-        if ((*workingModule).getEnum(name, val))
+        if (rootModule.getEnum(name, val))
             return true;
 
         return false;
@@ -106,19 +106,19 @@ namespace irgen
                 console.compileErrorOnToken("Module and Package exists with same name", name_token);
 
             /* Check for multiple imports */
-            if (module.useExists(name_token.toString()))
+            if (rootModule.useExists(name_token.toString()))
                 console.compileErrorOnToken("Multiple imports detected", name_token);
 
             /* Check for name conflict */
-            if (module.symbolExists(name_token.toString()))
+            if (rootModule.symbolExists(name_token.toString()))
                 console.compileErrorOnToken("Name conflict, symbol already exists", name_token);
 
             /* Check for self import */
-            if (module.name == name_token.toString())
+            if (rootModule.name == name_token.toString())
                 console.compileErrorOnToken("Self import not allowed", name_token);
 
             /* Add to icode */
-            module.uses.push_back(name_token.toString());
+            rootModule.uses.push_back(name_token.toString());
         }
     }
 
@@ -130,7 +130,7 @@ namespace irgen
         int enum_val;
 
         /* Get ext module */
-        if (!module.useExists(root.children[0].tok.toString()))
+        if (!rootModule.useExists(root.children[0].tok.toString()))
             console.compileErrorOnToken("Module not imported", root.children[0].tok);
 
         icode::ModuleDescription* ext_module = &ext_modules_map[root.children[0].tok.toString()];
@@ -138,24 +138,24 @@ namespace irgen
         for (node::Node child : root.children[1].children)
         {
             /* Check if symbol exists */
-            if (module.symbolExists(child.tok.toString()))
+            if (rootModule.symbolExists(child.tok.toString()))
                 console.compileErrorOnToken("Symbol already defined in current module", child.tok);
 
             /* If it is struct */
             if ((*ext_module).getStruct(child.tok.toString(), struct_desc))
-                module.structures[child.tok.toString()] = struct_desc;
+                rootModule.structures[child.tok.toString()] = struct_desc;
             /* If it a function */
             else if ((*ext_module).getFunction(child.tok.toString(), func_desc))
                 console.compileErrorOnToken("Cannot import functions", child.tok);
             /* If is a def */
             else if ((*ext_module).getDefine(child.tok.toString(), def))
-                module.defines[child.tok.toString()] = def;
+                rootModule.defines[child.tok.toString()] = def;
             /* If it is a enum */
             else if ((*ext_module).getEnum(child.tok.toString(), enum_val))
-                module.enumerations[child.tok.toString()] = enum_val;
+                rootModule.enumerations[child.tok.toString()] = enum_val;
             /* Check if use exists */
             else if ((*ext_module).useExists(child.tok.toString()))
-                module.uses.push_back(child.tok.toString());
+                rootModule.uses.push_back(child.tok.toString());
             /* Does not exist */
             else
                 console.compileErrorOnToken("Symbol does not exist", child.tok);
@@ -166,7 +166,7 @@ namespace irgen
     {
         /* Append string data */
         std::string name = "_str" + str_token.getLineColString();
-        module.stringsData[name] = str_token.toUnescapedString();
+        rootModule.stringsData[name] = str_token.toUnescapedString();
 
         /* Create icode::operand */
         size_t size = char_count * icode::getDataTypeSize(dtype);
@@ -263,7 +263,7 @@ namespace irgen
         /* Loop through each field and copy them */
         unsigned int count = 0;
         icode::Operand update;
-        for (auto field : module.structures[right.second.dtypeName].structFields)
+        for (auto field : rootModule.structures[right.second.dtypeName].structFields)
         {
             icode::VariableDescription field_info = field.second;
 
@@ -374,7 +374,7 @@ namespace irgen
             var.second.setProperty(icode::IS_MUT);
 
         /* Check if symbol already exists */
-        if (module.symbolExists(var.first.toString()) || (*workingFunction).symbolExists(var.first.toString()))
+        if (rootModule.symbolExists(var.first.toString()) || (*workingFunction).symbolExists(var.first.toString()))
             console.compileErrorOnToken("Symbol already defined", var.first);
 
         /* Check for initialization expression or initializer list */
@@ -446,7 +446,7 @@ namespace irgen
         {
             is_ptr = current_var_info.checkProperty(icode::IS_PTR);
         }
-        else if (module.getGlobal(ident_name, current_var_info))
+        else if (rootModule.getGlobal(ident_name, current_var_info))
         {
             is_global = true;
         }
@@ -703,12 +703,11 @@ namespace irgen
         std::string ident = root.children.back().tok.toString();
 
         /* Enter the specified ext module */
-        ModuleIndexPair moduleIndexPair = getModuleFromNode(*this, root, 0);
-        icode::ModuleDescription* current_module = moduleIndexPair.first;
+        setWorkingModuleFromNode(*this, root, 0);
 
         /* Get size of type */
         int size = 0;
-        icode::DataType dtype = module.dataTypeFromString(ident);
+        icode::DataType dtype = rootModule.dataTypeFromString(ident);
 
         icode::StructDescription struct_desc;
         icode::VariableDescription global;
@@ -716,14 +715,16 @@ namespace irgen
 
         if (dtype != icode::STRUCT)
             size = icode::getDataTypeSize(dtype);
-        else if ((*current_module).getStruct(ident, struct_desc))
+        else if ((*workingModule).getStruct(ident, struct_desc))
             size = struct_desc.size;
-        else if ((*current_module).getGlobal(ident, global))
+        else if ((*workingModule).getGlobal(ident, global))
             size = global.size;
         else if ((*workingFunction).getSymbol(ident, symbol))
             size = symbol.dtypeSize;
         else
             console.compileErrorOnToken("Symbol not found", root.tok);
+
+        resetWorkingModule();
 
         /* return a icode::INT literal  */
         return OperandDescriptionPair(icode::createLiteralOperand(icode::INT, size, id()),
@@ -779,7 +780,7 @@ namespace irgen
             }
             case node::CAST:
             {
-                icode::DataType cast_dtype = module.dataTypeFromString(child.tok.toString());
+                icode::DataType cast_dtype = rootModule.dataTypeFromString(child.tok.toString());
 
                 OperandDescriptionPair cast_term = term(child.children[0]);
 
@@ -845,35 +846,14 @@ namespace irgen
             }
             case node::MODULE:
             {
-                /* Enter the specified ext module */
-                icode::ModuleDescription* current_module = &module;
+                int nodeCounter = setWorkingModuleFromNode(*this, root, 0);
 
-                node::Node mod_node = root.children[0];
-
-                int i = 0;
-                while (mod_node.type == node::MODULE)
-                {
-                    std::string mod_name = mod_node.tok.toString();
-
-                    /* Check if module exists */
-                    if (!(*current_module).useExists(mod_name))
-                        console.compileErrorOnToken("Module does not exist", mod_node.tok);
-
-                    /* Swtich to module */
-                    current_module = &ext_modules_map[mod_name];
-
-                    i++;
-                    mod_node = root.children[i];
-                }
-
-                if (root.children[i].tok.getType() != token::IDENTIFIER)
+                if (root.children[nodeCounter].tok.getType() != token::IDENTIFIER)
                     console.compileErrorOnToken("Invalid use of MODULE ACCESS", child.tok);
 
-                workingModule = current_module;
+                OperandDescriptionPair ret_val = term(root.children[nodeCounter]);
 
-                OperandDescriptionPair ret_val = term(root.children[i]);
-
-                workingModule = &module;
+                resetWorkingModule();
 
                 return ret_val;
             }
@@ -1566,7 +1546,7 @@ namespace irgen
                 std::string func_name = child.children[0].tok.toString();
 
                 /* Switch symbol and icode table */
-                workingFunction = &module.functions[func_name];
+                workingFunction = &rootModule.functions[func_name];
                 builder.setFunctionDescription(workingFunction);
 
                 /* Clear scope */

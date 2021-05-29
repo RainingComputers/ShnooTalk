@@ -24,7 +24,7 @@ namespace irgen
       public:
         icode::TargetDescription& target;
         icode::StringModulesMap& ext_modules_map;
-        icode::ModuleDescription& module;
+        icode::ModuleDescription& rootModule;
         Console& console;
 
         ibuild::IRBuilder builder;
