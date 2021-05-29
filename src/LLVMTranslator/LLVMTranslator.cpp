@@ -20,8 +20,8 @@ icode::TargetDescription llvmgen::getTargetDescription()
                              { "long", icode::I64 },    { "ulong", icode::UI64 }, { "float", icode::F32 },
                              { "double", icode::F64 },  { "char", icode::UI8 },   { "bool", icode::UI8 } };
 
-    target.defines = { { "true", icode::createIntDefine(1, icode::INT) },
-                       { "false", icode::createIntDefine(0, icode::INT) } };
+    target.defines = { { "true", icode::createIntDefineDescription(1, icode::INT) },
+                       { "false", icode::createIntDefineDescription(0, icode::INT) } };
 
     return target;
 }
@@ -36,11 +36,11 @@ std::string getLLVMModuleString(const Module& LLVMModule)
     return moduleString;
 }
 
-void llvmgen::generateLLVMModuleObject(icode::ModuleDescription& modDesc,
+void llvmgen::generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,
                                        icode::StringModulesMap& modulesMap,
                                        Console& console)
 {
-    ModuleContext moduleContext(modDesc, modulesMap, console);
+    ModuleContext moduleContext(moduleDescription, modulesMap, console);
     BranchContext branchContext;
     FormatStringsContext formatStringsContext;
 
@@ -51,11 +51,11 @@ void llvmgen::generateLLVMModuleObject(icode::ModuleDescription& modDesc,
     setupPassManagerAndCreateObject(moduleContext, targetMachine);
 }
 
-std::string llvmgen::generateLLVMModuleString(icode::ModuleDescription& modDesc,
+std::string llvmgen::generateLLVMModuleString(icode::ModuleDescription& moduleDescription,
                                               icode::StringModulesMap& modulesMap,
                                               Console& console)
 {
-    ModuleContext moduleContext(modDesc, modulesMap, console);
+    ModuleContext moduleContext(moduleDescription, modulesMap, console);
     BranchContext branchContext;
     FormatStringsContext formatStringsContext;
 

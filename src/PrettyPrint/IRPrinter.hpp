@@ -20,11 +20,11 @@ namespace mikpp
 
     void printEntry(const icode::Entry& entry);
 
-    void printVariableDescription(const icode::VariableDescription& var_info);
+    void printTypeDescription(const icode::TypeDescription& var_info);
 
     void printStructDescription(const icode::StructDescription& struct_desc, int ilvl = 0);
 
-    void printDef(const icode::Define& definition);
+    void printDef(const icode::DefineDescription& definition);
 
     void printFunctionDescription(const icode::FunctionDescription& func_desc, int ilvl = 0);
 

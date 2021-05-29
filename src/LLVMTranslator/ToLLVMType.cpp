@@ -60,15 +60,15 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
     }
 }
 
-Type* variableDescriptionToLLVMType(const ModuleContext& ctx, const icode::VariableDescription& variableDesc)
+Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
-    if (variableDesc.checkProperty(icode::IS_PTR))
-        return dataTypeToLLVMPointerType(ctx, variableDesc.dtype);
+    if (typeDescription.checkProperty(icode::IS_PTR))
+        return dataTypeToLLVMPointerType(ctx, typeDescription.dtype);
 
-    if (variableDesc.dimensions.size() > 0 || variableDesc.dtype == icode::STRUCT)
-        return ArrayType::get(Type::getInt8Ty(*ctx.context), variableDesc.size);
+    if (typeDescription.dimensions.size() > 0 || typeDescription.dtype == icode::STRUCT)
+        return ArrayType::get(Type::getInt8Ty(*ctx.context), typeDescription.size);
 
-    return dataTypeToLLVMType(ctx, variableDesc.dtype);
+    return dataTypeToLLVMType(ctx, typeDescription.dtype);
 }
 
 FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::FunctionDescription& functionDesc)
@@ -78,14 +78,13 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
     /* Set the types vector */
     for (std::string paramString : functionDesc.parameters)
     {
-        Type* type = variableDescriptionToLLVMType(ctx, functionDesc.symbols.at(paramString));
+        Type* type = typeDescriptionToLLVMType(ctx, functionDesc.symbols.at(paramString));
         parameterTypes.push_back(type);
     }
 
     /* Setup llvm function */
-    FunctionType* FT = FunctionType::get(variableDescriptionToLLVMType(ctx, functionDesc.functionReturnDescription),
-                                         parameterTypes,
-                                         false);
+    FunctionType* FT =
+      FunctionType::get(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnDescription), parameterTypes, false);
 
     return FT;
 }

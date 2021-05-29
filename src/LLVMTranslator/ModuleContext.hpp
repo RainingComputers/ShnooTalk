@@ -25,14 +25,14 @@ struct ModuleContext
     std::map<icode::Operand, llvm::Value*> operandValueMap;
 
     icode::ModuleDescription& moduleDescription;
-    icode::StringModulesMap& externalModulesRef;
+    icode::StringModulesMap& modulesMap;
 
     std::map<std::string, std::map<std::string, std::vector<llvm::Value*>>> params;
     llvm::Value* currentFunctionReturnPointer;
 
     Console& console;
 
-    ModuleContext(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& modulesMap, Console& console);
+    ModuleContext(icode::ModuleDescription& moduleDescription, icode::StringModulesMap& modulesMap, Console& console);
 
     void clear();
 };

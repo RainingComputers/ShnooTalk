@@ -5,20 +5,20 @@
 #include <vector>
 
 #include "Entry.hpp"
-#include "VariableDescription.hpp"
+#include "TypeDescription.hpp"
 
 namespace icode
 {
     struct FunctionDescription
     {
-        VariableDescription functionReturnDescription;
+        TypeDescription functionReturnDescription;
         std::vector<std::string> parameters;
-        std::map<std::string, VariableDescription> symbols;
+        std::map<std::string, TypeDescription> symbols;
         std::vector<icode::Entry> icodeTable;
         std::string moduleName;
 
         bool symbolExists(const std::string& name);
-        bool getSymbol(const std::string& name, icode::VariableDescription& variableDesc);
+        bool getSymbol(const std::string& name, icode::TypeDescription& typeDescription);
     };
 }
 

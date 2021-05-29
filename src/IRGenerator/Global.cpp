@@ -1,10 +1,10 @@
-#include "VariableDescriptionFromNode.hpp"
+#include "TypeDescriptionFromNode.hpp"
 
 #include "Global.hpp"
 
 void createGlobalFromNode(irgen::ir_generator& ctx, const node::Node& root)
 {
-    TokenDescriptionPair tokenDescriptionPair = variableDescriptionFromNode(ctx, root);
+    TokenDescriptionPair tokenDescriptionPair = typeDescriptionFromNode(ctx, root);
 
     tokenDescriptionPair.second.setProperty(icode::IS_MUT);
 

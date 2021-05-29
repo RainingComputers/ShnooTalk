@@ -2,7 +2,7 @@
 #define OPERAND_HPP
 
 #include "DataType.hpp"
-#include "VariableDescription.hpp"
+#include "TypeDescription.hpp"
 
 namespace icode
 {
@@ -43,7 +43,7 @@ namespace icode
 
         bool operator<(const Operand& other) const;
         bool operator==(const Operand& other) const;
-        void updateDataType(const VariableDescription& var);
+        void updateDataType(const TypeDescription& var);
         bool isPointer() const;
     };
 

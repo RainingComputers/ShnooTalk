@@ -2,9 +2,9 @@
 
 namespace ibuild
 {
-    IRBuilder::IRBuilder(icode::ModuleDescription& moduleDesc, icode::StringModulesMap& moduleDescMap)
-      : module(moduleDesc)
-      , moduleMap(moduleDescMap)
+    IRBuilder::IRBuilder(icode::ModuleDescription& moduleDescription, icode::StringModulesMap& modulesMap)
+      : module(moduleDescription)
+      , modulesMap(modulesMap)
     {
         idCounter = 0;
     }
@@ -35,7 +35,7 @@ namespace ibuild
 
         /* If it a struct, create pointer to the first field */
 
-        icode::VariableDescription firstFieldDesc = module.structures[op.dtypeName].structFields.begin()->second;
+        icode::TypeDescription firstFieldDesc = module.structures[op.dtypeName].structFields.begin()->second;
 
         return icode::createPointerOperand(firstFieldDesc.dtype, firstFieldDesc.dtypeName, id());
     }

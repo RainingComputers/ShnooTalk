@@ -5,7 +5,7 @@
 
 namespace icode
 {
-    struct Define
+    struct DefineDescription
     {
         union
         {
@@ -16,8 +16,8 @@ namespace icode
         DataType dtype;
     };
 
-    Define createIntDefine(int val, DataType dtype);
-    Define createFloatDefine(float val, DataType dtype);
+    DefineDescription createIntDefineDescription(int val, DataType dtype);
+    DefineDescription createFloatDefineDescription(float val, DataType dtype);
 }
 
 #endif

@@ -114,20 +114,20 @@ namespace mikpp
         printOperand(entry.op3);
     }
 
-    void printVariableDescription(const icode::VariableDescription& variableDesc)
+    void printTypeDescription(const icode::TypeDescription& typeDescription)
     {
         std::cout << "Var(";
         std::cout << "dtype="
-                  << "\"" << variableDesc.dtypeName << "\":";
-        std::cout << icode::dataTypeToString(variableDesc.dtype);
-        std::cout << " dtypesize=" << variableDesc.dtypeSize;
+                  << "\"" << typeDescription.dtypeName << "\":";
+        std::cout << icode::dataTypeToString(typeDescription.dtype);
+        std::cout << " dtypesize=" << typeDescription.dtypeSize;
         std::cout << " mod="
-                  << "\"" << variableDesc.moduleName << "\"";
-        std::cout << " offset=" << variableDesc.offset;
-        std::cout << " size=" << variableDesc.size;
+                  << "\"" << typeDescription.moduleName << "\"";
+        std::cout << " offset=" << typeDescription.offset;
+        std::cout << " size=" << typeDescription.size;
 
         std::cout << " dim=[";
-        for (unsigned int i : variableDesc.dimensions)
+        for (unsigned int i : typeDescription.dimensions)
             std::cout << i << ",";
         std::cout << "]";
 
@@ -143,7 +143,7 @@ namespace mikpp
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << field.first << ":";
-            printVariableDescription(field.second);
+            printTypeDescription(field.second);
             std::cout << std::endl;
         }
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
@@ -155,7 +155,7 @@ namespace mikpp
         std::cout << std::string(ilvl, ' ') << ")" << std::endl;
     }
 
-    void printDef(const icode::Define& definition)
+    void printDef(const icode::DefineDescription& definition)
     {
         std::cout << "Def(";
 
@@ -177,7 +177,7 @@ namespace mikpp
         std::cout << "]" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Retinfo=";
-        printVariableDescription(functionDesc.functionReturnDescription);
+        printTypeDescription(functionDesc.functionReturnDescription);
         std::cout << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Symbols={" << std::endl;
@@ -185,7 +185,7 @@ namespace mikpp
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << symbol.first << ":";
-            printVariableDescription(symbol.second);
+            printTypeDescription(symbol.second);
             std::cout << std::endl;
         }
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
@@ -202,20 +202,20 @@ namespace mikpp
         std::cout << std::string(ilvl, ' ') << ")" << std::endl;
     }
 
-    void printModuleDescription(const icode::ModuleDescription& moduleDesc, int ilvl)
+    void printModuleDescription(const icode::ModuleDescription& moduleDescription, int ilvl)
     {
         std::cout << "Module(" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Name=";
-        std::cout << "\"" + moduleDesc.name + "\"" << std::endl;
+        std::cout << "\"" + moduleDescription.name + "\"" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Uses=[";
-        for (std::string use : moduleDesc.uses)
+        for (std::string use : moduleDescription.uses)
             std::cout << use << ", ";
         std::cout << "]" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Enums={" << std::endl;
-        for (auto enumeration : moduleDesc.enumerations)
+        for (auto enumeration : moduleDescription.enumerations)
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << enumeration.first << "=";
@@ -224,7 +224,7 @@ namespace mikpp
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Defs={" << std::endl;
-        for (auto definition : moduleDesc.defines)
+        for (auto definition : moduleDescription.defines)
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << definition.first << ":";
@@ -234,17 +234,17 @@ namespace mikpp
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Globals={" << std::endl;
-        for (auto symbol : moduleDesc.globals)
+        for (auto symbol : moduleDescription.globals)
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << symbol.first << ":";
-            printVariableDescription(symbol.second);
+            printTypeDescription(symbol.second);
             std::cout << std::endl;
         }
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Sructs={" << std::endl;
-        for (auto structure : moduleDesc.structures)
+        for (auto structure : moduleDescription.structures)
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << structure.first << ":";
@@ -253,7 +253,7 @@ namespace mikpp
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Functs={" << std::endl;
-        for (auto function : moduleDesc.functions)
+        for (auto function : moduleDescription.functions)
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << function.first << ":";

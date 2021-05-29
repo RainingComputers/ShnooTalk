@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "../IntermediateRepresentation/VariableDescription.hpp"
+#include "../IntermediateRepresentation/TypeDescription.hpp"
 #include "../Token/Token.hpp"
 
 namespace mikpp
@@ -37,8 +37,8 @@ namespace mikpp
     void typeError(const std::string& moduleName,
                    std::ifstream& file,
                    const token::Token& tok,
-                   icode::VariableDescription& expected,
-                   icode::VariableDescription& found);
+                   icode::TypeDescription& expected,
+                   icode::TypeDescription& found);
 
     void internalCompilerErrorToken(const std::string& moduleName, std::ifstream& file, const token::Token& tok);
 

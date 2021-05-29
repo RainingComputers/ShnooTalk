@@ -1,18 +1,17 @@
 #ifndef IRGEN_HPP
 #define IRGEN_HPP
 
-
 #include "Builder/DescriptionBuilder.hpp"
 #include "Console/Console.hpp"
 #include "IRBuilder_old/IRBuilder.hpp"
-#include "IntermediateRepresentation/All.hpp"
 #include "IRGenerator/ScopeTracker.hpp"
+#include "IntermediateRepresentation/All.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"
 #include "pathchk.hpp"
 
-typedef std::pair<icode::Operand, icode::VariableDescription> OperandDescriptionPair;
-typedef std::pair<token::Token, icode::VariableDescription> TokenDescriptionPair;
+typedef std::pair<icode::Operand, icode::TypeDescription> OperandDescriptionPair;
+typedef std::pair<token::Token, icode::TypeDescription> TokenDescriptionPair;
 typedef std::pair<icode::ModuleDescription*, size_t> ModuleIndexPair;
 typedef std::pair<icode::DataType, int> DataTypeSizePair;
 typedef std::pair<std::vector<int>, int> LiteralDimensionsIndexPair;
@@ -41,13 +40,13 @@ namespace irgen
         void resetWorkingModule();
         void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
-        bool get_def(const std::string& name, icode::Define& def);
+        bool get_def(const std::string& name, icode::DefineDescription& def);
 
         bool get_func(const std::string& name, icode::FunctionDescription& func);
 
         bool get_enum(const std::string& name, int& val);
 
-        std::pair<token::Token, icode::VariableDescription> var_from_node(const node::Node& root);
+        std::pair<token::Token, icode::TypeDescription> var_from_node(const node::Node& root);
 
         void use(const node::Node& root);
 
@@ -55,7 +54,7 @@ namespace irgen
 
         icode::Operand gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype);
 
-        OperandDescriptionPair var_info_to_str_dat(const token::Token& str_token, icode::VariableDescription var);
+        OperandDescriptionPair var_info_to_str_dat(const token::Token& str_token, icode::TypeDescription var);
 
         void assign_str_literal_tovar(OperandDescriptionPair var, node::Node& root);
 

@@ -21,7 +21,7 @@ class Console
   public:
     void compileErrorOnToken(const std::string& message, const token::Token& tok);
 
-    void typeError(const token::Token& tok, icode::VariableDescription& expected, icode::VariableDescription& found);
+    void typeError(const token::Token& tok, icode::TypeDescription& expected, icode::TypeDescription& found);
 
     void internalBugErrorOnToken(const token::Token& tok);
 

@@ -40,14 +40,14 @@ namespace icode
         return GetMapElement<std::string, int>(enumerations, name, val);
     }
 
-    bool ModuleDescription::getDefine(const std::string& name, Define& val)
+    bool ModuleDescription::getDefineDescription(const std::string& name, DefineDescription& val)
     {
-        return GetMapElement<std::string, Define>(defines, name, val);
+        return GetMapElement<std::string, DefineDescription>(defines, name, val);
     }
 
-    bool ModuleDescription::getGlobal(const std::string& name, VariableDescription& val)
+    bool ModuleDescription::getGlobal(const std::string& name, TypeDescription& val)
     {
-        return GetMapElement<std::string, VariableDescription>(globals, name, val);
+        return GetMapElement<std::string, TypeDescription>(globals, name, val);
     }
 
     bool ModuleDescription::symbolExists(const std::string& name)

@@ -6,7 +6,7 @@
 #include "IRGenerator/Global.hpp"
 #include "IRGenerator/Module.hpp"
 #include "IRGenerator/Structure.hpp"
-#include "IRGenerator/VariableDescriptionFromNode.hpp"
+#include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -49,12 +49,12 @@ namespace irgen
         descriptionBuilder.setWorkingModule(moduleDescription);
     }
 
-    bool ir_generator::get_def(const std::string& name, icode::Define& def)
+    bool ir_generator::get_def(const std::string& name, icode::DefineDescription& def)
     {
-        if ((*workingModule).getDefine(name, def))
+        if ((*workingModule).getDefineDescription(name, def))
             return true;
 
-        if (rootModule.getDefine(name, def))
+        if (rootModule.getDefineDescription(name, def))
             return true;
 
         return false;
@@ -82,9 +82,9 @@ namespace irgen
         return false;
     }
 
-    std::pair<token::Token, icode::VariableDescription> ir_generator::var_from_node(const node::Node& root)
+    std::pair<token::Token, icode::TypeDescription> ir_generator::var_from_node(const node::Node& root)
     {
-        return variableDescriptionFromNode(*this, root);
+        return typeDescriptionFromNode(*this, root);
     }
 
     void ir_generator::use(const node::Node& root)
@@ -126,7 +126,7 @@ namespace irgen
     {
         icode::StructDescription struct_desc;
         icode::FunctionDescription func_desc;
-        icode::Define def;
+        icode::DefineDescription def;
         int enum_val;
 
         /* Get ext module */
@@ -148,7 +148,7 @@ namespace irgen
             else if ((*ext_module).getFunction(child.tok.toString(), func_desc))
                 console.compileErrorOnToken("Cannot import functions", child.tok);
             /* If is a def */
-            else if ((*ext_module).getDefine(child.tok.toString(), def))
+            else if ((*ext_module).getDefineDescription(child.tok.toString(), def))
                 rootModule.defines[child.tok.toString()] = def;
             /* If it is a enum */
             else if ((*ext_module).getEnum(child.tok.toString(), enum_val))
@@ -175,8 +175,7 @@ namespace irgen
         return opr;
     }
 
-    OperandDescriptionPair ir_generator::var_info_to_str_dat(const token::Token& str_token,
-                                                             icode::VariableDescription var)
+    OperandDescriptionPair ir_generator::var_info_to_str_dat(const token::Token& str_token, icode::TypeDescription var)
     {
         if (var.dimensions.size() != 1 || var.dtype != icode::UI8)
             console.compileErrorOnToken("String assignment only allowed on 1D CHAR ARRAY", str_token);
@@ -265,7 +264,7 @@ namespace irgen
         icode::Operand update;
         for (auto field : rootModule.structures[right.second.dtypeName].structFields)
         {
-            icode::VariableDescription field_info = field.second;
+            icode::TypeDescription field_info = field.second;
 
             if (count != 0)
             {
@@ -306,7 +305,7 @@ namespace irgen
         icode::Operand curr_offset = builder.createPointer(var.first);
 
         /* Create var info for the elements inside the list */
-        icode::VariableDescription element_var = var.second;
+        icode::TypeDescription element_var = var.second;
         element_var.size /= element_var.dimensions[0];
         element_var.dimensions.erase(element_var.dimensions.begin());
 
@@ -367,7 +366,7 @@ namespace irgen
 
     void ir_generator::var(const node::Node& root)
     {
-        std::pair<token::Token, icode::VariableDescription> var = var_from_node(root);
+        std::pair<token::Token, icode::TypeDescription> var = var_from_node(root);
 
         /* Set mutable for var */
         if (root.type == node::VAR)
@@ -429,7 +428,7 @@ namespace irgen
     OperandDescriptionPair ir_generator::var_access(const node::Node& root)
     {
         icode::Operand current_offset_temp;
-        icode::VariableDescription current_var_info;
+        icode::TypeDescription current_var_info;
         std::string ident_name;
         unsigned int dim_count = 0;
         unsigned int rem_dim = 0;
@@ -437,7 +436,7 @@ namespace irgen
         bool is_ptr = false;
 
         int enum_val;
-        icode::Define def;
+        icode::DefineDescription def;
 
         /* Check if identifier exists and get dtype and size */
         node::Node child = root.children[0];
@@ -457,7 +456,7 @@ namespace irgen
                 console.compileErrorOnToken("Invalid use of ENUM", child.tok);
 
             icode::Operand op = icode::createLiteralOperand(icode::INT, enum_val, id());
-            icode::VariableDescription var = icode::variableDescriptionFromDataType(icode::INT, target);
+            icode::TypeDescription var = icode::typeDescriptionFromDataType(icode::INT, target);
             return OperandDescriptionPair(op, var);
         }
         else if (get_def(ident_name, def))
@@ -473,7 +472,7 @@ namespace irgen
             else
                 op = icode::createLiteralOperand(icode::FLOAT, def.val.floating, id());
 
-            icode::VariableDescription var = icode::variableDescriptionFromDataType(def.dtype, target);
+            icode::TypeDescription var = icode::typeDescriptionFromDataType(def.dtype, target);
             return OperandDescriptionPair(op, var);
         }
         else
@@ -650,7 +649,7 @@ namespace irgen
         for (size_t i = 0; i < root.children.size(); i++)
         {
             /* Get parameter information */
-            icode::VariableDescription param = func_desc.symbols[func_desc.parameters[i]];
+            icode::TypeDescription param = func_desc.symbols[func_desc.parameters[i]];
             bool mut = param.checkProperty(icode::IS_MUT);
 
             /* Get argument passed to function */
@@ -710,8 +709,8 @@ namespace irgen
         icode::DataType dtype = rootModule.dataTypeFromString(ident);
 
         icode::StructDescription struct_desc;
-        icode::VariableDescription global;
-        icode::VariableDescription symbol;
+        icode::TypeDescription global;
+        icode::TypeDescription symbol;
 
         if (dtype != icode::STRUCT)
             size = icode::getDataTypeSize(dtype);
@@ -728,7 +727,7 @@ namespace irgen
 
         /* return a icode::INT literal  */
         return OperandDescriptionPair(icode::createLiteralOperand(icode::INT, size, id()),
-                                      icode::variableDescriptionFromDataType(icode::INT, target));
+                                      icode::typeDescriptionFromDataType(icode::INT, target));
     }
 
     OperandDescriptionPair ir_generator::term(const node::Node& root)
@@ -748,7 +747,7 @@ namespace irgen
                         int literal = std::stoi(child.tok.toString());
                         icode::DataType dtype = icode::INT;
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, literal, id()),
-                                                      icode::variableDescriptionFromDataType(dtype, target));
+                                                      icode::typeDescriptionFromDataType(dtype, target));
 
                         break;
                     }
@@ -758,7 +757,7 @@ namespace irgen
 
                         icode::DataType dtype = icode::UI8;
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, c, id()),
-                                                      icode::variableDescriptionFromDataType(dtype, target));
+                                                      icode::typeDescriptionFromDataType(dtype, target));
                     }
                     case token::FLOAT_LITERAL:
                     {
@@ -766,7 +765,7 @@ namespace irgen
                         icode::DataType dtype = icode::FLOAT;
                         float literal = (float)stof(child.tok.toString());
                         return OperandDescriptionPair(icode::createLiteralOperand(dtype, literal, id()),
-                                                      icode::variableDescriptionFromDataType(dtype, target));
+                                                      icode::typeDescriptionFromDataType(dtype, target));
 
                         break;
                     }
@@ -792,7 +791,7 @@ namespace irgen
                 icode::Operand res_temp = builder.castOperator(cast_dtype, cast_term.first);
 
                 /* Return temp */
-                return OperandDescriptionPair(res_temp, icode::variableDescriptionFromDataType(cast_dtype, target));
+                return OperandDescriptionPair(res_temp, icode::typeDescriptionFromDataType(cast_dtype, target));
             }
             case node::UNARY_OPR:
             {
@@ -865,7 +864,7 @@ namespace irgen
                 console.internalBugErrorOnToken(child.tok);
         }
 
-        return OperandDescriptionPair(icode::Operand(), icode::variableDescriptionFromDataType(icode::VOID, target));
+        return OperandDescriptionPair(icode::Operand(), icode::typeDescriptionFromDataType(icode::VOID, target));
     }
 
     icode::Instruction ir_generator::tokenToBinaryOperator(const token::Token tok)
@@ -1427,7 +1426,7 @@ namespace irgen
                 }
                 case node::RETURN:
                 {
-                    icode::VariableDescription ret_info = (*workingFunction).functionReturnDescription;
+                    icode::TypeDescription ret_info = (*workingFunction).functionReturnDescription;
 
                     /* Get return value */
                     if (stmt.children.size() != 0)

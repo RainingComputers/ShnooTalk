@@ -85,7 +85,7 @@ namespace mikpp
         errorOnToken(moduleName, errorMessage, file, found);
     }
 
-    std::string variableDescriptionToTypeString(icode::VariableDescription& var)
+    std::string typeDescriptionToTypeString(icode::TypeDescription& var)
     {
         std::string var_str = var.dtypeName;
 
@@ -98,13 +98,13 @@ namespace mikpp
     void typeError(const std::string& moduleName,
                    std::ifstream& file,
                    const token::Token& tok,
-                   icode::VariableDescription& expected,
-                   icode::VariableDescription& found)
+                   icode::TypeDescription& expected,
+                   icode::TypeDescription& found)
     {
         /* Used by ir generator for type errors */
 
-        std::string found_str = variableDescriptionToTypeString(found);
-        std::string expected_str = variableDescriptionToTypeString(expected);
+        std::string found_str = typeDescriptionToTypeString(found);
+        std::string expected_str = typeDescriptionToTypeString(expected);
 
         std::string expect_msg = "Type error, did not expect " + found_str;
         expect_msg += ",\nexpected " + expected_str;

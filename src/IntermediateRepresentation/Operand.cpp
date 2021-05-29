@@ -39,7 +39,7 @@ namespace icode
         return false;
     }
 
-    void Operand::updateDataType(const VariableDescription& var)
+    void Operand::updateDataType(const TypeDescription& var)
     {
         dtype = var.dtype;
         dtypeName = var.dtypeName;

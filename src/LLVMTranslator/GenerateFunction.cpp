@@ -146,7 +146,7 @@ void setCurrentFunctionReturnPointer(ModuleContext& ctx,
                                      const std::string& name)
 {
     ctx.currentFunctionReturnPointer =
-      ctx.builder->CreateAlloca(variableDescriptionToLLVMType(ctx, functionDesc.functionReturnDescription),
+      ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnDescription),
                                 nullptr,
                                 name + ".retPointer");
 }

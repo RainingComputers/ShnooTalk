@@ -4,13 +4,13 @@
 #include <map>
 #include <string>
 
-#include "VariableDescription.hpp"
+#include "TypeDescription.hpp"
 
 namespace icode
 {
     struct StructDescription
     {
-        std::map<std::string, VariableDescription> structFields;
+        std::map<std::string, TypeDescription> structFields;
         unsigned int size;
         std::string moduleName;
 

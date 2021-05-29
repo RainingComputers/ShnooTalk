@@ -19,9 +19,9 @@ namespace icode
         std::map<std::string, StructDescription> structures;
         std::map<std::string, FunctionDescription> functions;
         std::map<std::string, int> enumerations;
-        std::map<std::string, Define> defines;
+        std::map<std::string, DefineDescription> defines;
         std::map<std::string, DataType> dataTypeNames;
-        std::map<std::string, VariableDescription> globals;
+        std::map<std::string, TypeDescription> globals;
         std::map<std::string, std::string> stringsData;
 
         void initializeTargetInfo(const TargetDescription& target);
@@ -31,8 +31,8 @@ namespace icode
         bool getStruct(const std::string&, StructDescription&);
         bool getFunction(const std::string&, FunctionDescription&);
         bool getEnum(const std::string&, int&);
-        bool getDefine(const std::string&, Define&);
-        bool getGlobal(const std::string&, VariableDescription&);
+        bool getDefineDescription(const std::string&, DefineDescription&);
+        bool getGlobal(const std::string&, TypeDescription&);
         bool symbolExists(const std::string&);
     };
 

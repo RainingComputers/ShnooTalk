@@ -7,12 +7,13 @@ DescriptionBuilder::DescriptionBuilder(Console& console)
 {
 }
 
-void DescriptionBuilder::setWorkingModule(icode::ModuleDescription* moduleDesc)
+void DescriptionBuilder::setWorkingModule(icode::ModuleDescription* moduleDescription)
 {
-    workingModule = moduleDesc;
+    workingModule = moduleDescription;
 }
 
-ModuleDescription* DescriptionBuilder::getModuleFromToken(const token::Token& moduleNameToken, StringModulesMap& modulesMap)
+ModuleDescription* DescriptionBuilder::getModuleFromToken(const token::Token& moduleNameToken,
+                                                          StringModulesMap& modulesMap)
 {
     const std::string& moduleName = moduleNameToken.toString();
 
@@ -22,19 +23,19 @@ ModuleDescription* DescriptionBuilder::getModuleFromToken(const token::Token& mo
     return &modulesMap.at(moduleName);
 }
 
-VariableDescription DescriptionBuilder::createVoidVariableDescription()
+TypeDescription DescriptionBuilder::createVoidTypeDescription()
 {
-    VariableDescription voidVariableDescription;
+    TypeDescription voidTypeDescription;
 
-    voidVariableDescription.dtype = icode::VOID;
-    voidVariableDescription.dtypeName = dataTypeToString(icode::VOID);
-    voidVariableDescription.dtypeSize = 0;
-    voidVariableDescription.size = 0;
-    voidVariableDescription.offset = 0;
-    voidVariableDescription.properties = 0;
-    voidVariableDescription.moduleName = workingModule->name;
+    voidTypeDescription.dtype = icode::VOID;
+    voidTypeDescription.dtypeName = dataTypeToString(icode::VOID);
+    voidTypeDescription.dtypeSize = 0;
+    voidTypeDescription.size = 0;
+    voidTypeDescription.offset = 0;
+    voidTypeDescription.properties = 0;
+    voidTypeDescription.moduleName = workingModule->name;
 
-    return voidVariableDescription;
+    return voidTypeDescription;
 }
 
 std::pair<int, std::string> DescriptionBuilder::getSizeAndModuleName(const token::Token& dataTypeToken, DataType dtype)
@@ -49,45 +50,45 @@ std::pair<int, std::string> DescriptionBuilder::getSizeAndModuleName(const token
     return std::pair<int, std::string>(structDesc.size, structDesc.moduleName);
 }
 
-VariableDescription DescriptionBuilder::createVariableDescription(const token::Token& dataTypeToken)
+TypeDescription DescriptionBuilder::createTypeDescription(const token::Token& dataTypeToken)
 {
     icode::DataType dtype = workingModule->dataTypeFromString(dataTypeToken.toString());
 
     std::pair<int, std::string> sizeAndModuleName = getSizeAndModuleName(dataTypeToken, dtype);
 
-    VariableDescription variableDescription;
+    TypeDescription typeDescription;
 
-    variableDescription.dtype = dtype;
-    variableDescription.dtypeName = dataTypeToken.toString();
-    variableDescription.dtypeSize = sizeAndModuleName.first;
-    variableDescription.size = variableDescription.dtypeSize;
-    variableDescription.offset = 0;
-    variableDescription.properties = 0;
-    variableDescription.moduleName = sizeAndModuleName.second;
+    typeDescription.dtype = dtype;
+    typeDescription.dtypeName = dataTypeToken.toString();
+    typeDescription.dtypeSize = sizeAndModuleName.first;
+    typeDescription.size = typeDescription.dtypeSize;
+    typeDescription.offset = 0;
+    typeDescription.properties = 0;
+    typeDescription.moduleName = sizeAndModuleName.second;
 
-    return variableDescription;
+    return typeDescription;
 }
 
-VariableDescription DescriptionBuilder::createArrayVariableDescription(const VariableDescription& variableDesc,
-                                                                       std::vector<int>& dimensions)
+TypeDescription DescriptionBuilder::createArrayTypeDescription(const TypeDescription& typeDescription,
+                                                               std::vector<int>& dimensions)
 {
-    VariableDescription modifiedVariableDesc = variableDesc;
+    TypeDescription modifiedTypeDescription = typeDescription;
 
     for (int dim : dimensions)
     {
-        modifiedVariableDesc.size *= dim;
-        modifiedVariableDesc.dimensions.push_back(dim);
+        modifiedTypeDescription.size *= dim;
+        modifiedTypeDescription.dimensions.push_back(dim);
     }
 
-    return modifiedVariableDesc;
+    return modifiedTypeDescription;
 }
 
-icode::Define defineFromToken(const token::Token& valueToken)
+icode::DefineDescription defineDescriptionFromToken(const token::Token& valueToken)
 {
     if (valueToken.getType() == token::INT_LITERAL)
-        return icode::createIntDefine(valueToken.toInt(), icode::INT);
+        return icode::createIntDefineDescription(valueToken.toInt(), icode::INT);
 
-    return icode::createFloatDefine(valueToken.toFloat(), icode::FLOAT);
+    return icode::createFloatDefineDescription(valueToken.toFloat(), icode::FLOAT);
 }
 
 void DescriptionBuilder::createDefine(const token::Token& nameToken, const token::Token& valueToken)
@@ -95,7 +96,7 @@ void DescriptionBuilder::createDefine(const token::Token& nameToken, const token
     if (workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
-    workingModule->defines[nameToken.toString()] = defineFromToken(valueToken);
+    workingModule->defines[nameToken.toString()] = defineDescriptionFromToken(valueToken);
 }
 
 void DescriptionBuilder::createEnum(const std::vector<token::Token>& enums)
@@ -110,9 +111,9 @@ void DescriptionBuilder::createEnum(const std::vector<token::Token>& enums)
 }
 
 void DescriptionBuilder::createFunctionDescription(const token::Token& nameToken,
-                                                   const icode::VariableDescription& returnType,
+                                                   const icode::TypeDescription& returnType,
                                                    const std::vector<token::Token>& paramNames,
-                                                   const std::vector<icode::VariableDescription>& paramTypes)
+                                                   const std::vector<icode::TypeDescription>& paramTypes)
 {
     if (workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
@@ -135,12 +136,12 @@ void DescriptionBuilder::createFunctionDescription(const token::Token& nameToken
 }
 
 void DescriptionBuilder::createGlobal(const token::Token globalNameToken,
-                                      const icode::VariableDescription& variableDesc)
+                                      const icode::TypeDescription& typeDescription)
 {
     if (workingModule->symbolExists(globalNameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", globalNameToken);
 
-    workingModule->globals[globalNameToken.toString()] = variableDesc;
+    workingModule->globals[globalNameToken.toString()] = typeDescription;
 }
 
 icode::StructDescription DescriptionBuilder::createEmptyStructDescription()
@@ -154,7 +155,7 @@ icode::StructDescription DescriptionBuilder::createEmptyStructDescription()
 
 void DescriptionBuilder::createStructDescription(const token::Token& nameToken,
                                                  const std::vector<token::Token>& fieldNames,
-                                                 const std::vector<icode::VariableDescription>& fieldTypes)
+                                                 const std::vector<icode::TypeDescription>& fieldTypes)
 {
     if (workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
@@ -169,7 +170,7 @@ void DescriptionBuilder::createStructDescription(const token::Token& nameToken,
         if (structDescription.fieldExists(fieldNames[i].toString()))
             console.compileErrorOnToken("Field already defined", fieldNames[i]);
 
-        icode::VariableDescription field = fieldTypes[i];
+        icode::TypeDescription field = fieldTypes[i];
         field.offset = structDescription.size;
 
         structDescription.size += field.size;

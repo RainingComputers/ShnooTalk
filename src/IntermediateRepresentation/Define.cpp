@@ -2,17 +2,17 @@
 
 namespace icode
 {
-    Define createIntDefine(int val, DataType dtype)
+    DefineDescription createIntDefineDescription(int val, DataType dtype)
     {
-        Define intDefine;
+        DefineDescription intDefine;
         intDefine.val.integer = val;
         intDefine.dtype = dtype;
         return intDefine;
     }
 
-    Define createFloatDefine(float val, DataType dtype)
+    DefineDescription createFloatDefineDescription(float val, DataType dtype)
     {
-        Define floatDefine;
+        DefineDescription floatDefine;
         floatDefine.val.floating = val;
         floatDefine.dtype = dtype;
         return floatDefine;

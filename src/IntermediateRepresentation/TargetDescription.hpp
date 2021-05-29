@@ -11,7 +11,7 @@ namespace icode
     struct TargetDescription
     {
         std::map<std::string, DataType> dataTypeNames;
-        std::map<std::string, Define> defines;
+        std::map<std::string, DefineDescription> defines;
     };
 }
 

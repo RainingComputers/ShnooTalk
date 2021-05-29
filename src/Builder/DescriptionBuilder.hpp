@@ -14,32 +14,32 @@ class DescriptionBuilder
     std::pair<int, std::string> getSizeAndModuleName(const token::Token& dataTypeToken, icode::DataType dtype);
 
   public:
-    void setWorkingModule(icode::ModuleDescription* moduleDesc);
+    void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
     icode::ModuleDescription* getModuleFromToken(const token::Token& moduleNameToken,
                                                  icode::StringModulesMap& modulesMap);
 
-    icode::VariableDescription createVoidVariableDescription();
+    icode::TypeDescription createVoidTypeDescription();
 
-    icode::VariableDescription createVariableDescription(const token::Token& dataTypeToken);
+    icode::TypeDescription createTypeDescription(const token::Token& dataTypeToken);
 
-    icode::VariableDescription createArrayVariableDescription(const icode::VariableDescription& variableDesc,
-                                                              std::vector<int>& dimensions);
+    icode::TypeDescription createArrayTypeDescription(const icode::TypeDescription& typeDescription,
+                                                      std::vector<int>& dimensions);
 
     void createDefine(const token::Token& nameToken, const token::Token& valueToken);
 
     void createEnum(const std::vector<token::Token>& enums);
 
     void createFunctionDescription(const token::Token& nameToken,
-                                   const icode::VariableDescription& returnType,
+                                   const icode::TypeDescription& returnType,
                                    const std::vector<token::Token>& paramNames,
-                                   const std::vector<icode::VariableDescription>& paramTypes);
+                                   const std::vector<icode::TypeDescription>& paramTypes);
 
-    void createGlobal(const token::Token globalNameToken, const icode::VariableDescription& variableDesc);
+    void createGlobal(const token::Token globalNameToken, const icode::TypeDescription& typeDescription);
 
     void createStructDescription(const token::Token& nameToken,
                                  const std::vector<token::Token>& fieldNames,
-                                 const std::vector<icode::VariableDescription>& fieldTypes);
+                                 const std::vector<icode::TypeDescription>& fieldTypes);
 
     DescriptionBuilder(Console& console);
 };

@@ -1,7 +1,7 @@
 #include "Module.hpp"
 #include "Subscript.hpp"
 
-#include "VariableDescriptionFromNode.hpp"
+#include "TypeDescriptionFromNode.hpp"
 
 using namespace irgen;
 using namespace icode;
@@ -14,19 +14,19 @@ bool isVoidFunction(const node::Node& root)
     return false;
 }
 
-TokenDescriptionPair variableDescriptionFromFunctionNode(ir_generator& ctx, const node::Node& root)
+TokenDescriptionPair typeDescriptionFromFunctionNode(ir_generator& ctx, const node::Node& root)
 {
     const token::Token& symbolNameToken = root.children[0].tok;
 
     if (isVoidFunction(root))
-        return TokenDescriptionPair(symbolNameToken, ctx.descriptionBuilder.createVoidVariableDescription());
+        return TokenDescriptionPair(symbolNameToken, ctx.descriptionBuilder.createVoidTypeDescription());
 
     token::Token dataTypeToken = root.getNthChildTokenFromLast(2);
 
-    return TokenDescriptionPair(symbolNameToken, ctx.descriptionBuilder.createVariableDescription(dataTypeToken));
+    return TokenDescriptionPair(symbolNameToken, ctx.descriptionBuilder.createTypeDescription(dataTypeToken));
 }
 
-TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, const node::Node& root)
+TokenDescriptionPair typeDescriptionFromVarOrParamNode(ir_generator& ctx, const node::Node& root)
 {
     const token::Token& symbolNameToken = root.getNthChildToken(0);
 
@@ -36,15 +36,15 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
         childNodeCounter = setWorkingModuleFromNode(ctx, root, childNodeCounter);
 
     const token::Token& dataTypeToken = root.getNthChildToken(childNodeCounter);
-    VariableDescription variableDescription = ctx.descriptionBuilder.createVariableDescription(dataTypeToken);
+    TypeDescription typeDescription = ctx.descriptionBuilder.createTypeDescription(dataTypeToken);
 
     childNodeCounter++;
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
     {
         LiteralDimensionsIndexPair literalDimensionsIndexPair = getLiteralDimensionFromNode(root, childNodeCounter);
 
-        variableDescription =
-          ctx.descriptionBuilder.createArrayVariableDescription(variableDescription, literalDimensionsIndexPair.first);
+        typeDescription =
+          ctx.descriptionBuilder.createArrayTypeDescription(typeDescription, literalDimensionsIndexPair.first);
 
         childNodeCounter = literalDimensionsIndexPair.second;
     }
@@ -53,13 +53,13 @@ TokenDescriptionPair variableDescriptionFromVarOrParamNode(ir_generator& ctx, co
 
     ctx.scope.putInCurrentScope(symbolNameToken);
 
-    return TokenDescriptionPair(symbolNameToken, variableDescription);
+    return TokenDescriptionPair(symbolNameToken, typeDescription);
 }
 
-TokenDescriptionPair variableDescriptionFromNode(ir_generator& ctx, const node::Node& root)
+TokenDescriptionPair typeDescriptionFromNode(ir_generator& ctx, const node::Node& root)
 {
     if (root.type == node::FUNCTION)
-        return variableDescriptionFromFunctionNode(ctx, root);
+        return typeDescriptionFromFunctionNode(ctx, root);
 
-    return variableDescriptionFromVarOrParamNode(ctx, root);
+    return typeDescriptionFromVarOrParamNode(ctx, root);
 }

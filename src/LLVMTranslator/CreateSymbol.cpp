@@ -5,16 +5,16 @@
 
 using namespace llvm;
 
-void createLocalSymbol(ModuleContext& ctx, const icode::VariableDescription& variableDesc, const std::string& name)
+void createLocalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
 {
     ctx.symbolNamePointersMap[name] =
-      ctx.builder->CreateAlloca(variableDescriptionToLLVMType(ctx, variableDesc), nullptr, name);
+      ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
 }
 
-void createGlobalSymbol(ModuleContext& ctx, const icode::VariableDescription& variableDesc, const std::string& name)
+void createGlobalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
 {
     GlobalVariable* global;
-    Type* type = variableDescriptionToLLVMType(ctx, variableDesc);
+    Type* type = typeDescriptionToLLVMType(ctx, typeDescription);
 
     global = new GlobalVariable(*ctx.LLVMModule, type, false, GlobalVariable::CommonLinkage, nullptr, name);
 
@@ -24,13 +24,13 @@ void createGlobalSymbol(ModuleContext& ctx, const icode::VariableDescription& va
 }
 
 void createFunctionParameter(ModuleContext& ctx,
-                             const icode::VariableDescription& variableDesc,
+                             const icode::TypeDescription& typeDescription,
                              const std::string& name,
                              llvm::Value* arg)
 {
-    if (!variableDesc.checkProperty(icode::IS_PTR))
+    if (!typeDescription.checkProperty(icode::IS_PTR))
     {
-        Value* alloca = ctx.builder->CreateAlloca(variableDescriptionToLLVMType(ctx, variableDesc), nullptr, name);
+        Value* alloca = ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
         ctx.builder->CreateStore(arg, alloca);
         ctx.symbolNamePointersMap[name] = alloca;
     }

@@ -8,14 +8,14 @@
 
 namespace icode
 {
-    enum VariableProperty
+    enum TypeProperties
     {
         IS_MUT,
         IS_PTR,
         IS_PARAM,
     };
 
-    struct VariableDescription
+    struct TypeDescription
     {
         DataType dtype;
         std::string dtypeName;
@@ -27,21 +27,21 @@ namespace icode
 
         unsigned int properties;
 
-        VariableDescription();
+        TypeDescription();
 
-        void setProperty(VariableProperty prop);
-        void clearProperty(VariableProperty prop);
-        bool checkProperty(VariableProperty prop) const;
+        void setProperty(TypeProperties prop);
+        void clearProperty(TypeProperties prop);
+        bool checkProperty(TypeProperties prop) const;
 
         bool isSameType() const;
         bool isStruct() const;
         bool isArray() const;
     };
 
-    bool isSameType(VariableDescription var1, VariableDescription var2);
+    bool isSameType(TypeDescription var1, TypeDescription var2);
 
     // TODO Remove this
-    VariableDescription variableDescriptionFromDataType(DataType dtype, TargetDescription& target);
+    TypeDescription typeDescriptionFromDataType(DataType dtype, TargetDescription& target);
 }
 
 #endif

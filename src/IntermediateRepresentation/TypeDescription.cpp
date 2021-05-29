@@ -1,38 +1,38 @@
-#include "VariableDescription.hpp"
+#include "TypeDescription.hpp"
 
 namespace icode
 {
-    VariableDescription::VariableDescription()
+    TypeDescription::TypeDescription()
     {
         properties = 0;
     }
 
-    void VariableDescription::setProperty(VariableProperty property)
+    void TypeDescription::setProperty(TypeProperties property)
     {
         properties |= (1 << property);
     }
 
-    void VariableDescription::clearProperty(VariableProperty property)
+    void TypeDescription::clearProperty(TypeProperties property)
     {
         properties &= ~(1 << property);
     }
 
-    bool VariableDescription::checkProperty(VariableProperty property) const
+    bool TypeDescription::checkProperty(TypeProperties property) const
     {
         return properties & (1 << property);
     }
 
-    bool VariableDescription::isStruct() const
+    bool TypeDescription::isStruct() const
     {
         return dtype == STRUCT;
     }
 
-    bool VariableDescription::isArray() const
+    bool TypeDescription::isArray() const
     {
         return dimensions.size() > 0;
     }
 
-    bool isSameType(VariableDescription var1, VariableDescription var2)
+    bool isSameType(TypeDescription var1, TypeDescription var2)
     {
         if (var1.dtype == STRUCT || var2.dtype == STRUCT)
             return (var1.dtypeName == var2.dtypeName && var1.dimensions == var2.dimensions &&
@@ -42,9 +42,9 @@ namespace icode
     }
 
     // TODO remove this
-    VariableDescription variableDescriptionFromDataType(DataType dtype, TargetDescription& target)
+    TypeDescription typeDescriptionFromDataType(DataType dtype, TargetDescription& target)
     {
-        VariableDescription var;
+        TypeDescription var;
 
         var.dtype = dtype;
 

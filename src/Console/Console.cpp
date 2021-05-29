@@ -6,9 +6,7 @@ void Console::compileErrorOnToken(const std::string& message, const token::Token
     throw CompileError();
 }
 
-void Console::typeError(const token::Token& tok,
-                        icode::VariableDescription& expected,
-                        icode::VariableDescription& found)
+void Console::typeError(const token::Token& tok, icode::TypeDescription& expected, icode::TypeDescription& found)
 {
     mikpp::typeError(fileName, *file, tok, expected, found);
     throw CompileError();

@@ -1,8 +1,8 @@
 #ifndef SCOPE_TRACKER
 #define SCOPE_TRACKER
 
-#include <vector>
 #include <map>
+#include <vector>
 
 #include "../Token/Token.hpp"
 
