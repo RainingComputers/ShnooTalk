@@ -17,7 +17,10 @@ void callPrintf(const ModuleContext& ctx, Value* formatString, Value* value)
 {
     /* Set up printf arguments*/
     std::vector<Value*> printArgs;
-    printArgs.push_back(formatString);
+
+    Value* formatStringCasted = ctx.builder->CreateBitCast(formatString, dataTypeToLLVMPointerType(ctx, icode::UI8));
+    printArgs.push_back(formatStringCasted);
+
     if (value)
         printArgs.push_back(value);
 

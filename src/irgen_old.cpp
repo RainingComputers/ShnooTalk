@@ -484,8 +484,6 @@ namespace irgen
     {
         unsigned int dim_count = 0;
         unsigned int rem_dim = 0;
-        bool is_global = false;
-        bool is_ptr = false;
 
         /* Check if identifier exists and get dtype and size */
         node::Node child = root.children[0];
