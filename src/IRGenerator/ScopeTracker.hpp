@@ -12,13 +12,13 @@ class ScopeTracker
     std::vector<unsigned int> scopeStack;
     std::map<std::string, int> symbolScopeMap;
 
+    unsigned int getCurrentScope();
+
   public:
     ScopeTracker();
-    unsigned int getCurrentScope();
     void createScope();
     void exitScope();
-    void globalScope();
-    void putInGlobalScope(const token::Token& symbol);
+    void resetScope();
     void putInCurrentScope(const token::Token& symbol);
     bool isInCurrentScope(const token::Token& symbol);
 };

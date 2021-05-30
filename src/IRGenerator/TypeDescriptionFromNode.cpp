@@ -14,22 +14,18 @@ bool isVoidFunction(const node::Node& root)
     return false;
 }
 
-TokenDescriptionPair typeDescriptionFromFunctionNode(ir_generator& ctx, const node::Node& root)
+TypeDescription typeDescriptionFromFunctionNode(ir_generator& ctx, const node::Node& root)
 {
-    const token::Token& symbolNameToken = root.children[0].tok;
-
     if (isVoidFunction(root))
-        return TokenDescriptionPair(symbolNameToken, ctx.descriptionBuilder.createVoidTypeDescription());
+        return ctx.descriptionBuilder.createVoidTypeDescription();
 
     token::Token dataTypeToken = root.getNthChildTokenFromLast(2);
 
-    return TokenDescriptionPair(symbolNameToken, ctx.descriptionBuilder.createTypeDescription(dataTypeToken));
+    return ctx.descriptionBuilder.createTypeDescription(dataTypeToken);
 }
 
-TokenDescriptionPair typeDescriptionFromVarOrParamNode(ir_generator& ctx, const node::Node& root)
+TypeDescription typeDescriptionFromVarOrParamNode(ir_generator& ctx, const node::Node& root)
 {
-    const token::Token& symbolNameToken = root.getNthChildToken(0);
-
     size_t childNodeCounter = 1;
 
     if (root.isNthChild(node::MODULE, childNodeCounter))
@@ -51,12 +47,10 @@ TokenDescriptionPair typeDescriptionFromVarOrParamNode(ir_generator& ctx, const 
 
     ctx.resetWorkingModule();
 
-    ctx.scope.putInCurrentScope(symbolNameToken);
-
-    return TokenDescriptionPair(symbolNameToken, typeDescription);
+    return typeDescription;
 }
 
-TokenDescriptionPair typeDescriptionFromNode(ir_generator& ctx, const node::Node& root)
+TypeDescription typeDescriptionFromNode(ir_generator& ctx, const node::Node& root)
 {
     if (root.type == node::FUNCTION)
         return typeDescriptionFromFunctionNode(ctx, root);

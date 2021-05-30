@@ -22,7 +22,7 @@ void ScopeTracker::exitScope()
     scopeStack.pop_back();
 }
 
-void ScopeTracker::globalScope()
+void ScopeTracker::resetScope()
 {
     scopeCounter = 0;
     scopeStack.clear();
@@ -33,11 +33,6 @@ bool ScopeTracker::isInCurrentScope(const token::Token& symbol)
 {
     const int symbolScope = symbolScopeMap.at(symbol.toString());
     return std::find(scopeStack.begin(), scopeStack.end(), symbolScope) != scopeStack.end();
-}
-
-void ScopeTracker::putInGlobalScope(const token::Token& symbol)
-{
-    symbolScopeMap[symbol.toString()] = 0;
 }
 
 void ScopeTracker::putInCurrentScope(const token::Token& symbol)

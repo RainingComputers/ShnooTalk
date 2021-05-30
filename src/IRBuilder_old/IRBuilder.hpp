@@ -1,14 +1,13 @@
 #ifndef IBUILD_HPP
 #define IBUILD_HPP
 
+#include "../Builder/OperandBuilder.hpp"
 #include "../IntermediateRepresentation/All.hpp"
 
 namespace ibuild
 {
     class IRBuilder
     {
-        unsigned int idCounter;
-
         icode::FunctionDescription* functionDescriptionPointer;
         icode::ModuleDescription& module;
         icode::StringModulesMap modulesMap;
@@ -20,7 +19,7 @@ namespace ibuild
         icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op);
 
       public:
-        unsigned int id();
+        OperandBuilder opBuilder;
 
         void setFunctionDescription(icode::FunctionDescription* functionDesc);
 

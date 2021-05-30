@@ -41,7 +41,7 @@ namespace icode
         return (dataTypeIsEqual(var1.dtype, var2.dtype) && var1.dimensions == var2.dimensions);
     }
 
-    // TODO remove this
+    // TODO move this
     TypeDescription typeDescriptionFromDataType(DataType dtype, TargetDescription& target)
     {
         TypeDescription var;

@@ -2,21 +2,23 @@
 
 #include "TypeDescriptionFromNode.hpp"
 
-TokenDescriptionPair getParamFromNode(irgen::ir_generator& ctx, const node::Node& paramNode)
+using namespace icode;
+
+TypeDescription getParamType(irgen::ir_generator& ctx, const node::Node& paramNode)
 {
-    TokenDescriptionPair tokenDescriptionPair = typeDescriptionFromNode(ctx, paramNode);
+    TypeDescription paramType = typeDescriptionFromNode(ctx, paramNode);
 
     bool isMutable = paramNode.isNodeType(node::MUT_PARAM);
 
     if (isMutable)
-        tokenDescriptionPair.second.setProperty(icode::IS_MUT);
+        paramType.setProperty(icode::IS_MUT);
 
-    if (isMutable || tokenDescriptionPair.second.isArray() > 0 || tokenDescriptionPair.second.isStruct())
-        tokenDescriptionPair.second.setProperty(icode::IS_PTR);
+    if (isMutable || paramType.isArray() > 0 || paramType.isStruct())
+        paramType.setProperty(icode::IS_PTR);
 
-    tokenDescriptionPair.second.setProperty(icode::IS_PARAM);
+    paramType.setProperty(icode::IS_PARAM);
 
-    return tokenDescriptionPair;
+    return paramType;
 }
 
 bool isParamNode(const node::Node& nodeToCheck)
@@ -26,19 +28,21 @@ bool isParamNode(const node::Node& nodeToCheck)
 
 void createFunctionFromNode(irgen::ir_generator& ctx, const node::Node& root)
 {
-    TokenDescriptionPair functionNameAndReturnType = typeDescriptionFromNode(ctx, root);
-    const token::Token& nameToken = functionNameAndReturnType.first;
-    const icode::TypeDescription& returnType = functionNameAndReturnType.second;
+    const token::Token& nameToken = root.getNthChildToken(0);
+    TypeDescription returnType = typeDescriptionFromNode(ctx, root);
 
     std::vector<token::Token> paramNames;
     std::vector<icode::TypeDescription> paramTypes;
 
     for (size_t i = 1; isParamNode(root.children[i]); i += 1)
     {
-        TokenDescriptionPair tokenDescriptionPair = getParamFromNode(ctx, root.children[i]);
+        const token::Token& paramName = root.children[i].getNthChildToken(0);
+        TypeDescription paramType = getParamType(ctx, root.children[i]);
 
-        paramNames.push_back(tokenDescriptionPair.first);
-        paramTypes.push_back(tokenDescriptionPair.second);
+        paramNames.push_back(paramName);
+        paramTypes.push_back(paramType);
+    
+        ctx.scope.putInCurrentScope(paramName);
     }
 
     ctx.descriptionBuilder.createFunctionDescription(nameToken, returnType, paramNames, paramTypes);

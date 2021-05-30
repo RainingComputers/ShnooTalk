@@ -13,6 +13,7 @@ namespace icode
         IS_MUT,
         IS_PTR,
         IS_PARAM,
+        IS_GLOBAL,
     };
 
     struct TypeDescription
@@ -40,7 +41,7 @@ namespace icode
 
     bool isSameType(TypeDescription var1, TypeDescription var2);
 
-    // TODO Remove this
+    // TODO Move this
     TypeDescription typeDescriptionFromDataType(DataType dtype, TargetDescription& target);
 }
 

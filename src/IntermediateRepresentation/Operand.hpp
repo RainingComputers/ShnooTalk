@@ -46,33 +46,6 @@ namespace icode
         void updateDataType(const TypeDescription& var);
         bool isPointer() const;
     };
-
-    Operand createTempOperand(DataType dtype, const std::string& dtype_name, unsigned int id);
-
-    Operand createPointerOperand(DataType dtype, const std::string& dtype_name, unsigned int id);
-
-    Operand createStringDataOperand(const std::string& name, unsigned int size, unsigned int id);
-
-    Operand createVarOperand(DataType dtype,
-                             const std::string& dtype_name,
-                             const std::string& symbol,
-                             unsigned int id,
-                             bool global = false,
-                             bool ptr = false);
-
-    Operand createRetPointerOperand(DataType dtype, const std::string& dtype_name, unsigned int id);
-
-    Operand createCalleeRetValOperand(DataType dtype, const std::string& dtype_name, unsigned int id);
-
-    Operand createLiteralOperand(DataType dtype, float literal, unsigned int id);
-
-    Operand createLiteralOperand(DataType dtype, int literal, unsigned int id);
-
-    Operand createLiteralAddressOperand(unsigned int address, unsigned int id);
-
-    Operand createLabelOperand(const std::string& label, unsigned int id);
-
-    Operand createModuleOperand(const std::string& module, unsigned int id);
 }
 
 #endif

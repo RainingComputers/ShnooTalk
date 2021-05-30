@@ -11,7 +11,7 @@
 #include "pathchk.hpp"
 
 typedef std::pair<icode::Operand, icode::TypeDescription> OperandDescriptionPair;
-typedef std::pair<token::Token, icode::TypeDescription> TokenDescriptionPair;
+typedef std::pair<token::Token, icode::TypeDescription> TokenTypePair;
 typedef std::pair<icode::ModuleDescription*, size_t> ModuleIndexPair;
 typedef std::pair<icode::DataType, int> DataTypeSizePair;
 typedef std::pair<std::vector<int>, int> LiteralDimensionsIndexPair;
@@ -30,8 +30,6 @@ namespace irgen
 
         icode::FunctionDescription* workingFunction;
         icode::ModuleDescription* workingModule;
-
-        unsigned int id();
 
         DescriptionBuilder descriptionBuilder;
 
@@ -65,6 +63,8 @@ namespace irgen
         void copy_struct(icode::Operand& left, OperandDescriptionPair right);
 
         void var(const node::Node& root);
+
+        OperandDescriptionPair getTypeFromToken(const node::Node& root, token::Token nameToken);
 
         OperandDescriptionPair var_access(const node::Node& root);
 

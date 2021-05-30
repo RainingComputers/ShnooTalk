@@ -14,7 +14,7 @@ varname = ident ":" [ident "::"] termvar
 
 exprvar = termvar {"." termvar}
 
-initializerlist = "[" expr {"," expr} ]
+initializerlist = "[" expr {"," expr} "]"
 
 varassign = varname ["=" expr|initializerlist ]
 

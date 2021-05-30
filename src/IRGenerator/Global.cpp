@@ -2,13 +2,16 @@
 
 #include "Global.hpp"
 
+using namespace icode;
+
 void createGlobalFromNode(irgen::ir_generator& ctx, const node::Node& root)
 {
-    TokenDescriptionPair tokenDescriptionPair = typeDescriptionFromNode(ctx, root);
+    const token::Token& globalName = root.getNthChildToken(0);
+    
+    TypeDescription globalType = typeDescriptionFromNode(ctx, root);
+    globalType.setProperty(IS_GLOBAL);
 
-    tokenDescriptionPair.second.setProperty(icode::IS_MUT);
+    globalType.setProperty(icode::IS_MUT);
 
-    ctx.descriptionBuilder.createGlobal(tokenDescriptionPair.first, tokenDescriptionPair.second);
-
-    ctx.scope.putInGlobalScope(tokenDescriptionPair.first);
+    ctx.descriptionBuilder.createGlobal(globalName, globalType);
 }

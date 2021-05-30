@@ -3,6 +3,6 @@
 
 #include "../irgen_old.hpp"
 
-TokenDescriptionPair typeDescriptionFromNode(irgen::ir_generator& ctx, const node::Node& root);
+icode::TypeDescription typeDescriptionFromNode(irgen::ir_generator& ctx, const node::Node& root);
 
 #endif

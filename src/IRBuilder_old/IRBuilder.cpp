@@ -6,12 +6,6 @@ namespace ibuild
       : module(moduleDescription)
       , modulesMap(modulesMap)
     {
-        idCounter = 0;
-    }
-
-    unsigned int IRBuilder::id()
-    {
-        return idCounter++;
     }
 
     void IRBuilder::setFunctionDescription(icode::FunctionDescription* functionDesc)
@@ -31,13 +25,13 @@ namespace ibuild
         /* If not a struct, just copy the operand but change its time to a pointer */
 
         if (op.dtype != icode::STRUCT)
-            return icode::createPointerOperand(op.dtype, op.dtypeName, id());
+            return opBuilder.createPointerOperand(op.dtype, op.dtypeName);
 
         /* If it a struct, create pointer to the first field */
 
         icode::TypeDescription firstFieldDesc = module.structures[op.dtypeName].structFields.begin()->second;
 
-        return icode::createPointerOperand(firstFieldDesc.dtype, firstFieldDesc.dtypeName, id());
+        return opBuilder.createPointerOperand(firstFieldDesc.dtype, firstFieldDesc.dtypeName);
     }
 
     icode::Operand IRBuilder::createPointer(const icode::Operand& op)
@@ -71,7 +65,7 @@ namespace ibuild
 
         if (op1.isPointer() && op2.isPointer())
         {
-            icode::Operand temp = icode::createTempOperand(op2.dtype, op2.dtypeName, id());
+            icode::Operand temp = opBuilder.createTempOperand(op2.dtype, op2.dtypeName);
             copy(temp, op2);
             copy(op1, temp);
         }
@@ -101,7 +95,7 @@ namespace ibuild
         if (!op.isPointer())
             return op;
 
-        icode::Operand temp = icode::createTempOperand(op.dtype, op.dtypeName, id());
+        icode::Operand temp = opBuilder.createTempOperand(op.dtype, op.dtypeName);
         copy(temp, op);
         return temp;
     }
@@ -122,7 +116,7 @@ namespace ibuild
 
         /* Create corresponding TEMP to TEMP_PTR  */
         icode::Operand pointerOperand = entry.op1;
-        icode::Operand temp = icode::createTempOperand(pointerOperand.dtype, pointerOperand.dtypeName, id());
+        icode::Operand temp = opBuilder.createTempOperand(pointerOperand.dtype, pointerOperand.dtypeName);
 
         /* Replace TEMP_PTR with TEMP */
         icode::Entry modifiedEntry = entry;
@@ -180,7 +174,7 @@ namespace ibuild
         icode::Entry entry;
 
         entry.opcode = icode::CAST;
-        entry.op1 = icode::createTempOperand(castDataType, icode::dataTypeToString(castDataType), id());
+        entry.op1 = opBuilder.createTempOperand(castDataType, icode::dataTypeToString(castDataType));
         entry.op2 = ensureNotPointer(op);
 
         return pushEntryAndEnsureNoPointerWrite(entry);
@@ -212,7 +206,7 @@ namespace ibuild
         icode::Entry entry;
 
         entry.opcode = icode::ADDR_ADD;
-        entry.op1 = icode::createPointerOperand(op2.dtype, op2.dtypeName, id());
+        entry.op1 = opBuilder.createPointerOperand(op2.dtype, op2.dtypeName);
         entry.op2 = op2;
         entry.op3 = op3;
 
@@ -228,7 +222,7 @@ namespace ibuild
         icode::Entry entry;
 
         entry.opcode = icode::ADDR_MUL;
-        entry.op1 = icode::createPointerOperand(icode::VOID, icode::dataTypeToString(icode::VOID), id());
+        entry.op1 = opBuilder.createPointerOperand(icode::VOID, icode::dataTypeToString(icode::VOID));
         entry.op2 = op2;
         entry.op3 = op3;
 
@@ -285,7 +279,7 @@ namespace ibuild
 
         inputEntry.opcode = inputInstruction;
         inputEntry.op1 = op;
-        inputEntry.op2 = icode::createLiteralOperand(icode::INT, (int)size, id());
+        inputEntry.op2 = opBuilder.createIntLiteralOperand(icode::INT, (int)size);
 
         pushEntry(inputEntry);
     }
@@ -309,8 +303,8 @@ namespace ibuild
         else
             entry.op1 = op;
 
-        entry.op2 = icode::createVarOperand(functionDataType, functionDataTypeName, functionName, id());
-        entry.op3 = icode::createModuleOperand(functionDesc.moduleName, id());
+        entry.op2 = opBuilder.createVarOperand(functionDataType, functionDataTypeName, functionName);
+        entry.op3 = opBuilder.createModuleOperand(functionDesc.moduleName);
 
         pushEntry(entry);
     }
@@ -325,9 +319,9 @@ namespace ibuild
         icode::Entry callEntry;
 
         callEntry.opcode = icode::CALL;
-        callEntry.op1 = icode::createCalleeRetValOperand(functionDataType, functionDataTypeName, id());
-        callEntry.op2 = icode::createVarOperand(functionDataType, functionDataTypeName, functionName, id());
-        callEntry.op3 = icode::createModuleOperand(functionDesc.moduleName, id());
+        callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType, functionDataTypeName);
+        callEntry.op2 = opBuilder.createVarOperand(functionDataType, functionDataTypeName, functionName);
+        callEntry.op3 = opBuilder.createModuleOperand(functionDesc.moduleName);
 
         pushEntry(callEntry);
 
