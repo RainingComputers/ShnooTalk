@@ -16,7 +16,7 @@ Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op)
     if (icode::isFloat(op.dtype))
         return ConstantFP::get(dataTypeToLLVMType(ctx, op.dtype), op.val.floating);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 std::string getFullFunctionName(const std::string& functionName, const std::string& moduleName)
@@ -69,7 +69,7 @@ Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op)
         case icode::PTR:
             return ctx.symbolNamePointerIntMap.at(op.name);
         default:
-            return (Value*)ctx.console.controlReachedEndError();
+            ctx.console.internalBugError();
     }
 }
 
@@ -91,7 +91,7 @@ Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
         case icode::CALLEE_RET_VAL:
             return getCalleeRetValuePointer(ctx, op);
         default:
-            return (Value*)ctx.console.controlReachedEndError();
+            ctx.console.internalBugError();
     }
 }
 

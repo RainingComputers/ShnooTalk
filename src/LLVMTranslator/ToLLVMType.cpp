@@ -28,7 +28,7 @@ Type* dataTypeToLLVMType(const ModuleContext& ctx, const icode::DataType dtype)
         case icode::VOID:
             return Type::getVoidTy(*ctx.context);
         default:
-            return (Type*)ctx.console.controlReachedEndError();
+            ctx.console.internalBugError();
     }
 }
 
@@ -56,7 +56,7 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
         case icode::F64:
             return Type::getDoublePtrTy(*ctx.context);
         default:
-            return (Type*)ctx.console.controlReachedEndError();
+            ctx.console.internalBugError();
     }
 }
 

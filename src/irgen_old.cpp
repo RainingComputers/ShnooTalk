@@ -424,7 +424,7 @@ namespace irgen
 
     OperandDescriptionPair ir_generator::getTypeFromToken(const node::Node& root, token::Token nameToken)
     {
-        icode::TypeDescription current_var_info;
+        icode::TypeDescription typeDescription;
 
         node::Node child = root.children[0];
         const std::string& ident_name = child.tok.toString();
@@ -432,21 +432,21 @@ namespace irgen
         int enum_val;
         icode::DefineDescription def;
 
-        if ((*workingFunction).getSymbol(ident_name, current_var_info))
+        if ((*workingFunction).getSymbol(ident_name, typeDescription))
         {
             if (!scope.isInCurrentScope(child.tok))
                 console.compileErrorOnToken("Symbol not in scope", child.tok);
 
-            icode::Operand op = builder.opBuilder.operandFromTypeDescription(current_var_info, child.tok);
+            icode::Operand op = builder.opBuilder.operandFromTypeDescription(typeDescription, child.tok);
 
-            return OperandDescriptionPair(op, current_var_info);
+            return OperandDescriptionPair(op, typeDescription);
         }
 
-        if (rootModule.getGlobal(ident_name, current_var_info))
+        if (rootModule.getGlobal(ident_name, typeDescription))
         {
-            icode::Operand op = builder.opBuilder.operandFromTypeDescription(current_var_info, child.tok);
+            icode::Operand op = builder.opBuilder.operandFromTypeDescription(typeDescription, child.tok);
 
-            return OperandDescriptionPair(op, current_var_info);
+            return OperandDescriptionPair(op, typeDescription);
         }
 
         if (get_enum(ident_name, enum_val))

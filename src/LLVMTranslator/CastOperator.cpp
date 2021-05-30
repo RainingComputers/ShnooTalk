@@ -16,7 +16,7 @@ Value* castToSignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* de
     if (icode::isFloat(e.op2.dtype))
         return ctx.builder->CreateFPToSI(getLLVMValue(ctx, e.op2), destType);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* castToUnsignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
@@ -27,7 +27,7 @@ Value* castToUnsignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* 
     if (icode::isFloat(e.op2.dtype))
         return ctx.builder->CreateFPToUI(getLLVMValue(ctx, e.op2), destType);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* castToFloatFromInt(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
@@ -38,7 +38,7 @@ Value* castToFloatFromInt(const ModuleContext& ctx, const icode::Entry& e, Type*
     if (icode::isUnsignedInteger(e.op2.dtype))
         return ctx.builder->CreateUIToFP(getLLVMValue(ctx, e.op2), destType);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* castToFloatFromFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
@@ -52,7 +52,7 @@ Value* castToFloatFromFloat(const ModuleContext& ctx, const icode::Entry& e, Typ
     if (icode::getDataTypeSize(e.op1.dtype) == icode::getDataTypeSize(e.op2.dtype))
         return getLLVMValue(ctx, e.op2);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* castToFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
@@ -63,7 +63,7 @@ Value* castToFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destTy
     if (icode::isFloat(e.op2.dtype))
         return castToFloatFromFloat(ctx, e, destType);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 void castOperator(ModuleContext& ctx, const icode::Entry& e)

@@ -14,7 +14,7 @@ Value* equal(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType d
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUEQ(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* notEqual(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -27,7 +27,7 @@ Value* notEqual(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUNE(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* lessThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -43,7 +43,7 @@ Value* lessThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpULT(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* lessThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -59,7 +59,7 @@ Value* lessThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpULE(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* greaterThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -75,7 +75,7 @@ Value* greaterThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::Data
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUGT(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* greaterThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -91,7 +91,7 @@ Value* greaterThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, ic
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFCmpUGE(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* getCompareOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
@@ -115,7 +115,7 @@ Value* getCompareOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
         case icode::GTE:
             return greaterThanOrEqualTo(ctx, LHS, RHS, dtype);
         default:
-            return (Value*)ctx.console.controlReachedEndError();
+            ctx.console.internalBugError();
     }
 }
 

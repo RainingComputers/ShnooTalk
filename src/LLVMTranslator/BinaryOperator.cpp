@@ -17,7 +17,7 @@ Value* add(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dty
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFAdd(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* subtract(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -33,7 +33,7 @@ Value* subtract(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFSub(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* multiply(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -49,7 +49,7 @@ Value* multiply(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFMul(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* divide(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -65,7 +65,7 @@ Value* divide(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType 
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFDiv(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* remainder(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -81,7 +81,7 @@ Value* remainder(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
     if (icode::isFloat(dtype))
         return ctx.builder->CreateFRem(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* rightShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -94,7 +94,7 @@ Value* rightShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
     if (icode::isUnsignedInteger(dtype))
         return ctx.builder->CreateLShr(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* leftShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -104,7 +104,7 @@ Value* leftShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
     if (icode::isInteger(dtype))
         return ctx.builder->CreateShl(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* bitwiseAnd(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -114,7 +114,7 @@ Value* bitwiseAnd(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
     if (icode::isInteger(dtype))
         return ctx.builder->CreateAnd(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* bitwiseOr(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -124,7 +124,7 @@ Value* bitwiseOr(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
     if (icode::isInteger(dtype))
         return ctx.builder->CreateOr(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* bitwiseXor(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
@@ -134,7 +134,7 @@ Value* bitwiseXor(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
     if (icode::isInteger(dtype))
         return ctx.builder->CreateXor(LHS, RHS);
 
-    return (Value*)ctx.console.controlReachedEndError();
+    ctx.console.internalBugError();
 }
 
 Value* getBinaryOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
@@ -166,7 +166,7 @@ Value* getBinaryOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
         case icode::BWX:
             return bitwiseXor(ctx, LHS, RHS, dtype);
         default:
-            return (Value*)ctx.console.controlReachedEndError();
+            ctx.console.internalBugError();
     }
 }
 
