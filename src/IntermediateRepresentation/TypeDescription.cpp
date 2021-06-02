@@ -22,6 +22,16 @@ namespace icode
         return properties & (1 << property);
     }
 
+    void TypeDescription::becomeMutable()
+    {
+        setProperty(IS_MUT);
+    }
+
+    void TypeDescription::becomePointer()
+    {
+        setProperty(IS_PTR);
+    }
+
     bool TypeDescription::isStruct() const
     {
         return dtype == STRUCT;

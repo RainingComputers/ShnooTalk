@@ -10,7 +10,7 @@ void createGlobalFromNode(irgen::ir_generator& ctx, const node::Node& root)
     
     TypeDescription globalType = typeDescriptionFromNode(ctx, root);
 
-    globalType.setProperty(icode::IS_MUT);
+    globalType.becomeMutable();
 
     ctx.descriptionBuilder.createGlobal(globalName, globalType);
 }

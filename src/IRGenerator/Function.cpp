@@ -11,10 +11,10 @@ TypeDescription getParamType(irgen::ir_generator& ctx, const node::Node& paramNo
     bool isMutable = paramNode.isNodeType(node::MUT_PARAM);
 
     if (isMutable)
-        paramType.setProperty(icode::IS_MUT);
+        paramType.becomeMutable();
 
     if (isMutable || paramType.isArray() > 0 || paramType.isStruct())
-        paramType.setProperty(icode::IS_PTR);
+        paramType.becomePointer();
 
     return paramType;
 }
