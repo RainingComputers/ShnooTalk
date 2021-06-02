@@ -12,17 +12,6 @@ void DescriptionBuilder::setWorkingModule(icode::ModuleDescription* moduleDescri
     workingModule = moduleDescription;
 }
 
-ModuleDescription* DescriptionBuilder::getModuleFromToken(const token::Token& moduleNameToken,
-                                                          StringModulesMap& modulesMap)
-{
-    const std::string& moduleName = moduleNameToken.toString();
-
-    if (!workingModule->useExists(moduleName))
-        console.compileErrorOnToken("Module does not exist", moduleNameToken);
-
-    return &modulesMap.at(moduleName);
-}
-
 TypeDescription DescriptionBuilder::createVoidTypeDescription()
 {
     TypeDescription voidTypeDescription;

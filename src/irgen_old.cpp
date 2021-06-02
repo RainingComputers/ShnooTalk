@@ -20,10 +20,10 @@ namespace irgen
       , ext_modules_map(modules_map)
       , rootModule(modules_map[file_name])
       , console(console)
-      , builder(modules_map[file_name], ext_modules_map, opBuilder)
       , descriptionBuilder(console)
       , unitBuilder(opBuilder)
       , descriptionFinder(modules_map[file_name], console, unitBuilder)
+      , builder(modules_map[file_name], ext_modules_map, opBuilder)
     {
         workingFunction = nullptr;
         workingModule = &rootModule;
@@ -38,6 +38,7 @@ namespace irgen
     {
         workingModule = &rootModule;
         descriptionBuilder.setWorkingModule(&rootModule);
+        descriptionFinder.setWorkingModule(&rootModule);
     }
 
     void ir_generator::setWorkingModule(icode::ModuleDescription* moduleDescription)

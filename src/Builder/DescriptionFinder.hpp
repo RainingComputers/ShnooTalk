@@ -24,6 +24,9 @@ class DescriptionFinder
     void setWorkingModule(icode::ModuleDescription* module);
     void setWorkingFunction(icode::FunctionDescription* function);
 
+    icode::ModuleDescription* getModuleFromToken(const token::Token& moduleNameToken,
+                                                 icode::StringModulesMap& modulesMap);
+
     bool getLocal(const token::Token& nameToken, Unit& returnValue);
     bool getGlobal(const token::Token& nameToken, Unit& returnValue);
     bool getDefine(const token::Token& nameToken, Unit& returnValue);

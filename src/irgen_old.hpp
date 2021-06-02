@@ -27,15 +27,14 @@ namespace irgen
         icode::ModuleDescription& rootModule;
         Console& console;
 
+        DescriptionBuilder descriptionBuilder;
         OperandBuilder opBuilder;
-        ibuild::IRBuilder builder;
         UnitBuilder unitBuilder;
         DescriptionFinder descriptionFinder;
-
+        ibuild::IRBuilder builder;
+        
         icode::FunctionDescription* workingFunction;
         icode::ModuleDescription* workingModule;
-
-        DescriptionBuilder descriptionBuilder;
 
         ScopeTracker scope;
 

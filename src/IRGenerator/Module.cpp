@@ -9,7 +9,7 @@ int setWorkingModuleFromNode(irgen::ir_generator& ctx, const node::Node& root, s
         const token::Token& moduleNameToken = root.children[nodeCounter].tok;
         const std::string& moduleName = moduleNameToken.toString();
 
-        ctx.setWorkingModule(ctx.descriptionBuilder.getModuleFromToken(moduleNameToken, ctx.ext_modules_map));
+        ctx.setWorkingModule(ctx.descriptionFinder.getModuleFromToken(moduleNameToken, ctx.ext_modules_map));
     }
 
     return nodeCounter;

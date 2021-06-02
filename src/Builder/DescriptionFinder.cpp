@@ -19,6 +19,17 @@ void DescriptionFinder::setWorkingFunction(FunctionDescription* functionDescript
     workingFunction = functionDescription;
 }
 
+ModuleDescription* DescriptionFinder::getModuleFromToken(const token::Token& moduleNameToken,
+                                                         StringModulesMap& modulesMap)
+{
+    const std::string& moduleName = moduleNameToken.toString();
+
+    if (!workingModule->useExists(moduleName))
+        console.compileErrorOnToken("Module does not exist", moduleNameToken);
+
+    return &modulesMap.at(moduleName);
+}
+
 bool DescriptionFinder::getLocal(const token::Token& nameToken, Unit& returnValue)
 {
     TypeDescription typeDescription;
