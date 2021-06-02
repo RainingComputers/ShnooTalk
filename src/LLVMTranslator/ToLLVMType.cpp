@@ -71,7 +71,7 @@ Type* nonPointerTypeDescriptionToLLVMType(const ModuleContext& ctx, const icode:
 Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
     if (typeDescription.checkProperty(icode::IS_PTR))
-        return PointerType::get(nonPointerTypeDescriptionToLLVMType(ctx, typeDescription), 0);
+        return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription)->getPointerTo();
 
     return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
 }
