@@ -22,8 +22,8 @@ namespace irgen
       , console(console)
       , builder(modules_map[file_name], ext_modules_map, opBuilder)
       , descriptionBuilder(console)
-      , valueBuilder(opBuilder)
-      , descriptionFinder(modules_map[file_name], console, valueBuilder)
+      , unitBuilder(opBuilder)
+      , descriptionFinder(modules_map[file_name], console, unitBuilder)
     {
         workingFunction = nullptr;
         workingModule = &rootModule;
@@ -47,34 +47,12 @@ namespace irgen
         descriptionFinder.setWorkingModule(moduleDescription);
     }
 
-    bool ir_generator::get_def(const std::string& name, icode::DefineDescription& def)
-    {
-        if ((*workingModule).getDefineDescription(name, def))
-            return true;
-
-        if (rootModule.getDefineDescription(name, def))
-            return true;
-
-        return false;
-    }
-
     bool ir_generator::get_func(const std::string& name, icode::FunctionDescription& func)
     {
         if ((*workingModule).getFunction(name, func))
             return true;
 
         if (rootModule.getFunction(name, func))
-            return true;
-
-        return false;
-    }
-
-    bool ir_generator::get_enum(const std::string& name, int& val)
-    {
-        if ((*workingModule).getEnum(name, val))
-            return true;
-
-        if (rootModule.getEnum(name, val))
             return true;
 
         return false;
@@ -173,7 +151,7 @@ namespace irgen
         return opr;
     }
 
-    OperandDescriptionPair ir_generator::var_info_to_str_dat(const token::Token& str_token, icode::TypeDescription var)
+    Unit ir_generator::var_info_to_str_dat(const token::Token& str_token, icode::TypeDescription var)
     {
         if (var.dimensions.size() != 1 || var.dtype != icode::UI8)
             console.compileErrorOnToken("String assignment only allowed on 1D CHAR ARRAY", str_token);
@@ -187,10 +165,10 @@ namespace irgen
         /* Create STR_DAT operand */
         icode::Operand opr = gen_str_dat(str_token, char_count, var.dtype);
 
-        return OperandDescriptionPair(opr, var);
+        return Unit(opr, var);
     }
 
-    void ir_generator::assign_str_literal_tovar(OperandDescriptionPair var, node::Node& root)
+    void ir_generator::assign_str_literal_tovar(Unit var, node::Node& root)
     {
         if (var.second.dimensions.size() != 1 || var.second.dtype != icode::UI8)
             console.compileErrorOnToken("String assignment only allowed on 1D INT ARRAY", root.tok);
@@ -220,7 +198,7 @@ namespace irgen
         builder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, 0));
     }
 
-    void ir_generator::copy_array(icode::Operand& left, OperandDescriptionPair right)
+    void ir_generator::copy_array(icode::Operand& left, Unit right)
     {
         icode::Operand curr_offset_left = builder.createPointer(left);
         icode::Operand curr_offset_right = builder.createPointer(right.first);
@@ -234,7 +212,7 @@ namespace irgen
             if (right.second.dtype == icode::STRUCT)
             {
                 /* Copy struct from right to left */
-                copy_struct(curr_offset_left, OperandDescriptionPair(curr_offset_right, right.second));
+                copy_struct(curr_offset_left, Unit(curr_offset_right, right.second));
             }
             else
             {
@@ -252,7 +230,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::copy_struct(icode::Operand& left, OperandDescriptionPair right)
+    void ir_generator::copy_struct(icode::Operand& left, Unit right)
     {
         icode::Operand curr_offset_left = builder.createPointer(left);
         icode::Operand curr_offset_right = builder.createPointer(right.first);
@@ -276,7 +254,7 @@ namespace irgen
             /* Copy field */
             if (field_info.dimensions.size() != 0)
             {
-                copy_array(curr_offset_left, OperandDescriptionPair(curr_offset_right, field_info));
+                copy_array(curr_offset_left, Unit(curr_offset_right, field_info));
             }
             else if (field_info.dtype != icode::STRUCT)
             {
@@ -285,7 +263,7 @@ namespace irgen
             }
             else
             {
-                copy_struct(curr_offset_left, OperandDescriptionPair(curr_offset_right, field_info));
+                copy_struct(curr_offset_left, Unit(curr_offset_right, field_info));
             }
 
             update = opBuilder.createLiteralAddressOperand(field_info.size);
@@ -294,7 +272,7 @@ namespace irgen
         }
     }
 
-    void ir_generator::assign_init_list_tovar(OperandDescriptionPair var, node::Node& root)
+    void ir_generator::assign_init_list_tovar(Unit var, node::Node& root)
     {
         /* Cannot use initializer list to assign to var */
         if (var.second.dimensions.size() == 0)
@@ -323,7 +301,7 @@ namespace irgen
                 if (child.type != node::TERM && child.type != node::EXPRESSION)
                     console.compileErrorOnToken("Incorrect dimensions", child.tok);
 
-                OperandDescriptionPair element_expr = expression(child);
+                Unit element_expr = expression(child);
 
                 /* Type check */
                 if (!icode::isSameType(element_var, element_expr.second))
@@ -341,11 +319,11 @@ namespace irgen
             }
             else if (child.type == node::STR_LITERAL)
             {
-                assign_str_literal_tovar(OperandDescriptionPair(curr_offset, element_var), child);
+                assign_str_literal_tovar(Unit(curr_offset, element_var), child);
             }
             else
             {
-                assign_init_list_tovar(OperandDescriptionPair(curr_offset, element_var), child);
+                assign_init_list_tovar(Unit(curr_offset, element_var), child);
             }
 
             dim_count++;
@@ -390,7 +368,7 @@ namespace irgen
             icode::Operand left =
               opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString());
 
-            OperandDescriptionPair init_exp = expression(last_node);
+            Unit init_exp = expression(last_node);
 
             /* Check if the type match */
             if (!icode::isSameType(var.second, init_exp.second))
@@ -408,14 +386,14 @@ namespace irgen
         }
         else if (last_node.type == node::STR_LITERAL)
         {
-            OperandDescriptionPair var_pair = OperandDescriptionPair(
+            Unit var_pair = Unit(
               opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
               var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
-            OperandDescriptionPair var_pair = OperandDescriptionPair(
+            Unit var_pair = Unit(
               opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
               var.second);
             assign_init_list_tovar(var_pair, last_node);
@@ -425,26 +403,26 @@ namespace irgen
         (*workingFunction).symbols[var.first.toString()] = var.second;
     }
 
-    OperandDescriptionPair ir_generator::getTypeFromToken(const node::Node& root)
+    Unit ir_generator::getTypeFromToken(const node::Node& root)
     {
         const token::Token& nameToken = root.getNthChildToken(0);
 
-        OperandDescriptionPair operandDescriptionPair = descriptionFinder.getValueFromToken(nameToken);
+        Unit Unit = descriptionFinder.getUnitFromToken(nameToken);
 
-        if (operandDescriptionPair.second.checkProperty(icode::IS_ENUM) && root.children.size() > 1)
+        if (Unit.second.checkProperty(icode::IS_ENUM) && root.children.size() > 1)
             console.compileErrorOnToken("Invalid use of ENUM", nameToken);
 
-        if (operandDescriptionPair.second.checkProperty(icode::IS_DEFINE) && root.children.size() > 1)
+        if (Unit.second.checkProperty(icode::IS_DEFINE) && root.children.size() > 1)
             console.compileErrorOnToken("Invalid use of DEF", nameToken);
 
-        if (operandDescriptionPair.second.checkProperty(icode::IS_LOCAL))
+        if (Unit.second.checkProperty(icode::IS_LOCAL))
             if (!scope.isInCurrentScope(nameToken))
                 console.compileErrorOnToken("Symbol not in scope", nameToken);
 
-        return operandDescriptionPair;
+        return Unit;
     }
 
-    OperandDescriptionPair ir_generator::var_access(const node::Node& root)
+    Unit ir_generator::var_access(const node::Node& root)
     {
         unsigned int dim_count = 0;
         unsigned int rem_dim = 0;
@@ -453,14 +431,14 @@ namespace irgen
         node::Node child = root.children[0];
         const std::string& ident_name = child.tok.toString();
 
-        OperandDescriptionPair operandDescPair = getTypeFromToken(root);
+        Unit unit = getTypeFromToken(root);
 
         /* If no struct or subscript */
         if (root.children.size() == 1)
-            return operandDescPair;
+            return unit;
 
-        icode::Operand current_offset_temp = operandDescPair.first;
-        icode::TypeDescription current_var_info = operandDescPair.second;
+        icode::Operand current_offset_temp = unit.first;
+        icode::TypeDescription current_var_info = unit.second;
 
         current_offset_temp = builder.createPointer(current_offset_temp);
 
@@ -531,7 +509,7 @@ namespace irgen
                             console.compileErrorOnToken("Too many subscripts", child.tok);
 
                         /* Operand to store result of expression */
-                        OperandDescriptionPair subs_expr = expression(child.children[0]);
+                        Unit subs_expr = expression(child.children[0]);
 
                         /* Check if int expression */
                         if (!icode::isInteger(subs_expr.second.dtype) || subs_expr.second.dimensions.size() != 0)
@@ -575,15 +553,15 @@ namespace irgen
         }
 
         /* Return var */
-        return OperandDescriptionPair(current_offset_temp, current_var_info);
+        return Unit(current_offset_temp, current_var_info);
     }
 
-    OperandDescriptionPair ir_generator::funccall(const node::Node& root)
+    Unit ir_generator::funccall(const node::Node& root)
     {
         icode::ModuleDescription* temp = workingModule;
 
         /* Get the first argument (if not a string literal) */
-        OperandDescriptionPair first_arg;
+        Unit first_arg;
         if (root.children.size() != 0)
         {
             if (root.children[0].type != node::STR_LITERAL)
@@ -613,7 +591,7 @@ namespace irgen
             bool mut = param.checkProperty(icode::IS_MUT);
 
             /* Get argument passed to function */
-            OperandDescriptionPair arg;
+            Unit arg;
             if (root.children[i].type == node::STR_LITERAL)
             {
                 arg = var_info_to_str_dat(root.children[i].tok, param);
@@ -654,10 +632,10 @@ namespace irgen
         if (root.type == node::STRUCT_FUNCCALL)
             workingModule = temp;
 
-        return OperandDescriptionPair(ret_temp, func_desc.functionReturnDescription);
+        return Unit(ret_temp, func_desc.functionReturnDescription);
     }
 
-    OperandDescriptionPair ir_generator::size_of(const node::Node& root)
+    Unit ir_generator::size_of(const node::Node& root)
     {
         std::string ident = root.children.back().tok.toString();
 
@@ -686,10 +664,10 @@ namespace irgen
         resetWorkingModule();
 
         /* return a icode::INT literal  */
-        return valueBuilder.operandDescPairFromIntLiteral(size, icode::INT);
+        return unitBuilder.unitPairFromIntLiteral(size, icode::INT);
     }
 
-    OperandDescriptionPair ir_generator::term(const node::Node& root)
+    Unit ir_generator::term(const node::Node& root)
     {
         node::Node child = root.children[0];
         switch (child.type)
@@ -704,18 +682,18 @@ namespace irgen
                     {
                         /* Return literal icode operand */
                         int literal = std::stoi(child.tok.toString());
-                        return valueBuilder.operandDescPairFromIntLiteral(literal, icode::INT);
+                        return unitBuilder.unitPairFromIntLiteral(literal, icode::INT);
                     }
                     case token::CHAR_LITERAL:
                     {
                         char literal = child.tok.toUnescapedString()[0];
-                        return valueBuilder.operandDescPairFromIntLiteral(literal, icode::UI8);
+                        return unitBuilder.unitPairFromIntLiteral(literal, icode::UI8);
                     }
                     case token::FLOAT_LITERAL:
                     {
                         /* Return literal icode operand */
                         float literal = (float)stof(child.tok.toString());
-                        return valueBuilder.operandDescPairFromFloatLiteral(literal, icode::FLOAT);
+                        return unitBuilder.unitPairFromFloatLiteral(literal, icode::FLOAT);
                     }
                     default:
                         console.internalBugErrorOnToken(child.tok);
@@ -729,7 +707,7 @@ namespace irgen
             {
                 icode::DataType cast_dtype = rootModule.dataTypeFromString(child.tok.toString());
 
-                OperandDescriptionPair cast_term = term(child.children[0]);
+                Unit cast_term = term(child.children[0]);
 
                 /* Cannot cast ARRAY */
                 if (cast_term.second.dimensions.size() != 0 || cast_term.second.dtype == icode::STRUCT)
@@ -739,11 +717,11 @@ namespace irgen
                 icode::Operand res_temp = builder.castOperator(cast_dtype, cast_term.first);
 
                 /* Return temp */
-                return OperandDescriptionPair(res_temp, icode::typeDescriptionFromDataType(cast_dtype));
+                return Unit(res_temp, icode::typeDescriptionFromDataType(cast_dtype));
             }
             case node::UNARY_OPR:
             {
-                OperandDescriptionPair term_var = term(child.children[0]);
+                Unit term_var = term(child.children[0]);
 
                 icode::DataType dtype = term_var.second.dtype;
                 std::string dtype_name = term_var.second.dtypeName;
@@ -780,7 +758,7 @@ namespace irgen
                   builder.unaryOperator(opcode, opBuilder.createTempOperand(dtype, dtype_name), term_var.first);
 
                 /* Return temp */
-                return OperandDescriptionPair(res_temp, term_var.second);
+                return Unit(res_temp, term_var.second);
             }
             case node::EXPRESSION:
             {
@@ -798,7 +776,7 @@ namespace irgen
                 if (root.children[nodeCounter].tok.getType() != token::IDENTIFIER)
                     console.compileErrorOnToken("Invalid use of MODULE ACCESS", child.tok);
 
-                OperandDescriptionPair ret_val = term(root.children[nodeCounter]);
+                Unit ret_val = term(root.children[nodeCounter]);
 
                 resetWorkingModule();
 
@@ -812,7 +790,7 @@ namespace irgen
                 console.internalBugErrorOnToken(child.tok);
         }
 
-        return OperandDescriptionPair(icode::Operand(), icode::typeDescriptionFromDataType(icode::VOID));
+        return Unit(icode::Operand(), icode::typeDescriptionFromDataType(icode::VOID));
     }
 
     icode::Instruction ir_generator::tokenToBinaryOperator(const token::Token tok)
@@ -853,7 +831,7 @@ namespace irgen
         }
     }
 
-    OperandDescriptionPair ir_generator::expression(const node::Node& root)
+    Unit ir_generator::expression(const node::Node& root)
     {
         if (root.type == node::TERM)
             return term(root);
@@ -863,11 +841,11 @@ namespace irgen
 
         token::Token expressionOperator = root.children[1].tok;
 
-        OperandDescriptionPair LHS = expression(root.children[0]);
+        Unit LHS = expression(root.children[0]);
         icode::DataType dtype = LHS.second.dtype;
         std::string dtype_name = LHS.second.dtypeName;
 
-        OperandDescriptionPair RHS = expression(root.children[2]);
+        Unit RHS = expression(root.children[2]);
 
         if (dtype == icode::STRUCT || LHS.second.dimensions.size() != 0)
             console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expressionOperator);
@@ -883,7 +861,7 @@ namespace irgen
         icode::Operand result =
           builder.binaryOperator(instruction, opBuilder.createTempOperand(dtype, dtype_name), LHS.first, RHS.first);
 
-        return OperandDescriptionPair(result, LHS.second);
+        return Unit(result, LHS.second);
     }
 
     icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const token::Token tok)
@@ -913,9 +891,9 @@ namespace irgen
 
     void ir_generator::assignment(const node::Node& root)
     {
-        OperandDescriptionPair LHS = var_access(root.children[0]);
+        Unit LHS = var_access(root.children[0]);
 
-        OperandDescriptionPair RHS = expression(root.children[2]);
+        Unit RHS = expression(root.children[2]);
 
         token::Token assignOperator = root.children[1].tok;
 
@@ -1065,13 +1043,13 @@ namespace irgen
                     icode::Instruction opcode = tokenToCompareOperator(expr_opr);
 
                     /* Create icode entry for comparing two expressions */
-                    OperandDescriptionPair first_operand = expression(root.children[0]);
+                    Unit first_operand = expression(root.children[0]);
 
                     /* Cannot compare structs and arrays */
                     if (first_operand.second.dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
                         console.compileErrorOnToken("Cannot compare STRUCT or ARRAYS", expr_opr);
 
-                    OperandDescriptionPair second_operand = expression(root.children[2]);
+                    Unit second_operand = expression(root.children[2]);
 
                     /* Type check */
                     if (!icode::isSameType(first_operand.second, second_operand.second))
@@ -1213,7 +1191,7 @@ namespace irgen
             /* Else expression */
             else
             {
-                OperandDescriptionPair print_var = expression(child);
+                Unit print_var = expression(child);
 
                 /* Cannot peint struct or arrays */
                 if (print_var.second.dtype == icode::STRUCT || print_var.second.dimensions.size() > 1)
@@ -1237,7 +1215,7 @@ namespace irgen
 
     void ir_generator::input(const node::Node& root)
     {
-        OperandDescriptionPair input_var = expression(root.children[0]);
+        Unit input_var = expression(root.children[0]);
 
         /* Check if the input var is writable */
         if (!(input_var.first.operandType == icode::VAR || input_var.first.operandType == icode::GBL_VAR ||
@@ -1283,7 +1261,7 @@ namespace irgen
                 case node::ASSIGNMENT_STR:
                 {
                     /* The variable to write to */
-                    OperandDescriptionPair var = var_access(stmt.children[0]);
+                    Unit var = var_access(stmt.children[0]);
 
                     assign_str_literal_tovar(var, stmt.children[1]);
 
@@ -1292,7 +1270,7 @@ namespace irgen
                 case node::ASSIGNMENT_INITLIST:
                 {
                     /* The variable to write to */
-                    OperandDescriptionPair var = var_access(stmt.children[0]);
+                    Unit var = var_access(stmt.children[0]);
 
                     assign_init_list_tovar(var, stmt.children[1]);
 
@@ -1314,7 +1292,7 @@ namespace irgen
                     icode::ModuleDescription* temp = workingModule;
                     workingModule = &ext_modules_map[stmt.tok.toString()];
 
-                    OperandDescriptionPair ret_val = funccall(stmt.children[0]);
+                    Unit ret_val = funccall(stmt.children[0]);
 
                     /* Switch back to self */
                     workingModule = temp;
@@ -1357,7 +1335,7 @@ namespace irgen
                     /* Get return value */
                     if (stmt.children.size() != 0)
                     {
-                        OperandDescriptionPair ret_val = expression(stmt.children[0]);
+                        Unit ret_val = expression(stmt.children[0]);
 
                         /* Type check */
                         if (!icode::isSameType(ret_info, ret_val.second))

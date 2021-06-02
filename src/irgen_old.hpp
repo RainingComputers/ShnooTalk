@@ -2,9 +2,9 @@
 #define IRGEN_HPP
 
 #include "Builder/DescriptionBuilder.hpp"
-#include "Builder/ValueBuilder.hpp"
+#include "Builder/UnitBuilder.hpp"
 #include "Builder/DescriptionFinder.hpp"
-#include "Builder/OperandDescriptionPair.hpp"
+#include "Builder/Unit.hpp"
 #include "Console/Console.hpp"
 #include "IRBuilder_old/IRBuilder.hpp"
 #include "IRGenerator/ScopeTracker.hpp"
@@ -29,7 +29,7 @@ namespace irgen
 
         OperandBuilder opBuilder;
         ibuild::IRBuilder builder;
-        ValueBuilder valueBuilder;
+        UnitBuilder unitBuilder;
         DescriptionFinder descriptionFinder;
 
         icode::FunctionDescription* workingFunction;
@@ -42,11 +42,7 @@ namespace irgen
         void resetWorkingModule();
         void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
-        bool get_def(const std::string& name, icode::DefineDescription& def);
-
         bool get_func(const std::string& name, icode::FunctionDescription& func);
-
-        bool get_enum(const std::string& name, int& val);
 
         std::pair<token::Token, icode::TypeDescription> var_from_node(const node::Node& root);
 
@@ -56,31 +52,31 @@ namespace irgen
 
         icode::Operand gen_str_dat(const token::Token& str_token, size_t char_count, icode::DataType dtype);
 
-        OperandDescriptionPair var_info_to_str_dat(const token::Token& str_token, icode::TypeDescription var);
+        Unit var_info_to_str_dat(const token::Token& str_token, icode::TypeDescription var);
 
-        void assign_str_literal_tovar(OperandDescriptionPair var, node::Node& root);
+        void assign_str_literal_tovar(Unit var, node::Node& root);
 
-        void assign_init_list_tovar(OperandDescriptionPair var, node::Node& root);
+        void assign_init_list_tovar(Unit var, node::Node& root);
 
-        void copy_array(icode::Operand& left, OperandDescriptionPair right);
+        void copy_array(icode::Operand& left, Unit right);
 
-        void copy_struct(icode::Operand& left, OperandDescriptionPair right);
+        void copy_struct(icode::Operand& left, Unit right);
 
         void var(const node::Node& root);
 
-        OperandDescriptionPair getTypeFromToken(const node::Node& root);
+        Unit getTypeFromToken(const node::Node& root);
 
-        OperandDescriptionPair var_access(const node::Node& root);
+        Unit var_access(const node::Node& root);
 
-        OperandDescriptionPair funccall(const node::Node& root);
+        Unit funccall(const node::Node& root);
 
-        OperandDescriptionPair size_of(const node::Node& root);
+        Unit size_of(const node::Node& root);
 
-        OperandDescriptionPair term(const node::Node& root);
+        Unit term(const node::Node& root);
 
         icode::Instruction tokenToBinaryOperator(const token::Token tok);
 
-        OperandDescriptionPair expression(const node::Node& root);
+        Unit expression(const node::Node& root);
 
         icode::Instruction assignmentTokenToBinaryOperator(const token::Token tok);
 

@@ -2,10 +2,10 @@
 
 using namespace icode;
 
-DescriptionFinder::DescriptionFinder(ModuleDescription& rootModule, Console& console, ValueBuilder& valueBuilder)
+DescriptionFinder::DescriptionFinder(ModuleDescription& rootModule, Console& console, UnitBuilder& unitBuilder)
   : rootModule(rootModule)
   , console(console)
-  , valueBuilder(valueBuilder)
+  , unitBuilder(unitBuilder)
 {
 }
 
@@ -19,29 +19,29 @@ void DescriptionFinder::setWorkingFunction(FunctionDescription* functionDescript
     workingFunction = functionDescription;
 }
 
-bool DescriptionFinder::getLocal(const token::Token& nameToken, OperandDescriptionPair& returnValue)
+bool DescriptionFinder::getLocal(const token::Token& nameToken, Unit& returnValue)
 {
     TypeDescription typeDescription;
 
     if (!workingFunction->getSymbol(nameToken.toString(), typeDescription))
         return false;
 
-    returnValue = valueBuilder.operandDescPairFromTypeDesc(typeDescription, nameToken);
+    returnValue = unitBuilder.unitPairFromTypeDescription(typeDescription, nameToken);
     return true;
 }
 
-bool DescriptionFinder::getGlobal(const token::Token& nameToken, OperandDescriptionPair& returnValue)
+bool DescriptionFinder::getGlobal(const token::Token& nameToken, Unit& returnValue)
 {
     TypeDescription typeDescription;
 
     if (!rootModule.getGlobal(nameToken.toString(), typeDescription))
         return false;
 
-    returnValue = valueBuilder.operandDescPairFromTypeDesc(typeDescription, nameToken);
+    returnValue = unitBuilder.unitPairFromTypeDescription(typeDescription, nameToken);
     return true;
 }
 
-bool DescriptionFinder::getEnum(const token::Token& nameToken, OperandDescriptionPair& returnValue)
+bool DescriptionFinder::getEnum(const token::Token& nameToken, Unit& returnValue)
 {
     int enumValue;
 
@@ -49,11 +49,11 @@ bool DescriptionFinder::getEnum(const token::Token& nameToken, OperandDescriptio
         if (!rootModule.getEnum(nameToken.toString(), enumValue))
             return false;
 
-    returnValue = valueBuilder.operandDescPairFromEnum(enumValue);
+    returnValue = unitBuilder.unitFromEnum(enumValue);
     return true;
 }
 
-bool DescriptionFinder::getDefine(const token::Token& nameToken, OperandDescriptionPair& returnValue)
+bool DescriptionFinder::getDefine(const token::Token& nameToken, Unit& returnValue)
 {
     DefineDescription defineDescription;
 
@@ -61,25 +61,25 @@ bool DescriptionFinder::getDefine(const token::Token& nameToken, OperandDescript
         if (!rootModule.getDefineDescription(nameToken.toString(), defineDescription))
             return false;
 
-    returnValue = valueBuilder.operandDescPairFromDefine(defineDescription);
+    returnValue = unitBuilder.unitFromDefineDescription(defineDescription);
     return true;
 }
 
-OperandDescriptionPair DescriptionFinder::getValueFromToken(const token::Token& nameToken)
+Unit DescriptionFinder::getUnitFromToken(const token::Token& nameToken)
 {
-    OperandDescriptionPair operandDescriptionPair;
+    Unit unit;
 
-    if (getLocal(nameToken, operandDescriptionPair))
-        return operandDescriptionPair;
+    if (getLocal(nameToken, unit))
+        return unit;
 
-    if (getGlobal(nameToken, operandDescriptionPair))
-        return operandDescriptionPair;
+    if (getGlobal(nameToken, unit))
+        return unit;
 
-    if (getEnum(nameToken, operandDescriptionPair))
-        return operandDescriptionPair;
+    if (getEnum(nameToken, unit))
+        return unit;
 
-    if (getDefine(nameToken, operandDescriptionPair))
-        return operandDescriptionPair;
+    if (getDefine(nameToken, unit))
+        return unit;
 
     console.compileErrorOnToken("Symbol does not exist", nameToken);
 }

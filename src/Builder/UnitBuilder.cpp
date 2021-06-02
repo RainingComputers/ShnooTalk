@@ -1,46 +1,46 @@
-#include "ValueBuilder.hpp"
+#include "UnitBuilder.hpp"
 
 using namespace icode;
 
-ValueBuilder::ValueBuilder(OperandBuilder& opBuilder)
+UnitBuilder::UnitBuilder(OperandBuilder& opBuilder)
   : opBuilder(opBuilder)
 {
 }
 
-OperandDescriptionPair ValueBuilder::operandDescPairFromIntLiteral(int value, DataType dtype)
+Unit UnitBuilder::unitPairFromIntLiteral(int value, DataType dtype)
 {
     Operand op = opBuilder.createIntLiteralOperand(dtype, value);
     icode::TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
 
-    return OperandDescriptionPair(op, typeDescription);
+    return Unit(op, typeDescription);
 }
 
-OperandDescriptionPair ValueBuilder::operandDescPairFromFloatLiteral(float value, DataType dtype)
+Unit UnitBuilder::unitPairFromFloatLiteral(float value, DataType dtype)
 {
     Operand op = opBuilder.createFloatLiteralOperand(dtype, value);
     icode::TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
 
-    return OperandDescriptionPair(op, typeDescription);
+    return Unit(op, typeDescription);
 }
 
-OperandDescriptionPair ValueBuilder::operandDescPairFromTypeDesc(TypeDescription& typeDescription,
+Unit UnitBuilder::unitPairFromTypeDescription(TypeDescription& typeDescription,
                                                                 const token::Token& nameToken)
 {
     Operand op = opBuilder.operandFromTypeDescription(typeDescription, nameToken);
-    return OperandDescriptionPair(op, typeDescription);
+    return Unit(op, typeDescription);
 }
 
-OperandDescriptionPair ValueBuilder::operandDescPairFromEnum(int enumValue)
+Unit UnitBuilder::unitFromEnum(int enumValue)
 {
     icode::Operand op = opBuilder.createIntLiteralOperand(icode::INT, enumValue);
     
     icode::TypeDescription typeDescription = icode::typeDescriptionFromDataType(icode::INT);
     typeDescription.setProperty(IS_ENUM);
 
-    return OperandDescriptionPair(op, typeDescription);
+    return Unit(op, typeDescription);
 }
 
-OperandDescriptionPair ValueBuilder::operandDescPairFromDefine(const DefineDescription& defineDescription)
+Unit UnitBuilder::unitFromDefineDescription(const DefineDescription& defineDescription)
 {
     icode::Operand op;
 
@@ -52,5 +52,5 @@ OperandDescriptionPair ValueBuilder::operandDescPairFromDefine(const DefineDescr
     icode::TypeDescription typeDescription = icode::typeDescriptionFromDataType(defineDescription.dtype);
     typeDescription.setProperty(IS_DEFINE);
 
-    return OperandDescriptionPair(op, typeDescription);
+    return Unit(op, typeDescription);
 }

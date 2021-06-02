@@ -5,8 +5,8 @@
 #include "../IntermediateRepresentation/All.hpp"
 #include "../Token/Token.hpp"
 #include "OperandBuilder.hpp"
-#include "OperandDescriptionPair.hpp"
-#include "ValueBuilder.hpp"
+#include "Unit.hpp"
+#include "UnitBuilder.hpp"
 
 class DescriptionFinder
 {
@@ -16,20 +16,20 @@ class DescriptionFinder
 
     Console& console;
 
-    ValueBuilder& valueBuilder;
+    UnitBuilder& unitBuilder;
 
   public:
-    DescriptionFinder(icode::ModuleDescription& rootModule, Console& console, ValueBuilder& valueBuilder);
+    DescriptionFinder(icode::ModuleDescription& rootModule, Console& console, UnitBuilder& unitBuilder);
 
     void setWorkingModule(icode::ModuleDescription* module);
     void setWorkingFunction(icode::FunctionDescription* function);
 
-    bool getLocal(const token::Token& nameToken, OperandDescriptionPair& returnValue);
-    bool getGlobal(const token::Token& nameToken, OperandDescriptionPair& returnValue);
-    bool getDefine(const token::Token& nameToken, OperandDescriptionPair& returnValue);
-    bool getEnum(const token::Token& nameToken, OperandDescriptionPair& returnValue);
+    bool getLocal(const token::Token& nameToken, Unit& returnValue);
+    bool getGlobal(const token::Token& nameToken, Unit& returnValue);
+    bool getDefine(const token::Token& nameToken, Unit& returnValue);
+    bool getEnum(const token::Token& nameToken, Unit& returnValue);
 
-    OperandDescriptionPair getValueFromToken(const token::Token& nameToken);
+    Unit getUnitFromToken(const token::Token& nameToken);
 };
 
 #endif
