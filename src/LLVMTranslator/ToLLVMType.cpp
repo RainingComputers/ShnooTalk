@@ -60,15 +60,20 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
     }
 }
 
-Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
+Type* nonPointerTypeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
-    if (typeDescription.checkProperty(icode::IS_PTR))
-        return dataTypeToLLVMPointerType(ctx, typeDescription.dtype);
-
     if (typeDescription.dimensions.size() > 0 || typeDescription.dtype == icode::STRUCT)
         return ArrayType::get(Type::getInt8Ty(*ctx.context), typeDescription.size);
 
     return dataTypeToLLVMType(ctx, typeDescription.dtype);
+}
+
+Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
+{
+    if (typeDescription.checkProperty(icode::IS_PTR))
+        return PointerType::get(nonPointerTypeDescriptionToLLVMType(ctx, typeDescription), 0);
+
+    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
 }
 
 FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::FunctionDescription& functionDesc)

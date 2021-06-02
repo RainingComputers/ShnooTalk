@@ -184,6 +184,9 @@ def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
 def run_all_llc_tests(compiler_exec_path):
     os.system('rm -f ./*.llc')
 
+    failed = []
+    passed = []
+
     for file in os.listdir():
         if not file.endswith("_test.uhll"):
             continue
@@ -192,12 +195,18 @@ def run_all_llc_tests(compiler_exec_path):
 
         if(res == TestResult.PASSED):
             print(" 👌", file, "passed")
+            passed.append(file)
         elif(res == TestResult.FAILED):
             print(" ❌", file, "failed\n")
             print("[LLC output]")
             print(llc_output)
+            failed.append(file)
         elif(res == TestResult.TIMEDOUT):
             print(" 🕒", file, "timedout")
+
+    # Print number of tests that passed
+    print(f"{len(failed)} tests failed.")
+    print(f"{len(passed)} tests passed.")
 
     os.system('rm -f *.o')
     os.system('rm -f *.llc.s')
