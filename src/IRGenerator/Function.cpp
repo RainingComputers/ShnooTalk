@@ -16,8 +16,6 @@ TypeDescription getParamType(irgen::ir_generator& ctx, const node::Node& paramNo
     if (isMutable || paramType.isArray() > 0 || paramType.isStruct())
         paramType.setProperty(icode::IS_PTR);
 
-    paramType.setProperty(icode::IS_PARAM);
-
     return paramType;
 }
 

@@ -25,29 +25,29 @@ namespace icode
         return std::find(uses.begin(), uses.end(), name) != uses.end();
     }
 
-    bool ModuleDescription::getStruct(const std::string& name, StructDescription& val)
+    bool ModuleDescription::getStruct(const std::string& name, StructDescription& returnValue)
     {
-        return GetMapElement<std::string, StructDescription>(structures, name, val);
+        return getMapElement<std::string, StructDescription>(structures, name, returnValue);
     }
 
-    bool ModuleDescription::getFunction(const std::string& name, FunctionDescription& val)
+    bool ModuleDescription::getFunction(const std::string& name, FunctionDescription& returnValue)
     {
-        return GetMapElement<std::string, FunctionDescription>(functions, name, val);
+        return getMapElement<std::string, FunctionDescription>(functions, name, returnValue);
     }
 
-    bool ModuleDescription::getEnum(const std::string& name, int& val)
+    bool ModuleDescription::getEnum(const std::string& name, int& returnValue)
     {
-        return GetMapElement<std::string, int>(enumerations, name, val);
+        return getMapElement<std::string, int>(enumerations, name, returnValue);
     }
 
-    bool ModuleDescription::getDefineDescription(const std::string& name, DefineDescription& val)
+    bool ModuleDescription::getDefineDescription(const std::string& name, DefineDescription& returnValue)
     {
-        return GetMapElement<std::string, DefineDescription>(defines, name, val);
+        return getMapElement<std::string, DefineDescription>(defines, name, returnValue);
     }
 
-    bool ModuleDescription::getGlobal(const std::string& name, TypeDescription& val)
+    bool ModuleDescription::getGlobal(const std::string& name, TypeDescription& returnValue)
     {
-        return GetMapElement<std::string, TypeDescription>(globals, name, val);
+        return getMapElement<std::string, TypeDescription>(globals, name, returnValue);
     }
 
     bool ModuleDescription::symbolExists(const std::string& name)

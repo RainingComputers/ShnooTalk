@@ -2,9 +2,12 @@
 
 namespace ibuild
 {
-    IRBuilder::IRBuilder(icode::ModuleDescription& moduleDescription, icode::StringModulesMap& modulesMap)
+    IRBuilder::IRBuilder(icode::ModuleDescription& moduleDescription,
+                         icode::StringModulesMap& modulesMap,
+                         OperandBuilder& opBuilder)
       : module(moduleDescription)
       , modulesMap(modulesMap)
+      , opBuilder(opBuilder)
     {
     }
 

@@ -113,7 +113,7 @@ void DescriptionBuilder::createEnum(const std::vector<token::Token>& enums)
 void DescriptionBuilder::createFunctionDescription(const token::Token& nameToken,
                                                    const icode::TypeDescription& returnType,
                                                    const std::vector<token::Token>& paramNames,
-                                                   const std::vector<icode::TypeDescription>& paramTypes)
+                                                   std::vector<icode::TypeDescription>& paramTypes)
 {
     if (workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
@@ -127,6 +127,8 @@ void DescriptionBuilder::createFunctionDescription(const token::Token& nameToken
         if (workingModule->symbolExists(paramNames[i].toString()))
             console.compileErrorOnToken("Symbol already defined", paramNames[i]);
 
+        paramTypes[i].setProperty(IS_PARAM);
+
         /* Append to symbol table */
         functionDescription.parameters.push_back(paramNames[i].toString());
         functionDescription.symbols[paramNames[i].toString()] = paramTypes[i];
@@ -135,11 +137,12 @@ void DescriptionBuilder::createFunctionDescription(const token::Token& nameToken
     workingModule->functions[nameToken.toString()] = functionDescription;
 }
 
-void DescriptionBuilder::createGlobal(const token::Token globalNameToken,
-                                      const icode::TypeDescription& typeDescription)
+void DescriptionBuilder::createGlobal(const token::Token globalNameToken, icode::TypeDescription& typeDescription)
 {
     if (workingModule->symbolExists(globalNameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", globalNameToken);
+
+    typeDescription.setProperty(IS_GLOBAL);
 
     workingModule->globals[globalNameToken.toString()] = typeDescription;
 }

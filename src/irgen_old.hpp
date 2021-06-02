@@ -2,6 +2,9 @@
 #define IRGEN_HPP
 
 #include "Builder/DescriptionBuilder.hpp"
+#include "Builder/ValueBuilder.hpp"
+#include "Builder/DescriptionFinder.hpp"
+#include "Builder/OperandDescriptionPair.hpp"
 #include "Console/Console.hpp"
 #include "IRBuilder_old/IRBuilder.hpp"
 #include "IRGenerator/ScopeTracker.hpp"
@@ -10,10 +13,8 @@
 #include "Token/Token.hpp"
 #include "pathchk.hpp"
 
-typedef std::pair<icode::Operand, icode::TypeDescription> OperandDescriptionPair;
+
 typedef std::pair<token::Token, icode::TypeDescription> TokenTypePair;
-typedef std::pair<icode::ModuleDescription*, size_t> ModuleIndexPair;
-typedef std::pair<icode::DataType, int> DataTypeSizePair;
 typedef std::pair<std::vector<int>, int> LiteralDimensionsIndexPair;
 
 namespace irgen
@@ -26,7 +27,10 @@ namespace irgen
         icode::ModuleDescription& rootModule;
         Console& console;
 
+        OperandBuilder opBuilder;
         ibuild::IRBuilder builder;
+        ValueBuilder valueBuilder;
+        DescriptionFinder descriptionFinder;
 
         icode::FunctionDescription* workingFunction;
         icode::ModuleDescription* workingModule;
@@ -64,7 +68,7 @@ namespace irgen
 
         void var(const node::Node& root);
 
-        OperandDescriptionPair getTypeFromToken(const node::Node& root, token::Token nameToken);
+        OperandDescriptionPair getTypeFromToken(const node::Node& root);
 
         OperandDescriptionPair var_access(const node::Node& root);
 

@@ -11,6 +11,7 @@ namespace ibuild
         icode::FunctionDescription* functionDescriptionPointer;
         icode::ModuleDescription& module;
         icode::StringModulesMap modulesMap;
+        OperandBuilder& opBuilder;
 
         icode::Operand ensureNotPointer(icode::Operand op);
 
@@ -19,8 +20,6 @@ namespace ibuild
         icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op);
 
       public:
-        OperandBuilder opBuilder;
-
         void setFunctionDescription(icode::FunctionDescription* functionDesc);
 
         void pushEntry(icode::Entry entry);
@@ -61,7 +60,7 @@ namespace ibuild
 
         void noArgumentEntry(icode::Instruction instruction);
 
-        IRBuilder(icode::ModuleDescription& moduleDescription, icode::StringModulesMap& modulesMap);
+        IRBuilder(icode::ModuleDescription& moduleDescription, icode::StringModulesMap& modulesMap, OperandBuilder& opBuilder);
     };
 }
 

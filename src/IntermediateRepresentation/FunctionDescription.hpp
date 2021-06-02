@@ -18,7 +18,7 @@ namespace icode
         std::string moduleName;
 
         bool symbolExists(const std::string& name);
-        bool getSymbol(const std::string& name, icode::TypeDescription& typeDescription);
+        bool getSymbol(const std::string& name, icode::TypeDescription& returnValue);
     };
 }
 

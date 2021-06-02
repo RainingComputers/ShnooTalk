@@ -1,15 +1,13 @@
 #include <map>
 
 template<class K, class V>
-bool GetMapElement(std::map<K, V>& map, const K& key, V& val)
+bool getMapElement(std::map<K, V>& map, const K& key, V& returnValue)
 {
     auto pair = map.find(key);
 
-    if (pair != map.end())
-    {
-        val = pair->second;
-        return true;
-    }
+    if (pair == map.end())
+        return false;
 
-    return false;
+    returnValue = pair->second;
+    return true;
 }

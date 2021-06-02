@@ -33,9 +33,9 @@ class DescriptionBuilder
     void createFunctionDescription(const token::Token& nameToken,
                                    const icode::TypeDescription& returnType,
                                    const std::vector<token::Token>& paramNames,
-                                   const std::vector<icode::TypeDescription>& paramTypes);
+                                   std::vector<icode::TypeDescription>& paramTypes);
 
-    void createGlobal(const token::Token globalNameToken, const icode::TypeDescription& typeDescription);
+    void createGlobal(const token::Token globalNameToken, icode::TypeDescription& typeDescription);
 
     void createStructDescription(const token::Token& nameToken,
                                  const std::vector<token::Token>& fieldNames,

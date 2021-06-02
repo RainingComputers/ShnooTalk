@@ -42,29 +42,14 @@ namespace icode
     }
 
     // TODO move this
-    TypeDescription typeDescriptionFromDataType(DataType dtype, TargetDescription& target)
+    TypeDescription typeDescriptionFromDataType(DataType dtype)
     {
         TypeDescription var;
-
         var.dtype = dtype;
-
-        if (dtype == INT)
-            var.dtypeName = "int";
-        else if (dtype == FLOAT)
-            var.dtypeName = "float";
-        else if (dtype == VOID)
-            var.dtypeName = "void";
-        else
-        {
-            for (auto pair : target.dataTypeNames)
-                if (pair.second == dtype)
-                    var.dtypeName = pair.first;
-        }
-
+        var.dtypeName = dataTypeToString(dtype);
         var.dtypeSize = getDataTypeSize(dtype);
         var.size = var.dtypeSize;
         var.offset = 0;
-
         return var;
     }
 }

@@ -9,9 +9,9 @@ namespace icode
         return symbols.find(name) != symbols.end();
     }
 
-    bool FunctionDescription::getSymbol(const std::string& name, TypeDescription& typeDescription)
+    bool FunctionDescription::getSymbol(const std::string& name, TypeDescription& returnValue)
     {
-        return GetMapElement<std::string, TypeDescription>(symbols, name, typeDescription);
+        return getMapElement<std::string, TypeDescription>(symbols, name, returnValue);
     }
 
 }

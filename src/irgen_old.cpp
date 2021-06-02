@@ -20,8 +20,10 @@ namespace irgen
       , ext_modules_map(modules_map)
       , rootModule(modules_map[file_name])
       , console(console)
-      , builder(modules_map[file_name], ext_modules_map)
+      , builder(modules_map[file_name], ext_modules_map, opBuilder)
       , descriptionBuilder(console)
+      , valueBuilder(opBuilder)
+      , descriptionFinder(modules_map[file_name], console, valueBuilder)
     {
         workingFunction = nullptr;
         workingModule = &rootModule;
@@ -29,7 +31,7 @@ namespace irgen
         rootModule.name = file_name;
         rootModule.initializeTargetInfo(target_desc);
 
-        descriptionBuilder.setWorkingModule(workingModule);
+        setWorkingModule(workingModule);
     }
 
     void ir_generator::resetWorkingModule()
@@ -42,6 +44,7 @@ namespace irgen
     {
         workingModule = moduleDescription;
         descriptionBuilder.setWorkingModule(moduleDescription);
+        descriptionFinder.setWorkingModule(moduleDescription);
     }
 
     bool ir_generator::get_def(const std::string& name, icode::DefineDescription& def)
@@ -165,7 +168,7 @@ namespace irgen
 
         /* Create icode::operand */
         size_t size = char_count * icode::getDataTypeSize(dtype);
-        icode::Operand opr = builder.opBuilder.createStringDataOperand(name, size);
+        icode::Operand opr = opBuilder.createStringDataOperand(name, size);
 
         return opr;
     }
@@ -207,15 +210,14 @@ namespace irgen
             char character = root.tok.toUnescapedString()[i];
 
             /* Write to current offset */
-            builder.copy(curr_offset, builder.opBuilder.createIntLiteralOperand(icode::UI8, character));
+            builder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, character));
 
             curr_offset =
-              builder.addressAddOperator(curr_offset,
-                                         builder.opBuilder.createLiteralAddressOperand(var.second.dtypeSize));
+              builder.addressAddOperator(curr_offset, opBuilder.createLiteralAddressOperand(var.second.dtypeSize));
         }
 
         /* Copy null character */
-        builder.copy(curr_offset, builder.opBuilder.createIntLiteralOperand(icode::UI8, 0));
+        builder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, 0));
     }
 
     void ir_generator::copy_array(icode::Operand& left, OperandDescriptionPair right)
@@ -243,7 +245,7 @@ namespace irgen
             /* Update offset */
             if (i != size - dtype_size)
             {
-                icode::Operand update = builder.opBuilder.createLiteralAddressOperand(dtype_size);
+                icode::Operand update = opBuilder.createLiteralAddressOperand(dtype_size);
                 curr_offset_left = builder.addressAddOperator(curr_offset_left, update);
                 curr_offset_right = builder.addressAddOperator(curr_offset_right, update);
             }
@@ -286,7 +288,7 @@ namespace irgen
                 copy_struct(curr_offset_left, OperandDescriptionPair(curr_offset_right, field_info));
             }
 
-            update = builder.opBuilder.createLiteralAddressOperand(field_info.size);
+            update = opBuilder.createLiteralAddressOperand(field_info.size);
 
             count++;
         }
@@ -352,7 +354,7 @@ namespace irgen
             if (i != root.children.size() - 1)
             {
                 curr_offset =
-                  builder.addressAddOperator(curr_offset, builder.opBuilder.createLiteralAddressOperand(element_var.size));
+                  builder.addressAddOperator(curr_offset, opBuilder.createLiteralAddressOperand(element_var.size));
             }
         }
 
@@ -363,6 +365,7 @@ namespace irgen
     void ir_generator::var(const node::Node& root)
     {
         TokenTypePair var = var_from_node(root);
+        var.second.setProperty(icode::IS_LOCAL);
         scope.putInCurrentScope(var.first);
 
         /* Set mutable for var */
@@ -385,7 +388,7 @@ namespace irgen
             /* Create icode operands, one for variable other for temp
                 to hold result of initialization expression */
             icode::Operand left =
-              builder.opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString());
+              opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString());
 
             OperandDescriptionPair init_exp = expression(last_node);
 
@@ -406,14 +409,14 @@ namespace irgen
         else if (last_node.type == node::STR_LITERAL)
         {
             OperandDescriptionPair var_pair = OperandDescriptionPair(
-              builder.opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
+              opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
               var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
             OperandDescriptionPair var_pair = OperandDescriptionPair(
-              builder.opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
+              opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
               var.second);
             assign_init_list_tovar(var_pair, last_node);
         }
@@ -422,62 +425,23 @@ namespace irgen
         (*workingFunction).symbols[var.first.toString()] = var.second;
     }
 
-    OperandDescriptionPair ir_generator::getTypeFromToken(const node::Node& root, token::Token nameToken)
+    OperandDescriptionPair ir_generator::getTypeFromToken(const node::Node& root)
     {
-        icode::TypeDescription typeDescription;
+        const token::Token& nameToken = root.getNthChildToken(0);
 
-        node::Node child = root.children[0];
-        const std::string& ident_name = child.tok.toString();
+        OperandDescriptionPair operandDescriptionPair = descriptionFinder.getValueFromToken(nameToken);
 
-        int enum_val;
-        icode::DefineDescription def;
+        if (operandDescriptionPair.second.checkProperty(icode::IS_ENUM) && root.children.size() > 1)
+            console.compileErrorOnToken("Invalid use of ENUM", nameToken);
 
-        if ((*workingFunction).getSymbol(ident_name, typeDescription))
-        {
-            if (!scope.isInCurrentScope(child.tok))
-                console.compileErrorOnToken("Symbol not in scope", child.tok);
+        if (operandDescriptionPair.second.checkProperty(icode::IS_DEFINE) && root.children.size() > 1)
+            console.compileErrorOnToken("Invalid use of DEF", nameToken);
 
-            icode::Operand op = builder.opBuilder.operandFromTypeDescription(typeDescription, child.tok);
+        if (operandDescriptionPair.second.checkProperty(icode::IS_LOCAL))
+            if (!scope.isInCurrentScope(nameToken))
+                console.compileErrorOnToken("Symbol not in scope", nameToken);
 
-            return OperandDescriptionPair(op, typeDescription);
-        }
-
-        if (rootModule.getGlobal(ident_name, typeDescription))
-        {
-            icode::Operand op = builder.opBuilder.operandFromTypeDescription(typeDescription, child.tok);
-
-            return OperandDescriptionPair(op, typeDescription);
-        }
-
-        if (get_enum(ident_name, enum_val))
-        {
-            /* Check if there is STRUCT or ARRAY access of enum */
-            if (root.children.size() > 1)
-                console.compileErrorOnToken("Invalid use of ENUM", child.tok);
-
-            icode::Operand op = builder.opBuilder.createIntLiteralOperand(icode::INT, enum_val);
-            icode::TypeDescription var = icode::typeDescriptionFromDataType(icode::INT, target);
-            return OperandDescriptionPair(op, var);
-        }
-
-        if (get_def(ident_name, def))
-        {
-            /* Check if there is STRUCT or ARRAY access of def */
-            if (root.children.size() > 1)
-                console.compileErrorOnToken("Invalid use of DEF", child.tok);
-
-            icode::Operand op;
-
-            if (def.dtype == icode::INT)
-                op = builder.opBuilder.createIntLiteralOperand(icode::INT, def.val.integer);
-            else
-                op = builder.opBuilder.createFloatLiteralOperand(icode::FLOAT, def.val.floating);
-
-            icode::TypeDescription var = icode::typeDescriptionFromDataType(def.dtype, target);
-            return OperandDescriptionPair(op, var);
-        }
-
-        console.compileErrorOnToken("Symbol does not exist", child.tok);
+        return operandDescriptionPair;
     }
 
     OperandDescriptionPair ir_generator::var_access(const node::Node& root)
@@ -489,7 +453,7 @@ namespace irgen
         node::Node child = root.children[0];
         const std::string& ident_name = child.tok.toString();
 
-        OperandDescriptionPair operandDescPair = getTypeFromToken(root, child.tok);
+        OperandDescriptionPair operandDescPair = getTypeFromToken(root);
 
         /* If no struct or subscript */
         if (root.children.size() == 1)
@@ -542,7 +506,7 @@ namespace irgen
                             /* Add offset */
                             current_offset_temp = builder.addressAddOperator(
                               current_offset_temp,
-                              builder.opBuilder.createLiteralAddressOperand(current_var_info.offset));
+                              opBuilder.createLiteralAddressOperand(current_var_info.offset));
 
                             dim_count = 0;
                         }
@@ -576,7 +540,7 @@ namespace irgen
                         /* Entry for subscript expression */
                         icode::Operand subs_op =
                           builder.addressMultiplyOperator(subs_expr.first,
-                                                          builder.opBuilder.createLiteralAddressOperand(elem_width));
+                                                          opBuilder.createLiteralAddressOperand(elem_width));
 
                         if (dim_count != current_var_info.dimensions.size())
                             elem_width /= current_var_info.dimensions[dim_count];
@@ -722,8 +686,7 @@ namespace irgen
         resetWorkingModule();
 
         /* return a icode::INT literal  */
-        return OperandDescriptionPair(builder.opBuilder.createIntLiteralOperand(icode::INT, size),
-                                      icode::typeDescriptionFromDataType(icode::INT, target));
+        return valueBuilder.operandDescPairFromIntLiteral(size, icode::INT);
     }
 
     OperandDescriptionPair ir_generator::term(const node::Node& root)
@@ -741,29 +704,18 @@ namespace irgen
                     {
                         /* Return literal icode operand */
                         int literal = std::stoi(child.tok.toString());
-                        icode::DataType dtype = icode::INT;
-                        return OperandDescriptionPair(builder.opBuilder.createIntLiteralOperand(dtype, literal),
-                                                      icode::typeDescriptionFromDataType(dtype, target));
-
-                        break;
+                        return valueBuilder.operandDescPairFromIntLiteral(literal, icode::INT);
                     }
                     case token::CHAR_LITERAL:
                     {
-                        char c = child.tok.toUnescapedString()[0];
-
-                        icode::DataType dtype = icode::UI8;
-                        return OperandDescriptionPair(builder.opBuilder.createIntLiteralOperand(dtype, c),
-                                                      icode::typeDescriptionFromDataType(dtype, target));
+                        char literal = child.tok.toUnescapedString()[0];
+                        return valueBuilder.operandDescPairFromIntLiteral(literal, icode::UI8);
                     }
                     case token::FLOAT_LITERAL:
                     {
                         /* Return literal icode operand */
-                        icode::DataType dtype = icode::FLOAT;
                         float literal = (float)stof(child.tok.toString());
-                        return OperandDescriptionPair(builder.opBuilder.createFloatLiteralOperand(dtype, literal),
-                                                      icode::typeDescriptionFromDataType(dtype, target));
-
-                        break;
+                        return valueBuilder.operandDescPairFromFloatLiteral(literal, icode::FLOAT);
                     }
                     default:
                         console.internalBugErrorOnToken(child.tok);
@@ -787,7 +739,7 @@ namespace irgen
                 icode::Operand res_temp = builder.castOperator(cast_dtype, cast_term.first);
 
                 /* Return temp */
-                return OperandDescriptionPair(res_temp, icode::typeDescriptionFromDataType(cast_dtype, target));
+                return OperandDescriptionPair(res_temp, icode::typeDescriptionFromDataType(cast_dtype));
             }
             case node::UNARY_OPR:
             {
@@ -825,7 +777,7 @@ namespace irgen
                 }
 
                 icode::Operand res_temp =
-                  builder.unaryOperator(opcode, builder.opBuilder.createTempOperand(dtype, dtype_name), term_var.first);
+                  builder.unaryOperator(opcode, opBuilder.createTempOperand(dtype, dtype_name), term_var.first);
 
                 /* Return temp */
                 return OperandDescriptionPair(res_temp, term_var.second);
@@ -860,7 +812,7 @@ namespace irgen
                 console.internalBugErrorOnToken(child.tok);
         }
 
-        return OperandDescriptionPair(icode::Operand(), icode::typeDescriptionFromDataType(icode::VOID, target));
+        return OperandDescriptionPair(icode::Operand(), icode::typeDescriptionFromDataType(icode::VOID));
     }
 
     icode::Instruction ir_generator::tokenToBinaryOperator(const token::Token tok)
@@ -909,43 +861,33 @@ namespace irgen
         if (root.children.size() == 1)
             return expression(root.children[0]);
 
-        token::Token expr_opr = root.children[1].tok;
+        token::Token expressionOperator = root.children[1].tok;
 
-        /* First operand */
-        OperandDescriptionPair first_operand = expression(root.children[0]);
-        icode::DataType dtype = first_operand.second.dtype;
-        std::string dtype_name = first_operand.second.dtypeName;
+        OperandDescriptionPair LHS = expression(root.children[0]);
+        icode::DataType dtype = LHS.second.dtype;
+        std::string dtype_name = LHS.second.dtypeName;
 
-        /* Expression not allowed on arrays or struct */
-        if (dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
-            console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expr_opr);
+        OperandDescriptionPair RHS = expression(root.children[2]);
 
-        /* Second operand */
-        OperandDescriptionPair second_operand = expression(root.children[2]);
+        if (dtype == icode::STRUCT || LHS.second.dimensions.size() != 0)
+            console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expressionOperator);
 
-        /* Type check */
-        if (!icode::isSameType(first_operand.second, second_operand.second))
-            console.typeError(root.children[2].tok, first_operand.second, second_operand.second);
+        if (!icode::isSameType(LHS.second, RHS.second))
+            console.typeError(root.children[2].tok, LHS.second, RHS.second);
 
-        /* If bitwise operator, dtype has to be int */
-        if (expr_opr.isBitwiseOperation() && !icode::isInteger(dtype))
-            console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expr_opr);
+        if (expressionOperator.isBitwiseOperation() && !icode::isInteger(dtype))
+            console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expressionOperator);
 
-        /* Generate corresponding opcode for operator */
-        icode::Instruction opcode = tokenToBinaryOperator(expr_opr);
+        icode::Instruction instruction = tokenToBinaryOperator(expressionOperator);
 
-        icode::Operand res_temp = builder.binaryOperator(opcode,
-                                                         builder.opBuilder.createTempOperand(dtype, dtype_name),
-                                                         first_operand.first,
-                                                         second_operand.first);
+        icode::Operand result =
+          builder.binaryOperator(instruction, opBuilder.createTempOperand(dtype, dtype_name), LHS.first, RHS.first);
 
-        /* Return the operand where final result is stored */
-        return OperandDescriptionPair(res_temp, first_operand.second);
+        return OperandDescriptionPair(result, LHS.second);
     }
 
     icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const token::Token tok)
     {
-        /* Convert token type to opcode */
         switch (tok.getType())
         {
             case token::EQUAL:
@@ -971,59 +913,47 @@ namespace irgen
 
     void ir_generator::assignment(const node::Node& root)
     {
-        /* The variable to write to */
-        OperandDescriptionPair var = var_access(root.children[0]);
+        OperandDescriptionPair LHS = var_access(root.children[0]);
 
-        /* Assignment expression */
-        OperandDescriptionPair expr = expression(root.children[2]);
+        OperandDescriptionPair RHS = expression(root.children[2]);
 
-        /* Assignement operator */
-        token::Token assign_opr = root.children[1].tok;
+        token::Token assignOperator = root.children[1].tok;
 
-        /* Var connot be enum of a def */
-        if (var.first.operandType == icode::LITERAL)
+        if (LHS.first.operandType == icode::LITERAL)
             console.compileErrorOnToken("Cannot assign to LITERAL", root.children[0].tok);
 
-        /* Check if type matches */
-        if (!icode::isSameType(var.second, expr.second))
-            console.typeError(root.children[2].tok, var.second, expr.second);
+        if (!icode::isSameType(LHS.second, RHS.second))
+            console.typeError(root.children[2].tok, LHS.second, RHS.second);
 
-        /* Check if mutable */
-        if (!var.second.checkProperty(icode::IS_MUT))
+        if (!LHS.second.checkProperty(icode::IS_MUT))
             console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
 
-        /* Assignment operator not allowed on arrays */
-        if (var.second.dimensions.size() != 0)
-            console.compileErrorOnToken("Assignment operators not allowed on ARRAY", assign_opr);
+        if (LHS.second.dimensions.size() != 0)
+            console.compileErrorOnToken("Assignment operators not allowed on ARRAY", assignOperator);
 
-        /* Only EQUAL operator allowed on STRUCT */
-        if (var.second.dtype == icode::STRUCT && assign_opr.getType() != token::EQUAL)
-            console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT", assign_opr);
+        if (LHS.second.dtype == icode::STRUCT && assignOperator.getType() != token::EQUAL)
+            console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT", assignOperator);
 
-        /* If bitwise operator, dtype has to be int */
-        if (assign_opr.isBitwiseOperation() && !icode::isInteger(var.second.dtype))
-            console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assign_opr);
+        if (assignOperator.isBitwiseOperation() && !icode::isInteger(LHS.second.dtype))
+            console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
 
-        /* Create icode entry */
-        icode::Instruction opcode = assignmentTokenToBinaryOperator(assign_opr);
+        icode::Instruction opcode = assignmentTokenToBinaryOperator(assignOperator);
 
-        /* If struct */
-        if (var.second.dtype == icode::STRUCT)
+        if (LHS.second.dtype == icode::STRUCT)
         {
-            copy_struct(var.first, expr);
+            copy_struct(LHS.first, RHS);
             return;
         }
 
-        /* If not a struct field */
-        if (assign_opr.getType() == token::EQUAL)
+        if (assignOperator.getType() == token::EQUAL)
         {
-            builder.copy(var.first, expr.first);
+            builder.copy(LHS.first, RHS.first);
         }
         else
         {
-            icode::Operand temp = builder.opBuilder.createTempOperand(var.second.dtype, var.second.dtypeName);
-            builder.copy(temp, var.first);
-            builder.binaryOperator(opcode, var.first, temp, expr.first);
+            icode::Operand temp = opBuilder.createTempOperand(LHS.second.dtype, LHS.second.dtypeName);
+            builder.copy(temp, LHS.first);
+            builder.binaryOperator(opcode, LHS.first, temp, RHS.first);
         }
     }
 
@@ -1034,9 +964,9 @@ namespace irgen
         std::string label_name = tok.getLineColString();
 
         if (true_label)
-            return builder.opBuilder.createLabelOperand("_" + prefix + "_true" + label_name);
+            return opBuilder.createLabelOperand("_" + prefix + "_true" + label_name);
 
-        return builder.opBuilder.createLabelOperand("_" + prefix + "_false" + label_name);
+        return opBuilder.createLabelOperand("_" + prefix + "_false" + label_name);
     }
 
     icode::Instruction ir_generator::tokenToCompareOperator(const token::Token tok)
@@ -1434,8 +1364,7 @@ namespace irgen
                             console.typeError(stmt.children[0].tok, ret_info, ret_val.second);
 
                         /* Assign return value to return pointer */
-                        icode::Operand ret_ptr =
-                          builder.opBuilder.createRetPointerOperand(ret_info.dtype, ret_info.dtypeName);
+                        icode::Operand ret_ptr = opBuilder.createRetPointerOperand(ret_info.dtype, ret_info.dtypeName);
 
                         if (ret_val.second.dtype == icode::STRUCT)
                             copy_struct(ret_ptr, ret_val);
@@ -1543,6 +1472,7 @@ namespace irgen
                 /* Switch symbol and icode table */
                 workingFunction = &rootModule.functions[func_name];
                 builder.setFunctionDescription(workingFunction);
+                descriptionFinder.setWorkingFunction(workingFunction);
 
                 /* Clear scope */
                 scope.resetScope();
@@ -1550,9 +1480,9 @@ namespace irgen
                 /* Process block */
                 block(child.children.back(),
                       false,
-                      builder.opBuilder.createLabelOperand(""),
-                      builder.opBuilder.createLabelOperand(""),
-                      builder.opBuilder.createLabelOperand(""));
+                      opBuilder.createLabelOperand(""),
+                      opBuilder.createLabelOperand(""),
+                      opBuilder.createLabelOperand(""));
 
                 /* Last instruction must be return */
                 if (!current_function_terminates())
