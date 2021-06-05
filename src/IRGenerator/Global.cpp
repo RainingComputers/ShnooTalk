@@ -4,9 +4,9 @@
 
 using namespace icode;
 
-void createGlobalFromNode(irgen::ir_generator& ctx, const node::Node& root)
+void createGlobalFromNode(irgen::ir_generator& ctx, const Node& root)
 {
-    const token::Token& globalName = root.getNthChildToken(0);
+    const Token& globalName = root.getNthChildToken(0);
     
     TypeDescription globalType = typeDescriptionFromNode(ctx, root);
 

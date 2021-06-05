@@ -37,7 +37,7 @@ class OperandBuilder
 
     icode::Operand createModuleOperand(const std::string& module);
 
-    icode::Operand operandFromTypeDescription(const icode::TypeDescription& typeDescription, const token::Token& nameToken);
+    icode::Operand operandFromTypeDescription(const icode::TypeDescription& typeDescription, const Token& nameToken);
 
     icode::Operand operandFromIntLiteral(int value);
     

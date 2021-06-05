@@ -143,7 +143,7 @@ Operand OperandBuilder::createModuleOperand(const std::string& module)
 }
 
 Operand OperandBuilder::operandFromTypeDescription(const TypeDescription& typeDescription,
-                                                   const token::Token& nameToken)
+                                                   const Token& nameToken)
 {
     return createVarOperand(typeDescription.dtype,
                             typeDescription.dtypeName,

@@ -19,8 +19,8 @@ class ScopeTracker
     void createScope();
     void exitScope();
     void resetScope();
-    void putInCurrentScope(const token::Token& symbol);
-    bool isInCurrentScope(const token::Token& symbol);
+    void putInCurrentScope(const Token& symbol);
+    bool isInCurrentScope(const Token& symbol);
 };
 
 #endif

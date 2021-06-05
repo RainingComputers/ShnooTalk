@@ -27,7 +27,7 @@ TypeDescription DescriptionBuilder::createVoidTypeDescription()
     return voidTypeDescription;
 }
 
-std::pair<int, std::string> DescriptionBuilder::getSizeAndModuleName(const token::Token& dataTypeToken, DataType dtype)
+std::pair<int, std::string> DescriptionBuilder::getSizeAndModuleName(const Token& dataTypeToken, DataType dtype)
 {
     if (dtype != icode::STRUCT)
         return std::pair<int, std::string>(getDataTypeSize(dtype), workingModule->name);
@@ -39,7 +39,7 @@ std::pair<int, std::string> DescriptionBuilder::getSizeAndModuleName(const token
     return std::pair<int, std::string>(structDesc.size, structDesc.moduleName);
 }
 
-TypeDescription DescriptionBuilder::createTypeDescription(const token::Token& dataTypeToken)
+TypeDescription DescriptionBuilder::createTypeDescription(const Token& dataTypeToken)
 {
     icode::DataType dtype = workingModule->dataTypeFromString(dataTypeToken.toString());
 
@@ -72,7 +72,7 @@ TypeDescription DescriptionBuilder::createArrayTypeDescription(const TypeDescrip
     return modifiedTypeDescription;
 }
 
-icode::DefineDescription defineDescriptionFromToken(const token::Token& valueToken)
+icode::DefineDescription defineDescriptionFromToken(const Token& valueToken)
 {
     if (valueToken.getType() == token::INT_LITERAL)
         return icode::createIntDefineDescription(valueToken.toInt(), icode::INT);
@@ -80,7 +80,7 @@ icode::DefineDescription defineDescriptionFromToken(const token::Token& valueTok
     return icode::createFloatDefineDescription(valueToken.toFloat(), icode::FLOAT);
 }
 
-void DescriptionBuilder::createDefine(const token::Token& nameToken, const token::Token& valueToken)
+void DescriptionBuilder::createDefine(const Token& nameToken, const Token& valueToken)
 {
     if (workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already exists", nameToken);
@@ -88,7 +88,7 @@ void DescriptionBuilder::createDefine(const token::Token& nameToken, const token
     workingModule->defines[nameToken.toString()] = defineDescriptionFromToken(valueToken);
 }
 
-void DescriptionBuilder::createEnum(const std::vector<token::Token>& enums)
+void DescriptionBuilder::createEnum(const std::vector<Token>& enums)
 {
     for (size_t i = 0; i < enums.size(); i += 1)
     {
@@ -99,9 +99,9 @@ void DescriptionBuilder::createEnum(const std::vector<token::Token>& enums)
     }
 }
 
-void DescriptionBuilder::createFunctionDescription(const token::Token& nameToken,
+void DescriptionBuilder::createFunctionDescription(const Token& nameToken,
                                                    const icode::TypeDescription& returnType,
-                                                   const std::vector<token::Token>& paramNames,
+                                                   const std::vector<Token>& paramNames,
                                                    std::vector<icode::TypeDescription>& paramTypes)
 {
     if (workingModule->symbolExists(nameToken.toString()))
@@ -126,7 +126,7 @@ void DescriptionBuilder::createFunctionDescription(const token::Token& nameToken
     workingModule->functions[nameToken.toString()] = functionDescription;
 }
 
-void DescriptionBuilder::createGlobal(const token::Token globalNameToken, icode::TypeDescription& typeDescription)
+void DescriptionBuilder::createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription)
 {
     if (workingModule->symbolExists(globalNameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", globalNameToken);
@@ -145,8 +145,8 @@ icode::StructDescription DescriptionBuilder::createEmptyStructDescription()
     return structDescription;
 }
 
-void DescriptionBuilder::createStructDescription(const token::Token& nameToken,
-                                                 const std::vector<token::Token>& fieldNames,
+void DescriptionBuilder::createStructDescription(const Token& nameToken,
+                                                 const std::vector<Token>& fieldNames,
                                                  const std::vector<icode::TypeDescription>& fieldTypes)
 {
     if (workingModule->symbolExists(nameToken.toString()))

@@ -3,6 +3,6 @@
 
 #include "../irgen_old.hpp"
 
-int setWorkingModuleFromNode(irgen::ir_generator& ctx, const node::Node& root, size_t startIndex);
+int setWorkingModuleFromNode(irgen::ir_generator& ctx, const Node& root, size_t startIndex);
 
 #endif

@@ -24,7 +24,7 @@ Unit UnitBuilder::unitPairFromFloatLiteral(float value, DataType dtype)
 }
 
 Unit UnitBuilder::unitPairFromTypeDescription(TypeDescription& typeDescription,
-                                                                const token::Token& nameToken)
+                                                                const Token& nameToken)
 {
     Operand op = opBuilder.operandFromTypeDescription(typeDescription, nameToken);
     return Unit(op, typeDescription);

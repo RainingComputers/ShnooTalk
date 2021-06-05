@@ -2,7 +2,7 @@
 
 namespace mikpp
 {
-    void printToken(const token::Token& symbol)
+    void printToken(const Token& symbol)
     {
         /* Prints token and its properties */
 
@@ -10,7 +10,7 @@ namespace mikpp
                   << ", line=" << symbol.getLine() << ", col=" << symbol.getColumn() << ")";
     }
 
-    void printNode(const node::Node& node, int depth)
+    void printNode(const Node& node, int depth)
     {
         /* Recursively prints tree, used to print AST */
 

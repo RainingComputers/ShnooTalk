@@ -19,7 +19,7 @@ void DescriptionFinder::setWorkingFunction(FunctionDescription* functionDescript
     workingFunction = functionDescription;
 }
 
-ModuleDescription* DescriptionFinder::getModuleFromToken(const token::Token& moduleNameToken,
+ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& moduleNameToken,
                                                          StringModulesMap& modulesMap)
 {
     const std::string& moduleName = moduleNameToken.toString();
@@ -30,7 +30,7 @@ ModuleDescription* DescriptionFinder::getModuleFromToken(const token::Token& mod
     return &modulesMap.at(moduleName);
 }
 
-bool DescriptionFinder::getLocal(const token::Token& nameToken, Unit& returnValue)
+bool DescriptionFinder::getLocal(const Token& nameToken, Unit& returnValue)
 {
     TypeDescription typeDescription;
 
@@ -41,7 +41,7 @@ bool DescriptionFinder::getLocal(const token::Token& nameToken, Unit& returnValu
     return true;
 }
 
-bool DescriptionFinder::getGlobal(const token::Token& nameToken, Unit& returnValue)
+bool DescriptionFinder::getGlobal(const Token& nameToken, Unit& returnValue)
 {
     TypeDescription typeDescription;
 
@@ -52,7 +52,7 @@ bool DescriptionFinder::getGlobal(const token::Token& nameToken, Unit& returnVal
     return true;
 }
 
-bool DescriptionFinder::getEnum(const token::Token& nameToken, Unit& returnValue)
+bool DescriptionFinder::getEnum(const Token& nameToken, Unit& returnValue)
 {
     int enumValue;
 
@@ -64,7 +64,7 @@ bool DescriptionFinder::getEnum(const token::Token& nameToken, Unit& returnValue
     return true;
 }
 
-bool DescriptionFinder::getDefine(const token::Token& nameToken, Unit& returnValue)
+bool DescriptionFinder::getDefine(const Token& nameToken, Unit& returnValue)
 {
     DefineDescription defineDescription;
 
@@ -76,7 +76,7 @@ bool DescriptionFinder::getDefine(const token::Token& nameToken, Unit& returnVal
     return true;
 }
 
-Unit DescriptionFinder::getUnitFromToken(const token::Token& nameToken)
+Unit DescriptionFinder::getUnitFromToken(const Token& nameToken)
 {
     Unit unit;
 

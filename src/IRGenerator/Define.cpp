@@ -1,9 +1,9 @@
 #include "Define.hpp"
 
-void createDefineFromNode(irgen::ir_generator& ctx, const node::Node& root)
+void createDefineFromNode(irgen::ir_generator& ctx, const Node& root)
 {
-    const token::Token& nameToken = root.children[0].tok;
-    const token::Token& valueToken = root.children[1].tok;
+    const Token& nameToken = root.children[0].tok;
+    const Token& valueToken = root.children[1].tok;
 
     ctx.descriptionBuilder.createDefine(nameToken, valueToken);
 }

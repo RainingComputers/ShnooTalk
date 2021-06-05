@@ -39,7 +39,7 @@ namespace mikpp
     void errorOnToken(const std::string& moduleName,
                       const std::string& errorMessage,
                       std::ifstream& file,
-                      const token::Token& tok)
+                      const Token& tok)
     {
         /* Prints the exact line from file using tok
             and error message */
@@ -56,7 +56,7 @@ namespace mikpp
         errorOnLine(moduleName, errorMessage, line, tok.getLine(), tok.getColumn());
     }
 
-    void parserError(const std::string& moduleName, token::tokenType expected, token::Token& found, std::ifstream& file)
+    void parserError(const std::string& moduleName, token::TokenType expected, Token& found, std::ifstream& file)
     {
         /* Used by parser when it finds some other token type than expected */
 
@@ -66,9 +66,9 @@ namespace mikpp
     }
 
     void parserErrorMultiple(const std::string& moduleName,
-                             const token::tokenType* expected,
+                             const token::TokenType* expected,
                              int ntoks,
-                             const token::Token& found,
+                             const Token& found,
                              std::ifstream& file)
     {
         /* Used by parser when if finds a token type that does not match
@@ -97,7 +97,7 @@ namespace mikpp
 
     void typeError(const std::string& moduleName,
                    std::ifstream& file,
-                   const token::Token& tok,
+                   const Token& tok,
                    icode::TypeDescription& expected,
                    icode::TypeDescription& found)
     {
@@ -112,7 +112,7 @@ namespace mikpp
         errorOnToken(moduleName, expect_msg, file, tok);
     }
 
-    void internalCompilerErrorToken(const std::string& moduleName, std::ifstream& file, const token::Token& tok)
+    void internalCompilerErrorToken(const std::string& moduleName, std::ifstream& file, const Token& tok)
     {
         errorOnToken(moduleName, "Internal compiler error, REPORT THIS BUG", file, tok);
     }

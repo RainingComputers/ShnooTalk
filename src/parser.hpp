@@ -16,18 +16,18 @@ namespace parser
         lexer::lexical_analyser& lex;
         Console& console;
 
-        node::Node* current_node;
-        std::vector<node::Node*> node_stack;
+        Node* current_node;
+        std::vector<Node*> node_stack;
 
-        token::Token symbol;
+        Token symbol;
 
         void next();
-        bool peek(token::tokenType type);
-        bool dpeek(token::tokenType type);
-        bool accept(token::tokenType type);
+        bool peek(token::TokenType type);
+        bool dpeek(token::TokenType type);
+        bool accept(token::TokenType type);
         int get_operator_prec();
-        void expect(token::tokenType type);
-        void expect(token::tokenType* types, int ntypes);
+        void expect(token::TokenType type);
+        void expect(token::TokenType* types, int ntypes);
 
         void push_node();
         void pop_node();
@@ -66,7 +66,7 @@ namespace parser
         void funccall();
 
       public:
-        node::Node ast;
+        Node ast;
         rd_parser(lexer::lexical_analyser& lexer, Console& consoleRef);
     };
 }

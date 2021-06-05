@@ -12,9 +12,9 @@
 
 namespace mikpp
 {
-    void printToken(const token::Token& symbol);
+    void printToken(const Token& symbol);
 
-    void printNode(const node::Node& node, int depth = 1);
+    void printNode(const Node& node, int depth = 1);
 
     void printOperand(const icode::Operand& op);
 

@@ -4,7 +4,7 @@
 
 using namespace icode;
 
-TypeDescription getParamType(irgen::ir_generator& ctx, const node::Node& paramNode)
+TypeDescription getParamType(irgen::ir_generator& ctx, const Node& paramNode)
 {
     TypeDescription paramType = typeDescriptionFromNode(ctx, paramNode);
 
@@ -19,22 +19,22 @@ TypeDescription getParamType(irgen::ir_generator& ctx, const node::Node& paramNo
     return paramType;
 }
 
-bool isParamNode(const node::Node& nodeToCheck)
+bool isParamNode(const Node& nodeToCheck)
 {
     return nodeToCheck.isNodeType(node::PARAM) || nodeToCheck.isNodeType(node::MUT_PARAM);
 }
 
-void createFunctionFromNode(irgen::ir_generator& ctx, const node::Node& root)
+void createFunctionFromNode(irgen::ir_generator& ctx, const Node& root)
 {
-    const token::Token& nameToken = root.getNthChildToken(0);
+    const Token& nameToken = root.getNthChildToken(0);
     TypeDescription returnType = typeDescriptionFromNode(ctx, root);
 
-    std::vector<token::Token> paramNames;
+    std::vector<Token> paramNames;
     std::vector<icode::TypeDescription> paramTypes;
 
     for (size_t i = 1; isParamNode(root.children[i]); i += 1)
     {
-        const token::Token& paramName = root.children[i].getNthChildToken(0);
+        const Token& paramName = root.children[i].getNthChildToken(0);
         TypeDescription paramType = getParamType(ctx, root.children[i]);
 
         paramNames.push_back(paramName);

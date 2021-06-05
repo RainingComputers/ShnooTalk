@@ -19,21 +19,21 @@ class Console
     std::ifstream* file;
 
   public:
-    [[noreturn]] void compileErrorOnToken(const std::string& message, const token::Token& tok);
+    [[noreturn]] void compileErrorOnToken(const std::string& message, const Token& tok);
 
-    [[noreturn]] void typeError(const token::Token& tok,
+    [[noreturn]] void typeError(const Token& tok,
                                 icode::TypeDescription& expected,
                                 icode::TypeDescription& found);
 
-    [[noreturn]] void internalBugErrorOnToken(const token::Token& tok);
+    [[noreturn]] void internalBugErrorOnToken(const Token& tok);
 
     [[noreturn]] void internalBugError();
 
     [[noreturn]] void internalBugErrorMessage(const std::string& message);
 
-    [[noreturn]] void parseError(token::tokenType& expected, token::Token& found);
+    [[noreturn]] void parseError(token::TokenType& expected, Token& found);
 
-    [[noreturn]] void parserErrorMultiple(const token::tokenType* expected, int ntoks, const token::Token& found);
+    [[noreturn]] void parserErrorMultiple(const token::TokenType* expected, int ntoks, const Token& found);
 
     [[noreturn]] void lexerError(const std::string& errorMessage, const std::string& line, int lineno, int col);
 

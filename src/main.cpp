@@ -35,7 +35,7 @@ Console getStreamAndConsole(const std::string& fileName, std::ifstream& fileStre
     return console;
 }
 
-node::Node generateAST(Console& console)
+Node generateAST(Console& console)
 {
     lexer::lexical_analyser lex(*console.getStream(), console);
     parser::rd_parser parse(lex, console);
@@ -49,7 +49,7 @@ void generateIR(Console& console,
                 icode::StringModulesMap& modulesMap)
 {
 
-    node::Node ast = generateAST(console);
+    Node ast = generateAST(console);
 
     irgen::ir_generator gen(target, modulesMap, moduleName, console);
 

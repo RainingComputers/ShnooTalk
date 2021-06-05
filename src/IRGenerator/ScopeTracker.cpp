@@ -29,13 +29,13 @@ void ScopeTracker::resetScope()
     scopeStack.push_back(0);
 }
 
-bool ScopeTracker::isInCurrentScope(const token::Token& symbol)
+bool ScopeTracker::isInCurrentScope(const Token& symbol)
 {
     const int symbolScope = symbolScopeMap.at(symbol.toString());
     return std::find(scopeStack.begin(), scopeStack.end(), symbolScope) != scopeStack.end();
 }
 
-void ScopeTracker::putInCurrentScope(const token::Token& symbol)
+void ScopeTracker::putInCurrentScope(const Token& symbol)
 {
     symbolScopeMap[symbol.toString()] = getCurrentScope();
 }

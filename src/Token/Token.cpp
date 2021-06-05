@@ -1,141 +1,140 @@
 #include "Token.hpp"
 
-namespace token
+using namespace token;
+
+char toEscapedCharacter(char c)
 {
-    char toEscapedCharacter(char c)
+    switch (c)
     {
-        switch (c)
-        {
-            case 'n':
-                return '\n';
-            case 'b':
-                return '\b';
-            case 't':
-                return '\t';
-            case '0':
-                return '\0';
-            case '\\':
-                return '\\';
-            default:
-                return c;
-        }
+        case 'n':
+            return '\n';
+        case 'b':
+            return '\b';
+        case 't':
+            return '\t';
+        case '0':
+            return '\0';
+        case '\\':
+            return '\\';
+        default:
+            return c;
+    }
+}
+
+void Token::initializeUnescapedString()
+{
+    for (size_t i = 1; i < string.length() - 1; i++)
+    {
+        if (string[i] == '\\')
+            unescapedString += toEscapedCharacter(string[++i]);
+        else
+            unescapedString += string[i];
+    }
+}
+
+Token::Token(std::string tokenString, TokenType tokenType, unsigned int columnNumber, unsigned int lineNumber)
+{
+    string = tokenString;
+    type = tokenType;
+    column = columnNumber;
+    line = lineNumber;
+
+    if (type == STR_LITERAL || type == CHAR_LITERAL)
+        initializeUnescapedString();
+}
+
+int Token::getPrecedence() const
+{
+    switch (type)
+    {
+        case MULTIPLY:
+        case DIVIDE:
+        case MOD:
+            return 10;
+            break;
+        case PLUS:
+        case MINUS:
+            return 9;
+            break;
+        case RIGHT_SHIFT:
+        case LEFT_SHIFT:
+            return 8;
+            break;
+        case BITWISE_AND:
+            return 7;
+            break;
+        case BITWISE_XOR:
+            return 6;
+            break;
+        case BITWISE_OR:
+            return 5;
+            break;
+        case LESS_THAN:
+        case LESS_THAN_EQUAL:
+        case GREATER_THAN:
+        case GREATER_THAN_EQUAL:
+            return 4;
+            break;
+        case CONDN_EQUAL:
+        case CONDN_NOT_EQUAL:
+            return 3;
+            break;
+        case CONDN_AND:
+            return 2;
+            break;
+        case CONDN_OR:
+            return 1;
+            break;
+        default:
+            return 0;
+            break;
     }
 
-    void Token::initializeUnescapedString()
-    {
-        for (size_t i = 1; i < string.length() - 1; i++)
-        {
-            if (string[i] == '\\')
-                unescapedString += toEscapedCharacter(string[++i]);
-            else
-                unescapedString += string[i];
-        }
-    }
+    return 0;
+}
 
-    Token::Token(std::string tokenString, tokenType tokenType, unsigned int columnNumber, unsigned int lineNumber)
-    {
-        string = tokenString;
-        type = tokenType;
-        column = columnNumber;
-        line = lineNumber;
+bool Token::isBitwiseOperation() const
+{
+    return type == BITWISE_AND || type == BITWISE_OR || type == BITWISE_XOR || type == AND_EQUAL || type == OR_EQUAL ||
+           type == XOR_EQUAL;
+}
 
-        if (type == STR_LITERAL || type == CHAR_LITERAL)
-            initializeUnescapedString();
-    }
+int Token::toInt() const
+{
+    return std::stoi(string);
+}
 
-    int Token::getPrecedence() const
-    {
-        switch (type)
-        {
-            case MULTIPLY:
-            case DIVIDE:
-            case MOD:
-                return 10;
-                break;
-            case PLUS:
-            case MINUS:
-                return 9;
-                break;
-            case RIGHT_SHIFT:
-            case LEFT_SHIFT:
-                return 8;
-                break;
-            case BITWISE_AND:
-                return 7;
-                break;
-            case BITWISE_XOR:
-                return 6;
-                break;
-            case BITWISE_OR:
-                return 5;
-                break;
-            case LESS_THAN:
-            case LESS_THAN_EQUAL:
-            case GREATER_THAN:
-            case GREATER_THAN_EQUAL:
-                return 4;
-                break;
-            case CONDN_EQUAL:
-            case CONDN_NOT_EQUAL:
-                return 3;
-                break;
-            case CONDN_AND:
-                return 2;
-                break;
-            case CONDN_OR:
-                return 1;
-                break;
-            default:
-                return 0;
-                break;
-        }
+float Token::toFloat() const
+{
+    return std::stof(string);
+}
 
-        return 0;
-    }
+std::string Token::toString() const
+{
+    return string;
+}
 
-    bool Token::isBitwiseOperation() const
-    {
-        return type == BITWISE_AND || type == BITWISE_OR || type == BITWISE_XOR || type == AND_EQUAL ||
-               type == OR_EQUAL || type == XOR_EQUAL;
-    }
+std::string Token::toUnescapedString() const
+{
+    return unescapedString;
+}
 
-    int Token::toInt() const
-    {
-        return std::stoi(string);
-    }
+TokenType Token::getType() const
+{
+    return type;
+}
 
-    float Token::toFloat() const
-    {
-        return std::stof(string);
-    }
+std::string Token::getLineColString() const
+{
+    return "_l" + std::to_string(line) + "_c" + std::to_string(column);
+}
 
-    std::string Token::toString() const
-    {
-        return string;
-    }
+int Token::getLine() const
+{
+    return line;
+}
 
-    std::string Token::toUnescapedString() const
-    {
-        return unescapedString;
-    }
-
-    tokenType Token::getType() const
-    {
-        return type;
-    }
-
-    std::string Token::getLineColString() const
-    {
-        return "_l" + std::to_string(line) + "_c" + std::to_string(column);
-    }
-
-    int Token::getLine() const
-    {
-        return line;
-    }
-
-    int Token::getColumn() const
-    {
-        return column;
-    }
-} // namespace token
+int Token::getColumn() const
+{
+    return column;
+}

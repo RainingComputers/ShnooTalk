@@ -54,21 +54,22 @@ namespace node
         INPUT,
         EXIT
     };
-
-    struct Node
-    {
-        NodeType type;
-        token::Token tok;
-        std::vector<Node> children;
-
-        Node(NodeType nodeType, token::Token token);
-        Node(NodeType nodeType);
-        bool isNodeType(NodeType nodeType) const;
-        bool isNthChild(NodeType nodeType, size_t index) const;
-        bool isNthChildFromLast(NodeType nodeType, size_t N) const;
-        token::Token getNthChildToken(size_t N) const;
-        token::Token getNthChildTokenFromLast(size_t N) const;
-    };
 }
+
+
+struct Node
+{
+    node::NodeType type;
+    Token tok;
+    std::vector<Node> children;
+
+    Node(node::NodeType nodeType, Token token);
+    Node(node::NodeType nodeType);
+    bool isNodeType(node::NodeType nodeType) const;
+    bool isNthChild(node::NodeType nodeType, size_t index) const;
+    bool isNthChildFromLast(node::NodeType nodeType, size_t N) const;
+    Token getNthChildToken(size_t N) const;
+    Token getNthChildTokenFromLast(size_t N) const;
+};
 
 #endif

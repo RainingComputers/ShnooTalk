@@ -21,26 +21,26 @@ namespace mikpp
     void errorOnToken(const std::string& moduleName,
                       const std::string& errorMessage,
                       std::ifstream& file,
-                      const token::Token& token);
+                      const Token& token);
 
     void parserError(const std::string& moduleName,
-                     token::tokenType expected,
-                     token::Token& found,
+                     token::TokenType expected,
+                     Token& found,
                      std::ifstream& file);
 
     void parserErrorMultiple(const std::string& moduleName,
-                             const token::tokenType* expected,
+                             const token::TokenType* expected,
                              int ntoks,
-                             const token::Token& found,
+                             const Token& found,
                              std::ifstream& file);
 
     void typeError(const std::string& moduleName,
                    std::ifstream& file,
-                   const token::Token& tok,
+                   const Token& tok,
                    icode::TypeDescription& expected,
                    icode::TypeDescription& found);
 
-    void internalCompilerErrorToken(const std::string& moduleName, std::ifstream& file, const token::Token& tok);
+    void internalCompilerErrorToken(const std::string& moduleName, std::ifstream& file, const Token& tok);
 
     void internalCompileError(const std::string& moduleName);
 }

@@ -5,7 +5,7 @@
 
 namespace token
 {
-    enum tokenType
+    enum TokenType
     {
         NONE,
         SPACE,
@@ -87,35 +87,35 @@ namespace token
         INPUT,
         EXIT
     };
-
-    class Token
-    {
-        std::string string;
-        std::string unescapedString;
-        tokenType type;
-        unsigned int column;
-        unsigned int line;
-
-        void initializeUnescapedString();
-
-      public:
-        int getPrecedence() const;
-        bool isBitwiseOperation() const;
-        int toInt() const;
-        float toFloat() const;
-        std::string toString() const;
-        std::string toUnescapedString() const;
-        tokenType getType() const;
-        std::string getLineColString() const;
-
-        int getLine() const;
-        int getColumn() const;
-
-        Token(std::string token_str = "",
-              tokenType tok_type = NONE,
-              unsigned int column = 0,
-              unsigned int linenumber = 0);
-    };
 }
+
+class Token
+{
+    std::string string;
+    std::string unescapedString;
+    token::TokenType type;
+    unsigned int column;
+    unsigned int line;
+
+    void initializeUnescapedString();
+
+  public:
+    int getPrecedence() const;
+    bool isBitwiseOperation() const;
+    int toInt() const;
+    float toFloat() const;
+    std::string toString() const;
+    std::string toUnescapedString() const;
+    token::TokenType getType() const;
+    std::string getLineColString() const;
+
+    int getLine() const;
+    int getColumn() const;
+
+    Token(std::string token_str = "",
+          token::TokenType tok_type = token::NONE,
+          unsigned int column = 0,
+          unsigned int linenumber = 0);
+};
 
 #endif

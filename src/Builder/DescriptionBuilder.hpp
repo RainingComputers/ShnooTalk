@@ -11,7 +11,7 @@ class DescriptionBuilder
 
     icode::StructDescription createEmptyStructDescription();
 
-    std::pair<int, std::string> getSizeAndModuleName(const token::Token& dataTypeToken, icode::DataType dtype);
+    std::pair<int, std::string> getSizeAndModuleName(const Token& dataTypeToken, icode::DataType dtype);
 
   public:
     void setWorkingModule(icode::ModuleDescription* moduleDescription);
@@ -20,24 +20,24 @@ class DescriptionBuilder
 
     icode::TypeDescription createVoidTypeDescription();
 
-    icode::TypeDescription createTypeDescription(const token::Token& dataTypeToken);
+    icode::TypeDescription createTypeDescription(const Token& dataTypeToken);
 
     icode::TypeDescription createArrayTypeDescription(const icode::TypeDescription& typeDescription,
                                                       std::vector<int>& dimensions);
 
-    void createDefine(const token::Token& nameToken, const token::Token& valueToken);
+    void createDefine(const Token& nameToken, const Token& valueToken);
 
-    void createEnum(const std::vector<token::Token>& enums);
+    void createEnum(const std::vector<Token>& enums);
 
-    void createFunctionDescription(const token::Token& nameToken,
+    void createFunctionDescription(const Token& nameToken,
                                    const icode::TypeDescription& returnType,
-                                   const std::vector<token::Token>& paramNames,
+                                   const std::vector<Token>& paramNames,
                                    std::vector<icode::TypeDescription>& paramTypes);
 
-    void createGlobal(const token::Token globalNameToken, icode::TypeDescription& typeDescription);
+    void createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription);
 
-    void createStructDescription(const token::Token& nameToken,
-                                 const std::vector<token::Token>& fieldNames,
+    void createStructDescription(const Token& nameToken,
+                                 const std::vector<Token>& fieldNames,
                                  const std::vector<icode::TypeDescription>& fieldTypes);
 
     DescriptionBuilder(Console& console);
