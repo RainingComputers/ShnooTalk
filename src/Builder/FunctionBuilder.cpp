@@ -2,27 +2,16 @@
 
 using namespace icode;
 
-FunctionBuilder::FunctionBuilder(ModuleDescription& rootModule,
-                                 StringModulesMap& modulesMap,
+FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap,
                                  Console& console,
                                  OperandBuilder& opBuilder,
                                  EntryBuilder& entryBuilder)
-  : rootModule(rootModule)
-  , modulesMap(modulesMap)
+
+  : modulesMap(modulesMap)
   , console(console)
   , opBuilder(opBuilder)
   , entryBuilder(entryBuilder)
 {
-}
-
-void FunctionBuilder::setWorkingModule(ModuleDescription* moduleDescription)
-{
-    workingModule = moduleDescription;
-}
-
-void FunctionBuilder::setWorkingFunction(FunctionDescription* functionDescription)
-{
-    workingFunction = functionDescription;
 }
 
 icode::Operand FunctionBuilder::ensurePointerOperand(const icode::Operand& op)

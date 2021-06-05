@@ -8,10 +8,7 @@
 
 class FunctionBuilder
 {
-    icode::ModuleDescription& rootModule;
     icode::StringModulesMap& modulesMap;
-    icode::ModuleDescription* workingModule;
-    icode::FunctionDescription* workingFunction;
 
     Console& console;
     OperandBuilder& opBuilder;
@@ -20,14 +17,10 @@ class FunctionBuilder
     icode::Operand ensurePointerOperand(const icode::Operand& op);
 
   public:
-    FunctionBuilder(icode::ModuleDescription& rootModule,
-                    icode::StringModulesMap& modulesMap,
+    FunctionBuilder(icode::StringModulesMap& modulesMap,
                     Console& console,
                     OperandBuilder& opBuilder,
                     EntryBuilder& entryBuilder);
-
-    void setWorkingModule(icode::ModuleDescription* module);
-    void setWorkingFunction(icode::FunctionDescription* function);
 
     Unit getStructField(const Token& fieldName, const Unit& unit);
 

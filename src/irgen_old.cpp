@@ -24,7 +24,7 @@ namespace irgen
       , unitBuilder(opBuilder)
       , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
       , builder(modulesMap[fileName], modulesMap, opBuilder)
-      , functionBuilder(modulesMap[fileName], modulesMap, console, opBuilder, builder)
+      , functionBuilder(modulesMap, console, opBuilder, builder)
     {
         workingFunction = nullptr;
         workingModule = &rootModule;
