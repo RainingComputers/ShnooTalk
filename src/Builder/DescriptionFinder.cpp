@@ -2,8 +2,12 @@
 
 using namespace icode;
 
-DescriptionFinder::DescriptionFinder(ModuleDescription& rootModule, Console& console, UnitBuilder& unitBuilder)
+DescriptionFinder::DescriptionFinder(ModuleDescription& rootModule,
+                                     StringModulesMap& modulesMap,
+                                     Console& console,
+                                     UnitBuilder& unitBuilder)
   : rootModule(rootModule)
+  , modulesMap(modulesMap)
   , console(console)
   , unitBuilder(unitBuilder)
 {
@@ -19,8 +23,7 @@ void DescriptionFinder::setWorkingFunction(FunctionDescription* functionDescript
     workingFunction = functionDescription;
 }
 
-ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& moduleNameToken,
-                                                         StringModulesMap& modulesMap)
+ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& moduleNameToken)
 {
     const std::string& moduleName = moduleNameToken.toString();
 

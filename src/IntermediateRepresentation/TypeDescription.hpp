@@ -39,6 +39,8 @@ namespace icode
 
         void becomeMutable();
         void becomePointer();
+        bool isMutable() const;
+        bool isPointer() const;
 
         bool isSameType() const;
         bool isStruct() const;

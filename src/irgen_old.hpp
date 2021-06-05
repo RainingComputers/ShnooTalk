@@ -2,17 +2,17 @@
 #define IRGEN_HPP
 
 #include "Builder/DescriptionBuilder.hpp"
-#include "Builder/UnitBuilder.hpp"
 #include "Builder/DescriptionFinder.hpp"
+#include "Builder/EntryBuilder.hpp"
 #include "Builder/Unit.hpp"
+#include "Builder/UnitBuilder.hpp"
+#include "Builder/FunctionBuilder.hpp"
 #include "Console/Console.hpp"
-#include "IRBuilder_old/IRBuilder.hpp"
 #include "IRGenerator/ScopeTracker.hpp"
 #include "IntermediateRepresentation/All.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"
 #include "pathchk.hpp"
-
 
 typedef std::pair<Token, icode::TypeDescription> TokenTypePair;
 typedef std::pair<std::vector<int>, int> LiteralDimensionsIndexPair;
@@ -23,7 +23,7 @@ namespace irgen
     {
       public:
         icode::TargetDescription& target;
-        icode::StringModulesMap& ext_modules_map;
+        icode::StringModulesMap& modulesMap;
         icode::ModuleDescription& rootModule;
         Console& console;
 
@@ -31,8 +31,10 @@ namespace irgen
         OperandBuilder opBuilder;
         UnitBuilder unitBuilder;
         DescriptionFinder descriptionFinder;
-        ibuild::IRBuilder builder;
+        EntryBuilder builder;
+        FunctionBuilder functionBuilder;
         
+
         icode::FunctionDescription* workingFunction;
         icode::ModuleDescription* workingModule;
 

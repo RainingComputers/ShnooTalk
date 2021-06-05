@@ -11,25 +11,26 @@
 
 namespace irgen
 {
-    ir_generator::ir_generator(icode::TargetDescription& target_desc,
-                               icode::StringModulesMap& modules_map,
-                               const std::string& file_name,
+    ir_generator::ir_generator(icode::TargetDescription& targetDescription,
+                               icode::StringModulesMap& modulesMap,
+                               const std::string& fileName,
                                Console& console)
 
-      : target(target_desc)
-      , ext_modules_map(modules_map)
-      , rootModule(modules_map[file_name])
+      : target(targetDescription)
+      , modulesMap(modulesMap)
+      , rootModule(modulesMap[fileName])
       , console(console)
       , descriptionBuilder(console)
       , unitBuilder(opBuilder)
-      , descriptionFinder(modules_map[file_name], console, unitBuilder)
-      , builder(modules_map[file_name], ext_modules_map, opBuilder)
+      , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
+      , builder(modulesMap[fileName], modulesMap, opBuilder)
+      , functionBuilder(modulesMap[fileName], modulesMap, console, opBuilder, builder)
     {
         workingFunction = nullptr;
         workingModule = &rootModule;
 
-        rootModule.name = file_name;
-        rootModule.initializeTargetInfo(target_desc);
+        rootModule.name = fileName;
+        rootModule.initializeTargetInfo(targetDescription);
 
         setWorkingModule(workingModule);
     }
@@ -110,7 +111,7 @@ namespace irgen
         if (!rootModule.useExists(root.children[0].tok.toString()))
             console.compileErrorOnToken("Module not imported", root.children[0].tok);
 
-        icode::ModuleDescription* ext_module = &ext_modules_map[root.children[0].tok.toString()];
+        icode::ModuleDescription* ext_module = &modulesMap[root.children[0].tok.toString()];
 
         for (Node child : root.children[1].children)
         {
@@ -387,16 +388,16 @@ namespace irgen
         }
         else if (last_node.type == node::STR_LITERAL)
         {
-            Unit var_pair = Unit(
-              opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
-              var.second);
+            Unit var_pair =
+              Unit(opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
+                   var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
-            Unit var_pair = Unit(
-              opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
-              var.second);
+            Unit var_pair =
+              Unit(opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
+                   var.second);
             assign_init_list_tovar(var_pair, last_node);
         }
 
@@ -425,136 +426,64 @@ namespace irgen
 
     Unit ir_generator::var_access(const Node& root)
     {
-        unsigned int dim_count = 0;
-        unsigned int rem_dim = 0;
-
-        /* Check if identifier exists and get dtype and size */
-        Node child = root.children[0];
-        const std::string& ident_name = child.tok.toString();
-
         Unit unit = getTypeFromToken(root);
 
-        /* If no struct or subscript */
-        if (root.children.size() == 1)
-            return unit;
-
-        icode::Operand current_offset_temp = unit.first;
-        icode::TypeDescription current_var_info = unit.second;
-
-        current_offset_temp = builder.createPointer(current_offset_temp);
-
         /* Go through struct fields and subsripts */
-        for (size_t i = 1; i < root.children.size();)
+        for (size_t nodeCounter = 1; nodeCounter < root.children.size();)
         {
-            Node child = root.children[i];
-
-            switch (child.type)
+            switch (root.children[nodeCounter].type)
             {
                 case node::STRUCT_VAR:
                 {
-                    child = root.children[++i];
+                    nodeCounter++;
+                    const Token& fieldNameToken = root.getNthChildToken(nodeCounter);
 
-                    if (current_var_info.dtype != icode::STRUCT)
-                        console.compileErrorOnToken("STRUCT access on a NON-STRUCT data type", child.tok);
-                    else if (dim_count == 0 && current_var_info.dimensions.size() != 0)
-                        console.compileErrorOnToken("STRUCT access on an ARRAY", child.tok);
-                    else
-                    {
-                        /* Get struct description */
-                        icode::StructDescription struct_desc;
-                        struct_desc =
-                          ext_modules_map[current_var_info.moduleName].structures[current_var_info.dtypeName];
+                    if (unit.second.dtype != icode::STRUCT)
+                        console.compileErrorOnToken("STRUCT access on a NON-STRUCT data type", fieldNameToken);
 
-                        /* Check if field exists */
-                        if (struct_desc.fieldExists(child.tok.toString()))
-                        {
-                            /* If it does, update offset */
-                            bool is_mut = current_var_info.checkProperty(icode::IS_MUT);
+                    if (unit.second.dimensions.size() != 0)
+                        console.compileErrorOnToken("STRUCT access on an ARRAY", fieldNameToken);
 
-                            /* Update var info to struct field */
-                            current_var_info = struct_desc.structFields[child.tok.toString()];
+                    unit = functionBuilder.getStructField(fieldNameToken, unit);
 
-                            /* If the struct is immutable, fields are automatically
-                             * immutable */
-                            if (!is_mut)
-                                current_var_info.clearProperty(icode::IS_MUT);
-
-                            /* Update pointer dtype */
-                            current_offset_temp.updateDataType(current_var_info);
-
-                            /* Add offset */
-                            current_offset_temp = builder.addressAddOperator(
-                              current_offset_temp,
-                              opBuilder.createLiteralAddressOperand(current_var_info.offset));
-
-                            dim_count = 0;
-                        }
-                        else
-                            console.compileErrorOnToken("Undefined STRUCT field", child.tok);
-                    }
-                    i++;
+                    nodeCounter++;
                     break;
                 }
                 case node::SUBSCRIPT:
                 {
-                    dim_count = 1;
+                    if (unit.second.dimensions.size() == 0)
+                        console.compileErrorOnToken("ARRAY access on a NON ARRAY", root.children[nodeCounter].tok);
 
-                    if (current_var_info.dimensions.size() == 0)
-                        console.compileErrorOnToken("ARRAY access on a NON ARRAY", child.tok);
+                    std::vector<Unit> indices;
 
-                    unsigned int elem_width = current_var_info.size / current_var_info.dimensions[0];
-
-                    while (child.type == node::SUBSCRIPT)
+                    for (; nodeCounter < root.children.size(); nodeCounter++)
                     {
-                        if (dim_count > current_var_info.dimensions.size())
+                        const Node& child = root.children[nodeCounter];
+
+                        if (!child.isNodeType(node::SUBSCRIPT))
+                            break;
+
+                        const Unit indexExpression = expression(child.children[0]);
+
+                        indices.push_back(indexExpression);
+
+                        if (indices.size() > unit.second.dimensions.size())
                             console.compileErrorOnToken("Too many subscripts", child.tok);
 
-                        /* Operand to store result of expression */
-                        Unit subs_expr = expression(child.children[0]);
-
-                        /* Check if int expression */
-                        if (!icode::isInteger(subs_expr.second.dtype) || subs_expr.second.dimensions.size() != 0)
+                        if (!icode::isInteger(indexExpression.second.dtype) || indexExpression.second.isArray())
                             console.compileErrorOnToken("Index must be an integer", child.children[0].tok);
-
-                        /* Entry for subscript expression */
-                        icode::Operand subs_op =
-                          builder.addressMultiplyOperator(subs_expr.first,
-                                                          opBuilder.createLiteralAddressOperand(elem_width));
-
-                        if (dim_count != current_var_info.dimensions.size())
-                            elem_width /= current_var_info.dimensions[dim_count];
-
-                        /* Create entry for adding to the current offset */
-                        current_offset_temp = builder.addressAddOperator(current_offset_temp, subs_op);
-
-                        if (i < root.children.size() - 1)
-                        {
-                            child = root.children[++i];
-                            if (child.type == node::SUBSCRIPT)
-                                dim_count++;
-                        }
-                        else
-                        {
-                            i++;
-                            break;
-                        };
                     }
 
-                    /* After indexing, only some dimensions will be left */
-                    rem_dim = current_var_info.dimensions.size() - dim_count;
-
-                    current_var_info.dimensions.erase(current_var_info.dimensions.begin(),
-                                                      current_var_info.dimensions.end() - rem_dim);
+                    unit = functionBuilder.getIndexedElement(unit, indices);
 
                     break;
                 }
                 default:
-                    console.internalBugErrorOnToken(child.tok);
+                    console.internalBugErrorOnToken(root.children[nodeCounter].tok);
             }
         }
 
-        /* Return var */
-        return Unit(current_offset_temp, current_var_info);
+        return unit;
     }
 
     Unit ir_generator::funccall(const Node& root)
@@ -570,7 +499,7 @@ namespace irgen
 
             /* If struct funccall, switch to struct's (first arg's) module */
             if (root.type == node::STRUCT_FUNCCALL)
-                workingModule = &ext_modules_map[first_arg.second.moduleName];
+                workingModule = &modulesMap[first_arg.second.moduleName];
         }
 
         /* Check if function exits */
@@ -1291,7 +1220,7 @@ namespace irgen
 
                     /* Switch to external module */
                     icode::ModuleDescription* temp = workingModule;
-                    workingModule = &ext_modules_map[stmt.tok.toString()];
+                    workingModule = &modulesMap[stmt.tok.toString()];
 
                     Unit ret_val = funccall(stmt.children[0]);
 

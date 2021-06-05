@@ -15,6 +15,7 @@ namespace icode
         std::string moduleName;
 
         bool fieldExists(const std::string&);
+        bool getField(const std::string&, TypeDescription& returnValue);
     };
 }
 

@@ -32,6 +32,16 @@ namespace icode
         setProperty(IS_PTR);
     }
 
+    bool TypeDescription::isMutable() const
+    {
+        return checkProperty(IS_MUT);
+    }
+
+    bool TypeDescription::isPointer() const
+    {
+        return checkProperty(IS_PTR);
+    }
+
     bool TypeDescription::isStruct() const
     {
         return dtype == STRUCT;
