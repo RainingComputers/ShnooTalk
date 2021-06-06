@@ -33,6 +33,11 @@ class DescriptionFinder
     bool getEnum(const Token& nameToken, Unit& returnValue);
 
     Unit getUnitFromToken(const Token& nameToken);
+
+    void createUse(const Token& nameToken);
+
+    void createFrom(const Token& moduleNameToken, const Token& symbolNameToken);
+
 };
 
 #endif

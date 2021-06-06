@@ -1,4 +1,4 @@
-#include "DescriptionBuilder.hpp"
+#include "ModuleBuilder.hpp"
 
 using namespace icode;
 
@@ -59,7 +59,7 @@ TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
 }
 
 TypeDescription ModuleBuilder::createArrayTypeDescription(const TypeDescription& typeDescription,
-                                                               std::vector<int>& dimensions)
+                                                          std::vector<int>& dimensions)
 {
     TypeDescription modifiedTypeDescription = typeDescription;
 
@@ -100,9 +100,9 @@ void ModuleBuilder::createEnum(const std::vector<Token>& enums)
 }
 
 void ModuleBuilder::createFunctionDescription(const Token& nameToken,
-                                                   const icode::TypeDescription& returnType,
-                                                   const std::vector<Token>& paramNames,
-                                                   std::vector<icode::TypeDescription>& paramTypes)
+                                              const icode::TypeDescription& returnType,
+                                              const std::vector<Token>& paramNames,
+                                              std::vector<icode::TypeDescription>& paramTypes)
 {
     if (workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
@@ -146,8 +146,8 @@ icode::StructDescription ModuleBuilder::createEmptyStructDescription()
 }
 
 void ModuleBuilder::createStructDescription(const Token& nameToken,
-                                                 const std::vector<Token>& fieldNames,
-                                                 const std::vector<icode::TypeDescription>& fieldTypes)
+                                            const std::vector<Token>& fieldNames,
+                                            const std::vector<icode::TypeDescription>& fieldTypes)
 {
     if (workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);

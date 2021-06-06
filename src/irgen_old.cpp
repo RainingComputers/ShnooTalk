@@ -8,6 +8,7 @@
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "IRGenerator/UnitFromIdentifier.hpp"
+#include "IRGenerator/From.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -64,81 +65,6 @@ namespace irgen
     TokenTypePair ir_generator::var_from_node(const Node& root)
     {
         return TokenTypePair(root.getNthChildToken(0), typeDescriptionFromNode(*this, root));
-    }
-
-    void ir_generator::use(const Node& root)
-    {
-        for (Node child : root.children)
-        {
-            /* Get module name */
-            Token name_token = child.tok;
-
-            bool is_module = pathchk::file_exists(name_token.toString() + ".uhll");
-            bool is_package = pathchk::dir_exists(name_token.toString());
-
-            /* Check if file exists */
-            if (!(is_module || is_package))
-                console.compileErrorOnToken("Module or Package does not exist", name_token);
-
-            /* Check for conflicts */
-            if (is_module && is_package)
-                console.compileErrorOnToken("Module and Package exists with same name", name_token);
-
-            /* Check for multiple imports */
-            if (rootModule.useExists(name_token.toString()))
-                console.compileErrorOnToken("Multiple imports detected", name_token);
-
-            /* Check for name conflict */
-            if (rootModule.symbolExists(name_token.toString()))
-                console.compileErrorOnToken("Name conflict, symbol already exists", name_token);
-
-            /* Check for self import */
-            if (rootModule.name == name_token.toString())
-                console.compileErrorOnToken("Self import not allowed", name_token);
-
-            /* Add to icode */
-            rootModule.uses.push_back(name_token.toString());
-        }
-    }
-
-    void ir_generator::from(const Node& root)
-    {
-        icode::StructDescription struct_desc;
-        icode::FunctionDescription func_desc;
-        icode::DefineDescription def;
-        int enum_val;
-
-        /* Get ext module */
-        if (!rootModule.useExists(root.children[0].tok.toString()))
-            console.compileErrorOnToken("Module not imported", root.children[0].tok);
-
-        icode::ModuleDescription* ext_module = &modulesMap[root.children[0].tok.toString()];
-
-        for (Node child : root.children[1].children)
-        {
-            /* Check if symbol exists */
-            if (rootModule.symbolExists(child.tok.toString()))
-                console.compileErrorOnToken("Symbol already defined in current module", child.tok);
-
-            /* If it is struct */
-            if ((*ext_module).getStruct(child.tok.toString(), struct_desc))
-                rootModule.structures[child.tok.toString()] = struct_desc;
-            /* If it a function */
-            else if ((*ext_module).getFunction(child.tok.toString(), func_desc))
-                console.compileErrorOnToken("Cannot import functions", child.tok);
-            /* If is a def */
-            else if ((*ext_module).getDefineDescription(child.tok.toString(), def))
-                rootModule.defines[child.tok.toString()] = def;
-            /* If it is a enum */
-            else if ((*ext_module).getEnum(child.tok.toString(), enum_val))
-                rootModule.enumerations[child.tok.toString()] = enum_val;
-            /* Check if use exists */
-            else if ((*ext_module).useExists(child.tok.toString()))
-                rootModule.uses.push_back(child.tok.toString());
-            /* Does not exist */
-            else
-                console.compileErrorOnToken("Symbol does not exist", child.tok);
-        }
     }
 
     icode::Operand ir_generator::gen_str_dat(const Token& str_token, size_t char_count, icode::DataType dtype)
@@ -1235,7 +1161,7 @@ namespace irgen
         for (Node child : root.children)
         {
             if (child.type == node::USE)
-                use(child);
+                createUse(*this, child);
             else
                 break;
         }
@@ -1267,7 +1193,7 @@ namespace irgen
                 case node::USE:
                     break;
                 case node::FROM:
-                    from(child);
+                    createFrom(*this, child);
                     break;
                 case node::STRUCT:
                     createStructFromNode(*this, child);
