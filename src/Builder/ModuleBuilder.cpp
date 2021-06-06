@@ -34,7 +34,7 @@ std::pair<int, std::string> ModuleBuilder::getSizeAndModuleName(const Token& dat
 
     icode::StructDescription structDesc;
     if (!workingModule->getStruct(dataTypeToken.toString(), structDesc))
-        console.compileErrorOnToken("Symbol does not exist", dataTypeToken);
+        console.compileErrorOnToken("Data type does not exist", dataTypeToken);
 
     return std::pair<int, std::string>(structDesc.size, structDesc.moduleName);
 }

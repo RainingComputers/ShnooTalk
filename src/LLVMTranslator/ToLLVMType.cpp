@@ -80,14 +80,12 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 {
     std::vector<Type*> parameterTypes;
 
-    /* Set the types vector */
     for (std::string paramString : functionDesc.parameters)
     {
         Type* type = typeDescriptionToLLVMType(ctx, functionDesc.symbols.at(paramString));
         parameterTypes.push_back(type);
     }
 
-    /* Setup llvm function */
     FunctionType* FT =
       FunctionType::get(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnDescription), parameterTypes, false);
 
