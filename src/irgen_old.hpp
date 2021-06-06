@@ -47,10 +47,6 @@ namespace irgen
 
         std::pair<Token, icode::TypeDescription> var_from_node(const Node& root);
 
-        void use(const Node& root);
-
-        void from(const Node& root);
-
         icode::Operand gen_str_dat(const Token& str_token, size_t char_count, icode::DataType dtype);
 
         Unit var_info_to_str_dat(const Token& str_token, icode::TypeDescription var);
