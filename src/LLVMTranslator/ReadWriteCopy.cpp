@@ -23,10 +23,12 @@ void createPointer(ModuleContext& ctx, const icode::Entry& e)
             ctx.operandValueMap[e.op1] = ctx.symbolNamePointerIntMap[e.op2.name];
             break;
         case icode::CALLEE_RET_VAL:
-            ctx.operandValueMap[e.op1] = getCalleeRetValuePointer(ctx, e.op2);
+            ctx.operandValueMap[e.op1] =
+              ctx.builder->CreatePtrToInt(getCalleeRetValuePointer(ctx, e.op2), dataTypeToLLVMType(ctx, icode::I64));
             break;
         case icode::RET_PTR:
-            ctx.operandValueMap[e.op1] = ctx.currentFunctionReturnPointer;
+            ctx.operandValueMap[e.op1] =
+              ctx.builder->CreatePtrToInt(ctx.currentFunctionReturnPointer, dataTypeToLLVMType(ctx, icode::I64));
             break;
         default:
             ctx.console.internalBugError();
