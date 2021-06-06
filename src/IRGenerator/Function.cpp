@@ -43,5 +43,5 @@ void createFunctionFromNode(irgen::ir_generator& ctx, const Node& root)
         ctx.scope.putInCurrentScope(paramName);
     }
 
-    ctx.descriptionBuilder.createFunctionDescription(nameToken, returnType, paramNames, paramTypes);
+    ctx.moduleBuilder.createFunctionDescription(nameToken, returnType, paramNames, paramTypes);
 }

@@ -1,5 +1,4 @@
 #include "Module.hpp"
-#include "Subscript.hpp"
 
 #include "TypeDescriptionFromNode.hpp"
 
@@ -17,11 +16,29 @@ bool isVoidFunction(const Node& root)
 TypeDescription typeDescriptionFromFunctionNode(ir_generator& ctx, const Node& root)
 {
     if (isVoidFunction(root))
-        return ctx.descriptionBuilder.createVoidTypeDescription();
+        return ctx.moduleBuilder.createVoidTypeDescription();
 
     Token dataTypeToken = root.getNthChildTokenFromLast(2);
 
-    return ctx.descriptionBuilder.createTypeDescription(dataTypeToken);
+    return ctx.moduleBuilder.createTypeDescription(dataTypeToken);
+}
+
+TypeDescription arrayTypeFromSubscript(ir_generator& ctx,
+                                  const Node& root,
+                                  TypeDescription typeDescription,
+                                  size_t startIndex)
+{
+    std::vector<int> dimensions;
+
+    size_t nodeCounter;
+
+    for (nodeCounter = startIndex; root.isNthChild(node::SUBSCRIPT, nodeCounter); nodeCounter++)
+    {
+        const int subscriptInt = root.children[nodeCounter].children[0].tok.toInt();
+        dimensions.push_back(subscriptInt);
+    }
+
+    return ctx.moduleBuilder.createArrayTypeDescription(typeDescription, dimensions);
 }
 
 TypeDescription typeDescriptionFromVarOrParamNode(ir_generator& ctx, const Node& root)
@@ -32,18 +49,12 @@ TypeDescription typeDescriptionFromVarOrParamNode(ir_generator& ctx, const Node&
         childNodeCounter = setWorkingModuleFromNode(ctx, root, childNodeCounter);
 
     const Token& dataTypeToken = root.getNthChildToken(childNodeCounter);
-    TypeDescription typeDescription = ctx.descriptionBuilder.createTypeDescription(dataTypeToken);
+    TypeDescription typeDescription = ctx.moduleBuilder.createTypeDescription(dataTypeToken);
 
     childNodeCounter++;
+
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
-    {
-        LiteralDimensionsIndexPair literalDimensionsIndexPair = getLiteralDimensionFromNode(root, childNodeCounter);
-
-        typeDescription =
-          ctx.descriptionBuilder.createArrayTypeDescription(typeDescription, literalDimensionsIndexPair.first);
-
-        childNodeCounter = literalDimensionsIndexPair.second;
-    }
+        typeDescription = arrayTypeFromSubscript(ctx, root, typeDescription, childNodeCounter);
 
     ctx.resetWorkingModule();
 

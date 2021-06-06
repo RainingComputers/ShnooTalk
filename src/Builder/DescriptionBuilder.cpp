@@ -2,17 +2,17 @@
 
 using namespace icode;
 
-DescriptionBuilder::DescriptionBuilder(Console& console)
+ModuleBuilder::ModuleBuilder(Console& console)
   : console(console)
 {
 }
 
-void DescriptionBuilder::setWorkingModule(icode::ModuleDescription* moduleDescription)
+void ModuleBuilder::setWorkingModule(icode::ModuleDescription* moduleDescription)
 {
     workingModule = moduleDescription;
 }
 
-TypeDescription DescriptionBuilder::createVoidTypeDescription()
+TypeDescription ModuleBuilder::createVoidTypeDescription()
 {
     TypeDescription voidTypeDescription;
 
@@ -27,7 +27,7 @@ TypeDescription DescriptionBuilder::createVoidTypeDescription()
     return voidTypeDescription;
 }
 
-std::pair<int, std::string> DescriptionBuilder::getSizeAndModuleName(const Token& dataTypeToken, DataType dtype)
+std::pair<int, std::string> ModuleBuilder::getSizeAndModuleName(const Token& dataTypeToken, DataType dtype)
 {
     if (dtype != icode::STRUCT)
         return std::pair<int, std::string>(getDataTypeSize(dtype), workingModule->name);
@@ -39,7 +39,7 @@ std::pair<int, std::string> DescriptionBuilder::getSizeAndModuleName(const Token
     return std::pair<int, std::string>(structDesc.size, structDesc.moduleName);
 }
 
-TypeDescription DescriptionBuilder::createTypeDescription(const Token& dataTypeToken)
+TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
 {
     icode::DataType dtype = workingModule->dataTypeFromString(dataTypeToken.toString());
 
@@ -58,7 +58,7 @@ TypeDescription DescriptionBuilder::createTypeDescription(const Token& dataTypeT
     return typeDescription;
 }
 
-TypeDescription DescriptionBuilder::createArrayTypeDescription(const TypeDescription& typeDescription,
+TypeDescription ModuleBuilder::createArrayTypeDescription(const TypeDescription& typeDescription,
                                                                std::vector<int>& dimensions)
 {
     TypeDescription modifiedTypeDescription = typeDescription;
@@ -80,7 +80,7 @@ icode::DefineDescription defineDescriptionFromToken(const Token& valueToken)
     return icode::createFloatDefineDescription(valueToken.toFloat(), icode::FLOAT);
 }
 
-void DescriptionBuilder::createDefine(const Token& nameToken, const Token& valueToken)
+void ModuleBuilder::createDefine(const Token& nameToken, const Token& valueToken)
 {
     if (workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already exists", nameToken);
@@ -88,7 +88,7 @@ void DescriptionBuilder::createDefine(const Token& nameToken, const Token& value
     workingModule->defines[nameToken.toString()] = defineDescriptionFromToken(valueToken);
 }
 
-void DescriptionBuilder::createEnum(const std::vector<Token>& enums)
+void ModuleBuilder::createEnum(const std::vector<Token>& enums)
 {
     for (size_t i = 0; i < enums.size(); i += 1)
     {
@@ -99,7 +99,7 @@ void DescriptionBuilder::createEnum(const std::vector<Token>& enums)
     }
 }
 
-void DescriptionBuilder::createFunctionDescription(const Token& nameToken,
+void ModuleBuilder::createFunctionDescription(const Token& nameToken,
                                                    const icode::TypeDescription& returnType,
                                                    const std::vector<Token>& paramNames,
                                                    std::vector<icode::TypeDescription>& paramTypes)
@@ -126,7 +126,7 @@ void DescriptionBuilder::createFunctionDescription(const Token& nameToken,
     workingModule->functions[nameToken.toString()] = functionDescription;
 }
 
-void DescriptionBuilder::createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription)
+void ModuleBuilder::createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription)
 {
     if (workingModule->symbolExists(globalNameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", globalNameToken);
@@ -136,7 +136,7 @@ void DescriptionBuilder::createGlobal(const Token globalNameToken, icode::TypeDe
     workingModule->globals[globalNameToken.toString()] = typeDescription;
 }
 
-icode::StructDescription DescriptionBuilder::createEmptyStructDescription()
+icode::StructDescription ModuleBuilder::createEmptyStructDescription()
 {
     icode::StructDescription structDescription;
     structDescription.moduleName = workingModule->name;
@@ -145,7 +145,7 @@ icode::StructDescription DescriptionBuilder::createEmptyStructDescription()
     return structDescription;
 }
 
-void DescriptionBuilder::createStructDescription(const Token& nameToken,
+void ModuleBuilder::createStructDescription(const Token& nameToken,
                                                  const std::vector<Token>& fieldNames,
                                                  const std::vector<icode::TypeDescription>& fieldTypes)
 {

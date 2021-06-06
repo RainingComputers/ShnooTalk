@@ -4,7 +4,7 @@
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"
 
-class DescriptionBuilder
+class ModuleBuilder
 {
     icode::ModuleDescription* workingModule;
     Console& console;
@@ -40,7 +40,7 @@ class DescriptionBuilder
                                  const std::vector<Token>& fieldNames,
                                  const std::vector<icode::TypeDescription>& fieldTypes);
 
-    DescriptionBuilder(Console& console);
+    ModuleBuilder(Console& console);
 };
 
 #endif

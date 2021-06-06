@@ -21,5 +21,5 @@ void createStructFromNode(irgen::ir_generator& ctx, const Node& root)
         fieldTypes.push_back(fieldType);
     }
 
-    ctx.descriptionBuilder.createStructDescription(nameToken, fieldNames, fieldTypes);
+    ctx.moduleBuilder.createStructDescription(nameToken, fieldNames, fieldTypes);
 }

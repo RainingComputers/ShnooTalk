@@ -12,5 +12,5 @@ void createGlobalFromNode(irgen::ir_generator& ctx, const Node& root)
 
     globalType.becomeMutable();
 
-    ctx.descriptionBuilder.createGlobal(globalName, globalType);
+    ctx.moduleBuilder.createGlobal(globalName, globalType);
 }

@@ -27,7 +27,7 @@ namespace irgen
         icode::ModuleDescription& rootModule;
         Console& console;
 
-        DescriptionBuilder descriptionBuilder;
+        ModuleBuilder moduleBuilder;
         OperandBuilder opBuilder;
         UnitBuilder unitBuilder;
         DescriptionFinder descriptionFinder;
@@ -64,10 +64,6 @@ namespace irgen
         void copy_struct(icode::Operand& left, Unit right);
 
         void var(const Node& root);
-
-        Unit getTypeFromToken(const Node& root);
-
-        Unit var_access(const Node& root);
 
         Unit funccall(const Node& root);
 

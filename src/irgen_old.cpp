@@ -7,6 +7,7 @@
 #include "IRGenerator/Module.hpp"
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
+#include "IRGenerator/UnitFromIdentifier.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -20,7 +21,7 @@ namespace irgen
       , modulesMap(modulesMap)
       , rootModule(modulesMap[fileName])
       , console(console)
-      , descriptionBuilder(console)
+      , moduleBuilder(console)
       , unitBuilder(opBuilder)
       , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
       , builder(modulesMap[fileName], modulesMap, opBuilder)
@@ -38,14 +39,14 @@ namespace irgen
     void ir_generator::resetWorkingModule()
     {
         workingModule = &rootModule;
-        descriptionBuilder.setWorkingModule(&rootModule);
+        moduleBuilder.setWorkingModule(&rootModule);
         descriptionFinder.setWorkingModule(&rootModule);
     }
 
     void ir_generator::setWorkingModule(icode::ModuleDescription* moduleDescription)
     {
         workingModule = moduleDescription;
-        descriptionBuilder.setWorkingModule(moduleDescription);
+        moduleBuilder.setWorkingModule(moduleDescription);
         descriptionFinder.setWorkingModule(moduleDescription);
     }
 
@@ -405,87 +406,6 @@ namespace irgen
         (*workingFunction).symbols[var.first.toString()] = var.second;
     }
 
-    Unit ir_generator::getTypeFromToken(const Node& root)
-    {
-        const Token& nameToken = root.getNthChildToken(0);
-
-        Unit Unit = descriptionFinder.getUnitFromToken(nameToken);
-
-        if (Unit.second.checkProperty(icode::IS_ENUM) && root.children.size() > 1)
-            console.compileErrorOnToken("Invalid use of ENUM", nameToken);
-
-        if (Unit.second.checkProperty(icode::IS_DEFINE) && root.children.size() > 1)
-            console.compileErrorOnToken("Invalid use of DEF", nameToken);
-
-        if (Unit.second.checkProperty(icode::IS_LOCAL))
-            if (!scope.isInCurrentScope(nameToken))
-                console.compileErrorOnToken("Symbol not in scope", nameToken);
-
-        return Unit;
-    }
-
-    Unit ir_generator::var_access(const Node& root)
-    {
-        Unit unit = getTypeFromToken(root);
-
-        /* Go through struct fields and subsripts */
-        for (size_t nodeCounter = 1; nodeCounter < root.children.size();)
-        {
-            switch (root.children[nodeCounter].type)
-            {
-                case node::STRUCT_VAR:
-                {
-                    nodeCounter++;
-                    const Token& fieldNameToken = root.getNthChildToken(nodeCounter);
-
-                    if (unit.second.dtype != icode::STRUCT)
-                        console.compileErrorOnToken("STRUCT access on a NON-STRUCT data type", fieldNameToken);
-
-                    if (unit.second.dimensions.size() != 0)
-                        console.compileErrorOnToken("STRUCT access on an ARRAY", fieldNameToken);
-
-                    unit = functionBuilder.getStructField(fieldNameToken, unit);
-
-                    nodeCounter++;
-                    break;
-                }
-                case node::SUBSCRIPT:
-                {
-                    if (unit.second.dimensions.size() == 0)
-                        console.compileErrorOnToken("ARRAY access on a NON ARRAY", root.children[nodeCounter].tok);
-
-                    std::vector<Unit> indices;
-
-                    for (; nodeCounter < root.children.size(); nodeCounter++)
-                    {
-                        const Node& child = root.children[nodeCounter];
-
-                        if (!child.isNodeType(node::SUBSCRIPT))
-                            break;
-
-                        const Unit indexExpression = expression(child.children[0]);
-
-                        indices.push_back(indexExpression);
-
-                        if (indices.size() > unit.second.dimensions.size())
-                            console.compileErrorOnToken("Too many subscripts", child.tok);
-
-                        if (!icode::isInteger(indexExpression.second.dtype) || indexExpression.second.isArray())
-                            console.compileErrorOnToken("Index must be an integer", child.children[0].tok);
-                    }
-
-                    unit = functionBuilder.getIndexedElement(unit, indices);
-
-                    break;
-                }
-                default:
-                    console.internalBugErrorOnToken(root.children[nodeCounter].tok);
-            }
-        }
-
-        return unit;
-    }
-
     Unit ir_generator::funccall(const Node& root)
     {
         icode::ModuleDescription* temp = workingModule;
@@ -631,7 +551,7 @@ namespace irgen
             }
             case node::IDENTIFIER:
             {
-                return var_access(root);
+                return getUnitFromIdentifier(*this, root);
             }
             case node::CAST:
             {
@@ -821,7 +741,7 @@ namespace irgen
 
     void ir_generator::assignment(const Node& root)
     {
-        Unit LHS = var_access(root.children[0]);
+        Unit LHS = getUnitFromIdentifier(*this, root.children[0]);
 
         Unit RHS = expression(root.children[2]);
 
@@ -1191,7 +1111,7 @@ namespace irgen
                 case node::ASSIGNMENT_STR:
                 {
                     /* The variable to write to */
-                    Unit var = var_access(stmt.children[0]);
+                    Unit var = getUnitFromIdentifier(*this, stmt.children[0]);
 
                     assign_str_literal_tovar(var, stmt.children[1]);
 
@@ -1200,7 +1120,7 @@ namespace irgen
                 case node::ASSIGNMENT_INITLIST:
                 {
                     /* The variable to write to */
-                    Unit var = var_access(stmt.children[0]);
+                    Unit var = getUnitFromIdentifier(*this, stmt.children[0]);
 
                     assign_init_list_tovar(var, stmt.children[1]);
 
