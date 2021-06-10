@@ -25,6 +25,12 @@ class FunctionBuilder
     Unit getStructField(const Token& fieldName, const Unit& unit);
 
     Unit getIndexedElement(const Unit& unit, const std::vector<Unit>& indices);
+
+    Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
+
+    Unit castOperator(const Unit& unitToCast, icode::DataType destinationDataType);
+
+    Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
 };
 
 #endif

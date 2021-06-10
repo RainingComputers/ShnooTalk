@@ -1,9 +1,9 @@
 # MODULE sizeoferr2_test.uhll
-# ERROR in Line 10 Col 13
+# ERROR in Line 10 Col 20
 # 
 #     println(sizeof(doesnotexist))
-#             ^
-# Symbol not found
+#                    ^
+# Symbol does not exist
 
 fn main()
 {

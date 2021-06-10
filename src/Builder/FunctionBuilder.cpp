@@ -72,3 +72,32 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
 
     return Unit(elementOperand, elementType);
 }
+
+Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
+{
+    std::string dtype_name = LHS.second.dtypeName;
+    DataType dtype = LHS.second.dtype;
+
+    icode::Operand result =
+      entryBuilder.binaryOperator(instruction, opBuilder.createTempOperand(dtype, dtype_name), LHS.first, RHS.first);
+
+    return Unit(result, LHS.second);
+}
+
+Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationDataType)
+{
+    icode::Operand result = entryBuilder.castOperator(destinationDataType, unitToCast.first);
+
+    return Unit(result, typeDescriptionFromDataType(destinationDataType));
+}
+
+Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOperatorTerm)
+{
+    const DataType dtype = unaryOperatorTerm.second.dtype;
+    const std::string& dtypeName = unaryOperatorTerm.second.dtypeName;
+
+    icode::Operand result =
+      entryBuilder.unaryOperator(instruction, opBuilder.createTempOperand(dtype, dtypeName), unaryOperatorTerm.first);
+
+    return Unit(result, unaryOperatorTerm.second);
+}

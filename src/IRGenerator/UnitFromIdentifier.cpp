@@ -1,3 +1,5 @@
+#include "Expression.hpp"
+
 #include "UnitFromIdentifier.hpp"
 
 Unit getUnitFromNode(irgen::ir_generator& ctx, const Node& root)
@@ -62,7 +64,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(irgen::ir_generator& ctx,
         if (!child.isNodeType(node::SUBSCRIPT))
             break;
 
-        const Unit indexExpression = ctx.expression(child.children[0]);
+        const Unit indexExpression = expression(ctx, child.children[0]);
 
         indices.push_back(indexExpression);
 

@@ -2,13 +2,14 @@
 
 #include "IRGenerator/Define.hpp"
 #include "IRGenerator/Enum.hpp"
+#include "IRGenerator/Expression.hpp"
+#include "IRGenerator/From.hpp"
 #include "IRGenerator/Function.hpp"
 #include "IRGenerator/Global.hpp"
 #include "IRGenerator/Module.hpp"
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "IRGenerator/UnitFromIdentifier.hpp"
-#include "IRGenerator/From.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -230,7 +231,7 @@ namespace irgen
                 if (child.type != node::TERM && child.type != node::EXPRESSION)
                     console.compileErrorOnToken("Incorrect dimensions", child.tok);
 
-                Unit element_expr = expression(child);
+                Unit element_expr = expression(*this, child);
 
                 /* Type check */
                 if (!icode::isSameType(element_var, element_expr.second))
@@ -297,7 +298,7 @@ namespace irgen
             icode::Operand left =
               opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString());
 
-            Unit init_exp = expression(last_node);
+            Unit init_exp = expression(*this, last_node);
 
             /* Check if the type match */
             if (!icode::isSameType(var.second, init_exp.second))
@@ -341,7 +342,7 @@ namespace irgen
         if (root.children.size() != 0)
         {
             if (root.children[0].type != node::STR_LITERAL)
-                first_arg = expression(root.children[0]);
+                first_arg = expression(*this, root.children[0]);
 
             /* If struct funccall, switch to struct's (first arg's) module */
             if (root.type == node::STRUCT_FUNCCALL)
@@ -375,7 +376,7 @@ namespace irgen
             else if (i == 0 && root.children[0].type != node::STR_LITERAL)
                 arg = first_arg;
             else
-                arg = expression(root.children[i]);
+                arg = expression(*this, root.children[i]);
 
             /* Type check */
             if (!icode::isSameType(param, arg.second))
@@ -411,235 +412,6 @@ namespace irgen
         return Unit(ret_temp, func_desc.functionReturnDescription);
     }
 
-    Unit ir_generator::size_of(const Node& root)
-    {
-        std::string ident = root.children.back().tok.toString();
-
-        /* Enter the specified ext module */
-        setWorkingModuleFromNode(*this, root, 0);
-
-        /* Get size of type */
-        int size = 0;
-        icode::DataType dtype = rootModule.dataTypeFromString(ident);
-
-        icode::StructDescription struct_desc;
-        icode::TypeDescription global;
-        icode::TypeDescription symbol;
-
-        if (dtype != icode::STRUCT)
-            size = icode::getDataTypeSize(dtype);
-        else if ((*workingModule).getStruct(ident, struct_desc))
-            size = struct_desc.size;
-        else if ((*workingModule).getGlobal(ident, global))
-            size = global.size;
-        else if ((*workingFunction).getSymbol(ident, symbol))
-            size = symbol.dtypeSize;
-        else
-            console.compileErrorOnToken("Symbol not found", root.tok);
-
-        resetWorkingModule();
-
-        /* return a icode::INT literal  */
-        return unitBuilder.unitPairFromIntLiteral(size, icode::INT);
-    }
-
-    Unit ir_generator::term(const Node& root)
-    {
-        Node child = root.children[0];
-        switch (child.type)
-        {
-            case node::LITERAL:
-            {
-                switch (child.tok.getType())
-                {
-                    case token::INT_LITERAL:
-                    case token::HEX_LITERAL:
-                    case token::BIN_LITERAL:
-                    {
-                        /* Return literal icode operand */
-                        int literal = std::stoi(child.tok.toString());
-                        return unitBuilder.unitPairFromIntLiteral(literal, icode::INT);
-                    }
-                    case token::CHAR_LITERAL:
-                    {
-                        char literal = child.tok.toUnescapedString()[0];
-                        return unitBuilder.unitPairFromIntLiteral(literal, icode::UI8);
-                    }
-                    case token::FLOAT_LITERAL:
-                    {
-                        /* Return literal icode operand */
-                        float literal = (float)stof(child.tok.toString());
-                        return unitBuilder.unitPairFromFloatLiteral(literal, icode::FLOAT);
-                    }
-                    default:
-                        console.internalBugErrorOnToken(child.tok);
-                }
-            }
-            case node::IDENTIFIER:
-            {
-                return getUnitFromIdentifier(*this, root);
-            }
-            case node::CAST:
-            {
-                icode::DataType cast_dtype = rootModule.dataTypeFromString(child.tok.toString());
-
-                Unit cast_term = term(child.children[0]);
-
-                /* Cannot cast ARRAY */
-                if (cast_term.second.dimensions.size() != 0 || cast_term.second.dtype == icode::STRUCT)
-                    console.compileErrorOnToken("Cannot cast STRUCT or ARRAY", child.tok);
-
-                /* Create icode entry for casting */
-                icode::Operand res_temp = builder.castOperator(cast_dtype, cast_term.first);
-
-                /* Return temp */
-                return Unit(res_temp, icode::typeDescriptionFromDataType(cast_dtype));
-            }
-            case node::UNARY_OPR:
-            {
-                Unit term_var = term(child.children[0]);
-
-                icode::DataType dtype = term_var.second.dtype;
-                std::string dtype_name = term_var.second.dtypeName;
-
-                /* Unary operator not allowed on ARRAY */
-                if (term_var.second.dimensions.size() != 0)
-                    console.compileErrorOnToken("Unary operator not allowed on ARRAY", child.tok);
-
-                /* Unary operator not allowed on STRUCT */
-                if (dtype == icode::STRUCT)
-                    console.compileErrorOnToken("Unary operator not allowed on STRUCT", child.tok);
-
-                /* NOT operator not allowed on float */
-                if (!icode::isInteger(dtype) && child.tok.getType() == token::NOT)
-                    console.compileErrorOnToken("Unary operator NOT not allowed on FLOAT", child.tok);
-
-                icode::Instruction opcode;
-                switch (child.tok.getType())
-                {
-                    case token::MINUS:
-                        opcode = icode::UNARY_MINUS;
-                        break;
-                    case token::NOT:
-                        opcode = icode::NOT;
-                        break;
-                    case token::CONDN_NOT:
-                        console.compileErrorOnToken("Did not expect CONDN NOT", child.tok);
-                        break;
-                    default:
-                        console.internalBugErrorOnToken(child.tok);
-                }
-
-                icode::Operand res_temp =
-                  builder.unaryOperator(opcode, opBuilder.createTempOperand(dtype, dtype_name), term_var.first);
-
-                /* Return temp */
-                return Unit(res_temp, term_var.second);
-            }
-            case node::EXPRESSION:
-            {
-                return expression(child);
-            }
-            case node::STRUCT_FUNCCALL:
-            case node::FUNCCALL:
-            {
-                return funccall(child);
-            }
-            case node::MODULE:
-            {
-                int nodeCounter = setWorkingModuleFromNode(*this, root, 0);
-
-                if (root.children[nodeCounter].tok.getType() != token::IDENTIFIER)
-                    console.compileErrorOnToken("Invalid use of MODULE ACCESS", child.tok);
-
-                Unit ret_val = term(root.children[nodeCounter]);
-
-                resetWorkingModule();
-
-                return ret_val;
-            }
-            case node::SIZEOF:
-            {
-                return size_of(child);
-            }
-            default:
-                console.internalBugErrorOnToken(child.tok);
-        }
-
-        return Unit(icode::Operand(), icode::typeDescriptionFromDataType(icode::VOID));
-    }
-
-    icode::Instruction ir_generator::tokenToBinaryOperator(const Token tok)
-    {
-        switch (tok.getType())
-        {
-            case token::MULTIPLY:
-                return icode::MUL;
-            case token::DIVIDE:
-                return icode::DIV;
-            case token::MOD:
-                return icode::MOD;
-            case token::PLUS:
-                return icode::ADD;
-            case token::MINUS:
-                return icode::SUB;
-            case token::RIGHT_SHIFT:
-                return icode::RSH;
-            case token::LEFT_SHIFT:
-                return icode::LSH;
-            case token::BITWISE_AND:
-                return icode::BWA;
-            case token::BITWISE_XOR:
-                return icode::BWX;
-            case token::BITWISE_OR:
-                return icode::BWO;
-            case token::CONDN_AND:
-            case token::CONDN_OR:
-            case token::LESS_THAN:
-            case token::LESS_THAN_EQUAL:
-            case token::GREATER_THAN:
-            case token::GREATER_THAN_EQUAL:
-            case token::CONDN_EQUAL:
-            case token::CONDN_NOT_EQUAL:
-                console.compileErrorOnToken("Did not expect conditional operator", tok);
-            default:
-                console.internalBugErrorOnToken(tok);
-        }
-    }
-
-    Unit ir_generator::expression(const Node& root)
-    {
-        if (root.type == node::TERM)
-            return term(root);
-
-        if (root.children.size() == 1)
-            return expression(root.children[0]);
-
-        Token expressionOperator = root.children[1].tok;
-
-        Unit LHS = expression(root.children[0]);
-        icode::DataType dtype = LHS.second.dtype;
-        std::string dtype_name = LHS.second.dtypeName;
-
-        Unit RHS = expression(root.children[2]);
-
-        if (dtype == icode::STRUCT || LHS.second.dimensions.size() != 0)
-            console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expressionOperator);
-
-        if (!icode::isSameType(LHS.second, RHS.second))
-            console.typeError(root.children[2].tok, LHS.second, RHS.second);
-
-        if (expressionOperator.isBitwiseOperation() && !icode::isInteger(dtype))
-            console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expressionOperator);
-
-        icode::Instruction instruction = tokenToBinaryOperator(expressionOperator);
-
-        icode::Operand result =
-          builder.binaryOperator(instruction, opBuilder.createTempOperand(dtype, dtype_name), LHS.first, RHS.first);
-
-        return Unit(result, LHS.second);
-    }
-
     icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const Token tok)
     {
         switch (tok.getType())
@@ -669,7 +441,7 @@ namespace irgen
     {
         Unit LHS = getUnitFromIdentifier(*this, root.children[0]);
 
-        Unit RHS = expression(root.children[2]);
+        Unit RHS = expression(*this, root.children[2]);
 
         Token assignOperator = root.children[1].tok;
 
@@ -819,13 +591,13 @@ namespace irgen
                     icode::Instruction opcode = tokenToCompareOperator(expr_opr);
 
                     /* Create icode entry for comparing two expressions */
-                    Unit first_operand = expression(root.children[0]);
+                    Unit first_operand = expression(*this, root.children[0]);
 
                     /* Cannot compare structs and arrays */
                     if (first_operand.second.dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
                         console.compileErrorOnToken("Cannot compare STRUCT or ARRAYS", expr_opr);
 
-                    Unit second_operand = expression(root.children[2]);
+                    Unit second_operand = expression(*this, root.children[2]);
 
                     /* Type check */
                     if (!icode::isSameType(first_operand.second, second_operand.second))
@@ -967,7 +739,7 @@ namespace irgen
             /* Else expression */
             else
             {
-                Unit print_var = expression(child);
+                Unit print_var = expression(*this, child);
 
                 /* Cannot peint struct or arrays */
                 if (print_var.second.dtype == icode::STRUCT || print_var.second.dimensions.size() > 1)
@@ -991,7 +763,7 @@ namespace irgen
 
     void ir_generator::input(const Node& root)
     {
-        Unit input_var = expression(root.children[0]);
+        Unit input_var = expression(*this, root.children[0]);
 
         /* Check if the input var is writable */
         if (!(input_var.first.operandType == icode::VAR || input_var.first.operandType == icode::GBL_VAR ||
@@ -1111,7 +883,7 @@ namespace irgen
                     /* Get return value */
                     if (stmt.children.size() != 0)
                     {
-                        Unit ret_val = expression(stmt.children[0]);
+                        Unit ret_val = expression(*this, stmt.children[0]);
 
                         /* Type check */
                         if (!icode::isSameType(ret_info, ret_val.second))

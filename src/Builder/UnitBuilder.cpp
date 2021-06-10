@@ -7,7 +7,7 @@ UnitBuilder::UnitBuilder(OperandBuilder& opBuilder)
 {
 }
 
-Unit UnitBuilder::unitPairFromIntLiteral(int value, DataType dtype)
+Unit UnitBuilder::unitFromIntLiteral(int value, DataType dtype)
 {
     Operand op = opBuilder.createIntLiteralOperand(dtype, value);
     icode::TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
@@ -15,7 +15,7 @@ Unit UnitBuilder::unitPairFromIntLiteral(int value, DataType dtype)
     return Unit(op, typeDescription);
 }
 
-Unit UnitBuilder::unitPairFromFloatLiteral(float value, DataType dtype)
+Unit UnitBuilder::unitFromFloatLiteral(float value, DataType dtype)
 {
     Operand op = opBuilder.createFloatLiteralOperand(dtype, value);
     icode::TypeDescription typeDescription = typeDescriptionFromDataType(dtype);

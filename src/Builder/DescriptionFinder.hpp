@@ -20,7 +20,10 @@ class DescriptionFinder
     UnitBuilder& unitBuilder;
 
   public:
-    DescriptionFinder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console, UnitBuilder& unitBuilder);
+    DescriptionFinder(icode::ModuleDescription& rootModule,
+                      icode::StringModulesMap& modulesMap,
+                      Console& console,
+                      UnitBuilder& unitBuilder);
 
     void setWorkingModule(icode::ModuleDescription* module);
     void setWorkingFunction(icode::FunctionDescription* function);
@@ -38,6 +41,7 @@ class DescriptionFinder
 
     void createFrom(const Token& moduleNameToken, const Token& symbolNameToken);
 
+    int getDataTypeSizeFromToken(const Token& nameToken);
 };
 
 #endif

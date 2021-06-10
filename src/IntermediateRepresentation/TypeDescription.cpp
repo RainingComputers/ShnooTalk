@@ -52,6 +52,11 @@ namespace icode
         return dimensions.size() > 0;
     }
 
+    bool TypeDescription::isIntegerType() const
+    {
+        return isInteger(dtype);
+    }
+
     bool isSameType(TypeDescription var1, TypeDescription var2)
     {
         if (var1.dtype == STRUCT || var2.dtype == STRUCT)

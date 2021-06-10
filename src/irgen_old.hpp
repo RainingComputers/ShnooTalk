@@ -63,14 +63,6 @@ namespace irgen
 
         Unit funccall(const Node& root);
 
-        Unit size_of(const Node& root);
-
-        Unit term(const Node& root);
-
-        icode::Instruction tokenToBinaryOperator(const Token tok);
-
-        Unit expression(const Node& root);
-
         icode::Instruction assignmentTokenToBinaryOperator(const Token tok);
 
         void assignment(const Node& root);

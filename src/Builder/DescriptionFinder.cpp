@@ -125,7 +125,7 @@ void DescriptionFinder::createUse(const Token& nameToken)
 
 void DescriptionFinder::createFrom(const Token& moduleNameToken, const Token& symbolNameToken)
 {
-    icode::StructDescription sturctDescription;
+    icode::StructDescription structDescription;
     icode::FunctionDescription functionDescription;
     icode::DefineDescription defineDescription;
     int enumValue;
@@ -140,8 +140,8 @@ void DescriptionFinder::createFrom(const Token& moduleNameToken, const Token& sy
     if (workingModule->symbolExists(symbolString))
         console.compileErrorOnToken("Symbol already defined in current module", symbolNameToken);
 
-    if ((*externalModule).getStruct(symbolString, sturctDescription))
-        workingModule->structures[symbolString] = sturctDescription;
+    if ((*externalModule).getStruct(symbolString, structDescription))
+        workingModule->structures[symbolString] = structDescription;
 
     else if ((*externalModule).getFunction(symbolString, functionDescription))
         console.compileErrorOnToken("Cannot import functions", symbolNameToken);
@@ -157,4 +157,20 @@ void DescriptionFinder::createFrom(const Token& moduleNameToken, const Token& sy
 
     else
         console.compileErrorOnToken("Symbol does not exist", symbolNameToken);
+}
+
+int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
+{
+    const std::string& dataTypeString = nameToken.toString();
+
+    DataType dtype = workingModule->dataTypeFromString(dataTypeString);
+    if(dtype != icode::STRUCT)
+        return getDataTypeSize(dtype);
+
+    StructDescription structDescription;
+    if(workingModule->getStruct(dataTypeString, structDescription))
+        return structDescription.size;
+
+    Unit unit = getUnitFromToken(nameToken);
+    return unit.second.size;
 }

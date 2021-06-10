@@ -45,6 +45,7 @@ namespace icode
         bool isSameType() const;
         bool isStruct() const;
         bool isArray() const;
+        bool isIntegerType() const;
     };
 
     bool isSameType(TypeDescription var1, TypeDescription var2);
