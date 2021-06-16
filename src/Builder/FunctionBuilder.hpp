@@ -31,6 +31,8 @@ class FunctionBuilder
     Unit castOperator(const Unit& unitToCast, icode::DataType destinationDataType);
 
     Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
+
+    icode::Operand createLabel(const Token& tok, bool isTrueLabel, std::string prefix);
 };
 
 #endif

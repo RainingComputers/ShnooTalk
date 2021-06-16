@@ -80,12 +80,12 @@ int main(int argc, char* argv[])
     std::string moduleName = removeFileExtension(fileName);
     std::string option = argv[2];
 
-    std::ifstream fileStream;
-    Console console = getStreamAndConsole(fileName, fileStream);
-
     /* Compile program */
     try
     {
+        std::ifstream fileStream;
+        Console console = getStreamAndConsole(fileName, fileStream);
+
         if (option == "-ast")
         {
             mikpp::printNode(generateAST(console));

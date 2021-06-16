@@ -3,6 +3,7 @@
 #include "IRGenerator/Define.hpp"
 #include "IRGenerator/Enum.hpp"
 #include "IRGenerator/Expression.hpp"
+#include "IRGenerator/ConditionalExpression.hpp"
 #include "IRGenerator/From.hpp"
 #include "IRGenerator/Function.hpp"
 #include "IRGenerator/Global.hpp"
@@ -443,7 +444,7 @@ namespace irgen
 
         Unit RHS = expression(*this, root.children[2]);
 
-        Token assignOperator = root.children[1].tok;
+        Token assignOperator = root.getNthChildToken(1);
 
         if (LHS.first.operandType == icode::LITERAL)
             console.compileErrorOnToken("Cannot assign to LITERAL", root.children[0].tok);
@@ -451,13 +452,13 @@ namespace irgen
         if (!icode::isSameType(LHS.second, RHS.second))
             console.typeError(root.children[2].tok, LHS.second, RHS.second);
 
-        if (!LHS.second.checkProperty(icode::IS_MUT))
+        if (!LHS.second.isMutable())
             console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
 
-        if (LHS.second.dimensions.size() != 0)
+        if (LHS.second.isArray())
             console.compileErrorOnToken("Assignment operators not allowed on ARRAY", assignOperator);
 
-        if (LHS.second.dtype == icode::STRUCT && assignOperator.getType() != token::EQUAL)
+        if (LHS.second.isStruct() && assignOperator.getType() != token::EQUAL)
             console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT", assignOperator);
 
         if (assignOperator.isBitwiseOperation() && !icode::isInteger(LHS.second.dtype))
@@ -465,7 +466,7 @@ namespace irgen
 
         icode::Instruction opcode = assignmentTokenToBinaryOperator(assignOperator);
 
-        if (LHS.second.dtype == icode::STRUCT)
+        if (LHS.second.isStruct())
         {
             copy_struct(LHS.first, RHS);
             return;
@@ -483,141 +484,6 @@ namespace irgen
         }
     }
 
-    icode::Operand ir_generator::gen_label(Token tok, bool true_label, std::string prefix)
-    {
-        /* Generate label using token's line and col number */
-
-        std::string label_name = tok.getLineColString();
-
-        if (true_label)
-            return opBuilder.createLabelOperand("_" + prefix + "_true" + label_name);
-
-        return opBuilder.createLabelOperand("_" + prefix + "_false" + label_name);
-    }
-
-    icode::Instruction ir_generator::tokenToCompareOperator(const Token tok)
-    {
-        switch (tok.getType())
-        {
-            case token::LESS_THAN:
-                return icode::LT;
-            case token::LESS_THAN_EQUAL:
-                return icode::LTE;
-            case token::GREATER_THAN:
-                return icode::GT;
-            case token::GREATER_THAN_EQUAL:
-                return icode::GTE;
-            case token::CONDN_EQUAL:
-                return icode::EQ;
-            case token::CONDN_NOT_EQUAL:
-                return icode::NEQ;
-            default:
-                console.compileErrorOnToken("Invalid conditional expression", tok);
-        }
-    }
-
-    void ir_generator::condn_expression(const Node& root,
-                                        const icode::Operand& t_label,
-                                        const icode::Operand& f_label,
-                                        bool t_fall,
-                                        bool f_fall)
-    {
-        if (root.type == node::TERM)
-        {
-            /* For unary operator NOT */
-            if (root.children[0].type == node::EXPRESSION)
-            {
-                condn_expression(root.children[0], t_label, f_label, t_fall, f_fall);
-                return;
-            }
-
-            if (root.children[0].tok.getType() != token::CONDN_NOT)
-                console.compileErrorOnToken("Invalid conditional expression", root.tok);
-
-            condn_expression(root.children[0].children[0].children[0], f_label, t_label, f_fall, t_fall);
-        }
-        else if (root.children.size() == 1)
-        {
-            condn_expression(root.children[0], t_label, f_label, t_fall, f_fall);
-        }
-        else
-        {
-            Token expr_opr = root.children[1].tok;
-
-            /* See the dragon book, Figure 6.39 and Figure 6.40 */
-
-            switch (expr_opr.getType())
-            {
-                case token::CONDN_AND:
-                {
-                    icode::Operand new_t_label = gen_label(expr_opr, true);
-                    icode::Operand new_f_label = gen_label(expr_opr, false);
-
-                    if (!f_fall)
-                        condn_expression(root.children[0], new_t_label, f_label, true, false);
-                    else
-                        condn_expression(root.children[0], new_t_label, new_f_label, true, false);
-
-                    condn_expression(root.children[2], t_label, f_label, t_fall, f_fall);
-
-                    if (f_fall)
-                    {
-                        builder.label(new_f_label);
-                    }
-
-                    break;
-                }
-                case token::CONDN_OR:
-                {
-                    icode::Operand new_t_label = gen_label(expr_opr, true);
-                    icode::Operand new_f_label = gen_label(expr_opr, false);
-
-                    if (!t_fall)
-                        condn_expression(root.children[0], t_label, new_f_label, false, true);
-                    else
-                        condn_expression(root.children[0], new_t_label, new_f_label, false, true);
-
-                    condn_expression(root.children[2], t_label, f_label, t_fall, f_fall);
-
-                    if (t_fall)
-                    {
-                        builder.label(new_t_label);
-                    }
-
-                    break;
-                }
-                default:
-                {
-                    icode::Instruction opcode = tokenToCompareOperator(expr_opr);
-
-                    /* Create icode entry for comparing two expressions */
-                    Unit first_operand = expression(*this, root.children[0]);
-
-                    /* Cannot compare structs and arrays */
-                    if (first_operand.second.dtype == icode::STRUCT || first_operand.second.dimensions.size() != 0)
-                        console.compileErrorOnToken("Cannot compare STRUCT or ARRAYS", expr_opr);
-
-                    Unit second_operand = expression(*this, root.children[2]);
-
-                    /* Type check */
-                    if (!icode::isSameType(first_operand.second, second_operand.second))
-                        console.typeError(root.children[2].tok, first_operand.second, second_operand.second);
-
-                    /* If second operand is a ptr, read it into a temp */
-                    builder.compareOperator(opcode, first_operand.first, second_operand.first);
-
-                    /* Create icode entry for goto */
-
-                    if (!t_fall)
-                        builder.createBranch(icode::IF_TRUE_GOTO, t_label);
-
-                    if (!f_fall)
-                        builder.createBranch(icode::IF_FALSE_GOTO, f_label);
-                }
-            }
-        }
-    }
-
     void ir_generator::ifstmt(const Node& root,
                               bool loop,
                               const icode::Operand& start_label,
@@ -625,19 +491,19 @@ namespace irgen
                               const icode::Operand& cont_label)
     {
         /* Create label for end of all if statements */
-        icode::Operand end_label = gen_label(root.tok, false, "ifend");
+        icode::Operand end_label = functionBuilder.createLabel(root.tok, false, "ifend");
 
         for (size_t i = 0; i < root.children.size(); i++)
         {
             Node child = root.children[i];
 
-            icode::Operand new_t_label = gen_label(child.tok, true, "if");
-            icode::Operand new_f_label = gen_label(child.tok, false, "if");
+            icode::Operand newTrueLabel = functionBuilder.createLabel(child.tok, true, "if");
+            icode::Operand newFalseLabel = functionBuilder.createLabel(child.tok, false, "if");
 
             if (child.type != node::ELSE)
             {
                 /* Process conditional expression */
-                condn_expression(child.children[0], new_t_label, new_f_label, true, false);
+                conditionalExpression(*this, child.children[0], newTrueLabel, newFalseLabel, true);
 
                 /* Process block */
                 block(child.children[1], loop, start_label, break_label, cont_label);
@@ -649,7 +515,7 @@ namespace irgen
                 }
 
                 /* Create label to skip block */
-                builder.label(new_f_label);
+                builder.label(newFalseLabel);
             }
             else
             {
@@ -666,23 +532,23 @@ namespace irgen
 
     void ir_generator::whileloop(const Node& root)
     {
-        icode::Operand new_t_label = gen_label(root.tok, true, "while");
-        icode::Operand new_f_label = gen_label(root.tok, false, "while");
+        icode::Operand newTrueLabel = functionBuilder.createLabel(root.tok, true, "while");
+        icode::Operand newFalseLabel = functionBuilder.createLabel(root.tok, false, "while");
 
         /* Create label for looping */
-        builder.label(new_t_label);
+        builder.label(newTrueLabel);
 
         /* Process conditional expression */
-        condn_expression(root.children[0], new_t_label, new_f_label, true, false);
+        conditionalExpression(*this, root.children[0], newTrueLabel, newFalseLabel, true);
 
         /* Process block */
-        block(root.children[1], true, new_t_label, new_f_label, new_t_label);
+        block(root.children[1], true, newTrueLabel, newFalseLabel, newTrueLabel);
 
         /* Go back to beginning */
-        builder.createBranch(icode::GOTO, new_t_label);
+        builder.createBranch(icode::GOTO, newTrueLabel);
 
         /* Create label to skip block */
-        builder.label(new_f_label);
+        builder.label(newFalseLabel);
     }
 
     void ir_generator::forloop(const Node& root)
@@ -694,18 +560,18 @@ namespace irgen
             assignment(root.children[0]);
 
         /* Process conditional  */
-        icode::Operand new_t_label = gen_label(root.tok, true, "for");
-        icode::Operand new_f_label = gen_label(root.tok, false, "for");
-        icode::Operand cont_label = gen_label(root.tok, true, "for_cont");
+        icode::Operand newTrueLabel = functionBuilder.createLabel(root.tok, true, "for");
+        icode::Operand newFalseLabel = functionBuilder.createLabel(root.tok, false, "for");
+        icode::Operand cont_label = functionBuilder.createLabel(root.tok, true, "for_cont");
 
         /* Create label for looping */
-        builder.label(new_t_label);
+        builder.label(newTrueLabel);
 
         /* Process conditional expression */
-        condn_expression(root.children[1], new_t_label, new_f_label, true, false);
+        conditionalExpression(*this, root.children[1], newTrueLabel, newFalseLabel, true);
 
         /* Process block */
-        block(root.children[3], true, new_t_label, new_f_label, cont_label);
+        block(root.children[3], true, newTrueLabel, newFalseLabel, cont_label);
 
         /* Create label for continue */
         builder.label(cont_label);
@@ -714,10 +580,10 @@ namespace irgen
         assignment(root.children[2]);
 
         /* Go back to beginning */
-        builder.createBranch(icode::GOTO, new_t_label);
+        builder.createBranch(icode::GOTO, newTrueLabel);
 
         /* Create label to skip block */
-        builder.label(new_f_label);
+        builder.label(newFalseLabel);
     }
 
     void ir_generator::print(const Node& root)

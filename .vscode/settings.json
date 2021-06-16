@@ -61,6 +61,7 @@
         "*.inc": "cpp"
     },
     "cSpell.words": [
+        "CONDN",
         "dtype",
         "ibuild",
         "icode",

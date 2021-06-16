@@ -67,16 +67,6 @@ namespace irgen
 
         void assignment(const Node& root);
 
-        icode::Operand gen_label(Token tok, bool true_label, std::string prefix = "");
-
-        icode::Instruction tokenToCompareOperator(const Token tok);
-
-        void condn_expression(const Node& root,
-                              const icode::Operand& t_label,
-                              const icode::Operand& f_label,
-                              bool t_fall,
-                              bool f_fall);
-
         void ifstmt(const Node& root,
                     bool loop,
                     const icode::Operand& start_label,

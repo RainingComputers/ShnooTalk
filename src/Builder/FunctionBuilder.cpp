@@ -14,7 +14,7 @@ FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap,
 {
 }
 
-icode::Operand FunctionBuilder::ensurePointerOperand(const icode::Operand& op)
+Operand FunctionBuilder::ensurePointerOperand(const Operand& op)
 {
     if (!op.isPointer())
         return entryBuilder.createPointer(op);
@@ -78,7 +78,7 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
     std::string dtype_name = LHS.second.dtypeName;
     DataType dtype = LHS.second.dtype;
 
-    icode::Operand result =
+    Operand result =
       entryBuilder.binaryOperator(instruction, opBuilder.createTempOperand(dtype, dtype_name), LHS.first, RHS.first);
 
     return Unit(result, LHS.second);
@@ -86,7 +86,7 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
 
 Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationDataType)
 {
-    icode::Operand result = entryBuilder.castOperator(destinationDataType, unitToCast.first);
+    Operand result = entryBuilder.castOperator(destinationDataType, unitToCast.first);
 
     return Unit(result, typeDescriptionFromDataType(destinationDataType));
 }
@@ -96,8 +96,15 @@ Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOp
     const DataType dtype = unaryOperatorTerm.second.dtype;
     const std::string& dtypeName = unaryOperatorTerm.second.dtypeName;
 
-    icode::Operand result =
+    Operand result =
       entryBuilder.unaryOperator(instruction, opBuilder.createTempOperand(dtype, dtypeName), unaryOperatorTerm.first);
 
     return Unit(result, unaryOperatorTerm.second);
+}
+
+Operand FunctionBuilder::createLabel(const Token& tok, bool isTrueLabel, std::string prefix)
+{
+    std::string label_name = tok.getLineColString();
+
+    return opBuilder.createLabelOperand("_" + prefix + "_" + (isTrueLabel ? "true" : "false") + label_name);
 }
