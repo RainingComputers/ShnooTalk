@@ -108,3 +108,28 @@ Operand FunctionBuilder::createLabel(const Token& tok, bool isTrueLabel, std::st
 
     return opBuilder.createLabelOperand("_" + prefix + "_" + (isTrueLabel ? "true" : "false") + label_name);
 }
+
+void FunctionBuilder::insertLabel(const Operand& label)
+{
+    entryBuilder.label(label);
+}
+
+void FunctionBuilder::createIfTrueGoto(const icode::Operand& label)
+{
+    entryBuilder.createBranch(icode::IF_TRUE_GOTO, label);
+}
+
+void FunctionBuilder::createIfFalseGoto(const icode::Operand& label)
+{
+    entryBuilder.createBranch(icode::IF_FALSE_GOTO, label);
+}
+
+void FunctionBuilder::createGoto(const icode::Operand& label)
+{
+    entryBuilder.createBranch(icode::GOTO, label);
+}
+
+void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
+{
+    entryBuilder.compareOperator(instruction, LHS.first, RHS.first);
+}

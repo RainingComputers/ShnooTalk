@@ -4,6 +4,7 @@
 #include "IRGenerator/Enum.hpp"
 #include "IRGenerator/Expression.hpp"
 #include "IRGenerator/ConditionalExpression.hpp"
+#include "IRGenerator/ControlStatement.hpp"
 #include "IRGenerator/From.hpp"
 #include "IRGenerator/Function.hpp"
 #include "IRGenerator/Global.hpp"
@@ -484,108 +485,6 @@ namespace irgen
         }
     }
 
-    void ir_generator::ifstmt(const Node& root,
-                              bool loop,
-                              const icode::Operand& start_label,
-                              const icode::Operand& break_label,
-                              const icode::Operand& cont_label)
-    {
-        /* Create label for end of all if statements */
-        icode::Operand end_label = functionBuilder.createLabel(root.tok, false, "ifend");
-
-        for (size_t i = 0; i < root.children.size(); i++)
-        {
-            Node child = root.children[i];
-
-            icode::Operand newTrueLabel = functionBuilder.createLabel(child.tok, true, "if");
-            icode::Operand newFalseLabel = functionBuilder.createLabel(child.tok, false, "if");
-
-            if (child.type != node::ELSE)
-            {
-                /* Process conditional expression */
-                conditionalExpression(*this, child.children[0], newTrueLabel, newFalseLabel, true);
-
-                /* Process block */
-                block(child.children[1], loop, start_label, break_label, cont_label);
-
-                if (i != root.children.size() - 1)
-                {
-                    /* Go to end */
-                    builder.createBranch(icode::GOTO, end_label);
-                }
-
-                /* Create label to skip block */
-                builder.label(newFalseLabel);
-            }
-            else
-            {
-                block(child.children[0], loop, start_label, break_label, cont_label);
-            }
-        }
-
-        if (root.children.size() != 1)
-        {
-            /* Create label for end of if statement */
-            builder.label(end_label);
-        }
-    }
-
-    void ir_generator::whileloop(const Node& root)
-    {
-        icode::Operand newTrueLabel = functionBuilder.createLabel(root.tok, true, "while");
-        icode::Operand newFalseLabel = functionBuilder.createLabel(root.tok, false, "while");
-
-        /* Create label for looping */
-        builder.label(newTrueLabel);
-
-        /* Process conditional expression */
-        conditionalExpression(*this, root.children[0], newTrueLabel, newFalseLabel, true);
-
-        /* Process block */
-        block(root.children[1], true, newTrueLabel, newFalseLabel, newTrueLabel);
-
-        /* Go back to beginning */
-        builder.createBranch(icode::GOTO, newTrueLabel);
-
-        /* Create label to skip block */
-        builder.label(newFalseLabel);
-    }
-
-    void ir_generator::forloop(const Node& root)
-    {
-        /* Process initialization */
-        if (root.children[0].type == node::VAR)
-            var(root.children[0]);
-        else
-            assignment(root.children[0]);
-
-        /* Process conditional  */
-        icode::Operand newTrueLabel = functionBuilder.createLabel(root.tok, true, "for");
-        icode::Operand newFalseLabel = functionBuilder.createLabel(root.tok, false, "for");
-        icode::Operand cont_label = functionBuilder.createLabel(root.tok, true, "for_cont");
-
-        /* Create label for looping */
-        builder.label(newTrueLabel);
-
-        /* Process conditional expression */
-        conditionalExpression(*this, root.children[1], newTrueLabel, newFalseLabel, true);
-
-        /* Process block */
-        block(root.children[3], true, newTrueLabel, newFalseLabel, cont_label);
-
-        /* Create label for continue */
-        builder.label(cont_label);
-
-        /* Process assignment */
-        assignment(root.children[2]);
-
-        /* Go back to beginning */
-        builder.createBranch(icode::GOTO, newTrueLabel);
-
-        /* Create label to skip block */
-        builder.label(newFalseLabel);
-    }
-
     void ir_generator::print(const Node& root)
     {
         for (size_t i = 0; i < root.children.size(); i++)
@@ -653,10 +552,10 @@ namespace irgen
     }
 
     void ir_generator::block(const Node& root,
-                             bool loop,
-                             const icode::Operand& start_label,
-                             const icode::Operand& break_label,
-                             const icode::Operand& cont_label)
+                             bool isLoopBlock,
+                             const icode::Operand& loopLabel,
+                             const icode::Operand& breakLabel,
+                             const icode::Operand& continueLabel)
     {
         /* Setup scope */
         scope.createScope();
@@ -714,34 +613,20 @@ namespace irgen
                     break;
                 }
                 case node::IF:
-                    ifstmt(stmt, loop, start_label, break_label, cont_label);
+                    ifStatement(*this, stmt, isLoopBlock, loopLabel, breakLabel, continueLabel);
                     break;
                 case node::WHILE:
-                    whileloop(stmt);
+                    whileLoop(*this, stmt);
                     break;
                 case node::FOR:
-                    forloop(stmt);
+                    forLoop(*this, stmt);
                     break;
                 case node::BREAK:
-                {
-                    if (!loop)
-                        console.compileErrorOnToken("BREAK outside loop", stmt.tok);
-
-                    /* Go to end */
-                    builder.createBranch(icode::GOTO, break_label);
-
+                    breakStatement(*this, isLoopBlock, breakLabel, stmt.tok);
                     break;
-                }
                 case node::CONTINUE:
-                {
-                    if (!loop)
-                        console.compileErrorOnToken("CONTINUE outside loop", stmt.tok);
-
-                    /* Go to end */
-                    builder.createBranch(icode::GOTO, cont_label);
-
+                    continueStatement(*this, isLoopBlock, continueLabel, stmt.tok);
                     break;
-                }
                 case node::RETURN:
                 {
                     icode::TypeDescription ret_info = (*workingFunction).functionReturnDescription;

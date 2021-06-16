@@ -33,6 +33,16 @@ class FunctionBuilder
     Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
 
     icode::Operand createLabel(const Token& tok, bool isTrueLabel, std::string prefix);
+
+    void insertLabel(const icode::Operand& label);
+
+    void createIfTrueGoto(const icode::Operand& label);
+
+    void createIfFalseGoto(const icode::Operand& label);
+
+    void createGoto(const icode::Operand& label);
+
+    void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
 };
 
 #endif

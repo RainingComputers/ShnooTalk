@@ -67,16 +67,6 @@ namespace irgen
 
         void assignment(const Node& root);
 
-        void ifstmt(const Node& root,
-                    bool loop,
-                    const icode::Operand& start_label,
-                    const icode::Operand& break_label,
-                    const icode::Operand& cont_label);
-
-        void whileloop(const Node& root);
-
-        void forloop(const Node& root);
-
         void print(const Node& root);
 
         void input(const Node& root);

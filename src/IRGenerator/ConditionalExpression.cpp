@@ -59,7 +59,7 @@ void conditionalAndOperator(irgen::ir_generator& ctx,
     conditionalExpression(ctx, root.children[2], trueLabel, falseLabel, trueFall);
 
     if (!trueFall)
-        ctx.builder.label(newFalseLabel);
+        ctx.functionBuilder.insertLabel(newFalseLabel);
 }
 
 void conditionalOrOperator(irgen::ir_generator& ctx,
@@ -80,7 +80,7 @@ void conditionalOrOperator(irgen::ir_generator& ctx,
     conditionalExpression(ctx, root.children[2], trueLabel, falseLabel, trueFall);
 
     if (trueFall)
-        ctx.builder.label(newTrueLabel);
+        ctx.functionBuilder.insertLabel(newTrueLabel);
 }
 
 void relationalOperator(irgen::ir_generator& ctx,
@@ -101,12 +101,12 @@ void relationalOperator(irgen::ir_generator& ctx,
     if (!icode::isSameType(LHS.second, RHS.second))
         ctx.console.typeError(root.children[2].tok, LHS.second, RHS.second);
 
-    ctx.builder.compareOperator(opcode, LHS.first, RHS.first);
+    ctx.functionBuilder.compareOperator(opcode, LHS, RHS);
 
     if (!trueFall)
-        ctx.builder.createBranch(icode::IF_TRUE_GOTO, trueLabel);
+        ctx.functionBuilder.createIfTrueGoto(trueLabel);
     else
-        ctx.builder.createBranch(icode::IF_FALSE_GOTO, falseLabel);
+        ctx.functionBuilder.createIfFalseGoto(falseLabel);
 }
 
 void conditionalExpression(irgen::ir_generator& ctx,
