@@ -49,7 +49,7 @@ namespace irgen
 
         icode::Operand gen_str_dat(const Token& str_token, size_t char_count, icode::DataType dtype);
 
-        Unit var_info_to_str_dat(const Token& str_token, icode::TypeDescription var);
+        Unit var_info_to_str_dat(const Token& str_token);
 
         void assign_str_literal_tovar(Unit var, Node& root);
 
@@ -60,6 +60,8 @@ namespace irgen
         void copy_struct(icode::Operand& left, Unit right);
 
         void var(const Node& root);
+
+        Unit getArg(const Node& root);
 
         Unit funccall(const Node& root);
 

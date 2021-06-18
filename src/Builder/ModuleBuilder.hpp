@@ -22,9 +22,6 @@ class ModuleBuilder
 
     icode::TypeDescription createTypeDescription(const Token& dataTypeToken);
 
-    icode::TypeDescription createArrayTypeDescription(const icode::TypeDescription& typeDescription,
-                                                      std::vector<int>& dimensions);
-
     void createDefine(const Token& nameToken, const Token& valueToken);
 
     void createEnum(const std::vector<Token>& enums);

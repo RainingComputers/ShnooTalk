@@ -32,6 +32,11 @@ namespace icode
         setProperty(IS_PTR);
     }
 
+    void TypeDescription::becomeString()
+    {
+        setProperty(IS_STRING);
+    }
+
     bool TypeDescription::isMutable() const
     {
         return checkProperty(IS_MUT);
@@ -57,24 +62,36 @@ namespace icode
         return isInteger(dtype);
     }
 
-    bool isSameType(TypeDescription var1, TypeDescription var2)
+    bool TypeDescription::isString() const
     {
-        if (var1.dtype == STRUCT || var2.dtype == STRUCT)
-            return (var1.dtypeName == var2.dtypeName && var1.dimensions == var2.dimensions &&
-                    var1.moduleName == var2.moduleName);
-
-        return (dataTypeIsEqual(var1.dtype, var2.dtype) && var1.dimensions == var2.dimensions);
+        return checkProperty(IS_STRING);
     }
 
-    // TODO move this
-    TypeDescription typeDescriptionFromDataType(DataType dtype)
+    bool canAssignString(TypeDescription assignee, TypeDescription str)
     {
-        TypeDescription var;
-        var.dtype = dtype;
-        var.dtypeName = dataTypeToString(dtype);
-        var.dtypeSize = getDataTypeSize(dtype);
-        var.size = var.dtypeSize;
-        var.offset = 0;
-        return var;
+        if(assignee.dimensions.size() != 1 || assignee.dtype != icode::UI8)
+            return false;
+
+        return str.dimensions[0] <= assignee.dimensions[0];
+    }
+
+    bool isSameDim(TypeDescription type1, TypeDescription type2)
+    {
+        if(type1.isString() && !type2.isString())
+            return canAssignString(type2, type1);
+
+        if(!type1.isString() && type2.isString())
+            return canAssignString(type1, type2);
+
+        return type1.dimensions.size() == type2.dimensions.size();
+    }
+
+    bool isSameType(TypeDescription type1, TypeDescription type2)
+    {
+        if (type1.dtype == STRUCT || type2.dtype == STRUCT)
+            return (type1.dtypeName == type2.dtypeName && isSameDim(type1, type2) &&
+                    type1.moduleName == type2.moduleName);
+
+        return (dataTypeIsEqual(type1.dtype, type2.dtype) && isSameDim(type1, type2));
     }
 }

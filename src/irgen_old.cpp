@@ -12,6 +12,7 @@
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "IRGenerator/UnitFromIdentifier.hpp"
+#include "Builder/TypeDesctiptionUtil.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -83,21 +84,15 @@ namespace irgen
         return opr;
     }
 
-    Unit ir_generator::var_info_to_str_dat(const Token& str_token, icode::TypeDescription var)
+    Unit ir_generator::var_info_to_str_dat(const Token& str_token)
     {
-        if (var.dimensions.size() != 1 || var.dtype != icode::UI8)
-            console.compileErrorOnToken("String assignment only allowed on 1D CHAR ARRAY", str_token);
-
-        /* Check dimensions */
+        icode::TypeDescription stringType = stringTypeFromToken(str_token);
+        
         size_t char_count = str_token.toUnescapedString().length();
 
-        if (char_count > var.dimensions[0])
-            console.compileErrorOnToken("String too big", str_token);
+        icode::Operand opr = gen_str_dat(str_token, char_count, icode::UI8);
 
-        /* Create STR_DAT operand */
-        icode::Operand opr = gen_str_dat(str_token, char_count, var.dtype);
-
-        return Unit(opr, var);
+        return Unit(opr, stringType);
     }
 
     void ir_generator::assign_str_literal_tovar(Unit var, Node& root)
@@ -343,7 +338,9 @@ namespace irgen
         Unit first_arg;
         if (root.children.size() != 0)
         {
-            if (root.children[0].type != node::STR_LITERAL)
+            if (root.isNthChild(node::STR_LITERAL, 0))
+                first_arg = var_info_to_str_dat(root.children[0].tok);
+            else
                 first_arg = expression(*this, root.children[0]);
 
             /* If struct funccall, switch to struct's (first arg's) module */
@@ -371,12 +368,11 @@ namespace irgen
 
             /* Get argument passed to function */
             Unit arg;
-            if (root.children[i].type == node::STR_LITERAL)
-            {
-                arg = var_info_to_str_dat(root.children[i].tok, param);
-            }
-            else if (i == 0 && root.children[0].type != node::STR_LITERAL)
+
+            if(i == 0)
                 arg = first_arg;
+            if (root.children[i].type == node::STR_LITERAL)
+                arg = var_info_to_str_dat(root.children[i].tok);
             else
                 arg = expression(*this, root.children[i]);
 
@@ -535,7 +531,7 @@ namespace irgen
               input_var.first.operandType == icode::TEMP_PTR || input_var.first.operandType == icode::PTR))
             console.compileErrorOnToken("Invalid term for INPUT", root.children[0].tok);
 
-        if (input_var.second.dtype == icode::STRUCT)
+        if (input_var.second.isStruct())
             console.compileErrorOnToken("Cannot INPUT STRUCT", root.children[0].tok);
 
         if (input_var.second.dimensions.size() > 1)

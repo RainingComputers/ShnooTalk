@@ -17,6 +17,7 @@ namespace icode
         IS_LOCAL,
         IS_ENUM,
         IS_DEFINE,
+        IS_STRING,
     };
 
     struct TypeDescription
@@ -39,8 +40,10 @@ namespace icode
 
         void becomeMutable();
         void becomePointer();
+        void becomeString();
         bool isMutable() const;
         bool isPointer() const;
+        bool isString() const;
 
         bool isSameType() const;
         bool isStruct() const;
@@ -49,9 +52,6 @@ namespace icode
     };
 
     bool isSameType(TypeDescription var1, TypeDescription var2);
-
-    // TODO Move this
-    TypeDescription typeDescriptionFromDataType(DataType dtype);
 }
 
 #endif

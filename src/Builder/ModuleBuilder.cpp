@@ -58,20 +58,6 @@ TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
     return typeDescription;
 }
 
-TypeDescription ModuleBuilder::createArrayTypeDescription(const TypeDescription& typeDescription,
-                                                          std::vector<int>& dimensions)
-{
-    TypeDescription modifiedTypeDescription = typeDescription;
-
-    for (int dim : dimensions)
-    {
-        modifiedTypeDescription.size *= dim;
-        modifiedTypeDescription.dimensions.push_back(dim);
-    }
-
-    return modifiedTypeDescription;
-}
-
 icode::DefineDescription defineDescriptionFromToken(const Token& valueToken)
 {
     if (valueToken.getType() == token::INT_LITERAL)

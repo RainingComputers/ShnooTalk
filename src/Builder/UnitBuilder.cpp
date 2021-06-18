@@ -1,3 +1,5 @@
+#include "TypeDesctiptionUtil.hpp"
+
 #include "UnitBuilder.hpp"
 
 using namespace icode;
@@ -10,7 +12,7 @@ UnitBuilder::UnitBuilder(OperandBuilder& opBuilder)
 Unit UnitBuilder::unitFromIntLiteral(int value, DataType dtype)
 {
     Operand op = opBuilder.createIntLiteralOperand(dtype, value);
-    icode::TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
+    TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
 
     return Unit(op, typeDescription);
 }
@@ -18,7 +20,7 @@ Unit UnitBuilder::unitFromIntLiteral(int value, DataType dtype)
 Unit UnitBuilder::unitFromFloatLiteral(float value, DataType dtype)
 {
     Operand op = opBuilder.createFloatLiteralOperand(dtype, value);
-    icode::TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
+    TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
 
     return Unit(op, typeDescription);
 }
@@ -32,9 +34,9 @@ Unit UnitBuilder::unitPairFromTypeDescription(TypeDescription& typeDescription,
 
 Unit UnitBuilder::unitFromEnum(int enumValue)
 {
-    icode::Operand op = opBuilder.createIntLiteralOperand(icode::INT, enumValue);
+    Operand op = opBuilder.createIntLiteralOperand(INT, enumValue);
     
-    icode::TypeDescription typeDescription = icode::typeDescriptionFromDataType(icode::INT);
+    TypeDescription typeDescription = typeDescriptionFromDataType(INT);
     typeDescription.setProperty(IS_ENUM);
 
     return Unit(op, typeDescription);
@@ -42,14 +44,14 @@ Unit UnitBuilder::unitFromEnum(int enumValue)
 
 Unit UnitBuilder::unitFromDefineDescription(const DefineDescription& defineDescription)
 {
-    icode::Operand op;
+    Operand op;
 
-    if (defineDescription.dtype == icode::INT)
-        op = opBuilder.createIntLiteralOperand(icode::INT, defineDescription.val.integer);
+    if (defineDescription.dtype == INT)
+        op = opBuilder.createIntLiteralOperand(INT, defineDescription.val.integer);
     else
-        op = opBuilder.createFloatLiteralOperand(icode::FLOAT, defineDescription.val.floating);
+        op = opBuilder.createFloatLiteralOperand(FLOAT, defineDescription.val.floating);
 
-    icode::TypeDescription typeDescription = icode::typeDescriptionFromDataType(defineDescription.dtype);
+    TypeDescription typeDescription = typeDescriptionFromDataType(defineDescription.dtype);
     typeDescription.setProperty(IS_DEFINE);
 
     return Unit(op, typeDescription);

@@ -1,4 +1,5 @@
 #include "Module.hpp"
+#include "../Builder/TypeDesctiptionUtil.hpp"
 
 #include "TypeDescriptionFromNode.hpp"
 
@@ -38,7 +39,7 @@ TypeDescription arrayTypeFromSubscript(ir_generator& ctx,
         dimensions.push_back(subscriptInt);
     }
 
-    return ctx.moduleBuilder.createArrayTypeDescription(typeDescription, dimensions);
+    return createArrayTypeDescription(typeDescription, dimensions);
 }
 
 TypeDescription typeDescriptionFromVarOrParamNode(ir_generator& ctx, const Node& root)
