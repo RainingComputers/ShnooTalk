@@ -29,3 +29,10 @@ fn printVec(vector:Vec)
     println("x:", vector.x, "y:", vector.y)
 }
 
+fn isUnitVector(vector:Vec) -> bool
+{
+    if(vector.x == 1 and vector.y == 1)
+        return true
+
+    return false
+}

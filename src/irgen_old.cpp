@@ -29,7 +29,7 @@ namespace irgen
       , moduleBuilder(console)
       , unitBuilder(opBuilder)
       , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
-      , builder(modulesMap[fileName], opBuilder)
+      , builder(opBuilder)
       , functionBuilder(modulesMap, console, opBuilder, builder)
     {
         workingFunction = nullptr;
@@ -602,7 +602,7 @@ namespace irgen
                     Unit ret_val = funccall(stmt.children[0]);
 
                     /* Switch back to self */
-                    workingModule = temp;
+                    setWorkingModule(temp);
 
                     break;
                 }

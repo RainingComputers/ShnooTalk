@@ -2,9 +2,8 @@
 
 using namespace icode;
 
-EntryBuilder::EntryBuilder(ModuleDescription& rootModule, OperandBuilder& opBuilder)
-  : modulesMap(modulesMap)
-  , opBuilder(opBuilder)
+EntryBuilder::EntryBuilder(OperandBuilder& opBuilder)
+  : opBuilder(opBuilder)
 {
 }
 

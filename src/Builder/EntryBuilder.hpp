@@ -7,7 +7,6 @@
 class EntryBuilder
 {
     icode::FunctionDescription* functionDescriptionPointer;
-    icode::StringModulesMap modulesMap;
     OperandBuilder& opBuilder;
 
     icode::Operand ensureNotPointer(icode::Operand op);
@@ -57,7 +56,7 @@ class EntryBuilder
 
     void noArgumentEntry(icode::Instruction instruction);
 
-    EntryBuilder(icode::ModuleDescription& moduleDescription, OperandBuilder& opBuilder);
+    EntryBuilder(OperandBuilder& opBuilder);
 };
 
 #endif
