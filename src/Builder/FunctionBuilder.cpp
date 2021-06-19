@@ -15,12 +15,14 @@ FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap,
 {
 }
 
-Operand FunctionBuilder::ensurePointerOperand(const Operand& op)
+Operand FunctionBuilder::getPointerOperand(const Unit& unit)
 {
-    if (!op.isPointer())
-        return entryBuilder.createPointer(op);
+    ModuleDescription* workingModule = &modulesMap.at(unit.second.moduleName);
 
-    return op;
+    if (!unit.first.isPointer())
+        return entryBuilder.createPointer(unit.first, workingModule);
+
+    return unit.first;
 }
 
 Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
@@ -35,7 +37,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
     if (unit.second.isMutable())
         fieldType.becomeMutable();
 
-    Operand fieldOperand = ensurePointerOperand(unit.first);
+    Operand fieldOperand = getPointerOperand(unit);
     fieldOperand.updateDataType(fieldType);
 
     fieldOperand =
@@ -49,7 +51,7 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
     unsigned int dimensionCount = 0;
     unsigned int elementWidth = unit.second.size / unit.second.dimensions[0];
 
-    Operand elementOperand = ensurePointerOperand(unit.first);
+    Operand elementOperand = getPointerOperand(unit);
 
     TypeDescription elementType = unit.second;
 

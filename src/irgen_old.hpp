@@ -40,8 +40,12 @@ namespace irgen
 
         ScopeTracker scope;
 
+        std::vector<icode::ModuleDescription*> moduleDescriptionStack;
+
         void resetWorkingModule();
         void setWorkingModule(icode::ModuleDescription* moduleDescription);
+        void pushWorkingModule();
+        void popWorkingModule();
 
         bool get_func(const std::string& name, icode::FunctionDescription& func);
 

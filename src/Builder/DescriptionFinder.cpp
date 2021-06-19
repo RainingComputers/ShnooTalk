@@ -25,6 +25,11 @@ void DescriptionFinder::setWorkingFunction(FunctionDescription* functionDescript
     workingFunction = functionDescription;
 }
 
+ModuleDescription* DescriptionFinder::getModuleFromUnit(const Unit& unit)
+{
+    return &modulesMap.at(unit.second.moduleName);
+}
+
 ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& moduleNameToken)
 {
     const std::string& moduleName = moduleNameToken.toString();
@@ -164,11 +169,11 @@ int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
     const std::string& dataTypeString = nameToken.toString();
 
     DataType dtype = workingModule->dataTypeFromString(dataTypeString);
-    if(dtype != icode::STRUCT)
+    if (dtype != icode::STRUCT)
         return getDataTypeSize(dtype);
 
     StructDescription structDescription;
-    if(workingModule->getStruct(dataTypeString, structDescription))
+    if (workingModule->getStruct(dataTypeString, structDescription))
         return structDescription.size;
 
     Unit unit = getUnitFromToken(nameToken);

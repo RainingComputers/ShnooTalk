@@ -1,10 +1,11 @@
 #include <algorithm>
 
+#include "Builder/TypeDesctiptionUtil.hpp"
+#include "IRGenerator/ConditionalExpression.hpp"
+#include "IRGenerator/ControlStatement.hpp"
 #include "IRGenerator/Define.hpp"
 #include "IRGenerator/Enum.hpp"
 #include "IRGenerator/Expression.hpp"
-#include "IRGenerator/ConditionalExpression.hpp"
-#include "IRGenerator/ControlStatement.hpp"
 #include "IRGenerator/From.hpp"
 #include "IRGenerator/Function.hpp"
 #include "IRGenerator/Global.hpp"
@@ -12,7 +13,6 @@
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "IRGenerator/UnitFromIdentifier.hpp"
-#include "Builder/TypeDesctiptionUtil.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -29,7 +29,7 @@ namespace irgen
       , moduleBuilder(console)
       , unitBuilder(opBuilder)
       , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
-      , builder(modulesMap[fileName], modulesMap, opBuilder)
+      , builder(modulesMap[fileName], opBuilder)
       , functionBuilder(modulesMap, console, opBuilder, builder)
     {
         workingFunction = nullptr;
@@ -53,6 +53,17 @@ namespace irgen
         workingModule = moduleDescription;
         moduleBuilder.setWorkingModule(moduleDescription);
         descriptionFinder.setWorkingModule(moduleDescription);
+    }
+
+    void ir_generator::pushWorkingModule()
+    {
+        moduleDescriptionStack.push_back(workingModule);
+    }
+
+    void ir_generator::popWorkingModule()
+    {
+        setWorkingModule(moduleDescriptionStack.back());
+        moduleDescriptionStack.pop_back();
     }
 
     bool ir_generator::get_func(const std::string& name, icode::FunctionDescription& func)
@@ -87,7 +98,7 @@ namespace irgen
     Unit ir_generator::var_info_to_str_dat(const Token& str_token)
     {
         icode::TypeDescription stringType = stringTypeFromToken(str_token);
-        
+
         size_t char_count = str_token.toUnescapedString().length();
 
         icode::Operand opr = gen_str_dat(str_token, char_count, icode::UI8);
@@ -107,7 +118,7 @@ namespace irgen
             console.compileErrorOnToken("String too big", root.tok);
 
         /* Create Addr Temp */
-        icode::Operand curr_offset = builder.createPointer(var.first);
+        icode::Operand curr_offset = builder.createPointer(var.first, workingModule);
 
         /* Loop through int and initialize string */
         for (size_t i = 0; i < char_count; i++)
@@ -127,8 +138,8 @@ namespace irgen
 
     void ir_generator::copy_array(icode::Operand& left, Unit right)
     {
-        icode::Operand curr_offset_left = builder.createPointer(left);
-        icode::Operand curr_offset_right = builder.createPointer(right.first);
+        icode::Operand curr_offset_left = builder.createPointer(left, workingModule);
+        icode::Operand curr_offset_right = builder.createPointer(right.first, workingModule);
 
         unsigned int size = right.second.size;
         unsigned int dtype_size = right.second.dtypeSize;
@@ -159,8 +170,8 @@ namespace irgen
 
     void ir_generator::copy_struct(icode::Operand& left, Unit right)
     {
-        icode::Operand curr_offset_left = builder.createPointer(left);
-        icode::Operand curr_offset_right = builder.createPointer(right.first);
+        icode::Operand curr_offset_left = builder.createPointer(left, workingModule);
+        icode::Operand curr_offset_right = builder.createPointer(right.first, workingModule);
 
         /* Loop through each field and copy them */
         unsigned int count = 0;
@@ -205,7 +216,7 @@ namespace irgen
         if (var.second.dimensions.size() == 0)
             console.compileErrorOnToken("Cannot initialize a NON-ARRAY with initializer list", root.tok);
 
-        icode::Operand curr_offset = builder.createPointer(var.first);
+        icode::Operand curr_offset = builder.createPointer(var.first, workingModule);
 
         /* Create var info for the elements inside the list */
         icode::TypeDescription element_var = var.second;
@@ -332,7 +343,7 @@ namespace irgen
 
     Unit ir_generator::funccall(const Node& root)
     {
-        icode::ModuleDescription* temp = workingModule;
+        pushWorkingModule();
 
         /* Get the first argument (if not a string literal) */
         Unit first_arg;
@@ -343,9 +354,8 @@ namespace irgen
             else
                 first_arg = expression(*this, root.children[0]);
 
-            /* If struct funccall, switch to struct's (first arg's) module */
             if (root.type == node::STRUCT_FUNCCALL)
-                workingModule = &modulesMap[first_arg.second.moduleName];
+                setWorkingModule(descriptionFinder.getModuleFromUnit(first_arg));
         }
 
         /* Check if function exits */
@@ -362,50 +372,38 @@ namespace irgen
         /* Go through each parameter */
         for (size_t i = 0; i < root.children.size(); i++)
         {
-            /* Get parameter information */
             icode::TypeDescription param = func_desc.symbols[func_desc.parameters[i]];
             bool mut = param.checkProperty(icode::IS_MUT);
 
-            /* Get argument passed to function */
             Unit arg;
 
-            if(i == 0)
+            if (i == 0)
                 arg = first_arg;
             if (root.children[i].type == node::STR_LITERAL)
                 arg = var_info_to_str_dat(root.children[i].tok);
             else
                 arg = expression(*this, root.children[i]);
 
-            /* Type check */
             if (!icode::isSameType(param, arg.second))
                 console.typeError(root.children[i].tok, param, arg.second);
 
-            /* If mutable, it has to be a variable or address */
-            if (mut && (arg.first.operandType == icode::TEMP || arg.first.operandType == icode::STR_DATA ||
-                        arg.first.operandType == icode::LITERAL))
+            if (mut && !arg.first.canPassAsMutable())
                 console.compileErrorOnToken("Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE",
                                             root.children[i].tok);
 
-            /* If param is mut, arg has to be mutable to */
-            if (mut && !arg.second.checkProperty(icode::IS_MUT))
+            if (mut && !arg.second.isMutable())
                 console.compileErrorOnToken("Cannot pass IMMUTABLE as MUTABLE", root.children[i].tok);
 
-            /* Pass arguments */
 
-            /* If mut or struct or array, pass by ref */
-            if (mut || param.dtype == icode::STRUCT || param.dimensions.size() != 0)
+            if (mut || param.isStruct() || param.isArray())
                 builder.pass(icode::PASS_ADDR, arg.first, func_name, func_desc);
-            /* Else pass by value */
             else
                 builder.pass(icode::PASS, arg.first, func_name, func_desc);
         }
 
-        /* Call function */
         icode::Operand ret_temp = builder.call(func_name, func_desc);
 
-        /* Switch back to current module if ext_mod was modified */
-        if (root.type == node::STRUCT_FUNCCALL)
-            workingModule = temp;
+        popWorkingModule();
 
         return Unit(ret_temp, func_desc.functionReturnDescription);
     }

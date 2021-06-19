@@ -45,6 +45,7 @@ namespace icode
         bool operator==(const Operand& other) const;
         void updateDataType(const TypeDescription& var);
         bool isPointer() const;
+        bool canPassAsMutable() const;
     };
 }
 

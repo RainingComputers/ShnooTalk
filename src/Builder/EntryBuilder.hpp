@@ -7,7 +7,6 @@
 class EntryBuilder
 {
     icode::FunctionDescription* functionDescriptionPointer;
-    icode::ModuleDescription& rootModule;
     icode::StringModulesMap modulesMap;
     OperandBuilder& opBuilder;
 
@@ -15,14 +14,14 @@ class EntryBuilder
 
     icode::Operand pushEntryAndEnsureNoPointerWrite(icode::Entry entry);
 
-    icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op);
+    icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op, icode::ModuleDescription* workingModule);
 
   public:
     void setFunctionDescription(icode::FunctionDescription* functionDesc);
 
     void pushEntry(icode::Entry entry);
 
-    icode::Operand createPointer(const icode::Operand& op);
+    icode::Operand createPointer(const icode::Operand& op, icode::ModuleDescription* workingModule);
 
     void copy(icode::Operand op1, icode::Operand op2);
 
@@ -58,9 +57,7 @@ class EntryBuilder
 
     void noArgumentEntry(icode::Instruction instruction);
 
-    EntryBuilder(icode::ModuleDescription& moduleDescription,
-                 icode::StringModulesMap& modulesMap,
-                 OperandBuilder& opBuilder);
+    EntryBuilder(icode::ModuleDescription& moduleDescription, OperandBuilder& opBuilder);
 };
 
 #endif

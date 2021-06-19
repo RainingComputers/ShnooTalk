@@ -47,6 +47,11 @@ namespace icode
 
     bool Operand::isPointer() const
     {
-        return operandType == icode::PTR || operandType == icode::TEMP_PTR || operandType == icode::RET_PTR;
+        return operandType == PTR || operandType == TEMP_PTR || operandType == RET_PTR;
+    }
+
+    bool Operand::canPassAsMutable() const
+    {
+        return !(operandType == TEMP || operandType == STR_DATA || operandType == LITERAL);
     }
 }

@@ -1,50 +1,50 @@
 #include "EntryBuilder.hpp"
 
-EntryBuilder::EntryBuilder(icode::ModuleDescription& rootModule,
-                           icode::StringModulesMap& modulesMap,
-                           OperandBuilder& opBuilder)
-  : rootModule(rootModule)
-  , modulesMap(modulesMap)
+using namespace icode;
+
+EntryBuilder::EntryBuilder(ModuleDescription& rootModule, OperandBuilder& opBuilder)
+  : modulesMap(modulesMap)
   , opBuilder(opBuilder)
 {
 }
 
-void EntryBuilder::setFunctionDescription(icode::FunctionDescription* functionDesc)
+void EntryBuilder::setFunctionDescription(FunctionDescription* functionDesc)
 {
     functionDescriptionPointer = functionDesc;
 }
 
-void EntryBuilder::pushEntry(icode::Entry entry)
+void EntryBuilder::pushEntry(Entry entry)
 {
     (*functionDescriptionPointer).icodeTable.push_back(entry);
 }
 
-icode::Operand EntryBuilder::getCreatePointerDestinationOperand(const icode::Operand& op)
+Operand EntryBuilder::getCreatePointerDestinationOperand(const Operand& op, ModuleDescription* workingModule)
 {
     /* If not a struct, just copy the operand but change its type to a pointer */
 
-    if (op.dtype != icode::STRUCT)
+    if (op.dtype != STRUCT)
         return opBuilder.createPointerOperand(op.dtype, op.dtypeName);
 
     /* If it a struct, create pointer to the first field */
 
-    icode::TypeDescription firstFieldDesc = rootModule.structures[op.dtypeName].structFields.begin()->second;
+    TypeDescription firstFieldDesc = workingModule->structures[op.dtypeName].structFields.begin()->second;
 
     return opBuilder.createPointerOperand(firstFieldDesc.dtype, firstFieldDesc.dtypeName);
 }
 
-icode::Operand EntryBuilder::createPointer(const icode::Operand& op)
+Operand EntryBuilder::createPointer(const Operand& op, ModuleDescription* workingModule)
 {
-    if(op.operandType == icode::TEMP_PTR && op.dtype != icode::STRUCT) return op;
+    if (op.operandType == TEMP_PTR && op.dtype != STRUCT)
+        return op;
     /* Converts op to TEMP_PTR using the CREATE_PTR instruction */
 
     /* Converted TEMP_PTR */
-    icode::Operand pointerOperand = getCreatePointerDestinationOperand(op);
+    Operand pointerOperand = getCreatePointerDestinationOperand(op, workingModule);
 
     /* Construct CREATE_PTR instruction */
-    icode::Entry createPointerEntry;
+    Entry createPointerEntry;
 
-    createPointerEntry.opcode = icode::CREATE_PTR;
+    createPointerEntry.opcode = CREATE_PTR;
     createPointerEntry.op1 = pointerOperand;
     createPointerEntry.op2 = op;
 
@@ -53,11 +53,11 @@ icode::Operand EntryBuilder::createPointer(const icode::Operand& op)
     return pointerOperand;
 }
 
-void EntryBuilder::copy(icode::Operand op1, icode::Operand op2)
+void EntryBuilder::copy(Operand op1, Operand op2)
 {
-    /* If op2 is a literal, change generic dtypes like icode::INT and icode::FLOAT
+    /* If op2 is a literal, change generic dtypes like INT and FLOAT
         to correct specific dtype */
-    if (op2.operandType == icode::LITERAL)
+    if (op2.operandType == LITERAL)
         op2.dtype = op1.dtype;
 
     /* Copy one operand value to another, use READ and WRITE instruction
@@ -65,20 +65,20 @@ void EntryBuilder::copy(icode::Operand op1, icode::Operand op2)
 
     if (op1.isPointer() && op2.isPointer())
     {
-        icode::Operand temp = opBuilder.createTempOperand(op2.dtype, op2.dtypeName);
+        Operand temp = opBuilder.createTempOperand(op2.dtype, op2.dtypeName);
         copy(temp, op2);
         copy(op1, temp);
     }
     else
     {
-        icode::Entry copy_entry;
+        Entry copy_entry;
 
         if (op1.isPointer() && !op2.isPointer())
-            copy_entry.opcode = icode::WRITE;
+            copy_entry.opcode = WRITE;
         else if (!op1.isPointer() && op2.isPointer())
-            copy_entry.opcode = icode::READ;
+            copy_entry.opcode = READ;
         else if (!op1.isPointer() && !op2.isPointer())
-            copy_entry.opcode = icode::EQUAL;
+            copy_entry.opcode = EQUAL;
 
         copy_entry.op1 = op1;
         copy_entry.op2 = op2;
@@ -87,7 +87,7 @@ void EntryBuilder::copy(icode::Operand op1, icode::Operand op2)
     }
 }
 
-icode::Operand EntryBuilder::ensureNotPointer(icode::Operand op)
+Operand EntryBuilder::ensureNotPointer(Operand op)
 {
     /* Make sure the operand is not a pointer, if it is a pointer,
         converts it to a temp using the READ instruction */
@@ -95,12 +95,12 @@ icode::Operand EntryBuilder::ensureNotPointer(icode::Operand op)
     if (!op.isPointer())
         return op;
 
-    icode::Operand temp = opBuilder.createTempOperand(op.dtype, op.dtypeName);
+    Operand temp = opBuilder.createTempOperand(op.dtype, op.dtypeName);
     copy(temp, op);
     return temp;
 }
 
-icode::Operand EntryBuilder::pushEntryAndEnsureNoPointerWrite(icode::Entry entry)
+Operand EntryBuilder::pushEntryAndEnsureNoPointerWrite(Entry entry)
 {
     /* Push an ir entry to the current function's icode table,
         but ensures entry.op1 is not a pointer */
@@ -115,35 +115,32 @@ icode::Operand EntryBuilder::pushEntryAndEnsureNoPointerWrite(icode::Entry entry
         write that temp to the pointer */
 
     /* Create corresponding TEMP to TEMP_PTR  */
-    icode::Operand pointerOperand = entry.op1;
-    icode::Operand temp = opBuilder.createTempOperand(pointerOperand.dtype, pointerOperand.dtypeName);
+    Operand pointerOperand = entry.op1;
+    Operand temp = opBuilder.createTempOperand(pointerOperand.dtype, pointerOperand.dtypeName);
 
     /* Replace TEMP_PTR with TEMP */
-    icode::Entry modifiedEntry = entry;
+    Entry modifiedEntry = entry;
     modifiedEntry.op1 = temp;
     pushEntry(modifiedEntry);
 
     /* Create WRITE instruction to write the TEMP to TEMP_PTR */
-    icode::Entry writeEntry;
+    Entry writeEntry;
 
     writeEntry.op1 = pointerOperand;
     writeEntry.op2 = temp;
-    writeEntry.opcode = icode::WRITE;
+    writeEntry.opcode = WRITE;
 
     pushEntry(writeEntry);
 
     return temp;
 }
 
-icode::Operand EntryBuilder::binaryOperator(icode::Instruction instruction,
-                                            icode::Operand op1,
-                                            icode::Operand op2,
-                                            icode::Operand op3)
+Operand EntryBuilder::binaryOperator(Instruction instruction, Operand op1, Operand op2, Operand op3)
 {
     /* Construct icode instruction for binary operator instructions,
         ADD, SUB, MUL, DIV, MOD, RSH, LSH, BWA, BWO, BWX */
 
-    icode::Entry entry;
+    Entry entry;
 
     entry.opcode = instruction;
     entry.op1 = op1;
@@ -153,12 +150,12 @@ icode::Operand EntryBuilder::binaryOperator(icode::Instruction instruction,
     return pushEntryAndEnsureNoPointerWrite(entry);
 }
 
-icode::Operand EntryBuilder::unaryOperator(icode::Instruction instruction, icode::Operand op1, icode::Operand op2)
+Operand EntryBuilder::unaryOperator(Instruction instruction, Operand op1, Operand op2)
 {
     /* Construct icode for unary operator instructions,
         UNARY_MINUS and NOT  */
 
-    icode::Entry entry;
+    Entry entry;
 
     entry.opcode = instruction;
     entry.op1 = op1;
@@ -167,30 +164,30 @@ icode::Operand EntryBuilder::unaryOperator(icode::Instruction instruction, icode
     return pushEntryAndEnsureNoPointerWrite(entry);
 }
 
-icode::Operand EntryBuilder::castOperator(icode::DataType castDataType, icode::Operand op)
+Operand EntryBuilder::castOperator(DataType castDataType, Operand op)
 {
     /* Construct icode for CAST */
 
-    icode::Entry entry;
+    Entry entry;
 
-    entry.opcode = icode::CAST;
-    entry.op1 = opBuilder.createTempOperand(castDataType, icode::dataTypeToString(castDataType));
+    entry.opcode = CAST;
+    entry.op1 = opBuilder.createTempOperand(castDataType, dataTypeToString(castDataType));
     entry.op2 = ensureNotPointer(op);
 
     return pushEntryAndEnsureNoPointerWrite(entry);
 }
 
-void EntryBuilder::compareOperator(icode::Instruction instruction, icode::Operand op1, icode::Operand op2)
+void EntryBuilder::compareOperator(Instruction instruction, Operand op1, Operand op2)
 {
-    /* If op2 is a literal, change generic dtypes like icode::INT and icode::FLOAT
+    /* If op2 is a literal, change generic dtypes like INT and FLOAT
         to correct specific dtype */
-    if (op2.operandType == icode::LITERAL)
+    if (op2.operandType == LITERAL)
         op2.dtype = op1.dtype;
 
     /* Construct icode for comparator operator instructions,
         EQ, NEQ, LT, LTE, GT, GTE  */
 
-    icode::Entry entry;
+    Entry entry;
 
     entry.opcode = instruction;
     entry.op1 = ensureNotPointer(op1);
@@ -199,13 +196,13 @@ void EntryBuilder::compareOperator(icode::Instruction instruction, icode::Operan
     pushEntry(entry);
 }
 
-icode::Operand EntryBuilder::addressAddOperator(icode::Operand op2, icode::Operand op3)
+Operand EntryBuilder::addressAddOperator(Operand op2, Operand op3)
 {
     /* Construct icode for ADDR_ADD */
 
-    icode::Entry entry;
+    Entry entry;
 
-    entry.opcode = icode::ADDR_ADD;
+    entry.opcode = ADDR_ADD;
     entry.op1 = opBuilder.createPointerOperand(op2.dtype, op2.dtypeName);
     entry.op2 = op2;
     entry.op3 = op3;
@@ -215,14 +212,14 @@ icode::Operand EntryBuilder::addressAddOperator(icode::Operand op2, icode::Opera
     return entry.op1;
 }
 
-icode::Operand EntryBuilder::addressMultiplyOperator(icode::Operand op2, icode::Operand op3)
+Operand EntryBuilder::addressMultiplyOperator(Operand op2, Operand op3)
 {
     /* Construct icode for ADDR_MUL */
 
-    icode::Entry entry;
+    Entry entry;
 
-    entry.opcode = icode::ADDR_MUL;
-    entry.op1 = opBuilder.createPointerOperand(icode::VOID, icode::dataTypeToString(icode::VOID));
+    entry.opcode = ADDR_MUL;
+    entry.op1 = opBuilder.createPointerOperand(VOID, dataTypeToString(VOID));
     entry.op2 = ensureNotPointer(op2);
     entry.op3 = op3;
 
@@ -231,23 +228,23 @@ icode::Operand EntryBuilder::addressMultiplyOperator(icode::Operand op2, icode::
     return entry.op1;
 }
 
-void EntryBuilder::label(icode::Operand op)
+void EntryBuilder::label(Operand op)
 {
     /* Construct CREATE_LABEL */
 
-    icode::Entry labelEntry;
+    Entry labelEntry;
 
-    labelEntry.opcode = icode::CREATE_LABEL;
+    labelEntry.opcode = CREATE_LABEL;
     labelEntry.op1 = op;
 
     pushEntry(labelEntry);
 }
 
-void EntryBuilder::createBranch(icode::Instruction instruction, icode::Operand op)
+void EntryBuilder::createBranch(Instruction instruction, Operand op)
 {
     /* Construct icode for GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO */
 
-    icode::Entry branchEntry;
+    Entry branchEntry;
 
     branchEntry.opcode = instruction;
     branchEntry.op1 = op;
@@ -255,15 +252,15 @@ void EntryBuilder::createBranch(icode::Instruction instruction, icode::Operand o
     pushEntry(branchEntry);
 }
 
-void EntryBuilder::printOperator(icode::Instruction printInstruction, icode::Operand op)
+void EntryBuilder::printOperator(Instruction printInstruction, Operand op)
 {
     /* Construct icode for PRINT, PRINT_STR */
 
-    icode::Entry printEntry;
+    Entry printEntry;
 
     printEntry.opcode = printInstruction;
 
-    if (printInstruction == icode::PRINT)
+    if (printInstruction == PRINT)
         printEntry.op1 = ensureNotPointer(op);
     else
         printEntry.op1 = op;
@@ -271,34 +268,34 @@ void EntryBuilder::printOperator(icode::Instruction printInstruction, icode::Ope
     pushEntry(printEntry);
 }
 
-void EntryBuilder::inputOperator(icode::Instruction inputInstruction, icode::Operand op, unsigned int size)
+void EntryBuilder::inputOperator(Instruction inputInstruction, Operand op, unsigned int size)
 {
     /* Construct icode for INPUT, INPUT_STR */
 
-    icode::Entry inputEntry;
+    Entry inputEntry;
 
     inputEntry.opcode = inputInstruction;
     inputEntry.op1 = op;
-    inputEntry.op2 = opBuilder.createIntLiteralOperand(icode::INT, (int)size);
+    inputEntry.op2 = opBuilder.createIntLiteralOperand(INT, (int)size);
 
     pushEntry(inputEntry);
 }
 
-void EntryBuilder::pass(icode::Instruction passInstruction,
-                        icode::Operand op,
+void EntryBuilder::pass(Instruction passInstruction,
+                        Operand op,
                         const std::string& functionName,
-                        const icode::FunctionDescription& functionDesc)
+                        const FunctionDescription& functionDesc)
 {
     /* Construct icode for PASS and PASS_ADDR instructions */
 
-    icode::DataType functionDataType = functionDesc.functionReturnDescription.dtype;
+    DataType functionDataType = functionDesc.functionReturnDescription.dtype;
     std::string functionDataTypeName = functionDesc.functionReturnDescription.dtypeName;
 
-    icode::Entry entry;
+    Entry entry;
 
     entry.opcode = passInstruction;
 
-    if (passInstruction == icode::PASS)
+    if (passInstruction == PASS)
         entry.op1 = ensureNotPointer(op);
     else
         entry.op1 = op;
@@ -309,16 +306,16 @@ void EntryBuilder::pass(icode::Instruction passInstruction,
     pushEntry(entry);
 }
 
-icode::Operand EntryBuilder::call(const std::string& functionName, const icode::FunctionDescription& functionDesc)
+Operand EntryBuilder::call(const std::string& functionName, const FunctionDescription& functionDesc)
 {
     /* Construct icode for CALL instruction */
 
-    icode::DataType functionDataType = functionDesc.functionReturnDescription.dtype;
+    DataType functionDataType = functionDesc.functionReturnDescription.dtype;
     std::string functionDataTypeName = functionDesc.functionReturnDescription.dtypeName;
 
-    icode::Entry callEntry;
+    Entry callEntry;
 
-    callEntry.opcode = icode::CALL;
+    callEntry.opcode = CALL;
     callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType, functionDataTypeName);
     callEntry.op2 = opBuilder.createVarOperand(functionDataType, functionDataTypeName, functionName);
     callEntry.op3 = opBuilder.createModuleOperand(functionDesc.moduleName);
@@ -328,12 +325,12 @@ icode::Operand EntryBuilder::call(const std::string& functionName, const icode::
     return callEntry.op1;
 }
 
-void EntryBuilder::noArgumentEntry(icode::Instruction instruction)
+void EntryBuilder::noArgumentEntry(Instruction instruction)
 {
     /* Construct icode for instructions with no arguments,
         RET, SPACE, NEWLN, EXIT */
 
-    icode::Entry entry;
+    Entry entry;
 
     entry.opcode = instruction;
 

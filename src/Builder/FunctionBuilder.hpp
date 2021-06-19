@@ -14,7 +14,7 @@ class FunctionBuilder
     OperandBuilder& opBuilder;
     EntryBuilder& entryBuilder;
 
-    icode::Operand ensurePointerOperand(const icode::Operand& op);
+    icode::Operand getPointerOperand(const Unit& unit);
 
   public:
     FunctionBuilder(icode::StringModulesMap& modulesMap,

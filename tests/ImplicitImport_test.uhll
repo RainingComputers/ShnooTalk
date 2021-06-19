@@ -1,4 +1,5 @@
-# This is a failing text, TODO: Fix this compiler bug
+# x: 1 y: 2
+# 1
 
 use math
 
