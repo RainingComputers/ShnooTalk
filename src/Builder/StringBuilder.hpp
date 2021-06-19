@@ -14,7 +14,7 @@ class StringBuilder
   public:
     StringBuilder(icode::ModuleDescription& rootModule, OperandBuilder& opBuilder);
 
-    icode::Operand creatStringOperand(const Token& str_token, icode::DataType dtype);
+    icode::Operand createStringOperand(const Token& str_token, icode::DataType dtype);
 
     Unit createString(const Token& str_token);
 };

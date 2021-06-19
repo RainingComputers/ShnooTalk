@@ -398,7 +398,7 @@ namespace irgen
 
             if (child.type == node::STR_LITERAL)
             {
-                icode::Operand str_dat_opr = strBuilder.creatStringOperand(child.tok, icode::UI8);
+                icode::Operand str_dat_opr = strBuilder.createStringOperand(child.tok, icode::UI8);
 
                 builder.printOperator(icode::PRINT_STR, str_dat_opr);
             }
@@ -576,15 +576,6 @@ namespace irgen
         }
     }
 
-    bool ir_generator::doesFunctionTerminate()
-    {
-        if (workingFunction->icodeTable.size() < 1)
-            return false;
-
-        icode::Instruction lastOpcode = workingFunction->icodeTable.back().opcode;
-        return lastOpcode == icode::RET;
-    }
-
     void ir_generator::program(const Node& root)
     {
         /* Setup scope */
@@ -630,7 +621,7 @@ namespace irgen
 
                 /* Switch symbol and icode table */
                 workingFunction = &rootModule.functions[func_name];
-                builder.setFunctionDescription(workingFunction);
+                builder.setWorkingFunction(workingFunction);
                 descriptionFinder.setWorkingFunction(workingFunction);
 
                 /* Clear scope */
@@ -644,13 +635,8 @@ namespace irgen
                       opBuilder.createLabelOperand(""));
 
                 /* Last instruction must be return */
-                if (!doesFunctionTerminate())
-                {
-                    if (!workingFunction->isVoid())
-                        console.compileErrorOnToken("Missing RETURN for this FUNCTION", child.tok);
-
-                    builder.noArgumentEntry(icode::RET);
-                }
+                if (!functionBuilder.terminateFunction())
+                    console.compileErrorOnToken("Missing RETURN for this FUNCTION", child.tok);
             }
         }
     }

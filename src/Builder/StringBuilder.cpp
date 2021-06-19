@@ -10,7 +10,7 @@ StringBuilder::StringBuilder(icode::ModuleDescription& rootModule, OperandBuilde
 {
 }
 
-Operand StringBuilder::creatStringOperand(const Token& str_token, DataType dtype)
+Operand StringBuilder::createStringOperand(const Token& str_token, DataType dtype)
 {
     std::string name = "_str" + str_token.getLineColString();
     rootModule.stringsData[name] = str_token.toUnescapedString();
@@ -26,7 +26,7 @@ Unit StringBuilder::createString(const Token& str_token)
 {
     TypeDescription stringType = stringTypeFromToken(str_token);
 
-    Operand opr = creatStringOperand(str_token, UI8);
+    Operand opr = createStringOperand(str_token, UI8);
 
     return Unit(opr, stringType);
 }

@@ -6,7 +6,7 @@
 
 class EntryBuilder
 {
-    icode::FunctionDescription* functionDescriptionPointer;
+    icode::FunctionDescription* workingFunction;
     OperandBuilder& opBuilder;
 
     icode::Operand ensureNotPointer(icode::Operand op);
@@ -16,7 +16,7 @@ class EntryBuilder
     icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op, icode::ModuleDescription* workingModule);
 
   public:
-    void setFunctionDescription(icode::FunctionDescription* functionDesc);
+    void setWorkingFunction(icode::FunctionDescription* functionDesc);
 
     void pushEntry(icode::Entry entry);
 
@@ -52,9 +52,13 @@ class EntryBuilder
               const std::string& functionName,
               const icode::FunctionDescription& functionDesc);
 
-    icode::Operand call(const std::string& functoinName, const icode::FunctionDescription& functionDesc);
+    icode::Operand call(const std::string& functionName, const icode::FunctionDescription& functionDesc);
 
     void noArgumentEntry(icode::Instruction instruction);
+
+    bool doesFunctionTerminate();
+
+    bool terminateFunction();
 
     EntryBuilder(OperandBuilder& opBuilder);
 };

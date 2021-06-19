@@ -79,8 +79,6 @@ namespace irgen
 
         void initgen(const Node& ast);
 
-        bool doesFunctionTerminate();
-
         void program(const Node& root);
 
         ir_generator(icode::TargetDescription& target_desc,

@@ -7,14 +7,14 @@ EntryBuilder::EntryBuilder(OperandBuilder& opBuilder)
 {
 }
 
-void EntryBuilder::setFunctionDescription(FunctionDescription* functionDesc)
+void EntryBuilder::setWorkingFunction(FunctionDescription* functionDesc)
 {
-    functionDescriptionPointer = functionDesc;
+    workingFunction = functionDesc;
 }
 
 void EntryBuilder::pushEntry(Entry entry)
 {
-    (*functionDescriptionPointer).icodeTable.push_back(entry);
+    (*workingFunction).icodeTable.push_back(entry);
 }
 
 Operand EntryBuilder::getCreatePointerDestinationOperand(const Operand& op, ModuleDescription* workingModule)
@@ -334,4 +334,27 @@ void EntryBuilder::noArgumentEntry(Instruction instruction)
     entry.opcode = instruction;
 
     pushEntry(entry);
+}
+
+bool EntryBuilder::doesFunctionTerminate()
+{
+    if (workingFunction->icodeTable.size() < 1)
+        return false;
+
+    icode::Instruction lastOpcode = workingFunction->icodeTable.back().opcode;
+    return lastOpcode == icode::RET;
+}
+
+bool EntryBuilder::terminateFunction()
+{
+    if (!doesFunctionTerminate())
+    {
+        if (!workingFunction->isVoid())
+            return false;
+
+        noArgumentEntry(icode::RET);
+        return true;
+    }
+
+    return true;
 }

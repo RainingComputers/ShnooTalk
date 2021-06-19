@@ -153,3 +153,8 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescrip
     Operand result = entryBuilder.call(calleeNameToken.toString(), callee);
     return Unit(result, callee.functionReturnType);
 }
+
+bool FunctionBuilder::terminateFunction()
+{
+    return entryBuilder.terminateFunction();
+}

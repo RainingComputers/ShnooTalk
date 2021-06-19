@@ -54,6 +54,8 @@ class FunctionBuilder
     icode::Operand creatStringOperand(const Token& str_token, icode::DataType dtype);
 
     Unit createString(const Token& str_token);
+
+    bool terminateFunction();
 };
 
 #endif

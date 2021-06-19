@@ -1,0 +1,13 @@
+# MODULE FunctionTerminationCheck_test.uhll
+# ERROR in Line 8 Col 1
+# 
+# fn foo() -> int
+# ^
+# Missing RETURN for this FUNCTION
+
+fn foo() -> int
+{
+    var a: int, b: int
+    a = 1
+    b = a + 3
+}
