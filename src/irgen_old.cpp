@@ -591,18 +591,13 @@ namespace irgen
                     break;
                 case node::MODULE:
                 {
-                    /* Check if the module exists */
-                    if (!(*workingModule).useExists(stmt.tok.toString()))
-                        console.compileErrorOnToken("Module does not exist", stmt.tok);
+                    pushWorkingModule();
 
-                    /* Switch to external module */
-                    icode::ModuleDescription* temp = workingModule;
-                    workingModule = &modulesMap[stmt.tok.toString()];
+                    int nodeCounter = setWorkingModuleFromNode(*this, stmt, 0);
 
-                    Unit ret_val = funccall(stmt.children[0]);
+                    funccall(stmt.children[nodeCounter]);
 
-                    /* Switch back to self */
-                    setWorkingModule(temp);
+                    popWorkingModule();
 
                     break;
                 }

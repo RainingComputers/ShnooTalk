@@ -610,6 +610,7 @@ namespace parser
             {
                 while (peek(token::DOUBLE_COLON))
                 {
+                    expect(token::IDENTIFIER);
                     add_node(node::MODULE);
                     next();
                 }
@@ -772,8 +773,15 @@ namespace parser
             {
                 push_node();
 
-                add_node(node::MODULE, true);
-                next();
+                add_node(node::MODULE, true, false);
+
+                while (peek(token::DOUBLE_COLON))
+                {
+                    expect(token::IDENTIFIER);
+                    add_node(node::MODULE);
+                    next();
+                }
+
                 funccall();
 
                 pop_node();
