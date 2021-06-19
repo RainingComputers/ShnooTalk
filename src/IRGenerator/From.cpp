@@ -3,7 +3,7 @@
 void createUse(irgen::ir_generator& ctx, const Node& root)
 {
     for (Node child : root.children)
-        ctx.descriptionFinder.createUse(child.tok);
+        ctx.moduleBuilder.createUse(child.tok);
 }
 
 void createFrom(irgen::ir_generator& ctx, const Node& root)

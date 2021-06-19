@@ -16,8 +16,6 @@ class ModuleBuilder
   public:
     void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
-
-
     icode::TypeDescription createVoidTypeDescription();
 
     icode::TypeDescription createTypeDescription(const Token& dataTypeToken);
@@ -36,6 +34,8 @@ class ModuleBuilder
     void createStructDescription(const Token& nameToken,
                                  const std::vector<Token>& fieldNames,
                                  const std::vector<icode::TypeDescription>& fieldTypes);
+
+    void createUse(const Token& nameToken);
 
     ModuleBuilder(Console& console);
 };

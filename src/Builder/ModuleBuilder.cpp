@@ -1,3 +1,5 @@
+#include "../pathchk.hpp"
+
 #include "ModuleBuilder.hpp"
 
 using namespace icode;
@@ -158,3 +160,27 @@ void ModuleBuilder::createStructDescription(const Token& nameToken,
 
     workingModule->structures[nameToken.toString()] = structDescription;
 }
+
+void ModuleBuilder::createUse(const Token& nameToken)
+{
+    bool isFile = pathchk::file_exists(nameToken.toString() + ".uhll");
+    bool isFolder = pathchk::dir_exists(nameToken.toString());
+
+    if (!(isFile || isFolder))
+        console.compileErrorOnToken("Module or Package does not exist", nameToken);
+
+    if (isFile && isFolder)
+        console.compileErrorOnToken("Module and Package exists with same name", nameToken);
+
+    if (workingModule->useExists(nameToken.toString()))
+        console.compileErrorOnToken("Multiple imports detected", nameToken);
+
+    if (workingModule->symbolExists(nameToken.toString()))
+        console.compileErrorOnToken("Name conflict, symbol already exists", nameToken);
+
+    if (workingModule->name == nameToken.toString())
+        console.compileErrorOnToken("Self import not allowed", nameToken);
+
+    workingModule->uses.push_back(nameToken.toString());
+}
+

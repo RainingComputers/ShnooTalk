@@ -105,64 +105,7 @@ Unit DescriptionFinder::getUnitFromToken(const Token& nameToken)
     console.compileErrorOnToken("Symbol does not exist", nameToken);
 }
 
-void DescriptionFinder::createUse(const Token& nameToken)
-{
-    bool isFile = pathchk::file_exists(nameToken.toString() + ".uhll");
-    bool isFolder = pathchk::dir_exists(nameToken.toString());
 
-    if (!(isFile || isFolder))
-        console.compileErrorOnToken("Module or Package does not exist", nameToken);
-
-    if (isFile && isFolder)
-        console.compileErrorOnToken("Module and Package exists with same name", nameToken);
-
-    if (workingModule->useExists(nameToken.toString()))
-        console.compileErrorOnToken("Multiple imports detected", nameToken);
-
-    if (workingModule->symbolExists(nameToken.toString()))
-        console.compileErrorOnToken("Name conflict, symbol already exists", nameToken);
-
-    if (workingModule->name == nameToken.toString())
-        console.compileErrorOnToken("Self import not allowed", nameToken);
-
-    workingModule->uses.push_back(nameToken.toString());
-}
-
-void DescriptionFinder::createFrom(const Token& moduleNameToken, const Token& symbolNameToken)
-{
-    StructDescription structDescription;
-    FunctionDescription functionDescription;
-    DefineDescription defineDescription;
-    int enumValue;
-
-    if (!workingModule->useExists(moduleNameToken.toString()))
-        console.compileErrorOnToken("Module not imported", moduleNameToken);
-
-    ModuleDescription* externalModule = &modulesMap[moduleNameToken.toString()];
-
-    const std::string& symbolString = symbolNameToken.toString();
-
-    if (workingModule->symbolExists(symbolString))
-        console.compileErrorOnToken("Symbol already defined in current module", symbolNameToken);
-
-    if ((*externalModule).getStruct(symbolString, structDescription))
-        workingModule->structures[symbolString] = structDescription;
-
-    else if ((*externalModule).getFunction(symbolString, functionDescription))
-        console.compileErrorOnToken("Cannot import functions", symbolNameToken);
-
-    else if ((*externalModule).getDefineDescription(symbolString, defineDescription))
-        workingModule->defines[symbolString] = defineDescription;
-
-    else if ((*externalModule).getEnum(symbolString, enumValue))
-        workingModule->enumerations[symbolString] = enumValue;
-
-    else if ((*externalModule).useExists(symbolString))
-        workingModule->uses.push_back(symbolString);
-
-    else
-        console.compileErrorOnToken("Symbol does not exist", symbolNameToken);
-}
 
 int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
 {
@@ -204,4 +147,40 @@ std::vector<Unit> DescriptionFinder::getFormalParameters(const FunctionDescripti
     }
 
     return formalParameters;
+}
+
+void DescriptionFinder::createFrom(const Token& moduleNameToken, const Token& symbolNameToken)
+{
+    StructDescription structDescription;
+    FunctionDescription functionDescription;
+    DefineDescription defineDescription;
+    int enumValue;
+
+    if (!workingModule->useExists(moduleNameToken.toString()))
+        console.compileErrorOnToken("Module not imported", moduleNameToken);
+
+    ModuleDescription* externalModule = &modulesMap[moduleNameToken.toString()];
+
+    const std::string& symbolString = symbolNameToken.toString();
+
+    if (workingModule->symbolExists(symbolString))
+        console.compileErrorOnToken("Symbol already defined in current module", symbolNameToken);
+
+    if ((*externalModule).getStruct(symbolString, structDescription))
+        workingModule->structures[symbolString] = structDescription;
+
+    else if ((*externalModule).getFunction(symbolString, functionDescription))
+        console.compileErrorOnToken("Cannot import functions", symbolNameToken);
+
+    else if ((*externalModule).getDefineDescription(symbolString, defineDescription))
+        workingModule->defines[symbolString] = defineDescription;
+
+    else if ((*externalModule).getEnum(symbolString, enumValue))
+        workingModule->enumerations[symbolString] = enumValue;
+
+    else if ((*externalModule).useExists(symbolString))
+        workingModule->uses.push_back(symbolString);
+
+    else
+        console.compileErrorOnToken("Symbol does not exist", symbolNameToken);
 }
