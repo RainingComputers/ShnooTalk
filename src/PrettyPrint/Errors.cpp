@@ -50,10 +50,10 @@ namespace mikpp
 
         /* Get line */
         std::string line;
-        for (size_t i = 0; i < tok.getLine(); i++)
+        for (int i = 0; i < tok.getLineNo(); i++)
             getline(file, line);
 
-        errorOnLine(moduleName, errorMessage, line, tok.getLine(), tok.getColumn());
+        errorOnLine(moduleName, errorMessage, line, tok.getLineNo(), tok.getColumn());
     }
 
     void parserError(const std::string& moduleName, token::TokenType expected, Token& found, std::ifstream& file)
@@ -77,7 +77,7 @@ namespace mikpp
         std::string errorMessage = "Did not expect " + tokenTypeToString[found.getType()];
         errorMessage += ",\nexpected ";
 
-        for (size_t i = 0; i < ntoks - 1; i++)
+        for (int i = 0; i < ntoks - 1; i++)
             errorMessage += ((tokenTypeToString[expected[i]]) + " or ");
 
         errorMessage += tokenTypeToString[expected[ntoks - 1]];

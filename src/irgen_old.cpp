@@ -1,6 +1,6 @@
 #include <algorithm>
 
-#include "Builder/TypeDesctiptionUtil.hpp"
+#include "Builder/TypeDescriptionUtil.hpp"
 #include "IRGenerator/ConditionalExpression.hpp"
 #include "IRGenerator/ControlStatement.hpp"
 #include "IRGenerator/Define.hpp"
@@ -13,6 +13,7 @@
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "IRGenerator/UnitFromIdentifier.hpp"
+#include "IRGenerator/FunctionCall.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -31,6 +32,7 @@ namespace irgen
       , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
       , builder(opBuilder)
       , functionBuilder(modulesMap, console, opBuilder, builder)
+      , strBuilder(modulesMap[fileName], opBuilder)
     {
         workingFunction = nullptr;
         workingModule = &rootModule;
@@ -80,30 +82,6 @@ namespace irgen
     TokenTypePair ir_generator::var_from_node(const Node& root)
     {
         return TokenTypePair(root.getNthChildToken(0), typeDescriptionFromNode(*this, root));
-    }
-
-    icode::Operand ir_generator::gen_str_dat(const Token& str_token, size_t char_count, icode::DataType dtype)
-    {
-        /* Append string data */
-        std::string name = "_str" + str_token.getLineColString();
-        rootModule.stringsData[name] = str_token.toUnescapedString();
-
-        /* Create icode::operand */
-        size_t size = char_count * icode::getDataTypeSize(dtype);
-        icode::Operand opr = opBuilder.createStringDataOperand(name, size);
-
-        return opr;
-    }
-
-    Unit ir_generator::var_info_to_str_dat(const Token& str_token)
-    {
-        icode::TypeDescription stringType = stringTypeFromToken(str_token);
-
-        size_t char_count = str_token.toUnescapedString().length();
-
-        icode::Operand opr = gen_str_dat(str_token, char_count, icode::UI8);
-
-        return Unit(opr, stringType);
     }
 
     void ir_generator::assign_str_literal_tovar(Unit var, Node& root)
@@ -341,73 +319,6 @@ namespace irgen
         (*workingFunction).symbols[var.first.toString()] = var.second;
     }
 
-    Unit ir_generator::funccall(const Node& root)
-    {
-        pushWorkingModule();
-
-        /* Get the first argument (if not a string literal) */
-        Unit first_arg;
-        if (root.children.size() != 0)
-        {
-            if (root.isNthChild(node::STR_LITERAL, 0))
-                first_arg = var_info_to_str_dat(root.children[0].tok);
-            else
-                first_arg = expression(*this, root.children[0]);
-
-            if (root.type == node::STRUCT_FUNCCALL)
-                setWorkingModule(descriptionFinder.getModuleFromUnit(first_arg));
-        }
-
-        /* Check if function exits */
-        icode::FunctionDescription func_desc;
-        std::string func_name = root.tok.toString();
-
-        if (!get_func(func_name, func_desc))
-            console.compileErrorOnToken("Function does not exist", root.tok);
-
-        /* Check number of parameters */
-        if (root.children.size() != func_desc.parameters.size())
-            console.compileErrorOnToken("Number of parameters don't match", root.tok);
-
-        /* Go through each parameter */
-        for (size_t i = 0; i < root.children.size(); i++)
-        {
-            icode::TypeDescription param = func_desc.symbols[func_desc.parameters[i]];
-            bool mut = param.checkProperty(icode::IS_MUT);
-
-            Unit arg;
-
-            if (i == 0)
-                arg = first_arg;
-            if (root.children[i].type == node::STR_LITERAL)
-                arg = var_info_to_str_dat(root.children[i].tok);
-            else
-                arg = expression(*this, root.children[i]);
-
-            if (!icode::isSameType(param, arg.second))
-                console.typeError(root.children[i].tok, param, arg.second);
-
-            if (mut && !arg.first.canPassAsMutable())
-                console.compileErrorOnToken("Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE",
-                                            root.children[i].tok);
-
-            if (mut && !arg.second.isMutable())
-                console.compileErrorOnToken("Cannot pass IMMUTABLE as MUTABLE", root.children[i].tok);
-
-
-            if (mut || param.isStruct() || param.isArray())
-                builder.pass(icode::PASS_ADDR, arg.first, func_name, func_desc);
-            else
-                builder.pass(icode::PASS, arg.first, func_name, func_desc);
-        }
-
-        icode::Operand ret_temp = builder.call(func_name, func_desc);
-
-        popWorkingModule();
-
-        return Unit(ret_temp, func_desc.functionReturnDescription);
-    }
-
     icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const Token tok)
     {
         switch (tok.getType())
@@ -485,22 +396,16 @@ namespace irgen
         {
             Node child = root.children[i];
 
-            /* If string literal, create temp string an print it */
             if (child.type == node::STR_LITERAL)
             {
-                /* Get str len and str size */
-                int char_count = child.tok.toUnescapedString().length();
-
-                icode::Operand str_dat_opr = gen_str_dat(child.tok, char_count, icode::UI8);
+                icode::Operand str_dat_opr = strBuilder.creatStringOperand(child.tok, icode::UI8);
 
                 builder.printOperator(icode::PRINT_STR, str_dat_opr);
             }
-            /* Else expression */
             else
             {
                 Unit print_var = expression(*this, child);
 
-                /* Cannot peint struct or arrays */
                 if (print_var.second.dtype == icode::STRUCT || print_var.second.dimensions.size() > 1)
                     console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
 
@@ -510,11 +415,9 @@ namespace irgen
                     builder.printOperator(icode::PRINT, print_var.first);
             }
 
-            /* Add space after printing (except for the last print) */
             if (i != root.children.size() - 1)
                 builder.noArgumentEntry(icode::SPACE);
 
-            /* If println, the last print should add new line */
             if (i == root.children.size() - 1 && root.type == node::PRINTLN)
                 builder.noArgumentEntry(icode::NEWLN);
         }
@@ -567,27 +470,21 @@ namespace irgen
                     break;
                 case node::ASSIGNMENT_STR:
                 {
-                    /* The variable to write to */
                     Unit var = getUnitFromIdentifier(*this, stmt.children[0]);
-
                     assign_str_literal_tovar(var, stmt.children[1]);
-
                     break;
                 }
                 case node::ASSIGNMENT_INITLIST:
                 {
-                    /* The variable to write to */
                     Unit var = getUnitFromIdentifier(*this, stmt.children[0]);
-
                     assign_init_list_tovar(var, stmt.children[1]);
-
                     break;
                 }
                 case node::FUNCCALL:
-                    funccall(stmt);
+                    functionCall(*this, stmt);
                     break;
                 case node::TERM:
-                    funccall(stmt.children[0]);
+                    functionCall(*this, stmt.children[0]);
                     break;
                 case node::MODULE:
                 {
@@ -595,7 +492,7 @@ namespace irgen
 
                     int nodeCounter = setWorkingModuleFromNode(*this, stmt, 0);
 
-                    funccall(stmt.children[nodeCounter]);
+                    functionCall(*this, stmt.children[nodeCounter]);
 
                     popWorkingModule();
 
@@ -618,7 +515,7 @@ namespace irgen
                     break;
                 case node::RETURN:
                 {
-                    icode::TypeDescription ret_info = (*workingFunction).functionReturnDescription;
+                    icode::TypeDescription ret_info = (*workingFunction).functionReturnType;
 
                     /* Get return value */
                     if (stmt.children.size() != 0)
@@ -753,7 +650,7 @@ namespace irgen
                 /* Last instruction must be return */
                 if (!current_function_terminates())
                 {
-                    if (workingFunction->functionReturnDescription.dtype != icode::VOID)
+                    if (workingFunction->functionReturnType.dtype != icode::VOID)
                         console.compileErrorOnToken("Missing RETURN for this FUNCTION", child.tok);
 
                     builder.noArgumentEntry(icode::RET);

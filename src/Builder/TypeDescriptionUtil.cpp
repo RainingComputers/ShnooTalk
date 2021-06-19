@@ -1,4 +1,4 @@
-#include "TypeDesctiptionUtil.hpp"
+#include "TypeDescriptionUtil.hpp"
 
 using namespace icode;
 

@@ -11,7 +11,7 @@ namespace icode
 {
     struct FunctionDescription
     {
-        TypeDescription functionReturnDescription;
+        TypeDescription functionReturnType;
         std::vector<std::string> parameters;
         std::map<std::string, TypeDescription> symbols;
         std::vector<icode::Entry> icodeTable;
@@ -19,6 +19,7 @@ namespace icode
 
         bool symbolExists(const std::string& name);
         bool getSymbol(const std::string& name, icode::TypeDescription& returnValue);
+        size_t numParameters() const;
     };
 }
 

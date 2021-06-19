@@ -94,7 +94,7 @@ void ModuleBuilder::createFunctionDescription(const Token& nameToken,
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
     icode::FunctionDescription functionDescription;
-    functionDescription.functionReturnDescription = returnType;
+    functionDescription.functionReturnType = returnType;
     functionDescription.moduleName = workingModule->name;
 
     for (size_t i = 0; i < paramNames.size(); i++)

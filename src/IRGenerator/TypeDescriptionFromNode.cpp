@@ -1,5 +1,5 @@
 #include "Module.hpp"
-#include "../Builder/TypeDesctiptionUtil.hpp"
+#include "../Builder/TypeDescriptionUtil.hpp"
 
 #include "TypeDescriptionFromNode.hpp"
 

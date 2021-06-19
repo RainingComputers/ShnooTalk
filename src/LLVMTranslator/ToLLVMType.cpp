@@ -87,7 +87,7 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
     }
 
     FunctionType* FT =
-      FunctionType::get(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnDescription), parameterTypes, false);
+      FunctionType::get(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType), parameterTypes, false);
 
     return FT;
 }

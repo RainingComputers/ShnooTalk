@@ -129,7 +129,7 @@ std::string Token::getLineColString() const
     return "_l" + std::to_string(line) + "_c" + std::to_string(column);
 }
 
-int Token::getLine() const
+int Token::getLineNo() const
 {
     return line;
 }

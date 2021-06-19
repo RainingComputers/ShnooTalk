@@ -1,7 +1,6 @@
 #ifndef UNIT_BUILDER
 #define UNIT_BUILDER
 
-#include "../Token/Token.hpp"
 #include "OperandBuilder.hpp"
 #include "Unit.hpp"
 
@@ -15,7 +14,7 @@ class UnitBuilder
     Unit unitFromIntLiteral(int value, icode::DataType dtype);
     Unit unitFromFloatLiteral(float value, icode::DataType dtype);
     Unit unitPairFromTypeDescription(icode::TypeDescription& typeDescription,
-                                                       const Token& nameToken);
+                                                       const std::string& name);
     Unit unitFromEnum(int enumValue);
     Unit unitFromDefineDescription(const icode::DefineDescription& defineDescription);
 };

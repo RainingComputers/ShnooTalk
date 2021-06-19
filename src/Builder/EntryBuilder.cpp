@@ -287,8 +287,8 @@ void EntryBuilder::pass(Instruction passInstruction,
 {
     /* Construct icode for PASS and PASS_ADDR instructions */
 
-    DataType functionDataType = functionDesc.functionReturnDescription.dtype;
-    std::string functionDataTypeName = functionDesc.functionReturnDescription.dtypeName;
+    DataType functionDataType = functionDesc.functionReturnType.dtype;
+    std::string functionDataTypeName = functionDesc.functionReturnType.dtypeName;
 
     Entry entry;
 
@@ -309,8 +309,8 @@ Operand EntryBuilder::call(const std::string& functionName, const FunctionDescri
 {
     /* Construct icode for CALL instruction */
 
-    DataType functionDataType = functionDesc.functionReturnDescription.dtype;
-    std::string functionDataTypeName = functionDesc.functionReturnDescription.dtypeName;
+    DataType functionDataType = functionDesc.functionReturnType.dtype;
+    std::string functionDataTypeName = functionDesc.functionReturnType.dtypeName;
 
     Entry callEntry;
 

@@ -1,7 +1,6 @@
 #ifndef OPERAND_BUILDER
 #define OPERAND_BUILDER
 
-#include "../Token/Token.hpp"
 #include "../IntermediateRepresentation/All.hpp"
 
 class OperandBuilder
@@ -37,7 +36,7 @@ class OperandBuilder
 
     icode::Operand createModuleOperand(const std::string& module);
 
-    icode::Operand operandFromTypeDescription(const icode::TypeDescription& typeDescription, const Token& nameToken);
+    icode::Operand operandFromTypeDescription(const icode::TypeDescription& typeDescription, const std::string& name);
 
     icode::Operand operandFromIntLiteral(int value);
     

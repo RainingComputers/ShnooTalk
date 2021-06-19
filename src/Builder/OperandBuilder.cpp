@@ -142,12 +142,11 @@ Operand OperandBuilder::createModuleOperand(const std::string& module)
     return temp;
 }
 
-Operand OperandBuilder::operandFromTypeDescription(const TypeDescription& typeDescription,
-                                                   const Token& nameToken)
+Operand OperandBuilder::operandFromTypeDescription(const TypeDescription& typeDescription, const std::string& name)
 {
     return createVarOperand(typeDescription.dtype,
                             typeDescription.dtypeName,
-                            nameToken.toString(),
+                            name,
                             typeDescription.checkProperty(icode::IS_GLOBAL),
                             typeDescription.checkProperty(icode::IS_PTR));
 }

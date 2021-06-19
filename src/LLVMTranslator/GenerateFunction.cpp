@@ -105,7 +105,7 @@ void translateFunctionIcode(ModuleContext& ctx,
                 call(ctx, e);
                 break;
             case icode::RET:
-                ret(ctx, e, functionDesc.functionReturnDescription.dtype);
+                ret(ctx, e, functionDesc.functionReturnType.dtype);
                 break;
             case icode::INPUT:
                 input(ctx, formatStringsContext, e);
@@ -146,7 +146,7 @@ void setCurrentFunctionReturnPointer(ModuleContext& ctx,
                                      const std::string& name)
 {
     ctx.currentFunctionReturnPointer =
-      ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnDescription),
+      ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType),
                                 nullptr,
                                 name + ".retPointer");
 }
@@ -169,7 +169,7 @@ void generateFunction(ModuleContext& ctx,
     setupFunctionStack(ctx, functionDesc, function);
 
     /* Set ret ptr */
-    if (functionDesc.functionReturnDescription.dtype != icode::VOID)
+    if (functionDesc.functionReturnType.dtype != icode::VOID)
         setCurrentFunctionReturnPointer(ctx, functionDesc, name);
 
     /* Convert mikuro function ir to llvm ir */

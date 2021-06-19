@@ -47,7 +47,7 @@ bool DescriptionFinder::getLocal(const Token& nameToken, Unit& returnValue)
     if (!workingFunction->getSymbol(nameToken.toString(), typeDescription))
         return false;
 
-    returnValue = unitBuilder.unitPairFromTypeDescription(typeDescription, nameToken);
+    returnValue = unitBuilder.unitPairFromTypeDescription(typeDescription, nameToken.toString());
     return true;
 }
 
@@ -58,7 +58,7 @@ bool DescriptionFinder::getGlobal(const Token& nameToken, Unit& returnValue)
     if (!rootModule.getGlobal(nameToken.toString(), typeDescription))
         return false;
 
-    returnValue = unitBuilder.unitPairFromTypeDescription(typeDescription, nameToken);
+    returnValue = unitBuilder.unitPairFromTypeDescription(typeDescription, nameToken.toString());
     return true;
 }
 
@@ -130,15 +130,15 @@ void DescriptionFinder::createUse(const Token& nameToken)
 
 void DescriptionFinder::createFrom(const Token& moduleNameToken, const Token& symbolNameToken)
 {
-    icode::StructDescription structDescription;
-    icode::FunctionDescription functionDescription;
-    icode::DefineDescription defineDescription;
+    StructDescription structDescription;
+    FunctionDescription functionDescription;
+    DefineDescription defineDescription;
     int enumValue;
 
     if (!workingModule->useExists(moduleNameToken.toString()))
         console.compileErrorOnToken("Module not imported", moduleNameToken);
 
-    icode::ModuleDescription* externalModule = &modulesMap[moduleNameToken.toString()];
+    ModuleDescription* externalModule = &modulesMap[moduleNameToken.toString()];
 
     const std::string& symbolString = symbolNameToken.toString();
 
@@ -169,7 +169,7 @@ int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
     const std::string& dataTypeString = nameToken.toString();
 
     DataType dtype = workingModule->dataTypeFromString(dataTypeString);
-    if (dtype != icode::STRUCT)
+    if (dtype != STRUCT)
         return getDataTypeSize(dtype);
 
     StructDescription structDescription;
@@ -178,4 +178,30 @@ int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
 
     Unit unit = getUnitFromToken(nameToken);
     return unit.second.size;
+}
+
+FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
+{
+    FunctionDescription functionDescription;
+
+    if ((*workingModule).getFunction(nameToken.toString(), functionDescription))
+        return functionDescription;
+
+    if (rootModule.getFunction(nameToken.toString(), functionDescription))
+        return functionDescription;
+
+    console.compileErrorOnToken("Function does not exist", nameToken);
+}
+
+std::vector<Unit> DescriptionFinder::getFormalParameters(const FunctionDescription& function)
+{
+    std::vector<Unit> formalParameters;
+
+    for (const std::string& parameter : function.parameters)
+    {
+        TypeDescription paramType = function.symbols.at(parameter);
+        formalParameters.push_back(unitBuilder.unitPairFromTypeDescription(paramType, parameter));
+    }
+
+    return formalParameters;
 }

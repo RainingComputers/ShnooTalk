@@ -7,7 +7,7 @@ namespace mikpp
         /* Prints token and its properties */
 
         std::cout << "Token(\"" << symbol.toString() << "\", " << tokenTypeToString[symbol.getType()]
-                  << ", line=" << symbol.getLine() << ", col=" << symbol.getColumn() << ")";
+                  << ", line=" << symbol.getLineNo() << ", col=" << symbol.getColumn() << ")";
     }
 
     void printNode(const Node& node, int depth)
@@ -22,11 +22,11 @@ namespace mikpp
 
         isLastChild.push_back(false);
 
-        for (size_t i = 0; i < node.children.size(); i++)
+        for (int i = 0; i < (int)node.children.size(); i++)
         {
-            for (size_t j = 1; j <= depth; j++)
+            for (int j = 1; j <= depth; j++)
                 if (j == depth)
-                    if (i == node.children.size() - 1)
+                    if (i == (int)node.children.size() - 1)
                         std::cout << "└"
                                   << "──";
                     else
@@ -39,7 +39,7 @@ namespace mikpp
                     std::cout << "│"
                               << "  ";
 
-            if (i == node.children.size() - 1)
+            if (i == (int)node.children.size() - 1)
                 isLastChild[depth - 1] = true;
 
             printNode(node.children[i], depth + 1);
@@ -177,7 +177,7 @@ namespace mikpp
         std::cout << "]" << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Retinfo=";
-        printTypeDescription(functionDesc.functionReturnDescription);
+        printTypeDescription(functionDesc.functionReturnType);
         std::cout << std::endl;
 
         std::cout << std::string(ilvl + 3, ' ') << "Symbols={" << std::endl;

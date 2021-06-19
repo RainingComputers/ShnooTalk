@@ -43,6 +43,17 @@ class FunctionBuilder
     void createGoto(const icode::Operand& label);
 
     void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
+
+    void passParameter(const Token& calleeNameToken,
+                       icode::FunctionDescription callee,
+                       const Unit& formalParam,
+                       const Unit& actualParam);
+
+    Unit callFunction(const Token& calleeNameToken, icode::FunctionDescription callee);
+
+    icode::Operand creatStringOperand(const Token& str_token, icode::DataType dtype);
+
+    Unit createString(const Token& str_token);
 };
 
 #endif

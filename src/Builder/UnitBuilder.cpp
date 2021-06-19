@@ -1,4 +1,4 @@
-#include "TypeDesctiptionUtil.hpp"
+#include "TypeDescriptionUtil.hpp"
 
 #include "UnitBuilder.hpp"
 
@@ -26,9 +26,9 @@ Unit UnitBuilder::unitFromFloatLiteral(float value, DataType dtype)
 }
 
 Unit UnitBuilder::unitPairFromTypeDescription(TypeDescription& typeDescription,
-                                                                const Token& nameToken)
+                                                                const std::string& name)
 {
-    Operand op = opBuilder.operandFromTypeDescription(typeDescription, nameToken);
+    Operand op = opBuilder.operandFromTypeDescription(typeDescription, name);
     return Unit(op, typeDescription);
 }
 

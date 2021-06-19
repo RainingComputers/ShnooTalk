@@ -109,7 +109,7 @@ class Token
     token::TokenType getType() const;
     std::string getLineColString() const;
 
-    int getLine() const;
+    int getLineNo() const;
     int getColumn() const;
 
     Token(std::string token_str = "",

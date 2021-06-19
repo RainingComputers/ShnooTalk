@@ -14,4 +14,9 @@ namespace icode
         return getMapElement<std::string, TypeDescription>(symbols, name, returnValue);
     }
 
+    size_t FunctionDescription::numParameters() const
+    {
+        return parameters.size();
+    }
+
 }

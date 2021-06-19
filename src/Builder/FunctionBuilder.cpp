@@ -1,5 +1,5 @@
-#include "TypeDesctiptionUtil.hpp"
 #include "FunctionBuilder.hpp"
+#include "TypeDescriptionUtil.hpp"
 
 using namespace icode;
 
@@ -117,22 +117,39 @@ void FunctionBuilder::insertLabel(const Operand& label)
     entryBuilder.label(label);
 }
 
-void FunctionBuilder::createIfTrueGoto(const icode::Operand& label)
+void FunctionBuilder::createIfTrueGoto(const Operand& label)
 {
-    entryBuilder.createBranch(icode::IF_TRUE_GOTO, label);
+    entryBuilder.createBranch(IF_TRUE_GOTO, label);
 }
 
-void FunctionBuilder::createIfFalseGoto(const icode::Operand& label)
+void FunctionBuilder::createIfFalseGoto(const Operand& label)
 {
-    entryBuilder.createBranch(icode::IF_FALSE_GOTO, label);
+    entryBuilder.createBranch(IF_FALSE_GOTO, label);
 }
 
-void FunctionBuilder::createGoto(const icode::Operand& label)
+void FunctionBuilder::createGoto(const Operand& label)
 {
-    entryBuilder.createBranch(icode::GOTO, label);
+    entryBuilder.createBranch(GOTO, label);
 }
 
 void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
 {
     entryBuilder.compareOperator(instruction, LHS.first, RHS.first);
+}
+
+void FunctionBuilder::passParameter(const Token& calleeNameToken,
+                                    FunctionDescription callee,
+                                    const Unit& formalParam,
+                                    const Unit& actualParam)
+{
+    if (formalParam.second.isMutable() || formalParam.second.isStruct() || formalParam.second.isArray())
+        entryBuilder.pass(PASS_ADDR, actualParam.first, calleeNameToken.toString(), callee);
+    else
+        entryBuilder.pass(PASS, actualParam.first, calleeNameToken.toString(), callee);
+}
+
+Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescription callee)
+{
+    Operand result = entryBuilder.call(calleeNameToken.toString(), callee);
+    return Unit(result, callee.functionReturnType);
 }

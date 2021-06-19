@@ -7,6 +7,7 @@
 #include "Builder/Unit.hpp"
 #include "Builder/UnitBuilder.hpp"
 #include "Builder/FunctionBuilder.hpp"
+#include "Builder/StringBuilder.hpp"
 #include "Console/Console.hpp"
 #include "IRGenerator/ScopeTracker.hpp"
 #include "IntermediateRepresentation/All.hpp"
@@ -33,6 +34,7 @@ namespace irgen
         DescriptionFinder descriptionFinder;
         EntryBuilder builder;
         FunctionBuilder functionBuilder;
+        StringBuilder strBuilder;
         
 
         icode::FunctionDescription* workingFunction;
@@ -51,10 +53,6 @@ namespace irgen
 
         std::pair<Token, icode::TypeDescription> var_from_node(const Node& root);
 
-        icode::Operand gen_str_dat(const Token& str_token, size_t char_count, icode::DataType dtype);
-
-        Unit var_info_to_str_dat(const Token& str_token);
-
         void assign_str_literal_tovar(Unit var, Node& root);
 
         void assign_init_list_tovar(Unit var, Node& root);
@@ -64,10 +62,6 @@ namespace irgen
         void copy_struct(icode::Operand& left, Unit right);
 
         void var(const Node& root);
-
-        Unit getArg(const Node& root);
-
-        Unit funccall(const Node& root);
 
         icode::Instruction assignmentTokenToBinaryOperator(const Token tok);
 

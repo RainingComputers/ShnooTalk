@@ -1,5 +1,6 @@
 #include "Module.hpp"
 #include "UnitFromIdentifier.hpp"
+#include "FunctionCall.hpp"
 
 #include "Expression.hpp"
 
@@ -119,7 +120,7 @@ Unit term(irgen::ir_generator& ctx, const Node& root)
             return expression(ctx, child);
         case node::STRUCT_FUNCCALL:
         case node::FUNCCALL:
-            return ctx.funccall(child);
+            return functionCall(ctx, child);
         case node::MODULE:
             return switchModuleAndCallTerm(ctx, root);
         case node::SIZEOF:

@@ -44,6 +44,10 @@ class DescriptionFinder
     void createFrom(const Token& moduleNameToken, const Token& symbolNameToken);
 
     int getDataTypeSizeFromToken(const Token& nameToken);
+
+    icode::FunctionDescription getFunction(const Token& nameToken);
+
+    std::vector<Unit> getFormalParameters(const icode::FunctionDescription& function);
 };
 
 #endif
