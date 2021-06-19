@@ -26,8 +26,6 @@ Unit StringBuilder::createString(const Token& str_token)
 {
     TypeDescription stringType = stringTypeFromToken(str_token);
 
-    size_t char_count = str_token.toUnescapedString().length();
-
     Operand opr = creatStringOperand(str_token, UI8);
 
     return Unit(opr, stringType);

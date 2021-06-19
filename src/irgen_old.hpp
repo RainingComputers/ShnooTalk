@@ -79,7 +79,7 @@ namespace irgen
 
         void initgen(const Node& ast);
 
-        bool current_function_terminates();
+        bool doesFunctionTerminate();
 
         void program(const Node& root);
 

@@ -576,17 +576,13 @@ namespace irgen
         }
     }
 
-    bool ir_generator::current_function_terminates()
+    bool ir_generator::doesFunctionTerminate()
     {
-        if ((*workingFunction).icodeTable.size() < 1)
+        if (workingFunction->icodeTable.size() < 1)
             return false;
 
-        icode::Instruction last_opcode = (*workingFunction).icodeTable.back().opcode;
-
-        if (last_opcode == icode::RET)
-            return true;
-
-        return false;
+        icode::Instruction lastOpcode = workingFunction->icodeTable.back().opcode;
+        return lastOpcode == icode::RET;
     }
 
     void ir_generator::program(const Node& root)
@@ -648,9 +644,9 @@ namespace irgen
                       opBuilder.createLabelOperand(""));
 
                 /* Last instruction must be return */
-                if (!current_function_terminates())
+                if (!doesFunctionTerminate())
                 {
-                    if (workingFunction->functionReturnType.dtype != icode::VOID)
+                    if (!workingFunction->isVoid())
                         console.compileErrorOnToken("Missing RETURN for this FUNCTION", child.tok);
 
                     builder.noArgumentEntry(icode::RET);

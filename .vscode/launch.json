@@ -11,8 +11,8 @@
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/uhll",
             "args": [
-                "enum_test.uhll",
-                "-llvm"
+                "test.uhll",
+                "-c"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/",

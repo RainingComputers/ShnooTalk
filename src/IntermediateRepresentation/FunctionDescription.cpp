@@ -19,4 +19,9 @@ namespace icode
         return parameters.size();
     }
 
+    bool FunctionDescription::isVoid() const
+    {
+        return functionReturnType.dtype == VOID;
+    }
+
 }
