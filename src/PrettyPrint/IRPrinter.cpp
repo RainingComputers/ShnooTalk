@@ -53,10 +53,10 @@ namespace mikpp
         switch (op.operandType)
         {
             case icode::TEMP:
-                std::cout << "Temp(id_" << op.operandId << ":" << op.dtypeName;
+                std::cout << "Temp(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
                 break;
             case icode::TEMP_PTR:
-                std::cout << "TempPtr(id_" << op.operandId << ":" << op.dtypeName;
+                std::cout << "TempPtr(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
                 break;
             case icode::STR_DATA:
                 std::cout << "StrDat(name=" << op.name << " size=" << op.val.size;
@@ -65,19 +65,19 @@ namespace mikpp
                 std::cout << "Addr(" << op.val.address;
                 break;
             case icode::VAR:
-                std::cout << "Var(" << op.name << ":" << op.dtypeName;
+                std::cout << "Var(" << op.name << ":" << icode::dataTypeToString(op.dtype);
                 break;
             case icode::GBL_VAR:
-                std::cout << "GblVar(" << op.name << ":" << op.dtypeName;
+                std::cout << "GblVar(" << op.name << ":" << icode::dataTypeToString(op.dtype);
                 break;
             case icode::PTR:
-                std::cout << "Ptr(" << op.name << ":" << op.dtypeName;
+                std::cout << "Ptr(" << op.name << ":" << icode::dataTypeToString(op.dtype);
                 break;
             case icode::RET_PTR:
-                std::cout << "RetPtr(id_" << op.operandId << ":" << op.dtypeName;
+                std::cout << "RetPtr(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
                 break;
             case icode::CALLEE_RET_VAL:
-                std::cout << "CalleeRetVal(id_" << op.operandId << ":" << op.dtypeName;
+                std::cout << "CalleeRetVal(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
                 break;
             case icode::LITERAL:
             {

@@ -39,12 +39,6 @@ namespace icode
         return false;
     }
 
-    void Operand::updateDataType(const TypeDescription& var)
-    {
-        dtype = var.dtype;
-        dtypeName = var.dtypeName;
-    }
-
     bool Operand::isPointer() const
     {
         return operandType == PTR || operandType == TEMP_PTR || operandType == RET_PTR;

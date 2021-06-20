@@ -10,21 +10,20 @@ class OperandBuilder
   public:
     unsigned int getId();
 
-    icode::Operand createTempOperand(icode::DataType dtype, const std::string& dtype_name);
+    icode::Operand createTempOperand(icode::DataType dtype);
 
-    icode::Operand createPointerOperand(icode::DataType dtype, const std::string& dtype_name);
+    icode::Operand createPointerOperand(icode::DataType dtype);
 
     icode::Operand createStringDataOperand(const std::string& name, unsigned int size);
 
     icode::Operand createVarOperand(icode::DataType dtype,
-                                    const std::string& dtype_name,
                                     const std::string& symbol,
                                     bool global = false,
                                     bool ptr = false);
 
-    icode::Operand createRetPointerOperand(icode::DataType dtype, const std::string& dtype_name);
+    icode::Operand createRetPointerOperand(icode::DataType dtype);
 
-    icode::Operand createCalleeRetValOperand(icode::DataType dtype, const std::string& dtype_name);
+    icode::Operand createCalleeRetValOperand(icode::DataType dtype);
 
     icode::Operand createFloatLiteralOperand(icode::DataType dtype, float literal);
 
@@ -39,7 +38,7 @@ class OperandBuilder
     icode::Operand operandFromTypeDescription(const icode::TypeDescription& typeDescription, const std::string& name);
 
     icode::Operand operandFromIntLiteral(int value);
-    
+
     icode::Operand operandFromFloatLiteral(float value);
 
     OperandBuilder();

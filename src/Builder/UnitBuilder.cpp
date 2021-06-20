@@ -25,8 +25,7 @@ Unit UnitBuilder::unitFromFloatLiteral(float value, DataType dtype)
     return Unit(op, typeDescription);
 }
 
-Unit UnitBuilder::unitPairFromTypeDescription(TypeDescription& typeDescription,
-                                                                const std::string& name)
+Unit UnitBuilder::unitPairFromTypeDescription(TypeDescription& typeDescription, const std::string& name)
 {
     Operand op = opBuilder.operandFromTypeDescription(typeDescription, name);
     return Unit(op, typeDescription);
@@ -35,7 +34,7 @@ Unit UnitBuilder::unitPairFromTypeDescription(TypeDescription& typeDescription,
 Unit UnitBuilder::unitFromEnum(int enumValue)
 {
     Operand op = opBuilder.createIntLiteralOperand(INT, enumValue);
-    
+
     TypeDescription typeDescription = typeDescriptionFromDataType(INT);
     typeDescription.setProperty(IS_ENUM);
 

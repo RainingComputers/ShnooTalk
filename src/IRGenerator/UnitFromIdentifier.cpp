@@ -29,7 +29,7 @@ std::pair<Unit, size_t> unitFromStructVar(irgen::ir_generator& ctx,
     size_t nodeCounter = startIndex;
 
     nodeCounter++;
-    
+
     const Token& fieldNameToken = root.getNthChildToken(nodeCounter);
 
     if (unit.second.dtype != icode::STRUCT)

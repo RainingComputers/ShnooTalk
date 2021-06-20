@@ -183,4 +183,3 @@ void ModuleBuilder::createUse(const Token& nameToken)
 
     workingModule->uses.push_back(nameToken.toString());
 }
-

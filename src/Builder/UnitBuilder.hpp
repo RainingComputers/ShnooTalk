@@ -13,8 +13,7 @@ class UnitBuilder
 
     Unit unitFromIntLiteral(int value, icode::DataType dtype);
     Unit unitFromFloatLiteral(float value, icode::DataType dtype);
-    Unit unitPairFromTypeDescription(icode::TypeDescription& typeDescription,
-                                                       const std::string& name);
+    Unit unitPairFromTypeDescription(icode::TypeDescription& typeDescription, const std::string& name);
     Unit unitFromEnum(int enumValue);
     Unit unitFromDefineDescription(const icode::DefineDescription& defineDescription);
 };

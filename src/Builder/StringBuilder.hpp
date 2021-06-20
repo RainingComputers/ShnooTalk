@@ -2,9 +2,9 @@
 #define STRING_BUILDER_HPP
 
 #include "../IntermediateRepresentation/ModuleDescription.hpp"
+#include "../Token/Token.hpp"
 #include "OperandBuilder.hpp"
 #include "Unit.hpp"
-#include "../Token/Token.hpp"
 
 class StringBuilder
 {

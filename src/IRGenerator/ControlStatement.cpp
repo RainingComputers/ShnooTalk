@@ -91,7 +91,6 @@ void continueStatement(irgen::ir_generator& ctx, bool isLoopBlock, const Operand
     ctx.functionBuilder.createGoto(continueLabel);
 }
 
-
 void breakStatement(irgen::ir_generator& ctx, bool isLoopBlock, const Operand& breakLabel, const Token& token)
 {
     if (!isLoopBlock)

@@ -1,5 +1,5 @@
-#include "Module.hpp"
 #include "../Builder/TypeDescriptionUtil.hpp"
+#include "Module.hpp"
 
 #include "TypeDescriptionFromNode.hpp"
 
@@ -25,9 +25,9 @@ TypeDescription typeDescriptionFromFunctionNode(ir_generator& ctx, const Node& r
 }
 
 TypeDescription arrayTypeFromSubscript(ir_generator& ctx,
-                                  const Node& root,
-                                  TypeDescription typeDescription,
-                                  size_t startIndex)
+                                       const Node& root,
+                                       TypeDescription typeDescription,
+                                       size_t startIndex)
 {
     std::vector<int> dimensions;
 

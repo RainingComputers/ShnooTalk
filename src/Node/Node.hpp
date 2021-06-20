@@ -56,7 +56,6 @@ namespace node
     };
 }
 
-
 struct Node
 {
     node::NodeType type;

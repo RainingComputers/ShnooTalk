@@ -20,7 +20,7 @@ Operand FunctionBuilder::getPointerOperand(const Unit& unit)
     ModuleDescription* workingModule = &modulesMap.at(unit.second.moduleName);
 
     if (!unit.first.isPointer())
-        return entryBuilder.createPointer(unit.first, workingModule);
+        return entryBuilder.createPointer(unit.first, unit.second.dtypeName, workingModule);
 
     return unit.first;
 }
@@ -37,11 +37,12 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
     if (unit.second.isMutable())
         fieldType.becomeMutable();
 
-    Operand fieldOperand = getPointerOperand(unit);
-    fieldOperand.updateDataType(fieldType);
+    Operand pointerOperand = getPointerOperand(unit);
 
-    fieldOperand =
-      entryBuilder.addressAddOperator(fieldOperand, opBuilder.createLiteralAddressOperand(fieldType.offset));
+    Operand fieldOperand =
+      entryBuilder.addressAddOperator(pointerOperand, opBuilder.createLiteralAddressOperand(fieldType.offset));
+
+    fieldOperand.dtype = fieldType.dtype;
 
     return Unit(fieldOperand, fieldType);
 }
@@ -78,11 +79,10 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
 
 Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
 {
-    std::string dtype_name = LHS.second.dtypeName;
     DataType dtype = LHS.second.dtype;
 
     Operand result =
-      entryBuilder.binaryOperator(instruction, opBuilder.createTempOperand(dtype, dtype_name), LHS.first, RHS.first);
+      entryBuilder.binaryOperator(instruction, opBuilder.createTempOperand(dtype), LHS.first, RHS.first);
 
     return Unit(result, LHS.second);
 }
@@ -97,10 +97,9 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
 Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOperatorTerm)
 {
     const DataType dtype = unaryOperatorTerm.second.dtype;
-    const std::string& dtypeName = unaryOperatorTerm.second.dtypeName;
 
     Operand result =
-      entryBuilder.unaryOperator(instruction, opBuilder.createTempOperand(dtype, dtypeName), unaryOperatorTerm.first);
+      entryBuilder.unaryOperator(instruction, opBuilder.createTempOperand(dtype), unaryOperatorTerm.first);
 
     return Unit(result, unaryOperatorTerm.second);
 }

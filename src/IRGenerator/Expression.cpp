@@ -1,9 +1,8 @@
+#include "FunctionCall.hpp"
 #include "Module.hpp"
 #include "UnitFromIdentifier.hpp"
-#include "FunctionCall.hpp"
 
 #include "Expression.hpp"
-
 
 Unit sizeOf(irgen::ir_generator& ctx, const Node& root)
 {

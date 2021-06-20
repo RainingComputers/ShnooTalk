@@ -23,10 +23,7 @@ namespace mikpp
                       std::ifstream& file,
                       const Token& token);
 
-    void parserError(const std::string& moduleName,
-                     token::TokenType expected,
-                     Token& found,
-                     std::ifstream& file);
+    void parserError(const std::string& moduleName, token::TokenType expected, Token& found, std::ifstream& file);
 
     void parserErrorMultiple(const std::string& moduleName,
                              const token::TokenType* expected,

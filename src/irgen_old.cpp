@@ -8,13 +8,13 @@
 #include "IRGenerator/Expression.hpp"
 #include "IRGenerator/From.hpp"
 #include "IRGenerator/Function.hpp"
+#include "IRGenerator/FunctionCall.hpp"
 #include "IRGenerator/Global.hpp"
+#include "IRGenerator/Input.hpp"
 #include "IRGenerator/Module.hpp"
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "IRGenerator/UnitFromIdentifier.hpp"
-#include "IRGenerator/FunctionCall.hpp"
-#include "IRGenerator/Input.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -86,7 +86,7 @@ namespace irgen
             console.compileErrorOnToken("String too big", root.tok);
 
         /* Create Addr Temp */
-        icode::Operand curr_offset = builder.createPointer(var.first, workingModule);
+        icode::Operand curr_offset = builder.createPointer(var.first, var.second.dtypeName, workingModule);
 
         /* Loop through int and initialize string */
         for (size_t i = 0; i < char_count; i++)
@@ -106,8 +106,8 @@ namespace irgen
 
     void ir_generator::copy_array(icode::Operand& left, Unit right)
     {
-        icode::Operand curr_offset_left = builder.createPointer(left, workingModule);
-        icode::Operand curr_offset_right = builder.createPointer(right.first, workingModule);
+        icode::Operand curr_offset_left = builder.createPointer(left, right.second.dtypeName, workingModule);
+        icode::Operand curr_offset_right = builder.createPointer(right.first, right.second.dtypeName, workingModule);
 
         unsigned int size = right.second.size;
         unsigned int dtype_size = right.second.dtypeSize;
@@ -138,8 +138,8 @@ namespace irgen
 
     void ir_generator::copy_struct(icode::Operand& left, Unit right)
     {
-        icode::Operand curr_offset_left = builder.createPointer(left, workingModule);
-        icode::Operand curr_offset_right = builder.createPointer(right.first, workingModule);
+        icode::Operand curr_offset_left = builder.createPointer(left, right.second.dtypeName, workingModule);
+        icode::Operand curr_offset_right = builder.createPointer(right.first, right.second.dtypeName, workingModule);
 
         /* Loop through each field and copy them */
         unsigned int count = 0;
@@ -150,8 +150,8 @@ namespace irgen
 
             if (count != 0)
             {
-                curr_offset_left.updateDataType(field.second);
-                curr_offset_right.updateDataType(field.second);
+                curr_offset_left.dtype = field.second.dtype;
+                curr_offset_right.dtype = field.second.dtype;
 
                 curr_offset_left = builder.addressAddOperator(curr_offset_left, update);
                 curr_offset_right = builder.addressAddOperator(curr_offset_right, update);
@@ -184,7 +184,7 @@ namespace irgen
         if (var.second.dimensions.size() == 0)
             console.compileErrorOnToken("Cannot initialize a NON-ARRAY with initializer list", root.tok);
 
-        icode::Operand curr_offset = builder.createPointer(var.first, workingModule);
+        icode::Operand curr_offset = builder.createPointer(var.first, var.second.dtypeName, workingModule);
 
         /* Create var info for the elements inside the list */
         icode::TypeDescription element_var = var.second;
@@ -271,8 +271,7 @@ namespace irgen
 
             /* Create icode operands, one for variable other for temp
                 to hold result of initialization expression */
-            icode::Operand left =
-              opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString());
+            icode::Operand left = opBuilder.createVarOperand(var.second.dtype, var.first.toString());
 
             Unit init_exp = expression(*this, last_node);
 
@@ -292,16 +291,12 @@ namespace irgen
         }
         else if (last_node.type == node::STR_LITERAL)
         {
-            Unit var_pair =
-              Unit(opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
-                   var.second);
+            Unit var_pair = Unit(opBuilder.createVarOperand(var.second.dtype, var.first.toString()), var.second);
             assign_str_literal_tovar(var_pair, last_node);
         }
         else if (last_node.type == node::INITLIST)
         {
-            Unit var_pair =
-              Unit(opBuilder.createVarOperand(var.second.dtype, var.second.dtypeName, var.first.toString()),
-                   var.second);
+            Unit var_pair = Unit(opBuilder.createVarOperand(var.second.dtype, var.first.toString()), var.second);
             assign_init_list_tovar(var_pair, last_node);
         }
 
@@ -374,7 +369,7 @@ namespace irgen
         }
         else
         {
-            icode::Operand temp = opBuilder.createTempOperand(LHS.second.dtype, LHS.second.dtypeName);
+            icode::Operand temp = opBuilder.createTempOperand(LHS.second.dtype);
             builder.copy(temp, LHS.first);
             builder.binaryOperator(opcode, LHS.first, temp, RHS.first);
         }
@@ -492,7 +487,7 @@ namespace irgen
                             console.typeError(stmt.children[0].tok, ret_info, ret_val.second);
 
                         /* Assign return value to return pointer */
-                        icode::Operand ret_ptr = opBuilder.createRetPointerOperand(ret_info.dtype, ret_info.dtypeName);
+                        icode::Operand ret_ptr = opBuilder.createRetPointerOperand(ret_info.dtype);
 
                         if (ret_val.second.dtype == icode::STRUCT)
                             copy_struct(ret_ptr, ret_val);

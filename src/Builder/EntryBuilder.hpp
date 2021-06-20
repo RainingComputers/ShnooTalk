@@ -13,14 +13,18 @@ class EntryBuilder
 
     icode::Operand pushEntryAndEnsureNoPointerWrite(icode::Entry entry);
 
-    icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op, icode::ModuleDescription* workingModule);
+    icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op,
+                                                      const std::string& dtypeName,
+                                                      icode::ModuleDescription* workingModule);
 
   public:
     void setWorkingFunction(icode::FunctionDescription* functionDesc);
 
     void pushEntry(icode::Entry entry);
 
-    icode::Operand createPointer(const icode::Operand& op, icode::ModuleDescription* workingModule);
+    icode::Operand createPointer(const icode::Operand& op,
+                                 const std::string& dtypeName,
+                                 icode::ModuleDescription* workingModule);
 
     void copy(icode::Operand op1, icode::Operand op2);
 

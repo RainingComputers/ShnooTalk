@@ -17,28 +17,29 @@ void EntryBuilder::pushEntry(Entry entry)
     (*workingFunction).icodeTable.push_back(entry);
 }
 
-Operand EntryBuilder::getCreatePointerDestinationOperand(const Operand& op, ModuleDescription* workingModule)
+Operand EntryBuilder::getCreatePointerDestinationOperand(const Operand& op,
+                                                         const std::string& dtypeName,
+                                                         ModuleDescription* workingModule)
 {
     /* If not a struct, just copy the operand but change its type to a pointer */
 
     if (op.dtype != STRUCT)
-        return opBuilder.createPointerOperand(op.dtype, op.dtypeName);
+        return opBuilder.createPointerOperand(op.dtype);
 
     /* If it a struct, create pointer to the first field */
 
-    TypeDescription firstFieldDesc = workingModule->structures[op.dtypeName].structFields.begin()->second;
+    TypeDescription firstFieldDesc = workingModule->structures[dtypeName].structFields.begin()->second;
 
-    return opBuilder.createPointerOperand(firstFieldDesc.dtype, firstFieldDesc.dtypeName);
+    return opBuilder.createPointerOperand(firstFieldDesc.dtype);
 }
 
-Operand EntryBuilder::createPointer(const Operand& op, ModuleDescription* workingModule)
+Operand EntryBuilder::createPointer(const Operand& op, const std::string& dtypeName, ModuleDescription* workingModule)
 {
     if (op.operandType == TEMP_PTR && op.dtype != STRUCT)
         return op;
-    /* Converts op to TEMP_PTR using the CREATE_PTR instruction */
 
     /* Converted TEMP_PTR */
-    Operand pointerOperand = getCreatePointerDestinationOperand(op, workingModule);
+    Operand pointerOperand = getCreatePointerDestinationOperand(op, dtypeName, workingModule);
 
     /* Construct CREATE_PTR instruction */
     Entry createPointerEntry;
@@ -64,7 +65,7 @@ void EntryBuilder::copy(Operand op1, Operand op2)
 
     if (op1.isPointer() && op2.isPointer())
     {
-        Operand temp = opBuilder.createTempOperand(op2.dtype, op2.dtypeName);
+        Operand temp = opBuilder.createTempOperand(op2.dtype);
         copy(temp, op2);
         copy(op1, temp);
     }
@@ -94,7 +95,7 @@ Operand EntryBuilder::ensureNotPointer(Operand op)
     if (!op.isPointer())
         return op;
 
-    Operand temp = opBuilder.createTempOperand(op.dtype, op.dtypeName);
+    Operand temp = opBuilder.createTempOperand(op.dtype);
     copy(temp, op);
     return temp;
 }
@@ -115,7 +116,7 @@ Operand EntryBuilder::pushEntryAndEnsureNoPointerWrite(Entry entry)
 
     /* Create corresponding TEMP to TEMP_PTR  */
     Operand pointerOperand = entry.op1;
-    Operand temp = opBuilder.createTempOperand(pointerOperand.dtype, pointerOperand.dtypeName);
+    Operand temp = opBuilder.createTempOperand(pointerOperand.dtype);
 
     /* Replace TEMP_PTR with TEMP */
     Entry modifiedEntry = entry;
@@ -170,7 +171,7 @@ Operand EntryBuilder::castOperator(DataType castDataType, Operand op)
     Entry entry;
 
     entry.opcode = CAST;
-    entry.op1 = opBuilder.createTempOperand(castDataType, dataTypeToString(castDataType));
+    entry.op1 = opBuilder.createTempOperand(castDataType);
     entry.op2 = ensureNotPointer(op);
 
     return pushEntryAndEnsureNoPointerWrite(entry);
@@ -202,7 +203,7 @@ Operand EntryBuilder::addressAddOperator(Operand op2, Operand op3)
     Entry entry;
 
     entry.opcode = ADDR_ADD;
-    entry.op1 = opBuilder.createPointerOperand(op2.dtype, op2.dtypeName);
+    entry.op1 = opBuilder.createPointerOperand(op2.dtype);
     entry.op2 = op2;
     entry.op3 = op3;
 
@@ -218,7 +219,7 @@ Operand EntryBuilder::addressMultiplyOperator(Operand op2, Operand op3)
     Entry entry;
 
     entry.opcode = ADDR_MUL;
-    entry.op1 = opBuilder.createPointerOperand(VOID, dataTypeToString(VOID));
+    entry.op1 = opBuilder.createPointerOperand(VOID);
     entry.op2 = ensureNotPointer(op2);
     entry.op3 = op3;
 
@@ -288,7 +289,6 @@ void EntryBuilder::pass(Instruction passInstruction,
     /* Construct icode for PASS and PASS_ADDR instructions */
 
     DataType functionDataType = functionDesc.functionReturnType.dtype;
-    std::string functionDataTypeName = functionDesc.functionReturnType.dtypeName;
 
     Entry entry;
 
@@ -299,7 +299,7 @@ void EntryBuilder::pass(Instruction passInstruction,
     else
         entry.op1 = op;
 
-    entry.op2 = opBuilder.createVarOperand(functionDataType, functionDataTypeName, functionName);
+    entry.op2 = opBuilder.createVarOperand(functionDataType, functionName);
     entry.op3 = opBuilder.createModuleOperand(functionDesc.moduleName);
 
     pushEntry(entry);
@@ -310,13 +310,12 @@ Operand EntryBuilder::call(const std::string& functionName, const FunctionDescri
     /* Construct icode for CALL instruction */
 
     DataType functionDataType = functionDesc.functionReturnType.dtype;
-    std::string functionDataTypeName = functionDesc.functionReturnType.dtypeName;
 
     Entry callEntry;
 
     callEntry.opcode = CALL;
-    callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType, functionDataTypeName);
-    callEntry.op2 = opBuilder.createVarOperand(functionDataType, functionDataTypeName, functionName);
+    callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
+    callEntry.op2 = opBuilder.createVarOperand(functionDataType, functionName);
     callEntry.op3 = opBuilder.createModuleOperand(functionDesc.moduleName);
 
     pushEntry(callEntry);

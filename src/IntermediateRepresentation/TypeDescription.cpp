@@ -69,7 +69,7 @@ namespace icode
 
     bool canAssignString(TypeDescription assignee, TypeDescription str)
     {
-        if(assignee.dimensions.size() != 1 || assignee.dtype != icode::UI8)
+        if (assignee.dimensions.size() != 1 || assignee.dtype != icode::UI8)
             return false;
 
         return str.dimensions[0] <= assignee.dimensions[0];
@@ -77,10 +77,10 @@ namespace icode
 
     bool isSameDim(TypeDescription type1, TypeDescription type2)
     {
-        if(type1.isString() && !type2.isString())
+        if (type1.isString() && !type2.isString())
             return canAssignString(type2, type1);
 
-        if(!type1.isString() && type2.isString())
+        if (!type1.isString() && type2.isString())
             return canAssignString(type1, type2);
 
         return type1.dimensions.size() == type2.dimensions.size();

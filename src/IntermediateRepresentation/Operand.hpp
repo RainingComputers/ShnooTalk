@@ -38,12 +38,10 @@ namespace icode
 
         std::string name;
         DataType dtype;
-        std::string dtypeName;
         OperandType operandType;
 
         bool operator<(const Operand& other) const;
         bool operator==(const Operand& other) const;
-        void updateDataType(const TypeDescription& var);
         bool isPointer() const;
         bool canPassAsMutable() const;
         bool isInvalidForInput() const;

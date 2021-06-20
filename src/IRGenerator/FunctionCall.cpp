@@ -10,7 +10,6 @@ Unit getActualParam(irgen::ir_generator& ctx, const Node& root, int nodeCounter)
         return expression(ctx, root.children[nodeCounter]);
 }
 
-
 Unit functionCall(irgen::ir_generator& ctx, const Node& root)
 {
     ctx.pushWorkingModule();
@@ -42,7 +41,7 @@ Unit functionCall(irgen::ir_generator& ctx, const Node& root)
 
         if (i == 0)
             actualParam = firstActualParam;
-        else 
+        else
             actualParam = getActualParam(ctx, root, i);
 
         if (!icode::isSameType(formalParam.second, actualParam.second))

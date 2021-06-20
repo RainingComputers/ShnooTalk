@@ -34,8 +34,7 @@ Function* getLLVMFunction(const ModuleContext& ctx, const std::string& functionN
     if (auto* F = ctx.LLVMModule->getFunction(fullFunctionName))
         return F;
 
-    FunctionType* functionType =
-      funcDescriptionToLLVMType(ctx, ctx.modulesMap[moduleName].functions[functionName]);
+    FunctionType* functionType = funcDescriptionToLLVMType(ctx, ctx.modulesMap[moduleName].functions[functionName]);
     return Function::Create(functionType, Function::ExternalLinkage, fullFunctionName, *ctx.LLVMModule);
 }
 

@@ -12,23 +12,21 @@ unsigned int OperandBuilder::getId()
     return idCounter++;
 }
 
-Operand OperandBuilder::createTempOperand(DataType dtype, const std::string& dtype_name)
+Operand OperandBuilder::createTempOperand(DataType dtype)
 {
     Operand temp;
     temp.operandId = getId();
     temp.dtype = dtype;
-    temp.dtypeName = dtype_name;
     temp.operandType = TEMP;
 
     return temp;
 }
 
-Operand OperandBuilder::createPointerOperand(DataType dtype, const std::string& dtype_name)
+Operand OperandBuilder::createPointerOperand(DataType dtype)
 {
     Operand temp;
     temp.operandId = getId();
     temp.dtype = dtype;
-    temp.dtypeName = dtype_name;
     temp.operandType = TEMP_PTR;
 
     return temp;
@@ -56,17 +54,12 @@ Operand OperandBuilder::createLiteralAddressOperand(unsigned int address)
     return temp;
 }
 
-Operand OperandBuilder::createVarOperand(DataType dtype,
-                                         const std::string& dtype_name,
-                                         const std::string& symbol,
-                                         bool global,
-                                         bool ptr)
+Operand OperandBuilder::createVarOperand(DataType dtype, const std::string& symbol, bool global, bool ptr)
 {
     Operand temp;
     temp.operandId = getId();
     temp.name = symbol;
     temp.dtype = dtype;
-    temp.dtypeName = dtype_name;
 
     if (global)
         temp.operandType = GBL_VAR;
@@ -78,23 +71,21 @@ Operand OperandBuilder::createVarOperand(DataType dtype,
     return temp;
 }
 
-Operand OperandBuilder::createRetPointerOperand(DataType dtype, const std::string& dtype_name)
+Operand OperandBuilder::createRetPointerOperand(DataType dtype)
 {
     Operand temp;
     temp.operandId = getId();
     temp.dtype = dtype;
-    temp.dtypeName = dtype_name;
     temp.operandType = RET_PTR;
 
     return temp;
 }
 
-Operand OperandBuilder::createCalleeRetValOperand(DataType dtype, const std::string& dtype_name)
+Operand OperandBuilder::createCalleeRetValOperand(DataType dtype)
 {
     Operand temp;
     temp.operandId = getId();
     temp.dtype = dtype;
-    temp.dtypeName = dtype_name;
     temp.operandType = CALLEE_RET_VAL;
 
     return temp;
@@ -145,7 +136,6 @@ Operand OperandBuilder::createModuleOperand(const std::string& module)
 Operand OperandBuilder::operandFromTypeDescription(const TypeDescription& typeDescription, const std::string& name)
 {
     return createVarOperand(typeDescription.dtype,
-                            typeDescription.dtypeName,
                             name,
                             typeDescription.checkProperty(icode::IS_GLOBAL),
                             typeDescription.checkProperty(icode::IS_PTR));

@@ -39,7 +39,7 @@ void createFunctionFromNode(irgen::ir_generator& ctx, const Node& root)
 
         paramNames.push_back(paramName);
         paramTypes.push_back(paramType);
-    
+
         ctx.scope.putInCurrentScope(paramName);
     }
 

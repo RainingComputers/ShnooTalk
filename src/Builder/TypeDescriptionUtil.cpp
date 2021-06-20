@@ -2,7 +2,6 @@
 
 using namespace icode;
 
-
 TypeDescription typeDescriptionFromDataType(DataType dtype)
 {
     TypeDescription var;
@@ -14,8 +13,7 @@ TypeDescription typeDescriptionFromDataType(DataType dtype)
     return var;
 }
 
-TypeDescription createArrayTypeDescription(const TypeDescription& typeDescription,
-                                                          std::vector<int>& dimensions)
+TypeDescription createArrayTypeDescription(const TypeDescription& typeDescription, std::vector<int>& dimensions)
 {
     TypeDescription modifiedTypeDescription = typeDescription;
 

@@ -1,13 +1,13 @@
 #ifndef IRGEN_HPP
 #define IRGEN_HPP
 
-#include "Builder/ModuleBuilder.hpp"
 #include "Builder/DescriptionFinder.hpp"
 #include "Builder/EntryBuilder.hpp"
+#include "Builder/FunctionBuilder.hpp"
+#include "Builder/ModuleBuilder.hpp"
+#include "Builder/StringBuilder.hpp"
 #include "Builder/Unit.hpp"
 #include "Builder/UnitBuilder.hpp"
-#include "Builder/FunctionBuilder.hpp"
-#include "Builder/StringBuilder.hpp"
 #include "Console/Console.hpp"
 #include "IRGenerator/ScopeTracker.hpp"
 #include "IntermediateRepresentation/All.hpp"
@@ -35,7 +35,6 @@ namespace irgen
         EntryBuilder builder;
         FunctionBuilder functionBuilder;
         StringBuilder strBuilder;
-        
 
         icode::FunctionDescription* workingFunction;
         icode::ModuleDescription* workingModule;
