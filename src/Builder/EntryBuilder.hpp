@@ -18,6 +18,8 @@ class EntryBuilder
                                                       icode::ModuleDescription* workingModule);
 
   public:
+    EntryBuilder(OperandBuilder& opBuilder);
+
     void setWorkingFunction(icode::FunctionDescription* functionDesc);
 
     void pushEntry(icode::Entry entry);
@@ -63,8 +65,6 @@ class EntryBuilder
     bool doesFunctionTerminate();
 
     bool terminateFunction();
-
-    EntryBuilder(OperandBuilder& opBuilder);
 };
 
 #endif

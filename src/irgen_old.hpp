@@ -9,7 +9,7 @@
 #include "Builder/Unit.hpp"
 #include "Builder/UnitBuilder.hpp"
 #include "Console/Console.hpp"
-#include "IRGenerator/ScopeTracker.hpp"
+#include "Generator/ScopeTracker.hpp"
 #include "IntermediateRepresentation/All.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"

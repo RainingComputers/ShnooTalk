@@ -14,6 +14,8 @@ class ModuleBuilder
     std::pair<int, std::string> getSizeAndModuleName(const Token& dataTypeToken, icode::DataType dtype);
 
   public:
+    ModuleBuilder(Console& console);
+
     void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
     icode::TypeDescription createVoidTypeDescription();
@@ -36,8 +38,6 @@ class ModuleBuilder
                                  const std::vector<icode::TypeDescription>& fieldTypes);
 
     void createUse(const Token& nameToken);
-
-    ModuleBuilder(Console& console);
 };
 
 #endif

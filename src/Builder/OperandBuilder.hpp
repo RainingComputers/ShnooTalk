@@ -8,6 +8,8 @@ class OperandBuilder
     unsigned int idCounter;
 
   public:
+    OperandBuilder();
+
     unsigned int getId();
 
     icode::Operand createTempOperand(icode::DataType dtype);
@@ -40,8 +42,6 @@ class OperandBuilder
     icode::Operand operandFromIntLiteral(int value);
 
     icode::Operand operandFromFloatLiteral(float value);
-
-    OperandBuilder();
 };
 
 #endif
