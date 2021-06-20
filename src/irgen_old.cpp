@@ -12,10 +12,10 @@
 #include "Generator/Global.hpp"
 #include "Generator/Input.hpp"
 #include "Generator/Module.hpp"
+#include "Generator/Print.hpp"
 #include "Generator/Structure.hpp"
 #include "Generator/TypeDescriptionFromNode.hpp"
 #include "Generator/UnitFromIdentifier.hpp"
-#include "Generator/Print.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen

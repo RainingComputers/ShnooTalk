@@ -2,9 +2,9 @@
 #include <iostream>
 
 #include "Console/Console.hpp"
-#include "Translator/LLVMTranslator.hpp"
 #include "PrettyPrint/IRPrinter.hpp"
 #include "Token/Token.hpp"
+#include "Translator/LLVMTranslator.hpp"
 #include "irgen_old.hpp"
 #include "lexer.hpp"
 #include "parser.hpp"

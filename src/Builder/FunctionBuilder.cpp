@@ -179,12 +179,12 @@ void FunctionBuilder::createPrint(const Unit& unit)
         entryBuilder.printOperator(icode::PRINT, unit.first);
 }
 
-void FunctionBuilder::createPrintNewln() 
+void FunctionBuilder::createPrintNewln()
 {
     entryBuilder.noArgumentEntry(NEWLN);
 }
 
-void FunctionBuilder::createPrintSpace() 
+void FunctionBuilder::createPrintSpace()
 {
     entryBuilder.noArgumentEntry(SPACE);
 }
