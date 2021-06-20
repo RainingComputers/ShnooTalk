@@ -346,14 +346,12 @@ bool EntryBuilder::doesFunctionTerminate()
 
 bool EntryBuilder::terminateFunction()
 {
-    if (!doesFunctionTerminate())
-    {
-        if (!workingFunction->isVoid())
-            return false;
-
-        noArgumentEntry(icode::RET);
+    if (doesFunctionTerminate())
         return true;
-    }
 
+    if (!workingFunction->isVoid())
+        return false;
+
+    noArgumentEntry(icode::RET);
     return true;
 }
