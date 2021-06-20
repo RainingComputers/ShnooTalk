@@ -5,17 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug",
+            "name": "Debug currently open test",
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/uhll",
             "args": [
-                "test.uhll",
+                "${file}",
                 "-c"
             ],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/",
+            "cwd": "${workspaceFolder}/tests/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
