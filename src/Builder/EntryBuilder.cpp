@@ -71,19 +71,19 @@ void EntryBuilder::copy(Operand op1, Operand op2)
     }
     else
     {
-        Entry copy_entry;
+        Entry copyEntry;
 
         if (op1.isPointer() && !op2.isPointer())
-            copy_entry.opcode = WRITE;
+            copyEntry.opcode = WRITE;
         else if (!op1.isPointer() && op2.isPointer())
-            copy_entry.opcode = READ;
+            copyEntry.opcode = READ;
         else if (!op1.isPointer() && !op2.isPointer())
-            copy_entry.opcode = EQUAL;
+            copyEntry.opcode = EQUAL;
 
-        copy_entry.op1 = op1;
-        copy_entry.op2 = op2;
+        copyEntry.op1 = op1;
+        copyEntry.op2 = op2;
 
-        pushEntry(copy_entry);
+        pushEntry(copyEntry);
     }
 }
 
