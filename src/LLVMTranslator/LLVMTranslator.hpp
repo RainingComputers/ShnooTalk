@@ -1,5 +1,5 @@
-#ifndef LLVM_TRANSLATOR
-#define LLVM_TRANSLATOR
+#ifndef TRANSLATOR_LLVM_TRANSLATOR
+#define TRANSLATOR_LLVM_TRANSLATOR
 
 #include "../IntermediateRepresentation/All.hpp"
 

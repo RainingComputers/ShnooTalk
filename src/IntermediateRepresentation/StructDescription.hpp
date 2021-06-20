@@ -1,5 +1,5 @@
-#ifndef STRUCT_DESCRIPTION_HPP
-#define STRUCT_DESCRIPTION_HPP
+#ifndef IR_STRUCT_DESCRIPTION
+#define IR_STRUCT_DESCRIPTION
 
 #include <map>
 #include <string>

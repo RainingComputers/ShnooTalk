@@ -1,12 +1,12 @@
-#ifndef ERRORS_HPP
-#define ERRORS_HPP
+#ifndef PP_ERRORS
+#define PP_ERRORS
 
 #include <string>
 
 #include "../IntermediateRepresentation/TypeDescription.hpp"
 #include "../Token/Token.hpp"
 
-namespace mikpp
+namespace pp
 {
     void println(const std::string& msg);
 

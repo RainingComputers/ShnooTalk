@@ -1,5 +1,5 @@
-#ifndef DEFINE_HPP
-#define DEFINE_HPP
+#ifndef IR_DEFINE
+#define IR_DEFINE
 
 #include "DataType.hpp"
 

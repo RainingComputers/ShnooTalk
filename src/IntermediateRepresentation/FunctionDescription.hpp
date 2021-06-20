@@ -1,5 +1,5 @@
-#ifndef FUNCTION_DESCRIPTION_HPP
-#define FUNCTION_DESCRIPTION_HPP
+#ifndef IR_FUNCTION_DESCRIPTION
+#define IR_FUNCTION_DESCRIPTION
 
 #include <map>
 #include <vector>

@@ -1,5 +1,5 @@
-#ifndef STRING_BUILDER_HPP
-#define STRING_BUILDER_HPP
+#ifndef BUILDER_STRING_BUILDER
+#define BUILDER_STRING_BUILDER
 
 #include "../IntermediateRepresentation/ModuleDescription.hpp"
 #include "../Token/Token.hpp"

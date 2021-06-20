@@ -1,5 +1,5 @@
-#ifndef CONSOLE_HPP
-#define CONSOLE_HPP
+#ifndef CONSOLE_CONSOLE
+#define CONSOLE_CONSOLE
 
 #include <fstream>
 

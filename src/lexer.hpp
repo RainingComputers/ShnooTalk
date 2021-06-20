@@ -1,5 +1,5 @@
-#ifndef LEXER_HPP
-#define LEXER_HPP
+#ifndef LEXER
+#define LEXER
 
 #include <fstream>
 #include <regex>

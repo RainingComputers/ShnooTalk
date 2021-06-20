@@ -1,5 +1,5 @@
-#ifndef PARSER_HPP
-#define PARSER_HPP
+#ifndef PARSER
+#define PARSER
 
 #include <fstream>
 #include <vector>

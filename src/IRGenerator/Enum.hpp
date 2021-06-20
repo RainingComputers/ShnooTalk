@@ -1,5 +1,5 @@
-#ifndef IRGEN_ENUM_HPP
-#define IRGEN_ENUM_HPP
+#ifndef GENERATOR_ENUM
+#define GENERATOR_ENUM
 
 #include "../irgen_old.hpp"
 

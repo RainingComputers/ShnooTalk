@@ -1,5 +1,5 @@
-#ifndef UNIT
-#define UNIT
+#ifndef BUILDER_UNIT
+#define BUILDER_UNIT
 
 #include <utility>
 

@@ -1,5 +1,5 @@
-#ifndef UNIT_FROM_IDENTIFIER
-#define UNIT_FROM_IDENTIFIER
+#ifndef GENERATOR_UNIT_FROM_IDENTIFIER
+#define GENERATOR_UNIT_FROM_IDENTIFIER
 
 #include "../irgen_old.hpp"
 

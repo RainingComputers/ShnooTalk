@@ -1,5 +1,5 @@
-#ifndef CONTROL_STATEMENT_HPP
-#define CONTROL_STATEMENT_HPP
+#ifndef GENERATOR_CONTROL_STATEMENT
+#define GENERATOR_CONTROL_STATEMENT
 
 #include "../irgen_old.hpp"
 

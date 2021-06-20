@@ -1,5 +1,5 @@
-#ifndef SCOPE_TRACKER
-#define SCOPE_TRACKER
+#ifndef GENERATOR_SCOPE_TRACKER
+#define GENERATOR_SCOPE_TRACKER
 
 #include <map>
 #include <vector>

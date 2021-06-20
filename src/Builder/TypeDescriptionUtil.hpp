@@ -1,5 +1,5 @@
-#ifndef TYPE_DESCRIPTION_UTIL
-#define TYPE_DESCRIPTION_UTIL
+#ifndef BUILDER_TYPE_DESCRIPTION_UTIL
+#define BUILDER_TYPE_DESCRIPTION_UTIL
 
 #include "../IntermediateRepresentation/DataType.hpp"
 #include "../IntermediateRepresentation/TypeDescription.hpp"

@@ -1,5 +1,5 @@
-#ifndef GENERATE_FUNCTION_HPP
-#define GENERATE_FUNCTION_HPP
+#ifndef TRANSLATOR_GENERATE_FUNCTION
+#define TRANSLATOR_GENERATE_FUNCTION
 
 #include "BranchContext.hpp"
 #include "ModuleContext.hpp"

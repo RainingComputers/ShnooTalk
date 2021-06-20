@@ -1,5 +1,5 @@
-#ifndef NODE_HPP
-#define NODE_HPP
+#ifndef NODE_NODE
+#define NODE_NODE
 
 #include "../Token/Token.hpp"
 #include <vector>

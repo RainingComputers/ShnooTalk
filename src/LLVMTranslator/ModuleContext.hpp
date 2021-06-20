@@ -1,6 +1,5 @@
-
-#ifndef MODULE_CONTEXT_HPP
-#define MODULE_CONTEXT_HPP
+#ifndef TRANSLATOR_MODULE_CONTEXT
+#define TRANSLATOR_MODULE_CONTEXT
 
 #include <map>
 #include <queue>

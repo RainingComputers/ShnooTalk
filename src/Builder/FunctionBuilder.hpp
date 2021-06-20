@@ -1,5 +1,5 @@
-#ifndef FUNCTION_BUILDER
-#define FUNCTION_BUILDER
+#ifndef BUILDER_FUNCTION_BUILDER
+#define BUILDER_FUNCTION_BUILDER
 
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"

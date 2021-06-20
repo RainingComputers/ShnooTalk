@@ -1,5 +1,5 @@
-#ifndef READ_WRITE_COPY
-#define READ_WRITE_COPY
+#ifndef TRANSLATOR_READ_WRITE_COPY
+#define TRANSLATOR_READ_WRITE_COPY
 
 #include "ModuleContext.hpp"
 

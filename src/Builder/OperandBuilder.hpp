@@ -1,5 +1,5 @@
-#ifndef OPERAND_BUILDER
-#define OPERAND_BUILDER
+#ifndef BUILDER_OPERAND_BUILDER
+#define BUILDER_OPERAND_BUILDER
 
 #include "../IntermediateRepresentation/All.hpp"
 

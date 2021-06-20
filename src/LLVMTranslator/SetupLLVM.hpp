@@ -1,5 +1,5 @@
-#ifndef LLVM_SETUP
-#define LLVM_SETUP
+#ifndef TRANSLATOR_LLVM_SETUP
+#define TRANSLATOR_LLVM_SETUP
 
 #include "llvm/Target/TargetMachine.h"
 

@@ -1,5 +1,5 @@
-#ifndef BINARY_OPERATOR_HPP
-#define BINARY_OPERATOR_HPP
+#ifndef TRANSLATOR_BINARY_OPERATOR
+#define TRANSLATOR_BINARY_OPERATOR
 
 #include "ModuleContext.hpp"
 

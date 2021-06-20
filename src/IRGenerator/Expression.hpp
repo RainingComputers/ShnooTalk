@@ -1,5 +1,5 @@
-#ifndef EXPRESSION_HPP
-#define EXPRESSUON_HPP
+#ifndef GENERATOR_EXPRESSION
+#define GENERATOR_EXPRESSUON
 
 #include "../irgen_old.hpp"
 

@@ -1,5 +1,5 @@
-#ifndef IRGEN_GLOBAL_HPP
-#define IRGEN_GLOBAL_HPP
+#ifndef GENERATOR_GLOBAL
+#define GENERATOR_GLOBAL
 
 #include "../irgen_old.hpp"
 

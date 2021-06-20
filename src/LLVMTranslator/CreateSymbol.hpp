@@ -1,5 +1,5 @@
-#ifndef CREATE_SYMBOL_HPP
-#define CREATE_SYMBOL_HPP
+#ifndef TRANSLATOR_CREATE_SYMBOL
+#define TRANSLATOR_CREATE_SYMBOL
 
 #include "llvm/IR/Value.h"
 

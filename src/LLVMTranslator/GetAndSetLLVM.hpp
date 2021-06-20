@@ -1,5 +1,5 @@
-#ifndef GET_LLVM_HPP
-#define GET_LLVM_HPP
+#ifndef TRANSLATOR_GET_AND_SET_LLVM
+#define TRANSLATOR_GET_AND_SET_LLVM
 
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Value.h"

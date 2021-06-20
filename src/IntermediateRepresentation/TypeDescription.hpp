@@ -1,5 +1,5 @@
-#ifndef VARIABLE_DESCRIPTION
-#define VARIABLE_DESCRIPTION
+#ifndef IR_TYPE_DESCRIPTION
+#define IR_TYPE_DESCRIPTION
 
 #include <vector>
 

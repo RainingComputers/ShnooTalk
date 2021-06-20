@@ -1,6 +1,6 @@
 #include "IRPrinter.hpp"
 
-namespace mikpp
+namespace pp
 {
     void printToken(const Token& symbol)
     {

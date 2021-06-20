@@ -1,5 +1,5 @@
-#ifndef OPERAND_HPP
-#define OPERAND_HPP
+#ifndef IR_OPERAND
+#define IR_OPERAND
 
 #include "DataType.hpp"
 #include "TypeDescription.hpp"

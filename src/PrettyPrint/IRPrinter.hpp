@@ -1,5 +1,5 @@
-#ifndef IR_PRINTER_HPP
-#define IR_PRINTER_HPP
+#ifndef PP_IR_PRINTER
+#define PP_IR_PRINTER
 
 #include <fstream>
 #include <iostream>
@@ -10,7 +10,7 @@
 #include "../Token/Token.hpp"
 #include "Strings.hpp"
 
-namespace mikpp
+namespace pp
 {
     void printToken(const Token& symbol);
 

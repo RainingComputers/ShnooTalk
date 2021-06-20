@@ -1,5 +1,5 @@
-#ifndef BRANCH_HPP
-#define BRANCH_HPP
+#ifndef TRANSLATOR_BRANCH
+#define TRANSLATOR_BRANCH
 
 #include "BranchContext.hpp"
 #include "ModuleContext.hpp"

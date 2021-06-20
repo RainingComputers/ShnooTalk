@@ -2,49 +2,49 @@
 
 void Console::compileErrorOnToken(const std::string& message, const Token& tok)
 {
-    mikpp::errorOnToken(fileName, message, *file, tok);
+    pp::errorOnToken(fileName, message, *file, tok);
     throw CompileError();
 }
 
 void Console::typeError(const Token& tok, icode::TypeDescription& expected, icode::TypeDescription& found)
 {
-    mikpp::typeError(fileName, *file, tok, expected, found);
+    pp::typeError(fileName, *file, tok, expected, found);
     throw CompileError();
 }
 
 void Console::internalBugErrorOnToken(const Token& tok)
 {
-    mikpp::errorOnToken(fileName, "Internal compiler error, REPORT THIS BUG", *file, tok);
+    pp::errorOnToken(fileName, "Internal compiler error, REPORT THIS BUG", *file, tok);
     throw InternalBugError();
 }
 
 void Console::internalBugError()
 {
-    mikpp::errorOnModuleName(fileName, "Internal compiler error, REPORT THIS BUG");
+    pp::errorOnModuleName(fileName, "Internal compiler error, REPORT THIS BUG");
     throw InternalBugError();
 }
 
 void Console::internalBugErrorMessage(const std::string& message)
 {
-    mikpp::println(message);
+    pp::println(message);
     throw InternalBugError();
 }
 
 void Console::parseError(token::TokenType& expected, Token& found)
 {
-    mikpp::parserError(fileName, expected, found, *file);
+    pp::parserError(fileName, expected, found, *file);
     throw CompileError();
 }
 
 void Console::parserErrorMultiple(const token::TokenType* expected, int ntoks, const Token& found)
 {
-    mikpp::parserErrorMultiple(fileName, expected, ntoks, found, *file);
+    pp::parserErrorMultiple(fileName, expected, ntoks, found, *file);
     throw CompileError();
 }
 
 void Console::lexerError(const std::string& errorMessage, const std::string& line, int lineno, int col)
 {
-    mikpp::errorOnLine(fileName, errorMessage, line, lineno, col);
+    pp::errorOnLine(fileName, errorMessage, line, lineno, col);
     throw CompileError();
 }
 

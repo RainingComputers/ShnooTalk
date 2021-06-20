@@ -1,5 +1,5 @@
-#ifndef DESCRIPTION_FINDER
-#define DESCRIPTION_FINDER
+#ifndef BUILDER_DESCRIPTION_FINDER
+#define BUILDER_DESCRIPTION_FINDER
 
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"

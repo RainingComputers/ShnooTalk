@@ -1,5 +1,5 @@
-#ifndef IRGEN_HPP
-#define IRGEN_HPP
+#ifndef DEPRICATED_IRGEN
+#define DEPRICATED_IRGEN
 
 #include "Builder/DescriptionFinder.hpp"
 #include "Builder/EntryBuilder.hpp"

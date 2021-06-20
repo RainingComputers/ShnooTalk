@@ -1,5 +1,5 @@
-#ifndef IRGEN_STRUCTURE_HPP
-#define IRGEN_STRUCTURE_HPP
+#ifndef GENERATOR_STRUCTURE_HPP
+#define GENERATOR_STRUCTURE_HPP
 
 #include "../irgen_old.hpp"
 

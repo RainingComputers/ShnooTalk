@@ -1,5 +1,5 @@
-#ifndef UNIT_BUILDER
-#define UNIT_BUILDER
+#ifndef BUILDER_UNIT_BUILDER
+#define BUILDER_UNIT_BUILDER
 
 #include "OperandBuilder.hpp"
 #include "Unit.hpp"

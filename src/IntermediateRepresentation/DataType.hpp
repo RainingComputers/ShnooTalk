@@ -1,5 +1,5 @@
-#ifndef DATA_TYPE_HPP
-#define DATA_TYPE_HPP
+#ifndef IR_DATA_TYPE
+#define IR_DATA_TYPE
 
 #include <string>
 

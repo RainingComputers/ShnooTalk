@@ -1,5 +1,5 @@
-#ifndef IRGEN_INPUT_HPP
-#define IRGEN_INPUT_HPP
+#ifndef GENERATOR_INPUT
+#define GENERATOR_INPUT
 
 #include "../irgen_old.hpp"
 

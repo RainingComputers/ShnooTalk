@@ -1,5 +1,5 @@
-#ifndef PRINT_HPP
-#define PRINT_HPP
+#ifndef TRANSLATOR_PRINT
+#define TRANSLATOR_PRINT
 
 #include "FormatStringsContext.hpp"
 #include "ModuleContext.hpp"

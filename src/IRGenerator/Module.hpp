@@ -1,5 +1,5 @@
-#ifndef IRGEN_MODULE_HPP
-#define IRGEN_MODULE_HPP
+#ifndef GENERATOR_MODULE
+#define GENERATOR_MODULE
 
 #include "../irgen_old.hpp"
 

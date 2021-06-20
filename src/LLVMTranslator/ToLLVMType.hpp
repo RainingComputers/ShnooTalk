@@ -1,5 +1,5 @@
-#ifndef TO_LLVM_TYPE_HPP
-#define TO_LLVM_TYPE_HPP
+#ifndef TRANSLATOR_TO_LLVM_TYPE
+#define TRANSLATOR_TO_LLVM_TYPE
 
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Type.h"

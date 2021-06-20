@@ -1,5 +1,5 @@
-#ifndef MODULE_DESCRIPTION_HPP
-#define MODULE_DESCRIPTION_HPP
+#ifndef IR_MODULE_DESCRIPTION
+#define IR_MODULE_DESCRIPTION
 
 #include <map>
 #include <string>

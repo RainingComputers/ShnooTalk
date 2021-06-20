@@ -1,5 +1,5 @@
-#ifndef FUNCTION_CALL_HPP
-#define FUNCTION_CALL_HPP
+#ifndef TRANSLATOR_FUNCTION_CALL
+#define TRANSLATOR_FUNCTION_CALL
 
 #include "ModuleContext.hpp"
 

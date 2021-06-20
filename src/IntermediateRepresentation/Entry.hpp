@@ -1,5 +1,5 @@
-#ifndef ENTRY_HPP
-#define ENTRY_HPP
+#ifndef IR_ENTRY
+#define IR_ENTRY
 
 #include "Operand.hpp"
 

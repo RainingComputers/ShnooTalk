@@ -1,5 +1,5 @@
-#ifndef STRINGS_HPP
-#define STRINGS_HPP
+#ifndef PP_STRINGS
+#define PP_STRINGS
 
 #include <string>
 

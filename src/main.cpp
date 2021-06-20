@@ -12,12 +12,12 @@
 
 void printCLIUsage()
 {
-    mikpp::println("USAGE: uhllc FILE OPTION");
-    mikpp::println("\nAvailable options:");
-    mikpp::println("\t-c\tCompile program");
-    mikpp::println("\t-ast\tPrint parse tree");
-    mikpp::println("\t-ir\tPrint intermediate code representation");
-    mikpp::println("\t-llvm\tPrint llvm ir");
+    pp::println("USAGE: uhllc FILE OPTION");
+    pp::println("\nAvailable options:");
+    pp::println("\t-c\tCompile program");
+    pp::println("\t-ast\tPrint parse tree");
+    pp::println("\t-ir\tPrint intermediate code representation");
+    pp::println("\t-llvm\tPrint llvm ir");
 }
 
 std::string removeFileExtension(const std::string& fileName)
@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
 
         if (option == "-ast")
         {
-            mikpp::printNode(generateAST(console));
+            pp::printNode(generateAST(console));
             return 0;
         }
 
@@ -98,13 +98,13 @@ int main(int argc, char* argv[])
 
         if (option == "-ir")
         {
-            mikpp::printModuleDescription(modulesMap[moduleName]);
+            pp::printModuleDescription(modulesMap[moduleName]);
             return 0;
         }
 
         if (option == "-llvm")
         {
-            mikpp::println(llvmgen::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
+            pp::println(llvmgen::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
             return 0;
         }
 
@@ -129,7 +129,7 @@ int main(int argc, char* argv[])
     }
     catch (const std::ifstream::failure)
     {
-        mikpp::println("File I/O error");
+        pp::println("File I/O error");
         return EXIT_FAILURE;
     }
 

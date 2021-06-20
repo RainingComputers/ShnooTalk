@@ -1,5 +1,5 @@
-#ifndef CAST_OPERATOR_HPP
-#define CAST_OPERATOR_HPP
+#ifndef TRANSLATOR_CAST_OPERATOR
+#define TRANSLATOR_CAST_OPERATOR
 
 #include "ModuleContext.hpp"
 

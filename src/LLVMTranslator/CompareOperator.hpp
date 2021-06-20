@@ -1,5 +1,5 @@
-#ifndef COMPARE_OPERATOR_HPP
-#define COMPARE_OPERATOR_HPP
+#ifndef TRANSLATOR_COMPARE_OPERATOR
+#define TRANSLATOR_COMPARE_OPERATOR
 
 #include "BranchContext.hpp"
 #include "ModuleContext.hpp"

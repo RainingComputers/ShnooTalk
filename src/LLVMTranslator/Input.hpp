@@ -1,5 +1,5 @@
-#ifndef INPUT_HPP
-#define INPUT_HPP
+#ifndef TRANSLATOR_INPUT
+#define TRANSLATOR_INPUT
 
 #include "FormatStringsContext.hpp"
 #include "ModuleContext.hpp"

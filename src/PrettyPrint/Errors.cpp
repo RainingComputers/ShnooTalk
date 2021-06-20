@@ -5,7 +5,7 @@
 
 #include "Errors.hpp"
 
-namespace mikpp
+namespace pp
 {
     void println(const std::string& msg)
     {

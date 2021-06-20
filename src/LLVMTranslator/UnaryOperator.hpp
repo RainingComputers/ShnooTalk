@@ -1,5 +1,5 @@
-#ifndef UNARY_OPERATOR
-#define UNARY_OPERATOR
+#ifndef TRANSLATOR_UNARY_OPERATOR
+#define TRANSLATOR_UNARY_OPERATOR
 
 #include "ModuleContext.hpp"
 

@@ -1,5 +1,5 @@
-#ifndef GENERATE_MODULE_HPP
-#define GENERATE_MODULE_HPP
+#ifndef TRANSLATOR_GENERATE_MODULE
+#define TRANSLATOR_GENERATE_MODULE
 
 #include "BranchContext.hpp"
 #include "FormatStringsContext.hpp"

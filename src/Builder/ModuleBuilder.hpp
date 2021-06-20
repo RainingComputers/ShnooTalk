@@ -1,5 +1,5 @@
-#ifndef MODULE_BUILDER
-#define MODULE_BUILDER
+#ifndef BUILDER_MODULE_BUILDER
+#define BUILDER_MODULE_BUILDER
 
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"

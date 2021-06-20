@@ -1,5 +1,5 @@
-#ifndef IRGEN_PRINT_HPP
-#define IRGEN_PRINT_HPP
+#ifndef GENERATOR_PRINT
+#define GENERATOR_PRINT
 
 #include "../irgen_old.hpp"
 
