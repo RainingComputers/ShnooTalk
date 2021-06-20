@@ -56,6 +56,8 @@ class FunctionBuilder
     Unit createString(const Token& str_token);
 
     bool terminateFunction();
+
+    void createInput(const Unit& unit);
 };
 
 #endif

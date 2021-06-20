@@ -34,7 +34,7 @@ namespace icode
 
     void TypeDescription::becomeString()
     {
-        setProperty(IS_STRING);
+        setProperty(IS_STRING_LTRL);
     }
 
     bool TypeDescription::isMutable() const
@@ -64,7 +64,7 @@ namespace icode
 
     bool TypeDescription::isString() const
     {
-        return checkProperty(IS_STRING);
+        return checkProperty(IS_STRING_LTRL);
     }
 
     bool canAssignString(TypeDescription assignee, TypeDescription str)

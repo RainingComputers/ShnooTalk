@@ -49,8 +49,6 @@ namespace irgen
         void pushWorkingModule();
         void popWorkingModule();
 
-        bool get_func(const std::string& name, icode::FunctionDescription& func);
-
         std::pair<Token, icode::TypeDescription> var_from_node(const Node& root);
 
         void assign_str_literal_tovar(Unit var, Node& root);
@@ -68,8 +66,6 @@ namespace irgen
         void assignment(const Node& root);
 
         void print(const Node& root);
-
-        void input(const Node& root);
 
         void block(const Node& root,
                    bool loop,

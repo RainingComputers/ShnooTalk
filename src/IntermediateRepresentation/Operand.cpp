@@ -54,4 +54,9 @@ namespace icode
     {
         return !(operandType == TEMP || operandType == STR_DATA || operandType == LITERAL);
     }
+
+    bool Operand::isInvalidForInput() const
+    {
+        return !(operandType == VAR || operandType == GBL_VAR || operandType == TEMP_PTR || operandType == PTR);
+    }
 }

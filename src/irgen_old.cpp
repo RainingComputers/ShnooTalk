@@ -14,6 +14,7 @@
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "IRGenerator/UnitFromIdentifier.hpp"
 #include "IRGenerator/FunctionCall.hpp"
+#include "IRGenerator/Input.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -66,17 +67,6 @@ namespace irgen
     {
         setWorkingModule(moduleDescriptionStack.back());
         moduleDescriptionStack.pop_back();
-    }
-
-    bool ir_generator::get_func(const std::string& name, icode::FunctionDescription& func)
-    {
-        if ((*workingModule).getFunction(name, func))
-            return true;
-
-        if (rootModule.getFunction(name, func))
-            return true;
-
-        return false;
     }
 
     TokenTypePair ir_generator::var_from_node(const Node& root)
@@ -423,31 +413,6 @@ namespace irgen
         }
     }
 
-    void ir_generator::input(const Node& root)
-    {
-        Unit input_var = expression(*this, root.children[0]);
-
-        /* Check if the input var is writable */
-        if (!(input_var.first.operandType == icode::VAR || input_var.first.operandType == icode::GBL_VAR ||
-              input_var.first.operandType == icode::TEMP_PTR || input_var.first.operandType == icode::PTR))
-            console.compileErrorOnToken("Invalid term for INPUT", root.children[0].tok);
-
-        if (input_var.second.isStruct())
-            console.compileErrorOnToken("Cannot INPUT STRUCT", root.children[0].tok);
-
-        if (input_var.second.dimensions.size() > 1)
-            console.compileErrorOnToken("Cannot INPUT more than 1D ARRAY", root.children[0].tok);
-
-        if (input_var.second.dimensions.size() == 1 && input_var.first.dtype == icode::UI8)
-            console.compileErrorOnToken("String input requires 1D CHAR ARRAY", root.children[0].tok);
-
-        /* Create INPUT or INPUT_STR entry */
-        if (input_var.second.dimensions.size() == 0)
-            builder.inputOperator(icode::INPUT, input_var.first);
-        else
-            builder.inputOperator(icode::INPUT_STR, input_var.first, input_var.second.dimensions[0]);
-    }
-
     void ir_generator::block(const Node& root,
                              bool isLoopBlock,
                              const icode::Operand& loopLabel,
@@ -549,7 +514,7 @@ namespace irgen
                     print(stmt);
                     break;
                 case node::INPUT:
-                    input(stmt);
+                    input(*this, stmt);
                     break;
                 case node::EXIT:
                 {

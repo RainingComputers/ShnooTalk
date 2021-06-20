@@ -158,3 +158,11 @@ bool FunctionBuilder::terminateFunction()
 {
     return entryBuilder.terminateFunction();
 }
+
+void FunctionBuilder::createInput(const Unit& unit)
+{
+    if (unit.second.isArray())
+        entryBuilder.inputOperator(icode::INPUT_STR, unit.first, unit.second.dimensions[0]);
+    else
+        entryBuilder.inputOperator(icode::INPUT, unit.first);
+}

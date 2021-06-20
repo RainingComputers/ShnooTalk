@@ -17,7 +17,7 @@ namespace icode
         IS_LOCAL,
         IS_ENUM,
         IS_DEFINE,
-        IS_STRING,
+        IS_STRING_LTRL,
     };
 
     struct TypeDescription
