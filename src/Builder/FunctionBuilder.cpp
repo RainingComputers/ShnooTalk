@@ -161,7 +161,30 @@ bool FunctionBuilder::terminateFunction()
 void FunctionBuilder::createInput(const Unit& unit)
 {
     if (unit.second.isArray())
-        entryBuilder.inputOperator(icode::INPUT_STR, unit.first, unit.second.dimensions[0]);
+        entryBuilder.inputOperator(INPUT_STR, unit.first, unit.second.dimensions[0]);
     else
-        entryBuilder.inputOperator(icode::INPUT, unit.first);
+        entryBuilder.inputOperator(INPUT, unit.first);
+}
+
+void FunctionBuilder::createPrintStringLtrl(const Unit& stringLiteral)
+{
+    entryBuilder.printOperator(PRINT_STR, stringLiteral.first);
+}
+
+void FunctionBuilder::createPrint(const Unit& unit)
+{
+    if (unit.second.isArray())
+        entryBuilder.printOperator(icode::PRINT_STR, unit.first);
+    else
+        entryBuilder.printOperator(icode::PRINT, unit.first);
+}
+
+void FunctionBuilder::createPrintNewln() 
+{
+    entryBuilder.noArgumentEntry(NEWLN);
+}
+
+void FunctionBuilder::createPrintSpace() 
+{
+    entryBuilder.noArgumentEntry(SPACE);
 }

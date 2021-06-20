@@ -57,6 +57,11 @@ namespace icode
         return dimensions.size() > 0;
     }
 
+    bool TypeDescription::isMultiDimArray() const
+    {
+        return dimensions.size() > 1;
+    }
+
     bool TypeDescription::isIntegerType() const
     {
         return isInteger(dtype);

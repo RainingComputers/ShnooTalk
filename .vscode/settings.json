@@ -62,12 +62,14 @@
     },
     "cSpell.words": [
         "CONDN",
+        "Newln",
         "dtype",
         "ibuild",
         "icode",
         "irgen",
         "mikpp",
         "mikuro",
-        "println"
+        "println",
+        "newln"
     ]
 }

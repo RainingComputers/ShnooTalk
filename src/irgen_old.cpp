@@ -15,6 +15,7 @@
 #include "IRGenerator/Structure.hpp"
 #include "IRGenerator/TypeDescriptionFromNode.hpp"
 #include "IRGenerator/UnitFromIdentifier.hpp"
+#include "IRGenerator/Print.hpp"
 #include "irgen_old.hpp"
 
 namespace irgen
@@ -375,39 +376,6 @@ namespace irgen
         }
     }
 
-    void ir_generator::print(const Node& root)
-    {
-        for (size_t i = 0; i < root.children.size(); i++)
-        {
-            Node child = root.children[i];
-
-            if (child.type == node::STR_LITERAL)
-            {
-                icode::Operand str_dat_opr = strBuilder.createStringOperand(child.tok, icode::UI8);
-
-                builder.printOperator(icode::PRINT_STR, str_dat_opr);
-            }
-            else
-            {
-                Unit print_var = expression(*this, child);
-
-                if (print_var.second.dtype == icode::STRUCT || print_var.second.dimensions.size() > 1)
-                    console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
-
-                if (print_var.second.dimensions.size() != 0)
-                    builder.printOperator(icode::PRINT_STR, print_var.first);
-                else
-                    builder.printOperator(icode::PRINT, print_var.first);
-            }
-
-            if (i != root.children.size() - 1)
-                builder.noArgumentEntry(icode::SPACE);
-
-            if (i == root.children.size() - 1 && root.type == node::PRINTLN)
-                builder.noArgumentEntry(icode::NEWLN);
-        }
-    }
-
     void ir_generator::block(const Node& root,
                              bool isLoopBlock,
                              const icode::Operand& loopLabel,
@@ -506,7 +474,7 @@ namespace irgen
                 }
                 case node::PRINT:
                 case node::PRINTLN:
-                    print(stmt);
+                    print(*this, stmt);
                     break;
                 case node::INPUT:
                     input(*this, stmt);

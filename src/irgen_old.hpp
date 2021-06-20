@@ -64,8 +64,6 @@ namespace irgen
 
         void assignment(const Node& root);
 
-        void print(const Node& root);
-
         void block(const Node& root,
                    bool loop,
                    const icode::Operand& start_label,

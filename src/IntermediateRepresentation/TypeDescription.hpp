@@ -48,6 +48,7 @@ namespace icode
         bool isSameType() const;
         bool isStruct() const;
         bool isArray() const;
+        bool isMultiDimArray() const;
         bool isIntegerType() const;
     };
 

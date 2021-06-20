@@ -51,13 +51,17 @@ class FunctionBuilder
 
     Unit callFunction(const Token& calleeNameToken, icode::FunctionDescription callee);
 
-    icode::Operand creatStringOperand(const Token& str_token, icode::DataType dtype);
-
-    Unit createString(const Token& str_token);
-
     bool terminateFunction();
 
     void createInput(const Unit& unit);
+
+    void createPrintStringLtrl(const Unit& stringLiteral);
+
+    void createPrint(const Unit& unit);
+
+    void createPrintNewln();
+
+    void createPrintSpace();
 };
 
 #endif
