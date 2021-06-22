@@ -1,5 +1,11 @@
 #include "Console.hpp"
 
+Console::Console(const std::string& fileName, std::ifstream* file)
+  : fileName(fileName)
+{
+    this->file = file;
+}
+
 void Console::compileErrorOnToken(const std::string& message, const Token& tok)
 {
     pp::errorOnToken(fileName, message, *file, tok);
@@ -51,10 +57,4 @@ void Console::lexerError(const std::string& errorMessage, const std::string& lin
 std::ifstream* Console::getStream()
 {
     return file;
-}
-
-Console::Console(const std::string& fileName, std::ifstream* file)
-  : fileName(fileName)
-{
-    this->file = file;
 }

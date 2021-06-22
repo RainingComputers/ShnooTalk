@@ -7,13 +7,13 @@
 #include "Console/Console.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"
-#include "lexer.hpp"
+#include "Lexer/Lexer.hpp"
 
 namespace parser
 {
     class rd_parser
     {
-        lexer::lexical_analyser& lex;
+        lexer::Lexer& lex;
         Console& console;
 
         Node* current_node;
@@ -67,7 +67,7 @@ namespace parser
 
       public:
         Node ast;
-        rd_parser(lexer::lexical_analyser& lexer, Console& consoleRef);
+        rd_parser(lexer::Lexer& lexer, Console& consoleRef);
     };
 }
 

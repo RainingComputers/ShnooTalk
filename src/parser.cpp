@@ -7,7 +7,7 @@
 
 namespace parser
 {
-    rd_parser::rd_parser(lexer::lexical_analyser& lexer, Console& consoleRef)
+    rd_parser::rd_parser(lexer::Lexer& lexer, Console& consoleRef)
       : lex(lexer)
       , console(consoleRef)
       , ast(node::PROGRAM)
@@ -23,19 +23,19 @@ namespace parser
     void rd_parser::next()
     {
         /* Get next token from lexer's token queue */
-        lex.get_token(symbol);
+        lex.getToken(symbol);
     }
 
     bool rd_parser::peek(token::TokenType type)
     {
         /* Peek into token queue without popping it */
-        return type == lex.peek_token().getType();
+        return type == lex.peekToken().getType();
     }
 
     bool rd_parser::dpeek(token::TokenType type)
     {
         /* Peek into token queue without popping it */
-        return type == lex.dpeek_token().getType();
+        return type == lex.doublePeekToken().getType();
     }
 
     bool rd_parser::accept(token::TokenType type)

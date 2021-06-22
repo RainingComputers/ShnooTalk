@@ -6,7 +6,7 @@
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
 #include "irgen_old.hpp"
-#include "lexer.hpp"
+#include "Lexer/Lexer.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
 
@@ -37,7 +37,7 @@ Console getStreamAndConsole(const std::string& fileName, std::ifstream& fileStre
 
 Node generateAST(Console& console)
 {
-    lexer::lexical_analyser lex(*console.getStream(), console);
+    lexer::Lexer lex(*console.getStream(), console);
     parser::rd_parser parse(lex, console);
 
     return parse.ast;
