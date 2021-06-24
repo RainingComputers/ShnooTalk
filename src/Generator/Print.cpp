@@ -9,7 +9,7 @@ void print(irgen::ir_generator& ctx, const Node& root)
         Node child = root.children[i];
 
         if (child.type == node::STR_LITERAL)
-            ctx.functionBuilder.createPrintStringLtrl(ctx.strBuilder.createString(child.tok));
+            ctx.functionBuilder.createPrint(ctx.strBuilder.createString(child.tok));
         else
         {
             Unit unit = expression(ctx, child);
@@ -21,9 +21,9 @@ void print(irgen::ir_generator& ctx, const Node& root)
         }
 
         if (i != root.children.size() - 1)
-            ctx.functionBuilder.createPrintSpace();
+            ctx.functionBuilder.noArgumentEntry(icode::SPACE);
 
         if (i == root.children.size() - 1 && root.type == node::PRINTLN)
-            ctx.functionBuilder.createPrintNewln();
+            ctx.functionBuilder.noArgumentEntry(icode::NEWLN);
     }
 }

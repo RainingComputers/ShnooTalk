@@ -1,48 +1,72 @@
-#ifndef BUILDER_FUNCTION_BUILDER
-#define BUILDER_FUNCTION_BUILDER
+#ifndef BUILDER_ENTRY_BUILDER
+#define BUILDER_ENTRY_BUILDER
 
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"
-#include "EntryBuilder.hpp"
-#include "UnitBuilder.hpp"
+#include "OperandBuilder.hpp"
+#include "Unit.hpp"
 
 class FunctionBuilder
 {
-    icode::StringModulesMap& modulesMap;
-
     Console& console;
+    icode::StringModulesMap& modulesMap;
     OperandBuilder& opBuilder;
-    EntryBuilder& entryBuilder;
+    icode::FunctionDescription* workingFunction;
+
+    icode::Operand ensureNotPointer(icode::Operand op);
+
+    icode::Operand pushEntryAndEnsureNoPointerWrite(icode::Entry entry);
+
+    icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op,
+                                                      const std::string& dtypeName,
+                                                      icode::ModuleDescription* workingModule);
+
+  public:
+    FunctionBuilder(icode::StringModulesMap& modulesMap, Console& console, OperandBuilder& opBuilder);
+
+    void setWorkingFunction(icode::FunctionDescription* functionDesc);
+
+    void pushEntry(icode::Entry entry);
+
+    icode::Operand createPointer(const icode::Operand& op,
+                                 const std::string& dtypeName,
+                                 icode::ModuleDescription* workingModule);
 
     icode::Operand getPointerOperand(const Unit& unit);
 
-  public:
-    FunctionBuilder(icode::StringModulesMap& modulesMap,
-                    Console& console,
-                    OperandBuilder& opBuilder,
-                    EntryBuilder& entryBuilder);
+    void copy(icode::Operand op1, icode::Operand op2);
+
+    Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
+
+    // TODO: Remove this function
+    icode::Operand binaryOperator(icode::Instruction instruction,
+                                  icode::Operand op1,
+                                  icode::Operand op2,
+                                  icode::Operand op3);
+
+    Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
+
+    Unit castOperator(const Unit& unitToCast, icode::DataType destinationDataType);
+
+    void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
+
+    icode::Operand addressAddOperator(icode::Operand op2, icode::Operand op3);
+
+    icode::Operand addressMultiplyOperator(icode::Operand op2, icode::Operand op3);
 
     Unit getStructField(const Token& fieldName, const Unit& unit);
 
     Unit getIndexedElement(const Unit& unit, const std::vector<Unit>& indices);
 
-    Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
-
-    Unit castOperator(const Unit& unitToCast, icode::DataType destinationDataType);
-
-    Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
-
     icode::Operand createLabel(const Token& tok, bool isTrueLabel, std::string prefix);
 
-    void insertLabel(const icode::Operand& label);
+    void insertLabel(icode::Operand op);
 
-    void createIfTrueGoto(const icode::Operand& label);
+    void createBranch(icode::Instruction instruction, icode::Operand op);
 
-    void createIfFalseGoto(const icode::Operand& label);
+    void createPrint(const Unit& unit);
 
-    void createGoto(const icode::Operand& label);
-
-    void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
+    void createInput(const Unit& unit);
 
     void passParameter(const Token& calleeNameToken,
                        icode::FunctionDescription callee,
@@ -51,17 +75,11 @@ class FunctionBuilder
 
     Unit callFunction(const Token& calleeNameToken, icode::FunctionDescription callee);
 
+    void noArgumentEntry(icode::Instruction instruction);
+
+    bool doesFunctionTerminate();
+
     bool terminateFunction();
-
-    void createInput(const Unit& unit);
-
-    void createPrintStringLtrl(const Unit& stringLiteral);
-
-    void createPrint(const Unit& unit);
-
-    void createPrintNewln();
-
-    void createPrintSpace();
 };
 
 #endif

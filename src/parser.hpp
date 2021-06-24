@@ -5,9 +5,9 @@
 #include <vector>
 
 #include "Console/Console.hpp"
+#include "Lexer/Lexer.hpp"
 #include "Node/Node.hpp"
 #include "Token/Token.hpp"
-#include "Lexer/Lexer.hpp"
 
 namespace parser
 {

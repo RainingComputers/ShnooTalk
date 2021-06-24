@@ -131,5 +131,6 @@ const std::string instructionToString[] = {
     "WRITE",        "CREATE_PTR", "CAST",      "UNARY_MINUS", "NOT",      "MUL",      "DIV",          "MOD",
     "ADD",          "SUB",        "RSH",       "LSH",         "LT",       "LTE",      "GT",           "GTE",
     "EQ",           "NEQ",        "BWA",       "BWX",         "BWO",      "GOTO",     "IF_TRUE_GOTO", "IF_FALSE_GOTO",
-    "CREATE_LABEL", "PRINT",      "PRINT_STR", "SPACE",       "NEWLN",    "INPUT",    "INPUT_STR",    "EXIT"
+    "CREATE_LABEL", "PRINT",      "PRINT_STR", "SPACE",       "NEWLN",    "INPUT",    "INPUT_STR",    "MEMCPY",
+    "EXIT"
 };

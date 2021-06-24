@@ -2,11 +2,11 @@
 #include <iostream>
 
 #include "Console/Console.hpp"
+#include "Lexer/Lexer.hpp"
 #include "PrettyPrint/IRPrinter.hpp"
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
 #include "irgen_old.hpp"
-#include "Lexer/Lexer.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
 

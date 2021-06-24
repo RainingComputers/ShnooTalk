@@ -104,9 +104,9 @@ void relationalOperator(irgen::ir_generator& ctx,
     ctx.functionBuilder.compareOperator(opcode, LHS, RHS);
 
     if (!trueFall)
-        ctx.functionBuilder.createIfTrueGoto(trueLabel);
+        ctx.functionBuilder.createBranch(icode::IF_TRUE_GOTO, trueLabel);
     else
-        ctx.functionBuilder.createIfFalseGoto(falseLabel);
+        ctx.functionBuilder.createBranch(icode::IF_FALSE_GOTO, falseLabel);
 }
 
 void conditionalExpression(irgen::ir_generator& ctx,

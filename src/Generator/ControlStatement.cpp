@@ -27,7 +27,7 @@ void ifStatement(irgen::ir_generator& ctx,
             ctx.block(child.children[1], isLoopBlock, loopLabel, breakLabel, continueLabel);
 
             if (i != root.children.size() - 1)
-                ctx.functionBuilder.createGoto(elseIfChainEndLabel);
+                ctx.functionBuilder.createBranch(GOTO, elseIfChainEndLabel);
 
             ctx.functionBuilder.insertLabel(ifFalseLabel);
         }
@@ -52,7 +52,7 @@ void whileLoop(irgen::ir_generator& ctx, const Node& root)
 
     ctx.block(root.children[1], true, loopLabel, breakLabel, loopLabel);
 
-    ctx.functionBuilder.createGoto(loopLabel);
+    ctx.functionBuilder.createBranch(GOTO, loopLabel);
 
     ctx.functionBuilder.insertLabel(breakLabel);
 }
@@ -78,7 +78,7 @@ void forLoop(irgen::ir_generator& ctx, const Node& root)
 
     ctx.assignment(root.children[2]);
 
-    ctx.functionBuilder.createGoto(loopLabel);
+    ctx.functionBuilder.createBranch(GOTO, loopLabel);
 
     ctx.functionBuilder.insertLabel(breakLabel);
 }
@@ -88,7 +88,7 @@ void continueStatement(irgen::ir_generator& ctx, bool isLoopBlock, const Operand
     if (!isLoopBlock)
         ctx.console.compileErrorOnToken("CONTINUE outside loop", token);
 
-    ctx.functionBuilder.createGoto(continueLabel);
+    ctx.functionBuilder.createBranch(GOTO, continueLabel);
 }
 
 void breakStatement(irgen::ir_generator& ctx, bool isLoopBlock, const Operand& breakLabel, const Token& token)
@@ -96,5 +96,5 @@ void breakStatement(irgen::ir_generator& ctx, bool isLoopBlock, const Operand& b
     if (!isLoopBlock)
         ctx.console.compileErrorOnToken("BREAK outside loop", token);
 
-    ctx.functionBuilder.createGoto(breakLabel);
+    ctx.functionBuilder.createBranch(GOTO, breakLabel);
 }

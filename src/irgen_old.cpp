@@ -32,8 +32,7 @@ namespace irgen
       , moduleBuilder(console)
       , unitBuilder(opBuilder)
       , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
-      , builder(opBuilder)
-      , functionBuilder(modulesMap, console, opBuilder, builder)
+      , functionBuilder(modulesMap, console, opBuilder)
       , strBuilder(modulesMap[fileName], opBuilder)
     {
         workingFunction = nullptr;
@@ -87,7 +86,7 @@ namespace irgen
             console.compileErrorOnToken("String too big", root.tok);
 
         /* Create Addr Temp */
-        icode::Operand curr_offset = builder.createPointer(var.first, var.second.dtypeName, workingModule);
+        icode::Operand curr_offset = functionBuilder.createPointer(var.first, var.second.dtypeName, workingModule);
 
         /* Loop through int and initialize string */
         for (size_t i = 0; i < char_count; i++)
@@ -95,20 +94,22 @@ namespace irgen
             char character = root.tok.toUnescapedString()[i];
 
             /* Write to current offset */
-            builder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, character));
+            functionBuilder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, character));
 
             curr_offset =
-              builder.addressAddOperator(curr_offset, opBuilder.createLiteralAddressOperand(var.second.dtypeSize));
+              functionBuilder.addressAddOperator(curr_offset,
+                                                 opBuilder.createLiteralAddressOperand(var.second.dtypeSize));
         }
 
         /* Copy null character */
-        builder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, 0));
+        functionBuilder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, 0));
     }
 
     void ir_generator::copy_array(icode::Operand& left, Unit right)
     {
-        icode::Operand curr_offset_left = builder.createPointer(left, right.second.dtypeName, workingModule);
-        icode::Operand curr_offset_right = builder.createPointer(right.first, right.second.dtypeName, workingModule);
+        icode::Operand curr_offset_left = functionBuilder.createPointer(left, right.second.dtypeName, workingModule);
+        icode::Operand curr_offset_right =
+          functionBuilder.createPointer(right.first, right.second.dtypeName, workingModule);
 
         unsigned int size = right.second.size;
         unsigned int dtype_size = right.second.dtypeSize;
@@ -124,23 +125,24 @@ namespace irgen
             else
             {
                 /* Copy element from right to left */
-                builder.copy(curr_offset_left, curr_offset_right);
+                functionBuilder.copy(curr_offset_left, curr_offset_right);
             }
 
             /* Update offset */
             if (i != size - dtype_size)
             {
                 icode::Operand update = opBuilder.createLiteralAddressOperand(dtype_size);
-                curr_offset_left = builder.addressAddOperator(curr_offset_left, update);
-                curr_offset_right = builder.addressAddOperator(curr_offset_right, update);
+                curr_offset_left = functionBuilder.addressAddOperator(curr_offset_left, update);
+                curr_offset_right = functionBuilder.addressAddOperator(curr_offset_right, update);
             }
         }
     }
 
     void ir_generator::copy_struct(icode::Operand& left, Unit right)
     {
-        icode::Operand curr_offset_left = builder.createPointer(left, right.second.dtypeName, workingModule);
-        icode::Operand curr_offset_right = builder.createPointer(right.first, right.second.dtypeName, workingModule);
+        icode::Operand curr_offset_left = functionBuilder.createPointer(left, right.second.dtypeName, workingModule);
+        icode::Operand curr_offset_right =
+          functionBuilder.createPointer(right.first, right.second.dtypeName, workingModule);
 
         /* Loop through each field and copy them */
         unsigned int count = 0;
@@ -154,8 +156,8 @@ namespace irgen
                 curr_offset_left.dtype = field.second.dtype;
                 curr_offset_right.dtype = field.second.dtype;
 
-                curr_offset_left = builder.addressAddOperator(curr_offset_left, update);
-                curr_offset_right = builder.addressAddOperator(curr_offset_right, update);
+                curr_offset_left = functionBuilder.addressAddOperator(curr_offset_left, update);
+                curr_offset_right = functionBuilder.addressAddOperator(curr_offset_right, update);
             }
 
             /* Copy field */
@@ -166,7 +168,7 @@ namespace irgen
             else if (field_info.dtype != icode::STRUCT)
             {
                 /* Copy field from right into left */
-                builder.copy(curr_offset_left, curr_offset_right);
+                functionBuilder.copy(curr_offset_left, curr_offset_right);
             }
             else
             {
@@ -185,7 +187,7 @@ namespace irgen
         if (var.second.dimensions.size() == 0)
             console.compileErrorOnToken("Cannot initialize a NON-ARRAY with initializer list", root.tok);
 
-        icode::Operand curr_offset = builder.createPointer(var.first, var.second.dtypeName, workingModule);
+        icode::Operand curr_offset = functionBuilder.createPointer(var.first, var.second.dtypeName, workingModule);
 
         /* Create var info for the elements inside the list */
         icode::TypeDescription element_var = var.second;
@@ -217,7 +219,7 @@ namespace irgen
                 if (element_expr.second.dtype != icode::STRUCT)
                 {
                     /* Write to current offset if not a struct */
-                    builder.copy(curr_offset, element_expr.first);
+                    functionBuilder.copy(curr_offset, element_expr.first);
                 }
                 else
                 {
@@ -239,7 +241,8 @@ namespace irgen
             if (i != root.children.size() - 1)
             {
                 curr_offset =
-                  builder.addressAddOperator(curr_offset, opBuilder.createLiteralAddressOperand(element_var.size));
+                  functionBuilder.addressAddOperator(curr_offset,
+                                                     opBuilder.createLiteralAddressOperand(element_var.size));
             }
         }
 
@@ -283,7 +286,7 @@ namespace irgen
             if (var.second.dtype != icode::STRUCT)
             {
                 /* Create EQUAL icode entry is not a STRUCT */
-                builder.copy(left, init_exp.first);
+                functionBuilder.copy(left, init_exp.first);
             }
             else
             {
@@ -366,13 +369,13 @@ namespace irgen
 
         if (assignOperator.getType() == token::EQUAL)
         {
-            builder.copy(LHS.first, RHS.first);
+            functionBuilder.copy(LHS.first, RHS.first);
         }
         else
         {
             icode::Operand temp = opBuilder.createTempOperand(LHS.second.dtype);
-            builder.copy(temp, LHS.first);
-            builder.binaryOperator(opcode, LHS.first, temp, RHS.first);
+            functionBuilder.copy(temp, LHS.first);
+            functionBuilder.binaryOperator(opcode, LHS.first, temp, RHS.first);
         }
     }
 
@@ -461,14 +464,14 @@ namespace irgen
                             copy_struct(ret_ptr, ret_val);
                         else
                         {
-                            builder.copy(ret_ptr, ret_val.first);
+                            functionBuilder.copy(ret_ptr, ret_val.first);
                         }
                     }
                     else if (ret_info.dtype != icode::VOID)
                         console.compileErrorOnToken("Ret type is not VOID", stmt.tok);
 
                     /* Add return to icode */
-                    builder.noArgumentEntry(icode::RET);
+                    functionBuilder.noArgumentEntry(icode::RET);
 
                     break;
                 }
@@ -481,7 +484,7 @@ namespace irgen
                     break;
                 case node::EXIT:
                 {
-                    builder.noArgumentEntry(icode::EXIT);
+                    functionBuilder.noArgumentEntry(icode::EXIT);
                     break;
                 }
                 default:
@@ -549,7 +552,7 @@ namespace irgen
 
                 /* Switch symbol and icode table */
                 workingFunction = &rootModule.functions[func_name];
-                builder.setWorkingFunction(workingFunction);
+                functionBuilder.setWorkingFunction(workingFunction);
                 descriptionFinder.setWorkingFunction(workingFunction);
 
                 /* Clear scope */

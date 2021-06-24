@@ -2,7 +2,6 @@
 #define DEPRICATED_IRGEN
 
 #include "Builder/DescriptionFinder.hpp"
-#include "Builder/EntryBuilder.hpp"
 #include "Builder/FunctionBuilder.hpp"
 #include "Builder/ModuleBuilder.hpp"
 #include "Builder/StringBuilder.hpp"
@@ -32,7 +31,6 @@ namespace irgen
         OperandBuilder opBuilder;
         UnitBuilder unitBuilder;
         DescriptionFinder descriptionFinder;
-        EntryBuilder builder;
         FunctionBuilder functionBuilder;
         StringBuilder strBuilder;
 
