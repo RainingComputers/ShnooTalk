@@ -10,3 +10,4 @@ tests/log.txt
 *.o
 test
 test.o
+tests/temp/*

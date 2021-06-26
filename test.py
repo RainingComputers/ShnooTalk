@@ -2,6 +2,7 @@ import os
 import glob
 import subprocess
 import sys
+from difflib import ndiff
 
 
 class TestResult:
@@ -17,6 +18,13 @@ def coverge_enabled():
     if(sys.argv[1] == "--gcov"):
         return True
     return False
+
+
+def print_diff(act_output, test_output):
+    diff = ndiff(act_output.splitlines(keepends=True),
+                test_output.splitlines(keepends=True))
+
+    print(''.join(diff))
 
 
 def get_test_output(file_name):
@@ -167,6 +175,8 @@ def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
             print(act_output)
             print("[Defined test output]")
             print(test_output)
+            print("[Diff]")
+            print_diff(act_output, test_output)
             failed.append(file)
         elif(res == TestResult.TIMEDOUT):
             print(" 🕒", file, "timedout")
@@ -225,4 +235,4 @@ if __name__ == "__main__":
                   f"../obj/{build_type}/", "../src/", "testinfo/")
 
     #print("--=[Running LLVM LLC tests]=--")
-    #run_all_llc_tests(f"../bin/{build_type}/uhll")
+    # run_all_llc_tests(f"../bin/{build_type}/uhll")

@@ -272,6 +272,17 @@ namespace lexer
         return false;
     }
 
+    void Lexer::pushPrecedingToken(std::string& line, int lineNo, size_t startIndex, size_t i)
+    {
+        if (startIndex == i)
+            return;
+
+        std::string precedingTokenString = line.substr(startIndex, i - startIndex);
+        token::TokenType precedingTokenType = typeFromStringMatch(precedingTokenString);
+
+        tokenQueue.push_back(Token(precedingTokenString, precedingTokenType, startIndex, lineNo));
+    }
+
     void Lexer::consumeLine(std::string& line, int lineNo)
     {
         line += ' '; /* line is not const because of this */
@@ -299,7 +310,7 @@ namespace lexer
 
             LenTypePair lenTokenPair = consumePunctuatorOrStringLtrl(line, lineNo, i);
 
-            /* Punctuator tokens include operators and string literals */
+            /* Punctuator tokens include operators, string literals, space */
             size_t punctuatorTokenLen = lenTokenPair.first;
             token::TokenType punctuatorTokenType = lenTokenPair.second;
 
@@ -314,14 +325,8 @@ namespace lexer
             }
             else if (punctuatorTokenType != token::NONE)
             {
-                /* Get the token preceding the punctuator/space */
-                if (startIndex != i)
-                {
-                    std::string precedingTokenString = line.substr(startIndex, i - startIndex);
-                    token::TokenType precedingTokenType = typeFromStringMatch(precedingTokenString);
-
-                    tokenQueue.push_back(Token(precedingTokenString, precedingTokenType, startIndex, lineNo));
-                }
+                /* PUSH the token preceding the punctuator/space */
+                pushPrecedingToken(line, lineNo, startIndex, i);
 
                 /* Add punctuator token to queue */
                 if (punctuatorTokenType != token::SPACE)

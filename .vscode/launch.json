@@ -15,7 +15,7 @@
                 "-c"
             ],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/tests/",
+            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

@@ -38,6 +38,12 @@ void conditionalTerm(irgen::ir_generator& ctx,
     if (root.children[0].tok.getType() != token::CONDN_NOT)
         ctx.console.compileErrorOnToken("Invalid conditional expression", root.tok);
 
+    if (!root.children[0].isNthChild(node::TERM, 0))
+        ctx.console.compileErrorOnToken("Invalid conditional expression", root.tok);
+
+    if(!root.children[0].children[0].isNthChild(node::EXPRESSION, 0))
+        ctx.console.compileErrorOnToken("Invalid conditional expression", root.tok);
+
     conditionalExpression(ctx, root.children[0].children[0].children[0], falseLabel, trueLabel, !trueFall);
 }
 

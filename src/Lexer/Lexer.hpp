@@ -22,6 +22,7 @@ namespace lexer
 
         void consumeLine(std::string& line, int lineNo);
         bool pushPrecedingTokenIfIdentifier(std::string& line, int lineNo, size_t startIndex, size_t i);
+        void pushPrecedingToken(std::string& line, int lineNo, size_t startIndex, size_t i);
         bool ignoreWhiteSpace(std::string& line, size_t i);
         LenTypePair consumePunctuatorOrStringLtrl(const std::string& line, int lineNo, int i);
         token::TokenType typeFromStringMatch(const std::string& string);

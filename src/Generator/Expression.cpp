@@ -6,11 +6,12 @@
 
 Unit sizeOf(irgen::ir_generator& ctx, const Node& root)
 {
+    ctx.pushWorkingModule();
     setWorkingModuleFromNode(ctx, root, 0);
 
     int size = ctx.descriptionFinder.getDataTypeSizeFromToken(root.children.back().tok);
 
-    ctx.resetWorkingModule();
+    ctx.popWorkingModule();
 
     return ctx.unitBuilder.unitFromIntLiteral(size, icode::INT);
 }
@@ -89,6 +90,9 @@ Unit unaryOperator(irgen::ir_generator& ctx, const Node& root)
 
 Unit switchModuleAndCallTerm(irgen::ir_generator& ctx, const Node& root)
 {
+    ctx.pushWorkingModule();
+    ctx.resetWorkingModule();
+
     int nodeCounter = setWorkingModuleFromNode(ctx, root, 0);
 
     if (root.children[nodeCounter].tok.getType() != token::IDENTIFIER)
@@ -96,7 +100,7 @@ Unit switchModuleAndCallTerm(irgen::ir_generator& ctx, const Node& root)
 
     Unit result = term(ctx, root.children[nodeCounter]);
 
-    ctx.resetWorkingModule();
+    ctx.popWorkingModule();
 
     return result;
 }
