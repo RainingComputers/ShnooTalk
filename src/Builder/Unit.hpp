@@ -18,5 +18,4 @@ struct Unit
     std::vector<Unit> flatten() const;
 };
 
-
 #endif

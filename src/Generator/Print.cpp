@@ -14,7 +14,6 @@ void print(irgen::ir_generator& ctx, const Node& root)
             ctx.console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
 
         ctx.functionBuilder.createPrint(unit);
-    
 
         if (i != root.children.size() - 1)
             ctx.functionBuilder.noArgumentEntry(icode::SPACE);

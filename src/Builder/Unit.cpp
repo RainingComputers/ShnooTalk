@@ -18,22 +18,20 @@ Unit::Unit(const TypeDescription& type, const std::vector<Unit>& aggs)
 
 std::vector<Unit> flattenUnit(const Unit& aggUnit)
 {
-    std::vector<Unit> flattenedUnitList;
+    std::vector<Unit> flatList;
 
     for (const Unit& childUnit : aggUnit.aggs)
     {
         if (childUnit.aggs.size() == 0)
-            flattenedUnitList.push_back(childUnit);
+            flatList.push_back(childUnit);
         else
         {
-            std::vector<Unit> childFlattendUnitList = flattenUnit(childUnit);
-            flattenedUnitList.insert(flattenedUnitList.end(),
-                                     childFlattendUnitList.begin(),
-                                     childFlattendUnitList.end());
+            std::vector<Unit> childFlatList = flattenUnit(childUnit);
+            flatList.insert(flatList.end(), childFlatList.begin(), childFlatList.end());
         }
     }
 
-    return flattenedUnitList;
+    return flatList;
 }
 
 std::vector<Unit> Unit::flatten() const

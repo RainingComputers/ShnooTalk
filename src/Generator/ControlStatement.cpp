@@ -1,4 +1,6 @@
+#include "Assignment.hpp"
 #include "ConditionalExpression.hpp"
+#include "Local.hpp"
 
 #include "ControlStatement.hpp"
 
@@ -60,9 +62,9 @@ void whileLoop(irgen::ir_generator& ctx, const Node& root)
 void forLoop(irgen::ir_generator& ctx, const Node& root)
 {
     if (root.children[0].type == node::VAR)
-        ctx.var(root.children[0]);
+        local(ctx, root.children[0]);
     else
-        ctx.assignment(root.children[0]);
+        assignment(ctx, root.children[0]);
 
     Operand loopLabel = ctx.functionBuilder.createLabel(root.tok, true, "for");
     Operand breakLabel = ctx.functionBuilder.createLabel(root.tok, false, "for");
@@ -76,7 +78,7 @@ void forLoop(irgen::ir_generator& ctx, const Node& root)
 
     ctx.functionBuilder.insertLabel(continueLabel);
 
-    ctx.assignment(root.children[2]);
+    assignment(ctx, root.children[2]);
 
     ctx.functionBuilder.createBranch(GOTO, loopLabel);
 

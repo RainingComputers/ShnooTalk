@@ -18,11 +18,25 @@ class FunctionBuilder
 
     icode::FunctionDescription* workingFunction;
 
+    void pushEntry(icode::Entry entry);
+
     icode::Operand getCreatePointerDestinationOperand(const Unit& unit);
+
+    icode::Operand createPointer(const Unit& unit);
+
+    void operandCopy(icode::Operand op1, icode::Operand op2);
+
+    void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
+
+    void unitAggCopy(const Unit& dest, const Unit& src);
 
     icode::Operand ensureNotPointer(icode::Operand op);
 
     icode::Operand pushEntryAndEnsureNoPointerWrite(icode::Entry entry);
+
+    icode::Operand addressAddOperator(icode::Operand op2, icode::Operand op3);
+
+    icode::Operand addressMultiplyOperator(icode::Operand op2, icode::Operand op3);
 
     bool doesFunctionTerminate();
 
@@ -34,18 +48,6 @@ class FunctionBuilder
 
     void setWorkingFunction(icode::FunctionDescription* functionDesc);
 
-    void pushEntry(icode::Entry entry);
-
-    icode::Operand createPointer(const Unit& unit);
-
-    icode::Operand getPointerOperand(const Unit& unit);
-
-    void operandCopy(icode::Operand op1, icode::Operand op2);
-
-    void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
-
-    void unitListCopy(const Unit& dest, const Unit& src);
-
     void unitCopy(const Unit& dest, const Unit& src);
 
     Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
@@ -55,10 +57,6 @@ class FunctionBuilder
     Unit castOperator(const Unit& unitToCast, icode::DataType destinationDataType);
 
     void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
-
-    icode::Operand addressAddOperator(icode::Operand op2, icode::Operand op3);
-
-    icode::Operand addressMultiplyOperator(icode::Operand op2, icode::Operand op3);
 
     Unit getStructField(const Token& fieldName, const Unit& unit);
 
@@ -87,7 +85,7 @@ class FunctionBuilder
 
     Unit getReturnPointerUnit();
 
-    bool terminateFunction();
+    void terminateFunction(const Token& nameToken);
 };
 
 #endif

@@ -16,7 +16,7 @@ TypeDescription StringBuilder::stringTypeFromToken(const Token& token)
 
     std::vector<int> dimensions;
     /* +1 for null char */
-    dimensions.push_back(token.toUnescapedString().size()+1);
+    dimensions.push_back(token.toUnescapedString().size() + 1);
 
     stringType = createArrayTypeDescription(stringType, dimensions);
 

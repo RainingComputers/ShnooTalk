@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "Builder/TypeDescriptionUtil.hpp"
+#include "Generator/Assignment.hpp"
 #include "Generator/ConditionalExpression.hpp"
 #include "Generator/ControlStatement.hpp"
 #include "Generator/Define.hpp"
@@ -11,6 +12,7 @@
 #include "Generator/FunctionCall.hpp"
 #include "Generator/Global.hpp"
 #include "Generator/Input.hpp"
+#include "Generator/Local.hpp"
 #include "Generator/Module.hpp"
 #include "Generator/Print.hpp"
 #include "Generator/Structure.hpp"
@@ -69,87 +71,11 @@ namespace irgen
         moduleDescriptionStack.pop_back();
     }
 
-    void ir_generator::var(const Node& root)
+    void ir_generator::setWorkingFunction(icode::FunctionDescription* functionDescription)
     {
-        const Token& nameToken = root.getNthChildToken(0);
-
-        icode::TypeDescription localType = typeDescriptionFromNode(*this, root);
-
-        scope.putInCurrentScope(nameToken);
-
-        if (root.type == node::VAR)
-            localType.becomeMutable();
-
-        Unit local = functionBuilder.createLocal(nameToken, localType);
-
-        Node lastNode = root.children.back();
-
-        if (lastNode.isNodeType(node::EXPRESSION) || lastNode.isNodeType(node::TERM) ||
-            lastNode.isNodeType(node::STR_LITERAL) || lastNode.isNodeType(node::INITLIST))
-        {
-            Unit RHS = expression(*this, lastNode);
-
-            if (!icode::isSameType(local.type, RHS.type))
-                console.typeError(lastNode.tok, local.type, RHS.type);
-
-            functionBuilder.unitCopy(local, RHS);
-        }
-    }
-
-    icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const Token tok)
-    {
-        switch (tok.getType())
-        {
-            case token::EQUAL:
-                return icode::EQUAL;
-            case token::PLUS_EQUAL:
-                return icode::ADD;
-            case token::MINUS_EQUAL:
-                return icode::SUB;
-            case token::DIVIDE_EQUAL:
-                return icode::DIV;
-            case token::MULTIPLY_EQUAL:
-                return icode::MUL;
-            case token::OR_EQUAL:
-                return icode::BWO;
-            case token::AND_EQUAL:
-                return icode::BWA;
-            case token::XOR_EQUAL:
-                return icode::BWX;
-            default:
-                console.internalBugErrorOnToken(tok);
-        }
-    }
-
-    void ir_generator::assignment(const Node& root)
-    {
-        Unit LHS = getUnitFromIdentifier(*this, root.children[0]);
-
-        Unit RHS = expression(*this, root.children[2]);
-
-        Token assignOperator = root.getNthChildToken(1);
-
-        if (LHS.op.operandType == icode::LITERAL)
-            console.compileErrorOnToken("Cannot assign to LITERAL", root.children[0].tok);
-
-        if (!icode::isSameType(LHS.type, RHS.type))
-            console.typeError(root.children[2].tok, LHS.type, RHS.type);
-
-        if (!LHS.type.isMutable())
-            console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
-
-        if ((LHS.type.isStruct() || LHS.type.isArray()) && assignOperator.getType() != token::EQUAL)
-            console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT or ARRAY", assignOperator);
-
-        if (assignOperator.isBitwiseOperation() && !icode::isInteger(LHS.type.dtype))
-            console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
-
-        icode::Instruction instruction = assignmentTokenToBinaryOperator(assignOperator);
-
-        if (assignOperator.getType() == token::EQUAL)
-            functionBuilder.unitCopy(LHS, RHS);
-        else
-            functionBuilder.unitCopy(LHS, functionBuilder.binaryOperator(instruction, LHS, RHS));
+        workingFunction = functionDescription;
+        functionBuilder.setWorkingFunction(workingFunction);
+        descriptionFinder.setWorkingFunction(workingFunction);
     }
 
     void ir_generator::block(const Node& root,
@@ -167,12 +93,12 @@ namespace irgen
             {
                 case node::VAR:
                 case node::CONST:
-                    var(stmt);
+                    local(*this, stmt);
                     break;
                 case node::ASSIGNMENT:
                 case node::ASSIGNMENT_STR:
                 case node::ASSIGNMENT_INITLIST:
-                    assignment(stmt);
+                    assignment(*this, stmt);
                     break;
                 case node::FUNCCALL:
                     functionCall(*this, stmt);
@@ -301,27 +227,19 @@ namespace irgen
         {
             if (child.type == node::FUNCTION)
             {
-                /* Get function name */
-                std::string func_name = child.children[0].tok.toString();
+                const Token& functionNameToken = child.children[0].tok;
 
-                /* Switch symbol and icode table */
-                workingFunction = &rootModule.functions[func_name];
-                functionBuilder.setWorkingFunction(workingFunction);
-                descriptionFinder.setWorkingFunction(workingFunction);
+                setWorkingFunction(&rootModule.functions[functionNameToken.toString()]);
 
-                /* Clear scope */
                 scope.resetScope();
 
-                /* Process block */
                 block(child.children.back(),
                       false,
                       opBuilder.createLabelOperand(""),
                       opBuilder.createLabelOperand(""),
                       opBuilder.createLabelOperand(""));
 
-                /* Last instruction must be return */
-                if (!functionBuilder.terminateFunction())
-                    console.compileErrorOnToken("Missing RETURN for this FUNCTION", child.tok);
+                functionBuilder.terminateFunction(functionNameToken);
             }
         }
     }

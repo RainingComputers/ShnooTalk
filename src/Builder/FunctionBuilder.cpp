@@ -60,12 +60,6 @@ Operand FunctionBuilder::createPointer(const Unit& unit)
     return pointerOperand;
 }
 
-// TODO: merge this with createPointer
-Operand FunctionBuilder::getPointerOperand(const Unit& unit)
-{
-    return createPointer(unit);
-}
-
 void FunctionBuilder::operandCopy(Operand op1, Operand op2)
 {
     /* If op2 is a literal, change generic dtypes like INT and FLOAT
@@ -112,9 +106,9 @@ void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
     pushEntry(memCpyEntry);
 }
 
-void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
+void FunctionBuilder::unitAggCopy(const Unit& dest, const Unit& src)
 {
-    Operand destPointer = getPointerOperand(dest);
+    Operand destPointer = createPointer(dest);
 
     std::vector<Unit> unitsToCopy = src.flatten();
 
@@ -123,12 +117,12 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
         const Unit& unit = unitsToCopy[i];
 
         if (unit.type.isArray() || unit.type.isStruct())
-            memCopy(destPointer, getPointerOperand(unit), unit.type.size);
+            memCopy(destPointer, createPointer(unit), unit.type.size);
         else
             operandCopy(destPointer, unit.op);
 
         if (i == unitsToCopy.size() - 1)
-            continue;
+            break;
 
         Operand update = opBuilder.createLiteralAddressOperand(dest.type.dtypeSize);
         destPointer = addressAddOperator(destPointer, update);
@@ -138,11 +132,11 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
     if (src.aggs.size() != 0)
-        unitListCopy(dest, src);
+        unitAggCopy(dest, src);
     else if (dest.type.isArray() || dest.type.isStruct())
     {
-        Operand destPointer = getPointerOperand(dest);
-        Operand srcPointer = getPointerOperand(src);
+        Operand destPointer = createPointer(dest);
+        Operand srcPointer = createPointer(src);
 
         memCopy(destPointer, srcPointer, src.type.size);
     }
@@ -316,7 +310,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
     if (unit.type.isMutable())
         fieldType.becomeMutable();
 
-    Operand pointerOperand = getPointerOperand(unit);
+    Operand pointerOperand = createPointer(unit);
 
     Operand fieldOperand = addressAddOperator(pointerOperand, opBuilder.createLiteralAddressOperand(fieldType.offset));
 
@@ -330,7 +324,7 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
     unsigned int dimensionCount = 0;
     unsigned int elementWidth = unit.type.size / unit.type.dimensions[0];
 
-    Operand elementOperand = getPointerOperand(unit);
+    Operand elementOperand = createPointer(unit);
 
     TypeDescription elementType = unit.type;
 
@@ -512,14 +506,14 @@ bool FunctionBuilder::doesFunctionTerminate()
     return lastOpcode == icode::RET;
 }
 
-bool FunctionBuilder::terminateFunction()
+void FunctionBuilder::terminateFunction(const Token& nameToken)
 {
     if (doesFunctionTerminate())
-        return true;
+        return;
 
     if (!workingFunction->isVoid())
-        return false;
+        console.compileErrorOnToken("Missing RETURN for this FUNCTION", nameToken);
 
     noArgumentEntry(icode::RET);
-    return true;
+    return;
 }

@@ -80,6 +80,8 @@
         "mikpp",
         "mikuro",
         "newln",
-        "println"
+        "println",
+        "stof",
+        "stoi"
     ]
 }

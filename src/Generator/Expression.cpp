@@ -4,7 +4,6 @@
 
 #include "Expression.hpp"
 
-
 Unit sizeOf(irgen::ir_generator& ctx, const Node& root)
 {
     ctx.pushWorkingModule();
@@ -138,17 +137,17 @@ Unit initializerList(irgen::ir_generator& ctx, const Node& root)
 {
     std::vector<Unit> units;
 
-    for(size_t i = 0; i < root.children.size(); i += 1)
+    for (size_t i = 0; i < root.children.size(); i += 1)
     {
         const Node& child = root.children[i];
 
         units.push_back(expression(ctx, child));
-    
-        if(i != 0)
-            if(!icode::isSameType(units[i-1].type, units[i].type))
-                ctx.console.typeError(child.tok, units[i-1].type, units[i].type);
+
+        if (i != 0)
+            if (!icode::isSameType(units[i - 1].type, units[i].type))
+                ctx.console.typeError(child.tok, units[i - 1].type, units[i].type);
     }
-        
+
     return ctx.unitBuilder.unitFromUnitList(units);
 }
 
@@ -195,7 +194,7 @@ Unit expression(irgen::ir_generator& ctx, const Node& root)
     if (root.type == node::STR_LITERAL)
         return ctx.strBuilder.createString(root.tok);
 
-    if(root.type == node::INITLIST)
+    if (root.type == node::INITLIST)
         return initializerList(ctx, root);
 
     if (root.type == node::TERM)

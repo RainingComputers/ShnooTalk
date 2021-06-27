@@ -46,11 +46,7 @@ namespace irgen
         void pushWorkingModule();
         void popWorkingModule();
 
-        void var(const Node& root);
-
-        icode::Instruction assignmentTokenToBinaryOperator(const Token tok);
-
-        void assignment(const Node& root);
+        void setWorkingFunction(icode::FunctionDescription* functionDescription);
 
         void block(const Node& root,
                    bool loop,

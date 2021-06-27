@@ -1,8 +1,8 @@
 # MODULE FunctionTerminationCheck_test.uhll
-# ERROR in Line 8 Col 1
+# ERROR in Line 8 Col 4
 # 
 # fn foo() -> int
-# ^
+#    ^
 # Missing RETURN for this FUNCTION
 
 fn foo() -> int
