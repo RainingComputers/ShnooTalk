@@ -8,13 +8,13 @@ Unit getUnitFromNode(irgen::ir_generator& ctx, const Node& root)
 
     Unit Unit = ctx.descriptionFinder.getUnitFromToken(nameToken);
 
-    if (Unit.second.checkProperty(icode::IS_ENUM) && root.children.size() > 1)
+    if (Unit.type.checkProperty(icode::IS_ENUM) && root.children.size() > 1)
         ctx.console.compileErrorOnToken("Invalid use of ENUM", nameToken);
 
-    if (Unit.second.checkProperty(icode::IS_DEFINE) && root.children.size() > 1)
+    if (Unit.type.checkProperty(icode::IS_DEFINE) && root.children.size() > 1)
         ctx.console.compileErrorOnToken("Invalid use of DEF", nameToken);
 
-    if (Unit.second.checkProperty(icode::IS_LOCAL))
+    if (Unit.type.checkProperty(icode::IS_LOCAL))
         if (!ctx.scope.isInCurrentScope(nameToken))
             ctx.console.compileErrorOnToken("Symbol not in scope", nameToken);
 
@@ -32,10 +32,10 @@ std::pair<Unit, size_t> unitFromStructVar(irgen::ir_generator& ctx,
 
     const Token& fieldNameToken = root.getNthChildToken(nodeCounter);
 
-    if (unit.second.dtype != icode::STRUCT)
+    if (unit.type.dtype != icode::STRUCT)
         ctx.console.compileErrorOnToken("STRUCT access on a NON-STRUCT data type", fieldNameToken);
 
-    if (unit.second.dimensions.size() != 0)
+    if (unit.type.dimensions.size() != 0)
         ctx.console.compileErrorOnToken("STRUCT access on an ARRAY", fieldNameToken);
 
     nodeCounter++;
@@ -52,7 +52,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(irgen::ir_generator& ctx,
 {
     size_t nodeCounter = startIndex;
 
-    if (unit.second.dimensions.size() == 0)
+    if (unit.type.dimensions.size() == 0)
         ctx.console.compileErrorOnToken("ARRAY access on a NON ARRAY", root.children[nodeCounter].tok);
 
     std::vector<Unit> indices;
@@ -68,10 +68,10 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(irgen::ir_generator& ctx,
 
         indices.push_back(indexExpression);
 
-        if (indices.size() > unit.second.dimensions.size())
+        if (indices.size() > unit.type.dimensions.size())
             ctx.console.compileErrorOnToken("Too many subscripts", child.tok);
 
-        if (!icode::isInteger(indexExpression.second.dtype) || indexExpression.second.isArray())
+        if (!icode::isInteger(indexExpression.type.dtype) || indexExpression.type.isArray())
             ctx.console.compileErrorOnToken("Index must be an integer", child.children[0].tok);
     }
 

@@ -101,11 +101,11 @@ void relationalOperator(irgen::ir_generator& ctx,
     Unit LHS = expression(ctx, root.children[0]);
     Unit RHS = expression(ctx, root.children[2]);
 
-    if (LHS.second.isStruct() || LHS.second.isArray())
+    if (LHS.type.isStruct() || LHS.type.isArray())
         ctx.console.compileErrorOnToken("Cannot compare STRUCT or ARRAYS", operatorToken);
 
-    if (!icode::isSameType(LHS.second, RHS.second))
-        ctx.console.typeError(root.children[2].tok, LHS.second, RHS.second);
+    if (!icode::isSameType(LHS.type, RHS.type))
+        ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
     ctx.functionBuilder.compareOperator(opcode, LHS, RHS);
 

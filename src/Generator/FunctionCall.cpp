@@ -41,14 +41,14 @@ Unit functionCall(irgen::ir_generator& ctx, const Node& root)
         else
             actualParam = getActualParam(ctx, root, i);
 
-        if (!icode::isSameType(formalParam.second, actualParam.second))
-            ctx.console.typeError(actualParamToken, formalParam.second, actualParam.second);
+        if (!icode::isSameType(formalParam.type, actualParam.type))
+            ctx.console.typeError(actualParamToken, formalParam.type, actualParam.type);
 
-        if (formalParam.second.isMutable() && !actualParam.first.canPassAsMutable())
+        if (formalParam.type.isMutable() && !actualParam.op.canPassAsMutable())
             ctx.console.compileErrorOnToken("Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE",
                                             actualParamToken);
 
-        if (formalParam.second.isMutable() && !actualParam.second.isMutable())
+        if (formalParam.type.isMutable() && !actualParam.type.isMutable())
             ctx.console.compileErrorOnToken("Cannot pass IMMUTABLE as MUTABLE", actualParamToken);
 
         ctx.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);

@@ -10,7 +10,7 @@ void print(irgen::ir_generator& ctx, const Node& root)
 
         Unit unit = expression(ctx, child);
 
-        if (unit.second.isStruct() || unit.second.isMultiDimArray())
+        if (unit.type.isStruct() || unit.type.isMultiDimArray())
             ctx.console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
 
         ctx.functionBuilder.createPrint(unit);

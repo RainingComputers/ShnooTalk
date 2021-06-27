@@ -6,6 +6,13 @@
 #include "../IntermediateRepresentation/Operand.hpp"
 #include "../IntermediateRepresentation/TypeDescription.hpp"
 
-typedef std::pair<icode::Operand, icode::TypeDescription> Unit;
+struct Unit
+{
+    icode::Operand op;
+    icode::TypeDescription type;
+
+    Unit();
+    Unit(const icode::Operand& operand, const icode::TypeDescription& type);
+};
 
 #endif

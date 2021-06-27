@@ -48,7 +48,7 @@ Unit cast(irgen::ir_generator& ctx, const Node& root)
 
     Unit termToCast = term(ctx, root.children[0]);
 
-    if (termToCast.second.isArray() || termToCast.second.isStruct())
+    if (termToCast.type.isArray() || termToCast.type.isStruct())
         ctx.console.compileErrorOnToken("Cannot cast STRUCT or ARRAY", root.tok);
 
     return ctx.functionBuilder.castOperator(termToCast, destinationDataType);
@@ -58,12 +58,12 @@ Unit unaryOperator(irgen::ir_generator& ctx, const Node& root)
 {
     Unit unaryOperatorTerm = term(ctx, root.children[0]);
 
-    icode::DataType dtype = unaryOperatorTerm.second.dtype;
+    icode::DataType dtype = unaryOperatorTerm.type.dtype;
 
-    if (unaryOperatorTerm.second.isArray())
+    if (unaryOperatorTerm.type.isArray())
         ctx.console.compileErrorOnToken("Unary operator not allowed on ARRAY", root.tok);
 
-    if (unaryOperatorTerm.second.isStruct())
+    if (unaryOperatorTerm.type.isStruct())
         ctx.console.compileErrorOnToken("Unary operator not allowed on STRUCT", root.tok);
 
     if (!icode::isInteger(dtype) && root.tok.getType() == token::NOT)
@@ -185,17 +185,17 @@ Unit expression(irgen::ir_generator& ctx, const Node& root)
     Token expressionOperator = root.children[1].tok;
 
     Unit LHS = expression(ctx, root.children[0]);
-    std::string dtype_name = LHS.second.dtypeName;
+    std::string dtype_name = LHS.type.dtypeName;
 
     Unit RHS = expression(ctx, root.children[2]);
 
-    if (LHS.second.isStruct() || LHS.second.isArray())
+    if (LHS.type.isStruct() || LHS.type.isArray())
         ctx.console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expressionOperator);
 
-    if (!icode::isSameType(LHS.second, RHS.second))
-        ctx.console.typeError(root.children[2].tok, LHS.second, RHS.second);
+    if (!icode::isSameType(LHS.type, RHS.type))
+        ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
-    if (expressionOperator.isBitwiseOperation() && !LHS.second.isIntegerType())
+    if (expressionOperator.isBitwiseOperation() && !LHS.type.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expressionOperator);
 
     icode::Instruction instruction = tokenToBinaryOperator(ctx, expressionOperator);

@@ -76,17 +76,17 @@ namespace irgen
 
     void ir_generator::assign_str_literal_tovar(Unit var, Node& root)
     {
-        if (var.second.dimensions.size() != 1 || var.second.dtype != icode::UI8)
+        if (var.type.dimensions.size() != 1 || var.type.dtype != icode::UI8)
             console.compileErrorOnToken("String assignment only allowed on 1D INT ARRAY", root.tok);
 
         /* Check size */
         size_t char_count = root.tok.toUnescapedString().length();
 
-        if (char_count > var.second.dimensions[0])
+        if (char_count > var.type.dimensions[0])
             console.compileErrorOnToken("String too big", root.tok);
 
         /* Create Addr Temp */
-        icode::Operand curr_offset = functionBuilder.createPointer(var.first, var.second.dtypeName, workingModule);
+        icode::Operand curr_offset = functionBuilder.createPointer(var.op, var.type.dtypeName, workingModule);
 
         /* Loop through int and initialize string */
         for (size_t i = 0; i < char_count; i++)
@@ -98,7 +98,7 @@ namespace irgen
 
             curr_offset =
               functionBuilder.addressAddOperator(curr_offset,
-                                                 opBuilder.createLiteralAddressOperand(var.second.dtypeSize));
+                                                 opBuilder.createLiteralAddressOperand(var.type.dtypeSize));
         }
 
         /* Copy null character */
@@ -107,23 +107,23 @@ namespace irgen
 
     void ir_generator::copy_struct(icode::Operand& left, Unit right)
     {
-        icode::Operand curr_offset_left = functionBuilder.createPointer(left, right.second.dtypeName, workingModule);
+        icode::Operand curr_offset_left = functionBuilder.createPointer(left, right.type.dtypeName, workingModule);
         icode::Operand curr_offset_right =
-          functionBuilder.createPointer(right.first, right.second.dtypeName, workingModule);
+          functionBuilder.createPointer(right.op, right.type.dtypeName, workingModule);
 
-        functionBuilder.memCopy(curr_offset_left, curr_offset_right, right.second.size);
+        functionBuilder.memCopy(curr_offset_left, curr_offset_right, right.type.size);
     }
 
     void ir_generator::assign_init_list_tovar(Unit var, Node& root)
     {
         /* Cannot use initializer list to assign to var */
-        if (var.second.dimensions.size() == 0)
+        if (var.type.dimensions.size() == 0)
             console.compileErrorOnToken("Cannot initialize a NON-ARRAY with initializer list", root.tok);
 
-        icode::Operand curr_offset = functionBuilder.createPointer(var.first, var.second.dtypeName, workingModule);
+        icode::Operand curr_offset = functionBuilder.createPointer(var.op, var.type.dtypeName, workingModule);
 
         /* Create var info for the elements inside the list */
-        icode::TypeDescription element_var = var.second;
+        icode::TypeDescription element_var = var.type;
         element_var.size /= element_var.dimensions[0];
         element_var.dimensions.erase(element_var.dimensions.begin());
 
@@ -134,7 +134,7 @@ namespace irgen
         {
             Node child = root.children[i];
 
-            if (dim_count >= var.second.dimensions[0])
+            if (dim_count >= var.type.dimensions[0])
                 console.compileErrorOnToken("Dimension size too big", child.tok);
 
             if (element_var.dimensions.size() == 0)
@@ -146,13 +146,13 @@ namespace irgen
                 Unit element_expr = expression(*this, child);
 
                 /* Type check */
-                if (!icode::isSameType(element_var, element_expr.second))
-                    console.typeError(child.tok, element_var, element_expr.second);
+                if (!icode::isSameType(element_var, element_expr.type))
+                    console.typeError(child.tok, element_var, element_expr.type);
 
-                if (element_expr.second.dtype != icode::STRUCT)
+                if (element_expr.type.dtype != icode::STRUCT)
                 {
                     /* Write to current offset if not a struct */
-                    functionBuilder.operandCopy(curr_offset, element_expr.first);
+                    functionBuilder.operandCopy(curr_offset, element_expr.op);
                 }
                 else
                 {
@@ -179,7 +179,7 @@ namespace irgen
             }
         }
 
-        if (dim_count < var.second.dimensions[0])
+        if (dim_count < var.type.dimensions[0])
             console.compileErrorOnToken("Dimension size too small", root.tok);
     }
 
@@ -202,8 +202,8 @@ namespace irgen
         {
             Unit RHS = expression(*this, lastNode);
 
-            if (!icode::isSameType(local.second, RHS.second))
-                console.typeError(lastNode.tok, local.second, RHS.second);
+            if (!icode::isSameType(local.type, RHS.type))
+                console.typeError(lastNode.tok, local.type, RHS.type);
 
            functionBuilder.unitCopy(local, RHS);
         }
@@ -244,19 +244,19 @@ namespace irgen
 
         Token assignOperator = root.getNthChildToken(1);
 
-        if (LHS.first.operandType == icode::LITERAL)
+        if (LHS.op.operandType == icode::LITERAL)
             console.compileErrorOnToken("Cannot assign to LITERAL", root.children[0].tok);
 
-        if (!icode::isSameType(LHS.second, RHS.second))
-            console.typeError(root.children[2].tok, LHS.second, RHS.second);
+        if (!icode::isSameType(LHS.type, RHS.type))
+            console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
-        if (!LHS.second.isMutable())
+        if (!LHS.type.isMutable())
             console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
 
-        if ((LHS.second.isStruct() || LHS.second.isArray()) && assignOperator.getType() != token::EQUAL)
+        if ((LHS.type.isStruct() || LHS.type.isArray()) && assignOperator.getType() != token::EQUAL)
             console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT or ARRAY", assignOperator);
 
-        if (assignOperator.isBitwiseOperation() && !icode::isInteger(LHS.second.dtype))
+        if (assignOperator.isBitwiseOperation() && !icode::isInteger(LHS.type.dtype))
             console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
 
         icode::Instruction instruction = assignmentTokenToBinaryOperator(assignOperator);
@@ -336,17 +336,17 @@ namespace irgen
                     {
                         Unit returnValue = expression(*this, stmt.children[0]);
 
-                        if (!icode::isSameType(returnType, returnValue.second))
-                            console.typeError(stmt.children[0].tok, returnType, returnValue.second);
+                        if (!icode::isSameType(returnType, returnValue.type))
+                            console.typeError(stmt.children[0].tok, returnType, returnValue.type);
 
                         /* Assign return value to return pointer */
                         icode::Operand returnPointer = opBuilder.createRetPointerOperand(returnType.dtype);
 
-                        if (returnValue.second.dtype == icode::STRUCT)
+                        if (returnValue.type.dtype == icode::STRUCT)
                             copy_struct(returnPointer, returnValue);
                         else
                         {
-                            functionBuilder.operandCopy(returnPointer, returnValue.first);
+                            functionBuilder.operandCopy(returnPointer, returnValue.op);
                         }
                     }
                     else if (returnType.dtype != icode::VOID)

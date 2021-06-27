@@ -66,9 +66,9 @@ Operand FunctionBuilder::createPointer(const Operand& op,
 // TODO: merge this with createPointer
 Operand FunctionBuilder::getPointerOperand(const Unit& unit)
 {
-    ModuleDescription* workingModule = &modulesMap.at(unit.second.moduleName);
+    ModuleDescription* workingModule = &modulesMap.at(unit.type.moduleName);
 
-    return createPointer(unit.first, unit.second.dtypeName, workingModule);
+    return createPointer(unit.op, unit.type.dtypeName, workingModule);
 }
 
 void FunctionBuilder::operandCopy(Operand op1, Operand op2)
@@ -119,15 +119,15 @@ void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
 
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
-    if (dest.second.isArray() || dest.second.isStruct())
+    if (dest.type.isArray() || dest.type.isStruct())
     {
         Operand destPointer = getPointerOperand(dest);
         Operand srcPointer = getPointerOperand(src);
 
-        memCopy(destPointer, srcPointer, src.second.size);
+        memCopy(destPointer, srcPointer, src.type.size);
     }
     else
-        operandCopy(dest.first, src.first);
+        operandCopy(dest.op, src.op);
 }
 
 Operand FunctionBuilder::ensureNotPointer(Operand op)
@@ -183,18 +183,18 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
     /* Construct icode instruction for binary operator instructions,
         ADD, SUB, MUL, DIV, MOD, RSH, LSH, BWA, BWO, BWX */
 
-    DataType dtype = LHS.second.dtype;
+    DataType dtype = LHS.type.dtype;
 
     Entry entry;
 
     entry.opcode = instruction;
     entry.op1 = opBuilder.createTempOperand(dtype);
-    entry.op2 = ensureNotPointer(LHS.first);
-    entry.op3 = ensureNotPointer(RHS.first);
+    entry.op2 = ensureNotPointer(LHS.op);
+    entry.op3 = ensureNotPointer(RHS.op);
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(result, LHS.second);
+    return Unit(result, LHS.type);
 }
 
 Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOperatorTerm)
@@ -202,17 +202,17 @@ Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOp
     /* Construct icode for unary operator instructions,
         UNARY_MINUS and NOT  */
 
-    const DataType dtype = unaryOperatorTerm.second.dtype;
+    const DataType dtype = unaryOperatorTerm.type.dtype;
 
     Entry entry;
 
     entry.opcode = instruction;
     entry.op1 = opBuilder.createTempOperand(dtype);
-    entry.op2 = ensureNotPointer(unaryOperatorTerm.first);
+    entry.op2 = ensureNotPointer(unaryOperatorTerm.op);
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(result, unaryOperatorTerm.second);
+    return Unit(result, unaryOperatorTerm.type);
 }
 
 Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationDataType)
@@ -223,7 +223,7 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
 
     entry.opcode = CAST;
     entry.op1 = opBuilder.createTempOperand(destinationDataType);
-    entry.op2 = ensureNotPointer(unitToCast.first);
+    entry.op2 = ensureNotPointer(unitToCast.op);
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
@@ -232,8 +232,8 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
 
 void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
 {
-    Operand op1 = LHS.first;
-    Operand op2 = RHS.first;
+    Operand op1 = LHS.op;
+    Operand op2 = RHS.op;
 
     /* If op2 is a literal, change generic dtypes like INT and FLOAT
         to correct specific dtype */
@@ -286,14 +286,14 @@ Operand FunctionBuilder::addressMultiplyOperator(Operand op2, Operand op3)
 
 Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
 {
-    StructDescription structDescription = modulesMap[unit.second.moduleName].structures[unit.second.dtypeName];
+    StructDescription structDescription = modulesMap[unit.type.moduleName].structures[unit.type.dtypeName];
 
     TypeDescription fieldType;
 
     if (!structDescription.getField(fieldName.toString(), fieldType))
         console.compileErrorOnToken("Undefined STRUCT field", fieldName);
 
-    if (unit.second.isMutable())
+    if (unit.type.isMutable())
         fieldType.becomeMutable();
 
     Operand pointerOperand = getPointerOperand(unit);
@@ -308,16 +308,16 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
 Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit>& indices)
 {
     unsigned int dimensionCount = 0;
-    unsigned int elementWidth = unit.second.size / unit.second.dimensions[0];
+    unsigned int elementWidth = unit.type.size / unit.type.dimensions[0];
 
     Operand elementOperand = getPointerOperand(unit);
 
-    TypeDescription elementType = unit.second;
+    TypeDescription elementType = unit.type;
 
     for (const Unit indexUnit : indices)
     {
         Operand subscriptOperand =
-          addressMultiplyOperator(indexUnit.first, opBuilder.createLiteralAddressOperand(elementWidth));
+          addressMultiplyOperator(indexUnit.op, opBuilder.createLiteralAddressOperand(elementWidth));
 
         if (dimensionCount + 1 != elementType.dimensions.size())
             elementWidth /= elementType.dimensions[dimensionCount + 1];
@@ -372,14 +372,14 @@ void FunctionBuilder::createPrint(const Unit& unit)
 
     Entry printEntry;
 
-    Instruction printInstruction = unit.second.isArray() ? PRINT_STR : PRINT;
+    Instruction printInstruction = unit.type.isArray() ? PRINT_STR : PRINT;
 
     printEntry.opcode = printInstruction;
 
     if (printInstruction == PRINT)
-        printEntry.op1 = ensureNotPointer(unit.first);
+        printEntry.op1 = ensureNotPointer(unit.op);
     else
-        printEntry.op1 = unit.first;
+        printEntry.op1 = unit.op;
 
     pushEntry(printEntry);
 }
@@ -393,14 +393,14 @@ void FunctionBuilder::createInput(const Unit& unit)
     Instruction inputInstruction = INPUT;
     int size = 0;
 
-    if (unit.second.isArray())
+    if (unit.type.isArray())
     {
         inputInstruction = INPUT_STR;
-        size = unit.second.dimensions[0];
+        size = unit.type.dimensions[0];
     }
 
     inputEntry.opcode = inputInstruction;
-    inputEntry.op1 = unit.first;
+    inputEntry.op1 = unit.op;
     inputEntry.op2 = opBuilder.createIntLiteralOperand(INT, (int)size);
 
     pushEntry(inputEntry);
@@ -430,12 +430,12 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
     Entry entry;
 
     entry.opcode = PASS_ADDR;
-    entry.op1 = actualParam.first;
+    entry.op1 = actualParam.op;
 
-    if (!(formalParam.second.isMutable() || formalParam.second.isStruct() || formalParam.second.isArray()))
+    if (!(formalParam.type.isMutable() || formalParam.type.isStruct() || formalParam.type.isArray()))
     {
         entry.opcode = PASS;
-        entry.op1 = ensureNotPointer(actualParam.first);
+        entry.op1 = ensureNotPointer(actualParam.op);
     }
 
     entry.op2 = opBuilder.createVarOperand(functionDataType, calleeNameToken.toString());
