@@ -8,11 +8,15 @@
 
 struct Unit
 {
-    icode::Operand op;
     icode::TypeDescription type;
+    icode::Operand op;
+    std::vector<Unit> aggs;
 
     Unit();
-    Unit(const icode::Operand& operand, const icode::TypeDescription& type);
+    Unit(const icode::TypeDescription& type, const icode::Operand& operand);
+    Unit(const icode::TypeDescription& type, const std::vector<Unit>& aggs);
+    std::vector<Unit> flatten() const;
 };
+
 
 #endif

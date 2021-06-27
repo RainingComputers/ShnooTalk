@@ -18,9 +18,7 @@ class FunctionBuilder
 
     icode::FunctionDescription* workingFunction;
 
-    icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op,
-                                                      const std::string& dtypeName,
-                                                      icode::ModuleDescription* workingModule);
+    icode::Operand getCreatePointerDestinationOperand(const Unit& unit);
 
     icode::Operand ensureNotPointer(icode::Operand op);
 
@@ -38,15 +36,15 @@ class FunctionBuilder
 
     void pushEntry(icode::Entry entry);
 
-    icode::Operand createPointer(const icode::Operand& op,
-                                 const std::string& dtypeName,
-                                 icode::ModuleDescription* workingModule);
+    icode::Operand createPointer(const Unit& unit);
 
     icode::Operand getPointerOperand(const Unit& unit);
 
     void operandCopy(icode::Operand op1, icode::Operand op2);
 
     void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
+
+    void unitListCopy(const Unit& dest, const Unit& src);
 
     void unitCopy(const Unit& dest, const Unit& src);
 
@@ -86,6 +84,8 @@ class FunctionBuilder
     Unit callFunction(const Token& calleeNameToken, icode::FunctionDescription callee);
 
     void noArgumentEntry(icode::Instruction instruction);
+
+    Unit getReturnPointerUnit();
 
     bool terminateFunction();
 };

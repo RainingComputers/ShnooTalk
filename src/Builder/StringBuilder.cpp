@@ -45,5 +45,5 @@ Unit StringBuilder::createString(const Token& str_token)
 
     Operand opr = createStringOperand(str_token);
 
-    return Unit(opr, stringType);
+    return Unit(stringType, opr);
 }

@@ -88,7 +88,7 @@ namespace icode
         if (!type1.isString() && type2.isString())
             return canAssignString(type1, type2);
 
-        return type1.dimensions.size() == type2.dimensions.size();
+        return type1.dimensions == type2.dimensions;
     }
 
     bool isSameType(TypeDescription type1, TypeDescription type2)

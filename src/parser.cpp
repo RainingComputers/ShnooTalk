@@ -700,7 +700,8 @@ namespace parser
             {
                 insert_node(node::ASSIGNMENT_INITLIST);
 
-                next();
+                expect(token::EQUAL);
+                add_node(node::ASSIGN_OPERATOR);
                 initializerlist();
             }
             else

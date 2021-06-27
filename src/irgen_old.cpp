@@ -69,126 +69,12 @@ namespace irgen
         moduleDescriptionStack.pop_back();
     }
 
-    TokenTypePair ir_generator::var_from_node(const Node& root)
-    {
-        return TokenTypePair(root.getNthChildToken(0), typeDescriptionFromNode(*this, root));
-    }
-
-    void ir_generator::assign_str_literal_tovar(Unit var, Node& root)
-    {
-        if (var.type.dimensions.size() != 1 || var.type.dtype != icode::UI8)
-            console.compileErrorOnToken("String assignment only allowed on 1D INT ARRAY", root.tok);
-
-        /* Check size */
-        size_t char_count = root.tok.toUnescapedString().length();
-
-        if (char_count > var.type.dimensions[0])
-            console.compileErrorOnToken("String too big", root.tok);
-
-        /* Create Addr Temp */
-        icode::Operand curr_offset = functionBuilder.createPointer(var.op, var.type.dtypeName, workingModule);
-
-        /* Loop through int and initialize string */
-        for (size_t i = 0; i < char_count; i++)
-        {
-            char character = root.tok.toUnescapedString()[i];
-
-            /* Write to current offset */
-            functionBuilder.operandCopy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, character));
-
-            curr_offset =
-              functionBuilder.addressAddOperator(curr_offset,
-                                                 opBuilder.createLiteralAddressOperand(var.type.dtypeSize));
-        }
-
-        /* Copy null character */
-        functionBuilder.operandCopy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, 0));
-    }
-
-    void ir_generator::copy_struct(icode::Operand& left, Unit right)
-    {
-        icode::Operand curr_offset_left = functionBuilder.createPointer(left, right.type.dtypeName, workingModule);
-        icode::Operand curr_offset_right =
-          functionBuilder.createPointer(right.op, right.type.dtypeName, workingModule);
-
-        functionBuilder.memCopy(curr_offset_left, curr_offset_right, right.type.size);
-    }
-
-    void ir_generator::assign_init_list_tovar(Unit var, Node& root)
-    {
-        /* Cannot use initializer list to assign to var */
-        if (var.type.dimensions.size() == 0)
-            console.compileErrorOnToken("Cannot initialize a NON-ARRAY with initializer list", root.tok);
-
-        icode::Operand curr_offset = functionBuilder.createPointer(var.op, var.type.dtypeName, workingModule);
-
-        /* Create var info for the elements inside the list */
-        icode::TypeDescription element_var = var.type;
-        element_var.size /= element_var.dimensions[0];
-        element_var.dimensions.erase(element_var.dimensions.begin());
-
-        /* Keep track of number of dimensions written */
-        unsigned int dim_count = 0;
-
-        for (size_t i = 0; i < root.children.size(); i++)
-        {
-            Node child = root.children[i];
-
-            if (dim_count >= var.type.dimensions[0])
-                console.compileErrorOnToken("Dimension size too big", child.tok);
-
-            if (element_var.dimensions.size() == 0)
-            {
-                /* Check if expression */
-                if (child.type != node::TERM && child.type != node::EXPRESSION)
-                    console.compileErrorOnToken("Incorrect dimensions", child.tok);
-
-                Unit element_expr = expression(*this, child);
-
-                /* Type check */
-                if (!icode::isSameType(element_var, element_expr.type))
-                    console.typeError(child.tok, element_var, element_expr.type);
-
-                if (element_expr.type.dtype != icode::STRUCT)
-                {
-                    /* Write to current offset if not a struct */
-                    functionBuilder.operandCopy(curr_offset, element_expr.op);
-                }
-                else
-                {
-                    copy_struct(curr_offset, element_expr);
-                }
-            }
-            else if (child.type == node::STR_LITERAL)
-            {
-                assign_str_literal_tovar(Unit(curr_offset, element_var), child);
-            }
-            else
-            {
-                assign_init_list_tovar(Unit(curr_offset, element_var), child);
-            }
-
-            dim_count++;
-
-            /* Update offset */
-            if (i != root.children.size() - 1)
-            {
-                curr_offset =
-                  functionBuilder.addressAddOperator(curr_offset,
-                                                     opBuilder.createLiteralAddressOperand(element_var.size));
-            }
-        }
-
-        if (dim_count < var.type.dimensions[0])
-            console.compileErrorOnToken("Dimension size too small", root.tok);
-    }
-
     void ir_generator::var(const Node& root)
     {
         const Token& nameToken = root.getNthChildToken(0);
 
         icode::TypeDescription localType = typeDescriptionFromNode(*this, root);
-        
+
         scope.putInCurrentScope(nameToken);
 
         if (root.type == node::VAR)
@@ -198,17 +84,16 @@ namespace irgen
 
         Node lastNode = root.children.back();
 
-        if (lastNode.type == node::EXPRESSION || lastNode.type == node::TERM || lastNode.type == node::STR_LITERAL)
+        if (lastNode.isNodeType(node::EXPRESSION) || lastNode.isNodeType(node::TERM) ||
+            lastNode.isNodeType(node::STR_LITERAL) || lastNode.isNodeType(node::INITLIST))
         {
             Unit RHS = expression(*this, lastNode);
 
             if (!icode::isSameType(local.type, RHS.type))
                 console.typeError(lastNode.tok, local.type, RHS.type);
 
-           functionBuilder.unitCopy(local, RHS);
+            functionBuilder.unitCopy(local, RHS);
         }
-        else if (lastNode.type == node::INITLIST)
-            assign_init_list_tovar(local, lastNode);
     }
 
     icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const Token tok)
@@ -286,14 +171,9 @@ namespace irgen
                     break;
                 case node::ASSIGNMENT:
                 case node::ASSIGNMENT_STR:
+                case node::ASSIGNMENT_INITLIST:
                     assignment(stmt);
                     break;
-                case node::ASSIGNMENT_INITLIST:
-                {
-                    Unit var = getUnitFromIdentifier(*this, stmt.children[0]);
-                    assign_init_list_tovar(var, stmt.children[1]);
-                    break;
-                }
                 case node::FUNCCALL:
                     functionCall(*this, stmt);
                     break;
@@ -331,7 +211,6 @@ namespace irgen
                 {
                     icode::TypeDescription returnType = (*workingFunction).functionReturnType;
 
-                    /* Get return value */
                     if (stmt.children.size() != 0)
                     {
                         Unit returnValue = expression(*this, stmt.children[0]);
@@ -339,20 +218,13 @@ namespace irgen
                         if (!icode::isSameType(returnType, returnValue.type))
                             console.typeError(stmt.children[0].tok, returnType, returnValue.type);
 
-                        /* Assign return value to return pointer */
-                        icode::Operand returnPointer = opBuilder.createRetPointerOperand(returnType.dtype);
+                        Unit returnPointer = functionBuilder.getReturnPointerUnit();
 
-                        if (returnValue.type.dtype == icode::STRUCT)
-                            copy_struct(returnPointer, returnValue);
-                        else
-                        {
-                            functionBuilder.operandCopy(returnPointer, returnValue.op);
-                        }
+                        functionBuilder.unitCopy(returnPointer, returnValue);
                     }
                     else if (returnType.dtype != icode::VOID)
                         console.compileErrorOnToken("Ret type is not VOID", stmt.tok);
 
-                    /* Add return to icode */
                     functionBuilder.noArgumentEntry(icode::RET);
 
                     break;

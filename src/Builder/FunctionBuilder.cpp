@@ -25,38 +25,35 @@ void FunctionBuilder::pushEntry(Entry entry)
     (*workingFunction).icodeTable.push_back(entry);
 }
 
-Operand FunctionBuilder::getCreatePointerDestinationOperand(const Operand& op,
-                                                            const std::string& dtypeName,
-                                                            ModuleDescription* workingModule)
+Operand FunctionBuilder::getCreatePointerDestinationOperand(const Unit& unit)
 {
     /* If not a struct, just copy the operand but change its type to a pointer */
 
-    if (op.dtype != STRUCT)
-        return opBuilder.createPointerOperand(op.dtype);
+    if (unit.op.dtype != STRUCT)
+        return opBuilder.createPointerOperand(unit.op.dtype);
 
     /* If it a struct, create pointer to the first field */
+    ModuleDescription* workingModule = &modulesMap.at(unit.type.moduleName);
 
-    TypeDescription firstFieldDesc = workingModule->structures[dtypeName].structFields.begin()->second;
+    TypeDescription firstFieldDesc = workingModule->structures[unit.type.dtypeName].structFields.begin()->second;
 
     return opBuilder.createPointerOperand(firstFieldDesc.dtype);
 }
 
-Operand FunctionBuilder::createPointer(const Operand& op,
-                                       const std::string& dtypeName,
-                                       ModuleDescription* workingModule)
+Operand FunctionBuilder::createPointer(const Unit& unit)
 {
-    if (op.isPointer() && op.dtype != STRUCT)
-        return op;
+    if (unit.op.isPointer() && unit.op.dtype != STRUCT)
+        return unit.op;
 
     /* Converted TEMP_PTR */
-    Operand pointerOperand = getCreatePointerDestinationOperand(op, dtypeName, workingModule);
+    Operand pointerOperand = getCreatePointerDestinationOperand(unit);
 
     /* Construct CREATE_PTR instruction */
     Entry createPointerEntry;
 
     createPointerEntry.opcode = CREATE_PTR;
     createPointerEntry.op1 = pointerOperand;
-    createPointerEntry.op2 = op;
+    createPointerEntry.op2 = unit.op;
 
     pushEntry(createPointerEntry);
 
@@ -66,9 +63,7 @@ Operand FunctionBuilder::createPointer(const Operand& op,
 // TODO: merge this with createPointer
 Operand FunctionBuilder::getPointerOperand(const Unit& unit)
 {
-    ModuleDescription* workingModule = &modulesMap.at(unit.type.moduleName);
-
-    return createPointer(unit.op, unit.type.dtypeName, workingModule);
+    return createPointer(unit);
 }
 
 void FunctionBuilder::operandCopy(Operand op1, Operand op2)
@@ -117,9 +112,34 @@ void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
     pushEntry(memCpyEntry);
 }
 
+void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
+{
+    Operand destPointer = getPointerOperand(dest);
+
+    std::vector<Unit> unitsToCopy = src.flatten();
+
+    for (size_t i = 0; i < unitsToCopy.size(); i++)
+    {
+        const Unit& unit = unitsToCopy[i];
+
+        if (unit.type.isArray() || unit.type.isStruct())
+            memCopy(destPointer, getPointerOperand(unit), unit.type.size);
+        else
+            operandCopy(destPointer, unit.op);
+
+        if (i == unitsToCopy.size() - 1)
+            continue;
+
+        Operand update = opBuilder.createLiteralAddressOperand(dest.type.dtypeSize);
+        destPointer = addressAddOperator(destPointer, update);
+    }
+}
+
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
-    if (dest.type.isArray() || dest.type.isStruct())
+    if (src.aggs.size() != 0)
+        unitListCopy(dest, src);
+    else if (dest.type.isArray() || dest.type.isStruct())
     {
         Operand destPointer = getPointerOperand(dest);
         Operand srcPointer = getPointerOperand(src);
@@ -194,7 +214,7 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(result, LHS.type);
+    return Unit(LHS.type, result);
 }
 
 Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOperatorTerm)
@@ -212,7 +232,7 @@ Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOp
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(result, unaryOperatorTerm.type);
+    return Unit(unaryOperatorTerm.type, result);
 }
 
 Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationDataType)
@@ -227,7 +247,7 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(result, typeDescriptionFromDataType(destinationDataType));
+    return Unit(typeDescriptionFromDataType(destinationDataType), result);
 }
 
 void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
@@ -302,7 +322,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
 
     fieldOperand.dtype = fieldType.dtype;
 
-    return Unit(fieldOperand, fieldType);
+    return Unit(fieldType, fieldOperand);
 }
 
 Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit>& indices)
@@ -332,7 +352,7 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
     elementType.dimensions.erase(elementType.dimensions.begin(),
                                  elementType.dimensions.end() - remainingDimensionCount);
 
-    return Unit(elementOperand, elementType);
+    return Unit(elementType, elementOperand);
 }
 
 Operand FunctionBuilder::createLabel(const Token& tok, bool isTrueLabel, std::string prefix)
@@ -459,7 +479,7 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescrip
 
     pushEntry(callEntry);
 
-    return Unit(callEntry.op1, callee.functionReturnType);
+    return Unit(callee.functionReturnType, callEntry.op1);
 }
 
 void FunctionBuilder::noArgumentEntry(Instruction instruction)
@@ -472,6 +492,15 @@ void FunctionBuilder::noArgumentEntry(Instruction instruction)
     entry.opcode = instruction;
 
     pushEntry(entry);
+}
+
+Unit FunctionBuilder::getReturnPointerUnit()
+{
+    const TypeDescription& returnType = workingFunction->functionReturnType;
+
+    Operand returnPointerOperand = opBuilder.createRetPointerOperand(returnType.dtype);
+
+    return Unit(returnType, returnPointerOperand);
 }
 
 bool FunctionBuilder::doesFunctionTerminate()

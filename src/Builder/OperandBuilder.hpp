@@ -38,10 +38,6 @@ class OperandBuilder
     icode::Operand createModuleOperand(const std::string& module);
 
     icode::Operand operandFromTypeDescription(const icode::TypeDescription& typeDescription, const std::string& name);
-
-    icode::Operand operandFromIntLiteral(int value);
-
-    icode::Operand operandFromFloatLiteral(float value);
 };
 
 #endif

@@ -25,3 +25,13 @@ TypeDescription createArrayTypeDescription(const TypeDescription& typeDescriptio
 
     return modifiedTypeDescription;
 }
+
+TypeDescription prependDimension(const TypeDescription& typeDescription, int dimension)
+{
+    TypeDescription modifiedTypeDescription = typeDescription;
+
+    modifiedTypeDescription.size *= dimension;
+    modifiedTypeDescription.dimensions.insert(modifiedTypeDescription.dimensions.begin(), dimension);
+
+    return modifiedTypeDescription;
+}

@@ -16,6 +16,7 @@ class UnitBuilder
     Unit unitFromTypeDescription(icode::TypeDescription& typeDescription, const std::string& name);
     Unit unitFromEnum(int enumValue);
     Unit unitFromDefineDescription(const icode::DefineDescription& defineDescription);
+    Unit unitFromUnitList(const std::vector<Unit>& unitList);
 };
 
 #endif

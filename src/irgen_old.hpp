@@ -46,14 +46,6 @@ namespace irgen
         void pushWorkingModule();
         void popWorkingModule();
 
-        std::pair<Token, icode::TypeDescription> var_from_node(const Node& root);
-
-        void assign_str_literal_tovar(Unit var, Node& root);
-
-        void assign_init_list_tovar(Unit var, Node& root);
-
-        void copy_struct(icode::Operand& left, Unit right);
-
         void var(const Node& root);
 
         icode::Instruction assignmentTokenToBinaryOperator(const Token tok);

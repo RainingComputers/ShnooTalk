@@ -14,7 +14,7 @@ Unit UnitBuilder::unitFromIntLiteral(int value, DataType dtype)
     Operand op = opBuilder.createIntLiteralOperand(dtype, value);
     TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
 
-    return Unit(op, typeDescription);
+    return Unit(typeDescription, op);
 }
 
 Unit UnitBuilder::unitFromFloatLiteral(float value, DataType dtype)
@@ -22,13 +22,13 @@ Unit UnitBuilder::unitFromFloatLiteral(float value, DataType dtype)
     Operand op = opBuilder.createFloatLiteralOperand(dtype, value);
     TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
 
-    return Unit(op, typeDescription);
+    return Unit(typeDescription, op);
 }
 
 Unit UnitBuilder::unitFromTypeDescription(TypeDescription& typeDescription, const std::string& name)
 {
     Operand op = opBuilder.operandFromTypeDescription(typeDescription, name);
-    return Unit(op, typeDescription);
+    return Unit(typeDescription, op);
 }
 
 Unit UnitBuilder::unitFromEnum(int enumValue)
@@ -38,7 +38,7 @@ Unit UnitBuilder::unitFromEnum(int enumValue)
     TypeDescription typeDescription = typeDescriptionFromDataType(INT);
     typeDescription.setProperty(IS_ENUM);
 
-    return Unit(op, typeDescription);
+    return Unit(typeDescription, op);
 }
 
 Unit UnitBuilder::unitFromDefineDescription(const DefineDescription& defineDescription)
@@ -53,5 +53,14 @@ Unit UnitBuilder::unitFromDefineDescription(const DefineDescription& defineDescr
     TypeDescription typeDescription = typeDescriptionFromDataType(defineDescription.dtype);
     typeDescription.setProperty(IS_DEFINE);
 
-    return Unit(op, typeDescription);
+    return Unit(typeDescription, op);
+}
+
+Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
+{
+    TypeDescription type = unitList[0].type;
+
+    type = prependDimension(type, unitList.size());
+
+    return Unit(type, unitList);
 }
