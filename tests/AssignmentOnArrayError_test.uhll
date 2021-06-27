@@ -3,7 +3,7 @@
 # 
 #     a += b
 #       ^
-# Assignment operators not allowed on ARRAY
+# Only EQUAL operator allowed on STRUCT or ARRAY
 
 fn main() -> int
 {

@@ -113,6 +113,9 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::INPUT_STR:
                 inputString(ctx, e);
                 break;
+            case icode::MEMCPY:
+                memCopy(ctx, e);
+                break;
             case icode::EXIT:
                 break;
             default:

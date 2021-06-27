@@ -25,7 +25,7 @@ Unit UnitBuilder::unitFromFloatLiteral(float value, DataType dtype)
     return Unit(op, typeDescription);
 }
 
-Unit UnitBuilder::unitPairFromTypeDescription(TypeDescription& typeDescription, const std::string& name)
+Unit UnitBuilder::unitFromTypeDescription(TypeDescription& typeDescription, const std::string& name)
 {
     Operand op = opBuilder.operandFromTypeDescription(typeDescription, name);
     return Unit(op, typeDescription);

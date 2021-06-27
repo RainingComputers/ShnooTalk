@@ -11,10 +11,12 @@ class StringBuilder
     icode::ModuleDescription& rootModule;
     OperandBuilder& opBuilder;
 
-  public:
-    StringBuilder(icode::ModuleDescription& rootModule, OperandBuilder& opBuilder);
+    icode::TypeDescription stringTypeFromToken(const Token& token);
 
     icode::Operand createStringOperand(const Token& stringToken);
+
+  public:
+    StringBuilder(icode::ModuleDescription& rootModule, OperandBuilder& opBuilder);
 
     Unit createString(const Token& stringToken);
 };

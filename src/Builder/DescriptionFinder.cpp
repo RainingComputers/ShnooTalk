@@ -47,7 +47,7 @@ bool DescriptionFinder::getLocal(const Token& nameToken, Unit& returnValue)
     if (!workingFunction->getSymbol(nameToken.toString(), typeDescription))
         return false;
 
-    returnValue = unitBuilder.unitPairFromTypeDescription(typeDescription, nameToken.toString());
+    returnValue = unitBuilder.unitFromTypeDescription(typeDescription, nameToken.toString());
     return true;
 }
 
@@ -58,7 +58,7 @@ bool DescriptionFinder::getGlobal(const Token& nameToken, Unit& returnValue)
     if (!rootModule.getGlobal(nameToken.toString(), typeDescription))
         return false;
 
-    returnValue = unitBuilder.unitPairFromTypeDescription(typeDescription, nameToken.toString());
+    returnValue = unitBuilder.unitFromTypeDescription(typeDescription, nameToken.toString());
     return true;
 }
 
@@ -141,44 +141,8 @@ std::vector<Unit> DescriptionFinder::getFormalParameters(const FunctionDescripti
     for (const std::string& parameter : function.parameters)
     {
         TypeDescription paramType = function.symbols.at(parameter);
-        formalParameters.push_back(unitBuilder.unitPairFromTypeDescription(paramType, parameter));
+        formalParameters.push_back(unitBuilder.unitFromTypeDescription(paramType, parameter));
     }
 
     return formalParameters;
-}
-
-void DescriptionFinder::createFrom(const Token& moduleNameToken, const Token& symbolNameToken)
-{
-    StructDescription structDescription;
-    FunctionDescription functionDescription;
-    DefineDescription defineDescription;
-    int enumValue;
-
-    if (!workingModule->useExists(moduleNameToken.toString()))
-        console.compileErrorOnToken("Module not imported", moduleNameToken);
-
-    ModuleDescription* externalModule = &modulesMap[moduleNameToken.toString()];
-
-    const std::string& symbolString = symbolNameToken.toString();
-
-    if (workingModule->symbolExists(symbolString))
-        console.compileErrorOnToken("Symbol already defined in current module", symbolNameToken);
-
-    if ((*externalModule).getStruct(symbolString, structDescription))
-        workingModule->structures[symbolString] = structDescription;
-
-    else if ((*externalModule).getFunction(symbolString, functionDescription))
-        console.compileErrorOnToken("Cannot import functions", symbolNameToken);
-
-    else if ((*externalModule).getDefineDescription(symbolString, defineDescription))
-        workingModule->defines[symbolString] = defineDescription;
-
-    else if ((*externalModule).getEnum(symbolString, enumValue))
-        workingModule->enumerations[symbolString] = enumValue;
-
-    else if ((*externalModule).useExists(symbolString))
-        workingModule->uses.push_back(symbolString);
-
-    else
-        console.compileErrorOnToken("Symbol does not exist", symbolNameToken);
 }

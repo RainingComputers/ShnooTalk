@@ -4,10 +4,11 @@
 
 using namespace icode;
 
-FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap, Console& console, OperandBuilder& opBuilder)
+FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap, Console& console, OperandBuilder& opBuilder, UnitBuilder& unitBuilder)
   : console(console)
   , modulesMap(modulesMap)
   , opBuilder(opBuilder)
+  , unitBuilder(unitBuilder)
 {
 }
 
@@ -67,7 +68,7 @@ Operand FunctionBuilder::getPointerOperand(const Unit& unit)
     return createPointer(unit.first, unit.second.dtypeName, workingModule);
 }
 
-void FunctionBuilder::copy(Operand op1, Operand op2)
+void FunctionBuilder::operandCopy(Operand op1, Operand op2)
 {
     /* If op2 is a literal, change generic dtypes like INT and FLOAT
         to correct specific dtype */
@@ -80,8 +81,8 @@ void FunctionBuilder::copy(Operand op1, Operand op2)
     if (op1.isPointer() && op2.isPointer())
     {
         Operand temp = opBuilder.createTempOperand(op2.dtype);
-        copy(temp, op2);
-        copy(op1, temp);
+        operandCopy(temp, op2);
+        operandCopy(op1, temp);
     }
     else
     {
@@ -101,6 +102,31 @@ void FunctionBuilder::copy(Operand op1, Operand op2)
     }
 }
 
+void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
+{
+    Entry memCpyEntry;
+
+    memCpyEntry.op1 = op1;
+    memCpyEntry.op2 = op2;
+    memCpyEntry.op3 = opBuilder.createIntLiteralOperand(I64, numBytes);
+    memCpyEntry.opcode = MEMCPY;
+
+    pushEntry(memCpyEntry);
+}
+
+void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
+{
+    if(dest.second.isArray() || dest.second.isStruct())
+    {
+        Operand destPointer = getPointerOperand(dest);
+        Operand srcPointer = getPointerOperand(src);
+
+        memCopy(destPointer, srcPointer, src.second.size);
+    }
+    else
+        operandCopy(dest.first, src.first);
+}
+
 Operand FunctionBuilder::ensureNotPointer(Operand op)
 {
     /* Make sure the operand is not a pointer, if it is a pointer,
@@ -110,7 +136,7 @@ Operand FunctionBuilder::ensureNotPointer(Operand op)
         return op;
 
     Operand temp = opBuilder.createTempOperand(op.dtype);
-    copy(temp, op);
+    operandCopy(temp, op);
     return temp;
 }
 
@@ -166,21 +192,6 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
     return Unit(result, LHS.second);
-}
-
-Operand FunctionBuilder::binaryOperator(Instruction instruction, Operand op1, Operand op2, Operand op3)
-{
-    /* Construct icode instruction for binary operator instructions,
-        ADD, SUB, MUL, DIV, MOD, RSH, LSH, BWA, BWO, BWX */
-
-    Entry entry;
-
-    entry.opcode = instruction;
-    entry.op1 = op1;
-    entry.op2 = ensureNotPointer(op2);
-    entry.op3 = ensureNotPointer(op3);
-
-    return pushEntryAndEnsureNoPointerWrite(entry);
 }
 
 Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOperatorTerm)
@@ -390,6 +401,18 @@ void FunctionBuilder::createInput(const Unit& unit)
     inputEntry.op2 = opBuilder.createIntLiteralOperand(INT, (int)size);
 
     pushEntry(inputEntry);
+}
+
+Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDescription)
+{
+    if (workingFunction->symbolExists(nameToken.toString()))
+        console.compileErrorOnToken("Symbol already defined", nameToken);
+
+    typeDescription.setProperty(IS_LOCAL);
+
+    workingFunction->symbols[nameToken.toString()] = typeDescription;
+
+    return unitBuilder.unitFromTypeDescription(typeDescription, nameToken.toString());
 }
 
 void FunctionBuilder::passParameter(const Token& calleeNameToken,

@@ -52,8 +52,6 @@ namespace irgen
 
         void assign_init_list_tovar(Unit var, Node& root);
 
-        void copy_array(icode::Operand& left, Unit right);
-
         void copy_struct(icode::Operand& left, Unit right);
 
         void var(const Node& root);

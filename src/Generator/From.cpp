@@ -11,5 +11,5 @@ void createFrom(irgen::ir_generator& ctx, const Node& root)
     const Token& moduleNameToken = root.children[0].tok;
 
     for (Node child : root.children[1].children)
-        ctx.descriptionFinder.createFrom(moduleNameToken, child.tok);
+        ctx.moduleBuilder.createFrom(moduleNameToken, child.tok);
 }

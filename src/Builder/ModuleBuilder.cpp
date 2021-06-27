@@ -4,8 +4,9 @@
 
 using namespace icode;
 
-ModuleBuilder::ModuleBuilder(Console& console)
-  : console(console)
+ModuleBuilder::ModuleBuilder(StringModulesMap& modulesMap, Console& console)
+  : modulesMap(modulesMap)
+  , console(console)
 {
 }
 
@@ -182,4 +183,40 @@ void ModuleBuilder::createUse(const Token& nameToken)
         console.compileErrorOnToken("Self import not allowed", nameToken);
 
     workingModule->uses.push_back(nameToken.toString());
+}
+
+void ModuleBuilder::createFrom(const Token& moduleNameToken, const Token& symbolNameToken)
+{
+    StructDescription structDescription;
+    FunctionDescription functionDescription;
+    DefineDescription defineDescription;
+    int enumValue;
+
+    if (!workingModule->useExists(moduleNameToken.toString()))
+        console.compileErrorOnToken("Module not imported", moduleNameToken);
+
+    ModuleDescription* externalModule = &modulesMap[moduleNameToken.toString()];
+
+    const std::string& symbolString = symbolNameToken.toString();
+
+    if (workingModule->symbolExists(symbolString))
+        console.compileErrorOnToken("Symbol already defined in current module", symbolNameToken);
+
+    if ((*externalModule).getStruct(symbolString, structDescription))
+        workingModule->structures[symbolString] = structDescription;
+
+    else if ((*externalModule).getFunction(symbolString, functionDescription))
+        console.compileErrorOnToken("Cannot import functions", symbolNameToken);
+
+    else if ((*externalModule).getDefineDescription(symbolString, defineDescription))
+        workingModule->defines[symbolString] = defineDescription;
+
+    else if ((*externalModule).getEnum(symbolString, enumValue))
+        workingModule->enumerations[symbolString] = enumValue;
+
+    else if ((*externalModule).useExists(symbolString))
+        workingModule->uses.push_back(symbolString);
+
+    else
+        console.compileErrorOnToken("Symbol does not exist", symbolNameToken);
 }

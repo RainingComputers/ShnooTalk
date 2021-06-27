@@ -1,9 +1,10 @@
 # MODULE StringTooBigError_test.uhll
-# ERROR in Line 10 Col 21
+# ERROR in Line 11 Col 21
 # 
 #     var a:char[4] = "Hello"
 #                     ^
-# String too big
+# Type error, did not expect UI8[6],
+# expected char[4]
 
 fn main() -> int
 {

@@ -173,6 +173,9 @@ icode::Instruction tokenToBinaryOperator(const irgen::ir_generator& ctx, const T
 
 Unit expression(irgen::ir_generator& ctx, const Node& root)
 {
+    if (root.type == node::STR_LITERAL)
+        return ctx.strBuilder.createString(root.tok);
+
     if (root.type == node::TERM)
         return term(ctx, root);
 

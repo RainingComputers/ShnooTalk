@@ -30,6 +30,10 @@ void createPointer(ModuleContext& ctx, const icode::Entry& e)
             ctx.operandValueMap[e.op1] =
               ctx.builder->CreatePtrToInt(ctx.currentFunctionReturnPointer, dataTypeToLLVMType(ctx, icode::I64));
             break;
+        case icode::STR_DATA:
+            ctx.operandValueMap[e.op1] =
+              ctx.builder->CreateGlobalStringPtr(ctx.moduleDescription.stringsData[e.op2.name]);
+            break;
         default:
             ctx.console.internalBugError();
     }
@@ -93,4 +97,13 @@ void addressBinaryOperator(ModuleContext& ctx, const icode::Entry& e)
 
     /* Store result llvm in map so it can be used by other llvm tranlations */
     setLLVMValue(ctx, e.op1, result);
+}
+
+void memCopy(ModuleContext& ctx, const icode::Entry& e)
+{
+    Value* dest = getLLVMPointer(ctx, e.op1);
+    Value* src = getLLVMPointer(ctx, e.op2);
+    Value* nbytes = getLLVMValue(ctx, e.op3);
+
+    ctx.builder->CreateMemCpy(dest, MaybeAlign(), src, MaybeAlign(), nbytes);
 }

@@ -692,7 +692,8 @@ namespace parser
             {
                 insert_node(node::ASSIGNMENT_STR);
 
-                next();
+                expect(token::EQUAL);
+                add_node(node::ASSIGN_OPERATOR);
                 add_node(node::STR_LITERAL);
             }
             else if (accept(token::EQUAL) && peek(token::OPEN_SQAURE))

@@ -7,8 +7,6 @@
 
 icode::TypeDescription typeDescriptionFromDataType(icode::DataType dtype);
 
-icode::TypeDescription stringTypeFromToken(const Token& token);
-
 icode::TypeDescription createArrayTypeDescription(const icode::TypeDescription& typeDescription,
                                                   std::vector<int>& dimensions);
 

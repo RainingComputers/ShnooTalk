@@ -1,9 +1,10 @@
 # MODULE StringAssignmentOnlyOn1dCharrArrayError_test.uhll
-# ERROR in Line 10 Col 21
+# ERROR in Line 11 Col 21
 # 
 #     var a:int[10] = "Hello"
 #                     ^
-# String assignment only allowed on 1D INT ARRAY
+# Type error, did not expect UI8[6],
+# expected int[10]
 
 fn main() -> int
 {

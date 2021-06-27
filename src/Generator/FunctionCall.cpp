@@ -4,10 +4,7 @@
 
 Unit getActualParam(irgen::ir_generator& ctx, const Node& root, int nodeCounter)
 {
-    if (root.isNthChild(node::STR_LITERAL, nodeCounter))
-        return ctx.strBuilder.createString(root.children[nodeCounter].tok);
-    else
-        return expression(ctx, root.children[nodeCounter]);
+    return expression(ctx, root.children[nodeCounter]);
 }
 
 Unit functionCall(irgen::ir_generator& ctx, const Node& root)

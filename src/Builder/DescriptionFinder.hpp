@@ -19,6 +19,11 @@ class DescriptionFinder
 
     UnitBuilder& unitBuilder;
 
+    bool getLocal(const Token& nameToken, Unit& returnValue);
+    bool getGlobal(const Token& nameToken, Unit& returnValue);
+    bool getDefine(const Token& nameToken, Unit& returnValue);
+    bool getEnum(const Token& nameToken, Unit& returnValue);
+
   public:
     DescriptionFinder(icode::ModuleDescription& rootModule,
                       icode::StringModulesMap& modulesMap,
@@ -32,14 +37,7 @@ class DescriptionFinder
 
     icode::ModuleDescription* getModuleFromToken(const Token& moduleNameToken);
 
-    bool getLocal(const Token& nameToken, Unit& returnValue);
-    bool getGlobal(const Token& nameToken, Unit& returnValue);
-    bool getDefine(const Token& nameToken, Unit& returnValue);
-    bool getEnum(const Token& nameToken, Unit& returnValue);
-
     Unit getUnitFromToken(const Token& nameToken);
-
-    void createFrom(const Token& moduleNameToken, const Token& symbolNameToken);
 
     int getDataTypeSizeFromToken(const Token& nameToken);
 

@@ -25,18 +25,3 @@ TypeDescription createArrayTypeDescription(const TypeDescription& typeDescriptio
 
     return modifiedTypeDescription;
 }
-
-TypeDescription stringTypeFromToken(const Token& token)
-{
-    TypeDescription stringType = typeDescriptionFromDataType(icode::UI8);
-
-    std::vector<int> dimensions;
-    /* +1 for null char */
-    dimensions.push_back(token.toUnescapedString().size());
-
-    stringType = createArrayTypeDescription(stringType, dimensions);
-
-    stringType.becomeString();
-
-    return stringType;
-}

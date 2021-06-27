@@ -29,10 +29,10 @@ namespace irgen
       , modulesMap(modulesMap)
       , rootModule(modulesMap[fileName])
       , console(console)
-      , moduleBuilder(console)
+      , moduleBuilder(modulesMap, console)
       , unitBuilder(opBuilder)
       , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
-      , functionBuilder(modulesMap, console, opBuilder)
+      , functionBuilder(modulesMap, console, opBuilder, unitBuilder)
       , strBuilder(modulesMap[fileName], opBuilder)
     {
         workingFunction = nullptr;
@@ -94,7 +94,7 @@ namespace irgen
             char character = root.tok.toUnescapedString()[i];
 
             /* Write to current offset */
-            functionBuilder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, character));
+            functionBuilder.operandCopy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, character));
 
             curr_offset =
               functionBuilder.addressAddOperator(curr_offset,
@@ -102,40 +102,7 @@ namespace irgen
         }
 
         /* Copy null character */
-        functionBuilder.copy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, 0));
-    }
-
-    void ir_generator::copy_array(icode::Operand& left, Unit right)
-    {
-        icode::Operand curr_offset_left = functionBuilder.createPointer(left, right.second.dtypeName, workingModule);
-        icode::Operand curr_offset_right =
-          functionBuilder.createPointer(right.first, right.second.dtypeName, workingModule);
-
-        unsigned int size = right.second.size;
-        unsigned int dtype_size = right.second.dtypeSize;
-
-        /* Loop through array and copy each element */
-        for (size_t i = 0; i < size; i += dtype_size)
-        {
-            if (right.second.dtype == icode::STRUCT)
-            {
-                /* Copy struct from right to left */
-                copy_struct(curr_offset_left, Unit(curr_offset_right, right.second));
-            }
-            else
-            {
-                /* Copy element from right to left */
-                functionBuilder.copy(curr_offset_left, curr_offset_right);
-            }
-
-            /* Update offset */
-            if (i != size - dtype_size)
-            {
-                icode::Operand update = opBuilder.createLiteralAddressOperand(dtype_size);
-                curr_offset_left = functionBuilder.addressAddOperator(curr_offset_left, update);
-                curr_offset_right = functionBuilder.addressAddOperator(curr_offset_right, update);
-            }
-        }
+        functionBuilder.operandCopy(curr_offset, opBuilder.createIntLiteralOperand(icode::UI8, 0));
     }
 
     void ir_generator::copy_struct(icode::Operand& left, Unit right)
@@ -144,41 +111,7 @@ namespace irgen
         icode::Operand curr_offset_right =
           functionBuilder.createPointer(right.first, right.second.dtypeName, workingModule);
 
-        /* Loop through each field and copy them */
-        unsigned int count = 0;
-        icode::Operand update;
-        for (auto field : rootModule.structures[right.second.dtypeName].structFields)
-        {
-            icode::TypeDescription field_info = field.second;
-
-            if (count != 0)
-            {
-                curr_offset_left.dtype = field.second.dtype;
-                curr_offset_right.dtype = field.second.dtype;
-
-                curr_offset_left = functionBuilder.addressAddOperator(curr_offset_left, update);
-                curr_offset_right = functionBuilder.addressAddOperator(curr_offset_right, update);
-            }
-
-            /* Copy field */
-            if (field_info.dimensions.size() != 0)
-            {
-                copy_array(curr_offset_left, Unit(curr_offset_right, field_info));
-            }
-            else if (field_info.dtype != icode::STRUCT)
-            {
-                /* Copy field from right into left */
-                functionBuilder.copy(curr_offset_left, curr_offset_right);
-            }
-            else
-            {
-                copy_struct(curr_offset_left, Unit(curr_offset_right, field_info));
-            }
-
-            update = opBuilder.createLiteralAddressOperand(field_info.size);
-
-            count++;
-        }
+        functionBuilder.memCopy(curr_offset_left, curr_offset_right, right.second.size);
     }
 
     void ir_generator::assign_init_list_tovar(Unit var, Node& root)
@@ -219,7 +152,7 @@ namespace irgen
                 if (element_expr.second.dtype != icode::STRUCT)
                 {
                     /* Write to current offset if not a struct */
-                    functionBuilder.copy(curr_offset, element_expr.first);
+                    functionBuilder.operandCopy(curr_offset, element_expr.first);
                 }
                 else
                 {
@@ -252,60 +185,30 @@ namespace irgen
 
     void ir_generator::var(const Node& root)
     {
-        TokenTypePair var = var_from_node(root);
-        var.second.setProperty(icode::IS_LOCAL);
-        scope.putInCurrentScope(var.first);
+        const Token& nameToken = root.getNthChildToken(0);
 
-        /* Set mutable for var */
+        icode::TypeDescription localType = typeDescriptionFromNode(*this, root);
+        
+        scope.putInCurrentScope(nameToken);
+
         if (root.type == node::VAR)
-            var.second.setProperty(icode::IS_MUT);
+            localType.becomeMutable();
 
-        /* Check if symbol already exists */
-        if (rootModule.symbolExists(var.first.toString()) || (*workingFunction).symbolExists(var.first.toString()))
-            console.compileErrorOnToken("Symbol already defined", var.first);
+        Unit local = functionBuilder.createLocal(nameToken, localType);
 
-        /* Check for initialization expression or initializer list */
-        Node last_node = root.children.back();
+        Node lastNode = root.children.back();
 
-        if (last_node.type == node::EXPRESSION || last_node.type == node::TERM)
+        if (lastNode.type == node::EXPRESSION || lastNode.type == node::TERM || lastNode.type == node::STR_LITERAL)
         {
-            /* If an array requires initializer list */
-            if (var.second.dimensions.size() != 0)
-                console.compileErrorOnToken("Initializer list required to initialize array", last_node.tok);
+            Unit RHS = expression(*this, lastNode);
 
-            /* Create icode operands, one for variable other for temp
-                to hold result of initialization expression */
-            icode::Operand left = opBuilder.createVarOperand(var.second.dtype, var.first.toString());
+            if (!icode::isSameType(local.second, RHS.second))
+                console.typeError(lastNode.tok, local.second, RHS.second);
 
-            Unit init_exp = expression(*this, last_node);
-
-            /* Check if the type match */
-            if (!icode::isSameType(var.second, init_exp.second))
-                console.typeError(last_node.tok, var.second, init_exp.second);
-
-            if (var.second.dtype != icode::STRUCT)
-            {
-                /* Create EQUAL icode entry is not a STRUCT */
-                functionBuilder.copy(left, init_exp.first);
-            }
-            else
-            {
-                copy_struct(left, init_exp);
-            }
+           functionBuilder.unitCopy(local, RHS);
         }
-        else if (last_node.type == node::STR_LITERAL)
-        {
-            Unit var_pair = Unit(opBuilder.createVarOperand(var.second.dtype, var.first.toString()), var.second);
-            assign_str_literal_tovar(var_pair, last_node);
-        }
-        else if (last_node.type == node::INITLIST)
-        {
-            Unit var_pair = Unit(opBuilder.createVarOperand(var.second.dtype, var.first.toString()), var.second);
-            assign_init_list_tovar(var_pair, last_node);
-        }
-
-        /* Add to symbol table */
-        (*workingFunction).symbols[var.first.toString()] = var.second;
+        else if (lastNode.type == node::INITLIST)
+            assign_init_list_tovar(local, lastNode);
     }
 
     icode::Instruction ir_generator::assignmentTokenToBinaryOperator(const Token tok)
@@ -350,33 +253,18 @@ namespace irgen
         if (!LHS.second.isMutable())
             console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
 
-        if (LHS.second.isArray())
-            console.compileErrorOnToken("Assignment operators not allowed on ARRAY", assignOperator);
-
-        if (LHS.second.isStruct() && assignOperator.getType() != token::EQUAL)
-            console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT", assignOperator);
+        if ((LHS.second.isStruct() || LHS.second.isArray()) && assignOperator.getType() != token::EQUAL)
+            console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT or ARRAY", assignOperator);
 
         if (assignOperator.isBitwiseOperation() && !icode::isInteger(LHS.second.dtype))
             console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
 
-        icode::Instruction opcode = assignmentTokenToBinaryOperator(assignOperator);
-
-        if (LHS.second.isStruct())
-        {
-            copy_struct(LHS.first, RHS);
-            return;
-        }
+        icode::Instruction instruction = assignmentTokenToBinaryOperator(assignOperator);
 
         if (assignOperator.getType() == token::EQUAL)
-        {
-            functionBuilder.copy(LHS.first, RHS.first);
-        }
+            functionBuilder.unitCopy(LHS, RHS);
         else
-        {
-            icode::Operand temp = opBuilder.createTempOperand(LHS.second.dtype);
-            functionBuilder.copy(temp, LHS.first);
-            functionBuilder.binaryOperator(opcode, LHS.first, temp, RHS.first);
-        }
+            functionBuilder.unitCopy(LHS, functionBuilder.binaryOperator(instruction, LHS, RHS));
     }
 
     void ir_generator::block(const Node& root,
@@ -397,14 +285,9 @@ namespace irgen
                     var(stmt);
                     break;
                 case node::ASSIGNMENT:
+                case node::ASSIGNMENT_STR:
                     assignment(stmt);
                     break;
-                case node::ASSIGNMENT_STR:
-                {
-                    Unit var = getUnitFromIdentifier(*this, stmt.children[0]);
-                    assign_str_literal_tovar(var, stmt.children[1]);
-                    break;
-                }
                 case node::ASSIGNMENT_INITLIST:
                 {
                     Unit var = getUnitFromIdentifier(*this, stmt.children[0]);
@@ -446,28 +329,27 @@ namespace irgen
                     break;
                 case node::RETURN:
                 {
-                    icode::TypeDescription ret_info = (*workingFunction).functionReturnType;
+                    icode::TypeDescription returnType = (*workingFunction).functionReturnType;
 
                     /* Get return value */
                     if (stmt.children.size() != 0)
                     {
-                        Unit ret_val = expression(*this, stmt.children[0]);
+                        Unit returnValue = expression(*this, stmt.children[0]);
 
-                        /* Type check */
-                        if (!icode::isSameType(ret_info, ret_val.second))
-                            console.typeError(stmt.children[0].tok, ret_info, ret_val.second);
+                        if (!icode::isSameType(returnType, returnValue.second))
+                            console.typeError(stmt.children[0].tok, returnType, returnValue.second);
 
                         /* Assign return value to return pointer */
-                        icode::Operand ret_ptr = opBuilder.createRetPointerOperand(ret_info.dtype);
+                        icode::Operand returnPointer = opBuilder.createRetPointerOperand(returnType.dtype);
 
-                        if (ret_val.second.dtype == icode::STRUCT)
-                            copy_struct(ret_ptr, ret_val);
+                        if (returnValue.second.dtype == icode::STRUCT)
+                            copy_struct(returnPointer, returnValue);
                         else
                         {
-                            functionBuilder.copy(ret_ptr, ret_val.first);
+                            functionBuilder.operandCopy(returnPointer, returnValue.first);
                         }
                     }
-                    else if (ret_info.dtype != icode::VOID)
+                    else if (returnType.dtype != icode::VOID)
                         console.compileErrorOnToken("Ret type is not VOID", stmt.tok);
 
                     /* Add return to icode */

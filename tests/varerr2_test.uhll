@@ -1,9 +1,10 @@
 # MODULE varerr2_test.uhll
-# ERROR in Line 10 Col 20
+# ERROR in Line 11 Col 20
 # 
 #     var a:int[3] = 2
 #                    ^
-# Initializer list required to initialize array
+# Type error, did not expect INT,
+# expected int[3]
 
 fn main()
 {

@@ -6,6 +6,7 @@
 
 class ModuleBuilder
 {
+    icode::StringModulesMap& modulesMap;
     icode::ModuleDescription* workingModule;
     Console& console;
 
@@ -14,7 +15,7 @@ class ModuleBuilder
     std::pair<int, std::string> getSizeAndModuleName(const Token& dataTypeToken, icode::DataType dtype);
 
   public:
-    ModuleBuilder(Console& console);
+    ModuleBuilder(icode::StringModulesMap& modulesMap, Console& console);
 
     void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
@@ -38,6 +39,8 @@ class ModuleBuilder
                                  const std::vector<icode::TypeDescription>& fieldTypes);
 
     void createUse(const Token& nameToken);
+
+    void createFrom(const Token& moduleNameToken, const Token& symbolNameToken);
 };
 
 #endif

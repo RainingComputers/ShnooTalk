@@ -4,13 +4,16 @@
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"
 #include "OperandBuilder.hpp"
+#include "UnitBuilder.hpp"
 #include "Unit.hpp"
+#include "../Token/Token.hpp"
 
 class FunctionBuilder
 {
     Console& console;
     icode::StringModulesMap& modulesMap;
     OperandBuilder& opBuilder;
+    UnitBuilder& unitBuilder;
     icode::FunctionDescription* workingFunction;
 
     icode::Operand ensureNotPointer(icode::Operand op);
@@ -22,7 +25,7 @@ class FunctionBuilder
                                                       icode::ModuleDescription* workingModule);
 
   public:
-    FunctionBuilder(icode::StringModulesMap& modulesMap, Console& console, OperandBuilder& opBuilder);
+    FunctionBuilder(icode::StringModulesMap& modulesMap, Console& console, OperandBuilder& opBuilder, UnitBuilder& unitBuilder);
 
     void setWorkingFunction(icode::FunctionDescription* functionDesc);
 
@@ -34,15 +37,13 @@ class FunctionBuilder
 
     icode::Operand getPointerOperand(const Unit& unit);
 
-    void copy(icode::Operand op1, icode::Operand op2);
+    void operandCopy(icode::Operand op1, icode::Operand op2);
+
+    void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
+
+    void unitCopy(const Unit& dest, const Unit& src);
 
     Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
-
-    // TODO: Remove this function
-    icode::Operand binaryOperator(icode::Instruction instruction,
-                                  icode::Operand op1,
-                                  icode::Operand op2,
-                                  icode::Operand op3);
 
     Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
 
@@ -67,6 +68,8 @@ class FunctionBuilder
     void createPrint(const Unit& unit);
 
     void createInput(const Unit& unit);
+
+    Unit createLocal(const Token nameToken, icode::TypeDescription& typeDescription);
 
     void passParameter(const Token& calleeNameToken,
                        icode::FunctionDescription callee,

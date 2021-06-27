@@ -58,7 +58,15 @@
         "mutex": "cpp",
         "thread": "cpp",
         "*.def": "cpp",
-        "*.inc": "cpp"
+        "*.inc": "cpp",
+        "cassert": "cpp",
+        "cerrno": "cpp",
+        "ciso646": "cpp",
+        "climits": "cpp",
+        "ios": "cpp",
+        "locale": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     },
     "cSpell.words": [
         "CONDN",

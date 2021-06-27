@@ -1,9 +1,10 @@
 # MODULE strdaterr2_test.uhll
-# ERROR in Line 10 Col 21
+# ERROR in Line 11 Col 21
 # 
 #     var a:char[2] = "lol"
 #                     ^
-# String too big
+# Type error, did not expect UI8[4],
+# expected char[2]
 
 fn main()
 {
