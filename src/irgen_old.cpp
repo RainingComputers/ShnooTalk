@@ -31,8 +31,8 @@ namespace irgen
       , console(console)
       , moduleBuilder(modulesMap, console)
       , unitBuilder(opBuilder)
-      , descriptionFinder(modulesMap[fileName], modulesMap, console, unitBuilder)
-      , functionBuilder(modulesMap, console, opBuilder, unitBuilder)
+      , descriptionFinder(modulesMap[fileName], modulesMap, unitBuilder, console)
+      , functionBuilder(modulesMap, opBuilder, unitBuilder, console)
       , strBuilder(modulesMap[fileName], opBuilder)
     {
         workingFunction = nullptr;

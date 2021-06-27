@@ -3,29 +3,36 @@
 
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"
-#include "OperandBuilder.hpp"
-#include "UnitBuilder.hpp"
-#include "Unit.hpp"
 #include "../Token/Token.hpp"
+#include "OperandBuilder.hpp"
+#include "Unit.hpp"
+#include "UnitBuilder.hpp"
 
 class FunctionBuilder
 {
-    Console& console;
+
     icode::StringModulesMap& modulesMap;
     OperandBuilder& opBuilder;
     UnitBuilder& unitBuilder;
+    Console& console;
+
     icode::FunctionDescription* workingFunction;
-
-    icode::Operand ensureNotPointer(icode::Operand op);
-
-    icode::Operand pushEntryAndEnsureNoPointerWrite(icode::Entry entry);
 
     icode::Operand getCreatePointerDestinationOperand(const icode::Operand& op,
                                                       const std::string& dtypeName,
                                                       icode::ModuleDescription* workingModule);
 
+    icode::Operand ensureNotPointer(icode::Operand op);
+
+    icode::Operand pushEntryAndEnsureNoPointerWrite(icode::Entry entry);
+
+    bool doesFunctionTerminate();
+
   public:
-    FunctionBuilder(icode::StringModulesMap& modulesMap, Console& console, OperandBuilder& opBuilder, UnitBuilder& unitBuilder);
+    FunctionBuilder(icode::StringModulesMap& modulesMap,
+                    OperandBuilder& opBuilder,
+                    UnitBuilder& unitBuilder,
+                    Console& console);
 
     void setWorkingFunction(icode::FunctionDescription* functionDesc);
 
@@ -79,8 +86,6 @@ class FunctionBuilder
     Unit callFunction(const Token& calleeNameToken, icode::FunctionDescription callee);
 
     void noArgumentEntry(icode::Instruction instruction);
-
-    bool doesFunctionTerminate();
 
     bool terminateFunction();
 };

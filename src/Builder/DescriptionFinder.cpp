@@ -6,12 +6,12 @@ using namespace icode;
 
 DescriptionFinder::DescriptionFinder(ModuleDescription& rootModule,
                                      StringModulesMap& modulesMap,
-                                     Console& console,
-                                     UnitBuilder& unitBuilder)
+                                     UnitBuilder& unitBuilder,
+                                     Console& console)
   : rootModule(rootModule)
   , modulesMap(modulesMap)
-  , console(console)
   , unitBuilder(unitBuilder)
+  , console(console)
 {
 }
 

@@ -7,8 +7,9 @@
 class ModuleBuilder
 {
     icode::StringModulesMap& modulesMap;
-    icode::ModuleDescription* workingModule;
     Console& console;
+
+    icode::ModuleDescription* workingModule;
 
     icode::StructDescription createEmptyStructDescription();
 

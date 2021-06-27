@@ -4,11 +4,14 @@
 
 using namespace icode;
 
-FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap, Console& console, OperandBuilder& opBuilder, UnitBuilder& unitBuilder)
-  : console(console)
-  , modulesMap(modulesMap)
+FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap,
+                                 OperandBuilder& opBuilder,
+                                 UnitBuilder& unitBuilder,
+                                 Console& console)
+  : modulesMap(modulesMap)
   , opBuilder(opBuilder)
   , unitBuilder(unitBuilder)
+  , console(console)
 {
 }
 
@@ -116,7 +119,7 @@ void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
 
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
-    if(dest.second.isArray() || dest.second.isStruct())
+    if (dest.second.isArray() || dest.second.isStruct())
     {
         Operand destPointer = getPointerOperand(dest);
         Operand srcPointer = getPointerOperand(src);

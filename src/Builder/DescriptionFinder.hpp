@@ -12,12 +12,11 @@ class DescriptionFinder
 {
     icode::ModuleDescription& rootModule;
     icode::StringModulesMap& modulesMap;
-    icode::ModuleDescription* workingModule;
-    icode::FunctionDescription* workingFunction;
-
+    UnitBuilder& unitBuilder;
     Console& console;
 
-    UnitBuilder& unitBuilder;
+    icode::ModuleDescription* workingModule;
+    icode::FunctionDescription* workingFunction;
 
     bool getLocal(const Token& nameToken, Unit& returnValue);
     bool getGlobal(const Token& nameToken, Unit& returnValue);
@@ -27,8 +26,8 @@ class DescriptionFinder
   public:
     DescriptionFinder(icode::ModuleDescription& rootModule,
                       icode::StringModulesMap& modulesMap,
-                      Console& console,
-                      UnitBuilder& unitBuilder);
+                      UnitBuilder& unitBuilder,
+                      Console& console);
 
     void setWorkingModule(icode::ModuleDescription* module);
     void setWorkingFunction(icode::FunctionDescription* function);
