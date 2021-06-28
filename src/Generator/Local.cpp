@@ -3,7 +3,7 @@
 
 #include "Local.hpp"
 
-void local(irgen::ir_generator& ctx, const Node& root)
+void local(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& nameToken = root.getNthChildToken(0);
 

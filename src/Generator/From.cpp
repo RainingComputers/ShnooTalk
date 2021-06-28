@@ -1,12 +1,12 @@
 #include "From.hpp"
 
-void createUse(irgen::ir_generator& ctx, const Node& root)
+void createUse(generator::GeneratorContext& ctx, const Node& root)
 {
     for (Node child : root.children)
         ctx.moduleBuilder.createUse(child.tok);
 }
 
-void createFrom(irgen::ir_generator& ctx, const Node& root)
+void createFrom(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& moduleNameToken = root.children[0].tok;
 

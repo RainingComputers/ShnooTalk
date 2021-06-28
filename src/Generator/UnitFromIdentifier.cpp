@@ -2,7 +2,7 @@
 
 #include "UnitFromIdentifier.hpp"
 
-Unit getUnitFromNode(irgen::ir_generator& ctx, const Node& root)
+Unit getUnitFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& nameToken = root.getNthChildToken(0);
 
@@ -21,7 +21,7 @@ Unit getUnitFromNode(irgen::ir_generator& ctx, const Node& root)
     return Unit;
 }
 
-std::pair<Unit, size_t> unitFromStructVar(irgen::ir_generator& ctx,
+std::pair<Unit, size_t> unitFromStructVar(generator::GeneratorContext& ctx,
                                           const Node& root,
                                           const Unit& unit,
                                           size_t startIndex)
@@ -45,7 +45,7 @@ std::pair<Unit, size_t> unitFromStructVar(irgen::ir_generator& ctx,
     return std::pair<Unit, size_t>(returnUnit, nodeCounter);
 }
 
-std::pair<Unit, size_t> unitFromExpressionSubscripts(irgen::ir_generator& ctx,
+std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext& ctx,
                                                      const Node& root,
                                                      const Unit& unit,
                                                      size_t startIndex)
@@ -80,7 +80,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(irgen::ir_generator& ctx,
     return std::pair<Unit, size_t>(returnUnit, nodeCounter);
 }
 
-Unit getUnitFromIdentifier(irgen::ir_generator& ctx, const Node& root)
+Unit getUnitFromIdentifier(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit unit = getUnitFromNode(ctx, root);
 

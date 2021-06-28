@@ -1,8 +1,8 @@
 #ifndef GENERATOR_FUNCTION
 #define GENERATOR_FUNCTION
 
-#include "../irgen_old.hpp"
+#include "GeneratorContext.hpp"
 
-void createFunctionFromNode(irgen::ir_generator& ctx, const Node& root);
+void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

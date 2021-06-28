@@ -34,8 +34,8 @@ namespace pp
     void typeError(const std::string& moduleName,
                    std::ifstream& file,
                    const Token& tok,
-                   icode::TypeDescription& expected,
-                   icode::TypeDescription& found);
+                   const icode::TypeDescription& expected,
+                   const icode::TypeDescription& found);
 
     void internalCompilerErrorToken(const std::string& moduleName, std::ifstream& file, const Token& tok);
 

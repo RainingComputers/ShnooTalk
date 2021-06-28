@@ -2,7 +2,7 @@
 
 #include "Input.hpp"
 
-void input(irgen::ir_generator& ctx, const Node& root)
+void input(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit unit = expression(ctx, root.children[0]);
 

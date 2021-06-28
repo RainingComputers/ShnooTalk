@@ -9,7 +9,7 @@ void createLabel(const ModuleContext& ctx, BranchContext& branchContext, const i
 
     branchContext.labelToBasicBlockMap[e.op1] = newBlock;
 
-    /* Make sure every block has a terminator */
+    /* Make sure old block has a terminator */
     if (!branchContext.prevInstructionGotoOrRet)
         ctx.builder->CreateBr(newBlock);
 
@@ -89,6 +89,8 @@ void processGotoBackpatches(const ModuleContext& ctx, BranchContext& branchConte
         BasicBlock* gotoBlock = branchContext.labelToBasicBlockMap.at(e.op1);
         BasicBlock* fallBlock = branchContext.fallBlocks.at(entryIndex);
 
+        /* Branch instruction are always follwed by compare instructions that set
+         the imaginary flag register */
         Value* flag = branchContext.branchFlags.front();
 
         /* Get insertion point corresponding to the entry */

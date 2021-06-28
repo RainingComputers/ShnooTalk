@@ -1,8 +1,8 @@
 #ifndef GENERATOR_TYPE_DESCRIPTION_FROM_NODE
 #define GENERATOR_TYPE_DESCRIPTION_FROM_NODE
 
-#include "../irgen_old.hpp"
+#include "GeneratorContext.hpp"
 
-icode::TypeDescription typeDescriptionFromNode(irgen::ir_generator& ctx, const Node& root);
+icode::TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

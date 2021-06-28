@@ -2,12 +2,14 @@
 
 #include "FunctionCall.hpp"
 
-Unit getActualParam(irgen::ir_generator& ctx, const Node& root, int nodeCounter)
+using namespace icode;
+
+Unit getActualParam(generator::GeneratorContext& ctx, const Node& root, int nodeCounter)
 {
     return expression(ctx, root.children[nodeCounter]);
 }
 
-Unit functionCall(irgen::ir_generator& ctx, const Node& root)
+Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.pushWorkingModule();
 
@@ -22,7 +24,7 @@ Unit functionCall(irgen::ir_generator& ctx, const Node& root)
     }
 
     const Token& calleeNameToken = root.tok;
-    icode::FunctionDescription callee = ctx.descriptionFinder.getFunction(calleeNameToken);
+    FunctionDescription callee = ctx.descriptionFinder.getFunction(calleeNameToken);
 
     if (root.children.size() != callee.numParameters())
         ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
@@ -41,7 +43,7 @@ Unit functionCall(irgen::ir_generator& ctx, const Node& root)
         else
             actualParam = getActualParam(ctx, root, i);
 
-        if (!icode::isSameType(formalParam.type, actualParam.type))
+        if (!isSameType(formalParam.type, actualParam.type))
             ctx.console.typeError(actualParamToken, formalParam.type, actualParam.type);
 
         if (formalParam.type.isMutable() && !actualParam.op.canPassAsMutable())
@@ -57,4 +59,25 @@ Unit functionCall(irgen::ir_generator& ctx, const Node& root)
     ctx.popWorkingModule();
 
     return ctx.functionBuilder.callFunction(calleeNameToken, callee);
+}
+
+void functionReturn(generator::GeneratorContext& ctx, const Node& root)
+{
+    const TypeDescription& returnType = ctx.workingFunction->functionReturnType;
+
+    if (root.children.size() != 0)
+    {
+        Unit returnValue = expression(ctx, root.children[0]);
+
+        if (!isSameType(returnType, returnValue.type))
+            ctx.console.typeError(root.children[0].tok, returnType, returnValue.type);
+
+        Unit returnPointer = ctx.functionBuilder.getReturnPointerUnit();
+
+        ctx.functionBuilder.unitCopy(returnPointer, returnValue);
+    }
+    else if (returnType.dtype != VOID)
+        ctx.console.compileErrorOnToken("Ret type is not VOID", root.tok);
+
+    ctx.functionBuilder.noArgumentEntry(RET);
 }

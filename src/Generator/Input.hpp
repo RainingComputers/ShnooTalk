@@ -1,8 +1,8 @@
 #ifndef GENERATOR_INPUT
 #define GENERATOR_INPUT
 
-#include "../irgen_old.hpp"
+#include "GeneratorContext.hpp"
 
-void input(irgen::ir_generator& ctx, const Node& root);
+void input(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

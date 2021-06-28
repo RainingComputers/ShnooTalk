@@ -1,8 +1,8 @@
 #ifndef GENERATOR_ASSIGNMENT
 #define GENERATOR_ASSIGNMENT
 
-#include "../irgen_old.hpp"
+#include "GeneratorContext.hpp"
 
-void assignment(irgen::ir_generator& ctx, const Node& root);
+void assignment(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

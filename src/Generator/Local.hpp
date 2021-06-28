@@ -1,8 +1,8 @@
 #ifndef GENERATOR_LOCAL
 #define GENERATOR_LOCAL
 
-#include "../irgen_old.hpp"
+#include "GeneratorContext.hpp"
 
-void local(irgen::ir_generator& ctx, const Node& root);
+void local(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

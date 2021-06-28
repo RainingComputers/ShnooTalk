@@ -11,7 +11,7 @@
 
 using namespace llvm;
 
-icode::TargetDescription llvmgen::getTargetDescription()
+icode::TargetDescription translator::getTargetDescription()
 {
     icode::TargetDescription target;
 
@@ -36,7 +36,7 @@ std::string getLLVMModuleString(const Module& LLVMModule)
     return moduleString;
 }
 
-void llvmgen::generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,
+void translator::generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,
                                        icode::StringModulesMap& modulesMap,
                                        Console& console)
 {
@@ -51,7 +51,7 @@ void llvmgen::generateLLVMModuleObject(icode::ModuleDescription& moduleDescripti
     setupPassManagerAndCreateObject(moduleContext, targetMachine);
 }
 
-std::string llvmgen::generateLLVMModuleString(icode::ModuleDescription& moduleDescription,
+std::string translator::generateLLVMModuleString(icode::ModuleDescription& moduleDescription,
                                               icode::StringModulesMap& modulesMap,
                                               Console& console)
 {

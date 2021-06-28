@@ -3,7 +3,7 @@
 
 #include "Assignment.hpp"
 
-icode::Instruction assignmentTokenToBinaryOperator(const irgen::ir_generator& ctx, const Token tok)
+icode::Instruction assignmentTokenToBinaryOperator(const generator::GeneratorContext& ctx, const Token tok)
 {
     switch (tok.getType())
     {
@@ -28,10 +28,10 @@ icode::Instruction assignmentTokenToBinaryOperator(const irgen::ir_generator& ct
     }
 }
 
-void assignment(irgen::ir_generator& ctx, const Node& root)
+void assignment(generator::GeneratorContext& ctx, const Node& root)
 {
 
-    Unit LHS = getUnitFromIdentifier(ctx, root.children[0]);
+    Unit LHS = expression(ctx, root.children[0]);
 
     Unit RHS = expression(ctx, root.children[2]);
 

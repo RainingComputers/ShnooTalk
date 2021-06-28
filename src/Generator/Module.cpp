@@ -1,6 +1,6 @@
 #include "Module.hpp"
 
-int setWorkingModuleFromNode(irgen::ir_generator& ctx, const Node& root, size_t startIndex)
+int setWorkingModuleFromNode(generator::GeneratorContext& ctx, const Node& root, size_t startIndex)
 {
     size_t nodeCounter;
 

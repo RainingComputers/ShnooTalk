@@ -2,7 +2,7 @@
 
 #include "ConditionalExpression.hpp"
 
-icode::Instruction tokenToCompareOperator(const irgen::ir_generator& ctx, const Token tok)
+icode::Instruction tokenToCompareOperator(const generator::GeneratorContext& ctx, const Token tok)
 {
     switch (tok.getType())
     {
@@ -23,7 +23,7 @@ icode::Instruction tokenToCompareOperator(const irgen::ir_generator& ctx, const 
     }
 }
 
-void conditionalTerm(irgen::ir_generator& ctx,
+void conditionalTerm(generator::GeneratorContext& ctx,
                      const Node& root,
                      const icode::Operand& trueLabel,
                      const icode::Operand& falseLabel,
@@ -47,7 +47,7 @@ void conditionalTerm(irgen::ir_generator& ctx,
     conditionalExpression(ctx, root.children[0].children[0].children[0], falseLabel, trueLabel, !trueFall);
 }
 
-void conditionalAndOperator(irgen::ir_generator& ctx,
+void conditionalAndOperator(generator::GeneratorContext& ctx,
                             const Token& operatorToken,
                             const Node& root,
                             const icode::Operand& trueLabel,
@@ -68,7 +68,7 @@ void conditionalAndOperator(irgen::ir_generator& ctx,
         ctx.functionBuilder.insertLabel(newFalseLabel);
 }
 
-void conditionalOrOperator(irgen::ir_generator& ctx,
+void conditionalOrOperator(generator::GeneratorContext& ctx,
                            const Token& operatorToken,
                            const Node& root,
                            const icode::Operand& trueLabel,
@@ -89,7 +89,7 @@ void conditionalOrOperator(irgen::ir_generator& ctx,
         ctx.functionBuilder.insertLabel(newTrueLabel);
 }
 
-void relationalOperator(irgen::ir_generator& ctx,
+void relationalOperator(generator::GeneratorContext& ctx,
                         const Token& operatorToken,
                         const Node& root,
                         const icode::Operand& trueLabel,
@@ -115,7 +115,7 @@ void relationalOperator(irgen::ir_generator& ctx,
         ctx.functionBuilder.createBranch(icode::IF_FALSE_GOTO, falseLabel);
 }
 
-void conditionalExpression(irgen::ir_generator& ctx,
+void conditionalExpression(generator::GeneratorContext& ctx,
                            const Node& root,
                            const icode::Operand& trueLabel,
                            const icode::Operand& falseLabel,

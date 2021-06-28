@@ -85,11 +85,11 @@ namespace pp
         errorOnToken(moduleName, errorMessage, file, found);
     }
 
-    std::string typeDescriptionToTypeString(icode::TypeDescription& var)
+    std::string typeDescriptionToTypeString(const icode::TypeDescription& var)
     {
         std::string var_str = var.dtypeName;
 
-        for (unsigned int dim : var.dimensions)
+        for (const int dim : var.dimensions)
             var_str += "[" + std::to_string(dim) + "]";
 
         return var_str;
@@ -98,8 +98,8 @@ namespace pp
     void typeError(const std::string& moduleName,
                    std::ifstream& file,
                    const Token& tok,
-                   icode::TypeDescription& expected,
-                   icode::TypeDescription& found)
+                   const icode::TypeDescription& expected,
+                   const icode::TypeDescription& found)
     {
         /* Used by ir generator for type errors */
 

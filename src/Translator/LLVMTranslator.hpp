@@ -3,7 +3,7 @@
 
 #include "../IntermediateRepresentation/All.hpp"
 
-namespace llvmgen
+namespace translator
 {
     icode::TargetDescription getTargetDescription();
     void generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,

@@ -1,9 +1,9 @@
 #ifndef GENERATOR_CONDITIONAL_EXPRESSION
 #define GENERATOR_CONDITIONAL_EXPRESSION
 
-#include "../irgen_old.hpp"
+#include "GeneratorContext.hpp"
 
-void conditionalExpression(irgen::ir_generator& ctx,
+void conditionalExpression(generator::GeneratorContext& ctx,
                            const Node& root,
                            const icode::Operand& trueLabel,
                            const icode::Operand& falseLabel,

@@ -4,7 +4,7 @@
 
 using namespace icode;
 
-void createGlobalFromNode(irgen::ir_generator& ctx, const Node& root)
+void createGlobalFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& globalName = root.getNthChildToken(0);
 

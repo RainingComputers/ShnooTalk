@@ -1,9 +1,9 @@
 #ifndef GENERATOR_FROM
 #define GENERATOR_FROM
 
-#include "../irgen_old.hpp"
+#include "GeneratorContext.hpp"
 
-void createUse(irgen::ir_generator& ctx, const Node& root);
-void createFrom(irgen::ir_generator& ctx, const Node& root);
+void createUse(generator::GeneratorContext& ctx, const Node& root);
+void createFrom(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

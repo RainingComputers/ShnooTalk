@@ -2,7 +2,7 @@
 
 #include "Print.hpp"
 
-void print(irgen::ir_generator& ctx, const Node& root)
+void print(generator::GeneratorContext& ctx, const Node& root)
 {
     for (size_t i = 0; i < root.children.size(); i++)
     {

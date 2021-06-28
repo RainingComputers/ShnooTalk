@@ -12,7 +12,7 @@ void Console::compileErrorOnToken(const std::string& message, const Token& tok)
     throw CompileError();
 }
 
-void Console::typeError(const Token& tok, icode::TypeDescription& expected, icode::TypeDescription& found)
+void Console::typeError(const Token& tok, const icode::TypeDescription& expected, const icode::TypeDescription& found)
 {
     pp::typeError(fileName, *file, tok, expected, found);
     throw CompileError();

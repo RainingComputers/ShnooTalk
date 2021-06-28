@@ -121,5 +121,6 @@ Value* getCompareOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
 
 void compareOperator(const ModuleContext& ctx, BranchContext& branchContext, const icode::Entry& e)
 {
+    /* The flag will be used by the next branch instruction that follows this instruction */
     branchContext.branchFlags.push(getCompareOperatorValue(ctx, e));
 }

@@ -4,7 +4,7 @@
 
 #include "Expression.hpp"
 
-Unit sizeOf(irgen::ir_generator& ctx, const Node& root)
+Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.pushWorkingModule();
     setWorkingModuleFromNode(ctx, root, 0);
@@ -16,7 +16,7 @@ Unit sizeOf(irgen::ir_generator& ctx, const Node& root)
     return ctx.unitBuilder.unitFromIntLiteral(size, icode::INT);
 }
 
-Unit literal(irgen::ir_generator& ctx, const Node& root)
+Unit literal(generator::GeneratorContext& ctx, const Node& root)
 {
     switch (root.tok.getType())
     {
@@ -42,7 +42,7 @@ Unit literal(irgen::ir_generator& ctx, const Node& root)
     }
 }
 
-Unit cast(irgen::ir_generator& ctx, const Node& root)
+Unit cast(generator::GeneratorContext& ctx, const Node& root)
 {
     icode::DataType destinationDataType = ctx.rootModule.dataTypeFromString(root.tok.toString());
 
@@ -54,7 +54,7 @@ Unit cast(irgen::ir_generator& ctx, const Node& root)
     return ctx.functionBuilder.castOperator(termToCast, destinationDataType);
 }
 
-Unit unaryOperator(irgen::ir_generator& ctx, const Node& root)
+Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit unaryOperatorTerm = term(ctx, root.children[0]);
 
@@ -88,7 +88,7 @@ Unit unaryOperator(irgen::ir_generator& ctx, const Node& root)
     return ctx.functionBuilder.unaryOperator(instruction, unaryOperatorTerm);
 }
 
-Unit switchModuleAndCallTerm(irgen::ir_generator& ctx, const Node& root)
+Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.pushWorkingModule();
     ctx.resetWorkingModule();
@@ -105,7 +105,7 @@ Unit switchModuleAndCallTerm(irgen::ir_generator& ctx, const Node& root)
     return result;
 }
 
-Unit term(irgen::ir_generator& ctx, const Node& root)
+Unit term(generator::GeneratorContext& ctx, const Node& root)
 {
     Node child = root.children[0];
 
@@ -133,7 +133,7 @@ Unit term(irgen::ir_generator& ctx, const Node& root)
     }
 }
 
-Unit initializerList(irgen::ir_generator& ctx, const Node& root)
+Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
 {
     std::vector<Unit> units;
 
@@ -151,7 +151,7 @@ Unit initializerList(irgen::ir_generator& ctx, const Node& root)
     return ctx.unitBuilder.unitFromUnitList(units);
 }
 
-icode::Instruction tokenToBinaryOperator(const irgen::ir_generator& ctx, const Token tok)
+icode::Instruction tokenToBinaryOperator(const generator::GeneratorContext& ctx, const Token tok)
 {
     switch (tok.getType())
     {
@@ -189,7 +189,7 @@ icode::Instruction tokenToBinaryOperator(const irgen::ir_generator& ctx, const T
     }
 }
 
-Unit expression(irgen::ir_generator& ctx, const Node& root)
+Unit expression(generator::GeneratorContext& ctx, const Node& root)
 {
     if (root.type == node::STR_LITERAL)
         return ctx.strBuilder.createString(root.tok);

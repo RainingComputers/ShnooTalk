@@ -4,7 +4,7 @@
 
 using namespace icode;
 
-TypeDescription getParamType(irgen::ir_generator& ctx, const Node& paramNode)
+TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& paramNode)
 {
     TypeDescription paramType = typeDescriptionFromNode(ctx, paramNode);
 
@@ -24,7 +24,7 @@ bool isParamNode(const Node& nodeToCheck)
     return nodeToCheck.isNodeType(node::PARAM) || nodeToCheck.isNodeType(node::MUT_PARAM);
 }
 
-void createFunctionFromNode(irgen::ir_generator& ctx, const Node& root)
+void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& nameToken = root.getNthChildToken(0);
     TypeDescription returnType = typeDescriptionFromNode(ctx, root);

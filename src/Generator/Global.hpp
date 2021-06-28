@@ -1,8 +1,8 @@
 #ifndef GENERATOR_GLOBAL
 #define GENERATOR_GLOBAL
 
-#include "../irgen_old.hpp"
+#include "GeneratorContext.hpp"
 
-void createGlobalFromNode(irgen::ir_generator& ctx, const Node& root);
+void createGlobalFromNode(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

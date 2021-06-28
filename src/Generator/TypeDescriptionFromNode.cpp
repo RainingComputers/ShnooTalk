@@ -3,7 +3,7 @@
 
 #include "TypeDescriptionFromNode.hpp"
 
-using namespace irgen;
+using namespace generator;
 using namespace icode;
 
 bool isVoidFunction(const Node& root)
@@ -14,7 +14,7 @@ bool isVoidFunction(const Node& root)
     return false;
 }
 
-TypeDescription typeDescriptionFromFunctionNode(ir_generator& ctx, const Node& root)
+TypeDescription typeDescriptionFromFunctionNode(GeneratorContext& ctx, const Node& root)
 {
     if (isVoidFunction(root))
         return ctx.moduleBuilder.createVoidTypeDescription();
@@ -24,7 +24,7 @@ TypeDescription typeDescriptionFromFunctionNode(ir_generator& ctx, const Node& r
     return ctx.moduleBuilder.createTypeDescription(dataTypeToken);
 }
 
-TypeDescription arrayTypeFromSubscript(ir_generator& ctx,
+TypeDescription arrayTypeFromSubscript(GeneratorContext& ctx,
                                        const Node& root,
                                        TypeDescription typeDescription,
                                        size_t startIndex)
@@ -42,7 +42,7 @@ TypeDescription arrayTypeFromSubscript(ir_generator& ctx,
     return createArrayTypeDescription(typeDescription, dimensions);
 }
 
-TypeDescription typeDescriptionFromVarOrParamNode(ir_generator& ctx, const Node& root)
+TypeDescription typeDescriptionFromVarOrParamNode(GeneratorContext& ctx, const Node& root)
 {
     size_t childNodeCounter = 1;
 
@@ -62,7 +62,7 @@ TypeDescription typeDescriptionFromVarOrParamNode(ir_generator& ctx, const Node&
     return typeDescription;
 }
 
-TypeDescription typeDescriptionFromNode(ir_generator& ctx, const Node& root)
+TypeDescription typeDescriptionFromNode(GeneratorContext& ctx, const Node& root)
 {
     if (root.type == node::FUNCTION)
         return typeDescriptionFromFunctionNode(ctx, root);

@@ -1,6 +1,6 @@
 #include "Enum.hpp"
 
-void createEnumFromNode(irgen::ir_generator& ctx, const Node& root)
+void createEnumFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     std::vector<Token> enums;
 

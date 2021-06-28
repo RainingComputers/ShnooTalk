@@ -6,7 +6,7 @@
 #include "PrettyPrint/IRPrinter.hpp"
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
-#include "irgen_old.hpp"
+#include "Generator/IRGenerator.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
 
@@ -51,9 +51,9 @@ void generateIR(Console& console,
 
     Node ast = generateAST(console);
 
-    irgen::ir_generator gen(target, modulesMap, moduleName, console);
+    generator::GeneratorContext generatorContext(target, modulesMap, moduleName, console);
 
-    gen.initgen(ast);
+    generator::getUses(generatorContext, ast);
 
     for (std::string use : modulesMap[moduleName].uses)
         if (modulesMap.find(use) == modulesMap.end())
@@ -64,8 +64,7 @@ void generateIR(Console& console,
             generateIR(console, use, target, modulesMap);
         }
 
-    /* Generate icode */
-    gen.program(ast);
+    generator::generateModule(generatorContext, ast);
 }
 
 int main(int argc, char* argv[])
@@ -93,7 +92,7 @@ int main(int argc, char* argv[])
         }
 
         icode::StringModulesMap modulesMap;
-        icode::TargetDescription target = llvmgen::getTargetDescription();
+        icode::TargetDescription target = translator::getTargetDescription();
         generateIR(console, moduleName, target, modulesMap);
 
         if (option == "-ir")
@@ -104,14 +103,14 @@ int main(int argc, char* argv[])
 
         if (option == "-llvm")
         {
-            pp::println(llvmgen::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
+            pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
             return 0;
         }
 
         if (option == "-c")
         {
             for (auto stringModulePair : modulesMap)
-                llvmgen::generateLLVMModuleObject(stringModulePair.second, modulesMap, console);
+                translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, console);
 
             return 0;
         }
