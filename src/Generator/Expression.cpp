@@ -44,7 +44,7 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
 
 Unit cast(generator::GeneratorContext& ctx, const Node& root)
 {
-    icode::DataType destinationDataType = ctx.rootModule.dataTypeFromString(root.tok.toString());
+    icode::DataType destinationDataType = icode::stringToDataType(root.tok.toString());
 
     Unit termToCast = term(ctx, root.children[0]);
 
@@ -206,7 +206,6 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
     Token expressionOperator = root.children[1].tok;
 
     Unit LHS = expression(ctx, root.children[0]);
-    std::string dtype_name = LHS.type.dtypeName;
 
     Unit RHS = expression(ctx, root.children[2]);
 

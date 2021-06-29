@@ -33,6 +33,7 @@ namespace icode
     bool dataTypeIsEqual(DataType dtype1, DataType dtype2);
 
     std::string dataTypeToString(const DataType dtype);
+    DataType stringToDataType(const std::string& dtypeName);
     int getDataTypeSize(const DataType dtype);
 
 }

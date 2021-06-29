@@ -109,7 +109,7 @@ int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
 {
     const std::string& dataTypeString = nameToken.toString();
 
-    DataType dtype = workingModule->dataTypeFromString(dataTypeString);
+    DataType dtype = stringToDataType(dataTypeString);
     if (dtype != STRUCT)
         return getDataTypeSize(dtype);
 
@@ -145,4 +145,9 @@ std::vector<Unit> DescriptionFinder::getFormalParameters(const FunctionDescripti
     }
 
     return formalParameters;
+}
+
+TypeDescription DescriptionFinder::getReturnType()
+{
+    return workingFunction->functionReturnType;
 }

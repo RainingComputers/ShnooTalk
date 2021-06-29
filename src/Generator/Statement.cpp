@@ -1,8 +1,5 @@
 #include "Assignment.hpp"
-#include "FunctionCall.hpp"
 #include "ConditionalExpression.hpp"
-#include "Module.hpp"
-#include "Assignment.hpp"
 #include "FunctionCall.hpp"
 #include "Input.hpp"
 #include "Local.hpp"
@@ -92,7 +89,10 @@ void forLoop(generator::GeneratorContext& ctx, const Node& root)
     ctx.functionBuilder.insertLabel(breakLabel);
 }
 
-void continueStatement(generator::GeneratorContext& ctx, bool isLoopBlock, const Operand& continueLabel, const Token& token)
+void continueStatement(generator::GeneratorContext& ctx,
+                       bool isLoopBlock,
+                       const Operand& continueLabel,
+                       const Token& token)
 {
     if (!isLoopBlock)
         ctx.console.compileErrorOnToken("CONTINUE outside loop", token);

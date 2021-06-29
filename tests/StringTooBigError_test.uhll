@@ -3,7 +3,7 @@
 # 
 #     var a:char[4] = "Hello"
 #                     ^
-# Type error, did not expect UI8[6],
+# Type error, did not expect char[6],
 # expected char[4]
 
 fn main() -> int

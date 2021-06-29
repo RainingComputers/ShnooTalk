@@ -11,14 +11,9 @@
 
 using namespace llvm;
 
-icode::TargetDescription translator::getTargetDescription()
+icode::TargetEnums translator::getTarget()
 {
-    icode::TargetDescription target;
-
-    target.dataTypeNames = { { "byte", icode::I8 },     { "ubyte", icode::UI8 },  { "short", icode::I16 },
-                             { "ushort", icode::UI16 }, { "int", icode::I32 },    { "uint", icode::UI32 },
-                             { "long", icode::I64 },    { "ulong", icode::UI64 }, { "float", icode::F32 },
-                             { "double", icode::F64 },  { "char", icode::UI8 },   { "bool", icode::UI8 } };
+    icode::TargetEnums target;
 
     target.defines = { { "true", icode::createIntDefineDescription(1, icode::INT) },
                        { "false", icode::createIntDefineDescription(0, icode::INT) } };
@@ -37,8 +32,8 @@ std::string getLLVMModuleString(const Module& LLVMModule)
 }
 
 void translator::generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,
-                                       icode::StringModulesMap& modulesMap,
-                                       Console& console)
+                                          icode::StringModulesMap& modulesMap,
+                                          Console& console)
 {
     ModuleContext moduleContext(moduleDescription, modulesMap, console);
     BranchContext branchContext;
@@ -52,8 +47,8 @@ void translator::generateLLVMModuleObject(icode::ModuleDescription& moduleDescri
 }
 
 std::string translator::generateLLVMModuleString(icode::ModuleDescription& moduleDescription,
-                                              icode::StringModulesMap& modulesMap,
-                                              Console& console)
+                                                 icode::StringModulesMap& modulesMap,
+                                                 Console& console)
 {
     ModuleContext moduleContext(moduleDescription, modulesMap, console);
     BranchContext branchContext;

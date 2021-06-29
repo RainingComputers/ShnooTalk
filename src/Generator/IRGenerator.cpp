@@ -19,7 +19,7 @@ void generator::getUses(generator::GeneratorContext& ctx, const Node& root)
     }
 }
 
-void generateSymbols(generator::GeneratorContext& ctx, const Node& child)
+void generateSymbol(generator::GeneratorContext& ctx, const Node& child)
 {
     ctx.scope.resetScope();
 
@@ -50,11 +50,11 @@ void generateSymbols(generator::GeneratorContext& ctx, const Node& child)
     }
 }
 
-void generateFunctions(generator::GeneratorContext& ctx, const Node& child)
+void generateFunction(generator::GeneratorContext& ctx, const Node& child)
 {
     const Token& functionNameToken = child.children[0].tok;
 
-    ctx.setWorkingFunction(&ctx.rootModule.functions[functionNameToken.toString()]);
+    ctx.setWorkingFunction(functionNameToken);
 
     ctx.scope.resetScope();
 
@@ -71,9 +71,9 @@ void generateFunctions(generator::GeneratorContext& ctx, const Node& child)
 void generator::generateModule(generator::GeneratorContext& ctx, const Node& root)
 {
     for (const Node& child : root.children)
-        generateSymbols(ctx, child);
+        generateSymbol(ctx, child);
 
     for (const Node& child : root.children)
         if (child.type == node::FUNCTION)
-            generateFunctions(ctx, child);
+            generateFunction(ctx, child);
 }

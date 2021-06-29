@@ -5,7 +5,7 @@
 
 namespace translator
 {
-    icode::TargetDescription getTargetDescription();
+    icode::TargetEnums getTarget();
     void generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,
                                   icode::StringModulesMap& modulesMap,
                                   Console& console);

@@ -2,11 +2,11 @@
 #include <iostream>
 
 #include "Console/Console.hpp"
+#include "Generator/IRGenerator.hpp"
 #include "Lexer/Lexer.hpp"
 #include "PrettyPrint/IRPrinter.hpp"
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
-#include "Generator/IRGenerator.hpp"
 #include "parser.hpp"
 #include "pathchk.hpp"
 
@@ -45,7 +45,7 @@ Node generateAST(Console& console)
 
 void generateIR(Console& console,
                 const std::string& moduleName,
-                icode::TargetDescription& target,
+                icode::TargetEnums& target,
                 icode::StringModulesMap& modulesMap)
 {
 
@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
         }
 
         icode::StringModulesMap modulesMap;
-        icode::TargetDescription target = translator::getTargetDescription();
+        icode::TargetEnums target = translator::getTarget();
         generateIR(console, moduleName, target, modulesMap);
 
         if (option == "-ir")

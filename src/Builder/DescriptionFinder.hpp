@@ -43,6 +43,8 @@ class DescriptionFinder
     icode::FunctionDescription getFunction(const Token& nameToken);
 
     std::vector<Unit> getFormalParameters(const icode::FunctionDescription& function);
+
+    icode::TypeDescription getReturnType();
 };
 
 #endif

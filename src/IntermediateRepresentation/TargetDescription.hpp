@@ -8,9 +8,8 @@
 
 namespace icode
 {
-    struct TargetDescription
+    struct TargetEnums
     {
-        std::map<std::string, DataType> dataTypeNames;
         std::map<std::string, DefineDescription> defines;
     };
 }

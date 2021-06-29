@@ -2,12 +2,12 @@
 
 namespace generator
 {
-    GeneratorContext::GeneratorContext(icode::TargetDescription& targetDescription,
-                               icode::StringModulesMap& modulesMap,
-                               const std::string& fileName,
-                               Console& console)
+    GeneratorContext::GeneratorContext(icode::TargetEnums& target,
+                                       icode::StringModulesMap& modulesMap,
+                                       const std::string& fileName,
+                                       Console& console)
 
-      : target(targetDescription)
+      : target(target)
       , modulesMap(modulesMap)
       , rootModule(modulesMap[fileName])
       , console(console)
@@ -21,7 +21,7 @@ namespace generator
         workingModule = &rootModule;
 
         rootModule.name = fileName;
-        rootModule.initializeTargetInfo(targetDescription);
+        rootModule.initializeTarget(target);
 
         setWorkingModule(workingModule);
     }
@@ -51,9 +51,9 @@ namespace generator
         moduleDescriptionStack.pop_back();
     }
 
-    void GeneratorContext::setWorkingFunction(icode::FunctionDescription* functionDescription)
+    void GeneratorContext::setWorkingFunction(const Token& functionNameToken)
     {
-        workingFunction = functionDescription;
+        workingFunction = &rootModule.functions[functionNameToken.toString()];
         functionBuilder.setWorkingFunction(workingFunction);
         descriptionFinder.setWorkingFunction(workingFunction);
     }

@@ -19,13 +19,16 @@ void continueStatement(generator::GeneratorContext& ctx,
                        const icode::Operand& continueLabel,
                        const Token& token);
 
-void breakStatement(generator::GeneratorContext& ctx, bool isLoopBlock, const icode::Operand& breakLabel, const Token& token);
+void breakStatement(generator::GeneratorContext& ctx,
+                    bool isLoopBlock,
+                    const icode::Operand& breakLabel,
+                    const Token& token);
 
 void block(generator::GeneratorContext& ctx,
-               const Node& root,
-               bool isLoopBlock,
-               const icode::Operand& loopLabel,
-               const icode::Operand& breakLabel,
-               const icode::Operand& continueLabel);
+           const Node& root,
+           bool isLoopBlock,
+           const icode::Operand& loopLabel,
+           const icode::Operand& breakLabel,
+           const icode::Operand& continueLabel);
 
 #endif

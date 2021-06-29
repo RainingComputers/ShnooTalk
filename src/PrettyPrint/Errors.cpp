@@ -103,13 +103,19 @@ namespace pp
     {
         /* Used by ir generator for type errors */
 
-        std::string found_str = typeDescriptionToTypeString(found);
-        std::string expected_str = typeDescriptionToTypeString(expected);
+        icode::TypeDescription modifiedFound = found;
 
-        std::string expect_msg = "Type error, did not expect " + found_str;
-        expect_msg += ",\nexpected " + expected_str;
+        if(found.dtype == expected.dtype && found.dtype != icode::STRUCT)
+            modifiedFound.dtypeName = expected.dtypeName;
 
-        errorOnToken(moduleName, expect_msg, file, tok);
+        std::string foundString = typeDescriptionToTypeString(modifiedFound);
+
+        std::string expectedString = typeDescriptionToTypeString(expected);
+
+        std::string errorMessage = "Type error, did not expect " + foundString;
+        errorMessage += ",\nexpected " + expectedString;
+
+        errorOnToken(moduleName, errorMessage, file, tok);
     }
 
     void internalCompilerErrorToken(const std::string& moduleName, std::ifstream& file, const Token& tok)

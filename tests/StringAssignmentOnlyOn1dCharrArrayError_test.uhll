@@ -3,7 +3,7 @@
 # 
 #     var a:int[10] = "Hello"
 #                     ^
-# Type error, did not expect UI8[6],
+# Type error, did not expect ubyte[6],
 # expected int[10]
 
 fn main() -> int

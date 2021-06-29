@@ -9,6 +9,4 @@ namespace generator
     void generateModule(generator::GeneratorContext& ctx, const Node& root);
 }
 
-
-
 #endif

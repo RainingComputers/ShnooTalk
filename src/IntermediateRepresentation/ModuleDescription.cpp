@@ -6,18 +6,9 @@
 
 namespace icode
 {
-    void ModuleDescription::initializeTargetInfo(const TargetDescription& target)
+    void ModuleDescription::initializeTarget(const TargetEnums& target)
     {
         defines = target.defines;
-        dataTypeNames = target.dataTypeNames;
-    }
-
-    DataType ModuleDescription::dataTypeFromString(const std::string& dataTypeString)
-    {
-        if (dataTypeNames.find(dataTypeString) != dataTypeNames.end())
-            return dataTypeNames[dataTypeString];
-
-        return STRUCT;
     }
 
     bool ModuleDescription::useExists(const std::string& name)
@@ -53,7 +44,7 @@ namespace icode
     bool ModuleDescription::symbolExists(const std::string& name)
     {
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
-               useExists(name) || dataTypeFromString(name) != STRUCT ||
+               useExists(name) || stringToDataType(name) != STRUCT ||
                enumerations.find(name) != enumerations.end() || globals.find(name) != globals.end() ||
                defines.find(name) != defines.end();
     }

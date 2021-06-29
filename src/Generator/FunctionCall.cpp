@@ -63,7 +63,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 
 void functionReturn(generator::GeneratorContext& ctx, const Node& root)
 {
-    const TypeDescription& returnType = ctx.workingFunction->functionReturnType;
+    const TypeDescription& returnType = ctx.descriptionFinder.getReturnType();
 
     if (root.children.size() != 0)
     {

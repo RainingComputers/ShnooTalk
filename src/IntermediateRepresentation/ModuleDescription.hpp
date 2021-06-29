@@ -20,12 +20,10 @@ namespace icode
         std::map<std::string, FunctionDescription> functions;
         std::map<std::string, int> enumerations;
         std::map<std::string, DefineDescription> defines;
-        std::map<std::string, DataType> dataTypeNames;
         std::map<std::string, TypeDescription> globals;
         std::map<std::string, std::string> stringsData;
 
-        void initializeTargetInfo(const TargetDescription& target);
-        DataType dataTypeFromString(const std::string& dtype_name);
+        void initializeTarget(const TargetEnums& target);
 
         bool useExists(const std::string&);
         bool getStruct(const std::string&, StructDescription&);

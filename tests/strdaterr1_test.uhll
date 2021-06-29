@@ -3,7 +3,7 @@
 # 
 #     var a:int = "lol"
 #                 ^
-# Type error, did not expect UI8[4],
+# Type error, did not expect ubyte[4],
 # expected int
 
 fn main()

@@ -44,7 +44,7 @@ std::pair<int, std::string> ModuleBuilder::getSizeAndModuleName(const Token& dat
 
 TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
 {
-    icode::DataType dtype = workingModule->dataTypeFromString(dataTypeToken.toString());
+    icode::DataType dtype = stringToDataType(dataTypeToken.toString());
 
     std::pair<int, std::string> sizeAndModuleName = getSizeAndModuleName(dataTypeToken, dtype);
 
