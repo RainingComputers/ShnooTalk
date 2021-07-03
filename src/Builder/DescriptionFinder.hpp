@@ -44,7 +44,7 @@ class DescriptionFinder
 
     std::vector<Unit> getFormalParameters(const icode::FunctionDescription& function);
 
-    icode::TypeDescription getReturnType();
+    Unit getReturnType();
 };
 
 #endif

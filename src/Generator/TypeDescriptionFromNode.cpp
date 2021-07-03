@@ -39,7 +39,7 @@ TypeDescription arrayTypeFromSubscript(GeneratorContext& ctx,
         dimensions.push_back(subscriptInt);
     }
 
-    return createArrayTypeDescription(typeDescription, dimensions);
+    return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
 }
 
 TypeDescription typeDescriptionFromVarOrParamNode(GeneratorContext& ctx, const Node& root)

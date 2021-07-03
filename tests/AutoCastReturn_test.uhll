@@ -1,0 +1,15 @@
+# 2.000000
+
+fn foobar() -> float
+{
+    var a:int = 2
+
+    return a
+}
+
+fn main() -> int
+{
+    println(foobar())
+
+    return 0
+}

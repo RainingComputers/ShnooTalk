@@ -60,7 +60,12 @@ Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
 {
     TypeDescription type = unitList[0].type;
 
-    type = prependDimension(type, unitList.size());
+    DimensionType dimType = FIXED_DIM;
 
+    if(type.isStringLtrl())
+        dimType = STRING_LTRL_DIM;
+
+    type = prependDimension(type, unitList.size(), dimType);
+    
     return Unit(type, unitList);
 }

@@ -57,6 +57,11 @@ namespace icode
         return dimensions.size() > 0;
     }
 
+    bool TypeDescription::isStructOrArray() const
+    {
+        return isStruct() || isArray();
+    }
+
     bool TypeDescription::isMultiDimArray() const
     {
         return dimensions.size() > 1;
@@ -67,36 +72,8 @@ namespace icode
         return isInteger(dtype);
     }
 
-    bool TypeDescription::isString() const
+    bool TypeDescription::isStringLtrl() const
     {
         return checkProperty(IS_STRING_LTRL);
-    }
-
-    bool canAssignString(TypeDescription assignee, TypeDescription str)
-    {
-        if (assignee.dimensions.size() != 1 || assignee.dtype != icode::UI8)
-            return false;
-
-        return str.dimensions[0] <= assignee.dimensions[0];
-    }
-
-    bool isSameDim(TypeDescription type1, TypeDescription type2)
-    {
-        if (type1.isString() && !type2.isString())
-            return canAssignString(type2, type1);
-
-        if (!type1.isString() && type2.isString())
-            return canAssignString(type1, type2);
-
-        return type1.dimensions == type2.dimensions;
-    }
-
-    bool isSameType(TypeDescription type1, TypeDescription type2)
-    {
-        if (type1.dtype == STRUCT || type2.dtype == STRUCT)
-            return (type1.dtypeName == type2.dtypeName && isSameDim(type1, type2) &&
-                    type1.moduleName == type2.moduleName);
-
-        return (dataTypeIsEqual(type1.dtype, type2.dtype) && isSameDim(type1, type2));
     }
 }

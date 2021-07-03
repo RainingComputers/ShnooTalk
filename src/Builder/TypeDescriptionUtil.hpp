@@ -8,8 +8,8 @@
 icode::TypeDescription typeDescriptionFromDataType(icode::DataType dtype);
 
 icode::TypeDescription createArrayTypeDescription(const icode::TypeDescription& typeDescription,
-                                                  std::vector<int>& dimensions);
+                                                  std::vector<int>& dimensions, icode::DimensionType dimType);
 
-icode::TypeDescription prependDimension(const icode::TypeDescription& typeDescription, int dimension);
+icode::TypeDescription prependDimension(const icode::TypeDescription& typeDescription, int dimension, icode::DimensionType dimType);
 
 #endif

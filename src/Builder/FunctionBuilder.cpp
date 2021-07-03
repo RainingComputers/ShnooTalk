@@ -124,7 +124,15 @@ void FunctionBuilder::unitAggCopy(const Unit& dest, const Unit& src)
         if (i == unitsToCopy.size() - 1)
             break;
 
-        Operand update = opBuilder.createLiteralAddressOperand(dest.type.dtypeSize);
+        /* Move to next element */
+        int updateSize = 0;
+
+        if(unit.type.isStringLtrl())
+            updateSize = dest.type.dtypeSize * dest.type.dimensions.back();
+        else
+            updateSize = dest.type.dtypeSize;
+
+        Operand update = opBuilder.createLiteralAddressOperand(updateSize);
         destPointer = addressAddOperator(destPointer, update);
     }
 }

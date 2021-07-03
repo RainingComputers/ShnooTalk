@@ -18,7 +18,7 @@ TypeDescription StringBuilder::stringTypeFromToken(const Token& token)
     /* +1 for null char */
     dimensions.push_back(token.toUnescapedString().size() + 1);
 
-    stringType = createArrayTypeDescription(stringType, dimensions);
+    stringType = createArrayTypeDescription(stringType, dimensions, icode::STRING_LTRL_DIM);
 
     stringType.becomeString();
 

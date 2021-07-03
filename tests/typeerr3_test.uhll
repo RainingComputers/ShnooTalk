@@ -1,17 +1,13 @@
-# MODULE typeerr3_test.uhll
-# ERROR in Line 16 Col 12
-# 
-#     foobar(2.0)
-#            ^
-# Type error, did not expect FLOAT,
-# expected int
+# 2
 
 fn foobar(i:int)
 {
     println(i)
 }
 
-fn main()
+fn main() -> int
 {
     foobar(2.0)
+
+    return 0
 }

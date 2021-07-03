@@ -144,7 +144,7 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
         units.push_back(expression(ctx, child));
 
         if (i != 0)
-            if (!icode::isSameType(units[i - 1].type, units[i].type))
+            if (!ctx.typeChecker.check(units[i - 1], units[i]))
                 ctx.console.typeError(child.tok, units[i - 1].type, units[i].type);
     }
 
@@ -212,7 +212,7 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
     if (LHS.type.isStruct() || LHS.type.isArray())
         ctx.console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expressionOperator);
 
-    if (!icode::isSameType(LHS.type, RHS.type))
+    if (!ctx.typeChecker.check(LHS, RHS))
         ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
     if (expressionOperator.isBitwiseOperation() && !LHS.type.isIntegerType())

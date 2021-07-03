@@ -20,6 +20,12 @@ namespace icode
         IS_STRING_LTRL,
     };
 
+    enum DimensionType
+    {
+        FIXED_DIM,
+        STRING_LTRL_DIM,
+    };
+
     struct TypeDescription
     {
         DataType dtype;
@@ -29,6 +35,7 @@ namespace icode
         unsigned int offset;
         unsigned int size;
         std::vector<unsigned int> dimensions;
+        std::vector<DimensionType> dimTypes;
 
         unsigned int properties;
 
@@ -43,16 +50,15 @@ namespace icode
         void becomeString();
         bool isMutable() const;
         bool isPointer() const;
-        bool isString() const;
+        bool isStringLtrl() const;
 
         bool isSameType() const;
         bool isStruct() const;
         bool isArray() const;
+        bool isStructOrArray() const;
         bool isMultiDimArray() const;
         bool isIntegerType() const;
     };
-
-    bool isSameType(TypeDescription var1, TypeDescription var2);
 }
 
 #endif

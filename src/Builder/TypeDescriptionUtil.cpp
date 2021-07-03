@@ -13,7 +13,7 @@ TypeDescription typeDescriptionFromDataType(DataType dtype)
     return var;
 }
 
-TypeDescription createArrayTypeDescription(const TypeDescription& typeDescription, std::vector<int>& dimensions)
+TypeDescription createArrayTypeDescription(const TypeDescription& typeDescription, std::vector<int>& dimensions, DimensionType dimType)
 {
     TypeDescription modifiedTypeDescription = typeDescription;
 
@@ -21,17 +21,19 @@ TypeDescription createArrayTypeDescription(const TypeDescription& typeDescriptio
     {
         modifiedTypeDescription.size *= dim;
         modifiedTypeDescription.dimensions.push_back(dim);
+        modifiedTypeDescription.dimTypes.push_back(dimType);
     }
 
     return modifiedTypeDescription;
 }
 
-TypeDescription prependDimension(const TypeDescription& typeDescription, int dimension)
+TypeDescription prependDimension(const TypeDescription& typeDescription, int dimension, DimensionType dimType)
 {
     TypeDescription modifiedTypeDescription = typeDescription;
 
     modifiedTypeDescription.size *= dimension;
     modifiedTypeDescription.dimensions.insert(modifiedTypeDescription.dimensions.begin(), dimension);
+    modifiedTypeDescription.dimTypes.insert(modifiedTypeDescription.dimTypes.begin(), dimType);
 
     return modifiedTypeDescription;
 }

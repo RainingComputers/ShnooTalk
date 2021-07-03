@@ -6,6 +6,7 @@
 #include "../Builder/ModuleBuilder.hpp"
 #include "../Builder/StringBuilder.hpp"
 #include "../Builder/UnitBuilder.hpp"
+#include "../Builder/TypeChecker.hpp"
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/FunctionDescription.hpp"
 #include "../IntermediateRepresentation/ModuleDescription.hpp"
@@ -34,6 +35,7 @@ namespace generator
         DescriptionFinder descriptionFinder;
         FunctionBuilder functionBuilder;
         StringBuilder strBuilder;
+        TypeChecker typeChecker;
 
         ScopeTracker scope;
 

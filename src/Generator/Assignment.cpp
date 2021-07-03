@@ -40,7 +40,7 @@ void assignment(generator::GeneratorContext& ctx, const Node& root)
     if (LHS.op.operandType == icode::LITERAL)
         ctx.console.compileErrorOnToken("Cannot assign to LITERAL", root.children[0].tok);
 
-    if (!icode::isSameType(LHS.type, RHS.type))
+    if (!ctx.typeChecker.check(LHS, RHS))
         ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
     if (!LHS.type.isMutable())

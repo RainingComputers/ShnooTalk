@@ -104,7 +104,7 @@ void relationalOperator(generator::GeneratorContext& ctx,
     if (LHS.type.isStruct() || LHS.type.isArray())
         ctx.console.compileErrorOnToken("Cannot compare STRUCT or ARRAYS", operatorToken);
 
-    if (!icode::isSameType(LHS.type, RHS.type))
+    if (!ctx.typeChecker.check(LHS, RHS))
         ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
     ctx.functionBuilder.compareOperator(opcode, LHS, RHS);

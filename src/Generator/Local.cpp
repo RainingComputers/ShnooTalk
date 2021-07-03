@@ -23,7 +23,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     {
         Unit RHS = expression(ctx, lastNode);
 
-        if (!icode::isSameType(local.type, RHS.type))
+        if (!ctx.typeChecker.check(local, RHS))
             ctx.console.typeError(lastNode.tok, local.type, RHS.type);
 
         ctx.functionBuilder.unitCopy(local, RHS);

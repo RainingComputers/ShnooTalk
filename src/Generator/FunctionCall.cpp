@@ -43,7 +43,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         else
             actualParam = getActualParam(ctx, root, i);
 
-        if (!isSameType(formalParam.type, actualParam.type))
+        if (!ctx.typeChecker.check(formalParam, actualParam))
             ctx.console.typeError(actualParamToken, formalParam.type, actualParam.type);
 
         if (formalParam.type.isMutable() && !actualParam.op.canPassAsMutable())
@@ -63,20 +63,20 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 
 void functionReturn(generator::GeneratorContext& ctx, const Node& root)
 {
-    const TypeDescription& returnType = ctx.descriptionFinder.getReturnType();
+    Unit returnTypeUnit = ctx.descriptionFinder.getReturnType();
 
     if (root.children.size() != 0)
     {
         Unit returnValue = expression(ctx, root.children[0]);
 
-        if (!isSameType(returnType, returnValue.type))
-            ctx.console.typeError(root.children[0].tok, returnType, returnValue.type);
+        if (!ctx.typeChecker.check(returnTypeUnit, returnValue))
+            ctx.console.typeError(root.children[0].tok, returnTypeUnit.type, returnValue.type);
 
         Unit returnPointer = ctx.functionBuilder.getReturnPointerUnit();
 
         ctx.functionBuilder.unitCopy(returnPointer, returnValue);
     }
-    else if (returnType.dtype != VOID)
+    else if (returnTypeUnit.type.dtype != VOID)
         ctx.console.compileErrorOnToken("Ret type is not VOID", root.tok);
 
     ctx.functionBuilder.noArgumentEntry(RET);
