@@ -44,8 +44,7 @@ namespace icode
     bool ModuleDescription::symbolExists(const std::string& name)
     {
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
-               useExists(name) || stringToDataType(name) != STRUCT ||
-               enumerations.find(name) != enumerations.end() || globals.find(name) != globals.end() ||
-               defines.find(name) != defines.end();
+               useExists(name) || stringToDataType(name) != STRUCT || enumerations.find(name) != enumerations.end() ||
+               globals.find(name) != globals.end() || defines.find(name) != defines.end();
     }
 }

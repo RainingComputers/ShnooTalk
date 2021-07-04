@@ -30,7 +30,6 @@ namespace icode
     bool isUnsignedInteger(DataType);
     bool isInteger(DataType);
     bool isFloat(DataType);
-    bool dataTypeIsEqual(DataType dtype1, DataType dtype2);
 
     std::string dataTypeToString(const DataType dtype);
     DataType stringToDataType(const std::string& dtypeName);

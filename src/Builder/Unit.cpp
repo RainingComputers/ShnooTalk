@@ -10,19 +10,19 @@ Unit::Unit(const TypeDescription& type, const Operand& operand)
     this->type = type;
 }
 
-Unit::Unit(const TypeDescription& type, const std::vector<Unit>& aggs)
+Unit::Unit(const TypeDescription& type, const std::vector<Unit>& list)
 {
     this->type = type;
-    this->aggs = aggs;
+    this->list = list;
 };
 
-std::vector<Unit> flattenUnit(const Unit& aggUnit)
+std::vector<Unit> flattenUnit(const Unit& listUnit)
 {
     std::vector<Unit> flatList;
 
-    for (const Unit& childUnit : aggUnit.aggs)
+    for (const Unit& childUnit : listUnit.list)
     {
-        if (childUnit.aggs.size() == 0)
+        if (childUnit.list.size() == 0)
             flatList.push_back(childUnit);
         else
         {

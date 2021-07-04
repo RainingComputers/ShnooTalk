@@ -24,12 +24,6 @@ namespace icode
         return (dtype == F32 || dtype == F64 || dtype == FLOAT || dtype == VM_FLOAT);
     }
 
-    bool dataTypeIsEqual(DataType dtype1, DataType dtype2)
-    {
-        return dtype1 == dtype2 || (dtype1 == INT && isInteger(dtype2)) || (isInteger(dtype1) && dtype2 == INT) ||
-               (dtype1 == FLOAT && isFloat(dtype2)) || (isFloat(dtype1) && dtype2 == FLOAT);
-    }
-
     std::string dataTypeToString(const DataType dtype)
     {
         static std::string dataTypeStringsArray[] = { "byte",     "ubyte", "short", "ushort", "int",    "uint",

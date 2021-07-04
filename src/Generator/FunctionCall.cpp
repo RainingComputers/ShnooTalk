@@ -4,11 +4,6 @@
 
 using namespace icode;
 
-Unit getActualParam(generator::GeneratorContext& ctx, const Node& root, int nodeCounter)
-{
-    return expression(ctx, root.children[nodeCounter]);
-}
-
 Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.pushWorkingModule();
@@ -17,7 +12,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 
     if (root.children.size() != 0)
     {
-        firstActualParam = getActualParam(ctx, root, 0);
+        firstActualParam = expression(ctx, root.children[0]);
 
         if (root.type == node::STRUCT_FUNCCALL)
             ctx.setWorkingModule(ctx.descriptionFinder.getModuleFromUnit(firstActualParam));
@@ -41,7 +36,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         if (i == 0)
             actualParam = firstActualParam;
         else
-            actualParam = getActualParam(ctx, root, i);
+            actualParam = expression(ctx, root.children[i]);
 
         if (!ctx.typeChecker.check(formalParam, actualParam))
             ctx.console.typeError(actualParamToken, formalParam.type, actualParam.type);

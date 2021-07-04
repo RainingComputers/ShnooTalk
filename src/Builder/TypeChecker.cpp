@@ -9,6 +9,12 @@ TypeChecker::TypeChecker(FunctionBuilder& functionBuilder)
 {
 }
 
+bool dataTypeIsEqual(DataType dtype1, DataType dtype2)
+{
+    return dtype1 == dtype2 || (dtype1 == INT && isInteger(dtype2)) || (isInteger(dtype1) && dtype2 == INT) ||
+           (dtype1 == FLOAT && isFloat(dtype2)) || (isFloat(dtype1) && dtype2 == FLOAT);
+}
+
 bool isSameDim(TypeDescription type1, TypeDescription type2)
 {
     if (type1.dimensions.size() != type2.dimensions.size())
@@ -44,7 +50,7 @@ bool isSameType(TypeDescription type1, TypeDescription type2)
     return (dataTypeIsEqual(type1.dtype, type2.dtype) && isSameDim(type1, type2));
 }
 
-bool TypeChecker::autoCast(Unit& LHS, Unit& RHS)
+void TypeChecker::autoCast(Unit& LHS, Unit& RHS)
 {
     if (LHS.type.dtype != RHS.type.dtype)
         RHS = functionBuilder.castOperator(RHS, LHS.op.dtype);

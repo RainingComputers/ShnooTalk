@@ -28,7 +28,7 @@ class FunctionBuilder
 
     void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
 
-    void unitAggCopy(const Unit& dest, const Unit& src);
+    void unitListCopy(const Unit& dest, const Unit& src);
 
     icode::Operand ensureNotPointer(icode::Operand op);
 

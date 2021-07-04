@@ -62,11 +62,6 @@ Operand FunctionBuilder::createPointer(const Unit& unit)
 
 void FunctionBuilder::operandCopy(Operand op1, Operand op2)
 {
-    /* If op2 is a literal, change generic dtypes like INT and FLOAT
-        to correct specific dtype */
-    if (op2.operandType == LITERAL)
-        op2.dtype = op1.dtype;
-
     /* Copy one operand value to another, use READ and WRITE instruction
         if pointers are involved */
 
@@ -106,7 +101,7 @@ void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
     pushEntry(memCpyEntry);
 }
 
-void FunctionBuilder::unitAggCopy(const Unit& dest, const Unit& src)
+void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 {
     Operand destPointer = createPointer(dest);
 
@@ -125,12 +120,10 @@ void FunctionBuilder::unitAggCopy(const Unit& dest, const Unit& src)
             break;
 
         /* Move to next element */
-        int updateSize = 0;
+        int updateSize = dest.type.dtypeSize;
 
-        if(unit.type.isStringLtrl())
-            updateSize = dest.type.dtypeSize * dest.type.dimensions.back();
-        else
-            updateSize = dest.type.dtypeSize;
+        if (unit.type.isStringLtrl())
+            updateSize *= dest.type.dimensions.back();
 
         Operand update = opBuilder.createLiteralAddressOperand(updateSize);
         destPointer = addressAddOperator(destPointer, update);
@@ -139,8 +132,8 @@ void FunctionBuilder::unitAggCopy(const Unit& dest, const Unit& src)
 
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
-    if (src.aggs.size() != 0)
-        unitAggCopy(dest, src);
+    if (src.list.size() != 0)
+        unitListCopy(dest, src);
     else if (dest.type.isArray() || dest.type.isStruct())
     {
         Operand destPointer = createPointer(dest);
@@ -254,22 +247,14 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
 
 void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
 {
-    Operand op1 = LHS.op;
-    Operand op2 = RHS.op;
-
-    /* If op2 is a literal, change generic dtypes like INT and FLOAT
-        to correct specific dtype */
-    if (op2.operandType == LITERAL)
-        op2.dtype = op1.dtype;
-
     /* Construct icode for comparator operator instructions,
         EQ, NEQ, LT, LTE, GT, GTE  */
 
     Entry entry;
 
     entry.opcode = instruction;
-    entry.op1 = ensureNotPointer(op1);
-    entry.op2 = ensureNotPointer(op2);
+    entry.op1 = ensureNotPointer(LHS.op);
+    entry.op2 = ensureNotPointer(RHS.op);
 
     pushEntry(entry);
 }

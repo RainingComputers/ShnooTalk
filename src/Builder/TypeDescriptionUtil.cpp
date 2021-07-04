@@ -13,7 +13,9 @@ TypeDescription typeDescriptionFromDataType(DataType dtype)
     return var;
 }
 
-TypeDescription createArrayTypeDescription(const TypeDescription& typeDescription, std::vector<int>& dimensions, DimensionType dimType)
+TypeDescription createArrayTypeDescription(const TypeDescription& typeDescription,
+                                           std::vector<int>& dimensions,
+                                           DimensionType dimType)
 {
     TypeDescription modifiedTypeDescription = typeDescription;
 
