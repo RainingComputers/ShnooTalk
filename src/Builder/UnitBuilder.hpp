@@ -11,8 +11,8 @@ class UnitBuilder
   public:
     UnitBuilder(OperandBuilder& opBuilder);
 
-    Unit unitFromIntLiteral(int value, icode::DataType dtype);
-    Unit unitFromFloatLiteral(float value, icode::DataType dtype);
+    Unit unitFromIntLiteral(int value);
+    Unit unitFromFloatLiteral(float value);
     Unit unitFromTypeDescription(icode::TypeDescription& typeDescription, const std::string& name);
     Unit unitFromEnum(int enumValue);
     Unit unitFromDefineDescription(const icode::DefineDescription& defineDescription);

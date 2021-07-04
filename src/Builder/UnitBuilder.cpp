@@ -9,18 +9,18 @@ UnitBuilder::UnitBuilder(OperandBuilder& opBuilder)
 {
 }
 
-Unit UnitBuilder::unitFromIntLiteral(int value, DataType dtype)
+Unit UnitBuilder::unitFromIntLiteral(int value)
 {
-    Operand op = opBuilder.createIntLiteralOperand(dtype, value);
-    TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
+    Operand op = opBuilder.createIntLiteralOperand(AUTO_INT, value);
+    TypeDescription typeDescription = typeDescriptionFromDataType(AUTO_INT);
 
     return Unit(typeDescription, op);
 }
 
-Unit UnitBuilder::unitFromFloatLiteral(float value, DataType dtype)
+Unit UnitBuilder::unitFromFloatLiteral(float value)
 {
-    Operand op = opBuilder.createFloatLiteralOperand(dtype, value);
-    TypeDescription typeDescription = typeDescriptionFromDataType(dtype);
+    Operand op = opBuilder.createFloatLiteralOperand(AUTO_FLOAT, value);
+    TypeDescription typeDescription = typeDescriptionFromDataType(AUTO_FLOAT);
 
     return Unit(typeDescription, op);
 }
@@ -33,9 +33,9 @@ Unit UnitBuilder::unitFromTypeDescription(TypeDescription& typeDescription, cons
 
 Unit UnitBuilder::unitFromEnum(int enumValue)
 {
-    Operand op = opBuilder.createIntLiteralOperand(INT, enumValue);
+    Operand op = opBuilder.createIntLiteralOperand(AUTO_INT, enumValue);
 
-    TypeDescription typeDescription = typeDescriptionFromDataType(INT);
+    TypeDescription typeDescription = typeDescriptionFromDataType(AUTO_INT);
     typeDescription.setProperty(IS_ENUM);
 
     return Unit(typeDescription, op);
@@ -45,10 +45,10 @@ Unit UnitBuilder::unitFromDefineDescription(const DefineDescription& defineDescr
 {
     Operand op;
 
-    if (defineDescription.dtype == INT)
-        op = opBuilder.createIntLiteralOperand(INT, defineDescription.val.integer);
+    if (defineDescription.dtype == AUTO_INT)
+        op = opBuilder.createIntLiteralOperand(AUTO_INT, defineDescription.val.integer);
     else
-        op = opBuilder.createFloatLiteralOperand(FLOAT, defineDescription.val.floating);
+        op = opBuilder.createFloatLiteralOperand(AUTO_FLOAT, defineDescription.val.floating);
 
     TypeDescription typeDescription = typeDescriptionFromDataType(defineDescription.dtype);
     typeDescription.setProperty(IS_DEFINE);

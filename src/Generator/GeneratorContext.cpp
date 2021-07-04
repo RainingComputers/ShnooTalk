@@ -16,7 +16,6 @@ namespace generator
       , descriptionFinder(modulesMap[fileName], modulesMap, unitBuilder, console)
       , functionBuilder(modulesMap, opBuilder, unitBuilder, console)
       , strBuilder(modulesMap[fileName], opBuilder)
-      , typeChecker(functionBuilder)
     {
         workingFunction = nullptr;
         workingModule = &rootModule;

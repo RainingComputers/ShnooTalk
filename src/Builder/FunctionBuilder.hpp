@@ -24,6 +24,8 @@ class FunctionBuilder
 
     icode::Operand createPointer(const Unit& unit);
 
+    icode::Operand autoCast(const icode::Operand& op, icode::DataType destinationDataType);
+
     void operandCopy(icode::Operand op1, icode::Operand op2);
 
     void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);

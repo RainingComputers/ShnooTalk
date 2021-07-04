@@ -1,5 +1,6 @@
 #include "Expression.hpp"
 #include "TypeDescriptionFromNode.hpp"
+#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "Local.hpp"
 
@@ -23,7 +24,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     {
         Unit RHS = expression(ctx, lastNode);
 
-        if (!ctx.typeChecker.check(local, RHS))
+        if (!isSameType(local.type, RHS.type))
             ctx.console.typeError(lastNode.tok, local.type, RHS.type);
 
         ctx.functionBuilder.unitCopy(local, RHS);

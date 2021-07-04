@@ -60,30 +60,48 @@ Operand FunctionBuilder::createPointer(const Unit& unit)
     return pointerOperand;
 }
 
-void FunctionBuilder::operandCopy(Operand op1, Operand op2)
+Operand FunctionBuilder::autoCast(const Operand& op, DataType destinationDataType)
 {
+    if (op.dtype == destinationDataType)
+        return op;
+
+    Entry entry;
+
+    entry.opcode = CAST;
+    entry.op1 = opBuilder.createTempOperand(destinationDataType);
+    entry.op2 = op;
+
+    pushEntry(entry);
+
+    return entry.op1;
+}
+
+void FunctionBuilder::operandCopy(Operand dest, Operand src)
+{
+    Operand castedSrc = autoCast(src, dest.dtype);
+
     /* Copy one operand value to another, use READ and WRITE instruction
         if pointers are involved */
 
-    if (op1.isPointer() && op2.isPointer())
+    if (dest.isPointer() && castedSrc.isPointer())
     {
-        Operand temp = opBuilder.createTempOperand(op2.dtype);
-        operandCopy(temp, op2);
-        operandCopy(op1, temp);
+        Operand temp = opBuilder.createTempOperand(castedSrc.dtype);
+        operandCopy(temp, castedSrc);
+        operandCopy(dest, temp);
     }
     else
     {
         Entry copyEntry;
 
-        if (op1.isPointer() && !op2.isPointer())
+        if (dest.isPointer() && !castedSrc.isPointer())
             copyEntry.opcode = WRITE;
-        else if (!op1.isPointer() && op2.isPointer())
+        else if (!dest.isPointer() && castedSrc.isPointer())
             copyEntry.opcode = READ;
-        else if (!op1.isPointer() && !op2.isPointer())
+        else if (!dest.isPointer() && !castedSrc.isPointer())
             copyEntry.opcode = EQUAL;
 
-        copyEntry.op1 = op1;
-        copyEntry.op2 = op2;
+        copyEntry.op1 = dest;
+        copyEntry.op2 = castedSrc;
 
         pushEntry(copyEntry);
     }
@@ -205,7 +223,7 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
     entry.opcode = instruction;
     entry.op1 = opBuilder.createTempOperand(dtype);
     entry.op2 = ensureNotPointer(LHS.op);
-    entry.op3 = ensureNotPointer(RHS.op);
+    entry.op3 = autoCast(ensureNotPointer(RHS.op), dtype);
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
@@ -250,11 +268,13 @@ void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, 
     /* Construct icode for comparator operator instructions,
         EQ, NEQ, LT, LTE, GT, GTE  */
 
+    DataType dtype = LHS.type.dtype;
+
     Entry entry;
 
     entry.opcode = instruction;
     entry.op1 = ensureNotPointer(LHS.op);
-    entry.op2 = ensureNotPointer(RHS.op);
+    entry.op2 = autoCast(ensureNotPointer(RHS.op), dtype);
 
     pushEntry(entry);
 }
@@ -408,7 +428,7 @@ void FunctionBuilder::createInput(const Unit& unit)
 
     inputEntry.opcode = inputInstruction;
     inputEntry.op1 = unit.op;
-    inputEntry.op2 = opBuilder.createIntLiteralOperand(INT, (int)size);
+    inputEntry.op2 = opBuilder.createIntLiteralOperand(AUTO_INT, (int)size);
 
     pushEntry(inputEntry);
 }
@@ -442,7 +462,7 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
     if (!(formalParam.type.isMutable() || formalParam.type.isStruct() || formalParam.type.isArray()))
     {
         entry.opcode = PASS;
-        entry.op1 = ensureNotPointer(actualParam.op);
+        entry.op1 = autoCast(ensureNotPointer(actualParam.op), formalParam.type.dtype);
     }
 
     entry.op2 = opBuilder.createVarOperand(functionDataType, calleeNameToken.toString());
@@ -495,8 +515,8 @@ bool FunctionBuilder::doesFunctionTerminate()
     if (workingFunction->icodeTable.size() < 1)
         return false;
 
-    icode::Instruction lastOpcode = workingFunction->icodeTable.back().opcode;
-    return lastOpcode == icode::RET;
+    Instruction lastOpcode = workingFunction->icodeTable.back().opcode;
+    return lastOpcode == RET;
 }
 
 void FunctionBuilder::terminateFunction(const Token& nameToken)
@@ -507,6 +527,6 @@ void FunctionBuilder::terminateFunction(const Token& nameToken)
     if (!workingFunction->isVoid())
         console.compileErrorOnToken("Missing RETURN for this FUNCTION", nameToken);
 
-    noArgumentEntry(icode::RET);
+    noArgumentEntry(RET);
     return;
 }

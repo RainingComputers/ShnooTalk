@@ -1,6 +1,7 @@
 #include "FunctionCall.hpp"
 #include "Module.hpp"
 #include "UnitFromIdentifier.hpp"
+#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "Expression.hpp"
 
@@ -13,7 +14,7 @@ Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 
     ctx.popWorkingModule();
 
-    return ctx.unitBuilder.unitFromIntLiteral(size, icode::INT);
+    return ctx.unitBuilder.unitFromIntLiteral(size);
 }
 
 Unit literal(generator::GeneratorContext& ctx, const Node& root)
@@ -25,17 +26,17 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
         case token::BIN_LITERAL:
         {
             int literal = std::stoi(root.tok.toString());
-            return ctx.unitBuilder.unitFromIntLiteral(literal, icode::INT);
+            return ctx.unitBuilder.unitFromIntLiteral(literal);
         }
         case token::CHAR_LITERAL:
         {
             char literal = root.tok.toUnescapedString()[0];
-            return ctx.unitBuilder.unitFromIntLiteral(literal, icode::UI8);
+            return ctx.unitBuilder.unitFromIntLiteral(literal);
         }
         case token::FLOAT_LITERAL:
         {
             float literal = (float)stof(root.tok.toString());
-            return ctx.unitBuilder.unitFromFloatLiteral(literal, icode::FLOAT);
+            return ctx.unitBuilder.unitFromFloatLiteral(literal);
         }
         default:
             ctx.console.internalBugErrorOnToken(root.tok);
@@ -144,7 +145,7 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
         units.push_back(expression(ctx, child));
 
         if (i != 0)
-            if (!ctx.typeChecker.check(units[i - 1], units[i]))
+            if (!isSameType(units[i - 1].type, units[i].type))
                 ctx.console.typeError(child.tok, units[i - 1].type, units[i].type);
     }
 
@@ -212,7 +213,7 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
     if (LHS.type.isStruct() || LHS.type.isArray())
         ctx.console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expressionOperator);
 
-    if (!ctx.typeChecker.check(LHS, RHS))
+    if (!isSameType(LHS.type, RHS.type))
         ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
     if (expressionOperator.isBitwiseOperation() && !LHS.type.isIntegerType())

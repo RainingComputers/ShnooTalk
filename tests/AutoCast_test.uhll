@@ -1,8 +1,0 @@
-# 2
-
-fn main()
-{
-    var i:int = 2.0
-
-    println(2)
-}

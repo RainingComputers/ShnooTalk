@@ -1,9 +1,0 @@
-# lol a < b
-
-fn main()
-{
-    var a:float = 2.0
-    var b:int = 5
-
-    if(a < b) println("lol a < b")
-}

@@ -15,15 +15,15 @@ Type* dataTypeToLLVMType(const ModuleContext& ctx, const icode::DataType dtype)
             return Type::getInt16Ty(*ctx.context);
         case icode::I32:
         case icode::UI32:
-        case icode::INT:
             return Type::getInt32Ty(*ctx.context);
         case icode::I64:
         case icode::UI64:
+        case icode::AUTO_INT:
             return Type::getInt64Ty(*ctx.context);
         case icode::F32:
-        case icode::FLOAT:
             return Type::getFloatTy(*ctx.context);
         case icode::F64:
+        case icode::AUTO_FLOAT:
             return Type::getDoubleTy(*ctx.context);
         case icode::VOID:
             return Type::getVoidTy(*ctx.context);
@@ -45,15 +45,15 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
             return Type::getInt16PtrTy(*ctx.context);
         case icode::I32:
         case icode::UI32:
-        case icode::INT:
             return Type::getInt32PtrTy(*ctx.context);
         case icode::I64:
         case icode::UI64:
+        case icode::AUTO_INT:
             return Type::getInt64PtrTy(*ctx.context);
         case icode::F32:
-        case icode::FLOAT:
             return Type::getFloatPtrTy(*ctx.context);
         case icode::F64:
+        case icode::AUTO_FLOAT:
             return Type::getDoublePtrTy(*ctx.context);
         default:
             ctx.console.internalBugError();

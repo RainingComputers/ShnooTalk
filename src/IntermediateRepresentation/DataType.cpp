@@ -6,7 +6,7 @@ namespace icode
 {
     bool isSignedInteger(DataType dtype)
     {
-        return (dtype == I8 || dtype == I16 || dtype == I32 || dtype == I64 || dtype == VM_INT || dtype == INT);
+        return (dtype == I8 || dtype == I16 || dtype == I32 || dtype == I64 || dtype == VM_INT || dtype == AUTO_INT);
     }
 
     bool isUnsignedInteger(DataType dtype)
@@ -21,7 +21,7 @@ namespace icode
 
     bool isFloat(DataType dtype)
     {
-        return (dtype == F32 || dtype == F64 || dtype == FLOAT || dtype == VM_FLOAT);
+        return (dtype == F32 || dtype == F64 || dtype == AUTO_FLOAT || dtype == VM_FLOAT);
     }
 
     std::string dataTypeToString(const DataType dtype)
@@ -41,7 +41,7 @@ namespace icode
             { "long", icode::I64 },      { "ulong", icode::UI64 },      { "float", icode::F32 },
             { "double", icode::F64 },    { "char", icode::UI8 },        { "bool", icode::UI8 },
             { "VM_INT", icode::VM_INT }, { "VM_UINT", icode::VM_UINT }, { "VM_FLOAT", icode::VM_FLOAT },
-            { "INT", icode::INT },       { "FLOAT", icode::FLOAT },     { "STRUCT", icode::STRUCT },
+            { "INT", icode::AUTO_INT },       { "FLOAT", icode::AUTO_FLOAT },     { "STRUCT", icode::STRUCT },
             { "VOID", icode::VOID }
 
         };
@@ -54,7 +54,7 @@ namespace icode
 
     int getDataTypeSize(const DataType dtype)
     {
-        const int dataTypeSizesArray[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 1, 1, 1, 0, 0, 0, 0 };
+        const int dataTypeSizesArray[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 1, 1, 1, 8, 8, 0, 0 };
         return dataTypeSizesArray[dtype];
     }
 }

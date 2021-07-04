@@ -20,8 +20,8 @@ namespace icode
         VM_INT,
         VM_UINT,
         VM_FLOAT,
-        INT,
-        FLOAT,
+        AUTO_INT,
+        AUTO_FLOAT,
         STRUCT,
         VOID
     };

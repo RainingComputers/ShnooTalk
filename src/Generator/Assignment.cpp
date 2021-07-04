@@ -1,5 +1,6 @@
 #include "Expression.hpp"
 #include "UnitFromIdentifier.hpp"
+#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "Assignment.hpp"
 
@@ -40,7 +41,7 @@ void assignment(generator::GeneratorContext& ctx, const Node& root)
     if (LHS.op.operandType == icode::LITERAL)
         ctx.console.compileErrorOnToken("Cannot assign to LITERAL", root.children[0].tok);
 
-    if (!ctx.typeChecker.check(LHS, RHS))
+    if (!isSameType(LHS.type, RHS.type))
         ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
     if (!LHS.type.isMutable())

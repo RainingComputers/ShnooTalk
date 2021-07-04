@@ -19,11 +19,11 @@ void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& f
         { icode::F64, ctx.builder->CreateGlobalString("%lf", "doublefmt", 0U, ctx.LLVMModule.get()) }
     };
 
-    formatStringsContext.dataTypeFormatStringsMap[icode::INT] =
-      formatStringsContext.dataTypeFormatStringsMap[icode::I32];
+    formatStringsContext.dataTypeFormatStringsMap[icode::AUTO_INT] =
+      formatStringsContext.dataTypeFormatStringsMap[icode::I64];
 
-    formatStringsContext.dataTypeFormatStringsMap[icode::FLOAT] =
-      formatStringsContext.dataTypeFormatStringsMap[icode::F32];
+    formatStringsContext.dataTypeFormatStringsMap[icode::AUTO_FLOAT] =
+      formatStringsContext.dataTypeFormatStringsMap[icode::F64];
 
     formatStringsContext.newLineString = ctx.builder->CreateGlobalString("\n", "newln", 0U, ctx.LLVMModule.get());
 

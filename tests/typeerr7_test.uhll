@@ -1,0 +1,15 @@
+# MODULE typeerr7_test.uhll
+# ERROR in Line 14 Col 12
+# 
+#     if(a < b) println("lol a < b")
+#            ^
+# Type error, did not expect int,
+# expected float
+
+fn main()
+{
+    var a:float = 2.0
+    var b:int = 5
+
+    if(a < b) println("lol a < b")
+}

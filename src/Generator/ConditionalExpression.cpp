@@ -1,4 +1,5 @@
 #include "Expression.hpp"
+#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "ConditionalExpression.hpp"
 
@@ -104,7 +105,7 @@ void relationalOperator(generator::GeneratorContext& ctx,
     if (LHS.type.isStruct() || LHS.type.isArray())
         ctx.console.compileErrorOnToken("Cannot compare STRUCT or ARRAYS", operatorToken);
 
-    if (!ctx.typeChecker.check(LHS, RHS))
+    if (!isSameType(LHS.type, RHS.type))
         ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
 
     ctx.functionBuilder.compareOperator(opcode, LHS, RHS);

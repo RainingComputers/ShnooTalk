@@ -64,9 +64,9 @@ TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
 icode::DefineDescription defineDescriptionFromToken(const Token& valueToken)
 {
     if (valueToken.getType() == token::INT_LITERAL)
-        return icode::createIntDefineDescription(valueToken.toInt(), icode::INT);
+        return icode::createIntDefineDescription(valueToken.toInt(), icode::AUTO_INT);
 
-    return icode::createFloatDefineDescription(valueToken.toFloat(), icode::FLOAT);
+    return icode::createFloatDefineDescription(valueToken.toFloat(), icode::AUTO_FLOAT);
 }
 
 void ModuleBuilder::createDefine(const Token& nameToken, const Token& valueToken)

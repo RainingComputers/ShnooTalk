@@ -159,7 +159,7 @@ namespace pp
     {
         std::cout << "Def(";
 
-        if (definition.dtype == icode::INT)
+        if (definition.dtype == icode::AUTO_INT)
             std::cout << definition.val.integer;
         else
             std::cout << definition.val.floating;

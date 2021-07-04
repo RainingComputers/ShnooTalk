@@ -1,4 +1,5 @@
 #include "Expression.hpp"
+#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "FunctionCall.hpp"
 
@@ -38,7 +39,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         else
             actualParam = expression(ctx, root.children[i]);
 
-        if (!ctx.typeChecker.check(formalParam, actualParam))
+        if (!isSameType(formalParam.type, actualParam.type))
             ctx.console.typeError(actualParamToken, formalParam.type, actualParam.type);
 
         if (formalParam.type.isMutable() && !actualParam.op.canPassAsMutable())
@@ -64,7 +65,7 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
     {
         Unit returnValue = expression(ctx, root.children[0]);
 
-        if (!ctx.typeChecker.check(returnTypeUnit, returnValue))
+        if (!isSameType(returnTypeUnit.type, returnValue.type))
             ctx.console.typeError(root.children[0].tok, returnTypeUnit.type, returnValue.type);
 
         Unit returnPointer = ctx.functionBuilder.getReturnPointerUnit();
