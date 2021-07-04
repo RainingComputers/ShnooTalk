@@ -4,6 +4,8 @@ import subprocess
 import sys
 from difflib import ndiff
 
+from tqdm import tqdm
+
 
 class TestResult:
     PASSED = 0
@@ -22,7 +24,7 @@ def coverge_enabled():
 
 def print_diff(act_output, test_output):
     diff = ndiff(act_output.splitlines(keepends=True),
-                test_output.splitlines(keepends=True))
+                 test_output.splitlines(keepends=True))
 
     print(''.join(diff))
 
@@ -126,10 +128,9 @@ def run_test_llc(file_name, compiler_exec_path):
 def generate_info_files(obj_dir, testinfo_dir, passed_test_files):
     print("Generating info files...")
 
-    for file in passed_test_files:
+    for file in tqdm(passed_test_files, ncols=80, unit='test'):
         os.system(
-            f"lcov -c  -b ../ -d {obj_dir} -o {testinfo_dir}{file}.info > /dev/null")
-
+            f"lcov -c  -b ../ -d {obj_dir} -o {testinfo_dir}{file}_unfiltered.info > /dev/null")
 
 def prepare_coverage_report(testinfo_dir):
     # Generate report
@@ -138,7 +139,10 @@ def prepare_coverage_report(testinfo_dir):
     add_files = " ".join(
         [f"-a {info_file}" for info_file in glob.glob(f"{testinfo_dir}*.info")])
 
-    os.system(f"lcov {add_files} -o {testinfo_dir}total.info > /dev/null")
+    os.system(f"lcov {add_files} -o {testinfo_dir}total_unfiltered.info > /dev/null")
+
+    os.system(f"lcov --remove {testinfo_dir}total_unfiltered.info \
+        '/usr/include/*' '/usr/lib/*' -o {testinfo_dir}total.info > /dev/null")
 
     os.system(
         f"genhtml {testinfo_dir}total.info -o {testinfo_dir} > /dev/null")
@@ -147,7 +151,7 @@ def prepare_coverage_report(testinfo_dir):
     os.system(f"xdg-open {testinfo_dir}index.html")
 
 
-def setup_test(obj_dir, src_dir, testinfo_dir):
+def setup_test(testinfo_dir):
     # Clean
     os.system(f"rm -rf {testinfo_dir}")
     os.system(f"mkdir -p {testinfo_dir}")
