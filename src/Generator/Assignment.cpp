@@ -1,6 +1,6 @@
+#include "../Builder/TypeCheck.hpp"
 #include "Expression.hpp"
 #include "UnitFromIdentifier.hpp"
-#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "Assignment.hpp"
 

@@ -1,6 +1,6 @@
+#include "../Builder/TypeCheck.hpp"
 #include "Expression.hpp"
 #include "TypeDescriptionFromNode.hpp"
-#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "Local.hpp"
 

@@ -12,10 +12,10 @@ void input(generator::GeneratorContext& ctx, const Node& root)
     if (unit.type.isStruct())
         ctx.console.compileErrorOnToken("Cannot INPUT STRUCT", root.children[0].tok);
 
-    if (unit.type.dimensions.size() > 1)
+    if (unit.type.isMultiDimArray())
         ctx.console.compileErrorOnToken("Cannot INPUT more than 1D ARRAY", root.children[0].tok);
 
-    if (unit.type.dimensions.size() == 1 && unit.op.dtype != icode::UI8)
+    if (unit.type.isArray() && unit.op.dtype != icode::UI8)
         ctx.console.compileErrorOnToken("String input requires 1D CHAR ARRAY", root.children[0].tok);
 
     ctx.functionBuilder.createInput(unit);

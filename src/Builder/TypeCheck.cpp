@@ -4,8 +4,9 @@ using namespace icode;
 
 bool dataTypeIsEqual(DataType dtype1, DataType dtype2)
 {
-    return dtype1 == dtype2 || (dtype1 == AUTO_INT && isInteger(dtype2)) || (isInteger(dtype1) && dtype2 == AUTO_INT) ||
-           (dtype1 == AUTO_FLOAT && isFloat(dtype2)) || (isFloat(dtype1) && dtype2 == AUTO_FLOAT);
+    return dtype1 == dtype2 || (dtype1 == AUTO_INT && isInteger(dtype2)) ||
+           (isInteger(dtype1) && dtype2 == AUTO_INT) || (dtype1 == AUTO_FLOAT && isFloat(dtype2)) ||
+           (isFloat(dtype1) && dtype2 == AUTO_FLOAT);
 }
 
 bool isSameDim(TypeDescription type1, TypeDescription type2)
@@ -42,4 +43,3 @@ bool isSameType(TypeDescription type1, TypeDescription type2)
 
     return (dataTypeIsEqual(type1.dtype, type2.dtype) && isSameDim(type1, type2));
 }
-

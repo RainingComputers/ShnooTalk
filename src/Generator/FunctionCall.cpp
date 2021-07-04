@@ -1,5 +1,5 @@
+#include "../Builder/TypeCheck.hpp"
 #include "Expression.hpp"
-#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "FunctionCall.hpp"
 

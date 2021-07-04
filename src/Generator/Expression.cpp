@@ -1,7 +1,7 @@
+#include "../Builder/TypeCheck.hpp"
 #include "FunctionCall.hpp"
 #include "Module.hpp"
 #include "UnitFromIdentifier.hpp"
-#include "../IntermediateRepresentation/TypeCheck.hpp"
 
 #include "Expression.hpp"
 

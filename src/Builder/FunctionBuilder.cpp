@@ -251,14 +251,7 @@ Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOp
 Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationDataType)
 {
     /* Construct icode for CAST */
-
-    Entry entry;
-
-    entry.opcode = CAST;
-    entry.op1 = opBuilder.createTempOperand(destinationDataType);
-    entry.op2 = ensureNotPointer(unitToCast.op);
-
-    Operand result = pushEntryAndEnsureNoPointerWrite(entry);
+    Operand result = autoCast(ensureNotPointer(unitToCast.op), destinationDataType);
 
     return Unit(typeDescriptionFromDataType(destinationDataType), result);
 }
