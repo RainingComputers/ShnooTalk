@@ -50,7 +50,7 @@ void assignment(generator::GeneratorContext& ctx, const Node& root)
     if ((LHS.type.isStruct() || LHS.type.isArray()) && assignOperator.getType() != token::EQUAL)
         ctx.console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT or ARRAY", assignOperator);
 
-    if (assignOperator.isBitwiseOperation() && !icode::isInteger(LHS.type.dtype))
+    if (assignOperator.isBitwiseOperation() && !LHS.type.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
 
     icode::Instruction instruction = assignmentTokenToBinaryOperator(ctx, assignOperator);

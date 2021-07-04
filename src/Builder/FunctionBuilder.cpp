@@ -29,7 +29,7 @@ Operand FunctionBuilder::getCreatePointerDestinationOperand(const Unit& unit)
 {
     /* If not a struct, just copy the operand but change its type to a pointer */
 
-    if (unit.op.dtype != STRUCT)
+    if (!unit.type.isStruct())
         return opBuilder.createPointerOperand(unit.op.dtype);
 
     /* If it a struct, create pointer to the first field */
@@ -42,7 +42,7 @@ Operand FunctionBuilder::getCreatePointerDestinationOperand(const Unit& unit)
 
 Operand FunctionBuilder::createPointer(const Unit& unit)
 {
-    if (unit.op.isPointer() && unit.op.dtype != STRUCT)
+    if (unit.op.isPointer() && !unit.type.isStruct())
         return unit.op;
 
     /* Converted TEMP_PTR */
@@ -62,6 +62,15 @@ Operand FunctionBuilder::createPointer(const Unit& unit)
 
 Operand FunctionBuilder::autoCast(const Operand& op, DataType destinationDataType)
 {
+    /* This compiler does not support implicit casting, this function
+        is primarily meant for casting to and from AUTO_INT and AUTO_FLOAT datatypes
+        and explicit casting */
+
+    /* Literals are sometimes have AUTO_INT and AUTO_FLOAT data types, and adding
+        them will lead to mere temp operators having AUTO datatypes */
+
+    /* Pointers will never have the AUTO data types */
+
     if (op.dtype == destinationDataType)
         return op;
 

@@ -59,15 +59,13 @@ Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit unaryOperatorTerm = term(ctx, root.children[0]);
 
-    icode::DataType dtype = unaryOperatorTerm.type.dtype;
-
     if (unaryOperatorTerm.type.isArray())
         ctx.console.compileErrorOnToken("Unary operator not allowed on ARRAY", root.tok);
 
     if (unaryOperatorTerm.type.isStruct())
         ctx.console.compileErrorOnToken("Unary operator not allowed on STRUCT", root.tok);
 
-    if (!icode::isInteger(dtype) && root.tok.getType() == token::NOT)
+    if (!unaryOperatorTerm.type.isIntegerType() && root.tok.getType() == token::NOT)
         ctx.console.compileErrorOnToken("Unary operator NOT not allowed on FLOAT", root.tok);
 
     icode::Instruction instruction;
