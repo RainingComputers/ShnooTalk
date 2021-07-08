@@ -8,13 +8,13 @@ Unit getUnitFromNode(generator::GeneratorContext& ctx, const Node& root)
 
     Unit Unit = ctx.descriptionFinder.getUnitFromToken(nameToken);
 
-    if (Unit.type.checkProperty(icode::IS_ENUM) && root.children.size() > 1)
+    if (Unit.isEnum() && root.children.size() > 1)
         ctx.console.compileErrorOnToken("Invalid use of ENUM", nameToken);
 
-    if (Unit.type.checkProperty(icode::IS_DEFINE) && root.children.size() > 1)
+    if (Unit.isDefine() && root.children.size() > 1)
         ctx.console.compileErrorOnToken("Invalid use of DEF", nameToken);
 
-    if (Unit.type.checkProperty(icode::IS_LOCAL))
+    if (Unit.isLocal())
         if (!ctx.scope.isInCurrentScope(nameToken))
             ctx.console.compileErrorOnToken("Symbol not in scope", nameToken);
 
@@ -32,10 +32,10 @@ std::pair<Unit, size_t> unitFromStructVar(generator::GeneratorContext& ctx,
 
     const Token& fieldNameToken = root.getNthChildToken(nodeCounter);
 
-    if (unit.type.dtype != icode::STRUCT)
+    if (!unit.isStruct())
         ctx.console.compileErrorOnToken("STRUCT access on a NON-STRUCT data type", fieldNameToken);
 
-    if (unit.type.dimensions.size() != 0)
+    if (unit.isArray())
         ctx.console.compileErrorOnToken("STRUCT access on an ARRAY", fieldNameToken);
 
     nodeCounter++;
@@ -52,7 +52,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext
 {
     size_t nodeCounter = startIndex;
 
-    if (unit.type.dimensions.size() == 0)
+    if (!unit.isArray())
         ctx.console.compileErrorOnToken("ARRAY access on a NON ARRAY", root.children[nodeCounter].tok);
 
     std::vector<Unit> indices;
@@ -68,10 +68,10 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext
 
         indices.push_back(indexExpression);
 
-        if (indices.size() > unit.type.dimensions.size())
+        if (indices.size() > unit.dimensions().size())
             ctx.console.compileErrorOnToken("Too many subscripts", child.tok);
 
-        if (!icode::isInteger(indexExpression.type.dtype) || indexExpression.type.isArray())
+        if (!indexExpression.isIntegerType() || indexExpression.isArray())
             ctx.console.compileErrorOnToken("Index must be an integer", child.children[0].tok);
     }
 

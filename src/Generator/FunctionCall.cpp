@@ -39,14 +39,14 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         else
             actualParam = expression(ctx, root.children[i]);
 
-        if (!isSameType(formalParam.type, actualParam.type))
-            ctx.console.typeError(actualParamToken, formalParam.type, actualParam.type);
+        if (!isSameType(formalParam, actualParam))
+            ctx.console.typeError(actualParamToken, formalParam, actualParam);
 
-        if (formalParam.type.isMutable() && !actualParam.op.canPassAsMutable())
+        if (formalParam.isMutable() && !actualParam.canPassAsMutable())
             ctx.console.compileErrorOnToken("Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE",
                                             actualParamToken);
 
-        if (formalParam.type.isMutable() && !actualParam.type.isMutable())
+        if (formalParam.isMutable() && !actualParam.isMutable())
             ctx.console.compileErrorOnToken("Cannot pass IMMUTABLE as MUTABLE", actualParamToken);
 
         ctx.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);
@@ -65,14 +65,14 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
     {
         Unit returnValue = expression(ctx, root.children[0]);
 
-        if (!isSameType(returnTypeUnit.type, returnValue.type))
-            ctx.console.typeError(root.children[0].tok, returnTypeUnit.type, returnValue.type);
+        if (!isSameType(returnTypeUnit, returnValue))
+            ctx.console.typeError(root.children[0].tok, returnTypeUnit, returnValue);
 
         Unit returnPointer = ctx.functionBuilder.getReturnPointerUnit();
 
         ctx.functionBuilder.unitCopy(returnPointer, returnValue);
     }
-    else if (returnTypeUnit.type.dtype != VOID)
+    else if (returnTypeUnit.dtype() != VOID)
         ctx.console.compileErrorOnToken("Ret type is not VOID", root.tok);
 
     ctx.functionBuilder.noArgumentEntry(RET);

@@ -12,9 +12,9 @@ void Console::compileErrorOnToken(const std::string& message, const Token& tok)
     throw CompileError();
 }
 
-void Console::typeError(const Token& tok, const icode::TypeDescription& expected, const icode::TypeDescription& found)
+void Console::typeError(const Token& tok, const Unit& expected, const Unit& found)
 {
-    pp::typeError(fileName, *file, tok, expected, found);
+    pp::typeError(fileName, *file, tok, expected.type(), found.type());
     throw CompileError();
 }
 

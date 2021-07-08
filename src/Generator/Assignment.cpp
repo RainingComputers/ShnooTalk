@@ -38,19 +38,19 @@ void assignment(generator::GeneratorContext& ctx, const Node& root)
 
     Token assignOperator = root.getNthChildToken(1);
 
-    if (LHS.op.operandType == icode::LITERAL)
+    if (LHS.isLiteral())
         ctx.console.compileErrorOnToken("Cannot assign to LITERAL", root.children[0].tok);
 
-    if (!isSameType(LHS.type, RHS.type))
-        ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
+    if (!isSameType(LHS, RHS))
+        ctx.console.typeError(root.children[2].tok, LHS, RHS);
 
-    if (!LHS.type.isMutable())
+    if (!LHS.isMutable())
         ctx.console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
 
-    if ((LHS.type.isStruct() || LHS.type.isArray()) && assignOperator.getType() != token::EQUAL)
+    if ((LHS.isStruct() || LHS.isArray()) && assignOperator.getType() != token::EQUAL)
         ctx.console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT or ARRAY", assignOperator);
 
-    if (assignOperator.isBitwiseOperation() && !LHS.type.isIntegerType())
+    if (assignOperator.isBitwiseOperation() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
 
     icode::Instruction instruction = assignmentTokenToBinaryOperator(ctx, assignOperator);

@@ -58,11 +58,11 @@ Unit UnitBuilder::unitFromDefineDescription(const DefineDescription& defineDescr
 
 Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
 {
-    TypeDescription type = unitList[0].type;
+    TypeDescription type = unitList[0].type();
 
     DimensionType dimType = FIXED_DIM;
 
-    if (type.isStringLtrl())
+    if (type.checkProperty(IS_STRING_LTRL))
         dimType = STRING_LTRL_DIM;
 
     type = prependDimension(type, unitList.size(), dimType);

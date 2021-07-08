@@ -10,7 +10,7 @@ void print(generator::GeneratorContext& ctx, const Node& root)
 
         Unit unit = expression(ctx, child);
 
-        if (unit.type.isStruct() || unit.type.isMultiDimArray())
+        if (unit.isStruct() || unit.isMultiDimArray())
             ctx.console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
 
         ctx.functionBuilder.createPrint(unit);

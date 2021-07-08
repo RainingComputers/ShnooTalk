@@ -49,7 +49,7 @@ Unit cast(generator::GeneratorContext& ctx, const Node& root)
 
     Unit termToCast = term(ctx, root.children[0]);
 
-    if (termToCast.type.isArray() || termToCast.type.isStruct())
+    if (termToCast.isArray() || termToCast.isStruct())
         ctx.console.compileErrorOnToken("Cannot cast STRUCT or ARRAY", root.tok);
 
     return ctx.functionBuilder.castOperator(termToCast, destinationDataType);
@@ -59,13 +59,13 @@ Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit unaryOperatorTerm = term(ctx, root.children[0]);
 
-    if (unaryOperatorTerm.type.isArray())
+    if (unaryOperatorTerm.isArray())
         ctx.console.compileErrorOnToken("Unary operator not allowed on ARRAY", root.tok);
 
-    if (unaryOperatorTerm.type.isStruct())
+    if (unaryOperatorTerm.isStruct())
         ctx.console.compileErrorOnToken("Unary operator not allowed on STRUCT", root.tok);
 
-    if (!unaryOperatorTerm.type.isIntegerType() && root.tok.getType() == token::NOT)
+    if (!unaryOperatorTerm.isIntegerType() && root.tok.getType() == token::NOT)
         ctx.console.compileErrorOnToken("Unary operator NOT not allowed on FLOAT", root.tok);
 
     icode::Instruction instruction;
@@ -143,8 +143,8 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
         units.push_back(expression(ctx, child));
 
         if (i != 0)
-            if (!isSameType(units[i - 1].type, units[i].type))
-                ctx.console.typeError(child.tok, units[i - 1].type, units[i].type);
+            if (!isSameType(units[i - 1], units[i]))
+                ctx.console.typeError(child.tok, units[i - 1], units[i]);
     }
 
     return ctx.unitBuilder.unitFromUnitList(units);
@@ -208,13 +208,13 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
 
     Unit RHS = expression(ctx, root.children[2]);
 
-    if (LHS.type.isStruct() || LHS.type.isArray())
+    if (LHS.isStruct() || LHS.isArray())
         ctx.console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expressionOperator);
 
-    if (!isSameType(LHS.type, RHS.type))
-        ctx.console.typeError(root.children[2].tok, LHS.type, RHS.type);
+    if (!isSameType(LHS, RHS))
+        ctx.console.typeError(root.children[2].tok, LHS, RHS);
 
-    if (expressionOperator.isBitwiseOperation() && !LHS.type.isIntegerType())
+    if (expressionOperator.isBitwiseOperation() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expressionOperator);
 
     icode::Instruction instruction = tokenToBinaryOperator(ctx, expressionOperator);

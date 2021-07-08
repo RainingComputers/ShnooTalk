@@ -27,7 +27,7 @@ void DescriptionFinder::setWorkingFunction(FunctionDescription* functionDescript
 
 ModuleDescription* DescriptionFinder::getModuleFromUnit(const Unit& unit)
 {
-    return &modulesMap.at(unit.type.moduleName);
+    return &modulesMap.at(unit.moduleName());
 }
 
 ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& moduleNameToken)
@@ -118,7 +118,7 @@ int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
         return structDescription.size;
 
     Unit unit = getUnitFromToken(nameToken);
-    return unit.type.size;
+    return unit.size();
 }
 
 FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)

@@ -1,5 +1,6 @@
 #include "TypeCheck.hpp"
 
+
 using namespace icode;
 
 bool dataTypeIsEqual(DataType dtype1, DataType dtype2)
@@ -33,10 +34,13 @@ bool isSameDim(TypeDescription type1, TypeDescription type2)
     return true;
 }
 
-bool isSameType(TypeDescription type1, TypeDescription type2)
+bool isSameType(const Unit& unit1, const Unit& unit2)
 {
-    if (type1.isStringLtrl() && type2.isStringLtrl())
+    if (unit1.isStringLtrl() && unit2.isStringLtrl())
         return true;
+
+    TypeDescription type1 = unit1.type();
+    TypeDescription type2 = unit2.type();
 
     if (type1.dtype == STRUCT || type2.dtype == STRUCT)
         return (type1.dtypeName == type2.dtypeName && isSameDim(type1, type2) && type1.moduleName == type2.moduleName);

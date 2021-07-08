@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include "../PrettyPrint/Errors.hpp"
+#include "../Builder/Unit.hpp"
 
 struct CompileError
 {
@@ -22,8 +23,8 @@ class Console
     [[noreturn]] void compileErrorOnToken(const std::string& message, const Token& tok);
 
     [[noreturn]] void typeError(const Token& tok,
-                                const icode::TypeDescription& expected,
-                                const icode::TypeDescription& found);
+                                const Unit& expected,
+                                const Unit& found);
 
     [[noreturn]] void internalBugErrorOnToken(const Token& tok);
 

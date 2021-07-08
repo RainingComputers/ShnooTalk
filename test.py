@@ -158,7 +158,7 @@ def setup_test(testinfo_dir):
 
 
 def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
-    setup_test(obj_dir, src_dir, testinfo_dir)
+    setup_test(obj_dir)
 
     # Run each test in a subprocess
     failed = []

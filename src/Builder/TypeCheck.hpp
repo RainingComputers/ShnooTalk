@@ -1,8 +1,10 @@
 #ifndef BUILDER_TYPE_CHECKER
 #define BUILDER_TYPE_CHECKER
 
+#include "Unit.hpp"
+
 #include "../IntermediateRepresentation/TypeDescription.hpp"
 
-bool isSameType(icode::TypeDescription type1, icode::TypeDescription type2);
+bool isSameType(const Unit& unit1, const Unit& unit2);
 
 #endif

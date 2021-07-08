@@ -76,6 +76,7 @@
         "dtype",
         "ibuild",
         "icode",
+        "ifend",
         "irgen",
         "mikpp",
         "mikuro",

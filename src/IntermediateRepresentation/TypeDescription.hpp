@@ -34,7 +34,7 @@ namespace icode
         unsigned int dtypeSize;
         unsigned int offset;
         unsigned int size;
-        std::vector<unsigned int> dimensions;
+        std::vector<int> dimensions;
         std::vector<DimensionType> dimTypes;
 
         unsigned int properties;

@@ -24,8 +24,8 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     {
         Unit RHS = expression(ctx, lastNode);
 
-        if (!isSameType(local.type, RHS.type))
-            ctx.console.typeError(lastNode.tok, local.type, RHS.type);
+        if (!isSameType(local, RHS))
+            ctx.console.typeError(lastNode.tok, local, RHS);
 
         ctx.functionBuilder.unitCopy(local, RHS);
     }
