@@ -48,7 +48,7 @@ void assignment(generator::GeneratorContext& ctx, const Node& root)
         ctx.console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
 
     if ((LHS.isStruct() || LHS.isArray()) && assignOperator.getType() != token::EQUAL)
-        ctx.console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT or ARRAY", assignOperator);
+        ctx.console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT and ARRAY", assignOperator);
 
     if (assignOperator.isBitwiseOperation() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);

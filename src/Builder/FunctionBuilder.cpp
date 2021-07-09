@@ -62,12 +62,12 @@ Operand FunctionBuilder::createPointer(const Unit& unit)
 
 Operand FunctionBuilder::autoCast(const Operand& op, DataType destinationDataType)
 {
-    /* This compiler does not support implicit casting, this function
-        is primarily meant for casting to and from AUTO_INT and AUTO_FLOAT datatypes
+    /* This compiler does not support implicit type casting, this function
+        is meant for casting to and from AUTO_INT and AUTO_FLOAT datatypes
         and explicit casting */
 
     /* Literals are sometimes have AUTO_INT and AUTO_FLOAT data types, and adding
-        them will lead to mere temp operators having AUTO datatypes */
+        them will lead to more temp operands having AUTO datatypes */
 
     /* Pointers will never have the AUTO data types */
 

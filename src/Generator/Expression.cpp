@@ -1,9 +1,10 @@
 #include "../Builder/TypeCheck.hpp"
-#include "FunctionCall.hpp"
 #include "Module.hpp"
 #include "UnitFromIdentifier.hpp"
 
 #include "Expression.hpp"
+
+using namespace icode;
 
 Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 {
@@ -45,7 +46,7 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
 
 Unit cast(generator::GeneratorContext& ctx, const Node& root)
 {
-    icode::DataType destinationDataType = icode::stringToDataType(root.tok.toString());
+    DataType destinationDataType = stringToDataType(root.tok.toString());
 
     Unit termToCast = term(ctx, root.children[0]);
 
@@ -68,14 +69,14 @@ Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
     if (!unaryOperatorTerm.isIntegerType() && root.tok.getType() == token::NOT)
         ctx.console.compileErrorOnToken("Unary operator NOT not allowed on FLOAT", root.tok);
 
-    icode::Instruction instruction;
+    Instruction instruction;
     switch (root.tok.getType())
     {
         case token::MINUS:
-            instruction = icode::UNARY_MINUS;
+            instruction = UNARY_MINUS;
             break;
         case token::NOT:
-            instruction = icode::NOT;
+            instruction = NOT;
             break;
         case token::CONDN_NOT:
             ctx.console.compileErrorOnToken("Did not expect CONDN NOT", root.tok);
@@ -102,6 +103,58 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
     ctx.popWorkingModule();
 
     return result;
+}
+
+Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
+{
+    ctx.pushWorkingModule();
+
+    Unit firstActualParam;
+
+    if (root.children.size() != 0)
+    {
+        firstActualParam = expression(ctx, root.children[0]);
+
+        if (root.type == node::STRUCT_FUNCCALL)
+            ctx.setWorkingModule(ctx.descriptionFinder.getModuleFromUnit(firstActualParam));
+    }
+
+    const Token& calleeNameToken = root.tok;
+    FunctionDescription callee = ctx.descriptionFinder.getFunction(calleeNameToken);
+
+    if (root.children.size() != callee.numParameters())
+        ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
+
+    std::vector<Unit> formalParameters = ctx.descriptionFinder.getFormalParameters(callee);
+
+    for (size_t i = 0; i < root.children.size(); i++)
+    {
+        Unit formalParam = formalParameters[i];
+
+        Unit actualParam;
+        const Token& actualParamToken = root.children[i].tok;
+
+        if (i == 0)
+            actualParam = firstActualParam;
+        else
+            actualParam = expression(ctx, root.children[i]);
+
+        if (!isSameType(formalParam, actualParam))
+            ctx.console.typeError(actualParamToken, formalParam, actualParam);
+
+        if (formalParam.isMutable() && !actualParam.canPassAsMutable())
+            ctx.console.compileErrorOnToken("Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE",
+                                            actualParamToken);
+
+        if (formalParam.isMutable() && !actualParam.isMutable())
+            ctx.console.compileErrorOnToken("Cannot pass IMMUTABLE as MUTABLE", actualParamToken);
+
+        ctx.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);
+    }
+
+    ctx.popWorkingModule();
+
+    return ctx.functionBuilder.callFunction(calleeNameToken, callee);
 }
 
 Unit term(generator::GeneratorContext& ctx, const Node& root)
@@ -150,30 +203,30 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
     return ctx.unitBuilder.unitFromUnitList(units);
 }
 
-icode::Instruction tokenToBinaryOperator(const generator::GeneratorContext& ctx, const Token tok)
+Instruction tokenToBinaryOperator(const generator::GeneratorContext& ctx, const Token tok)
 {
     switch (tok.getType())
     {
         case token::MULTIPLY:
-            return icode::MUL;
+            return MUL;
         case token::DIVIDE:
-            return icode::DIV;
+            return DIV;
         case token::MOD:
-            return icode::MOD;
+            return MOD;
         case token::PLUS:
-            return icode::ADD;
+            return ADD;
         case token::MINUS:
-            return icode::SUB;
+            return SUB;
         case token::RIGHT_SHIFT:
-            return icode::RSH;
+            return RSH;
         case token::LEFT_SHIFT:
-            return icode::LSH;
+            return LSH;
         case token::BITWISE_AND:
-            return icode::BWA;
+            return BWA;
         case token::BITWISE_XOR:
-            return icode::BWX;
+            return BWX;
         case token::BITWISE_OR:
-            return icode::BWO;
+            return BWO;
         case token::CONDN_AND:
         case token::CONDN_OR:
         case token::LESS_THAN:
@@ -217,7 +270,7 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
     if (expressionOperator.isBitwiseOperation() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expressionOperator);
 
-    icode::Instruction instruction = tokenToBinaryOperator(ctx, expressionOperator);
+    Instruction instruction = tokenToBinaryOperator(ctx, expressionOperator);
 
     return ctx.functionBuilder.binaryOperator(instruction, LHS, RHS);
 }

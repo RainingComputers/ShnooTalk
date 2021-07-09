@@ -62,7 +62,7 @@ Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
 
     DimensionType dimType = FIXED_DIM;
 
-    if (type.checkProperty(IS_STRING_LTRL))
+    if (type.isStringLtrl())
         dimType = STRING_LTRL_DIM;
 
     type = prependDimension(type, unitList.size(), dimType);
