@@ -8,7 +8,7 @@ TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& param
 {
     TypeDescription paramType = typeDescriptionFromNode(ctx, paramNode);
 
-    bool isMutable = paramNode.isNodeType(node::MUT_PARAM);
+    bool isMutable = paramNode.type == node::MUT_PARAM;
 
     if (isMutable)
         paramType.becomeMutable();
@@ -21,7 +21,7 @@ TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& param
 
 bool isParamNode(const Node& nodeToCheck)
 {
-    return nodeToCheck.isNodeType(node::PARAM) || nodeToCheck.isNodeType(node::MUT_PARAM);
+    return nodeToCheck.type == node::PARAM || nodeToCheck.type == node::MUT_PARAM;
 }
 
 void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)

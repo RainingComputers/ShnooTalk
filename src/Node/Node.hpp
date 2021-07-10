@@ -64,7 +64,6 @@ struct Node
 
     Node(node::NodeType nodeType, Token token);
     Node(node::NodeType nodeType);
-    bool isNodeType(node::NodeType nodeType) const;
     bool isNthChild(node::NodeType nodeType, size_t index) const;
     bool isNthChildFromLast(node::NodeType nodeType, size_t N) const;
     Token getNthChildToken(size_t N) const;

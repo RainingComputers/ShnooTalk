@@ -14,11 +14,6 @@ Node::Node(NodeType nodeType)
     tok = Token();
 }
 
-bool Node::isNodeType(NodeType nodeType) const
-{
-    return type == nodeType;
-}
-
 bool Node::isNthChild(NodeType nodeType, size_t N) const
 {
     if (N < children.size())
