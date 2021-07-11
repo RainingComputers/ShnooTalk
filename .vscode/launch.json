@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/bin/debug/uhll",
             "args": [
                 "${file}",
-                "-ir"
+                "-c"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -32,7 +32,8 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/test.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "args": ["--gcov"]
         }
     ]
 }

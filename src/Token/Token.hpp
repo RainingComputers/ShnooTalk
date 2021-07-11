@@ -50,7 +50,7 @@ namespace token
         NOT,
         CONDN_NOT,
         CAST,
-        OPEN_SQAURE,
+        OPEN_SQUARE,
         CLOSE_SQUARE,
         OPEN_BRACE,
         CLOSE_BRACE,

@@ -7,7 +7,7 @@
 #include "PrettyPrint/IRPrinter.hpp"
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
-#include "parser.hpp"
+#include "Parser/Parser.hpp"
 #include "pathchk.hpp"
 
 void printCLIUsage()
@@ -38,9 +38,7 @@ Console getStreamAndConsole(const std::string& fileName, std::ifstream& fileStre
 Node generateAST(Console& console)
 {
     lexer::Lexer lex(*console.getStream(), console);
-    parser::rd_parser parse(lex, console);
-
-    return parse.ast;
+    return parser::generateAST(lex, console);
 }
 
 void generateIR(Console& console,

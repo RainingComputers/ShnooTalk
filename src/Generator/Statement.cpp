@@ -1,11 +1,11 @@
 #include "Assignment.hpp"
 #include "ConditionalExpression.hpp"
-#include "Return.hpp"
+#include "Expression.hpp"
 #include "Input.hpp"
 #include "Local.hpp"
 #include "Module.hpp"
 #include "Print.hpp"
-#include "Expression.hpp"
+#include "Return.hpp"
 
 #include "Statement.hpp"
 
@@ -64,12 +64,20 @@ void whileLoop(generator::GeneratorContext& ctx, const Node& root)
     ctx.functionBuilder.insertLabel(breakLabel);
 }
 
+void forLoopInitOrUpdateNode(generator::GeneratorContext& ctx, const Node& root)
+{
+    if (root.type == node::VAR)
+        local(ctx, root);
+    else if(root.type == node::TERM)
+        term(ctx, root);
+    else
+        assignment(ctx, root);    
+}
+
 void forLoop(generator::GeneratorContext& ctx, const Node& root)
 {
-    if (root.children[0].type == node::VAR)
-        local(ctx, root.children[0]);
-    else
-        assignment(ctx, root.children[0]);
+
+    forLoopInitOrUpdateNode(ctx, root.children[0]);
 
     Operand loopLabel = ctx.functionBuilder.createLabel(root.tok, true, "for");
     Operand breakLabel = ctx.functionBuilder.createLabel(root.tok, false, "for");
@@ -83,7 +91,7 @@ void forLoop(generator::GeneratorContext& ctx, const Node& root)
 
     ctx.functionBuilder.insertLabel(continueLabel);
 
-    assignment(ctx, root.children[2]);
+    forLoopInitOrUpdateNode(ctx, root.children[2]);
 
     ctx.functionBuilder.createBranch(GOTO, loopLabel);
 

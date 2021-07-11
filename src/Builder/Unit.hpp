@@ -18,24 +18,24 @@ class Unit
     Unit(const icode::TypeDescription& type, const std::vector<Unit>& list);
     std::vector<Unit> flatten() const;
 
-    std::string moduleName() const; 
-    
-    icode::DataType dtype() const; 
+    std::string moduleName() const;
+
+    icode::DataType dtype() const;
     std::string dtypeName() const;
     std::vector<int> dimensions() const;
     icode::TypeDescription type() const;
     icode::Operand op() const;
 
-    int size() const; 
+    int size() const;
     int dtypeSize() const;
 
     bool isStringLtrl() const;
     bool isChar() const;
-    
+
     bool isMutable() const;
 
     bool isIntegerType() const;
-    
+
     bool isStruct() const;
     bool isArray() const;
     bool isMultiDimArray() const;
@@ -51,7 +51,6 @@ class Unit
     bool isLiteral() const;
 
     bool isList() const;
-
 };
 
 #endif

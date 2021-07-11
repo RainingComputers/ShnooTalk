@@ -19,8 +19,8 @@ void local(generator::GeneratorContext& ctx, const Node& root)
 
     Node lastNode = root.children.back();
 
-    if (lastNode.type == node::EXPRESSION || lastNode.type == node::TERM ||
-        lastNode.type == node::STR_LITERAL || lastNode.type == node::INITLIST)
+    if (lastNode.type == node::EXPRESSION || lastNode.type == node::TERM || lastNode.type == node::STR_LITERAL ||
+        lastNode.type == node::INITLIST)
     {
         Unit RHS = expression(ctx, lastNode);
 

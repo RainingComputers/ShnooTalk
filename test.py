@@ -3,7 +3,6 @@ import glob
 import subprocess
 import sys
 from difflib import ndiff
-
 from tqdm import tqdm
 
 
@@ -128,9 +127,10 @@ def run_test_llc(file_name, compiler_exec_path):
 def generate_info_files(obj_dir, testinfo_dir, passed_test_files):
     print("Generating info files...")
 
-    for file in tqdm(passed_test_files, ncols=80, unit='test'):
+    for file in tqdm(passed_test_files, ncols=80, unit="test"):
         os.system(
-            f"lcov -c  -b ../ -d {obj_dir} -o {testinfo_dir}{file}_unfiltered.info > /dev/null")
+            f"lcov -c  -b ../ -d {obj_dir} -o {testinfo_dir}{file}.info > /dev/null")
+
 
 def prepare_coverage_report(testinfo_dir):
     # Generate report
@@ -157,8 +157,8 @@ def setup_test(testinfo_dir):
     os.system(f"mkdir -p {testinfo_dir}")
 
 
-def run_all_tests(compiler_exec_path, obj_dir, src_dir, testinfo_dir):
-    setup_test(obj_dir)
+def run_all_tests(compiler_exec_path, obj_dir, testinfo_dir):
+    setup_test(testinfo_dir)
 
     # Run each test in a subprocess
     failed = []
@@ -236,7 +236,7 @@ if __name__ == "__main__":
 
     print("--=[Running uHLL compiler tests]=--")
     run_all_tests(f"../bin/{build_type}/uhll",
-                  f"../obj/{build_type}/", "../src/", "testinfo/")
+                  f"../obj/{build_type}/", "testinfo/")
 
-    # print("--=[Running LLVM LLC tests]=--")
+    #print("--=[Running LLVM LLC tests]=--")
     # run_all_llc_tests(f"../bin/{build_type}/uhll")

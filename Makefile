@@ -75,7 +75,7 @@ OBJECTS = $(SOURCES:src/%.cpp=obj/$(BUILD_TYPE)/%.o)
 clean:
 	rm -f -r bin/
 	rm -f -r obj/
-	rm -f -r testinfo/
+	rm -f -r tests/testinfo/
 	rm -f -r .cccc/
 	rm -f tests/*.llc
 	rm -f tests/*.llc.s

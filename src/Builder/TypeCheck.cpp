@@ -1,6 +1,5 @@
 #include "TypeCheck.hpp"
 
-
 using namespace icode;
 
 bool dataTypeIsEqual(DataType dtype1, DataType dtype2)

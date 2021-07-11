@@ -93,7 +93,7 @@ namespace lexer
             case '~':
                 return LenTypePair(1, token::NOT);
             case '[':
-                return LenTypePair(1, token::OPEN_SQAURE);
+                return LenTypePair(1, token::OPEN_SQUARE);
             case ']':
                 return LenTypePair(1, token::CLOSE_SQUARE);
             case '+':

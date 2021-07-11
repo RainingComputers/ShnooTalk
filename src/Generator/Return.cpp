@@ -5,7 +5,6 @@
 
 using namespace icode;
 
-
 void functionReturn(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit returnTypeUnit = ctx.descriptionFinder.getReturnType();

@@ -72,7 +72,11 @@
         "CONDN",
         "Ltrl",
         "Newln",
+        "Qualident",
+        "RPAREN",
+        "Shnoo",
         "aggs",
+        "dpeek",
         "dtype",
         "ibuild",
         "icode",
@@ -83,6 +87,7 @@
         "newln",
         "println",
         "stof",
-        "stoi"
+        "stoi",
+        "struct"
     ]
 }

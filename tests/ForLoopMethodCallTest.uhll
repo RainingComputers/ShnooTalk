@@ -1,0 +1,30 @@
+# Haha lol this works
+# Wait wait is this
+# Haha lol this works
+# Wait wait is this
+# Haha lol this works
+
+
+struct foo
+{
+
+}
+
+fn lol(this:foo)
+{
+    println("Haha lol this works")
+}
+
+fn main() -> int
+{
+    var a: foo, i: int = 0
+
+    for(a.lol(); i < 2; a.lol())
+    {
+        println("Wait wait is this")
+
+        i += 1
+    }
+
+    return 0
+}
