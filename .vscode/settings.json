@@ -70,11 +70,13 @@
     },
     "cSpell.words": [
         "CONDN",
+        "LLVM",
         "Ltrl",
         "Newln",
         "Qualident",
         "RPAREN",
         "Shnoo",
+        "ShnooTalk",
         "aggs",
         "dpeek",
         "dtype",
@@ -83,11 +85,11 @@
         "ifend",
         "irgen",
         "mikpp",
-        "mikuro",
         "newln",
         "println",
         "stof",
         "stoi",
-        "struct"
+        "struct",
+        "uhll"
     ]
 }

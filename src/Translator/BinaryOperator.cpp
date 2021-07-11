@@ -6,7 +6,7 @@ using namespace llvm;
 
 Value* add(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro ADD to llvm ir */
+    /* Converts ShnooTalk ADD to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateNSWAdd(LHS, RHS);
@@ -22,7 +22,7 @@ Value* add(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dty
 
 Value* subtract(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro SUB to llvm ir */
+    /* Converts ShnooTalk SUB to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateNSWSub(LHS, RHS);
@@ -38,7 +38,7 @@ Value* subtract(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
 
 Value* multiply(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro MUL to llvm ir */
+    /* Converts ShnooTalk MUL to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateNSWMul(LHS, RHS);
@@ -54,7 +54,7 @@ Value* multiply(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
 
 Value* divide(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro DIV to llvm ir */
+    /* Converts ShnooTalk DIV to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateSDiv(LHS, RHS);
@@ -70,7 +70,7 @@ Value* divide(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType 
 
 Value* remainder(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro MOD to llvm ir */
+    /* Converts ShnooTalk MOD to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateSRem(LHS, RHS);
@@ -86,7 +86,7 @@ Value* remainder(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
 
 Value* rightShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro RSH to llvm ir */
+    /* Converts ShnooTalk RSH to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateAShr(LHS, RHS);
@@ -99,7 +99,7 @@ Value* rightShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
 
 Value* leftShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro LSH to llvm ir */
+    /* Converts ShnooTalk LSH to llvm ir */
 
     if (icode::isInteger(dtype))
         return ctx.builder->CreateShl(LHS, RHS);
@@ -109,7 +109,7 @@ Value* leftShift(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
 
 Value* bitwiseAnd(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro BWA to llvm ir */
+    /* Converts ShnooTalk BWA to llvm ir */
 
     if (icode::isInteger(dtype))
         return ctx.builder->CreateAnd(LHS, RHS);
@@ -119,7 +119,7 @@ Value* bitwiseAnd(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
 
 Value* bitwiseOr(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro BWO to llvm ir */
+    /* Converts ShnooTalk BWO to llvm ir */
 
     if (icode::isInteger(dtype))
         return ctx.builder->CreateOr(LHS, RHS);
@@ -129,7 +129,7 @@ Value* bitwiseOr(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTy
 
 Value* bitwiseXor(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro BWX to llvm ir */
+    /* Converts ShnooTalk BWX to llvm ir */
 
     if (icode::isInteger(dtype))
         return ctx.builder->CreateXor(LHS, RHS);

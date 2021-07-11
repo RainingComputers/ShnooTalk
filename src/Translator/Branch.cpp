@@ -4,7 +4,7 @@ using namespace llvm;
 
 void createLabel(const ModuleContext& ctx, BranchContext& branchContext, const icode::Entry& e, Function* function)
 {
-    /* Converts mikuro CREATE_LABEL to llvm basic block  */
+    /* Converts ShnooTalk CREATE_LABEL to llvm basic block  */
     BasicBlock* newBlock = BasicBlock::Create(*ctx.context, e.op1.name, function);
 
     branchContext.labelToBasicBlockMap[e.op1] = newBlock;
@@ -57,7 +57,7 @@ void createBranch(const ModuleContext& ctx,
                   BasicBlock* gotoBlock,
                   BasicBlock* fallBlock)
 {
-    /* Convert mikuro GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO int llvm ir  */
+    /* Convert ShnooTalk GOTO, IF_TRUE_GOTO, IF_FALSE_GOTO int llvm ir  */
 
     switch (e.opcode)
     {

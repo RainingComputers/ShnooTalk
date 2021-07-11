@@ -4,10 +4,10 @@
 #include "Console/Console.hpp"
 #include "Generator/IRGenerator.hpp"
 #include "Lexer/Lexer.hpp"
+#include "Parser/Parser.hpp"
 #include "PrettyPrint/IRPrinter.hpp"
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
-#include "Parser/Parser.hpp"
 
 void printCLIUsage()
 {

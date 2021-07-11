@@ -7,7 +7,7 @@ using namespace llvm;
 
 void createPointer(ModuleContext& ctx, const icode::Entry& e)
 {
-    /* Converts mikuro CREATE_PTR to llvm ir */
+    /* Converts ShnooTalk CREATE_PTR to llvm ir */
 
     switch (e.op2.operandType)
     {
@@ -41,7 +41,7 @@ void createPointer(ModuleContext& ctx, const icode::Entry& e)
 
 void copy(ModuleContext& ctx, const icode::Entry& e)
 {
-    /* Converts mikuro EQUAL to llvm ir */
+    /* Converts ShnooTalk EQUAL to llvm ir */
 
     Value* sourceValue = getLLVMValue(ctx, e.op2);
     setLLVMValue(ctx, e.op1, sourceValue);
@@ -49,7 +49,7 @@ void copy(ModuleContext& ctx, const icode::Entry& e)
 
 void read(ModuleContext& ctx, const icode::Entry& e)
 {
-    /* Converts mikuro READ to llvm ir */
+    /* Converts ShnooTalk READ to llvm ir */
 
     Value* sourcePointer = getLLVMPointer(ctx, e.op2);
     Value* sourceValue = ctx.builder->CreateLoad(sourcePointer);
@@ -59,7 +59,7 @@ void read(ModuleContext& ctx, const icode::Entry& e)
 
 void write(const ModuleContext& ctx, const icode::Entry& e)
 {
-    /* Converts mikuro WRITE to llvm ir */
+    /* Converts ShnooTalk WRITE to llvm ir */
 
     Value* destinationPointer = getLLVMPointer(ctx, e.op1);
     Value* sourceValue = getLLVMValue(ctx, e.op2);
@@ -77,7 +77,7 @@ llvm::Value* ensureI64(const ModuleContext& ctx, llvm::Value* value)
 
 void addressBinaryOperator(ModuleContext& ctx, const icode::Entry& e)
 {
-    /* Converts mikuro ADDR_ADD and ADDR_MUL to llvm ir */
+    /* Converts ShnooTalk ADDR_ADD and ADDR_MUL to llvm ir */
 
     Value* result;
     Value* LHS = getLLVMValue(ctx, e.op2);

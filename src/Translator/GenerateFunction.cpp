@@ -175,7 +175,7 @@ void generateFunction(ModuleContext& ctx,
     if (functionDesc.functionReturnType.dtype != icode::VOID)
         setCurrentFunctionReturnPointer(ctx, functionDesc, name);
 
-    /* Convert mikuro function ir to llvm ir */
+    /* Convert ShnooTalk function ir to llvm ir */
     translateFunctionIcode(ctx, branchContext, formatStringsContext, functionDesc, function);
 
     /* Process goto backpacthing */

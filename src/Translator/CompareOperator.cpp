@@ -6,7 +6,7 @@ using namespace llvm;
 
 Value* equal(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro EQ to llvm ir */
+    /* Converts ShnooTalk EQ to llvm ir */
 
     if (icode::isInteger(dtype))
         return ctx.builder->CreateICmpEQ(LHS, RHS);
@@ -19,7 +19,7 @@ Value* equal(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType d
 
 Value* notEqual(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro NEQ to llvm ir */
+    /* Converts ShnooTalk NEQ to llvm ir */
 
     if (icode::isInteger(dtype))
         return ctx.builder->CreateICmpNE(LHS, RHS);
@@ -32,7 +32,7 @@ Value* notEqual(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
 
 Value* lessThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro LT to llvm ir */
+    /* Converts ShnooTalk LT to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateICmpSLT(LHS, RHS);
@@ -48,7 +48,7 @@ Value* lessThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataTyp
 
 Value* lessThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro LTE to llvm ir */
+    /* Converts ShnooTalk LTE to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateICmpSLE(LHS, RHS);
@@ -64,7 +64,7 @@ Value* lessThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode
 
 Value* greaterThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro GT to llvm ir */
+    /* Converts ShnooTalk GT to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateICmpSGT(LHS, RHS);
@@ -80,7 +80,7 @@ Value* greaterThan(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::Data
 
 Value* greaterThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataType dtype)
 {
-    /* Converts mikuro GTE to llvm ir */
+    /* Converts ShnooTalk GTE to llvm ir */
 
     if (icode::isSignedInteger(dtype))
         return ctx.builder->CreateICmpSGE(LHS, RHS);
