@@ -33,3 +33,32 @@ uhll app.uhll -c
 clang app.o -o app
 ./app
 ```
+## TODO
+
+### Short term
+
+- [ ] Fix bugs in the LLVM translator backend
+- [ ] Language reference using mkdocs
+- [ ] Python wrapper generator
+- [ ] Refactor tests
+- [ ] Refactor the test runner and use multiprocessing
+- [ ] Dynamic allocation and pointers
+- [ ] Setup github workflows and build for other platforms
+- [ ] Static variables
+- [ ] NaN and infinity
+- [ ] Node style module imports
+- [ ] Assigning conditional expressions
+- [ ] `loop {}` syntax for looping forever
+- [ ] Check limits for primitive data types
+- [ ] Tests for pretty printer
+- [ ] ~95% test coverage
+
+### Advanced features
+
+- [ ] Custom operators
+- [ ] Constructor and destructor
+- [ ] Templates
+- [ ] Passing functions as arguments
+- [ ] Lambdas
+- [ ] Unions
+
