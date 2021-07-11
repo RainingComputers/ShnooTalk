@@ -1,11 +1,12 @@
-# MODULE strdaterr2_test
-# ERROR in Line 10 Col 20
+# MODULE strdaterr2_test.uhll
+# ERROR in Line 11 Col 21
 # 
-#     var a:int[2] = "lol"
-#                    ^
-# String too big
+#     var a:char[2] = "lol"
+#                     ^
+# Type error, did not expect char[4],
+# expected char[2]
 
 fn main()
 {
-    var a:int[2] = "lol"
+    var a:char[2] = "lol"
 }

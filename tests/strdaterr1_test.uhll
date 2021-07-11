@@ -1,9 +1,10 @@
-# MODULE strdaterr1_test
-# ERROR in Line 10 Col 17
+# MODULE strdaterr1_test.uhll
+# ERROR in Line 11 Col 17
 # 
 #     var a:int = "lol"
 #                 ^
-# String assignment only allowed on 1D INT ARRAY
+# Type error, did not expect ubyte[4],
+# expected int
 
 fn main()
 {

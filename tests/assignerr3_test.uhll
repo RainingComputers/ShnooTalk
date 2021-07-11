@@ -1,9 +1,9 @@
-# MODULE assignerr3_test
+# MODULE assignerr3_test.uhll
 # ERROR in Line 15 Col 7
 # 
 #     a += b
 #       ^
-# Only EQUAL operator allowed on STRUCT
+# Only EQUAL operator allowed on STRUCT and ARRAY
 
 use vec
 from vec use Vec

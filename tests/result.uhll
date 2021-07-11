@@ -16,7 +16,8 @@ fn val(this:Result) -> int
         println("ERROR: Called val() on result with error")
         exit
     }
-    else return this._val
+    
+    return this._val
 }
 
 fn fail() -> Result
@@ -57,7 +58,8 @@ fn floatVal(this:FloatResult) -> float
         println("ERROR: Called val() on floatResult with error")
         exit
     }
-    else return this._fVal
+    
+    return this._fVal
     
 }
 

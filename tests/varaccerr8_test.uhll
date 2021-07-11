@@ -1,4 +1,4 @@
-# MODULE varaccerr8_test
+# MODULE varaccerr8_test.uhll
 # ERROR in Line 24 Col 17
 # 
 #     println(foo.x)

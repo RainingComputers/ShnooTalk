@@ -6,15 +6,16 @@ from result use Result, FloatResult
 
 struct String
 {
-    var arr:int[80]
+    var arr:char[80]
 }
 
-fn isDigit(char:int) -> bool 
+fn isDigit(c:char) -> bool 
 {
     # Chaeck if char is digit or not
 
-    if(char >= '0' and char <= '9') return true
-    else return false
+    if(c >= '0' and c <= '9') return true
+    
+    return false
 }
 
 fn len(this:String) -> int
@@ -27,7 +28,7 @@ fn len(this:String) -> int
     return 80
 }
 
-fn copy(mut this:String, arr:int[80])
+fn copy(mut this:String, arr:char[80])
 {
     # Copy int array into struct
 
@@ -38,16 +39,16 @@ fn copy(mut this:String, arr:int[80])
     this.arr[i] = '\0'
 }
 
-fn copyChar(mut this:String, char:int)
+fn copyChar(mut this:String, c:char)
 {
     # Copy char into string
     
-    this.arr[0] = char
+    this.arr[0] = c
     this.arr[1] = '\0'
     
 }
 
-fn cat(this:String, arr:int[80]) -> String
+fn cat(this:String, arr:char[80]) -> String
 {
     # Return new string with concatination
 
@@ -67,7 +68,7 @@ fn cat(this:String, arr:int[80]) -> String
     return newstr
 }
 
-fn find(this:String, start:int, char:int) -> Result
+fn find(this:String, start:int, c:char) -> Result
 {
     # Returns index of char
 
@@ -75,7 +76,7 @@ fn find(this:String, start:int, char:int) -> Result
     
     for(var i:int = start; i < l; i += 1)
         # If char is found return a success result
-        if(this.arr[i] == char) return result::success(i)
+        if(this.arr[i] == c) return result::success(i)
 
     
     # If char is not found, return failure
@@ -95,7 +96,7 @@ fn integer(this:String) -> Result
         if (isDigit(this.arr[i]) != true) return result::fail()
         
         # If valid digit, add to string
-        parsed_int += pow * (this.arr[i] - '0')
+        parsed_int += pow * int'(this.arr[i] - '0')
         pow *= 10   
     }
 
@@ -147,16 +148,18 @@ fn subString(this:String, startidx:int, endidx:int) -> String
 
 }
 
-fn strcmp(this:String, arr:int[80]) -> int
+fn strcmp(this:String, arr:char[80]) -> int
 {
     var i:int = 0
 
     while(1 == 1)
     {
         if(this.arr[i] == '\0' and arr[i] == '\0') return 0
-        else if(this.arr[i] < arr[i]) return -1
-        else if(this.arr[i] > arr[i]) return 1
+        if(this.arr[i] < arr[i]) return -1
+        if(this.arr[i] > arr[i]) return 1
         i += 1
     }
+
+    return -1
 }
 

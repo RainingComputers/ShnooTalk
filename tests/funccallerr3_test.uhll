@@ -1,4 +1,4 @@
-# MODULE funccallerr3_test
+# MODULE funccallerr3_test.uhll
 # ERROR in Line 17 Col 9
 # 
 #     foo(a+1)

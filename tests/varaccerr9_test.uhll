@@ -1,4 +1,4 @@
-# MODULE varaccerr9_test
+# MODULE varaccerr9_test.uhll
 # ERROR in Line 15 Col 17
 # 
 #     println(foo.z)

@@ -1,15 +1,21 @@
-# MODULE typeerr6_test
-# ERROR in Line 14 Col 12
+# MODULE typeerr6_test.uhll
+# ERROR in Line 13 Col 12
 # 
-#     if(a < b) print("lol a < b")
+#     return a
 #            ^
 # Type error, did not expect int,
 # expected float
 
-fn main()
+fn foobar() -> float
 {
-    var a:float = 2.0
-    var b:int = 5
+    var a:int = 2
 
-    if(a < b) print("lol a < b")
+    return a
+}
+
+fn main() -> int
+{
+    println(foobar())
+
+    return 0
 }

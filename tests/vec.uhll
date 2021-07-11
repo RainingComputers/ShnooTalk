@@ -3,7 +3,7 @@ struct Vec
     var x:int, y:int
 }
 
-fn setVec(mut this:Vec, x:int, y:int) -> Vec
+fn setVec(mut this:Vec, x:int, y:int)
 {
     this.x = x 
     this.y = y
@@ -29,3 +29,10 @@ fn printVec(vector:Vec)
     println("x:", vector.x, "y:", vector.y)
 }
 
+fn isUnitVector(vector:Vec) -> bool
+{
+    if(vector.x == 1 and vector.y == 1)
+        return true
+
+    return false
+}

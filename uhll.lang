@@ -145,15 +145,17 @@
     </context>
 
     <context id="types" style-ref="type">
-       <keyword>bool</keyword> 
+       <keyword>byte</keyword> 
+       <keyword>ubyte</keyword>
+       <keyword>short</keyword>
+       <keyword>ushort</keyword>
        <keyword>int</keyword>
        <keyword>uint</keyword>
+       <keyword>long</keyword>
+       <keyword>ulong</keyword>
        <keyword>float</keyword>
-       <keyword>i8</keyword>
-       <keyword>i16</keyword>
-       <keyword>i32</keyword>
-       <keyword>ui32</keyword>
-       <keyword>f32</keyword>
+       <keyword>double</keyword>
+       <keyword>bool</keyword> 
     </context>
 
 

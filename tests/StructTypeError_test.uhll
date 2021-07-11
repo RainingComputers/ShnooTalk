@@ -1,0 +1,24 @@
+# MODULE StructTypeError_test.uhll
+# ERROR in Line 23 Col 9
+# 
+#     a = b
+#         ^
+# Type error, did not expect foo,
+# expected bar
+
+struct foo
+{
+    var x: int, y: int, z: int
+}
+
+struct bar
+{
+    var x: foo, y: foo
+}
+
+fn main() -> int
+{
+    var a: bar, b: foo
+
+    a = b
+}

@@ -1,165 +1,131 @@
 #include <fstream>
 #include <iostream>
 
-#include "icode.hpp"
-#include "irgen.hpp"
-#include "lexer.hpp"
-#include "log.hpp"
-#include "optimizer.hpp"
-#include "parser.hpp"
-#include "pathchk.hpp"
-#include "token.hpp"
-#include "vmgen.hpp"
+#include "Console/Console.hpp"
+#include "Generator/IRGenerator.hpp"
+#include "Lexer/Lexer.hpp"
+#include "Parser/Parser.hpp"
+#include "PrettyPrint/IRPrinter.hpp"
+#include "Token/Token.hpp"
+#include "Translator/LLVMTranslator.hpp"
 
-void print_usage()
+void printCLIUsage()
 {
-    log::println("USAGE: uhllc MODULE [OPTION]");
-    log::println("\nAvailable options:");
-    log::println("\t-ast\tPrint parse tree");
-    log::println("\t-ir\tPrint intermediate code representation");
-    log::println("\t-asm\tPrint uhllvm assembly");
-    log::println("\t-run\tExecute program (default)");
+    pp::println("USAGE: uhllc FILE OPTION");
+    pp::println("\nAvailable options:");
+    pp::println("\t-c\tCompile program");
+    pp::println("\t-ast\tPrint parse tree");
+    pp::println("\t-ir\tPrint intermediate code representation");
+    pp::println("\t-llvm\tPrint llvm ir");
 }
 
-void ir_gen(const std::string& file_name,
-            icode::target_desc& target,
-            icode::module_desc_map& modules)
+std::string removeFileExtension(const std::string& fileName)
 {
-    /* Open file */
-    std::ifstream ifile;
-    ifile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-    ifile.open(file_name + ".uhll");
+    return fileName.substr(0, fileName.find_last_of("."));
+}
 
-    lexer::lexical_analyser lex(file_name, ifile);
-    parser::rd_parser parse(lex, file_name, ifile);
-    irgen::ir_generator gen(target, modules, file_name, ifile);
+Console getStreamAndConsole(const std::string& fileName, std::ifstream& fileStream)
+{
+    fileStream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    fileStream.open(fileName);
 
-    /* Intermediate code generation */
-    gen.initgen(parse.ast);
+    Console console(fileName, &fileStream);
 
-    /* Compile external modules that the module uses/imports */
-    for (std::string use : modules[file_name].uses)
-        if (modules.find(use) == modules.end())
-            ir_gen(use, target, modules);
+    return console;
+}
 
-    /* Generate icode */
-    gen.program(parse.ast);
+Node generateAST(Console& console)
+{
+    lexer::Lexer lex(*console.getStream(), console);
+    return parser::generateAST(lex, console);
+}
+
+void generateIR(Console& console,
+                const std::string& moduleName,
+                icode::TargetEnums& target,
+                icode::StringModulesMap& modulesMap)
+{
+
+    Node ast = generateAST(console);
+
+    generator::GeneratorContext generatorContext(target, modulesMap, moduleName, console);
+
+    generator::getUses(generatorContext, ast);
+
+    for (std::string use : modulesMap[moduleName].uses)
+        if (modulesMap.find(use) == modulesMap.end())
+        {
+            std::ifstream fileStream;
+            std::string useWithExt = use + ".uhll";
+            Console console = getStreamAndConsole(useWithExt, fileStream);
+            generateIR(console, use, target, modulesMap);
+        }
+
+    generator::generateModule(generatorContext, ast);
 }
 
 int main(int argc, char* argv[])
 {
-    /* Check for correct usage */
-    if (argc < 2 || argc > 3)
+    if (argc != 3)
     {
-        print_usage();
+        printCLIUsage();
         return EXIT_FAILURE;
     }
 
-    /* Get module name, if .uhll is present, strip it */
-    std::string file_name = argv[1];
-
-    std::string ext = ".uhll";
-    if (file_name.size() > ext.size() &&
-        file_name.substr(file_name.size() - ext.size()) == ext)
-        file_name = file_name.substr(0, file_name.size() - ext.size());
-
-    /* Get option passed by user, (if present) */
-    std::string option;
-    if (argc == 3)
-    {
-        option = argv[2];
-
-        if (option != "-ir" && option != "-asm" && option != "-run" && option != "-ast" &&
-            option != "-use")
-        {
-            print_usage();
-            return EXIT_FAILURE;
-        }
-    }
-
-    /* Map for holding all the compiled module in intermediate representation */
-    icode::module_desc_map modules;
-
-    /* uhll vm */
-    vm::uhllvm vm;
+    std::string fileName = argv[1];
+    std::string moduleName = removeFileExtension(fileName);
+    std::string option = argv[2];
 
     /* Compile program */
     try
     {
+        std::ifstream fileStream;
+        Console console = getStreamAndConsole(fileName, fileStream);
+
         if (option == "-ast")
         {
-            /* Open file */
-            std::ifstream ifile;
-            ifile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-            ifile.open(file_name + ".uhll");
-
-            lexer::lexical_analyser lex(file_name, ifile);
-            parser::rd_parser parse(lex, file_name, ifile);
-
-            log::print_node(parse.ast);
-
+            pp::printNode(generateAST(console));
             return 0;
         }
 
-        icode::target_desc target = uhllvmgen::target_desc();
-
-        ir_gen(file_name, target, modules);
+        icode::StringModulesMap modulesMap;
+        icode::TargetEnums target = translator::getTarget();
+        generateIR(console, moduleName, target, modulesMap);
 
         if (option == "-ir")
         {
-            for (auto pair : modules)
-            {
-                log::print_module_desc(pair.second);
-                log::println("");
-            }
-
+            pp::printModuleDescription(modulesMap[moduleName]);
             return 0;
         }
 
-        opt::optimizer opt(target, modules);
-
-        if (option == "-use")
+        if (option == "-llvm")
         {
-            for (auto pair : modules)
-            {
-                log::print_module_desc(pair.second);
-                log::println("");
-            }
-
-            log::print_use_map(opt.prog_use_map);
-
+            pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
             return 0;
         }
 
-        uhllvmgen::uhllvm_generator vmgen(vm, modules, opt);
-
-        if (option == "-asm")
+        if (option == "-c")
         {
-            log::print_vm(vm);
+            for (auto stringModulePair : modulesMap)
+                translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, console);
+
             return 0;
         }
-    }
-    catch (const log::compile_error& e)
-    {
-        return EXIT_FAILURE;
-    }
-    catch (const log::internal_bug_error& e)
-    {
-        return EXIT_FAILURE;
-    }
-    catch (const std::ifstream::failure& e)
-    {
-        log::println("File I/O error");
-        return EXIT_FAILURE;
-    }
 
-    /* Run program */
-    try
-    {
-        vm.run();
+        printCLIUsage();
+        return EXIT_FAILURE;
     }
-    catch (const vm::vm_error& e)
+    catch (const CompileError)
     {
+        return EXIT_FAILURE;
+    }
+    catch (const InternalBugError)
+    {
+        return EXIT_FAILURE;
+    }
+    catch (const std::ifstream::failure)
+    {
+        pp::println("File I/O error");
         return EXIT_FAILURE;
     }
 

@@ -1,4 +1,4 @@
-# MODULE blockerr1_test
+# MODULE blockerr1_test.uhll
 # ERROR in Line 10 Col 5
 # 
 #     doesnotexist::foo()

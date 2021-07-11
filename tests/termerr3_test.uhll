@@ -1,4 +1,4 @@
-# MODULE termerr3_test
+# MODULE termerr3_test.uhll
 # ERROR in Line 17 Col 9
 # 
 #     a = -b 

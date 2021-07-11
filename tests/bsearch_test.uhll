@@ -5,12 +5,15 @@ fn BSearch(a:int[10], S:int, L:int, x:int) -> int
     var H:int = L/2
     
     if(L == 1)
+    {
         if(a[S] == x) return S
         else return -1
-    else if(x < a[S+H])
+    }
+    
+    if(x < a[S+H])
         return BSearch(a, S, H, x)
-    else
-        return BSearch(a, S+H, L-H, x)
+    
+    return BSearch(a, S+H, L-H, x)
 }
 
 fn main()

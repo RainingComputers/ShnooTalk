@@ -1,9 +1,10 @@
-# MODULE initlisterr1_test
-# ERROR in Line 10 Col 17
+# MODULE initlisterr1_test.uhll
+# ERROR in Line 11 Col 17
 # 
 #     var a:int = [1, 2, 3]
 #                 ^
-# Cannot initialize a NON-ARRAY with initializer list
+# Type error, did not expect INT[3],
+# expected int
 
 fn main()
 {

@@ -5,14 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug",
+            "name": "Debug currently open test",
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/uhll",
-            "args": ["test", "-run"],
+            "args": [
+                "${file}",
+                "-c"
+            ],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/",
+            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -24,5 +27,13 @@
                 }
             ]
         },
+        {
+            "name": "Debug test runner",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/test.py",
+            "console": "integratedTerminal",
+            "args": ["--gcov"]
+        }
     ]
 }

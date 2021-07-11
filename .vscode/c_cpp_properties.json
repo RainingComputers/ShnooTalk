@@ -3,7 +3,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/usr/include/llvm-11",
+                "/usr/include/llvm-c-11"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

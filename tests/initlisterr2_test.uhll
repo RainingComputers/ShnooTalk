@@ -1,9 +1,10 @@
-# MODULE initlisterr2_test
-# ERROR in Line 10 Col 39
+# MODULE initlisterr2_test.uhll
+# ERROR in Line 11 Col 32
 # 
 #     var a:int[2][2] = [[1, 2], [3, 4, 5]]
-#                                       ^
-# Dimension size too big
+#                                ^
+# Type error, did not expect INT[3],
+# expected INT[2]
 
 fn main()
 {

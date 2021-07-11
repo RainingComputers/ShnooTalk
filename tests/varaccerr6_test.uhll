@@ -1,4 +1,4 @@
-# MODULE varaccerr6_test
+# MODULE varaccerr6_test.uhll
 # ERROR in Line 18 Col 13
 # 
 #     println(b)

@@ -1,10 +1,11 @@
-# MODULE typeerr1_test
-# ERROR in Line 11 Col 21
+# MODULE typeerr1_test.uhll
+# ERROR in Line 12 Col 26
 # 
 #     var a:int[3] = [1.0, 1, 2]
-#                     ^
-# Type error, did not expect float,
-# expected int
+#                          ^
+# Type error, did not expect INT,
+# expected FLOAT
+
 
 fn main()
 {

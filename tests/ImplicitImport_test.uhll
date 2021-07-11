@@ -1,0 +1,15 @@
+# x: 1 y: 2
+# 1
+
+use math
+
+fn main()
+{
+    var a:math::vec::Vec
+
+    a.setVec(1, 2)
+
+    a.printVec()
+
+    println(a.x)
+}

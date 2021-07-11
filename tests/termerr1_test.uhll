@@ -1,4 +1,4 @@
-# MODULE termerr1_test
+# MODULE termerr1_test.uhll
 # ERROR in Line 17 Col 17
 # 
 #     var b:int = int'a

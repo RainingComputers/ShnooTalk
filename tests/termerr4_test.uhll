@@ -1,4 +1,4 @@
-# MODULE termerr4_test
+# MODULE termerr4_test.uhll
 # ERROR in Line 12 Col 9
 # 
 #     b = ~a

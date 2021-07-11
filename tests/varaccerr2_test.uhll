@@ -1,4 +1,4 @@
-# MODULE varaccerr2_test
+# MODULE varaccerr2_test.uhll
 # ERROR in Line 12 Col 17
 # 
 #     var a:int = LED0.pin

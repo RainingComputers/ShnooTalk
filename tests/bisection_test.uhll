@@ -1,4 +1,4 @@
-# 1.44225
+# 1.442250
 
 use math
 
@@ -9,7 +9,7 @@ fn f(x:float) -> float
 
 fn main()
 {
-    # Intial xL and xR values
+    # Initial xL and xR values
     var xL:float = 0.0, xR:float = 3.0 
     
     # Accuracy 
@@ -28,5 +28,5 @@ fn main()
             xR = xM
     }
     
-    println(xL) # 1.44225
+    println(xL) # 1.499999
 }

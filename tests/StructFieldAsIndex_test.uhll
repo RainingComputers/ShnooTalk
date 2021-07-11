@@ -1,0 +1,29 @@
+# 10
+# 2
+# 3
+
+struct foo
+{
+    var bar:int
+}
+
+fn changeArr(mut arr:int[3])
+{
+    var position:foo 
+    position.bar = 0
+    
+    arr[position.bar] = 10
+}
+
+fn main() -> int
+{
+    var arr:int[3] = [1, 2, 3]
+    
+    changeArr(arr)
+    
+    println(arr[0])
+    println(arr[1])
+    println(arr[2])
+
+    return 0
+}

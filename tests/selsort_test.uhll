@@ -20,7 +20,7 @@ fn maxPos(a:int[10], n:int) -> int
     return pos
 }
 
-fn selSort(mut a:int[10]) -> int
+fn selSort(mut a:int[10])
 {
     var n:int = 10
 

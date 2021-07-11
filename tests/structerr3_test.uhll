@@ -1,4 +1,4 @@
-# MODULE structerr3_test
+# MODULE structerr3_test.uhll
 # ERROR in Line 13 Col 9
 # 
 #     var vec:int
