@@ -39,6 +39,7 @@ clang app.o -o app
 
 - [ ] Fix bugs in the LLVM translator backend
 - [ ] Language reference using mkdocs
+- [ ] CLI argument parser
 - [ ] Python wrapper generator
 - [ ] Refactor tests
 - [ ] Refactor the test runner and use multiprocessing
