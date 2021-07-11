@@ -1,4 +1,4 @@
-.PHONY : help clean all build dirs install uninstall format quality test coverage
+.PHONY : help clean all build dirs install install-gedit uninstall format quality test coverage
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
@@ -66,10 +66,10 @@ else
 endif
 
 # llvm-config bin path, used to set llvm linker flags
-LLVM_CONFIG_BIN = llvm-config-11
+LLVM_CONFIG_BIN = llvm-config-12
 
 ifeq ($(shell uname -s), Darwin)
-	LLVM_CONFIG_BIN = /usr/local/opt/llvm@11/bin/llvm-config
+	LLVM_CONFIG_BIN = /usr/local/opt/llvm@12/bin/llvm-config
 endif
 
 # Set compiler and linker flags

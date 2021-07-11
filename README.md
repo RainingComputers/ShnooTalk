@@ -11,14 +11,14 @@ ShnooTalk was previously known as uHLL (micro high level language). The project 
 
 ### Ubuntu 20.04 
 ```
-sudo apt install llvm-11 llvm-11-dev
+sudo apt install llvm-12 llvm-12-dev
 make build
 sudo make install
 ```
 
 ### Mac OS
 ```
-brew install llvm@11
+brew install llvm@12
 make build
 sudo make install
 ```

@@ -4,8 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/llvm-11",
-                "/usr/include/llvm-c-11"
+                "/usr/include/llvm-12",
+                "/usr/include/llvm-c-12"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

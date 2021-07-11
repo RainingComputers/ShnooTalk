@@ -210,6 +210,7 @@ namespace lexer
                 return LenTypePair(endIndex - i + 1, token::STR_LITERAL);
             }
             case ' ':
+            case '\t':
                 return LenTypePair(1, token::SPACE);
             default:
                 return LenTypePair(1, token::NONE);
