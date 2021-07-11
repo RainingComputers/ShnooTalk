@@ -1,8 +1,8 @@
-#include "pathchk.hpp"
+#include "FileSystem.hpp"
 
-namespace pathchk
+namespace fs
 {
-    bool file_exists(const std::string& name)
+    bool fileExists(const std::string& name)
     {
         struct stat info;
 
@@ -14,7 +14,7 @@ namespace pathchk
         return false;
     }
 
-    bool dir_exists(const std::string& name)
+    bool directoryExists(const std::string& name)
     {
         struct stat info;
 

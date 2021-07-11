@@ -1,4 +1,4 @@
-#include "../pathchk.hpp"
+#include "../FileSystem/FileSystem.hpp"
 
 #include "ModuleBuilder.hpp"
 
@@ -164,8 +164,8 @@ void ModuleBuilder::createStructDescription(const Token& nameToken,
 
 void ModuleBuilder::createUse(const Token& nameToken)
 {
-    bool isFile = pathchk::file_exists(nameToken.toString() + ".uhll");
-    bool isFolder = pathchk::dir_exists(nameToken.toString());
+    bool isFile = fs::fileExists(nameToken.toString() + ".uhll");
+    bool isFolder = fs::directoryExists(nameToken.toString());
 
     if (!(isFile || isFolder))
         console.compileErrorOnToken("Module or Package does not exist", nameToken);
