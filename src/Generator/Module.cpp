@@ -7,8 +7,6 @@ int setWorkingModuleFromNode(generator::GeneratorContext& ctx, const Node& root,
     for (nodeCounter = startIndex; root.isNthChild(node::MODULE, nodeCounter); nodeCounter++)
     {
         const Token& moduleNameToken = root.children[nodeCounter].tok;
-        const std::string& moduleName = moduleNameToken.toString();
-
         ctx.setWorkingModule(ctx.descriptionFinder.getModuleFromToken(moduleNameToken));
     }
 

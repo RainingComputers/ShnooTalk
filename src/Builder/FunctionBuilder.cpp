@@ -343,7 +343,7 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
 
     TypeDescription elementType = unit.type();
 
-    for (const Unit indexUnit : indices)
+    for (const Unit& indexUnit : indices)
     {
         Operand subscriptOperand =
           addressMultiplyOperator(indexUnit.op(), opBuilder.createLiteralAddressOperand(elementWidth));

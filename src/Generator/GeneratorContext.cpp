@@ -7,9 +7,7 @@ namespace generator
                                        const std::string& fileName,
                                        Console& console)
 
-      : target(target)
-      , modulesMap(modulesMap)
-      , rootModule(modulesMap[fileName])
+      : rootModule(modulesMap[fileName])
       , console(console)
       , moduleBuilder(modulesMap, console)
       , unitBuilder(opBuilder)

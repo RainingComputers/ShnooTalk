@@ -29,10 +29,13 @@ void identifierDeclareList(parser::ParserContext& ctx, bool initAllowed)
 {
     node::NodeType declNodeType;
 
-    if (ctx.accept(token::VAR))
-        declNodeType = node::VAR;
-    else if (ctx.accept(token::CONST) && initAllowed)
+    token::TokenType expected[2] = {token::CONST, token::VAR};
+    ctx.expect(expected, 2);
+
+    if (ctx.accept(token::CONST) && initAllowed)
         declNodeType = node::CONST;
+    else
+        declNodeType = node::VAR;
 
     do
     {

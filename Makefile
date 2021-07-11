@@ -63,6 +63,12 @@ else
 	BUILD_TYPE = release_$(PLATFORM)
 endif
 
+LLVM_CONFIG_BIN = llvm-config-11
+
+ifeq ($(shell uname -s), Darwin)
+	LLVM_CONFIG_BIN = /usr/local/opt/llvm@11/bin/llvm-config
+endif
+
 CXXFLAGS := $(CXXFLAGS) `llvm-config-11 --cxxflags` -fexceptions
 LDFLAGS := $(LDFLAGS) `llvm-config-11 --ldflags --system-libs --libs all`
 

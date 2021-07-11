@@ -16,8 +16,6 @@ namespace generator
 {
     class GeneratorContext
     {
-        icode::TargetEnums& target;
-        icode::StringModulesMap& modulesMap;
         icode::ModuleDescription& rootModule;
 
         icode::FunctionDescription* workingFunction;
