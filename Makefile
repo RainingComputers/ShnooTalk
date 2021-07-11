@@ -69,10 +69,10 @@ ifeq ($(shell uname -s), Darwin)
 	LLVM_CONFIG_BIN = /usr/local/opt/llvm@11/bin/llvm-config
 endif
 
-CXXFLAGS := $(CXXFLAGS) `llvm-config-11 --cxxflags` -fexceptions
-LDFLAGS := $(LDFLAGS) `llvm-config-11 --ldflags --system-libs --libs all`
+CXXFLAGS := $(CXXFLAGS) `$(LLVM_CONFIG_BIN) --cxxflags` -fexceptions
+LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
-# Find all .cpp files in src/
+# Find all .cpp files in src/git
 SOURCES = $(shell find src/ -name '*.cpp')
 # Set object file names, all object files are in obj/
 OBJECTS = $(SOURCES:src/%.cpp=obj/$(BUILD_TYPE)/%.o)
