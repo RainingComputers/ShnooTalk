@@ -1,5 +1,3 @@
-#include "../pathchk.hpp"
-
 #include "DescriptionFinder.hpp"
 
 using namespace icode;

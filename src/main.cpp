@@ -8,7 +8,6 @@
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
 #include "Parser/Parser.hpp"
-#include "pathchk.hpp"
 
 void printCLIUsage()
 {
