@@ -14,6 +14,8 @@ help :
 	@echo "      Build executable for gcov (code coverage)."
 	@echo "install"
 	@echo "      Installs the executable to /usr/local/bin directory. Execute 'make build' first."
+	@echo "install-gedit"
+	@echo "      Installs syntax highlighting rule file for gedit"
 	@echo "uninstall"
 	@echo "      Uninstalls the executable from /usr/local/bin directory."
 	@echo "format"
@@ -63,12 +65,14 @@ else
 	BUILD_TYPE = release_$(PLATFORM)
 endif
 
+# llvm-config bin path, used to set llvm linker flags
 LLVM_CONFIG_BIN = llvm-config-11
 
 ifeq ($(shell uname -s), Darwin)
 	LLVM_CONFIG_BIN = /usr/local/opt/llvm@11/bin/llvm-config
 endif
 
+# Set compiler and linker flags
 CXXFLAGS := $(CXXFLAGS) `$(LLVM_CONFIG_BIN) --cxxflags` -fexceptions
 LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
@@ -118,6 +122,8 @@ quality:
 
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
+
+install-gedit:
 	cp uhll.lang /usr/share/gtksourceview-4/language-specs/uhll.lang
 
 uninstall:

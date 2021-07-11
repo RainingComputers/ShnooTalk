@@ -16,6 +16,13 @@ make build
 sudo make install
 ```
 
+### Mac OS
+```
+brew install llvm@11
+make build
+sudo make install
+```
+
 ## Getting started
 
 **app.uhll**
@@ -53,12 +60,14 @@ clang app.o -o app
 - [ ] Check limits for primitive data types
 - [ ] Tests for pretty printer
 - [ ] ~95% test coverage
+- [ ] Debug symbols
 
 ### Advanced features
 
 - [ ] Custom operators
 - [ ] Constructor and destructor
 - [ ] Templates
+- [ ] Exceptions
 - [ ] Passing functions as arguments
 - [ ] Lambdas
 - [ ] Unions
