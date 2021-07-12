@@ -1,11 +1,9 @@
-.PHONY : help clean all build dirs install install-gedit uninstall format quality test coverage
+.PHONY : help clean all build install install-gedit uninstall format test coverage
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
 	@echo "build"
 	@echo "      Build release executable."
-	@echo "build CXX=x86_64-w64-mingw32-g++"
-	@echo "      Cross-compile to build 64bit windows executable."
 	@echo "build DEBUG=1"
 	@echo "      Build executable for debugging."
 	@echo "build GPROF=1"
@@ -20,20 +18,17 @@ help :
 	@echo "      Uninstalls the executable from /usr/local/bin directory."
 	@echo "format"
 	@echo "      Run clang-format."
-	@echo "quality"
-	@echo "      Prepare code quality report and dump it to .cccc/ folder"
 	@echo "test"
 	@echo "      Run tests, run make build DEBUG=1 first"
 	@echo "coverage"
 	@echo "      Run test and prepare code coverage report, run make build GCOV=1"
 	@echo ""
-	@echo "[Note] To speed up repeated compiles, use CXX=ccache\\ g++"
 
 # Name of the executable
 EXEC_NAME = uhll
 
 # C++ compiler
-CXX ?= clang++
+CXX = clang++
 
 # Get platform
 ifeq ($(OS), Windows_NT)
@@ -72,8 +67,8 @@ ifeq ($(shell uname -s), Darwin)
 	LLVM_CONFIG_BIN = /usr/local/opt/llvm@12/bin/llvm-config
 endif
 
-# Set compiler and linker flags
-CXXFLAGS := $(CXXFLAGS) `$(LLVM_CONFIG_BIN) --cxxflags` -fexceptions
+# Set compiler and linker flags for llvm
+CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17
 LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
 # Find all .cpp files in src/git
@@ -86,7 +81,6 @@ clean:
 	rm -f -r bin/
 	rm -f -r obj/
 	rm -f -r tests/testinfo/
-	rm -f -r .cccc/
 	rm -f tests/*.llc
 	rm -f tests/*.llc.s
 	rm -f tests/*.o
@@ -111,15 +105,6 @@ all: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME)
 # Build executable
 build: all
 
-format:
-	clang-format -i src/*.cpp
-	clang-format -i src/*.hpp
-	clang-format -i src/*/*.cpp
-	clang-format -i src/*/*.hpp
-
-quality:
-	cccc src/*.cpp
-
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
 
@@ -129,6 +114,12 @@ install-gedit:
 uninstall:
 	rm /usr/local/bin/$(EXEC_NAME)
 
+format:
+	clang-format -i src/*.cpp
+	clang-format -i src/*.hpp
+	clang-format -i src/*/*.cpp
+	clang-format -i src/*/*.hpp
+
 test:
 	python3 test.py
 
@@ -136,4 +127,4 @@ coverage:
 	python3 test.py --gcov
 
 tidy:
-	clang-ti
+	clang-tidy src/*/*.cpp  -- $(CXXFLAGS)

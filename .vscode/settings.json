@@ -85,6 +85,7 @@
         "ifend",
         "irgen",
         "mikpp",
+        "mkdocs",
         "newln",
         "println",
         "stof",

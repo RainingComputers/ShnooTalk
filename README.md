@@ -47,6 +47,7 @@ clang app.o -o app
 - [ ] Fix bugs in the LLVM translator backend
 - [ ] Language reference using mkdocs
 - [ ] CLI argument parser
+- [ ] Array return types
 - [ ] Python wrapper generator
 - [ ] Refactor tests
 - [ ] Refactor the test runner and use multiprocessing
@@ -60,6 +61,7 @@ clang app.o -o app
 - [ ] Check limits for primitive data types
 - [ ] Tests for pretty printer
 - [ ] ~95% test coverage
+- [ ] IR Validator
 - [ ] Debug symbols
 
 ### Advanced features
