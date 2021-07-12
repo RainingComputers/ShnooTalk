@@ -4,8 +4,7 @@
 
 void input(parser::ParserContext& ctx)
 {
-
-    ctx.addNode(node::INPUT, true);
+    ctx.addNodeMakeCurrent(node::INPUT);
 
     ctx.expect(token::LPAREN);
     ctx.next();

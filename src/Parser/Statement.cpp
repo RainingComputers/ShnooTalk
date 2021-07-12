@@ -11,7 +11,7 @@ void assignmentOrMethodCall(parser::ParserContext& ctx)
 
     ctx.pushNode();
 
-    ctx.addNode(node::TERM, true, false);
+    ctx.addNodeMakeCurrentNoConsume(node::TERM);
 
     ctx.expect(token::IDENTIFIER);
     identifierWithQualidentAndSubscript(ctx);
@@ -43,7 +43,7 @@ void assignmentOrMethodCall(parser::ParserContext& ctx)
 void moduleFunctionCall(parser::ParserContext& ctx)
 {
     ctx.pushNode();
-    ctx.addNode(node::MODULE, true, false);
+    ctx.addNodeMakeCurrentNoConsume(node::MODULE);
     moduleQualident(ctx);
     functionCall(ctx);
     ctx.popNode();
@@ -52,10 +52,10 @@ void moduleFunctionCall(parser::ParserContext& ctx)
 void ifStatement(parser::ParserContext& ctx)
 {
     ctx.pushNode();
-    ctx.addNode(node::IF, true, false);
+    ctx.addNodeMakeCurrentNoConsume(node::IF);
 
     ctx.pushNode();
-    ctx.addNode(node::IF, true);
+    ctx.addNodeMakeCurrent(node::IF);
     expression(ctx);
     block(ctx);
     ctx.popNode();
@@ -63,7 +63,7 @@ void ifStatement(parser::ParserContext& ctx)
     while (ctx.accept(token::ELSEIF))
     {
         ctx.pushNode();
-        ctx.addNode(node::ELSEIF, true);
+        ctx.addNodeMakeCurrent(node::ELSEIF);
         expression(ctx);
         block(ctx);
         ctx.popNode();
@@ -72,7 +72,7 @@ void ifStatement(parser::ParserContext& ctx)
     if (ctx.accept(token::ELSE))
     {
         ctx.pushNode();
-        ctx.addNode(node::ELSE, true);
+        ctx.addNodeMakeCurrent(node::ELSE);
         block(ctx);
         ctx.popNode();
     }
@@ -83,7 +83,7 @@ void ifStatement(parser::ParserContext& ctx)
 void whileLoop(parser::ParserContext& ctx)
 {
     ctx.pushNode();
-    ctx.addNode(node::WHILE, true);
+    ctx.addNodeMakeCurrent(node::WHILE);
     expression(ctx);
     block(ctx);
     ctx.popNode();
@@ -93,7 +93,7 @@ void forLoop(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::FOR, true);
+    ctx.addNodeMakeCurrent(node::FOR);
 
     if (ctx.accept(token::LPAREN))
         ctx.next();
@@ -125,7 +125,7 @@ void returnExpression(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::RETURN, true);
+    ctx.addNodeMakeCurrent(node::RETURN);
 
     if (ctx.accept(token::VOID))
         ctx.next();
@@ -172,7 +172,7 @@ void block(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::BLOCK, true, false);
+    ctx.addNodeMakeCurrentNoConsume(node::BLOCK);
 
     token::TokenType expected[] = { token::CLOSE_BRACE, token::VAR,    token::CONST, token::IF,
                                     token::WHILE,       token::FOR,    token::BREAK, token::CONTINUE,

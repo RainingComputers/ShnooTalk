@@ -10,7 +10,7 @@ void identifierWithSubscript(parser::ParserContext& ctx, bool literalSubscriptOn
     {
         ctx.pushNode();
 
-        ctx.addNode(node::SUBSCRIPT, true);
+        ctx.addNodeMakeCurrent(node::SUBSCRIPT);
 
         if (literalSubscriptOnly)
         {
@@ -87,7 +87,7 @@ void functionCall(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::FUNCCALL, true, true);
+    ctx.addNodeMakeCurrent(node::FUNCCALL);
 
     actualParameterList(ctx);
 
@@ -118,7 +118,7 @@ void sizeofBuiltIn(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::SIZEOF, true);
+    ctx.addNodeMakeCurrent(node::SIZEOF);
 
     ctx.expect(token::LPAREN);
     ctx.next();
@@ -139,7 +139,7 @@ void initializerList(parser::ParserContext& ctx)
     ctx.pushNode();
 
     ctx.expect(token::OPEN_SQUARE);
-    ctx.addNode(node::INITLIST, true);
+    ctx.addNodeMakeCurrent(node::INITLIST);
 
     expression(ctx);
 
@@ -159,7 +159,7 @@ void term(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::TERM, true, false);
+    ctx.addNodeMakeCurrentNoConsume(node::TERM);
 
     token::TokenType expected[] = { token::IDENTIFIER,   token::NOT,         token::LPAREN,        token::INT_LITERAL,
                                     token::CHAR_LITERAL, token::HEX_LITERAL, token::FLOAT_LITERAL, token::BIN_LITERAL,
@@ -177,7 +177,7 @@ void term(parser::ParserContext& ctx)
         }
         else if (ctx.peek(token::CAST))
         {
-            ctx.addNode(node::CAST, true);
+            ctx.addNodeMakeCurrent(node::CAST);
             ctx.next();
             term(ctx);
         }
@@ -201,7 +201,7 @@ void term(parser::ParserContext& ctx)
     }
     else if (ctx.accept(token::NOT) || ctx.accept(token::MINUS) || ctx.accept(token::CONDN_NOT))
     {
-        ctx.addNode(node::UNARY_OPR, true);
+        ctx.addNodeMakeCurrent(node::UNARY_OPR);
         term(ctx);
     }
     else
@@ -216,7 +216,7 @@ void baseExpression(parser::ParserContext& ctx, int minPrecedence)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::EXPRESSION, true, false);
+    ctx.addNodeMakeCurrentNoConsume(node::EXPRESSION);
 
     term(ctx);
 

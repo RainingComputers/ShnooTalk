@@ -7,9 +7,9 @@ void print(parser::ParserContext& ctx)
     ctx.pushNode();
 
     if (ctx.accept(token::PRINTLN))
-        ctx.addNode(node::PRINTLN, true);
+        ctx.addNodeMakeCurrent(node::PRINTLN);
     else
-        ctx.addNode(node::PRINT, true);
+        ctx.addNodeMakeCurrent(node::PRINT);
 
     ctx.expect(token::LPAREN);
     ctx.next();

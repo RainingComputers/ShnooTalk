@@ -33,7 +33,9 @@ namespace parser
         void expect(token::TokenType type);
         void expect(token::TokenType* types, int ntypes);
 
-        void addNode(node::NodeType NodeType, bool traverse = false, bool nexttoken = true);
+        void addNode(node::NodeType NodeType);
+        void addNodeMakeCurrent(node::NodeType NodeType);
+        void addNodeMakeCurrentNoConsume(node::NodeType NodeType);
         void insertNode(node::NodeType NodeType);
         void insertNodeBeginning(node::NodeType NodeType);
         void duplicateNode();

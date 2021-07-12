@@ -4,7 +4,7 @@ void enumList(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::ENUM, true);
+    ctx.addNodeMakeCurrent(node::ENUM);
 
     ctx.expect(token::OPEN_SQUARE);
     ctx.next();

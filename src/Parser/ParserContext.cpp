@@ -70,17 +70,30 @@ namespace parser
             console.parserErrorMultiple(types, ntypes, symbol);
     }
 
-    void ParserContext::addNode(node::NodeType type, bool traverse, bool nexttoken)
+    void ParserContext::addNode(node::NodeType nodeType)
     {
         /* Add child node to current node, if traverse iw true
             make current node the child node */
         /* Also fetch next symbol, if nexttoken is true */
-        currentNode->children.push_back(Node(type, symbol));
+        currentNode->children.push_back(Node(nodeType, symbol));
 
-        if (traverse)
-            currentNode = &currentNode->children.back();
-        if (nexttoken)
-            next();
+        next();
+    }
+
+    void ParserContext::addNodeMakeCurrent(node::NodeType nodeType)
+    {
+        currentNode->children.push_back(Node(nodeType, symbol));
+
+        currentNode = &currentNode->children.back();
+
+        next();
+    }
+
+    void ParserContext::addNodeMakeCurrentNoConsume(node::NodeType nodeType)
+    {
+        currentNode->children.push_back(Node(nodeType, symbol));
+
+        currentNode = &currentNode->children.back();
     }
 
     void ParserContext::insertNode(node::NodeType type)

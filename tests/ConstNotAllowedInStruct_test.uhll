@@ -1,0 +1,17 @@
+# MODULE ConstNotAllowedInStruct_test.uhll
+# ERROR in Line 11 Col 5
+# 
+#     const a:int, b: int
+#     ^
+# Did not expect CONST,
+# expected CLOSE_BRACE
+
+struct foobar
+{
+    const a:int, b: int
+}
+
+fn main() -> int
+{
+    return 0
+}

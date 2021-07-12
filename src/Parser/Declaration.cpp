@@ -28,10 +28,15 @@ void identifierDeclareList(parser::ParserContext& ctx, bool initAllowed)
 {
     node::NodeType declNodeType;
 
-    token::TokenType expected[2] = { token::CONST, token::VAR };
-    ctx.expect(expected, 2);
+    token::TokenType expected[2] = { token::VAR, token::CONST };
 
-    if (ctx.accept(token::CONST) && initAllowed)
+    /* exclude token::CONST if initAllowed is false */
+    if (initAllowed)
+        ctx.expect(expected, 2);
+    else
+        ctx.expect(expected, 1);
+
+    if (ctx.accept(token::CONST))
         declNodeType = node::CONST;
     else
         declNodeType = node::VAR;
@@ -40,7 +45,7 @@ void identifierDeclareList(parser::ParserContext& ctx, bool initAllowed)
     {
         ctx.pushNode();
 
-        ctx.addNode(declNodeType, true);
+        ctx.addNodeMakeCurrent(declNodeType);
 
         ctx.expect(token::IDENTIFIER);
 

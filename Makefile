@@ -28,7 +28,7 @@ help :
 EXEC_NAME = uhll
 
 # C++ compiler
-CXX = clang++
+CXX ?= clang++
 
 # Get platform
 ifeq ($(OS), Windows_NT)

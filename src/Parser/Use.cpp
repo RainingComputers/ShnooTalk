@@ -4,7 +4,7 @@ void use(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::USE, true);
+    ctx.addNodeMakeCurrent(node::USE);
 
     ctx.expect(token::IDENTIFIER);
     ctx.addNode(node::IDENTIFIER);
@@ -23,7 +23,7 @@ void from(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNode(node::FROM, true);
+    ctx.addNodeMakeCurrent(node::FROM);
 
     ctx.expect(token::IDENTIFIER);
     ctx.addNode(node::IDENTIFIER);
