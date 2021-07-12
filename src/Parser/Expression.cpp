@@ -96,12 +96,11 @@ void functionCall(parser::ParserContext& ctx)
 
 void methodCall(parser::ParserContext& ctx)
 {
-    while (ctx.accept(token::DOT))
+    while (ctx.accept(token::DOT) && ctx.dpeek(token::LPAREN))
     {
         ctx.consume();
 
-        if (!(ctx.accept(token::IDENTIFIER) && ctx.peek(token::LPAREN)))
-            break;
+        ctx.expect(token::IDENTIFIER);
 
         ctx.duplicateNode();
 
