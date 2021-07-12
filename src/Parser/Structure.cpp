@@ -12,13 +12,13 @@ void structDefinition(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrent(node::IDENTIFIER);
 
     ctx.expect(token::OPEN_BRACE);
-    ctx.next();
+    ctx.consume();
 
     while (ctx.accept(token::VAR))
         identifierDeclareList(ctx, false);
 
     ctx.expect(token::CLOSE_BRACE);
-    ctx.next();
+    ctx.consume();
 
     ctx.popNode();
 }
