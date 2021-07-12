@@ -5,7 +5,6 @@
 #include "../Lexer/Lexer.hpp"
 #include "../Node/Node.hpp"
 
-
 namespace parser
 {
     Node generateAST(lexer::Lexer& lexer, Console& console);

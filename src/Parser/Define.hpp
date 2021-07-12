@@ -5,5 +5,4 @@
 
 void def(parser::ParserContext& ctx);
 
-
 #endif

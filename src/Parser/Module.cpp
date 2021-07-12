@@ -1,9 +1,9 @@
-#include "Use.hpp"
-#include "Structure.hpp"
-#include "Function.hpp"
-#include "Enum.hpp"
-#include "Define.hpp"
 #include "Declaration.hpp"
+#include "Define.hpp"
+#include "Enum.hpp"
+#include "Function.hpp"
+#include "Structure.hpp"
+#include "Use.hpp"
 
 #include "Module.hpp"
 

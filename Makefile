@@ -115,10 +115,9 @@ uninstall:
 	rm /usr/local/bin/$(EXEC_NAME)
 
 format:
-	clang-format -i src/*.cpp
-	clang-format -i src/*.hpp
 	clang-format -i src/*/*.cpp
 	clang-format -i src/*/*.hpp
+	clang-format -i src/*.cpp
 
 test:
 	python3 test.py

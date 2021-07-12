@@ -1,5 +1,5 @@
-#include "Expression.hpp"
 #include "Declaration.hpp"
+#include "Expression.hpp"
 #include "Statement.hpp"
 
 #include "Function.hpp"

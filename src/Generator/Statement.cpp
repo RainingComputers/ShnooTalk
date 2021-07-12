@@ -68,10 +68,10 @@ void forLoopInitOrUpdateNode(generator::GeneratorContext& ctx, const Node& root)
 {
     if (root.type == node::VAR)
         local(ctx, root);
-    else if(root.type == node::TERM)
+    else if (root.type == node::TERM)
         term(ctx, root);
     else
-        assignment(ctx, root);    
+        assignment(ctx, root);
 }
 
 void forLoop(generator::GeneratorContext& ctx, const Node& root)

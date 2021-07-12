@@ -2,7 +2,6 @@
 
 #include "Declaration.hpp"
 
-
 void identifierDecleration(parser::ParserContext& ctx)
 {
     ctx.addNode(node::IDENTIFIER);
@@ -29,7 +28,7 @@ void identifierDeclareList(parser::ParserContext& ctx, bool initAllowed)
 {
     node::NodeType declNodeType;
 
-    token::TokenType expected[2] = {token::CONST, token::VAR};
+    token::TokenType expected[2] = { token::CONST, token::VAR };
     ctx.expect(expected, 2);
 
     if (ctx.accept(token::CONST) && initAllowed)

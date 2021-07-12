@@ -1,5 +1,5 @@
-#include "ParserContext.hpp"
 #include "Module.hpp"
+#include "ParserContext.hpp"
 
 #include "Parser.hpp"
 
