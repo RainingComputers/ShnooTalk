@@ -126,4 +126,4 @@ coverage:
 	python3 test.py --gcov
 
 tidy:
-	clang-tidy src/*/*.cpp  -- $(CXXFLAGS)
+	clang-tidy src/*.cpp src/*/*.cpp  -- $(CXXFLAGS)
