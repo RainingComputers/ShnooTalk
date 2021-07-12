@@ -7,13 +7,13 @@ void input(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrent(node::INPUT);
 
     ctx.expect(token::LPAREN);
-    ctx.next();
+    ctx.consume();
 
     ctx.expect(token::IDENTIFIER);
     term(ctx);
 
     ctx.expect(token::RPAREN);
-    ctx.next();
+    ctx.consume();
 
     ctx.popNode();
 }

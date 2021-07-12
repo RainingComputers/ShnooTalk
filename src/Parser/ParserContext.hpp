@@ -25,7 +25,7 @@ namespace parser
         Node ast;
 
       public:
-        void next();
+        void consume();
         bool peek(token::TokenType type);
         bool dpeek(token::TokenType type);
         bool accept(token::TokenType type);

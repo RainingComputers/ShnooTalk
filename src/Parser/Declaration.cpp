@@ -7,7 +7,7 @@ void identifierDecleration(parser::ParserContext& ctx)
     ctx.addNode(node::IDENTIFIER);
 
     ctx.expect(token::COLON);
-    ctx.next();
+    ctx.consume();
 
     typeDefinition(ctx);
 }
@@ -19,7 +19,7 @@ void identifierDeclarationAndInit(parser::ParserContext& ctx)
 
     if (ctx.accept(token::EQUAL))
     {
-        ctx.next();
+        ctx.consume();
         expression(ctx);
     }
 }

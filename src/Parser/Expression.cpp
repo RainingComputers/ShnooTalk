@@ -21,7 +21,7 @@ void identifierWithSubscript(parser::ParserContext& ctx, bool literalSubscriptOn
             expression(ctx);
 
         ctx.expect(token::CLOSE_SQUARE);
-        ctx.next();
+        ctx.consume();
 
         ctx.popNode();
     }
@@ -51,7 +51,7 @@ void moduleQualident(parser::ParserContext& ctx)
     {
         ctx.expect(token::IDENTIFIER);
         ctx.addNode(node::MODULE);
-        ctx.next();
+        ctx.consume();
     }
 }
 
@@ -66,7 +66,7 @@ void typeDefinition(parser::ParserContext& ctx)
 void actualParameterList(parser::ParserContext& ctx)
 {
     ctx.expect(token::LPAREN);
-    ctx.next();
+    ctx.consume();
 
     if (!ctx.accept(token::RPAREN))
     {
@@ -74,13 +74,13 @@ void actualParameterList(parser::ParserContext& ctx)
 
         while (ctx.accept(token::COMMA))
         {
-            ctx.next();
+            ctx.consume();
             expression(ctx);
         }
     }
 
     ctx.expect(token::RPAREN);
-    ctx.next();
+    ctx.consume();
 }
 
 void functionCall(parser::ParserContext& ctx)
@@ -98,7 +98,7 @@ void methodCall(parser::ParserContext& ctx)
 {
     while (ctx.accept(token::DOT))
     {
-        ctx.next();
+        ctx.consume();
 
         if (!(ctx.accept(token::IDENTIFIER) && ctx.peek(token::LPAREN)))
             break;
@@ -121,7 +121,7 @@ void sizeofBuiltIn(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrent(node::SIZEOF);
 
     ctx.expect(token::LPAREN);
-    ctx.next();
+    ctx.consume();
 
     moduleQualident(ctx);
 
@@ -129,7 +129,7 @@ void sizeofBuiltIn(parser::ParserContext& ctx)
     ctx.addNode(node::IDENTIFIER);
 
     ctx.expect(token::RPAREN);
-    ctx.next();
+    ctx.consume();
 
     ctx.popNode();
 }
@@ -145,12 +145,12 @@ void initializerList(parser::ParserContext& ctx)
 
     while (ctx.accept(token::COMMA))
     {
-        ctx.next();
+        ctx.consume();
         expression(ctx);
     }
 
     ctx.expect(token::CLOSE_SQUARE);
-    ctx.next();
+    ctx.consume();
 
     ctx.popNode();
 }
@@ -178,7 +178,7 @@ void term(parser::ParserContext& ctx)
         else if (ctx.peek(token::CAST))
         {
             ctx.addNodeMakeCurrent(node::CAST);
-            ctx.next();
+            ctx.consume();
             term(ctx);
         }
         else if (ctx.peek(token::DOUBLE_COLON))
@@ -194,10 +194,10 @@ void term(parser::ParserContext& ctx)
     }
     else if (ctx.accept(token::LPAREN))
     {
-        ctx.next();
+        ctx.consume();
         expression(ctx);
         ctx.expect(token::RPAREN);
-        ctx.next();
+        ctx.consume();
     }
     else if (ctx.accept(token::NOT) || ctx.accept(token::MINUS) || ctx.accept(token::CONDN_NOT))
     {

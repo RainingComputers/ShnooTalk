@@ -96,7 +96,7 @@ void forLoop(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrent(node::FOR);
 
     if (ctx.accept(token::LPAREN))
-        ctx.next();
+        ctx.consume();
 
     if (ctx.accept(token::VAR))
         identifierDeclareList(ctx, true);
@@ -104,17 +104,17 @@ void forLoop(parser::ParserContext& ctx)
         assignmentOrMethodCall(ctx);
 
     ctx.expect(token::SEMICOLON);
-    ctx.next();
+    ctx.consume();
 
     expression(ctx);
     ctx.expect(token::SEMICOLON);
-    ctx.next();
+    ctx.consume();
 
     ctx.expect(token::IDENTIFIER);
     assignmentOrMethodCall(ctx);
 
     if (ctx.accept(token::RPAREN))
-        ctx.next();
+        ctx.consume();
 
     block(ctx);
 
@@ -128,7 +128,7 @@ void returnExpression(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrent(node::RETURN);
 
     if (ctx.accept(token::VOID))
-        ctx.next();
+        ctx.consume();
     else
         expression(ctx);
 
@@ -181,7 +181,7 @@ void block(parser::ParserContext& ctx)
 
     if (ctx.accept(token::OPEN_BRACE))
     {
-        ctx.next();
+        ctx.consume();
 
         while (!ctx.accept(token::CLOSE_BRACE))
         {
@@ -190,7 +190,7 @@ void block(parser::ParserContext& ctx)
         }
 
         ctx.expect(token::CLOSE_BRACE);
-        ctx.next();
+        ctx.consume();
     }
     else
     {

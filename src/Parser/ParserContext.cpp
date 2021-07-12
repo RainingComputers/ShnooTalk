@@ -16,10 +16,10 @@ namespace parser
     {
         currentNode = &ast;
 
-        next();
+        consume();
     }
 
-    void ParserContext::next()
+    void ParserContext::consume()
     {
         /* Get next token from lexer's token queue */
         lex.getToken(symbol);
@@ -77,7 +77,7 @@ namespace parser
         /* Also fetch next symbol, if nexttoken is true */
         currentNode->children.push_back(Node(nodeType, symbol));
 
-        next();
+        consume();
     }
 
     void ParserContext::addNodeMakeCurrent(node::NodeType nodeType)
@@ -86,7 +86,7 @@ namespace parser
 
         currentNode = &currentNode->children.back();
 
-        next();
+        consume();
     }
 
     void ParserContext::addNodeMakeCurrentNoConsume(node::NodeType nodeType)
@@ -138,7 +138,7 @@ namespace parser
 
         currentNode->children.push_back(new_node);
 
-        next();
+        consume();
     }
 
     void ParserContext::pushNode()

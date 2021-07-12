@@ -20,7 +20,7 @@ void formalParameterList(parser::ParserContext& ctx)
 
     while (ctx.accept(token::COMMA))
     {
-        ctx.next();
+        ctx.consume();
 
         ctx.pushNode();
 
@@ -46,19 +46,19 @@ void functionDefinition(parser::ParserContext& ctx)
     ctx.addNode(node::IDENTIFIER);
 
     ctx.expect(token::LPAREN);
-    ctx.next();
+    ctx.consume();
 
     if (ctx.accept(token::IDENTIFIER) || ctx.accept(token::MUTABLE))
         formalParameterList(ctx);
 
     ctx.expect(token::RPAREN);
-    ctx.next();
+    ctx.consume();
 
     if (ctx.accept(token::RIGHT_ARROW))
     {
         ctx.pushNode();
 
-        ctx.next();
+        ctx.consume();
 
         ctx.expect(token::IDENTIFIER);
         typeDefinition(ctx);
