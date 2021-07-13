@@ -58,6 +58,7 @@ clang app.o -o app
 - [ ] Node style module imports
 - [ ] Assigning conditional expressions
 - [ ] `loop {}` syntax for looping forever
+- [ ] `do {} while()` loop
 - [ ] Check limits for primitive data types
 - [ ] Tests for pretty printer
 - [ ] ~95% test coverage
