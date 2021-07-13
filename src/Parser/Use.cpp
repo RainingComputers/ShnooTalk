@@ -4,17 +4,15 @@ void use(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
-    ctx.addNodeMakeCurrent(node::USE);
+    ctx.addNodeMakeCurrentNoConsume(node::USE);
 
-    ctx.expect(token::IDENTIFIER);
-    ctx.addNode(node::IDENTIFIER);
-
-    while (ctx.accept(token::COMMA))
+    do
     {
         ctx.consume();
         ctx.expect(token::IDENTIFIER);
         ctx.addNode(node::IDENTIFIER);
-    }
+        
+    } while (ctx.accept(token::COMMA));
 
     ctx.popNode();
 }

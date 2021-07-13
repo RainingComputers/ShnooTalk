@@ -12,15 +12,13 @@ void print(parser::ParserContext& ctx)
         ctx.addNodeMakeCurrent(node::PRINT);
 
     ctx.expect(token::LPAREN);
-    ctx.consume();
 
-    expression(ctx);
-
-    while (ctx.accept(token::COMMA))
+    do 
     {
         ctx.consume();
         expression(ctx);
-    }
+        
+    } while (ctx.accept(token::COMMA));
 
     ctx.expect(token::RPAREN);
     ctx.consume();

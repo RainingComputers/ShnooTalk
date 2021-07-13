@@ -7,18 +7,14 @@ void enumList(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrent(node::ENUM);
 
     ctx.expect(token::OPEN_SQUARE);
-    ctx.consume();
 
-    ctx.expect(token::IDENTIFIER);
-    ctx.addNode(node::IDENTIFIER);
-
-    while (ctx.accept(token::COMMA))
+    do
     {
         ctx.consume();
-
         ctx.expect(token::IDENTIFIER);
         ctx.addNode(node::IDENTIFIER);
-    }
+        
+    } while (ctx.accept(token::COMMA));
 
     ctx.expect(token::CLOSE_SQUARE);
     ctx.consume();

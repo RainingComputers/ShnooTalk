@@ -138,15 +138,14 @@ void initializerList(parser::ParserContext& ctx)
     ctx.pushNode();
 
     ctx.expect(token::OPEN_SQUARE);
-    ctx.addNodeMakeCurrent(node::INITLIST);
+    ctx.addNodeMakeCurrentNoConsume(node::INITLIST);
 
-    expression(ctx);
-
-    while (ctx.accept(token::COMMA))
+    do
     {
         ctx.consume();
         expression(ctx);
-    }
+        
+    } while (ctx.accept(token::COMMA));
 
     ctx.expect(token::CLOSE_SQUARE);
     ctx.consume();
