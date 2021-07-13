@@ -107,6 +107,7 @@ void forLoop(parser::ParserContext& ctx)
     ctx.consume();
 
     expression(ctx);
+
     ctx.expect(token::SEMICOLON);
     ctx.consume();
 
@@ -158,14 +159,14 @@ void statement(parser::ParserContext& ctx)
         ctx.addNode(node::BREAK);
     else if (ctx.accept(token::CONTINUE))
         ctx.addNode(node::CONTINUE);
+    else if (ctx.accept(token::PRINTLN) || ctx.accept(token::PRINT))
+        print(ctx);
     else if (ctx.accept(token::INPUT))
         input(ctx);
     else if (ctx.accept(token::EXIT))
         ctx.addNode(node::EXIT);
     else if (ctx.accept(token::RETURN))
         returnExpression(ctx);
-    else if (ctx.accept(token::PRINTLN) || ctx.accept(token::PRINT))
-        print(ctx);
 }
 
 void block(parser::ParserContext& ctx)

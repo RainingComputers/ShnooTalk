@@ -21,16 +21,17 @@ void programModule(parser::ParserContext& ctx)
     while (true)
     {
         ctx.expect(expected, 6);
-        if (ctx.accept(token::STRUCT))
-            structDefinition(ctx);
-        else if (ctx.accept(token::FUNCTION))
-            functionDefinition(ctx);
+
+        if (ctx.accept(token::DEF))
+            def(ctx);
         else if (ctx.accept(token::ENUM))
             enumList(ctx);
         else if (ctx.accept(token::VAR))
             identifierDeclareList(ctx, false);
-        else if (ctx.accept(token::DEF))
-            def(ctx);
+        else if (ctx.accept(token::STRUCT))
+            structDefinition(ctx);
+        else if (ctx.accept(token::FUNCTION))
+            functionDefinition(ctx);
         else
             break;
     }

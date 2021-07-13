@@ -41,7 +41,7 @@ namespace node
         OPERATOR,
         UNARY_OPR,
         SUBSCRIPT,
-        STRUCT_VAR,
+        STRUCT_FIELD,
         INITLIST,
         TERM,
         SIZEOF,

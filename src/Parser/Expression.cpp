@@ -37,7 +37,7 @@ void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
 
     while (ctx.accept(token::DOT) && !ctx.dpeek(token::LPAREN))
     {
-        ctx.addNode(node::STRUCT_VAR);
+        ctx.addNode(node::STRUCT_FIELD);
         ctx.expect(token::IDENTIFIER);
         identifierWithSubscript(ctx, false);
     }

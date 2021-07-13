@@ -42,7 +42,7 @@ literal = intLiteral,
 
 use = "use" identifier {"," identifier}
 
-from = "from" use
+from = "from" identifier use
 
 enumList = "enum" "[" identifier {"," identifier} "]"
 
@@ -50,7 +50,7 @@ def = "def" identifier literal
 
 identifierWithSubscript = identifier {"[" (literalSubscriptOnly ? literal : expression)  "]"}
 
-identifierWithQualidentAndSubscript = identifierWithSubscript<false> {identifierWithSubscript<false> "."}
+identifierWithQualidentAndSubscript = identifierWithSubscript<false> {"." identifierWithSubscript<false>}
 
 moduleQualident = {identifier "::"}
 
@@ -60,19 +60,19 @@ identifierDeclaration = identifier ":" typeDefinition
 
 identifierDeclarationAndInit = identifierDeclaration ["=" expression]
 
-identifierDeclareList =  ("var" |  initAllowed ? "const") {initAllowed ?  identifierDeclarationAndInit : identifierDeclaration}!
+identifierDeclareList =  ("var" |  initAllowed ? "const") initAllowed ?  identifierDeclarationAndInit : identifierDeclaration {"," initAllowed ?  identifierDeclarationAndInit : identifierDeclaration}
 
 structDefinition = "struct" identifier "{" {identifierDeclareList<false>} "}"
 
-formalParameterList =   [["mut"] identifierDeclaration {"," ["mut"] identifierDeclaration}] 
+formalParameterList =   ["mut"] identifierDeclaration {"," ["mut"] identifierDeclaration}
 
-functionDefinition = "fn" "(" formalParameterList ")" ["->" typeDefinition] block
+functionDefinition = "fn" identifier "(" [formalParameterList] ")" ["->" typeDefinition] block
 
-print = ("print" | "println") "(" [expression {expression ,}] ")" 
+print = ("print" | "println") "(" [expression {"," expression}] ")" 
 
-input = "input" "(" expression ")"
+input = "input" "(" term ")"
 
-actualParameterList = "(" [expression {expression ,}] ")"
+actualParameterList = "(" [expression {"," expression}] ")"
 
 functionCall = identifier actualParameterList
 
@@ -120,7 +120,7 @@ statement = functionCall
           | input
           | returnExpression
 
-block = statement | ("{" {statement} "}")
+block =  ("{" {statement} "}") | statement
 
-program = {use} {from} {functionDefinition | structDefinition | enumList | identifierDeclareList<false> | def} endOfFile
+programModule = {use} {from} {def | enumList | identifierDeclareList<false>  | structDefinition | functionDefinition} endOfFile
 ```

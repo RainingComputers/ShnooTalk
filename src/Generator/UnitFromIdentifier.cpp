@@ -90,7 +90,7 @@ Unit getUnitFromIdentifier(generator::GeneratorContext& ctx, const Node& root)
 
         switch (root.children[nodeCounter].type)
         {
-            case node::STRUCT_VAR:
+            case node::STRUCT_FIELD:
                 unitAndNodeCounter = unitFromStructVar(ctx, root, unit, nodeCounter);
                 break;
             case node::SUBSCRIPT:
