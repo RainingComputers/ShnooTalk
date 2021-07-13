@@ -106,7 +106,7 @@ void methodCall(parser::ParserContext& ctx)
 
         ctx.pushNode();
 
-        ctx.insertNode(node::STRUCT_FUNCCALL);
+        ctx.insertNode(node::METHODCALL);
         actualParameterList(ctx);
 
         ctx.popNode();

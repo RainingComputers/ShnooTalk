@@ -87,7 +87,7 @@ term = sizeof
      | identifier castOperator term
      | moduleQualident term
      | identifierWithQualidentAndSubscript methodCall
-     | "(" baseExpression "
+     | "(" baseExpression ")"
      | unaryOperator term
      | literal
 

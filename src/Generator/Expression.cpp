@@ -115,7 +115,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
     {
         firstActualParam = expression(ctx, root.children[0]);
 
-        if (root.type == node::STRUCT_FUNCCALL)
+        if (root.type == node::METHODCALL)
             ctx.setWorkingModule(ctx.descriptionFinder.getModuleFromUnit(firstActualParam));
     }
 
@@ -173,7 +173,7 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
             return unaryOperator(ctx, child);
         case node::EXPRESSION:
             return expression(ctx, child);
-        case node::STRUCT_FUNCCALL:
+        case node::METHODCALL:
         case node::FUNCCALL:
             return functionCall(ctx, child);
         case node::MODULE:

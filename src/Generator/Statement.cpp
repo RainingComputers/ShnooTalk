@@ -131,8 +131,6 @@ void statement(generator::GeneratorContext& ctx,
             local(ctx, root);
             break;
         case node::ASSIGNMENT:
-        case node::ASSIGNMENT_STR:
-        case node::ASSIGNMENT_INITLIST:
             assignment(ctx, root);
             break;
         case node::FUNCCALL:
