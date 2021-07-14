@@ -144,7 +144,7 @@ void initializerList(parser::ParserContext& ctx)
     {
         ctx.consume();
         expression(ctx);
-        
+
     } while (ctx.accept(token::COMMA));
 
     ctx.expect(token::CLOSE_SQUARE);

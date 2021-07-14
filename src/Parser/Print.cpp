@@ -13,11 +13,11 @@ void print(parser::ParserContext& ctx)
 
     ctx.expect(token::LPAREN);
 
-    do 
+    do
     {
         ctx.consume();
         expression(ctx);
-        
+
     } while (ctx.accept(token::COMMA));
 
     ctx.expect(token::RPAREN);

@@ -11,7 +11,7 @@ void use(parser::ParserContext& ctx)
         ctx.consume();
         ctx.expect(token::IDENTIFIER);
         ctx.addNode(node::IDENTIFIER);
-        
+
     } while (ctx.accept(token::COMMA));
 
     ctx.popNode();

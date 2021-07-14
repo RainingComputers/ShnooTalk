@@ -40,11 +40,11 @@ Function* getLLVMFunction(const ModuleContext& ctx, const std::string& functionN
 
 Value* getCalleeRetValuePointer(const ModuleContext& ctx, const icode::Operand& op)
 {
-    Value* returnValue = ctx.operandValueMap.at(op);
-    Value* returnValuePointer = ctx.builder->CreateAlloca(returnValue->getType());
-    ctx.builder->CreateStore(returnValue, returnValuePointer);
+    Value* calleeReturnValue = ctx.operandValueMap.at(op);
+    Value* calleeReturnValuePointer = ctx.builder->CreateAlloca(calleeReturnValue->getType());
+    ctx.builder->CreateStore(calleeReturnValue, calleeReturnValuePointer);
 
-    return returnValuePointer;
+    return calleeReturnValuePointer;
 }
 
 Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op)
@@ -55,18 +55,17 @@ Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op)
         case icode::ADDR:
             return getLLVMConstant(ctx, op);
             return getLLVMConstant(ctx, op);
-        case icode::GBL_VAR:
-            return ctx.builder->CreateLoad(ctx.symbolNameGlobalsMap.at(op.name), op.name.c_str());
         case icode::VAR:
-            return ctx.builder->CreateLoad(ctx.symbolNamePointersMap.at(op.name), op.name.c_str());
+        case icode::GBL_VAR:
+            return ctx.builder->CreateLoad(getLLVMPointer(ctx, op), op.name.c_str());
+        case icode::RET_PTR:
+        case icode::PTR:
+            return ctx.builder->CreatePtrToInt(getLLVMPointer(ctx, op), dataTypeToLLVMType(ctx, icode::I64));
         case icode::TEMP_PTR:
         case icode::TEMP:
         case icode::CALLEE_RET_VAL:
             return ctx.operandValueMap.at(op);
-        case icode::RET_PTR:
-            return ctx.builder->CreatePtrToInt(ctx.currentFunctionReturnPointer, dataTypeToLLVMType(ctx, icode::I64));
-        case icode::PTR:
-            return ctx.symbolNamePointerIntMap.at(op.name);
+
         default:
             ctx.console.internalBugError();
     }
@@ -81,14 +80,14 @@ Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
             return ctx.symbolNamePointersMap.at(op.name);
         case icode::GBL_VAR:
             return ctx.symbolNameGlobalsMap.at(op.name);
-        case icode::STR_DATA:
-            return ctx.builder->CreateGlobalStringPtr(ctx.moduleDescription.stringsData[op.name]);
         case icode::RET_PTR:
             return ctx.currentFunctionReturnPointer;
         case icode::TEMP_PTR:
             return ctx.builder->CreateIntToPtr(getLLVMValue(ctx, op), dataTypeToLLVMPointerType(ctx, op.dtype));
         case icode::CALLEE_RET_VAL:
             return getCalleeRetValuePointer(ctx, op);
+        case icode::STR_DATA:
+            return ctx.operandGlobalStringMap.at(op.name);
         default:
             ctx.console.internalBugError();
     }

@@ -5,22 +5,27 @@
 
 using namespace llvm;
 
-void createLocalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
-{
-    ctx.symbolNamePointersMap[name] =
-      ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
-}
-
 void createGlobalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
 {
-    GlobalVariable* global;
     Type* type = typeDescriptionToLLVMType(ctx, typeDescription);
 
-    global = new GlobalVariable(*ctx.LLVMModule, type, false, GlobalVariable::CommonLinkage, nullptr, name);
+    GlobalVariable* global =
+      new GlobalVariable(*ctx.LLVMModule, type, false, GlobalVariable::PrivateLinkage, nullptr, name);
 
     global->setInitializer(Constant::getNullValue(type));
 
     ctx.symbolNameGlobalsMap[name] = global;
+}
+
+void createGlobalString(ModuleContext& ctx, const std::string& key, const std::string& str)
+{
+
+    Constant* strConstant = ConstantDataArray::getString(*ctx.context, str);
+
+    GlobalVariable* globalString =
+      new GlobalVariable(*ctx.LLVMModule, strConstant->getType(), true, GlobalValue::PrivateLinkage, strConstant, key);
+
+    ctx.operandGlobalStringMap[key] = globalString;
 }
 
 void createFunctionParameter(ModuleContext& ctx,
@@ -37,6 +42,11 @@ void createFunctionParameter(ModuleContext& ctx,
     else
     {
         ctx.symbolNamePointersMap[name] = arg;
-        ctx.symbolNamePointerIntMap[name] = ctx.builder->CreatePtrToInt(arg, dataTypeToLLVMType(ctx, icode::I64));
     }
+}
+
+void createLocalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
+{
+    ctx.symbolNamePointersMap[name] =
+      ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
 }

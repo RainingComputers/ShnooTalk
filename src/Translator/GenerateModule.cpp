@@ -13,6 +13,9 @@ void generateModule(ModuleContext& ctx, BranchContext& branchContext, FormatStri
     for (auto symbol : ctx.moduleDescription.globals)
         createGlobalSymbol(ctx, symbol.second, symbol.first);
 
+    for (auto globalString : ctx.moduleDescription.stringsData)
+        createGlobalString(ctx, globalString.first, globalString.second);
+
     for (auto func : ctx.moduleDescription.functions)
         generateFunction(ctx, branchContext, formatStringsContext, func.second, func.first);
 }

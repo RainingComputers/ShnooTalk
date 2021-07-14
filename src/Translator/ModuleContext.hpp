@@ -19,8 +19,8 @@ struct ModuleContext
     std::unique_ptr<llvm::IRBuilder<>> builder;
 
     std::map<std::string, llvm::Value*> symbolNamePointersMap;
-    std::map<std::string, llvm::Value*> symbolNamePointerIntMap;
     std::map<std::string, llvm::GlobalVariable*> symbolNameGlobalsMap;
+    std::map<std::string, llvm::Value*> operandGlobalStringMap;
     std::map<icode::Operand, llvm::Value*> operandValueMap;
 
     icode::ModuleDescription& moduleDescription;
