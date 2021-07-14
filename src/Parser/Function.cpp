@@ -6,19 +6,7 @@
 
 void formalParameterList(parser::ParserContext& ctx)
 {
-    ctx.pushNode();
-
-    if (ctx.accept(token::MUTABLE))
-        ctx.addNodeMakeCurrent(node::MUT_PARAM);
-    else
-        ctx.addNodeMakeCurrentNoConsume(node::PARAM);
-
-    ctx.expect(token::IDENTIFIER);
-    identifierDecleration(ctx);
-
-    ctx.popNode();
-
-    while (ctx.accept(token::COMMA))
+    do 
     {
         ctx.consume();
 
@@ -33,7 +21,7 @@ void formalParameterList(parser::ParserContext& ctx)
         identifierDecleration(ctx);
 
         ctx.popNode();
-    }
+    } while (ctx.accept(token::COMMA));
 }
 
 void functionDefinition(parser::ParserContext& ctx)
@@ -46,10 +34,11 @@ void functionDefinition(parser::ParserContext& ctx)
     ctx.addNode(node::IDENTIFIER);
 
     ctx.expect(token::LPAREN);
-    ctx.consume();
 
-    if (ctx.accept(token::IDENTIFIER) || ctx.accept(token::MUTABLE))
+    if (ctx.peek(token::IDENTIFIER) || ctx.peek(token::MUTABLE))
         formalParameterList(ctx);
+    else 
+        ctx.consume();
 
     ctx.expect(token::RPAREN);
     ctx.consume();
