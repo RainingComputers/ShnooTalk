@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "TypeDescriptionUtil.hpp"
 
 #include "StringBuilder.hpp"
@@ -27,14 +29,33 @@ TypeDescription StringBuilder::stringTypeFromToken(const Token& token)
     return stringType;
 }
 
-Operand StringBuilder::createStringOperand(const Token& str_token)
+std::string StringBuilder::createStringData(const std::string& str, const Token& stringToken)
 {
-    std::string name = "_str" + str_token.getLineColString();
-    rootModule.stringsData[name] = str_token.toUnescapedString() + '\0';
+    /* Check if this string has already been defined, if yes return the key for that,
+        else create a new key */
+    
+    auto result = std::find_if(rootModule.stringsData.begin(),
+                               rootModule.stringsData.end(),
+                               [str](const auto& mapItem) { return mapItem.second == str; });
 
-    int char_count = str_token.toUnescapedString().length() + 1;
-    size_t size = char_count * getDataTypeSize(UI8);
-    Operand opr = opBuilder.createStringDataOperand(name, size);
+    if(result != rootModule.stringsData.end())
+        return result->first;
+
+    std::string key = "_str" + stringToken.getLineColString();
+    rootModule.stringsData[key] = str;
+
+    return key;
+}
+
+Operand StringBuilder::createStringOperand(const Token& stringToken)
+{
+    std::string str = stringToken.toUnescapedString() + '\0';
+
+    std::string key = createStringData(str, stringToken);
+
+    int charCount = stringToken.toUnescapedString().length() + 1;
+    size_t size = charCount * getDataTypeSize(UI8);
+    Operand opr = opBuilder.createStringDataOperand(key, size);
 
     return opr;
 }

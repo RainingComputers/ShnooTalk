@@ -13,6 +13,8 @@ class StringBuilder
 
     icode::TypeDescription stringTypeFromToken(const Token& token);
 
+    std::string createStringData(const std::string& str, const Token& stringToken);
+
     icode::Operand createStringOperand(const Token& stringToken);
 
   public:
