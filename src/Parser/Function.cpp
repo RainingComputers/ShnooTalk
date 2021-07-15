@@ -6,7 +6,7 @@
 
 void formalParameterList(parser::ParserContext& ctx)
 {
-    do 
+    do
     {
         ctx.consume();
 
@@ -37,7 +37,7 @@ void functionDefinition(parser::ParserContext& ctx)
 
     if (ctx.peek(token::IDENTIFIER) || ctx.peek(token::MUTABLE))
         formalParameterList(ctx);
-    else 
+    else
         ctx.consume();
 
     ctx.expect(token::RPAREN);

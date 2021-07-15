@@ -458,10 +458,12 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
 
     Entry entry;
 
-    entry.opcode = PASS_ADDR;
-    entry.op1 = actualParam.op();
-
-    if (!(formalParam.isMutable() || formalParam.isStruct() || formalParam.isArray()))
+    if (formalParam.isMutable() || formalParam.isStruct() || formalParam.isArray())
+    {
+        entry.opcode = PASS_ADDR;
+        entry.op1 = createPointer(actualParam);
+    }
+    else
     {
         entry.opcode = PASS;
         entry.op1 = autoCast(ensureNotPointer(actualParam.op()), formalParam.dtype());

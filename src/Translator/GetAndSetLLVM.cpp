@@ -47,6 +47,28 @@ Value* getCalleeRetValuePointer(const ModuleContext& ctx, const icode::Operand& 
     return calleeReturnValuePointer;
 }
 
+Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
+{
+    switch (op.operandType)
+    {
+        case icode::PTR:
+        case icode::VAR:
+            return ctx.symbolNamePointersMap.at(op.name);
+        case icode::GBL_VAR:
+            return ctx.symbolNameGlobalsMap.at(op.name);
+        case icode::RET_PTR:
+            return ctx.currentFunctionReturnPointer;
+        case icode::TEMP_PTR:
+            return ctx.builder->CreateIntToPtr(getLLVMValue(ctx, op), dataTypeToLLVMPointerType(ctx, op.dtype));
+        case icode::CALLEE_RET_VAL:
+            return getCalleeRetValuePointer(ctx, op);
+        case icode::STR_DATA:
+            return ctx.operandGlobalStringMap.at(op.name);
+        default:
+            ctx.console.internalBugError();
+    }
+}
+
 Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op)
 {
     switch (op.operandType)
@@ -66,28 +88,6 @@ Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op)
         case icode::CALLEE_RET_VAL:
             return ctx.operandValueMap.at(op);
 
-        default:
-            ctx.console.internalBugError();
-    }
-}
-
-Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
-{
-    switch (op.operandType)
-    {
-        case icode::PTR:
-        case icode::VAR:
-            return ctx.symbolNamePointersMap.at(op.name);
-        case icode::GBL_VAR:
-            return ctx.symbolNameGlobalsMap.at(op.name);
-        case icode::RET_PTR:
-            return ctx.currentFunctionReturnPointer;
-        case icode::TEMP_PTR:
-            return ctx.builder->CreateIntToPtr(getLLVMValue(ctx, op), dataTypeToLLVMPointerType(ctx, op.dtype));
-        case icode::CALLEE_RET_VAL:
-            return getCalleeRetValuePointer(ctx, op);
-        case icode::STR_DATA:
-            return ctx.operandGlobalStringMap.at(op.name);
         default:
             ctx.console.internalBugError();
     }

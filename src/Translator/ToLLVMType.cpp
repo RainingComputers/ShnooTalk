@@ -62,7 +62,7 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
 
 Type* nonPointerTypeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
-    if (typeDescription.dimensions.size() > 0 || typeDescription.dtype == icode::STRUCT)
+    if (typeDescription.isStructOrArray())
         return ArrayType::get(Type::getInt8Ty(*ctx.context), typeDescription.size);
 
     return dataTypeToLLVMType(ctx, typeDescription.dtype);
@@ -70,10 +70,26 @@ Type* nonPointerTypeDescriptionToLLVMType(const ModuleContext& ctx, const icode:
 
 Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
-    if (typeDescription.checkProperty(icode::IS_PTR))
-        return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription)->getPointerTo();
+    if (!typeDescription.isPointer())
+        return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
 
-    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
+    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription)->getPointerTo();
+}
+
+Type* formalParameterTypeToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
+{
+    if (!typeDescription.isPointer())
+        return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
+
+    if (!typeDescription.isStruct())
+        return dataTypeToLLVMPointerType(ctx, typeDescription.dtype);
+
+    icode::StructDescription structDescription =
+      ctx.modulesMap[typeDescription.moduleName].structures[typeDescription.dtypeName];
+
+    icode::DataType dtype = structDescription.structFields.begin()->second.dtype;
+
+    return dataTypeToLLVMPointerType(ctx, dtype);
 }
 
 FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::FunctionDescription& functionDesc)
@@ -82,7 +98,7 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 
     for (std::string paramString : functionDesc.parameters)
     {
-        Type* type = typeDescriptionToLLVMType(ctx, functionDesc.symbols.at(paramString));
+        Type* type = formalParameterTypeToLLVMType(ctx, functionDesc.symbols.at(paramString));
         parameterTypes.push_back(type);
     }
 

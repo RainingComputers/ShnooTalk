@@ -238,5 +238,5 @@ if __name__ == "__main__":
     run_all_tests(f"../bin/{build_type}/uhll",
                   f"../obj/{build_type}/", "testinfo/")
 
-    #print("--=[Running LLVM LLC tests]=--")
-    # run_all_llc_tests(f"../bin/{build_type}/uhll")
+    print("--=[Running LLVM LLC tests]=--")
+    run_all_llc_tests(f"../bin/{build_type}/uhll")

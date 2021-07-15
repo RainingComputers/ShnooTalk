@@ -29,16 +29,18 @@ TypeDescription StringBuilder::stringTypeFromToken(const Token& token)
     return stringType;
 }
 
-std::string StringBuilder::createStringData(const std::string& str, const Token& stringToken)
+std::string StringBuilder::createStringData(const Token& stringToken)
 {
     /* Check if this string has already been defined, if yes return the key for that,
         else create a new key */
-    
+
+    std::string str = stringToken.toUnescapedString() + '\0';
+
     auto result = std::find_if(rootModule.stringsData.begin(),
                                rootModule.stringsData.end(),
                                [str](const auto& mapItem) { return mapItem.second == str; });
 
-    if(result != rootModule.stringsData.end())
+    if (result != rootModule.stringsData.end())
         return result->first;
 
     std::string key = "_str" + stringToken.getLineColString();
@@ -49,9 +51,7 @@ std::string StringBuilder::createStringData(const std::string& str, const Token&
 
 Operand StringBuilder::createStringOperand(const Token& stringToken)
 {
-    std::string str = stringToken.toUnescapedString() + '\0';
-
-    std::string key = createStringData(str, stringToken);
+    std::string key = createStringData(stringToken);
 
     int charCount = stringToken.toUnescapedString().length() + 1;
     size_t size = charCount * getDataTypeSize(UI8);
