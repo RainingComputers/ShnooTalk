@@ -33,7 +33,7 @@ void createFunctionParameter(ModuleContext& ctx,
                              const std::string& name,
                              llvm::Value* arg)
 {
-    if (!typeDescription.checkProperty(icode::IS_PTR))
+    if (!typeDescription.isPointer())
     {
         Value* alloca = ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
         ctx.builder->CreateStore(arg, alloca);
