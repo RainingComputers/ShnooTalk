@@ -44,7 +44,7 @@ clang app.o -o app
 
 ### Short term
 
-- [ ] Fix bugs in the LLVM translator backend
+- [x] Fix bugs in the LLVM translator backend
 - [ ] Language reference using mkdocs
 - [ ] CLI argument parser
 - [ ] Array return types
@@ -64,6 +64,7 @@ clang app.o -o app
 - [ ] ~95% test coverage
 - [ ] IR Validator
 - [ ] Debug symbols
+- [ ] Change IR pretty print to JSON
 
 ### Advanced features
 
