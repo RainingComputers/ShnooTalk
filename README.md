@@ -65,6 +65,7 @@ clang app.o -o app
 - [ ] IR Validator
 - [ ] Debug symbols
 - [ ] Change IR pretty print to JSON
+- [ ] Extern C functions and function imports
 
 ### Advanced features
 
