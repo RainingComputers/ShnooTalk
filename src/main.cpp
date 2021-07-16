@@ -128,6 +128,11 @@ int main(int argc, char* argv[])
         pp::println("File I/O error");
         return EXIT_FAILURE;
     }
+    catch (...)
+    {
+        pp::println("An unknown error or an internal compiler error has occurred");
+        return EXIT_FAILURE;
+    }
 
     return 0;
 }
