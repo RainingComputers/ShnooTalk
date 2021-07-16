@@ -16,7 +16,7 @@ namespace icode
         VAR,
         GBL_VAR,
         PTR,
-        RET_PTR,
+        RET_VALUE,
         CALLEE_RET_VAL,
         LITERAL,
         LABEL,

@@ -1,0 +1,21 @@
+# 1 2
+# 1
+# 2
+# 3
+
+fn foobar(a: int, b: int) -> int[3]
+{
+    println(a, b)
+    return [1, 2, 3]
+}
+
+fn main() -> int
+{
+    var a: int[3] = foobar(1, 2)
+
+    println(a[0])
+    println(a[1])
+    println(a[2])
+
+    return 0
+}

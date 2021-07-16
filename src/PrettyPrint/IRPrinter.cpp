@@ -73,8 +73,8 @@ namespace pp
             case icode::PTR:
                 std::cout << "Ptr(" << op.name << ":" << icode::dataTypeToString(op.dtype);
                 break;
-            case icode::RET_PTR:
-                std::cout << "RetPtr(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
+            case icode::RET_VALUE:
+                std::cout << "RetVal(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
                 break;
             case icode::CALLEE_RET_VAL:
                 std::cout << "CalleeRetVal(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);

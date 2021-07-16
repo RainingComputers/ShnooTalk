@@ -64,6 +64,47 @@ void generateIR(Console& console,
     generator::generateModule(generatorContext, ast);
 }
 
+int phaseDriver(const std::string& fileName, const std::string&option)
+{
+    std::string moduleName = removeFileExtension(fileName);
+
+    std::ifstream fileStream;
+    Console console = getStreamAndConsole(fileName, fileStream);
+
+    if (option == "-ast")
+    {
+        pp::printNode(generateAST(console));
+        return 0;
+    }
+
+    icode::StringModulesMap modulesMap;
+    icode::TargetEnums target = translator::getTarget();
+    generateIR(console, moduleName, target, modulesMap);
+
+    if (option == "-ir")
+    {
+        pp::printModuleDescription(modulesMap[moduleName]);
+        return 0;
+    }
+
+    if (option == "-llvm")
+    {
+        pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
+        return 0;
+    }
+
+    if (option == "-c")
+    {
+        for (auto stringModulePair : modulesMap)
+            translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, console);
+
+        return 0;
+    }
+
+    printCLIUsage();
+    return EXIT_FAILURE;
+}
+
 int main(int argc, char* argv[])
 {
     if (argc != 3)
@@ -72,48 +113,11 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    std::string fileName = argv[1];
-    std::string moduleName = removeFileExtension(fileName);
-    std::string option = argv[2];
-
-    /* Compile program */
     try
     {
-        std::ifstream fileStream;
-        Console console = getStreamAndConsole(fileName, fileStream);
-
-        if (option == "-ast")
-        {
-            pp::printNode(generateAST(console));
-            return 0;
-        }
-
-        icode::StringModulesMap modulesMap;
-        icode::TargetEnums target = translator::getTarget();
-        generateIR(console, moduleName, target, modulesMap);
-
-        if (option == "-ir")
-        {
-            pp::printModuleDescription(modulesMap[moduleName]);
-            return 0;
-        }
-
-        if (option == "-llvm")
-        {
-            pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
-            return 0;
-        }
-
-        if (option == "-c")
-        {
-            for (auto stringModulePair : modulesMap)
-                translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, console);
-
-            return 0;
-        }
-
-        printCLIUsage();
-        return EXIT_FAILURE;
+        std::string fileName = argv[1];
+        std::string option = argv[2];
+        return phaseDriver(fileName, option);
     }
     catch (const CompileError)
     {
@@ -130,7 +134,8 @@ int main(int argc, char* argv[])
     }
     catch (...)
     {
-        pp::println("An unknown error or an internal compiler error has occurred");
+        pp::println("Unknown error or an internal compiler error,");
+        pp::println("REPORT THIS BUG");
         return EXIT_FAILURE;
     }
 

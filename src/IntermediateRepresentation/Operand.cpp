@@ -19,7 +19,7 @@ namespace icode
         {
             case TEMP:
             case TEMP_PTR:
-            case RET_PTR:
+            case RET_VALUE:
             case CALLEE_RET_VAL:
                 return operandId == other.operandId;
             case VAR:
@@ -41,7 +41,7 @@ namespace icode
 
     bool Operand::isPointer() const
     {
-        return operandType == PTR || operandType == TEMP_PTR || operandType == RET_PTR;
+        return operandType == PTR || operandType == TEMP_PTR;
     }
 
     bool Operand::canPassAsMutable() const

@@ -76,7 +76,7 @@ Operand OperandBuilder::createRetPointerOperand(DataType dtype)
     Operand temp;
     temp.operandId = getId();
     temp.dtype = dtype;
-    temp.operandType = RET_PTR;
+    temp.operandType = RET_VALUE;
 
     return temp;
 }

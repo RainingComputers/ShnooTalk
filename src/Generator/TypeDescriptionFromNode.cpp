@@ -14,16 +14,6 @@ bool isVoidFunction(const Node& root)
     return false;
 }
 
-TypeDescription typeDescriptionFromFunctionNode(GeneratorContext& ctx, const Node& root)
-{
-    if (isVoidFunction(root))
-        return ctx.moduleBuilder.createVoidTypeDescription();
-
-    Token dataTypeToken = root.getNthChildTokenFromLast(2);
-
-    return ctx.moduleBuilder.createTypeDescription(dataTypeToken);
-}
-
 TypeDescription arrayTypeFromSubscript(GeneratorContext& ctx,
                                        const Node& root,
                                        TypeDescription typeDescription,
@@ -42,12 +32,18 @@ TypeDescription arrayTypeFromSubscript(GeneratorContext& ctx,
     return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
 }
 
-TypeDescription typeDescriptionFromVarOrParamNode(GeneratorContext& ctx, const Node& root)
+TypeDescription typeDescriptionFromNode(GeneratorContext& ctx, const Node& root)
 {
     size_t childNodeCounter = 1;
 
+    while (root.isNthChild(node::PARAM, childNodeCounter) || root.isNthChild(node::MUT_PARAM, childNodeCounter))
+        childNodeCounter++;
+
     if (root.isNthChild(node::MODULE, childNodeCounter))
         childNodeCounter = setWorkingModuleFromNode(ctx, root, childNodeCounter);
+
+    if (root.isNthChild(node::BLOCK, childNodeCounter))
+        return ctx.moduleBuilder.createVoidTypeDescription();
 
     const Token& dataTypeToken = root.getNthChildToken(childNodeCounter);
     TypeDescription typeDescription = ctx.moduleBuilder.createTypeDescription(dataTypeToken);
@@ -60,12 +56,4 @@ TypeDescription typeDescriptionFromVarOrParamNode(GeneratorContext& ctx, const N
     ctx.resetWorkingModule();
 
     return typeDescription;
-}
-
-TypeDescription typeDescriptionFromNode(GeneratorContext& ctx, const Node& root)
-{
-    if (root.type == node::FUNCTION)
-        return typeDescriptionFromFunctionNode(ctx, root);
-
-    return typeDescriptionFromVarOrParamNode(ctx, root);
 }

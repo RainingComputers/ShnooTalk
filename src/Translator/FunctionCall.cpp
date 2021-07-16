@@ -22,7 +22,7 @@ void ret(const ModuleContext& ctx, const icode::Entry& e, icode::DataType dtype)
     if (dtype == icode::VOID)
         ctx.builder->CreateRetVoid();
     else
-        ctx.builder->CreateRet(ctx.builder->CreateLoad(ctx.currentFunctionReturnPointer));
+        ctx.builder->CreateRet(ctx.builder->CreateLoad(ctx.currentFunctionReturnValue));
 }
 
 void pushParam(ModuleContext& ctx, const icode::Entry& e, Value* value)

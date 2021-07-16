@@ -148,10 +148,10 @@ void setCurrentFunctionReturnPointer(ModuleContext& ctx,
                                      const icode::FunctionDescription& functionDesc,
                                      const std::string& name)
 {
-    ctx.currentFunctionReturnPointer =
+    ctx.currentFunctionReturnValue =
       ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType),
                                 nullptr,
-                                name + ".retPointer");
+                                name + ".retValue");
 }
 
 void generateFunction(ModuleContext& ctx,
