@@ -47,7 +47,7 @@ clang app.o -o app
 - [x] Fix bugs in the LLVM translator backend
 - [ ] Language reference using mkdocs
 - [ ] CLI argument parser
-- [ ] Array return types
+- [x] Array return types
 - [ ] Python wrapper generator
 - [ ] Refactor tests
 - [ ] Refactor the test runner and use multiprocessing
