@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
     }
     catch (...)
     {
-        pp::println("An unknown error has occurred");
+        pp::println("An unknown error or an internal compiler error has occurred");
         return EXIT_FAILURE;
     }
 
