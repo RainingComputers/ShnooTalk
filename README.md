@@ -7,6 +7,8 @@ ShnooTalk was previously known as uHLL (micro high level language). The project 
 
 🛠️ Project under construction, some things may not be fully polished yet 🛠️
 
+![](blockdiag.png)
+
 ## Installing the compiler
 
 ### Ubuntu 20.04 
