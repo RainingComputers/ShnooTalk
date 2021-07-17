@@ -1,0 +1,14 @@
+# MODULE ConstInit_test.uhll
+# ERROR in Line 13 Col 5
+# 
+#     return 0
+#     ^
+# Did not expect RETURN,
+# expected EQUAL
+
+fn main() -> int
+{
+    const a:int
+
+    return 0
+}
