@@ -66,6 +66,7 @@ clang app.o -o app
 - [ ] Debug symbols
 - [ ] Change IR pretty print to JSON
 - [ ] Extern C functions and function imports
+- [ ] Fix def
 
 ### Advanced features
 
