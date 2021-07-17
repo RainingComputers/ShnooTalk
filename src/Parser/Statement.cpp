@@ -99,7 +99,7 @@ void forLoop(parser::ParserContext& ctx)
         ctx.consume();
 
     if (ctx.accept(token::VAR))
-        identifierDeclareList(ctx, true);
+        identifierDeclareListOptionalInit(ctx, true);
     else
         assignmentOrMethodCall(ctx);
 
@@ -147,8 +147,10 @@ void statement(parser::ParserContext& ctx)
         else
             assignmentOrMethodCall(ctx);
     }
-    else if (ctx.accept(token::VAR) || ctx.accept(token::CONST))
-        identifierDeclareList(ctx, true);
+    else if (ctx.accept(token::VAR))
+        identifierDeclareListOptionalInit(ctx, true);
+    else if (ctx.accept(token::CONST))
+        identifierDeclareListRequiredInit(ctx);
     else if (ctx.accept(token::IF))
         ifStatement(ctx);
     else if (ctx.accept(token::WHILE))

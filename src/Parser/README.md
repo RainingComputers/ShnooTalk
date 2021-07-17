@@ -48,7 +48,7 @@ enumList = "enum" "[" identifier {"," identifier} "]"
 
 def = "def" identifier literal
 
-identifierWithSubscript = identifier {"[" (literalSubscriptOnly ? literal : expression)  "]"}
+identifierWithSubscript = identifier {"[" (literalSubscriptOnly? literal : expression)  "]"}
 
 identifierWithQualidentAndSubscript = identifierWithSubscript<false> {"." identifierWithSubscript<false>}
 
@@ -58,9 +58,13 @@ typeDefinition = moduleQualident identifierWithSubscript<true>
 
 identifierDeclaration = identifier ":" typeDefinition
 
-identifierDeclarationAndInit = identifierDeclaration ["=" expression]
+identifierDeclarationOptionalInit = identifierDeclaration ["=" expression]
 
-identifierDeclareList =  ("var" |  initAllowed ? "const") initAllowed ?  identifierDeclarationAndInit : identifierDeclaration {"," initAllowed ?  identifierDeclarationAndInit : identifierDeclaration}
+identifierDeclareListOptionalInit =  "var" initAllowed? identifierDeclarationOptionalInit : identifierDeclaration {"," initAllowed? identifierDeclarationOptionalInit : identifierDeclaration}
+
+identifierDeclarationRequiredInit = identifierDeclaration "=" expression
+
+identifierDeclareListRequiredInit "const" identifierDeclarationRequiredInit {"," identifierDeclarationRequiredInit}
 
 structDefinition = "struct" identifier "{" {identifierDeclareList<false>} "}"
 

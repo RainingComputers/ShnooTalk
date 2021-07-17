@@ -15,7 +15,7 @@ void structDefinition(parser::ParserContext& ctx)
     ctx.consume();
 
     while (ctx.accept(token::VAR))
-        identifierDeclareList(ctx, false);
+        identifierDeclareListOptionalInit(ctx, false);
 
     ctx.expect(token::CLOSE_BRACE);
     ctx.consume();

@@ -4,7 +4,9 @@
 #include "ParserContext.hpp"
 
 void identifierDecleration(parser::ParserContext& ctx);
-void identifierDeclarationAndInit(parser::ParserContext& ctx);
-void identifierDeclareList(parser::ParserContext& ctx, bool initAllowed);
+void identifierDeclarationOptionalInit(parser::ParserContext& ctx);
+void identifierDeclareListOptionalInit(parser::ParserContext& ctx, bool initAllowed);
+void identifierDeclarationRequiredInit(parser::ParserContext& ctx);
+void identifierDeclareListRequiredInit(parser::ParserContext& ctx);
 
 #endif

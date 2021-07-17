@@ -27,7 +27,7 @@ void programModule(parser::ParserContext& ctx)
         else if (ctx.accept(token::ENUM))
             enumList(ctx);
         else if (ctx.accept(token::VAR))
-            identifierDeclareList(ctx, false);
+            identifierDeclareListOptionalInit(ctx, false);
         else if (ctx.accept(token::STRUCT))
             structDefinition(ctx);
         else if (ctx.accept(token::FUNCTION))
