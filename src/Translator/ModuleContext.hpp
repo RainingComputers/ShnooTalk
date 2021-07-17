@@ -26,7 +26,7 @@ struct ModuleContext
     icode::ModuleDescription& moduleDescription;
     icode::StringModulesMap& modulesMap;
 
-    std::map<std::string, std::map<std::string, std::vector<llvm::Value*>>> params;
+    std::map<std::string, std::vector<llvm::Value*>> params;
     llvm::Value* currentFunctionReturnValue;
 
     Console& console;

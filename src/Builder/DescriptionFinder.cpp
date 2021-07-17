@@ -1,3 +1,5 @@
+#include "NameMangle.hpp"
+
 #include "DescriptionFinder.hpp"
 
 using namespace icode;
@@ -51,12 +53,14 @@ bool DescriptionFinder::getLocal(const Token& nameToken, Unit& returnValue)
 
 bool DescriptionFinder::getGlobal(const Token& nameToken, Unit& returnValue)
 {
+    std::string mangledGlobalName = nameMangle(nameToken, rootModule.name);
+
     TypeDescription typeDescription;
 
-    if (!rootModule.getGlobal(nameToken.toString(), typeDescription))
+    if (!rootModule.getGlobal(mangledGlobalName, typeDescription))
         return false;
 
-    returnValue = unitBuilder.unitFromTypeDescription(typeDescription, nameToken.toString());
+    returnValue = unitBuilder.unitFromTypeDescription(typeDescription, mangledGlobalName);
     return true;
 }
 
@@ -123,10 +127,10 @@ FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
 {
     FunctionDescription functionDescription;
 
-    if ((*workingModule).getFunction(nameToken.toString(), functionDescription))
+    if ((*workingModule).getFunction(nameMangle(nameToken, workingModule->name), functionDescription))
         return functionDescription;
 
-    if (rootModule.getFunction(nameToken.toString(), functionDescription))
+    if (rootModule.getFunction(nameMangle(nameToken, rootModule.name), functionDescription))
         return functionDescription;
 
     console.compileErrorOnToken("Function does not exist", nameToken);

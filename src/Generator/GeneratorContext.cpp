@@ -1,3 +1,5 @@
+#include "../Builder/NameMangle.hpp"
+
 #include "GeneratorContext.hpp"
 
 namespace generator
@@ -51,7 +53,9 @@ namespace generator
 
     void GeneratorContext::setWorkingFunction(const Token& functionNameToken)
     {
-        workingFunction = &rootModule.functions[functionNameToken.toString()];
+        std::string mangledFunctionName = nameMangle(functionNameToken, rootModule.name);
+
+        workingFunction = &rootModule.functions[mangledFunctionName];
         functionBuilder.setWorkingFunction(workingFunction);
         descriptionFinder.setWorkingFunction(workingFunction);
     }

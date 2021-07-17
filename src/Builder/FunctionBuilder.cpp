@@ -1,3 +1,4 @@
+#include "NameMangle.hpp"
 #include "TypeDescriptionUtil.hpp"
 
 #include "FunctionBuilder.hpp"
@@ -453,6 +454,7 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
                                     const Unit& actualParam)
 {
     /* Construct icode for PASS and PASS_ADDR instructions */
+    std::string mangledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
 
     DataType functionDataType = callee.functionReturnType.dtype;
 
@@ -469,7 +471,7 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
         entry.op1 = autoCast(ensureNotPointer(actualParam.op()), formalParam.dtype());
     }
 
-    entry.op2 = opBuilder.createVarOperand(functionDataType, calleeNameToken.toString());
+    entry.op2 = opBuilder.createVarOperand(functionDataType, mangledCalleeName);
     entry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(entry);
@@ -479,13 +481,15 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescrip
 {
     /* Construct icode for CALL instruction */
 
+    std::string mangledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
+
     DataType functionDataType = callee.functionReturnType.dtype;
 
     Entry callEntry;
 
     callEntry.opcode = CALL;
     callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
-    callEntry.op2 = opBuilder.createVarOperand(functionDataType, calleeNameToken.toString());
+    callEntry.op2 = opBuilder.createVarOperand(functionDataType, mangledCalleeName);
     callEntry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(callEntry);

@@ -10,11 +10,11 @@ void call(ModuleContext& ctx, const icode::Entry& e)
     const std::string& moduleName = e.op3.name;
 
     Value* result =
-      ctx.builder->CreateCall(getLLVMFunction(ctx, functionName, e.op3.name), ctx.params[moduleName][functionName]);
+      ctx.builder->CreateCall(getLLVMFunction(ctx, functionName, e.op3.name), ctx.params[functionName]);
 
     setLLVMValue(ctx, e.op1, result);
 
-    ctx.params[moduleName][functionName].clear();
+    ctx.params[functionName].clear();
 }
 
 void ret(const ModuleContext& ctx, const icode::Entry& e, icode::DataType dtype)
@@ -30,7 +30,7 @@ void pushParam(ModuleContext& ctx, const icode::Entry& e, Value* value)
     const std::string& functionName = e.op2.name;
     const std::string& moduleName = e.op3.name;
 
-    ctx.params[moduleName][functionName].push_back(value);
+    ctx.params[functionName].push_back(value);
 }
 
 void pass(ModuleContext& ctx, const icode::Entry& e)

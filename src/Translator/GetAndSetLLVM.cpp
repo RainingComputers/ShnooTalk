@@ -19,23 +19,13 @@ Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op)
     ctx.console.internalBugError();
 }
 
-std::string getFullFunctionName(const std::string& functionName, const std::string& moduleName)
-{
-    if (functionName == "main")
-        return functionName;
-
-    return moduleName + "." + functionName;
-}
-
 Function* getLLVMFunction(const ModuleContext& ctx, const std::string& functionName, const std::string& moduleName)
 {
-    std::string fullFunctionName = getFullFunctionName(functionName, moduleName);
-
-    if (auto* F = ctx.LLVMModule->getFunction(fullFunctionName))
+    if (auto* F = ctx.LLVMModule->getFunction(functionName))
         return F;
 
     FunctionType* functionType = funcDescriptionToLLVMType(ctx, ctx.modulesMap[moduleName].functions[functionName]);
-    return Function::Create(functionType, Function::ExternalLinkage, fullFunctionName, *ctx.LLVMModule);
+    return Function::Create(functionType, Function::ExternalLinkage, functionName, *ctx.LLVMModule);
 }
 
 Value* getCalleeRetValuePointer(const ModuleContext& ctx, const icode::Operand& op)

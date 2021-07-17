@@ -1,4 +1,5 @@
 #include "../FileSystem/FileSystem.hpp"
+#include "NameMangle.hpp"
 
 #include "ModuleBuilder.hpp"
 
@@ -93,7 +94,9 @@ void ModuleBuilder::createFunctionDescription(const Token& nameToken,
                                               const std::vector<Token>& paramNames,
                                               std::vector<icode::TypeDescription>& paramTypes)
 {
-    if (workingModule->symbolExists(nameToken.toString()))
+    std::string mangledFunctionName = nameMangle(nameToken, workingModule->name);
+
+    if (workingModule->symbolExists(mangledFunctionName) || workingModule->symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
     icode::FunctionDescription functionDescription;
@@ -112,17 +115,19 @@ void ModuleBuilder::createFunctionDescription(const Token& nameToken,
         functionDescription.symbols[paramNames[i].toString()] = paramTypes[i];
     }
 
-    workingModule->functions[nameToken.toString()] = functionDescription;
+    workingModule->functions[mangledFunctionName] = functionDescription;
 }
 
 void ModuleBuilder::createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription)
 {
-    if (workingModule->symbolExists(globalNameToken.toString()))
+    std::string mangledGlobalName = nameMangle(globalNameToken, workingModule->name);
+
+    if (workingModule->symbolExists(mangledGlobalName) || workingModule->symbolExists(globalNameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", globalNameToken);
 
     typeDescription.setProperty(IS_GLOBAL);
 
-    workingModule->globals[globalNameToken.toString()] = typeDescription;
+    workingModule->globals[mangledGlobalName] = typeDescription;
 }
 
 icode::StructDescription ModuleBuilder::createEmptyStructDescription()
@@ -205,7 +210,7 @@ void ModuleBuilder::createFrom(const Token& moduleNameToken, const Token& symbol
     if ((*externalModule).getStruct(symbolString, structDescription))
         workingModule->structures[symbolString] = structDescription;
 
-    else if ((*externalModule).getFunction(symbolString, functionDescription))
+    else if ((*externalModule).getFunction(nameMangle(symbolString, externalModule->name), functionDescription))
         console.compileErrorOnToken("Cannot import functions", symbolNameToken);
 
     else if ((*externalModule).getDefineDescription(symbolString, defineDescription))

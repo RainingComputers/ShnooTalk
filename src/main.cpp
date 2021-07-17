@@ -64,7 +64,7 @@ void generateIR(Console& console,
     generator::generateModule(generatorContext, ast);
 }
 
-int phaseDriver(const std::string& fileName, const std::string&option)
+int phaseDriver(const std::string& fileName, const std::string& option)
 {
     std::string moduleName = removeFileExtension(fileName);
 
