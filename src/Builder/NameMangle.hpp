@@ -4,5 +4,6 @@
 #include "../Token/Token.hpp"
 
 std::string nameMangle(const Token& token, const std::string& moduleName);
+std::string lineColNameMangle(const Token& token, const std::string& moduleName);
 
 #endif

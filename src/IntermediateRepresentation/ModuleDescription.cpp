@@ -8,7 +8,7 @@ namespace icode
 {
     void ModuleDescription::initializeTarget(const TargetEnums& target)
     {
-        defines = target.defines;
+        intDefines = target.intDefines;
     }
 
     bool ModuleDescription::useExists(const std::string& name)
@@ -31,9 +31,19 @@ namespace icode
         return getMapElement<std::string, int>(enumerations, name, returnValue);
     }
 
-    bool ModuleDescription::getDefineDescription(const std::string& name, DefineDescription& returnValue)
+    bool ModuleDescription::getIntDefine(const std::string& name, int& returnValue)
     {
-        return getMapElement<std::string, DefineDescription>(defines, name, returnValue);
+        return getMapElement<std::string, int>(intDefines, name, returnValue);
+    }
+
+    bool ModuleDescription::getFloatDefine(const std::string& name, float& returnValue)
+    {
+        return getMapElement<std::string, float>(floatDefines, name, returnValue);
+    }
+
+    bool ModuleDescription::getStringDefine(const std::string& name, std::string& returnValue)
+    {
+        return getMapElement<std::string, std::string>(stringDefines, name, returnValue);
     }
 
     bool ModuleDescription::getGlobal(const std::string& name, TypeDescription& returnValue)
@@ -45,6 +55,7 @@ namespace icode
     {
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
                useExists(name) || stringToDataType(name) != STRUCT || enumerations.find(name) != enumerations.end() ||
-               globals.find(name) != globals.end() || defines.find(name) != defines.end();
+               globals.find(name) != globals.end() || intDefines.find(name) != intDefines.end() ||
+               floatDefines.find(name) != floatDefines.end() || stringDefines.find(name) != stringDefines.end();
     }
 }

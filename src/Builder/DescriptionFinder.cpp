@@ -76,15 +76,39 @@ bool DescriptionFinder::getEnum(const Token& nameToken, Unit& returnValue)
     return true;
 }
 
-bool DescriptionFinder::getDefine(const Token& nameToken, Unit& returnValue)
+bool DescriptionFinder::getIntDefine(const Token& nameToken, Unit& returnValue)
 {
-    DefineDescription defineDescription;
+    int defineValue;
 
-    if (!workingModule->getDefineDescription(nameToken.toString(), defineDescription))
-        if (!rootModule.getDefineDescription(nameToken.toString(), defineDescription))
+    if (!workingModule->getIntDefine(nameToken.toString(), defineValue))
+        if (!rootModule.getIntDefine(nameToken.toString(), defineValue))
             return false;
 
-    returnValue = unitBuilder.unitFromDefineDescription(defineDescription);
+    returnValue = unitBuilder.unitFromIntLiteral(defineValue);
+    return true;
+}
+
+bool DescriptionFinder::getFloatDefine(const Token& nameToken, Unit& returnValue)
+{
+    float defineValue;
+
+    if (!workingModule->getFloatDefine(nameToken.toString(), defineValue))
+        if (!rootModule.getFloatDefine(nameToken.toString(), defineValue))
+            return false;
+
+    returnValue = unitBuilder.unitFromFloatLiteral(defineValue);
+    return true;
+}
+
+bool DescriptionFinder::getStringDefine(const Token& nameToken, Unit& returnValue)
+{
+    std::string defineValue;
+
+    if (!workingModule->getStringDefine(nameToken.toString(), defineValue))
+        if (!rootModule.getStringDefine(nameToken.toString(), defineValue))
+            return false;
+
+    returnValue = unitBuilder.unitFromStringDataKey(defineValue);
     return true;
 }
 
@@ -101,7 +125,13 @@ Unit DescriptionFinder::getUnitFromToken(const Token& nameToken)
     if (getEnum(nameToken, unit))
         return unit;
 
-    if (getDefine(nameToken, unit))
+    if (getIntDefine(nameToken, unit))
+        return unit;
+
+    if (getFloatDefine(nameToken, unit))
+        return unit;
+
+    if (getStringDefine(nameToken, unit))
         return unit;
 
     console.compileErrorOnToken("Symbol does not exist", nameToken);

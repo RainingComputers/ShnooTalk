@@ -6,6 +6,7 @@
 
 class ModuleBuilder
 {
+    icode::ModuleDescription& rootModule;
     icode::StringModulesMap& modulesMap;
     Console& console;
 
@@ -16,7 +17,7 @@ class ModuleBuilder
     std::pair<int, std::string> getSizeAndModuleName(const Token& dataTypeToken, icode::DataType dtype);
 
   public:
-    ModuleBuilder(icode::StringModulesMap& modulesMap, Console& console);
+    ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
 
     void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
@@ -24,7 +25,13 @@ class ModuleBuilder
 
     icode::TypeDescription createTypeDescription(const Token& dataTypeToken);
 
-    void createDefine(const Token& nameToken, const Token& valueToken);
+    void createIntDefine(const Token& nameToken, int value);
+
+    void createFloatDefine(const Token& nameToken, float value);
+
+    std::string createStringData(const Token& stringToken);
+
+    void createStringDefine(const Token& nameToken, const Token& valueToken);
 
     void createEnum(const std::vector<Token>& enums);
 

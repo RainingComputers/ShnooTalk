@@ -11,11 +11,10 @@ namespace generator
 
       : rootModule(modulesMap[fileName])
       , console(console)
-      , moduleBuilder(modulesMap, console)
-      , unitBuilder(opBuilder)
+      , moduleBuilder(modulesMap[fileName], modulesMap, console)
+      , unitBuilder(modulesMap[fileName], opBuilder)
       , descriptionFinder(modulesMap[fileName], modulesMap, unitBuilder, console)
       , functionBuilder(modulesMap, opBuilder, unitBuilder, console)
-      , strBuilder(modulesMap[fileName], opBuilder)
     {
         workingFunction = nullptr;
         workingModule = &rootModule;

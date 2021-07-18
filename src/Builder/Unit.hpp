@@ -41,7 +41,6 @@ class Unit
     bool isMultiDimArray() const;
 
     bool isEnum() const;
-    bool isDefine() const;
     bool isLocal() const;
 
     bool isPointer() const;

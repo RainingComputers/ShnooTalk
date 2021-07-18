@@ -8,8 +8,7 @@ void call(ModuleContext& ctx, const icode::Entry& e)
 {
     const std::string& functionName = e.op2.name;
 
-    Value* result =
-      ctx.builder->CreateCall(getLLVMFunction(ctx, functionName, e.op3.name), ctx.params[functionName]);
+    Value* result = ctx.builder->CreateCall(getLLVMFunction(ctx, functionName, e.op3.name), ctx.params[functionName]);
 
     setLLVMValue(ctx, e.op1, result);
 

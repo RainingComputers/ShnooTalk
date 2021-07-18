@@ -11,7 +11,10 @@ void def(parser::ParserContext& ctx)
     ctx.expect(token::IDENTIFIER);
     ctx.addNode(node::IDENTIFIER);
 
-    literal(ctx);
+    if (ctx.accept(token::STR_LITERAL))
+        ctx.addNode(node::STR_LITERAL);
+    else
+        literal(ctx);
 
     ctx.popNode();
 }

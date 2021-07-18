@@ -155,18 +155,6 @@ namespace pp
         std::cout << std::string(ilvl, ' ') << ")" << std::endl;
     }
 
-    void printDef(const icode::DefineDescription& definition)
-    {
-        std::cout << "Def(";
-
-        if (definition.dtype == icode::AUTO_INT)
-            std::cout << definition.val.integer;
-        else
-            std::cout << definition.val.floating;
-
-        std::cout << ":" << icode::dataTypeToString(definition.dtype) << ")";
-    }
-
     void printFunctionDescription(const icode::FunctionDescription& functionDesc, int ilvl)
     {
         std::cout << "Func(" << std::endl;
@@ -223,12 +211,32 @@ namespace pp
         }
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
-        std::cout << std::string(ilvl + 3, ' ') << "Defs={" << std::endl;
-        for (auto definition : moduleDescription.defines)
+        std::cout << std::string(ilvl + 3, ' ') << "IntDefs={" << std::endl;
+        for (auto definition : moduleDescription.intDefines)
         {
             std::cout << std::string(ilvl + 6, ' ');
             std::cout << definition.first << ":";
-            printDef(definition.second);
+            std::cout << definition.second;
+            std::cout << std::endl;
+        }
+        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
+
+        std::cout << std::string(ilvl + 3, ' ') << "FloatDefs={" << std::endl;
+        for (auto definition : moduleDescription.floatDefines)
+        {
+            std::cout << std::string(ilvl + 6, ' ');
+            std::cout << definition.first << ":";
+            std::cout << definition.second;
+            std::cout << std::endl;
+        }
+        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
+
+        std::cout << std::string(ilvl + 3, ' ') << "StringDefs={" << std::endl;
+        for (auto definition : moduleDescription.stringDefines)
+        {
+            std::cout << std::string(ilvl + 6, ' ');
+            std::cout << definition.first << ":";
+            std::cout << definition.second;
             std::cout << std::endl;
         }
         std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;

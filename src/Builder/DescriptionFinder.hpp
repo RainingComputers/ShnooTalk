@@ -20,7 +20,9 @@ class DescriptionFinder
 
     bool getLocal(const Token& nameToken, Unit& returnValue);
     bool getGlobal(const Token& nameToken, Unit& returnValue);
-    bool getDefine(const Token& nameToken, Unit& returnValue);
+    bool getIntDefine(const Token& nameToken, Unit& returnValue);
+    bool getFloatDefine(const Token& nameToken, Unit& returnValue);
+    bool getStringDefine(const Token& nameToken, Unit& returnValue);
     bool getEnum(const Token& nameToken, Unit& returnValue);
 
   public:

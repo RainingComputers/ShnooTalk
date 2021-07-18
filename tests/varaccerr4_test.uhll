@@ -1,9 +1,9 @@
 # MODULE varaccerr4_test.uhll
-# ERROR in Line 12 Col 17
+# ERROR in Line 12 Col 22
 # 
 #     var a:int = LED0.pin
-#                 ^
-# Invalid use of DEF
+#                      ^
+# STRUCT access on a NON-STRUCT data type
 
 def LED0 0
 

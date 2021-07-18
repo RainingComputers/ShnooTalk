@@ -4,8 +4,9 @@
 
 using namespace icode;
 
-UnitBuilder::UnitBuilder(OperandBuilder& opBuilder)
-  : opBuilder(opBuilder)
+UnitBuilder::UnitBuilder(ModuleDescription& rootModule, OperandBuilder& opBuilder)
+  : rootModule(rootModule)
+  , opBuilder(opBuilder)
 {
 }
 
@@ -41,21 +42,6 @@ Unit UnitBuilder::unitFromEnum(int enumValue)
     return Unit(typeDescription, op);
 }
 
-Unit UnitBuilder::unitFromDefineDescription(const DefineDescription& defineDescription)
-{
-    Operand op;
-
-    if (defineDescription.dtype == AUTO_INT)
-        op = opBuilder.createIntLiteralOperand(AUTO_INT, defineDescription.val.integer);
-    else
-        op = opBuilder.createFloatLiteralOperand(AUTO_FLOAT, defineDescription.val.floating);
-
-    TypeDescription typeDescription = typeDescriptionFromDataType(defineDescription.dtype);
-    typeDescription.setProperty(IS_DEFINE);
-
-    return Unit(typeDescription, op);
-}
-
 Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
 {
     TypeDescription type = unitList[0].type();
@@ -68,4 +54,23 @@ Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
     type = prependDimension(type, unitList.size(), dimType);
 
     return Unit(type, unitList);
+}
+
+Unit UnitBuilder::unitFromStringDataKey(const std::string& key)
+{
+    /* +1 for null char */
+    int charCount = rootModule.stringsData.at(key).size();
+
+    std::vector<int> dimensions;
+    dimensions.push_back(charCount);
+
+    TypeDescription stringType = typeDescriptionFromDataType(icode::UI8);
+    stringType = createArrayTypeDescription(stringType, dimensions, icode::STRING_LTRL_DIM);
+    stringType.becomeString();
+    stringType.moduleName = rootModule.name;
+
+    size_t size = charCount * getDataTypeSize(UI8);
+    Operand opr = opBuilder.createStringDataOperand(key, size);
+
+    return Unit(stringType, opr);
 }

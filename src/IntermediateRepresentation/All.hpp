@@ -1,5 +1,4 @@
 #include "DataType.hpp"
-#include "Define.hpp"
 #include "Entry.hpp"
 #include "FunctionDescription.hpp"
 #include "ModuleDescription.hpp"

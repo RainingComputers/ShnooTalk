@@ -24,8 +24,6 @@ namespace pp
 
     void printStructDescription(const icode::StructDescription& struct_desc, int ilvl = 0);
 
-    void printDef(const icode::DefineDescription& definition);
-
     void printFunctionDescription(const icode::FunctionDescription& func_desc, int ilvl = 0);
 
     void printModuleDescription(const icode::ModuleDescription& module_desc, int ilvl = 0);

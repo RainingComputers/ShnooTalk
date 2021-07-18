@@ -11,9 +11,6 @@ Unit getUnitFromNode(generator::GeneratorContext& ctx, const Node& root)
     if (Unit.isEnum() && root.children.size() > 1)
         ctx.console.compileErrorOnToken("Invalid use of ENUM", nameToken);
 
-    if (Unit.isDefine() && root.children.size() > 1)
-        ctx.console.compileErrorOnToken("Invalid use of DEF", nameToken);
-
     if (Unit.isLocal())
         if (!ctx.scope.isInCurrentScope(nameToken))
             ctx.console.compileErrorOnToken("Symbol not in scope", nameToken);

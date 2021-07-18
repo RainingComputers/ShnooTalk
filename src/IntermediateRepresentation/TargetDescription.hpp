@@ -4,13 +4,12 @@
 #include <map>
 
 #include "DataType.hpp"
-#include "Define.hpp"
 
 namespace icode
 {
     struct TargetEnums
     {
-        std::map<std::string, DefineDescription> defines;
+        std::map<std::string, int> intDefines;
     };
 }
 

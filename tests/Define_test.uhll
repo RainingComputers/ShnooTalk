@@ -1,0 +1,12 @@
+# -5 3.500000 Hello
+
+def BAR -5
+def FOO 3.5
+def FOOBAR "Hello"
+
+fn main() -> int
+{
+    println(BAR, FOO, FOOBAR)
+
+    return 0
+}

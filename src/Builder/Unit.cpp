@@ -113,11 +113,6 @@ bool Unit::isEnum() const
     return typeDescription.checkProperty(IS_ENUM);
 }
 
-bool Unit::isDefine() const
-{
-    return typeDescription.checkProperty(IS_DEFINE);
-}
-
 bool Unit::isLocal() const
 {
     return typeDescription.checkProperty(IS_LOCAL);

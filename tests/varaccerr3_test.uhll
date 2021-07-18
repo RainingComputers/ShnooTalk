@@ -1,9 +1,9 @@
 # MODULE varaccerr3_test.uhll
-# ERROR in Line 12 Col 17
+# ERROR in Line 12 Col 21
 # 
 #     var a:int = LED0[2]
-#                 ^
-# Invalid use of DEF
+#                     ^
+# ARRAY access on a NON ARRAY
 
 def LED0 0
 

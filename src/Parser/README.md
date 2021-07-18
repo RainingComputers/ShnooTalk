@@ -46,7 +46,7 @@ from = "from" identifier use
 
 enumList = "enum" "[" identifier {"," identifier} "]"
 
-def = "def" identifier literal
+def = "def" identifier (literal | stringLiteral)
 
 identifierWithSubscript = identifier {"[" (literalSubscriptOnly? literal : expression)  "]"}
 

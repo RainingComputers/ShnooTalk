@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "../FileSystem/FileSystem.hpp"
 #include "NameMangle.hpp"
 
@@ -5,8 +7,9 @@
 
 using namespace icode;
 
-ModuleBuilder::ModuleBuilder(StringModulesMap& modulesMap, Console& console)
-  : modulesMap(modulesMap)
+ModuleBuilder::ModuleBuilder(ModuleDescription& rootModule, StringModulesMap& modulesMap, Console& console)
+  : rootModule(rootModule)
+  , modulesMap(modulesMap)
   , console(console)
 {
 }
@@ -26,7 +29,7 @@ TypeDescription ModuleBuilder::createVoidTypeDescription()
     voidTypeDescription.size = 0;
     voidTypeDescription.offset = 0;
     voidTypeDescription.properties = 0;
-    voidTypeDescription.moduleName = workingModule->name;
+    voidTypeDescription.moduleName = rootModule.name;
 
     return voidTypeDescription;
 }
@@ -62,30 +65,59 @@ TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
     return typeDescription;
 }
 
-icode::DefineDescription defineDescriptionFromToken(const Token& valueToken)
+void ModuleBuilder::createIntDefine(const Token& nameToken, int value)
 {
-    if (valueToken.getType() == token::INT_LITERAL)
-        return icode::createIntDefineDescription(valueToken.toInt(), icode::AUTO_INT);
-
-    return icode::createFloatDefineDescription(valueToken.toFloat(), icode::AUTO_FLOAT);
-}
-
-void ModuleBuilder::createDefine(const Token& nameToken, const Token& valueToken)
-{
-    if (workingModule->symbolExists(nameToken.toString()))
+    if (rootModule.symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
-    workingModule->defines[nameToken.toString()] = defineDescriptionFromToken(valueToken);
+    rootModule.intDefines[nameToken.toString()] = value;
+}
+
+void ModuleBuilder::createFloatDefine(const Token& nameToken, float value)
+{
+    if (rootModule.symbolExists(nameToken.toString()))
+        console.compileErrorOnToken("Symbol already exists", nameToken);
+
+    rootModule.floatDefines[nameToken.toString()] = value;
+}
+
+std::string ModuleBuilder::createStringData(const Token& stringToken)
+{
+    /* Check if this string has already been defined, if yes return the key for that,
+        else create a new key */
+
+    std::string str = stringToken.toUnescapedString() + '\0';
+
+    auto result = std::find_if(rootModule.stringsData.begin(),
+                               rootModule.stringsData.end(),
+                               [str](const auto& mapItem) { return mapItem.second == str; });
+
+    if (result != rootModule.stringsData.end())
+        return result->first;
+
+    std::string key = "_str" + stringToken.getLineColString();
+    rootModule.stringsData[key] = str;
+
+    return key;
+}
+
+void ModuleBuilder::createStringDefine(const Token& nameToken, const Token& valueToken)
+{
+    if (rootModule.symbolExists(nameToken.toString()))
+        console.compileErrorOnToken("Symbol already exists", nameToken);
+
+    std::string key = createStringData(valueToken);
+    rootModule.stringDefines[nameToken.toString()] = key;
 }
 
 void ModuleBuilder::createEnum(const std::vector<Token>& enums)
 {
     for (size_t i = 0; i < enums.size(); i += 1)
     {
-        if (workingModule->symbolExists(enums[i].toString()))
+        if (rootModule.symbolExists(enums[i].toString()))
             console.compileErrorOnToken("Symbol already defined", enums[i]);
 
-        workingModule->enumerations[enums[i].toString()] = i;
+        rootModule.enumerations[enums[i].toString()] = i;
     }
 }
 
@@ -94,18 +126,18 @@ void ModuleBuilder::createFunctionDescription(const Token& nameToken,
                                               const std::vector<Token>& paramNames,
                                               std::vector<icode::TypeDescription>& paramTypes)
 {
-    std::string mangledFunctionName = nameMangle(nameToken, workingModule->name);
+    std::string mangledFunctionName = nameMangle(nameToken, rootModule.name);
 
-    if (workingModule->symbolExists(mangledFunctionName) || workingModule->symbolExists(nameToken.toString()))
+    if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
     icode::FunctionDescription functionDescription;
     functionDescription.functionReturnType = returnType;
-    functionDescription.moduleName = workingModule->name;
+    functionDescription.moduleName = rootModule.name;
 
     for (size_t i = 0; i < paramNames.size(); i++)
     {
-        if (workingModule->symbolExists(paramNames[i].toString()))
+        if (rootModule.symbolExists(paramNames[i].toString()))
             console.compileErrorOnToken("Symbol already defined", paramNames[i]);
 
         paramTypes[i].setProperty(IS_PARAM);
@@ -115,25 +147,25 @@ void ModuleBuilder::createFunctionDescription(const Token& nameToken,
         functionDescription.symbols[paramNames[i].toString()] = paramTypes[i];
     }
 
-    workingModule->functions[mangledFunctionName] = functionDescription;
+    rootModule.functions[mangledFunctionName] = functionDescription;
 }
 
 void ModuleBuilder::createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription)
 {
-    std::string mangledGlobalName = nameMangle(globalNameToken, workingModule->name);
+    std::string mangledGlobalName = nameMangle(globalNameToken, rootModule.name);
 
-    if (workingModule->symbolExists(mangledGlobalName) || workingModule->symbolExists(globalNameToken.toString()))
+    if (rootModule.symbolExists(mangledGlobalName) || rootModule.symbolExists(globalNameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", globalNameToken);
 
     typeDescription.setProperty(IS_GLOBAL);
 
-    workingModule->globals[mangledGlobalName] = typeDescription;
+    rootModule.globals[mangledGlobalName] = typeDescription;
 }
 
 icode::StructDescription ModuleBuilder::createEmptyStructDescription()
 {
     icode::StructDescription structDescription;
-    structDescription.moduleName = workingModule->name;
+    structDescription.moduleName = rootModule.name;
     structDescription.size = 0;
 
     return structDescription;
@@ -143,14 +175,14 @@ void ModuleBuilder::createStructDescription(const Token& nameToken,
                                             const std::vector<Token>& fieldNames,
                                             const std::vector<icode::TypeDescription>& fieldTypes)
 {
-    if (workingModule->symbolExists(nameToken.toString()))
+    if (rootModule.symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
     icode::StructDescription structDescription = createEmptyStructDescription();
 
     for (size_t i = 0; i < fieldNames.size(); i++)
     {
-        if (workingModule->symbolExists(fieldNames[i].toString()))
+        if (rootModule.symbolExists(fieldNames[i].toString()))
             console.compileErrorOnToken("Symbol already defined", fieldNames[i]);
 
         if (structDescription.fieldExists(fieldNames[i].toString()))
@@ -164,7 +196,7 @@ void ModuleBuilder::createStructDescription(const Token& nameToken,
         structDescription.structFields[fieldNames[i].toString()] = field;
     }
 
-    workingModule->structures[nameToken.toString()] = structDescription;
+    rootModule.structures[nameToken.toString()] = structDescription;
 }
 
 void ModuleBuilder::createUse(const Token& nameToken)
@@ -178,49 +210,53 @@ void ModuleBuilder::createUse(const Token& nameToken)
     if (isFile && isFolder)
         console.compileErrorOnToken("Module and Package exists with same name", nameToken);
 
-    if (workingModule->useExists(nameToken.toString()))
+    if (rootModule.useExists(nameToken.toString()))
         console.compileErrorOnToken("Multiple imports detected", nameToken);
 
-    if (workingModule->symbolExists(nameToken.toString()))
+    if (rootModule.symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Name conflict, symbol already exists", nameToken);
 
-    if (workingModule->name == nameToken.toString())
+    if (rootModule.name == nameToken.toString())
         console.compileErrorOnToken("Self import not allowed", nameToken);
 
-    workingModule->uses.push_back(nameToken.toString());
+    rootModule.uses.push_back(nameToken.toString());
 }
 
 void ModuleBuilder::createFrom(const Token& moduleNameToken, const Token& symbolNameToken)
 {
     StructDescription structDescription;
     FunctionDescription functionDescription;
-    DefineDescription defineDescription;
+    int intDefineValue;
+    float floatDefineValue;
     int enumValue;
 
-    if (!workingModule->useExists(moduleNameToken.toString()))
+    if (!rootModule.useExists(moduleNameToken.toString()))
         console.compileErrorOnToken("Module not imported", moduleNameToken);
 
     ModuleDescription* externalModule = &modulesMap[moduleNameToken.toString()];
 
     const std::string& symbolString = symbolNameToken.toString();
 
-    if (workingModule->symbolExists(symbolString))
+    if (rootModule.symbolExists(symbolString))
         console.compileErrorOnToken("Symbol already defined in current module", symbolNameToken);
 
     if ((*externalModule).getStruct(symbolString, structDescription))
-        workingModule->structures[symbolString] = structDescription;
+        rootModule.structures[symbolString] = structDescription;
 
     else if ((*externalModule).getFunction(nameMangle(symbolString, externalModule->name), functionDescription))
         console.compileErrorOnToken("Cannot import functions", symbolNameToken);
 
-    else if ((*externalModule).getDefineDescription(symbolString, defineDescription))
-        workingModule->defines[symbolString] = defineDescription;
+    else if ((*externalModule).getIntDefine(symbolString, intDefineValue))
+        rootModule.intDefines[symbolString] = intDefineValue;
+
+    else if ((*externalModule).getFloatDefine(symbolString, floatDefineValue))
+        rootModule.floatDefines[symbolString] = floatDefineValue;
 
     else if ((*externalModule).getEnum(symbolString, enumValue))
-        workingModule->enumerations[symbolString] = enumValue;
+        rootModule.enumerations[symbolString] = enumValue;
 
     else if ((*externalModule).useExists(symbolString))
-        workingModule->uses.push_back(symbolString);
+        rootModule.uses.push_back(symbolString);
 
     else
         console.compileErrorOnToken("Symbol does not exist", symbolNameToken);

@@ -99,6 +99,11 @@ bool Token::isBitwiseOperation() const
            type == XOR_EQUAL;
 }
 
+bool Token::isIntLiteral() const
+{
+    return type == INT_LITERAL || type == HEX_LITERAL || type == BIN_LITERAL;
+}
+
 int Token::toInt() const
 {
     return std::stoi(string);

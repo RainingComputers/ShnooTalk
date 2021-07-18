@@ -15,8 +15,7 @@ icode::TargetEnums translator::getTarget()
 {
     icode::TargetEnums target;
 
-    target.defines = { { "true", icode::createIntDefineDescription(1, icode::AUTO_INT) },
-                       { "false", icode::createIntDefineDescription(0, icode::AUTO_INT) } };
+    target.intDefines = { { "true", 1 }, { "false", 0 } };
 
     return target;
 }

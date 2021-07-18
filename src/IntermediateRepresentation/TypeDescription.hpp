@@ -16,7 +16,6 @@ namespace icode
         IS_GLOBAL,
         IS_LOCAL,
         IS_ENUM,
-        IS_DEFINE,
         IS_STRING_LTRL,
     };
 

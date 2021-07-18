@@ -26,7 +26,7 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
         case token::HEX_LITERAL:
         case token::BIN_LITERAL:
         {
-            int literal = std::stoi(root.tok.toString());
+            int literal = root.tok.toInt();
             return ctx.unitBuilder.unitFromIntLiteral(literal);
         }
         case token::CHAR_LITERAL:
@@ -36,7 +36,7 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
         }
         case token::FLOAT_LITERAL:
         {
-            float literal = (float)stof(root.tok.toString());
+            float literal = root.tok.toFloat();
             return ctx.unitBuilder.unitFromFloatLiteral(literal);
         }
         default:
@@ -185,6 +185,12 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
     }
 }
 
+Unit stringLiteral(generator::GeneratorContext& ctx, const Node& root)
+{
+    std::string key = ctx.moduleBuilder.createStringData(root.tok);
+    return ctx.unitBuilder.unitFromStringDataKey(key);
+}
+
 Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
 {
     std::vector<Unit> units;
@@ -244,7 +250,7 @@ Instruction tokenToBinaryOperator(const generator::GeneratorContext& ctx, const 
 Unit expression(generator::GeneratorContext& ctx, const Node& root)
 {
     if (root.type == node::STR_LITERAL)
-        return ctx.strBuilder.createString(root.tok);
+        return stringLiteral(ctx, root);
 
     if (root.type == node::INITLIST)
         return initializerList(ctx, root);

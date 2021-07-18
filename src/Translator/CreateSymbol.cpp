@@ -23,7 +23,7 @@ void createGlobalString(ModuleContext& ctx, const std::string& key, const std::s
     Constant* strConstant = ConstantDataArray::getString(*ctx.context, str);
 
     GlobalVariable* globalString =
-      new GlobalVariable(*ctx.LLVMModule, strConstant->getType(), true, GlobalValue::PrivateLinkage, strConstant, key);
+      new GlobalVariable(*ctx.LLVMModule, strConstant->getType(), true, GlobalValue::ExternalLinkage, strConstant, key);
 
     ctx.operandGlobalStringMap[key] = globalString;
 }
