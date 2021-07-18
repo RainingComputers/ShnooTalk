@@ -5,7 +5,7 @@
 
 using namespace llvm;
 
-Value* castToSignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
+Value* castToSignedInt(ModuleContext& ctx, const icode::Entry& e, Type* destType)
 {
     if (icode::isSignedInteger(e.op2.dtype))
         return ctx.builder->CreateSExtOrTrunc(getLLVMValue(ctx, e.op2), destType);
@@ -19,7 +19,7 @@ Value* castToSignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* de
     ctx.console.internalBugError();
 }
 
-Value* castToUnsignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
+Value* castToUnsignedInt(ModuleContext& ctx, const icode::Entry& e, Type* destType)
 {
     if (icode::isInteger(e.op2.dtype))
         return ctx.builder->CreateZExtOrTrunc(getLLVMValue(ctx, e.op2), destType);
@@ -30,7 +30,7 @@ Value* castToUnsignedInt(const ModuleContext& ctx, const icode::Entry& e, Type* 
     ctx.console.internalBugError();
 }
 
-Value* castToFloatFromInt(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
+Value* castToFloatFromInt(ModuleContext& ctx, const icode::Entry& e, Type* destType)
 {
     if (icode::isSignedInteger(e.op2.dtype))
         return ctx.builder->CreateSIToFP(getLLVMValue(ctx, e.op2), destType);
@@ -41,7 +41,7 @@ Value* castToFloatFromInt(const ModuleContext& ctx, const icode::Entry& e, Type*
     ctx.console.internalBugError();
 }
 
-Value* castToFloatFromFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
+Value* castToFloatFromFloat(ModuleContext& ctx, const icode::Entry& e, Type* destType)
 {
     if (icode::getDataTypeSize(e.op1.dtype) > icode::getDataTypeSize(e.op2.dtype))
         return ctx.builder->CreateFPExt(getLLVMValue(ctx, e.op2), destType);
@@ -55,7 +55,7 @@ Value* castToFloatFromFloat(const ModuleContext& ctx, const icode::Entry& e, Typ
     ctx.console.internalBugError();
 }
 
-Value* castToFloat(const ModuleContext& ctx, const icode::Entry& e, Type* destType)
+Value* castToFloat(ModuleContext& ctx, const icode::Entry& e, Type* destType)
 {
     if (icode::isInteger(e.op2.dtype))
         return castToFloatFromInt(ctx, e, destType);

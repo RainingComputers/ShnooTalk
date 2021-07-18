@@ -9,6 +9,8 @@ void createGlobalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDe
 
 void createGlobalString(ModuleContext& ctx, const std::string& key, const std::string& str);
 
+llvm::Value* createExternGlobalString(ModuleContext& ctx, const std::string& key);
+
 void createFunctionParameter(ModuleContext& ctx,
                              const icode::TypeDescription& typeDescription,
                              const std::string& name,

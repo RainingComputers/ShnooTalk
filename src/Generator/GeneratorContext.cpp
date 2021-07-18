@@ -30,6 +30,7 @@ namespace generator
         workingModule = &rootModule;
         moduleBuilder.setWorkingModule(&rootModule);
         descriptionFinder.setWorkingModule(&rootModule);
+        unitBuilder.setWorkingModule(&rootModule);
     }
 
     void GeneratorContext::setWorkingModule(icode::ModuleDescription* moduleDescription)
@@ -37,6 +38,7 @@ namespace generator
         workingModule = moduleDescription;
         moduleBuilder.setWorkingModule(moduleDescription);
         descriptionFinder.setWorkingModule(moduleDescription);
+        unitBuilder.setWorkingModule(moduleDescription);
     }
 
     void GeneratorContext::pushWorkingModule()

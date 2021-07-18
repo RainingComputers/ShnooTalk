@@ -28,7 +28,7 @@ void callPrintf(const ModuleContext& ctx, Value* formatString, Value* value)
     ctx.builder->CreateCall(ctx.LLVMModule->getFunction("printf"), printArgs);
 }
 
-void print(const ModuleContext& ctx, const FormatStringsContext& formatStringsContext, const icode::Entry& e)
+void print(ModuleContext& ctx, const FormatStringsContext& formatStringsContext, const icode::Entry& e)
 {
     Value* value = getLLVMValue(ctx, e.op1);
 
@@ -41,7 +41,7 @@ void print(const ModuleContext& ctx, const FormatStringsContext& formatStringsCo
     callPrintf(ctx, getFromatStringFromDataType(formatStringsContext, e.op1.dtype), value);
 }
 
-void printString(const ModuleContext& ctx, const icode::Entry& e)
+void printString(ModuleContext& ctx, const icode::Entry& e)
 {
     Value* str_value = getLLVMPointer(ctx, e.op1);
 

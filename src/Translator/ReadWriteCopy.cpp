@@ -46,7 +46,7 @@ void read(ModuleContext& ctx, const icode::Entry& e)
     setLLVMValue(ctx, e.op1, sourceValue);
 }
 
-void write(const ModuleContext& ctx, const icode::Entry& e)
+void write(ModuleContext& ctx, const icode::Entry& e)
 {
     /* Converts ShnooTalk WRITE to llvm ir */
 

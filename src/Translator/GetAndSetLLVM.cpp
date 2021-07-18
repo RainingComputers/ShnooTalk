@@ -1,4 +1,5 @@
 #include "../IntermediateRepresentation/All.hpp"
+#include "CreateSymbol.hpp"
 #include "ToLLVMType.hpp"
 
 #include "GetAndSetLLVM.hpp"
@@ -37,7 +38,17 @@ Value* getCalleeRetValuePointer(const ModuleContext& ctx, const icode::Operand& 
     return calleeReturnValuePointer;
 }
 
-Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
+Value* getStringDataPointer(ModuleContext& ctx, const icode::Operand& op)
+{
+    auto result = ctx.operandGlobalStringMap.find(op.name);
+
+    if (result != ctx.operandGlobalStringMap.end())
+        return result->second;
+
+    return createExternGlobalString(ctx, op.name);
+}
+
+Value* getLLVMPointer(ModuleContext& ctx, const icode::Operand& op)
 {
     switch (op.operandType)
     {
@@ -53,13 +64,13 @@ Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op)
         case icode::CALLEE_RET_VAL:
             return getCalleeRetValuePointer(ctx, op);
         case icode::STR_DATA:
-            return ctx.operandGlobalStringMap.at(op.name);
+            return getStringDataPointer(ctx, op);
         default:
             ctx.console.internalBugError();
     }
 }
 
-Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op)
+Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op)
 {
     switch (op.operandType)
     {

@@ -137,7 +137,7 @@ Value* bitwiseXor(const ModuleContext& ctx, Value* LHS, Value* RHS, icode::DataT
     ctx.console.internalBugError();
 }
 
-Value* getBinaryOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
+Value* getBinaryOperatorValue(ModuleContext& ctx, const icode::Entry& e)
 {
     Value* LHS = getLLVMValue(ctx, e.op2);
     Value* RHS = getLLVMValue(ctx, e.op3);

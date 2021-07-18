@@ -4,6 +4,6 @@
 #include "BranchContext.hpp"
 #include "ModuleContext.hpp"
 
-void compareOperator(const ModuleContext& ctx, BranchContext& branchContext, const icode::Entry& e);
+void compareOperator(ModuleContext& ctx, BranchContext& branchContext, const icode::Entry& e);
 
 #endif

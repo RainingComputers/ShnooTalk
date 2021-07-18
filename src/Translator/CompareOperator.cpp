@@ -94,7 +94,7 @@ Value* greaterThanOrEqualTo(const ModuleContext& ctx, Value* LHS, Value* RHS, ic
     ctx.console.internalBugError();
 }
 
-Value* getCompareOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
+Value* getCompareOperatorValue(ModuleContext& ctx, const icode::Entry& e)
 {
     Value* LHS = getLLVMValue(ctx, e.op1);
     Value* RHS = getLLVMValue(ctx, e.op2);
@@ -119,7 +119,7 @@ Value* getCompareOperatorValue(const ModuleContext& ctx, const icode::Entry& e)
     }
 }
 
-void compareOperator(const ModuleContext& ctx, BranchContext& branchContext, const icode::Entry& e)
+void compareOperator(ModuleContext& ctx, BranchContext& branchContext, const icode::Entry& e)
 {
     /* The flag will be used by the next branch instruction that follows this instruction */
     branchContext.branchFlags.push(getCompareOperatorValue(ctx, e));

@@ -11,8 +11,8 @@ llvm::Function* getLLVMFunction(const ModuleContext& ctx,
                                 const std::string& functionName,
                                 const std::string& moduleName);
 llvm::Value* getCalleeRetValuePointer(const ModuleContext& ctx, const icode::Operand& op);
-llvm::Value* getLLVMPointer(const ModuleContext& ctx, const icode::Operand& op);
-llvm::Value* getLLVMValue(const ModuleContext& ctx, const icode::Operand& op);
+llvm::Value* getLLVMPointer(ModuleContext& ctx, const icode::Operand& op);
+llvm::Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op);
 void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, llvm::Value* value);
 
 #endif

@@ -20,8 +20,9 @@ namespace icode
         std::map<std::string, int> enumerations;
         std::map<std::string, int> intDefines;
         std::map<std::string, float> floatDefines;
-        std::map<std::string, std::string> stringDefines;
         std::map<std::string, TypeDescription> globals;
+
+        std::map<std::string, std::string> stringDefines;
         std::map<std::string, std::string> stringsData;
         std::map<std::string, int> stringsDataCharCounts;
 

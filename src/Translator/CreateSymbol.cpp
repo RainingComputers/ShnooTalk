@@ -28,6 +28,22 @@ void createGlobalString(ModuleContext& ctx, const std::string& key, const std::s
     ctx.operandGlobalStringMap[key] = globalString;
 }
 
+Value* createExternGlobalString(ModuleContext& ctx, const std::string& key)
+{
+    GlobalVariable* globalString = new GlobalVariable(*ctx.LLVMModule,
+                                                      dataTypeToLLVMPointerType(ctx, icode::I8),
+                                                      true,
+                                                      GlobalVariable::ExternalLinkage,
+                                                      nullptr,
+                                                      key,
+                                                      nullptr,
+                                                      GlobalVariable::NotThreadLocal,
+                                                      llvm::None,
+                                                      true);
+    ctx.operandGlobalStringMap[key] = globalString;
+    return globalString;
+}
+
 void createFunctionParameter(ModuleContext& ctx,
                              const icode::TypeDescription& typeDescription,
                              const std::string& name,

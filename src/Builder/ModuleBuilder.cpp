@@ -88,15 +88,19 @@ std::string ModuleBuilder::createStringData(const Token& stringToken)
 
     std::string str = stringToken.toUnescapedString() + '\0';
 
-    auto result = std::find_if(rootModule.stringsData.begin(),
-                               rootModule.stringsData.end(),
-                               [str](const auto& mapItem) { return mapItem.second == str; });
+    for (auto modulesMapItem : modulesMap)
+    {
+        auto result = std::find_if(modulesMapItem.second.stringsData.begin(),
+                                   modulesMapItem.second.stringsData.end(),
+                                   [str](const auto& mapItem) { return mapItem.second == str; });
 
-    if (result != rootModule.stringsData.end())
-        return result->first;
+        if (result != modulesMapItem.second.stringsData.end())
+            return result->first;
+    }
 
-    std::string key = "_str" + stringToken.getLineColString();
+    std::string key = lineColNameMangle(stringToken, rootModule.name);
     rootModule.stringsData[key] = str;
+    rootModule.stringsDataCharCounts[key] = str.size();
 
     return key;
 }
@@ -229,6 +233,7 @@ void ModuleBuilder::createFrom(const Token& moduleNameToken, const Token& symbol
     int intDefineValue;
     float floatDefineValue;
     int enumValue;
+    std::string stringDataKey;
 
     if (!rootModule.useExists(moduleNameToken.toString()))
         console.compileErrorOnToken("Module not imported", moduleNameToken);
@@ -251,6 +256,12 @@ void ModuleBuilder::createFrom(const Token& moduleNameToken, const Token& symbol
 
     else if ((*externalModule).getFloatDefine(symbolString, floatDefineValue))
         rootModule.floatDefines[symbolString] = floatDefineValue;
+
+    else if ((*externalModule).getStringDefine(symbolString, stringDataKey))
+    {
+        rootModule.stringDefines[symbolString] = stringDataKey;
+        rootModule.stringsDataCharCounts[stringDataKey] = (*externalModule).stringsDataCharCounts[stringDataKey];
+    }
 
     else if ((*externalModule).getEnum(symbolString, enumValue))
         rootModule.enumerations[symbolString] = enumValue;

@@ -10,6 +10,11 @@ UnitBuilder::UnitBuilder(ModuleDescription& rootModule, OperandBuilder& opBuilde
 {
 }
 
+void UnitBuilder::setWorkingModule(ModuleDescription* moduleDescription)
+{
+    workingModule = moduleDescription;
+}
+
 Unit UnitBuilder::unitFromIntLiteral(int value)
 {
     Operand op = opBuilder.createIntLiteralOperand(AUTO_INT, value);
@@ -56,10 +61,20 @@ Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
     return Unit(type, unitList);
 }
 
+int UnitBuilder::getCharCountFromStringDataKey(const std::string& key)
+{
+    auto resultItem = rootModule.stringsDataCharCounts.find(key);
+
+    if (resultItem != rootModule.stringsDataCharCounts.end())
+        return resultItem->second;
+
+    return workingModule->stringsDataCharCounts.at(key);
+}
+
 Unit UnitBuilder::unitFromStringDataKey(const std::string& key)
 {
     /* +1 for null char */
-    int charCount = rootModule.stringsData.at(key).size();
+    int charCount = getCharCountFromStringDataKey(key);
 
     std::vector<int> dimensions;
     dimensions.push_back(charCount);

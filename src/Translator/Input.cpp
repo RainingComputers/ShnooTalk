@@ -26,12 +26,12 @@ void callScanf(const ModuleContext& ctx, Value* formatString, Value* value)
     ctx.builder->CreateCall(ctx.LLVMModule->getFunction("scanf"), printArgs);
 }
 
-void input(const ModuleContext& ctx, const FormatStringsContext& formatStringsContext, const icode::Entry& e)
+void input(ModuleContext& ctx, const FormatStringsContext& formatStringsContext, const icode::Entry& e)
 {
     callScanf(ctx, getFromatStringFromDataType(formatStringsContext, e.op1.dtype), getLLVMPointer(ctx, e.op1));
 }
 
-void inputString(const ModuleContext& ctx, const icode::Entry& e)
+void inputString(ModuleContext& ctx, const icode::Entry& e)
 {
     callScanf(ctx, getFormatStringForStringInput(ctx, e.op2.val.size), getLLVMPointer(ctx, e.op1));
 }
