@@ -11,3 +11,4 @@ tests/log.txt
 test
 test.o
 tests/temp/*
+temp/
