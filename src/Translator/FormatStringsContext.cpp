@@ -7,8 +7,8 @@ void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& f
     /* Setup global format strings */
 
     formatStringsContext.dataTypeFormatStringsMap = {
-        { icode::I8, ctx.builder->CreateGlobalString("%c", "byte", 0U, ctx.LLVMModule.get()) },
-        { icode::UI8, ctx.builder->CreateGlobalString("%c", "ubyte", 0U, ctx.LLVMModule.get()) },
+        { icode::I8, ctx.builder->CreateGlobalString("%c", "bytefmt", 0U, ctx.LLVMModule.get()) },
+        { icode::UI8, ctx.builder->CreateGlobalString("%c", "ubytefmt", 0U, ctx.LLVMModule.get()) },
         { icode::I16, ctx.builder->CreateGlobalString("%hd", "shortfmt", 0U, ctx.LLVMModule.get()) },
         { icode::UI16, ctx.builder->CreateGlobalString("%hu", "ushortfmt", 0U, ctx.LLVMModule.get()) },
         { icode::I32, ctx.builder->CreateGlobalString("%d", "intfmt", 0U, ctx.LLVMModule.get()) },
@@ -25,9 +25,9 @@ void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& f
     formatStringsContext.dataTypeFormatStringsMap[icode::AUTO_FLOAT] =
       formatStringsContext.dataTypeFormatStringsMap[icode::F64];
 
-    formatStringsContext.newLineString = ctx.builder->CreateGlobalString("\n", "newln", 0U, ctx.LLVMModule.get());
+    formatStringsContext.newLineString = ctx.builder->CreateGlobalString("\n", "newlnfmt", 0U, ctx.LLVMModule.get());
 
-    formatStringsContext.spaceString = ctx.builder->CreateGlobalString(" ", "space", 0U, ctx.LLVMModule.get());
+    formatStringsContext.spaceString = ctx.builder->CreateGlobalString(" ", "spacefmt", 0U, ctx.LLVMModule.get());
 }
 
 Value* getFromatStringFromDataType(const FormatStringsContext& formatStringsContext, icode::DataType dtype)

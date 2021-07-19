@@ -87,6 +87,7 @@
         "mikpp",
         "mkdocs",
         "newln",
+        "newlnfmt",
         "println",
         "stof",
         "stoi",
