@@ -84,7 +84,7 @@ void ModuleBuilder::createFloatDefine(const Token& nameToken, float value)
 std::string ModuleBuilder::createStringData(const Token& stringToken)
 {
     /* Check if this string has already been defined, if yes return the key for that,
-        else create a new key */
+        else create a new key (across all modules) */
 
     std::string str = stringToken.toUnescapedString() + '\0';
 

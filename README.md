@@ -47,28 +47,29 @@ clang app.o -o app
 ### Short term
 
 - [x] Fix bugs in the LLVM translator backend
-- [ ] Language reference using mkdocs
-- [ ] CLI argument parser
 - [x] Array return types
-- [ ] Python wrapper generator
-- [ ] Refactor tests
-- [ ] Refactor the test runner and use multiprocessing
-- [ ] Dynamic allocation and pointers
-- [ ] Setup github workflows and build for other platforms
-- [ ] Static variables
-- [ ] NaN and infinity
-- [ ] Node style module imports
-- [ ] Assigning conditional expressions
+- [x] Fix def
+- [ ] IR Validator
+- [ ] Change IR pretty print to JSON
+- [ ] `exit()` function
+- [ ] Extern C functions and function imports
 - [ ] `loop {}` syntax for looping forever
 - [ ] `do {} while()` loop
-- [ ] Check limits for primitive data types
+- [ ] Static variables
+- [ ] Assigning conditional expressions
+- [ ] NaN and infinity
+- [ ] Node style module imports
+- [ ] Language reference using mkdocs
+- [ ] Dynamic allocation and pointers
+- [ ] CLI argument parser
+- [ ] Refactor tests
+- [ ] Refactor the test runner and use multiprocessing
 - [ ] Tests for pretty printer
 - [ ] ~95% test coverage
-- [ ] IR Validator
+- [ ] Python wrapper generator
+- [ ] Setup github workflows and build for other platforms
+- [ ] Check limits for primitive data types
 - [ ] Debug symbols
-- [ ] Change IR pretty print to JSON
-- [ ] Extern C functions and function imports
-- [ ] Fix def
 
 ### Advanced features
 

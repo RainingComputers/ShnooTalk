@@ -6,14 +6,6 @@
 using namespace generator;
 using namespace icode;
 
-bool isVoidFunction(const Node& root)
-{
-    if (!root.isNthChildFromLast(node::IDENTIFIER, 2))
-        return true;
-
-    return false;
-}
-
 TypeDescription arrayTypeFromSubscript(GeneratorContext& ctx,
                                        const Node& root,
                                        TypeDescription typeDescription,
