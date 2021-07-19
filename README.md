@@ -67,6 +67,7 @@ clang app.o -o app
 - [ ] Tests for pretty printer
 - [ ] ~95% test coverage
 - [ ] Python wrapper generator
+- [ ] WebAssembly support
 - [ ] Setup github workflows and build for other platforms
 - [ ] Check limits for primitive data types
 - [ ] Debug symbols
