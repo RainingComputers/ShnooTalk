@@ -42,7 +42,6 @@ Unit UnitBuilder::unitFromEnum(int enumValue)
     Operand op = opBuilder.createIntLiteralOperand(AUTO_INT, enumValue);
 
     TypeDescription typeDescription = typeDescriptionFromDataType(AUTO_INT);
-    typeDescription.setProperty(IS_ENUM);
 
     return Unit(typeDescription, op);
 }

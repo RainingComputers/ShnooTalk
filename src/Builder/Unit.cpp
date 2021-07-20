@@ -108,11 +108,6 @@ bool Unit::isMultiDimArray() const
     return typeDescription.isMultiDimArray();
 }
 
-bool Unit::isEnum() const
-{
-    return typeDescription.checkProperty(IS_ENUM);
-}
-
 bool Unit::isLocal() const
 {
     return typeDescription.checkProperty(IS_LOCAL);

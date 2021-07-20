@@ -1,9 +1,9 @@
 # MODULE varaccerr2_test.uhll
-# ERROR in Line 12 Col 17
+# ERROR in Line 12 Col 22
 # 
 #     var a:int = LED0.pin
-#                 ^
-# Invalid use of ENUM
+#                      ^
+# STRUCT access on a NON-STRUCT data type
 
 enum [LED0, LED1]
 

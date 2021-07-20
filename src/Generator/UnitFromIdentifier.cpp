@@ -8,9 +8,6 @@ Unit getUnitFromNode(generator::GeneratorContext& ctx, const Node& root)
 
     Unit Unit = ctx.descriptionFinder.getUnitFromToken(nameToken);
 
-    if (Unit.isEnum() && root.children.size() > 1)
-        ctx.console.compileErrorOnToken("Invalid use of ENUM", nameToken);
-
     if (Unit.isLocal())
         if (!ctx.scope.isInCurrentScope(nameToken))
             ctx.console.compileErrorOnToken("Symbol not in scope", nameToken);
