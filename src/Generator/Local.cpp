@@ -15,7 +15,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     if (root.type == node::VAR)
         localType.becomeMutable();
 
-    Unit local = ctx.functionBuilder.createLocal(nameToken, localType);
+    Unit local = ctx.ir.functionBuilder.createLocal(nameToken, localType);
 
     Node lastNode = root.children.back();
 
@@ -27,6 +27,6 @@ void local(generator::GeneratorContext& ctx, const Node& root)
         if (!isSameType(local, RHS))
             ctx.console.typeError(lastNode.tok, local, RHS);
 
-        ctx.functionBuilder.unitCopy(local, RHS);
+        ctx.ir.functionBuilder.unitCopy(local, RHS);
     }
 }

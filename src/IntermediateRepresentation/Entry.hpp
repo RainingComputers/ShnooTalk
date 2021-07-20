@@ -56,8 +56,6 @@ namespace icode
         Operand op1;
         Operand op2;
         Operand op3;
-
-        Entry();
     };
 }
 

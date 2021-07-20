@@ -37,7 +37,6 @@ Operand OperandBuilder::createStringDataOperand(const std::string& name, unsigne
     Operand temp;
     temp.operandId = getId();
     temp.name = name;
-    temp.dtype = icode::UI8;
     temp.operandType = STR_DATA;
     temp.val.size = size;
 
@@ -50,6 +49,7 @@ Operand OperandBuilder::createLiteralAddressOperand(unsigned int address)
     temp.operandId = getId();
     temp.val.address = address;
     temp.operandType = ADDR;
+    temp.dtype = AUTO_INT;
 
     return temp;
 }

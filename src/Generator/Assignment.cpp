@@ -56,7 +56,7 @@ void assignment(generator::GeneratorContext& ctx, const Node& root)
     icode::Instruction instruction = assignmentTokenToBinaryOperator(ctx, assignOperator);
 
     if (assignOperator.getType() == token::EQUAL)
-        ctx.functionBuilder.unitCopy(LHS, RHS);
+        ctx.ir.functionBuilder.unitCopy(LHS, RHS);
     else
-        ctx.functionBuilder.unitCopy(LHS, ctx.functionBuilder.binaryOperator(instruction, LHS, RHS));
+        ctx.ir.functionBuilder.unitCopy(LHS, ctx.ir.functionBuilder.binaryOperator(instruction, LHS, RHS));
 }

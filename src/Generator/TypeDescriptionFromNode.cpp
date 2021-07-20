@@ -35,17 +35,17 @@ TypeDescription typeDescriptionFromNode(GeneratorContext& ctx, const Node& root)
         childNodeCounter = setWorkingModuleFromNode(ctx, root, childNodeCounter);
 
     if (root.isNthChild(node::BLOCK, childNodeCounter))
-        return ctx.moduleBuilder.createVoidTypeDescription();
+        return ctx.ir.moduleBuilder.createVoidTypeDescription();
 
     const Token& dataTypeToken = root.getNthChildToken(childNodeCounter);
-    TypeDescription typeDescription = ctx.moduleBuilder.createTypeDescription(dataTypeToken);
+    TypeDescription typeDescription = ctx.ir.moduleBuilder.createTypeDescription(dataTypeToken);
 
     childNodeCounter++;
 
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
         typeDescription = arrayTypeFromSubscript(ctx, root, typeDescription, childNodeCounter);
 
-    ctx.resetWorkingModule();
+    ctx.ir.resetWorkingModule();
 
     return typeDescription;
 }

@@ -8,14 +8,14 @@ using namespace icode;
 
 Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 {
-    ctx.pushWorkingModule();
+    ctx.ir.pushWorkingModule();
     setWorkingModuleFromNode(ctx, root, 0);
 
-    int size = ctx.descriptionFinder.getDataTypeSizeFromToken(root.children.back().tok);
+    int size = ctx.ir.descriptionFinder.getDataTypeSizeFromToken(root.children.back().tok);
 
-    ctx.popWorkingModule();
+    ctx.ir.popWorkingModule();
 
-    return ctx.unitBuilder.unitFromIntLiteral(size);
+    return ctx.ir.unitBuilder.unitFromIntLiteral(size);
 }
 
 Unit literal(generator::GeneratorContext& ctx, const Node& root)
@@ -27,17 +27,17 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
         case token::BIN_LITERAL:
         {
             int literal = root.tok.toInt();
-            return ctx.unitBuilder.unitFromIntLiteral(literal);
+            return ctx.ir.unitBuilder.unitFromIntLiteral(literal);
         }
         case token::CHAR_LITERAL:
         {
             char literal = root.tok.toUnescapedString()[0];
-            return ctx.unitBuilder.unitFromIntLiteral(literal);
+            return ctx.ir.unitBuilder.unitFromIntLiteral(literal);
         }
         case token::FLOAT_LITERAL:
         {
             float literal = root.tok.toFloat();
-            return ctx.unitBuilder.unitFromFloatLiteral(literal);
+            return ctx.ir.unitBuilder.unitFromFloatLiteral(literal);
         }
         default:
             ctx.console.internalBugErrorOnToken(root.tok);
@@ -53,7 +53,7 @@ Unit cast(generator::GeneratorContext& ctx, const Node& root)
     if (termToCast.isArray() || termToCast.isStruct())
         ctx.console.compileErrorOnToken("Cannot cast STRUCT or ARRAY", root.tok);
 
-    return ctx.functionBuilder.castOperator(termToCast, destinationDataType);
+    return ctx.ir.functionBuilder.castOperator(termToCast, destinationDataType);
 }
 
 Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
@@ -85,13 +85,13 @@ Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
             ctx.console.internalBugErrorOnToken(root.tok);
     }
 
-    return ctx.functionBuilder.unaryOperator(instruction, unaryOperatorTerm);
+    return ctx.ir.functionBuilder.unaryOperator(instruction, unaryOperatorTerm);
 }
 
 Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
 {
-    ctx.pushWorkingModule();
-    ctx.resetWorkingModule();
+    ctx.ir.pushWorkingModule();
+    ctx.ir.resetWorkingModule();
 
     int nodeCounter = setWorkingModuleFromNode(ctx, root, 0);
 
@@ -100,14 +100,14 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
 
     Unit result = term(ctx, root.children[nodeCounter]);
 
-    ctx.popWorkingModule();
+    ctx.ir.popWorkingModule();
 
     return result;
 }
 
 Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 {
-    ctx.pushWorkingModule();
+    ctx.ir.pushWorkingModule();
 
     Unit firstActualParam;
 
@@ -116,16 +116,16 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         firstActualParam = expression(ctx, root.children[0]);
 
         if (root.type == node::METHODCALL)
-            ctx.setWorkingModule(ctx.descriptionFinder.getModuleFromUnit(firstActualParam));
+            ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromUnit(firstActualParam));
     }
 
     const Token& calleeNameToken = root.tok;
-    FunctionDescription callee = ctx.descriptionFinder.getFunction(calleeNameToken);
+    FunctionDescription callee = ctx.ir.descriptionFinder.getFunction(calleeNameToken);
 
     if (root.children.size() != callee.numParameters())
         ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
 
-    std::vector<Unit> formalParameters = ctx.descriptionFinder.getFormalParameters(callee);
+    std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
     for (size_t i = 0; i < root.children.size(); i++)
     {
@@ -149,12 +149,12 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         if (formalParam.isMutable() && !actualParam.isMutable())
             ctx.console.compileErrorOnToken("Cannot pass IMMUTABLE as MUTABLE", actualParamToken);
 
-        ctx.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);
+        ctx.ir.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);
     }
 
-    ctx.popWorkingModule();
+    ctx.ir.popWorkingModule();
 
-    return ctx.functionBuilder.callFunction(calleeNameToken, callee);
+    return ctx.ir.functionBuilder.callFunction(calleeNameToken, callee);
 }
 
 Unit term(generator::GeneratorContext& ctx, const Node& root)
@@ -187,8 +187,8 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
 
 Unit stringLiteral(generator::GeneratorContext& ctx, const Node& root)
 {
-    std::string key = ctx.moduleBuilder.createStringData(root.tok);
-    return ctx.unitBuilder.unitFromStringDataKey(key);
+    std::string key = ctx.ir.moduleBuilder.createStringData(root.tok);
+    return ctx.ir.unitBuilder.unitFromStringDataKey(key);
 }
 
 Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
@@ -206,7 +206,7 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
                 ctx.console.typeError(child.tok, units[i - 1], units[i]);
     }
 
-    return ctx.unitBuilder.unitFromUnitList(units);
+    return ctx.ir.unitBuilder.unitFromUnitList(units);
 }
 
 Instruction tokenToBinaryOperator(const generator::GeneratorContext& ctx, const Token tok)
@@ -278,5 +278,5 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
 
     Instruction instruction = tokenToBinaryOperator(ctx, expressionOperator);
 
-    return ctx.functionBuilder.binaryOperator(instruction, LHS, RHS);
+    return ctx.ir.functionBuilder.binaryOperator(instruction, LHS, RHS);
 }

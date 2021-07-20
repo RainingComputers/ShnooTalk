@@ -2,6 +2,13 @@
 
 namespace icode
 {
+    Operand::Operand()
+    {
+        operandId = 0;
+        dtype = VOID;
+        operandType = NONE;
+    }
+
     bool Operand::operator<(const Operand& other) const
     {
         if (*this == other)

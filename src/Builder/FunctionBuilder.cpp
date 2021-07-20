@@ -1,5 +1,6 @@
 #include "NameMangle.hpp"
 #include "TypeDescriptionUtil.hpp"
+#include "Validator/EntryValidator.hpp"
 
 #include "FunctionBuilder.hpp"
 
@@ -23,6 +24,8 @@ void FunctionBuilder::setWorkingFunction(FunctionDescription* functionDesc)
 
 void FunctionBuilder::pushEntry(Entry entry)
 {
+    validateEntry(entry, console);
+
     (*workingFunction).icodeTable.push_back(entry);
 }
 

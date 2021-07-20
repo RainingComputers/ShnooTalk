@@ -36,6 +36,8 @@ class Console
 
     [[noreturn]] void lexerError(const std::string& errorMessage, const std::string& line, int lineno, int col);
 
+    void check(bool flag);
+
     std::ifstream* getStream();
 
     Console(const std::string& fileName, std::ifstream* file);

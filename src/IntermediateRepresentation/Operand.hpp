@@ -40,6 +40,8 @@ namespace icode
         DataType dtype;
         OperandType operandType;
 
+        Operand();
+
         bool operator<(const Operand& other) const;
         bool operator==(const Operand& other) const;
         bool isPointer() const;

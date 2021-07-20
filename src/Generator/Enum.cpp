@@ -7,5 +7,5 @@ void createEnumFromNode(generator::GeneratorContext& ctx, const Node& root)
     for (const Node& child : root.children)
         enums.push_back(child.tok);
 
-    ctx.moduleBuilder.createEnum(enums);
+    ctx.ir.moduleBuilder.createEnum(enums);
 }

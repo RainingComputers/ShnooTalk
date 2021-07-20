@@ -18,5 +18,5 @@ void input(generator::GeneratorContext& ctx, const Node& root)
     if (unit.isArray() && !unit.isChar())
         ctx.console.compileErrorOnToken("String input requires 1D CHAR ARRAY", root.children[0].tok);
 
-    ctx.functionBuilder.createInput(unit);
+    ctx.ir.functionBuilder.createInput(unit);
 }

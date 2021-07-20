@@ -6,7 +6,7 @@ Unit getUnitFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& nameToken = root.getNthChildToken(0);
 
-    Unit Unit = ctx.descriptionFinder.getUnitFromToken(nameToken);
+    Unit Unit = ctx.ir.descriptionFinder.getUnitFromToken(nameToken);
 
     if (Unit.isLocal())
         if (!ctx.scope.isInCurrentScope(nameToken))
@@ -34,7 +34,7 @@ std::pair<Unit, size_t> unitFromStructVar(generator::GeneratorContext& ctx,
 
     nodeCounter++;
 
-    const Unit returnUnit = ctx.functionBuilder.getStructField(fieldNameToken, unit);
+    const Unit returnUnit = ctx.ir.functionBuilder.getStructField(fieldNameToken, unit);
 
     return std::pair<Unit, size_t>(returnUnit, nodeCounter);
 }
@@ -69,7 +69,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext
             ctx.console.compileErrorOnToken("Index must be an integer", child.children[0].tok);
     }
 
-    const Unit returnUnit = ctx.functionBuilder.getIndexedElement(unit, indices);
+    const Unit returnUnit = ctx.ir.functionBuilder.getIndexedElement(unit, indices);
 
     return std::pair<Unit, size_t>(returnUnit, nodeCounter);
 }

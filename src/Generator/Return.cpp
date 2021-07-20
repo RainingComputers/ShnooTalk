@@ -7,7 +7,7 @@ using namespace icode;
 
 void functionReturn(generator::GeneratorContext& ctx, const Node& root)
 {
-    Unit returnTypeUnit = ctx.descriptionFinder.getReturnType();
+    Unit returnTypeUnit = ctx.ir.descriptionFinder.getReturnType();
 
     if (root.children.size() != 0)
     {
@@ -16,12 +16,12 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
         if (!isSameType(returnTypeUnit, returnValue))
             ctx.console.typeError(root.children[0].tok, returnTypeUnit, returnValue);
 
-        Unit returnPointer = ctx.functionBuilder.getReturnPointerUnit();
+        Unit returnPointer = ctx.ir.functionBuilder.getReturnPointerUnit();
 
-        ctx.functionBuilder.unitCopy(returnPointer, returnValue);
+        ctx.ir.functionBuilder.unitCopy(returnPointer, returnValue);
     }
     else if (returnTypeUnit.dtype() != VOID)
         ctx.console.compileErrorOnToken("Ret type is not VOID", root.tok);
 
-    ctx.functionBuilder.noArgumentEntry(RET);
+    ctx.ir.functionBuilder.noArgumentEntry(RET);
 }

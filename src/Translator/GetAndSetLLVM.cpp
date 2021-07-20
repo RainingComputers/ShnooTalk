@@ -77,7 +77,6 @@ Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op)
         case icode::LITERAL:
         case icode::ADDR:
             return getLLVMConstant(ctx, op);
-            return getLLVMConstant(ctx, op);
         case icode::VAR:
         case icode::GBL_VAR:
             return ctx.builder->CreateLoad(getLLVMPointer(ctx, op), op.name.c_str());

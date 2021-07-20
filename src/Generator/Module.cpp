@@ -7,7 +7,7 @@ int setWorkingModuleFromNode(generator::GeneratorContext& ctx, const Node& root,
     for (nodeCounter = startIndex; root.isNthChild(node::MODULE, nodeCounter); nodeCounter++)
     {
         const Token& moduleNameToken = root.children[nodeCounter].tok;
-        ctx.setWorkingModule(ctx.descriptionFinder.getModuleFromToken(moduleNameToken));
+        ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromToken(moduleNameToken));
     }
 
     return nodeCounter;

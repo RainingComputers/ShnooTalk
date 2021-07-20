@@ -9,55 +9,8 @@ namespace generator
                                        const std::string& fileName,
                                        Console& console)
 
-      : rootModule(modulesMap[fileName])
+      : ir(target, modulesMap, fileName, console)
       , console(console)
-      , moduleBuilder(modulesMap[fileName], modulesMap, console)
-      , unitBuilder(modulesMap[fileName], opBuilder)
-      , descriptionFinder(modulesMap[fileName], modulesMap, unitBuilder, console)
-      , functionBuilder(modulesMap, opBuilder, unitBuilder, console)
     {
-        workingFunction = nullptr;
-        workingModule = &rootModule;
-
-        rootModule.name = fileName;
-        rootModule.initializeTarget(target);
-
-        setWorkingModule(workingModule);
     }
-
-    void GeneratorContext::resetWorkingModule()
-    {
-        workingModule = &rootModule;
-        moduleBuilder.setWorkingModule(&rootModule);
-        descriptionFinder.setWorkingModule(&rootModule);
-        unitBuilder.setWorkingModule(&rootModule);
-    }
-
-    void GeneratorContext::setWorkingModule(icode::ModuleDescription* moduleDescription)
-    {
-        workingModule = moduleDescription;
-        moduleBuilder.setWorkingModule(moduleDescription);
-        descriptionFinder.setWorkingModule(moduleDescription);
-        unitBuilder.setWorkingModule(moduleDescription);
-    }
-
-    void GeneratorContext::pushWorkingModule()
-    {
-        moduleDescriptionStack.push_back(workingModule);
-    }
-
-    void GeneratorContext::popWorkingModule()
-    {
-        setWorkingModule(moduleDescriptionStack.back());
-        moduleDescriptionStack.pop_back();
-    }
-
-    void GeneratorContext::setWorkingFunction(const Token& functionNameToken)
-    {
-        std::string mangledFunctionName = nameMangle(functionNameToken, rootModule.name);
-
-        workingFunction = &rootModule.functions[mangledFunctionName];
-        functionBuilder.setWorkingFunction(workingFunction);
-        descriptionFinder.setWorkingFunction(workingFunction);
-    }
-} // namespace irgen
+}

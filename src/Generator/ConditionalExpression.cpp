@@ -55,8 +55,8 @@ void conditionalAndOperator(generator::GeneratorContext& ctx,
                             const icode::Operand& falseLabel,
                             bool trueFall)
 {
-    icode::Operand newTrueLabel = ctx.functionBuilder.createLabel(operatorToken, true, "and");
-    icode::Operand newFalseLabel = ctx.functionBuilder.createLabel(operatorToken, false, "and");
+    icode::Operand newTrueLabel = ctx.ir.functionBuilder.createLabel(operatorToken, true, "and");
+    icode::Operand newFalseLabel = ctx.ir.functionBuilder.createLabel(operatorToken, false, "and");
 
     if (trueFall)
         conditionalExpression(ctx, root.children[0], newTrueLabel, falseLabel, true);
@@ -66,7 +66,7 @@ void conditionalAndOperator(generator::GeneratorContext& ctx,
     conditionalExpression(ctx, root.children[2], trueLabel, falseLabel, trueFall);
 
     if (!trueFall)
-        ctx.functionBuilder.insertLabel(newFalseLabel);
+        ctx.ir.functionBuilder.insertLabel(newFalseLabel);
 }
 
 void conditionalOrOperator(generator::GeneratorContext& ctx,
@@ -76,8 +76,8 @@ void conditionalOrOperator(generator::GeneratorContext& ctx,
                            const icode::Operand& falseLabel,
                            bool trueFall)
 {
-    icode::Operand newTrueLabel = ctx.functionBuilder.createLabel(operatorToken, true, "or");
-    icode::Operand newFalseLabel = ctx.functionBuilder.createLabel(operatorToken, false, "or");
+    icode::Operand newTrueLabel = ctx.ir.functionBuilder.createLabel(operatorToken, true, "or");
+    icode::Operand newFalseLabel = ctx.ir.functionBuilder.createLabel(operatorToken, false, "or");
 
     if (!trueFall)
         conditionalExpression(ctx, root.children[0], trueLabel, newFalseLabel, false);
@@ -87,7 +87,7 @@ void conditionalOrOperator(generator::GeneratorContext& ctx,
     conditionalExpression(ctx, root.children[2], trueLabel, falseLabel, trueFall);
 
     if (trueFall)
-        ctx.functionBuilder.insertLabel(newTrueLabel);
+        ctx.ir.functionBuilder.insertLabel(newTrueLabel);
 }
 
 void relationalOperator(generator::GeneratorContext& ctx,
@@ -108,12 +108,12 @@ void relationalOperator(generator::GeneratorContext& ctx,
     if (!isSameType(LHS, RHS))
         ctx.console.typeError(root.children[2].tok, LHS, RHS);
 
-    ctx.functionBuilder.compareOperator(opcode, LHS, RHS);
+    ctx.ir.functionBuilder.compareOperator(opcode, LHS, RHS);
 
     if (!trueFall)
-        ctx.functionBuilder.createBranch(icode::IF_TRUE_GOTO, trueLabel);
+        ctx.ir.functionBuilder.createBranch(icode::IF_TRUE_GOTO, trueLabel);
     else
-        ctx.functionBuilder.createBranch(icode::IF_FALSE_GOTO, falseLabel);
+        ctx.ir.functionBuilder.createBranch(icode::IF_FALSE_GOTO, falseLabel);
 }
 
 void conditionalExpression(generator::GeneratorContext& ctx,

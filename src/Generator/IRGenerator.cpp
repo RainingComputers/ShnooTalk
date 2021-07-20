@@ -54,18 +54,18 @@ void generateFunction(generator::GeneratorContext& ctx, const Node& child)
 {
     const Token& functionNameToken = child.children[0].tok;
 
-    ctx.setWorkingFunction(functionNameToken);
+    ctx.ir.setWorkingFunction(functionNameToken);
 
     ctx.scope.resetScope();
 
     block(ctx,
           child.children.back(),
           false,
-          ctx.opBuilder.createLabelOperand(""),
-          ctx.opBuilder.createLabelOperand(""),
-          ctx.opBuilder.createLabelOperand(""));
+          ctx.ir.opBuilder.createLabelOperand(""),
+          ctx.ir.opBuilder.createLabelOperand(""),
+          ctx.ir.opBuilder.createLabelOperand(""));
 
-    ctx.functionBuilder.terminateFunction(functionNameToken);
+    ctx.ir.functionBuilder.terminateFunction(functionNameToken);
 }
 
 void generator::generateModule(generator::GeneratorContext& ctx, const Node& root)

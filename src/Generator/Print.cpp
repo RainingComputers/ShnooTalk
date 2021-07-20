@@ -13,12 +13,12 @@ void print(generator::GeneratorContext& ctx, const Node& root)
         if (unit.isStruct() || unit.isMultiDimArray())
             ctx.console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
 
-        ctx.functionBuilder.createPrint(unit);
+        ctx.ir.functionBuilder.createPrint(unit);
 
         if (i != root.children.size() - 1)
-            ctx.functionBuilder.noArgumentEntry(icode::SPACE);
+            ctx.ir.functionBuilder.noArgumentEntry(icode::SPACE);
 
         if (i == root.children.size() - 1 && root.type == node::PRINTLN)
-            ctx.functionBuilder.noArgumentEntry(icode::NEWLN);
+            ctx.ir.functionBuilder.noArgumentEntry(icode::NEWLN);
     }
 }

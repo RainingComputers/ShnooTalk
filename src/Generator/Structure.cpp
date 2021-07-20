@@ -21,5 +21,5 @@ void createStructFromNode(generator::GeneratorContext& ctx, const Node& root)
         fieldTypes.push_back(fieldType);
     }
 
-    ctx.moduleBuilder.createStructDescription(nameToken, fieldNames, fieldTypes);
+    ctx.ir.moduleBuilder.createStructDescription(nameToken, fieldNames, fieldTypes);
 }

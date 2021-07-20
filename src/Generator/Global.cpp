@@ -12,5 +12,5 @@ void createGlobalFromNode(generator::GeneratorContext& ctx, const Node& root)
 
     globalType.becomeMutable();
 
-    ctx.moduleBuilder.createGlobal(globalName, globalType);
+    ctx.ir.moduleBuilder.createGlobal(globalName, globalType);
 }

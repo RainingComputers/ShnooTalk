@@ -54,6 +54,12 @@ void Console::lexerError(const std::string& errorMessage, const std::string& lin
     throw CompileError();
 }
 
+void Console::check(bool flag)
+{
+    if (!flag)
+        internalBugError();
+}
+
 std::ifstream* Console::getStream()
 {
     return file;
