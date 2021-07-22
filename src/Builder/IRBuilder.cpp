@@ -2,7 +2,7 @@
 
 #include "IRBuilder.hpp"
 
-ShnooTalkIRBuilder::ShnooTalkIRBuilder(icode::TargetEnums& target,
+IRBuilder::IRBuilder(icode::TargetEnums& target,
                      icode::StringModulesMap& modulesMap,
                      const std::string& fileName,
                      Console& console)
@@ -23,7 +23,7 @@ ShnooTalkIRBuilder::ShnooTalkIRBuilder(icode::TargetEnums& target,
     setWorkingModule(workingModule);
 }
 
-void ShnooTalkIRBuilder::resetWorkingModule()
+void IRBuilder::resetWorkingModule()
 {
     workingModule = &rootModule;
     moduleBuilder.setWorkingModule(&rootModule);
@@ -31,7 +31,7 @@ void ShnooTalkIRBuilder::resetWorkingModule()
     unitBuilder.setWorkingModule(&rootModule);
 }
 
-void ShnooTalkIRBuilder::setWorkingModule(icode::ModuleDescription* moduleDescription)
+void IRBuilder::setWorkingModule(icode::ModuleDescription* moduleDescription)
 {
     workingModule = moduleDescription;
     moduleBuilder.setWorkingModule(moduleDescription);
@@ -39,18 +39,18 @@ void ShnooTalkIRBuilder::setWorkingModule(icode::ModuleDescription* moduleDescri
     unitBuilder.setWorkingModule(moduleDescription);
 }
 
-void ShnooTalkIRBuilder::pushWorkingModule()
+void IRBuilder::pushWorkingModule()
 {
     moduleDescriptionStack.push_back(workingModule);
 }
 
-void ShnooTalkIRBuilder::popWorkingModule()
+void IRBuilder::popWorkingModule()
 {
     setWorkingModule(moduleDescriptionStack.back());
     moduleDescriptionStack.pop_back();
 }
 
-void ShnooTalkIRBuilder::setWorkingFunction(const Token& functionNameToken)
+void IRBuilder::setWorkingFunction(const Token& functionNameToken)
 {
     std::string mangledFunctionName = nameMangle(functionNameToken, rootModule.name);
 

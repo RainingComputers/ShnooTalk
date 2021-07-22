@@ -8,7 +8,7 @@ namespace generator
 {
     struct GeneratorContext
     {
-        ShnooTalkIRBuilder ir;
+        IRBuilder ir;
         ScopeTracker scope;
         Console& console;
 

@@ -4,7 +4,7 @@
 
 void validateNoneOperand(const icode::Operand& op, Console& con)
 {
-    con.check(voidDataType(op));
+    con.check(op.dtype == icode::VOID);
     con.check(op.name.size() == 0);
 }
 
@@ -20,9 +20,15 @@ void validateTempPtrOperand(const icode::Operand& op, Console& con)
     con.check(op.name.size() == 0);
 }
 
+void validateStrDataOperand(const icode::Operand& op, Console& con)
+{
+    con.check(op.dtype == icode::UI8);
+    con.check(op.name.size() != 0);
+}
+
 void validateNameOperand(const icode::Operand& op, Console& con)
 {
-    con.check(voidDataType(op));
+    con.check(op.dtype == icode::VOID);
     con.check(op.name.size() != 0);
 }
 
@@ -60,6 +66,8 @@ void validateOperand(const icode::Operand& op, Console& con)
             validateRetOperand(op, con);
             break;
         case icode::STR_DATA:
+            validateStrDataOperand(op, con);
+            break;
         case icode::LABEL:
         case icode::MODULE:
             validateNameOperand(op, con);

@@ -39,6 +39,7 @@ Operand OperandBuilder::createStringDataOperand(const std::string& name, unsigne
     temp.name = name;
     temp.operandType = STR_DATA;
     temp.val.size = size;
+    temp.dtype = icode::UI8;
 
     return temp;
 }

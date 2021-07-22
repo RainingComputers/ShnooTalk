@@ -45,7 +45,7 @@ class Unit
 
     bool isPointer() const;
 
-    bool isInvalidForInput() const;
+    bool isValidForInput() const;
     bool canPassAsMutable() const;
     bool isLiteral() const;
 

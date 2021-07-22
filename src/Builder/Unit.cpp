@@ -118,9 +118,9 @@ bool Unit::isPointer() const
     return operand.isPointer();
 }
 
-bool Unit::isInvalidForInput() const
+bool Unit::isValidForInput() const
 {
-    return operand.isInvalidForInput();
+    return operand.isValidForInput();
 }
 
 bool Unit::canPassAsMutable() const

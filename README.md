@@ -49,8 +49,9 @@ clang app.o -o app
 - [x] Fix bugs in the LLVM translator backend
 - [x] Array return types
 - [x] Fix def
-- [ ] IR Validator
+- [x] IR Validator
 - [ ] Change IR pretty print to JSON
+- [ ] Main function checks
 - [ ] `exit()` function
 - [ ] Extern C functions and function imports
 - [ ] `loop {}` syntax for looping forever

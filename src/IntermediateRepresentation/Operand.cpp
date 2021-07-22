@@ -51,13 +51,19 @@ namespace icode
         return operandType == PTR || operandType == TEMP_PTR;
     }
 
-    bool Operand::canPassAsMutable() const
+    bool Operand::isNotPointer() const
     {
-        return !(operandType == TEMP || operandType == STR_DATA || operandType == LITERAL);
+        return operandType == icode::TEMP || operandType == icode::LITERAL || operandType == icode::VAR ||
+               operandType == icode::GBL_VAR || operandType == icode::CALLEE_RET_VAL;
     }
 
-    bool Operand::isInvalidForInput() const
+    bool Operand::canPassAsMutable() const
     {
-        return !(operandType == VAR || operandType == GBL_VAR || operandType == TEMP_PTR || operandType == PTR);
+        return operandType == TEMP_PTR || operandType == VAR || operandType == GBL_VAR || operandType == PTR;
+    }
+
+    bool Operand::isValidForInput() const
+    {
+        return operandType == VAR || operandType == GBL_VAR || operandType == TEMP_PTR || operandType == PTR;
     }
 }

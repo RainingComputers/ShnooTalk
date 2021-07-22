@@ -45,8 +45,9 @@ namespace icode
         bool operator<(const Operand& other) const;
         bool operator==(const Operand& other) const;
         bool isPointer() const;
+        bool isNotPointer() const;
         bool canPassAsMutable() const;
-        bool isInvalidForInput() const;
+        bool isValidForInput() const;
     };
 }
 

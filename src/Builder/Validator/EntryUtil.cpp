@@ -13,7 +13,7 @@ bool allOperandNonVoidBaseDataType(const icode::Entry& e)
 
 bool allOperandNonPointer(const icode::Entry& e)
 {
-    return notPointer(e.op1) && notPointer(e.op2) && (notPointer(e.op3) || none(e.op3));
+    return e.op1.isNotPointer() && e.op2.isNotPointer() && (e.op3.isNotPointer() || none(e.op3));
 }
 
 bool noOperand(const icode::Entry& e)

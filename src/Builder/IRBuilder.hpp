@@ -10,7 +10,7 @@
 #include "../IntermediateRepresentation/ModuleDescription.hpp"
 #include "../Node/Node.hpp"
 
-class ShnooTalkIRBuilder
+class IRBuilder
 {
     icode::ModuleDescription& rootModule;
 
@@ -35,7 +35,7 @@ class ShnooTalkIRBuilder
 
     void setWorkingFunction(const Token& functionNameToken);
 
-    ShnooTalkIRBuilder(icode::TargetEnums& target,
+    IRBuilder(icode::TargetEnums& target,
                      icode::StringModulesMap& modules_map,
                      const std::string& file_name,
                      Console& console);

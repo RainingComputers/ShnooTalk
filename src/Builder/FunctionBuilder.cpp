@@ -126,7 +126,7 @@ void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
 
     memCpyEntry.op1 = op1;
     memCpyEntry.op2 = op2;
-    memCpyEntry.op3 = opBuilder.createIntLiteralOperand(I64, numBytes);
+    memCpyEntry.op3 = opBuilder.createIntLiteralOperand(AUTO_INT, numBytes);
     memCpyEntry.opcode = MEMCPY;
 
     pushEntry(memCpyEntry);
