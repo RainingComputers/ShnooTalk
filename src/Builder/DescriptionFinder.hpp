@@ -25,7 +25,7 @@ class DescriptionFinder
     bool getStringDefine(const Token& nameToken, Unit& returnValue);
     bool getEnum(const Token& nameToken, Unit& returnValue);
 
-  public:
+public:
     DescriptionFinder(icode::ModuleDescription& rootModule,
                       icode::StringModulesMap& modulesMap,
                       UnitBuilder& unitBuilder,

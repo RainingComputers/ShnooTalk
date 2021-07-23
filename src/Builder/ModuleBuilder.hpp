@@ -16,7 +16,7 @@ class ModuleBuilder
 
     std::pair<int, std::string> getSizeAndModuleName(const Token& dataTypeToken, icode::DataType dtype);
 
-  public:
+public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
 
     void setWorkingModule(icode::ModuleDescription* moduleDescription);

@@ -28,7 +28,7 @@ namespace lexer
         token::TokenType typeFromStringMatch(const std::string& string);
         void consume(std::ifstream& file);
 
-      public:
+    public:
         Lexer(std::ifstream& file, Console& console);
         bool getToken(Token& symbol);
         Token peekToken();

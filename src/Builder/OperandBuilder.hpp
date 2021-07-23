@@ -7,7 +7,7 @@ class OperandBuilder
 {
     unsigned int idCounter;
 
-  public:
+public:
     OperandBuilder();
 
     unsigned int getId();

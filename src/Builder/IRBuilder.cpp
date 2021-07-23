@@ -7,12 +7,12 @@ IRBuilder::IRBuilder(icode::TargetEnums& target,
                      const std::string& fileName,
                      Console& console)
 
-  : rootModule(modulesMap[fileName])
-  , console(console)
-  , moduleBuilder(modulesMap[fileName], modulesMap, console)
-  , unitBuilder(modulesMap[fileName], opBuilder)
-  , descriptionFinder(modulesMap[fileName], modulesMap, unitBuilder, console)
-  , functionBuilder(modulesMap, opBuilder, unitBuilder, console)
+    : rootModule(modulesMap[fileName])
+    , console(console)
+    , moduleBuilder(modulesMap[fileName], modulesMap, console)
+    , unitBuilder(modulesMap[fileName], opBuilder)
+    , descriptionFinder(modulesMap[fileName], modulesMap, unitBuilder, console)
+    , functionBuilder(modulesMap, opBuilder, unitBuilder, console)
 {
     workingFunction = nullptr;
     workingModule = &rootModule;

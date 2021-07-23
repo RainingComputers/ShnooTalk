@@ -5,8 +5,8 @@
 using namespace icode;
 
 UnitBuilder::UnitBuilder(ModuleDescription& rootModule, OperandBuilder& opBuilder)
-  : rootModule(rootModule)
-  , opBuilder(opBuilder)
+    : rootModule(rootModule)
+    , opBuilder(opBuilder)
 {
 }
 

@@ -14,7 +14,7 @@ class ScopeTracker
 
     unsigned int getCurrentScope();
 
-  public:
+public:
     ScopeTracker();
     void createScope();
     void exitScope();

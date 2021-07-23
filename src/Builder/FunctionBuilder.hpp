@@ -42,7 +42,7 @@ class FunctionBuilder
 
     bool doesFunctionTerminate();
 
-  public:
+public:
     FunctionBuilder(icode::StringModulesMap& modulesMap,
                     OperandBuilder& opBuilder,
                     UnitBuilder& unitBuilder,

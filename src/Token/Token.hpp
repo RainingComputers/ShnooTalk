@@ -99,7 +99,7 @@ class Token
 
     void initializeUnescapedString();
 
-  public:
+public:
     int getPrecedence() const;
     bool isBitwiseOperation() const;
     bool isIntLiteral() const;

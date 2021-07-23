@@ -8,9 +8,9 @@
 using namespace icode;
 
 ModuleBuilder::ModuleBuilder(ModuleDescription& rootModule, StringModulesMap& modulesMap, Console& console)
-  : rootModule(rootModule)
-  , modulesMap(modulesMap)
-  , console(console)
+    : rootModule(rootModule)
+    , modulesMap(modulesMap)
+    , console(console)
 {
 }
 

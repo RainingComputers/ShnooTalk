@@ -14,7 +14,7 @@ class UnitBuilder
 
     int getCharCountFromStringDataKey(const std::string& key);
 
-  public:
+public:
     UnitBuilder(icode::ModuleDescription& rootModule, OperandBuilder& opBuilder);
 
     void setWorkingModule(icode::ModuleDescription* moduleDescription);

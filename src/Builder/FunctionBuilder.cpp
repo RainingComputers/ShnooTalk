@@ -10,10 +10,10 @@ FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap,
                                  OperandBuilder& opBuilder,
                                  UnitBuilder& unitBuilder,
                                  Console& console)
-  : modulesMap(modulesMap)
-  , opBuilder(opBuilder)
-  , unitBuilder(unitBuilder)
-  , console(console)
+    : modulesMap(modulesMap)
+    , opBuilder(opBuilder)
+    , unitBuilder(unitBuilder)
+    , console(console)
 {
 }
 

@@ -22,7 +22,7 @@ namespace lexer
     }
 
     Lexer::Lexer(std::ifstream& file, Console& console)
-      : console(console)
+        : console(console)
     {
         consume(file);
         getTokenIndex = 0;

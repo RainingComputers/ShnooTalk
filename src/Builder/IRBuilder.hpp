@@ -1,14 +1,14 @@
 #ifndef BUILDER_IRBUILDER
 #define BUILDER_IRBUILDER
 
-#include "DescriptionFinder.hpp"
-#include "FunctionBuilder.hpp"
-#include "ModuleBuilder.hpp"
-#include "UnitBuilder.hpp"
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/FunctionDescription.hpp"
 #include "../IntermediateRepresentation/ModuleDescription.hpp"
 #include "../Node/Node.hpp"
+#include "DescriptionFinder.hpp"
+#include "FunctionBuilder.hpp"
+#include "ModuleBuilder.hpp"
+#include "UnitBuilder.hpp"
 
 class IRBuilder
 {
@@ -19,7 +19,7 @@ class IRBuilder
 
     std::vector<icode::ModuleDescription*> moduleDescriptionStack;
 
-  public:
+public:
     Console& console;
 
     ModuleBuilder moduleBuilder;
@@ -36,9 +36,9 @@ class IRBuilder
     void setWorkingFunction(const Token& functionNameToken);
 
     IRBuilder(icode::TargetEnums& target,
-                     icode::StringModulesMap& modules_map,
-                     const std::string& file_name,
-                     Console& console);
+              icode::StringModulesMap& modules_map,
+              const std::string& file_name,
+              Console& console);
 };
 
 #endif

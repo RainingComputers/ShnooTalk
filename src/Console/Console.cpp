@@ -1,7 +1,7 @@
 #include "Console.hpp"
 
 Console::Console(const std::string& fileName, std::ifstream* file)
-  : fileName(fileName)
+    : fileName(fileName)
 {
     this->file = file;
 }

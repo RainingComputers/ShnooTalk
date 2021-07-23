@@ -8,10 +8,10 @@ DescriptionFinder::DescriptionFinder(ModuleDescription& rootModule,
                                      StringModulesMap& modulesMap,
                                      UnitBuilder& unitBuilder,
                                      Console& console)
-  : rootModule(rootModule)
-  , modulesMap(modulesMap)
-  , unitBuilder(unitBuilder)
-  , console(console)
+    : rootModule(rootModule)
+    , modulesMap(modulesMap)
+    , unitBuilder(unitBuilder)
+    , console(console)
 {
 }
 

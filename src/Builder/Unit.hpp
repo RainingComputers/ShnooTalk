@@ -12,7 +12,7 @@ class Unit
     icode::Operand operand;
     std::vector<Unit> list;
 
-  public:
+public:
     Unit();
     Unit(const icode::TypeDescription& type, const icode::Operand& operand);
     Unit(const icode::TypeDescription& type, const std::vector<Unit>& list);

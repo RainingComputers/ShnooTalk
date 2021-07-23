@@ -19,7 +19,7 @@ class Console
     const std::string fileName;
     std::ifstream* file;
 
-  public:
+public:
     [[noreturn]] void compileErrorOnToken(const std::string& message, const Token& tok);
 
     [[noreturn]] void typeError(const Token& tok, const Unit& expected, const Unit& found);

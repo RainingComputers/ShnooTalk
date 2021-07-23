@@ -9,8 +9,8 @@ namespace generator
                                        const std::string& fileName,
                                        Console& console)
 
-      : ir(target, modulesMap, fileName, console)
-      , console(console)
+        : ir(target, modulesMap, fileName, console)
+        , console(console)
     {
     }
 }
