@@ -45,7 +45,7 @@ std::string operandToName(const icode::Operand& op)
     }
 }
 
-std::string prettyPrintEntryEqual(const icode::Entry& entry)
+std::string prettyPrintEntryEqualLHS(const icode::Entry& entry)
 {
     std::string entryString = "    ";
 
@@ -125,14 +125,14 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::READ:
         case icode::WRITE:
         case icode::MEMCPY:
-            return prettyPrintEntryEqual(entry);
+        case icode::CALL:
+            return prettyPrintEntryEqualLHS(entry);
         case icode::EQ:
         case icode::NEQ:
         case icode::LT:
         case icode::LTE:
         case icode::GT:
         case icode::GTE:
-        case icode::CALL:
             return prettyPrintEntryCompare(entry);
         case icode::CREATE_LABEL:
             return operandToName(entry.op1) + ":";
