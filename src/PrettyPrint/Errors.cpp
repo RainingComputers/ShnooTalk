@@ -105,7 +105,7 @@ namespace pp
 
         icode::TypeDescription modifiedFound = found;
 
-        if (found.dtype == expected.dtype && found.dtype != icode::STRUCT)
+        if (icode::dataTypeIsEqual(found.dtype, expected.dtype) && found.dtype != icode::STRUCT)
             modifiedFound.dtypeName = expected.dtypeName;
 
         std::string foundString = typeDescriptionToTypeString(modifiedFound);

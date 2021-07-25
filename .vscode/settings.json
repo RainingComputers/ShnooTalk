@@ -72,6 +72,7 @@
         "CONDN",
         "LLVM",
         "Ltrl",
+        "MEMCPY",
         "Newln",
         "Qualident",
         "RPAREN",
@@ -92,6 +93,7 @@
         "stof",
         "stoi",
         "struct",
+        "ubyte",
         "uhll"
     ]
 }

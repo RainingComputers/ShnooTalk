@@ -5,6 +5,7 @@
 #include "Generator/IRGenerator.hpp"
 #include "Lexer/Lexer.hpp"
 #include "Parser/Parser.hpp"
+#include "PrettyPrint/ASTPrinter.hpp"
 #include "PrettyPrint/IRPrinter.hpp"
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
@@ -15,7 +16,9 @@ void printCLIUsage()
     pp::println("\nAvailable options:");
     pp::println("\t-c\tCompile program");
     pp::println("\t-ast\tPrint parse tree");
+    pp::println("\t-jsonast\tPrint parse tree in JSON");
     pp::println("\t-ir\tPrint intermediate code representation");
+    pp::println("\t-jsonir\tPrint intermediate code representation completely in JSON");
     pp::println("\t-llvm\tPrint llvm ir");
 }
 
@@ -77,13 +80,25 @@ int phaseDriver(const std::string& fileName, const std::string& option)
         return 0;
     }
 
+    if (option == "-jsonast")
+    {
+        pp::printJSONAST(generateAST(console));
+        return 0;
+    }
+
     icode::StringModulesMap modulesMap;
     icode::TargetEnums target = translator::getTarget();
     generateIR(console, moduleName, target, modulesMap);
 
     if (option == "-ir")
     {
-        pp::printModuleDescription(modulesMap[moduleName]);
+        pp::printModuleDescription(modulesMap[moduleName], false);
+        return 0;
+    }
+
+    if (option == "-jsonir")
+    {
+        pp::printModuleDescription(modulesMap[moduleName], true);
         return 0;
     }
 

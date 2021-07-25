@@ -4,7 +4,7 @@
 #     var i:int = 2 + f
 #                     ^
 # Type error, did not expect float,
-# expected INT
+# expected autoInt
 
 fn main()
 {

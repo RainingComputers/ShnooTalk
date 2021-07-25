@@ -3,8 +3,8 @@
 # 
 #     var a:int[3][3] = [[1, 2, 3], [4, 5, 6], [7, 8]]
 #                                              ^
-# Type error, did not expect INT[2],
-# expected INT[3]
+# Type error, did not expect autoInt[2],
+# expected autoInt[3]
 
 fn main()
 {

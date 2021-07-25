@@ -90,11 +90,28 @@ const std::string nodeTypeToString[] = { "PROGRAM",    "USE",         "FROM",   
                                          "TERM",       "SIZEOF",      "TYPEOF",     "PRINT",      "PRINTLN",
                                          "INPUT",      "EXIT" };
 
-const std::string instructionToString[] = {
-    "PASS",         "PASS_ADDR",  "CALL",      "RET",         "ADDR_ADD", "ADDR_MUL", "EQUAL",        "READ",
-    "WRITE",        "CREATE_PTR", "CAST",      "UNARY_MINUS", "NOT",      "MUL",      "DIV",          "MOD",
-    "ADD",          "SUB",        "RSH",       "LSH",         "LT",       "LTE",      "GT",           "GTE",
-    "EQ",           "NEQ",        "BWA",       "BWX",         "BWO",      "GOTO",     "IF_TRUE_GOTO", "IF_FALSE_GOTO",
-    "CREATE_LABEL", "PRINT",      "PRINT_STR", "SPACE",       "NEWLN",    "INPUT",    "INPUT_STR",    "MEMCPY",
-    "EXIT"
-};
+const std::string operandTypeToString[] = { "TEMP",    "TEMP_PTR", "ADDR",      "STR_DATA",       "VAR",
+                                            "GBL_VAR", "PTR",      "RET_VALUE", "CALLEE_RET_VAL", "LITERAL",
+                                            "LABEL",   "MODULE",   "NONE" };
+
+const std::string instructionToString[] = { "pass",        "passAddress",
+                                            "call",        "return",
+                                            "addressAdd",  "addressMultiply",
+                                            "equal",       "read",
+                                            "write",       "createPointer",
+                                            "cast",        "unaryMinus",
+                                            "not",         "multiply",
+                                            "divide",      "remainder",
+                                            "add",         "subtract",
+                                            "rightShift",  "leftShift",
+                                            "lessThan",    "lessThanOrEqualTo",
+                                            "greaterThan", "greaterThanOrEqualTo",
+                                            "isEqual",     "isNotEqual",
+                                            "bitwiseAnd",  "bitwiseXor",
+                                            "bitwiseOr",   "goto",
+                                            "gotoIfTrue",  "gotoIfFalse",
+                                            "createLabel", "print",
+                                            "printString", "space",
+                                            "newLine",     "input",
+                                            "inputString", "memoryCopy",
+                                            "exit" };

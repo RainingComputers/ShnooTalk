@@ -3,7 +3,7 @@
 # 
 #     var i:int = 2.0
 #                 ^
-# Type error, did not expect FLOAT,
+# Type error, did not expect autoFloat,
 # expected int
 
 fn main()

@@ -50,7 +50,8 @@ clang app.o -o app
 - [x] Array return types
 - [x] Fix def
 - [x] IR Validator
-- [ ] Change IR pretty print to JSON
+- [x] Change IR pretty print to JSON
+- [ ] IR renaming and cleanup
 - [ ] Main function checks
 - [ ] `exit()` function
 - [ ] Extern C functions and function imports

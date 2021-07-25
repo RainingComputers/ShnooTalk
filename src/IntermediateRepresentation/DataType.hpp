@@ -31,6 +31,7 @@ namespace icode
     std::string dataTypeToString(const DataType dtype);
     DataType stringToDataType(const std::string& dtypeName);
     int getDataTypeSize(const DataType dtype);
+    bool dataTypeIsEqual(DataType dtype1, DataType dtype2);
 
 }
 

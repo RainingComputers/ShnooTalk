@@ -1,275 +1,205 @@
+#include "FlatJSONPrinter.hpp"
+#include "JSONMapUtil.hpp"
+
+#include "EntryPrinter.hpp"
 #include "IRPrinter.hpp"
 
 namespace pp
 {
-    void printToken(const Token& symbol)
+    void printOperand(const icode::Operand& op, FlatJSONPrinter& jsonp)
     {
-        /* Prints token and its properties */
+        jsonp.begin();
 
-        std::cout << "Token(\"" << symbol.toString() << "\", " << tokenTypeToString[symbol.getType()]
-                  << ", line=" << symbol.getLineNo() << ", col=" << symbol.getColumn() << ")";
-    }
+        jsonp.printString("type", operandTypeToString[op.operandType]);
 
-    void printNode(const Node& node, int depth)
-    {
-        /* Recursively prints tree, used to print AST */
+        if (op.operandType != icode::NONE)
+            jsonp.printNumber("id", op.operandId);
 
-        static std::vector<bool> isLastChild;
-
-        std::cout << "Node(" << nodeTypeToString[node.type] << ", ";
-        printToken(node.tok);
-        std::cout << ")" << std::endl;
-
-        isLastChild.push_back(false);
-
-        for (int i = 0; i < (int)node.children.size(); i++)
-        {
-            for (int j = 1; j <= depth; j++)
-                if (j == depth)
-                    if (i == (int)node.children.size() - 1)
-                        std::cout << "└"
-                                  << "──";
-                    else
-                        std::cout << "├"
-                                  << "──";
-                else if (isLastChild[j - 1])
-                    std::cout << " "
-                              << "  ";
-                else
-                    std::cout << "│"
-                              << "  ";
-
-            if (i == (int)node.children.size() - 1)
-                isLastChild[depth - 1] = true;
-
-            printNode(node.children[i], depth + 1);
-        }
-
-        isLastChild.pop_back();
-    }
-
-    void printOperand(const icode::Operand& op)
-    {
         switch (op.operandType)
         {
             case icode::TEMP:
-                std::cout << "Temp(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
-                break;
             case icode::TEMP_PTR:
-                std::cout << "TempPtr(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
-                break;
-            case icode::STR_DATA:
-                std::cout << "StrDat(name=" << op.name << " size=" << op.val.size;
-                break;
-            case icode::ADDR:
-                std::cout << "Addr(" << op.val.address;
+            case icode::RET_VALUE:
+            case icode::CALLEE_RET_VAL:
+                jsonp.printString("dtype", icode::dataTypeToString(op.dtype));
                 break;
             case icode::VAR:
-                std::cout << "Var(" << op.name << ":" << icode::dataTypeToString(op.dtype);
-                break;
             case icode::GBL_VAR:
-                std::cout << "GblVar(" << op.name << ":" << icode::dataTypeToString(op.dtype);
-                break;
             case icode::PTR:
-                std::cout << "Ptr(" << op.name << ":" << icode::dataTypeToString(op.dtype);
+                jsonp.printString("name", op.name);
+                jsonp.printString("dtype", icode::dataTypeToString(op.dtype));
                 break;
-            case icode::RET_VALUE:
-                std::cout << "RetVal(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
+            case icode::STR_DATA:
+                jsonp.printString("name", op.name);
+                jsonp.printNumber("size", op.val.size);
                 break;
-            case icode::CALLEE_RET_VAL:
-                std::cout << "CalleeRetVal(id_" << op.operandId << ":" << icode::dataTypeToString(op.dtype);
+            case icode::ADDR:
+                jsonp.printNumber("bytes", op.val.address);
                 break;
             case icode::LITERAL:
             {
-                if (icode::isUnsignedInteger(op.dtype))
-                    std::cout << "Ltrl(" << op.val.size << ":" << icode::dataTypeToString(op.dtype);
-                else if (icode::isInteger(op.dtype))
-                    std::cout << "Ltrl(" << op.val.integer << ":" << icode::dataTypeToString(op.dtype);
+                jsonp.printString("dtype", icode::dataTypeToString(op.dtype));
+
+                if (icode::isInteger(op.dtype))
+                    jsonp.printNumber("value", op.val.integer);
                 else
-                    std::cout << "Ltrl(" << op.val.floating << ":" << icode::dataTypeToString(op.dtype);
+                    jsonp.printNumber("value", op.val.floating);
 
                 break;
             }
             case icode::LABEL:
-                std::cout << "Label(" << op.name;
-                break;
             case icode::MODULE:
-                std::cout << "Module(" << op.name;
+                jsonp.printString("name", op.name);
                 break;
             case icode::NONE:
-                return;
                 break;
         }
 
-        std::cout << ")";
+        jsonp.end();
     }
 
-    void printEntry(const icode::Entry& entry)
+    void printEntry(const icode::Entry& entry, FlatJSONPrinter& jsonp)
     {
-        std::cout << instructionToString[entry.opcode] << " ";
-        printOperand(entry.op1);
-        std::cout << " ";
-        printOperand(entry.op2);
-        std::cout << " ";
-        printOperand(entry.op3);
+        jsonp.begin();
+
+        jsonp.printString("opcode", instructionToString[entry.opcode]);
+
+        FlatJSONPrinter op1Printer = jsonp.beginNested("op1");
+        printOperand(entry.op1, op1Printer);
+
+        FlatJSONPrinter op2Printer = jsonp.beginNested("op2");
+        printOperand(entry.op2, op2Printer);
+
+        FlatJSONPrinter op3Printer = jsonp.beginNested("op3");
+        printOperand(entry.op3, op3Printer);
+
+        jsonp.end();
     }
 
-    void printTypeDescription(const icode::TypeDescription& typeDescription)
+    void printTypeDescription(const icode::TypeDescription& typeDescription, FlatJSONPrinter& jsonp)
     {
-        std::cout << "Var(";
-        std::cout << "dtype="
-                  << "\"" << typeDescription.dtypeName << "\":";
-        std::cout << icode::dataTypeToString(typeDescription.dtype);
-        std::cout << " dtypesize=" << typeDescription.dtypeSize;
-        std::cout << " mod="
-                  << "\"" << typeDescription.moduleName << "\"";
-        std::cout << " offset=" << typeDescription.offset;
-        std::cout << " size=" << typeDescription.size;
-
-        std::cout << " dim=[";
-        for (unsigned int i : typeDescription.dimensions)
-            std::cout << i << ",";
-        std::cout << "]";
-
-        std::cout << ")";
+        jsonp.begin();
+        jsonp.printString("dtype", icode::dataTypeToString(typeDescription.dtype));
+        jsonp.printNumber("dtypeSize", typeDescription.dtypeSize);
+        jsonp.printNumber("size", typeDescription.size);
+        jsonp.printString("moduleName", typeDescription.moduleName);
+        jsonp.printNumber("offset", typeDescription.offset);
+        jsonp.printIntArray("dimensions", typeDescription.dimensions);
+        jsonp.end();
     }
 
-    void printStructDescription(const icode::StructDescription& structDesc, int ilvl)
+    void printTypeDescriptionMap(const std::map<std::string, icode::TypeDescription>& typeMap, FlatJSONPrinter& jsonp)
     {
-        std::cout << "Struct(" << std::endl;
+        jsonp.begin();
 
-        std::cout << std::string(ilvl + 3, ' ') << "Fields={" << std::endl;
-        for (auto field : structDesc.structFields)
+        for (auto pair : typeMap)
         {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << field.first << ":";
-            printTypeDescription(field.second);
-            std::cout << std::endl;
+            FlatJSONPrinter typePrinter = jsonp.beginNested(pair.first, true);
+            printTypeDescription(pair.second, typePrinter);
         }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
-        std::cout << std::string(ilvl + 3, ' ') << "Size=" << structDesc.size << std::endl;
-
-        std::cout << std::string(ilvl + 3, ' ') << "Module=" << structDesc.size << std::endl;
-
-        std::cout << std::string(ilvl, ' ') << ")" << std::endl;
+        jsonp.end();
     }
 
-    void printFunctionDescription(const icode::FunctionDescription& functionDesc, int ilvl)
+    void printStructDescription(const icode::StructDescription& structDesc, FlatJSONPrinter& jsonp)
     {
-        std::cout << "Func(" << std::endl;
+        jsonp.begin();
 
-        std::cout << std::string(ilvl + 3, ' ') << "Params=[";
-        for (std::string param : functionDesc.parameters)
-            std::cout << param << ", ";
-        std::cout << "]" << std::endl;
+        FlatJSONPrinter fieldsPrinter = jsonp.beginNested("structFields");
+        printTypeDescriptionMap(structDesc.structFields, fieldsPrinter);
 
-        std::cout << std::string(ilvl + 3, ' ') << "Retinfo=";
-        printTypeDescription(functionDesc.functionReturnType);
-        std::cout << std::endl;
+        jsonp.printNumber("size", structDesc.size);
+        jsonp.printString("moduleName", structDesc.moduleName);
 
-        std::cout << std::string(ilvl + 3, ' ') << "Symbols={" << std::endl;
-        for (auto symbol : functionDesc.symbols)
-        {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << symbol.first << ":";
-            printTypeDescription(symbol.second);
-            std::cout << std::endl;
-        }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
-
-        std::cout << std::string(ilvl + 3, ' ') << "icode=[" << std::endl;
-        for (icode::Entry i : functionDesc.icodeTable)
-        {
-            std::cout << std::string(ilvl + 6, ' ');
-            printEntry(i);
-            std::cout << std::endl;
-        }
-        std::cout << std::string(ilvl + 3, ' ') << "]" << std::endl;
-
-        std::cout << std::string(ilvl, ' ') << ")" << std::endl;
+        jsonp.end();
     }
 
-    void printModuleDescription(const icode::ModuleDescription& moduleDescription, int ilvl)
+    void printStructDescriptionMap(const std::map<std::string, icode::StructDescription>& structsMap,
+                                   FlatJSONPrinter& jsonp)
     {
-        std::cout << "Module(" << std::endl;
+        jsonp.begin();
 
-        std::cout << std::string(ilvl + 3, ' ') << "Name=";
-        std::cout << "\"" + moduleDescription.name + "\"" << std::endl;
-
-        std::cout << std::string(ilvl + 3, ' ') << "Uses=[";
-        for (std::string use : moduleDescription.uses)
-            std::cout << use << ", ";
-        std::cout << "]" << std::endl;
-
-        std::cout << std::string(ilvl + 3, ' ') << "Enums={" << std::endl;
-        for (auto enumeration : moduleDescription.enumerations)
+        for (auto pair : structsMap)
         {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << enumeration.first << "=";
-            std::cout << enumeration.second << std::endl;
+            FlatJSONPrinter structPrinter = jsonp.beginNested(pair.first);
+            printStructDescription(pair.second, structPrinter);
         }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
-        std::cout << std::string(ilvl + 3, ' ') << "IntDefs={" << std::endl;
-        for (auto definition : moduleDescription.intDefines)
+        jsonp.end();
+    }
+
+    void printFunctionDescription(const icode::FunctionDescription& functionDesc, FlatJSONPrinter& jsonp, bool jsonIR)
+    {
+        jsonp.begin();
+
+        jsonp.printStringArray("parameters", functionDesc.parameters);
+
+        FlatJSONPrinter typePrinter = jsonp.beginNested("functionReturnType", true);
+        printTypeDescription(functionDesc.functionReturnType, typePrinter);
+
+        FlatJSONPrinter symbolsPrinter = jsonp.beginNested("symbols");
+        printTypeDescriptionMap(functionDesc.symbols, symbolsPrinter);
+
+        if (jsonIR)
         {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << definition.first << ":";
-            std::cout << definition.second;
-            std::cout << std::endl;
+            FlatJSONPrinter entryPrinter = jsonp.beginArray("icode", true);
+            for (icode::Entry e : functionDesc.icodeTable)
+                printEntry(e, entryPrinter);
+            jsonp.endArray();
         }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
-
-        std::cout << std::string(ilvl + 3, ' ') << "FloatDefs={" << std::endl;
-        for (auto definition : moduleDescription.floatDefines)
+        else
         {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << definition.first << ":";
-            std::cout << definition.second;
-            std::cout << std::endl;
+            prettyPrintIcodeTable(functionDesc.icodeTable, 4);
         }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
-        std::cout << std::string(ilvl + 3, ' ') << "StringDefs={" << std::endl;
-        for (auto definition : moduleDescription.stringDefines)
+        jsonp.end();
+    }
+
+    void printFunctionDescriptionMap(const std::map<std::string, icode::FunctionDescription>& functionsMap,
+                                     FlatJSONPrinter& jsonp, bool jsonIR)
+    {
+        jsonp.begin();
+
+        for (auto pair : functionsMap)
         {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << definition.first << ":";
-            std::cout << definition.second;
-            std::cout << std::endl;
+            FlatJSONPrinter funcPrinter = jsonp.beginNested(pair.first);
+            printFunctionDescription(pair.second, funcPrinter, jsonIR);
         }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
 
-        std::cout << std::string(ilvl + 3, ' ') << "Globals={" << std::endl;
-        for (auto symbol : moduleDescription.globals)
-        {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << symbol.first << ":";
-            printTypeDescription(symbol.second);
-            std::cout << std::endl;
-        }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
+        jsonp.end();
+    }
 
-        std::cout << std::string(ilvl + 3, ' ') << "Sructs={" << std::endl;
-        for (auto structure : moduleDescription.structures)
-        {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << structure.first << ":";
-            printStructDescription(structure.second, ilvl + 6);
-        }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
+    void printModuleDescription(const icode::ModuleDescription& moduleDescription, bool jsonIR)
+    {
+        FlatJSONPrinter jsonp(0);
+        jsonp.begin();
 
-        std::cout << std::string(ilvl + 3, ' ') << "Functs={" << std::endl;
-        for (auto function : moduleDescription.functions)
-        {
-            std::cout << std::string(ilvl + 6, ' ');
-            std::cout << function.first << ":";
-            printFunctionDescription(function.second, ilvl + 6);
-        }
-        std::cout << std::string(ilvl + 3, ' ') << "}" << std::endl;
+        jsonp.printString("moduleName", moduleDescription.name);
 
-        std::cout << ")" << std::endl;
+        jsonp.printStringArray("uses", moduleDescription.uses);
+
+        FlatJSONPrinter enumPrinter = jsonp.beginNested("enumerations");
+        printNumberMap<int>(moduleDescription.enumerations, enumPrinter);
+
+        FlatJSONPrinter intDefinePrinter = jsonp.beginNested("intDefines");
+        printNumberMap<int>(moduleDescription.intDefines, intDefinePrinter);
+
+        FlatJSONPrinter floatDefinePrinter = jsonp.beginNested("floatDefines");
+        printNumberMap<float>(moduleDescription.floatDefines, floatDefinePrinter);
+
+        FlatJSONPrinter stringDefinePrinter = jsonp.beginNested("stringDefines");
+        printStringMap(moduleDescription.stringDefines, stringDefinePrinter);
+
+        FlatJSONPrinter globalsPrinter = jsonp.beginNested("globals");
+        printTypeDescriptionMap(moduleDescription.globals, globalsPrinter);
+
+        FlatJSONPrinter structsPrinter = jsonp.beginNested("structures");
+        printStructDescriptionMap(moduleDescription.structures, structsPrinter);
+
+        FlatJSONPrinter functionsPrinter = jsonp.beginNested("functions");
+        printFunctionDescriptionMap(moduleDescription.functions, functionsPrinter, jsonIR);
+
+        jsonp.end();
     }
 
 } // namespace mikpp

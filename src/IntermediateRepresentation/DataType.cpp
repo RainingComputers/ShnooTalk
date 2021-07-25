@@ -26,8 +26,9 @@ namespace icode
 
     std::string dataTypeToString(const DataType dtype)
     {
-        static std::string dataTypeStringsArray[] = { "byte",  "ubyte", "short",  "ushort", "int",   "uint",   "long",
-                                                      "ulong", "float", "double", "INT",    "FLOAT", "STRUCT", "VOID" };
+        static std::string dataTypeStringsArray[] = { "byte",    "ubyte",     "short",  "ushort", "int",
+                                                      "uint",    "long",      "ulong",  "float",  "double",
+                                                      "autoInt", "autoFloat", "struct", "void" };
 
         return dataTypeStringsArray[dtype];
     }
@@ -35,12 +36,14 @@ namespace icode
     DataType stringToDataType(const std::string& dtypeName)
     {
         static std::map<std::string, DataType> dataTypeNames = {
-            { "byte", icode::I8 },      { "ubyte", icode::UI8 },        { "short", icode::I16 },
-            { "ushort", icode::UI16 },  { "int", icode::I32 },          { "uint", icode::UI32 },
-            { "long", icode::I64 },     { "ulong", icode::UI64 },       { "float", icode::F32 },
-            { "double", icode::F64 },   { "char", icode::UI8 },         { "bool", icode::UI8 },
-            { "INT", icode::AUTO_INT }, { "FLOAT", icode::AUTO_FLOAT }, { "STRUCT", icode::STRUCT },
-            { "VOID", icode::VOID }
+            { "byte", icode::I8 },          { "ubyte", icode::UI8 },
+            { "short", icode::I16 },        { "ushort", icode::UI16 },
+            { "int", icode::I32 },          { "uint", icode::UI32 },
+            { "long", icode::I64 },         { "ulong", icode::UI64 },
+            { "float", icode::F32 },        { "double", icode::F64 },
+            { "char", icode::UI8 },         { "bool", icode::UI8 },
+            { "autoInt", icode::AUTO_INT }, { "autoFloat", icode::AUTO_FLOAT },
+            { "struct", icode::STRUCT },    { "void", icode::VOID }
 
         };
 
@@ -54,5 +57,12 @@ namespace icode
     {
         const int dataTypeSizesArray[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 8, 8, 0, 0 };
         return dataTypeSizesArray[dtype];
+    }
+
+    bool dataTypeIsEqual(DataType dtype1, DataType dtype2)
+    {
+        return dtype1 == dtype2 || (dtype1 == AUTO_INT && isInteger(dtype2)) ||
+               (isInteger(dtype1) && dtype2 == AUTO_INT) || (dtype1 == AUTO_FLOAT && isFloat(dtype2)) ||
+               (isFloat(dtype1) && dtype2 == AUTO_FLOAT);
     }
 }
