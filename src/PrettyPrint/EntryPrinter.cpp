@@ -159,7 +159,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
     }
 }
 
-std::string prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int indentLevel)
+void prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int indentLevel)
 {
     std::cout << std::endl << std::string((indentLevel - 1) * 4, ' ') << "\"icode\": [" << std::endl;
 

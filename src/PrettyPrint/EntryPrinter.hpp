@@ -4,6 +4,6 @@
 #include "../IntermediateRepresentation/Entry.hpp"
 
 std::vector<std::string> icodeTableToStringArray(const std::vector<icode::Entry>& icodeTable);
-std::string prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int indentLevel);
+void prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int indentLevel);
 
 #endif
