@@ -13,13 +13,14 @@
 void printCLIUsage()
 {
     pp::println("USAGE: uhllc FILE OPTION");
-    pp::println("\nAvailable options:");
-    pp::println("\t-c\tCompile program");
-    pp::println("\t-ast\tPrint parse tree");
-    pp::println("\t-jsonast\tPrint parse tree in JSON");
-    pp::println("\t-ir\tPrint intermediate code representation");
-    pp::println("\t-jsonir\tPrint intermediate code representation completely in JSON");
-    pp::println("\t-llvm\tPrint llvm ir");
+    pp::println("");
+    pp::println("Available options:");
+    pp::println("    -c         Compile program");
+    pp::println("    -ast       Print parse tree");
+    pp::println("    -json-ast  Print parse tree in JSON");
+    pp::println("    -ir        intermediate code representation");
+    pp::println("    -json-ir   Print intermediate code representation completely in JSON");
+    pp::println("    -llvm      Print llvm ir");
 }
 
 std::string removeFileExtension(const std::string& fileName)
@@ -80,7 +81,7 @@ int phaseDriver(const std::string& fileName, const std::string& option)
         return 0;
     }
 
-    if (option == "-jsonast")
+    if (option == "-json-ast")
     {
         pp::printJSONAST(generateAST(console));
         return 0;
@@ -96,7 +97,7 @@ int phaseDriver(const std::string& fileName, const std::string& option)
         return 0;
     }
 
-    if (option == "-jsonir")
+    if (option == "-json-ir")
     {
         pp::printModuleDescription(modulesMap[moduleName], true);
         return 0;
