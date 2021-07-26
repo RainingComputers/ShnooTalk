@@ -12,7 +12,7 @@ use result
 from string use String
 from result use Result, FloatResult
 
-fn main()
+fn main() -> int
 {
     var foo:char[80] = "1.234"
 
@@ -38,4 +38,6 @@ fn main()
     
     var h:String h.copy("lo Wo")
     if(h.strcmp(g.arr) == 0) println("Yes")
+
+    return 0
 }

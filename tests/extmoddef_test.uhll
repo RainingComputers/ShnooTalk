@@ -4,7 +4,9 @@ use math
 
 def BLEH 5
 
-fn main()
+fn main() -> int
 {
     println(math::sin(float'BLEH))
+
+    return 0
 }

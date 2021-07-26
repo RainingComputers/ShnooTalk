@@ -10,9 +10,11 @@ fn avg(a:int[5]) -> int
     return tot/5
 }
 
-fn main()
+fn main() -> int
 {
     var a:int[5] = [1, 2, 3, 4, 5]
     
     println(avg(a))
+
+    return 0
 }

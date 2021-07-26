@@ -9,9 +9,11 @@ fn area(r:float) -> float
     return PI*r*r
 }
 
-fn main()
+fn main() -> int
 {
     var r:int = 4
 
     println(area(float'r))
+
+    return 0
 }

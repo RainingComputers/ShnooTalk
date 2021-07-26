@@ -23,7 +23,9 @@ fn integrate(a:float, b:float, n:float) -> float
     return sum
 }
 
-fn main()
+fn main() -> int
 {
     println(integrate(0.0, 3.0, 10000.0)) # 4.5
+
+    return 0
 }

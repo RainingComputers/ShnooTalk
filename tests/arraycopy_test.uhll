@@ -46,7 +46,7 @@ fn printarr(arr:Vec[4])
         arr[i].printVec()
 }
 
-fn main()
+fn main() -> int
 {
     var test:foobar
 
@@ -67,4 +67,6 @@ fn main()
     println("")
     test2.pos.printVec()
     println("")
+
+    return 0
 }

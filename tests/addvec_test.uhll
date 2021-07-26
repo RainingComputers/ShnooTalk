@@ -8,7 +8,7 @@ use math
 from math use vec
 from vec use Vec
 
-fn main()
+fn main() -> int
 {
     var a:Vec, b:Vec, c:Vec, d:Vec
 
@@ -22,4 +22,6 @@ fn main()
     b.printVec()
     c.printVec()
     d.printVec()
+
+    return 0
 }

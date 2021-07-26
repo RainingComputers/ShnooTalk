@@ -7,7 +7,7 @@ fn f(x:float) -> float
     return (x * x * x) - 3.0
 }
 
-fn main()
+fn main() -> int
 {
     # Initial xL and xR values
     var xL:float = 0.0, xR:float = 3.0 
@@ -29,4 +29,6 @@ fn main()
     }
     
     println(xL) # 1.499999
+
+    return 0
 }

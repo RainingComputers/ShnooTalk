@@ -2,7 +2,7 @@
 # 5
 # 5
 
-fn main()
+fn main() -> int
 {
     var a:int[2] = [1, 2]
 
@@ -13,4 +13,6 @@ fn main()
     println(b[0][0] + b[1][1])
 
     println(b[0][1] + b[1][0])
+
+    return 0
 }

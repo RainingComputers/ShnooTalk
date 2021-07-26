@@ -10,10 +10,12 @@ fn factorial(num:int) -> int
     return num * factorial(num - 1)
 }
 
-fn main() 
+fn main() -> int
 {
     println(factorial(2))
     println(factorial(3))
     println(factorial(4))
     println(factorial(5))
+
+    return 0
 }

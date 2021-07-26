@@ -4,7 +4,7 @@
 # backslash
 # null
 
-fn main()
+fn main() -> int
 {
     var foobar:char[10] = "\n\b\t\\\0"
 
@@ -13,4 +13,6 @@ fn main()
     if(foobar[2] == '\t') println("tab")
     if(foobar[3] == '\\') println("backslash")
     if(foobar[4] == '\0') println("null")
+
+    return 0
 }

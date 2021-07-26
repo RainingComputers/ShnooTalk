@@ -5,7 +5,7 @@ use math
 from math use vec
 from vec use Vec
 
-fn main()
+fn main() -> int
 {
     var a:Vec, b:Vec
     
@@ -13,4 +13,6 @@ fn main()
     b.setVec(5, 10)
     
     println(a.dot(b))
+
+    return 0
 }

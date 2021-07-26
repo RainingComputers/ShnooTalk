@@ -14,10 +14,12 @@ fn factorial(num:int) -> int
     return prod
 }
 
-fn main() 
+fn main() -> int
 {
     println(factorial(2))
     println(factorial(3))
     println(factorial(4))
     println(factorial(5))
+
+    return 0
 }

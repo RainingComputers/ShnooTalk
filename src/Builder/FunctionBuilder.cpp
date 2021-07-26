@@ -1,6 +1,7 @@
 #include "NameMangle.hpp"
 #include "TypeDescriptionUtil.hpp"
 #include "Validator/EntryValidator.hpp"
+#include "TypeCheck.hpp"
 
 #include "FunctionBuilder.hpp"
 
@@ -530,8 +531,22 @@ bool FunctionBuilder::doesFunctionTerminate()
     return lastOpcode == RET;
 }
 
+bool validMainReturn(const icode::FunctionDescription& functionDescription)
+{
+    if(functionDescription.functionReturnType.dtype != icode::I32)
+        return false;
+    
+    if(functionDescription.functionReturnType.isArray())
+        return false;
+
+    return true;
+}
+
 void FunctionBuilder::terminateFunction(const Token& nameToken)
 {
+    if (nameToken.toString() == "main" && !validMainReturn(*workingFunction))
+        console.compileErrorOnToken("Invalid return type for MAIN", nameToken);
+    
     if (doesFunctionTerminate())
         return;
 

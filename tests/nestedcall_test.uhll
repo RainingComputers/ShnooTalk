@@ -14,7 +14,9 @@ fn sum(a:int, b:int) -> int
     return a + b
 }
 
-fn main()
+fn main() -> int
 {
     foobar(math::sin(0.5), sum(1, 2))
+
+    return 0
 }

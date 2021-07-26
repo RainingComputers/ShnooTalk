@@ -18,7 +18,7 @@ fn multipy_poly(mut c:int[5], a:int[3], b:int[3], degree:int)
 
 }
 
-fn main()
+fn main() -> int
 {
     # 1 + x + 2*(x^2)
     var a:int[3] = [1, 1, 2]
@@ -32,4 +32,6 @@ fn main()
     
     # prints 1 5 7 9 2 
     for(var i:int = 0; i < 5; i += 1) println(c[i])
+
+    return 0
 }

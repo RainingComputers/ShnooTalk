@@ -52,7 +52,7 @@ clang app.o -o app
 - [x] IR Validator
 - [x] Change IR pretty print to JSON
 - [x] IR renaming and cleanup
-- [ ] Main function checks
+- [x] Main function return type check
 - [ ] `exit()` function
 - [ ] Extern C functions and function imports
 - [ ] `loop {}` syntax for looping forever

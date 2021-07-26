@@ -1,11 +1,13 @@
 # 0
 
-fn main()
+fn main() -> int
 {
     var c:int = 3, f:float = 3.4
 
     c += 3 - int'(f+3.0)
 
     println(c)
+
+    return 0
 }
 

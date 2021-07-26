@@ -10,7 +10,7 @@ struct foo
     var x:int, y:int
 }
 
-fn main()
+fn main() -> int
 {
     var elem1:foo
     elem1.x = 1
@@ -33,4 +33,5 @@ fn main()
     println(elem3.x)
     println(elem3.y)
 
+    return 0
 }

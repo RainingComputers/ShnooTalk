@@ -14,10 +14,12 @@ struct sprite
 }
 
 
-fn main()
+fn main() -> int
 {
     println(sizeof(int))
     println(sizeof(glbalfoobar))
     println(sizeof(math::vec::Vec))
     println(sizeof(sprite))
+
+    return 0
 }

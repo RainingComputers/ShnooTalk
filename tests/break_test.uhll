@@ -14,11 +14,13 @@ fn foobar(k:int) -> int
     return i
 }
 
-fn main()
+fn main() -> int
 {
     var k:int = 5
 
     var l:int = foobar(k)
 
     println(l)
+
+    return 0
 }

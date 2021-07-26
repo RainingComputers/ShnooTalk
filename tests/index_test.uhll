@@ -19,7 +19,7 @@ struct foo
     var z:bar[3]
 }
 
-fn main()
+fn main() -> int
 {
     var a:foo, b:foo
 
@@ -42,4 +42,6 @@ fn main()
     println(b.z[1].y)
     println(b.z[2].x)
     println(b.z[2].y)
+
+    return 0
 }

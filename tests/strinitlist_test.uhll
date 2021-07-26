@@ -5,7 +5,7 @@
 # Robby
 # Alice
 
-fn main()
+fn main() -> int
 {
     var name: char[3][10] = ["Shnoo", "Bob", "Alice"]
 
@@ -16,4 +16,6 @@ fn main()
 
     for(i = 0; i < 3; i += 1)
         println(name[i])
+
+    return 0
 }

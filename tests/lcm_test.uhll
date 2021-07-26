@@ -15,7 +15,9 @@ fn lcm(a:int, b:int) -> int
     return -1
 }
 
-fn main()
+fn main() -> int
 {
     println(lcm(6, 4)) # 12
+
+    return 0
 }

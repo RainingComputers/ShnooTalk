@@ -33,7 +33,7 @@ fn selSort(mut a:int[10])
     }
 }
 
-fn main()
+fn main() -> int
 {
     var a:int[10] = [2, 45, 64, 23, 65, 1, 75, 74, 43, 55]
     selSort(a)
@@ -41,4 +41,6 @@ fn main()
     # 1 2 23 43 45 55 64 65 74 75 
     for(var i:int = 0; i < 10 ; i += 1)
         println(a[i])
+
+    return 0
 }

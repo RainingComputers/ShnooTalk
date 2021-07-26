@@ -8,9 +8,11 @@ from digital use LOW, HIGH
 
 enum [LED0, LED1, LED2]
 
-fn main() 
+fn main() -> int
 {
     digital::digitalWrite(LED0, LOW)
     digital::digitalWrite(LED1, HIGH)
     digital::digitalWrite(LED2, HIGH)
+
+    return 0
 }

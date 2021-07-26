@@ -30,7 +30,7 @@ fn printVecArray(foo:Vec[3])
         foo[i].printVec()
 }
 
-fn main()
+fn main() -> int
 {
     var bar:Vec[3][3] = [
         [newVec(1, 2), newVec(3, 4), newVec(5, 6)],
@@ -43,4 +43,6 @@ fn main()
         printVecArray(bar[i])
         println("")
     }   
+
+    return 0
 }

@@ -13,7 +13,7 @@ fn foobar()
     return void
 }
 
-fn main()
+fn main() -> int
 {
     var c:int = 3
 
@@ -28,4 +28,6 @@ fn main()
     println(c*2*3) # 54
 
     println(b+3) # 8
+
+    return 0
 }

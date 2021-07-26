@@ -3,7 +3,7 @@
 
 use math
 
-fn main()
+fn main() -> int
 {
     var a:math::vec::Vec
 
@@ -12,4 +12,6 @@ fn main()
     a.printVec()
 
     println(a.x)
+
+    return 0
 }

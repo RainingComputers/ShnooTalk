@@ -9,7 +9,7 @@
 # 55
 # 89
 
-fn main()
+fn main() -> int
 {
     var num1:int = 0, num2:int = 1
     
@@ -21,4 +21,6 @@ fn main()
         num1 = num2
         num2 += temp
     }
+
+    return 0
 }

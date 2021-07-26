@@ -7,7 +7,9 @@ fn gcd(m:int, n:int) -> int
     return gcd(n, m % n)
 }
 
-fn main()
+fn main() -> int
 {
     println(gcd(45, 60)) # 15
+
+    return 0
 }
