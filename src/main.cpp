@@ -143,7 +143,7 @@ int main(int argc, char* argv[])
     {
         return EXIT_FAILURE;
     }
-    catch (const std::ifstream::failure)
+    catch (const std::ifstream::failure&)
     {
         pp::println("File I/O error");
         return EXIT_FAILURE;

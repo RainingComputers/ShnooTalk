@@ -1,8 +1,9 @@
-#include "FlatJSONPrinter.hpp"
-#include "JSONMapUtil.hpp"
+#include "JSON/FlatJSONPrinter.hpp"
+#include "JSON/JSONMapUtil.hpp"
 
 #include "EntryPrinter.hpp"
 #include "IRPrinter.hpp"
+#include "PrettyPrintError.hpp"
 
 namespace pp
 {
@@ -53,6 +54,8 @@ namespace pp
                 break;
             case icode::NONE:
                 break;
+            default:
+                throw PrettyPrintError();
         }
 
         jsonp.end();
@@ -156,7 +159,8 @@ namespace pp
     }
 
     void printFunctionDescriptionMap(const std::map<std::string, icode::FunctionDescription>& functionsMap,
-                                     FlatJSONPrinter& jsonp, bool jsonIR)
+                                     FlatJSONPrinter& jsonp,
+                                     bool jsonIR)
     {
         jsonp.begin();
 

@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 
+#include "PrettyPrintError.hpp"
 #include "EntryPrinter.hpp"
-#include "FlatJSONPrinter.hpp"
 #include "Strings.hpp"
 
 std::string operandToName(const icode::Operand& op)
@@ -42,6 +42,8 @@ std::string operandToName(const icode::Operand& op)
             return "module " + op.name;
         case icode::NONE:
             return "";
+        default:
+            throw PrettyPrintError();
     }
 }
 
@@ -155,7 +157,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::EXIT:
             return "    " + instructionToString[entry.opcode];
         default:
-            return "Error pretty printing entry";
+            throw PrettyPrintError();
     }
 }
 
