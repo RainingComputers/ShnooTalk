@@ -70,7 +70,7 @@ void addrAdd(const icode::Entry& e, Console& con)
     con.check(threeOperand(e));
     con.check(e.op1.operandType == icode::TEMP_PTR);
     con.check(e.op2.isPointer());
-    con.check(e.op3.operandType == icode::TEMP_PTR || e.op3.operandType == icode::ADDR);
+    con.check(e.op3.operandType == icode::TEMP_PTR || e.op3.operandType == icode::BYTES);
     con.check(nonVoidDataType(e.op1));
     con.check(nonVoidDataType(e.op2));
     con.check(e.op3.dtype == icode::VOID || e.op3.dtype == icode::AUTO_INT);
@@ -81,7 +81,7 @@ void addrMul(const icode::Entry& e, Console& con)
     con.check(threeOperand(e));
     con.check(e.op1.operandType == icode::TEMP_PTR);
     con.check(e.op2.isNotPointer());
-    con.check(e.op3.operandType == icode::ADDR);
+    con.check(e.op3.operandType == icode::BYTES);
     con.check(e.op1.dtype == icode::VOID);
     con.check(icode::isInteger(e.op2.dtype));
     con.check(e.op3.dtype == icode::AUTO_INT);

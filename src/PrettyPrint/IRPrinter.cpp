@@ -34,8 +34,8 @@ namespace pp
                 jsonp.printString("name", op.name);
                 jsonp.printNumber("size", op.val.size);
                 break;
-            case icode::ADDR:
-                jsonp.printNumber("bytes", op.val.address);
+            case icode::BYTES:
+                jsonp.printNumber("bytes", op.val.bytes);
                 break;
             case icode::LITERAL:
             {

@@ -36,7 +36,7 @@ namespace icode
             case LABEL:
             case MODULE:
                 return name == other.name;
-            case ADDR:
+            case BYTES:
             case LITERAL:
                 return val.size == other.val.size;
             case NONE:

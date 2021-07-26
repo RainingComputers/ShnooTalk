@@ -31,7 +31,7 @@ public:
 
     icode::Operand createIntLiteralOperand(icode::DataType dtype, int literal);
 
-    icode::Operand createLiteralAddressOperand(unsigned int address);
+    icode::Operand createBytesOperand(unsigned int address);
 
     icode::Operand createLabelOperand(const std::string& label);
 

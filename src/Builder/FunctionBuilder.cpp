@@ -156,7 +156,7 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
         if (unit.isStringLtrl())
             updateSize *= dest.dimensions().back();
 
-        Operand update = opBuilder.createLiteralAddressOperand(updateSize);
+        Operand update = opBuilder.createBytesOperand(updateSize);
         destPointer = addressAddOperator(destPointer, update);
     }
 }
@@ -331,7 +331,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
 
     Operand pointerOperand = createPointer(unit);
 
-    Operand fieldOperand = addressAddOperator(pointerOperand, opBuilder.createLiteralAddressOperand(fieldType.offset));
+    Operand fieldOperand = addressAddOperator(pointerOperand, opBuilder.createBytesOperand(fieldType.offset));
 
     fieldOperand.dtype = fieldType.dtype;
 
@@ -350,7 +350,7 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
     for (const Unit& indexUnit : indices)
     {
         Operand subscriptOperand =
-          addressMultiplyOperator(indexUnit.op(), opBuilder.createLiteralAddressOperand(elementWidth));
+          addressMultiplyOperator(indexUnit.op(), opBuilder.createBytesOperand(elementWidth));
 
         if (dimensionCount + 1 != elementType.dimensions.size())
             elementWidth /= elementType.dimensions[dimensionCount + 1];

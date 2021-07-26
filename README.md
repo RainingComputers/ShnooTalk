@@ -51,7 +51,7 @@ clang app.o -o app
 - [x] Fix def
 - [x] IR Validator
 - [x] Change IR pretty print to JSON
-- [ ] IR renaming and cleanup
+- [x] IR renaming and cleanup
 - [ ] Main function checks
 - [ ] `exit()` function
 - [ ] Extern C functions and function imports

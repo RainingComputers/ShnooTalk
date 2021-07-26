@@ -90,9 +90,9 @@ const std::string nodeTypeToString[] = { "PROGRAM",    "USE",         "FROM",   
                                          "TERM",       "SIZEOF",      "TYPEOF",     "PRINT",      "PRINTLN",
                                          "INPUT",      "EXIT" };
 
-const std::string operandTypeToString[] = { "TEMP",    "TEMP_PTR", "ADDR",      "STR_DATA",       "VAR",
-                                            "GBL_VAR", "PTR",      "RET_VALUE", "CALLEE_RET_VAL", "LITERAL",
-                                            "LABEL",   "MODULE",   "NONE" };
+const std::string operandTypeToString[] = { "temp",      "tempPtr", "bytes",       "stringData",        "var",
+                                            "globalVar", "ptr",     "returnValue", "calleeReturnValue", "literal",
+                                            "label",     "module",  "none" };
 
 const std::string instructionToString[] = { "pass",        "passAddress",
                                             "call",        "return",

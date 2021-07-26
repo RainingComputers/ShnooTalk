@@ -24,9 +24,9 @@ std::string operandToName(const icode::Operand& op)
         case icode::CALLEE_RET_VAL:
             return icode::dataTypeToString(op.dtype) + " calleeReturnValue" + std::to_string(op.operandId);
         case icode::STR_DATA:
-            return "stringDataAt(" + op.name + ")";
-        case icode::ADDR:
-            return "bytes " + std::to_string(op.val.address);
+            return "stringData " + op.name;
+        case icode::BYTES:
+            return "bytes " + std::to_string(op.val.bytes);
         case icode::LITERAL:
         {
             if (icode::isInteger(op.dtype))

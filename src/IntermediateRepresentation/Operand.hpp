@@ -11,7 +11,7 @@ namespace icode
     {
         TEMP,
         TEMP_PTR,
-        ADDR,
+        BYTES,
         STR_DATA,
         VAR,
         GBL_VAR,
@@ -32,7 +32,7 @@ namespace icode
         {
             int integer;
             float floating;
-            unsigned int address;
+            unsigned int bytes;
             unsigned int size;
         } val;
 

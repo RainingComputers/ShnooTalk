@@ -49,7 +49,7 @@ void validateOperand(const icode::Operand& op, Console& con)
     switch (op.operandType)
     {
         case icode::TEMP:
-        case icode::ADDR:
+        case icode::BYTES:
         case icode::LITERAL:
             validateTempOrLiteralOperand(op, con);
             break;

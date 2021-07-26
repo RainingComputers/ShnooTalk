@@ -8,7 +8,7 @@ using namespace llvm;
 
 Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op)
 {
-    if (op.operandType == icode::ADDR)
+    if (op.operandType == icode::BYTES)
         return ConstantInt::get(Type::getInt64Ty(*ctx.context), op.val.integer);
 
     if (icode::isInteger(op.dtype))
@@ -75,7 +75,7 @@ Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op)
     switch (op.operandType)
     {
         case icode::LITERAL:
-        case icode::ADDR:
+        case icode::BYTES:
             return getLLVMConstant(ctx, op);
         case icode::VAR:
         case icode::GBL_VAR:

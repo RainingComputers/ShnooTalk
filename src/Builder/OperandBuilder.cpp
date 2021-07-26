@@ -44,12 +44,12 @@ Operand OperandBuilder::createStringDataOperand(const std::string& name, unsigne
     return temp;
 }
 
-Operand OperandBuilder::createLiteralAddressOperand(unsigned int address)
+Operand OperandBuilder::createBytesOperand(unsigned int address)
 {
     Operand temp;
     temp.operandId = getId();
-    temp.val.address = address;
-    temp.operandType = ADDR;
+    temp.val.bytes = address;
+    temp.operandType = BYTES;
     temp.dtype = AUTO_INT;
 
     return temp;
