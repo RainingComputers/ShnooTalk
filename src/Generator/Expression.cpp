@@ -32,7 +32,7 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
         case token::CHAR_LITERAL:
         {
             char literal = root.tok.toUnescapedString()[0];
-            return ctx.ir.unitBuilder.unitFromIntLiteral(literal);
+            return ctx.ir.unitBuilder.unitFromCharLiteral(literal);
         }
         case token::FLOAT_LITERAL:
         {

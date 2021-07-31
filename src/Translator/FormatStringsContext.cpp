@@ -7,7 +7,7 @@ void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& f
     /* Setup global format strings */
 
     formatStringsContext.dataTypeFormatStringsMap = {
-        { icode::I8, ctx.builder->CreateGlobalString("%c", "bytefmt", 0U, ctx.LLVMModule.get()) },
+        { icode::I8, ctx.builder->CreateGlobalString("%d", "bytefmt", 0U, ctx.LLVMModule.get()) },
         { icode::UI8, ctx.builder->CreateGlobalString("%c", "ubytefmt", 0U, ctx.LLVMModule.get()) },
         { icode::I16, ctx.builder->CreateGlobalString("%hd", "shortfmt", 0U, ctx.LLVMModule.get()) },
         { icode::UI16, ctx.builder->CreateGlobalString("%hu", "ushortfmt", 0U, ctx.LLVMModule.get()) },

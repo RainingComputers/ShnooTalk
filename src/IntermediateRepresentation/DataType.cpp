@@ -41,7 +41,7 @@ namespace icode
             { "int", icode::I32 },          { "uint", icode::UI32 },
             { "long", icode::I64 },         { "ulong", icode::UI64 },
             { "float", icode::F32 },        { "double", icode::F64 },
-            { "char", icode::UI8 },         { "bool", icode::UI8 },
+            { "char", icode::UI8 },         { "bool", icode::I8 },
             { "autoInt", icode::AUTO_INT }, { "autoFloat", icode::AUTO_FLOAT },
             { "struct", icode::STRUCT },    { "void", icode::VOID }
 

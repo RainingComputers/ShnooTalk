@@ -133,7 +133,6 @@ void input(const icode::Entry& e, Console& con)
 {
     con.check(twoOperand(e));
     con.check(e.op1.isValidForInput());
-    con.check(e.op1.isNotPointer());
     con.check(e.op2.operandType == icode::LITERAL);
     con.check(nonVoidBaseDataType(e.op1));
     con.check(e.op2.dtype == icode::AUTO_INT);

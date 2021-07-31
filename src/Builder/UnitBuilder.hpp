@@ -20,6 +20,7 @@ public:
     void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
     Unit unitFromIntLiteral(int value);
+    Unit unitFromCharLiteral(char value);
     Unit unitFromFloatLiteral(float value);
     Unit unitFromTypeDescription(icode::TypeDescription& typeDescription, const std::string& name);
     Unit unitFromEnum(int enumValue);

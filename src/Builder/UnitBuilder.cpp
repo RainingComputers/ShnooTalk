@@ -23,6 +23,14 @@ Unit UnitBuilder::unitFromIntLiteral(int value)
     return Unit(typeDescription, op);
 }
 
+Unit UnitBuilder::unitFromCharLiteral(char value)
+{
+    Operand op = opBuilder.createIntLiteralOperand(UI8, value);
+    TypeDescription typeDescription = typeDescriptionFromDataType(AUTO_INT);
+
+    return Unit(typeDescription, op);
+}
+
 Unit UnitBuilder::unitFromFloatLiteral(float value)
 {
     Operand op = opBuilder.createFloatLiteralOperand(AUTO_FLOAT, value);

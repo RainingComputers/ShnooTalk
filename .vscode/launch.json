@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/bin/debug/uhll",
             "args": [
                 "${file}",
-                "-llvm"
+                "-c"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

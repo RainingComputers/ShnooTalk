@@ -1,0 +1,51 @@
+# 1
+# 2
+# 3
+# 4
+# 5
+# 6
+# 7
+# 8
+# 9.100000
+# 10.100000
+# 8
+# 9.100000
+# 1
+# 1.100000
+# d
+# Hello
+
+fn main() -> int
+{
+    var a: byte = 1
+    var b: ubyte = '2'
+    var c: short = 3
+    var d: ushort = 4
+    var e: int = 5
+    var f: uint = 6
+    var g: long = 7
+    var h: ulong = 8
+    var i: float = 9.1
+    var j: double = 10.1
+    var l: bool = 11
+    var m: char = 'c'
+
+    println(a)
+    println(b)
+    println(c)
+    println(d)
+    println(e)
+    println(f)
+    println(g)
+    println(h)
+    println(i)
+    println(j)
+    println(h)
+    println(i)
+    println(1)
+    println(1.1)
+    println('d')
+    println("Hello")
+
+    return 0
+}
