@@ -1,7 +1,7 @@
 #include "NameMangle.hpp"
+#include "TypeCheck.hpp"
 #include "TypeDescriptionUtil.hpp"
 #include "Validator/EntryValidator.hpp"
-#include "TypeCheck.hpp"
 
 #include "FunctionBuilder.hpp"
 
@@ -350,8 +350,7 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
 
     for (const Unit& indexUnit : indices)
     {
-        Operand subscriptOperand =
-          addressMultiplyOperator(indexUnit.op(), opBuilder.createBytesOperand(elementWidth));
+        Operand subscriptOperand = addressMultiplyOperator(indexUnit.op(), opBuilder.createBytesOperand(elementWidth));
 
         if (dimensionCount + 1 != elementType.dimensions.size())
             elementWidth /= elementType.dimensions[dimensionCount + 1];
@@ -533,10 +532,10 @@ bool FunctionBuilder::doesFunctionTerminate()
 
 bool validMainReturn(const icode::FunctionDescription& functionDescription)
 {
-    if(functionDescription.functionReturnType.dtype != icode::I32)
+    if (functionDescription.functionReturnType.dtype != icode::I32)
         return false;
-    
-    if(functionDescription.functionReturnType.isArray())
+
+    if (functionDescription.functionReturnType.isArray())
         return false;
 
     return true;
@@ -546,7 +545,7 @@ void FunctionBuilder::terminateFunction(const Token& nameToken)
 {
     if (nameToken.toString() == "main" && !validMainReturn(*workingFunction))
         console.compileErrorOnToken("Invalid return type for MAIN", nameToken);
-    
+
     if (doesFunctionTerminate())
         return;
 

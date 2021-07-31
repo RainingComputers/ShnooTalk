@@ -78,18 +78,20 @@ Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescr
 
 Type* formalParameterTypeToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
-    if (!typeDescription.isPointer())
-        return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
+    if (typeDescription.isStruct())
+    {
+        icode::StructDescription structDescription =
+          ctx.modulesMap[typeDescription.moduleName].structures[typeDescription.dtypeName];
 
-    if (!typeDescription.isStruct())
+        icode::DataType dtype = structDescription.structFields.begin()->second.dtype;
+
+        return dataTypeToLLVMPointerType(ctx, dtype);
+    }
+
+    if (typeDescription.isPointer() || typeDescription.isArray())
         return dataTypeToLLVMPointerType(ctx, typeDescription.dtype);
 
-    icode::StructDescription structDescription =
-      ctx.modulesMap[typeDescription.moduleName].structures[typeDescription.dtypeName];
-
-    icode::DataType dtype = structDescription.structFields.begin()->second.dtype;
-
-    return dataTypeToLLVMPointerType(ctx, dtype);
+    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
 }
 
 FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::FunctionDescription& functionDesc)
@@ -102,8 +104,17 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
         parameterTypes.push_back(type);
     }
 
-    FunctionType* FT =
-      FunctionType::get(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType), parameterTypes, false);
+    /* If the function returns a struct or array, the return value is passed by reference */
 
-    return FT;
+    if (functionDesc.functionReturnType.isStructOrArray())
+    {
+        Type* returnType = typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType)->getPointerTo();
+        parameterTypes.push_back(returnType);
+
+        return FunctionType::get(Type::getVoidTy(*ctx.context), parameterTypes, false);
+    }
+
+    Type* returnType = typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType);
+
+    return FunctionType::get(returnType, parameterTypes, false);
 }

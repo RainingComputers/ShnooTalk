@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "JSON/FlatJSONPrinter.hpp"
 #include "Strings.hpp"
+#include "JSON/FlatJSONPrinter.hpp"
 
 #include "ASTPrinter.hpp"
 

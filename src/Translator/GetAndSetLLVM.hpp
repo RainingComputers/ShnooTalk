@@ -7,12 +7,19 @@
 #include "ModuleContext.hpp"
 
 llvm::Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op);
+
 llvm::Function* getLLVMFunction(const ModuleContext& ctx,
                                 const std::string& functionName,
                                 const std::string& moduleName);
-llvm::Value* getCalleeRetValuePointer(const ModuleContext& ctx, const icode::Operand& op);
+
+icode::TypeDescription getFunctionReturnType(const ModuleContext& ctx,
+                                             const std::string& functionName,
+                                             const std::string& moduleName);
+
 llvm::Value* getLLVMPointer(ModuleContext& ctx, const icode::Operand& op);
+
 llvm::Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op);
+
 void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, llvm::Value* value);
 
 #endif

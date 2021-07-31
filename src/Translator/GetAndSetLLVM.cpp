@@ -29,13 +29,12 @@ Function* getLLVMFunction(const ModuleContext& ctx, const std::string& functionN
     return Function::Create(functionType, Function::ExternalLinkage, functionName, *ctx.LLVMModule);
 }
 
-Value* getCalleeRetValuePointer(const ModuleContext& ctx, const icode::Operand& op)
+icode::TypeDescription getFunctionReturnType(const ModuleContext& ctx,
+                                             const std::string& functionName,
+                                             const std::string& moduleName)
 {
-    Value* calleeReturnValue = ctx.operandValueMap.at(op);
-    Value* calleeReturnValuePointer = ctx.builder->CreateAlloca(calleeReturnValue->getType());
-    ctx.builder->CreateStore(calleeReturnValue, calleeReturnValuePointer);
-
-    return calleeReturnValuePointer;
+    const icode::FunctionDescription& functionDescription = ctx.modulesMap[moduleName].functions[functionName];
+    return functionDescription.functionReturnType;
 }
 
 Value* getStringDataPointer(ModuleContext& ctx, const icode::Operand& op)
@@ -62,7 +61,7 @@ Value* getLLVMPointer(ModuleContext& ctx, const icode::Operand& op)
         case icode::TEMP_PTR:
             return ctx.builder->CreateIntToPtr(getLLVMValue(ctx, op), dataTypeToLLVMPointerType(ctx, op.dtype));
         case icode::CALLEE_RET_VAL:
-            return getCalleeRetValuePointer(ctx, op);
+            return ctx.operandValueMap.at(op);
         case icode::STR_DATA:
             return getStringDataPointer(ctx, op);
         default:
@@ -79,14 +78,13 @@ Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op)
             return getLLVMConstant(ctx, op);
         case icode::VAR:
         case icode::GBL_VAR:
+        case icode::CALLEE_RET_VAL:
             return ctx.builder->CreateLoad(getLLVMPointer(ctx, op), op.name.c_str());
         case icode::PTR:
             return ctx.builder->CreatePtrToInt(getLLVMPointer(ctx, op), dataTypeToLLVMType(ctx, icode::I64));
         case icode::TEMP_PTR:
         case icode::TEMP:
-        case icode::CALLEE_RET_VAL:
             return ctx.operandValueMap.at(op);
-
         default:
             ctx.console.internalBugError();
     }

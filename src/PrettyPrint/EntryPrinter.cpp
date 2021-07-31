@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 
-#include "PrettyPrintError.hpp"
 #include "EntryPrinter.hpp"
+#include "PrettyPrintError.hpp"
 #include "Strings.hpp"
 
 std::string operandToName(const icode::Operand& op)

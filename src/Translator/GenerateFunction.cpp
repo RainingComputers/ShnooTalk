@@ -105,7 +105,7 @@ void translateFunctionIcode(ModuleContext& ctx,
                 call(ctx, e);
                 break;
             case icode::RET:
-                ret(ctx, e, functionDesc.functionReturnType.dtype);
+                ret(ctx, e, functionDesc.functionReturnType);
                 break;
             case icode::INPUT:
                 input(ctx, formatStringsContext, e);
@@ -133,25 +133,33 @@ void setupFunctionStack(ModuleContext& ctx, const icode::FunctionDescription& fu
         if (!symbol.second.checkProperty(icode::IS_PARAM))
             createLocalSymbol(ctx, symbol.second, symbol.first);
 
-    /* Assign passed function args */
-    unsigned int argumentCounter = 0;
-    for (auto& arg : function->args())
+    for (unsigned int i = 0; i < functionDesc.numParameters(); i++)
     {
-        const std::string& argumentName = functionDesc.parameters[argumentCounter];
-        arg.setName(argumentName);
-        createFunctionParameter(ctx, functionDesc.symbols.at(argumentName), argumentName, &arg);
-        argumentCounter++;
+        llvm::Argument* arg = function->getArg(i);
+        const std::string& argumentName = functionDesc.parameters[i];
+        arg->setName(argumentName);
+        createFunctionParameter(ctx, functionDesc.symbols.at(argumentName), argumentName, arg);
     }
 }
 
 void setCurrentFunctionReturnPointer(ModuleContext& ctx,
                                      const icode::FunctionDescription& functionDesc,
-                                     const std::string& name)
+                                     const std::string& name,
+                                     Function* function)
 {
-    ctx.currentFunctionReturnValue =
-      ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType),
-                                nullptr,
-                                name + ".retValue");
+    if (functionDesc.functionReturnType.isStructOrArray())
+    {
+        llvm::Argument* lastArg = function->arg_end() - 1;
+        lastArg->setName(name + "_retValue");
+        ctx.currentFunctionReturnValue = lastArg;
+    }
+    else
+    {
+        ctx.currentFunctionReturnValue =
+          ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType),
+                                    nullptr,
+                                    name + "_retValue");
+    }
 }
 
 void generateFunction(ModuleContext& ctx,
@@ -173,7 +181,7 @@ void generateFunction(ModuleContext& ctx,
 
     /* Set ret ptr */
     if (functionDesc.functionReturnType.dtype != icode::VOID)
-        setCurrentFunctionReturnPointer(ctx, functionDesc, name);
+        setCurrentFunctionReturnPointer(ctx, functionDesc, name, function);
 
     /* Convert ShnooTalk function ir to llvm ir */
     translateFunctionIcode(ctx, branchContext, formatStringsContext, functionDesc, function);

@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/bin/debug/uhll",
             "args": [
                 "${file}",
-                "-jsonast"
+                "-llvm"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
