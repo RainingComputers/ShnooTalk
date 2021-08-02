@@ -53,6 +53,9 @@ clang app.o -o app
 - [x] Change IR pretty print to JSON
 - [x] IR renaming and cleanup
 - [x] Main function return type check
+- [ ] Fix `input()` and `print()` and `println()` functions
+- [ ] Add `fopen()` function
+- [ ] Fix nested single line statements
 - [ ] `exit()` function
 - [ ] Extern C functions and function imports
 - [ ] `loop {}` syntax for looping forever
