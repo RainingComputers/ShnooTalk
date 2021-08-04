@@ -25,18 +25,26 @@ void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& f
     formatStringsContext.dataTypeFormatStringsMap[icode::AUTO_FLOAT] =
       formatStringsContext.dataTypeFormatStringsMap[icode::F64];
 
+    formatStringsContext.charInputFormatString = ctx.builder->CreateGlobalString(" %c", "charinpfmt", 0U, ctx.LLVMModule.get());
+
     formatStringsContext.newLineString = ctx.builder->CreateGlobalString("\n", "newlnfmt", 0U, ctx.LLVMModule.get());
 
     formatStringsContext.spaceString = ctx.builder->CreateGlobalString(" ", "spacefmt", 0U, ctx.LLVMModule.get());
 }
 
-Value* getFromatStringFromDataType(const FormatStringsContext& formatStringsContext, icode::DataType dtype)
+Value* getFromatStringFromDataTypePrintf(const FormatStringsContext& formatStringsContext, icode::DataType dtype)
 {
+    return formatStringsContext.dataTypeFormatStringsMap.at(dtype);
+}
+
+Value* getFromatStringFromDataTypeScanf(const FormatStringsContext& formatStringsContext, icode::DataType dtype)
+{
+    if(dtype == icode::UI8) return formatStringsContext.charInputFormatString;
     return formatStringsContext.dataTypeFormatStringsMap.at(dtype);
 }
 
 Value* getFormatStringForStringInput(const ModuleContext& ctx, int charCount)
 {
-    std::string formatString = "%" + std::to_string(charCount - 1) + "s";
-    return ctx.builder->CreateGlobalString(formatString, "space", 0U, ctx.LLVMModule.get());
+    std::string formatString = " %" + std::to_string(charCount - 1) + "s";
+    return ctx.builder->CreateGlobalString(formatString, "", 0U, ctx.LLVMModule.get());
 }

@@ -38,7 +38,7 @@ void print(ModuleContext& ctx, const FormatStringsContext& formatStringsContext,
     else
         value = ctx.builder->CreateSExt(value, dataTypeToLLVMType(ctx, icode::I64));
 
-    callPrintf(ctx, getFromatStringFromDataType(formatStringsContext, e.op1.dtype), value);
+    callPrintf(ctx, getFromatStringFromDataTypePrintf(formatStringsContext, e.op1.dtype), value);
 }
 
 void printString(ModuleContext& ctx, const icode::Entry& e)

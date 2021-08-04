@@ -12,10 +12,6 @@ void setupScanf(const ModuleContext& ctx)
     args.push_back(Type::getInt8PtrTy(*ctx.context));
     FunctionType* scanfFunctionType = FunctionType::get(ctx.builder->getInt32Ty(), args, true);
     Function::Create(scanfFunctionType, Function::ExternalLinkage, "scanf", ctx.LLVMModule.get());
-
-    /* Declare getchar function */
-    FunctionType* getcharFunctionType = FunctionType::get(ctx.builder->getInt32Ty(), false);
-    Function::Create(getcharFunctionType, Function::ExternalLinkage, "getchar", ctx.LLVMModule.get());
 }
 
 void callScanf(const ModuleContext& ctx, Value* formatString, Value* value)
@@ -28,12 +24,11 @@ void callScanf(const ModuleContext& ctx, Value* formatString, Value* value)
 
     /* Call printf */
     ctx.builder->CreateCall(ctx.LLVMModule->getFunction("scanf"), printArgs);
-    ctx.builder->CreateCall(ctx.LLVMModule->getFunction("getchar"));
 }
 
 void input(ModuleContext& ctx, const FormatStringsContext& formatStringsContext, const icode::Entry& e)
 {
-    callScanf(ctx, getFromatStringFromDataType(formatStringsContext, e.op1.dtype), getLLVMPointer(ctx, e.op1));
+    callScanf(ctx, getFromatStringFromDataTypeScanf(formatStringsContext, e.op1.dtype), getLLVMPointer(ctx, e.op1));
 }
 
 void inputString(ModuleContext& ctx, const icode::Entry& e)
