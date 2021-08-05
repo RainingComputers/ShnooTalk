@@ -95,7 +95,12 @@ std::string ModuleBuilder::createStringData(const Token& stringToken)
                                    [str](const auto& mapItem) { return mapItem.second == str; });
 
         if (result != modulesMapItem.second.stringsData.end())
-            return result->first;
+        {
+            const std::string& key = result->first;
+            rootModule.stringsDataCharCounts[key] = modulesMapItem.second.stringsDataCharCounts[key];
+            return key;
+        }
+            
     }
 
     std::string key = lineColNameMangle(stringToken, rootModule.name);

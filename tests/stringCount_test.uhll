@@ -1,0 +1,9 @@
+# x:
+
+use vec
+
+fn main() -> int
+{
+    println("x:")
+    return 0
+}
