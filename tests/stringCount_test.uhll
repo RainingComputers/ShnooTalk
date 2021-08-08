@@ -1,6 +1,6 @@
 # x:
 
-use vec
+use "vec.uhll" as vec
 
 fn main() -> int
 {

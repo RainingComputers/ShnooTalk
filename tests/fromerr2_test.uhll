@@ -3,9 +3,9 @@
 # 
 # from math use vec
 #               ^
-# Symbol already defined in current module
+# Symbol already defined
 
-use math
-use vec
+use "math.uhll" as math
+use "vec.uhll" as vec
 
 from math use vec

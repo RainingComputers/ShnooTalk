@@ -1,9 +1,9 @@
 # MODULE useerr2_test.uhll
 # ERROR in Line 9 Col 5
 # 
-# use math
+# use "math.uhll" as math
 #     ^
 # Multiple imports detected
 
-use math
-use math
+use "math.uhll" as math
+use "math.uhll" as math

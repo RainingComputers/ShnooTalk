@@ -80,7 +80,6 @@ int UnitBuilder::getCharCountFromStringDataKey(const std::string& key)
 
 Unit UnitBuilder::unitFromStringDataKey(const std::string& key)
 {
-    /* +1 for null char */
     int charCount = getCharCountFromStringDataKey(key);
 
     std::vector<int> dimensions;

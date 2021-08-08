@@ -16,6 +16,11 @@ namespace icode
         return std::find(uses.begin(), uses.end(), name) != uses.end();
     }
 
+    bool ModuleDescription::getModuleNameFromAlias(const std::string& alias, std::string& returnValue)
+    {
+        return getMapElement<std::string, std::string>(aliases, alias, returnValue);
+    }
+
     bool ModuleDescription::getStruct(const std::string& name, StructDescription& returnValue)
     {
         return getMapElement<std::string, StructDescription>(structures, name, returnValue);
@@ -59,8 +64,9 @@ namespace icode
     bool ModuleDescription::symbolExists(const std::string& name)
     {
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
-               useExists(name) || stringToDataType(name) != STRUCT || enumerations.find(name) != enumerations.end() ||
-               globals.find(name) != globals.end() || intDefines.find(name) != intDefines.end() ||
-               floatDefines.find(name) != floatDefines.end() || stringDefines.find(name) != stringDefines.end();
+               aliases.find(name) != aliases.end() || stringToDataType(name) != STRUCT ||
+               enumerations.find(name) != enumerations.end() || globals.find(name) != globals.end() ||
+               intDefines.find(name) != intDefines.end() || floatDefines.find(name) != floatDefines.end() ||
+               stringDefines.find(name) != stringDefines.end();
     }
 }

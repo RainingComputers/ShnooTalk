@@ -1,4 +1,4 @@
-use vec
+use "vec.uhll" as vec
 
 def PI 3.14
 

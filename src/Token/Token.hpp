@@ -75,6 +75,7 @@ namespace token
         BITWISE_AND,
         CONDN_AND,
         USE,
+        AS,
         FROM,
         MUTABLE,
         SEMICOLON,

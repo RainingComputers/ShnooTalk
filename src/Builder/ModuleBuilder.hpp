@@ -55,9 +55,9 @@ public:
                       const std::vector<Token>& fieldNames,
                       const std::vector<icode::TypeDescription>& fieldTypes);
 
-    void createUse(const Token& nameToken);
+    void createUse(const Token& pathToken, const Token& aliasToken);
 
-    void createFrom(const Token& moduleNameToken, const Token& symbolNameToken);
+    void createFrom(const Token& aliasToken, const Token& symbolNameToken);
 };
 
 #endif

@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/bin/debug/uhll",
             "args": [
                 "${file}",
-                "-json-ir"
+                "-ir"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -33,7 +33,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/test.py",
             "console": "integratedTerminal",
-            "args": ["--gcov"]
+            "args": [""]
         }
     ]
 }

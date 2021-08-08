@@ -1,7 +1,7 @@
 # 0.479426
 # 3
 
-use math
+use "math.uhll" as math
 
 fn foobar(a:float, b:int)
 {

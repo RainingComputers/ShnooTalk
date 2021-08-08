@@ -1,9 +1,8 @@
 # MODULE useerr1_test.uhll
 # ERROR in Line 8 Col 5
 # 
-# use does_not_exist
+# use "does_not_exist.uhll" as bar
 #     ^
-# Module or Package does not exist
+# File does not exist
 
-use does_not_exist
-
+use "does_not_exist.uhll" as bar

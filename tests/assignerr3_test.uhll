@@ -5,7 +5,7 @@
 #       ^
 # Only EQUAL operator allowed on STRUCT and ARRAY
 
-use vec
+use "vec.uhll" as vec
 from vec use Vec
 
 fn main()

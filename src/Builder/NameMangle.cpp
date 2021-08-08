@@ -6,6 +6,7 @@ std::string mangleModuleName(const std::string& moduleName)
 {
     std::string mangledModuleName = moduleName;
     std::replace(mangledModuleName.begin(), mangledModuleName.end(), '/', '_');
+    std::replace(mangledModuleName.begin(), mangledModuleName.end(), '.', '_');
 
     return mangledModuleName;
 }

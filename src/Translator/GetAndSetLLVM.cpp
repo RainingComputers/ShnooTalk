@@ -20,9 +20,9 @@ Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op)
     ctx.console.internalBugError();
 }
 
-icode::FunctionDescription getFunction(const ModuleContext& ctx,
-                                       const std::string& functionName,
-                                       const std::string& moduleName)
+icode::FunctionDescription getFunctionDescription(const ModuleContext& ctx,
+                                                  const std::string& functionName,
+                                                  const std::string& moduleName)
 {
     icode::ModuleDescription& functionModule = ctx.modulesMap.at(moduleName);
 
@@ -42,8 +42,7 @@ Function* getLLVMFunction(const ModuleContext& ctx, const std::string& functionN
     if (auto* F = ctx.LLVMModule->getFunction(functionName))
         return F;
 
-    /* This code will be never reached for extern functions because they are already declared */
-    FunctionType* functionType = funcDescriptionToLLVMType(ctx, getFunction(ctx, functionName, moduleName));
+    FunctionType* functionType = funcDescriptionToLLVMType(ctx, getFunctionDescription(ctx, functionName, moduleName));
     return Function::Create(functionType, Function::ExternalLinkage, functionName, *ctx.LLVMModule);
 }
 
@@ -51,7 +50,7 @@ icode::TypeDescription getFunctionReturnType(const ModuleContext& ctx,
                                              const std::string& functionName,
                                              const std::string& moduleName)
 {
-    const icode::FunctionDescription& functionDescription = getFunction(ctx, functionName, moduleName);
+    const icode::FunctionDescription& functionDescription = getFunctionDescription(ctx, functionName, moduleName);
     return functionDescription.functionReturnType;
 }
 

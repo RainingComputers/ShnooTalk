@@ -1,6 +1,6 @@
 # 15
 
-use math
+use "math.uhll" as math
 
 fn gcd(a:int, b:int) -> int
 {

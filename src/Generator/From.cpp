@@ -2,8 +2,7 @@
 
 void createUse(generator::GeneratorContext& ctx, const Node& root)
 {
-    for (Node child : root.children)
-        ctx.ir.moduleBuilder.createUse(child.tok);
+    ctx.ir.moduleBuilder.createUse(root.getNthChildToken(0), root.getNthChildToken(1));
 }
 
 void createFrom(generator::GeneratorContext& ctx, const Node& root)

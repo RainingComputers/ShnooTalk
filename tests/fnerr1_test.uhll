@@ -5,7 +5,7 @@
 #    ^
 # Symbol already defined
 
-use math
+use "math.uhll" as math
 from math use vec
 
 fn vec() -> int

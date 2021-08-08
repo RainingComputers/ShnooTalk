@@ -67,7 +67,7 @@ clang app.o -o app
 - [ ] Static variables
 - [ ] Assigning conditional expressions
 - [ ] NaN and infinity
-- [ ] Node style module imports
+- [x] Node style module imports
 - [ ] Language reference using mkdocs
 - [ ] Dynamic allocation and pointers
 - [ ] CLI argument parser

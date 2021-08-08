@@ -1,6 +1,6 @@
 # Pin 0 low
 
-use digital
+use "digital.uhll" as digital
 
 fn main() -> int
 {

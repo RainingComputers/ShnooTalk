@@ -6,7 +6,7 @@
 # 2.000000
 # 2
 
-use math
+use "math.uhll" as math
 
 fn main() -> int
 {

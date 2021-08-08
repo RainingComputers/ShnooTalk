@@ -36,7 +36,6 @@ public:
     void printNumber(const std::string& key, float val);
     void printIntArray(const std::string& key, const std::vector<int>& val);
     void printStringArray(const std::string& key, const std::vector<std::string>& val);
-    void printLongStringArray(const std::string& key, const std::vector<std::string>& val);
 };
 
 #endif

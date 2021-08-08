@@ -135,6 +135,8 @@ namespace pp
     {
         jsonp.begin();
 
+        jsonp.printString("moduleName", functionDesc.moduleName);
+
         jsonp.printStringArray("parameters", functionDesc.parameters);
 
         FlatJSONPrinter typePrinter = jsonp.beginNested("functionReturnType", true);
@@ -182,6 +184,9 @@ namespace pp
 
         jsonp.printStringArray("uses", moduleDescription.uses);
 
+        FlatJSONPrinter aliasesPrinter = jsonp.beginNested("aliases");
+        printStringMap(moduleDescription.aliases, aliasesPrinter);
+
         FlatJSONPrinter enumPrinter = jsonp.beginNested("enumerations");
         printNumberMap<int>(moduleDescription.enumerations, enumPrinter);
 
@@ -193,6 +198,9 @@ namespace pp
 
         FlatJSONPrinter stringDefinePrinter = jsonp.beginNested("stringDefines");
         printStringMap(moduleDescription.stringDefines, stringDefinePrinter);
+
+        FlatJSONPrinter stringsDataCharCountPrinter = jsonp.beginNested("stringsDataCharCounts");
+        printNumberMap<int>(moduleDescription.stringsDataCharCounts, stringsDataCharCountPrinter);
 
         FlatJSONPrinter globalsPrinter = jsonp.beginNested("globals");
         printTypeDescriptionMap(moduleDescription.globals, globalsPrinter);

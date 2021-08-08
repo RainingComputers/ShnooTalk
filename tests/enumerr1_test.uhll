@@ -5,6 +5,6 @@
 #       ^
 # Symbol already defined
 
-use math
+use "math.uhll" as math
 
 enum [math, phsysics, chemistry, csc]

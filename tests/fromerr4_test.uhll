@@ -5,5 +5,5 @@
 #               ^
 # Symbol does not exist
 
-use math 
+use "math.uhll" as math 
 from math use doesNotExist

@@ -1,6 +1,6 @@
 # -0.958933
 
-use math
+use "math.uhll" as math
 
 def BLEH 5
 

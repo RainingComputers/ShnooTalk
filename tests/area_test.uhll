@@ -1,6 +1,6 @@
 # 50.240002
 
-use math
+use "math.uhll" as math
 
 from math use PI
 

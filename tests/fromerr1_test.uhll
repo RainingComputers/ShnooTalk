@@ -3,6 +3,6 @@
 # 
 # from math use vec
 #      ^
-# Module not imported
+# Use does not exist
 
 from math use vec

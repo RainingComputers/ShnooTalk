@@ -6,8 +6,8 @@
 # lo Wo
 # Yes
 
-use string
-use result
+use "string.uhll" as string
+use "result.uhll" as result
 
 from string use String
 from result use Result, FloatResult

@@ -95,6 +95,7 @@
         "stoi",
         "struct",
         "ubyte",
-        "uhll"
+        "uhll",
+        "uhllc"
     ]
 }

@@ -5,7 +5,7 @@
 #     ^
 # Symbol already defined
 
-use string
+use "string.uhll" as string
 
 var string:char[10]
 

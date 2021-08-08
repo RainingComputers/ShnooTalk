@@ -40,9 +40,9 @@ literal = intLiteral,
         | binLiteral,
         | ("-" | "+") literal
 
-use = "use" identifier {"," identifier}
+use = "use" stringLiteral "as" identifier
 
-from = "from" identifier use
+from = "from" identifier "use" identifier {"," identifier}
 
 enumList = "enum" "[" identifier {"," identifier} "]"
 

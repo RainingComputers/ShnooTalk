@@ -1,6 +1,6 @@
 # 1.442250
 
-use math
+use "math.uhll" as math
 
 fn f(x:float) -> float
     return (x * x * x) - 3.0

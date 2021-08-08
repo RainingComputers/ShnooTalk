@@ -1,8 +1,8 @@
 # Pin 0 low
 # This works
 
-use vec
-use digital
+use "vec.uhll" as vec
+use "digital.uhll" as digital
 
 fn main() -> int
 {

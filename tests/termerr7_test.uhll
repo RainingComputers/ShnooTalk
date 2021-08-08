@@ -5,7 +5,7 @@
 #             ^
 # Invalid use of MODULE ACCESS
 
-use vec
+use "vec.uhll" as vec
 
 fn main()
 {

@@ -187,25 +187,3 @@ void FlatJSONPrinter::printStringArray(const std::string& key, const std::vector
 
     std::cout << "\"" << val[i] << "\"]";
 }
-
-void FlatJSONPrinter::printLongStringArray(const std::string& key, const std::vector<std::string>& val)
-{
-    printCommaAndKey(key);
-
-    if (val.size() == 0)
-    {
-        std::cout << "[]";
-        return;
-    }
-
-    size_t i = 0;
-    std::cout << "[\n";
-
-    for (i = 0; i < val.size() - 1; i++)
-    {
-        indent(indentLevel + 2);
-        std::cout << "\"" << val[i] << "\",\n";
-    }
-
-    std::cout << "\"" << val[i] << "\"\n]";
-}

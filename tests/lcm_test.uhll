@@ -1,6 +1,6 @@
 # 12
 
-use math
+use "math.uhll" as math
 
 fn lcm(a:int, b:int) -> int
 {

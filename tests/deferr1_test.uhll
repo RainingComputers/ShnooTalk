@@ -5,6 +5,6 @@
 #     ^
 # Symbol already exists
 
-use vec
+use "vec.uhll" as vec
 
 def vec 0

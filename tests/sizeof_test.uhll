@@ -3,7 +3,7 @@
 # 8
 # 12
 
-use math
+use "math.uhll" as math
 
 var glbalfoobar:int
 

@@ -1,6 +1,6 @@
 #include <algorithm>
+#include <filesystem>
 
-#include "../FileSystem/FileSystem.hpp"
 #include "NameMangle.hpp"
 
 #include "ModuleBuilder.hpp"
@@ -227,78 +227,83 @@ void ModuleBuilder::createStruct(const Token& nameToken,
     rootModule.structures[nameToken.toString()] = structDescription;
 }
 
-void ModuleBuilder::createUse(const Token& nameToken)
+void ModuleBuilder::createUse(const Token& pathToken, const Token& aliasToken)
 {
-    bool isFile = fs::fileExists(nameToken.toString() + ".uhll");
-    bool isFolder = fs::directoryExists(nameToken.toString());
+    const std::string& path = pathToken.toUnescapedString();
+    const std::string& alias = aliasToken.toString();
 
-    if (!(isFile || isFolder))
-        console.compileErrorOnToken("Module or Package does not exist", nameToken);
+    if (!std::filesystem::exists(path))
+        console.compileErrorOnToken("File does not exist", pathToken);
 
-    if (isFile && isFolder)
-        console.compileErrorOnToken("Module and Package exists with same name", nameToken);
+    if (rootModule.useExists(path))
+        console.compileErrorOnToken("Multiple imports detected", pathToken);
 
-    if (rootModule.useExists(nameToken.toString()))
-        console.compileErrorOnToken("Multiple imports detected", nameToken);
+    if (rootModule.symbolExists(alias))
+        console.compileErrorOnToken("Symbol already defined", aliasToken);
 
-    if (rootModule.symbolExists(nameToken.toString()))
-        console.compileErrorOnToken("Name conflict, symbol already exists", nameToken);
-
-    if (rootModule.name == nameToken.toString())
-        console.compileErrorOnToken("Self import not allowed", nameToken);
-
-    rootModule.uses.push_back(nameToken.toString());
+    rootModule.uses.push_back(path);
+    rootModule.aliases[alias] = path;
 }
 
-void ModuleBuilder::createFrom(const Token& moduleNameToken, const Token& symbolNameToken)
+void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameToken)
 {
-    StructDescription structDescription;
-    FunctionDescription functionDescription;
-    int intDefineValue;
-    float floatDefineValue;
-    int enumValue;
-    std::string stringDataKey;
+    /* Used to store return values */
+    StructDescription structDescReturnValue;
+    FunctionDescription funcDescReturnValue;
+    int intDefineReturnValue;
+    float floatDefineReturnValue;
+    int enumReturnValue;
+    std::string stringDataKeyReturnValue;
+    std::string importModuleNameReturnValue;
 
-    if (!rootModule.useExists(moduleNameToken.toString()))
-        console.compileErrorOnToken("Module not imported", moduleNameToken);
+    /* Get module description from alias */
+    std::string moduleName;
+    if (!rootModule.getModuleNameFromAlias(aliasToken.toString(), moduleName))
+        console.compileErrorOnToken("Use does not exist", aliasToken);
 
-    ModuleDescription* externalModule = &modulesMap[moduleNameToken.toString()];
+    ModuleDescription* externalModule = &(modulesMap.at(moduleName));
+
+    /* Import symbol */
 
     const std::string& symbolString = symbolNameToken.toString();
     const std::string& mangledSymbolString = nameMangle(symbolString, externalModule->name);
 
     if (rootModule.symbolExists(symbolString))
-        console.compileErrorOnToken("Symbol already defined in current module", symbolNameToken);
+        console.compileErrorOnToken("Symbol already defined", symbolNameToken);
 
-    if (externalModule->getStruct(symbolString, structDescription))
-        rootModule.structures[symbolString] = structDescription;
+    if (externalModule->getStruct(symbolString, structDescReturnValue))
+        rootModule.structures[symbolString] = structDescReturnValue;
 
-    else if (externalModule->getExternFunction(symbolString, functionDescription))
-        rootModule.externFunctions[symbolString] = functionDescription;
+    else if (externalModule->getExternFunction(symbolString, funcDescReturnValue))
+        rootModule.externFunctions[symbolString] = funcDescReturnValue;
 
-    else if (externalModule->getFunction(mangledSymbolString, functionDescription))
+    else if (externalModule->getFunction(mangledSymbolString, funcDescReturnValue))
     {
-        functionDescription.icodeTable.clear();
-        rootModule.externFunctions[symbolString] = functionDescription;
+        funcDescReturnValue.icodeTable.clear();
+        rootModule.externFunctions[symbolString] = funcDescReturnValue;
     }
 
-    else if (externalModule->getIntDefine(symbolString, intDefineValue))
-        rootModule.intDefines[symbolString] = intDefineValue;
+    else if (externalModule->getIntDefine(symbolString, intDefineReturnValue))
+        rootModule.intDefines[symbolString] = intDefineReturnValue;
 
-    else if (externalModule->getFloatDefine(symbolString, floatDefineValue))
-        rootModule.floatDefines[symbolString] = floatDefineValue;
+    else if (externalModule->getFloatDefine(symbolString, floatDefineReturnValue))
+        rootModule.floatDefines[symbolString] = floatDefineReturnValue;
 
-    else if (externalModule->getStringDefine(symbolString, stringDataKey))
+    else if (externalModule->getStringDefine(symbolString, stringDataKeyReturnValue))
     {
-        rootModule.stringDefines[symbolString] = stringDataKey;
-        rootModule.stringsDataCharCounts[stringDataKey] = externalModule->stringsDataCharCounts[stringDataKey];
+        rootModule.stringDefines[symbolString] = stringDataKeyReturnValue;
+        rootModule.stringsDataCharCounts[stringDataKeyReturnValue] =
+          externalModule->stringsDataCharCounts[stringDataKeyReturnValue];
     }
 
-    else if (externalModule->getEnum(symbolString, enumValue))
-        rootModule.enumerations[symbolString] = enumValue;
+    else if (externalModule->getEnum(symbolString, enumReturnValue))
+        rootModule.enumerations[symbolString] = enumReturnValue;
 
-    else if (externalModule->useExists(symbolString))
-        rootModule.uses.push_back(symbolString);
+    else if (externalModule->getModuleNameFromAlias(symbolString, importModuleNameReturnValue))
+    {
+        rootModule.uses.push_back(importModuleNameReturnValue);
+        rootModule.aliases[symbolString] = importModuleNameReturnValue;
+    }
 
     else
         console.compileErrorOnToken("Symbol does not exist", symbolNameToken);

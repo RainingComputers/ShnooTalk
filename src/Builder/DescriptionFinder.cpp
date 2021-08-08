@@ -30,12 +30,14 @@ ModuleDescription* DescriptionFinder::getModuleFromUnit(const Unit& unit)
     return &modulesMap.at(unit.moduleName());
 }
 
-ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& moduleNameToken)
+ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& aliasToken)
 {
-    const std::string& moduleName = moduleNameToken.toString();
+    const std::string& alias = aliasToken.toString();
 
-    if (!workingModule->useExists(moduleName))
-        console.compileErrorOnToken("Module does not exist", moduleNameToken);
+    std::string moduleName;
+
+    if (!workingModule->getModuleNameFromAlias(alias, moduleName))
+        console.compileErrorOnToken("Use does not exist", aliasToken);
 
     return &modulesMap.at(moduleName);
 }

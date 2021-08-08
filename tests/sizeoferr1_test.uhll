@@ -3,7 +3,7 @@
 # 
 #     println(sizeof(doesnotexist::foo))
 #                    ^
-# Module does not exist
+# Use does not exist
 
 fn main()
 {

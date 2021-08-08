@@ -15,6 +15,7 @@ namespace icode
     {
         std::string name;
         std::vector<std::string> uses;
+        std::map<std::string, std::string> aliases;
         std::map<std::string, StructDescription> structures;
         std::map<std::string, FunctionDescription> functions;
         std::map<std::string, FunctionDescription> externFunctions;
@@ -30,6 +31,7 @@ namespace icode
         void initializeTarget(const TargetEnums& target);
 
         bool useExists(const std::string&);
+        bool getModuleNameFromAlias(const std::string& name, std::string& returnValue);
         bool getStruct(const std::string& name, StructDescription& returnValue);
         bool getFunction(const std::string& name, FunctionDescription& returnValue);
         bool getExternFunction(const std::string& name, FunctionDescription& returnValue);

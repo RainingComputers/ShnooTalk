@@ -23,11 +23,6 @@ void printCLIUsage()
     pp::println("    -llvm      Print llvm ir");
 }
 
-std::string removeFileExtension(const std::string& fileName)
-{
-    return fileName.substr(0, fileName.find_last_of("."));
-}
-
 Console getStreamAndConsole(const std::string& fileName, std::ifstream& fileStream)
 {
     fileStream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
@@ -60,7 +55,7 @@ void generateIR(Console& console,
         if (modulesMap.find(use) == modulesMap.end())
         {
             std::ifstream fileStream;
-            std::string useWithExt = use + ".uhll";
+            std::string useWithExt = use;
             Console console = getStreamAndConsole(useWithExt, fileStream);
             generateIR(console, use, target, modulesMap);
         }
@@ -68,12 +63,10 @@ void generateIR(Console& console,
     generator::generateModule(generatorContext, ast);
 }
 
-int phaseDriver(const std::string& fileName, const std::string& option)
+int phaseDriver(const std::string& moduleName, const std::string& option)
 {
-    std::string moduleName = removeFileExtension(fileName);
-
     std::ifstream fileStream;
-    Console console = getStreamAndConsole(fileName, fileStream);
+    Console console = getStreamAndConsole(moduleName, fileStream);
 
     if (option == "-ast")
     {
