@@ -1,0 +1,14 @@
+# This should be printed
+
+extfn exit(exitCode: int)
+
+fn main() -> int
+{
+    println("This should be printed")
+
+    exit(0)
+
+    println("This should not be printed")
+
+    return 0
+}
