@@ -9,7 +9,7 @@
 
 void programModule(parser::ParserContext& ctx)
 {
-    token::TokenType expected[] = { token::STRUCT, token::FUNCTION, token::ENUM,
+    token::TokenType expected[] = { token::STRUCT, token::FUNCTION, token::EXTERN_FUNCTION, token::ENUM,
                                     token::DEF,    token::VAR,      token::END_OF_FILE };
 
     while (ctx.accept(token::USE))
@@ -20,7 +20,7 @@ void programModule(parser::ParserContext& ctx)
 
     while (true)
     {
-        ctx.expect(expected, 6);
+        ctx.expect(expected, 7);
 
         if (ctx.accept(token::DEF))
             def(ctx);
@@ -32,6 +32,8 @@ void programModule(parser::ParserContext& ctx)
             structDefinition(ctx);
         else if (ctx.accept(token::FUNCTION))
             functionDefinition(ctx);
+        else if (ctx.accept(token::EXTERN_FUNCTION))
+            externFunctionDefinition(ctx);
         else
             break;
     }

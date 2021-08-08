@@ -34,7 +34,7 @@ TypeDescription typeDescriptionFromNode(GeneratorContext& ctx, const Node& root)
     if (root.isNthChild(node::MODULE, childNodeCounter))
         childNodeCounter = setWorkingModuleFromNode(ctx, root, childNodeCounter);
 
-    if (root.isNthChild(node::BLOCK, childNodeCounter))
+    if (!root.isNthChild(node::IDENTIFIER, childNodeCounter))
         return ctx.ir.moduleBuilder.createVoidTypeDescription();
 
     const Token& dataTypeToken = root.getNthChildToken(childNodeCounter);

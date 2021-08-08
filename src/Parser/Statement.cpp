@@ -165,8 +165,6 @@ void statement(parser::ParserContext& ctx)
         print(ctx);
     else if (ctx.accept(token::INPUT))
         input(ctx);
-    else if (ctx.accept(token::EXIT))
-        ctx.addNode(node::EXIT);
     else if (ctx.accept(token::RETURN))
         returnExpression(ctx);
 }
@@ -177,10 +175,10 @@ void block(parser::ParserContext& ctx)
 
     ctx.addNodeMakeCurrentNoConsume(node::BLOCK);
 
-    token::TokenType expected[] = { token::CLOSE_BRACE, token::VAR,    token::CONST, token::IF,
-                                    token::WHILE,       token::FOR,    token::BREAK, token::CONTINUE,
-                                    token::IDENTIFIER,  token::RETURN, token::PRINT, token::PRINTLN,
-                                    token::INPUT,       token::EXIT };
+    token::TokenType expected[] = {
+        token::CLOSE_BRACE, token::VAR,        token::CONST,  token::IF,    token::WHILE,   token::FOR,   token::BREAK,
+        token::CONTINUE,    token::IDENTIFIER, token::RETURN, token::PRINT, token::PRINTLN, token::INPUT,
+    };
 
     if (ctx.accept(token::OPEN_BRACE))
     {
@@ -188,7 +186,7 @@ void block(parser::ParserContext& ctx)
 
         while (!ctx.accept(token::CLOSE_BRACE))
         {
-            ctx.expect(expected, 14);
+            ctx.expect(expected, 13);
             statement(ctx);
         }
 
@@ -197,7 +195,7 @@ void block(parser::ParserContext& ctx)
     }
     else
     {
-        ctx.expect(expected, 14);
+        ctx.expect(expected, 13);
         statement(ctx);
     }
 

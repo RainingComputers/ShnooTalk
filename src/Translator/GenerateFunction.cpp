@@ -1,3 +1,4 @@
+#include "llvm/IR/Function.h"
 #include "llvm/IR/Verifier.h"
 
 #include "BinaryOperator.hpp"
@@ -115,8 +116,6 @@ void translateFunctionIcode(ModuleContext& ctx,
                 break;
             case icode::MEMCPY:
                 memCopy(ctx, e);
-                break;
-            case icode::EXIT:
                 break;
             default:
                 ctx.console.internalBugError();

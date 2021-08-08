@@ -25,6 +25,10 @@ make build
 sudo make install
 ```
 
+### VS Code syntax highlight extension
+
+Install the extension from [here](https://marketplace.visualstudio.com/items?itemName=RainingComputers.shnootalk-vscode) 
+
 ## Getting started
 
 **app.uhll**
@@ -53,11 +57,11 @@ clang app.o -o app
 - [x] Change IR pretty print to JSON
 - [x] IR renaming and cleanup
 - [x] Main function return type check
-- [ ] Fix `input()` and `print()` and `println()` functions
+- [x] Fix `input()` and `print()` and `println()` functions
 - [ ] Add `fopen()` function
-- [ ] Fix nested single line statements
-- [ ] `exit()` function
-- [ ] Extern C functions and function imports
+- [ ] Multi-line strings
+- [x] `exit()` function
+- [x] Extern C functions and function imports
 - [ ] `loop {}` syntax for looping forever
 - [ ] `do {} while()` loop
 - [ ] Static variables

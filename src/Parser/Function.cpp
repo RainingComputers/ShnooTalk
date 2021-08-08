@@ -24,12 +24,8 @@ void formalParameterList(parser::ParserContext& ctx)
     } while (ctx.accept(token::COMMA));
 }
 
-void functionDefinition(parser::ParserContext& ctx)
+void functionDecleration(parser::ParserContext& ctx)
 {
-    ctx.pushNode();
-
-    ctx.addNodeMakeCurrent(node::FUNCTION);
-
     ctx.expect(token::IDENTIFIER);
     ctx.addNode(node::IDENTIFIER);
 
@@ -54,8 +50,28 @@ void functionDefinition(parser::ParserContext& ctx)
 
         ctx.popNode();
     }
+}
+
+void functionDefinition(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrent(node::FUNCTION);
+
+    functionDecleration(ctx);
 
     block(ctx);
+
+    ctx.popNode();
+}
+
+void externFunctionDefinition(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrent(node::EXTERN_FUNCTION);
+
+    functionDecleration(ctx);
 
     ctx.popNode();
 }

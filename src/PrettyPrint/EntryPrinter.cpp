@@ -154,7 +154,6 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::NEWLN:
         case icode::SPACE:
         case icode::RET:
-        case icode::EXIT:
             return "    " + instructionToString[entry.opcode];
         default:
             throw PrettyPrintError();

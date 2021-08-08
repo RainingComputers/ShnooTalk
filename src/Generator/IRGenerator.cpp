@@ -34,6 +34,7 @@ void generateSymbol(generator::GeneratorContext& ctx, const Node& child)
             createStructFromNode(ctx, child);
             break;
         case node::FUNCTION:
+        case node::EXTERN_FUNCTION:
             createFunctionFromNode(ctx, child);
             break;
         case node::ENUM:

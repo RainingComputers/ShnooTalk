@@ -106,7 +106,7 @@ bool Token::isIntLiteral() const
 
 int Token::toInt() const
 {
-    return std::stoi(string);
+    return std::stoi(string, nullptr, 0);
 }
 
 float Token::toFloat() const

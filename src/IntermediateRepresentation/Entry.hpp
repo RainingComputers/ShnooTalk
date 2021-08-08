@@ -46,8 +46,7 @@ namespace icode
         NEWLN,
         INPUT,
         INPUT_STR,
-        MEMCPY,
-        EXIT
+        MEMCPY
     };
 
     struct Entry

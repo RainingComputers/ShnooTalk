@@ -26,6 +26,11 @@ namespace icode
         return getMapElement<std::string, FunctionDescription>(functions, name, returnValue);
     }
 
+    bool ModuleDescription::getExternFunction(const std::string& name, FunctionDescription& returnValue)
+    {
+        return getMapElement<std::string, FunctionDescription>(externFunctions, name, returnValue);
+    }
+
     bool ModuleDescription::getEnum(const std::string& name, int& returnValue)
     {
         return getMapElement<std::string, int>(enumerations, name, returnValue);

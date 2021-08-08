@@ -14,6 +14,7 @@ namespace node
         BLOCK,
         MODULE,
         FUNCTION,
+        EXTERN_FUNCTION,
         STRUCT,
         ENUM,
         DEF,
@@ -48,8 +49,7 @@ namespace node
         TYPEOF,
         PRINT,
         PRINTLN,
-        INPUT,
-        EXIT
+        INPUT
     };
 }
 

@@ -16,6 +16,10 @@ class ModuleBuilder
 
     std::pair<int, std::string> getSizeAndModuleName(const Token& dataTypeToken, icode::DataType dtype);
 
+    icode::FunctionDescription createFunctionDescription(const icode::TypeDescription& returnType,
+                                                         const std::vector<Token>& paramNames,
+                                                         std::vector<icode::TypeDescription>& paramTypes);
+
 public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
 
@@ -35,16 +39,21 @@ public:
 
     void createEnum(const std::vector<Token>& enums);
 
-    void createFunctionDescription(const Token& nameToken,
-                                   const icode::TypeDescription& returnType,
-                                   const std::vector<Token>& paramNames,
-                                   std::vector<icode::TypeDescription>& paramTypes);
+    void createFunction(const Token& nameToken,
+                        const icode::TypeDescription& returnType,
+                        const std::vector<Token>& paramNames,
+                        std::vector<icode::TypeDescription>& paramTypes);
+
+    void createExternFunction(const Token& nameToken,
+                              const icode::TypeDescription& returnType,
+                              const std::vector<Token>& paramNames,
+                              std::vector<icode::TypeDescription>& paramTypes);
 
     void createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription);
 
-    void createStructDescription(const Token& nameToken,
-                                 const std::vector<Token>& fieldNames,
-                                 const std::vector<icode::TypeDescription>& fieldTypes);
+    void createStruct(const Token& nameToken,
+                      const std::vector<Token>& fieldNames,
+                      const std::vector<icode::TypeDescription>& fieldTypes);
 
     void createUse(const Token& nameToken);
 

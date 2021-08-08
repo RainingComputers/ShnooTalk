@@ -164,9 +164,6 @@ void statement(generator::GeneratorContext& ctx,
         case node::INPUT:
             input(ctx, root);
             break;
-        case node::EXIT:
-            ctx.ir.functionBuilder.noArgumentEntry(EXIT);
-            break;
         case node::MODULE:
         {
             ctx.ir.pushWorkingModule();

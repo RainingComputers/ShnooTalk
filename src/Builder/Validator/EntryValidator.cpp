@@ -242,7 +242,6 @@ void validateEntry(const icode::Entry& entry, Console& con)
         case icode::NEWLN:
         case icode::SPACE:
         case icode::RET:
-        case icode::EXIT:
             con.check(noOperand(entry));
             break;
         default:

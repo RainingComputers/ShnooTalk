@@ -17,6 +17,7 @@ namespace icode
         std::vector<std::string> uses;
         std::map<std::string, StructDescription> structures;
         std::map<std::string, FunctionDescription> functions;
+        std::map<std::string, FunctionDescription> externFunctions;
         std::map<std::string, int> enumerations;
         std::map<std::string, int> intDefines;
         std::map<std::string, float> floatDefines;
@@ -31,6 +32,7 @@ namespace icode
         bool useExists(const std::string&);
         bool getStruct(const std::string& name, StructDescription& returnValue);
         bool getFunction(const std::string& name, FunctionDescription& returnValue);
+        bool getExternFunction(const std::string& name, FunctionDescription& returnValue);
         bool getEnum(const std::string& name, int& returnValue);
         bool getIntDefine(const std::string& name, int& returnValue);
         bool getFloatDefine(const std::string& name, float& returnValue);

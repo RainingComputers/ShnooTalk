@@ -10,6 +10,7 @@ namespace token
         NONE,
         SPACE,
         FUNCTION,
+        EXTERN_FUNCTION,
         IDENTIFIER,
         LPAREN,
         RPAREN,
@@ -84,8 +85,7 @@ namespace token
         TYPEOF,
         PRINT,
         PRINTLN,
-        INPUT,
-        EXIT
+        INPUT
     };
 }
 

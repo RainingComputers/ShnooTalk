@@ -451,13 +451,23 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
     return unitBuilder.unitFromTypeDescription(typeDescription, nameToken.toString());
 }
 
+std::string FunctionBuilder::getCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)
+{
+    icode::ModuleDescription& functionModule = modulesMap.at(callee.moduleName);
+
+    if (functionModule.externFunctions.find(calleeNameToken.toString()) != functionModule.externFunctions.end())
+        return calleeNameToken.toString();
+
+    return nameMangle(calleeNameToken, callee.moduleName);
+}
+
 void FunctionBuilder::passParameter(const Token& calleeNameToken,
                                     FunctionDescription callee,
                                     const Unit& formalParam,
                                     const Unit& actualParam)
 {
     /* Construct icode for PASS and PASS_ADDR instructions */
-    std::string mangledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
+    std::string calleeName = getCalleeName(calleeNameToken, callee);
 
     DataType functionDataType = callee.functionReturnType.dtype;
 
@@ -474,7 +484,7 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
         entry.op1 = autoCast(ensureNotPointer(actualParam.op()), formalParam.dtype());
     }
 
-    entry.op2 = opBuilder.createVarOperand(functionDataType, mangledCalleeName);
+    entry.op2 = opBuilder.createVarOperand(functionDataType, calleeName);
     entry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(entry);
@@ -484,7 +494,7 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescrip
 {
     /* Construct icode for CALL instruction */
 
-    std::string mangledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
+    std::string calleeName = getCalleeName(calleeNameToken, callee);
 
     DataType functionDataType = callee.functionReturnType.dtype;
 
@@ -492,7 +502,7 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescrip
 
     callEntry.opcode = CALL;
     callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
-    callEntry.op2 = opBuilder.createVarOperand(functionDataType, mangledCalleeName);
+    callEntry.op2 = opBuilder.createVarOperand(functionDataType, calleeName);
     callEntry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(callEntry);

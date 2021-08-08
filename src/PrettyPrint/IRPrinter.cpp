@@ -200,6 +200,9 @@ namespace pp
         FlatJSONPrinter structsPrinter = jsonp.beginNested("structures");
         printStructDescriptionMap(moduleDescription.structures, structsPrinter);
 
+        FlatJSONPrinter externFunctionsPrinter = jsonp.beginNested("externFunctions");
+        printFunctionDescriptionMap(moduleDescription.externFunctions, externFunctionsPrinter, jsonIR);
+
         FlatJSONPrinter functionsPrinter = jsonp.beginNested("functions");
         printFunctionDescriptionMap(moduleDescription.functions, functionsPrinter, jsonIR);
 

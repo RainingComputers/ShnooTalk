@@ -81,6 +81,7 @@
         "aggs",
         "dpeek",
         "dtype",
+        "extfn",
         "ibuild",
         "icode",
         "ifend",

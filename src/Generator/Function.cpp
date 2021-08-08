@@ -43,5 +43,8 @@ void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
         ctx.scope.putInCurrentScope(paramName);
     }
 
-    ctx.ir.moduleBuilder.createFunctionDescription(nameToken, returnType, paramNames, paramTypes);
+    if (root.type == node::FUNCTION)
+        ctx.ir.moduleBuilder.createFunction(nameToken, returnType, paramNames, paramTypes);
+    else
+        ctx.ir.moduleBuilder.createExternFunction(nameToken, returnType, paramNames, paramTypes);
 }

@@ -70,7 +70,11 @@ structDefinition = "struct" identifier "{" {identifierDeclareList<false>} "}"
 
 formalParameterList =   ["mut"] identifierDeclaration {"," ["mut"] identifierDeclaration}
 
-functionDefinition = "fn" identifier "(" [formalParameterList] ")" ["->" typeDefinition] block
+functionDeceleration = identifier "(" [formalParameterList] ")" ["->" typeDefinition]
+
+functionDefinition = "fn" functionDeceleration block
+
+externFunctionDefinition = "extfn" functionDeceleration
 
 print = ("print" | "println") "(" [expression {"," expression}] ")" 
 
@@ -126,5 +130,5 @@ statement = functionCall
 
 block =  ("{" {statement} "}") | statement
 
-programModule = {use} {from} {def | enumList | identifierDeclareList<false>  | structDefinition | functionDefinition} endOfFile
+programModule = {use} {from} {def | enumList | identifierDeclareList<false>  | structDefinition | functionDefinition | externFunctionDefinition} endOfFile
 ```

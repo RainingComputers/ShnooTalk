@@ -20,12 +20,30 @@ Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op)
     ctx.console.internalBugError();
 }
 
+icode::FunctionDescription getFunction(const ModuleContext& ctx,
+                                       const std::string& functionName,
+                                       const std::string& moduleName)
+{
+    icode::ModuleDescription& functionModule = ctx.modulesMap.at(moduleName);
+
+    icode::FunctionDescription functionDescription;
+
+    if (functionModule.getFunction(functionName, functionDescription))
+        return functionDescription;
+
+    if (functionModule.getExternFunction(functionName, functionDescription))
+        return functionDescription;
+
+    ctx.console.internalBugError();
+}
+
 Function* getLLVMFunction(const ModuleContext& ctx, const std::string& functionName, const std::string& moduleName)
 {
     if (auto* F = ctx.LLVMModule->getFunction(functionName))
         return F;
 
-    FunctionType* functionType = funcDescriptionToLLVMType(ctx, ctx.modulesMap[moduleName].functions[functionName]);
+    /* This code will be never reached for extern functions because they are already declared */
+    FunctionType* functionType = funcDescriptionToLLVMType(ctx, getFunction(ctx, functionName, moduleName));
     return Function::Create(functionType, Function::ExternalLinkage, functionName, *ctx.LLVMModule);
 }
 
@@ -33,7 +51,7 @@ icode::TypeDescription getFunctionReturnType(const ModuleContext& ctx,
                                              const std::string& functionName,
                                              const std::string& moduleName)
 {
-    const icode::FunctionDescription& functionDescription = ctx.modulesMap[moduleName].functions[functionName];
+    const icode::FunctionDescription& functionDescription = getFunction(ctx, functionName, moduleName);
     return functionDescription.functionReturnType;
 }
 

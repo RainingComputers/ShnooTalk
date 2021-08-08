@@ -157,7 +157,10 @@ FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
 {
     FunctionDescription functionDescription;
 
-    if ((*workingModule).getFunction(nameMangle(nameToken, workingModule->name), functionDescription))
+    if (workingModule->getExternFunction(nameToken.toString(), functionDescription))
+        return functionDescription;
+
+    if (workingModule->getFunction(nameMangle(nameToken, workingModule->name), functionDescription))
         return functionDescription;
 
     if (rootModule.getFunction(nameMangle(nameToken, rootModule.name), functionDescription))

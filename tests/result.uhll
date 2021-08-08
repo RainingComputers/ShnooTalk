@@ -1,6 +1,8 @@
 # Library for error handling and returning 
 # success or failure results
 
+extfn exit(exitCode: int)
+
 struct Result
 {
     var _val:int, err:bool
@@ -14,7 +16,7 @@ fn val(this:Result) -> int
     if(this.err == true) 
     {
         println("ERROR: Called val() on result with error")
-        exit
+        exit(1)
     }
     
     return this._val
@@ -56,7 +58,7 @@ fn floatVal(this:FloatResult) -> float
     if(this.err == true)
     {
         println("ERROR: Called val() on floatResult with error")
-        exit
+        exit(1)
     }
     
     return this._fVal
