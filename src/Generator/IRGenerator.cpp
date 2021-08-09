@@ -1,10 +1,10 @@
 #include "Define.hpp"
 #include "Enum.hpp"
-#include "From.hpp"
 #include "Function.hpp"
 #include "Global.hpp"
 #include "Statement.hpp"
 #include "Structure.hpp"
+#include "Use.hpp"
 
 #include "IRGenerator.hpp"
 

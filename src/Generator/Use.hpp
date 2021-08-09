@@ -1,5 +1,5 @@
-#ifndef GENERATOR_FROM
-#define GENERATOR_FROM
+#ifndef GENERATOR_USE
+#define GENERATOR_USE
 
 #include "GeneratorContext.hpp"
 
