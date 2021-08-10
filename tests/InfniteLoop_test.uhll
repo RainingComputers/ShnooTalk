@@ -1,0 +1,19 @@
+# loop
+# loop
+# loop
+# loop
+# loop
+
+fn main() -> int
+{
+    var a: int = 0
+
+    loop {
+        if (a == 5) break
+
+        a += 1
+        println("loop")
+    }
+
+    return 0
+}

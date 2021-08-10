@@ -1,6 +1,7 @@
 ![](logo.png)
 
 # ShnooTalk 
+
 ShnooTalk is a programming language implemented in C++ using the LLVM compiler framework. ShnooTalk works by being compiled to a custom IR format and then translating that to LLVM IR. It is possible to run ShnooTalk on any runtime that supports the clang compiler. ShnooTalk links against standard C libraries/runtime.
 
 ShnooTalk was previously known as uHLL (micro high level language). The project is still transitioning from this name.
@@ -12,6 +13,7 @@ ShnooTalk was previously known as uHLL (micro high level language). The project 
 ## Installing the compiler
 
 ### Ubuntu 20.04 
+
 ```
 sudo apt install llvm-12 llvm-12-dev
 make build
@@ -19,6 +21,7 @@ sudo make install
 ```
 
 ### Mac OS
+
 ```
 brew install llvm@12
 make build
@@ -46,6 +49,7 @@ uhll app.uhll -c
 clang app.o -o app
 ./app
 ```
+
 ## TODO
 
 ### Short term
@@ -58,18 +62,18 @@ clang app.o -o app
 - [x] IR renaming and cleanup
 - [x] Main function return type check
 - [x] Fix `input()` and `print()` and `println()` functions
-- [ ] Add `fopen()` function
-- [ ] Multi-line strings
 - [x] `exit()` function
 - [x] Extern C functions and function imports
-- [ ] `loop {}` syntax for looping forever
-- [ ] `do {} while()` loop
+- [x] Node style module imports
+- [x] `loop {}` syntax for looping forever
+- [x] `do {} while()` loop
+- [ ] NaN and infinity
+- [ ] Dynamic allocation and pointers
+- [ ] Add `fopen()` function
+- [ ] Multi-line strings
 - [ ] Static variables
 - [ ] Assigning conditional expressions
-- [ ] NaN and infinity
-- [x] Node style module imports
 - [ ] Language reference using mkdocs
-- [ ] Dynamic allocation and pointers
 - [ ] CLI argument parser
 - [ ] Refactor tests
 - [ ] Refactor the test runner and use multiprocessing

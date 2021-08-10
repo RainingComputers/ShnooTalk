@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/bin/debug/uhll",
             "args": [
                 "${file}",
-                "-ir"
+                "-c"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

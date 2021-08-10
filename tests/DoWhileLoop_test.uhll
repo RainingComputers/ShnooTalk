@@ -1,0 +1,18 @@
+# loop
+# loop
+# loop
+# loop
+# loop
+
+fn main() -> int
+{
+    var a: int = 0
+
+    do {
+        a += 1
+
+        println("loop")
+    } while (a < 5)
+
+    return 0
+}

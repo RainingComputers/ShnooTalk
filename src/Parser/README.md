@@ -111,7 +111,11 @@ ifStatement = "if" expression block {"elseif" expression block} ["else" block]
 
 whileLoop = "while" expression block
 
+doWhileLoop = "do" block "while" expression
+
 forLoop = "for" ["("] (identifierDeclareList<true> | assignmentOrMethodCall) ";" expression ";" assignmentOrMethodCall [")"] block
+
+infiniteLoop = "loop" block
 
 returnExpression = "return" (expression | "void")
 
@@ -122,6 +126,7 @@ statement = functionCall
           | ifStatement
           | whileLoop
           | forLoop
+          | infiniteLoop
           | "break"
           | "continue"
           | print

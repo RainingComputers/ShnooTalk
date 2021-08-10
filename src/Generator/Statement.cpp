@@ -64,6 +64,22 @@ void whileLoop(generator::GeneratorContext& ctx, const Node& root)
     ctx.ir.functionBuilder.insertLabel(breakLabel);
 }
 
+void doWhileLoop(generator::GeneratorContext& ctx, const Node& root)
+{
+    Operand loopLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "do");
+    Operand breakLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "do");
+
+    ctx.ir.functionBuilder.insertLabel(loopLabel);
+
+    block(ctx, root.children[0], true, loopLabel, breakLabel, loopLabel);
+
+    conditionalExpression(ctx, root.children[1], loopLabel, breakLabel, true);
+
+    ctx.ir.functionBuilder.createBranch(GOTO, loopLabel);
+
+    ctx.ir.functionBuilder.insertLabel(breakLabel); 
+}
+
 void forLoopInitOrUpdateNode(generator::GeneratorContext& ctx, const Node& root)
 {
     if (root.type == node::VAR)
@@ -92,6 +108,20 @@ void forLoop(generator::GeneratorContext& ctx, const Node& root)
     ctx.ir.functionBuilder.insertLabel(continueLabel);
 
     forLoopInitOrUpdateNode(ctx, root.children[2]);
+
+    ctx.ir.functionBuilder.createBranch(GOTO, loopLabel);
+
+    ctx.ir.functionBuilder.insertLabel(breakLabel);
+}
+
+void infniteLoop(generator::GeneratorContext& ctx, const Node& root)
+{
+    Operand loopLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "loop");
+    Operand breakLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "loop");
+
+    ctx.ir.functionBuilder.insertLabel(loopLabel);
+
+    block(ctx, root.children[0], true, loopLabel, breakLabel, loopLabel);
 
     ctx.ir.functionBuilder.createBranch(GOTO, loopLabel);
 
@@ -145,8 +175,14 @@ void statement(generator::GeneratorContext& ctx,
         case node::WHILE:
             whileLoop(ctx, root);
             break;
+        case node::DO_WHILE:
+            doWhileLoop(ctx, root);
+            break;
         case node::FOR:
             forLoop(ctx, root);
+            break;
+        case node::LOOP:
+            infniteLoop(ctx, root);
             break;
         case node::BREAK:
             breakStatement(ctx, isLoopBlock, breakLabel, root.tok);

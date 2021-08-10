@@ -89,6 +89,22 @@ void whileLoop(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
+void doWhileLoop(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrent(node::DO_WHILE);
+
+    block(ctx);
+
+    ctx.expect(token::WHILE);
+    ctx.consume();
+
+    expression(ctx);
+
+    ctx.popNode();
+}
+
 void forLoop(parser::ParserContext& ctx)
 {
     ctx.pushNode();
@@ -116,6 +132,17 @@ void forLoop(parser::ParserContext& ctx)
 
     if (ctx.accept(token::RPAREN))
         ctx.consume();
+
+    block(ctx);
+
+    ctx.popNode();
+}
+
+void infniteLoop(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrent(node::LOOP);
 
     block(ctx);
 
@@ -155,8 +182,12 @@ void statement(parser::ParserContext& ctx)
         ifStatement(ctx);
     else if (ctx.accept(token::WHILE))
         whileLoop(ctx);
+    else if (ctx.accept(token::DO))
+        doWhileLoop(ctx);
     else if (ctx.accept(token::FOR))
         forLoop(ctx);
+    else if (ctx.accept(token::LOOP))
+        infniteLoop(ctx);
     else if (ctx.accept(token::BREAK))
         ctx.addNode(node::BREAK);
     else if (ctx.accept(token::CONTINUE))
@@ -176,8 +207,9 @@ void block(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrentNoConsume(node::BLOCK);
 
     token::TokenType expected[] = {
-        token::CLOSE_BRACE, token::VAR,        token::CONST,  token::IF,    token::WHILE,   token::FOR,   token::BREAK,
-        token::CONTINUE,    token::IDENTIFIER, token::RETURN, token::PRINT, token::PRINTLN, token::INPUT,
+        token::CLOSE_BRACE, token::VAR,    token::CONST, token::IF,      token::WHILE,
+        token::DO,          token::FOR,    token::LOOP,  token::BREAK,   token::CONTINUE,
+        token::IDENTIFIER,  token::RETURN, token::PRINT, token::PRINTLN, token::INPUT,
     };
 
     if (ctx.accept(token::OPEN_BRACE))
@@ -186,7 +218,7 @@ void block(parser::ParserContext& ctx)
 
         while (!ctx.accept(token::CLOSE_BRACE))
         {
-            ctx.expect(expected, 13);
+            ctx.expect(expected, 15);
             statement(ctx);
         }
 
@@ -195,7 +227,7 @@ void block(parser::ParserContext& ctx)
     }
     else
     {
-        ctx.expect(expected, 13);
+        ctx.expect(expected, 15);
         statement(ctx);
     }
 
