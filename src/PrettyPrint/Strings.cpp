@@ -126,6 +126,7 @@ const std::string nodeTypeToString[] = { "PROGRAM",
                                          "TYPEOF",
                                          "PRINT",
                                          "PRINTLN",
+                                         "SPACE",
                                          "INPUT" };
 
 const std::string operandTypeToString[] = { "temp",      "tempPtr", "bytes",       "stringData",        "var",

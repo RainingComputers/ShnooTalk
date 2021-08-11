@@ -8,15 +8,19 @@ void print(generator::GeneratorContext& ctx, const Node& root)
     {
         Node child = root.children[i];
 
-        Unit unit = expression(ctx, child);
-
-        if (unit.isStruct() || unit.isMultiDimArray())
-            ctx.console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
-
-        ctx.ir.functionBuilder.createPrint(unit);
-
-        if (i != root.children.size() - 1)
+        if (child.type == node::SPACE)
+        {
             ctx.ir.functionBuilder.noArgumentEntry(icode::SPACE);
+        }
+        else
+        {
+            Unit unit = expression(ctx, child);
+
+            if (unit.isStruct() || unit.isMultiDimArray())
+                ctx.console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
+
+            ctx.ir.functionBuilder.createPrint(unit);
+        }
 
         if (i == root.children.size() - 1 && root.type == node::PRINTLN)
             ctx.ir.functionBuilder.noArgumentEntry(icode::NEWLN);

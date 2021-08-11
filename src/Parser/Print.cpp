@@ -12,13 +12,17 @@ void print(parser::ParserContext& ctx)
         ctx.addNodeMakeCurrent(node::PRINT);
 
     ctx.expect(token::LPAREN);
+    ctx.consume();
 
-    do
+    while (!ctx.accept(token::RPAREN))
     {
-        ctx.consume();
-        expression(ctx);
-
-    } while (ctx.accept(token::COMMA));
+        if (ctx.accept(token::COMMA))
+            ctx.addNode(node::SPACE);
+        else if (ctx.accept(token::SEMICOLON))
+            ctx.consume();
+        else
+            expression(ctx);
+    };
 
     ctx.expect(token::RPAREN);
     ctx.consume();

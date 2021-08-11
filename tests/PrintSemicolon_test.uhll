@@ -1,0 +1,8 @@
+# hello worldgoodbye world
+
+fn main() -> int
+{
+    println("hello", "world"; "goodbye", "world")
+
+    return 0
+}

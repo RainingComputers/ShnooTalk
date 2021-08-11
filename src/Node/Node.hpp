@@ -51,6 +51,7 @@ namespace node
         TYPEOF,
         PRINT,
         PRINTLN,
+        SPACE,
         INPUT
     };
 }
