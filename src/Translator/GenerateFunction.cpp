@@ -141,10 +141,10 @@ void setupFunctionStack(ModuleContext& ctx, const icode::FunctionDescription& fu
     }
 }
 
-void setCurrentFunctionReturnPointer(ModuleContext& ctx,
-                                     const icode::FunctionDescription& functionDesc,
-                                     const std::string& name,
-                                     Function* function)
+void setCurrentFunctionReturnValue(ModuleContext& ctx,
+                                   const icode::FunctionDescription& functionDesc,
+                                   const std::string& name,
+                                   Function* function)
 {
     if (functionDesc.functionReturnType.isStructOrArray())
     {
@@ -155,9 +155,9 @@ void setCurrentFunctionReturnPointer(ModuleContext& ctx,
     else
     {
         ctx.currentFunctionReturnValue =
-          ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType),
-                                    nullptr,
-                                    name + "_retValue");
+            ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType),
+                                      nullptr,
+                                      name + "_retValue");
     }
 }
 
@@ -180,7 +180,7 @@ void generateFunction(ModuleContext& ctx,
 
     /* Set ret ptr */
     if (functionDesc.functionReturnType.dtype != icode::VOID)
-        setCurrentFunctionReturnPointer(ctx, functionDesc, name, function);
+        setCurrentFunctionReturnValue(ctx, functionDesc, name, function);
 
     /* Convert ShnooTalk function ir to llvm ir */
     translateFunctionIcode(ctx, branchContext, formatStringsContext, functionDesc, function);

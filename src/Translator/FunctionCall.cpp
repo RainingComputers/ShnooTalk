@@ -33,7 +33,7 @@ void call(ModuleContext& ctx, const icode::Entry& e)
     if (!returnType.isStructOrArray())
     {
         Value* result =
-          ctx.builder->CreateCall(getLLVMFunction(ctx, functionName, e.op3.name), ctx.params[functionName]);
+            ctx.builder->CreateCall(getLLVMFunction(ctx, functionName, e.op3.name), ctx.params[functionName]);
 
         if (returnType.dtype != icode::VOID)
             ctx.builder->CreateStore(result, calleeReturnValuePointer);

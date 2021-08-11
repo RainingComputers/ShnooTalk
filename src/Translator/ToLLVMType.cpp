@@ -81,7 +81,7 @@ Type* formalParameterTypeToLLVMType(const ModuleContext& ctx, const icode::TypeD
     if (typeDescription.isStruct())
     {
         icode::StructDescription structDescription =
-          ctx.modulesMap[typeDescription.moduleName].structures[typeDescription.dtypeName];
+            ctx.modulesMap[typeDescription.moduleName].structures[typeDescription.dtypeName];
 
         icode::DataType dtype = structDescription.structFields.begin()->second.dtype;
 

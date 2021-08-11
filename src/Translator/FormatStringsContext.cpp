@@ -20,13 +20,13 @@ void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& f
     };
 
     formatStringsContext.dataTypeFormatStringsMap[icode::AUTO_INT] =
-      formatStringsContext.dataTypeFormatStringsMap[icode::I64];
+        formatStringsContext.dataTypeFormatStringsMap[icode::I64];
 
     formatStringsContext.dataTypeFormatStringsMap[icode::AUTO_FLOAT] =
-      formatStringsContext.dataTypeFormatStringsMap[icode::F64];
+        formatStringsContext.dataTypeFormatStringsMap[icode::F64];
 
     formatStringsContext.charInputFormatString =
-      ctx.builder->CreateGlobalString(" %c", "charinpfmt", 0U, ctx.LLVMModule.get());
+        ctx.builder->CreateGlobalString(" %c", "charinpfmt", 0U, ctx.LLVMModule.get());
 
     formatStringsContext.newLineString = ctx.builder->CreateGlobalString("\n", "newlnfmt", 0U, ctx.LLVMModule.get());
 
@@ -42,6 +42,7 @@ Value* getFromatStringFromDataTypeScanf(const FormatStringsContext& formatString
 {
     if (dtype == icode::UI8)
         return formatStringsContext.charInputFormatString;
+
     return formatStringsContext.dataTypeFormatStringsMap.at(dtype);
 }
 

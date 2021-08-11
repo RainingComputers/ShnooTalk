@@ -31,7 +31,7 @@ void createGotoBackpatch(const ModuleContext& ctx,
 
     /* Save llvm insertion point corresponding to this entry */
     branchContext.insertionPoints[entryIndex] =
-      InsertionPoint(ctx.builder->GetInsertBlock(), ctx.builder->GetInsertPoint()++);
+        InsertionPoint(ctx.builder->GetInsertBlock(), ctx.builder->GetInsertPoint()++);
 
     /* Append to backpatch queue */
     branchContext.backpatchQueue.push_back(EnumeratedEntry(entryIndex, e));

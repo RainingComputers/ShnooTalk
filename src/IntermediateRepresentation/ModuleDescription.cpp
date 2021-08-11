@@ -11,10 +11,9 @@ namespace icode
     {
         intDefines = target.intDefines;
 
-        intDefines = { { "false", 0 },
-                       { "true", 1 }};
+        intDefines = { { "false", 0 }, { "true", 1 } };
 
-        floatDefines = { { "nan", NAN }, { "infinity", INFINITY }};
+        floatDefines = { { "nan", NAN }, { "infinity", INFINITY } };
     }
 
     bool ModuleDescription::useExists(const std::string& name)

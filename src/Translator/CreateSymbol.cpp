@@ -10,7 +10,7 @@ void createGlobalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDe
     Type* type = typeDescriptionToLLVMType(ctx, typeDescription);
 
     GlobalVariable* global =
-      new GlobalVariable(*ctx.LLVMModule, type, false, GlobalVariable::PrivateLinkage, nullptr, name);
+        new GlobalVariable(*ctx.LLVMModule, type, false, GlobalVariable::PrivateLinkage, nullptr, name);
 
     global->setInitializer(Constant::getNullValue(type));
 
@@ -22,8 +22,12 @@ void createGlobalString(ModuleContext& ctx, const std::string& key, const std::s
 
     Constant* strConstant = ConstantDataArray::getString(*ctx.context, str);
 
-    GlobalVariable* globalString =
-      new GlobalVariable(*ctx.LLVMModule, strConstant->getType(), true, GlobalValue::ExternalLinkage, strConstant, key);
+    GlobalVariable* globalString = new GlobalVariable(*ctx.LLVMModule,
+                                                      strConstant->getType(),
+                                                      true,
+                                                      GlobalValue::ExternalLinkage,
+                                                      strConstant,
+                                                      key);
 
     ctx.operandGlobalStringMap[key] = globalString;
 }
@@ -64,5 +68,5 @@ void createFunctionParameter(ModuleContext& ctx,
 void createLocalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
 {
     ctx.symbolNamePointersMap[name] =
-      ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
+        ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
 }

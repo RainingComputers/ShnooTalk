@@ -68,6 +68,7 @@ clang app.o -o app
 - [x] `loop {}` syntax for looping forever
 - [x] `do {} while()` loop
 - [x] NaN and infinity
+- [ ] Cleanup format strings and function call in Translator
 - [ ] Dynamic allocation and pointers
 - [ ] Add `fopen()` function
 - [ ] Multi-line strings
@@ -83,6 +84,7 @@ clang app.o -o app
 - [ ] WebAssembly support
 - [ ] Setup github workflows and build for other platforms
 - [ ] Check limits for primitive data types
+- [ ] Error recovery
 - [ ] Debug symbols
 
 ### Advanced features

@@ -16,9 +16,12 @@ namespace icode
         std::string name;
         std::vector<std::string> uses;
         std::map<std::string, std::string> aliases;
+
         std::map<std::string, StructDescription> structures;
+
         std::map<std::string, FunctionDescription> functions;
         std::map<std::string, FunctionDescription> externFunctions;
+
         std::map<std::string, int> enumerations;
         std::map<std::string, long> intDefines;
         std::map<std::string, double> floatDefines;

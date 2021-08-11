@@ -293,7 +293,7 @@ void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameT
     {
         rootModule.stringDefines[symbolString] = stringDataKeyReturnValue;
         rootModule.stringsDataCharCounts[stringDataKeyReturnValue] =
-          externalModule->stringsDataCharCounts[stringDataKeyReturnValue];
+            externalModule->stringsDataCharCounts[stringDataKeyReturnValue];
     }
 
     else if (externalModule->getEnum(symbolString, enumReturnValue))
