@@ -76,7 +76,7 @@ functionDefinition = "fn" functionDeceleration block
 
 externFunctionDefinition = "extfn" functionDeceleration
 
-print = ("print" | "println") "(" [expression {"," expression}] ")" 
+print = ("print" | "println") "(" [expression {("," | ";") expression}] ")" 
 
 input = "input" "(" term ")"
 
