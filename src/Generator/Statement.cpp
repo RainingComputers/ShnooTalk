@@ -77,7 +77,7 @@ void doWhileLoop(generator::GeneratorContext& ctx, const Node& root)
 
     ctx.ir.functionBuilder.createBranch(GOTO, loopLabel);
 
-    ctx.ir.functionBuilder.insertLabel(breakLabel); 
+    ctx.ir.functionBuilder.insertLabel(breakLabel);
 }
 
 void forLoopInitOrUpdateNode(generator::GeneratorContext& ctx, const Node& root)

@@ -15,7 +15,7 @@ void UnitBuilder::setWorkingModule(ModuleDescription* moduleDescription)
     workingModule = moduleDescription;
 }
 
-Unit UnitBuilder::unitFromIntLiteral(int value)
+Unit UnitBuilder::unitFromIntLiteral(long value)
 {
     Operand op = opBuilder.createIntLiteralOperand(AUTO_INT, value);
     TypeDescription typeDescription = typeDescriptionFromDataType(AUTO_INT);
@@ -31,7 +31,7 @@ Unit UnitBuilder::unitFromCharLiteral(char value)
     return Unit(typeDescription, op);
 }
 
-Unit UnitBuilder::unitFromFloatLiteral(float value)
+Unit UnitBuilder::unitFromFloatLiteral(double value)
 {
     Operand op = opBuilder.createFloatLiteralOperand(AUTO_FLOAT, value);
     TypeDescription typeDescription = typeDescriptionFromDataType(AUTO_FLOAT);

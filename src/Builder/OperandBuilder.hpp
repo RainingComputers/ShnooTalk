@@ -16,7 +16,7 @@ public:
 
     icode::Operand createPointerOperand(icode::DataType dtype);
 
-    icode::Operand createStringDataOperand(const std::string& name, unsigned int size);
+    icode::Operand createStringDataOperand(const std::string& name, unsigned long size);
 
     icode::Operand createVarOperand(icode::DataType dtype,
                                     const std::string& symbol,
@@ -27,11 +27,11 @@ public:
 
     icode::Operand createCalleeRetValOperand(icode::DataType dtype);
 
-    icode::Operand createFloatLiteralOperand(icode::DataType dtype, float literal);
+    icode::Operand createFloatLiteralOperand(icode::DataType dtype, double literal);
 
-    icode::Operand createIntLiteralOperand(icode::DataType dtype, int literal);
+    icode::Operand createIntLiteralOperand(icode::DataType dtype, long literal);
 
-    icode::Operand createBytesOperand(unsigned int address);
+    icode::Operand createBytesOperand(unsigned long address);
 
     icode::Operand createLabelOperand(const std::string& label);
 

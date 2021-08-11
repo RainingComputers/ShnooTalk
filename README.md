@@ -67,7 +67,7 @@ clang app.o -o app
 - [x] Node style module imports
 - [x] `loop {}` syntax for looping forever
 - [x] `do {} while()` loop
-- [ ] NaN and infinity
+- [x] NaN and infinity
 - [ ] Dynamic allocation and pointers
 - [ ] Add `fopen()` function
 - [ ] Multi-line strings

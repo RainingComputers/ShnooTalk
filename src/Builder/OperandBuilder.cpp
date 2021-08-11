@@ -32,7 +32,7 @@ Operand OperandBuilder::createPointerOperand(DataType dtype)
     return temp;
 }
 
-Operand OperandBuilder::createStringDataOperand(const std::string& name, unsigned int size)
+Operand OperandBuilder::createStringDataOperand(const std::string& name, unsigned long size)
 {
     Operand temp;
     temp.operandId = getId();
@@ -44,7 +44,7 @@ Operand OperandBuilder::createStringDataOperand(const std::string& name, unsigne
     return temp;
 }
 
-Operand OperandBuilder::createBytesOperand(unsigned int address)
+Operand OperandBuilder::createBytesOperand(unsigned long address)
 {
     Operand temp;
     temp.operandId = getId();
@@ -92,7 +92,7 @@ Operand OperandBuilder::createCalleeRetValOperand(DataType dtype)
     return temp;
 }
 
-Operand OperandBuilder::createFloatLiteralOperand(DataType dtype, float literal)
+Operand OperandBuilder::createFloatLiteralOperand(DataType dtype, double literal)
 {
     Operand temp;
     temp.operandId = getId();
@@ -103,7 +103,7 @@ Operand OperandBuilder::createFloatLiteralOperand(DataType dtype, float literal)
     return temp;
 }
 
-Operand OperandBuilder::createIntLiteralOperand(DataType dtype, int literal)
+Operand OperandBuilder::createIntLiteralOperand(DataType dtype, long literal)
 {
     Operand temp;
     temp.operandId = getId();

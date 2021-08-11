@@ -191,10 +191,10 @@ namespace pp
         printNumberMap<int>(moduleDescription.enumerations, enumPrinter);
 
         FlatJSONPrinter intDefinePrinter = jsonp.beginNested("intDefines");
-        printNumberMap<int>(moduleDescription.intDefines, intDefinePrinter);
+        printNumberMap<long>(moduleDescription.intDefines, intDefinePrinter);
 
         FlatJSONPrinter floatDefinePrinter = jsonp.beginNested("floatDefines");
-        printNumberMap<float>(moduleDescription.floatDefines, floatDefinePrinter);
+        printNumberMap<double>(moduleDescription.floatDefines, floatDefinePrinter);
 
         FlatJSONPrinter stringDefinePrinter = jsonp.beginNested("stringDefines");
         printStringMap(moduleDescription.stringDefines, stringDefinePrinter);

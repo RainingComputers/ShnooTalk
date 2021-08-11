@@ -106,8 +106,8 @@ public:
     int getPrecedence() const;
     bool isBitwiseOperation() const;
     bool isIntLiteral() const;
-    int toInt() const;
-    float toFloat() const;
+    long toInt() const;
+    double toFloat() const;
     std::string toString() const;
     std::string toUnescapedString() const;
     token::TokenType getType() const;

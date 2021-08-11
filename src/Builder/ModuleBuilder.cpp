@@ -250,8 +250,8 @@ void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameT
     /* Used to store return values */
     StructDescription structDescReturnValue;
     FunctionDescription funcDescReturnValue;
-    int intDefineReturnValue;
-    float floatDefineReturnValue;
+    long intDefineReturnValue;
+    double floatDefineReturnValue;
     int enumReturnValue;
     std::string stringDataKeyReturnValue;
     std::string importModuleNameReturnValue;

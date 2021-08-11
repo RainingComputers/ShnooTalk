@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 
 #include "GetMapElement.hpp"
 
@@ -9,6 +10,11 @@ namespace icode
     void ModuleDescription::initializeTarget(const TargetEnums& target)
     {
         intDefines = target.intDefines;
+
+        intDefines = { { "false", 0 },
+                       { "true", 1 }};
+
+        floatDefines = { { "nan", NAN }, { "infinity", INFINITY }};
     }
 
     bool ModuleDescription::useExists(const std::string& name)
@@ -41,14 +47,14 @@ namespace icode
         return getMapElement<std::string, int>(enumerations, name, returnValue);
     }
 
-    bool ModuleDescription::getIntDefine(const std::string& name, int& returnValue)
+    bool ModuleDescription::getIntDefine(const std::string& name, long& returnValue)
     {
-        return getMapElement<std::string, int>(intDefines, name, returnValue);
+        return getMapElement<std::string, long>(intDefines, name, returnValue);
     }
 
-    bool ModuleDescription::getFloatDefine(const std::string& name, float& returnValue)
+    bool ModuleDescription::getFloatDefine(const std::string& name, double& returnValue)
     {
-        return getMapElement<std::string, float>(floatDefines, name, returnValue);
+        return getMapElement<std::string, double>(floatDefines, name, returnValue);
     }
 
     bool ModuleDescription::getStringDefine(const std::string& name, std::string& returnValue)

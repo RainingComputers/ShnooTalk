@@ -1,0 +1,53 @@
+# -1
+# 255
+# -1
+# 65535
+# -1
+# 4294967295
+# -1
+# 18446744073709551615
+# nan
+# nan
+# 18446744073709551615
+# nan
+# nan
+# -1
+# inf
+# inf
+
+fn main() -> int
+{
+    var a: byte = 0b11111111
+    var b: ubyte = 0b11111111
+    var c: short = 0xffff
+    var d: ushort = 0xffff
+    var e: int = 0xffffffff
+    var f: uint = 0xffffffff
+    var g: long = 0xffffffffffffffff
+    var h: ulong = 0xffffffffffffffff
+    var i: float = nan
+    var j: double = nan
+    var l: bool = a
+    var m: float = infinity
+    var n: double = infinity
+
+    println(a)
+    println(int'b)
+    println(c)
+    println(d)
+    println(e)
+    println(f)
+    println(g)
+    println(h)
+    println(i)
+    println(j)
+    println(h)
+    println(i)
+    println(j)
+    println(l)
+    println(m)
+    println(n)
+
+
+    return 0
+}

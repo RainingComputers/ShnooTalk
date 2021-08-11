@@ -15,8 +15,6 @@ icode::TargetEnums translator::getTarget()
 {
     icode::TargetEnums target;
 
-    target.intDefines = { { "true", 1 }, { "false", 0 } };
-
     return target;
 }
 

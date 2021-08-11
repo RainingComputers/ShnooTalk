@@ -20,8 +20,8 @@ namespace icode
         std::map<std::string, FunctionDescription> functions;
         std::map<std::string, FunctionDescription> externFunctions;
         std::map<std::string, int> enumerations;
-        std::map<std::string, int> intDefines;
-        std::map<std::string, float> floatDefines;
+        std::map<std::string, long> intDefines;
+        std::map<std::string, double> floatDefines;
         std::map<std::string, TypeDescription> globals;
 
         std::map<std::string, std::string> stringDefines;
@@ -36,8 +36,8 @@ namespace icode
         bool getFunction(const std::string& name, FunctionDescription& returnValue);
         bool getExternFunction(const std::string& name, FunctionDescription& returnValue);
         bool getEnum(const std::string& name, int& returnValue);
-        bool getIntDefine(const std::string& name, int& returnValue);
-        bool getFloatDefine(const std::string& name, float& returnValue);
+        bool getIntDefine(const std::string& name, long& returnValue);
+        bool getFloatDefine(const std::string& name, double& returnValue);
         bool getStringDefine(const std::string& name, std::string& returnValue);
         bool getGlobal(const std::string& name, TypeDescription& returnValue);
         bool symbolExists(const std::string&);

@@ -9,7 +9,7 @@ namespace icode
 {
     struct TargetEnums
     {
-        std::map<std::string, int> intDefines;
+        std::map<std::string, long> intDefines;
     };
 }
 

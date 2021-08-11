@@ -80,7 +80,7 @@ bool DescriptionFinder::getEnum(const Token& nameToken, Unit& returnValue)
 
 bool DescriptionFinder::getIntDefine(const Token& nameToken, Unit& returnValue)
 {
-    int defineValue;
+    long defineValue;
 
     if (!workingModule->getIntDefine(nameToken.toString(), defineValue))
         if (!rootModule.getIntDefine(nameToken.toString(), defineValue))
@@ -92,7 +92,7 @@ bool DescriptionFinder::getIntDefine(const Token& nameToken, Unit& returnValue)
 
 bool DescriptionFinder::getFloatDefine(const Token& nameToken, Unit& returnValue)
 {
-    float defineValue;
+    double defineValue;
 
     if (!workingModule->getFloatDefine(nameToken.toString(), defineValue))
         if (!rootModule.getFloatDefine(nameToken.toString(), defineValue))

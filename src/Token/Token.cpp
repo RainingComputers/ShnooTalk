@@ -104,14 +104,17 @@ bool Token::isIntLiteral() const
     return type == INT_LITERAL || type == HEX_LITERAL || type == BIN_LITERAL;
 }
 
-int Token::toInt() const
+long Token::toInt() const
 {
-    return std::stoi(string, nullptr, 0);
+    if (string[0] == '0' && string[1] == 'b')
+        return std::stoul(string.substr(2), nullptr, 2);
+
+    return std::stoul(string, nullptr, 0);
 }
 
-float Token::toFloat() const
+double Token::toFloat() const
 {
-    return std::stof(string);
+    return std::stod(string);
 }
 
 std::string Token::toString() const

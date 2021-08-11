@@ -237,7 +237,7 @@ namespace lexer
             { "while", token::WHILE },
             { "do", token::DO },
             { "for", token::FOR },
-            { "loop", token::LOOP},
+            { "loop", token::LOOP },
             { "break", token::BREAK },
             { "continue", token::CONTINUE },
             { "return", token::RETURN },

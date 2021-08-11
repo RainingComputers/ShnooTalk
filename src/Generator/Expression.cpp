@@ -26,7 +26,7 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
         case token::HEX_LITERAL:
         case token::BIN_LITERAL:
         {
-            int literal = root.tok.toInt();
+            long literal = root.tok.toInt();
             return ctx.ir.unitBuilder.unitFromIntLiteral(literal);
         }
         case token::CHAR_LITERAL:
@@ -36,7 +36,7 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
         }
         case token::FLOAT_LITERAL:
         {
-            float literal = root.tok.toFloat();
+            double literal = root.tok.toFloat();
             return ctx.ir.unitBuilder.unitFromFloatLiteral(literal);
         }
         default:

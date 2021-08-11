@@ -30,10 +30,10 @@ namespace icode
 
         union
         {
-            int integer;
-            float floating;
-            unsigned int bytes;
-            unsigned int size;
+            long integer;
+            double floating;
+            unsigned long bytes;
+            unsigned long size;
         } val;
 
         std::string name;
