@@ -10,11 +10,11 @@ llvm::Value* getLLVMConstant(const ModuleContext& ctx, const icode::Operand& op)
 
 llvm::Function* getLLVMFunction(const ModuleContext& ctx,
                                 const std::string& functionName,
-                                const std::string& moduleName);
+                                const icode::FunctionDescription& functionDescription);
 
-icode::TypeDescription getFunctionReturnType(const ModuleContext& ctx,
-                                             const std::string& functionName,
-                                             const std::string& moduleName);
+icode::FunctionDescription getFunctionDescription(const ModuleContext& ctx,
+                                                  const std::string& functionName,
+                                                  const std::string& moduleName);
 
 llvm::Value* getLLVMPointer(ModuleContext& ctx, const icode::Operand& op);
 

@@ -37,21 +37,15 @@ icode::FunctionDescription getFunctionDescription(const ModuleContext& ctx,
     ctx.console.internalBugError();
 }
 
-Function* getLLVMFunction(const ModuleContext& ctx, const std::string& functionName, const std::string& moduleName)
+Function* getLLVMFunction(const ModuleContext& ctx,
+                          const std::string& functionName,
+                          const icode::FunctionDescription& functionDescription)
 {
     if (auto* F = ctx.LLVMModule->getFunction(functionName))
         return F;
 
-    FunctionType* functionType = funcDescriptionToLLVMType(ctx, getFunctionDescription(ctx, functionName, moduleName));
+    FunctionType* functionType = funcDescriptionToLLVMType(ctx, functionDescription);
     return Function::Create(functionType, Function::ExternalLinkage, functionName, *ctx.LLVMModule);
-}
-
-icode::TypeDescription getFunctionReturnType(const ModuleContext& ctx,
-                                             const std::string& functionName,
-                                             const std::string& moduleName)
-{
-    const icode::FunctionDescription& functionDescription = getFunctionDescription(ctx, functionName, moduleName);
-    return functionDescription.functionReturnType;
 }
 
 Value* getStringDataPointer(ModuleContext& ctx, const icode::Operand& op)

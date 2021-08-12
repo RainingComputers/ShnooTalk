@@ -13,12 +13,15 @@ class TestResult:
     SKIPPED = 3
 
 
-def coverge_enabled():
+def get_build_type():
     if(len(sys.argv) == 1):
-        return False
-    if(sys.argv[1] == "--gcov"):
-        return True
-    return False
+        return "debug"
+    
+    if(sys.argv[1] == "--coverage"):
+        return "gcov"
+    
+    if(sys.argv[1] == "--profile"):
+        return "gprof"
 
 
 def print_diff(act_output, test_output):
@@ -190,7 +193,7 @@ def run_all_tests(compiler_exec_path, obj_dir, testinfo_dir):
     print(f"{len(passed)} tests passed.")
 
     # Use lcov and open report in browser
-    if(coverge_enabled()):
+    if(get_build_type() == '--gcov'):
         generate_info_files(obj_dir, testinfo_dir, passed)
         prepare_coverage_report(testinfo_dir)
 
@@ -227,12 +230,9 @@ def run_all_llc_tests(compiler_exec_path):
 
 
 if __name__ == "__main__":
-    if(coverge_enabled()):
-        build_type = "gcov"
-    else:
-        build_type = "debug"
+    build_type = get_build_type()
 
-    os.chdir('tests/')
+    os.chdir("tests/")
 
     print("--=[Running uHLL compiler tests]=--")
     run_all_tests(f"../bin/{build_type}/uhll",

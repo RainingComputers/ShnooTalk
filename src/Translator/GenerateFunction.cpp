@@ -106,7 +106,7 @@ void translateFunctionIcode(ModuleContext& ctx,
                 call(ctx, e);
                 break;
             case icode::RET:
-                ret(ctx, e, functionDesc.functionReturnType);
+                ret(ctx, functionDesc.functionReturnType);
                 break;
             case icode::INPUT:
                 input(ctx, formatStringsContext, e);
@@ -170,7 +170,7 @@ void generateFunction(ModuleContext& ctx,
     ctx.clear();
     branchContext.clear();
 
-    Function* function = getLLVMFunction(ctx, name, ctx.moduleDescription.name);
+    Function* function = getLLVMFunction(ctx, name, functionDesc);
 
     /* Set insertion point to function body */
     BasicBlock* functionBlock = BasicBlock::Create(*ctx.context, "entry", function);

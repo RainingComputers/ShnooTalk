@@ -68,7 +68,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 # Set compiler and linker flags for llvm
-CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17
+CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall
 LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
 # Find all .cpp files in src/git
@@ -89,7 +89,7 @@ clean:
 # For compiling .cpp files in src/ to .o object files in obj/
 obj/$(BUILD_TYPE)/%.o: src/%.cpp src/*/*.hpp
 	mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -Wall -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # For creting directories required for linking and building executable
 dirs:
@@ -125,7 +125,10 @@ test:
 	python3 test.py
 
 coverage:
-	python3 test.py --gcov
+	python3 test.py --coverage
+
+profile:
+	python3 test.py --profile
 
 tidy:
-	clang-tidy src/*.cpp src/*/*.cpp  -- $(CXXFLAGS)
+	clang-tidy src/*.cpp src/*/*.cpp  -- $(CXXFLAGS) -Wextra

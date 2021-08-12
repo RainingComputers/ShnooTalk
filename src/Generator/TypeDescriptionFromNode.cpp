@@ -6,10 +6,7 @@
 using namespace generator;
 using namespace icode;
 
-TypeDescription arrayTypeFromSubscript(GeneratorContext& ctx,
-                                       const Node& root,
-                                       TypeDescription typeDescription,
-                                       size_t startIndex)
+TypeDescription arrayTypeFromSubscript(const Node& root, TypeDescription typeDescription, size_t startIndex)
 {
     std::vector<int> dimensions;
 
@@ -43,7 +40,7 @@ TypeDescription typeDescriptionFromNode(GeneratorContext& ctx, const Node& root)
     childNodeCounter++;
 
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
-        typeDescription = arrayTypeFromSubscript(ctx, root, typeDescription, childNodeCounter);
+        typeDescription = arrayTypeFromSubscript(root, typeDescription, childNodeCounter);
 
     ctx.ir.resetWorkingModule();
 
