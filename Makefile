@@ -50,6 +50,7 @@ ifeq ($(DEBUG), 1)
 	BUILD_TYPE = debug
 else ifeq ($(GPROF), 1)
     CXXFLAGS = -pg -g
+	LDFLAGS = -pg
 	BUILD_TYPE = gprof
 else ifeq ($(GCOV), 1)
     LDFLAGS = -lgcov --coverage
@@ -85,6 +86,7 @@ clean:
 	rm -f tests/*.llc.s
 	rm -f tests/*.o
 	rm -f tests/test
+	rm -f tests/*.gmon.out*
 
 # For compiling .cpp files in src/ to .o object files in obj/
 obj/$(BUILD_TYPE)/%.o: src/%.cpp src/*/*.hpp

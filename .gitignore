@@ -12,3 +12,4 @@ test
 test.o
 tests/temp/*
 temp/
+tests/*.gmon.out.*

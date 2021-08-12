@@ -74,6 +74,9 @@ def run_test(file_name, compiler_exec_path):
     os.system('rm -f *.o')
     os.system('rm -f ./test')
 
+    # Set profile output file name
+    os.environ['GMON_OUT_PREFIX'] = file_name + '.gmon.out'
+
     # Run the compiler
     compile_command = [compiler_exec_path, file_name, '-c']
     timedout, compiler_output, compiler_retcode = run_subprocess(
@@ -99,7 +102,7 @@ def run_test(file_name, compiler_exec_path):
     return compare_outputs(test_output, exec_output)
 
 
-def run_test_llc(file_name, compiler_exec_path):
+def run_test_llc(file_name, compiler_exec_path):    
     # Run the compiler
     compile_command = [compiler_exec_path, file_name, '-llvm']
     timedout, compiler_output, compiler_retcode = run_subprocess(
@@ -238,5 +241,6 @@ if __name__ == "__main__":
     run_all_tests(f"../bin/{build_type}/uhll",
                   f"../obj/{build_type}/", "testinfo/")
 
-    print("--=[Running LLVM LLC tests]=--")
-    run_all_llc_tests(f"../bin/{build_type}/uhll")
+    if (build_type == "debug"):
+        print("--=[Running LLVM LLC tests]=--")
+        run_all_llc_tests(f"../bin/{build_type}/uhll")
