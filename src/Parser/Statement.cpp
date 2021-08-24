@@ -29,9 +29,9 @@ void assignmentOrMethodCall(parser::ParserContext& ctx)
 
         token::TokenType expected[] = { token::PLUS_EQUAL,     token::MINUS_EQUAL, token::DIVIDE_EQUAL,
                                         token::MULTIPLY_EQUAL, token::OR_EQUAL,    token::AND_EQUAL,
-                                        token::XOR_EQUAL,      token::EQUAL };
+                                        token::XOR_EQUAL,      token::EQUAL,       token::LEFT_ARROW };
 
-        ctx.expect(expected, 8);
+        ctx.expect(expected, 9);
         ctx.addNode(node::ASSIGN_OPERATOR);
 
         expression(ctx);

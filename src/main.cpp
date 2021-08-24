@@ -7,12 +7,13 @@
 #include "Parser/Parser.hpp"
 #include "PrettyPrint/ASTPrinter.hpp"
 #include "PrettyPrint/IRPrinter.hpp"
+#include "PrettyPrint/PrettyPrintError.hpp"
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
 
 void printCLIUsage()
 {
-    pp::println("USAGE: uhllc FILE OPTION");
+    pp::println("USAGE: uhll FILE OPTION");
     pp::println("");
     pp::println("Available options:");
     pp::println("    -c         Compile program");
@@ -136,7 +137,12 @@ int main(int argc, char* argv[])
     {
         return EXIT_FAILURE;
     }
-    catch (const std::ifstream::failure&)
+    catch (const PrettyPrintError&)
+    {
+        pp::println("Pretty print error");
+        pp::println("REPORT THIS BUG");
+    }
+    catch (const std::ifstream::failure& error)
     {
         pp::println("File I/O error");
         return EXIT_FAILURE;

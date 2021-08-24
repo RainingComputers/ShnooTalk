@@ -141,6 +141,8 @@ namespace lexer
                         return LenTypePair(2, token::LEFT_SHIFT);
                     case '=':
                         return LenTypePair(2, token::LESS_THAN_EQUAL);
+                    case '-':
+                        return LenTypePair(2, token::LEFT_ARROW);
                     default:
                         return LenTypePair(1, token::LESS_THAN);
                 }

@@ -41,13 +41,10 @@ namespace icode
         OperandType operandType;
 
         Operand();
-
-        bool operator<(const Operand& other) const;
-        bool operator==(const Operand& other) const;
         bool isPointer() const;
         bool isNotPointer() const;
-        bool canPassAsMutable() const;
-        bool isValidForInput() const;
+        bool isUserPointer() const;
+        bool isValidForPointerAssignment() const;
     };
 }
 

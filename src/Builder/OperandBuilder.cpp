@@ -55,19 +55,13 @@ Operand OperandBuilder::createBytesOperand(unsigned long address)
     return temp;
 }
 
-Operand OperandBuilder::createVarOperand(DataType dtype, const std::string& symbol, bool global, bool ptr)
+Operand OperandBuilder::createVarOperand(DataType dtype, const std::string& name, OperandType type)
 {
     Operand temp;
     temp.operandId = getId();
-    temp.name = symbol;
+    temp.name = name;
     temp.dtype = dtype;
-
-    if (global)
-        temp.operandType = GBL_VAR;
-    else if (ptr)
-        temp.operandType = PTR;
-    else
-        temp.operandType = VAR;
+    temp.operandType = type;
 
     return temp;
 }
@@ -136,8 +130,12 @@ Operand OperandBuilder::createModuleOperand(const std::string& module)
 
 Operand OperandBuilder::operandFromTypeDescription(const TypeDescription& typeDescription, const std::string& name)
 {
-    return createVarOperand(typeDescription.dtype,
-                            name,
-                            typeDescription.checkProperty(icode::IS_GLOBAL),
-                            typeDescription.checkProperty(icode::IS_PTR));
+    if (typeDescription.checkProperty(IS_GLOBAL))
+        return createVarOperand(typeDescription.dtype, name, GBL_VAR);
+    
+    else if (typeDescription.checkProperty(IS_PTR))
+        return createVarOperand(typeDescription.dtype, name, PTR);
+    
+    else
+        return createVarOperand(typeDescription.dtype, name, VAR);
 }

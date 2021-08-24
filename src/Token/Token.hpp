@@ -58,6 +58,7 @@ namespace token
         OPEN_BRACE,
         CLOSE_BRACE,
         RIGHT_ARROW,
+        LEFT_ARROW,
         PLUS,
         MINUS,
         BITWISE_OR,
@@ -106,6 +107,7 @@ public:
     int getPrecedence() const;
     bool isBitwiseOperation() const;
     bool isIntLiteral() const;
+    bool isEqualOrLeftArrow() const;
     long toInt() const;
     double toFloat() const;
     std::string toString() const;

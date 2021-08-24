@@ -70,10 +70,10 @@ Type* nonPointerTypeDescriptionToLLVMType(const ModuleContext& ctx, const icode:
 
 Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
-    if (!typeDescription.isPointer())
-        return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
+    if (typeDescription.isPassedByReference() || typeDescription.isPointer())
+        return dataTypeToLLVMPointerType(ctx, typeDescription.dtype);
 
-    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription)->getPointerTo();
+    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);    
 }
 
 Type* formalParameterTypeToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
@@ -88,10 +88,7 @@ Type* formalParameterTypeToLLVMType(const ModuleContext& ctx, const icode::TypeD
         return dataTypeToLLVMPointerType(ctx, dtype);
     }
 
-    if (typeDescription.isPointer() || typeDescription.isArray())
-        return dataTypeToLLVMPointerType(ctx, typeDescription.dtype);
-
-    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
+    return typeDescriptionToLLVMType(ctx, typeDescription);
 }
 
 FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::FunctionDescription& functionDesc)
@@ -100,7 +97,13 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 
     for (std::string paramString : functionDesc.parameters)
     {
-        Type* type = formalParameterTypeToLLVMType(ctx, functionDesc.symbols.at(paramString));
+        icode::TypeDescription paramTypeDescription = functionDesc.symbols.at(paramString);
+
+        Type* type = formalParameterTypeToLLVMType(ctx, paramTypeDescription);
+
+        if (paramTypeDescription.isPointer() && paramTypeDescription.isMutable())
+            type = type->getPointerTo();
+
         parameterTypes.push_back(type);
     }
 
@@ -113,6 +116,8 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 
         return FunctionType::get(Type::getVoidTy(*ctx.context), parameterTypes, false);
     }
+
+    /* else the value is returned normally */
 
     Type* returnType = typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType);
 

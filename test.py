@@ -196,7 +196,7 @@ def run_all_tests(compiler_exec_path, obj_dir, testinfo_dir):
     print(f"{len(passed)} tests passed.")
 
     # Use lcov and open report in browser
-    if(get_build_type() == '--gcov'):
+    if(get_build_type() == 'gcov'):
         generate_info_files(obj_dir, testinfo_dir, passed)
         prepare_coverage_report(testinfo_dir)
 

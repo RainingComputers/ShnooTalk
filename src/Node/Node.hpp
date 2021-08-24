@@ -44,6 +44,7 @@ namespace node
         OPERATOR,
         UNARY_OPR,
         SUBSCRIPT,
+        POINTER_STAR,
         STRUCT_FIELD,
         INITLIST,
         TERM,

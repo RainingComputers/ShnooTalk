@@ -39,6 +39,9 @@ TypeDescription typeDescriptionFromNode(GeneratorContext& ctx, const Node& root)
 
     childNodeCounter++;
 
+    if (root.isNthChild(node::POINTER_STAR, childNodeCounter))
+        typeDescription.becomePointer();
+
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
         typeDescription = arrayTypeFromSubscript(root, typeDescription, childNodeCounter);
 

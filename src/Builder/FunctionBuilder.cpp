@@ -25,7 +25,7 @@ void FunctionBuilder::setWorkingFunction(FunctionDescription* functionDesc)
 
 void FunctionBuilder::pushEntry(Entry entry)
 {
-    validateEntry(entry, console);
+    //validateEntry(entry, console);
 
     (*workingFunction).icodeTable.push_back(entry);
 }
@@ -107,11 +107,11 @@ void FunctionBuilder::operandCopy(Operand dest, Operand src)
     {
         Entry copyEntry;
 
-        if (dest.isPointer() && !castedSrc.isPointer())
+        if (dest.isPointer())
             copyEntry.opcode = WRITE;
-        else if (!dest.isPointer() && castedSrc.isPointer())
+        else if (castedSrc.isPointer())
             copyEntry.opcode = READ;
-        else if (!dest.isPointer() && !castedSrc.isPointer())
+        else
             copyEntry.opcode = EQUAL;
 
         copyEntry.op1 = dest;
@@ -175,6 +175,17 @@ void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
     }
     else
         operandCopy(dest.op(), src.op());
+}
+
+void FunctionBuilder::unitPointerAssign(const Unit& to, const Unit& src)
+{
+    icode::Entry entry;
+
+    entry.op1 = to.op();
+    entry.op2 = src.op();
+    entry.opcode = PTR_ASSIGN;
+
+    pushEntry(entry);
 }
 
 Operand FunctionBuilder::ensureNotPointer(Operand op)
@@ -341,7 +352,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
 
 Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit>& indices)
 {
-    unsigned int dimensionCount = 0;
+    unsigned int dimensionCount = 1;
     unsigned int elementWidth = unit.size() / unit.dimensions()[0];
 
     Operand elementOperand = createPointer(unit);
@@ -352,15 +363,15 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
     {
         Operand subscriptOperand = addressMultiplyOperator(indexUnit.op(), opBuilder.createBytesOperand(elementWidth));
 
-        if (dimensionCount + 1 != elementType.dimensions.size())
-            elementWidth /= elementType.dimensions[dimensionCount + 1];
+        if (dimensionCount != elementType.dimensions.size())
+            elementWidth /= elementType.dimensions[dimensionCount];
 
         elementOperand = addressAddOperator(elementOperand, subscriptOperand);
 
         dimensionCount++;
     }
 
-    unsigned int remainingDimensionCount = elementType.dimensions.size() - dimensionCount;
+    unsigned int remainingDimensionCount = elementType.dimensions.size() - dimensionCount + 1;
 
     elementType.dimensions.erase(elementType.dimensions.begin(),
                                  elementType.dimensions.end() - remainingDimensionCount);
@@ -473,7 +484,12 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
 
     Entry entry;
 
-    if (formalParam.isMutable() || formalParam.isStruct() || formalParam.isArray())
+    if (formalParam.isMutablePointer())
+    {
+        entry.opcode = PASS_PTR;
+        entry.op1 = actualParam.op();
+    }
+    else if (formalParam.isMutableOrPointer() || formalParam.isStruct() || formalParam.isArray())
     {
         entry.opcode = PASS_ADDR;
         entry.op1 = createPointer(actualParam);
@@ -522,7 +538,7 @@ void FunctionBuilder::noArgumentEntry(Instruction instruction)
     pushEntry(entry);
 }
 
-Unit FunctionBuilder::getReturnPointerUnit()
+Unit FunctionBuilder::getReturnUnit()
 {
     const TypeDescription& returnType = workingFunction->functionReturnType;
 

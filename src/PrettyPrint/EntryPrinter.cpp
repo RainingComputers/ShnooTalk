@@ -108,6 +108,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
     switch (entry.opcode)
     {
         case icode::EQUAL:
+        case icode::PTR_ASSIGN:
         case icode::ADD:
         case icode::SUB:
         case icode::MUL:
@@ -126,6 +127,8 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::ADDR_MUL:
         case icode::READ:
         case icode::WRITE:
+        case icode::DIG:
+        case icode::BURY:
         case icode::MEMCPY:
         case icode::CALL:
             return prettyPrintEntryEqualLHS(entry);
@@ -148,6 +151,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::PRINT_STR:
         case icode::PASS:
         case icode::PASS_ADDR:
+        case icode::PASS_PTR:
         case icode::INPUT:
         case icode::INPUT_STR:
             return prettyPrintNoLHS(entry);

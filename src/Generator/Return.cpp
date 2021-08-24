@@ -16,9 +16,9 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
         if (!isSameType(returnTypeUnit, returnValue))
             ctx.console.typeError(root.children[0].tok, returnTypeUnit, returnValue);
 
-        Unit returnPointer = ctx.ir.functionBuilder.getReturnPointerUnit();
+        Unit functionReturn = ctx.ir.functionBuilder.getReturnUnit();
 
-        ctx.ir.functionBuilder.unitCopy(returnPointer, returnValue);
+        ctx.ir.functionBuilder.unitCopy(functionReturn, returnValue);
     }
     else if (returnTypeUnit.dtype() != VOID)
         ctx.console.compileErrorOnToken("Ret type is not VOID", root.tok);

@@ -48,6 +48,12 @@ Value* getFromatStringFromDataTypeScanf(const FormatStringsContext& formatString
 
 Value* getFormatStringForStringInput(const ModuleContext& ctx, int charCount)
 {
-    std::string formatString = " %" + std::to_string(charCount - 1) + "s";
+    std::string formatString;
+    
+    if (charCount == -1)
+        formatString = " %s";
+    else 
+        formatString = " %" + std::to_string(charCount - 1) + "s";
+    
     return ctx.builder->CreateGlobalString(formatString, "", 0U, ctx.LLVMModule.get());
 }

@@ -27,6 +27,13 @@ void identifierWithSubscript(parser::ParserContext& ctx, bool literalSubscriptOn
     }
 }
 
+void identifierWithPointerStar(parser::ParserContext& ctx)
+{
+    ctx.addNode(node::IDENTIFIER);
+    ctx.expect(token::MULTIPLY);
+    ctx.addNode(node::POINTER_STAR);
+}
+
 void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
 {
     identifierWithSubscript(ctx, false);
@@ -60,7 +67,11 @@ void typeDefinition(parser::ParserContext& ctx)
     moduleQualident(ctx);
 
     ctx.expect(token::IDENTIFIER);
-    identifierWithSubscript(ctx, true);
+
+    if (ctx.peek(token::MULTIPLY))
+        identifierWithPointerStar(ctx);
+    else
+        identifierWithSubscript(ctx, true);
 }
 
 void actualParameterList(parser::ParserContext& ctx)

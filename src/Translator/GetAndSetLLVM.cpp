@@ -62,17 +62,18 @@ Value* getLLVMPointer(ModuleContext& ctx, const icode::Operand& op)
 {
     switch (op.operandType)
     {
-        case icode::PTR:
-        case icode::VAR:
-            return ctx.symbolNamePointersMap.at(op.name);
         case icode::GBL_VAR:
             return ctx.symbolNameGlobalsMap.at(op.name);
+        case icode::VAR:
+            return ctx.symbolNamePointersMap.at(op.name);
+        case icode::PTR:
+            return ctx.builder->CreateLoad(ctx.symbolNamePointersMap.at(op.name));
         case icode::RET_VALUE:
             return ctx.currentFunctionReturnValue;
         case icode::TEMP_PTR:
             return ctx.builder->CreateIntToPtr(getLLVMValue(ctx, op), dataTypeToLLVMPointerType(ctx, op.dtype));
         case icode::CALLEE_RET_VAL:
-            return ctx.operandValueMap.at(op);
+            return ctx.operandValueMap.at(op.operandId);
         case icode::STR_DATA:
             return getStringDataPointer(ctx, op);
         default:
@@ -95,7 +96,7 @@ Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op)
             return ctx.builder->CreatePtrToInt(getLLVMPointer(ctx, op), dataTypeToLLVMType(ctx, icode::I64));
         case icode::TEMP_PTR:
         case icode::TEMP:
-            return ctx.operandValueMap.at(op);
+            return ctx.operandValueMap.at(op.operandId);
         default:
             ctx.console.internalBugError();
     }
@@ -108,7 +109,7 @@ void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, Value* value)
         case icode::TEMP:
         case icode::TEMP_PTR:
         case icode::CALLEE_RET_VAL:
-            ctx.operandValueMap[op] = value;
+            ctx.operandValueMap[op.operandId] = value;
             break;
         case icode::VAR:
         case icode::GBL_VAR:
@@ -118,4 +119,12 @@ void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, Value* value)
         default:
             ctx.console.internalBugError();
     }
+}
+
+Value* getLLVMPointerToPointer(ModuleContext& ctx, const icode::Operand& op)
+{
+    if(op.operandType != icode::PTR)
+        ctx.console.internalBugError();
+    
+    return ctx.symbolNamePointersMap.at(op.name);
 }

@@ -19,9 +19,8 @@ public:
     icode::Operand createStringDataOperand(const std::string& name, unsigned long size);
 
     icode::Operand createVarOperand(icode::DataType dtype,
-                                    const std::string& symbol,
-                                    bool global = false,
-                                    bool ptr = false);
+                                    const std::string& name,
+                                    icode::OperandType type = icode::VAR);
 
     icode::Operand createRetPointerOperand(icode::DataType dtype);
 

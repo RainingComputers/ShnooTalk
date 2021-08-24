@@ -132,7 +132,7 @@ void call(const icode::Entry& e, Console& con)
 void input(const icode::Entry& e, Console& con)
 {
     con.check(twoOperand(e));
-    con.check(e.op1.isValidForInput());
+    con.check(e.op1.isValidForPointerAssignment());
     con.check(e.op2.operandType == icode::LITERAL);
     con.check(nonVoidBaseDataType(e.op1));
     con.check(e.op2.dtype == icode::AUTO_INT);
@@ -141,7 +141,7 @@ void input(const icode::Entry& e, Console& con)
 void inputString(const icode::Entry& e, Console& con)
 {
     con.check(twoOperand(e));
-    con.check(e.op1.isValidForInput());
+    con.check(e.op1.isValidForPointerAssignment());
     con.check(e.op2.operandType == icode::LITERAL);
     con.check(e.op1.dtype == icode::UI8);
     con.check(e.op2.dtype == icode::AUTO_INT);

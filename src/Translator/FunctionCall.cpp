@@ -67,7 +67,12 @@ void pass(ModuleContext& ctx, const icode::Entry& e)
     pushParam(ctx, e, getLLVMValue(ctx, e.op1));
 }
 
-void passPointer(ModuleContext& ctx, const icode::Entry& e)
+void passAddress(ModuleContext& ctx, const icode::Entry& e)
 {
     pushParam(ctx, e, getLLVMPointer(ctx, e.op1));
+}
+
+void passPointer(ModuleContext& ctx, const icode::Entry& e)
+{
+    pushParam(ctx, e, getLLVMPointerToPointer(ctx, e.op1));
 }

@@ -42,6 +42,11 @@ namespace icode
         return checkProperty(IS_MUT);
     }
 
+    bool TypeDescription::isPassedByReference() const
+    {
+        return checkProperty(IS_PARAM) && (isMutable() || (isStructOrArray() && !isPointer()));
+    }
+
     bool TypeDescription::isPointer() const
     {
         return checkProperty(IS_PTR);
@@ -54,7 +59,7 @@ namespace icode
 
     bool TypeDescription::isArray() const
     {
-        return dimensions.size() > 0;
+        return dimensions.size() > 0 && !isPointer();
     }
 
     bool TypeDescription::isStructOrArray() const

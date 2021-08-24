@@ -8,13 +8,8 @@ TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& param
 {
     TypeDescription paramType = typeDescriptionFromNode(ctx, paramNode);
 
-    bool isMutable = paramNode.type == node::MUT_PARAM;
-
-    if (isMutable)
+    if (paramNode.type == node::MUT_PARAM)
         paramType.becomeMutable();
-
-    if (isMutable || paramType.isArray() > 0 || paramType.isStruct())
-        paramType.becomePointer();
 
     return paramType;
 }

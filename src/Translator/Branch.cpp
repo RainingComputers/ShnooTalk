@@ -7,7 +7,7 @@ void createLabel(const ModuleContext& ctx, BranchContext& branchContext, const i
     /* Converts ShnooTalk CREATE_LABEL to llvm basic block  */
     BasicBlock* newBlock = BasicBlock::Create(*ctx.context, e.op1.name, function);
 
-    branchContext.labelToBasicBlockMap[e.op1] = newBlock;
+    branchContext.labelToBasicBlockMap[e.op1.name] = newBlock;
 
     /* Make sure old block has a terminator */
     if (!branchContext.prevInstructionGotoOrRet)
@@ -86,7 +86,7 @@ void processGotoBackpatches(const ModuleContext& ctx, BranchContext& branchConte
         const icode::Entry& e = enumeratedEntry.second;
 
         /* Get branch flags and blocks for the goto */
-        BasicBlock* gotoBlock = branchContext.labelToBasicBlockMap.at(e.op1);
+        BasicBlock* gotoBlock = branchContext.labelToBasicBlockMap.at(e.op1.name);
         BasicBlock* fallBlock = branchContext.fallBlocks.at(entryIndex);
 
         /* Branch instruction are always follwed by compare instructions that set

@@ -34,6 +34,9 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::EQUAL:
                 copy(ctx, e);
                 break;
+            case icode::PTR_ASSIGN:
+                pointerAssign(ctx, e);
+                break;
             case icode::ADD:
             case icode::SUB:
             case icode::MUL:
@@ -100,6 +103,9 @@ void translateFunctionIcode(ModuleContext& ctx,
                 pass(ctx, e);
                 break;
             case icode::PASS_ADDR:
+                passAddress(ctx, e);
+                break;
+            case icode::PASS_PTR:
                 passPointer(ctx, e);
                 break;
             case icode::CALL:

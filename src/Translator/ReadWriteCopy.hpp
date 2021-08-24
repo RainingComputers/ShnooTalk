@@ -5,6 +5,7 @@
 
 void createPointer(ModuleContext& ctx, const icode::Entry& e);
 void copy(ModuleContext& ctx, const icode::Entry& e);
+void pointerAssign(ModuleContext& ctx, const icode::Entry& e);
 void read(ModuleContext& ctx, const icode::Entry& e);
 void write(ModuleContext& ctx, const icode::Entry& e);
 void addressBinaryOperator(ModuleContext& ctx, const icode::Entry& e);

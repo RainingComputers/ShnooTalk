@@ -54,6 +54,8 @@ public:
 
     void unitCopy(const Unit& dest, const Unit& src);
 
+    void unitPointerAssign(const Unit& to, const Unit& src);
+
     Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
 
     Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
@@ -87,7 +89,7 @@ public:
 
     void noArgumentEntry(icode::Instruction instruction);
 
-    Unit getReturnPointerUnit();
+    Unit getReturnUnit();
 
     void terminateFunction(const Token& nameToken);
 };

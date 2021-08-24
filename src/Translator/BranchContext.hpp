@@ -14,7 +14,7 @@ typedef std::pair<size_t, icode::Entry> EnumeratedEntry;
 
 struct BranchContext
 {
-    std::map<icode::Operand, llvm::BasicBlock*> labelToBasicBlockMap;
+    std::map<std::string, llvm::BasicBlock*> labelToBasicBlockMap;
     std::map<size_t, llvm::BasicBlock*> fallBlocks;
     std::queue<llvm::Value*> branchFlags;
     std::map<size_t, InsertionPoint> insertionPoints;

@@ -45,8 +45,12 @@ public:
 
     bool isPointer() const;
 
-    bool isValidForInput() const;
-    bool canPassAsMutable() const;
+    bool isValidForPointerAssignment() const;
+    bool isUserPointer() const;
+
+    bool isMutablePointer() const;
+    bool isMutableOrPointer() const;
+
     bool isLiteral() const;
 
     bool isList() const;

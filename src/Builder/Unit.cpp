@@ -118,14 +118,24 @@ bool Unit::isPointer() const
     return operand.isPointer();
 }
 
-bool Unit::isValidForInput() const
+bool Unit::isValidForPointerAssignment() const
 {
-    return operand.isValidForInput();
+    return operand.isValidForPointerAssignment();
 }
 
-bool Unit::canPassAsMutable() const
+bool Unit::isUserPointer() const
 {
-    return operand.canPassAsMutable();
+    return operand.isUserPointer();
+}
+
+bool Unit::isMutablePointer() const
+{
+    return typeDescription.isPointer() && typeDescription.isMutable();
+}
+
+bool Unit::isMutableOrPointer() const
+{
+    return typeDescription.isPointer() || typeDescription.isMutable();
 }
 
 bool Unit::isLiteral() const

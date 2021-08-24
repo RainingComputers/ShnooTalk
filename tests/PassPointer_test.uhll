@@ -1,0 +1,29 @@
+# x: 1
+# y: 4
+# x: 1
+# y: 4
+
+struct Vector
+{
+    var x: int, y: int
+}
+
+fn printVector(b: Vector*)
+{
+    println("x:", b.x)
+    println("y:", b.y)  
+}
+
+fn main() -> int
+{
+    var a: Vector
+    a.x = 1
+    a.y = 4
+
+    var b: Vector* <- a
+
+    printVector(a)
+    printVector(b)
+
+    return 0
+}

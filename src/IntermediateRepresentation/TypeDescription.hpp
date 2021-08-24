@@ -47,6 +47,7 @@ namespace icode
         void becomePointer();
         void becomeString();
         bool isMutable() const;
+        bool isPassedByReference() const;
         bool isPointer() const;
         bool isStringLtrl() const;
 

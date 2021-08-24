@@ -21,7 +21,7 @@ struct ModuleContext
     std::map<std::string, llvm::Value*> symbolNamePointersMap;
     std::map<std::string, llvm::GlobalVariable*> symbolNameGlobalsMap;
     std::map<std::string, llvm::Value*> operandGlobalStringMap;
-    std::map<icode::Operand, llvm::Value*> operandValueMap;
+    std::map<int, llvm::Value*> operandValueMap;
 
     icode::ModuleDescription& moduleDescription;
     icode::StringModulesMap& modulesMap;

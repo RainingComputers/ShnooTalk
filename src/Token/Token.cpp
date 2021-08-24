@@ -104,6 +104,11 @@ bool Token::isIntLiteral() const
     return type == INT_LITERAL || type == HEX_LITERAL || type == BIN_LITERAL;
 }
 
+bool Token::isEqualOrLeftArrow() const
+{
+    return type == EQUAL || type == LEFT_ARROW;
+}
+
 long Token::toInt() const
 {
     if (string[0] == '0' && string[1] == 'b')
