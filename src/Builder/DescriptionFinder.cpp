@@ -183,8 +183,3 @@ std::vector<Unit> DescriptionFinder::getFormalParameters(const FunctionDescripti
 
     return formalParameters;
 }
-
-Unit DescriptionFinder::getReturnType()
-{
-    return unitBuilder.unitFromTypeDescription(workingFunction->functionReturnType, "return");
-}

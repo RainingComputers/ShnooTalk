@@ -17,6 +17,7 @@ public:
     Unit(const icode::TypeDescription& type, const icode::Operand& operand);
     Unit(const icode::TypeDescription& type, const std::vector<Unit>& list);
     std::vector<Unit> flatten() const;
+    Unit clearProperties();
 
     std::string moduleName() const;
 
@@ -48,7 +49,7 @@ public:
     bool isValidForPointerAssignment() const;
     bool isUserPointer() const;
 
-    bool isMutablePointer() const;
+    bool isMutableAndPointer() const;
     bool isMutableOrPointer() const;
 
     bool isLiteral() const;

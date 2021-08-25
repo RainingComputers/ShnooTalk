@@ -52,6 +52,16 @@ namespace icode
         return checkProperty(IS_PTR);
     }
 
+    bool TypeDescription::isMutablePointer() const
+    {
+        return isPointer() && isMutable();
+    }
+
+    bool TypeDescription::isMutableOrPointer() const
+    {
+        return isPointer() || isMutable();
+    }
+
     bool TypeDescription::isStruct() const
     {
         return dtype == STRUCT;

@@ -7,7 +7,7 @@ using namespace llvm;
 
 void createGlobalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
 {
-    Type* type = typeDescriptionToLLVMType(ctx, typeDescription);
+    Type* type = typeDescriptionToAllocaLLVMType(ctx, typeDescription);
 
     GlobalVariable* global =
         new GlobalVariable(*ctx.LLVMModule, type, false, GlobalVariable::PrivateLinkage, nullptr, name);
@@ -59,22 +59,23 @@ void createFunctionParameter(ModuleContext& ctx,
     }
     else
     {
-        Value* alloca = ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
-        
+        Value* alloca =
+            ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, typeDescription), nullptr, name);
+
         Value* castedArg = arg;
 
-        /* When struct pointer is passed to function, the type will be different 
-            (see getFormalParameterType() in getAndSetLLVM.cpp) */
+        /* When struct pointer is passed to function, the type will be different
+            (see typeDescriptionToLLVMType() in getAndSetLLVM.cpp) */
         if (typeDescription.isStruct())
             castedArg = ctx.builder->CreateBitCast(arg, dataTypeToLLVMPointerType(ctx, icode::I8), name);
 
         ctx.builder->CreateStore(castedArg, alloca);
-        ctx.symbolNamePointersMap[name] = alloca;   
+        ctx.symbolNamePointersMap[name] = alloca;
     }
 }
 
 void createLocalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
 {
     ctx.symbolNamePointersMap[name] =
-        ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, typeDescription), nullptr, name);
+        ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, typeDescription), nullptr, name);
 }

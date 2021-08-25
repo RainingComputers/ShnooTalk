@@ -152,7 +152,7 @@ void setCurrentFunctionReturnValue(ModuleContext& ctx,
                                    const std::string& name,
                                    Function* function)
 {
-    if (functionDesc.functionReturnType.isStructOrArray())
+    if (functionDesc.functionReturnType.isStructOrArray() && !functionDesc.functionReturnType.isPointer())
     {
         llvm::Argument* lastArg = function->arg_end() - 1;
         lastArg->setName(name + "_retValue");
@@ -161,7 +161,7 @@ void setCurrentFunctionReturnValue(ModuleContext& ctx,
     else
     {
         ctx.currentFunctionReturnValue =
-            ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType),
+            ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, functionDesc.functionReturnType),
                                       nullptr,
                                       name + "_retValue");
     }

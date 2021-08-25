@@ -22,9 +22,13 @@ public:
                                     const std::string& name,
                                     icode::OperandType type = icode::VAR);
 
+    icode::Operand createRetValueOperand(icode::DataType dtype);
+
     icode::Operand createRetPointerOperand(icode::DataType dtype);
 
     icode::Operand createCalleeRetValOperand(icode::DataType dtype);
+
+    icode::Operand createCalleeRetPointerOperand(icode::DataType dtype);
 
     icode::Operand createFloatLiteralOperand(icode::DataType dtype, double literal);
 

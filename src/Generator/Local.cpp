@@ -1,7 +1,7 @@
 #include "../Builder/TypeCheck.hpp"
+#include "Assignment.hpp"
 #include "Expression.hpp"
 #include "TypeDescriptionFromNode.hpp"
-#include "Assignment.hpp"
 
 #include "Local.hpp"
 

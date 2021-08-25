@@ -49,6 +49,8 @@ namespace icode
         bool isMutable() const;
         bool isPassedByReference() const;
         bool isPointer() const;
+        bool isMutablePointer() const;
+        bool isMutableOrPointer() const;
         bool isStringLtrl() const;
 
         bool isSameType() const;

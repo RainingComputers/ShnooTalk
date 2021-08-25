@@ -74,6 +74,8 @@ Value* getLLVMPointer(ModuleContext& ctx, const icode::Operand& op)
             return ctx.builder->CreateIntToPtr(getLLVMValue(ctx, op), dataTypeToLLVMPointerType(ctx, op.dtype));
         case icode::CALLEE_RET_VAL:
             return ctx.operandValueMap.at(op.operandId);
+        case icode::CALLEE_RET_PTR:
+            return ctx.builder->CreateLoad(ctx.operandValueMap.at(op.operandId));
         case icode::STR_DATA:
             return getStringDataPointer(ctx, op);
         default:
@@ -93,6 +95,7 @@ Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op)
         case icode::CALLEE_RET_VAL:
             return ctx.builder->CreateLoad(getLLVMPointer(ctx, op), op.name.c_str());
         case icode::PTR:
+        case icode::CALLEE_RET_PTR:
             return ctx.builder->CreatePtrToInt(getLLVMPointer(ctx, op), dataTypeToLLVMType(ctx, icode::I64));
         case icode::TEMP_PTR:
         case icode::TEMP:
@@ -109,6 +112,7 @@ void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, Value* value)
         case icode::TEMP:
         case icode::TEMP_PTR:
         case icode::CALLEE_RET_VAL:
+        case icode::CALLEE_RET_PTR:
             ctx.operandValueMap[op.operandId] = value;
             break;
         case icode::VAR:
@@ -123,8 +127,13 @@ void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, Value* value)
 
 Value* getLLVMPointerToPointer(ModuleContext& ctx, const icode::Operand& op)
 {
-    if(op.operandType != icode::PTR)
-        ctx.console.internalBugError();
-    
-    return ctx.symbolNamePointersMap.at(op.name);
+    switch (op.operandType)
+    {
+        case icode::PTR:
+            return ctx.symbolNamePointersMap.at(op.name);
+        case icode::RET_PTR:
+            return ctx.currentFunctionReturnValue;
+        default:
+            ctx.console.internalBugError();
+    }
 }

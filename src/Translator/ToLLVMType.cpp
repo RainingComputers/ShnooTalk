@@ -68,15 +68,15 @@ Type* nonPointerTypeDescriptionToLLVMType(const ModuleContext& ctx, const icode:
     return dataTypeToLLVMType(ctx, typeDescription.dtype);
 }
 
-Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
+Type* typeDescriptionToAllocaLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
     if (typeDescription.isPassedByReference() || typeDescription.isPointer())
         return dataTypeToLLVMPointerType(ctx, typeDescription.dtype);
 
-    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);    
+    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
 }
 
-Type* formalParameterTypeToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
+Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
     if (typeDescription.isStruct())
     {
@@ -88,7 +88,7 @@ Type* formalParameterTypeToLLVMType(const ModuleContext& ctx, const icode::TypeD
         return dataTypeToLLVMPointerType(ctx, dtype);
     }
 
-    return typeDescriptionToLLVMType(ctx, typeDescription);
+    return typeDescriptionToAllocaLLVMType(ctx, typeDescription);
 }
 
 FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::FunctionDescription& functionDesc)
@@ -99,9 +99,9 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
     {
         icode::TypeDescription paramTypeDescription = functionDesc.symbols.at(paramString);
 
-        Type* type = formalParameterTypeToLLVMType(ctx, paramTypeDescription);
+        Type* type = typeDescriptionToLLVMType(ctx, paramTypeDescription);
 
-        if (paramTypeDescription.isPointer() && paramTypeDescription.isMutable())
+        if (paramTypeDescription.isMutablePointer())
             type = type->getPointerTo();
 
         parameterTypes.push_back(type);
@@ -111,7 +111,7 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 
     if (functionDesc.functionReturnType.isStructOrArray())
     {
-        Type* returnType = typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType)->getPointerTo();
+        Type* returnType = typeDescriptionToAllocaLLVMType(ctx, functionDesc.functionReturnType)->getPointerTo();
         parameterTypes.push_back(returnType);
 
         return FunctionType::get(Type::getVoidTy(*ctx.context), parameterTypes, false);
@@ -119,7 +119,7 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 
     /* else the value is returned normally */
 
-    Type* returnType = typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType);
+    Type* returnType = typeDescriptionToAllocaLLVMType(ctx, functionDesc.functionReturnType);
 
     return FunctionType::get(returnType, parameterTypes, false);
 }

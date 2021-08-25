@@ -21,8 +21,12 @@ std::string operandToName(const icode::Operand& op)
             return icode::dataTypeToString(op.dtype) + "* " + op.name;
         case icode::RET_VALUE:
             return icode::dataTypeToString(op.dtype) + " returnValue" + std::to_string(op.operandId);
+        case icode::RET_PTR:
+            return icode::dataTypeToString(op.dtype) + "* returnPointer" + std::to_string(op.operandId);
         case icode::CALLEE_RET_VAL:
             return icode::dataTypeToString(op.dtype) + " calleeReturnValue" + std::to_string(op.operandId);
+        case icode::CALLEE_RET_PTR:
+            return icode::dataTypeToString(op.dtype) + "* calleeReturnPointer" + std::to_string(op.operandId);
         case icode::STR_DATA:
             return "stringData " + op.name;
         case icode::BYTES:

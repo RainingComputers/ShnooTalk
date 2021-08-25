@@ -25,7 +25,7 @@ void FunctionBuilder::setWorkingFunction(FunctionDescription* functionDesc)
 
 void FunctionBuilder::pushEntry(Entry entry)
 {
-    //validateEntry(entry, console);
+    // validateEntry(entry, console);
 
     (*workingFunction).icodeTable.push_back(entry);
 }
@@ -225,13 +225,7 @@ Operand FunctionBuilder::pushEntryAndEnsureNoPointerWrite(Entry entry)
     pushEntry(modifiedEntry);
 
     /* Create WRITE instruction to write the TEMP to TEMP_PTR */
-    Entry writeEntry;
-
-    writeEntry.op1 = pointerOperand;
-    writeEntry.op2 = temp;
-    writeEntry.opcode = WRITE;
-
-    pushEntry(writeEntry);
+    operandCopy(pointerOperand, temp);
 
     return temp;
 }
@@ -252,7 +246,7 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(LHS.type(), result);
+    return Unit(LHS.type(), result).clearProperties();
 }
 
 Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOperatorTerm)
@@ -270,7 +264,7 @@ Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOp
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(unaryOperatorTerm.type(), result);
+    return Unit(unaryOperatorTerm.type(), result).clearProperties();
 }
 
 Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationDataType)
@@ -484,7 +478,7 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
 
     Entry entry;
 
-    if (formalParam.isMutablePointer())
+    if (formalParam.isMutableAndPointer())
     {
         entry.opcode = PASS_PTR;
         entry.op1 = actualParam.op();
@@ -517,7 +511,12 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescrip
     Entry callEntry;
 
     callEntry.opcode = CALL;
-    callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
+
+    if (callee.functionReturnType.isPointer())
+        callEntry.op1 = opBuilder.createCalleeRetPointerOperand(functionDataType);
+    else
+        callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
+
     callEntry.op2 = opBuilder.createVarOperand(functionDataType, calleeName);
     callEntry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
@@ -538,13 +537,18 @@ void FunctionBuilder::noArgumentEntry(Instruction instruction)
     pushEntry(entry);
 }
 
-Unit FunctionBuilder::getReturnUnit()
+Unit FunctionBuilder::getReturnValueUnit()
 {
     const TypeDescription& returnType = workingFunction->functionReturnType;
 
-    Operand returnPointerOperand = opBuilder.createRetPointerOperand(returnType.dtype);
+    Operand operand;
 
-    return Unit(returnType, returnPointerOperand);
+    if (returnType.isPointer())
+        operand = opBuilder.createRetPointerOperand(returnType.dtype);
+    else
+        operand = opBuilder.createRetValueOperand(returnType.dtype);
+
+    return Unit(returnType, operand);
 }
 
 bool FunctionBuilder::doesFunctionTerminate()

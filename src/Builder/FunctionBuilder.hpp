@@ -89,7 +89,7 @@ public:
 
     void noArgumentEntry(icode::Instruction instruction);
 
-    Unit getReturnUnit();
+    Unit getReturnValueUnit();
 
     void terminateFunction(const Token& nameToken);
 };

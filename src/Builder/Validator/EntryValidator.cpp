@@ -7,7 +7,7 @@
 void equal(const icode::Entry& e, Console& con)
 {
     con.check(twoOperand(e));
-    con.check(e.op1.isNotPointer() || e.op1.operandType == icode::RET_VALUE);
+    con.check(e.op1.isNotPointer());
     con.check(e.op2.isNotPointer());
     con.check(allOperandNonVoidBaseDataType(e));
 }
@@ -90,7 +90,7 @@ void addrMul(const icode::Entry& e, Console& con)
 void read(const icode::Entry& e, Console& con)
 {
     con.check(twoOperand(e));
-    con.check(e.op1.isNotPointer() || e.op1.operandType == icode::RET_VALUE);
+    con.check(e.op1.isNotPointer());
     con.check(e.op2.isPointer());
     con.check(allOperandNonVoidBaseDataType(e));
 }

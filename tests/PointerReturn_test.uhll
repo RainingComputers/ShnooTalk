@@ -1,0 +1,24 @@
+# 2
+
+struct Vector
+{
+    var x: int, y: int
+}
+
+fn testfunction(this: Vector) -> int*
+{
+    return this.y
+}
+
+fn main() -> int
+{
+    var a: Vector
+    a.x = 1
+    a.y = 2
+
+    var p: int* <- a.testfunction()
+
+    println(p)
+
+    return 0
+}

@@ -17,7 +17,7 @@ Value* createCalleeReturnValue(const ModuleContext& ctx, const icode::TypeDescri
     if (returnType.dtype == icode::VOID)
         return nullptr;
 
-    return ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, returnType));
+    return ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, returnType));
 }
 
 void call(ModuleContext& ctx, const icode::Entry& e)
@@ -29,16 +29,15 @@ void call(ModuleContext& ctx, const icode::Entry& e)
     const icode::TypeDescription& returnType = functionDescription.functionReturnType;
 
     Value* calleeReturnValuePointer = createCalleeReturnValue(ctx, returnType);
-    
+
     Function* callee = getLLVMFunction(ctx, functionName, functionDescription);
 
     /* If the function returns a struct or an array, pass return value by reference,
         (as the last argument) else return the return value normally */
 
-    if (!returnType.isStructOrArray())
+    if (!returnType.isStructOrArray() || returnType.isPointer())
     {
-        Value* result =
-            ctx.builder->CreateCall(callee, ctx.params[functionName]);
+        Value* result = ctx.builder->CreateCall(callee, ctx.params[functionName]);
 
         if (returnType.dtype != icode::VOID)
             ctx.builder->CreateStore(result, calleeReturnValuePointer);

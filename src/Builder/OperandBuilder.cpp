@@ -66,12 +66,22 @@ Operand OperandBuilder::createVarOperand(DataType dtype, const std::string& name
     return temp;
 }
 
-Operand OperandBuilder::createRetPointerOperand(DataType dtype)
+Operand OperandBuilder::createRetValueOperand(DataType dtype)
 {
     Operand temp;
     temp.operandId = getId();
     temp.dtype = dtype;
     temp.operandType = RET_VALUE;
+
+    return temp;
+}
+
+Operand OperandBuilder::createRetPointerOperand(DataType dtype)
+{
+    Operand temp;
+    temp.operandId = getId();
+    temp.dtype = dtype;
+    temp.operandType = RET_PTR;
 
     return temp;
 }
@@ -82,6 +92,16 @@ Operand OperandBuilder::createCalleeRetValOperand(DataType dtype)
     temp.operandId = getId();
     temp.dtype = dtype;
     temp.operandType = CALLEE_RET_VAL;
+
+    return temp;
+}
+
+Operand OperandBuilder::createCalleeRetPointerOperand(DataType dtype)
+{
+    Operand temp;
+    temp.operandId = getId();
+    temp.dtype = dtype;
+    temp.operandType = CALLEE_RET_PTR;
 
     return temp;
 }
@@ -132,10 +152,10 @@ Operand OperandBuilder::operandFromTypeDescription(const TypeDescription& typeDe
 {
     if (typeDescription.checkProperty(IS_GLOBAL))
         return createVarOperand(typeDescription.dtype, name, GBL_VAR);
-    
+
     else if (typeDescription.checkProperty(IS_PTR))
         return createVarOperand(typeDescription.dtype, name, PTR);
-    
+
     else
         return createVarOperand(typeDescription.dtype, name, VAR);
 }
