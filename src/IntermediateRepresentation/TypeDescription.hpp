@@ -45,6 +45,7 @@ namespace icode
 
         void becomeMutable();
         void becomePointer();
+        void becomeArrayPointer();
         void becomeString();
         bool isMutable() const;
         bool isPassedByReference() const;

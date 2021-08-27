@@ -44,7 +44,7 @@ void pointerAssign(ModuleContext& ctx, const icode::Entry& e)
     Value* sourceValue = getLLVMPointer(ctx, e.op2);
 
     if (sourceValue->getType()->getPointerElementType()->isArrayTy())
-        sourceValue = ctx.builder->CreateBitCast(sourceValue, dataTypeToLLVMPointerType(ctx, icode::I8));
+        sourceValue = ctx.builder->CreateBitCast(sourceValue, destinationPointer->getType()->getPointerElementType());
 
     ctx.builder->CreateStore(sourceValue, destinationPointer);
 }

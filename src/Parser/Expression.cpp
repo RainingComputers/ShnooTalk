@@ -34,6 +34,13 @@ void identifierWithPointerStar(parser::ParserContext& ctx)
     ctx.addNode(node::POINTER_STAR);
 }
 
+void identifierWithEmptySubscript(parser::ParserContext& ctx)
+{
+    ctx.addNode(node::IDENTIFIER);
+    ctx.expect(token::EMPTY_SUBSCRIPT);
+    ctx.addNode(node::EMPTY_SUBSCRIPT);
+}
+
 void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
 {
     identifierWithSubscript(ctx, false);
@@ -70,6 +77,8 @@ void typeDefinition(parser::ParserContext& ctx)
 
     if (ctx.peek(token::MULTIPLY))
         identifierWithPointerStar(ctx);
+    else if (ctx.peek(token::EMPTY_SUBSCRIPT))
+        identifierWithEmptySubscript(ctx);
     else
         identifierWithSubscript(ctx, true);
 }

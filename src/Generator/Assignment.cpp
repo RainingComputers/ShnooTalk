@@ -67,6 +67,9 @@ void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, cons
             ctx.console.compileErrorOnToken("Invalid expression for POINTER ASSIGNMENT",
                                             root.getNthChildTokenFromLast(1));
 
+        if (LHS.isArray() && RHS.isPointer())
+            ctx.console.compileErrorOnToken("Cannot assign POINTER to ARRAY", root.getNthChildTokenFromLast(1));
+
         ctx.ir.functionBuilder.unitPointerAssign(LHS, RHS);
     }
     else

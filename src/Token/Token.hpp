@@ -57,6 +57,7 @@ namespace token
         CLOSE_SQUARE,
         OPEN_BRACE,
         CLOSE_BRACE,
+        EMPTY_SUBSCRIPT,
         RIGHT_ARROW,
         LEFT_ARROW,
         PLUS,

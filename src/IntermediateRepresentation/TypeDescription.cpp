@@ -32,6 +32,12 @@ namespace icode
         setProperty(IS_PTR);
     }
 
+    void TypeDescription::becomeArrayPointer()
+    {
+        setProperty(IS_PTR);
+        dimensions.push_back(1);
+    }
+
     void TypeDescription::becomeString()
     {
         setProperty(IS_STRING_LTRL);
@@ -69,7 +75,7 @@ namespace icode
 
     bool TypeDescription::isArray() const
     {
-        return dimensions.size() > 0 && !isPointer();
+        return dimensions.size() > 0;
     }
 
     bool TypeDescription::isStructOrArray() const

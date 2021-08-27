@@ -52,11 +52,13 @@ identifierWithSubscript = identifier {"[" (literalSubscriptOnly? literal : expre
 
 identifierWithPointerStar = identifier "*"
 
+identifierWithEmptySubscripts = identifier "[]"
+
 identifierWithQualidentAndSubscript = identifierWithSubscript<false> {"." identifierWithSubscript<false>}
 
 moduleQualident = {identifier "::"}
 
-typeDefinition = moduleQualident (identifierWithSubscript<true> | identifierWithPointerStar)
+typeDefinition = moduleQualident (identifierWithSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts)
 
 identifierDeclaration = identifier ":" typeDefinition
 

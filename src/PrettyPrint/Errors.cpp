@@ -87,15 +87,20 @@ namespace pp
 
     std::string typeDescriptionToTypeString(const icode::TypeDescription& typeDescription)
     {
-        std::string str = typeDescription.dtypeName;
+        std::string typeDescString = typeDescription.dtypeName;
 
         if (typeDescription.isPointer())
-            return str + "*";
+        {
+            if (typeDescription.isArray())
+                return typeDescString + "[]";
+            else
+                return typeDescString + "*";
+        }
 
         for (const int dim : typeDescription.dimensions)
-            str += "[" + std::to_string(dim) + "]";
+            typeDescString += "[" + std::to_string(dim) + "]";
 
-        return str;
+        return typeDescString;
     }
 
     void typeError(const std::string& moduleName,
