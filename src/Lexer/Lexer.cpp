@@ -93,13 +93,12 @@ namespace lexer
             case '~':
                 return LenTypePair(1, token::NOT);
             case '[':
-                switch (line[i + 1])
-                {
-                    case ']':
-                        return LenTypePair(2, token::EMPTY_SUBSCRIPT);
-                    default:
-                        return LenTypePair(1, token::OPEN_SQUARE);
-                }
+                if (line[i + 1] == ']' && line[i + 2] == '\'')
+                    return LenTypePair(3, token::PTR_CAST);
+                else if (line[i + 1] == ']')
+                    return LenTypePair(2, token::EMPTY_SUBSCRIPT);
+                else
+                    return LenTypePair(1, token::OPEN_SQUARE);
             case ']':
                 return LenTypePair(1, token::CLOSE_SQUARE);
             case '+':
@@ -169,6 +168,8 @@ namespace lexer
                 {
                     case '=':
                         return LenTypePair(2, token::MULTIPLY_EQUAL);
+                    case '\'':
+                        return LenTypePair(2, token::PTR_CAST);
                     default:
                         return LenTypePair(1, token::MULTIPLY);
                 }

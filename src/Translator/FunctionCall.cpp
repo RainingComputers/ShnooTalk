@@ -35,17 +35,17 @@ void call(ModuleContext& ctx, const icode::Entry& e)
     /* If the function returns a struct or an array, pass return value by reference,
         (as the last argument) else return the return value normally */
 
-    if (!returnType.isStructOrArray() || returnType.isPointer())
+    if (returnType.isStructOrArrayAndNotPointer())
+    {
+        pushParam(ctx, e, calleeReturnValuePointer);
+        ctx.builder->CreateCall(callee, ctx.params[functionName]);
+    }
+    else
     {
         Value* result = ctx.builder->CreateCall(callee, ctx.params[functionName]);
 
         if (returnType.dtype != icode::VOID)
             ctx.builder->CreateStore(result, calleeReturnValuePointer);
-    }
-    else
-    {
-        pushParam(ctx, e, calleeReturnValuePointer);
-        ctx.builder->CreateCall(callee, ctx.params[functionName]);
     }
 
     setLLVMValue(ctx, e.op1, calleeReturnValuePointer);
@@ -55,7 +55,7 @@ void call(ModuleContext& ctx, const icode::Entry& e)
 
 void ret(const ModuleContext& ctx, const icode::TypeDescription& functionReturnType)
 {
-    if (functionReturnType.isStructOrArray() || functionReturnType.dtype == icode::VOID)
+    if (functionReturnType.isStructOrArrayAndNotPointer() || functionReturnType.dtype == icode::VOID)
         ctx.builder->CreateRetVoid();
     else
         ctx.builder->CreateRet(ctx.builder->CreateLoad(ctx.currentFunctionReturnValue));

@@ -136,7 +136,7 @@ bool Unit::isUserPointer() const
 
 bool Unit::isMutableAndPointer() const
 {
-    return typeDescription.isMutablePointer();
+    return typeDescription.isMutableAndPointer();
 }
 
 bool Unit::isMutableOrPointer() const

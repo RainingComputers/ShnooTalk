@@ -20,7 +20,7 @@ class FunctionBuilder
 
     void pushEntry(icode::Entry entry);
 
-    icode::Operand getCreatePointerDestinationOperand(const Unit& unit);
+    icode::Operand getCreatePointerDestOperand(const Unit& unit);
 
     icode::Operand createPointer(const Unit& unit);
 
@@ -61,6 +61,8 @@ public:
     Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
 
     Unit castOperator(const Unit& unitToCast, icode::DataType destinationDataType);
+
+    Unit pointerCastOperator(const Unit& unitToCast, icode::TypeDescription destinationType);
 
     void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
 

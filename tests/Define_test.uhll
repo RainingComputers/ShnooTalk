@@ -1,12 +1,13 @@
-# -5 3.500000 Hello
+# -5 3.500000 Hello -3.500000
 
 def BAR -5
 def FOO 3.5
 def FOOBAR "Hello"
+def FLOATBAR -3.5
 
 fn main() -> int
 {
-    println(BAR, FOO, FOOBAR)
+    println(BAR, FOO, FOOBAR, FLOATBAR)
 
     return 0
 }

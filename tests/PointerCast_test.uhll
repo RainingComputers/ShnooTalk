@@ -1,0 +1,22 @@
+# 1
+# 2
+
+struct Vector
+{
+    var x: int, y: int
+}
+
+fn main() -> int
+{
+    var a: Vector
+
+    a.x = 1
+    a.y = 2
+
+    var p: int[] <- int*'a
+
+    println(p[0])
+    println(p[1])
+
+    return 0
+}

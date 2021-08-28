@@ -1,0 +1,13 @@
+# MODULE InvalidPointerAssignExpr_test.uhll
+# ERROR in Line 10 Col 20
+# 
+#     var a: int* <- 1
+#                    ^
+# Invalid expression for POINTER ASSIGNMENT
+
+fn main() -> int
+{
+    var a: int* <- 1
+
+    return 0
+}

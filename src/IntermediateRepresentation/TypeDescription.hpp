@@ -50,7 +50,7 @@ namespace icode
         bool isMutable() const;
         bool isPassedByReference() const;
         bool isPointer() const;
-        bool isMutablePointer() const;
+        bool isMutableAndPointer() const;
         bool isMutableOrPointer() const;
         bool isStringLtrl() const;
 
@@ -58,6 +58,7 @@ namespace icode
         bool isStruct() const;
         bool isArray() const;
         bool isStructOrArray() const;
+        bool isStructOrArrayAndNotPointer() const;
         bool isMultiDimArray() const;
         bool isIntegerType() const;
     };

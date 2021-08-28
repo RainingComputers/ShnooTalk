@@ -30,7 +30,7 @@ void FunctionBuilder::pushEntry(Entry entry)
     (*workingFunction).icodeTable.push_back(entry);
 }
 
-Operand FunctionBuilder::getCreatePointerDestinationOperand(const Unit& unit)
+Operand FunctionBuilder::getCreatePointerDestOperand(const Unit& unit)
 {
     /* If not a struct, just copy the operand but change its type to a pointer */
 
@@ -51,7 +51,7 @@ Operand FunctionBuilder::createPointer(const Unit& unit)
         return unit.op();
 
     /* Converted TEMP_PTR */
-    Operand pointerOperand = getCreatePointerDestinationOperand(unit);
+    Operand pointerOperand = getCreatePointerDestOperand(unit);
 
     /* Construct CREATE_PTR instruction */
     Entry createPointerEntry;
@@ -273,6 +273,20 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
     Operand result = autoCast(ensureNotPointer(unitToCast.op()), destinationDataType);
 
     return Unit(typeDescriptionFromDataType(destinationDataType), result);
+}
+
+
+Unit FunctionBuilder::pointerCastOperator(const Unit& unitToCast, TypeDescription destinationType)
+{
+    Entry entry;
+
+    entry.opcode = PTR_CAST;
+    entry.op1 = opBuilder.createPointerOperand(destinationType.dtype);
+    entry.op2 = unitToCast.op();
+
+    pushEntry(entry);
+
+    return Unit(destinationType, entry.op1);
 }
 
 void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)

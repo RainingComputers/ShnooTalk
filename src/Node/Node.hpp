@@ -28,6 +28,7 @@ namespace node
         FOR,
         LOOP,
         CAST,
+        PTR_CAST,
         BREAK,
         CONTINUE,
         ASSIGNMENT,

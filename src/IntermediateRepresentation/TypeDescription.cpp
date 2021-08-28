@@ -58,7 +58,7 @@ namespace icode
         return checkProperty(IS_PTR);
     }
 
-    bool TypeDescription::isMutablePointer() const
+    bool TypeDescription::isMutableAndPointer() const
     {
         return isPointer() && isMutable();
     }
@@ -81,6 +81,11 @@ namespace icode
     bool TypeDescription::isStructOrArray() const
     {
         return isStruct() || isArray();
+    }
+
+    bool TypeDescription::isStructOrArrayAndNotPointer() const
+    {
+        return isStructOrArray() && !isPointer();
     }
 
     bool TypeDescription::isMultiDimArray() const

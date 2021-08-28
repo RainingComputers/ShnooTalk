@@ -60,20 +60,15 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
     }
 }
 
-Type* nonPointerTypeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
-{
-    if (typeDescription.isStructOrArray())
-        return ArrayType::get(Type::getInt8Ty(*ctx.context), typeDescription.size);
-
-    return dataTypeToLLVMType(ctx, typeDescription.dtype);
-}
-
 Type* typeDescriptionToAllocaLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
 {
     if (typeDescription.isPassedByReference() || typeDescription.isPointer())
         return dataTypeToLLVMPointerType(ctx, typeDescription.dtype);
 
-    return nonPointerTypeDescriptionToLLVMType(ctx, typeDescription);
+    if (typeDescription.isStructOrArray())
+        return ArrayType::get(Type::getInt8Ty(*ctx.context), typeDescription.size);
+
+    return dataTypeToLLVMType(ctx, typeDescription.dtype);
 }
 
 Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription)
@@ -101,7 +96,7 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 
         Type* type = typeDescriptionToLLVMType(ctx, paramTypeDescription);
 
-        if (paramTypeDescription.isMutablePointer())
+        if (paramTypeDescription.isMutableAndPointer())
             type = type->getPointerTo();
 
         parameterTypes.push_back(type);
@@ -109,7 +104,7 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 
     /* If the function returns a struct or array, the return value is passed by reference */
 
-    if (functionDesc.functionReturnType.isStructOrArray())
+    if (functionDesc.functionReturnType.isStructOrArrayAndNotPointer())
     {
         Type* returnType = typeDescriptionToAllocaLLVMType(ctx, functionDesc.functionReturnType)->getPointerTo();
         parameterTypes.push_back(returnType);

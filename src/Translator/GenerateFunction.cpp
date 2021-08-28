@@ -58,6 +58,9 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::CAST:
                 castOperator(ctx, e);
                 break;
+            case icode::PTR_CAST:
+                pointerCastOperator(ctx, e);
+                break;
             case icode::EQ:
             case icode::NEQ:
             case icode::LT:
@@ -152,7 +155,7 @@ void setCurrentFunctionReturnValue(ModuleContext& ctx,
                                    const std::string& name,
                                    Function* function)
 {
-    if (functionDesc.functionReturnType.isStructOrArray() && !functionDesc.functionReturnType.isPointer())
+    if (functionDesc.functionReturnType.isStructOrArrayAndNotPointer())
     {
         llvm::Argument* lastArg = function->arg_end() - 1;
         lastArg->setName(name + "_retValue");

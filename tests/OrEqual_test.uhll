@@ -1,0 +1,12 @@
+# 3
+
+fn main() -> int
+{
+    var a: int = 2, b: int = 1
+
+    b |= a
+
+    println(b)
+
+    return 0
+}

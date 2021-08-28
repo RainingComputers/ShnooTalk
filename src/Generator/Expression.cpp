@@ -46,14 +46,27 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
 
 Unit cast(generator::GeneratorContext& ctx, const Node& root)
 {
+    Unit termToCast = term(ctx, root.children[0]);
+    
     DataType destinationDataType = stringToDataType(root.tok.toString());
 
-    Unit termToCast = term(ctx, root.children[0]);
+    if (destinationDataType == STRUCT)
+        ctx.console.compileErrorOnToken("Cannot cast to STRUCT", root.tok);
 
     if (termToCast.isArray() || termToCast.isStruct())
         ctx.console.compileErrorOnToken("Cannot cast STRUCT or ARRAY", root.tok);
 
     return ctx.ir.functionBuilder.castOperator(termToCast, destinationDataType);
+}
+
+Unit pointerCast(generator::GeneratorContext& ctx, const Node& root)
+{
+    Unit termToCast = term(ctx, root.children[0]);
+    
+    TypeDescription destinationType = ctx.ir.moduleBuilder.createTypeDescription(root.tok);
+    destinationType.becomePointer();
+
+    return ctx.ir.functionBuilder.pointerCastOperator(termToCast, destinationType);
 }
 
 Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
@@ -173,6 +186,8 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
             return getUnitFromIdentifier(ctx, root);
         case node::CAST:
             return cast(ctx, child);
+        case node::PTR_CAST:
+            return pointerCast(ctx, child);
         case node::UNARY_OPR:
             return unaryOperator(ctx, child);
         case node::EXPRESSION:

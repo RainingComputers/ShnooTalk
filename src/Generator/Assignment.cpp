@@ -8,8 +8,6 @@ icode::Instruction assignmentTokenToBinaryOperator(const generator::GeneratorCon
 {
     switch (tok.getType())
     {
-        case token::EQUAL:
-            return icode::EQUAL;
         case token::PLUS_EQUAL:
             return icode::ADD;
         case token::MINUS_EQUAL:
@@ -53,8 +51,8 @@ void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, cons
         if (LHS.isPointer() && root.type != node::ASSIGNMENT)
             ctx.console.compileErrorOnToken("Non pointer initialization for POINTER", assignOperator);
 
-        if (LHS.isArray() && RHS.isUserPointer())
-            ctx.console.compileErrorOnToken("EQUAL operator not allowed between ARRAY and POINTER", assignOperator);
+        if (LHS.isArray() && RHS.isPointer())
+            ctx.console.compileErrorOnToken("Cannot assign POINTER to ARRAY", root.getNthChildTokenFromLast(1));
 
         ctx.ir.functionBuilder.unitCopy(LHS, RHS);
     }
@@ -66,9 +64,6 @@ void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, cons
         if (!RHS.isValidForPointerAssignment())
             ctx.console.compileErrorOnToken("Invalid expression for POINTER ASSIGNMENT",
                                             root.getNthChildTokenFromLast(1));
-
-        if (LHS.isArray() && RHS.isPointer())
-            ctx.console.compileErrorOnToken("Cannot assign POINTER to ARRAY", root.getNthChildTokenFromLast(1));
 
         ctx.ir.functionBuilder.unitPointerAssign(LHS, RHS);
     }

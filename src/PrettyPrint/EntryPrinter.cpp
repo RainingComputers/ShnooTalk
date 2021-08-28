@@ -126,6 +126,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::NOT:
         case icode::UNARY_MINUS:
         case icode::CAST:
+        case icode::PTR_CAST:
         case icode::CREATE_PTR:
         case icode::ADDR_ADD:
         case icode::ADDR_MUL:

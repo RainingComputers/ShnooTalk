@@ -22,6 +22,7 @@ namespace icode
         BURY,
         CREATE_PTR,
         CAST,
+        PTR_CAST,
         UNARY_MINUS,
         NOT,
         MUL,
