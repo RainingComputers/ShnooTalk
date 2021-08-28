@@ -1,0 +1,14 @@
+# MODULE InvalidCastOperator_test.uhll
+# ERROR in Line 11 Col 20
+# 
+#     var b: int* <- int*'(1.2+3.4) 
+#                    ^
+# Invalid expression for POINTER CAST
+
+fn main() -> int
+{
+    var a: int* <- int*'0xffff
+    var b: int* <- int*'(1.2+3.4) 
+
+    return 0
+}

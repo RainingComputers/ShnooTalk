@@ -63,8 +63,15 @@ Unit pointerCast(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit termToCast = term(ctx, root.children[0]);
     
+    if (!termToCast.isValidForPointerAssignment() && !termToCast.isIntegerType())
+        ctx.console.compileErrorOnToken("Invalid expression for POINTER CAST", root.tok);
+
     TypeDescription destinationType = ctx.ir.moduleBuilder.createTypeDescription(root.tok);
-    destinationType.becomePointer();
+
+    if (root.type == node::PTR_ARRAY_CAST)
+        destinationType.becomeArrayPointer();
+    else
+        destinationType.becomePointer();
 
     return ctx.ir.functionBuilder.pointerCastOperator(termToCast, destinationType);
 }
@@ -187,6 +194,7 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
         case node::CAST:
             return cast(ctx, child);
         case node::PTR_CAST:
+        case node::PTR_ARRAY_CAST:
             return pointerCast(ctx, child);
         case node::UNARY_OPR:
             return unaryOperator(ctx, child);

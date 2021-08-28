@@ -88,7 +88,7 @@ void pointerCastOperator(ModuleContext& ctx, const icode::Entry& e)
     Value* castedPointer;
     Type* destinationLLVMType = dataTypeToLLVMPointerType(ctx, e.op1.dtype);
 
-    if (icode::isInteger(e.op2.dtype) && !e.op2.isPointer())
+    if (e.op2.operandType == icode::TEMP)
         castedPointer = ctx.builder->CreateIntToPtr(getLLVMValue(ctx, e.op2), destinationLLVMType);
     else 
         castedPointer = ctx.builder->CreateBitCast(getLLVMPointer(ctx, e.op2), destinationLLVMType);

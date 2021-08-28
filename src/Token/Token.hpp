@@ -54,6 +54,7 @@ namespace token
         CONDN_NOT,
         CAST,
         PTR_CAST,
+        ARRAY_PTR_CAST,
         OPEN_SQUARE,
         CLOSE_SQUARE,
         OPEN_BRACE,

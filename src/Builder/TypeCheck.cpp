@@ -4,9 +4,6 @@ using namespace icode;
 
 bool isSameDim(TypeDescription type1, TypeDescription type2)
 {
-    if (type1.isPointer() && type2.isPointer())
-        return true;
-
     if (type1.dimensions.size() != type2.dimensions.size())
         return false;
 

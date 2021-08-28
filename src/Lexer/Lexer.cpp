@@ -94,7 +94,7 @@ namespace lexer
                 return LenTypePair(1, token::NOT);
             case '[':
                 if (line[i + 1] == ']' && line[i + 2] == '\'')
-                    return LenTypePair(3, token::PTR_CAST);
+                    return LenTypePair(3, token::ARRAY_PTR_CAST);
                 else if (line[i + 1] == ']')
                     return LenTypePair(2, token::EMPTY_SUBSCRIPT);
                 else

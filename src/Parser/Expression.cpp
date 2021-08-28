@@ -205,6 +205,12 @@ void term(parser::ParserContext& ctx)
             ctx.consume();
             term(ctx);
         }
+        else if (ctx.peek(token::ARRAY_PTR_CAST))
+        {
+            ctx.addNodeMakeCurrent(node::PTR_ARRAY_CAST);
+            ctx.consume();
+            term(ctx);
+        }
         else if (ctx.peek(token::DOUBLE_COLON))
         {
             moduleQualident(ctx);

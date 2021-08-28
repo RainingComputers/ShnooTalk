@@ -29,7 +29,7 @@ fn printVec(vector: Vector)
     println("x:", vector.x, "y:", vector.y)
 }
 
-fn test(a: Vector[]) -> Vector*
+fn test(a: Vector[]) -> Vector[]
 {
     return a
 }

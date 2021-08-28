@@ -26,6 +26,10 @@ binaryOperator = "+" | "-" | "|" | "^" | ">>" | "<<" | "||"  |  ">"
 
 castOperator = "'"
 
+pointerCastOperator = "*'"
+
+arrayPointerCastOperator = "[]'"
+
 identifier = regex ([a-zA-Z_][a-zA-Z0-9_]*)
 
 intLiteral = regex ([0-9]+)
@@ -97,6 +101,8 @@ initializerList = "[" expression {"," expression} "]"
 term = sizeof
      | functionCall
      | identifier castOperator term
+     | identifier pointerCastOperator term
+     | identifier arrayPointerCastOperator term
      | moduleQualident term
      | identifierWithQualidentAndSubscript methodCall
      | "(" baseExpression ")"
