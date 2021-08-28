@@ -6,7 +6,7 @@ def BLEH 5
 
 fn main() -> int
 {
-    println(math::sin(float'BLEH))
+    println(math::sin(float`BLEH))
 
     return 0
 }

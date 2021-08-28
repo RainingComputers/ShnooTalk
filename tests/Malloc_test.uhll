@@ -34,7 +34,7 @@ fn printVec(vector: Vector)
 
 fn main() -> int
 {
-    var vecArray: Vector[] <- Vector[]'malloc(sizeof(Vector)*10)
+    var vecArray: Vector[] <- Vector[]`malloc(sizeof(Vector)*10)
     var i: int
 
     for (i = 0; i < NUM_ELEM; i += 1)

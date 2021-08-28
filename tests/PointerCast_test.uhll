@@ -13,7 +13,7 @@ fn main() -> int
     a.x = 1
     a.y = 2
 
-    var p: int[] <- int[]'a
+    var p: int[] <- int[]`a
 
     println(p[0])
     println(p[1])

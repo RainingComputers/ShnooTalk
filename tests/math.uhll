@@ -23,7 +23,7 @@ fn sin(x:float) -> float
     
     for(var k:int = 1; k < 10; k += 1)
     {
-        t = t * (-x * x )/((2.0 * float'k) * (2.0 * float'k + 1.0))
+        t = t * (-x * x )/((2.0 * float`k) * (2.0 * float`k + 1.0))
         sum += t
     }
     

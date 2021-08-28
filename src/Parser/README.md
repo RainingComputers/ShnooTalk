@@ -24,11 +24,11 @@ unaryOperator = "!"
 binaryOperator = "+" | "-" | "|" | "^" | ">>" | "<<" | "||"  |  ">" 
        | "<" | ">=" | "<=" | "==" | "!=" | "*" | "/" | "&" | "&&" 
 
-castOperator = "'"
+castOperator = "`"
 
-pointerCastOperator = "*'"
+pointerCastOperator = "*`"
 
-arrayPointerCastOperator = "[]'"
+arrayPointerCastOperator = "[]`"
 
 identifier = regex ([a-zA-Z_][a-zA-Z0-9_]*)
 
