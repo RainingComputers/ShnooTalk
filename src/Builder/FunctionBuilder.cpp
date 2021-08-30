@@ -275,7 +275,6 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
     return Unit(typeDescriptionFromDataType(destinationDataType), result);
 }
 
-
 Unit FunctionBuilder::pointerCastOperator(const Unit& unitToCast, TypeDescription destinationType)
 {
     Entry entry;

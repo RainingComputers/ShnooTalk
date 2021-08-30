@@ -1,16 +1,13 @@
-# MODULE globalerr1_test.uhll
-# ERROR in Line 10 Col 5
-# 
-# var string:char[10]
-#     ^
-# Symbol already defined
+# Hello
 
 use "string.uhll" as string
 
 var string:char[10]
 
-fn main()
+fn main() -> int
 {
     string = "Hello"
     println(string)
+
+    return 0
 }

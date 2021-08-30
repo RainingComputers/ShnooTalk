@@ -101,8 +101,7 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/test.py",
-            "console": "integratedTerminal",
-            "args": [""]
+            "console": "integratedTerminal"
         }
     ]
 }

@@ -3,7 +3,7 @@
 # 
 # from math use vec
 #               ^
-# Symbol already defined
+# Alias already exists
 
 use "math.uhll" as math
 use "vec.uhll" as vec

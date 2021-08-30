@@ -16,11 +16,6 @@ namespace icode
         floatDefines = { { "nan", NAN }, { "infinity", INFINITY } };
     }
 
-    bool ModuleDescription::useExists(const std::string& name)
-    {
-        return std::find(uses.begin(), uses.end(), name) != uses.end();
-    }
-
     bool ModuleDescription::getModuleNameFromAlias(const std::string& alias, std::string& returnValue)
     {
         return getMapElement<std::string, std::string>(aliases, alias, returnValue);
@@ -66,12 +61,21 @@ namespace icode
         return getMapElement<std::string, TypeDescription>(globals, name, returnValue);
     }
 
+    bool ModuleDescription::useExists(const std::string& name)
+    {
+        return std::find(uses.begin(), uses.end(), name) != uses.end();
+    }
+
+    bool ModuleDescription::aliasExists(const std::string& name)
+    {
+        return aliases.find(name) != aliases.end();
+    }
+
     bool ModuleDescription::symbolExists(const std::string& name)
     {
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
-               aliases.find(name) != aliases.end() || stringToDataType(name) != STRUCT ||
-               enumerations.find(name) != enumerations.end() || globals.find(name) != globals.end() ||
-               intDefines.find(name) != intDefines.end() || floatDefines.find(name) != floatDefines.end() ||
-               stringDefines.find(name) != stringDefines.end();
+               stringToDataType(name) != STRUCT || enumerations.find(name) != enumerations.end() ||
+               globals.find(name) != globals.end() || intDefines.find(name) != intDefines.end() ||
+               floatDefines.find(name) != floatDefines.end() || stringDefines.find(name) != stringDefines.end();
     }
 }

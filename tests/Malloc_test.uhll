@@ -31,7 +31,6 @@ fn printVec(vector: Vector)
     println("x:", vector.x, "y:", vector.y)
 }
 
-
 fn main() -> int
 {
     var vecArray: Vector[] <- Vector[]`malloc(sizeof(Vector)*10)

@@ -1,10 +1,12 @@
-# MODULE enumerr1_test.uhll
-# ERROR in Line 10 Col 7
-# 
-# enum [math, phsysics, chemistry, csc]
-#       ^
-# Symbol already defined
+# 0
 
 use "math.uhll" as math
 
 enum [math, phsysics, chemistry, csc]
+
+fn main() -> int
+{
+    println(math)
+
+    return 0
+}

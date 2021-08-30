@@ -1,14 +1,16 @@
-# MODULE fnerr1_test.uhll
-# ERROR in Line 11 Col 4
-# 
-# fn vec() -> int
-#    ^
-# Symbol already defined
+# 0
 
 use "math.uhll" as math
 from math use vec
 
 fn vec() -> int
 {
+    return 0
+}
+
+fn main() -> int
+{
+    println(vec())
+
     return 0
 }

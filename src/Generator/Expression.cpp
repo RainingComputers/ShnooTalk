@@ -47,7 +47,7 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
 Unit cast(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit termToCast = term(ctx, root.children[0]);
-    
+
     DataType destinationDataType = stringToDataType(root.tok.toString());
 
     if (destinationDataType == STRUCT)
@@ -62,7 +62,7 @@ Unit cast(generator::GeneratorContext& ctx, const Node& root)
 Unit pointerCast(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit termToCast = term(ctx, root.children[0]);
-    
+
     if (!termToCast.isValidForPointerAssignment() && !termToCast.isIntegerType())
         ctx.console.compileErrorOnToken("Invalid expression for POINTER CAST", root.tok);
 
