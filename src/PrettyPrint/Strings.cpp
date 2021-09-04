@@ -144,22 +144,11 @@ const std::string nodeTypeToString[] = {
 const std::string typePropertiesString[] = { "isMutable", "isPointer", "isParameter",
                                              "isGlobal",  "isLocal",   "isStringLiteral" };
 
-const std::string operandTypeToString[] = { "temp",
-                                            "tempPtr",
-                                            "tempPtrPtr",
-                                            "bytes",
-                                            "stringData",
-                                            "var",
-                                            "globalVar",
-                                            "ptr",
-                                            "returnValue",
-                                            "returnPointer",
-                                            "calleeReturnValue",
-                                            "calleeReturnPointer",
-                                            "literal",
-                                            "label",
-                                            "module",
-                                            "none" };
+const std::string operandTypeToString[] = {
+    "temp",      "tempPtr", "tempPtrPtr",  "bytes",         "stringData",        "var",
+    "globalVar", "ptr",     "returnValue", "returnPointer", "calleeReturnValue", "calleeReturnPointer",
+    "literal",   "label",   "module",      "none"
+};
 
 const std::string instructionToString[] = { "pass",
                                             "passAddress",

@@ -12,7 +12,7 @@ void equal(const icode::Entry& e, Console& con)
     con.check(allOperandNonVoidBaseDataType(e));
 }
 
-void pointerAssign(const icode::Entry& e, Console& con) 
+void pointerAssign(const icode::Entry& e, Console& con)
 {
     con.check(twoOperand(e));
     con.check(e.op1.isUserPointer() || e.op1.operandType == icode::RET_PTR);

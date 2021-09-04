@@ -367,7 +367,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
     Operand pointerOperand = createPointer(unit);
     Operand offsetOperand = opBuilder.createBytesOperand(fieldType.offset);
 
-    Operand fieldOperand; 
+    Operand fieldOperand;
 
     if (fieldType.isPointer())
         fieldOperand = addressAddOperatorPtrPtr(pointerOperand, offsetOperand);
