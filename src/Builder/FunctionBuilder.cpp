@@ -40,9 +40,9 @@ Operand FunctionBuilder::getCreatePointerDestOperand(const Unit& unit)
     /* If it a struct, create pointer to the first field */
     ModuleDescription* workingModule = &modulesMap.at(unit.moduleName());
 
-    TypeDescription firstFieldDesc = workingModule->structures.at(unit.dtypeName()).structFields.begin()->second;
+    DataType firstFieldDataType = workingModule->structures.at(unit.dtypeName()).getFirstFieldDataType();
 
-    return opBuilder.createTempPtrOperand(firstFieldDesc.dtype);
+    return opBuilder.createTempPtrOperand(firstFieldDataType);
 }
 
 Operand FunctionBuilder::createPointer(const Unit& unit)

@@ -4,7 +4,7 @@
 
 namespace icode
 {
-    bool StructDescription::fieldExists(const std::string& name)
+    bool StructDescription::fieldExists(const std::string& name) const
     {
         return structFields.find(name) != structFields.end();
     }
@@ -12,5 +12,13 @@ namespace icode
     bool StructDescription::getField(const std::string& name, TypeDescription& returnValue)
     {
         return getMapElement<std::string, TypeDescription>(structFields, name, returnValue);
+    }
+
+    DataType StructDescription::getFirstFieldDataType() const
+    {
+        if(structFields.size() == 0)
+            return STRUCT;
+        
+        return structFields.begin()->second.dtype;
     }
 }

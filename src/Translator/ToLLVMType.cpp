@@ -78,7 +78,7 @@ Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescr
         icode::StructDescription structDescription =
             ctx.modulesMap[typeDescription.moduleName].structures[typeDescription.dtypeName];
 
-        icode::DataType dtype = structDescription.structFields.begin()->second.dtype;
+        icode::DataType dtype = structDescription.getFirstFieldDataType();
 
         return dataTypeToLLVMPointerType(ctx, dtype);
     }
