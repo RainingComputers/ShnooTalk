@@ -1,0 +1,12 @@
+# MODULE StringLiteralTypeError_test.uhll
+# ERROR in Line 11 Col 17
+# 
+#     var a:int = "lol"
+#                 ^
+# Type error, did not expect ubyte[4],
+# expected int
+
+fn main()
+{
+    var a:int = "lol"
+}

@@ -1,0 +1,12 @@
+# MODULE ArrayAccessOnNonArrayError_test.uhll
+# ERROR in Line 11 Col 14
+# 
+#     println(a[2])
+#              ^
+# ARRAY access on a NON ARRAY
+
+fn main()
+{
+    var a:int = 10
+    println(a[2])
+}

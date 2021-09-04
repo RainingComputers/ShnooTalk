@@ -1,0 +1,13 @@
+# MODULE ArrayAccessOnDefine_test.uhll
+# ERROR in Line 12 Col 21
+# 
+#     var a:int = LED0[2]
+#                     ^
+# ARRAY access on a NON ARRAY
+
+def LED0 0
+
+fn main()
+{
+    var a:int = LED0[2]
+}

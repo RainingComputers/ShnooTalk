@@ -1,0 +1,12 @@
+# MODULE InitializerListNestedTypeError1_test.uhll
+# ERROR in Line 11 Col 32
+# 
+#     var a:int[2][2] = [[1, 2], [3, 4, 5]]
+#                                ^
+# Type error, did not expect autoInt[3],
+# expected autoInt[2]
+
+fn main()
+{
+    var a:int[2][2] = [[1, 2], [3, 4, 5]]
+}

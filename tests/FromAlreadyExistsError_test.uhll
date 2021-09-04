@@ -1,0 +1,11 @@
+# MODULE FromAlreadyExistsError_test.uhll
+# ERROR in Line 11 Col 15
+# 
+# from math use vec
+#               ^
+# Alias already exists
+
+use "math.uhll" as math
+use "vec.uhll" as vec
+
+from math use vec

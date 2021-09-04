@@ -1,0 +1,12 @@
+# MODULE TooManySubscriptsError_test.uhll
+# ERROR in Line 11 Col 17
+# 
+#     println(a[1][1])
+#                 ^
+# Too many subscripts
+
+fn main()
+{
+    var a:int[2] = [1, 2]
+    println(a[1][1])
+}

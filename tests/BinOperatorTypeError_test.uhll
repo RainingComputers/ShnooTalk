@@ -1,0 +1,15 @@
+# MODULE BinOperatorTypeError_test.uhll
+# ERROR in Line 12 Col 21
+# 
+#     var i:int = 2 + f
+#                     ^
+# Type error, did not expect float,
+# expected autoInt
+
+fn main()
+{
+    var f:float = 2.0 
+    var i:int = 2 + f
+
+    println(i)
+}

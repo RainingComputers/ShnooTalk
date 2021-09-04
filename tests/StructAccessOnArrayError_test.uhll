@@ -1,0 +1,25 @@
+# MODULE StructAccessOnArrayError_test.uhll
+# ERROR in Line 24 Col 17
+# 
+#     println(foo.x)
+#                 ^
+# STRUCT access on an ARRAY
+
+use "vec.uhll" as vec
+from vec use Vec
+
+fn newVec(x:int, y:int) -> Vec
+{
+    var new:Vec
+
+    new.setVec(x, y)
+
+    return new
+}
+
+fn main()
+{
+    var foo:Vec[3] = [newVec(1, 2), newVec(3, 4), newVec(5, 6)]
+
+    println(foo.x)
+}

@@ -1,0 +1,34 @@
+# 2
+# 3
+# 10
+
+struct foo
+{
+    var a:int, b:int
+}
+
+fn atest() -> foo
+{
+    var res:foo
+    res.a = 2
+    res.b = 3
+
+    return res
+}
+
+fn btest() -> int
+{
+    return 10
+}
+
+fn main() -> int
+{
+    var c:foo = atest()
+
+    println(c.a)
+    println(c.b)
+
+    println(btest())
+
+    return 0
+}

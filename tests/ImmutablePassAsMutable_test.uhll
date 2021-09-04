@@ -1,0 +1,22 @@
+# MODULE ImmutablePassAsMutable_test.uhll
+# ERROR in Line 15 Col 9
+# 
+#     bar(a)
+#         ^
+# Cannot pass IMMUTABLE as MUTABLE
+
+fn bar(mut b:int)
+{
+    b += 1
+}
+
+fn foo(a:int)
+{
+    bar(a)
+}
+
+fn main()
+{
+    var a:int = 2
+    foo(a)
+}

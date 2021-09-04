@@ -1,0 +1,11 @@
+# MODULE ReturnVoidOnNonVoid_test.uhll
+# ERROR in Line 10 Col 5
+# 
+#     return void
+#     ^
+# Ret type is not VOID
+
+fn lol() -> int
+{
+    return void
+}

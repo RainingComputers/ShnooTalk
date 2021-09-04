@@ -1,0 +1,14 @@
+# MODULE LiteralTypeError_test.uhll
+# ERROR in Line 11 Col 17
+# 
+#     var i:int = 2.0
+#                 ^
+# Type error, did not expect autoFloat,
+# expected int
+
+fn main()
+{
+    var i:int = 2.0
+
+    println(2)
+}

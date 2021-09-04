@@ -1,0 +1,16 @@
+# MODULE StringLiteralPassAsMutable_test.uhll
+# ERROR in Line 15 Col 9
+# 
+#     foo("Hello")
+#         ^
+# Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE
+
+fn foo(mut a:char[6])
+{
+    println(a)
+}
+
+fn main()
+{
+    foo("Hello")
+}

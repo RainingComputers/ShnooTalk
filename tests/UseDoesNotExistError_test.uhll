@@ -1,0 +1,11 @@
+# MODULE UseDoesNotExistError_test.uhll
+# ERROR in Line 10 Col 5
+# 
+#     doesnotexist::foo()
+#     ^
+# Use does not exist
+
+fn main()
+{
+    doesnotexist::foo()
+}

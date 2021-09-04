@@ -1,0 +1,19 @@
+# MODULE AssignOperatorTypeError_test.uhll
+# ERROR in Line 14 Col 10
+# 
+#     a += f
+#          ^
+# Type error, did not expect float,
+# expected int
+
+fn main() -> int
+{
+    var a:int = 2
+    var f:float = 2.0
+
+    a += f
+
+    println(a)
+
+    return 0
+}
