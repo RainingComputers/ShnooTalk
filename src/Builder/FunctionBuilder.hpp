@@ -38,6 +38,8 @@ class FunctionBuilder
 
     icode::Operand addressAddOperator(icode::Operand op2, icode::Operand op3);
 
+    icode::Operand addressAddOperatorPtrPtr(icode::Operand op2, icode::Operand op3);
+
     icode::Operand addressMultiplyOperator(icode::Operand op2, icode::Operand op3);
 
     std::string getCalleeName(const Token& calleeNameToken, const icode::FunctionDescription& callee);

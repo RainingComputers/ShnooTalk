@@ -11,6 +11,7 @@ namespace icode
     {
         TEMP,
         TEMP_PTR,
+        TEMP_PTR_PTR,
         BYTES,
         STR_DATA,
         VAR,

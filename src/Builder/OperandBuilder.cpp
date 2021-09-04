@@ -22,12 +22,22 @@ Operand OperandBuilder::createTempOperand(DataType dtype)
     return temp;
 }
 
-Operand OperandBuilder::createPointerOperand(DataType dtype)
+Operand OperandBuilder::createTempPtrOperand(DataType dtype)
 {
     Operand temp;
     temp.operandId = getId();
     temp.dtype = dtype;
     temp.operandType = TEMP_PTR;
+
+    return temp;
+}
+
+Operand OperandBuilder::createTempPtrPtrOperand(icode::DataType dtype)
+{
+    Operand temp;
+    temp.operandId = getId();
+    temp.dtype = dtype;
+    temp.operandType = TEMP_PTR_PTR;
 
     return temp;
 }

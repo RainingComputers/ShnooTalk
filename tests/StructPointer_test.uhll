@@ -1,0 +1,21 @@
+# 4
+
+struct Test
+{
+    var a: int*
+    var b: int
+}
+
+fn main() -> int
+{
+    var lol: Test
+    var bar: int = 2
+
+    lol.a <- bar
+
+    lol.a += 2
+
+    println(bar)
+
+    return 0
+}

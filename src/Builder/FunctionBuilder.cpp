@@ -35,14 +35,14 @@ Operand FunctionBuilder::getCreatePointerDestOperand(const Unit& unit)
     /* If not a struct, just copy the operand but change its type to a pointer */
 
     if (!unit.isStruct())
-        return opBuilder.createPointerOperand(unit.dtype());
+        return opBuilder.createTempPtrOperand(unit.dtype());
 
     /* If it a struct, create pointer to the first field */
     ModuleDescription* workingModule = &modulesMap.at(unit.moduleName());
 
     TypeDescription firstFieldDesc = workingModule->structures.at(unit.dtypeName()).structFields.begin()->second;
 
-    return opBuilder.createPointerOperand(firstFieldDesc.dtype);
+    return opBuilder.createTempPtrOperand(firstFieldDesc.dtype);
 }
 
 Operand FunctionBuilder::createPointer(const Unit& unit)
@@ -280,7 +280,7 @@ Unit FunctionBuilder::pointerCastOperator(const Unit& unitToCast, TypeDescriptio
     Entry entry;
 
     entry.opcode = PTR_CAST;
-    entry.op1 = opBuilder.createPointerOperand(destinationType.dtype);
+    entry.op1 = opBuilder.createTempPtrOperand(destinationType.dtype);
     entry.op2 = unitToCast.op();
 
     pushEntry(entry);
@@ -311,7 +311,23 @@ Operand FunctionBuilder::addressAddOperator(Operand op2, Operand op3)
     Entry entry;
 
     entry.opcode = ADDR_ADD;
-    entry.op1 = opBuilder.createPointerOperand(op2.dtype);
+    entry.op1 = opBuilder.createTempPtrOperand(op2.dtype);
+    entry.op2 = op2;
+    entry.op3 = op3;
+
+    pushEntry(entry);
+
+    return entry.op1;
+}
+
+Operand FunctionBuilder::addressAddOperatorPtrPtr(Operand op2, Operand op3)
+{
+    /* Construct icode for ADDR_ADD */
+
+    Entry entry;
+
+    entry.opcode = ADDR_ADD;
+    entry.op1 = opBuilder.createTempPtrPtrOperand(op2.dtype);
     entry.op2 = op2;
     entry.op3 = op3;
 
@@ -327,7 +343,7 @@ Operand FunctionBuilder::addressMultiplyOperator(Operand op2, Operand op3)
     Entry entry;
 
     entry.opcode = ADDR_MUL;
-    entry.op1 = opBuilder.createPointerOperand(VOID);
+    entry.op1 = opBuilder.createTempPtrOperand(VOID);
     entry.op2 = ensureNotPointer(op2);
     entry.op3 = op3;
 
@@ -349,8 +365,14 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
         fieldType.becomeMutable();
 
     Operand pointerOperand = createPointer(unit);
+    Operand offsetOperand = opBuilder.createBytesOperand(fieldType.offset);
 
-    Operand fieldOperand = addressAddOperator(pointerOperand, opBuilder.createBytesOperand(fieldType.offset));
+    Operand fieldOperand; 
+
+    if (fieldType.isPointer())
+        fieldOperand = addressAddOperatorPtrPtr(pointerOperand, offsetOperand);
+    else
+        fieldOperand = addressAddOperator(pointerOperand, offsetOperand);
 
     fieldOperand.dtype = fieldType.dtype;
 

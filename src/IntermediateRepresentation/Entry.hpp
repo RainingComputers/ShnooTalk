@@ -18,8 +18,6 @@ namespace icode
         PTR_ASSIGN,
         READ,
         WRITE,
-        DIG,
-        BURY,
         CREATE_PTR,
         CAST,
         PTR_CAST,

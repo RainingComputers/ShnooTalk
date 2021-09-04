@@ -14,7 +14,9 @@ public:
 
     icode::Operand createTempOperand(icode::DataType dtype);
 
-    icode::Operand createPointerOperand(icode::DataType dtype);
+    icode::Operand createTempPtrOperand(icode::DataType dtype);
+
+    icode::Operand createTempPtrPtrOperand(icode::DataType dtype);
 
     icode::Operand createStringDataOperand(const std::string& name, unsigned long size);
 

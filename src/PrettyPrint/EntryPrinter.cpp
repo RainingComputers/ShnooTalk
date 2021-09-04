@@ -14,6 +14,8 @@ std::string operandToName(const icode::Operand& op)
             return icode::dataTypeToString(op.dtype) + " temp" + std::to_string(op.operandId);
         case icode::TEMP_PTR:
             return icode::dataTypeToString(op.dtype) + "* tempPtr" + std::to_string(op.operandId);
+        case icode::TEMP_PTR_PTR:
+            return icode::dataTypeToString(op.dtype) + "** tempPtrPtr" + std::to_string(op.operandId);
         case icode::VAR:
         case icode::GBL_VAR:
             return icode::dataTypeToString(op.dtype) + " " + op.name;
@@ -132,8 +134,6 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::ADDR_MUL:
         case icode::READ:
         case icode::WRITE:
-        case icode::DIG:
-        case icode::BURY:
         case icode::MEMCPY:
         case icode::CALL:
             return prettyPrintEntryEqualLHS(entry);

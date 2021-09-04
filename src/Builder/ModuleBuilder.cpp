@@ -219,7 +219,10 @@ void ModuleBuilder::createStruct(const Token& nameToken,
         icode::TypeDescription field = fieldTypes[i];
         field.offset = structDescription.size;
 
-        structDescription.size += field.size;
+        if (field.isPointer())
+            structDescription.size += getDataTypeSize(icode::I64);
+        else
+            structDescription.size += field.size;
 
         structDescription.structFields[fieldNames[i].toString()] = field;
     }
