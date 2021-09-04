@@ -6,6 +6,7 @@
 
 bool allOperandEqualDataType(const icode::Entry& e);
 bool allOperandNonVoidBaseDataType(const icode::Entry& e);
+bool allOperandNonVoidDataType(const icode::Entry& e);
 bool allOperandNonPointer(const icode::Entry& e);
 bool noOperand(const icode::Entry& e);
 bool oneOperand(const icode::Entry& e);

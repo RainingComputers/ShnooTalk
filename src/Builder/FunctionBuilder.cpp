@@ -25,7 +25,7 @@ void FunctionBuilder::setWorkingFunction(FunctionDescription* functionDesc)
 
 void FunctionBuilder::pushEntry(Entry entry)
 {
-    // validateEntry(entry, console);
+    validateEntry(entry, console);
 
     (*workingFunction).icodeTable.push_back(entry);
 }

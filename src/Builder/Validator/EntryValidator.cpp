@@ -12,6 +12,13 @@ void equal(const icode::Entry& e, Console& con)
     con.check(allOperandNonVoidBaseDataType(e));
 }
 
+void pointerAssign(const icode::Entry& e, Console& con) 
+{
+    con.check(twoOperand(e));
+    con.check(e.op1.isUserPointer() || e.op1.operandType == icode::RET_PTR);
+    con.check(allOperandNonVoidDataType(e));
+}
+
 void binaryOperater(const icode::Entry& e, Console& con)
 {
     con.check(threeOperand(e));
@@ -34,6 +41,14 @@ void unaryOrCastOperator(const icode::Entry& e, Console& con)
     con.check(twoOperand(e));
     con.check(allOperandNonPointer(e));
     con.check(allOperandNonVoidBaseDataType(e));
+}
+
+void pointerCastOperator(const icode::Entry& e, Console& con)
+{
+    con.check(twoOperand(e));
+    con.check(e.op1.operandType == icode::TEMP_PTR);
+    con.check(e.op2.isValidForPointerAssignment() || (e.op2.isNotPointer() && icode::isInteger(e.op2.dtype)));
+    con.check(allOperandNonVoidDataType(e));
 }
 
 void branch(const icode::Entry& e, Console& con)
@@ -68,7 +83,7 @@ void createPointer(const icode::Entry& e, Console& con)
 void addrAdd(const icode::Entry& e, Console& con)
 {
     con.check(threeOperand(e));
-    con.check(e.op1.operandType == icode::TEMP_PTR);
+    con.check(e.op1.operandType == icode::TEMP_PTR || e.op1.operandType == icode::TEMP_PTR_PTR);
     con.check(e.op2.isPointer());
     con.check(e.op3.operandType == icode::TEMP_PTR || e.op3.operandType == icode::BYTES);
     con.check(nonVoidDataType(e.op1));
@@ -121,10 +136,19 @@ void passAddress(const icode::Entry& e, Console& con)
     con.check(nonVoidDataType(e.op1));
 }
 
+void passPointer(const icode::Entry& e, Console& con)
+{
+    con.check(threeOperand(e));
+    con.check(e.op1.isUserPointer());
+    con.check(e.op2.operandType == icode::VAR);
+    con.check(e.op3.operandType == icode::MODULE);
+    con.check(nonVoidDataType(e.op1));
+}
+
 void call(const icode::Entry& e, Console& con)
 {
     con.check(threeOperand(e));
-    con.check(e.op1.operandType == icode::CALLEE_RET_VAL);
+    con.check(e.op1.operandType == icode::CALLEE_RET_VAL || e.op1.operandType == icode::CALLEE_RET_PTR);
     con.check(e.op2.operandType == icode::VAR);
     con.check(e.op3.operandType == icode::MODULE);
 }
@@ -169,6 +193,9 @@ void validateEntry(const icode::Entry& entry, Console& con)
         case icode::EQUAL:
             equal(entry, con);
             break;
+        case icode::PTR_ASSIGN:
+            pointerAssign(entry, con);
+            break;
         case icode::ADD:
         case icode::SUB:
         case icode::MUL:
@@ -185,6 +212,9 @@ void validateEntry(const icode::Entry& entry, Console& con)
         case icode::UNARY_MINUS:
         case icode::CAST:
             unaryOrCastOperator(entry, con);
+            break;
+        case icode::PTR_CAST:
+            pointerCastOperator(entry, con);
             break;
         case icode::EQ:
         case icode::NEQ:
@@ -226,6 +256,9 @@ void validateEntry(const icode::Entry& entry, Console& con)
             break;
         case icode::PASS_ADDR:
             passAddress(entry, con);
+            break;
+        case icode::PASS_PTR:
+            passPointer(entry, con);
             break;
         case icode::CALL:
             call(entry, con);
