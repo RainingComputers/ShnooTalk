@@ -1,6 +1,6 @@
 # 25
 
-use "math.uhll" as math
+use "TestModules/Math.uhll" as math
 
 from math use vec
 from vec use Vec

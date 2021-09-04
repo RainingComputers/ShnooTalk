@@ -1,8 +1,8 @@
 # Pin 0 low
 # This works
 
-use "vec.uhll" as vec
-use "digital.uhll" as digital
+use "TestModules/Vector.uhll" as vec
+use "TestModules/Digital.uhll" as digital
 
 fn main() -> int
 {

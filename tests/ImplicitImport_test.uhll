@@ -1,7 +1,7 @@
 # x: 1 y: 2
 # 1
 
-use "math.uhll" as math
+use "TestModules/Math.uhll" as math
 
 fn main() -> int
 {

@@ -5,7 +5,7 @@
 #             ^
 # Cannot print STRUCT or multi-dimensional ARRAY
 
-use "vec.uhll" as vec
+use "TestModules/Vector.uhll" as vec
 from vec use Vec
 
 fn main()

@@ -1,6 +1,6 @@
 # Hello
 
-use "string.uhll" as string
+use "TestModules/String.uhll" as string
 
 var string:char[10]
 

@@ -16,9 +16,9 @@ namespace icode
 
     DataType StructDescription::getFirstFieldDataType() const
     {
-        if(structFields.size() == 0)
+        if (structFields.size() == 0)
             return STRUCT;
-        
+
         return structFields.begin()->second.dtype;
     }
 }

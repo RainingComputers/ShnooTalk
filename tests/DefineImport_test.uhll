@@ -1,7 +1,7 @@
 # 123 1.230000 random
 # random
 
-use "RandomDefine.uhll" as RandomDefine
+use "TestModules/RandomDefine.uhll" as RandomDefine
 from RandomDefine use SOME_RANDOM_INT, SOME_RANDOM_STRING
 
 fn main() -> int

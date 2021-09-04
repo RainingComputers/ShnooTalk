@@ -1,7 +1,7 @@
 # 1
 # 2
 
-use "math.uhll" as math
+use "TestModules/Math.uhll" as math
 from math use vec
 
 struct vec

@@ -1,6 +1,6 @@
 # 15
 
-use "math.uhll" as math
+use "TestModules/Math.uhll" as math
 
 fn gcd(a:int, b:int) -> int
 {

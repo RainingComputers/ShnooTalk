@@ -1,6 +1,6 @@
 # Pin 0 low
 
-use "digital.uhll" as digital
+use "TestModules/Digital.uhll" as digital
 
 fn main() -> int
 {

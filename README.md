@@ -69,7 +69,7 @@ clang app.o -o app
 - [x] `do {} while()` loop
 - [x] NaN and infinity
 - [ ] Cleanup format strings and function call in Translator
-- [ ] Dynamic allocation and pointers
+- [x] Dynamic allocation and pointers
 - [ ] Add `fopen()` function
 - [ ] Multi-line strings
 - [ ] Static variables

@@ -21,7 +21,7 @@
 # x: 2 y: 4
 # 
 
-use "vec.uhll" as vec
+use "TestModules/Vector.uhll" as vec
 from vec use Vec
 
 struct foobar

@@ -1,5 +1,5 @@
 # 0
-use "vec.uhll" as vec
+use "TestModules/Vector.uhll" as vec
 
 def vec 0
 

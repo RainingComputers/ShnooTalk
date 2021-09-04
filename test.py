@@ -72,6 +72,7 @@ def run_test(file_name, compiler_exec_path):
 
     # Remove all object files before running the test
     os.system('rm -f *.o')
+    os.system('rm -f TestModules/*.o')
     os.system('rm -f ./test')
 
     # Set profile output file name
@@ -89,8 +90,9 @@ def run_test(file_name, compiler_exec_path):
     if(compiler_retcode != 0):
         return compare_outputs(test_output, compiler_output)
 
-    # Link object file into an execuatable
-    os.system('clang *.o -o test')
+    # Link object file into an executable
+    object_files = " ".join(glob.glob("*.o")+glob.glob("TestModules/*.o"))
+    os.system(f'clang {object_files} -o test')
 
     # Run the executable and return the output from the executable
     timedout, exec_output, _ = run_subprocess(['./test'])

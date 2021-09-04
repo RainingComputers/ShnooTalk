@@ -5,7 +5,7 @@
 #             ^
 # Invalid use of MODULE ACCESS
 
-use "vec.uhll" as vec
+use "TestModules/Vector.uhll" as vec
 
 fn main()
 {

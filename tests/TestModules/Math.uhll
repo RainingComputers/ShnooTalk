@@ -1,4 +1,4 @@
-use "vec.uhll" as vec
+use "TestModules/Vector.uhll" as vec
 
 def PI 3.14
 

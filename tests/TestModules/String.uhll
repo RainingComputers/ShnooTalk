@@ -1,5 +1,5 @@
-use "math.uhll" as math
-use "result.uhll" as result
+use "TestModules/Math.uhll" as math
+use "TestModules/Result.uhll" as result
 from result use Result, FloatResult
 
 # Library for handling string

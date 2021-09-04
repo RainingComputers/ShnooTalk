@@ -5,7 +5,7 @@
 #               ^
 # Alias already exists
 
-use "math.uhll" as math
-use "vec.uhll" as vec
+use "TestModules/Math.uhll" as math
+use "TestModules/Vector.uhll" as vec
 
 from math use vec

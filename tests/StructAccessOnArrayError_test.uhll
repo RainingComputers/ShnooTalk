@@ -5,7 +5,7 @@
 #                 ^
 # STRUCT access on an ARRAY
 
-use "vec.uhll" as vec
+use "TestModules/Vector.uhll" as vec
 from vec use Vec
 
 fn newVec(x:int, y:int) -> Vec
