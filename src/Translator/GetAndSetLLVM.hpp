@@ -22,4 +22,6 @@ llvm::Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op);
 
 void setLLVMValue(ModuleContext& ctx, const icode::Operand& op, llvm::Value* value);
 
+llvm::Value* getLLVMPointerToPointer(ModuleContext& ctx, const icode::Operand& op);
+
 #endif

@@ -8,7 +8,7 @@
 
 llvm::Type* dataTypeToLLVMType(const ModuleContext& ctx, const icode::DataType dtype);
 llvm::Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType dtype);
-llvm::Type* typeDescriptionToLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription);
+llvm::Type* typeDescriptionToAllocaLLVMType(const ModuleContext& ctx, const icode::TypeDescription& typeDescription);
 llvm::FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx,
                                               const icode::FunctionDescription& functionDesc);
 

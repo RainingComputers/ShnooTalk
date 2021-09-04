@@ -27,6 +27,20 @@ void identifierWithSubscript(parser::ParserContext& ctx, bool literalSubscriptOn
     }
 }
 
+void identifierWithPointerStar(parser::ParserContext& ctx)
+{
+    ctx.addNode(node::IDENTIFIER);
+    ctx.expect(token::MULTIPLY);
+    ctx.addNode(node::POINTER_STAR);
+}
+
+void identifierWithEmptySubscript(parser::ParserContext& ctx)
+{
+    ctx.addNode(node::IDENTIFIER);
+    ctx.expect(token::EMPTY_SUBSCRIPT);
+    ctx.addNode(node::EMPTY_SUBSCRIPT);
+}
+
 void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
 {
     identifierWithSubscript(ctx, false);
@@ -60,7 +74,13 @@ void typeDefinition(parser::ParserContext& ctx)
     moduleQualident(ctx);
 
     ctx.expect(token::IDENTIFIER);
-    identifierWithSubscript(ctx, true);
+
+    if (ctx.peek(token::MULTIPLY))
+        identifierWithPointerStar(ctx);
+    else if (ctx.peek(token::EMPTY_SUBSCRIPT))
+        identifierWithEmptySubscript(ctx);
+    else
+        identifierWithSubscript(ctx, true);
 }
 
 void actualParameterList(parser::ParserContext& ctx)
@@ -176,6 +196,18 @@ void term(parser::ParserContext& ctx)
         else if (ctx.peek(token::CAST))
         {
             ctx.addNodeMakeCurrent(node::CAST);
+            ctx.consume();
+            term(ctx);
+        }
+        else if (ctx.peek(token::PTR_CAST))
+        {
+            ctx.addNodeMakeCurrent(node::PTR_CAST);
+            ctx.consume();
+            term(ctx);
+        }
+        else if (ctx.peek(token::ARRAY_PTR_CAST))
+        {
+            ctx.addNodeMakeCurrent(node::PTR_ARRAY_CAST);
             ctx.consume();
             term(ctx);
         }

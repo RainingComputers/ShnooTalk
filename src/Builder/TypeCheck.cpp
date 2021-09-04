@@ -7,6 +7,9 @@ bool isSameDim(TypeDescription type1, TypeDescription type2)
     if (type1.dimensions.size() != type2.dimensions.size())
         return false;
 
+    if (type1.isPointer() || type2.isPointer())
+        return true;
+
     for (size_t i = 0; i < type1.dimensions.size(); i += 1)
     {
         if (type1.dimTypes[i] == STRING_LTRL_DIM)

@@ -46,14 +46,34 @@ Unit literal(generator::GeneratorContext& ctx, const Node& root)
 
 Unit cast(generator::GeneratorContext& ctx, const Node& root)
 {
+    Unit termToCast = term(ctx, root.children[0]);
+
     DataType destinationDataType = stringToDataType(root.tok.toString());
 
-    Unit termToCast = term(ctx, root.children[0]);
+    if (destinationDataType == STRUCT)
+        ctx.console.compileErrorOnToken("Cannot cast to STRUCT", root.tok);
 
     if (termToCast.isArray() || termToCast.isStruct())
         ctx.console.compileErrorOnToken("Cannot cast STRUCT or ARRAY", root.tok);
 
     return ctx.ir.functionBuilder.castOperator(termToCast, destinationDataType);
+}
+
+Unit pointerCast(generator::GeneratorContext& ctx, const Node& root)
+{
+    Unit termToCast = term(ctx, root.children[0]);
+
+    if (!termToCast.isValidForPointerAssignment() && !termToCast.isIntegerType())
+        ctx.console.compileErrorOnToken("Invalid expression for POINTER CAST", root.tok);
+
+    TypeDescription destinationType = ctx.ir.moduleBuilder.createTypeDescription(root.tok);
+
+    if (root.type == node::PTR_ARRAY_CAST)
+        destinationType.becomeArrayPointer();
+    else
+        destinationType.becomePointer();
+
+    return ctx.ir.functionBuilder.pointerCastOperator(termToCast, destinationType);
 }
 
 Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
@@ -142,7 +162,11 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         if (!isSameType(formalParam, actualParam))
             ctx.console.typeError(actualParamToken, formalParam, actualParam);
 
-        if (formalParam.isMutable() && !actualParam.canPassAsMutable())
+        if (formalParam.isMutableAndPointer() && !actualParam.isUserPointer())
+            ctx.console.compileErrorOnToken("Cannot pass EXPRESSION or STRING LITERAL as MUTABLE POINTER",
+                                            actualParamToken);
+
+        if (formalParam.isMutableOrPointer() && !actualParam.isValidForPointerAssignment())
             ctx.console.compileErrorOnToken("Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE",
                                             actualParamToken);
 
@@ -169,6 +193,9 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
             return getUnitFromIdentifier(ctx, root);
         case node::CAST:
             return cast(ctx, child);
+        case node::PTR_CAST:
+        case node::PTR_ARRAY_CAST:
+            return pointerCast(ctx, child);
         case node::UNARY_OPR:
             return unaryOperator(ctx, child);
         case node::EXPRESSION:

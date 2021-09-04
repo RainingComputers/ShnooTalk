@@ -45,15 +45,20 @@ namespace icode
 
         void becomeMutable();
         void becomePointer();
+        void becomeArrayPointer();
         void becomeString();
         bool isMutable() const;
+        bool isPassedByReference() const;
         bool isPointer() const;
+        bool isMutableAndPointer() const;
+        bool isMutableOrPointer() const;
         bool isStringLtrl() const;
 
         bool isSameType() const;
         bool isStruct() const;
         bool isArray() const;
         bool isStructOrArray() const;
+        bool isStructOrArrayAndNotPointer() const;
         bool isMultiDimArray() const;
         bool isIntegerType() const;
     };

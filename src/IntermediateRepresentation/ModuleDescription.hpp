@@ -33,7 +33,6 @@ namespace icode
 
         void initializeTarget(const TargetEnums& target);
 
-        bool useExists(const std::string&);
         bool getModuleNameFromAlias(const std::string& name, std::string& returnValue);
         bool getStruct(const std::string& name, StructDescription& returnValue);
         bool getFunction(const std::string& name, FunctionDescription& returnValue);
@@ -43,6 +42,8 @@ namespace icode
         bool getFloatDefine(const std::string& name, double& returnValue);
         bool getStringDefine(const std::string& name, std::string& returnValue);
         bool getGlobal(const std::string& name, TypeDescription& returnValue);
+        bool useExists(const std::string&);
+        bool aliasExists(const std::string&);
         bool symbolExists(const std::string&);
     };
 

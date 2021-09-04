@@ -34,6 +34,12 @@ std::vector<Unit> Unit::flatten() const
     return flatList;
 }
 
+Unit Unit::clearProperties()
+{
+    typeDescription.properties &= 1 << IS_PTR;
+    return *this;
+}
+
 std::string Unit::moduleName() const
 {
     return typeDescription.moduleName;
@@ -118,14 +124,24 @@ bool Unit::isPointer() const
     return operand.isPointer();
 }
 
-bool Unit::isValidForInput() const
+bool Unit::isValidForPointerAssignment() const
 {
-    return operand.isValidForInput();
+    return operand.isValidForPointerAssignment();
 }
 
-bool Unit::canPassAsMutable() const
+bool Unit::isUserPointer() const
 {
-    return operand.canPassAsMutable();
+    return operand.isUserPointer();
+}
+
+bool Unit::isMutableAndPointer() const
+{
+    return typeDescription.isMutableAndPointer();
+}
+
+bool Unit::isMutableOrPointer() const
+{
+    return typeDescription.isMutableOrPointer();
 }
 
 bool Unit::isLiteral() const

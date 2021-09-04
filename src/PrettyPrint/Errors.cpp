@@ -85,14 +85,22 @@ namespace pp
         errorOnToken(moduleName, errorMessage, file, found);
     }
 
-    std::string typeDescriptionToTypeString(const icode::TypeDescription& var)
+    std::string typeDescriptionToTypeString(const icode::TypeDescription& typeDescription)
     {
-        std::string var_str = var.dtypeName;
+        std::string typeDescString = typeDescription.dtypeName;
 
-        for (const int dim : var.dimensions)
-            var_str += "[" + std::to_string(dim) + "]";
+        if (typeDescription.isPointer())
+        {
+            if (typeDescription.isArray())
+                return typeDescString + "[]";
+            else
+                return typeDescString + "*";
+        }
 
-        return var_str;
+        for (const int dim : typeDescription.dimensions)
+            typeDescString += "[" + std::to_string(dim) + "]";
+
+        return typeDescString;
     }
 
     void typeError(const std::string& moduleName,
@@ -107,6 +115,9 @@ namespace pp
 
         if (icode::dataTypeIsEqual(found.dtype, expected.dtype) && found.dtype != icode::STRUCT)
             modifiedFound.dtypeName = expected.dtypeName;
+
+        if (expected.isPointer())
+            modifiedFound.becomePointer();
 
         std::string foundString = typeDescriptionToTypeString(modifiedFound);
 

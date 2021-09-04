@@ -11,13 +11,16 @@ namespace icode
     {
         TEMP,
         TEMP_PTR,
+        TEMP_PTR_PTR,
         BYTES,
         STR_DATA,
         VAR,
         GBL_VAR,
         PTR,
         RET_VALUE,
+        RET_PTR,
         CALLEE_RET_VAL,
+        CALLEE_RET_PTR,
         LITERAL,
         LABEL,
         MODULE,
@@ -41,13 +44,10 @@ namespace icode
         OperandType operandType;
 
         Operand();
-
-        bool operator<(const Operand& other) const;
-        bool operator==(const Operand& other) const;
         bool isPointer() const;
         bool isNotPointer() const;
-        bool canPassAsMutable() const;
-        bool isValidForInput() const;
+        bool isUserPointer() const;
+        bool isValidForPointerAssignment() const;
     };
 }
 

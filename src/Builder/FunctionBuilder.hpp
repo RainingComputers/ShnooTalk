@@ -20,7 +20,7 @@ class FunctionBuilder
 
     void pushEntry(icode::Entry entry);
 
-    icode::Operand getCreatePointerDestinationOperand(const Unit& unit);
+    icode::Operand getCreatePointerDestOperand(const Unit& unit);
 
     icode::Operand createPointer(const Unit& unit);
 
@@ -38,6 +38,8 @@ class FunctionBuilder
 
     icode::Operand addressAddOperator(icode::Operand op2, icode::Operand op3);
 
+    icode::Operand addressAddOperatorPtrPtr(icode::Operand op2, icode::Operand op3);
+
     icode::Operand addressMultiplyOperator(icode::Operand op2, icode::Operand op3);
 
     std::string getCalleeName(const Token& calleeNameToken, const icode::FunctionDescription& callee);
@@ -54,11 +56,15 @@ public:
 
     void unitCopy(const Unit& dest, const Unit& src);
 
+    void unitPointerAssign(const Unit& to, const Unit& src);
+
     Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
 
     Unit unaryOperator(icode::Instruction instruction, const Unit& unaryOperatorTerm);
 
     Unit castOperator(const Unit& unitToCast, icode::DataType destinationDataType);
+
+    Unit pointerCastOperator(const Unit& unitToCast, icode::TypeDescription destinationType);
 
     void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
 
@@ -87,7 +93,7 @@ public:
 
     void noArgumentEntry(icode::Instruction instruction);
 
-    Unit getReturnPointerUnit();
+    Unit getReturnValueUnit();
 
     void terminateFunction(const Token& nameToken);
 };

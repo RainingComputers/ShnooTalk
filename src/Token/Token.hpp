@@ -53,11 +53,15 @@ namespace token
         NOT,
         CONDN_NOT,
         CAST,
+        PTR_CAST,
+        ARRAY_PTR_CAST,
         OPEN_SQUARE,
         CLOSE_SQUARE,
         OPEN_BRACE,
         CLOSE_BRACE,
+        EMPTY_SUBSCRIPT,
         RIGHT_ARROW,
+        LEFT_ARROW,
         PLUS,
         MINUS,
         BITWISE_OR,
@@ -106,6 +110,7 @@ public:
     int getPrecedence() const;
     bool isBitwiseOperation() const;
     bool isIntLiteral() const;
+    bool isEqualOrLeftArrow() const;
     long toInt() const;
     double toFloat() const;
     std::string toString() const;

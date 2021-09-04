@@ -14,6 +14,8 @@ std::string operandToName(const icode::Operand& op)
             return icode::dataTypeToString(op.dtype) + " temp" + std::to_string(op.operandId);
         case icode::TEMP_PTR:
             return icode::dataTypeToString(op.dtype) + "* tempPtr" + std::to_string(op.operandId);
+        case icode::TEMP_PTR_PTR:
+            return icode::dataTypeToString(op.dtype) + "** tempPtrPtr" + std::to_string(op.operandId);
         case icode::VAR:
         case icode::GBL_VAR:
             return icode::dataTypeToString(op.dtype) + " " + op.name;
@@ -21,8 +23,12 @@ std::string operandToName(const icode::Operand& op)
             return icode::dataTypeToString(op.dtype) + "* " + op.name;
         case icode::RET_VALUE:
             return icode::dataTypeToString(op.dtype) + " returnValue" + std::to_string(op.operandId);
+        case icode::RET_PTR:
+            return icode::dataTypeToString(op.dtype) + "* returnPointer" + std::to_string(op.operandId);
         case icode::CALLEE_RET_VAL:
             return icode::dataTypeToString(op.dtype) + " calleeReturnValue" + std::to_string(op.operandId);
+        case icode::CALLEE_RET_PTR:
+            return icode::dataTypeToString(op.dtype) + "* calleeReturnPointer" + std::to_string(op.operandId);
         case icode::STR_DATA:
             return "stringData " + op.name;
         case icode::BYTES:
@@ -108,6 +114,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
     switch (entry.opcode)
     {
         case icode::EQUAL:
+        case icode::PTR_ASSIGN:
         case icode::ADD:
         case icode::SUB:
         case icode::MUL:
@@ -121,6 +128,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::NOT:
         case icode::UNARY_MINUS:
         case icode::CAST:
+        case icode::PTR_CAST:
         case icode::CREATE_PTR:
         case icode::ADDR_ADD:
         case icode::ADDR_MUL:
@@ -148,6 +156,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::PRINT_STR:
         case icode::PASS:
         case icode::PASS_ADDR:
+        case icode::PASS_PTR:
         case icode::INPUT:
         case icode::INPUT_STR:
             return prettyPrintNoLHS(entry);

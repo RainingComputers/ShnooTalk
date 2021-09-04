@@ -17,9 +17,9 @@ void identifierDeclarationOptionalInit(parser::ParserContext& ctx)
     ctx.expect(token::IDENTIFIER);
     identifierDecleration(ctx);
 
-    if (ctx.accept(token::EQUAL))
+    if (ctx.accept(token::EQUAL) || ctx.accept(token::LEFT_ARROW))
     {
-        ctx.consume();
+        ctx.addNode(node::ASSIGN_OPERATOR);
         expression(ctx);
     }
 }
@@ -55,8 +55,10 @@ void identifierDeclarationRequiredInit(parser::ParserContext& ctx)
     ctx.expect(token::IDENTIFIER);
     identifierDecleration(ctx);
 
-    ctx.expect(token::EQUAL);
-    ctx.consume();
+    token::TokenType expected[2] = { token::EQUAL, token::LEFT_ARROW };
+    ctx.expect(expected, 2);
+    ctx.addNode(node::ASSIGN_OPERATOR);
+
     expression(ctx);
 }
 

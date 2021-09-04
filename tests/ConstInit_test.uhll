@@ -4,7 +4,7 @@
 #     return 0
 #     ^
 # Did not expect RETURN,
-# expected EQUAL
+# expected EQUAL or LEFT_ARROW
 
 fn main() -> int
 {

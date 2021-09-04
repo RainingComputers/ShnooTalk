@@ -14,18 +14,23 @@ public:
 
     icode::Operand createTempOperand(icode::DataType dtype);
 
-    icode::Operand createPointerOperand(icode::DataType dtype);
+    icode::Operand createTempPtrOperand(icode::DataType dtype);
+
+    icode::Operand createTempPtrPtrOperand(icode::DataType dtype);
 
     icode::Operand createStringDataOperand(const std::string& name, unsigned long size);
 
     icode::Operand createVarOperand(icode::DataType dtype,
-                                    const std::string& symbol,
-                                    bool global = false,
-                                    bool ptr = false);
+                                    const std::string& name,
+                                    icode::OperandType type = icode::VAR);
+
+    icode::Operand createRetValueOperand(icode::DataType dtype);
 
     icode::Operand createRetPointerOperand(icode::DataType dtype);
 
     icode::Operand createCalleeRetValOperand(icode::DataType dtype);
+
+    icode::Operand createCalleeRetPointerOperand(icode::DataType dtype);
 
     icode::Operand createFloatLiteralOperand(icode::DataType dtype, double literal);
 

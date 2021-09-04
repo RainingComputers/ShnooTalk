@@ -32,7 +32,7 @@ fn main() -> int
     var n: double = infinity
 
     println(a)
-    println(int'b)
+    println(int`b)
     println(c)
     println(d)
     println(e)

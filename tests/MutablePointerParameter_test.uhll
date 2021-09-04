@@ -1,0 +1,23 @@
+# 2
+# 3
+
+fn testfunction(mut p: int*, a: int*)
+{
+    p <- a
+}
+
+fn main() -> int
+{
+    var x: int = 2
+    var y: int = 3
+
+    var p: int* <- x
+
+    println(p)
+
+    testfunction(p, y)
+
+    println(p)
+
+    return 0
+}

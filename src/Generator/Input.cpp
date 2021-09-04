@@ -6,7 +6,7 @@ void input(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit unit = expression(ctx, root.children[0]);
 
-    if (!unit.isValidForInput())
+    if (!unit.isValidForPointerAssignment())
         ctx.console.compileErrorOnToken("Invalid term for INPUT", root.children[0].tok);
 
     if (unit.isStruct())

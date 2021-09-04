@@ -219,7 +219,10 @@ void ModuleBuilder::createStruct(const Token& nameToken,
         icode::TypeDescription field = fieldTypes[i];
         field.offset = structDescription.size;
 
-        structDescription.size += field.size;
+        if (field.isPointer())
+            structDescription.size += getDataTypeSize(icode::I64);
+        else
+            structDescription.size += field.size;
 
         structDescription.structFields[fieldNames[i].toString()] = field;
     }
@@ -238,7 +241,7 @@ void ModuleBuilder::createUse(const Token& pathToken, const Token& aliasToken)
     if (rootModule.useExists(path))
         console.compileErrorOnToken("Multiple imports detected", pathToken);
 
-    if (rootModule.symbolExists(alias))
+    if (rootModule.aliasExists(alias))
         console.compileErrorOnToken("Symbol already defined", aliasToken);
 
     rootModule.uses.push_back(path);
@@ -301,6 +304,9 @@ void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameT
 
     else if (externalModule->getModuleNameFromAlias(symbolString, importModuleNameReturnValue))
     {
+        if (rootModule.aliasExists(symbolString))
+            console.compileErrorOnToken("Alias already exists", symbolNameToken);
+
         rootModule.uses.push_back(importModuleNameReturnValue);
         rootModule.aliases[symbolString] = importModuleNameReturnValue;
     }

@@ -30,19 +30,19 @@ void FunctionBuilder::pushEntry(Entry entry)
     (*workingFunction).icodeTable.push_back(entry);
 }
 
-Operand FunctionBuilder::getCreatePointerDestinationOperand(const Unit& unit)
+Operand FunctionBuilder::getCreatePointerDestOperand(const Unit& unit)
 {
     /* If not a struct, just copy the operand but change its type to a pointer */
 
     if (!unit.isStruct())
-        return opBuilder.createPointerOperand(unit.dtype());
+        return opBuilder.createTempPtrOperand(unit.dtype());
 
     /* If it a struct, create pointer to the first field */
     ModuleDescription* workingModule = &modulesMap.at(unit.moduleName());
 
     TypeDescription firstFieldDesc = workingModule->structures.at(unit.dtypeName()).structFields.begin()->second;
 
-    return opBuilder.createPointerOperand(firstFieldDesc.dtype);
+    return opBuilder.createTempPtrOperand(firstFieldDesc.dtype);
 }
 
 Operand FunctionBuilder::createPointer(const Unit& unit)
@@ -51,7 +51,7 @@ Operand FunctionBuilder::createPointer(const Unit& unit)
         return unit.op();
 
     /* Converted TEMP_PTR */
-    Operand pointerOperand = getCreatePointerDestinationOperand(unit);
+    Operand pointerOperand = getCreatePointerDestOperand(unit);
 
     /* Construct CREATE_PTR instruction */
     Entry createPointerEntry;
@@ -107,11 +107,11 @@ void FunctionBuilder::operandCopy(Operand dest, Operand src)
     {
         Entry copyEntry;
 
-        if (dest.isPointer() && !castedSrc.isPointer())
+        if (dest.isPointer())
             copyEntry.opcode = WRITE;
-        else if (!dest.isPointer() && castedSrc.isPointer())
+        else if (castedSrc.isPointer())
             copyEntry.opcode = READ;
-        else if (!dest.isPointer() && !castedSrc.isPointer())
+        else
             copyEntry.opcode = EQUAL;
 
         copyEntry.op1 = dest;
@@ -177,6 +177,17 @@ void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
         operandCopy(dest.op(), src.op());
 }
 
+void FunctionBuilder::unitPointerAssign(const Unit& to, const Unit& src)
+{
+    icode::Entry entry;
+
+    entry.op1 = to.op();
+    entry.op2 = src.op();
+    entry.opcode = PTR_ASSIGN;
+
+    pushEntry(entry);
+}
+
 Operand FunctionBuilder::ensureNotPointer(Operand op)
 {
     /* Make sure the operand is not a pointer, if it is a pointer,
@@ -214,13 +225,7 @@ Operand FunctionBuilder::pushEntryAndEnsureNoPointerWrite(Entry entry)
     pushEntry(modifiedEntry);
 
     /* Create WRITE instruction to write the TEMP to TEMP_PTR */
-    Entry writeEntry;
-
-    writeEntry.op1 = pointerOperand;
-    writeEntry.op2 = temp;
-    writeEntry.opcode = WRITE;
-
-    pushEntry(writeEntry);
+    operandCopy(pointerOperand, temp);
 
     return temp;
 }
@@ -241,7 +246,7 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(LHS.type(), result);
+    return Unit(LHS.type(), result).clearProperties();
 }
 
 Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOperatorTerm)
@@ -259,7 +264,7 @@ Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOp
 
     Operand result = pushEntryAndEnsureNoPointerWrite(entry);
 
-    return Unit(unaryOperatorTerm.type(), result);
+    return Unit(unaryOperatorTerm.type(), result).clearProperties();
 }
 
 Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationDataType)
@@ -268,6 +273,19 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
     Operand result = autoCast(ensureNotPointer(unitToCast.op()), destinationDataType);
 
     return Unit(typeDescriptionFromDataType(destinationDataType), result);
+}
+
+Unit FunctionBuilder::pointerCastOperator(const Unit& unitToCast, TypeDescription destinationType)
+{
+    Entry entry;
+
+    entry.opcode = PTR_CAST;
+    entry.op1 = opBuilder.createTempPtrOperand(destinationType.dtype);
+    entry.op2 = unitToCast.op();
+
+    pushEntry(entry);
+
+    return Unit(destinationType, entry.op1);
 }
 
 void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
@@ -293,7 +311,23 @@ Operand FunctionBuilder::addressAddOperator(Operand op2, Operand op3)
     Entry entry;
 
     entry.opcode = ADDR_ADD;
-    entry.op1 = opBuilder.createPointerOperand(op2.dtype);
+    entry.op1 = opBuilder.createTempPtrOperand(op2.dtype);
+    entry.op2 = op2;
+    entry.op3 = op3;
+
+    pushEntry(entry);
+
+    return entry.op1;
+}
+
+Operand FunctionBuilder::addressAddOperatorPtrPtr(Operand op2, Operand op3)
+{
+    /* Construct icode for ADDR_ADD */
+
+    Entry entry;
+
+    entry.opcode = ADDR_ADD;
+    entry.op1 = opBuilder.createTempPtrPtrOperand(op2.dtype);
     entry.op2 = op2;
     entry.op3 = op3;
 
@@ -309,7 +343,7 @@ Operand FunctionBuilder::addressMultiplyOperator(Operand op2, Operand op3)
     Entry entry;
 
     entry.opcode = ADDR_MUL;
-    entry.op1 = opBuilder.createPointerOperand(VOID);
+    entry.op1 = opBuilder.createTempPtrOperand(VOID);
     entry.op2 = ensureNotPointer(op2);
     entry.op3 = op3;
 
@@ -331,8 +365,14 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
         fieldType.becomeMutable();
 
     Operand pointerOperand = createPointer(unit);
+    Operand offsetOperand = opBuilder.createBytesOperand(fieldType.offset);
 
-    Operand fieldOperand = addressAddOperator(pointerOperand, opBuilder.createBytesOperand(fieldType.offset));
+    Operand fieldOperand; 
+
+    if (fieldType.isPointer())
+        fieldOperand = addressAddOperatorPtrPtr(pointerOperand, offsetOperand);
+    else
+        fieldOperand = addressAddOperator(pointerOperand, offsetOperand);
 
     fieldOperand.dtype = fieldType.dtype;
 
@@ -341,7 +381,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
 
 Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit>& indices)
 {
-    unsigned int dimensionCount = 0;
+    unsigned int dimensionCount = 1;
     unsigned int elementWidth = unit.size() / unit.dimensions()[0];
 
     Operand elementOperand = createPointer(unit);
@@ -352,15 +392,15 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
     {
         Operand subscriptOperand = addressMultiplyOperator(indexUnit.op(), opBuilder.createBytesOperand(elementWidth));
 
-        if (dimensionCount + 1 != elementType.dimensions.size())
-            elementWidth /= elementType.dimensions[dimensionCount + 1];
+        if (dimensionCount != elementType.dimensions.size())
+            elementWidth /= elementType.dimensions[dimensionCount];
 
         elementOperand = addressAddOperator(elementOperand, subscriptOperand);
 
         dimensionCount++;
     }
 
-    unsigned int remainingDimensionCount = elementType.dimensions.size() - dimensionCount;
+    unsigned int remainingDimensionCount = elementType.dimensions.size() - dimensionCount + 1;
 
     elementType.dimensions.erase(elementType.dimensions.begin(),
                                  elementType.dimensions.end() - remainingDimensionCount);
@@ -473,7 +513,12 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
 
     Entry entry;
 
-    if (formalParam.isMutable() || formalParam.isStruct() || formalParam.isArray())
+    if (formalParam.isMutableAndPointer())
+    {
+        entry.opcode = PASS_PTR;
+        entry.op1 = actualParam.op();
+    }
+    else if (formalParam.isMutableOrPointer() || formalParam.isStruct() || formalParam.isArray())
     {
         entry.opcode = PASS_ADDR;
         entry.op1 = createPointer(actualParam);
@@ -501,7 +546,12 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescrip
     Entry callEntry;
 
     callEntry.opcode = CALL;
-    callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
+
+    if (callee.functionReturnType.isPointer())
+        callEntry.op1 = opBuilder.createCalleeRetPointerOperand(functionDataType);
+    else
+        callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
+
     callEntry.op2 = opBuilder.createVarOperand(functionDataType, calleeName);
     callEntry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
@@ -522,13 +572,18 @@ void FunctionBuilder::noArgumentEntry(Instruction instruction)
     pushEntry(entry);
 }
 
-Unit FunctionBuilder::getReturnPointerUnit()
+Unit FunctionBuilder::getReturnValueUnit()
 {
     const TypeDescription& returnType = workingFunction->functionReturnType;
 
-    Operand returnPointerOperand = opBuilder.createRetPointerOperand(returnType.dtype);
+    Operand operand;
 
-    return Unit(returnType, returnPointerOperand);
+    if (returnType.isPointer())
+        operand = opBuilder.createRetPointerOperand(returnType.dtype);
+    else
+        operand = opBuilder.createRetValueOperand(returnType.dtype);
+
+    return Unit(returnType, operand);
 }
 
 bool FunctionBuilder::doesFunctionTerminate()

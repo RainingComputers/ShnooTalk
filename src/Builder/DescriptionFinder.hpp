@@ -45,8 +45,6 @@ public:
     icode::FunctionDescription getFunction(const Token& nameToken);
 
     std::vector<Unit> getFormalParameters(const icode::FunctionDescription& function);
-
-    Unit getReturnType();
 };
 
 #endif

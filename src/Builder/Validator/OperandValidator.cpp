@@ -54,6 +54,7 @@ void validateOperand(const icode::Operand& op, Console& con)
             validateTempOrLiteralOperand(op, con);
             break;
         case icode::TEMP_PTR:
+        case icode::TEMP_PTR_PTR:
             validateTempPtrOperand(op, con);
             break;
         case icode::VAR:
@@ -62,7 +63,9 @@ void validateOperand(const icode::Operand& op, Console& con)
             validateVaOrPtrOperand(op, con);
             break;
         case icode::RET_VALUE:
+        case icode::RET_PTR:
         case icode::CALLEE_RET_VAL:
+        case icode::CALLEE_RET_PTR:
             validateRetOperand(op, con);
             break;
         case icode::STR_DATA:

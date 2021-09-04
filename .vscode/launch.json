@@ -5,14 +5,83 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug currently open test",
+            "name": "-ast",
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/uhll",
             "args": [
-                "${file}",
+                "${fileBasename}",
                 "-ast"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-ir",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/uhll",
+            "args": [
+                "${fileBasename}",
+                "-ir"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-llvm",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/uhll",
+            "args": [
+                "${fileBasename}",
+                "-llvm"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-c",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/uhll",
+            "args": [
+                "${fileBasename}",
+                "-c"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -32,8 +101,7 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/test.py",
-            "console": "integratedTerminal",
-            "args": [""]
+            "console": "integratedTerminal"
         }
     ]
 }

@@ -96,7 +96,7 @@ fn integer(this:String) -> Result
         if (isDigit(this.arr[i]) != true) return result::fail()
         
         # If valid digit, add to string
-        parsed_int += pow * int'(this.arr[i] - '0')
+        parsed_int += pow * int`(this.arr[i] - '0')
         pow *= 10   
     }
 
@@ -116,7 +116,7 @@ fn floating(this:String) -> FloatResult
     else dot = dotidx.val() 
     
     # Parse string to float
-    var pow:float = 1.0/float'math::pow(10, (l - dot - 1))
+    var pow:float = 1.0/float`math::pow(10, (l - dot - 1))
     var parsed_float:float = 0.0
     
     for(var i:int = l - 1; i >= 0; i -= 1)
@@ -126,7 +126,7 @@ fn floating(this:String) -> FloatResult
         # Check if valid digit
         if (isDigit(this.arr[i]) != true) return result::floatFail() 
         
-        parsed_float += pow * float'(this.arr[i] - '0')
+        parsed_float += pow * float`(this.arr[i] - '0')
         pow *= 10.0   
     }
 

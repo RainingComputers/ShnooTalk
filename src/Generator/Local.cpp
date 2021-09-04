@@ -1,4 +1,5 @@
 #include "../Builder/TypeCheck.hpp"
+#include "Assignment.hpp"
 #include "Expression.hpp"
 #include "TypeDescriptionFromNode.hpp"
 
@@ -24,9 +25,6 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     {
         Unit RHS = expression(ctx, lastNode);
 
-        if (!isSameType(local, RHS))
-            ctx.console.typeError(lastNode.tok, local, RHS);
-
-        ctx.ir.functionBuilder.unitCopy(local, RHS);
+        assignmentFromTree(ctx, root, local, RHS);
     }
 }

@@ -14,9 +14,9 @@ fn integrate(a:float, b:float, n:float) -> float
     var w:float = (b - a) / n
     
     # loop thorugh the rectangles, add their area i.e integrate
-    for(var i:int = 0; i < int'n; i += 1)
+    for(var i:int = 0; i < int`n; i += 1)
     {
-        var area:float = w * f(a + (float'i + 0.5) * w)
+        var area:float = w * f(a + (float`i + 0.5) * w)
         sum+=area
     }
     

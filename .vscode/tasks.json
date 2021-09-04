@@ -6,7 +6,7 @@
         {
             "label": "debugbuild",
             "type": "shell",
-            "command": "make build DEBUG=1 CXX=ccache\\ g++"
+            "command": "make build DEBUG=1 CXX=ccache\\ g++ -j 4"
         },
     ]
 }

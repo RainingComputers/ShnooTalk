@@ -1,10 +1,11 @@
-# MODULE deferr1_test.uhll
-# ERROR in Line 10 Col 5
-# 
-# def vec 0
-#     ^
-# Symbol already exists
-
+# 0
 use "vec.uhll" as vec
 
 def vec 0
+
+fn main() -> int
+{
+    println(vec)
+
+    return 0
+}

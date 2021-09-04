@@ -13,7 +13,7 @@ fn main() -> int
 {
     var r:int = 4
 
-    println(area(float'r))
+    println(area(float`r))
 
     return 0
 }

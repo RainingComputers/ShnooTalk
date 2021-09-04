@@ -34,6 +34,9 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::EQUAL:
                 copy(ctx, e);
                 break;
+            case icode::PTR_ASSIGN:
+                pointerAssign(ctx, e);
+                break;
             case icode::ADD:
             case icode::SUB:
             case icode::MUL:
@@ -54,6 +57,9 @@ void translateFunctionIcode(ModuleContext& ctx,
                 break;
             case icode::CAST:
                 castOperator(ctx, e);
+                break;
+            case icode::PTR_CAST:
+                pointerCastOperator(ctx, e);
                 break;
             case icode::EQ:
             case icode::NEQ:
@@ -100,6 +106,9 @@ void translateFunctionIcode(ModuleContext& ctx,
                 pass(ctx, e);
                 break;
             case icode::PASS_ADDR:
+                passAddress(ctx, e);
+                break;
+            case icode::PASS_PTR:
                 passPointer(ctx, e);
                 break;
             case icode::CALL:
@@ -146,7 +155,7 @@ void setCurrentFunctionReturnValue(ModuleContext& ctx,
                                    const std::string& name,
                                    Function* function)
 {
-    if (functionDesc.functionReturnType.isStructOrArray())
+    if (functionDesc.functionReturnType.isStructOrArrayAndNotPointer())
     {
         llvm::Argument* lastArg = function->arg_end() - 1;
         lastArg->setName(name + "_retValue");
@@ -155,7 +164,7 @@ void setCurrentFunctionReturnValue(ModuleContext& ctx,
     else
     {
         ctx.currentFunctionReturnValue =
-            ctx.builder->CreateAlloca(typeDescriptionToLLVMType(ctx, functionDesc.functionReturnType),
+            ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, functionDesc.functionReturnType),
                                       nullptr,
                                       name + "_retValue");
     }

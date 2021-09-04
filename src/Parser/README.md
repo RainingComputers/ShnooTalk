@@ -17,14 +17,18 @@ This grammar spec is just for reference, the parser is handwritten, not generate
 
 ### Grammar specification
 ``` 
-assignmentOperator  = "=" | "+=" | "-=" | "/=" | "*=" | "|=" | "&=" | "^="
+assignmentOperator  = "=" |  "<-" | "+=" | "-=" | "/=" | "*=" | "|=" | "&=" | "^=" 
 
 unaryOperator = "!"
 
 binaryOperator = "+" | "-" | "|" | "^" | ">>" | "<<" | "||"  |  ">" 
        | "<" | ">=" | "<=" | "==" | "!=" | "*" | "/" | "&" | "&&" 
 
-castOperator = "'"
+castOperator = "`"
+
+pointerCastOperator = "*`"
+
+arrayPointerCastOperator = "[]`"
 
 identifier = regex ([a-zA-Z_][a-zA-Z0-9_]*)
 
@@ -50,19 +54,23 @@ def = "def" identifier (literal | stringLiteral)
 
 identifierWithSubscript = identifier {"[" (literalSubscriptOnly? literal : expression)  "]"}
 
+identifierWithPointerStar = identifier "*"
+
+identifierWithEmptySubscripts = identifier "[]"
+
 identifierWithQualidentAndSubscript = identifierWithSubscript<false> {"." identifierWithSubscript<false>}
 
 moduleQualident = {identifier "::"}
 
-typeDefinition = moduleQualident identifierWithSubscript<true>
+typeDefinition = moduleQualident (identifierWithSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts)
 
 identifierDeclaration = identifier ":" typeDefinition
 
-identifierDeclarationOptionalInit = identifierDeclaration ["=" expression]
+identifierDeclarationOptionalInit = identifierDeclaration [ ("=" | "<-") expression]
 
 identifierDeclareListOptionalInit =  "var" initAllowed? identifierDeclarationOptionalInit : identifierDeclaration {"," initAllowed? identifierDeclarationOptionalInit : identifierDeclaration}
 
-identifierDeclarationRequiredInit = identifierDeclaration "=" expression
+identifierDeclarationRequiredInit = identifierDeclaration ("=" | "<-") expression
 
 identifierDeclareListRequiredInit "const" identifierDeclarationRequiredInit {"," identifierDeclarationRequiredInit}
 
@@ -93,6 +101,8 @@ initializerList = "[" expression {"," expression} "]"
 term = sizeof
      | functionCall
      | identifier castOperator term
+     | identifier pointerCastOperator term
+     | identifier arrayPointerCastOperator term
      | moduleQualident term
      | identifierWithQualidentAndSubscript methodCall
      | "(" baseExpression ")"

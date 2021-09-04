@@ -82,3 +82,16 @@ void castOperator(ModuleContext& ctx, const icode::Entry& e)
 
     setLLVMValue(ctx, e.op1, result);
 }
+
+void pointerCastOperator(ModuleContext& ctx, const icode::Entry& e)
+{
+    Value* castedPointer;
+    Type* destinationLLVMType = dataTypeToLLVMPointerType(ctx, e.op1.dtype);
+
+    if (e.op2.operandType == icode::TEMP)
+        castedPointer = ctx.builder->CreateIntToPtr(getLLVMValue(ctx, e.op2), destinationLLVMType);
+    else
+        castedPointer = ctx.builder->CreateBitCast(getLLVMPointer(ctx, e.op2), destinationLLVMType);
+
+    setLLVMValue(ctx, e.op1, castedPointer);
+}
