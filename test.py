@@ -92,7 +92,7 @@ def run_test(file_name, compiler_exec_path):
 
     # Link object file into an executable
     object_files = " ".join(glob.glob("*.o")+glob.glob("TestModules/*.o"))
-    os.system(f'clang {object_files} -o test')
+    os.system(f'clang {object_files} -o test -lm')
 
     # Run the executable and return the output from the executable
     timedout, exec_output, _ = run_subprocess(['./test'])

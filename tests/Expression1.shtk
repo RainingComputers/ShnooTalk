@@ -1,4 +1,6 @@
 # 0
+# 7
+# 12
 
 fn main() -> int
 {
@@ -7,6 +9,12 @@ fn main() -> int
     c += 3 - int`(f+3.0)
 
     println(c)
+
+    var d: uint = 3
+    var k: uint = 4
+
+    println(d + k)
+    println(d * k)
 
     return 0
 }

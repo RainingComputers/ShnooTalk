@@ -3,7 +3,7 @@
 # 
 #     foo(a+1)
 #         ^
-# Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE
+# Cannot pass IMMUTABLE as MUTABLE
 
 fn foo(mut a:int)
 {

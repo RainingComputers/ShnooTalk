@@ -130,7 +130,7 @@ void pass(const icode::Entry& e, Console& con)
 void passAddress(const icode::Entry& e, Console& con)
 {
     con.check(threeOperand(e));
-    con.check(e.op1.isPointer());
+    con.check(e.op1.isPointer() || e.op1.operandType == icode::STR_DATA);
     con.check(e.op2.operandType == icode::VAR);
     con.check(e.op3.operandType == icode::MODULE);
     con.check(nonVoidDataType(e.op1));

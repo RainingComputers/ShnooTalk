@@ -1,0 +1,31 @@
+# 1
+# 3
+# 3
+
+struct goo
+{
+    var b: int
+    var a: int*
+}
+
+fn test(a: int*)
+{
+    println(a)
+}
+
+fn main() -> int
+{
+    var c: int = 2
+    var foobar: goo
+    
+    foobar.b = 1
+    foobar.a <- c
+
+    foobar.a += 1
+
+    test(foobar.b)
+    test(foobar.a)
+    println(c)
+
+    return 0
+}

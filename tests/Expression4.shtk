@@ -2,6 +2,7 @@
 # 6
 # 54
 # 8
+# no lol
 
 fn foobar()
 {
@@ -29,5 +30,12 @@ fn main() -> int
 
     println(b+3) # 8
 
+    var bar: float = 3.0
+
+    if (bar == 1.0) println("lol") 
+    if (bar != 1.0) println("no lol")
+
     return 0
+
+
 }

@@ -1,4 +1,6 @@
 # 3.400000
+# 2.000000
+# 1
 
 fn main() -> int
 {
@@ -7,6 +9,16 @@ fn main() -> int
     var c:int = 1
 
     println(f)
+
+    var a: uint = 2
+
+    var b: float = float`a
+
+    println(b)
+
+    var k: float = 1.2
+    var m: uint = uint`k
+    println(m)
 
     return 0
 }

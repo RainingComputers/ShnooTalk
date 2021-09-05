@@ -1,0 +1,13 @@
+# 1
+# 2.300000
+
+fn main() -> int
+{
+    var a: int = 1, b: int = 2
+    var c: float = 2.3, d: float = 4.0
+
+    println(a % b)
+    println(c % d)
+
+    return 0
+}

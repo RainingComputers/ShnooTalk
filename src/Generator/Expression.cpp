@@ -166,8 +166,8 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
             ctx.console.compileErrorOnToken("Cannot pass EXPRESSION or STRING LITERAL as MUTABLE POINTER",
                                             actualParamToken);
 
-        if (formalParam.isMutableOrPointer() && !actualParam.isValidForPointerAssignment())
-            ctx.console.compileErrorOnToken("Cannot pass an EXPRESSION or STRING LITERAL as MUTABLE",
+        if (formalParam.isPointer() && actualParam.isLiteral())
+            ctx.console.compileErrorOnToken("Cannot pass an LITERAL as MUTABLE or POINTER",
                                             actualParamToken);
 
         if (formalParam.isMutable() && !actualParam.isMutable())
