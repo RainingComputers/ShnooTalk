@@ -1,0 +1,19 @@
+# 50.240002
+
+use "TestModules/Math.shtk" as math
+
+from math use PI
+
+fn area(r:float) -> float
+{
+    return PI*r*r
+}
+
+fn main() -> int
+{
+    var r:int = 4
+
+    println(area(float`r))
+
+    return 0
+}

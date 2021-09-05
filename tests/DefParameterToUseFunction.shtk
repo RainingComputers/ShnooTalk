@@ -1,0 +1,12 @@
+# -0.958933
+
+use "TestModules/Math.shtk" as math
+
+def BLEH 5
+
+fn main() -> int
+{
+    println(math::sin(float`BLEH))
+
+    return 0
+}

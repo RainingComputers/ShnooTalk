@@ -173,7 +173,7 @@ def run_all_tests(compiler_exec_path, obj_dir, testinfo_dir):
     passed = []
 
     for file in os.listdir():
-        if not file.endswith("_test.uhll"):
+        if not file.endswith(".shtk"):
             continue
 
         res, act_output, test_output = run_test(file, compiler_exec_path)
@@ -210,7 +210,7 @@ def run_all_llc_tests(compiler_exec_path):
     passed = []
 
     for file in os.listdir():
-        if not file.endswith("_test.uhll"):
+        if not file.endswith(".shtk"):
             continue
 
         res, llc_output = run_test_llc(file, compiler_exec_path)
@@ -239,10 +239,10 @@ if __name__ == "__main__":
 
     os.chdir("tests/")
 
-    print("--=[Running uHLL compiler tests]=--")
-    run_all_tests(f"../bin/{build_type}/uhll",
+    print("--=[Running ShnooTalk compiler tests]=--")
+    run_all_tests(f"../bin/{build_type}/shtkc",
                   f"../obj/{build_type}/", "testinfo/")
 
     if (build_type == "debug"):
         print("--=[Running LLVM LLC tests]=--")
-        run_all_llc_tests(f"../bin/{build_type}/uhll")
+        run_all_llc_tests(f"../bin/{build_type}/shtkc")

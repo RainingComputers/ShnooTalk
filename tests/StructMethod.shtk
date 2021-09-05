@@ -1,0 +1,18 @@
+# 25
+
+use "TestModules/Math.shtk" as math
+
+from math use vec
+from vec use Vec
+
+fn main() -> int
+{
+    var a:Vec, b:Vec
+    
+    a.setVec(1, 2)
+    b.setVec(5, 10)
+    
+    println(a.dot(b))
+
+    return 0
+}

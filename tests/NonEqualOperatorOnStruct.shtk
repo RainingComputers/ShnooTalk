@@ -1,0 +1,16 @@
+# MODULE NonEqualOperatorOnStruct.shtk
+# ERROR in Line 15 Col 7
+# 
+#     a += b
+#       ^
+# Only EQUAL operator allowed on STRUCT and ARRAY
+
+use "TestModules/Vector.shtk" as vec
+from vec use Vec
+
+fn main()
+{
+    var a:Vec, b:Vec
+
+    a += b
+}

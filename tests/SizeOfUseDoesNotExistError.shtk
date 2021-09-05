@@ -1,0 +1,11 @@
+# MODULE SizeOfUseDoesNotExistError.shtk
+# ERROR in Line 10 Col 20
+# 
+#     println(sizeof(doesnotexist::foo))
+#                    ^
+# Use does not exist
+
+fn main()
+{
+    println(sizeof(doesnotexist::foo))
+}

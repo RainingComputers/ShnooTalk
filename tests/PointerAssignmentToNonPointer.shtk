@@ -1,0 +1,16 @@
+# MODULE PointerAssignmentToNonPointer.shtk
+# ERROR in Line 13 Col 7
+# 
+#     a <- b
+#       ^
+# Pointer assignment on a NON POINTER
+
+fn main() -> int
+{
+    var a: int = 1
+    var b: int = 2
+
+    a <- b
+
+    return 0
+}

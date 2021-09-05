@@ -1,0 +1,11 @@
+# 0
+use "TestModules/Vector.shtk" as vec
+
+def vec 0
+
+fn main() -> int
+{
+    println(vec)
+
+    return 0
+}

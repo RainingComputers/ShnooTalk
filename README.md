@@ -4,8 +4,6 @@
 
 ShnooTalk is a programming language implemented in C++ using the LLVM compiler framework. ShnooTalk works by being compiled to a custom IR format and then translating that to LLVM IR. It is possible to run ShnooTalk on any runtime that supports the clang compiler. ShnooTalk links against standard C libraries/runtime.
 
-ShnooTalk was previously known as uHLL (micro high level language). The project is still transitioning from this name.
-
 🛠️ Project under construction, some things may not be fully polished yet 🛠️
 
 ![](blockdiag.png)
@@ -34,7 +32,7 @@ Install the extension from [here](https://marketplace.visualstudio.com/items?ite
 
 ## Getting started
 
-**app.uhll**
+**app.shtk**
 ```
 fn main() -> int
 {
@@ -45,7 +43,7 @@ fn main() -> int
 
 **Compile and run**
 ```
-uhll app.uhll -c
+shtkc app.shtk -c
 clang app.o -o app
 ./app
 ```

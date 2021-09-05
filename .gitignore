@@ -2,6 +2,8 @@ obj/*
 bin/*
 tests/testinfo/*
 /*.uhll
+/*.shnoo
+/*.shtk
 todo.txt
 .cccc/*
 tests/log.txt

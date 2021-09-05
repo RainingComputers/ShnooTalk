@@ -13,7 +13,7 @@
 
 void printCLIUsage()
 {
-    pp::println("USAGE: uhll FILE OPTION");
+    pp::println("USAGE: shtkc FILE OPTION");
     pp::println("");
     pp::println("Available options:");
     pp::println("    -c         Compile program");

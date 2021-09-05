@@ -1,0 +1,12 @@
+# MODULE NonIntegerIndexError.shtk
+# ERROR in Line 11 Col 15
+# 
+#     println(a[b])
+#               ^
+# Index must be an integer
+
+fn main()
+{
+    var a:int[2] = [1, 2], b:float = 1.0
+    println(a[b])
+}

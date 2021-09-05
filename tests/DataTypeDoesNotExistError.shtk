@@ -1,0 +1,13 @@
+# MODULE DataTypeDoesNotExistError.shtk
+# ERROR in Line 10 Col 11
+# 
+#     var a:foo
+#           ^
+# Data type does not exist
+
+fn main() -> int
+{
+    var a:foo
+
+    return 0
+}

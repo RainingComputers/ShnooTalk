@@ -1,0 +1,12 @@
+# MODULE DeclarationInitializationTypeError.shtk
+# ERROR in Line 11 Col 20
+# 
+#     var a:int[3] = 2
+#                    ^
+# Type error, did not expect int,
+# expected int[3]
+
+fn main()
+{
+    var a:int[3] = 2
+}

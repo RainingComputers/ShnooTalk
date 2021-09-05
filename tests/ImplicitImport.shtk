@@ -1,0 +1,17 @@
+# x: 1 y: 2
+# 1
+
+use "TestModules/Math.shtk" as math
+
+fn main() -> int
+{
+    var a:math::vec::Vec
+
+    a.setVec(1, 2)
+
+    a.printVec()
+
+    println(a.x)
+
+    return 0
+}

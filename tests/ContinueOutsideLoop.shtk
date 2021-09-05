@@ -1,0 +1,11 @@
+# MODULE ContinueOutsideLoop.shtk
+# ERROR in Line 10 Col 5
+# 
+#     continue
+#     ^
+# CONTINUE outside loop
+
+fn main()
+{
+    continue
+}

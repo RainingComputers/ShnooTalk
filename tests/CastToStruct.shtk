@@ -1,0 +1,13 @@
+# MODULE CastToStruct.shtk
+# ERROR in Line 12 Col 18
+# 
+#     var a: int = Vector`0
+#                  ^
+# Cannot cast to STRUCT
+
+fn main() -> int
+{
+    return 0
+
+    var a: int = Vector`0
+}

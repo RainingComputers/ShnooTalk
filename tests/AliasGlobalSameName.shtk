@@ -1,0 +1,13 @@
+# Hello
+
+use "TestModules/String.shtk" as string
+
+var string:char[10]
+
+fn main() -> int
+{
+    string = "Hello"
+    println(string)
+
+    return 0
+}

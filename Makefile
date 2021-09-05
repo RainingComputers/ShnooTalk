@@ -25,7 +25,7 @@ help :
 	@echo ""
 
 # Name of the executable
-EXEC_NAME = uhll
+EXEC_NAME = shtkc
 
 # C++ compiler
 CXX ?= clang++
@@ -111,7 +111,7 @@ install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
 
 install-gedit:
-	cp uhll.lang /usr/share/gtksourceview-4/language-specs/uhll.lang
+	cp shnootalk.lang /usr/share/gtksourceview-4/language-specs/shnootalk.lang
 
 uninstall:
 	rm /usr/local/bin/$(EXEC_NAME)

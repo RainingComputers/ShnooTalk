@@ -1,0 +1,16 @@
+# MODULE PrintStructError.shtk
+# ERROR in Line 15 Col 13
+# 
+#     println(a)
+#             ^
+# Cannot print STRUCT or multi-dimensional ARRAY
+
+use "TestModules/Vector.shtk" as vec
+from vec use Vec
+
+fn main()
+{
+    var a:Vec, b:Vec
+
+    println(a)
+}

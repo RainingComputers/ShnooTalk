@@ -1,9 +1,0 @@
-# x:
-
-use "TestModules/Vector.uhll" as vec
-
-fn main() -> int
-{
-    println("x:")
-    return 0
-}

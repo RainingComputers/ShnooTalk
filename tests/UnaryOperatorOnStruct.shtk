@@ -1,0 +1,18 @@
+# MODULE UnaryOperatorOnStruct.shtk
+# ERROR in Line 17 Col 9
+# 
+#     a = -b 
+#         ^
+# Unary operator not allowed on STRUCT
+
+struct foobar
+{
+    var a:int, b:int
+}
+
+fn main()
+{
+    var a:foobar, b:foobar
+
+    a = -b 
+}

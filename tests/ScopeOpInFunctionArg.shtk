@@ -1,0 +1,10 @@
+# Pin 0 low
+
+use "TestModules/Digital.shtk" as digital
+
+fn main() -> int
+{
+    digital::digitalWrite(0, digital::LOW)
+
+    return 0
+}

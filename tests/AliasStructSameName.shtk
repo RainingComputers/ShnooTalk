@@ -1,0 +1,23 @@
+# 1
+# 2
+
+use "TestModules/Math.shtk" as math
+from math use vec
+
+struct vec
+{
+    var x:int, y:int
+}
+
+fn main() -> int
+{
+    var a: vec
+
+    a.x = 1
+    a.y = 2
+
+    println(a.x)
+    println(a.y)
+
+    return 0
+}

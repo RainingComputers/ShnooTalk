@@ -1,9 +1,0 @@
-# MODULE MultipleImportsError_test.uhll
-# ERROR in Line 9 Col 5
-# 
-# use "TestModules/Math.uhll" as math
-#     ^
-# Multiple imports detected
-
-use "TestModules/Math.uhll" as math
-use "TestModules/Math.uhll" as math

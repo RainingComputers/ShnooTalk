@@ -1,0 +1,23 @@
+# 12
+
+use "TestModules/Math.shtk" as math
+
+fn lcm(a:int, b:int) -> int
+{
+    # Find maximum 
+    var max:int = math::maxInt(a, b)
+    
+    # Loop through all possibilities 
+    for(var x:int = max; x <= a * b; x += 1)
+        if(x % a == 0 and x % b == 0)
+            return x
+
+    return -1
+}
+
+fn main() -> int
+{
+    println(lcm(6, 4)) # 12
+
+    return 0
+}

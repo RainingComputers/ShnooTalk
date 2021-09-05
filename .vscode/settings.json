@@ -102,6 +102,9 @@
         "struct",
         "ubyte",
         "uhll",
-        "uhllc"
+        "uhllc",
+        "shtkc",
+        "shnoo",
+        "shtk"
     ]
 }

@@ -1,0 +1,21 @@
+# MODULE ReturnTypeError.shtk
+# ERROR in Line 13 Col 12
+# 
+#     return a
+#            ^
+# Type error, did not expect int,
+# expected float
+
+fn foobar() -> float
+{
+    var a:int = 2
+
+    return a
+}
+
+fn main() -> int
+{
+    println(foobar())
+
+    return 0
+}

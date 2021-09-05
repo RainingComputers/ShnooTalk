@@ -1,0 +1,47 @@
+# Var size: 32
+# x: 1 y: 2
+# x: 3 y: 4
+# x: 5 y: 6
+# x: 7 y: 8
+# x: 10 y: 20
+# x: 30 y: 40
+# x: 50 y: 60
+# x: 70 y: 80
+
+use "TestModules/Vector.shtk" as vec
+
+from vec use Vec
+
+fn newVec(x:int, y:int) -> Vec
+{
+    var new:Vec
+
+    new.setVec(x, y)
+
+    return new
+}
+
+fn printVecArray(foo:Vec[4])
+{
+    var i:int
+
+    for(i = 0; i < 4; i += 1)
+    {
+        foo[i].printVec()
+    }
+}
+
+fn main() -> int
+{
+    var foo:Vec[4] = [newVec(1, 2), newVec(3, 4), newVec(5, 6), newVec(7, 8)]
+
+    println("Var size:", sizeof(foo))
+
+    printVecArray(foo)
+
+    foo = [newVec(10, 20), newVec(30, 40), newVec(50, 60), newVec(70, 80)]
+
+    printVecArray(foo)
+        
+    return 0
+}

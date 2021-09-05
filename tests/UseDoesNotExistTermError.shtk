@@ -1,0 +1,11 @@
+# MODULE UseDoesNotExistTermError.shtk
+# ERROR in Line 10 Col 17
+# 
+#     var a:int = doesnotexist::foo
+#                 ^
+# Use does not exist
+
+fn main()
+{
+    var a:int = doesnotexist::foo
+}

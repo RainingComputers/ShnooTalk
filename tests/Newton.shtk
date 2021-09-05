@@ -1,0 +1,23 @@
+# 1.442250
+
+use "TestModules/Math.shtk" as math
+
+fn f(x:float) -> float
+    return (x * x * x) - 3.0
+
+fn f_prime(x:float) -> float
+    return (3.0 * x * x)
+    
+fn main() -> int
+{
+    var x:float = 3.0
+
+    var epsilon:float = 0.00001
+    
+    while(math::abs(f(x)) >= epsilon)
+        x = x - (f(x) / f_prime(x))
+
+    println(x) # 1.44225
+
+    return 0
+}

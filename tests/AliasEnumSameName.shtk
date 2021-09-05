@@ -1,0 +1,12 @@
+# 0
+
+use "TestModules/Math.shtk" as math
+
+enum [math, phsysics, chemistry, csc]
+
+fn main() -> int
+{
+    println(math)
+
+    return 0
+}
