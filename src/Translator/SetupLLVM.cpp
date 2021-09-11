@@ -38,7 +38,7 @@ TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx)
     std::string features = "";
 
     TargetOptions opt;
-    auto RM = Optional<Reloc::Model>();
+    auto RM = Optional<Reloc::Model>(Reloc::Model::PIC_);
     auto targetMachine = Target->createTargetMachine(targetTriple, CPU, features, opt, RM);
 
     ctx.LLVMModule->setDataLayout(targetMachine->createDataLayout());
