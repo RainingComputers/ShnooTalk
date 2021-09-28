@@ -66,9 +66,10 @@ clang app.o -o app
 - [x] `loop {}` syntax for looping forever
 - [x] `do {} while()` loop
 - [x] NaN and infinity
+- [ ] 01234 bug
 - [ ] Cleanup format strings and function call in Translator
 - [x] Dynamic allocation and pointers
-- [ ] Add `fopen()` function
+- [x] Add `fopen()` function
 - [ ] Multi-line strings
 - [ ] Static variables
 - [ ] Assigning conditional expressions
