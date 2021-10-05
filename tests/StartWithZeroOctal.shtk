@@ -1,0 +1,7 @@
+# 668
+
+fn main() -> int
+{
+    println(01234)
+    return 0
+}
