@@ -82,7 +82,7 @@ clang app.o -o app
 - [ ] Python wrapper generator
 - [ ] WebAssembly support
 - [ ] Setup github workflows and build for other platforms
-- [ ] Check limits for primitive data types
+- [x] Check limits for primitive data types
 - [ ] Error recovery
 - [ ] Debug symbols
 
@@ -93,6 +93,5 @@ clang app.o -o app
 - [ ] Templates
 - [ ] Exceptions
 - [ ] Passing functions as arguments
-- [ ] Lambdas
 - [ ] Unions
 
