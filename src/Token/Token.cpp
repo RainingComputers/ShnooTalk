@@ -93,10 +93,16 @@ int Token::getPrecedence() const
     return 0;
 }
 
-bool Token::isBitwiseOperation() const
+bool Token::isBitwiseOperator() const
 {
     return type == BITWISE_AND || type == BITWISE_OR || type == BITWISE_XOR || type == AND_EQUAL || type == OR_EQUAL ||
            type == XOR_EQUAL;
+}
+
+bool Token::isRelationalOperator() const
+{
+    return type == LESS_THAN || type == LESS_THAN_EQUAL || type == GREATER_THAN || type == GREATER_THAN_EQUAL ||
+           type == CONDN_EQUAL || type == CONDN_NOT_EQUAL;
 }
 
 bool Token::isIntLiteral() const

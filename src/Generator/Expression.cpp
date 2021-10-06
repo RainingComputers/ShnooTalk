@@ -300,7 +300,7 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
     if (!isSameType(LHS, RHS))
         ctx.console.typeError(root.children[2].tok, LHS, RHS);
 
-    if (expressionOperator.isBitwiseOperation() && !LHS.isIntegerType())
+    if (expressionOperator.isBitwiseOperator() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expressionOperator);
 
     Instruction instruction = tokenToBinaryOperator(ctx, expressionOperator);

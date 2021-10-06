@@ -108,7 +108,8 @@ class Token
 
 public:
     int getPrecedence() const;
-    bool isBitwiseOperation() const;
+    bool isBitwiseOperator() const;
+    bool isRelationalOperator() const;
     bool isIntLiteral() const;
     bool isEqualOrLeftArrow() const;
     long toInt() const;

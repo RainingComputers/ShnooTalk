@@ -24,30 +24,6 @@ icode::Instruction tokenToCompareOperator(const generator::GeneratorContext& ctx
     }
 }
 
-void conditionalTerm(generator::GeneratorContext& ctx,
-                     const Node& root,
-                     const icode::Operand& trueLabel,
-                     const icode::Operand& falseLabel,
-                     bool trueFall)
-{
-    if (root.children[0].type == node::EXPRESSION)
-    {
-        conditionalExpression(ctx, root.children[0], trueLabel, falseLabel, trueFall);
-        return;
-    }
-
-    if (root.children[0].tok.getType() != token::CONDN_NOT)
-        ctx.console.compileErrorOnToken("Invalid conditional expression", root.tok);
-
-    if (!root.children[0].isNthChild(node::TERM, 0))
-        ctx.console.compileErrorOnToken("Invalid conditional expression", root.tok);
-
-    if (!root.children[0].children[0].isNthChild(node::EXPRESSION, 0))
-        ctx.console.compileErrorOnToken("Invalid conditional expression", root.tok);
-
-    conditionalExpression(ctx, root.children[0].children[0].children[0], falseLabel, trueLabel, !trueFall);
-}
-
 void conditionalAndOperator(generator::GeneratorContext& ctx,
                             const Token& operatorToken,
                             const Node& root,
@@ -90,6 +66,27 @@ void conditionalOrOperator(generator::GeneratorContext& ctx,
         ctx.ir.functionBuilder.insertLabel(newTrueLabel);
 }
 
+void conditionalIntegerTruthyOperator(generator::GeneratorContext& ctx,
+                                      const Node& root,
+                                      const icode::Operand& trueLabel,
+                                      const icode::Operand& falseLabel,
+                                      bool trueFall)
+{
+    Unit LHS = expression(ctx, root);
+    Unit RHS = ctx.ir.unitBuilder.unitFromIntLiteral(0);
+
+    if (LHS.isStruct() || LHS.isArray() || !LHS.isIntegerType())
+        ctx.console.compileErrorOnToken("Cannot get truth from expression", root.tok);
+
+    ctx.ir.functionBuilder.compareOperator(icode::GT, LHS, RHS);
+
+    if (!trueFall)
+        ctx.ir.functionBuilder.createBranch(icode::IF_TRUE_GOTO, trueLabel);
+    else
+        ctx.ir.functionBuilder.createBranch(icode::IF_FALSE_GOTO, falseLabel);
+}
+
+
 void relationalOperator(generator::GeneratorContext& ctx,
                         const Token& operatorToken,
                         const Node& root,
@@ -116,12 +113,29 @@ void relationalOperator(generator::GeneratorContext& ctx,
         ctx.ir.functionBuilder.createBranch(icode::IF_FALSE_GOTO, falseLabel);
 }
 
+void conditionalTerm(generator::GeneratorContext& ctx,
+                     const Node& root,
+                     const icode::Operand& trueLabel,
+                     const icode::Operand& falseLabel,
+                     bool trueFall)
+{
+    if (root.children[0].tok.getType() == token::CONDN_NOT)
+        conditionalExpression(ctx, root.children[0].children[0], falseLabel, trueLabel, !trueFall);
+    else if (root.children[0].type == node::EXPRESSION)
+        conditionalExpression(ctx, root.children[0], trueLabel, falseLabel, trueFall);
+    else
+        conditionalIntegerTruthyOperator(ctx, root, trueLabel, falseLabel, trueFall);
+}
+
 void conditionalExpression(generator::GeneratorContext& ctx,
                            const Node& root,
                            const icode::Operand& trueLabel,
                            const icode::Operand& falseLabel,
                            bool trueFall)
 {
+    if (root.type == node::STR_LITERAL || root.type == node::INITLIST)
+        ctx.console.compileErrorOnToken("Invalid conditional expression", root.tok);
+
     if (root.type == node::TERM)
         conditionalTerm(ctx, root, trueLabel, falseLabel, trueFall);
     else if (root.children.size() == 1)
@@ -130,16 +144,13 @@ void conditionalExpression(generator::GeneratorContext& ctx,
     {
         Token operatorToken = root.children[1].tok;
 
-        switch (operatorToken.getType())
-        {
-            case token::CONDN_AND:
-                conditionalAndOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
-                break;
-            case token::CONDN_OR:
-                conditionalOrOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
-                break;
-            default:
-                relationalOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
-        }
+        if (operatorToken.getType() == token::CONDN_AND)
+            conditionalAndOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
+        else if (operatorToken.getType() == token::CONDN_OR)
+            conditionalOrOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
+        else if (operatorToken.isRelationalOperator())
+            relationalOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
+        else
+            conditionalIntegerTruthyOperator(ctx, root, trueLabel, falseLabel, trueFall);
     }
 }

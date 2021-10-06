@@ -1,0 +1,10 @@
+# foo
+
+fn main() -> int
+{
+    var a:int = 2
+
+    if(a + 1) println("foo")
+
+    return 0
+}

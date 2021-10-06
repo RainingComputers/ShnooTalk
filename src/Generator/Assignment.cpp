@@ -43,7 +43,7 @@ void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, cons
     if ((LHS.isStruct() || LHS.isArray()) && !assignOperator.isEqualOrLeftArrow())
         ctx.console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT and ARRAY", assignOperator);
 
-    if (assignOperator.isBitwiseOperation() && !LHS.isIntegerType())
+    if (assignOperator.isBitwiseOperator() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
 
     if (assignOperator.getType() == token::EQUAL)
