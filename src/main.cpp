@@ -11,6 +11,8 @@
 #include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
 
+#include "version.hpp"
+
 void printCLIUsage()
 {
     pp::println("USAGE: shtkc FILE OPTION");
@@ -22,6 +24,8 @@ void printCLIUsage()
     pp::println("    -ir        intermediate code representation");
     pp::println("    -json-ir   Print intermediate code representation completely in JSON");
     pp::println("    -llvm      Print llvm ir");
+    pp::println("");
+    pp::println("Use shtkc -version for compiler version");
 }
 
 Console getStreamAndConsole(const std::string& fileName, std::ifstream& fileStream)
@@ -117,16 +121,31 @@ int phaseDriver(const std::string& moduleName, const std::string& option)
 
 int main(int argc, char* argv[])
 {
+    
+    if (argc < 2)
+    {
+        printCLIUsage();
+        return EXIT_FAILURE;
+    }
+
+    std::string fileName = argv[1];
+
+    if (fileName == "-version" && argc == 2)
+    {
+        pp::println(VERSION);
+        return EXIT_SUCCESS;
+    }
+
     if (argc != 3)
     {
         printCLIUsage();
         return EXIT_FAILURE;
     }
 
+    std::string option = argv[2];
+
     try
     {
-        std::string fileName = argv[1];
-        std::string option = argv[2];
         return phaseDriver(fileName, option);
     }
     catch (const CompileError)

@@ -4,6 +4,8 @@ help :
 	@echo "      Remove auto-generated files."
 	@echo "build"
 	@echo "      Build release executable."
+	@echo "build VERSION_FILE=1"
+	@echo "      Build release executable and version string comes from version file"
 	@echo "build DEBUG=1"
 	@echo "      Build executable for debugging."
 	@echo "build GPROF=1"
@@ -29,6 +31,13 @@ EXEC_NAME = shtkc
 
 # C++ compiler
 CXX ?= clang++
+
+# Set version string
+ifeq ($(VERSION_FILE), 1)
+	VERSION_STRING = RELEASE_$(shell cat version)
+else 
+	VERSION_STRING = SNAPSHOT_$(shell date '+%Y-%m-%d_%H:%M:%S_%Z')
+endif
 
 # Get platform
 ifeq ($(OS), Windows_NT)
@@ -69,7 +78,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 # Set compiler and linker flags for llvm
-CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall
+CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
 LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
 # Find all .cpp files in src/git
