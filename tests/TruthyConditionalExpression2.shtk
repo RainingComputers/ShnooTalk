@@ -1,0 +1,27 @@
+# Hello2
+# Hello3
+# Hello4
+
+fn main() -> int
+{
+    var a: int = 1
+    
+    if a - 1 
+    {
+        println("Hello1")
+    }
+
+    if a 
+    {
+        println("Hello2")
+    }
+
+    if not (a - 1) 
+    {
+        println("Hello3")
+    }
+
+    if (a > 0) println("Hello4")
+
+    return 0
+}
