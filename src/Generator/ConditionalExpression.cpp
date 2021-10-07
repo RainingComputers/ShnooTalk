@@ -1,5 +1,5 @@
 #include "../Builder/TypeCheck.hpp"
-#include "Expression.hpp"
+#include "OrdinaryExpression.hpp"
 
 #include "ConditionalExpression.hpp"
 
@@ -72,7 +72,7 @@ void conditionalIntegerTruthyOperator(generator::GeneratorContext& ctx,
                                       const icode::Operand& falseLabel,
                                       bool trueFall)
 {
-    Unit LHS = expression(ctx, root);
+    Unit LHS = ordinaryExpression(ctx, root);
     Unit RHS = ctx.ir.unitBuilder.unitFromIntLiteral(0);
 
     if (LHS.isStruct() || LHS.isArray() || !LHS.isIntegerType())
@@ -95,8 +95,8 @@ void relationalOperator(generator::GeneratorContext& ctx,
 {
     icode::Instruction opcode = tokenToCompareOperator(ctx, operatorToken);
 
-    Unit LHS = expression(ctx, root.children[0]);
-    Unit RHS = expression(ctx, root.children[2]);
+    Unit LHS = ordinaryExpression(ctx, root.children[0]);
+    Unit RHS = ordinaryExpression(ctx, root.children[2]);
 
     if (LHS.isStruct() || LHS.isArray())
         ctx.console.compileErrorOnToken("Cannot compare STRUCT or ARRAYS", operatorToken);

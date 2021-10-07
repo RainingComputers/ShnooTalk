@@ -1,10 +1,10 @@
-#include "Expression.hpp"
+#include "OrdinaryExpression.hpp"
 
 #include "Input.hpp"
 
 void input(generator::GeneratorContext& ctx, const Node& root)
 {
-    Unit unit = expression(ctx, root.children[0]);
+    Unit unit = ordinaryExpression(ctx, root.children[0]);
 
     if (!unit.isValidForPointerAssignment())
         ctx.console.compileErrorOnToken("Invalid term for INPUT", root.children[0].tok);

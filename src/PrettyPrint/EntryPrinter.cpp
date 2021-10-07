@@ -61,7 +61,8 @@ std::string prettyPrintEntryEqualLHS(const icode::Entry& entry)
 
     entryString += instructionToString[entry.opcode] + " ";
 
-    entryString += operandToName(entry.op2);
+    if (entry.op2.operandType != icode::NONE)
+        entryString += operandToName(entry.op2);
 
     if (entry.op3.operandType != icode::NONE)
     {
@@ -136,6 +137,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::WRITE:
         case icode::MEMCPY:
         case icode::CALL:
+        case icode::ALLOC_PTR:
             return prettyPrintEntryEqualLHS(entry);
         case icode::EQ:
         case icode::NEQ:

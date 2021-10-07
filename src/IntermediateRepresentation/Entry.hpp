@@ -19,6 +19,7 @@ namespace icode
         READ,
         WRITE,
         CREATE_PTR,
+        ALLOC_PTR,
         CAST,
         PTR_CAST,
         UNARY_MINUS,

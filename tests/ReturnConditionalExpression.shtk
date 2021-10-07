@@ -1,0 +1,19 @@
+# 1
+# 0
+# 1
+# 0
+
+fn isSingleDigitNumber(a: int) -> bool
+{
+    return a >= 0 and a <= 9
+}
+
+fn main() -> int
+{
+    println(isSingleDigitNumber(4))
+    println(isSingleDigitNumber(10))
+    println(isSingleDigitNumber(6))
+    println(isSingleDigitNumber(100))
+
+    return 0
+}

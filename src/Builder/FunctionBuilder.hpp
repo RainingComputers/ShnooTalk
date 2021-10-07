@@ -26,13 +26,13 @@ class FunctionBuilder
 
     icode::Operand autoCast(const icode::Operand& op, icode::DataType destinationDataType);
 
+    icode::Operand ensureNotPointer(icode::Operand op);
+
     void operandCopy(icode::Operand op1, icode::Operand op2);
 
     void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
 
     void unitListCopy(const Unit& dest, const Unit& src);
-
-    icode::Operand ensureNotPointer(icode::Operand op);
 
     icode::Operand pushEntryAndEnsureNoPointerWrite(icode::Entry entry);
 
@@ -57,6 +57,8 @@ public:
     void unitCopy(const Unit& dest, const Unit& src);
 
     void unitPointerAssign(const Unit& to, const Unit& src);
+
+    Unit createTemp(icode::DataType dtype);
 
     Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
 

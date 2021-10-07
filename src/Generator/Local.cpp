@@ -1,5 +1,6 @@
 #include "../Builder/TypeCheck.hpp"
 #include "Assignment.hpp"
+#include "OrdinaryExpression.hpp"
 #include "Expression.hpp"
 #include "TypeDescriptionFromNode.hpp"
 
@@ -23,6 +24,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     if (lastNode.type == node::EXPRESSION || lastNode.type == node::TERM || lastNode.type == node::STR_LITERAL ||
         lastNode.type == node::INITLIST)
     {
-        conditionalOrExpressionAssignmentFromTree(ctx, root, local, lastNode);
+        Unit RHS = expression(ctx, lastNode);
+        assignmentFromTree(ctx, root, local, RHS);
     }
 }

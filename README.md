@@ -72,7 +72,7 @@ clang app.o -o app
 - [x] Add `fopen()` function
 - [ ] Multi-line strings
 - [ ] Static variables
-- [ ] Assigning conditional expressions
+- [x] Assigning conditional expressions
 - [ ] Language reference using mkdocs
 - [ ] CLI argument parser
 - [x] Refactor tests

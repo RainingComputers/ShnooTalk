@@ -1,0 +1,10 @@
+# 1
+
+fn main() -> int
+{
+    var a: int = 4
+
+    println(a % 2 == 0)
+
+    return 0
+}

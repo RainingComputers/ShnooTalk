@@ -74,7 +74,8 @@ Operand FunctionBuilder::autoCast(const Operand& op, DataType destinationDataTyp
     /* Literals are sometimes have AUTO_INT and AUTO_FLOAT data types, and adding
         them will lead to more temp operands having AUTO datatypes */
 
-    /* Pointers will never have the AUTO data types */
+    /* Pointers will also AUTO data types when assigning conditional expression
+        i.e. when ALLOC_PTR instruction is used */
 
     if (op.dtype == destinationDataType)
         return op;
@@ -90,35 +91,44 @@ Operand FunctionBuilder::autoCast(const Operand& op, DataType destinationDataTyp
     return entry.op1;
 }
 
+Operand FunctionBuilder::ensureNotPointer(Operand op)
+{
+    /* Make sure the operand is not a pointer, if it is a pointer,
+        converts it to a temp using the READ instruction */
+
+    if (!op.isPointer())
+        return op;
+
+    Operand temp = opBuilder.createTempOperand(op.dtype);
+
+    Entry copyEntry;
+
+    copyEntry.op1 = temp;
+    copyEntry.op2 = op;
+    copyEntry.opcode = READ;
+    pushEntry(copyEntry);
+
+    return temp;
+}
+
 void FunctionBuilder::operandCopy(Operand dest, Operand src)
 {
-    Operand castedSrc = autoCast(src, dest.dtype);
+    Operand castedSrc = autoCast(ensureNotPointer(src), dest.dtype);
 
-    /* Copy one operand value to another, use READ and WRITE instruction
+    /* Copy one operand value to another, WRITE instruction
         if pointers are involved */
 
-    if (dest.isPointer() && castedSrc.isPointer())
-    {
-        Operand temp = opBuilder.createTempOperand(castedSrc.dtype);
-        operandCopy(temp, castedSrc);
-        operandCopy(dest, temp);
-    }
+    Entry copyEntry;
+
+    if (dest.isPointer())
+        copyEntry.opcode = WRITE;
     else
-    {
-        Entry copyEntry;
+        copyEntry.opcode = EQUAL;
 
-        if (dest.isPointer())
-            copyEntry.opcode = WRITE;
-        else if (castedSrc.isPointer())
-            copyEntry.opcode = READ;
-        else
-            copyEntry.opcode = EQUAL;
+    copyEntry.op1 = dest;
+    copyEntry.op2 = castedSrc;
 
-        copyEntry.op1 = dest;
-        copyEntry.op2 = castedSrc;
-
-        pushEntry(copyEntry);
-    }
+    pushEntry(copyEntry);
 }
 
 void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
@@ -188,19 +198,6 @@ void FunctionBuilder::unitPointerAssign(const Unit& to, const Unit& src)
     pushEntry(entry);
 }
 
-Operand FunctionBuilder::ensureNotPointer(Operand op)
-{
-    /* Make sure the operand is not a pointer, if it is a pointer,
-        converts it to a temp using the READ instruction */
-
-    if (!op.isPointer())
-        return op;
-
-    Operand temp = opBuilder.createTempOperand(op.dtype);
-    operandCopy(temp, op);
-    return temp;
-}
-
 Operand FunctionBuilder::pushEntryAndEnsureNoPointerWrite(Entry entry)
 {
     /* Push an ir entry to the current function's icode table,
@@ -228,6 +225,20 @@ Operand FunctionBuilder::pushEntryAndEnsureNoPointerWrite(Entry entry)
     operandCopy(pointerOperand, temp);
 
     return temp;
+}
+
+Unit FunctionBuilder::createTemp(DataType dtype)
+{
+    Operand tempPointer = opBuilder.createTempPtrOperand(dtype);
+
+    icode::Entry entry;
+
+    entry.op1 = tempPointer;
+    entry.opcode = ALLOC_PTR;
+
+    pushEntry(entry);
+
+    return Unit(typeDescriptionFromDataType(dtype), tempPointer);
 }
 
 Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)

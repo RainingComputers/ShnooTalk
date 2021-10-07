@@ -1,4 +1,5 @@
 #include "../Builder/TypeCheck.hpp"
+#include "OrdinaryExpression.hpp"
 #include "Expression.hpp"
 #include "ConditionalExpression.hpp"
 #include "UnitFromIdentifier.hpp"
@@ -75,38 +76,10 @@ void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, cons
     }
 }
 
-void conditionalOrExpressionAssignmentFromTree(generator::GeneratorContext& ctx,
-                                               const Node& root,
-                                               const Unit& LHS,
-                                               const Node& expressionTree)
-{
-    if (expressionTree.isConditionalExpression())
-    {
-        icode::Operand trueLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "assign");
-        icode::Operand falseLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "assign");
-        
-        icode::Operand endLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "assignend");
-
-        conditionalExpression(ctx, expressionTree, trueLabel, falseLabel, true);
-
-        assignmentFromTree(ctx, root, LHS, ctx.ir.unitBuilder.unitFromIntLiteral(1));
-        ctx.ir.functionBuilder.createBranch(icode::GOTO, endLabel);
-
-        ctx.ir.functionBuilder.insertLabel(falseLabel);
-
-        assignmentFromTree(ctx, root, LHS, ctx.ir.unitBuilder.unitFromIntLiteral(0));
-    
-        ctx.ir.functionBuilder.insertLabel(endLabel);
-    }
-    else
-    {
-        Unit RHS = expression(ctx, expressionTree);
-        assignmentFromTree(ctx, root, LHS, RHS);
-    }
-}
-
 void assignment(generator::GeneratorContext& ctx, const Node& root)
 {
-    Unit LHS = expression(ctx, root.children[0]);
-    conditionalOrExpressionAssignmentFromTree(ctx, root, LHS, root.children[2]);
+    Unit LHS = ordinaryExpression(ctx, root.children[0]);
+    Unit RHS = expression(ctx, root.children[2]);
+
+    assignmentFromTree(ctx, root, LHS, RHS);
 }

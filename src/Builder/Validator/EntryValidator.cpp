@@ -80,6 +80,13 @@ void createPointer(const icode::Entry& e, Console& con)
     con.check(nonVoidDataType(e.op2));
 }
 
+void allocPointer(const icode::Entry& e, Console& con)
+{
+    con.check(oneOperand(e));
+    con.check(e.op1.isPointer());
+    con.check(allOperandNonVoidBaseDataType(e));
+}
+
 void addrAdd(const icode::Entry& e, Console& con)
 {
     con.check(threeOperand(e));
@@ -232,6 +239,9 @@ void validateEntry(const icode::Entry& entry, Console& con)
             break;
         case icode::CREATE_PTR:
             createPointer(entry, con);
+            break;
+        case icode::ALLOC_PTR:
+            allocPointer(entry, con);
             break;
         case icode::ADDR_ADD:
             addrAdd(entry, con);

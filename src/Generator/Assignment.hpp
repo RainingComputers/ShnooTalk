@@ -3,10 +3,7 @@
 
 #include "GeneratorContext.hpp"
 
-void conditionalOrExpressionAssignmentFromTree(generator::GeneratorContext& ctx,
-                                               const Node& root,
-                                               const Unit& LHS,
-                                               const Node& expressionTree);
+void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, const Unit& LHS, const Unit& RHS);
 void assignment(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

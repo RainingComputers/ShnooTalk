@@ -13,6 +13,7 @@
 #include "ReadWriteCopy.hpp"
 #include "ToLLVMType.hpp"
 #include "UnaryOperator.hpp"
+#include "AllocPointer.hpp"
 
 #include "GenerateFunction.hpp"
 
@@ -79,6 +80,9 @@ void translateFunctionIcode(ModuleContext& ctx,
                 break;
             case icode::CREATE_PTR:
                 createPointer(ctx, e);
+                break;
+            case icode::ALLOC_PTR:
+                allocPointer(ctx, e);
                 break;
             case icode::ADDR_ADD:
             case icode::ADDR_MUL:
