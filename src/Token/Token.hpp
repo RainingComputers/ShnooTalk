@@ -109,7 +109,7 @@ class Token
 public:
     int getPrecedence() const;
     bool isBitwiseOperator() const;
-    bool isRelationalOperator() const;
+    bool isConditionalOperator() const;
     bool isIntLiteral() const;
     bool isEqualOrLeftArrow() const;
     long toInt() const;

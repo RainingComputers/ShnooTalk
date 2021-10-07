@@ -99,10 +99,10 @@ bool Token::isBitwiseOperator() const
            type == XOR_EQUAL;
 }
 
-bool Token::isRelationalOperator() const
+bool Token::isConditionalOperator() const
 {
     return type == LESS_THAN || type == LESS_THAN_EQUAL || type == GREATER_THAN || type == GREATER_THAN_EQUAL ||
-           type == CONDN_EQUAL || type == CONDN_NOT_EQUAL;
+           type == CONDN_EQUAL || type == CONDN_NOT_EQUAL || type == CONDN_AND || type == CONDN_OR;
 }
 
 bool Token::isIntLiteral() const

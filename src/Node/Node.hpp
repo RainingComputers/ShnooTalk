@@ -72,6 +72,7 @@ struct Node
     bool isNthChildFromLast(node::NodeType nodeType, size_t N) const;
     Token getNthChildToken(size_t N) const;
     Token getNthChildTokenFromLast(size_t N) const;
+    bool isConditionalExpression() const;
 };
 
 #endif

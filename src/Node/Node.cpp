@@ -43,3 +43,19 @@ Token Node::getNthChildTokenFromLast(size_t N) const
 {
     return children[children.size() - N].tok;
 }
+
+bool Node::isConditionalExpression() const
+{
+    if (type == node::TERM)
+        return children[0].isConditionalExpression();
+    
+    if (type == EXPRESSION)
+    {
+        if(children.size() == 1)
+            return children[0].isConditionalExpression();
+        
+        return children[1].tok.isConditionalOperator();
+    }
+
+    return false;
+}

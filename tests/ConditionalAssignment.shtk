@@ -1,0 +1,24 @@
+# 1
+# 0
+# 1
+# 0
+
+
+fn main() -> int
+{
+    var a: int = 1
+    
+    var b:int = (a > 0 or a > 100)
+    println(b)
+
+    b = a == -1
+    println(b)
+
+    b = (a == 1)
+    println(b)
+
+    b = a > 0 and a > 100
+    println(b)
+
+    return 0
+}

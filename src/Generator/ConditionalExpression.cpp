@@ -147,7 +147,7 @@ void conditionalExpression(generator::GeneratorContext& ctx,
             conditionalAndOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
         else if (operatorToken.getType() == token::CONDN_OR)
             conditionalOrOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
-        else if (operatorToken.isRelationalOperator())
+        else if (operatorToken.isConditionalOperator())
             relationalOperator(ctx, operatorToken, root, trueLabel, falseLabel, trueFall);
         else
             conditionalIntegerTruthyOperator(ctx, root, trueLabel, falseLabel, trueFall);
