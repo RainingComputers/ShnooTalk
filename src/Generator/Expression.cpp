@@ -167,8 +167,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
                                             actualParamToken);
 
         if (formalParam.isPointer() && actualParam.isLiteral())
-            ctx.console.compileErrorOnToken("Cannot pass an LITERAL as MUTABLE or POINTER",
-                                            actualParamToken);
+            ctx.console.compileErrorOnToken("Cannot pass an LITERAL as MUTABLE or POINTER", actualParamToken);
 
         if (formalParam.isMutable() && !actualParam.isMutable())
             ctx.console.compileErrorOnToken("Cannot pass IMMUTABLE as MUTABLE", actualParamToken);

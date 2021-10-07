@@ -86,7 +86,6 @@ void conditionalIntegerTruthyOperator(generator::GeneratorContext& ctx,
         ctx.ir.functionBuilder.createBranch(icode::IF_FALSE_GOTO, falseLabel);
 }
 
-
 void relationalOperator(generator::GeneratorContext& ctx,
                         const Token& operatorToken,
                         const Node& root,

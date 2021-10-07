@@ -121,7 +121,6 @@ int phaseDriver(const std::string& moduleName, const std::string& option)
 
 int main(int argc, char* argv[])
 {
-    
     if (argc < 2)
     {
         printCLIUsage();
