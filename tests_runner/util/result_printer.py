@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import List, Optional
 
 from difflib import ndiff
@@ -10,11 +12,36 @@ class TestResultType:
     SKIPPED = 3
 
 
-def print_diff(act_output: str, test_output: str) -> None:
-    diff = ndiff(act_output.splitlines(keepends=True),
-                 test_output.splitlines(keepends=True))
+class TestResult:
+    def __init__(self, test_result: int,
+                 output: Optional[str], expected_output: Optional[str]) -> None:
+        self.test_result = test_result
+        self.output = output
+        self.expected_output = expected_output
 
-    print(''.join(diff))
+    def diff(self) -> str:
+        if self.output is None or self.expected_output is None:
+            return ""
+
+        diff = ndiff(self.output.splitlines(keepends=True),
+                     self.expected_output.splitlines(keepends=True))
+        return "".join(diff)
+
+    @staticmethod
+    def passed() -> TestResult:
+        return TestResult(TestResultType.PASSED, None, None)
+
+    @staticmethod
+    def failed(output: str, expected_output: Optional[str] = None) -> TestResult:
+        return TestResult(TestResultType.FAILED, output, expected_output)
+
+    @staticmethod
+    def timedout() -> TestResult:
+        return TestResult(TestResultType.TIMEDOUT, None, None)
+
+    @staticmethod
+    def skipped() -> TestResult:
+        return TestResult(TestResultType.SKIPPED, None, None)
 
 
 class ResultPrinter:
@@ -40,29 +67,28 @@ class ResultPrinter:
     def timedout(self) -> List[str]:
         return self._timedout
 
-    def print_result(self, name: str, test_result: str,
-                     output: str, expected_output: Optional[str] = None) -> None:
+    def print_result(self, name: str, result: TestResult) -> None:
 
-        if test_result == TestResultType.PASSED:
+        if result.test_result == TestResultType.PASSED:
             self._passed.append(name)
             print(" 👌", name, "passed")
 
-        elif test_result == TestResultType.FAILED:
+        elif result.test_result == TestResultType.FAILED:
             self._failed.append(name)
 
             print(" ❌", name, "failed\n")
             print("[Output]")
-            print(output)
+            print(result.output)
 
-            if expected_output is None:
+            if result.expected_output is None:
                 return
 
             print("[Defined or expected output]")
-            print(expected_output)
+            print(result.expected_output)
             print("[Diff]")
-            print_diff(output, expected_output)
+            print(result.diff())
 
-        elif test_result == TestResultType.TIMEDOUT:
+        elif result.test_result == TestResultType.TIMEDOUT:
             self._timedout.append(name)
             print(" 🕒", name, "timedout")
 

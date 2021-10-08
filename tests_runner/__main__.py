@@ -1,4 +1,4 @@
-from typing import Tuple, Optional
+from typing import Optional
 
 import os
 
@@ -7,13 +7,13 @@ from tests_runner.config import BUILD_TYPE, COMPILER_EXEC_PATH
 from tests_runner.util.run_subprocess import run_subprocess
 from tests_runner.util.test_dir import list_test_files, get_files
 from tests_runner.util.test_dir import remove_files, remove_test_executable
-from tests_runner.util.result_printer import TestResultType, ResultPrinter
+from tests_runner.util.result_printer import TestResult, ResultPrinter
 from tests_runner.util.coverage import prepare_coverage_report, setup_coverage_dir
 
 
-def get_test_output(file_name: str) -> str:
+def get_expected_output(file_name: str) -> str:
     # Extract commented test case from beginning of the file
-    test_output = ""
+    expected_output = ""
 
     with open(file_name) as test_program:
         while True:
@@ -21,20 +21,20 @@ def get_test_output(file_name: str) -> str:
             if line[0] != "#":
                 break
 
-            test_output += line[2:]
+            expected_output += line[2:]
 
-    return test_output
-
-
-def compare_outputs(test_output: str, actual_output: Optional[str]) -> Tuple[int, str, str]:
-    if test_output == actual_output or actual_output is None:
-        return TestResultType.PASSED, "", test_output
-
-    return TestResultType.FAILED, actual_output, test_output
+    return expected_output
 
 
-def run_test(file_name: str, compiler_exec_path: str) -> Tuple[int, str, str]:
-    test_output = get_test_output(file_name)
+def compare_outputs(expected_output: str, output: Optional[str]) -> TestResult:
+    if expected_output == output or output is None:
+        return TestResult.passed()
+
+    return TestResult.failed(output, expected_output)
+
+
+def run_test(file_name: str, compiler_exec_path: str) -> TestResult:
+    expected_output = get_expected_output(file_name)
 
     # Remove all object files before running the test
     remove_files(".o")
@@ -48,11 +48,11 @@ def run_test(file_name: str, compiler_exec_path: str) -> Tuple[int, str, str]:
     timedout, compiler_output, compiler_retcode = run_subprocess(compile_command)
 
     if timedout:
-        return TestResultType.TIMEDOUT, "", test_output
+        return TestResult.timedout()
 
     # If there was a compilation error, return the error message from the compiler
     if compiler_retcode != 0:
-        return compare_outputs(test_output, compiler_output)
+        return compare_outputs(expected_output, compiler_output)
 
     # Link object file into an executable
     object_files = " ".join(get_files(".o"))
@@ -62,22 +62,22 @@ def run_test(file_name: str, compiler_exec_path: str) -> Tuple[int, str, str]:
     timedout, exec_output, _ = run_subprocess(["./test"])
 
     if timedout:
-        return TestResultType.TIMEDOUT, "", test_output
+        return TestResult.timedout()
 
     # If the program/executable did not timeout, return program output
-    return compare_outputs(test_output, exec_output)
+    return compare_outputs(expected_output, exec_output)
 
 
-def run_test_llc(file_name: str, compiler_exec_path: str) -> Tuple[int, str]:
+def run_test_llc(file_name: str, compiler_exec_path: str) -> TestResult:
     # Run the compiler
     compile_command = [compiler_exec_path, file_name, "-llvm"]
     timedout, compiler_output, compiler_retcode = run_subprocess(compile_command)
 
     if timedout:
-        return TestResultType.TIMEDOUT, ""
+        return TestResult.timedout()
 
     if compiler_retcode != 0:
-        return TestResultType.SKIPPED, ""
+        return TestResult.skipped()
 
     # Run llc
     llc_file = file_name + ".llc"
@@ -89,9 +89,9 @@ def run_test_llc(file_name: str, compiler_exec_path: str) -> Tuple[int, str]:
 
     # Return test result
     if llc_retcode != 0:
-        return TestResultType.FAILED, llc_output
+        return TestResult.failed(llc_output)
 
-    return TestResultType.PASSED, ""
+    return TestResult.passed()
 
 
 def run_compiler_tests() -> None:
@@ -100,8 +100,8 @@ def run_compiler_tests() -> None:
     result_printer = ResultPrinter()
 
     for file in list_test_files():
-        test_result, output, expected_output = run_test(file, COMPILER_EXEC_PATH)
-        result_printer.print_result(file, test_result, output, expected_output)
+        test_result = run_test(file, COMPILER_EXEC_PATH)
+        result_printer.print_result(file, test_result)
 
     result_printer.print_summary()
 
@@ -115,8 +115,8 @@ def run_all_llc_tests() -> None:
     result_printer = ResultPrinter()
 
     for file in list_test_files():
-        test_result, output = run_test_llc(file, COMPILER_EXEC_PATH)
-        result_printer.print_result(file, test_result, output)
+        test_result = run_test_llc(file, COMPILER_EXEC_PATH)
+        result_printer.print_result(file, test_result)
 
     # Print number of tests that passed
     result_printer.print_summary()
