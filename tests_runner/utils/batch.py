@@ -1,8 +1,8 @@
 from typing import Callable
 
-from tests_runner.util.dir import list_test_files
-from tests_runner.util.result import ResultPrinter, TestResult
-from tests_runner.util.coverage import prepare_coverage_report
+from tests_runner.utils.dir import list_test_files
+from tests_runner.utils.result import ResultPrinter, TestResult
+from tests_runner.utils.coverage import prepare_coverage_report
 
 
 def batch_run(name: str, single_run_callback: Callable[[str], TestResult],

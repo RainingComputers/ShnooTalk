@@ -1,8 +1,8 @@
-from tests_runner.config import BUILD_TYPE
+from tests_runner.utils.config import BUILD_TYPE
 
-from tests_runner.util.result import TestResult
-from tests_runner.util.validator import compile_phase, validate
-from tests_runner.util.batch import batch_run
+from tests_runner.utils.result import TestResult
+from tests_runner.utils.validator import compile_phase, validate
+from tests_runner.utils.batch import batch_run
 
 
 def get_expected_output(file_name: str) -> str:

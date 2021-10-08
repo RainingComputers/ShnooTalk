@@ -5,7 +5,7 @@ from glob import glob
 
 from tqdm.contrib.concurrent import process_map
 
-from tests_runner.config import COVERAGE_INFO_DIR, OBJ_DIR
+from tests_runner.utils.config import COVERAGE_INFO_DIR, OBJ_DIR
 
 
 def shell(command: str) -> None:

@@ -1,7 +1,7 @@
-from tests_runner.util.batch import batch_run
-from tests_runner.util.dir import remove_files
-from tests_runner.util.result import TestResult
-from tests_runner.util.validator import compile_phase, validate
+from tests_runner.utils.batch import batch_run
+from tests_runner.utils.dir import remove_files
+from tests_runner.utils.result import TestResult
+from tests_runner.utils.validator import compile_phase, validate
 
 
 def run_single(file_name: str) -> TestResult:

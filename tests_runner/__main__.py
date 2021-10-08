@@ -1,6 +1,6 @@
 import os
 
-from tests_runner.config import BUILD_TYPE
+from tests_runner.utils.config import BUILD_TYPE
 
 from tests_runner import compiler_tests, llc_tests
 
