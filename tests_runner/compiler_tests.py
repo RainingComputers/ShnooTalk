@@ -3,7 +3,7 @@ from tests_runner.config import BUILD_TYPE
 from tests_runner.util.dir import list_test_files
 from tests_runner.util.result import TestResult, ResultPrinter
 from tests_runner.util.coverage import prepare_coverage_report
-from tests_runner.util.phase import phase_executer
+from tests_runner.util.validator import compile_phase, validate
 
 
 def get_expected_output(file_name: str) -> str:
@@ -24,14 +24,17 @@ def get_expected_output(file_name: str) -> str:
 def run_single(file_name: str) -> TestResult:
     expected_output = get_expected_output(file_name)
 
-    return phase_executer(
-        file_name=file_name,
-        compile_flag="-c",
-        compiler_output_dump_file=None,
-        command=["./test_executable"],
-        link_phase=True,
-        skip_on_compile_error=False,
-        expected=expected_output
+    return validate(
+        compile_phase_result=compile_phase(
+            file_name=file_name,
+            compile_flag="-c",
+            compiler_output_dump_file=None,
+            link_phase=True,
+            skip_on_compile_error=False,
+        ),
+        expected_on_compile_fail=expected_output,
+        command_on_compile_success=["./test_executable"],
+        expected_command_output=expected_output
     )
 
 

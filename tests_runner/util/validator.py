@@ -1,6 +1,3 @@
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-return-statements
-
 from typing import List, Optional, Tuple
 
 from tests_runner.config import COMPILER_EXEC_PATH
@@ -41,20 +38,18 @@ def dump_string_to_file(file_name: str, content: str) -> None:
         file.write(content)
 
 
-def compare(expected_output: Optional[str], output: str) -> TestResult:
+def compare(expected_output: str, output: str) -> TestResult:
     if expected_output == output:
         return TestResult.passed()
 
     return TestResult.failed(output, expected_output)
 
 
-def phase_executer(file_name: str,
-                   compile_flag: str,
-                   compiler_output_dump_file: Optional[str],
-                   command: List[str],
-                   link_phase: bool,
-                   skip_on_compile_error: bool,
-                   expected: Optional[str] = None) -> None:
+def compile_phase(file_name: str,
+                  compile_flag: str,
+                  compiler_output_dump_file: Optional[str],
+                  link_phase: bool,
+                  skip_on_compile_error: bool) -> TestResult:
     setup(file_name)
 
     # Run the shnootalk compiler
@@ -67,7 +62,7 @@ def phase_executer(file_name: str,
         if skip_on_compile_error:
             return TestResult.skipped()
 
-        return compare(expected, compiler_output)
+        return TestResult.failed(compiler_output)
 
     if compiler_output_dump_file is not None:
         dump_string_to_file(compiler_output_dump_file, compiler_output)
@@ -76,16 +71,29 @@ def phase_executer(file_name: str,
     if link_phase:
         link_objects()
 
-    # Run the given command
-    command_timedout, command_output, command_exit_code = run_command(command)
+    return TestResult.passed()
+
+
+def validate(compile_phase_result: TestResult,
+             expected_on_compile_fail: Optional[str],
+             command_on_compile_success: List[str],
+             expected_command_output: Optional[str]) -> None:
+
+    if compile_phase_result.has_failed and expected_on_compile_fail is not None:
+        return compare(expected_on_compile_fail, compile_phase_result.output)
+
+    if not compile_phase_result.has_passed:
+        return compile_phase_result
+
+    command_timedout, command_output, command_exit_code = run_command(command_on_compile_success)
 
     cleanup()
 
     if command_timedout:
         return TestResult.timedout()
 
-    if expected is not None:
-        return compare(expected, command_output)
+    if expected_command_output is not None:
+        return compare(expected_command_output, command_output)
 
     if command_exit_code != 0:
         return TestResult.failed(command_output)

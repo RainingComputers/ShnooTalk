@@ -1,19 +1,23 @@
 from tests_runner.util.dir import list_test_files
 from tests_runner.util.dir import remove_files
 from tests_runner.util.result import TestResult, ResultPrinter
-from tests_runner.util.phase import phase_executer
+from tests_runner.util.validator import compile_phase, validate
 
 
 def run_single(file_name: str) -> TestResult:
     llc_file = file_name + ".llc"
 
-    return phase_executer(
-        file_name=file_name,
-        compile_flag='-llvm',
-        compiler_output_dump_file=llc_file,
-        command=['llc', llc_file],
-        link_phase=False,
-        skip_on_compile_error=True
+    return validate(
+        compile_phase_result=compile_phase(
+            file_name=file_name,
+            compile_flag='-llvm',
+            compiler_output_dump_file=llc_file,
+            link_phase=False,
+            skip_on_compile_error=True
+        ),
+        expected_on_compile_fail=None,
+        command_on_compile_success=['llc', llc_file],
+        expected_command_output=None,
     )
 
 

@@ -43,6 +43,18 @@ class TestResult:
     def skipped() -> TestResult:
         return TestResult(TestResultType.SKIPPED, None, None)
 
+    @property
+    def has_failed(self) -> bool:
+        return self.test_result == TestResultType.FAILED
+
+    @property
+    def has_passed(self) -> bool:
+        return self.test_result == TestResultType.PASSED
+
+    @property
+    def has_timedout(self) -> bool:
+        return self.test_result == TestResultType.TIMEDOUT
+
 
 class ResultPrinter:
     def __init__(self, tests_set_name: str) -> None:
