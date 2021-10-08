@@ -1,17 +1,48 @@
+# c++
 obj/*
 bin/*
+
+# test coverage
 tests/testinfo/*
-/*.uhll
-/*.shnoo
-/*.shtk
-todo.txt
+tests/*.gmon.out.*
 .cccc/*
+
+# shnootalk testing
 tests/log.txt
 *.llc
 *.llc.s
 *.o
 test
 test.o
+
+# temp dir in test dir
 tests/temp/*
 temp/
-tests/*.gmon.out.*
+
+# temp files in root dir
+/*.uhll
+/*.shnoo
+/*.shtk
+todo.txt
+
+# python
+__pycache__/
+*.pyc
+
+# pytest
+.pytest_cache/
+
+# virtual environment
+.venv
+
+# pip
+build/
+dist/
+*.egg-info/
+
+# temp folders
+temp/
+zipdata/
+
+# mypy
+.mypy_cache/

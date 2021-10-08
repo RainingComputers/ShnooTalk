@@ -133,13 +133,13 @@ format:
 	clang-format -i src/*.cpp
 
 test:
-	python3 test.py
+	python3 -m tests_runner
 
 coverage:
-	python3 test.py --coverage
+	python3 -m tests_runner --coverage
 
 profile:
-	python3 test.py --profile
+	python3 -m tests_runner --profile
 
 tidy:
 	clang-tidy src/*.cpp src/*/*.cpp  -- $(CXXFLAGS) -Wextra
