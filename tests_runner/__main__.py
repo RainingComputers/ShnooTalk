@@ -1,7 +1,8 @@
 from typing import Tuple, Optional
 
 import os
-import sys
+
+from tests_runner.config import BUILD_TYPE, COMPILER_EXEC_PATH
 
 from tests_runner.util.run_subprocess import run_subprocess
 from tests_runner.util.test_dir import list_test_files, get_files
@@ -93,29 +94,28 @@ def run_test_llc(file_name: str, compiler_exec_path: str) -> Tuple[int, str]:
     return TestResultType.PASSED, ""
 
 
-def run_compiler_tests(compiler_exec_path: str, obj_dir: str, testinfo_dir: str,
-                       coverage: bool) -> None:
-    setup_coverage_dir(testinfo_dir)
+def run_compiler_tests() -> None:
+    setup_coverage_dir()
 
     result_printer = ResultPrinter()
 
     for file in list_test_files():
-        test_result, output, expected_output = run_test(file, compiler_exec_path)
+        test_result, output, expected_output = run_test(file, COMPILER_EXEC_PATH)
         result_printer.print_result(file, test_result, output, expected_output)
 
     result_printer.print_summary()
 
-    if coverage:
-        prepare_coverage_report(obj_dir, testinfo_dir, result_printer.passed)
+    if BUILD_TYPE == "gcov":
+        prepare_coverage_report(result_printer.passed)
 
 
-def run_all_llc_tests(compiler_exec_path: str) -> None:
+def run_all_llc_tests() -> None:
     remove_files(".llc")
 
     result_printer = ResultPrinter()
 
     for file in list_test_files():
-        test_result, output = run_test_llc(file, compiler_exec_path)
+        test_result, output = run_test_llc(file, COMPILER_EXEC_PATH)
         result_printer.print_result(file, test_result, output)
 
     # Print number of tests that passed
@@ -126,39 +126,19 @@ def run_all_llc_tests(compiler_exec_path: str) -> None:
     remove_files(".llc.s")
 
 
-def parse_args() -> Optional[str]:
-    if len(sys.argv) == 1:
-        return "debug"
-
-    if len(sys.argv) > 2:
-        return None
-
-    if sys.argv[1] == "--coverage":
-        return "gcov"
-
-    if sys.argv[1] == "--profile":
-        return "gprof"
-
-    return None
-
-
 def main() -> None:
-    build_type = parse_args()
-
-    if build_type is None:
+    if BUILD_TYPE is None:
         print("Invalid CLI args")
         return
 
     os.chdir("tests/")
 
     print("--=[Running ShnooTalk compiler tests]=--")
-    run_compiler_tests(f"../bin/{build_type}/shtkc",
-                       f"../obj/{build_type}/", "testinfo/",
-                       build_type == "gcov")
+    run_compiler_tests()
 
-    if build_type == "debug":
+    if BUILD_TYPE == "debug":
         print("--=[Running LLVM LLC tests]=--")
-        run_all_llc_tests(f"../bin/{build_type}/shtkc")
+        run_all_llc_tests()
 
 
 if __name__ == "__main__":
