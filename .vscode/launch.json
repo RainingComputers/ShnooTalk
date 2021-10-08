@@ -100,7 +100,7 @@
             "name": "Debug test runner",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/test.py",
+            "module": "tests_runner",
             "console": "integratedTerminal"
         }
     ]
