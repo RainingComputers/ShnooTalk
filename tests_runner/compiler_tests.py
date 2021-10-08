@@ -1,9 +1,8 @@
 from tests_runner.config import BUILD_TYPE
 
-from tests_runner.util.dir import list_test_files
-from tests_runner.util.result import TestResult, ResultPrinter
-from tests_runner.util.coverage import prepare_coverage_report
+from tests_runner.util.result import TestResult
 from tests_runner.util.validator import compile_phase, validate
+from tests_runner.util.batch import batch_run
 
 
 def get_expected_output(file_name: str) -> str:
@@ -39,13 +38,4 @@ def run_single(file_name: str) -> TestResult:
 
 
 def run() -> None:
-    result_printer = ResultPrinter("ShnooTalk compiler")
-
-    for file in list_test_files():
-        test_result = run_single(file)
-        result_printer.print_result(file, test_result)
-
-    result_printer.print_summary()
-
-    if BUILD_TYPE == "gcov":
-        prepare_coverage_report(result_printer.passed)
+    batch_run("compiler", run_single, BUILD_TYPE == "gcov")

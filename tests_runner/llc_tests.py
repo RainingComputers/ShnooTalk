@@ -1,6 +1,6 @@
-from tests_runner.util.dir import list_test_files
+from tests_runner.util.batch import batch_run
 from tests_runner.util.dir import remove_files
-from tests_runner.util.result import TestResult, ResultPrinter
+from tests_runner.util.result import TestResult
 from tests_runner.util.validator import compile_phase, validate
 
 
@@ -24,14 +24,7 @@ def run_single(file_name: str) -> TestResult:
 def run() -> None:
     remove_files(".llc")
 
-    result_printer = ResultPrinter("llc")
-
-    for file in list_test_files():
-        test_result = run_single(file)
-        result_printer.print_result(file, test_result)
-
-    # Print number of tests that passed
-    result_printer.print_summary()
+    batch_run("llc", run_single)
 
     remove_files(".o")
     remove_files(".llc")

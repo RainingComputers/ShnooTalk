@@ -63,7 +63,7 @@ class ResultPrinter:
         self._timedout: List[str] = []
         self._skipped: List[str] = []
 
-        print(f"Running {tests_set_name} tests")
+        print(f"-=[Running {tests_set_name} tests]=-")
 
     @property
     def total(self) -> int:
