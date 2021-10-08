@@ -29,10 +29,6 @@ def link_objects() -> None:
     run_command(["gcc"] + get_files(".o") + ["-o", "test_executable", "-lm"])
 
 
-def cleanup() -> None:
-    remove_if_exists("./test_executable")
-
-
 def dump_string_to_file(file_name: str, content: str) -> None:
     with open(file_name, 'w') as file:
         file.write(content)
@@ -87,7 +83,7 @@ def validate(compile_phase_result: TestResult,
 
     command_timedout, command_output, command_exit_code = run_command(command_on_compile_success)
 
-    cleanup()
+    remove_if_exists("./test_executable")
 
     if command_timedout:
         return TestResult.timedout()
