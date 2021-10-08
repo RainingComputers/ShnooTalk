@@ -70,7 +70,7 @@ clang app.o -o app
 - [ ] Cleanup format strings and function call in Translator
 - [x] Dynamic allocation and pointers
 - [x] Add `fopen()` function
-- [ ] Multi-line strings
+- [x] Multi-line strings
 - [ ] Static variables
 - [x] Assigning conditional expressions
 - [ ] Language reference using mkdocs

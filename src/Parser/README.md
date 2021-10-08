@@ -7,7 +7,6 @@ This grammar spec is just for reference, the parser is handwritten, not generate
 |---------|-----------------------------
 |[]       | Optional
 |{}       | Zero or once or multiple times
-|{}!      | Once or multiple times
 |()       | Group
 |\|       | Or
 |? and :  | Ternary operator, changes how the non-terminal behaves based on the flag
@@ -111,7 +110,9 @@ term = sizeof
 
 baseExpression = term {binaryOperator term}
 
-expression = initializerList | stringLiteral | baseExpression
+multiLineStringLiteral = stringLiteral {stringLiteral}
+
+expression = initializerList | multiLineStringLiteral | baseExpression
 
 assignmentOrMethodCall = identifierWithQualidentAndSubscript (methodCall | (assignmentOperator expression))
 

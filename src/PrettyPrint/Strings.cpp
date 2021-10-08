@@ -122,6 +122,7 @@ const std::string nodeTypeToString[] = {
     "MUT_PARAM",
     "EXPRESSION",
     "STR_LITERAL",
+    "MULTILINE_STR_LITERAL",
     "LITERAL",
     "IDENTIFIER",
     "ASSIGN_OPERATOR",

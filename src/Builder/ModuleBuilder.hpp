@@ -33,6 +33,8 @@ public:
 
     void createFloatDefine(const Token& nameToken, float value);
 
+    std::string createMultilineStringData(const std::vector<Token>& tokens);
+
     std::string createStringData(const Token& stringToken);
 
     void createStringDefine(const Token& nameToken, const Token& valueToken);

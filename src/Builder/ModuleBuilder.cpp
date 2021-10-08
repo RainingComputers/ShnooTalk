@@ -81,13 +81,24 @@ void ModuleBuilder::createFloatDefine(const Token& nameToken, float value)
     rootModule.floatDefines[nameToken.toString()] = value;
 }
 
-std::string ModuleBuilder::createStringData(const Token& stringToken)
+std::string unescapedStringFromTokens(const std::vector<Token>& tokens)
+{
+    std::string str;
+
+    for (const Token& tok : tokens)
+        str += tok.toUnescapedString();
+    
+    str += '\0';
+
+    return str;
+}
+
+std::string ModuleBuilder::createMultilineStringData(const std::vector<Token>& tokens)
 {
     /* Check if this string has already been defined, if yes return the key for that,
         else create a new key (across all modules) */
-
-    std::string str = stringToken.toUnescapedString() + '\0';
-
+    std::string str = unescapedStringFromTokens(tokens);
+    
     for (auto modulesMapItem : modulesMap)
     {
         auto result = std::find_if(modulesMapItem.second.stringsData.begin(),
@@ -102,11 +113,17 @@ std::string ModuleBuilder::createStringData(const Token& stringToken)
         }
     }
 
-    std::string key = lineColNameMangle(stringToken, rootModule.name);
+    std::string key = lineColNameMangle(tokens[0], rootModule.name);
     rootModule.stringsData[key] = str;
     rootModule.stringsDataCharCounts[key] = str.size();
 
     return key;
+}
+
+std::string ModuleBuilder::createStringData(const Token& stringToken)
+{
+    const std::vector<Token> stringTokens = {stringToken};
+    return createMultilineStringData(stringTokens);
 }
 
 void ModuleBuilder::createStringDefine(const Token& nameToken, const Token& valueToken)

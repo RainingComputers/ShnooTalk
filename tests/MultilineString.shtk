@@ -1,0 +1,13 @@
+# Hello this is multi line string
+# This is another line
+
+fn main() -> int
+{
+    var a: char[60] = 
+        "Hello this is multi line string\n"
+        "This is another line\n"
+
+    print(a)
+
+    return 0
+}

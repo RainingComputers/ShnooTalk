@@ -211,9 +211,14 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
     }
 }
 
-Unit stringLiteral(generator::GeneratorContext& ctx, const Node& root)
+Unit multilineStringLiteral(generator::GeneratorContext& ctx, const Node& root)
 {
-    std::string key = ctx.ir.moduleBuilder.createStringData(root.tok);
+    std::vector<Token> stringTokens;
+
+    for (const Node& child : root.children)
+        stringTokens.push_back(child.tok);
+
+    const std::string key = ctx.ir.moduleBuilder.createMultilineStringData(stringTokens);
     return ctx.ir.unitBuilder.unitFromStringDataKey(key);
 }
 
@@ -275,8 +280,8 @@ Instruction tokenToBinaryOperator(const generator::GeneratorContext& ctx, const 
 
 Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
 {
-    if (root.type == node::STR_LITERAL)
-        return stringLiteral(ctx, root);
+    if (root.type == node::MULTILINE_STR_LITERAL)
+        return multilineStringLiteral(ctx, root);
 
     if (root.type == node::INITLIST)
         return initializerList(ctx, root);

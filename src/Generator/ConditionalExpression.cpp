@@ -132,7 +132,7 @@ void conditionalExpression(generator::GeneratorContext& ctx,
                            const icode::Operand& falseLabel,
                            bool trueFall)
 {
-    if (root.type == node::STR_LITERAL || root.type == node::INITLIST)
+    if (root.type == node::STR_LITERAL || root.type == node::INITLIST || root.type == node::MULTILINE_STR_LITERAL)
         ctx.console.compileErrorOnToken("Invalid conditional expression", root.tok);
 
     if (root.type == node::TERM)

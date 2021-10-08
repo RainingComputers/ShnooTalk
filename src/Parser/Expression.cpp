@@ -242,6 +242,21 @@ void term(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
+void multiLineStringLiteral(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrentNoConsume(node::MULTILINE_STR_LITERAL);
+
+    do 
+    {
+        ctx.addNode(node::STR_LITERAL);
+
+    } while (ctx.accept(token::STR_LITERAL));
+
+    ctx.popNode();
+}
+
 void baseExpression(parser::ParserContext& ctx, int minPrecedence)
 {
     ctx.pushNode();
@@ -276,7 +291,7 @@ void expression(parser::ParserContext& ctx)
     if (ctx.accept(token::OPEN_SQUARE))
         initializerList(ctx);
     else if (ctx.accept(token::STR_LITERAL))
-        ctx.addNode(node::STR_LITERAL);
+        multiLineStringLiteral(ctx);
     else
         baseExpression(ctx, 1);
 }
