@@ -13,6 +13,10 @@ def setup_coverage_dir() -> None:
     os.system(f"mkdir -p {COVERAGE_INFO_DIR}")
 
 
+def set_gmon_prefix(file_name: str) -> None:
+    os.environ["GMON_OUT_PREFIX"] = file_name + ".gmon.out"
+
+
 def generate_info_files(passed_test_files: List[str]) -> None:
     print("Generating info files...")
 

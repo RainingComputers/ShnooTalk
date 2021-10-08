@@ -22,7 +22,3 @@ def remove_files(file_ext: str) -> None:
 
     for file in files:
         remove_if_exists(file)
-
-
-def remove_test_executable() -> None:
-    remove_if_exists("./test", )

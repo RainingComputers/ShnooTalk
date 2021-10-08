@@ -1,35 +1,20 @@
-from tests_runner.config import COMPILER_EXEC_PATH
-
-from tests_runner.util.run_subprocess import run_subprocess
-from tests_runner.util.test_dir import list_test_files
-from tests_runner.util.test_dir import remove_files
+from tests_runner.util.dir import list_test_files
+from tests_runner.util.dir import remove_files
 from tests_runner.util.result import TestResult, ResultPrinter
+from tests_runner.util.phase import phase_executer
 
 
-def run_single(file_name: str, compiler_exec_path: str) -> TestResult:
-    # Run the compiler
-    compile_command = [compiler_exec_path, file_name, "-llvm"]
-    timedout, compiler_output, compiler_retcode = run_subprocess(compile_command)
-
-    if timedout:
-        return TestResult.timedout()
-
-    if compiler_retcode != 0:
-        return TestResult.skipped()
-
-    # Run llc
+def run_single(file_name: str) -> TestResult:
     llc_file = file_name + ".llc"
 
-    with open(llc_file, "w") as ll_f:
-        ll_f.write(compiler_output)
-
-    timedout, llc_output, llc_retcode = run_subprocess(["llc", llc_file])
-
-    # Return test result
-    if llc_retcode != 0:
-        return TestResult.failed(llc_output)
-
-    return TestResult.passed()
+    return phase_executer(
+        file_name=file_name,
+        compile_flag='-llvm',
+        compiler_output_dump_file=llc_file,
+        command=['llc', llc_file],
+        link_phase=False,
+        skip_on_compile_error=True
+    )
 
 
 def run() -> None:
@@ -38,7 +23,7 @@ def run() -> None:
     result_printer = ResultPrinter("llc")
 
     for file in list_test_files():
-        test_result = run_single(file, COMPILER_EXEC_PATH)
+        test_result = run_single(file)
         result_printer.print_result(file, test_result)
 
     # Print number of tests that passed
