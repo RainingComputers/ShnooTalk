@@ -103,10 +103,3 @@ class ResultPrinter:
         print(f"{len(self.failed)} tests failed")
         print(f"{len(self.timedout)} tests timedout")
         print(f"{len(self._skipped)} tests skipped")
-
-
-def compare(expected_output: str, output: Optional[str]) -> TestResult:
-    if expected_output == output or output is None:
-        return TestResult.passed()
-
-    return TestResult.failed(output, expected_output)

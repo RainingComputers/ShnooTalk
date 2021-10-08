@@ -1,3 +1,6 @@
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-return-statements
+
 from typing import List, Optional, Tuple
 
 from tests_runner.config import COMPILER_EXEC_PATH
@@ -5,7 +8,7 @@ from tests_runner.config import COMPILER_EXEC_PATH
 from tests_runner.util.command import run_command
 from tests_runner.util.dir import get_files, remove_if_exists
 from tests_runner.util.dir import remove_files
-from tests_runner.util.result import TestResult, compare
+from tests_runner.util.result import TestResult
 from tests_runner.util.coverage import set_gmon_prefix, setup_coverage_dir
 
 
@@ -14,7 +17,7 @@ def setup(file_name: str) -> None:
     remove_files(".o")
     remove_if_exists("./test_executable")
 
-    # Set profile output file name (applicable if coverage)
+    # Set profile output file name (applicable if lcov build)
     set_gmon_prefix(file_name)
 
     # Create dir for string .info files (lcov)
@@ -38,8 +41,18 @@ def dump_string_to_file(file_name: str, content: str) -> None:
         file.write(content)
 
 
-def phase_executer(file_name: str, compile_flag: str, compiler_output_dump_file: Optional[str],
-                   command: List[str], link_phase: bool,
+def compare(expected_output: Optional[str], output: str) -> TestResult:
+    if expected_output == output:
+        return TestResult.passed()
+
+    return TestResult.failed(output, expected_output)
+
+
+def phase_executer(file_name: str,
+                   compile_flag: str,
+                   compiler_output_dump_file: Optional[str],
+                   command: List[str],
+                   link_phase: bool,
                    skip_on_compile_error: bool,
                    expected: Optional[str] = None) -> None:
     setup(file_name)
@@ -59,7 +72,7 @@ def phase_executer(file_name: str, compile_flag: str, compiler_output_dump_file:
     if compiler_output_dump_file is not None:
         dump_string_to_file(compiler_output_dump_file, compiler_output)
 
-    # Link objects is necessary
+    # Link objects if necessary
     if link_phase:
         link_objects()
 

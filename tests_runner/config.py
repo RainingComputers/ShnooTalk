@@ -25,6 +25,6 @@ COMPILER_EXEC_PATH = f"../bin/{BUILD_TYPE}/shtkc"
 
 OBJ_DIR = f"../obj/{BUILD_TYPE}/"
 
-COVERAGE_INFO_DIR = "testinfo/"
+COVERAGE_INFO_DIR = "testinfo"
 
 TIMEOUT = 5

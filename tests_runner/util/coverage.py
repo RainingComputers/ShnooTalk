@@ -1,44 +1,42 @@
 from typing import List
 
 import os
-import glob
+from glob import glob
 
-from tqdm import tqdm
+from tqdm.contrib.concurrent import process_map
 
 from tests_runner.config import COVERAGE_INFO_DIR, OBJ_DIR
 
 
+def shell(command: str) -> None:
+    os.system(command + ' > /dev/null')
+
+
 def setup_coverage_dir() -> None:
-    os.system(f"rm -rf {COVERAGE_INFO_DIR}")
-    os.system(f"mkdir -p {COVERAGE_INFO_DIR}")
+    shell(f"rm -rf {COVERAGE_INFO_DIR}")
+    shell(f"mkdir -p {COVERAGE_INFO_DIR}")
 
 
 def set_gmon_prefix(file_name: str) -> None:
     os.environ["GMON_OUT_PREFIX"] = file_name + ".gmon.out"
 
 
-def generate_info_files(passed_test_files: List[str]) -> None:
-    print("Generating info files...")
-
-    for file in tqdm(passed_test_files, ncols=80, unit="test"):
-        os.system(f"lcov -c  -b ../ -d {OBJ_DIR} -o {COVERAGE_INFO_DIR}{file}.info > /dev/null")
+def generate_info_file(passed_test_file: str) -> None:
+    shell(f"lcov -c  -b ../ -d {OBJ_DIR} -o {COVERAGE_INFO_DIR}/{passed_test_file}.info")
 
 
 def prepare_coverage_report(passed_test_files: List[str]) -> None:
-    generate_info_files(passed_test_files)
+    print("Generating info files...")
+    process_map(generate_info_file, passed_test_files, max_workers=8, unit='tests', ncols=80)
 
-    # Generate report
+    os.chdir(COVERAGE_INFO_DIR)
+
     print("Preparing coverage report...")
+    info_files = " ".join([f"-a {info_file}" for info_file in glob("*.info")])
 
-    info_files = " ".join(
-        [f"-a {info_file}" for info_file in glob.glob(f"{COVERAGE_INFO_DIR}*.info")])
+    shell(f"lcov {info_files} -o total_unfiltered.info")
+    shell("lcov --remove total_unfiltered.info '/usr/include/*' '/usr/lib/*' -o total.info")
+    shell("genhtml total.info -o ./")
+    shell("xdg-open index.html")
 
-    os.system(f"lcov {info_files} -o {COVERAGE_INFO_DIR}total_unfiltered.info > /dev/null")
-
-    os.system(f"lcov --remove {COVERAGE_INFO_DIR}total_unfiltered.info \
-        '/usr/include/*' '/usr/lib/*' -o {COVERAGE_INFO_DIR}total.info > /dev/null")
-
-    os.system(f"genhtml {COVERAGE_INFO_DIR}total.info -o {COVERAGE_INFO_DIR} > /dev/null")
-
-    # Open report
-    os.system(f"xdg-open {COVERAGE_INFO_DIR}index.html")
+    os.chdir('..')
