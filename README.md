@@ -75,7 +75,7 @@ clang app.o -o app
 - [x] Assigning conditional expressions
 - [ ] Language reference using mkdocs
 - [ ] CLI argument parser
-- [x] Refactor testsw
+- [x] Refactor tests
 - [ ] Refactor the test runner and use multiprocessing
 - [ ] Tests for pretty printer
 - [ ] ~95% test coverage
