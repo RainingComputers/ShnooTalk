@@ -1,3 +1,5 @@
+from typing import List, Optional
+
 from difflib import ndiff
 
 
@@ -8,7 +10,7 @@ class TestResultType:
     SKIPPED = 3
 
 
-def print_diff(act_output, test_output):
+def print_diff(act_output: str, test_output: str) -> None:
     diff = ndiff(act_output.splitlines(keepends=True),
                  test_output.splitlines(keepends=True))
 
@@ -16,29 +18,31 @@ def print_diff(act_output, test_output):
 
 
 class ResultPrinter:
-    def __init__(self):
-        self._passed = []
-        self._failed = []
-        self._timedout = []
-        self._skipped = []
+    def __init__(self) -> None:
+        self._passed: List[str] = []
+        self._failed: List[str] = []
+        self._timedout: List[str] = []
+        self._skipped: List[str] = []
 
     @property
-    def total(self):
+    def total(self) -> int:
         return len(self._passed) + len(self._failed) + len(self._timedout)
 
     @property
-    def passed(self):
+    def passed(self) -> List[str]:
         return self._passed
 
     @property
-    def failed(self):
+    def failed(self) -> List[str]:
         return self._failed
 
     @property
-    def timedout(self):
+    def timedout(self) -> List[str]:
         return self._timedout
 
-    def print_result(self, name, test_result, output, expected_output=None):
+    def print_result(self, name: str, test_result: str,
+                     output: str, expected_output: Optional[str] = None) -> None:
+
         if test_result == TestResultType.PASSED:
             self._passed.append(name)
             print(" 👌", name, "passed")
@@ -65,7 +69,7 @@ class ResultPrinter:
         else:
             self._skipped.append(name)
 
-    def print_summary(self):
+    def print_summary(self) -> None:
         print(f"Ran {self.total} tests")
         print(f"{len(self.passed)} tests passed")
         print(f"{len(self.failed)} tests failed")
