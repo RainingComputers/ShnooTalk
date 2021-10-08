@@ -17,15 +17,15 @@ class TestResult:
                  output: Optional[str], expected_output: Optional[str]) -> None:
         self.test_result = test_result
         self.output = output
-        self.expected_output = expected_output
+        self.expected = expected_output
 
     def diff(self) -> str:
-        if self.output is None or self.expected_output is None:
+        if self.output is None or self.expected is None:
             return ""
 
-        diff = ndiff(self.output.splitlines(keepends=True),
-                     self.expected_output.splitlines(keepends=True))
-        return "".join(diff)
+        str_diff = ndiff(self.output.splitlines(keepends=True),
+                         self.expected.splitlines(keepends=True))
+        return "".join(str_diff)
 
     @staticmethod
     def passed() -> TestResult:
@@ -45,11 +45,13 @@ class TestResult:
 
 
 class ResultPrinter:
-    def __init__(self) -> None:
+    def __init__(self, tests_set_name: str) -> None:
         self._passed: List[str] = []
         self._failed: List[str] = []
         self._timedout: List[str] = []
         self._skipped: List[str] = []
+
+        print(f"Running {tests_set_name} tests")
 
     @property
     def total(self) -> int:
@@ -80,11 +82,11 @@ class ResultPrinter:
             print("[Output]")
             print(result.output)
 
-            if result.expected_output is None:
+            if result.expected is None:
                 return
 
             print("[Defined or expected output]")
-            print(result.expected_output)
+            print(result.expected)
             print("[Diff]")
             print(result.diff())
 

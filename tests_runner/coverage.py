@@ -26,10 +26,10 @@ def prepare_coverage_report(passed_test_files: List[str]) -> None:
     # Generate report
     print("Preparing coverage report...")
 
-    add_files = " ".join(
+    info_files = " ".join(
         [f"-a {info_file}" for info_file in glob.glob(f"{COVERAGE_INFO_DIR}*.info")])
 
-    os.system(f"lcov {add_files} -o {COVERAGE_INFO_DIR}total_unfiltered.info > /dev/null")
+    os.system(f"lcov {info_files} -o {COVERAGE_INFO_DIR}total_unfiltered.info > /dev/null")
 
     os.system(f"lcov --remove {COVERAGE_INFO_DIR}total_unfiltered.info \
         '/usr/include/*' '/usr/lib/*' -o {COVERAGE_INFO_DIR}total.info > /dev/null")

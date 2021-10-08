@@ -20,6 +20,11 @@ def parse_args() -> Optional[str]:
 
 
 BUILD_TYPE = parse_args()
+
 COMPILER_EXEC_PATH = f"../bin/{BUILD_TYPE}/shtkc"
+
 OBJ_DIR = f"../obj/{BUILD_TYPE}/"
+
 COVERAGE_INFO_DIR = "testinfo/"
+
+TIMEOUT = 5
