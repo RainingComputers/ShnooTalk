@@ -286,7 +286,7 @@ void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameT
     /* Import symbol */
 
     const std::string& symbolString = symbolNameToken.toString();
-    const std::string& mangledSymbolString = nameMangle(symbolString, externalModule->name);
+    const std::string& mangledSymbolString = nameMangle(symbolNameToken, externalModule->name);
 
     if (rootModule.symbolExists(symbolString))
         console.compileErrorOnToken("Symbol already defined", symbolNameToken);

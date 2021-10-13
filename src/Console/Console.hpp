@@ -1,6 +1,8 @@
 #ifndef CONSOLE_CONSOLE
 #define CONSOLE_CONSOLE
 
+#include <map>
+#include <vector>
 #include <fstream>
 
 #include "../Builder/Unit.hpp"
@@ -16,8 +18,12 @@ struct InternalBugError
 
 class Console
 {
-    const std::string fileName;
+    std::string fileName;
     std::ifstream* file;
+
+    std::map<std::string, std::ifstream> streamsMap;
+    std::vector<std::string> fileNameStack;
+    std::vector<std::ifstream*> fileStack;
 
 public:
     [[noreturn]] void compileErrorOnToken(const std::string& message, const Token& tok);
@@ -40,7 +46,11 @@ public:
 
     std::ifstream* getStream();
 
-    Console(const std::string& fileName, std::ifstream* file);
+    std::string getFileName();
+
+    void pushModule(const std::string& fileName);
+
+    void popModule();
 };
 
 #endif

@@ -24,6 +24,7 @@ namespace lexer
     Lexer::Lexer(std::ifstream& file, Console& console)
         : console(console)
     {
+        fileName = console.getFileName();
         consume(file);
         getTokenIndex = 0;
     }
@@ -39,7 +40,7 @@ namespace lexer
             consumeLine(line, lineNo);
         }
 
-        tokenQueue.push_back(Token("", token::END_OF_FILE, line.length(), lineNo));
+        tokenQueue.push_back(Token(fileName, "", token::END_OF_FILE, line.length(), lineNo));
     }
 
     LenTypePair Lexer::consumePunctuatorOrStringLtrl(const std::string& line, int lineNo, int i)
@@ -293,7 +294,7 @@ namespace lexer
 
         if (std::regex_match(preceedingTokenString, identifierRegex))
         {
-            tokenQueue.push_back(Token(preceedingTokenString, token::IDENTIFIER, startIndex, lineNo));
+            tokenQueue.push_back(Token(fileName, preceedingTokenString, token::IDENTIFIER, startIndex, lineNo));
             return true;
         }
 
@@ -308,7 +309,7 @@ namespace lexer
         std::string precedingTokenString = line.substr(startIndex, i - startIndex);
         token::TokenType precedingTokenType = typeFromStringMatch(precedingTokenString);
 
-        tokenQueue.push_back(Token(precedingTokenString, precedingTokenType, startIndex, lineNo));
+        tokenQueue.push_back(Token(fileName, precedingTokenString, precedingTokenType, startIndex, lineNo));
     }
 
     void Lexer::consumeLine(std::string& line, int lineNo)
@@ -347,7 +348,7 @@ namespace lexer
                 /* Push dot token if preceding token is an identifier */
                 if (pushPrecedingTokenIfIdentifier(line, lineNo, startIndex, i) || startIndex == i)
                 {
-                    tokenQueue.push_back(Token(line.substr(i, punctuatorTokenLen), punctuatorTokenType, i, lineNo));
+                    tokenQueue.push_back(Token(fileName, line.substr(i, punctuatorTokenLen), punctuatorTokenType, i, lineNo));
                     buildingToken = false;
                 }
             }
@@ -358,7 +359,7 @@ namespace lexer
 
                 /* Add punctuator token to queue */
                 if (punctuatorTokenType != token::SPACE)
-                    tokenQueue.push_back(Token(line.substr(i, punctuatorTokenLen), punctuatorTokenType, i, lineNo));
+                    tokenQueue.push_back(Token(fileName, line.substr(i, punctuatorTokenLen), punctuatorTokenType, i, lineNo));
 
                 buildingToken = false;
             }

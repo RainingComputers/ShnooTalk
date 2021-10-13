@@ -28,16 +28,6 @@ void printCLIUsage()
     pp::println("Use shtkc -version for compiler version");
 }
 
-Console getStreamAndConsole(const std::string& fileName, std::ifstream& fileStream)
-{
-    fileStream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-    fileStream.open(fileName);
-
-    Console console(fileName, &fileStream);
-
-    return console;
-}
-
 Node generateAST(Console& console)
 {
     lexer::Lexer lex(*console.getStream(), console);
@@ -59,19 +49,17 @@ void generateIR(Console& console,
     for (std::string use : modulesMap[moduleName].uses)
         if (modulesMap.find(use) == modulesMap.end())
         {
-            std::ifstream fileStream;
-            std::string useWithExt = use;
-            Console console = getStreamAndConsole(useWithExt, fileStream);
+            console.pushModule(use);
             generateIR(console, use, target, modulesMap);
+            console.popModule();
         }
 
     generator::generateModule(generatorContext, ast);
 }
 
-int phaseDriver(const std::string& moduleName, const std::string& option)
+int phaseDriver(const std::string& moduleName, const std::string& option, Console& console)
 {
-    std::ifstream fileStream;
-    Console console = getStreamAndConsole(moduleName, fileStream);
+    console.pushModule(moduleName);
 
     if (option == "-ast")
     {
@@ -121,6 +109,8 @@ int phaseDriver(const std::string& moduleName, const std::string& option)
 
 int main(int argc, char* argv[])
 {
+    Console console;
+
     if (argc < 2)
     {
         printCLIUsage();
@@ -145,7 +135,7 @@ int main(int argc, char* argv[])
 
     try
     {
-        return phaseDriver(fileName, option);
+        return phaseDriver(fileName, option, console);
     }
     catch (const CompileError)
     {

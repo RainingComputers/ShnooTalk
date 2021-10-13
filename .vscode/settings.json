@@ -104,6 +104,7 @@
         "newln",
         "Newln",
         "newlnfmt",
+        "ntoks",
         "println",
         "Qualident",
         "RPAREN",

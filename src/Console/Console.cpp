@@ -1,14 +1,8 @@
 #include "Console.hpp"
 
-Console::Console(const std::string& fileName, std::ifstream* file)
-    : fileName(fileName)
-{
-    this->file = file;
-}
-
 void Console::compileErrorOnToken(const std::string& message, const Token& tok)
 {
-    pp::errorOnToken(fileName, message, *file, tok);
+    pp::errorOnToken(tok.getFileName(), message, streamsMap[tok.getFileName()], tok);
     throw CompileError();
 }
 
@@ -63,4 +57,30 @@ void Console::check(bool flag)
 std::ifstream* Console::getStream()
 {
     return file;
+}
+
+std::string Console::getFileName()
+{
+    return fileName;
+}
+
+void Console::pushModule(const std::string& moduleName)
+{   
+    streamsMap[moduleName].exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    streamsMap[moduleName].open(moduleName);
+
+    fileName = moduleName;
+    file = &streamsMap[moduleName];
+
+    fileNameStack.push_back(moduleName);
+    fileStack.push_back(&streamsMap[moduleName]);
+}
+
+void Console::popModule()
+{
+    fileNameStack.pop_back();
+    fileStack.pop_back();
+
+    fileName = fileNameStack.back();
+    file = fileStack.back();
 }

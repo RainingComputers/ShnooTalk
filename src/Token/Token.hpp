@@ -104,6 +104,8 @@ class Token
     unsigned int column;
     unsigned int line;
 
+    std::string file;
+
     void initializeUnescapedString();
 
 public:
@@ -122,8 +124,11 @@ public:
     int getLineNo() const;
     int getColumn() const;
 
-    Token(std::string token_str = "",
-          token::TokenType tok_type = token::NONE,
+    std::string getFileName() const;
+
+    Token(std::string fileName = "",
+          std::string tokenString = "",
+          token::TokenType tokenType = token::NONE,
           unsigned int column = 0,
           unsigned int linenumber = 0);
 };

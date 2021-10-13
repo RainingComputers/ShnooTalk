@@ -32,8 +32,13 @@ void Token::initializeUnescapedString()
     }
 }
 
-Token::Token(std::string tokenString, TokenType tokenType, unsigned int columnNumber, unsigned int lineNumber)
+Token::Token(std::string fileName,
+             std::string tokenString,
+             TokenType tokenType,
+             unsigned int columnNumber,
+             unsigned int lineNumber)
 {
+    file = fileName;
     string = tokenString;
     type = tokenType;
     column = columnNumber;
@@ -156,4 +161,9 @@ int Token::getLineNo() const
 int Token::getColumn() const
 {
     return column;
+}
+
+std::string Token::getFileName() const
+{
+    return file;
 }

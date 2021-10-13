@@ -77,6 +77,7 @@ namespace pp
         jsonp.printString("tokenType", tokenTypeToString[token.getType()]);
         jsonp.printNumber("line", token.getLineNo());
         jsonp.printNumber("col", token.getColumn());
+        jsonp.printString("file", token.getFileName());
         jsonp.end();
     }
 
