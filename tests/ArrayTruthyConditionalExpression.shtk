@@ -1,0 +1,18 @@
+# MODULE ArrayTruthyConditionalExpression.shtk
+# ERROR in Line 12 Col 8
+# 
+#     if a 
+#        ^
+# Cannot get truth from expression
+
+fn main() -> int
+{
+    var a: int[3] = [1, 2, 3]
+
+    if a 
+    {
+        println("Hello world")
+    }
+
+    return 0
+}

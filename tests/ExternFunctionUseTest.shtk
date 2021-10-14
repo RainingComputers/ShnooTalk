@@ -1,0 +1,11 @@
+# 1.000000
+
+use "TestModules/ExternMath.shtk" as math 
+from math use sin
+
+fn main() -> int
+{
+    println(sin(3.14/2.0))
+
+    return 0
+}

@@ -4,6 +4,8 @@
 
 ShnooTalk is a programming language implemented in C++ using the LLVM compiler framework. ShnooTalk works by being compiled to a custom IR format and then translating that to LLVM IR. It is possible to run ShnooTalk on any runtime that supports the clang compiler. ShnooTalk links against standard C libraries/runtime.
 
+See the tests directory for examples, try out the language in your browser on [ShnooTalk Playground](http://rainingcomputers.gitlab.io/shnootalk-playground/).
+
 🛠️ Project under construction, some things may not be fully polished yet 🛠️
 
 ![](blockdiag.png)
@@ -50,7 +52,7 @@ clang app.o -o app
 
 ## TODO
 
-### Short term
+### Language core
 
 - [x] Fix bugs in the LLVM translator backend
 - [x] Array return types
@@ -67,31 +69,45 @@ clang app.o -o app
 - [x] `do {} while()` loop
 - [x] NaN and infinity
 - [x] 01234 bug
-- [ ] Cleanup format strings and function call in Translator
+- [x] Check limits for primitive data types
 - [x] Dynamic allocation and pointers
 - [x] Add `fopen()` function
 - [x] Multi-line strings
-- [ ] Static variables
 - [x] Assigning conditional expressions
-- [ ] Language reference using mkdocs
-- [ ] CLI argument parser
-- [x] Refactor tests
-- [ ] Refactor the test runner and use multiprocessing
-- [ ] Tests for pretty printer
-- [ ] ~95% test coverage
+- [ ] Cleanup format strings and function call in Translator
+- [ ] Static variables
+- [ ] Language tour using shnootalk-playground
+- [ ] Setup github workflows and build for other platforms
+- [ ] Error recovery
+
+### Translators
+
+- [ ] Debug symbols
 - [ ] Python wrapper generator
 - [ ] WebAssembly support
-- [ ] Setup github workflows and build for other platforms
-- [x] Check limits for primitive data types
-- [ ] Error recovery
-- [ ] Debug symbols
 
 ### Advanced features
 
 - [ ] Custom operators
-- [ ] Constructor and destructor
 - [ ] Templates
-- [ ] Exceptions
+- [ ] Standard library
 - [ ] Passing functions as arguments
+- [ ] Constructor and destructor
+- [ ] Exceptions
 - [ ] Unions
 
+### Testing
+- [x] Refactor tests
+- [x] Refactor the test runner 
+- [ ] Use multiprocessing for tests runner
+- [ ] Tests for ast and ir
+- [ ] Unit tests for ir builder
+- [ ] Unit tests for pretty printer
+- [ ] ~95% test coverage
+
+### Language tools
+
+- [ ] STPM package manager
+- [ ] Code formatter
+- [ ] Static analyser
+- [ ] Language server

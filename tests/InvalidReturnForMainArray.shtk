@@ -1,0 +1,12 @@
+# MODULE InvalidReturnForMainArray.shtk
+# ERROR in Line 8 Col 4
+# 
+# fn main() -> int[3]
+#    ^
+# Invalid return type for MAIN
+
+fn main() -> int[3]
+{
+    println("Hello world")
+    return [1, 2, 3]
+}

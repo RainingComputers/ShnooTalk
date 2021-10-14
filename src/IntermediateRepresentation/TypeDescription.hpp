@@ -40,7 +40,6 @@ namespace icode
         TypeDescription();
 
         void setProperty(TypeProperties prop);
-        void clearProperty(TypeProperties prop);
         bool checkProperty(TypeProperties prop) const;
 
         void becomeMutable();

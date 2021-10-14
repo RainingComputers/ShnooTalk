@@ -1,0 +1,15 @@
+# MODULE StructAlreadyExistsError.shtk
+# ERROR in Line 10 Col 8
+# 
+# struct test {}
+#        ^
+# Symbol already defined
+
+def test 1
+
+struct test {}
+
+fn main() -> int
+{
+    return 0
+}

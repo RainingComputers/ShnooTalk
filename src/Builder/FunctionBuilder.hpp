@@ -34,8 +34,6 @@ class FunctionBuilder
 
     void unitListCopy(const Unit& dest, const Unit& src);
 
-    icode::Operand pushEntryAndEnsureNoPointerWrite(icode::Entry entry);
-
     icode::Operand addressAddOperator(icode::Operand op2, icode::Operand op3);
 
     icode::Operand addressAddOperatorPtrPtr(icode::Operand op2, icode::Operand op3);

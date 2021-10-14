@@ -1,0 +1,22 @@
+# Hello
+# Lol
+# Hola
+# idk
+
+fn foo(a: int)
+{
+    if a == 1 println("Hello")
+    elif a == 2 println("Lol")
+    elif a == 3 println("Hola")
+    else println("idk")    
+}
+
+fn main() -> int
+{
+    foo(1)
+    foo(2)
+    foo(3)
+    foo(4)
+
+    return 0
+}

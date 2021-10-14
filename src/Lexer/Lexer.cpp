@@ -216,7 +216,7 @@ namespace lexer
                     if (line[endIndex - 1] != '\\')
                         break;
                     else
-                        startQuoteIndex = endIndex + 1;
+                        startQuoteIndex = endIndex;
                 }
 
                 return LenTypePair(endIndex - i + 1, token::STR_LITERAL);

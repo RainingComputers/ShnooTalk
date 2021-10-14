@@ -1,0 +1,16 @@
+# MODULE StringIntializaerListTypeError.shtk
+# ERROR in Line 13 Col 36
+# 
+#     var d: char[2][10] = ["hello", c]
+#                                    ^
+# Type error, did not expect ubyte[4],
+# expected ubyte[6]
+
+fn main() -> int
+{
+    var c: char[4] = "lol"
+
+    var d: char[2][10] = ["hello", c]
+
+    return 0
+}

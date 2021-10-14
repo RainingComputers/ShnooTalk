@@ -76,6 +76,7 @@ namespace icode
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
                stringToDataType(name) != STRUCT || enumerations.find(name) != enumerations.end() ||
                globals.find(name) != globals.end() || intDefines.find(name) != intDefines.end() ||
-               floatDefines.find(name) != floatDefines.end() || stringDefines.find(name) != stringDefines.end();
+               floatDefines.find(name) != floatDefines.end() || stringDefines.find(name) != stringDefines.end() ||
+               externFunctions.find(name) != externFunctions.end();
     }
 }

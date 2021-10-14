@@ -3,16 +3,18 @@
 # tab
 # backslash
 # null
+# a
 
 fn main() -> int
 {
-    var foobar:char[10] = "\n\b\t\\\0"
+    var foobar:char[10] = "\n\b\t\\\0a"
 
     if(foobar[0] == '\n') println("newline")
     if(foobar[1] == '\b') println("backspace")
     if(foobar[2] == '\t') println("tab")
     if(foobar[3] == '\\') println("backslash")
     if(foobar[4] == '\0') println("null")
+    if(foobar[5] == '\a') println("a")
 
     return 0
 }

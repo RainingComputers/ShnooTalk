@@ -1,0 +1,13 @@
+# MODULE HangingStringQuoteTest.shtk
+# ERROR in Line 10 Col 23
+# 
+#     var c: char[10] = " 
+#                       ^
+# Invalid STRING LITERAL
+
+fn main() -> int
+{
+    var c: char[10] = "
+
+    return 0
+}

@@ -1,0 +1,9 @@
+# random
+
+use "TestModules/RandomDefine.shtk" as Random
+
+fn main() -> int
+{
+    println(Random::SOME_RANDOM_STRING)
+    return 0
+}

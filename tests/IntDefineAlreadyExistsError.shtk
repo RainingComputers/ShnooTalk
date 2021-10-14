@@ -1,0 +1,17 @@
+# MODULE IntDefineAlreadyExistsError.shtk
+# ERROR in Line 12 Col 5
+# 
+# def abs 1
+#     ^
+# Symbol already exists
+
+use "TestModules/Math.shtk" as math
+
+from math use abs
+
+def abs 1
+
+fn main() -> int
+{
+    return 0
+}

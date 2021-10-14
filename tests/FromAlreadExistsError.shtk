@@ -1,0 +1,17 @@
+# MODULE FromAlreadExistsError.shtk
+# ERROR in Line 12 Col 21
+# 
+# from ExternMath use sin
+#                     ^
+# Symbol already defined
+
+use "TestModules/Math.shtk" as Math
+use "TestModules/ExternMath.shtk" as ExternMath
+
+from Math use sin
+from ExternMath use sin
+
+fn main() -> int
+{
+    return 0
+}

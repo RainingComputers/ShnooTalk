@@ -1,20 +1,24 @@
 # Shnoo
 # Bob
 # Alice
+# Kenny
 # Shnoo
 # Robby
 # Alice
+# Kenny
 
 fn main() -> int
 {
-    var name: char[3][10] = ["Shnoo", "Bob", "Alice"]
+    var c: char[10] = "Bob"
 
-    for(var i:int = 0; i < 3; i += 1)
+    var name: char[4][10] = ["Shnoo", c, "Alice", "Kenny"]
+
+    for(var i:int = 0; i < 4; i += 1)
         println(name[i])
 
     name[1] = "Robby"
 
-    for(i = 0; i < 3; i += 1)
+    for(i = 0; i < 4; i += 1)
         println(name[i])
 
     return 0

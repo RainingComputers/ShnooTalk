@@ -1,0 +1,14 @@
+# MODULE EnumAlreadyExistsError.shtk
+# ERROR in Line 9 Col 7
+# 
+# enum [LED_ONE, LED_TWO]
+#       ^
+# Symbol already defined
+
+enum [LED_ONE, LED_TWO]
+enum [LED_ONE, LED_TWO]
+
+fn main() -> int
+{
+    return 0
+}

@@ -1,0 +1,12 @@
+# ./test_executable
+
+fn getArg(argv: ulong[], idx: int) -> char[]
+{
+    return char[]`(argv[idx] + 0)
+}
+
+fn main(argc: int, argv: ulong[]) -> int
+{
+    println(getArg(argv, 0))
+    return 0
+}

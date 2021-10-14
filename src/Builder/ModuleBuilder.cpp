@@ -227,9 +227,6 @@ void ModuleBuilder::createStruct(const Token& nameToken,
 
     for (size_t i = 0; i < fieldNames.size(); i++)
     {
-        if (rootModule.symbolExists(fieldNames[i].toString()))
-            console.compileErrorOnToken("Symbol already defined", fieldNames[i]);
-
         if (structDescription.fieldExists(fieldNames[i].toString()))
             console.compileErrorOnToken("Field already defined", fieldNames[i]);
 

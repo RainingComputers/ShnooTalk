@@ -1,0 +1,15 @@
+# MODULE ParamNamesAlreadyExistsError.shtk
+# ERROR in Line 10 Col 11
+# 
+# fn foobar(test: int) {}
+#           ^
+# Symbol already defined
+
+struct test {}
+
+fn foobar(test: int) {}
+
+fn main() -> int
+{
+    return 0    
+}

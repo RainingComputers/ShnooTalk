@@ -1,0 +1,9 @@
+# Hello "World"
+
+fn main() -> int
+{
+    var c: char[20] = "Hello \"World\""
+    println(c)
+
+    return 0
+}

@@ -164,7 +164,7 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
         /* Move to next element */
         int updateSize = dest.dtypeSize();
 
-        if (unit.isStringLtrl())
+        if (unit.isArray())
             updateSize *= dest.dimensions().back();
 
         Operand update = opBuilder.createBytesOperand(updateSize);
@@ -198,35 +198,6 @@ void FunctionBuilder::unitPointerAssign(const Unit& to, const Unit& src)
     pushEntry(entry);
 }
 
-Operand FunctionBuilder::pushEntryAndEnsureNoPointerWrite(Entry entry)
-{
-    /* Push an ir entry to the current function's icode table,
-        but ensures entry.op1 is not a pointer */
-
-    if (!entry.op1.isPointer())
-    {
-        pushEntry(entry);
-        return entry.op1;
-    }
-
-    /* If entry.op1 is a pointer, replace it with a temp and
-        write that temp to the pointer */
-
-    /* Create corresponding TEMP to TEMP_PTR  */
-    Operand pointerOperand = entry.op1;
-    Operand temp = opBuilder.createTempOperand(pointerOperand.dtype);
-
-    /* Replace TEMP_PTR with TEMP */
-    Entry modifiedEntry = entry;
-    modifiedEntry.op1 = temp;
-    pushEntry(modifiedEntry);
-
-    /* Create WRITE instruction to write the TEMP to TEMP_PTR */
-    operandCopy(pointerOperand, temp);
-
-    return temp;
-}
-
 Unit FunctionBuilder::createTemp(DataType dtype)
 {
     Operand tempPointer = opBuilder.createTempPtrOperand(dtype);
@@ -255,9 +226,9 @@ Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, c
     entry.op2 = ensureNotPointer(LHS.op());
     entry.op3 = autoCast(ensureNotPointer(RHS.op()), dtype);
 
-    Operand result = pushEntryAndEnsureNoPointerWrite(entry);
+    pushEntry(entry);
 
-    return Unit(LHS.type(), result).clearProperties();
+    return Unit(LHS.type(), entry.op1).clearProperties();
 }
 
 Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOperatorTerm)
@@ -273,9 +244,9 @@ Unit FunctionBuilder::unaryOperator(Instruction instruction, const Unit& unaryOp
     entry.op1 = opBuilder.createTempOperand(dtype);
     entry.op2 = ensureNotPointer(unaryOperatorTerm.op());
 
-    Operand result = pushEntryAndEnsureNoPointerWrite(entry);
+    pushEntry(entry);
 
-    return Unit(unaryOperatorTerm.type(), result).clearProperties();
+    return Unit(unaryOperatorTerm.type(), entry.op1).clearProperties();
 }
 
 Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationDataType)

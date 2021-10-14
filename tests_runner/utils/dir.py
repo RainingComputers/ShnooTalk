@@ -10,7 +10,10 @@ def remove_if_exists(filename: str) -> None:
 
 
 def list_test_files() -> List[str]:
-    return [file for file in os.listdir() if file.endswith(".shtk")]
+    files = [file for file in os.listdir() if file.endswith(".shtk")]
+    files.sort()
+
+    return files
 
 
 def get_files(file_ext: str) -> List[str]:

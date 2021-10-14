@@ -1,0 +1,2 @@
+extfn sin(x: double) -> double
+extfn abs(x: double) -> double

@@ -1,0 +1,12 @@
+# Hello
+
+fn main() -> int
+{
+    var b: bool = false
+
+    if !b {
+        println("Hello")
+    }
+
+    return 0
+}
