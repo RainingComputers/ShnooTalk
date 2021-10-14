@@ -1,0 +1,97 @@
+{
+    "moduleName": "ArrayAverage.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_ArrayAverage_shtk_avg": {
+            "moduleName": "ArrayAverage.shtk",
+            "parameters": ["a"],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [5], "properties": ["isParameter"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "tot": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "tot", "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 6, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 8, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 9, "name": "_for_true_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 14, "dtype": "int"}, "op2": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
+                {"opcode": "lessThan", "op1": {"type": "var", "id": 12, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 14, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 10, "name": "_for_false_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op2": {"type": "var", "id": 16, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 20, "dtype": "void"}, "op2": {"type": "var", "id": 17, "name": "i", "dtype": "int"}, "op3": {"type": "bytes", "id": 19, "bytes": 4}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 21, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 20, "dtype": "void"}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 21, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 22, "dtype": "int"}, "op2": {"type": "var", "id": 15, "name": "tot", "dtype": "int"}, "op3": {"type": "temp", "id": 23, "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 15, "name": "tot", "dtype": "int"}, "op2": {"type": "temp", "id": 22, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 11, "name": "_for_cont_true_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "literal", "id": 25, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 26, "dtype": "int"}, "op2": {"type": "var", "id": 24, "name": "i", "dtype": "int"}, "op3": {"type": "temp", "id": 27, "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 24, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 26, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 9, "name": "_for_true_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 10, "name": "_for_false_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 32, "dtype": "int"}, "op2": {"type": "literal", "id": 30, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
+                {"opcode": "divide", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "var", "id": 29, "name": "tot", "dtype": "int"}, "op3": {"type": "temp", "id": 32, "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 28, "dtype": "int"}, "op2": {"type": "temp", "id": 31, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "moduleName": "ArrayAverage.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [5], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 42, "dtype": "int"}, "op2": {"type": "var", "id": 36, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 43, "dtype": "int"}, "op2": {"type": "literal", "id": 37, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 42, "dtype": "int"}, "op2": {"type": "temp", "id": 43, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 42, "dtype": "int"}, "op3": {"type": "bytes", "id": 44, "bytes": 4}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "literal", "id": 38, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op2": {"type": "temp", "id": 46, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 48, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op3": {"type": "bytes", "id": 47, "bytes": 4}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 49, "dtype": "int"}, "op2": {"type": "literal", "id": 39, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 48, "dtype": "int"}, "op2": {"type": "temp", "id": 49, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 51, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 48, "dtype": "int"}, "op3": {"type": "bytes", "id": 50, "bytes": 4}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 52, "dtype": "int"}, "op2": {"type": "literal", "id": 40, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 51, "dtype": "int"}, "op2": {"type": "temp", "id": 52, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 54, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 51, "dtype": "int"}, "op3": {"type": "bytes", "id": 53, "bytes": 4}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "literal", "id": 41, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 54, "dtype": "int"}, "op2": {"type": "temp", "id": 55, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 58, "dtype": "int"}, "op2": {"type": "var", "id": 56, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 58, "dtype": "int"}, "op2": {"type": "var", "id": 59, "name": "_fn_ArrayAverage_shtk_avg", "dtype": "int"}, "op3": {"type": "module", "id": 60, "name": "ArrayAverage.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 61, "dtype": "int"}, "op2": {"type": "var", "id": 62, "name": "_fn_ArrayAverage_shtk_avg", "dtype": "int"}, "op3": {"type": "module", "id": 63, "name": "ArrayAverage.shtk"}},
+                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 61, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 66, "dtype": "int"}, "op2": {"type": "literal", "id": 65, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 64, "dtype": "int"}, "op2": {"type": "temp", "id": 66, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

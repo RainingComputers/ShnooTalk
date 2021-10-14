@@ -1,0 +1,993 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 11, "col": 0, "file": "VecFactory.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Vector.shtk\"", "tokenType": "STR_LITERAL", "line": 11, "col": 4, "file": "VecFactory.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 11, "col": 33, "file": "VecFactory.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "from", "tokenType": "FROM", "line": 13, "col": 0, "file": "VecFactory.shtk"},
+      "children": [
+        {
+          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 13, "col": 5, "file": "VecFactory.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "use", "tokenType": "USE", "line": 13, "col": 9, "file": "VecFactory.shtk"},
+          "children": [
+            {
+              "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 13, "file": "VecFactory.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 15, "col": 0, "file": "VecFactory.shtk"},
+      "children": [
+        {
+          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 15, "col": 3, "file": "VecFactory.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 15, "col": 10, "file": "VecFactory.shtk"},
+          "children": [
+            {
+              "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 15, "col": 10, "file": "VecFactory.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "VecFactory.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 15, "col": 17, "file": "VecFactory.shtk"},
+          "children": [
+            {
+              "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 15, "col": 17, "file": "VecFactory.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 15, "col": 19, "file": "VecFactory.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 15, "col": 27, "file": "VecFactory.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 16, "col": 0, "file": "VecFactory.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 17, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "new", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "new", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 19, "col": 8, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 19, "col": 8, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "new", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "VecFactory.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 19, "col": 15, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 19, "col": 15, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 19, "col": 15, "file": "VecFactory.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 19, "col": 18, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 19, "col": 18, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 19, "col": 18, "file": "VecFactory.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 21, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "new", "tokenType": "IDENTIFIER", "line": 21, "col": 11, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "new", "tokenType": "IDENTIFIER", "line": 21, "col": 11, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "new", "tokenType": "IDENTIFIER", "line": 21, "col": 11, "file": "VecFactory.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 24, "col": 0, "file": "VecFactory.shtk"},
+      "children": [
+        {
+          "token": {"string": "printVecArray", "tokenType": "IDENTIFIER", "line": 24, "col": 3, "file": "VecFactory.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 24, "col": 17, "file": "VecFactory.shtk"},
+          "children": [
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 24, "col": 17, "file": "VecFactory.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 24, "col": 21, "file": "VecFactory.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 24, "col": 24, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 24, "col": 25, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 25, "col": 0, "file": "VecFactory.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 26, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 26, "col": 8, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 26, "col": 10, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "for", "tokenType": "FOR", "line": 28, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 8, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 8, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 8, "file": "VecFactory.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "=", "tokenType": "EQUAL", "line": 28, "col": 10, "file": "VecFactory.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 28, "col": 12, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 28, "col": 12, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 28, "col": 12, "file": "VecFactory.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 15, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 15, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 15, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 15, "file": "VecFactory.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "<", "tokenType": "LESS_THAN", "line": 28, "col": 17, "file": "VecFactory.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 28, "col": 19, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 28, "col": 19, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 28, "col": 19, "file": "VecFactory.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 22, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 22, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 28, "col": 22, "file": "VecFactory.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 28, "col": 24, "file": "VecFactory.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 28, "col": 27, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 28, "col": 27, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 28, "col": 27, "file": "VecFactory.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 29, "col": 4, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 30, "col": 8, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 30, "col": 15, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 30, "col": 15, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 30, "col": 8, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 30, "col": 11, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 30, "col": 12, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 30, "col": 12, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 30, "col": 12, "file": "VecFactory.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 34, "col": 0, "file": "VecFactory.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 34, "col": 3, "file": "VecFactory.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 34, "col": 13, "file": "VecFactory.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 35, "col": 0, "file": "VecFactory.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 36, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 36, "col": 8, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 36, "col": 12, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 36, "col": 15, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 36, "col": 16, "file": "VecFactory.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 36, "col": 19, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 36, "col": 21, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 22, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 22, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 22, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 36, "col": 29, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 36, "col": 29, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 36, "col": 29, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 36, "col": 32, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 36, "col": 32, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 36, "col": 32, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 36, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 36, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 36, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 36, "col": 43, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 36, "col": 43, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 36, "col": 43, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 36, "col": 46, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 36, "col": 46, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 36, "col": 46, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 50, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 50, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 50, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 36, "col": 57, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 36, "col": 57, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 36, "col": 57, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 36, "col": 60, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 36, "col": 60, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 36, "col": 60, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 64, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 64, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 36, "col": 64, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 36, "col": 71, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 36, "col": 71, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 36, "col": 71, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 36, "col": 74, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 36, "col": 74, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 36, "col": 74, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 38, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "\"Var size:\"", "tokenType": "STR_LITERAL", "line": 38, "col": 12, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"Var size:\"", "tokenType": "STR_LITERAL", "line": 38, "col": 12, "file": "VecFactory.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": ",", "tokenType": "COMMA", "line": 38, "col": 23, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 38, "col": 25, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 38, "col": 25, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 38, "col": 25, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 38, "col": 32, "file": "VecFactory.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "printVecArray", "tokenType": "IDENTIFIER", "line": 40, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 40, "col": 18, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 40, "col": 18, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 40, "col": 18, "file": "VecFactory.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 42, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 42, "col": 4, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 42, "col": 4, "file": "VecFactory.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 42, "col": 8, "file": "VecFactory.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 42, "col": 10, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 11, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 11, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 11, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 42, "col": 18, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 42, "col": 18, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 42, "col": 18, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "20", "tokenType": "INT_LITERAL", "line": 42, "col": 22, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "20", "tokenType": "INT_LITERAL", "line": 42, "col": 22, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "20", "tokenType": "INT_LITERAL", "line": 42, "col": 22, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 27, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 27, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 27, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "30", "tokenType": "INT_LITERAL", "line": 42, "col": 34, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "30", "tokenType": "INT_LITERAL", "line": 42, "col": 34, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "30", "tokenType": "INT_LITERAL", "line": 42, "col": 34, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "40", "tokenType": "INT_LITERAL", "line": 42, "col": 38, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "40", "tokenType": "INT_LITERAL", "line": 42, "col": 38, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "40", "tokenType": "INT_LITERAL", "line": 42, "col": 38, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 43, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 43, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 43, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "50", "tokenType": "INT_LITERAL", "line": 42, "col": 50, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "50", "tokenType": "INT_LITERAL", "line": 42, "col": 50, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "50", "tokenType": "INT_LITERAL", "line": 42, "col": 50, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "60", "tokenType": "INT_LITERAL", "line": 42, "col": 54, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "60", "tokenType": "INT_LITERAL", "line": 42, "col": 54, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "60", "tokenType": "INT_LITERAL", "line": 42, "col": 54, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 59, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 59, "file": "VecFactory.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "newVec", "tokenType": "IDENTIFIER", "line": 42, "col": 59, "file": "VecFactory.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "70", "tokenType": "INT_LITERAL", "line": 42, "col": 66, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "70", "tokenType": "INT_LITERAL", "line": 42, "col": 66, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "70", "tokenType": "INT_LITERAL", "line": 42, "col": 66, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "80", "tokenType": "INT_LITERAL", "line": 42, "col": 70, "file": "VecFactory.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "80", "tokenType": "INT_LITERAL", "line": 42, "col": 70, "file": "VecFactory.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "80", "tokenType": "INT_LITERAL", "line": 42, "col": 70, "file": "VecFactory.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "printVecArray", "tokenType": "IDENTIFIER", "line": 44, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 44, "col": 18, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 44, "col": 18, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 44, "col": 18, "file": "VecFactory.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 46, "col": 4, "file": "VecFactory.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 46, "col": 11, "file": "VecFactory.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 46, "col": 11, "file": "VecFactory.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 46, "col": 11, "file": "VecFactory.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

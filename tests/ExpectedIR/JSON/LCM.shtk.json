@@ -1,0 +1,91 @@
+{
+    "moduleName": "LCM.shtk",
+    "uses": ["TestModules/Math.shtk"],
+    "aliases": {
+        "math": "TestModules/Math.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_LCM_shtk_lcm": {
+            "moduleName": "LCM.shtk",
+            "parameters": ["a", "b"],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "LCM.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "LCM.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "LCM.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
+                "max": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "LCM.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "LCM.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "pass", "op1": {"type": "var", "id": 4, "name": "a", "dtype": "int"}, "op2": {"type": "var", "id": 7, "name": "_fn_TestModules_Math_shtk_maxInt", "dtype": "int"}, "op3": {"type": "module", "id": 8, "name": "TestModules/Math.shtk"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 9, "name": "b", "dtype": "int"}, "op2": {"type": "var", "id": 10, "name": "_fn_TestModules_Math_shtk_maxInt", "dtype": "int"}, "op3": {"type": "module", "id": 11, "name": "TestModules/Math.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 12, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "_fn_TestModules_Math_shtk_maxInt", "dtype": "int"}, "op3": {"type": "module", "id": 14, "name": "TestModules/Math.shtk"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "max", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 12, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 15, "name": "x", "dtype": "int"}, "op2": {"type": "var", "id": 16, "name": "max", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 17, "name": "_for_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "var", "id": 21, "name": "a", "dtype": "int"}, "op3": {"type": "var", "id": 22, "name": "b", "dtype": "int"}},
+                {"opcode": "lessThanOrEqualTo", "op1": {"type": "var", "id": 20, "name": "x", "dtype": "int"}, "op2": {"type": "temp", "id": 23, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 18, "name": "_for_false_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "remainder", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "var", "id": 29, "name": "x", "dtype": "int"}, "op3": {"type": "var", "id": 30, "name": "a", "dtype": "int"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "literal", "id": 32, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "isEqual", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "temp", "id": 33, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 26, "name": "_if_false_l12_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "remainder", "op1": {"type": "temp", "id": 36, "dtype": "int"}, "op2": {"type": "var", "id": 34, "name": "x", "dtype": "int"}, "op3": {"type": "var", "id": 35, "name": "b", "dtype": "int"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 37, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "isEqual", "op1": {"type": "temp", "id": 36, "dtype": "int"}, "op2": {"type": "temp", "id": 38, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 26, "name": "_if_false_l12_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 39, "dtype": "int"}, "op2": {"type": "var", "id": 40, "name": "x", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 26, "name": "_if_false_l12_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 19, "name": "_for_cont_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 44, "dtype": "int"}, "op2": {"type": "literal", "id": 42, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 43, "dtype": "int"}, "op2": {"type": "var", "id": 41, "name": "x", "dtype": "int"}, "op3": {"type": "temp", "id": 44, "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 41, "name": "x", "dtype": "int"}, "op2": {"type": "temp", "id": 43, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 17, "name": "_for_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 18, "name": "_for_false_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "unaryMinus", "op1": {"type": "temp", "id": 47, "dtype": "autoInt"}, "op2": {"type": "literal", "id": 46, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 48, "dtype": "int"}, "op2": {"type": "temp", "id": 47, "dtype": "autoInt"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 45, "dtype": "int"}, "op2": {"type": "temp", "id": 48, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "moduleName": "LCM.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "LCM.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "literal", "id": 52, "dtype": "autoInt", "value": 6}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "var", "id": 56, "name": "_fn_LCM_shtk_lcm", "dtype": "int"}, "op3": {"type": "module", "id": 57, "name": "LCM.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 59, "dtype": "int"}, "op2": {"type": "literal", "id": 58, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 59, "dtype": "int"}, "op2": {"type": "var", "id": 60, "name": "_fn_LCM_shtk_lcm", "dtype": "int"}, "op3": {"type": "module", "id": 61, "name": "LCM.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 62, "dtype": "int"}, "op2": {"type": "var", "id": 63, "name": "_fn_LCM_shtk_lcm", "dtype": "int"}, "op3": {"type": "module", "id": 64, "name": "LCM.shtk"}},
+                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 62, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 67, "dtype": "int"}, "op2": {"type": "literal", "id": 66, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 65, "dtype": "int"}, "op2": {"type": "temp", "id": 67, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

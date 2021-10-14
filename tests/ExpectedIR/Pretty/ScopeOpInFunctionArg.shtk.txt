@@ -1,0 +1,46 @@
+{
+    "moduleName": "ScopeOpInFunctionArg.shtk",
+    "uses": ["TestModules/Digital.shtk"],
+    "aliases": {
+        "digital": "TestModules/Digital.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "ScopeOpInFunctionArg.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ScopeOpInFunctionArg.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            }
+            "icode": [
+                    int temp6 = cast autoInt 0
+                    pass int temp6, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                    int temp10 = cast autoInt 0
+                    pass int temp10, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                    void calleeReturnValue13 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                    int temp18 = cast autoInt 0
+                    int returnValue16 = equal int temp18
+                    return
+            ]
+        }
+    }
+}

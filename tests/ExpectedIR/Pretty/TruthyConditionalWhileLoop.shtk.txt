@@ -1,0 +1,76 @@
+{
+    "moduleName": "TruthyConditionalWhileLoop.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_TruthyConditionalWhileLoop_shtk_stop": {
+            "moduleName": "TruthyConditionalWhileLoop.shtk",
+            "parameters": ["i"],
+            "functionReturnType": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            }
+            "icode": [
+                    int temp8 = cast autoInt 5
+                    flag = isEqual int i, int temp8
+                    if(not flag) goto _if_false_l9_c4
+                    byte temp11 = cast autoInt 1
+                    byte returnValue9 = equal byte temp11
+                    return
+                _if_false_l9_c4:
+                    byte temp14 = cast autoInt 0
+                    byte returnValue12 = equal byte temp14
+                    return
+            ]
+        },
+        "main": {
+            "moduleName": "TruthyConditionalWhileLoop.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    int temp20 = cast autoInt 0
+                    int i = equal int temp20
+                _while_true_l18_c4:
+                    pass int i, byte _fn_TruthyConditionalWhileLoop_shtk_stop, module TruthyConditionalWhileLoop.shtk
+                    byte calleeReturnValue27 = call byte _fn_TruthyConditionalWhileLoop_shtk_stop, module TruthyConditionalWhileLoop.shtk
+                    byte temp31 = cast autoInt 0
+                    flag = greaterThan byte calleeReturnValue27, byte temp31
+                    if(flag) goto _while_false_l18_c4
+                    print int i
+                    newLine
+                    int temp36 = cast autoInt 1
+                    int temp35 = add int i, int temp36
+                    int i = equal int temp35
+                    goto _while_true_l18_c4
+                _while_false_l18_c4:
+                    int temp39 = cast autoInt 0
+                    int returnValue37 = equal int temp39
+                    return
+            ]
+        }
+    }
+}

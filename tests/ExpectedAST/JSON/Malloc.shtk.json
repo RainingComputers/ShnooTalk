@@ -1,0 +1,1013 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "def", "tokenType": "DEF", "line": 12, "col": 0, "file": "Malloc.shtk"},
+      "children": [
+        {
+          "token": {"string": "NUM_ELEM", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 12, "col": 13, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "extfn", "tokenType": "EXTERN_FUNCTION", "line": 14, "col": 0, "file": "Malloc.shtk"},
+      "children": [
+        {
+          "token": {"string": "malloc", "tokenType": "IDENTIFIER", "line": 14, "col": 6, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "size", "tokenType": "IDENTIFIER", "line": 14, "col": 13, "file": "Malloc.shtk"},
+          "children": [
+            {
+              "token": {"string": "size", "tokenType": "IDENTIFIER", "line": 14, "col": 13, "file": "Malloc.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "ulong", "tokenType": "IDENTIFIER", "line": 14, "col": 19, "file": "Malloc.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "char", "tokenType": "IDENTIFIER", "line": 14, "col": 29, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "[]", "tokenType": "EMPTY_SUBSCRIPT", "line": 14, "col": 33, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "struct", "tokenType": "STRUCT", "line": 16, "col": 0, "file": "Malloc.shtk"},
+      "children": [
+        {
+          "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 16, "col": 7, "file": "Malloc.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 18, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 18, "col": 8, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 18, "col": 11, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 18, "col": 14, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 18, "col": 16, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 18, "col": 19, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 21, "col": 0, "file": "Malloc.shtk"},
+      "children": [
+        {
+          "token": {"string": "createVector", "tokenType": "IDENTIFIER", "line": 21, "col": 3, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 21, "col": 16, "file": "Malloc.shtk"},
+          "children": [
+            {
+              "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 21, "col": 16, "file": "Malloc.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 21, "col": 19, "file": "Malloc.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 21, "col": 24, "file": "Malloc.shtk"},
+          "children": [
+            {
+              "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 21, "col": 24, "file": "Malloc.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 21, "col": 27, "file": "Malloc.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 21, "col": 35, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 22, "col": 0, "file": "Malloc.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 23, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 23, "col": 8, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 23, "col": 11, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 24, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 24, "col": 4, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 24, "col": 4, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": ".", "tokenType": "DOT", "line": 24, "col": 5, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 24, "col": 6, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 24, "col": 8, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 24, "col": 10, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 24, "col": 10, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 24, "col": 10, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 25, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 25, "col": 4, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 25, "col": 4, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": ".", "tokenType": "DOT", "line": 25, "col": 5, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 25, "col": 6, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 25, "col": 8, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 25, "col": 10, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 25, "col": 10, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 25, "col": 10, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 26, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 26, "col": 11, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 26, "col": 11, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "v", "tokenType": "IDENTIFIER", "line": 26, "col": 11, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 29, "col": 0, "file": "Malloc.shtk"},
+      "children": [
+        {
+          "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 29, "col": 3, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "vector", "tokenType": "IDENTIFIER", "line": 29, "col": 12, "file": "Malloc.shtk"},
+          "children": [
+            {
+              "token": {"string": "vector", "tokenType": "IDENTIFIER", "line": 29, "col": 12, "file": "Malloc.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 29, "col": 20, "file": "Malloc.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 30, "col": 0, "file": "Malloc.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 31, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "\"x:\"", "tokenType": "STR_LITERAL", "line": 31, "col": 12, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"x:\"", "tokenType": "STR_LITERAL", "line": 31, "col": 12, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": ",", "tokenType": "COMMA", "line": 31, "col": 16, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "vector", "tokenType": "IDENTIFIER", "line": 31, "col": 18, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "vector", "tokenType": "IDENTIFIER", "line": 31, "col": 18, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "vector", "tokenType": "IDENTIFIER", "line": 31, "col": 18, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": ".", "tokenType": "DOT", "line": 31, "col": 24, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 31, "col": 25, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": ",", "tokenType": "COMMA", "line": 31, "col": 26, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "\"y:\"", "tokenType": "STR_LITERAL", "line": 31, "col": 28, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"y:\"", "tokenType": "STR_LITERAL", "line": 31, "col": 28, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": ",", "tokenType": "COMMA", "line": 31, "col": 32, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "vector", "tokenType": "IDENTIFIER", "line": 31, "col": 34, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "vector", "tokenType": "IDENTIFIER", "line": 31, "col": 34, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "vector", "tokenType": "IDENTIFIER", "line": 31, "col": 34, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": ".", "tokenType": "DOT", "line": 31, "col": 40, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 31, "col": 41, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 34, "col": 0, "file": "Malloc.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 34, "col": 3, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 34, "col": 13, "file": "Malloc.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 35, "col": 0, "file": "Malloc.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 36, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "vecArray", "tokenType": "IDENTIFIER", "line": 36, "col": 8, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 36, "col": 18, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[]", "tokenType": "EMPTY_SUBSCRIPT", "line": 36, "col": 24, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "<-", "tokenType": "LEFT_ARROW", "line": 36, "col": 27, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 36, "col": 30, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 36, "col": 30, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 36, "col": 30, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "malloc", "tokenType": "IDENTIFIER", "line": 36, "col": 39, "file": "Malloc.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "malloc", "tokenType": "IDENTIFIER", "line": 36, "col": 39, "file": "Malloc.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 36, "col": 46, "file": "Malloc.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 36, "col": 46, "file": "Malloc.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 36, "col": 46, "file": "Malloc.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 36, "col": 46, "file": "Malloc.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 36, "col": 53, "file": "Malloc.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "*", "tokenType": "MULTIPLY", "line": 36, "col": 60, "file": "Malloc.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 36, "col": 61, "file": "Malloc.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 36, "col": 61, "file": "Malloc.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 36, "col": 61, "file": "Malloc.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 37, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 37, "col": 8, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 37, "col": 11, "file": "Malloc.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "for", "tokenType": "FOR", "line": 39, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 9, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 9, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 9, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "=", "tokenType": "EQUAL", "line": 39, "col": 11, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 39, "col": 13, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 39, "col": 13, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 39, "col": 13, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 16, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 16, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 16, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 16, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "<", "tokenType": "LESS_THAN", "line": 39, "col": 18, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "NUM_ELEM", "tokenType": "IDENTIFIER", "line": 39, "col": 20, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "NUM_ELEM", "tokenType": "IDENTIFIER", "line": 39, "col": 20, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "NUM_ELEM", "tokenType": "IDENTIFIER", "line": 39, "col": 20, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 30, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 30, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 39, "col": 30, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 39, "col": 32, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 39, "col": 35, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 39, "col": 35, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 39, "col": 35, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "vecArray", "tokenType": "IDENTIFIER", "line": 40, "col": 8, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "vecArray", "tokenType": "IDENTIFIER", "line": 40, "col": 8, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "vecArray", "tokenType": "IDENTIFIER", "line": 40, "col": 8, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "vecArray", "tokenType": "IDENTIFIER", "line": 40, "col": 8, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 40, "col": 16, "file": "Malloc.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 17, "file": "Malloc.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 17, "file": "Malloc.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 17, "file": "Malloc.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "=", "tokenType": "EQUAL", "line": 40, "col": 20, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "createVector", "tokenType": "IDENTIFIER", "line": 40, "col": 22, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "createVector", "tokenType": "IDENTIFIER", "line": 40, "col": 22, "file": "Malloc.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "createVector", "tokenType": "IDENTIFIER", "line": 40, "col": 22, "file": "Malloc.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 35, "file": "Malloc.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 35, "file": "Malloc.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 35, "file": "Malloc.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 38, "file": "Malloc.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 38, "file": "Malloc.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 38, "file": "Malloc.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 40, "col": 38, "file": "Malloc.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "+", "tokenType": "PLUS", "line": 40, "col": 39, "file": "Malloc.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 40, "col": 40, "file": "Malloc.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 40, "col": 40, "file": "Malloc.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 40, "col": 40, "file": "Malloc.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "for", "tokenType": "FOR", "line": 42, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 9, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 9, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 9, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "=", "tokenType": "EQUAL", "line": 42, "col": 11, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 42, "col": 13, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 42, "col": 13, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 42, "col": 13, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 16, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 16, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 16, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 16, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "<", "tokenType": "LESS_THAN", "line": 42, "col": 18, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "NUM_ELEM", "tokenType": "IDENTIFIER", "line": 42, "col": 20, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "NUM_ELEM", "tokenType": "IDENTIFIER", "line": 42, "col": 20, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "NUM_ELEM", "tokenType": "IDENTIFIER", "line": 42, "col": 20, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 30, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 30, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 42, "col": 30, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 42, "col": 32, "file": "Malloc.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 42, "col": 35, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 42, "col": 35, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 42, "col": 35, "file": "Malloc.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 43, "col": 8, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 43, "col": 8, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "vecArray", "tokenType": "IDENTIFIER", "line": 43, "col": 17, "file": "Malloc.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "vecArray", "tokenType": "IDENTIFIER", "line": 43, "col": 17, "file": "Malloc.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "vecArray", "tokenType": "IDENTIFIER", "line": 43, "col": 17, "file": "Malloc.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 43, "col": 25, "file": "Malloc.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 43, "col": 26, "file": "Malloc.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 43, "col": 26, "file": "Malloc.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 43, "col": 26, "file": "Malloc.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 45, "col": 4, "file": "Malloc.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 45, "col": 11, "file": "Malloc.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 45, "col": 11, "file": "Malloc.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 45, "col": 11, "file": "Malloc.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

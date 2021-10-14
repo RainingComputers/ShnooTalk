@@ -1,0 +1,69 @@
+{
+    "moduleName": "AliasStructSameName.shtk",
+    "uses": ["TestModules/Math.shtk", "TestModules/Vector.shtk"],
+    "aliases": {
+        "math": "TestModules/Math.shtk",
+        "vec": "TestModules/Vector.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+        "vec": {
+            "structFields": {
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasStructSameName.shtk", "offset": 0, "dimensions": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasStructSameName.shtk", "offset": 4, "dimensions": [], "properties": []}
+            },
+            "size": 8,
+            "moduleName": "AliasStructSameName.shtk"
+        }
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "AliasStructSameName.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasStructSameName.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "AliasStructSameName.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    int* tempPtr5 = createPointer struct a
+                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                    int temp9 = cast autoInt 1
+                    int* tempPtr7 = write int temp9
+                    int* tempPtr11 = createPointer struct a
+                    int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                    int temp15 = cast autoInt 2
+                    int* tempPtr13 = write int temp15
+                    int* tempPtr17 = createPointer struct a
+                    int* tempPtr19 = addressAdd int* tempPtr17, bytes 0
+                    int temp20 = read int* tempPtr19
+                    print int temp20
+                    newLine
+                    int* tempPtr22 = createPointer struct a
+                    int* tempPtr24 = addressAdd int* tempPtr22, bytes 4
+                    int temp25 = read int* tempPtr24
+                    print int temp25
+                    newLine
+                    int temp28 = cast autoInt 0
+                    int returnValue26 = equal int temp28
+                    return
+            ]
+        }
+    }
+}

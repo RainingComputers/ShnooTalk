@@ -1,0 +1,5 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=8, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=8, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=0
+              └───> nodeType=FUNCCALL, string="foo", tokenType=IDENTIFIER, line=10, col=4

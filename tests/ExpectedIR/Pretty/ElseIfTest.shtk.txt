@@ -1,0 +1,91 @@
+{
+    "moduleName": "ElseIfTest.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_ElseIfTest_shtk__l10_c24": 5,
+        "_str_ElseIfTest_shtk__l11_c17": 4,
+        "_str_ElseIfTest_shtk__l8_c22": 6,
+        "_str_ElseIfTest_shtk__l9_c24": 4
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_ElseIfTest_shtk_foo": {
+            "moduleName": "ElseIfTest.shtk",
+            "parameters": ["a"],
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "ElseIfTest.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ElseIfTest.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            }
+            "icode": [
+                    int temp8 = cast autoInt 1
+                    flag = isEqual int a, int temp8
+                    if(not flag) goto _if_false_l8_c4
+                    printString stringData _str_ElseIfTest_shtk__l8_c22
+                    newLine
+                    goto _ifend_false_l8_c4
+                _if_false_l8_c4:
+                    int temp14 = cast autoInt 2
+                    flag = isEqual int a, int temp14
+                    if(not flag) goto _if_false_l9_c4
+                    printString stringData _str_ElseIfTest_shtk__l9_c24
+                    newLine
+                    goto _ifend_false_l8_c4
+                _if_false_l9_c4:
+                    int temp20 = cast autoInt 3
+                    flag = isEqual int a, int temp20
+                    if(not flag) goto _if_false_l10_c4
+                    printString stringData _str_ElseIfTest_shtk__l10_c24
+                    newLine
+                    goto _ifend_false_l8_c4
+                _if_false_l10_c4:
+                    printString stringData _str_ElseIfTest_shtk__l11_c17
+                    newLine
+                _ifend_false_l8_c4:
+                    return
+            ]
+        },
+        "main": {
+            "moduleName": "ElseIfTest.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ElseIfTest.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            }
+            "icode": [
+                    int temp30 = cast autoInt 1
+                    pass int temp30, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                    void calleeReturnValue33 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                    int temp38 = cast autoInt 2
+                    pass int temp38, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                    void calleeReturnValue41 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                    int temp46 = cast autoInt 3
+                    pass int temp46, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                    void calleeReturnValue49 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                    int temp54 = cast autoInt 4
+                    pass int temp54, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                    void calleeReturnValue57 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                    int temp62 = cast autoInt 0
+                    int returnValue60 = equal int temp62
+                    return
+            ]
+        }
+    }
+}

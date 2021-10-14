@@ -1,0 +1,48 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=USE, string="use", tokenType=USE, line=5, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/Digital.shtk"", tokenType=STR_LITERAL, line=5, col=4
+  │     └───> nodeType=IDENTIFIER, string="digital", tokenType=IDENTIFIER, line=5, col=34
+  ├───> nodeType=FROM, string="from", tokenType=FROM, line=7, col=0
+  │     ├───> nodeType=IDENTIFIER, string="digital", tokenType=IDENTIFIER, line=7, col=5
+  │     └───> nodeType=USE, string="use", tokenType=USE, line=7, col=13
+  │           ├───> nodeType=IDENTIFIER, string="LOW", tokenType=IDENTIFIER, line=7, col=17
+  │           └───> nodeType=IDENTIFIER, string="HIGH", tokenType=IDENTIFIER, line=7, col=22
+  ├───> nodeType=ENUM, string="enum", tokenType=ENUM, line=9, col=0
+  │     ├───> nodeType=IDENTIFIER, string="LED0", tokenType=IDENTIFIER, line=9, col=6
+  │     ├───> nodeType=IDENTIFIER, string="LED1", tokenType=IDENTIFIER, line=9, col=12
+  │     └───> nodeType=IDENTIFIER, string="LED2", tokenType=IDENTIFIER, line=9, col=18
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=11, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=11, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=11, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=12, col=0
+              ├───> nodeType=MODULE, string="digital", tokenType=IDENTIFIER, line=13, col=4
+              │     ├───> nodeType=MODULE, string="digital", tokenType=IDENTIFIER, line=13, col=4
+              │     └───> nodeType=FUNCCALL, string="digitalWrite", tokenType=IDENTIFIER, line=13, col=13
+              │           ├───> nodeType=EXPRESSION, string="LED0", tokenType=IDENTIFIER, line=13, col=26
+              │           │     └───> nodeType=TERM, string="LED0", tokenType=IDENTIFIER, line=13, col=26
+              │           │           └───> nodeType=IDENTIFIER, string="LED0", tokenType=IDENTIFIER, line=13, col=26
+              │           └───> nodeType=EXPRESSION, string="LOW", tokenType=IDENTIFIER, line=13, col=32
+              │                 └───> nodeType=TERM, string="LOW", tokenType=IDENTIFIER, line=13, col=32
+              │                       └───> nodeType=IDENTIFIER, string="LOW", tokenType=IDENTIFIER, line=13, col=32
+              ├───> nodeType=MODULE, string="digital", tokenType=IDENTIFIER, line=14, col=4
+              │     ├───> nodeType=MODULE, string="digital", tokenType=IDENTIFIER, line=14, col=4
+              │     └───> nodeType=FUNCCALL, string="digitalWrite", tokenType=IDENTIFIER, line=14, col=13
+              │           ├───> nodeType=EXPRESSION, string="LED1", tokenType=IDENTIFIER, line=14, col=26
+              │           │     └───> nodeType=TERM, string="LED1", tokenType=IDENTIFIER, line=14, col=26
+              │           │           └───> nodeType=IDENTIFIER, string="LED1", tokenType=IDENTIFIER, line=14, col=26
+              │           └───> nodeType=EXPRESSION, string="HIGH", tokenType=IDENTIFIER, line=14, col=32
+              │                 └───> nodeType=TERM, string="HIGH", tokenType=IDENTIFIER, line=14, col=32
+              │                       └───> nodeType=IDENTIFIER, string="HIGH", tokenType=IDENTIFIER, line=14, col=32
+              ├───> nodeType=MODULE, string="digital", tokenType=IDENTIFIER, line=15, col=4
+              │     ├───> nodeType=MODULE, string="digital", tokenType=IDENTIFIER, line=15, col=4
+              │     └───> nodeType=FUNCCALL, string="digitalWrite", tokenType=IDENTIFIER, line=15, col=13
+              │           ├───> nodeType=EXPRESSION, string="LED2", tokenType=IDENTIFIER, line=15, col=26
+              │           │     └───> nodeType=TERM, string="LED2", tokenType=IDENTIFIER, line=15, col=26
+              │           │           └───> nodeType=IDENTIFIER, string="LED2", tokenType=IDENTIFIER, line=15, col=26
+              │           └───> nodeType=EXPRESSION, string="HIGH", tokenType=IDENTIFIER, line=15, col=32
+              │                 └───> nodeType=TERM, string="HIGH", tokenType=IDENTIFIER, line=15, col=32
+              │                       └───> nodeType=IDENTIFIER, string="HIGH", tokenType=IDENTIFIER, line=15, col=32
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=17, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=17, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=17, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=17, col=11

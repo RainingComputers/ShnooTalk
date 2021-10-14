@@ -1,0 +1,185 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 8, "col": 0, "file": "NumParametersDontMatchError.shtk"},
+      "children": [
+        {
+          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 8, "col": 3, "file": "NumParametersDontMatchError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 7, "file": "NumParametersDontMatchError.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 7, "file": "NumParametersDontMatchError.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 8, "col": 9, "file": "NumParametersDontMatchError.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 8, "col": 14, "file": "NumParametersDontMatchError.shtk"},
+          "children": [
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 8, "col": 14, "file": "NumParametersDontMatchError.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 8, "col": 16, "file": "NumParametersDontMatchError.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 8, "col": 24, "file": "NumParametersDontMatchError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 0, "file": "NumParametersDontMatchError.shtk"},
+          "children": [
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 10, "col": 4, "file": "NumParametersDontMatchError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "NumParametersDontMatchError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "NumParametersDontMatchError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "NumParametersDontMatchError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "NumParametersDontMatchError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 10, "col": 12, "file": "NumParametersDontMatchError.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 10, "col": 13, "file": "NumParametersDontMatchError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 10, "col": 13, "file": "NumParametersDontMatchError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 10, "col": 13, "file": "NumParametersDontMatchError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "NumParametersDontMatchError.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "NumParametersDontMatchError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 14, "col": 0, "file": "NumParametersDontMatchError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 4, "file": "NumParametersDontMatchError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "NumParametersDontMatchError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 15, "col": 10, "file": "NumParametersDontMatchError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 15, "col": 14, "file": "NumParametersDontMatchError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 16, "file": "NumParametersDontMatchError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 16, "file": "NumParametersDontMatchError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 16, "file": "NumParametersDontMatchError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "NumParametersDontMatchError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "NumParametersDontMatchError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "NumParametersDontMatchError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "NumParametersDontMatchError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

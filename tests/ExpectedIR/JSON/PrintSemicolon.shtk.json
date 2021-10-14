@@ -1,0 +1,50 @@
+{
+    "moduleName": "PrintSemicolon.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_PrintSemicolon_shtk__l5_c12": 6,
+        "_str_PrintSemicolon_shtk__l5_c21": 6,
+        "_str_PrintSemicolon_shtk__l5_c30": 8
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "PrintSemicolon.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PrintSemicolon.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            },
+            "icode": [
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_PrintSemicolon_shtk__l5_c12", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 4, "name": "_str_PrintSemicolon_shtk__l5_c21", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 5, "name": "_str_PrintSemicolon_shtk__l5_c30", "size": 8}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 6, "name": "_str_PrintSemicolon_shtk__l5_c21", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 9, "dtype": "int"}, "op2": {"type": "literal", "id": 8, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 7, "dtype": "int"}, "op2": {"type": "temp", "id": 9, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

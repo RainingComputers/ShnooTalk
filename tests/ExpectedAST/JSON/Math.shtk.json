@@ -1,0 +1,484 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 9, "col": 0, "file": "Math.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Math.shtk\"", "tokenType": "STR_LITERAL", "line": 9, "col": 4, "file": "Math.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 9, "col": 31, "file": "Math.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 11, "col": 0, "file": "Math.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 11, "col": 3, "file": "Math.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 13, "file": "Math.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 12, "col": 0, "file": "Math.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 13, "col": 4, "file": "Math.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 13, "col": 12, "file": "Math.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 13, "col": 12, "file": "Math.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 13, "col": 12, "file": "Math.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "sin", "tokenType": "IDENTIFIER", "line": 13, "col": 18, "file": "Math.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "sin", "tokenType": "IDENTIFIER", "line": 13, "col": 18, "file": "Math.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "0.5", "tokenType": "FLOAT_LITERAL", "line": 13, "col": 22, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "0.5", "tokenType": "FLOAT_LITERAL", "line": 13, "col": 22, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "0.5", "tokenType": "FLOAT_LITERAL", "line": 13, "col": 22, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 14, "col": 4, "file": "Math.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 14, "col": 12, "file": "Math.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 14, "col": 12, "file": "Math.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 14, "col": 12, "file": "Math.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "pow", "tokenType": "IDENTIFIER", "line": 14, "col": 18, "file": "Math.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "pow", "tokenType": "IDENTIFIER", "line": 14, "col": 18, "file": "Math.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 14, "col": 22, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 14, "col": 22, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 14, "col": 22, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 14, "col": 25, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 14, "col": 25, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 14, "col": 25, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 15, "col": 4, "file": "Math.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "Math.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "Math.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "Math.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "abs", "tokenType": "IDENTIFIER", "line": 15, "col": 18, "file": "Math.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "abs", "tokenType": "IDENTIFIER", "line": 15, "col": 18, "file": "Math.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "-", "tokenType": "MINUS", "line": 15, "col": 22, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "-", "tokenType": "MINUS", "line": 15, "col": 22, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "-", "tokenType": "MINUS", "line": 15, "col": 22, "file": "Math.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 15, "col": 23, "file": "Math.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 15, "col": 23, "file": "Math.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 16, "col": 4, "file": "Math.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 16, "col": 12, "file": "Math.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 16, "col": 12, "file": "Math.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 16, "col": 12, "file": "Math.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "max", "tokenType": "IDENTIFIER", "line": 16, "col": 18, "file": "Math.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "max", "tokenType": "IDENTIFIER", "line": 16, "col": 18, "file": "Math.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 16, "col": 22, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 16, "col": 22, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 16, "col": 22, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "5.0", "tokenType": "FLOAT_LITERAL", "line": 16, "col": 27, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "5.0", "tokenType": "FLOAT_LITERAL", "line": 16, "col": 27, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "5.0", "tokenType": "FLOAT_LITERAL", "line": 16, "col": 27, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 17, "col": 4, "file": "Math.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "Math.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "Math.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "Math.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "maxInt", "tokenType": "IDENTIFIER", "line": 17, "col": 18, "file": "Math.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "maxInt", "tokenType": "IDENTIFIER", "line": 17, "col": 18, "file": "Math.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 17, "col": 25, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 17, "col": 25, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 17, "col": 25, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 17, "col": 28, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 17, "col": 28, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 17, "col": 28, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 18, "col": 4, "file": "Math.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 18, "col": 12, "file": "Math.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 18, "col": 12, "file": "Math.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 18, "col": 12, "file": "Math.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "min", "tokenType": "IDENTIFIER", "line": 18, "col": 18, "file": "Math.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "min", "tokenType": "IDENTIFIER", "line": 18, "col": 18, "file": "Math.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 18, "col": 22, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 18, "col": 22, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 18, "col": 22, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "5.0", "tokenType": "FLOAT_LITERAL", "line": 18, "col": 27, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "5.0", "tokenType": "FLOAT_LITERAL", "line": 18, "col": 27, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "5.0", "tokenType": "FLOAT_LITERAL", "line": 18, "col": 27, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 19, "col": 4, "file": "Math.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 19, "col": 12, "file": "Math.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 19, "col": 12, "file": "Math.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 19, "col": 12, "file": "Math.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "minInt", "tokenType": "IDENTIFIER", "line": 19, "col": 18, "file": "Math.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "minInt", "tokenType": "IDENTIFIER", "line": 19, "col": 18, "file": "Math.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 19, "col": 25, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 19, "col": 25, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 19, "col": 25, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 19, "col": 28, "file": "Math.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 19, "col": 28, "file": "Math.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 19, "col": 28, "file": "Math.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 21, "col": 4, "file": "Math.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 21, "col": 11, "file": "Math.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 21, "col": 11, "file": "Math.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 21, "col": 11, "file": "Math.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

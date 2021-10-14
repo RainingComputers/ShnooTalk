@@ -1,0 +1,260 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 8, "col": 0, "file": "AssignmentOnArrayError.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 8, "col": 3, "file": "AssignmentOnArrayError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 8, "col": 13, "file": "AssignmentOnArrayError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 0, "file": "AssignmentOnArrayError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 10, "col": 4, "file": "AssignmentOnArrayError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 8, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 10, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 10, "col": 13, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 10, "col": 14, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 10, "col": 17, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 10, "col": 19, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 20, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 20, "file": "AssignmentOnArrayError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 20, "file": "AssignmentOnArrayError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 10, "col": 23, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 10, "col": 23, "file": "AssignmentOnArrayError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 10, "col": 23, "file": "AssignmentOnArrayError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 10, "col": 26, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 10, "col": 26, "file": "AssignmentOnArrayError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 10, "col": 26, "file": "AssignmentOnArrayError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 11, "col": 4, "file": "AssignmentOnArrayError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 11, "col": 13, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 11, "col": 14, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 11, "col": 17, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 11, "col": 19, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 11, "col": 20, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 11, "col": 20, "file": "AssignmentOnArrayError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 11, "col": 20, "file": "AssignmentOnArrayError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 11, "col": 23, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 11, "col": 23, "file": "AssignmentOnArrayError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 11, "col": 23, "file": "AssignmentOnArrayError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 11, "col": 26, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 11, "col": 26, "file": "AssignmentOnArrayError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 11, "col": 26, "file": "AssignmentOnArrayError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignmentOnArrayError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 12, "col": 6, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 12, "col": 9, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 12, "col": 9, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 12, "col": 9, "file": "AssignmentOnArrayError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 14, "col": 4, "file": "AssignmentOnArrayError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 14, "col": 11, "file": "AssignmentOnArrayError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 14, "col": 11, "file": "AssignmentOnArrayError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 14, "col": 11, "file": "AssignmentOnArrayError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

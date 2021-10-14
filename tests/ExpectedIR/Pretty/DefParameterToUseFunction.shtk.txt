@@ -1,0 +1,47 @@
+{
+    "moduleName": "DefParameterToUseFunction.shtk",
+    "uses": ["TestModules/Math.shtk"],
+    "aliases": {
+        "math": "TestModules/Math.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "BLEH": 5,
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "DefParameterToUseFunction.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "DefParameterToUseFunction.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            }
+            "icode": [
+                    float temp4 = cast autoInt 5
+                    pass float temp4, float _fn_TestModules_Math_shtk_sin, module TestModules/Math.shtk
+                    float calleeReturnValue8 = call float _fn_TestModules_Math_shtk_sin, module TestModules/Math.shtk
+                    print float calleeReturnValue8
+                    newLine
+                    int temp13 = cast autoInt 0
+                    int returnValue11 = equal int temp13
+                    return
+            ]
+        }
+    }
+}

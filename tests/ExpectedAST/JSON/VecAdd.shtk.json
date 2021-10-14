@@ -1,0 +1,511 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 6, "col": 0, "file": "VecAdd.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Math.shtk\"", "tokenType": "STR_LITERAL", "line": 6, "col": 4, "file": "VecAdd.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 6, "col": 31, "file": "VecAdd.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "from", "tokenType": "FROM", "line": 8, "col": 0, "file": "VecAdd.shtk"},
+      "children": [
+        {
+          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 8, "col": 5, "file": "VecAdd.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "use", "tokenType": "USE", "line": 8, "col": 10, "file": "VecAdd.shtk"},
+          "children": [
+            {
+              "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 8, "col": 14, "file": "VecAdd.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "from", "tokenType": "FROM", "line": 9, "col": 0, "file": "VecAdd.shtk"},
+      "children": [
+        {
+          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 9, "col": 5, "file": "VecAdd.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "use", "tokenType": "USE", "line": 9, "col": 9, "file": "VecAdd.shtk"},
+          "children": [
+            {
+              "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 9, "col": 13, "file": "VecAdd.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 11, "col": 0, "file": "VecAdd.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 11, "col": 3, "file": "VecAdd.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 13, "file": "VecAdd.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 12, "col": 0, "file": "VecAdd.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 13, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 8, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 10, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 13, "col": 13, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 15, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 17, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 13, "col": 20, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 13, "col": 22, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 24, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 13, "col": 27, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 13, "col": 29, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 31, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 15, "col": 6, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 15, "col": 6, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 4, "file": "VecAdd.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 13, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 13, "file": "VecAdd.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 13, "file": "VecAdd.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 16, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 16, "file": "VecAdd.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 16, "file": "VecAdd.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 16, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 16, "col": 6, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 16, "col": 6, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 16, "col": 4, "file": "VecAdd.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 16, "col": 13, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 16, "col": 13, "file": "VecAdd.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 16, "col": 13, "file": "VecAdd.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 16, "col": 16, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 16, "col": 16, "file": "VecAdd.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 16, "col": 16, "file": "VecAdd.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 18, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 18, "col": 4, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 18, "col": 4, "file": "VecAdd.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 18, "col": 6, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 18, "col": 8, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 18, "col": 8, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 18, "col": 8, "file": "VecAdd.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "add", "tokenType": "IDENTIFIER", "line": 18, "col": 13, "file": "VecAdd.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "add", "tokenType": "IDENTIFIER", "line": 18, "col": 13, "file": "VecAdd.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 17, "file": "VecAdd.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 17, "file": "VecAdd.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 17, "file": "VecAdd.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 18, "col": 20, "file": "VecAdd.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 18, "col": 20, "file": "VecAdd.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 18, "col": 20, "file": "VecAdd.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "VecAdd.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 19, "col": 6, "file": "VecAdd.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 19, "col": 8, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 19, "col": 8, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "add", "tokenType": "IDENTIFIER", "line": 19, "col": 10, "file": "VecAdd.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "add", "tokenType": "IDENTIFIER", "line": 19, "col": 10, "file": "VecAdd.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 19, "col": 8, "file": "VecAdd.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 19, "col": 14, "file": "VecAdd.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 19, "col": 14, "file": "VecAdd.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 19, "col": 14, "file": "VecAdd.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 21, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 21, "col": 6, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 21, "col": 6, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 21, "col": 4, "file": "VecAdd.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 22, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 22, "col": 6, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 22, "col": 6, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 22, "col": 4, "file": "VecAdd.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 23, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 23, "col": 6, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 23, "col": 6, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 23, "col": 4, "file": "VecAdd.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 24, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 24, "col": 6, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 24, "col": 6, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 24, "col": 4, "file": "VecAdd.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 26, "col": 4, "file": "VecAdd.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 26, "col": 11, "file": "VecAdd.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 26, "col": 11, "file": "VecAdd.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 26, "col": 11, "file": "VecAdd.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

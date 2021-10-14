@@ -1,0 +1,19 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=9, col=0
+  │     ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=9, col=3
+  │     ├───> nodeType=MUT_PARAM, string="mut", tokenType=MUTABLE, line=9, col=8
+  │     │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=9, col=12
+  │     │     ├───> nodeType=IDENTIFIER, string="char", tokenType=IDENTIFIER, line=9, col=15
+  │     │     └───> nodeType=POINTER_STAR, string="*", tokenType=MULTIPLY, line=9, col=19
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=10, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=14, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=14, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=14, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=15, col=0
+              ├───> nodeType=FUNCCALL, string="test", tokenType=IDENTIFIER, line=16, col=4
+              │     └───> nodeType=MULTILINE_STR_LITERAL, string=""leh"", tokenType=STR_LITERAL, line=16, col=9
+              │           └───> nodeType=STR_LITERAL, string=""leh"", tokenType=STR_LITERAL, line=16, col=9
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=18, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=18, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=18, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=18, col=11

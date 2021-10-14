@@ -1,0 +1,98 @@
+{
+    "moduleName": "Newton.shtk",
+    "uses": ["TestModules/Math.shtk"],
+    "aliases": {
+        "math": "TestModules/Math.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_Newton_shtk_f": {
+            "moduleName": "Newton.shtk",
+            "parameters": ["x"],
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 6, "dtype": "float"}, "op2": {"type": "var", "id": 4, "name": "x", "dtype": "float"}, "op3": {"type": "var", "id": 5, "name": "x", "dtype": "float"}},
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 8, "dtype": "float"}, "op2": {"type": "temp", "id": 6, "dtype": "float"}, "op3": {"type": "var", "id": 7, "name": "x", "dtype": "float"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "float"}, "op2": {"type": "literal", "id": 9, "dtype": "autoFloat", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "subtract", "op1": {"type": "temp", "id": 10, "dtype": "float"}, "op2": {"type": "temp", "id": 8, "dtype": "float"}, "op3": {"type": "temp", "id": 11, "dtype": "float"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 3, "dtype": "float"}, "op2": {"type": "temp", "id": 10, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "_fn_Newton_shtk_f_prime": {
+            "moduleName": "Newton.shtk",
+            "parameters": ["x"],
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 19, "dtype": "autoFloat"}, "op2": {"type": "var", "id": 17, "name": "x", "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 18, "dtype": "autoFloat"}, "op2": {"type": "literal", "id": 16, "dtype": "autoFloat", "value": 3}, "op3": {"type": "temp", "id": 19, "dtype": "autoFloat"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 22, "dtype": "autoFloat"}, "op2": {"type": "var", "id": 20, "name": "x", "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 21, "dtype": "autoFloat"}, "op2": {"type": "temp", "id": 18, "dtype": "autoFloat"}, "op3": {"type": "temp", "id": 22, "dtype": "autoFloat"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "float"}, "op2": {"type": "temp", "id": 21, "dtype": "autoFloat"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 15, "dtype": "float"}, "op2": {"type": "temp", "id": 23, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "moduleName": "Newton.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "epsilon": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 29, "dtype": "float"}, "op2": {"type": "literal", "id": 28, "dtype": "autoFloat", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 27, "name": "x", "dtype": "float"}, "op2": {"type": "temp", "id": 29, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 32, "dtype": "float"}, "op2": {"type": "literal", "id": 31, "dtype": "autoFloat", "value": 1e-05}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 30, "name": "epsilon", "dtype": "float"}, "op2": {"type": "temp", "id": 32, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 33, "name": "_while_true_l17_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 35, "name": "x", "dtype": "float"}, "op2": {"type": "var", "id": 37, "name": "_fn_Newton_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 38, "name": "Newton.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 39, "dtype": "float"}, "op2": {"type": "var", "id": 40, "name": "_fn_Newton_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 41, "name": "Newton.shtk"}},
+                {"opcode": "pass", "op1": {"type": "calleeReturnValue", "id": 39, "dtype": "float"}, "op2": {"type": "var", "id": 43, "name": "_fn_TestModules_Math_shtk_abs", "dtype": "float"}, "op3": {"type": "module", "id": 44, "name": "TestModules/Math.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 45, "dtype": "float"}, "op2": {"type": "var", "id": 46, "name": "_fn_TestModules_Math_shtk_abs", "dtype": "float"}, "op3": {"type": "module", "id": 47, "name": "TestModules/Math.shtk"}},
+                {"opcode": "greaterThanOrEqualTo", "op1": {"type": "calleeReturnValue", "id": 45, "dtype": "float"}, "op2": {"type": "var", "id": 48, "name": "epsilon", "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 34, "name": "_while_false_l17_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 51, "name": "x", "dtype": "float"}, "op2": {"type": "var", "id": 53, "name": "_fn_Newton_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 54, "name": "Newton.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 55, "dtype": "float"}, "op2": {"type": "var", "id": 56, "name": "_fn_Newton_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 57, "name": "Newton.shtk"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 58, "name": "x", "dtype": "float"}, "op2": {"type": "var", "id": 60, "name": "_fn_Newton_shtk_f_prime", "dtype": "float"}, "op3": {"type": "module", "id": 61, "name": "Newton.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 62, "dtype": "float"}, "op2": {"type": "var", "id": 63, "name": "_fn_Newton_shtk_f_prime", "dtype": "float"}, "op3": {"type": "module", "id": 64, "name": "Newton.shtk"}},
+                {"opcode": "divide", "op1": {"type": "temp", "id": 65, "dtype": "float"}, "op2": {"type": "calleeReturnValue", "id": 55, "dtype": "float"}, "op3": {"type": "calleeReturnValue", "id": 62, "dtype": "float"}},
+                {"opcode": "subtract", "op1": {"type": "temp", "id": 66, "dtype": "float"}, "op2": {"type": "var", "id": 50, "name": "x", "dtype": "float"}, "op3": {"type": "temp", "id": 65, "dtype": "float"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 49, "name": "x", "dtype": "float"}, "op2": {"type": "temp", "id": 66, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 33, "name": "_while_true_l17_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 34, "name": "_while_false_l17_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 67, "name": "x", "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 70, "dtype": "int"}, "op2": {"type": "literal", "id": 69, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 68, "dtype": "int"}, "op2": {"type": "temp", "id": 70, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

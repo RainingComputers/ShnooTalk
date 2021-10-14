@@ -1,0 +1,53 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=USE, string="use", tokenType=USE, line=5, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/RandomDefine.shtk"", tokenType=STR_LITERAL, line=5, col=4
+  │     └───> nodeType=IDENTIFIER, string="RandomDefine", tokenType=IDENTIFIER, line=5, col=39
+  ├───> nodeType=FROM, string="from", tokenType=FROM, line=6, col=0
+  │     ├───> nodeType=IDENTIFIER, string="RandomDefine", tokenType=IDENTIFIER, line=6, col=5
+  │     └───> nodeType=USE, string="use", tokenType=USE, line=6, col=18
+  │           ├───> nodeType=IDENTIFIER, string="SOME_RANDOM_INT", tokenType=IDENTIFIER, line=6, col=22
+  │           └───> nodeType=IDENTIFIER, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=6, col=39
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=8, col=0
+  │     ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=8, col=3
+  │     ├───> nodeType=PARAM, string="a", tokenType=IDENTIFIER, line=8, col=8
+  │     │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=8, col=8
+  │     │     ├───> nodeType=IDENTIFIER, string="char", tokenType=IDENTIFIER, line=8, col=11
+  │     │     └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=8, col=15
+  │     │           └───> nodeType=LITERAL, string="1000", tokenType=INT_LITERAL, line=8, col=16
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=0
+  │           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=10, col=4
+  │                 └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=10, col=12
+  │                       └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=10, col=12
+  │                             └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=10, col=12
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=13, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=13, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=13, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=14, col=0
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=15, col=4
+              │     ├───> nodeType=EXPRESSION, string="SOME_RANDOM_INT", tokenType=IDENTIFIER, line=15, col=12
+              │     │     └───> nodeType=TERM, string="SOME_RANDOM_INT", tokenType=IDENTIFIER, line=15, col=12
+              │     │           └───> nodeType=IDENTIFIER, string="SOME_RANDOM_INT", tokenType=IDENTIFIER, line=15, col=12
+              │     ├───> nodeType=SPACE, string=",", tokenType=COMMA, line=15, col=27
+              │     ├───> nodeType=EXPRESSION, string="RandomDefine", tokenType=IDENTIFIER, line=15, col=29
+              │     │     └───> nodeType=TERM, string="RandomDefine", tokenType=IDENTIFIER, line=15, col=29
+              │     │           ├───> nodeType=MODULE, string="RandomDefine", tokenType=IDENTIFIER, line=15, col=29
+              │     │           └───> nodeType=TERM, string="SOME_RANDOM_FLOAT", tokenType=IDENTIFIER, line=15, col=43
+              │     │                 └───> nodeType=IDENTIFIER, string="SOME_RANDOM_FLOAT", tokenType=IDENTIFIER, line=15, col=43
+              │     ├───> nodeType=SPACE, string=",", tokenType=COMMA, line=15, col=60
+              │     └───> nodeType=EXPRESSION, string="RandomDefine", tokenType=IDENTIFIER, line=15, col=62
+              │           └───> nodeType=TERM, string="RandomDefine", tokenType=IDENTIFIER, line=15, col=62
+              │                 ├───> nodeType=MODULE, string="RandomDefine", tokenType=IDENTIFIER, line=15, col=62
+              │                 └───> nodeType=TERM, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=15, col=76
+              │                       └───> nodeType=IDENTIFIER, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=15, col=76
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=16, col=4
+              │     └───> nodeType=EXPRESSION, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=16, col=12
+              │           └───> nodeType=TERM, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=16, col=12
+              │                 └───> nodeType=IDENTIFIER, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=16, col=12
+              ├───> nodeType=FUNCCALL, string="test", tokenType=IDENTIFIER, line=17, col=4
+              │     └───> nodeType=EXPRESSION, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=17, col=9
+              │           └───> nodeType=TERM, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=17, col=9
+              │                 └───> nodeType=IDENTIFIER, string="SOME_RANDOM_STRING", tokenType=IDENTIFIER, line=17, col=9
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=19, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=19, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=19, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=19, col=11

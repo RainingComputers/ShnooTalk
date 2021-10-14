@@ -1,0 +1,107 @@
+{
+    "moduleName": "Println.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_Println_shtk__l48_c12": 6
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "Println.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "c": {"dtype": "short", "dtypeSize": 2, "size": 2, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "d": {"dtype": "ushort", "dtypeSize": 2, "size": 2, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "e": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "f": {"dtype": "uint", "dtypeSize": 4, "size": 4, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "g": {"dtype": "long", "dtypeSize": 8, "size": 8, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "h": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "i": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "j": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "l": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "m": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "byte"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "a", "dtype": "byte"}, "op2": {"type": "temp", "id": 5, "dtype": "byte"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 6, "name": "b", "dtype": "ubyte"}, "op2": {"type": "literal", "id": 7, "dtype": "ubyte", "value": 50}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 10, "dtype": "short"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 8, "name": "c", "dtype": "short"}, "op2": {"type": "temp", "id": 10, "dtype": "short"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 13, "dtype": "ushort"}, "op2": {"type": "literal", "id": 12, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 11, "name": "d", "dtype": "ushort"}, "op2": {"type": "temp", "id": 13, "dtype": "ushort"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "literal", "id": 15, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 14, "name": "e", "dtype": "int"}, "op2": {"type": "temp", "id": 16, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 19, "dtype": "uint"}, "op2": {"type": "literal", "id": 18, "dtype": "autoInt", "value": 6}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 17, "name": "f", "dtype": "uint"}, "op2": {"type": "temp", "id": 19, "dtype": "uint"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 22, "dtype": "long"}, "op2": {"type": "literal", "id": 21, "dtype": "autoInt", "value": 7}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 20, "name": "g", "dtype": "long"}, "op2": {"type": "temp", "id": 22, "dtype": "long"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 25, "dtype": "ulong"}, "op2": {"type": "literal", "id": 24, "dtype": "autoInt", "value": 8}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 23, "name": "h", "dtype": "ulong"}, "op2": {"type": "temp", "id": 25, "dtype": "ulong"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 28, "dtype": "float"}, "op2": {"type": "literal", "id": 27, "dtype": "autoFloat", "value": 9.1}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 26, "name": "i", "dtype": "float"}, "op2": {"type": "temp", "id": 28, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 31, "dtype": "double"}, "op2": {"type": "literal", "id": 30, "dtype": "autoFloat", "value": 10.1}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 29, "name": "j", "dtype": "double"}, "op2": {"type": "temp", "id": 31, "dtype": "double"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 34, "dtype": "byte"}, "op2": {"type": "literal", "id": 33, "dtype": "autoInt", "value": 11}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 32, "name": "l", "dtype": "byte"}, "op2": {"type": "temp", "id": 34, "dtype": "byte"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 35, "name": "m", "dtype": "ubyte"}, "op2": {"type": "literal", "id": 36, "dtype": "ubyte", "value": 99}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 37, "name": "a", "dtype": "byte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 38, "name": "b", "dtype": "ubyte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 39, "name": "c", "dtype": "short"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 40, "name": "d", "dtype": "ushort"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 41, "name": "e", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 42, "name": "f", "dtype": "uint"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 43, "name": "g", "dtype": "long"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 44, "name": "h", "dtype": "ulong"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 45, "name": "i", "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 46, "name": "j", "dtype": "double"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 47, "name": "h", "dtype": "ulong"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 48, "name": "i", "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "literal", "id": 49, "dtype": "autoInt", "value": 1}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "literal", "id": 50, "dtype": "autoFloat", "value": 1.1}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "literal", "id": 51, "dtype": "ubyte", "value": 100}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 52, "name": "_str_Println_shtk__l48_c12", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "literal", "id": 54, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 53, "dtype": "int"}, "op2": {"type": "temp", "id": 55, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

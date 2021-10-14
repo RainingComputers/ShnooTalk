@@ -1,0 +1,50 @@
+{
+    "moduleName": "ConditionalNotTest.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_ConditionalNotTest_shtk__l8_c16": 6
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "ConditionalNotTest.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ConditionalNotTest.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "b": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "ConditionalNotTest.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "byte"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "b", "dtype": "byte"}, "op2": {"type": "temp", "id": 5, "dtype": "byte"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "byte"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "greaterThan", "op1": {"type": "var", "id": 9, "name": "b", "dtype": "byte"}, "op2": {"type": "temp", "id": 11, "dtype": "byte"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfTrue", "op1": {"type": "label", "id": 8, "name": "_if_false_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 12, "name": "_str_ConditionalNotTest_shtk__l8_c16", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 8, "name": "_if_false_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 13, "dtype": "int"}, "op2": {"type": "temp", "id": 15, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

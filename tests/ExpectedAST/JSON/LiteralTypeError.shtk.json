@@ -1,0 +1,81 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 9, "col": 0, "file": "LiteralTypeError.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 9, "col": 3, "file": "LiteralTypeError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 10, "col": 0, "file": "LiteralTypeError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 11, "col": 4, "file": "LiteralTypeError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "LiteralTypeError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "LiteralTypeError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 11, "col": 14, "file": "LiteralTypeError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 11, "col": 16, "file": "LiteralTypeError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 11, "col": 16, "file": "LiteralTypeError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2.0", "tokenType": "FLOAT_LITERAL", "line": 11, "col": 16, "file": "LiteralTypeError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 13, "col": 4, "file": "LiteralTypeError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 13, "col": 12, "file": "LiteralTypeError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 13, "col": 12, "file": "LiteralTypeError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 13, "col": 12, "file": "LiteralTypeError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

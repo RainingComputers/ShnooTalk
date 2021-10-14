@@ -1,0 +1,19 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=USE, string="use", tokenType=USE, line=2, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/Vector.shtk"", tokenType=STR_LITERAL, line=2, col=4
+  │     └───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=2, col=33
+  ├───> nodeType=DEF, string="def", tokenType=DEF, line=4, col=0
+  │     ├───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=4, col=4
+  │     └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=4, col=8
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=6, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=6, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=6, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=7, col=0
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=8, col=4
+              │     └───> nodeType=EXPRESSION, string="vec", tokenType=IDENTIFIER, line=8, col=12
+              │           └───> nodeType=TERM, string="vec", tokenType=IDENTIFIER, line=8, col=12
+              │                 └───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=8, col=12
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=10, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=10, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=10, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=10, col=11

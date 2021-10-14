@@ -1,0 +1,13 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=USE, string="use", tokenType=USE, line=8, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/Vector.shtk"", tokenType=STR_LITERAL, line=8, col=4
+  │     └───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=8, col=33
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=10, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=10, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=11, col=0
+              └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=12, col=4
+                    └───> nodeType=EXPRESSION, string="vec", tokenType=IDENTIFIER, line=12, col=12
+                          └───> nodeType=TERM, string="vec", tokenType=IDENTIFIER, line=12, col=12
+                                ├───> nodeType=MODULE, string="vec", tokenType=IDENTIFIER, line=12, col=12
+                                └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=12, col=17
+                                      └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=12, col=17

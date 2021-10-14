@@ -1,0 +1,107 @@
+{
+    "moduleName": "Println.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_Println_shtk__l48_c12": 6
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "Println.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "c": {"dtype": "short", "dtypeSize": 2, "size": 2, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "d": {"dtype": "ushort", "dtypeSize": 2, "size": 2, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "e": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "f": {"dtype": "uint", "dtypeSize": 4, "size": 4, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "g": {"dtype": "long", "dtypeSize": 8, "size": 8, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "h": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "i": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "j": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "l": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "m": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "Println.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    byte temp5 = cast autoInt 1
+                    byte a = equal byte temp5
+                    ubyte b = equal ubyte 50
+                    short temp10 = cast autoInt 3
+                    short c = equal short temp10
+                    ushort temp13 = cast autoInt 4
+                    ushort d = equal ushort temp13
+                    int temp16 = cast autoInt 5
+                    int e = equal int temp16
+                    uint temp19 = cast autoInt 6
+                    uint f = equal uint temp19
+                    long temp22 = cast autoInt 7
+                    long g = equal long temp22
+                    ulong temp25 = cast autoInt 8
+                    ulong h = equal ulong temp25
+                    float temp28 = cast autoFloat 9.100000
+                    float i = equal float temp28
+                    double temp31 = cast autoFloat 10.100000
+                    double j = equal double temp31
+                    byte temp34 = cast autoInt 11
+                    byte l = equal byte temp34
+                    ubyte m = equal ubyte 99
+                    print byte a
+                    newLine
+                    print ubyte b
+                    newLine
+                    print short c
+                    newLine
+                    print ushort d
+                    newLine
+                    print int e
+                    newLine
+                    print uint f
+                    newLine
+                    print long g
+                    newLine
+                    print ulong h
+                    newLine
+                    print float i
+                    newLine
+                    print double j
+                    newLine
+                    print ulong h
+                    newLine
+                    print float i
+                    newLine
+                    print autoInt 1
+                    newLine
+                    print autoFloat 1.100000
+                    newLine
+                    print ubyte 100
+                    newLine
+                    printString stringData _str_Println_shtk__l48_c12
+                    newLine
+                    int temp55 = cast autoInt 0
+                    int returnValue53 = equal int temp55
+                    return
+            ]
+        }
+    }
+}

@@ -1,0 +1,70 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 8, "col": 0, "file": "InvalidModuleAccessUsageError.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Vector.shtk\"", "tokenType": "STR_LITERAL", "line": 8, "col": 4, "file": "InvalidModuleAccessUsageError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 8, "col": 33, "file": "InvalidModuleAccessUsageError.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 10, "col": 0, "file": "InvalidModuleAccessUsageError.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 10, "col": 3, "file": "InvalidModuleAccessUsageError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 11, "col": 0, "file": "InvalidModuleAccessUsageError.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 12, "col": 4, "file": "InvalidModuleAccessUsageError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 12, "col": 12, "file": "InvalidModuleAccessUsageError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 12, "col": 12, "file": "InvalidModuleAccessUsageError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 12, "col": 12, "file": "InvalidModuleAccessUsageError.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 17, "file": "InvalidModuleAccessUsageError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 17, "file": "InvalidModuleAccessUsageError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

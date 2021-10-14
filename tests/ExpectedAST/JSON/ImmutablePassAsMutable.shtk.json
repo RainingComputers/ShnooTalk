@@ -1,0 +1,206 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 8, "col": 0, "file": "ImmutablePassAsMutable.shtk"},
+      "children": [
+        {
+          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 8, "col": 3, "file": "ImmutablePassAsMutable.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "mut", "tokenType": "MUTABLE", "line": 8, "col": 7, "file": "ImmutablePassAsMutable.shtk"},
+          "children": [
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 8, "col": 11, "file": "ImmutablePassAsMutable.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 8, "col": 13, "file": "ImmutablePassAsMutable.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 0, "file": "ImmutablePassAsMutable.shtk"},
+          "children": [
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 10, "col": 4, "file": "ImmutablePassAsMutable.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 10, "col": 4, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 10, "col": 4, "file": "ImmutablePassAsMutable.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 10, "col": 6, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 9, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 9, "file": "ImmutablePassAsMutable.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 9, "file": "ImmutablePassAsMutable.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "ImmutablePassAsMutable.shtk"},
+      "children": [
+        {
+          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "ImmutablePassAsMutable.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 7, "file": "ImmutablePassAsMutable.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 7, "file": "ImmutablePassAsMutable.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 13, "col": 9, "file": "ImmutablePassAsMutable.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 14, "col": 0, "file": "ImmutablePassAsMutable.shtk"},
+          "children": [
+            {
+              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 15, "col": 4, "file": "ImmutablePassAsMutable.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "ImmutablePassAsMutable.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "ImmutablePassAsMutable.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 18, "col": 0, "file": "ImmutablePassAsMutable.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 18, "col": 3, "file": "ImmutablePassAsMutable.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 19, "col": 0, "file": "ImmutablePassAsMutable.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 20, "col": 4, "file": "ImmutablePassAsMutable.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 20, "col": 8, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 20, "col": 10, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 20, "col": 14, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 20, "col": 16, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 20, "col": 16, "file": "ImmutablePassAsMutable.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 20, "col": 16, "file": "ImmutablePassAsMutable.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 4, "file": "ImmutablePassAsMutable.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 21, "col": 8, "file": "ImmutablePassAsMutable.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 21, "col": 8, "file": "ImmutablePassAsMutable.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 21, "col": 8, "file": "ImmutablePassAsMutable.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

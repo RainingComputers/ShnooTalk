@@ -1,0 +1,71 @@
+{
+    "moduleName": "MutablePointerParameter.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_MutablePointerParameter_shtk_testfunction": {
+            "moduleName": "MutablePointerParameter.shtk",
+            "parameters": ["p", "a"],
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "MutablePointerParameter.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MutablePointerParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isPointer", "isParameter"]},
+                "p": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MutablePointerParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isPointer", "isParameter"]}
+            },
+            "icode": [
+                {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 3, "name": "p", "dtype": "int"}, "op2": {"type": "ptr", "id": 4, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "moduleName": "MutablePointerParameter.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MutablePointerParameter.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "p": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MutablePointerParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isPointer", "isLocal"]},
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MutablePointerParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MutablePointerParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 10, "dtype": "int"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 8, "name": "x", "dtype": "int"}, "op2": {"type": "temp", "id": 10, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 13, "dtype": "int"}, "op2": {"type": "literal", "id": 12, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 11, "name": "y", "dtype": "int"}, "op2": {"type": "temp", "id": 13, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 14, "name": "p", "dtype": "int"}, "op2": {"type": "var", "id": 15, "name": "x", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "ptr", "id": 16, "name": "p", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "passPointer", "op1": {"type": "ptr", "id": 18, "name": "p", "dtype": "int"}, "op2": {"type": "var", "id": 21, "name": "_fn_MutablePointerParameter_shtk_testfunction", "dtype": "void"}, "op3": {"type": "module", "id": 22, "name": "MutablePointerParameter.shtk"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 23, "name": "y", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 25, "name": "_fn_MutablePointerParameter_shtk_testfunction", "dtype": "void"}, "op3": {"type": "module", "id": 26, "name": "MutablePointerParameter.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 27, "dtype": "void"}, "op2": {"type": "var", "id": 28, "name": "_fn_MutablePointerParameter_shtk_testfunction", "dtype": "void"}, "op3": {"type": "module", "id": 29, "name": "MutablePointerParameter.shtk"}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "ptr", "id": 30, "name": "p", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 34, "dtype": "int"}, "op2": {"type": "literal", "id": 33, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 32, "dtype": "int"}, "op2": {"type": "temp", "id": 34, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

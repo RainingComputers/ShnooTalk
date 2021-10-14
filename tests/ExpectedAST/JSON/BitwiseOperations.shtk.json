@@ -1,0 +1,678 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 11, "col": 0, "file": "BitwiseOperations.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 11, "col": 3, "file": "BitwiseOperations.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 13, "file": "BitwiseOperations.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 12, "col": 0, "file": "BitwiseOperations.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 13, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 13, "col": 8, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "uint", "tokenType": "IDENTIFIER", "line": 13, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 13, "col": 17, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "32", "tokenType": "INT_LITERAL", "line": 13, "col": 19, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "32", "tokenType": "INT_LITERAL", "line": 13, "col": 19, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "32", "tokenType": "INT_LITERAL", "line": 13, "col": 19, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 15, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": ">>", "tokenType": "RIGHT_SHIFT", "line": 15, "col": 16, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 19, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 19, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 19, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 16, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "~", "tokenType": "NOT", "line": 16, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "~", "tokenType": "NOT", "line": 16, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "~", "tokenType": "NOT", "line": 16, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 16, "col": 13, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 16, "col": 13, "file": "BitwiseOperations.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 17, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "^", "tokenType": "BITWISE_XOR", "line": 17, "col": 16, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 18, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 18, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 18, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "^=", "tokenType": "XOR_EQUAL", "line": 19, "col": 8, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 19, "col": 11, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 19, "col": 11, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 19, "col": 11, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 4, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 4, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 21, "col": 8, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 10, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 10, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 10, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 10, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "|", "tokenType": "BITWISE_OR", "line": 21, "col": 14, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "32", "tokenType": "INT_LITERAL", "line": 21, "col": 16, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "32", "tokenType": "INT_LITERAL", "line": 21, "col": 16, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "32", "tokenType": "INT_LITERAL", "line": 21, "col": 16, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 23, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 23, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 23, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 23, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 25, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 25, "col": 4, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 25, "col": 4, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "/=", "tokenType": "DIVIDE_EQUAL", "line": 25, "col": 8, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "16", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "16", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "16", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 27, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 27, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 27, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 27, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 29, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 29, "col": 4, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 29, "col": 4, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "&=", "tokenType": "AND_EQUAL", "line": 29, "col": 8, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 29, "col": 11, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 29, "col": 11, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 29, "col": 11, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 31, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 31, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 31, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 31, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 33, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 33, "col": 8, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "uint", "tokenType": "IDENTIFIER", "line": 33, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 33, "col": 17, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 33, "col": 19, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 33, "col": 19, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 33, "col": 19, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 35, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 35, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 35, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 35, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 35, "col": 12, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "<<", "tokenType": "LEFT_SHIFT", "line": 35, "col": 16, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 35, "col": 19, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 35, "col": 19, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 35, "col": 19, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 36, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 36, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 36, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 36, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 36, "col": 12, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "&", "tokenType": "BITWISE_AND", "line": 36, "col": 16, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 36, "col": 18, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 36, "col": 18, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 36, "col": 18, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 38, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 38, "col": 8, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 38, "col": 11, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 38, "col": 15, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 38, "col": 17, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 38, "col": 17, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 38, "col": 17, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 40, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 40, "col": 12, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 40, "col": 12, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 40, "col": 12, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 40, "col": 12, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": ">>", "tokenType": "RIGHT_SHIFT", "line": 40, "col": 14, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 40, "col": 17, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 40, "col": 17, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 40, "col": 17, "file": "BitwiseOperations.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 42, "col": 4, "file": "BitwiseOperations.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 42, "col": 11, "file": "BitwiseOperations.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 42, "col": 11, "file": "BitwiseOperations.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 42, "col": 11, "file": "BitwiseOperations.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

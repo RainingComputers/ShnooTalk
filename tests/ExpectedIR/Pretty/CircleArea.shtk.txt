@@ -1,0 +1,67 @@
+{
+    "moduleName": "CircleArea.shtk",
+    "uses": ["TestModules/Math.shtk"],
+    "aliases": {
+        "math": "TestModules/Math.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "PI": 3.14,
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_CircleArea_shtk_area": {
+            "moduleName": "CircleArea.shtk",
+            "parameters": ["r"],
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "r": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            }
+            "icode": [
+                    autoFloat temp7 = cast float r
+                    autoFloat temp6 = multiply autoFloat 3.140000, autoFloat temp7
+                    autoFloat temp10 = cast float r
+                    autoFloat temp9 = multiply autoFloat temp6, autoFloat temp10
+                    float temp11 = cast autoFloat temp9
+                    float returnValue3 = equal float temp11
+                    return
+            ]
+        },
+        "main": {
+            "moduleName": "CircleArea.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "r": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    int temp17 = cast autoInt 4
+                    int r = equal int temp17
+                    float temp19 = cast int r
+                    pass float temp19, float _fn_CircleArea_shtk_area, module CircleArea.shtk
+                    float calleeReturnValue23 = call float _fn_CircleArea_shtk_area, module CircleArea.shtk
+                    print float calleeReturnValue23
+                    newLine
+                    int temp28 = cast autoInt 0
+                    int returnValue26 = equal int temp28
+                    return
+            ]
+        }
+    }
+}

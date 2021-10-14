@@ -1,0 +1,53 @@
+{
+    "moduleName": "Define.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "BAR": -5,
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "FLOATBAR": -3.5,
+        "FOO": 3.5,
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+        "FOOBAR": "_str_Define_shtk__l5_c11"
+    },
+    "stringsDataCharCounts": {
+        "_str_Define_shtk__l5_c11": 6
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "Define.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Define.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            }
+            "icode": [
+                    print autoInt -5
+                    space
+                    print autoFloat 3.500000
+                    space
+                    printString stringData _str_Define_shtk__l5_c11
+                    space
+                    print autoFloat -3.500000
+                    newLine
+                    int temp9 = cast autoInt 0
+                    int returnValue7 = equal int temp9
+                    return
+            ]
+        }
+    }
+}

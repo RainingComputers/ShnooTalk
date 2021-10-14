@@ -1,0 +1,355 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 4, "col": 0, "file": "NestedParameterFunctionCall.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Math.shtk\"", "tokenType": "STR_LITERAL", "line": 4, "col": 4, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 4, "col": 31, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 6, "col": 0, "file": "NestedParameterFunctionCall.shtk"},
+      "children": [
+        {
+          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 6, "col": 3, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 6, "col": 10, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 6, "col": 10, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 6, "col": 12, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 6, "col": 19, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 6, "col": 19, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 6, "col": 21, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 7, "col": 0, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 8, "col": 4, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 12, "file": "NestedParameterFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 12, "file": "NestedParameterFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 12, "file": "NestedParameterFunctionCall.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 9, "col": 4, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "NestedParameterFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "NestedParameterFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "NestedParameterFunctionCall.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 12, "col": 0, "file": "NestedParameterFunctionCall.shtk"},
+      "children": [
+        {
+          "token": {"string": "sum", "tokenType": "IDENTIFIER", "line": 12, "col": 3, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 7, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 7, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 12, "col": 9, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 12, "col": 14, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 12, "col": 14, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 12, "col": 16, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 12, "col": 24, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 13, "col": 0, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 14, "col": 4, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 14, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 14, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 14, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 14, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 14, "col": 13, "file": "NestedParameterFunctionCall.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 14, "col": 15, "file": "NestedParameterFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 14, "col": 15, "file": "NestedParameterFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 14, "col": 15, "file": "NestedParameterFunctionCall.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 17, "col": 0, "file": "NestedParameterFunctionCall.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 17, "col": 3, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 17, "col": 13, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 18, "col": 0, "file": "NestedParameterFunctionCall.shtk"},
+          "children": [
+            {
+              "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 19, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 19, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 19, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "sin", "tokenType": "IDENTIFIER", "line": 19, "col": 17, "file": "NestedParameterFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "sin", "tokenType": "IDENTIFIER", "line": 19, "col": 17, "file": "NestedParameterFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "0.5", "tokenType": "FLOAT_LITERAL", "line": 19, "col": 21, "file": "NestedParameterFunctionCall.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "0.5", "tokenType": "FLOAT_LITERAL", "line": 19, "col": 21, "file": "NestedParameterFunctionCall.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "0.5", "tokenType": "FLOAT_LITERAL", "line": 19, "col": 21, "file": "NestedParameterFunctionCall.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "sum", "tokenType": "IDENTIFIER", "line": 19, "col": 27, "file": "NestedParameterFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "sum", "tokenType": "IDENTIFIER", "line": 19, "col": 27, "file": "NestedParameterFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "sum", "tokenType": "IDENTIFIER", "line": 19, "col": 27, "file": "NestedParameterFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 19, "col": 31, "file": "NestedParameterFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 19, "col": 31, "file": "NestedParameterFunctionCall.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 19, "col": 31, "file": "NestedParameterFunctionCall.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 19, "col": 34, "file": "NestedParameterFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 19, "col": 34, "file": "NestedParameterFunctionCall.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 19, "col": 34, "file": "NestedParameterFunctionCall.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 21, "col": 4, "file": "NestedParameterFunctionCall.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 21, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 21, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 21, "col": 11, "file": "NestedParameterFunctionCall.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

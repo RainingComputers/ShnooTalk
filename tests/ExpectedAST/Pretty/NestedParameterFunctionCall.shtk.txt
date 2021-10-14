@@ -1,0 +1,66 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=USE, string="use", tokenType=USE, line=4, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/Math.shtk"", tokenType=STR_LITERAL, line=4, col=4
+  │     └───> nodeType=IDENTIFIER, string="math", tokenType=IDENTIFIER, line=4, col=31
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=6, col=0
+  │     ├───> nodeType=IDENTIFIER, string="foobar", tokenType=IDENTIFIER, line=6, col=3
+  │     ├───> nodeType=PARAM, string="a", tokenType=IDENTIFIER, line=6, col=10
+  │     │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=6, col=10
+  │     │     └───> nodeType=IDENTIFIER, string="float", tokenType=IDENTIFIER, line=6, col=12
+  │     ├───> nodeType=PARAM, string="b", tokenType=IDENTIFIER, line=6, col=19
+  │     │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=6, col=19
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=6, col=21
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=7, col=0
+  │           ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=8, col=4
+  │           │     └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=8, col=12
+  │           │           └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=8, col=12
+  │           │                 └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=8, col=12
+  │           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=9, col=4
+  │                 └───> nodeType=EXPRESSION, string="b", tokenType=IDENTIFIER, line=9, col=12
+  │                       └───> nodeType=TERM, string="b", tokenType=IDENTIFIER, line=9, col=12
+  │                             └───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=9, col=12
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=12, col=0
+  │     ├───> nodeType=IDENTIFIER, string="sum", tokenType=IDENTIFIER, line=12, col=3
+  │     ├───> nodeType=PARAM, string="a", tokenType=IDENTIFIER, line=12, col=7
+  │     │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=12, col=7
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=12, col=9
+  │     ├───> nodeType=PARAM, string="b", tokenType=IDENTIFIER, line=12, col=14
+  │     │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=12, col=14
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=12, col=16
+  │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=12, col=24
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=13, col=0
+  │           └───> nodeType=RETURN, string="return", tokenType=RETURN, line=14, col=4
+  │                 └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=14, col=11
+  │                       ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=14, col=11
+  │                       │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=14, col=11
+  │                       │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=14, col=11
+  │                       ├───> nodeType=OPERATOR, string="+", tokenType=PLUS, line=14, col=13
+  │                       └───> nodeType=EXPRESSION, string="b", tokenType=IDENTIFIER, line=14, col=15
+  │                             └───> nodeType=TERM, string="b", tokenType=IDENTIFIER, line=14, col=15
+  │                                   └───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=14, col=15
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=17, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=17, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=17, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=18, col=0
+              ├───> nodeType=FUNCCALL, string="foobar", tokenType=IDENTIFIER, line=19, col=4
+              │     ├───> nodeType=EXPRESSION, string="math", tokenType=IDENTIFIER, line=19, col=11
+              │     │     └───> nodeType=TERM, string="math", tokenType=IDENTIFIER, line=19, col=11
+              │     │           ├───> nodeType=MODULE, string="math", tokenType=IDENTIFIER, line=19, col=11
+              │     │           └───> nodeType=TERM, string="sin", tokenType=IDENTIFIER, line=19, col=17
+              │     │                 └───> nodeType=FUNCCALL, string="sin", tokenType=IDENTIFIER, line=19, col=17
+              │     │                       └───> nodeType=EXPRESSION, string="0.5", tokenType=FLOAT_LITERAL, line=19, col=21
+              │     │                             └───> nodeType=TERM, string="0.5", tokenType=FLOAT_LITERAL, line=19, col=21
+              │     │                                   └───> nodeType=LITERAL, string="0.5", tokenType=FLOAT_LITERAL, line=19, col=21
+              │     └───> nodeType=EXPRESSION, string="sum", tokenType=IDENTIFIER, line=19, col=27
+              │           └───> nodeType=TERM, string="sum", tokenType=IDENTIFIER, line=19, col=27
+              │                 └───> nodeType=FUNCCALL, string="sum", tokenType=IDENTIFIER, line=19, col=27
+              │                       ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=19, col=31
+              │                       │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=19, col=31
+              │                       │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=19, col=31
+              │                       └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=19, col=34
+              │                             └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=19, col=34
+              │                                   └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=19, col=34
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=21, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=21, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=21, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=21, col=11

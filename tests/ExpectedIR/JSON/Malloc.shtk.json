@@ -1,0 +1,109 @@
+{
+    "moduleName": "Malloc.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "NUM_ELEM": 10,
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_Malloc_shtk__l31_c12": 3,
+        "_str_Malloc_shtk__l31_c28": 3
+    },
+    "globals": {
+    },
+    "structures": {
+        "Vector": {
+            "structFields": {
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 4, "dimensions": [], "properties": []}
+            },
+            "size": 8,
+            "moduleName": "Malloc.shtk"
+        }
+    },
+    "externFunctions": {
+        "malloc": {
+            "moduleName": "Malloc.shtk",
+            "parameters": ["size"],
+            "functionReturnType": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer"]},
+            "symbols": {
+                "size": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                
+            ]
+        }
+    },
+    "functions": {
+        "_fn_Malloc_shtk_createVector": {
+            "moduleName": "Malloc.shtk",
+            "parameters": ["x", "y"],
+            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "v": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "v", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "var", "id": 8, "name": "x", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op2": {"type": "var", "id": 9, "name": "v", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 12, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op3": {"type": "bytes", "id": 11, "bytes": 4}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 12, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "y", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 16, "dtype": "int"}, "op2": {"type": "returnValue", "id": 14, "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 17, "dtype": "int"}, "op2": {"type": "var", "id": 15, "name": "v", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 16, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 17, "dtype": "int"}, "op3": {"type": "literal", "id": 18, "dtype": "autoInt", "value": 8}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "_fn_Malloc_shtk_printVec": {
+            "moduleName": "Malloc.shtk",
+            "parameters": ["vector"],
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "vector": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 22, "name": "_str_Malloc_shtk__l31_c12", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 23, "name": "vector", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 26, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 24, "dtype": "int"}, "op3": {"type": "bytes", "id": 25, "bytes": 0}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 26, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 28, "name": "_str_Malloc_shtk__l31_c28", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 29, "name": "vector", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 32, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op3": {"type": "bytes", "id": 31, "bytes": 4}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 32, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "moduleName": "Malloc.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "vecArray": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [1], "properties": ["isMutable", "isPointer", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 40, "dtype": "autoInt"}, "op2": {"type": "literal", "id": 38, "dtype": "autoInt", "value": 8}, "op3": {"type": "literal", "id": 39, "dtype": "autoInt", "value": 10}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 42, "dtype": "ulong"}, "op2": {"type": "temp", "id": 40, "dtype": "autoInt"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 42, "dtype": "ulong"}, "op2": {"type": "var", "id": 43, "name": "malloc", "dtype": "ubyte"}, "op3": {"type": "module", "id": 44, "name": "Malloc.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnPointer", "id": 45Pretty print error
+REPORT THIS BUG

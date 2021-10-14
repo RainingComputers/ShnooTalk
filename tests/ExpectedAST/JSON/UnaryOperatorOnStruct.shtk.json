@@ -1,0 +1,147 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "struct", "tokenType": "STRUCT", "line": 8, "col": 0, "file": "UnaryOperatorOnStruct.shtk"},
+      "children": [
+        {
+          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 8, "col": 7, "file": "UnaryOperatorOnStruct.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 10, "col": 4, "file": "UnaryOperatorOnStruct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 8, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 10, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 10, "col": 13, "file": "UnaryOperatorOnStruct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 10, "col": 15, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 17, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "UnaryOperatorOnStruct.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "UnaryOperatorOnStruct.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 14, "col": 0, "file": "UnaryOperatorOnStruct.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 4, "file": "UnaryOperatorOnStruct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 10, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 15, "col": 16, "file": "UnaryOperatorOnStruct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 18, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 20, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "UnaryOperatorOnStruct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "UnaryOperatorOnStruct.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 17, "col": 6, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "-", "tokenType": "MINUS", "line": 17, "col": 8, "file": "UnaryOperatorOnStruct.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "-", "tokenType": "MINUS", "line": 17, "col": 8, "file": "UnaryOperatorOnStruct.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "-", "tokenType": "MINUS", "line": 17, "col": 8, "file": "UnaryOperatorOnStruct.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 9, "file": "UnaryOperatorOnStruct.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 9, "file": "UnaryOperatorOnStruct.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+    "moduleName": "Global.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+        "_fn_Global_shtk_globalFoo": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Global.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isGlobal"]}
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_Global_shtk_foobar": {
+            "moduleName": "Global.shtk",
+            "parameters": ["x"],
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "Global.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Global.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            }
+            "icode": [
+                    print int _fn_Global_shtk_globalFoo
+                    newLine
+                    int temp9 = cast autoInt 2
+                    int temp8 = divide int _fn_Global_shtk_globalFoo, int temp9
+                    int temp10 = add int x, int temp8
+                    int temp11 = add int _fn_Global_shtk_globalFoo, int temp10
+                    int _fn_Global_shtk_globalFoo = equal int temp11
+                    return
+            ]
+        },
+        "main": {
+            "moduleName": "Global.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Global.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            }
+            "icode": [
+                    int temp17 = cast autoInt 2
+                    int _fn_Global_shtk_globalFoo = equal int temp17
+                    print int _fn_Global_shtk_globalFoo
+                    newLine
+                    int temp21 = cast autoInt 3
+                    pass int temp21, void _fn_Global_shtk_foobar, module Global.shtk
+                    void calleeReturnValue24 = call void _fn_Global_shtk_foobar, module Global.shtk
+                    print int _fn_Global_shtk_globalFoo
+                    newLine
+                    int temp31 = cast autoInt 1
+                    int temp30 = add int _fn_Global_shtk_globalFoo, int temp31
+                    int _fn_Global_shtk_globalFoo = equal int temp30
+                    print int _fn_Global_shtk_globalFoo
+                    newLine
+                    int temp35 = cast autoInt 0
+                    int returnValue33 = equal int temp35
+                    return
+            ]
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 8, "col": 0, "file": "ContinueOutsideLoop.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 8, "col": 3, "file": "ContinueOutsideLoop.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 0, "file": "ContinueOutsideLoop.shtk"},
+          "children": [
+            {
+              "token": {"string": "continue", "tokenType": "CONTINUE", "line": 10, "col": 4, "file": "ContinueOutsideLoop.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

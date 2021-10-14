@@ -1,0 +1,529 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 3, "col": 0, "file": "ArrayAverage.shtk"},
+      "children": [
+        {
+          "token": {"string": "avg", "tokenType": "IDENTIFIER", "line": 3, "col": 3, "file": "ArrayAverage.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 7, "file": "ArrayAverage.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 7, "file": "ArrayAverage.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 9, "file": "ArrayAverage.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 12, "file": "ArrayAverage.shtk"},
+              "children": [
+                {
+                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 3, "col": 13, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 20, "file": "ArrayAverage.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 4, "col": 0, "file": "ArrayAverage.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 5, "col": 4, "file": "ArrayAverage.shtk"},
+              "children": [
+                {
+                  "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 12, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 16, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 18, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 18, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 18, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "for", "tokenType": "FOR", "line": 7, "col": 4, "file": "ArrayAverage.shtk"},
+              "children": [
+                {
+                  "token": {"string": "var", "tokenType": "VAR", "line": 7, "col": 8, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 7, "col": 12, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 14, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "=", "tokenType": "EQUAL", "line": 7, "col": 18, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "<", "tokenType": "LESS_THAN", "line": 7, "col": 25, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 7, "col": 27, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 7, "col": 27, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 7, "col": 27, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 7, "col": 30, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 7, "col": 30, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 7, "col": 30, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 7, "col": 32, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 35, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 35, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 35, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 8, "col": 8, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 8, "col": 8, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 8, "col": 8, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 8, "col": 8, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 8, "col": 12, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 15, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 15, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 15, "file": "ArrayAverage.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 8, "col": 16, "file": "ArrayAverage.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 8, "col": 17, "file": "ArrayAverage.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 8, "col": 17, "file": "ArrayAverage.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 8, "col": 17, "file": "ArrayAverage.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 10, "col": 4, "file": "ArrayAverage.shtk"},
+              "children": [
+                {
+                  "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "tot", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "/", "tokenType": "DIVIDE", "line": 10, "col": 14, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 10, "col": 15, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 10, "col": 15, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 10, "col": 15, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "ArrayAverage.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "ArrayAverage.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 13, "col": 13, "file": "ArrayAverage.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 14, "col": 0, "file": "ArrayAverage.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 4, "file": "ArrayAverage.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 15, "col": 10, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 15, "col": 13, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 15, "col": 14, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 15, "col": 17, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 15, "col": 19, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 20, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 20, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 20, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 23, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 23, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 15, "col": 23, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 15, "col": 26, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 15, "col": 26, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 15, "col": 26, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 15, "col": 29, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 15, "col": 29, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 15, "col": 29, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 15, "col": 32, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 15, "col": 32, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 15, "col": 32, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 17, "col": 4, "file": "ArrayAverage.shtk"},
+              "children": [
+                {
+                  "token": {"string": "avg", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "avg", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "avg", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 16, "file": "ArrayAverage.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 16, "file": "ArrayAverage.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 16, "file": "ArrayAverage.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 19, "col": 4, "file": "ArrayAverage.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "ArrayAverage.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "ArrayAverage.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "ArrayAverage.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

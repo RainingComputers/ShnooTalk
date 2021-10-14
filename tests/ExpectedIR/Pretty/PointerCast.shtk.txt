@@ -1,0 +1,70 @@
+{
+    "moduleName": "PointerCast.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+        "Vector": {
+            "structFields": {
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerCast.shtk", "offset": 0, "dimensions": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerCast.shtk", "offset": 4, "dimensions": [], "properties": []}
+            },
+            "size": 8,
+            "moduleName": "PointerCast.shtk"
+        }
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "PointerCast.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerCast.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PointerCast.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "p": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerCast.shtk", "offset": 0, "dimensions": [1], "properties": ["isMutable", "isPointer", "isLocal"]}
+            }
+            "icode": [
+                    int* tempPtr5 = createPointer struct a
+                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                    int temp9 = cast autoInt 1
+                    int* tempPtr7 = write int temp9
+                    int* tempPtr11 = createPointer struct a
+                    int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                    int temp15 = cast autoInt 2
+                    int* tempPtr13 = write int temp15
+                    int* tempPtr18 = pointerCast struct a
+                    int* p = pointerAssign int* tempPtr18
+                    void* tempPtr22 = addressMultiply autoInt 0, bytes 4
+                    int* tempPtr23 = addressAdd int* p, void* tempPtr22
+                    int temp24 = read int* tempPtr23
+                    print int temp24
+                    newLine
+                    void* tempPtr28 = addressMultiply autoInt 1, bytes 4
+                    int* tempPtr29 = addressAdd int* p, void* tempPtr28
+                    int temp30 = read int* tempPtr29
+                    print int temp30
+                    newLine
+                    int temp33 = cast autoInt 0
+                    int returnValue31 = equal int temp33
+                    return
+            ]
+        }
+    }
+}

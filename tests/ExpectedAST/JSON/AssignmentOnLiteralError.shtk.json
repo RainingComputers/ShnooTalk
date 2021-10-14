@@ -1,0 +1,103 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "def", "tokenType": "DEF", "line": 8, "col": 0, "file": "AssignmentOnLiteralError.shtk"},
+      "children": [
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 4, "file": "AssignmentOnLiteralError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 8, "col": 6, "file": "AssignmentOnLiteralError.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 10, "col": 0, "file": "AssignmentOnLiteralError.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 10, "col": 3, "file": "AssignmentOnLiteralError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 13, "file": "AssignmentOnLiteralError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 11, "col": 0, "file": "AssignmentOnLiteralError.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignmentOnLiteralError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignmentOnLiteralError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignmentOnLiteralError.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 12, "col": 6, "file": "AssignmentOnLiteralError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 8, "file": "AssignmentOnLiteralError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 8, "file": "AssignmentOnLiteralError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 8, "file": "AssignmentOnLiteralError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 14, "col": 4, "file": "AssignmentOnLiteralError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 14, "col": 11, "file": "AssignmentOnLiteralError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 14, "col": 11, "file": "AssignmentOnLiteralError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 14, "col": 11, "file": "AssignmentOnLiteralError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

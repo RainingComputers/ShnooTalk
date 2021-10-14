@@ -1,0 +1,26 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=USE, string="use", tokenType=USE, line=3, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/Math.shtk"", tokenType=STR_LITERAL, line=3, col=4
+  │     └───> nodeType=IDENTIFIER, string="math", tokenType=IDENTIFIER, line=3, col=31
+  ├───> nodeType=DEF, string="def", tokenType=DEF, line=5, col=0
+  │     ├───> nodeType=IDENTIFIER, string="BLEH", tokenType=IDENTIFIER, line=5, col=4
+  │     └───> nodeType=LITERAL, string="5", tokenType=INT_LITERAL, line=5, col=9
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=7, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=7, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=7, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=8, col=0
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=9, col=4
+              │     └───> nodeType=EXPRESSION, string="math", tokenType=IDENTIFIER, line=9, col=12
+              │           └───> nodeType=TERM, string="math", tokenType=IDENTIFIER, line=9, col=12
+              │                 ├───> nodeType=MODULE, string="math", tokenType=IDENTIFIER, line=9, col=12
+              │                 └───> nodeType=TERM, string="sin", tokenType=IDENTIFIER, line=9, col=18
+              │                       └───> nodeType=FUNCCALL, string="sin", tokenType=IDENTIFIER, line=9, col=18
+              │                             └───> nodeType=EXPRESSION, string="float", tokenType=IDENTIFIER, line=9, col=22
+              │                                   └───> nodeType=TERM, string="float", tokenType=IDENTIFIER, line=9, col=22
+              │                                         └───> nodeType=CAST, string="float", tokenType=IDENTIFIER, line=9, col=22
+              │                                               └───> nodeType=TERM, string="BLEH", tokenType=IDENTIFIER, line=9, col=28
+              │                                                     └───> nodeType=IDENTIFIER, string="BLEH", tokenType=IDENTIFIER, line=9, col=28
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=11, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=11, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=11, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=11, col=11

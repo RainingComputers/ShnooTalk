@@ -1,0 +1,47 @@
+{
+    "moduleName": "DefParameterToUseFunction.shtk",
+    "uses": ["TestModules/Math.shtk"],
+    "aliases": {
+        "math": "TestModules/Math.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "BLEH": 5,
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "DefParameterToUseFunction.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "DefParameterToUseFunction.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 4, "dtype": "float"}, "op2": {"type": "literal", "id": 3, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 4, "dtype": "float"}, "op2": {"type": "var", "id": 6, "name": "_fn_TestModules_Math_shtk_sin", "dtype": "float"}, "op3": {"type": "module", "id": 7, "name": "TestModules/Math.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 8, "dtype": "float"}, "op2": {"type": "var", "id": 9, "name": "_fn_TestModules_Math_shtk_sin", "dtype": "float"}, "op3": {"type": "module", "id": 10, "name": "TestModules/Math.shtk"}},
+                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 8, "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 13, "dtype": "int"}, "op2": {"type": "literal", "id": 12, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 11, "dtype": "int"}, "op2": {"type": "temp", "id": 13, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

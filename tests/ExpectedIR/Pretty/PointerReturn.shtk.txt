@@ -1,0 +1,79 @@
+{
+    "moduleName": "PointerReturn.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+        "Vector": {
+            "structFields": {
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 4, "dimensions": [], "properties": []}
+            },
+            "size": 8,
+            "moduleName": "PointerReturn.shtk"
+        }
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_PointerReturn_shtk_testfunction": {
+            "moduleName": "PointerReturn.shtk",
+            "parameters": ["this"],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isPointer"]},
+            "symbols": {
+                "this": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            }
+            "icode": [
+                    int* tempPtr5 = createPointer struct this
+                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 4
+                    int* returnPointer3 = pointerAssign int* tempPtr7
+                    return
+            ]
+        },
+        "main": {
+            "moduleName": "PointerReturn.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "p": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isPointer", "isLocal"]}
+            }
+            "icode": [
+                    int* tempPtr13 = createPointer struct a
+                    int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
+                    int temp17 = cast autoInt 1
+                    int* tempPtr15 = write int temp17
+                    int* tempPtr19 = createPointer struct a
+                    int* tempPtr21 = addressAdd int* tempPtr19, bytes 4
+                    int temp23 = cast autoInt 2
+                    int* tempPtr21 = write int temp23
+                    int* tempPtr27 = createPointer struct a
+                    passAddress int* tempPtr27, int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
+                    int* calleeReturnPointer30 = call int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
+                    int* p = pointerAssign int* calleeReturnPointer30
+                    int temp34 = read int* p
+                    print int temp34
+                    newLine
+                    int temp37 = cast autoInt 0
+                    int returnValue35 = equal int temp37
+                    return
+            ]
+        }
+    }
+}

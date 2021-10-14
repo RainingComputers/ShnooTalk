@@ -1,0 +1,98 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "enum", "tokenType": "ENUM", "line": 8, "col": 0, "file": "ArrayAccessOnEnum.shtk"},
+      "children": [
+        {
+          "token": {"string": "LED0", "tokenType": "IDENTIFIER", "line": 8, "col": 6, "file": "ArrayAccessOnEnum.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "LED1", "tokenType": "IDENTIFIER", "line": 8, "col": 12, "file": "ArrayAccessOnEnum.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 10, "col": 0, "file": "ArrayAccessOnEnum.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 10, "col": 3, "file": "ArrayAccessOnEnum.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 11, "col": 0, "file": "ArrayAccessOnEnum.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 12, "col": 4, "file": "ArrayAccessOnEnum.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 8, "file": "ArrayAccessOnEnum.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 12, "col": 10, "file": "ArrayAccessOnEnum.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 12, "col": 14, "file": "ArrayAccessOnEnum.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "LED0", "tokenType": "IDENTIFIER", "line": 12, "col": 16, "file": "ArrayAccessOnEnum.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "LED0", "tokenType": "IDENTIFIER", "line": 12, "col": 16, "file": "ArrayAccessOnEnum.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "LED0", "tokenType": "IDENTIFIER", "line": 12, "col": 16, "file": "ArrayAccessOnEnum.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 12, "col": 20, "file": "ArrayAccessOnEnum.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 21, "file": "ArrayAccessOnEnum.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 21, "file": "ArrayAccessOnEnum.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 21, "file": "ArrayAccessOnEnum.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

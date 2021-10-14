@@ -1,0 +1,91 @@
+{
+    "moduleName": "ElseIfTest.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_ElseIfTest_shtk__l10_c24": 5,
+        "_str_ElseIfTest_shtk__l11_c17": 4,
+        "_str_ElseIfTest_shtk__l8_c22": 6,
+        "_str_ElseIfTest_shtk__l9_c24": 4
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_ElseIfTest_shtk_foo": {
+            "moduleName": "ElseIfTest.shtk",
+            "parameters": ["a"],
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "ElseIfTest.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ElseIfTest.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "isEqual", "op1": {"type": "var", "id": 6, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 8, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 9, "name": "_str_ElseIfTest_shtk__l8_c22", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 3, "name": "_ifend_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 14, "dtype": "int"}, "op2": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                {"opcode": "isEqual", "op1": {"type": "var", "id": 12, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 14, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 11, "name": "_if_false_l9_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 15, "name": "_str_ElseIfTest_shtk__l9_c24", "size": 4}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 3, "name": "_ifend_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 11, "name": "_if_false_l9_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 20, "dtype": "int"}, "op2": {"type": "literal", "id": 19, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "isEqual", "op1": {"type": "var", "id": 18, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 20, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 17, "name": "_if_false_l10_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 21, "name": "_str_ElseIfTest_shtk__l10_c24", "size": 5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 3, "name": "_ifend_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 17, "name": "_if_false_l10_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 24, "name": "_str_ElseIfTest_shtk__l11_c17", "size": 4}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 3, "name": "_ifend_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "moduleName": "ElseIfTest.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ElseIfTest.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "literal", "id": 28, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "_fn_ElseIfTest_shtk_foo", "dtype": "void"}, "op3": {"type": "module", "id": 32, "name": "ElseIfTest.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 33, "dtype": "void"}, "op2": {"type": "var", "id": 34, "name": "_fn_ElseIfTest_shtk_foo", "dtype": "void"}, "op3": {"type": "module", "id": 35, "name": "ElseIfTest.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 36, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "var", "id": 39, "name": "_fn_ElseIfTest_shtk_foo", "dtype": "void"}, "op3": {"type": "module", "id": 40, "name": "ElseIfTest.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 41, "dtype": "void"}, "op2": {"type": "var", "id": 42, "name": "_fn_ElseIfTest_shtk_foo", "dtype": "void"}, "op3": {"type": "module", "id": 43, "name": "ElseIfTest.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "literal", "id": 44, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "var", "id": 47, "name": "_fn_ElseIfTest_shtk_foo", "dtype": "void"}, "op3": {"type": "module", "id": 48, "name": "ElseIfTest.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 49, "dtype": "void"}, "op2": {"type": "var", "id": 50, "name": "_fn_ElseIfTest_shtk_foo", "dtype": "void"}, "op3": {"type": "module", "id": 51, "name": "ElseIfTest.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 54, "dtype": "int"}, "op2": {"type": "literal", "id": 52, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 54, "dtype": "int"}, "op2": {"type": "var", "id": 55, "name": "_fn_ElseIfTest_shtk_foo", "dtype": "void"}, "op3": {"type": "module", "id": 56, "name": "ElseIfTest.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 57, "dtype": "void"}, "op2": {"type": "var", "id": 58, "name": "_fn_ElseIfTest_shtk_foo", "dtype": "void"}, "op3": {"type": "module", "id": 59, "name": "ElseIfTest.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 62, "dtype": "int"}, "op2": {"type": "literal", "id": 61, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 60, "dtype": "int"}, "op2": {"type": "temp", "id": 62, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

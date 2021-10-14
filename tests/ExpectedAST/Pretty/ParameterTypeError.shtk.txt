@@ -1,0 +1,23 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=9, col=0
+  │     ├───> nodeType=IDENTIFIER, string="foobar", tokenType=IDENTIFIER, line=9, col=3
+  │     ├───> nodeType=PARAM, string="i", tokenType=IDENTIFIER, line=9, col=10
+  │     │     ├───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=9, col=10
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=9, col=12
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=10, col=0
+  │           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=11, col=4
+  │                 └───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=11, col=12
+  │                       └───> nodeType=TERM, string="i", tokenType=IDENTIFIER, line=11, col=12
+  │                             └───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=11, col=12
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=14, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=14, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=14, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=15, col=0
+              ├───> nodeType=FUNCCALL, string="foobar", tokenType=IDENTIFIER, line=16, col=4
+              │     └───> nodeType=EXPRESSION, string="2.0", tokenType=FLOAT_LITERAL, line=16, col=11
+              │           └───> nodeType=TERM, string="2.0", tokenType=FLOAT_LITERAL, line=16, col=11
+              │                 └───> nodeType=LITERAL, string="2.0", tokenType=FLOAT_LITERAL, line=16, col=11
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=18, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=18, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=18, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=18, col=11

@@ -1,0 +1,50 @@
+{
+    "moduleName": "OrEqual.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "OrEqual.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "OrEqual.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "OrEqual.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "OrEqual.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 6, "name": "b", "dtype": "int"}, "op2": {"type": "temp", "id": 8, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "bitwiseOr", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "var", "id": 9, "name": "b", "dtype": "int"}, "op3": {"type": "var", "id": 10, "name": "a", "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 9, "name": "b", "dtype": "int"}, "op2": {"type": "temp", "id": 11, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 12, "name": "b", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 13, "dtype": "int"}, "op2": {"type": "temp", "id": 15, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

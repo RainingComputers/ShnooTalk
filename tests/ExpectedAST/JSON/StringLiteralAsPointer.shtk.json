@@ -1,0 +1,104 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 9, "col": 0, "file": "StringLiteralAsPointer.shtk"},
+      "children": [
+        {
+          "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 9, "col": 3, "file": "StringLiteralAsPointer.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "mut", "tokenType": "MUTABLE", "line": 9, "col": 8, "file": "StringLiteralAsPointer.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "StringLiteralAsPointer.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "char", "tokenType": "IDENTIFIER", "line": 9, "col": 15, "file": "StringLiteralAsPointer.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "*", "tokenType": "MULTIPLY", "line": 9, "col": 19, "file": "StringLiteralAsPointer.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 10, "col": 0, "file": "StringLiteralAsPointer.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 14, "col": 0, "file": "StringLiteralAsPointer.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 14, "col": 3, "file": "StringLiteralAsPointer.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 14, "col": 13, "file": "StringLiteralAsPointer.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 15, "col": 0, "file": "StringLiteralAsPointer.shtk"},
+          "children": [
+            {
+              "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 16, "col": 4, "file": "StringLiteralAsPointer.shtk"},
+              "children": [
+                {
+                  "token": {"string": "\"leh\"", "tokenType": "STR_LITERAL", "line": 16, "col": 9, "file": "StringLiteralAsPointer.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"leh\"", "tokenType": "STR_LITERAL", "line": 16, "col": 9, "file": "StringLiteralAsPointer.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 18, "col": 4, "file": "StringLiteralAsPointer.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 18, "col": 11, "file": "StringLiteralAsPointer.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 18, "col": 11, "file": "StringLiteralAsPointer.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 18, "col": 11, "file": "StringLiteralAsPointer.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

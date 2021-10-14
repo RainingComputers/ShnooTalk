@@ -1,0 +1,89 @@
+{
+    "moduleName": "StructPointerAsParameter.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+        "goo": {
+            "structFields": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 4, "dimensions": [], "properties": ["isPointer"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": []}
+            },
+            "size": 12,
+            "moduleName": "StructPointerAsParameter.shtk"
+        }
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_StructPointerAsParameter_shtk_test": {
+            "moduleName": "StructPointerAsParameter.shtk",
+            "parameters": ["a"],
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isPointer", "isParameter"]}
+            }
+            "icode": [
+                    int temp4 = read int* a
+                    print int temp4
+                    newLine
+                    return
+            ]
+        },
+        "main": {
+            "moduleName": "StructPointerAsParameter.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "c": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "foobar": {"dtype": "struct", "dtypeSize": 12, "size": 12, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    int temp10 = cast autoInt 2
+                    int c = equal int temp10
+                    int* tempPtr13 = createPointer struct foobar
+                    int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
+                    int temp17 = cast autoInt 1
+                    int* tempPtr15 = write int temp17
+                    int* tempPtr19 = createPointer struct foobar
+                    int** tempPtrPtr21 = addressAdd int* tempPtr19, bytes 4
+                    int** tempPtrPtr21 = pointerAssign int c
+                    int* tempPtr24 = createPointer struct foobar
+                    int** tempPtrPtr26 = addressAdd int* tempPtr24, bytes 4
+                    int temp29 = read int** tempPtrPtr26
+                    int temp30 = cast autoInt 1
+                    int temp28 = add int temp29, int temp30
+                    int** tempPtrPtr26 = write int temp28
+                    int* tempPtr32 = createPointer struct foobar
+                    int* tempPtr34 = addressAdd int* tempPtr32, bytes 0
+                    passAddress int* tempPtr34, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                    void calleeReturnValue38 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                    int* tempPtr42 = createPointer struct foobar
+                    int** tempPtrPtr44 = addressAdd int* tempPtr42, bytes 4
+                    passAddress int** tempPtrPtr44, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                    void calleeReturnValue48 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                    print int c
+                    newLine
+                    int temp54 = cast autoInt 0
+                    int returnValue52 = equal int temp54
+                    return
+            ]
+        }
+    }
+}

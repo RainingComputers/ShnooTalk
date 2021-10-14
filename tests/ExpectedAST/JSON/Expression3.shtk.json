@@ -1,0 +1,597 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 5, "col": 0, "file": "Expression3.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 5, "col": 3, "file": "Expression3.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 13, "file": "Expression3.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 6, "col": 0, "file": "Expression3.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 7, "col": 4, "file": "Expression3.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "Expression3.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 10, "file": "Expression3.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 7, "col": 13, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 7, "col": 14, "file": "Expression3.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 7, "col": 17, "file": "Expression3.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 7, "col": 19, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "Expression3.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 7, "col": 23, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 7, "col": 23, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 7, "col": 23, "file": "Expression3.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 9, "col": 4, "file": "Expression3.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "Expression3.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 9, "col": 13, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 14, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 14, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 14, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 9, "col": 17, "file": "Expression3.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 19, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 19, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 19, "file": "Expression3.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 9, "col": 20, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 9, "col": 21, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 9, "col": 21, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 9, "col": 21, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 11, "col": 4, "file": "Expression3.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "Expression3.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "Expression3.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 11, "col": 13, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 14, "file": "Expression3.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 11, "col": 16, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 17, "file": "Expression3.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 11, "col": 20, "file": "Expression3.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 11, "col": 22, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 11, "col": 23, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 24, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 24, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 24, "file": "Expression3.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 27, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 27, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 27, "file": "Expression3.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 11, "col": 31, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 11, "col": 32, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 11, "col": 32, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 11, "col": 32, "file": "Expression3.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 11, "col": 35, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 11, "col": 35, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 11, "col": 35, "file": "Expression3.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 13, "col": 4, "file": "Expression3.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 12, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 12, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 12, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 12, "file": "Expression3.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 13, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 13, "col": 14, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 13, "col": 14, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 13, "col": 14, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 16, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 13, "col": 17, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 13, "col": 17, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 13, "col": 17, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 13, "col": 20, "file": "Expression3.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 22, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 22, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 22, "file": "Expression3.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 23, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 24, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 24, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 24, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 26, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 27, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 27, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 27, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 15, "col": 4, "file": "Expression3.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "Expression3.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 15, "col": 13, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 14, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 14, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 14, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 15, "col": 16, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 17, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 17, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 17, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 15, "col": 20, "file": "Expression3.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 22, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 22, "file": "Expression3.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 22, "file": "Expression3.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 15, "col": 23, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 24, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 24, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 24, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 15, "col": 26, "file": "Expression3.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 27, "file": "Expression3.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 27, "file": "Expression3.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 27, "file": "Expression3.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 17, "col": 4, "file": "Expression3.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 17, "col": 11, "file": "Expression3.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 17, "col": 11, "file": "Expression3.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 17, "col": 11, "file": "Expression3.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

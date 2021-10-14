@@ -1,0 +1,111 @@
+{
+    "moduleName": "Limits.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "Limits.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "c": {"dtype": "short", "dtypeSize": 2, "size": 2, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "d": {"dtype": "ushort", "dtypeSize": 2, "size": 2, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "e": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "f": {"dtype": "uint", "dtypeSize": 4, "size": 4, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "g": {"dtype": "long", "dtypeSize": 8, "size": 8, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "h": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "i": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "j": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "l": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "m": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "n": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "Limits.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    byte temp5 = cast autoInt 255
+                    byte a = equal byte temp5
+                    ubyte temp8 = cast autoInt 255
+                    ubyte b = equal ubyte temp8
+                    short temp11 = cast autoInt 65535
+                    short c = equal short temp11
+                    ushort temp14 = cast autoInt 65535
+                    ushort d = equal ushort temp14
+                    int temp17 = cast autoInt 4294967295
+                    int e = equal int temp17
+                    uint temp20 = cast autoInt 4294967295
+                    uint f = equal uint temp20
+                    long temp23 = cast autoInt -1
+                    long g = equal long temp23
+                    ulong temp26 = cast autoInt -1
+                    ulong h = equal ulong temp26
+                    float temp29 = cast autoFloat nan
+                    float i = equal float temp29
+                    double temp32 = cast autoFloat nan
+                    double j = equal double temp32
+                    byte l = equal byte a
+                    float temp37 = cast autoFloat inf
+                    float m = equal float temp37
+                    double temp40 = cast autoFloat inf
+                    double n = equal double temp40
+                    print byte a
+                    newLine
+                    int temp43 = cast ubyte b
+                    print int temp43
+                    newLine
+                    print short c
+                    newLine
+                    print ushort d
+                    newLine
+                    print int e
+                    newLine
+                    print uint f
+                    newLine
+                    print long g
+                    newLine
+                    print ulong h
+                    newLine
+                    print float i
+                    newLine
+                    print double j
+                    newLine
+                    print ulong h
+                    newLine
+                    print float i
+                    newLine
+                    print double j
+                    newLine
+                    print byte l
+                    newLine
+                    print float m
+                    newLine
+                    print double n
+                    newLine
+                    int temp60 = cast autoInt 0
+                    int returnValue58 = equal int temp60
+                    return
+            ]
+        }
+    }
+}

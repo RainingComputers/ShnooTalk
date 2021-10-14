@@ -1,0 +1,63 @@
+{
+    "moduleName": "StructPointer.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+        "Test": {
+            "structFields": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointer.shtk", "offset": 0, "dimensions": [], "properties": ["isPointer"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointer.shtk", "offset": 8, "dimensions": [], "properties": []}
+            },
+            "size": 12,
+            "moduleName": "StructPointer.shtk"
+        }
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "StructPointer.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointer.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "bar": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointer.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "lol": {"dtype": "struct", "dtypeSize": 12, "size": 12, "moduleName": "StructPointer.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    int temp6 = cast autoInt 2
+                    int bar = equal int temp6
+                    int* tempPtr8 = createPointer struct lol
+                    int** tempPtrPtr10 = addressAdd int* tempPtr8, bytes 0
+                    int** tempPtrPtr10 = pointerAssign int bar
+                    int* tempPtr13 = createPointer struct lol
+                    int** tempPtrPtr15 = addressAdd int* tempPtr13, bytes 0
+                    int temp18 = read int** tempPtrPtr15
+                    int temp19 = cast autoInt 2
+                    int temp17 = add int temp18, int temp19
+                    int** tempPtrPtr15 = write int temp17
+                    print int bar
+                    newLine
+                    int temp23 = cast autoInt 0
+                    int returnValue21 = equal int temp23
+                    return
+            ]
+        }
+    }
+}

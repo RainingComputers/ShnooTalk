@@ -1,0 +1,69 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 3, "col": 0, "file": "StartWithZeroOctal.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 3, "col": 3, "file": "StartWithZeroOctal.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 13, "file": "StartWithZeroOctal.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 4, "col": 0, "file": "StartWithZeroOctal.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 5, "col": 4, "file": "StartWithZeroOctal.shtk"},
+              "children": [
+                {
+                  "token": {"string": "01234", "tokenType": "INT_LITERAL", "line": 5, "col": 12, "file": "StartWithZeroOctal.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "01234", "tokenType": "INT_LITERAL", "line": 5, "col": 12, "file": "StartWithZeroOctal.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "01234", "tokenType": "INT_LITERAL", "line": 5, "col": 12, "file": "StartWithZeroOctal.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 6, "col": 4, "file": "StartWithZeroOctal.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 6, "col": 11, "file": "StartWithZeroOctal.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 6, "col": 11, "file": "StartWithZeroOctal.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 6, "col": 11, "file": "StartWithZeroOctal.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

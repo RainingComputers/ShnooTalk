@@ -1,0 +1,242 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=7, col=0
+  │     ├───> nodeType=IDENTIFIER, string="multipy_poly", tokenType=IDENTIFIER, line=7, col=3
+  │     ├───> nodeType=MUT_PARAM, string="mut", tokenType=MUTABLE, line=7, col=16
+  │     │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=7, col=20
+  │     │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=7, col=22
+  │     │     └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=7, col=25
+  │     │           └───> nodeType=LITERAL, string="5", tokenType=INT_LITERAL, line=7, col=26
+  │     ├───> nodeType=PARAM, string="a", tokenType=IDENTIFIER, line=7, col=30
+  │     │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=7, col=30
+  │     │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=7, col=32
+  │     │     └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=7, col=35
+  │     │           └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=7, col=36
+  │     ├───> nodeType=PARAM, string="b", tokenType=IDENTIFIER, line=7, col=40
+  │     │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=7, col=40
+  │     │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=7, col=42
+  │     │     └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=7, col=45
+  │     │           └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=7, col=46
+  │     ├───> nodeType=PARAM, string="degree", tokenType=IDENTIFIER, line=7, col=50
+  │     │     ├───> nodeType=IDENTIFIER, string="degree", tokenType=IDENTIFIER, line=7, col=50
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=7, col=57
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=8, col=0
+  │           └───> nodeType=FOR, string="for", tokenType=FOR, line=9, col=4
+  │                 ├───> nodeType=VAR, string="var", tokenType=VAR, line=9, col=8
+  │                 │     ├───> nodeType=IDENTIFIER, string="k", tokenType=IDENTIFIER, line=9, col=12
+  │                 │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=9, col=14
+  │                 │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=9, col=18
+  │                 │     └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=9, col=20
+  │                 │           └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=9, col=20
+  │                 │                 └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=9, col=20
+  │                 ├───> nodeType=EXPRESSION, string="k", tokenType=IDENTIFIER, line=9, col=23
+  │                 │     ├───> nodeType=EXPRESSION, string="k", tokenType=IDENTIFIER, line=9, col=23
+  │                 │     │     └───> nodeType=TERM, string="k", tokenType=IDENTIFIER, line=9, col=23
+  │                 │     │           └───> nodeType=IDENTIFIER, string="k", tokenType=IDENTIFIER, line=9, col=23
+  │                 │     ├───> nodeType=OPERATOR, string="<=", tokenType=LESS_THAN_EQUAL, line=9, col=25
+  │                 │     └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=9, col=28
+  │                 │           ├───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=9, col=28
+  │                 │           │     └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=9, col=28
+  │                 │           │           └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=9, col=28
+  │                 │           ├───> nodeType=OPERATOR, string="*", tokenType=MULTIPLY, line=9, col=30
+  │                 │           └───> nodeType=EXPRESSION, string="degree", tokenType=IDENTIFIER, line=9, col=32
+  │                 │                 └───> nodeType=TERM, string="degree", tokenType=IDENTIFIER, line=9, col=32
+  │                 │                       └───> nodeType=IDENTIFIER, string="degree", tokenType=IDENTIFIER, line=9, col=32
+  │                 ├───> nodeType=ASSIGNMENT, string="k", tokenType=IDENTIFIER, line=9, col=40
+  │                 │     ├───> nodeType=TERM, string="k", tokenType=IDENTIFIER, line=9, col=40
+  │                 │     │     └───> nodeType=IDENTIFIER, string="k", tokenType=IDENTIFIER, line=9, col=40
+  │                 │     ├───> nodeType=ASSIGN_OPERATOR, string="+=", tokenType=PLUS_EQUAL, line=9, col=42
+  │                 │     └───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=9, col=45
+  │                 │           └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=9, col=45
+  │                 │                 └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=9, col=45
+  │                 └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=10, col=4
+  │                       ├───> nodeType=ASSIGNMENT, string="c", tokenType=IDENTIFIER, line=11, col=8
+  │                       │     ├───> nodeType=TERM, string="c", tokenType=IDENTIFIER, line=11, col=8
+  │                       │     │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=11, col=8
+  │                       │     │     └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=11, col=9
+  │                       │     │           └───> nodeType=EXPRESSION, string="k", tokenType=IDENTIFIER, line=11, col=10
+  │                       │     │                 └───> nodeType=TERM, string="k", tokenType=IDENTIFIER, line=11, col=10
+  │                       │     │                       └───> nodeType=IDENTIFIER, string="k", tokenType=IDENTIFIER, line=11, col=10
+  │                       │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=11, col=13
+  │                       │     └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=11, col=15
+  │                       │           └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=11, col=15
+  │                       │                 └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=11, col=15
+  │                       └───> nodeType=FOR, string="for", tokenType=FOR, line=13, col=8
+  │                             ├───> nodeType=VAR, string="var", tokenType=VAR, line=13, col=12
+  │                             │     ├───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=13, col=16
+  │                             │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=13, col=18
+  │                             │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=13, col=22
+  │                             │     └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=13, col=24
+  │                             │           └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=13, col=24
+  │                             │                 └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=13, col=24
+  │                             ├───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=13, col=27
+  │                             │     ├───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=13, col=27
+  │                             │     │     └───> nodeType=TERM, string="i", tokenType=IDENTIFIER, line=13, col=27
+  │                             │     │           └───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=13, col=27
+  │                             │     ├───> nodeType=OPERATOR, string="<=", tokenType=LESS_THAN_EQUAL, line=13, col=29
+  │                             │     └───> nodeType=EXPRESSION, string="degree", tokenType=IDENTIFIER, line=13, col=32
+  │                             │           └───> nodeType=TERM, string="degree", tokenType=IDENTIFIER, line=13, col=32
+  │                             │                 └───> nodeType=IDENTIFIER, string="degree", tokenType=IDENTIFIER, line=13, col=32
+  │                             ├───> nodeType=ASSIGNMENT, string="i", tokenType=IDENTIFIER, line=13, col=40
+  │                             │     ├───> nodeType=TERM, string="i", tokenType=IDENTIFIER, line=13, col=40
+  │                             │     │     └───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=13, col=40
+  │                             │     ├───> nodeType=ASSIGN_OPERATOR, string="+=", tokenType=PLUS_EQUAL, line=13, col=42
+  │                             │     └───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=13, col=45
+  │                             │           └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=13, col=45
+  │                             │                 └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=13, col=45
+  │                             └───> nodeType=BLOCK, string="for", tokenType=FOR, line=14, col=12
+  │                                   └───> nodeType=FOR, string="for", tokenType=FOR, line=14, col=12
+  │                                         ├───> nodeType=VAR, string="var", tokenType=VAR, line=14, col=16
+  │                                         │     ├───> nodeType=IDENTIFIER, string="j", tokenType=IDENTIFIER, line=14, col=20
+  │                                         │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=14, col=22
+  │                                         │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=14, col=26
+  │                                         │     └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=14, col=28
+  │                                         │           └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=14, col=28
+  │                                         │                 └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=14, col=28
+  │                                         ├───> nodeType=EXPRESSION, string="j", tokenType=IDENTIFIER, line=14, col=31
+  │                                         │     ├───> nodeType=EXPRESSION, string="j", tokenType=IDENTIFIER, line=14, col=31
+  │                                         │     │     └───> nodeType=TERM, string="j", tokenType=IDENTIFIER, line=14, col=31
+  │                                         │     │           └───> nodeType=IDENTIFIER, string="j", tokenType=IDENTIFIER, line=14, col=31
+  │                                         │     ├───> nodeType=OPERATOR, string="<=", tokenType=LESS_THAN_EQUAL, line=14, col=33
+  │                                         │     └───> nodeType=EXPRESSION, string="degree", tokenType=IDENTIFIER, line=14, col=36
+  │                                         │           └───> nodeType=TERM, string="degree", tokenType=IDENTIFIER, line=14, col=36
+  │                                         │                 └───> nodeType=IDENTIFIER, string="degree", tokenType=IDENTIFIER, line=14, col=36
+  │                                         ├───> nodeType=ASSIGNMENT, string="j", tokenType=IDENTIFIER, line=14, col=44
+  │                                         │     ├───> nodeType=TERM, string="j", tokenType=IDENTIFIER, line=14, col=44
+  │                                         │     │     └───> nodeType=IDENTIFIER, string="j", tokenType=IDENTIFIER, line=14, col=44
+  │                                         │     ├───> nodeType=ASSIGN_OPERATOR, string="+=", tokenType=PLUS_EQUAL, line=14, col=46
+  │                                         │     └───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=14, col=49
+  │                                         │           └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=14, col=49
+  │                                         │                 └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=14, col=49
+  │                                         └───> nodeType=BLOCK, string="if", tokenType=IF, line=15, col=16
+  │                                               └───> nodeType=IF, string="if", tokenType=IF, line=15, col=16
+  │                                                     └───> nodeType=IF, string="if", tokenType=IF, line=15, col=16
+  │                                                           ├───> nodeType=EXPRESSION, string="(", tokenType=LPAREN, line=15, col=18
+  │                                                           │     └───> nodeType=TERM, string="(", tokenType=LPAREN, line=15, col=18
+  │                                                           │           └───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=15, col=19
+  │                                                           │                 ├───> nodeType=EXPRESSION, string="j", tokenType=IDENTIFIER, line=15, col=23
+  │                                                           │                 │     ├───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=15, col=19
+  │                                                           │                 │     │     └───> nodeType=TERM, string="i", tokenType=IDENTIFIER, line=15, col=19
+  │                                                           │                 │     │           └───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=15, col=19
+  │                                                           │                 │     ├───> nodeType=OPERATOR, string="+", tokenType=PLUS, line=15, col=21
+  │                                                           │                 │     └───> nodeType=EXPRESSION, string="j", tokenType=IDENTIFIER, line=15, col=23
+  │                                                           │                 │           └───> nodeType=TERM, string="j", tokenType=IDENTIFIER, line=15, col=23
+  │                                                           │                 │                 └───> nodeType=IDENTIFIER, string="j", tokenType=IDENTIFIER, line=15, col=23
+  │                                                           │                 ├───> nodeType=OPERATOR, string="==", tokenType=CONDN_EQUAL, line=15, col=25
+  │                                                           │                 └───> nodeType=EXPRESSION, string="k", tokenType=IDENTIFIER, line=15, col=28
+  │                                                           │                       └───> nodeType=TERM, string="k", tokenType=IDENTIFIER, line=15, col=28
+  │                                                           │                             └───> nodeType=IDENTIFIER, string="k", tokenType=IDENTIFIER, line=15, col=28
+  │                                                           └───> nodeType=BLOCK, string="c", tokenType=IDENTIFIER, line=16, col=20
+  │                                                                 └───> nodeType=ASSIGNMENT, string="c", tokenType=IDENTIFIER, line=16, col=20
+  │                                                                       ├───> nodeType=TERM, string="c", tokenType=IDENTIFIER, line=16, col=20
+  │                                                                       │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=16, col=20
+  │                                                                       │     └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=16, col=21
+  │                                                                       │           └───> nodeType=EXPRESSION, string="k", tokenType=IDENTIFIER, line=16, col=22
+  │                                                                       │                 └───> nodeType=TERM, string="k", tokenType=IDENTIFIER, line=16, col=22
+  │                                                                       │                       └───> nodeType=IDENTIFIER, string="k", tokenType=IDENTIFIER, line=16, col=22
+  │                                                                       ├───> nodeType=ASSIGN_OPERATOR, string="+=", tokenType=PLUS_EQUAL, line=16, col=25
+  │                                                                       └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=16, col=28
+  │                                                                             ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=16, col=28
+  │                                                                             │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=16, col=28
+  │                                                                             │           ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=16, col=28
+  │                                                                             │           └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=16, col=29
+  │                                                                             │                 └───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=16, col=30
+  │                                                                             │                       └───> nodeType=TERM, string="i", tokenType=IDENTIFIER, line=16, col=30
+  │                                                                             │                             └───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=16, col=30
+  │                                                                             ├───> nodeType=OPERATOR, string="*", tokenType=MULTIPLY, line=16, col=33
+  │                                                                             └───> nodeType=EXPRESSION, string="b", tokenType=IDENTIFIER, line=16, col=35
+  │                                                                                   └───> nodeType=TERM, string="b", tokenType=IDENTIFIER, line=16, col=35
+  │                                                                                         ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=16, col=35
+  │                                                                                         └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=16, col=36
+  │                                                                                               └───> nodeType=EXPRESSION, string="j", tokenType=IDENTIFIER, line=16, col=37
+  │                                                                                                     └───> nodeType=TERM, string="j", tokenType=IDENTIFIER, line=16, col=37
+  │                                                                                                           └───> nodeType=IDENTIFIER, string="j", tokenType=IDENTIFIER, line=16, col=37
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=21, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=21, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=21, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=22, col=0
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=24, col=4
+              │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=24, col=8
+              │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=24, col=10
+              │     ├───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=24, col=13
+              │     │     └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=24, col=14
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=24, col=17
+              │     └───> nodeType=INITLIST, string="[", tokenType=OPEN_SQUARE, line=24, col=19
+              │           ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=24, col=20
+              │           │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=24, col=20
+              │           │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=24, col=20
+              │           ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=24, col=23
+              │           │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=24, col=23
+              │           │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=24, col=23
+              │           └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=24, col=26
+              │                 └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=24, col=26
+              │                       └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=24, col=26
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=27, col=4
+              │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=27, col=8
+              │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=27, col=10
+              │     ├───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=27, col=13
+              │     │     └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=27, col=14
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=27, col=17
+              │     └───> nodeType=INITLIST, string="[", tokenType=OPEN_SQUARE, line=27, col=19
+              │           ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=27, col=20
+              │           │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=27, col=20
+              │           │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=27, col=20
+              │           ├───> nodeType=EXPRESSION, string="4", tokenType=INT_LITERAL, line=27, col=23
+              │           │     └───> nodeType=TERM, string="4", tokenType=INT_LITERAL, line=27, col=23
+              │           │           └───> nodeType=LITERAL, string="4", tokenType=INT_LITERAL, line=27, col=23
+              │           └───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=27, col=26
+              │                 └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=27, col=26
+              │                       └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=27, col=26
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=29, col=4
+              │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=29, col=8
+              │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=29, col=10
+              │     └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=29, col=13
+              │           └───> nodeType=LITERAL, string="5", tokenType=INT_LITERAL, line=29, col=14
+              ├───> nodeType=FUNCCALL, string="multipy_poly", tokenType=IDENTIFIER, line=31, col=4
+              │     ├───> nodeType=EXPRESSION, string="c", tokenType=IDENTIFIER, line=31, col=17
+              │     │     └───> nodeType=TERM, string="c", tokenType=IDENTIFIER, line=31, col=17
+              │     │           └───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=31, col=17
+              │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=31, col=20
+              │     │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=31, col=20
+              │     │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=31, col=20
+              │     ├───> nodeType=EXPRESSION, string="b", tokenType=IDENTIFIER, line=31, col=23
+              │     │     └───> nodeType=TERM, string="b", tokenType=IDENTIFIER, line=31, col=23
+              │     │           └───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=31, col=23
+              │     └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=31, col=26
+              │           └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=31, col=26
+              │                 └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=31, col=26
+              ├───> nodeType=FOR, string="for", tokenType=FOR, line=34, col=4
+              │     ├───> nodeType=VAR, string="var", tokenType=VAR, line=34, col=8
+              │     │     ├───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=34, col=12
+              │     │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=34, col=14
+              │     │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=34, col=18
+              │     │     └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=34, col=20
+              │     │           └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=34, col=20
+              │     │                 └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=34, col=20
+              │     ├───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=34, col=23
+              │     │     ├───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=34, col=23
+              │     │     │     └───> nodeType=TERM, string="i", tokenType=IDENTIFIER, line=34, col=23
+              │     │     │           └───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=34, col=23
+              │     │     ├───> nodeType=OPERATOR, string="<", tokenType=LESS_THAN, line=34, col=25
+              │     │     └───> nodeType=EXPRESSION, string="5", tokenType=INT_LITERAL, line=34, col=27
+              │     │           └───> nodeType=TERM, string="5", tokenType=INT_LITERAL, line=34, col=27
+              │     │                 └───> nodeType=LITERAL, string="5", tokenType=INT_LITERAL, line=34, col=27
+              │     ├───> nodeType=ASSIGNMENT, string="i", tokenType=IDENTIFIER, line=34, col=30
+              │     │     ├───> nodeType=TERM, string="i", tokenType=IDENTIFIER, line=34, col=30
+              │     │     │     └───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=34, col=30
+              │     │     ├───> nodeType=ASSIGN_OPERATOR, string="+=", tokenType=PLUS_EQUAL, line=34, col=32
+              │     │     └───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=34, col=35
+              │     │           └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=34, col=35
+              │     │                 └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=34, col=35
+              │     └───> nodeType=BLOCK, string="println", tokenType=PRINTLN, line=34, col=38
+              │           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=34, col=38
+              │                 └───> nodeType=EXPRESSION, string="c", tokenType=IDENTIFIER, line=34, col=46
+              │                       └───> nodeType=TERM, string="c", tokenType=IDENTIFIER, line=34, col=46
+              │                             ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=34, col=46
+              │                             └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=34, col=47
+              │                                   └───> nodeType=EXPRESSION, string="i", tokenType=IDENTIFIER, line=34, col=48
+              │                                         └───> nodeType=TERM, string="i", tokenType=IDENTIFIER, line=34, col=48
+              │                                               └───> nodeType=IDENTIFIER, string="i", tokenType=IDENTIFIER, line=34, col=48
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=36, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=36, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=36, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=36, col=11

@@ -1,0 +1,11 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=USE, string="use", tokenType=USE, line=8, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/Math.shtk"", tokenType=STR_LITERAL, line=8, col=4
+  │     └───> nodeType=IDENTIFIER, string="math", tokenType=IDENTIFIER, line=8, col=31
+  ├───> nodeType=USE, string="use", tokenType=USE, line=9, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/Vector.shtk"", tokenType=STR_LITERAL, line=9, col=4
+  │     └───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=9, col=33
+  └───> nodeType=FROM, string="from", tokenType=FROM, line=11, col=0
+        ├───> nodeType=IDENTIFIER, string="math", tokenType=IDENTIFIER, line=11, col=5
+        └───> nodeType=USE, string="use", tokenType=USE, line=11, col=10
+              └───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=11, col=14

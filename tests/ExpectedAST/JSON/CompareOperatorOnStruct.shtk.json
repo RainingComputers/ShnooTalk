@@ -1,0 +1,178 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 8, "col": 0, "file": "CompareOperatorOnStruct.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Vector.shtk\"", "tokenType": "STR_LITERAL", "line": 8, "col": 4, "file": "CompareOperatorOnStruct.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 8, "col": 33, "file": "CompareOperatorOnStruct.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "from", "tokenType": "FROM", "line": 9, "col": 0, "file": "CompareOperatorOnStruct.shtk"},
+      "children": [
+        {
+          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 9, "col": 5, "file": "CompareOperatorOnStruct.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "use", "tokenType": "USE", "line": 9, "col": 9, "file": "CompareOperatorOnStruct.shtk"},
+          "children": [
+            {
+              "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 9, "col": 13, "file": "CompareOperatorOnStruct.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 11, "col": 0, "file": "CompareOperatorOnStruct.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 11, "col": 3, "file": "CompareOperatorOnStruct.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 12, "col": 0, "file": "CompareOperatorOnStruct.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 13, "col": 4, "file": "CompareOperatorOnStruct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 8, "file": "CompareOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 10, "file": "CompareOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 13, "col": 13, "file": "CompareOperatorOnStruct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 15, "file": "CompareOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 17, "file": "CompareOperatorOnStruct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "if", "tokenType": "IF", "line": 15, "col": 4, "file": "CompareOperatorOnStruct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "if", "tokenType": "IF", "line": 15, "col": 4, "file": "CompareOperatorOnStruct.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "(", "tokenType": "LPAREN", "line": 15, "col": 6, "file": "CompareOperatorOnStruct.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "(", "tokenType": "LPAREN", "line": 15, "col": 6, "file": "CompareOperatorOnStruct.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 7, "file": "CompareOperatorOnStruct.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 7, "file": "CompareOperatorOnStruct.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 7, "file": "CompareOperatorOnStruct.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 7, "file": "CompareOperatorOnStruct.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": ">", "tokenType": "GREATER_THAN", "line": 15, "col": 9, "file": "CompareOperatorOnStruct.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 11, "file": "CompareOperatorOnStruct.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 11, "file": "CompareOperatorOnStruct.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 11, "file": "CompareOperatorOnStruct.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "println", "tokenType": "PRINTLN", "line": 15, "col": 14, "file": "CompareOperatorOnStruct.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "println", "tokenType": "PRINTLN", "line": 15, "col": 14, "file": "CompareOperatorOnStruct.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 15, "col": 22, "file": "CompareOperatorOnStruct.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 15, "col": 22, "file": "CompareOperatorOnStruct.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

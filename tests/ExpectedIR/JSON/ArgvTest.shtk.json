@@ -1,0 +1,43 @@
+{
+    "moduleName": "ArgvTest.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_ArgvTest_shtk_getArg": {
+            "moduleName": "ArgvTest.shtk",
+            "parameters": ["argv", "idx"],
+            "functionReturnType": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer"]},
+            "symbols": {
+                "argv": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer", "isParameter"]},
+                "idx": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 7, "dtype": "void"}, "op2": {"type": "var", "id": 5, "name": "idx", "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 8}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 8, "dtype": "ulong"}, "op2": {"type": "ptr", "id": 4, "name": "argv", "dtype": "ulong"}, "op3": {"type": "tempPtr", "id": 7, "dtype": "void"}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 11, "dtype": "ulong"}, "op2": {"type": "tempPtr", "id": 8, "dtype": "ulong"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 12, "dtype": "ulong"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 10, "dtype": "ulong"}, "op2": {"type": "temp", "id": 11, "dtype": "ulong"}, "op3": {"type": "temp", "id": 12, "dtype": "ulong"}},
+                {"opcode": "pointerCast", "op1": {"type": "tempPtr", "id": 13, "dtype": "ubyte"}, "op2": {"type": "temp", "id": 10, "dtype": "ulong"}, "op3": {"type": "none"}},
+                {"opcode": "pointerAssign", "op1": {"type": "returnPointer", "id": 3Pretty print error
+REPORT THIS BUG

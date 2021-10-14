@@ -1,0 +1,274 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "ConditionalOr.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "ConditionalOr.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "ConditionalOr.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "ConditionalOr.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 3, "col": 4, "file": "ConditionalOr.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 14, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 16, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 16, "file": "ConditionalOr.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 16, "file": "ConditionalOr.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 4, "col": 4, "file": "ConditionalOr.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 4, "col": 8, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 4, "col": 10, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 4, "col": 14, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 16, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 16, "file": "ConditionalOr.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 16, "file": "ConditionalOr.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "if", "tokenType": "IF", "line": 6, "col": 4, "file": "ConditionalOr.shtk"},
+              "children": [
+                {
+                  "token": {"string": "if", "tokenType": "IF", "line": 6, "col": 4, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 6, "col": 7, "file": "ConditionalOr.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 6, "col": 7, "file": "ConditionalOr.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 6, "col": 7, "file": "ConditionalOr.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "(", "tokenType": "LPAREN", "line": 6, "col": 11, "file": "ConditionalOr.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 6, "col": 12, "file": "ConditionalOr.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 6, "col": 16, "file": "ConditionalOr.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 6, "col": 12, "file": "ConditionalOr.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 6, "col": 12, "file": "ConditionalOr.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 6, "col": 12, "file": "ConditionalOr.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "token": {"string": ">", "tokenType": "GREATER_THAN", "line": 6, "col": 14, "file": "ConditionalOr.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            },
+                                            {
+                                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 6, "col": 16, "file": "ConditionalOr.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 6, "col": 16, "file": "ConditionalOr.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 6, "col": 16, "file": "ConditionalOr.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "or", "tokenType": "CONDN_OR", "line": 6, "col": 18, "file": "ConditionalOr.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 6, "col": 21, "file": "ConditionalOr.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 6, "col": 21, "file": "ConditionalOr.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 6, "col": 21, "file": "ConditionalOr.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 6, "col": 21, "file": "ConditionalOr.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "token": {"string": "<", "tokenType": "LESS_THAN", "line": 6, "col": 23, "file": "ConditionalOr.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            },
+                                            {
+                                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 25, "file": "ConditionalOr.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 25, "file": "ConditionalOr.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 25, "file": "ConditionalOr.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 8, "file": "ConditionalOr.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 8, "file": "ConditionalOr.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "\"lolol\"", "tokenType": "STR_LITERAL", "line": 7, "col": 16, "file": "ConditionalOr.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "\"lolol\"", "tokenType": "STR_LITERAL", "line": 7, "col": 16, "file": "ConditionalOr.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 9, "col": 4, "file": "ConditionalOr.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "ConditionalOr.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "ConditionalOr.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "ConditionalOr.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

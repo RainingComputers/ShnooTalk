@@ -1,0 +1,114 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 3, "col": 0, "file": "EscapeDoubleQuoteTest.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 3, "col": 3, "file": "EscapeDoubleQuoteTest.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 13, "file": "EscapeDoubleQuoteTest.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 4, "col": 0, "file": "EscapeDoubleQuoteTest.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 5, "col": 4, "file": "EscapeDoubleQuoteTest.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "EscapeDoubleQuoteTest.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "char", "tokenType": "IDENTIFIER", "line": 5, "col": 11, "file": "EscapeDoubleQuoteTest.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 15, "file": "EscapeDoubleQuoteTest.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "20", "tokenType": "INT_LITERAL", "line": 5, "col": 16, "file": "EscapeDoubleQuoteTest.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 20, "file": "EscapeDoubleQuoteTest.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "\"Hello \\\"World\\\"\"", "tokenType": "STR_LITERAL", "line": 5, "col": 22, "file": "EscapeDoubleQuoteTest.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"Hello \\\"World\\\"\"", "tokenType": "STR_LITERAL", "line": 5, "col": 22, "file": "EscapeDoubleQuoteTest.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 6, "col": 4, "file": "EscapeDoubleQuoteTest.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 6, "col": 12, "file": "EscapeDoubleQuoteTest.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 6, "col": 12, "file": "EscapeDoubleQuoteTest.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 6, "col": 12, "file": "EscapeDoubleQuoteTest.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 8, "col": 4, "file": "EscapeDoubleQuoteTest.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 8, "col": 11, "file": "EscapeDoubleQuoteTest.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 8, "col": 11, "file": "EscapeDoubleQuoteTest.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 8, "col": 11, "file": "EscapeDoubleQuoteTest.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+    "moduleName": "GCDRecursive.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_GCDRecursive_shtk_gcd": {
+            "moduleName": "GCDRecursive.shtk",
+            "parameters": ["m", "n"],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "m": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
+                "n": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            }
+            "icode": [
+                    int temp8 = remainder int m, int n
+                    int temp10 = cast autoInt 0
+                    flag = isEqual int temp8, int temp10
+                    if(not flag) goto _if_false_l5_c4
+                    int returnValue11 = equal int n
+                    return
+                _if_false_l5_c4:
+                    pass int n, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                    int temp21 = remainder int m, int n
+                    pass int temp21, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                    int calleeReturnValue24 = call int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                    int returnValue13 = equal int calleeReturnValue24
+                    return
+            ]
+        },
+        "main": {
+            "moduleName": "GCDRecursive.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            }
+            "icode": [
+                    int temp33 = cast autoInt 45
+                    pass int temp33, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                    int temp37 = cast autoInt 60
+                    pass int temp37, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                    int calleeReturnValue40 = call int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                    print int calleeReturnValue40
+                    newLine
+                    int temp45 = cast autoInt 0
+                    int returnValue43 = equal int temp45
+                    return
+            ]
+        }
+    }
+}

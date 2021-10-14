@@ -1,0 +1,300 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 4, "col": 0, "file": "ModOperator.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 4, "col": 3, "file": "ModOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 4, "col": 13, "file": "ModOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 5, "col": 0, "file": "ModOperator.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 6, "col": 4, "file": "ModOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 6, "col": 8, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 6, "col": 11, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 6, "col": 15, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 17, "file": "ModOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 17, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 17, "file": "ModOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 6, "col": 18, "file": "ModOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 6, "col": 20, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 6, "col": 23, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 6, "col": 27, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 6, "col": 29, "file": "ModOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 6, "col": 29, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 6, "col": 29, "file": "ModOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 7, "col": 4, "file": "ModOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 7, "col": 11, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 7, "col": 17, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2.3", "tokenType": "FLOAT_LITERAL", "line": 7, "col": 19, "file": "ModOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2.3", "tokenType": "FLOAT_LITERAL", "line": 7, "col": 19, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2.3", "tokenType": "FLOAT_LITERAL", "line": 7, "col": 19, "file": "ModOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 7, "col": 22, "file": "ModOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 7, "col": 24, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 7, "col": 27, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 7, "col": 33, "file": "ModOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "4.0", "tokenType": "FLOAT_LITERAL", "line": 7, "col": 35, "file": "ModOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "4.0", "tokenType": "FLOAT_LITERAL", "line": 7, "col": 35, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "4.0", "tokenType": "FLOAT_LITERAL", "line": 7, "col": 35, "file": "ModOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 9, "col": 4, "file": "ModOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "ModOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "ModOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "ModOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "%", "tokenType": "MOD", "line": 9, "col": 14, "file": "ModOperator.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 16, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 16, "file": "ModOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 16, "file": "ModOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 10, "col": 4, "file": "ModOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 10, "col": 12, "file": "ModOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 10, "col": 12, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 10, "col": 12, "file": "ModOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 10, "col": 12, "file": "ModOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "%", "tokenType": "MOD", "line": 10, "col": 14, "file": "ModOperator.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 10, "col": 16, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 10, "col": 16, "file": "ModOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 10, "col": 16, "file": "ModOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 12, "col": 4, "file": "ModOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "ModOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "ModOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "ModOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

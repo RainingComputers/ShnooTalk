@@ -1,0 +1,103 @@
+{
+    "moduleName": "Primes.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_Primes_shtk_is_prime": {
+            "moduleName": "Primes.shtk",
+            "parameters": ["num"],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Primes.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Primes.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Primes.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            }
+            "icode": [
+                    int temp9 = cast autoInt 2
+                    int temp8 = remainder int num, int temp9
+                    int temp11 = cast autoInt 0
+                    flag = isEqual int temp8, int temp11
+                    if(not flag) goto _if_false_l18_c4
+                    int temp14 = cast autoInt 0
+                    int returnValue12 = equal int temp14
+                    return
+                _if_false_l18_c4:
+                    int temp17 = cast autoInt 3
+                    int i = equal int temp17
+                _for_true_l21_c4:
+                    flag = lessThan int i, int num
+                    if(not flag) goto _for_false_l21_c4
+                    int temp28 = remainder int num, int i
+                    int temp30 = cast autoInt 0
+                    flag = isEqual int temp28, int temp30
+                    if(not flag) goto _if_false_l22_c8
+                    int temp33 = cast autoInt 0
+                    int returnValue31 = equal int temp33
+                    return
+                _if_false_l22_c8:
+                _for_cont_true_l21_c4:
+                    int temp37 = cast autoInt 1
+                    int temp36 = add int i, int temp37
+                    int i = equal int temp36
+                    goto _for_true_l21_c4
+                _for_false_l21_c4:
+                    int temp40 = cast autoInt 1
+                    int returnValue38 = equal int temp40
+                    return
+            ]
+        },
+        "main": {
+            "moduleName": "Primes.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Primes.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Primes.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    int temp46 = cast autoInt 3
+                    int num = equal int temp46
+                _for_true_l30_c4:
+                    int temp52 = cast autoInt 50
+                    flag = lessThanOrEqualTo int num, int temp52
+                    if(not flag) goto _for_false_l30_c4
+                    pass int num, int _fn_Primes_shtk_is_prime, module Primes.shtk
+                    int calleeReturnValue60 = call int _fn_Primes_shtk_is_prime, module Primes.shtk
+                    int temp64 = cast autoInt 1
+                    flag = isEqual int calleeReturnValue60, int temp64
+                    if(not flag) goto _if_false_l31_c8
+                    print int num
+                    newLine
+                _if_false_l31_c8:
+                _for_cont_true_l30_c4:
+                    int temp69 = cast autoInt 1
+                    int temp68 = add int num, int temp69
+                    int num = equal int temp68
+                    goto _for_true_l30_c4
+                _for_false_l30_c4:
+                    int temp72 = cast autoInt 0
+                    int returnValue70 = equal int temp72
+                    return
+            ]
+        }
+    }
+}

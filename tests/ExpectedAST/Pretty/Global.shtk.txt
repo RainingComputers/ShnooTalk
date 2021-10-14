@@ -1,0 +1,69 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=VAR, string="var", tokenType=VAR, line=6, col=0
+  │     ├───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=6, col=4
+  │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=6, col=14
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=8, col=0
+  │     ├───> nodeType=IDENTIFIER, string="foobar", tokenType=IDENTIFIER, line=8, col=3
+  │     ├───> nodeType=PARAM, string="x", tokenType=IDENTIFIER, line=8, col=10
+  │     │     ├───> nodeType=IDENTIFIER, string="x", tokenType=IDENTIFIER, line=8, col=10
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=8, col=12
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=0
+  │           ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=10, col=4
+  │           │     └───> nodeType=EXPRESSION, string="globalFoo", tokenType=IDENTIFIER, line=10, col=12
+  │           │           └───> nodeType=TERM, string="globalFoo", tokenType=IDENTIFIER, line=10, col=12
+  │           │                 └───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=10, col=12
+  │           └───> nodeType=ASSIGNMENT, string="globalFoo", tokenType=IDENTIFIER, line=12, col=4
+  │                 ├───> nodeType=TERM, string="globalFoo", tokenType=IDENTIFIER, line=12, col=4
+  │                 │     └───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=12, col=4
+  │                 ├───> nodeType=ASSIGN_OPERATOR, string="+=", tokenType=PLUS_EQUAL, line=12, col=14
+  │                 └───> nodeType=EXPRESSION, string="x", tokenType=IDENTIFIER, line=12, col=17
+  │                       ├───> nodeType=EXPRESSION, string="x", tokenType=IDENTIFIER, line=12, col=17
+  │                       │     └───> nodeType=TERM, string="x", tokenType=IDENTIFIER, line=12, col=17
+  │                       │           └───> nodeType=IDENTIFIER, string="x", tokenType=IDENTIFIER, line=12, col=17
+  │                       ├───> nodeType=OPERATOR, string="+", tokenType=PLUS, line=12, col=19
+  │                       └───> nodeType=EXPRESSION, string="globalFoo", tokenType=IDENTIFIER, line=12, col=21
+  │                             ├───> nodeType=EXPRESSION, string="globalFoo", tokenType=IDENTIFIER, line=12, col=21
+  │                             │     └───> nodeType=TERM, string="globalFoo", tokenType=IDENTIFIER, line=12, col=21
+  │                             │           └───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=12, col=21
+  │                             ├───> nodeType=OPERATOR, string="/", tokenType=DIVIDE, line=12, col=30
+  │                             └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=12, col=31
+  │                                   └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=12, col=31
+  │                                         └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=12, col=31
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=15, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=15, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=15, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=16, col=0
+              ├───> nodeType=ASSIGNMENT, string="globalFoo", tokenType=IDENTIFIER, line=17, col=4
+              │     ├───> nodeType=TERM, string="globalFoo", tokenType=IDENTIFIER, line=17, col=4
+              │     │     └───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=17, col=4
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=17, col=14
+              │     └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=17, col=16
+              │           └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=17, col=16
+              │                 └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=17, col=16
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=19, col=4
+              │     └───> nodeType=EXPRESSION, string="globalFoo", tokenType=IDENTIFIER, line=19, col=12
+              │           └───> nodeType=TERM, string="globalFoo", tokenType=IDENTIFIER, line=19, col=12
+              │                 └───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=19, col=12
+              ├───> nodeType=FUNCCALL, string="foobar", tokenType=IDENTIFIER, line=21, col=4
+              │     └───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=21, col=11
+              │           └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=21, col=11
+              │                 └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=21, col=11
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=23, col=4
+              │     └───> nodeType=EXPRESSION, string="globalFoo", tokenType=IDENTIFIER, line=23, col=12
+              │           └───> nodeType=TERM, string="globalFoo", tokenType=IDENTIFIER, line=23, col=12
+              │                 └───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=23, col=12
+              ├───> nodeType=ASSIGNMENT, string="globalFoo", tokenType=IDENTIFIER, line=25, col=4
+              │     ├───> nodeType=TERM, string="globalFoo", tokenType=IDENTIFIER, line=25, col=4
+              │     │     └───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=25, col=4
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="+=", tokenType=PLUS_EQUAL, line=25, col=14
+              │     └───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=25, col=17
+              │           └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=25, col=17
+              │                 └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=25, col=17
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=27, col=4
+              │     └───> nodeType=EXPRESSION, string="globalFoo", tokenType=IDENTIFIER, line=27, col=12
+              │           └───> nodeType=TERM, string="globalFoo", tokenType=IDENTIFIER, line=27, col=12
+              │                 └───> nodeType=IDENTIFIER, string="globalFoo", tokenType=IDENTIFIER, line=27, col=12
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=29, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=29, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=29, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=29, col=11

@@ -1,0 +1,17 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=STRUCT, string="struct", tokenType=STRUCT, line=8, col=0
+  │     └───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=8, col=7
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=10, col=0
+  │     ├───> nodeType=IDENTIFIER, string="foobar", tokenType=IDENTIFIER, line=10, col=3
+  │     ├───> nodeType=PARAM, string="test", tokenType=IDENTIFIER, line=10, col=10
+  │     │     ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=10, col=10
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=10, col=16
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=10, col=21
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=12, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=12, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=12, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=13, col=0
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=14, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=14, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=14, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=14, col=11

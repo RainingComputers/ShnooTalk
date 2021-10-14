@@ -1,0 +1,43 @@
+{
+    "moduleName": "ExternString.shtk",
+    "uses": ["TestModules/RandomDefine.shtk"],
+    "aliases": {
+        "Random": "TestModules/RandomDefine.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "ExternString.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ExternString.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            }
+            "icode": [
+                    printString stringData _str_TestModules_RandomDefine_shtk__l1_c23
+                    newLine
+                    int temp6 = cast autoInt 0
+                    int returnValue4 = equal int temp6
+                    return
+            ]
+        }
+    }
+}

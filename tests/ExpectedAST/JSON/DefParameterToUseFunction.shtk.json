@@ -1,0 +1,139 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 3, "col": 0, "file": "DefParameterToUseFunction.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Math.shtk\"", "tokenType": "STR_LITERAL", "line": 3, "col": 4, "file": "DefParameterToUseFunction.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 3, "col": 31, "file": "DefParameterToUseFunction.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "def", "tokenType": "DEF", "line": 5, "col": 0, "file": "DefParameterToUseFunction.shtk"},
+      "children": [
+        {
+          "token": {"string": "BLEH", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "DefParameterToUseFunction.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 5, "col": 9, "file": "DefParameterToUseFunction.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 7, "col": 0, "file": "DefParameterToUseFunction.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 7, "col": 3, "file": "DefParameterToUseFunction.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 13, "file": "DefParameterToUseFunction.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 8, "col": 0, "file": "DefParameterToUseFunction.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 9, "col": 4, "file": "DefParameterToUseFunction.shtk"},
+              "children": [
+                {
+                  "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "DefParameterToUseFunction.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "DefParameterToUseFunction.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "DefParameterToUseFunction.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "sin", "tokenType": "IDENTIFIER", "line": 9, "col": 18, "file": "DefParameterToUseFunction.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "sin", "tokenType": "IDENTIFIER", "line": 9, "col": 18, "file": "DefParameterToUseFunction.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 9, "col": 22, "file": "DefParameterToUseFunction.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 9, "col": 22, "file": "DefParameterToUseFunction.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 9, "col": 22, "file": "DefParameterToUseFunction.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "BLEH", "tokenType": "IDENTIFIER", "line": 9, "col": 28, "file": "DefParameterToUseFunction.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "BLEH", "tokenType": "IDENTIFIER", "line": 9, "col": 28, "file": "DefParameterToUseFunction.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 11, "col": 4, "file": "DefParameterToUseFunction.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 11, "col": 11, "file": "DefParameterToUseFunction.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 11, "col": 11, "file": "DefParameterToUseFunction.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 11, "col": 11, "file": "DefParameterToUseFunction.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

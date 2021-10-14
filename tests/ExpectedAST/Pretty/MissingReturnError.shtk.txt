@@ -1,0 +1,31 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=8, col=0
+        ├───> nodeType=IDENTIFIER, string="isAdult", tokenType=IDENTIFIER, line=8, col=3
+        ├───> nodeType=PARAM, string="age", tokenType=IDENTIFIER, line=8, col=11
+        │     ├───> nodeType=IDENTIFIER, string="age", tokenType=IDENTIFIER, line=8, col=11
+        │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=8, col=15
+        ├───> nodeType=IDENTIFIER, string="bool", tokenType=IDENTIFIER, line=8, col=23
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=0
+              └───> nodeType=IF, string="if", tokenType=IF, line=10, col=4
+                    ├───> nodeType=IF, string="if", tokenType=IF, line=10, col=4
+                    │     ├───> nodeType=EXPRESSION, string="(", tokenType=LPAREN, line=10, col=6
+                    │     │     └───> nodeType=TERM, string="(", tokenType=LPAREN, line=10, col=6
+                    │     │           └───> nodeType=EXPRESSION, string="age", tokenType=IDENTIFIER, line=10, col=7
+                    │     │                 ├───> nodeType=EXPRESSION, string="age", tokenType=IDENTIFIER, line=10, col=7
+                    │     │                 │     └───> nodeType=TERM, string="age", tokenType=IDENTIFIER, line=10, col=7
+                    │     │                 │           └───> nodeType=IDENTIFIER, string="age", tokenType=IDENTIFIER, line=10, col=7
+                    │     │                 ├───> nodeType=OPERATOR, string=">", tokenType=GREATER_THAN, line=10, col=11
+                    │     │                 └───> nodeType=EXPRESSION, string="18", tokenType=INT_LITERAL, line=10, col=13
+                    │     │                       └───> nodeType=TERM, string="18", tokenType=INT_LITERAL, line=10, col=13
+                    │     │                             └───> nodeType=LITERAL, string="18", tokenType=INT_LITERAL, line=10, col=13
+                    │     └───> nodeType=BLOCK, string="return", tokenType=RETURN, line=10, col=17
+                    │           └───> nodeType=RETURN, string="return", tokenType=RETURN, line=10, col=17
+                    │                 └───> nodeType=EXPRESSION, string="true", tokenType=IDENTIFIER, line=10, col=24
+                    │                       └───> nodeType=TERM, string="true", tokenType=IDENTIFIER, line=10, col=24
+                    │                             └───> nodeType=IDENTIFIER, string="true", tokenType=IDENTIFIER, line=10, col=24
+                    └───> nodeType=ELSE, string="else", tokenType=ELSE, line=11, col=4
+                          └───> nodeType=BLOCK, string="return", tokenType=RETURN, line=11, col=9
+                                └───> nodeType=RETURN, string="return", tokenType=RETURN, line=11, col=9
+                                      └───> nodeType=EXPRESSION, string="false", tokenType=IDENTIFIER, line=11, col=16
+                                            └───> nodeType=TERM, string="false", tokenType=IDENTIFIER, line=11, col=16
+                                                  └───> nodeType=IDENTIFIER, string="false", tokenType=IDENTIFIER, line=11, col=16

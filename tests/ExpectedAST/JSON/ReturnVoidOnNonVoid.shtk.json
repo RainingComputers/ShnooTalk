@@ -1,0 +1,33 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 8, "col": 0, "file": "ReturnVoidOnNonVoid.shtk"},
+      "children": [
+        {
+          "token": {"string": "lol", "tokenType": "IDENTIFIER", "line": 8, "col": 3, "file": "ReturnVoidOnNonVoid.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 8, "col": 12, "file": "ReturnVoidOnNonVoid.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 0, "file": "ReturnVoidOnNonVoid.shtk"},
+          "children": [
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 10, "col": 4, "file": "ReturnVoidOnNonVoid.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

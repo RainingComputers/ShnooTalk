@@ -1,0 +1,83 @@
+{
+    "moduleName": "ForLoopMethodCall.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_ForLoopMethodCall_shtk__l15_c12": 20,
+        "_str_ForLoopMethodCall_shtk__l24_c16": 18
+    },
+    "globals": {
+    },
+    "structures": {
+        "foo": {
+            "structFields": {
+            },
+            "size": 0,
+            "moduleName": "ForLoopMethodCall.shtk"
+        }
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_ForLoopMethodCall_shtk_lol": {
+            "moduleName": "ForLoopMethodCall.shtk",
+            "parameters": ["this"],
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "ForLoopMethodCall.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "this": {"dtype": "struct", "dtypeSize": 0, "size": 0, "moduleName": "ForLoopMethodCall.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_ForLoopMethodCall_shtk__l15_c12", "size": 20}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "moduleName": "ForLoopMethodCall.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ForLoopMethodCall.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "struct", "dtypeSize": 0, "size": 0, "moduleName": "ForLoopMethodCall.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ForLoopMethodCall.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 10, "dtype": "int"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 8, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 10, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 13, "dtype": "struct"}, "op2": {"type": "var", "id": 11, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 13, "dtype": "struct"}, "op2": {"type": "var", "id": 14, "name": "_fn_ForLoopMethodCall_shtk_lol", "dtype": "void"}, "op3": {"type": "module", "id": 15, "name": "ForLoopMethodCall.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 16, "dtype": "void"}, "op2": {"type": "var", "id": 17, "name": "_fn_ForLoopMethodCall_shtk_lol", "dtype": "void"}, "op3": {"type": "module", "id": 18, "name": "ForLoopMethodCall.shtk"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 19, "name": "_for_true_l22_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 24, "dtype": "int"}, "op2": {"type": "literal", "id": 23, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                {"opcode": "lessThan", "op1": {"type": "var", "id": 22, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 24, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 20, "name": "_for_false_l22_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 25, "name": "_str_ForLoopMethodCall_shtk__l24_c16", "size": 18}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 29, "dtype": "int"}, "op2": {"type": "literal", "id": 27, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 28, "dtype": "int"}, "op2": {"type": "var", "id": 26, "name": "i", "dtype": "int"}, "op3": {"type": "temp", "id": 29, "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 26, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 28, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 21, "name": "_for_cont_true_l22_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 32, "dtype": "struct"}, "op2": {"type": "var", "id": 30, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 32, "dtype": "struct"}, "op2": {"type": "var", "id": 33, "name": "_fn_ForLoopMethodCall_shtk_lol", "dtype": "void"}, "op3": {"type": "module", "id": 34, "name": "ForLoopMethodCall.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 35, "dtype": "void"}, "op2": {"type": "var", "id": 36, "name": "_fn_ForLoopMethodCall_shtk_lol", "dtype": "void"}, "op3": {"type": "module", "id": 37, "name": "ForLoopMethodCall.shtk"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 19, "name": "_for_true_l22_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 20, "name": "_for_false_l22_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 40, "dtype": "int"}, "op2": {"type": "literal", "id": 39, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 38, "dtype": "int"}, "op2": {"type": "temp", "id": 40, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

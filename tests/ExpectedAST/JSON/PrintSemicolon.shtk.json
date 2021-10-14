@@ -1,0 +1,109 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 3, "col": 0, "file": "PrintSemicolon.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 3, "col": 3, "file": "PrintSemicolon.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 13, "file": "PrintSemicolon.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 4, "col": 0, "file": "PrintSemicolon.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 5, "col": 4, "file": "PrintSemicolon.shtk"},
+              "children": [
+                {
+                  "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 12, "file": "PrintSemicolon.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 12, "file": "PrintSemicolon.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": ",", "tokenType": "COMMA", "line": 5, "col": 19, "file": "PrintSemicolon.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "\"world\"", "tokenType": "STR_LITERAL", "line": 5, "col": 21, "file": "PrintSemicolon.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"world\"", "tokenType": "STR_LITERAL", "line": 5, "col": 21, "file": "PrintSemicolon.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "\"goodbye\"", "tokenType": "STR_LITERAL", "line": 5, "col": 30, "file": "PrintSemicolon.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"goodbye\"", "tokenType": "STR_LITERAL", "line": 5, "col": 30, "file": "PrintSemicolon.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": ",", "tokenType": "COMMA", "line": 5, "col": 39, "file": "PrintSemicolon.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "\"world\"", "tokenType": "STR_LITERAL", "line": 5, "col": 41, "file": "PrintSemicolon.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"world\"", "tokenType": "STR_LITERAL", "line": 5, "col": 41, "file": "PrintSemicolon.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 7, "col": 4, "file": "PrintSemicolon.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "PrintSemicolon.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "PrintSemicolon.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "PrintSemicolon.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

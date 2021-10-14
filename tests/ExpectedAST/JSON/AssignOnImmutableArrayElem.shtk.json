@@ -1,0 +1,167 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 8, "col": 0, "file": "AssignOnImmutableArrayElem.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 8, "col": 3, "file": "AssignOnImmutableArrayElem.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 0, "file": "AssignOnImmutableArrayElem.shtk"},
+          "children": [
+            {
+              "token": {"string": "const", "tokenType": "CONST", "line": 10, "col": 4, "file": "AssignOnImmutableArrayElem.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 10, "file": "AssignOnImmutableArrayElem.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 12, "file": "AssignOnImmutableArrayElem.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 10, "col": 15, "file": "AssignOnImmutableArrayElem.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 10, "col": 16, "file": "AssignOnImmutableArrayElem.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 10, "col": 19, "file": "AssignOnImmutableArrayElem.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 10, "col": 21, "file": "AssignOnImmutableArrayElem.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 22, "file": "AssignOnImmutableArrayElem.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 22, "file": "AssignOnImmutableArrayElem.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 10, "col": 22, "file": "AssignOnImmutableArrayElem.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 10, "col": 25, "file": "AssignOnImmutableArrayElem.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 10, "col": 25, "file": "AssignOnImmutableArrayElem.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 10, "col": 25, "file": "AssignOnImmutableArrayElem.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 10, "col": 28, "file": "AssignOnImmutableArrayElem.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 10, "col": 28, "file": "AssignOnImmutableArrayElem.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 10, "col": 28, "file": "AssignOnImmutableArrayElem.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignOnImmutableArrayElem.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignOnImmutableArrayElem.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "AssignOnImmutableArrayElem.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 12, "col": 5, "file": "AssignOnImmutableArrayElem.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 6, "file": "AssignOnImmutableArrayElem.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 6, "file": "AssignOnImmutableArrayElem.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 12, "col": 6, "file": "AssignOnImmutableArrayElem.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 12, "col": 9, "file": "AssignOnImmutableArrayElem.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "AssignOnImmutableArrayElem.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "AssignOnImmutableArrayElem.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "AssignOnImmutableArrayElem.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

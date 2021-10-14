@@ -3,8 +3,7 @@ from typing import List, Optional, Tuple
 from tests_runner.utils.config import COMPILER_EXEC_PATH
 
 from tests_runner.utils.command import run_command
-from tests_runner.utils.dir import get_files, remove_if_exists
-from tests_runner.utils.dir import remove_files
+from tests_runner.utils.dir import get_files, remove_if_exists, dump_string_to_file, remove_files
 from tests_runner.utils.result import TestResult
 from tests_runner.utils.coverage import set_gmon_prefix, setup_coverage_dir
 
@@ -29,14 +28,9 @@ def link_objects() -> None:
     run_command(["gcc"] + get_files(".o") + ["-o", "test_executable", "-lm"])
 
 
-def dump_string_to_file(file_name: str, content: str) -> None:
-    with open(file_name, 'w') as file:
-        file.write(content)
-
-
 def compare(expected_output: str, output: str) -> TestResult:
     if expected_output == output:
-        return TestResult.passed()
+        return TestResult.passed(output)
 
     return TestResult.failed(output, expected_output)
 
@@ -67,13 +61,13 @@ def compile_phase(file_name: str,
     if link_phase:
         link_objects()
 
-    return TestResult.passed()
+    return TestResult.passed(compiler_output)
 
 
-def validate(compile_phase_result: TestResult,
-             expected_on_compile_fail: Optional[str],
-             command_on_compile_success: List[str],
-             expected_command_output: Optional[str]) -> None:
+def command_validator(compile_phase_result: TestResult,
+                      expected_on_compile_fail: Optional[str],
+                      command_on_compile_success: Optional[List[str]],
+                      expected_command_output: Optional[str]) -> TestResult:
 
     if compile_phase_result.has_failed and expected_on_compile_fail is not None:
         return compare(expected_on_compile_fail, compile_phase_result.output)
@@ -94,4 +88,13 @@ def validate(compile_phase_result: TestResult,
     if command_exit_code != 0:
         return TestResult.failed(command_output)
 
-    return TestResult.passed()
+    return TestResult.passed(command_output)
+
+
+def string_validator(file_name: str, flag: str, expected: str) -> TestResult:
+    compile_phase_result = compile_phase(file_name, flag, None, False, False)
+
+    if compile_phase_result.has_passed:
+        return compare(expected, compile_phase_result.output)
+
+    return compile_phase_result

@@ -1,0 +1,436 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 3, "col": 0, "file": "LoopBreak.shtk"},
+      "children": [
+        {
+          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 3, "col": 3, "file": "LoopBreak.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "LoopBreak.shtk"},
+          "children": [
+            {
+              "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "LoopBreak.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 12, "file": "LoopBreak.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 20, "file": "LoopBreak.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 4, "col": 0, "file": "LoopBreak.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 5, "col": 4, "file": "LoopBreak.shtk"},
+              "children": [
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 10, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 14, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 16, "file": "LoopBreak.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 16, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 16, "file": "LoopBreak.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "while", "tokenType": "WHILE", "line": 7, "col": 4, "file": "LoopBreak.shtk"},
+              "children": [
+                {
+                  "token": {"string": "(", "tokenType": "LPAREN", "line": 7, "col": 9, "file": "LoopBreak.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "(", "tokenType": "LPAREN", "line": 7, "col": 9, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 10, "file": "LoopBreak.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 10, "file": "LoopBreak.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 10, "file": "LoopBreak.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 10, "file": "LoopBreak.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 7, "col": 12, "file": "LoopBreak.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 15, "file": "LoopBreak.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 15, "file": "LoopBreak.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 15, "file": "LoopBreak.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 8, "col": 4, "file": "LoopBreak.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "if", "tokenType": "IF", "line": 9, "col": 8, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "if", "tokenType": "IF", "line": 9, "col": 8, "file": "LoopBreak.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "(", "tokenType": "LPAREN", "line": 9, "col": 10, "file": "LoopBreak.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "(", "tokenType": "LPAREN", "line": 9, "col": 10, "file": "LoopBreak.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 9, "col": 11, "file": "LoopBreak.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 9, "col": 11, "file": "LoopBreak.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 9, "col": 11, "file": "LoopBreak.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 9, "col": 11, "file": "LoopBreak.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 9, "col": 13, "file": "LoopBreak.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 9, "col": 16, "file": "LoopBreak.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 9, "col": 16, "file": "LoopBreak.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 9, "col": 16, "file": "LoopBreak.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "break", "tokenType": "BREAK", "line": 9, "col": 19, "file": "LoopBreak.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "break", "tokenType": "BREAK", "line": 9, "col": 19, "file": "LoopBreak.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "LoopBreak.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "LoopBreak.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 11, "col": 10, "file": "LoopBreak.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 13, "file": "LoopBreak.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 13, "file": "LoopBreak.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 13, "file": "LoopBreak.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 14, "col": 4, "file": "LoopBreak.shtk"},
+              "children": [
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 14, "col": 11, "file": "LoopBreak.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 14, "col": 11, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 14, "col": 11, "file": "LoopBreak.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 17, "col": 0, "file": "LoopBreak.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 17, "col": 3, "file": "LoopBreak.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 17, "col": 13, "file": "LoopBreak.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 18, "col": 0, "file": "LoopBreak.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 19, "col": 4, "file": "LoopBreak.shtk"},
+              "children": [
+                {
+                  "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 19, "col": 8, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 19, "col": 10, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 19, "col": 14, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 19, "col": 16, "file": "LoopBreak.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 19, "col": 16, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 19, "col": 16, "file": "LoopBreak.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 21, "col": 4, "file": "LoopBreak.shtk"},
+              "children": [
+                {
+                  "token": {"string": "l", "tokenType": "IDENTIFIER", "line": 21, "col": 8, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 21, "col": 10, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 21, "col": 14, "file": "LoopBreak.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 21, "col": 16, "file": "LoopBreak.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 21, "col": 16, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 21, "col": 16, "file": "LoopBreak.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 21, "col": 23, "file": "LoopBreak.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 21, "col": 23, "file": "LoopBreak.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 21, "col": 23, "file": "LoopBreak.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 23, "col": 4, "file": "LoopBreak.shtk"},
+              "children": [
+                {
+                  "token": {"string": "l", "tokenType": "IDENTIFIER", "line": 23, "col": 12, "file": "LoopBreak.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "l", "tokenType": "IDENTIFIER", "line": 23, "col": 12, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "l", "tokenType": "IDENTIFIER", "line": 23, "col": 12, "file": "LoopBreak.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 25, "col": 4, "file": "LoopBreak.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "LoopBreak.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "LoopBreak.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "LoopBreak.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

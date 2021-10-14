@@ -1,0 +1,6 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=8, col=0
+        ├───> nodeType=IDENTIFIER, string="lol", tokenType=IDENTIFIER, line=8, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=8, col=12
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=0
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=10, col=4

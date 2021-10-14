@@ -1,0 +1,34 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=9, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=9, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=10, col=0
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=11, col=4
+              │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=11, col=8
+              │     ├───> nodeType=IDENTIFIER, string="float", tokenType=IDENTIFIER, line=11, col=10
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=11, col=16
+              │     └───> nodeType=EXPRESSION, string="2.0", tokenType=FLOAT_LITERAL, line=11, col=18
+              │           └───> nodeType=TERM, string="2.0", tokenType=FLOAT_LITERAL, line=11, col=18
+              │                 └───> nodeType=LITERAL, string="2.0", tokenType=FLOAT_LITERAL, line=11, col=18
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=12, col=4
+              │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=12, col=8
+              │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=12, col=10
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=12, col=14
+              │     └───> nodeType=EXPRESSION, string="5", tokenType=INT_LITERAL, line=12, col=16
+              │           └───> nodeType=TERM, string="5", tokenType=INT_LITERAL, line=12, col=16
+              │                 └───> nodeType=LITERAL, string="5", tokenType=INT_LITERAL, line=12, col=16
+              └───> nodeType=IF, string="if", tokenType=IF, line=14, col=4
+                    └───> nodeType=IF, string="if", tokenType=IF, line=14, col=4
+                          ├───> nodeType=EXPRESSION, string="(", tokenType=LPAREN, line=14, col=6
+                          │     └───> nodeType=TERM, string="(", tokenType=LPAREN, line=14, col=6
+                          │           └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=14, col=7
+                          │                 ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=14, col=7
+                          │                 │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=14, col=7
+                          │                 │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=14, col=7
+                          │                 ├───> nodeType=OPERATOR, string="<", tokenType=LESS_THAN, line=14, col=9
+                          │                 └───> nodeType=EXPRESSION, string="b", tokenType=IDENTIFIER, line=14, col=11
+                          │                       └───> nodeType=TERM, string="b", tokenType=IDENTIFIER, line=14, col=11
+                          │                             └───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=14, col=11
+                          └───> nodeType=BLOCK, string="println", tokenType=PRINTLN, line=14, col=14
+                                └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=14, col=14
+                                      └───> nodeType=MULTILINE_STR_LITERAL, string=""lol a < b"", tokenType=STR_LITERAL, line=14, col=22
+                                            └───> nodeType=STR_LITERAL, string=""lol a < b"", tokenType=STR_LITERAL, line=14, col=22

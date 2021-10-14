@@ -1,0 +1,9 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=8, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=8, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=0
+              └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=10, col=4
+                    └───> nodeType=EXPRESSION, string="sizeof", tokenType=SIZEOF, line=10, col=12
+                          └───> nodeType=TERM, string="sizeof", tokenType=SIZEOF, line=10, col=12
+                                └───> nodeType=SIZEOF, string="sizeof", tokenType=SIZEOF, line=10, col=12
+                                      └───> nodeType=IDENTIFIER, string="doesnotexist", tokenType=IDENTIFIER, line=10, col=19

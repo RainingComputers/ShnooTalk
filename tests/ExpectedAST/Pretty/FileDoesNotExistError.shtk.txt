@@ -1,0 +1,4 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=USE, string="use", tokenType=USE, line=8, col=0
+        ├───> nodeType=STR_LITERAL, string=""does_not_exist.shtk"", tokenType=STR_LITERAL, line=8, col=4
+        └───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=8, col=29

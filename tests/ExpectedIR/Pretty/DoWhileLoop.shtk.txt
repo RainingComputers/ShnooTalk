@@ -1,0 +1,55 @@
+{
+    "moduleName": "DoWhileLoop.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+        "_str_DoWhileLoop_shtk__l14_c16": 5
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "DoWhileLoop.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "DoWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "DoWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    int temp5 = cast autoInt 0
+                    int a = equal int temp5
+                _do_true_l11_c4:
+                    int temp11 = cast autoInt 1
+                    int temp10 = add int a, int temp11
+                    int a = equal int temp10
+                    printString stringData _str_DoWhileLoop_shtk__l14_c16
+                    newLine
+                    int temp15 = cast autoInt 5
+                    flag = lessThan int a, int temp15
+                    if(not flag) goto _do_false_l11_c4
+                    goto _do_true_l11_c4
+                _do_false_l11_c4:
+                    int temp18 = cast autoInt 0
+                    int returnValue16 = equal int temp18
+                    return
+            ]
+        }
+    }
+}

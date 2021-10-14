@@ -1,0 +1,27 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=3, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=3, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=4, col=0
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=5, col=4
+              │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=5, col=8
+              │     ├───> nodeType=IDENTIFIER, string="bool", tokenType=IDENTIFIER, line=5, col=11
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=5, col=16
+              │     └───> nodeType=EXPRESSION, string="false", tokenType=IDENTIFIER, line=5, col=18
+              │           └───> nodeType=TERM, string="false", tokenType=IDENTIFIER, line=5, col=18
+              │                 └───> nodeType=IDENTIFIER, string="false", tokenType=IDENTIFIER, line=5, col=18
+              ├───> nodeType=IF, string="if", tokenType=IF, line=7, col=4
+              │     └───> nodeType=IF, string="if", tokenType=IF, line=7, col=4
+              │           ├───> nodeType=EXPRESSION, string="!", tokenType=CONDN_NOT, line=7, col=7
+              │           │     └───> nodeType=TERM, string="!", tokenType=CONDN_NOT, line=7, col=7
+              │           │           └───> nodeType=UNARY_OPR, string="!", tokenType=CONDN_NOT, line=7, col=7
+              │           │                 └───> nodeType=TERM, string="b", tokenType=IDENTIFIER, line=7, col=8
+              │           │                       └───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=7, col=8
+              │           └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=7, col=10
+              │                 └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=8, col=8
+              │                       └───> nodeType=MULTILINE_STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=8, col=16
+              │                             └───> nodeType=STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=8, col=16
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=11, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=11, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=11, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=11, col=11

@@ -1,0 +1,55 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=3, col=0
+  │     ├───> nodeType=IDENTIFIER, string="getArg", tokenType=IDENTIFIER, line=3, col=3
+  │     ├───> nodeType=PARAM, string="argv", tokenType=IDENTIFIER, line=3, col=10
+  │     │     ├───> nodeType=IDENTIFIER, string="argv", tokenType=IDENTIFIER, line=3, col=10
+  │     │     ├───> nodeType=IDENTIFIER, string="ulong", tokenType=IDENTIFIER, line=3, col=16
+  │     │     └───> nodeType=EMPTY_SUBSCRIPT, string="[]", tokenType=EMPTY_SUBSCRIPT, line=3, col=21
+  │     ├───> nodeType=PARAM, string="idx", tokenType=IDENTIFIER, line=3, col=25
+  │     │     ├───> nodeType=IDENTIFIER, string="idx", tokenType=IDENTIFIER, line=3, col=25
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=30
+  │     ├───> nodeType=IDENTIFIER, string="char", tokenType=IDENTIFIER, line=3, col=38
+  │     ├───> nodeType=EMPTY_SUBSCRIPT, string="[]", tokenType=EMPTY_SUBSCRIPT, line=3, col=42
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=4, col=0
+  │           └───> nodeType=RETURN, string="return", tokenType=RETURN, line=5, col=4
+  │                 └───> nodeType=EXPRESSION, string="char", tokenType=IDENTIFIER, line=5, col=11
+  │                       └───> nodeType=TERM, string="char", tokenType=IDENTIFIER, line=5, col=11
+  │                             └───> nodeType=PTR_ARRAY_CAST, string="char", tokenType=IDENTIFIER, line=5, col=11
+  │                                   └───> nodeType=TERM, string="(", tokenType=LPAREN, line=5, col=18
+  │                                         └───> nodeType=EXPRESSION, string="argv", tokenType=IDENTIFIER, line=5, col=19
+  │                                               ├───> nodeType=EXPRESSION, string="argv", tokenType=IDENTIFIER, line=5, col=19
+  │                                               │     └───> nodeType=TERM, string="argv", tokenType=IDENTIFIER, line=5, col=19
+  │                                               │           ├───> nodeType=IDENTIFIER, string="argv", tokenType=IDENTIFIER, line=5, col=19
+  │                                               │           └───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=5, col=23
+  │                                               │                 └───> nodeType=EXPRESSION, string="idx", tokenType=IDENTIFIER, line=5, col=24
+  │                                               │                       └───> nodeType=TERM, string="idx", tokenType=IDENTIFIER, line=5, col=24
+  │                                               │                             └───> nodeType=IDENTIFIER, string="idx", tokenType=IDENTIFIER, line=5, col=24
+  │                                               ├───> nodeType=OPERATOR, string="+", tokenType=PLUS, line=5, col=29
+  │                                               └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=5, col=31
+  │                                                     └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=5, col=31
+  │                                                           └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=5, col=31
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=8, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=8, col=3
+        ├───> nodeType=PARAM, string="argc", tokenType=IDENTIFIER, line=8, col=8
+        │     ├───> nodeType=IDENTIFIER, string="argc", tokenType=IDENTIFIER, line=8, col=8
+        │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=8, col=14
+        ├───> nodeType=PARAM, string="argv", tokenType=IDENTIFIER, line=8, col=19
+        │     ├───> nodeType=IDENTIFIER, string="argv", tokenType=IDENTIFIER, line=8, col=19
+        │     ├───> nodeType=IDENTIFIER, string="ulong", tokenType=IDENTIFIER, line=8, col=25
+        │     └───> nodeType=EMPTY_SUBSCRIPT, string="[]", tokenType=EMPTY_SUBSCRIPT, line=8, col=30
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=8, col=37
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=0
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=10, col=4
+              │     └───> nodeType=EXPRESSION, string="getArg", tokenType=IDENTIFIER, line=10, col=12
+              │           └───> nodeType=TERM, string="getArg", tokenType=IDENTIFIER, line=10, col=12
+              │                 └───> nodeType=FUNCCALL, string="getArg", tokenType=IDENTIFIER, line=10, col=12
+              │                       ├───> nodeType=EXPRESSION, string="argv", tokenType=IDENTIFIER, line=10, col=19
+              │                       │     └───> nodeType=TERM, string="argv", tokenType=IDENTIFIER, line=10, col=19
+              │                       │           └───> nodeType=IDENTIFIER, string="argv", tokenType=IDENTIFIER, line=10, col=19
+              │                       └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=10, col=25
+              │                             └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=10, col=25
+              │                                   └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=10, col=25
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=11, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=11, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=11, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=11, col=11

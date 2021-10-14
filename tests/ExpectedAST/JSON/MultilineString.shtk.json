@@ -1,0 +1,120 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 4, "col": 0, "file": "MultilineString.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 4, "col": 3, "file": "MultilineString.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 4, "col": 13, "file": "MultilineString.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 5, "col": 0, "file": "MultilineString.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 6, "col": 4, "file": "MultilineString.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 6, "col": 8, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "char", "tokenType": "IDENTIFIER", "line": 6, "col": 11, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 6, "col": 15, "file": "MultilineString.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "60", "tokenType": "INT_LITERAL", "line": 6, "col": 16, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 6, "col": 20, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "\"Hello this is multi line string\\n\"", "tokenType": "STR_LITERAL", "line": 7, "col": 8, "file": "MultilineString.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"Hello this is multi line string\\n\"", "tokenType": "STR_LITERAL", "line": 7, "col": 8, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "\"This is another line\\n\"", "tokenType": "STR_LITERAL", "line": 8, "col": 8, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "print", "tokenType": "PRINT", "line": 10, "col": 4, "file": "MultilineString.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 10, "file": "MultilineString.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 10, "file": "MultilineString.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 10, "file": "MultilineString.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 12, "col": 4, "file": "MultilineString.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "MultilineString.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "MultilineString.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 12, "col": 11, "file": "MultilineString.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

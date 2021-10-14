@@ -1,0 +1,124 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 3, "col": 0, "file": "ScopeOpInFunctionArg.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Digital.shtk\"", "tokenType": "STR_LITERAL", "line": 3, "col": 4, "file": "ScopeOpInFunctionArg.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "digital", "tokenType": "IDENTIFIER", "line": 3, "col": 34, "file": "ScopeOpInFunctionArg.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 5, "col": 0, "file": "ScopeOpInFunctionArg.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 5, "col": 3, "file": "ScopeOpInFunctionArg.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 13, "file": "ScopeOpInFunctionArg.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 6, "col": 0, "file": "ScopeOpInFunctionArg.shtk"},
+          "children": [
+            {
+              "token": {"string": "digital", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "ScopeOpInFunctionArg.shtk"},
+              "children": [
+                {
+                  "token": {"string": "digital", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "ScopeOpInFunctionArg.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "digitalWrite", "tokenType": "IDENTIFIER", "line": 7, "col": 13, "file": "ScopeOpInFunctionArg.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 26, "file": "ScopeOpInFunctionArg.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 26, "file": "ScopeOpInFunctionArg.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 26, "file": "ScopeOpInFunctionArg.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "digital", "tokenType": "IDENTIFIER", "line": 7, "col": 29, "file": "ScopeOpInFunctionArg.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "digital", "tokenType": "IDENTIFIER", "line": 7, "col": 29, "file": "ScopeOpInFunctionArg.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "digital", "tokenType": "IDENTIFIER", "line": 7, "col": 29, "file": "ScopeOpInFunctionArg.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "LOW", "tokenType": "IDENTIFIER", "line": 7, "col": 38, "file": "ScopeOpInFunctionArg.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "LOW", "tokenType": "IDENTIFIER", "line": 7, "col": 38, "file": "ScopeOpInFunctionArg.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 9, "col": 4, "file": "ScopeOpInFunctionArg.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "ScopeOpInFunctionArg.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "ScopeOpInFunctionArg.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "ScopeOpInFunctionArg.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 9, "col": 0, "file": "ReturnTypeError.shtk"},
+      "children": [
+        {
+          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 9, "col": 3, "file": "ReturnTypeError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 9, "col": 15, "file": "ReturnTypeError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 10, "col": 0, "file": "ReturnTypeError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 11, "col": 4, "file": "ReturnTypeError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "ReturnTypeError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "ReturnTypeError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 11, "col": 14, "file": "ReturnTypeError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 16, "file": "ReturnTypeError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 16, "file": "ReturnTypeError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 16, "file": "ReturnTypeError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 13, "col": 4, "file": "ReturnTypeError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 11, "file": "ReturnTypeError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 11, "file": "ReturnTypeError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 11, "file": "ReturnTypeError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 16, "col": 0, "file": "ReturnTypeError.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 16, "col": 3, "file": "ReturnTypeError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 16, "col": 13, "file": "ReturnTypeError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 17, "col": 0, "file": "ReturnTypeError.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 18, "col": 4, "file": "ReturnTypeError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 18, "col": 12, "file": "ReturnTypeError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 18, "col": 12, "file": "ReturnTypeError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 18, "col": 12, "file": "ReturnTypeError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 20, "col": 4, "file": "ReturnTypeError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 20, "col": 11, "file": "ReturnTypeError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 20, "col": 11, "file": "ReturnTypeError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 20, "col": 11, "file": "ReturnTypeError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

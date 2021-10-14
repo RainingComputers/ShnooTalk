@@ -1,0 +1,21 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=8, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=8, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=8, col=13
+        ├───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=8, col=16
+        │     └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=8, col=17
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=0
+              ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=10, col=4
+              │     └───> nodeType=MULTILINE_STR_LITERAL, string=""Hello world"", tokenType=STR_LITERAL, line=10, col=12
+              │           └───> nodeType=STR_LITERAL, string=""Hello world"", tokenType=STR_LITERAL, line=10, col=12
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=11, col=4
+                    └───> nodeType=INITLIST, string="[", tokenType=OPEN_SQUARE, line=11, col=11
+                          ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=11, col=12
+                          │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=11, col=12
+                          │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=11, col=12
+                          ├───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=11, col=15
+                          │     └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=11, col=15
+                          │           └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=11, col=15
+                          └───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=11, col=18
+                                └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=11, col=18
+                                      └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=11, col=18

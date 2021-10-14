@@ -1,0 +1,78 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=USE, string="use", tokenType=USE, line=8, col=0
+  │     ├───> nodeType=STR_LITERAL, string=""TestModules/Vector.shtk"", tokenType=STR_LITERAL, line=8, col=4
+  │     └───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=8, col=33
+  ├───> nodeType=FROM, string="from", tokenType=FROM, line=9, col=0
+  │     ├───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=9, col=5
+  │     └───> nodeType=USE, string="use", tokenType=USE, line=9, col=9
+  │           └───> nodeType=IDENTIFIER, string="Vec", tokenType=IDENTIFIER, line=9, col=13
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=11, col=0
+  │     ├───> nodeType=IDENTIFIER, string="newVec", tokenType=IDENTIFIER, line=11, col=3
+  │     ├───> nodeType=PARAM, string="x", tokenType=IDENTIFIER, line=11, col=10
+  │     │     ├───> nodeType=IDENTIFIER, string="x", tokenType=IDENTIFIER, line=11, col=10
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=11, col=12
+  │     ├───> nodeType=PARAM, string="y", tokenType=IDENTIFIER, line=11, col=17
+  │     │     ├───> nodeType=IDENTIFIER, string="y", tokenType=IDENTIFIER, line=11, col=17
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=11, col=19
+  │     ├───> nodeType=IDENTIFIER, string="Vec", tokenType=IDENTIFIER, line=11, col=27
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=12, col=0
+  │           ├───> nodeType=VAR, string="var", tokenType=VAR, line=13, col=4
+  │           │     ├───> nodeType=IDENTIFIER, string="new", tokenType=IDENTIFIER, line=13, col=8
+  │           │     └───> nodeType=IDENTIFIER, string="Vec", tokenType=IDENTIFIER, line=13, col=12
+  │           ├───> nodeType=TERM, string="new", tokenType=IDENTIFIER, line=15, col=4
+  │           │     └───> nodeType=METHODCALL, string="setVec", tokenType=IDENTIFIER, line=15, col=8
+  │           │           ├───> nodeType=TERM, string="setVec", tokenType=IDENTIFIER, line=15, col=8
+  │           │           │     └───> nodeType=IDENTIFIER, string="new", tokenType=IDENTIFIER, line=15, col=4
+  │           │           ├───> nodeType=EXPRESSION, string="x", tokenType=IDENTIFIER, line=15, col=15
+  │           │           │     └───> nodeType=TERM, string="x", tokenType=IDENTIFIER, line=15, col=15
+  │           │           │           └───> nodeType=IDENTIFIER, string="x", tokenType=IDENTIFIER, line=15, col=15
+  │           │           └───> nodeType=EXPRESSION, string="y", tokenType=IDENTIFIER, line=15, col=18
+  │           │                 └───> nodeType=TERM, string="y", tokenType=IDENTIFIER, line=15, col=18
+  │           │                       └───> nodeType=IDENTIFIER, string="y", tokenType=IDENTIFIER, line=15, col=18
+  │           └───> nodeType=RETURN, string="return", tokenType=RETURN, line=17, col=4
+  │                 └───> nodeType=EXPRESSION, string="new", tokenType=IDENTIFIER, line=17, col=11
+  │                       └───> nodeType=TERM, string="new", tokenType=IDENTIFIER, line=17, col=11
+  │                             └───> nodeType=IDENTIFIER, string="new", tokenType=IDENTIFIER, line=17, col=11
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=20, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=20, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=21, col=0
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=22, col=4
+              │     ├───> nodeType=IDENTIFIER, string="foo", tokenType=IDENTIFIER, line=22, col=8
+              │     ├───> nodeType=IDENTIFIER, string="Vec", tokenType=IDENTIFIER, line=22, col=12
+              │     ├───> nodeType=SUBSCRIPT, string="[", tokenType=OPEN_SQUARE, line=22, col=15
+              │     │     └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=22, col=16
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=22, col=19
+              │     └───> nodeType=INITLIST, string="[", tokenType=OPEN_SQUARE, line=22, col=21
+              │           ├───> nodeType=EXPRESSION, string="newVec", tokenType=IDENTIFIER, line=22, col=22
+              │           │     └───> nodeType=TERM, string="newVec", tokenType=IDENTIFIER, line=22, col=22
+              │           │           └───> nodeType=FUNCCALL, string="newVec", tokenType=IDENTIFIER, line=22, col=22
+              │           │                 ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=22, col=29
+              │           │                 │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=22, col=29
+              │           │                 │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=22, col=29
+              │           │                 └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=22, col=32
+              │           │                       └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=22, col=32
+              │           │                             └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=22, col=32
+              │           ├───> nodeType=EXPRESSION, string="newVec", tokenType=IDENTIFIER, line=22, col=36
+              │           │     └───> nodeType=TERM, string="newVec", tokenType=IDENTIFIER, line=22, col=36
+              │           │           └───> nodeType=FUNCCALL, string="newVec", tokenType=IDENTIFIER, line=22, col=36
+              │           │                 ├───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=22, col=43
+              │           │                 │     └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=22, col=43
+              │           │                 │           └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=22, col=43
+              │           │                 └───> nodeType=EXPRESSION, string="4", tokenType=INT_LITERAL, line=22, col=46
+              │           │                       └───> nodeType=TERM, string="4", tokenType=INT_LITERAL, line=22, col=46
+              │           │                             └───> nodeType=LITERAL, string="4", tokenType=INT_LITERAL, line=22, col=46
+              │           └───> nodeType=EXPRESSION, string="newVec", tokenType=IDENTIFIER, line=22, col=50
+              │                 └───> nodeType=TERM, string="newVec", tokenType=IDENTIFIER, line=22, col=50
+              │                       └───> nodeType=FUNCCALL, string="newVec", tokenType=IDENTIFIER, line=22, col=50
+              │                             ├───> nodeType=EXPRESSION, string="5", tokenType=INT_LITERAL, line=22, col=57
+              │                             │     └───> nodeType=TERM, string="5", tokenType=INT_LITERAL, line=22, col=57
+              │                             │           └───> nodeType=LITERAL, string="5", tokenType=INT_LITERAL, line=22, col=57
+              │                             └───> nodeType=EXPRESSION, string="6", tokenType=INT_LITERAL, line=22, col=60
+              │                                   └───> nodeType=TERM, string="6", tokenType=INT_LITERAL, line=22, col=60
+              │                                         └───> nodeType=LITERAL, string="6", tokenType=INT_LITERAL, line=22, col=60
+              └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=24, col=4
+                    └───> nodeType=EXPRESSION, string="foo", tokenType=IDENTIFIER, line=24, col=12
+                          └───> nodeType=TERM, string="foo", tokenType=IDENTIFIER, line=24, col=12
+                                ├───> nodeType=IDENTIFIER, string="foo", tokenType=IDENTIFIER, line=24, col=12
+                                ├───> nodeType=STRUCT_FIELD, string=".", tokenType=DOT, line=24, col=15
+                                └───> nodeType=IDENTIFIER, string="x", tokenType=IDENTIFIER, line=24, col=16

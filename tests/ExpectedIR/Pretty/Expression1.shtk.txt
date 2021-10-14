@@ -1,0 +1,68 @@
+{
+    "moduleName": "Expression1.shtk",
+    "uses": [],
+    "aliases": {
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "main": {
+            "moduleName": "Expression1.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Expression1.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "c": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Expression1.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "d": {"dtype": "uint", "dtypeSize": 4, "size": 4, "moduleName": "Expression1.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "f": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Expression1.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
+                "k": {"dtype": "uint", "dtypeSize": 4, "size": 4, "moduleName": "Expression1.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+            }
+            "icode": [
+                    int temp5 = cast autoInt 3
+                    int c = equal int temp5
+                    float temp8 = cast autoFloat 3.400000
+                    float f = equal float temp8
+                    float temp14 = cast autoFloat 3.000000
+                    float temp13 = add float f, float temp14
+                    int temp15 = cast float temp13
+                    autoInt temp17 = cast int temp15
+                    autoInt temp16 = subtract autoInt 3, autoInt temp17
+                    int temp19 = cast autoInt temp16
+                    int temp18 = add int c, int temp19
+                    int c = equal int temp18
+                    print int c
+                    newLine
+                    uint temp23 = cast autoInt 3
+                    uint d = equal uint temp23
+                    uint temp26 = cast autoInt 4
+                    uint k = equal uint temp26
+                    uint temp29 = add uint d, uint k
+                    print uint temp29
+                    newLine
+                    uint temp32 = multiply uint d, uint k
+                    print uint temp32
+                    newLine
+                    int temp35 = cast autoInt 0
+                    int returnValue33 = equal int temp35
+                    return
+            ]
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "from", "tokenType": "FROM", "line": 8, "col": 0, "file": "FromBeforeAliasError.shtk"},
+      "children": [
+        {
+          "token": {"string": "math", "tokenType": "IDENTIFIER", "line": 8, "col": 5, "file": "FromBeforeAliasError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "use", "tokenType": "USE", "line": 8, "col": 10, "file": "FromBeforeAliasError.shtk"},
+          "children": [
+            {
+              "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 8, "col": 14, "file": "FromBeforeAliasError.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

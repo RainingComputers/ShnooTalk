@@ -1,0 +1,57 @@
+{
+    "moduleName": "ExternFunctionUseTest.shtk",
+    "uses": ["TestModules/ExternMath.shtk"],
+    "aliases": {
+        "math": "TestModules/ExternMath.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": inf,
+        "nan": nan
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+        "sin": {
+            "moduleName": "TestModules/ExternMath.shtk",
+            "parameters": ["x"],
+            "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/ExternMath.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+                "x": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/ExternMath.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+            }
+            "icode": [
+            ]
+        }
+    },
+    "functions": {
+        "main": {
+            "moduleName": "ExternFunctionUseTest.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ExternFunctionUseTest.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "symbols": {
+            }
+            "icode": [
+                    autoFloat temp5 = divide autoFloat 3.140000, autoFloat 2.000000
+                    double temp7 = cast autoFloat temp5
+                    pass double temp7, double sin, module TestModules/ExternMath.shtk
+                    double calleeReturnValue10 = call double sin, module TestModules/ExternMath.shtk
+                    print double calleeReturnValue10
+                    newLine
+                    int temp15 = cast autoInt 0
+                    int returnValue13 = equal int temp15
+                    return
+            ]
+        }
+    }
+}

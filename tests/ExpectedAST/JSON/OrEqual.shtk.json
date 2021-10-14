@@ -1,0 +1,185 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 3, "col": 0, "file": "OrEqual.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 3, "col": 3, "file": "OrEqual.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 13, "file": "OrEqual.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 4, "col": 0, "file": "OrEqual.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 5, "col": 4, "file": "OrEqual.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "OrEqual.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 11, "file": "OrEqual.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 15, "file": "OrEqual.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 17, "file": "OrEqual.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 17, "file": "OrEqual.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 17, "file": "OrEqual.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 5, "col": 18, "file": "OrEqual.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 20, "file": "OrEqual.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 23, "file": "OrEqual.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 27, "file": "OrEqual.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 29, "file": "OrEqual.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 29, "file": "OrEqual.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 29, "file": "OrEqual.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "OrEqual.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "OrEqual.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "OrEqual.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "|=", "tokenType": "OR_EQUAL", "line": 7, "col": 6, "file": "OrEqual.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 9, "file": "OrEqual.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 9, "file": "OrEqual.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 9, "file": "OrEqual.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 9, "col": 4, "file": "OrEqual.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "OrEqual.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "OrEqual.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "OrEqual.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 11, "col": 4, "file": "OrEqual.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 11, "col": 11, "file": "OrEqual.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 11, "col": 11, "file": "OrEqual.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 11, "col": 11, "file": "OrEqual.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

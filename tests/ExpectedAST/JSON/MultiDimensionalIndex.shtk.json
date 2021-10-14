@@ -1,0 +1,580 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 11, "col": 0, "file": "MultiDimensionalIndex.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 11, "col": 3, "file": "MultiDimensionalIndex.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 13, "file": "MultiDimensionalIndex.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 12, "col": 0, "file": "MultiDimensionalIndex.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 13, "col": 4, "file": "MultiDimensionalIndex.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 8, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 13, "col": 10, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 13, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 13, "col": 14, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 16, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 13, "col": 17, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 13, "col": 20, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 22, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 23, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 24, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 24, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 13, "col": 24, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 13, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 13, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 13, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 13, "col": 30, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 13, "col": 30, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 13, "col": 30, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 34, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 13, "col": 35, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 13, "col": 35, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 13, "col": 35, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 13, "col": 38, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 13, "col": 38, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 13, "col": 38, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 13, "col": 41, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 13, "col": 41, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 13, "col": 41, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 45, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 13, "col": 46, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 13, "col": 46, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 13, "col": 46, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 13, "col": 49, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 13, "col": 49, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 13, "col": 49, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "9", "tokenType": "INT_LITERAL", "line": 13, "col": 52, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "9", "tokenType": "INT_LITERAL", "line": 13, "col": 52, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "9", "tokenType": "INT_LITERAL", "line": 13, "col": 52, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "for", "tokenType": "FOR", "line": 15, "col": 4, "file": "MultiDimensionalIndex.shtk"},
+              "children": [
+                {
+                  "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 8, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 15, "col": 14, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "=", "tokenType": "EQUAL", "line": 15, "col": 18, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 20, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 20, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 15, "col": 20, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 23, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 23, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 23, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 23, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "<", "tokenType": "LESS_THAN", "line": 15, "col": 25, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 15, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 15, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 15, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 30, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 30, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 30, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 15, "col": 32, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 35, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 35, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 35, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "for", "tokenType": "FOR", "line": 16, "col": 8, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "for", "tokenType": "FOR", "line": 16, "col": 8, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "var", "tokenType": "VAR", "line": 16, "col": 12, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 16, "col": 16, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 16, "col": 18, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "=", "tokenType": "EQUAL", "line": 16, "col": 22, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 16, "col": 24, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 16, "col": 24, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 16, "col": 24, "file": "MultiDimensionalIndex.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 16, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 16, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 16, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 16, "col": 27, "file": "MultiDimensionalIndex.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "<", "tokenType": "LESS_THAN", "line": 16, "col": 29, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 16, "col": 31, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 16, "col": 31, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 16, "col": 31, "file": "MultiDimensionalIndex.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 16, "col": 34, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 16, "col": 34, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 16, "col": 34, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 16, "col": 36, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 16, "col": 39, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 16, "col": 39, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 16, "col": 39, "file": "MultiDimensionalIndex.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "println", "tokenType": "PRINTLN", "line": 17, "col": 12, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "println", "tokenType": "PRINTLN", "line": 17, "col": 12, "file": "MultiDimensionalIndex.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 20, "file": "MultiDimensionalIndex.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 20, "file": "MultiDimensionalIndex.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 20, "file": "MultiDimensionalIndex.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 17, "col": 21, "file": "MultiDimensionalIndex.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 17, "col": 22, "file": "MultiDimensionalIndex.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 17, "col": 22, "file": "MultiDimensionalIndex.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 17, "col": 22, "file": "MultiDimensionalIndex.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 17, "col": 24, "file": "MultiDimensionalIndex.shtk"},
+                                          "children": [
+                                            {
+                                              "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 17, "col": 25, "file": "MultiDimensionalIndex.shtk"},
+                                              "children": [
+                                                {
+                                                  "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 17, "col": 25, "file": "MultiDimensionalIndex.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "token": {"string": "j", "tokenType": "IDENTIFIER", "line": 17, "col": 25, "file": "MultiDimensionalIndex.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 19, "col": 4, "file": "MultiDimensionalIndex.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "MultiDimensionalIndex.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "MultiDimensionalIndex.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "MultiDimensionalIndex.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

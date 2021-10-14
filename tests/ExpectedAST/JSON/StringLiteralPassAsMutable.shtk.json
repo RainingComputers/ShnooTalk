@@ -1,0 +1,102 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 8, "col": 0, "file": "StringLiteralPassAsMutable.shtk"},
+      "children": [
+        {
+          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 8, "col": 3, "file": "StringLiteralPassAsMutable.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "mut", "tokenType": "MUTABLE", "line": 8, "col": 7, "file": "StringLiteralPassAsMutable.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 8, "col": 11, "file": "StringLiteralPassAsMutable.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "char", "tokenType": "IDENTIFIER", "line": 8, "col": 13, "file": "StringLiteralPassAsMutable.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 8, "col": 17, "file": "StringLiteralPassAsMutable.shtk"},
+              "children": [
+                {
+                  "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 8, "col": 18, "file": "StringLiteralPassAsMutable.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 0, "file": "StringLiteralPassAsMutable.shtk"},
+          "children": [
+            {
+              "token": {"string": "println", "tokenType": "PRINTLN", "line": 10, "col": 4, "file": "StringLiteralPassAsMutable.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 12, "file": "StringLiteralPassAsMutable.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 12, "file": "StringLiteralPassAsMutable.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 12, "file": "StringLiteralPassAsMutable.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "StringLiteralPassAsMutable.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "StringLiteralPassAsMutable.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 14, "col": 0, "file": "StringLiteralPassAsMutable.shtk"},
+          "children": [
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 15, "col": 4, "file": "StringLiteralPassAsMutable.shtk"},
+              "children": [
+                {
+                  "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 15, "col": 8, "file": "StringLiteralPassAsMutable.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 15, "col": 8, "file": "StringLiteralPassAsMutable.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
