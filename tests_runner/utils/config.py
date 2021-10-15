@@ -3,39 +3,32 @@ from typing import Optional
 import sys
 
 
-ARG_MAP = {
+BUILD_TYPE_MAP = {
+    "--core": "debug",
+    "--test": "debug",
     "--coverage": "gcov",
-    "--profile": "gprof",
-    "--gen-ast": "ast_gen",
-    "--gen-json-ast": "ast_json_gen",
-    "--gen-ir": "ir_gen",
-    "--gen-json-ir": "ir_json_gen"
+    "--gen-ast": "debug",
+    "--gen-ir": "debug",
 }
 
 
 def parse_args() -> Optional[str]:
-    if len(sys.argv) == 1:
-        return "debug"
-
-    if len(sys.argv) > 2:
+    if len(sys.argv) != 2:
         return None
 
     try:
-        return ARG_MAP[sys.argv[1]]
+        return BUILD_TYPE_MAP[sys.argv[1]]
     except KeyError:
         return None
 
 
-CLI_ARG = parse_args()
+BUILD_TYPE = parse_args()
 
-if CLI_ARG is None:
-    COMPILER_EXEC_PATH = None
-elif CLI_ARG[-4:] != "_gen":
-    COMPILER_EXEC_PATH = f"../bin/{CLI_ARG}/shtkc"
-else:
-    COMPILER_EXEC_PATH = "../bin/debug/shtkc"
+CLI_ARG = None if BUILD_TYPE is None else sys.argv[1]
 
-OBJ_DIR = f"../obj/{CLI_ARG}/"
+COMPILER_EXEC_PATH = f"../bin/{BUILD_TYPE}/shtkc"
+
+OBJ_DIR = f"../obj/{BUILD_TYPE}/"
 
 COVERAGE_INFO_DIR = "testinfo"
 

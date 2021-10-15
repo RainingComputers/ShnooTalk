@@ -1,5 +1,3 @@
-from tests_runner.utils.config import CLI_ARG
-
 from tests_runner.utils.result import TestResult
 from tests_runner.utils.validator import compile_phase, command_validator
 from tests_runner.utils.batch import batch_run
@@ -38,4 +36,4 @@ def run_single(file_name: str) -> TestResult:
 
 
 def run() -> None:
-    batch_run("compiler", run_single, CLI_ARG == "gcov")
+    batch_run("compiler", run_single)

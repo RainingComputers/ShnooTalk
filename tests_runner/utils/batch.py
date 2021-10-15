@@ -2,11 +2,9 @@ from typing import Callable
 
 from tests_runner.utils.dir import list_test_files
 from tests_runner.utils.result import ResultPrinter, TestResult
-from tests_runner.utils.coverage import prepare_coverage_report
 
 
-def batch_run(name: str, single_run_callback: Callable[[str], TestResult],
-              coverage: bool = False) -> None:
+def batch_run(name: str, single_run_callback: Callable[[str], TestResult]) -> None:
 
     result_printer = ResultPrinter(name)
 
@@ -15,6 +13,3 @@ def batch_run(name: str, single_run_callback: Callable[[str], TestResult],
         result_printer.print_result(file, test_result)
 
     result_printer.print_summary()
-
-    if coverage:
-        prepare_coverage_report(result_printer.passed)

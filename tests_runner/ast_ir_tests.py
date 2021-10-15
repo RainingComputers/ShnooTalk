@@ -2,8 +2,6 @@ from typing import Callable, Optional
 
 import os
 
-from tests_runner.utils.config import CLI_ARG
-
 from tests_runner.utils.result import TestResult
 from tests_runner.utils.validator import string_validator
 from tests_runner.utils.dir import string_from_file
@@ -38,24 +36,20 @@ def run_single_config(parent_dir: str, type_dir: str, flag: str) -> Callable[[st
 def run() -> None:
     batch_run(
         "AST pretty",
-        run_single_config("ExpectedAST", "Pretty", "-ast"),
-        CLI_ARG == "gcov"
+        run_single_config("ExpectedAST", "Pretty", "-ast")
     )
 
     batch_run(
         "AST JSON",
-        run_single_config("ExpectedAST", "JSON", "-json-ast"),
-        CLI_ARG == "gcov"
+        run_single_config("ExpectedAST", "JSON", "-json-ast")
     )
 
     batch_run(
         "intermediate representation pretty",
-        run_single_config("ExpectedIR", "Pretty", "-ir"),
-        CLI_ARG == "gcov"
+        run_single_config("ExpectedIR", "Pretty", "-ir")
     )
 
     batch_run(
         "intermediate representation JSON",
-        run_single_config("ExpectedIR", "JSON", "-json-ir"),
-        CLI_ARG == "gcov"
+        run_single_config("ExpectedIR", "JSON", "-json-ir")
     )

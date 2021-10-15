@@ -5,6 +5,7 @@ bin/*
 # test coverage
 tests/testinfo/*
 tests/*.gmon.out.*
+tests/*.info
 .cccc/*
 
 # shnootalk testing
