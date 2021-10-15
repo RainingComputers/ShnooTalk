@@ -27,12 +27,12 @@
         "main": {
             "moduleName": "Fibonacci.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "num1": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "num2": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "temp": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "num1": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "num2": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "temp": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Fibonacci.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     int temp5 = cast autoInt 0

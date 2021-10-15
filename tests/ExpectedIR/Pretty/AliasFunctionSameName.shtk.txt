@@ -29,7 +29,7 @@
         "_fn_AliasFunctionSameName_shtk_vec": {
             "moduleName": "AliasFunctionSameName.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasFunctionSameName.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasFunctionSameName.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [
@@ -41,7 +41,7 @@
         "main": {
             "moduleName": "AliasFunctionSameName.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasFunctionSameName.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasFunctionSameName.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [

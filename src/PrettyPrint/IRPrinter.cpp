@@ -91,6 +91,16 @@ namespace pp
         return propertiesStringArray;
     }
 
+    std::vector<std::string> getDimTypesStringArrayFromType(const icode::TypeDescription& typeDescription)
+    {
+        std::vector<std::string> dimTypesStringArray;
+
+        for (icode::DimensionType dimType : typeDescription.dimTypes)
+            dimTypesStringArray.push_back(dimTypesStringArray[dimType]);
+
+        return dimTypesStringArray;
+    }
+
     void printTypeDescription(const icode::TypeDescription& typeDescription, FlatJSONPrinter& jsonp)
     {
         jsonp.begin();
@@ -100,6 +110,7 @@ namespace pp
         jsonp.printString("moduleName", typeDescription.moduleName);
         jsonp.printNumber("offset", typeDescription.offset);
         jsonp.printIntArray("dimensions", typeDescription.dimensions);
+        jsonp.printStringArray("dimTypes", getDimTypesStringArrayFromType(typeDescription));
         jsonp.printStringArray("properties", getPropertiesStringArrayFromType(typeDescription));
         jsonp.end();
     }

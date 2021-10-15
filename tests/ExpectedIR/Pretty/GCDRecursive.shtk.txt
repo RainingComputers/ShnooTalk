@@ -27,10 +27,10 @@
         "_fn_GCDRecursive_shtk_gcd": {
             "moduleName": "GCDRecursive.shtk",
             "parameters": ["m", "n"],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "m": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "n": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "m": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "n": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     int temp8 = remainder int m, int n
@@ -51,7 +51,7 @@
         "main": {
             "moduleName": "GCDRecursive.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "GCDRecursive.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [

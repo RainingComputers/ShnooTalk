@@ -22,8 +22,8 @@
     "structures": {
         "goo": {
             "structFields": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 4, "dimensions": [], "properties": ["isPointer"]},
-                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": []}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 12,
             "moduleName": "StructPointerAsParameter.shtk"
@@ -35,9 +35,9 @@
         "_fn_StructPointerAsParameter_shtk_test": {
             "moduleName": "StructPointerAsParameter.shtk",
             "parameters": ["a"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isPointer", "isParameter"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer", "isParameter"]}
             },
             "icode": [
                 {"opcode": "read", "op1": {"type": "temp", "id": 4, "dtype": "int"}, "op2": {"type": "ptr", "id": 3, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
@@ -49,10 +49,10 @@
         "main": {
             "moduleName": "StructPointerAsParameter.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "c": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "foobar": {"dtype": "struct", "dtypeSize": 12, "size": 12, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "c": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "foobar": {"dtype": "struct", "dtypeSize": 12, "size": 12, "moduleName": "StructPointerAsParameter.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 10, "dtype": "int"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},

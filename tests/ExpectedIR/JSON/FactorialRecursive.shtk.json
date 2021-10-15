@@ -27,9 +27,9 @@
         "_fn_FactorialRecursive_shtk_factorial": {
             "moduleName": "FactorialRecursive.shtk",
             "parameters": ["num"],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "FactorialRecursive.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "FactorialRecursive.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "FactorialRecursive.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "FactorialRecursive.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
@@ -51,7 +51,7 @@
         "main": {
             "moduleName": "FactorialRecursive.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "FactorialRecursive.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "FactorialRecursive.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             },
             "icode": [

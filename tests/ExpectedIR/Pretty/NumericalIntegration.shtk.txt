@@ -27,9 +27,9 @@
         "_fn_NumericalIntegration_shtk_f": {
             "moduleName": "NumericalIntegration.shtk",
             "parameters": ["x"],
-            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     float returnValue3 = equal float x
@@ -39,15 +39,15 @@
         "_fn_NumericalIntegration_shtk_integrate": {
             "moduleName": "NumericalIntegration.shtk",
             "parameters": ["a", "b", "n"],
-            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "area": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "b": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "n": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "sum": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "w": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "area": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "n": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "sum": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "w": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     float temp10 = cast autoFloat 0.000000
@@ -85,7 +85,7 @@
         "main": {
             "moduleName": "NumericalIntegration.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NumericalIntegration.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [

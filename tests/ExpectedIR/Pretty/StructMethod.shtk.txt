@@ -24,8 +24,8 @@
     "structures": {
         "Vec": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "TestModules/Vector.shtk"
@@ -37,10 +37,10 @@
         "main": {
             "moduleName": "StructMethod.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructMethod.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructMethod.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     int* tempPtr9 = createPointer struct a

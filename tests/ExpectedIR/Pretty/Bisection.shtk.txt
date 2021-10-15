@@ -28,9 +28,9 @@
         "_fn_Bisection_shtk_f": {
             "moduleName": "Bisection.shtk",
             "parameters": ["x"],
-            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     float temp6 = multiply float x, float x
@@ -44,12 +44,12 @@
         "main": {
             "moduleName": "Bisection.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "epsilon": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "xL": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "xM": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "xR": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "epsilon": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "xL": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "xM": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "xR": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Bisection.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     float temp17 = cast autoFloat 0.000000

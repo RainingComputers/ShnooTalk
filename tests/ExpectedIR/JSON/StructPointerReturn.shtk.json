@@ -25,8 +25,8 @@
     "structures": {
         "Vector": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "StructPointerReturn.shtk"
@@ -38,11 +38,11 @@
         "_fn_StructPointerReturn_shtk_createVector": {
             "moduleName": "StructPointerReturn.shtk",
             "parameters": ["x", "y"],
-            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "v": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "v": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "v", "dtype": "struct"}, "op3": {"type": "none"}},
@@ -60,9 +60,9 @@
         "_fn_StructPointerReturn_shtk_printVec": {
             "moduleName": "StructPointerReturn.shtk",
             "parameters": ["vector"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "vector": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "vector": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             },
             "icode": [
                 {"opcode": "printString", "op1": {"type": "stringData", "id": 22, "name": "_str_StructPointerReturn_shtk__l29_c12", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
@@ -85,9 +85,9 @@
         "_fn_StructPointerReturn_shtk_test": {
             "moduleName": "StructPointerReturn.shtk",
             "parameters": ["a"],
-            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer"]},
+            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer"]},
             "symbols": {
-                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer", "isParameter"]}
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer", "isParameter"]}
             },
             "icode": [
                 {"opcode": "pointerAssign", "op1": {"type": "returnPointer", "id": 37Pretty print error

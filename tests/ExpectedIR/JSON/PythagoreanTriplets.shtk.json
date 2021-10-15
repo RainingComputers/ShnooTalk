@@ -27,11 +27,11 @@
         "main": {
             "moduleName": "PythagoreanTriplets.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PythagoreanTriplets.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PythagoreanTriplets.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PythagoreanTriplets.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "j": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PythagoreanTriplets.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "k": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PythagoreanTriplets.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PythagoreanTriplets.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "j": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PythagoreanTriplets.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "k": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PythagoreanTriplets.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},

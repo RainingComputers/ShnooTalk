@@ -22,8 +22,8 @@
     "structures": {
         "foo": {
             "structFields": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructReturn.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructReturn.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "StructReturn.shtk"
@@ -35,9 +35,9 @@
         "_fn_StructReturn_shtk_atest": {
             "moduleName": "StructReturn.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "res": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "res": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "res", "dtype": "struct"}, "op3": {"type": "none"}},
@@ -57,7 +57,7 @@
         "_fn_StructReturn_shtk_btest": {
             "moduleName": "StructReturn.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             },
             "icode": [
@@ -69,9 +69,9 @@
         "main": {
             "moduleName": "StructReturn.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "c": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "c": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 31, "dtype": "struct"}, "op2": {"type": "var", "id": 32, "name": "_fn_StructReturn_shtk_atest", "dtype": "struct"}, "op3": {"type": "module", "id": 33, "name": "StructReturn.shtk"}},

@@ -27,10 +27,10 @@
         "_fn_ArgvTest_shtk_getArg": {
             "moduleName": "ArgvTest.shtk",
             "parameters": ["argv", "idx"],
-            "functionReturnType": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer"]},
+            "functionReturnType": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer"]},
             "symbols": {
-                "argv": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer", "isParameter"]},
-                "idx": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "argv": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer", "isParameter"]},
+                "idx": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     void* tempPtr7 = addressMultiply int idx, bytes 8
@@ -46,10 +46,10 @@
         "main": {
             "moduleName": "ArgvTest.shtk",
             "parameters": ["argc", "argv"],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "argc": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "argv": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer", "isParameter"]}
+                "argc": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "argv": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "ArgvTest.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer", "isParameter"]}
             }
             "icode": [
                     passAddress ulong* argv, ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk

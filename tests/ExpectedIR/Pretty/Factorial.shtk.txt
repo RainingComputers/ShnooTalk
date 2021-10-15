@@ -27,11 +27,11 @@
         "_fn_Factorial_shtk_factorial": {
             "moduleName": "Factorial.shtk",
             "parameters": ["num"],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "prod": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "prod": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     int temp5 = cast autoInt 1
@@ -56,7 +56,7 @@
         "main": {
             "moduleName": "Factorial.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Factorial.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [

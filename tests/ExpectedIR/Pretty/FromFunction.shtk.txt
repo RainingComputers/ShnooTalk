@@ -26,12 +26,12 @@
         "sin": {
             "moduleName": "TestModules/Math.shtk",
             "parameters": ["x"],
-            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "k": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "sum": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "t": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "k": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "sum": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "t": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Math.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
             ]
@@ -41,7 +41,7 @@
         "main": {
             "moduleName": "FromFunction.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "FromFunction.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "FromFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [

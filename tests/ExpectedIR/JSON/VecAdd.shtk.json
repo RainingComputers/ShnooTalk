@@ -24,8 +24,8 @@
     "structures": {
         "Vec": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "TestModules/Vector.shtk"
@@ -37,12 +37,12 @@
         "main": {
             "moduleName": "VecAdd.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "VecAdd.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "VecAdd.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "c": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "d": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "c": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "d": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 11, "dtype": "int"}, "op2": {"type": "var", "id": 7, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},

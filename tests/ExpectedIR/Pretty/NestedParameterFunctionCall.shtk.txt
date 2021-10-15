@@ -28,10 +28,10 @@
         "_fn_NestedParameterFunctionCall_shtk_foobar": {
             "moduleName": "NestedParameterFunctionCall.shtk",
             "parameters": ["a", "b"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "a": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     print float a
@@ -44,10 +44,10 @@
         "_fn_NestedParameterFunctionCall_shtk_sum": {
             "moduleName": "NestedParameterFunctionCall.shtk",
             "parameters": ["a", "b"],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     int temp11 = add int a, int b
@@ -58,7 +58,7 @@
         "main": {
             "moduleName": "NestedParameterFunctionCall.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "NestedParameterFunctionCall.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [

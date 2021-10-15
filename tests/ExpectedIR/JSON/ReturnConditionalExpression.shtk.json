@@ -27,9 +27,9 @@
         "_fn_ReturnConditionalExpression_shtk_isSingleDigitNumber": {
             "moduleName": "ReturnConditionalExpression.shtk",
             "parameters": ["a"],
-            "functionReturnType": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "ReturnConditionalExpression.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "ReturnConditionalExpression.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ReturnConditionalExpression.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ReturnConditionalExpression.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             },
             "icode": [
                 {"opcode": "allocPointer", "op1": {"type": "tempPtr", "id": 4, "dtype": "autoInt"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
@@ -53,7 +53,7 @@
         "main": {
             "moduleName": "ReturnConditionalExpression.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ReturnConditionalExpression.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ReturnConditionalExpression.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             },
             "icode": [

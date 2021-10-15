@@ -25,8 +25,8 @@
     "structures": {
         "Vector": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "Malloc.shtk"
@@ -36,9 +36,9 @@
         "malloc": {
             "moduleName": "Malloc.shtk",
             "parameters": ["size"],
-            "functionReturnType": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer"]},
+            "functionReturnType": {"dtype": "ubyte", "dtypeSize": 1, "size": 1, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer"]},
             "symbols": {
-                "size": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "size": {"dtype": "ulong", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
             ]
@@ -48,11 +48,11 @@
         "_fn_Malloc_shtk_createVector": {
             "moduleName": "Malloc.shtk",
             "parameters": ["x", "y"],
-            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "v": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "v": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     int* tempPtr5 = createPointer struct v
@@ -70,9 +70,9 @@
         "_fn_Malloc_shtk_printVec": {
             "moduleName": "Malloc.shtk",
             "parameters": ["vector"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "vector": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "vector": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     printString stringData _str_Malloc_shtk__l31_c12
@@ -95,10 +95,10 @@
         "main": {
             "moduleName": "Malloc.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "vecArray": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [1], "properties": ["isMutable", "isPointer", "isLocal"]}
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "vecArray": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Malloc.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isMutable", "isPointer", "isLocal"]}
             }
             "icode": [
                     autoInt temp40 = multiply autoInt 8, autoInt 10

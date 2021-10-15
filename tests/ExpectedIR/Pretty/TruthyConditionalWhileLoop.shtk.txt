@@ -27,9 +27,9 @@
         "_fn_TruthyConditionalWhileLoop_shtk_stop": {
             "moduleName": "TruthyConditionalWhileLoop.shtk",
             "parameters": ["i"],
-            "functionReturnType": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     int temp8 = cast autoInt 5
@@ -47,9 +47,9 @@
         "main": {
             "moduleName": "TruthyConditionalWhileLoop.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TruthyConditionalWhileLoop.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     int temp20 = cast autoInt 0

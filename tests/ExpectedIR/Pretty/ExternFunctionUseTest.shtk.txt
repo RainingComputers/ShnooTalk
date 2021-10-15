@@ -26,9 +26,9 @@
         "sin": {
             "moduleName": "TestModules/ExternMath.shtk",
             "parameters": ["x"],
-            "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/ExternMath.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/ExternMath.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "x": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/ExternMath.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "x": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/ExternMath.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
             ]
@@ -38,7 +38,7 @@
         "main": {
             "moduleName": "ExternFunctionUseTest.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ExternFunctionUseTest.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ExternFunctionUseTest.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [

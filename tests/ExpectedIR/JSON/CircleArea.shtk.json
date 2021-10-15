@@ -29,9 +29,9 @@
         "_fn_CircleArea_shtk_area": {
             "moduleName": "CircleArea.shtk",
             "parameters": ["r"],
-            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "r": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "r": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 7, "dtype": "autoFloat"}, "op2": {"type": "var", "id": 5, "name": "r", "dtype": "float"}, "op3": {"type": "none"}},
@@ -46,9 +46,9 @@
         "main": {
             "moduleName": "CircleArea.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "r": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "r": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "CircleArea.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "literal", "id": 16, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},

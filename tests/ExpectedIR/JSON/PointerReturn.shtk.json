@@ -22,8 +22,8 @@
     "structures": {
         "Vector": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "PointerReturn.shtk"
@@ -35,9 +35,9 @@
         "_fn_PointerReturn_shtk_testfunction": {
             "moduleName": "PointerReturn.shtk",
             "parameters": ["this"],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isPointer"]},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
             "symbols": {
-                "this": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "this": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "this", "dtype": "struct"}, "op3": {"type": "none"}},

@@ -24,8 +24,8 @@
     "structures": {
         "Vector": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PassPointer.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PassPointer.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "PassPointer.shtk"
@@ -37,9 +37,9 @@
         "_fn_PassPointer_shtk_printVector": {
             "moduleName": "PassPointer.shtk",
             "parameters": ["b"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "properties": ["isPointer", "isParameter"]}
+                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer", "isParameter"]}
             },
             "icode": [
                 {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_PassPointer_shtk__l13_c12", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
@@ -62,10 +62,10 @@
         "main": {
             "moduleName": "PassPointer.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isPointer", "isLocal"]}
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "PassPointer.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isPointer", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 20, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},

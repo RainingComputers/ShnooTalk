@@ -28,9 +28,9 @@
         "_fn_Newton_shtk_f": {
             "moduleName": "Newton.shtk",
             "parameters": ["x"],
-            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     float temp6 = multiply float x, float x
@@ -44,9 +44,9 @@
         "_fn_Newton_shtk_f_prime": {
             "moduleName": "Newton.shtk",
             "parameters": ["x"],
-            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     autoFloat temp19 = cast float x
@@ -61,10 +61,10 @@
         "main": {
             "moduleName": "Newton.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "epsilon": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "epsilon": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Newton.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     float temp29 = cast autoFloat 3.000000
