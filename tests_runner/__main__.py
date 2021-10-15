@@ -4,7 +4,7 @@ from tests_runner.utils.config import CLI_ARG, BUILD_TYPE_MAP
 from tests_runner.utils.generate import generate_test_cases
 from tests_runner.utils.coverage import prepare_coverage_report
 
-from tests_runner import compiler_tests, llc_tests, ast_ir_tests
+from tests_runner import compiler_tests, llc_tests, ast_ir_tests, cli_tests
 
 
 def print_usage() -> None:
@@ -23,6 +23,7 @@ def run_all_tests() -> None:
     compiler_tests.run()
     ast_ir_tests.run()
     llc_tests.run()
+    cli_tests.run()
 
 
 def main() -> None:

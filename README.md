@@ -99,11 +99,11 @@ clang app.o -o app
 ### Testing
 - [x] Refactor tests
 - [x] Refactor the test runner 
-- [ ] Use multiprocessing for tests runner
-- [ ] Tests for ast and ir
+- [x] ~95% test coverage
+- [x] Tests for ast and ir
 - [ ] Unit tests for ir builder
 - [ ] Unit tests for pretty printer
-- [ ] ~95% test coverage
+- [ ] Use multiprocessing for tests runner
 
 ### Language tools
 
