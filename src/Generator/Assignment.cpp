@@ -1,7 +1,7 @@
 #include "../Builder/TypeCheck.hpp"
-#include "OrdinaryExpression.hpp"
-#include "Expression.hpp"
 #include "ConditionalExpression.hpp"
+#include "Expression.hpp"
+#include "OrdinaryExpression.hpp"
 #include "UnitFromIdentifier.hpp"
 
 #include "Assignment.hpp"

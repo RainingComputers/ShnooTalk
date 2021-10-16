@@ -348,7 +348,8 @@ namespace lexer
                 /* Push dot token if preceding token is an identifier */
                 if (pushPrecedingTokenIfIdentifier(line, lineNo, startIndex, i) || startIndex == i)
                 {
-                    tokenQueue.push_back(Token(fileName, line.substr(i, punctuatorTokenLen), punctuatorTokenType, i, lineNo));
+                    tokenQueue.push_back(
+                        Token(fileName, line.substr(i, punctuatorTokenLen), punctuatorTokenType, i, lineNo));
                     buildingToken = false;
                 }
             }
@@ -359,7 +360,8 @@ namespace lexer
 
                 /* Add punctuator token to queue */
                 if (punctuatorTokenType != token::SPACE)
-                    tokenQueue.push_back(Token(fileName, line.substr(i, punctuatorTokenLen), punctuatorTokenType, i, lineNo));
+                    tokenQueue.push_back(
+                        Token(fileName, line.substr(i, punctuatorTokenLen), punctuatorTokenType, i, lineNo));
 
                 buildingToken = false;
             }

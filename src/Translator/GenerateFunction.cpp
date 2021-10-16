@@ -1,6 +1,7 @@
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Verifier.h"
 
+#include "AllocPointer.hpp"
 #include "BinaryOperator.hpp"
 #include "Branch.hpp"
 #include "CastOperator.hpp"
@@ -13,7 +14,6 @@
 #include "ReadWriteCopy.hpp"
 #include "ToLLVMType.hpp"
 #include "UnaryOperator.hpp"
-#include "AllocPointer.hpp"
 
 #include "GenerateFunction.hpp"
 

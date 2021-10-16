@@ -9,7 +9,7 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
         return ordinaryExpression(ctx, root);
 
     Unit LHS = ctx.ir.functionBuilder.createTemp(icode::AUTO_INT);
-    
+
     icode::Operand trueLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "condn_exp");
     icode::Operand falseLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "condn_exp");
 

@@ -248,7 +248,7 @@ void multiLineStringLiteral(parser::ParserContext& ctx)
 
     ctx.addNodeMakeCurrentNoConsume(node::MULTILINE_STR_LITERAL);
 
-    do 
+    do
     {
         ctx.addNode(node::STR_LITERAL);
 

@@ -87,7 +87,7 @@ std::string unescapedStringFromTokens(const std::vector<Token>& tokens)
 
     for (const Token& tok : tokens)
         str += tok.toUnescapedString();
-    
+
     str += '\0';
 
     return str;
@@ -98,7 +98,7 @@ std::string ModuleBuilder::createMultilineStringData(const std::vector<Token>& t
     /* Check if this string has already been defined, if yes return the key for that,
         else create a new key (across all modules) */
     std::string str = unescapedStringFromTokens(tokens);
-    
+
     for (auto modulesMapItem : modulesMap)
     {
         auto result = std::find_if(modulesMapItem.second.stringsData.begin(),
@@ -122,7 +122,7 @@ std::string ModuleBuilder::createMultilineStringData(const std::vector<Token>& t
 
 std::string ModuleBuilder::createStringData(const Token& stringToken)
 {
-    const std::vector<Token> stringTokens = {stringToken};
+    const std::vector<Token> stringTokens = { stringToken };
     return createMultilineStringData(stringTokens);
 }
 

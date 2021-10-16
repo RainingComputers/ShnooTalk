@@ -48,12 +48,12 @@ bool Node::isConditionalExpression() const
 {
     if (type == TERM)
         return children[0].isConditionalExpression();
-    
+
     if (type == EXPRESSION)
     {
-        if(children.size() == 1)
+        if (children.size() == 1)
             return children[0].isConditionalExpression();
-        
+
         return children[1].tok.isConditionalOperator();
     }
 

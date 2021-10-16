@@ -65,7 +65,7 @@ std::string Console::getFileName()
 }
 
 void Console::pushModule(const std::string& moduleName)
-{   
+{
     streamsMap[moduleName].exceptions(std::ifstream::failbit | std::ifstream::badbit);
     streamsMap[moduleName].open(moduleName);
 

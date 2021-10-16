@@ -1,9 +1,9 @@
 #ifndef CONSOLE_CONSOLE
 #define CONSOLE_CONSOLE
 
+#include <fstream>
 #include <map>
 #include <vector>
-#include <fstream>
 
 #include "../Builder/Unit.hpp"
 #include "../PrettyPrint/Errors.hpp"
