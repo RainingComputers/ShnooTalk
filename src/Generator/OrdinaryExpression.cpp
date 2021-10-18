@@ -1,5 +1,7 @@
 #include "../Builder/TypeCheck.hpp"
+#include "BinaryOperator.hpp"
 #include "Module.hpp"
+#include "PassParamTypeCheck.hpp"
 #include "UnitFromIdentifier.hpp"
 
 #include "OrdinaryExpression.hpp"
@@ -141,11 +143,10 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 
     const Token& calleeNameToken = root.tok;
     FunctionDescription callee = ctx.ir.descriptionFinder.getFunction(calleeNameToken);
+    std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
     if (root.children.size() != callee.numParameters())
         ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
-
-    std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
     for (size_t i = 0; i < root.children.size(); i++)
     {
@@ -159,18 +160,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         else
             actualParam = ordinaryExpression(ctx, root.children[i]);
 
-        if (!isSameType(formalParam, actualParam))
-            ctx.console.typeError(actualParamToken, formalParam, actualParam);
-
-        if (formalParam.isMutableAndPointer() && !actualParam.isUserPointer())
-            ctx.console.compileErrorOnToken("Cannot pass EXPRESSION or STRING LITERAL as MUTABLE POINTER",
-                                            actualParamToken);
-
-        if (formalParam.isPointer() && actualParam.isLiteral())
-            ctx.console.compileErrorOnToken("Cannot pass an LITERAL as MUTABLE or POINTER", actualParamToken);
-
-        if (formalParam.isMutable() && !actualParam.isMutable())
-            ctx.console.compileErrorOnToken("Cannot pass IMMUTABLE as MUTABLE", actualParamToken);
+        passParamTypeCheck(ctx, actualParam, formalParam, actualParamToken);
 
         ctx.ir.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);
     }
@@ -240,44 +230,6 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
     return ctx.ir.unitBuilder.unitFromUnitList(units);
 }
 
-Instruction tokenToBinaryOperator(const generator::GeneratorContext& ctx, const Token tok)
-{
-    switch (tok.getType())
-    {
-        case token::MULTIPLY:
-            return MUL;
-        case token::DIVIDE:
-            return DIV;
-        case token::MOD:
-            return MOD;
-        case token::PLUS:
-            return ADD;
-        case token::MINUS:
-            return SUB;
-        case token::RIGHT_SHIFT:
-            return RSH;
-        case token::LEFT_SHIFT:
-            return LSH;
-        case token::BITWISE_AND:
-            return BWA;
-        case token::BITWISE_XOR:
-            return BWX;
-        case token::BITWISE_OR:
-            return BWO;
-        case token::CONDN_AND:
-        case token::CONDN_OR:
-        case token::LESS_THAN:
-        case token::LESS_THAN_EQUAL:
-        case token::GREATER_THAN:
-        case token::GREATER_THAN_EQUAL:
-        case token::CONDN_EQUAL:
-        case token::CONDN_NOT_EQUAL:
-            ctx.console.compileErrorOnToken("Did not expect conditional operator", tok);
-        default:
-            ctx.console.internalBugErrorOnToken(tok);
-    }
-}
-
 Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
 {
     if (root.type == node::MULTILINE_STR_LITERAL)
@@ -298,8 +250,8 @@ Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
 
     Unit RHS = ordinaryExpression(ctx, root.children[2]);
 
-    if (LHS.isStruct() || LHS.isArray())
-        ctx.console.compileErrorOnToken("Operator not allowed on STRUCT or ARRAY", expressionOperator);
+    if (LHS.isArray())
+        ctx.console.compileErrorOnToken("Operator not allowed on ARRAY", expressionOperator);
 
     if (!isSameType(LHS, RHS))
         ctx.console.typeError(root.children[2].tok, LHS, RHS);
@@ -307,7 +259,5 @@ Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
     if (expressionOperator.isBitwiseOperator() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expressionOperator);
 
-    Instruction instruction = tokenToBinaryOperator(ctx, expressionOperator);
-
-    return ctx.ir.functionBuilder.binaryOperator(instruction, LHS, RHS);
+    return binaryOperator(ctx, expressionOperator, LHS, RHS);
 }

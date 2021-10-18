@@ -1,28 +1,8 @@
 #include "../Builder/TypeCheck.hpp"
+#include "OperatorTokenToInstruction.hpp"
 #include "OrdinaryExpression.hpp"
 
 #include "ConditionalExpression.hpp"
-
-icode::Instruction tokenToCompareOperator(const generator::GeneratorContext& ctx, const Token tok)
-{
-    switch (tok.getType())
-    {
-        case token::LESS_THAN:
-            return icode::LT;
-        case token::LESS_THAN_EQUAL:
-            return icode::LTE;
-        case token::GREATER_THAN:
-            return icode::GT;
-        case token::GREATER_THAN_EQUAL:
-            return icode::GTE;
-        case token::CONDN_EQUAL:
-            return icode::EQ;
-        case token::CONDN_NOT_EQUAL:
-            return icode::NEQ;
-        default:
-            ctx.console.compileErrorOnToken("Invalid conditional expression", tok);
-    }
-}
 
 void conditionalAndOperator(generator::GeneratorContext& ctx,
                             const Token& operatorToken,

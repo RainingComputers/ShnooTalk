@@ -5,5 +5,6 @@
 
 std::string nameMangle(const Token& token, const std::string& moduleName);
 std::string lineColNameMangle(const Token& token, const std::string& moduleName);
+std::string nameMangleCustomOperator(const Token& token, const std::string& moduleName);
 
 #endif

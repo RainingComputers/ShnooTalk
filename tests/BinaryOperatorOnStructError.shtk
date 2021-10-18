@@ -1,16 +1,20 @@
 # MODULE BinaryOperatorOnStructError.shtk
-# ERROR in Line 15 Col 11
+# ERROR in Line 17 Col 11
 # 
 #     a = b + c
 #           ^
-# Operator not allowed on STRUCT or ARRAY
+# Function does not exist
 
-use "TestModules/Vector.shtk" as vec
-from vec use Vec
-
-fn main()
+struct Foobar
 {
-    var a:Vec, b:Vec, c:Vec
+    var x: int, y: int
+}
+
+fn main() -> int
+{
+    var a: Foobar, b: Foobar, c: Foobar
 
     a = b + c
+
+    return 0
 }

@@ -1,0 +1,23 @@
+# x: 3 y: 3
+# x: 6 y: 6
+
+use "TestModules/Vector.shtk" as Vector
+
+from Vector use Vec, printVec
+
+fn main() -> int
+{
+    var a: Vec
+    a.setVec(1, 2)
+
+    var b: Vec
+    b.setVec(2, 1)
+
+    var c: Vec = a + b
+    printVec(c)
+
+    c += a + b
+    printVec(c)
+
+    return 0
+}

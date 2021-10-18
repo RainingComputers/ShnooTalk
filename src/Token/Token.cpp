@@ -138,6 +138,54 @@ std::string Token::toString() const
     return string;
 }
 
+std::string Token::toFunctionNameString() const
+{
+    switch (type)
+    {
+        case token::MULTIPLY:
+        case token::MULTIPLY_EQUAL:
+            return "multiply";
+        case token::DIVIDE:
+        case token::DIVIDE_EQUAL:
+            return "divide";
+        case token::MOD:
+            return "mod";
+        case token::PLUS:
+        case token::PLUS_EQUAL:
+            return "add";
+        case token::MINUS:
+        case token::MINUS_EQUAL:
+            return "subtract";
+        case token::RIGHT_SHIFT:
+            return "rightShift";
+        case token::LEFT_SHIFT:
+            return "leftShift";
+        case token::BITWISE_AND:
+        case token::AND_EQUAL:
+            return "and";
+        case token::BITWISE_XOR:
+        case token::XOR_EQUAL:
+            return "xor";
+        case token::BITWISE_OR:
+        case token::OR_EQUAL:
+            return "or";
+        case token::LESS_THAN:
+            return "lessThan";
+        case token::LESS_THAN_EQUAL:
+            return "lessThanOrEqual";
+        case token::GREATER_THAN:
+            return "greaterThan";
+        case token::GREATER_THAN_EQUAL:
+            return "greaterThanOrEqual";
+        case token::CONDN_EQUAL:
+            return "isEqual";
+        case token::CONDN_NOT_EQUAL:
+            return "isNotEqual";
+        default:
+            return string;
+    }
+}
+
 std::string Token::toUnescapedString() const
 {
     return unescapedString;

@@ -117,6 +117,7 @@ public:
     long toInt() const;
     double toFloat() const;
     std::string toString() const;
+    std::string toFunctionNameString() const;
     std::string toUnescapedString() const;
     token::TokenType getType() const;
     std::string getLineColString() const;

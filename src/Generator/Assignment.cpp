@@ -1,33 +1,11 @@
 #include "../Builder/TypeCheck.hpp"
+#include "BinaryOperator.hpp"
 #include "ConditionalExpression.hpp"
 #include "Expression.hpp"
 #include "OrdinaryExpression.hpp"
 #include "UnitFromIdentifier.hpp"
 
 #include "Assignment.hpp"
-
-icode::Instruction assignmentTokenToBinaryOperator(const generator::GeneratorContext& ctx, const Token tok)
-{
-    switch (tok.getType())
-    {
-        case token::PLUS_EQUAL:
-            return icode::ADD;
-        case token::MINUS_EQUAL:
-            return icode::SUB;
-        case token::DIVIDE_EQUAL:
-            return icode::DIV;
-        case token::MULTIPLY_EQUAL:
-            return icode::MUL;
-        case token::OR_EQUAL:
-            return icode::BWO;
-        case token::AND_EQUAL:
-            return icode::BWA;
-        case token::XOR_EQUAL:
-            return icode::BWX;
-        default:
-            ctx.console.internalBugErrorOnToken(tok);
-    }
-}
 
 void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, const Unit& LHS, const Unit& RHS)
 {
@@ -42,8 +20,8 @@ void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, cons
     if (!LHS.isMutable() && root.type == node::ASSIGNMENT)
         ctx.console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
 
-    if ((LHS.isStruct() || LHS.isArray()) && !assignOperator.isEqualOrLeftArrow())
-        ctx.console.compileErrorOnToken("Only EQUAL operator allowed on STRUCT and ARRAY", assignOperator);
+    if (LHS.isArray() && !assignOperator.isEqualOrLeftArrow())
+        ctx.console.compileErrorOnToken("Only EQUAL operator allowed on ARRAY", assignOperator);
 
     if (assignOperator.isBitwiseOperator() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
@@ -71,8 +49,7 @@ void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, cons
     }
     else
     {
-        icode::Instruction instruction = assignmentTokenToBinaryOperator(ctx, assignOperator);
-        ctx.ir.functionBuilder.unitCopy(LHS, ctx.ir.functionBuilder.binaryOperator(instruction, LHS, RHS));
+        ctx.ir.functionBuilder.unitCopy(LHS, binaryOperator(ctx, assignOperator, LHS, RHS));
     }
 }
 
