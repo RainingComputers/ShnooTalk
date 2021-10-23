@@ -2,38 +2,43 @@
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
-      "token": {"string": "use", "tokenType": "USE", "line": 8, "col": 0, "file": "BinaryOperatorOnStructError.shtk"},
+      "token": {"string": "struct", "tokenType": "STRUCT", "line": 8, "col": 0, "file": "BinaryOperatorOnStructError.shtk"},
       "children": [
         {
-          "token": {"string": "\"TestModules/Vector.shtk\"", "tokenType": "STR_LITERAL", "line": 8, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
-          "children": [
-            
-          ]
-        },
-        {
-          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 8, "col": 33, "file": "BinaryOperatorOnStructError.shtk"},
-          "children": [
-            
-          ]
-        }
-      ]
-    },
-    {
-      "token": {"string": "from", "tokenType": "FROM", "line": 9, "col": 0, "file": "BinaryOperatorOnStructError.shtk"},
-      "children": [
-        {
-          "token": {"string": "vec", "tokenType": "IDENTIFIER", "line": 9, "col": 5, "file": "BinaryOperatorOnStructError.shtk"},
-          "children": [
-            
-          ]
-        },
-        {
-          "token": {"string": "use", "tokenType": "USE", "line": 9, "col": 9, "file": "BinaryOperatorOnStructError.shtk"},
+          "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 8, "col": 7, "file": "BinaryOperatorOnStructError.shtk"},
           "children": [
             {
-              "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 9, "col": 13, "file": "BinaryOperatorOnStructError.shtk"},
+              "token": {"string": "var", "tokenType": "VAR", "line": 10, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
               "children": [
-                
+                {
+                  "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 10, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "BinaryOperatorOnStructError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 10, "col": 14, "file": "BinaryOperatorOnStructError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 10, "col": 16, "file": "BinaryOperatorOnStructError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 19, "file": "BinaryOperatorOnStructError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
               ]
             }
           ]
@@ -41,28 +46,34 @@
       ]
     },
     {
-      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 11, "col": 0, "file": "BinaryOperatorOnStructError.shtk"},
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "BinaryOperatorOnStructError.shtk"},
       "children": [
         {
-          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 11, "col": 3, "file": "BinaryOperatorOnStructError.shtk"},
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "BinaryOperatorOnStructError.shtk"},
           "children": [
             
           ]
         },
         {
-          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 12, "col": 0, "file": "BinaryOperatorOnStructError.shtk"},
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 13, "col": 13, "file": "BinaryOperatorOnStructError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 14, "col": 0, "file": "BinaryOperatorOnStructError.shtk"},
           "children": [
             {
-              "token": {"string": "var", "tokenType": "VAR", "line": 13, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
+              "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
               "children": [
                 {
-                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
-                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 10, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 11, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     
                   ]
@@ -70,16 +81,16 @@
               ]
             },
             {
-              "token": {"string": ",", "tokenType": "COMMA", "line": 13, "col": 13, "file": "BinaryOperatorOnStructError.shtk"},
+              "token": {"string": ",", "tokenType": "COMMA", "line": 15, "col": 17, "file": "BinaryOperatorOnStructError.shtk"},
               "children": [
                 {
-                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 15, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 19, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
-                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 17, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 22, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     
                   ]
@@ -87,16 +98,16 @@
               ]
             },
             {
-              "token": {"string": ",", "tokenType": "COMMA", "line": 13, "col": 20, "file": "BinaryOperatorOnStructError.shtk"},
+              "token": {"string": ",", "tokenType": "COMMA", "line": 15, "col": 28, "file": "BinaryOperatorOnStructError.shtk"},
               "children": [
                 {
-                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 13, "col": 22, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 15, "col": 30, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
-                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 24, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 33, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     
                   ]
@@ -104,13 +115,13 @@
               ]
             },
             {
-              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
               "children": [
                 {
-                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     {
-                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
                       "children": [
                         
                       ]
@@ -118,22 +129,22 @@
                   ]
                 },
                 {
-                  "token": {"string": "=", "tokenType": "EQUAL", "line": 15, "col": 6, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 17, "col": 6, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
-                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
                   "children": [
                     {
-                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
                       "children": [
                         {
-                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
                           "children": [
                             {
-                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "BinaryOperatorOnStructError.shtk"},
                               "children": [
                                 
                               ]
@@ -143,23 +154,44 @@
                       ]
                     },
                     {
-                      "token": {"string": "+", "tokenType": "PLUS", "line": 15, "col": 10, "file": "BinaryOperatorOnStructError.shtk"},
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 17, "col": 10, "file": "BinaryOperatorOnStructError.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
-                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "BinaryOperatorOnStructError.shtk"},
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BinaryOperatorOnStructError.shtk"},
                       "children": [
                         {
-                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "BinaryOperatorOnStructError.shtk"},
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BinaryOperatorOnStructError.shtk"},
                           "children": [
                             {
-                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "BinaryOperatorOnStructError.shtk"},
+                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BinaryOperatorOnStructError.shtk"},
                               "children": [
                                 
                               ]
                             }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 19, "col": 4, "file": "BinaryOperatorOnStructError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "BinaryOperatorOnStructError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "BinaryOperatorOnStructError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "BinaryOperatorOnStructError.shtk"},
+                          "children": [
+                            
                           ]
                         }
                       ]

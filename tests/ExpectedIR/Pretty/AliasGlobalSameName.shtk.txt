@@ -20,7 +20,7 @@
         "_str_AliasGlobalSameName_shtk__l9_c13": 6
     },
     "globals": {
-        "_fn_AliasGlobalSameName_shtk_string": {"dtype": "ubyte", "dtypeSize": 1, "size": 10, "moduleName": "AliasGlobalSameName.shtk", "offset": 0, "dimensions": [10], "properties": ["isMutable", "isGlobal"]}
+        "_fn_AliasGlobalSameName_shtk_string": {"dtype": "ubyte", "dtypeSize": 1, "size": 10, "moduleName": "AliasGlobalSameName.shtk", "offset": 0, "dimensions": [10], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isGlobal"]}
     },
     "structures": {
     },
@@ -30,7 +30,7 @@
         "main": {
             "moduleName": "AliasGlobalSameName.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasGlobalSameName.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "AliasGlobalSameName.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
             }
             "icode": [

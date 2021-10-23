@@ -24,17 +24,17 @@
     "structures": {
         "Vec": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Vector.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "TestModules/Vector.shtk"
         },
         "foobar": {
             "structFields": {
-                "bar": {"dtype": "struct", "dtypeSize": 8, "size": 32, "moduleName": "TestModules/Vector.shtk", "offset": 32, "dimensions": [4], "properties": []},
-                "foo": {"dtype": "struct", "dtypeSize": 8, "size": 32, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [4], "properties": []},
-                "pos": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 64, "dimensions": [], "properties": []}
+                "bar": {"dtype": "struct", "dtypeSize": 8, "size": 32, "moduleName": "TestModules/Vector.shtk", "offset": 32, "dimensions": [4], "dimTypes": ["fixedDim"], "properties": []},
+                "foo": {"dtype": "struct", "dtypeSize": 8, "size": 32, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [4], "dimTypes": ["fixedDim"], "properties": []},
+                "pos": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 64, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 72,
             "moduleName": "ArrayCopy.shtk"
@@ -46,11 +46,11 @@
         "_fn_ArrayCopy_shtk_newVec": {
             "moduleName": "ArrayCopy.shtk",
             "parameters": ["x", "y"],
-            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "new": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "new": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 8, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "new", "dtype": "struct"}, "op3": {"type": "none"}},
@@ -67,10 +67,10 @@
         "_fn_ArrayCopy_shtk_printarr": {
             "moduleName": "ArrayCopy.shtk",
             "parameters": ["arr"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "arr": {"dtype": "struct", "dtypeSize": 8, "size": 32, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [4], "properties": ["isParameter"]},
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "arr": {"dtype": "struct", "dtypeSize": 8, "size": 32, "moduleName": "TestModules/Vector.shtk", "offset": 0, "dimensions": [4], "dimTypes": ["fixedDim"], "properties": ["isParameter"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "literal", "id": 29, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
@@ -97,10 +97,10 @@
         "main": {
             "moduleName": "ArrayCopy.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "test": {"dtype": "struct", "dtypeSize": 72, "size": 72, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "test2": {"dtype": "struct", "dtypeSize": 72, "size": 72, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "test": {"dtype": "struct", "dtypeSize": 72, "size": 72, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "test2": {"dtype": "struct", "dtypeSize": 72, "size": 72, "moduleName": "ArrayCopy.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 59, "dtype": "struct"}, "op2": {"type": "var", "id": 58, "name": "test", "dtype": "struct"}, "op3": {"type": "none"}},

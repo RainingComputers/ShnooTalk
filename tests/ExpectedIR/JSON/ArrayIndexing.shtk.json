@@ -22,17 +22,17 @@
     "structures": {
         "bar": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "ArrayIndexing.shtk"
         },
         "foo": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 4, "dimensions": [], "properties": []},
-                "z": {"dtype": "struct", "dtypeSize": 8, "size": 24, "moduleName": "ArrayIndexing.shtk", "offset": 8, "dimensions": [3], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []},
+                "z": {"dtype": "struct", "dtypeSize": 8, "size": 24, "moduleName": "ArrayIndexing.shtk", "offset": 8, "dimensions": [3], "dimTypes": ["fixedDim"], "properties": []}
             },
             "size": 32,
             "moduleName": "ArrayIndexing.shtk"
@@ -44,10 +44,10 @@
         "main": {
             "moduleName": "ArrayIndexing.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "struct", "dtypeSize": 32, "size": 32, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "b": {"dtype": "struct", "dtypeSize": 32, "size": 32, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "struct", "dtypeSize": 32, "size": 32, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "struct", "dtypeSize": 32, "size": 32, "moduleName": "ArrayIndexing.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 6, "dtype": "int"}, "op2": {"type": "var", "id": 5, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},

@@ -1,3 +1,5 @@
+extfn sqrtf(num: float) -> float
+
 struct Vec 
 {
     var x:int, y:int
@@ -17,6 +19,14 @@ fn add(this:Vec, other:Vec) -> Vec
     res.y = this.y + other.y
 
     return res
+}
+
+fn greaterThan(this: Vec, other: Vec) -> bool
+{
+    var thisLen: float = sqrtf(float`(this.x*this.x + this.y*this.y))
+    var otherLen: float = sqrtf(float`(other.x*other.x + other.y*other.y))
+
+    return thisLen > otherLen
 }
 
 fn dot(this:Vec, other:Vec) -> int 

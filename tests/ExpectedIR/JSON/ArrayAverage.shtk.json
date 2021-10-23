@@ -27,11 +27,11 @@
         "_fn_ArrayAverage_shtk_avg": {
             "moduleName": "ArrayAverage.shtk",
             "parameters": ["a"],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [5], "properties": ["isParameter"]},
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "tot": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [5], "dimTypes": ["fixedDim"], "properties": ["isParameter"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "tot": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
@@ -63,9 +63,9 @@
         "main": {
             "moduleName": "ArrayAverage.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [5], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "ArrayAverage.shtk", "offset": 0, "dimensions": [5], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 42, "dtype": "int"}, "op2": {"type": "var", "id": 36, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},

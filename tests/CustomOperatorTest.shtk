@@ -1,0 +1,146 @@
+# x=2 y=2.000000
+# x=0 y=0.500000
+# x=1 y=1.000000
+# x=3 y=3.000000
+# x=-1 y=-1.000000
+# x=0 y=-1.000000
+# x=4 y=3.000000
+# x=0 y=-1.000000
+# x=3 y=3.000000
+# 0
+# 1
+# 0
+# 0
+# 1
+# 1
+# 1
+
+extfn sqrtf(num: float) -> float
+
+struct Foobar
+{
+    var x: int, y: float
+}
+
+fn createFoo(x: int, y: float) -> Foobar
+{
+    var res: Foobar
+    res.x = x
+    res.y = y
+    return res
+}
+
+fn printFoo(foo: Foobar)
+{
+    println("x="; foo.x, "y="; foo.y)
+}
+
+fn multiply(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x*RHS.x, LHS.y*RHS.y)
+}
+
+fn divide(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x/RHS.x, LHS.y/RHS.y)
+}
+
+fn mod(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x%RHS.x, LHS.y%RHS.y)
+}
+
+fn add(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x+RHS.x, LHS.y+RHS.y)
+}
+
+fn subtract(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x-RHS.x, LHS.y-RHS.y)
+}
+
+fn rightShift(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x>>RHS.x, LHS.y-RHS.y)
+}
+
+fn leftShift(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x<<RHS.x, LHS.y+RHS.y)
+}
+
+fn bitwiseAnd(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x&RHS.x, LHS.y-RHS.y)
+}
+
+fn bitwiseOr(LHS: Foobar, RHS: Foobar) -> Foobar
+{
+    return createFoo(LHS.x|RHS.x, LHS.y+RHS.y)
+}
+
+fn isEqual(LHS: Foobar, RHS: Foobar) -> bool
+{
+    return LHS.x == RHS.x and LHS.y == RHS.y
+}
+
+fn isNotEqual(LHS: Foobar, RHS: Foobar) -> bool
+{
+    return LHS.x != RHS.x or LHS.y != RHS.y
+}
+
+fn greaterThan(LHS: Foobar, RHS: Foobar) -> bool
+{
+    var LHSLen: float = sqrtf(float`(LHS.x*LHS.x) + LHS.y*LHS.y)
+    var RHSLen: float = sqrtf(float`(RHS.x*RHS.x) + RHS.y*RHS.y)
+
+    return LHSLen > RHSLen
+}
+
+fn greaterThanOrEqual(LHS: Foobar, RHS: Foobar) -> bool
+{
+    return isEqual(LHS, RHS) or greaterThan(LHS, RHS)
+}
+
+fn lessThan(LHS: Foobar, RHS: Foobar) -> bool
+{
+    var LHSLen: float = sqrtf(float`(LHS.x*LHS.x) + LHS.y*LHS.y)
+    var RHSLen: float = sqrtf(float`(RHS.x*RHS.x) + RHS.y*RHS.y)
+
+    return LHSLen < RHSLen
+}
+
+fn lessThanOrEqual(LHS: Foobar, RHS: Foobar) -> bool
+{
+    return not greaterThan(LHS, RHS)
+}
+
+fn main() -> int
+{
+    var a: Foobar = createFoo(1, 1.0)
+    var b: Foobar = createFoo(2, 2.0)
+
+    printFoo(a*b)
+    printFoo(a/b)
+    printFoo(a%b)
+    printFoo(a+b)
+    printFoo(a-b)
+    printFoo(a>>b)
+    printFoo(a<<b)
+    printFoo(a&b)
+    printFoo(a|b)
+    println(a==b)
+    println(a!=b)
+    println(a>b)
+    println(a>=b)
+    println(a<b)
+    println(a<=b)
+
+    a = createFoo(1, 1.0)
+    b = createFoo(1, 1.0)
+
+    println(a==b)
+
+    return 0
+}

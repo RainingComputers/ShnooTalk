@@ -162,13 +162,13 @@ std::string Token::toFunctionNameString() const
             return "leftShift";
         case token::BITWISE_AND:
         case token::AND_EQUAL:
-            return "and";
+            return "bitwiseAnd";
         case token::BITWISE_XOR:
         case token::XOR_EQUAL:
-            return "xor";
+            return "bitwiseXor";
         case token::BITWISE_OR:
         case token::OR_EQUAL:
-            return "or";
+            return "bitwiseOr";
         case token::LESS_THAN:
             return "lessThan";
         case token::LESS_THAN_EQUAL:

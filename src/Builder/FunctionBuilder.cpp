@@ -339,7 +339,6 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
     StructDescription structDescription = modulesMap[unit.moduleName()].structures[unit.dtypeName()];
 
     TypeDescription fieldType;
-
     if (!structDescription.getField(fieldName.toString(), fieldType))
         console.compileErrorOnToken("Undefined STRUCT field", fieldName);
 

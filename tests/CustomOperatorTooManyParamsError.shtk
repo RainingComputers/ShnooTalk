@@ -1,0 +1,26 @@
+# MODULE CustomOperatorTooManyParamsError.shtk
+# ERROR in Line 23 Col 23
+# 
+#     var c: Foobar = a + b
+#                       ^
+# Invalid number of parameters for OPERATOR FUNCTION
+
+struct Foobar 
+{
+    var x: int, y: int
+}
+
+fn add(a: Foobar, b: Foobar, c: Foobar) -> Foobar
+{
+    var res: Foobar
+    return res
+}
+
+fn main() -> int
+{
+    var a: Foobar, b: Foobar
+
+    var c: Foobar = a + b
+
+    return 0
+}

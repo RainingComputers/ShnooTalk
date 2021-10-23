@@ -1,4 +1,4 @@
-.PHONY : help clean all build install install-gedit uninstall format test coverage
+.PHONY : help clean all build install install-gedit uninstall format test coverage tidy gentests
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
@@ -24,6 +24,10 @@ help :
 	@echo "      Run tests, run make build DEBUG=1 first"
 	@echo "coverage"
 	@echo "      Run test and prepare code coverage report, run make build GCOV=1"
+	@echo "tidy"
+	@echo "      Run clang-tidy"
+	@echo "gentests"
+	@echo "      Generate test cases"
 	@echo ""
 
 # Name of the executable
@@ -139,8 +143,9 @@ test:
 coverage:
 	python3 -m tests_runner --coverage
 
-profile:
-	python3 -m tests_runner --profile
-
 tidy:
 	clang-tidy src/*.cpp src/*/*.cpp  -- $(CXXFLAGS) -Wextra
+
+gentests:
+	python3 -m tests_runner --gen-ast
+	python3 -m tests_runner --gen-ir

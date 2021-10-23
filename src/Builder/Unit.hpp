@@ -36,6 +36,7 @@ public:
     bool isMutable() const;
 
     bool isIntegerType() const;
+    bool isFloatType() const;
 
     bool isStruct() const;
     bool isArray() const;

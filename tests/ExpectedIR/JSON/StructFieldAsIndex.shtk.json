@@ -22,7 +22,7 @@
     "structures": {
         "foo": {
             "structFields": {
-                "bar": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [], "properties": []}
+                "bar": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 4,
             "moduleName": "StructFieldAsIndex.shtk"
@@ -34,10 +34,10 @@
         "_fn_StructFieldAsIndex_shtk_changeArr": {
             "moduleName": "StructFieldAsIndex.shtk",
             "parameters": ["arr"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "arr": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [3], "properties": ["isMutable", "isParameter"]},
-                "position": {"dtype": "struct", "dtypeSize": 4, "size": 4, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "arr": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [3], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isParameter"]},
+                "position": {"dtype": "struct", "dtypeSize": 4, "size": 4, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "position", "dtype": "struct"}, "op3": {"type": "none"}},
@@ -58,9 +58,9 @@
         "main": {
             "moduleName": "StructFieldAsIndex.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "arr": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [3], "properties": ["isMutable", "isLocal"]}
+                "arr": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "StructFieldAsIndex.shtk", "offset": 0, "dimensions": [3], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 29, "dtype": "int"}, "op2": {"type": "var", "id": 25, "name": "arr", "dtype": "int"}, "op3": {"type": "none"}},

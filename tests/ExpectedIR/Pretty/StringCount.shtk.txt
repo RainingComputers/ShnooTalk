@@ -17,7 +17,7 @@
     "stringDefines": {
     },
     "stringsDataCharCounts": {
-        "_str_TestModules_Vector_shtk__l29_c12": 3
+        "_str_TestModules_Vector_shtk__l39_c12": 3
     },
     "globals": {
     },
@@ -33,7 +33,7 @@
             "symbols": {
             }
             "icode": [
-                    printString stringData _str_TestModules_Vector_shtk__l29_c12
+                    printString stringData _str_TestModules_Vector_shtk__l39_c12
                     newLine
                     int temp6 = cast autoInt 0
                     int returnValue4 = equal int temp6

@@ -25,8 +25,8 @@
     "structures": {
         "Vector": {
             "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 8,
             "moduleName": "StructPointerReturn.shtk"
@@ -38,11 +38,11 @@
         "_fn_StructPointerReturn_shtk_createVector": {
             "moduleName": "StructPointerReturn.shtk",
             "parameters": ["x", "y"],
-            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "v": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "v": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     int* tempPtr5 = createPointer struct v
@@ -60,9 +60,9 @@
         "_fn_StructPointerReturn_shtk_printVec": {
             "moduleName": "StructPointerReturn.shtk",
             "parameters": ["vector"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "vector": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "vector": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             }
             "icode": [
                     printString stringData _str_StructPointerReturn_shtk__l29_c12
@@ -85,9 +85,9 @@
         "_fn_StructPointerReturn_shtk_test": {
             "moduleName": "StructPointerReturn.shtk",
             "parameters": ["a"],
-            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer"]},
+            "functionReturnType": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer"]},
             "symbols": {
-                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "properties": ["isPointer", "isParameter"]}
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer", "isParameter"]}
             }
             "icode": [
                     struct* returnPointer37 = pointerAssign struct* a
@@ -97,11 +97,11 @@
         "main": {
             "moduleName": "StructPointerReturn.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "arr": {"dtype": "struct", "dtypeSize": 8, "size": 80, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [10], "properties": ["isMutable", "isLocal"]},
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "vecArray": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "properties": ["isMutable", "isPointer", "isLocal"]}
+                "arr": {"dtype": "struct", "dtypeSize": 8, "size": 80, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [10], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "vecArray": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "StructPointerReturn.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isMutable", "isPointer", "isLocal"]}
             }
             "icode": [
                     int temp46 = cast autoInt 0

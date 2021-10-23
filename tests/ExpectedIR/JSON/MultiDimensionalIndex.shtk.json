@@ -27,11 +27,11 @@
         "main": {
             "moduleName": "MultiDimensionalIndex.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MultiDimensionalIndex.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MultiDimensionalIndex.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 36, "moduleName": "MultiDimensionalIndex.shtk", "offset": 0, "dimensions": [3, 3], "properties": ["isMutable", "isLocal"]},
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MultiDimensionalIndex.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "j": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MultiDimensionalIndex.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 36, "moduleName": "MultiDimensionalIndex.shtk", "offset": 0, "dimensions": [3, 3], "dimTypes": ["fixedDim", "fixedDim"], "properties": ["isMutable", "isLocal"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MultiDimensionalIndex.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "j": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MultiDimensionalIndex.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 13, "dtype": "int"}, "op2": {"type": "var", "id": 3, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},

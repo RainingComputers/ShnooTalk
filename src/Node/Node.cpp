@@ -46,6 +46,9 @@ Token Node::getNthChildTokenFromLast(size_t N) const
 
 bool Node::isConditionalExpression() const
 {
+    if (tok.getType() == token::CONDN_NOT)
+        return true;
+
     if (type == TERM)
         return children[0].isConditionalExpression();
 

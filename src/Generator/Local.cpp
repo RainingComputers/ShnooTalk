@@ -1,7 +1,6 @@
 #include "../Builder/TypeCheck.hpp"
 #include "Assignment.hpp"
 #include "Expression.hpp"
-#include "OrdinaryExpression.hpp"
 #include "TypeDescriptionFromNode.hpp"
 
 #include "Local.hpp"
@@ -25,6 +24,6 @@ void local(generator::GeneratorContext& ctx, const Node& root)
         lastNode.type == node::MULTILINE_STR_LITERAL || lastNode.type == node::INITLIST)
     {
         Unit RHS = expression(ctx, lastNode);
-        assignmentFromTree(ctx, root, local, RHS);
+        assignmentFromTree(ctx, root, nameToken, lastNode.tok, local, RHS);
     }
 }

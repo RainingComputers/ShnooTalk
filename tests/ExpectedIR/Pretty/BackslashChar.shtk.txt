@@ -34,9 +34,9 @@
         "main": {
             "moduleName": "BackslashChar.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BackslashChar.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BackslashChar.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "foobar": {"dtype": "ubyte", "dtypeSize": 1, "size": 10, "moduleName": "BackslashChar.shtk", "offset": 0, "dimensions": [10], "properties": ["isMutable", "isLocal"]}
+                "foobar": {"dtype": "ubyte", "dtypeSize": 1, "size": 10, "moduleName": "BackslashChar.shtk", "offset": 0, "dimensions": [10], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     ubyte* tempPtr5 = createPointer ubyte foobar

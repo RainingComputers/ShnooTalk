@@ -96,7 +96,7 @@ namespace pp
         std::vector<std::string> dimTypesStringArray;
 
         for (icode::DimensionType dimType : typeDescription.dimTypes)
-            dimTypesStringArray.push_back(dimTypesStringArray[dimType]);
+            dimTypesStringArray.push_back(dimensionTypesToString[dimType]);
 
         return dimTypesStringArray;
     }

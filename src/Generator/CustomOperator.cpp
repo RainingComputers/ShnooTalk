@@ -1,14 +1,16 @@
 #include "OperatorTokenToInstruction.hpp"
 #include "PassParamTypeCheck.hpp"
 
-#include "BinaryOperator.hpp"
+#include "CustomOperator.hpp"
 
 using namespace icode;
 
-Unit customBinaryOperator(generator::GeneratorContext& ctx,
-                          const Token& binaryOperator,
-                          const Unit& LHS,
-                          const Unit& RHS)
+Unit customOperator(generator::GeneratorContext& ctx,
+                    const Token& binaryOperator,
+                    const Token& LHSToken,
+                    const Token& RHSToken,
+                    const Unit& LHS,
+                    const Unit& RHS)
 {
     ctx.ir.pushWorkingModule();
 
@@ -21,8 +23,8 @@ Unit customBinaryOperator(generator::GeneratorContext& ctx,
 
     std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
-    passParamTypeCheck(ctx, LHS, formalParameters[0], binaryOperator);
-    passParamTypeCheck(ctx, RHS, formalParameters[1], binaryOperator);
+    passParamTypeCheck(ctx, LHS, formalParameters[0], LHSToken);
+    passParamTypeCheck(ctx, RHS, formalParameters[1], RHSToken);
 
     ctx.ir.functionBuilder.passParameter(binaryOperator, callee, formalParameters[0], LHS);
     ctx.ir.functionBuilder.passParameter(binaryOperator, callee, formalParameters[1], RHS);
@@ -32,12 +34,17 @@ Unit customBinaryOperator(generator::GeneratorContext& ctx,
     return ctx.ir.functionBuilder.callFunction(binaryOperator, callee);
 }
 
-Unit binaryOperator(generator::GeneratorContext& ctx, const Token& binaryOperator, const Unit& LHS, const Unit& RHS)
+Unit binaryOperator(generator::GeneratorContext& ctx,
+                    const Token& binaryOperator,
+                    const Token& LHSToken,
+                    const Token& RHSToken,
+                    const Unit& LHS,
+                    const Unit& RHS)
 {
     Instruction instruction = tokenToBinaryOperator(ctx, binaryOperator);
 
     if (LHS.isStruct())
-        return customBinaryOperator(ctx, binaryOperator, LHS, RHS);
+        return customOperator(ctx, binaryOperator, LHSToken, RHSToken, LHS, RHS);
 
     return ctx.ir.functionBuilder.binaryOperator(instruction, LHS, RHS);
 }

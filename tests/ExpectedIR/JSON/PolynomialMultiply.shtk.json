@@ -27,15 +27,15 @@
         "_fn_PolynomialMultiply_shtk_multipy_poly": {
             "moduleName": "PolynomialMultiply.shtk",
             "parameters": ["c", "a", "b", "degree"],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [3], "properties": ["isParameter"]},
-                "b": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [3], "properties": ["isParameter"]},
-                "c": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [5], "properties": ["isMutable", "isParameter"]},
-                "degree": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "j": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "k": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [3], "dimTypes": ["fixedDim"], "properties": ["isParameter"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [3], "dimTypes": ["fixedDim"], "properties": ["isParameter"]},
+                "c": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [5], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isParameter"]},
+                "degree": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "j": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "k": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
@@ -104,12 +104,12 @@
         "main": {
             "moduleName": "PolynomialMultiply.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [3], "properties": ["isMutable", "isLocal"]},
-                "b": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [3], "properties": ["isMutable", "isLocal"]},
-                "c": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [5], "properties": ["isMutable", "isLocal"]},
-                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [3], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "int", "dtypeSize": 4, "size": 12, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [3], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]},
+                "c": {"dtype": "int", "dtypeSize": 4, "size": 20, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [5], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]},
+                "i": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "PolynomialMultiply.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 88, "dtype": "int"}, "op2": {"type": "var", "id": 84, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},

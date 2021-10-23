@@ -1,4 +1,4 @@
-# MODULE BinaryOperatorOnStructError.shtk
+# MODULE BinaryOperatorFunctionDoesNotExistError.shtk
 # ERROR in Line 17 Col 11
 # 
 #     a = b + c

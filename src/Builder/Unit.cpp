@@ -99,6 +99,11 @@ bool Unit::isIntegerType() const
     return typeDescription.isIntegerType();
 }
 
+bool Unit::isFloatType() const
+{
+    return typeDescription.isFloatType();
+}
+
 bool Unit::isStruct() const
 {
     return typeDescription.isStruct();

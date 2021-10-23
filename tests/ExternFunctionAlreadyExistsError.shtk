@@ -1,0 +1,16 @@
+# MODULE ExternFunctionAlreadyExistsError.shtk
+# ERROR in Line 11 Col 7
+# 
+# extfn sin(x: double) -> double
+#       ^
+# Symbol already defined
+
+use "TestModules/Math.shtk" as math
+from math use sin
+
+extfn sin(x: double) -> double
+
+fn main() -> int
+{
+    return 0
+}

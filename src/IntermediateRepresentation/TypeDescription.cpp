@@ -93,6 +93,11 @@ namespace icode
         return isInteger(dtype);
     }
 
+    bool TypeDescription::isFloatType() const
+    {
+        return isFloat(dtype);
+    }
+
     bool TypeDescription::isStringLtrl() const
     {
         return checkProperty(IS_STRING_LTRL);

@@ -60,6 +60,7 @@ namespace icode
         bool isStructOrArrayAndNotPointer() const;
         bool isMultiDimArray() const;
         bool isIntegerType() const;
+        bool isFloatType() const;
     };
 }
 

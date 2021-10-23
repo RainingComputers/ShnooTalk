@@ -1,12 +1,11 @@
-# MODULE ConditionalNotOnTermError.shtk
-# ERROR in Line 11 Col 17
-# 
-#     var b:int = not a
-#                 ^
-# Did not expect CONDN NOT
+# 1
 
-fn main()
+fn main() -> int
 {
-    var a:int
+    var a:int = 0
     var b:int = not a
+
+    println(b)
+
+    return 0
 }

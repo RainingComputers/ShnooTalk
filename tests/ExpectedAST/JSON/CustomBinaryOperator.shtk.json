@@ -1,0 +1,406 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "use", "tokenType": "USE", "line": 4, "col": 0, "file": "CustomBinaryOperator.shtk"},
+      "children": [
+        {
+          "token": {"string": "\"TestModules/Vector.shtk\"", "tokenType": "STR_LITERAL", "line": 4, "col": 4, "file": "CustomBinaryOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 4, "col": 33, "file": "CustomBinaryOperator.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "from", "tokenType": "FROM", "line": 6, "col": 0, "file": "CustomBinaryOperator.shtk"},
+      "children": [
+        {
+          "token": {"string": "Vector", "tokenType": "IDENTIFIER", "line": 6, "col": 5, "file": "CustomBinaryOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "use", "tokenType": "USE", "line": 6, "col": 12, "file": "CustomBinaryOperator.shtk"},
+          "children": [
+            {
+              "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 6, "col": 16, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 6, "col": 21, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 8, "col": 0, "file": "CustomBinaryOperator.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 8, "col": 3, "file": "CustomBinaryOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 8, "col": 13, "file": "CustomBinaryOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 0, "file": "CustomBinaryOperator.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 10, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 10, "col": 8, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 11, "col": 6, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 11, "col": 6, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 4, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 16, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 16, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 16, "file": "CustomBinaryOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 13, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 8, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 13, "col": 11, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 14, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 14, "col": 6, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "setVec", "tokenType": "IDENTIFIER", "line": 14, "col": 6, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 14, "col": 4, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 14, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 14, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 14, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 14, "col": 16, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 14, "col": 16, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 14, "col": 16, "file": "CustomBinaryOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 16, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 16, "col": 8, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Vec", "tokenType": "IDENTIFIER", "line": 16, "col": 11, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 16, "col": 15, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 16, "col": 17, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 16, "col": 17, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 16, "col": 17, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 16, "col": 17, "file": "CustomBinaryOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 16, "col": 19, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 16, "col": 21, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 16, "col": 21, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 16, "col": 21, "file": "CustomBinaryOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 19, "col": 4, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 19, "col": 6, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 19, "col": 9, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 19, "col": 9, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 19, "col": 9, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 19, "col": 9, "file": "CustomBinaryOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 19, "col": 11, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 19, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 19, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 19, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "printVec", "tokenType": "IDENTIFIER", "line": 20, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 20, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 20, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 20, "col": 13, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 22, "col": 4, "file": "CustomBinaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 22, "col": 11, "file": "CustomBinaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 22, "col": 11, "file": "CustomBinaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 22, "col": 11, "file": "CustomBinaryOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

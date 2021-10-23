@@ -1,17 +1,17 @@
-# MODULE CompareOperatorOnStruct.shtk
-# ERROR in Line 15 Col 10
-# 
-#     if(a > b) println("lol")
-#          ^
-# Cannot compare STRUCT or ARRAYS
+# lol
 
 use "TestModules/Vector.shtk" as vec
 from vec use Vec
 
-fn main()
+fn main() -> int
 {
     var a:Vec, b:Vec
 
+    a.setVec(4, 4)
+    b.setVec(1, 1)
+
     if(a > b) println("lol")
+
+    return 0
 }
 

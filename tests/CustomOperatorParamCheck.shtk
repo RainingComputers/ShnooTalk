@@ -1,0 +1,26 @@
+# MODULE CustomOperatorParamCheck.shtk
+# ERROR in Line 23 Col 25
+# 
+#     var c: foobar = a + b
+#                         ^
+# Cannot pass IMMUTABLE as MUTABLE
+
+struct foobar {
+    var x: int, y: int
+}
+
+fn add(self: foobar, mut other: foobar) -> foobar
+{
+    var t: foobar
+    return t
+}
+
+fn main() -> int
+{
+    var a: foobar
+    const b: foobar = a
+
+    var c: foobar = a + b
+
+    return 0
+}

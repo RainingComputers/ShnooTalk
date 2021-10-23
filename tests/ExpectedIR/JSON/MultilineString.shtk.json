@@ -28,9 +28,9 @@
         "main": {
             "moduleName": "MultilineString.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MultilineString.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "MultilineString.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "ubyte", "dtypeSize": 1, "size": 60, "moduleName": "MultilineString.shtk", "offset": 0, "dimensions": [60], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "ubyte", "dtypeSize": 1, "size": 60, "moduleName": "MultilineString.shtk", "offset": 0, "dimensions": [60], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "ubyte"}, "op2": {"type": "var", "id": 3, "name": "a", "dtype": "ubyte"}, "op3": {"type": "none"}},

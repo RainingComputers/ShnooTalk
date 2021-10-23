@@ -1,0 +1,208 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "struct", "tokenType": "STRUCT", "line": 8, "col": 0, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+      "children": [
+        {
+          "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 8, "col": 7, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 10, "col": 4, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 10, "col": 8, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 10, "col": 14, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 10, "col": 16, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 19, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 13, "col": 13, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 14, "col": 0, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 4, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 11, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 15, "col": 17, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 15, "col": 19, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 22, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 15, "col": 28, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 15, "col": 30, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 33, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 4, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 17, "col": 6, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 17, "col": 10, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 17, "col": 12, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 19, "col": 4, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 19, "col": 11, "file": "BinaryOperatorFunctionDoesNotExistError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

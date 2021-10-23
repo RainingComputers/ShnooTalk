@@ -1,13 +1,17 @@
 #include "../Builder/TypeCheck.hpp"
-#include "BinaryOperator.hpp"
-#include "ConditionalExpression.hpp"
+#include "CustomOperator.hpp"
 #include "Expression.hpp"
-#include "OrdinaryExpression.hpp"
+#include "Expression.hpp"
 #include "UnitFromIdentifier.hpp"
 
 #include "Assignment.hpp"
 
-void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, const Unit& LHS, const Unit& RHS)
+void assignmentFromTree(generator::GeneratorContext& ctx,
+                        const Node& root,
+                        const Token& LHSToken,
+                        const Token& RHSToken,
+                        const Unit& LHS,
+                        const Unit& RHS)
 {
     Token assignOperator = root.getNthChildTokenFromLast(2);
 
@@ -49,14 +53,16 @@ void assignmentFromTree(generator::GeneratorContext& ctx, const Node& root, cons
     }
     else
     {
-        ctx.ir.functionBuilder.unitCopy(LHS, binaryOperator(ctx, assignOperator, LHS, RHS));
+        ctx.ir.functionBuilder.unitCopy(LHS, binaryOperator(ctx, assignOperator, LHSToken, RHSToken, LHS, RHS));
     }
 }
 
 void assignment(generator::GeneratorContext& ctx, const Node& root)
 {
+    const Token& LHSToken = root.children[0].tok;
+    const Token& RHSToken = root.children[2].tok;
     Unit LHS = ordinaryExpression(ctx, root.children[0]);
     Unit RHS = expression(ctx, root.children[2]);
 
-    assignmentFromTree(ctx, root, LHS, RHS);
+    assignmentFromTree(ctx, root, LHSToken, RHSToken, LHS, RHS);
 }

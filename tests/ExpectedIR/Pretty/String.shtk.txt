@@ -31,23 +31,23 @@
     "structures": {
         "FloatResult": {
             "structFields": {
-                "_fVal": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Result.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "err": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "TestModules/Result.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "_fVal": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Result.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "err": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "TestModules/Result.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 5,
             "moduleName": "TestModules/Result.shtk"
         },
         "Result": {
             "structFields": {
-                "_val": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Result.shtk", "offset": 0, "dimensions": [], "properties": []},
-                "err": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "TestModules/Result.shtk", "offset": 4, "dimensions": [], "properties": []}
+                "_val": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Result.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "err": {"dtype": "byte", "dtypeSize": 1, "size": 1, "moduleName": "TestModules/Result.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
             },
             "size": 5,
             "moduleName": "TestModules/Result.shtk"
         },
         "String": {
             "structFields": {
-                "arr": {"dtype": "ubyte", "dtypeSize": 1, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [80], "properties": []}
+                "arr": {"dtype": "ubyte", "dtypeSize": 1, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [80], "dimTypes": ["fixedDim"], "properties": []}
             },
             "size": 80,
             "moduleName": "TestModules/String.shtk"
@@ -59,17 +59,17 @@
         "main": {
             "moduleName": "String.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "String.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "b": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "c": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "d": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "e": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "f": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "foo": {"dtype": "ubyte", "dtypeSize": 1, "size": 80, "moduleName": "String.shtk", "offset": 0, "dimensions": [80], "properties": ["isMutable", "isLocal"]},
-                "g": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "h": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "b": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "c": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "d": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "e": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "f": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "foo": {"dtype": "ubyte", "dtypeSize": 1, "size": 80, "moduleName": "String.shtk", "offset": 0, "dimensions": [80], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]},
+                "g": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "h": {"dtype": "struct", "dtypeSize": 80, "size": 80, "moduleName": "TestModules/String.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
             }
             "icode": [
                     ubyte* tempPtr5 = createPointer ubyte foo

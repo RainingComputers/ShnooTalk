@@ -27,13 +27,13 @@
         "_fn_BinarySearch_shtk_BSearch": {
             "moduleName": "BinarySearch.shtk",
             "parameters": ["a", "S", "L", "x"],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "H": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "properties": ["isMutable", "isLocal"]},
-                "L": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "S": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]},
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 40, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [10], "properties": ["isParameter"]},
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "properties": ["isParameter"]}
+                "H": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                "L": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "S": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 40, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [10], "dimTypes": ["fixedDim"], "properties": ["isParameter"]},
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
             },
             "icode": [
                 {"opcode": "cast", "op1": {"type": "temp", "id": 7, "dtype": "int"}, "op2": {"type": "literal", "id": 5, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
@@ -89,9 +89,9 @@
         "main": {
             "moduleName": "BinarySearch.shtk",
             "parameters": [],
-            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "properties": []},
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
             "symbols": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 40, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [10], "properties": ["isMutable", "isLocal"]}
+                "a": {"dtype": "int", "dtypeSize": 4, "size": 40, "moduleName": "BinarySearch.shtk", "offset": 0, "dimensions": [10], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]}
             },
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 106, "dtype": "int"}, "op2": {"type": "var", "id": 95, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},

@@ -1,0 +1,303 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "struct", "tokenType": "STRUCT", "line": 8, "col": 0, "file": "CustomOperatorTooManyParamsError.shtk"},
+      "children": [
+        {
+          "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 8, "col": 7, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 10, "col": 4, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "x", "tokenType": "IDENTIFIER", "line": 10, "col": 8, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 10, "col": 14, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "y", "tokenType": "IDENTIFIER", "line": 10, "col": 16, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 10, "col": 19, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "CustomOperatorTooManyParamsError.shtk"},
+      "children": [
+        {
+          "token": {"string": "add", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 7, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 13, "col": 7, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 13, "col": 10, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 18, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 18, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 13, "col": 21, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 13, "col": 29, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            {
+              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 13, "col": 29, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 13, "col": 32, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 13, "col": 43, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 14, "col": 0, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 4, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "res", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 15, "col": 13, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 16, "col": 4, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "res", "tokenType": "IDENTIFIER", "line": 16, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "res", "tokenType": "IDENTIFIER", "line": 16, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "res", "tokenType": "IDENTIFIER", "line": 16, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 19, "col": 0, "file": "CustomOperatorTooManyParamsError.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 19, "col": 3, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 19, "col": 13, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 20, "col": 0, "file": "CustomOperatorTooManyParamsError.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 21, "col": 4, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 21, "col": 8, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 21, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 21, "col": 17, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 21, "col": 19, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 21, "col": 22, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 23, "col": 4, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 23, "col": 8, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Foobar", "tokenType": "IDENTIFIER", "line": 23, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 23, "col": 18, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 23, "col": 20, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 23, "col": 20, "file": "CustomOperatorTooManyParamsError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 23, "col": 20, "file": "CustomOperatorTooManyParamsError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 23, "col": 20, "file": "CustomOperatorTooManyParamsError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 23, "col": 22, "file": "CustomOperatorTooManyParamsError.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 23, "col": 24, "file": "CustomOperatorTooManyParamsError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 23, "col": 24, "file": "CustomOperatorTooManyParamsError.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 23, "col": 24, "file": "CustomOperatorTooManyParamsError.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 25, "col": 4, "file": "CustomOperatorTooManyParamsError.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 25, "col": 11, "file": "CustomOperatorTooManyParamsError.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

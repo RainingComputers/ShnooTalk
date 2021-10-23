@@ -1,4 +1,4 @@
-#include "OrdinaryExpression.hpp"
+#include "Expression.hpp"
 
 #include "UnitFromIdentifier.hpp"
 
@@ -58,7 +58,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext
         if (!(child.type == node::SUBSCRIPT))
             break;
 
-        const Unit indexExpression = ordinaryExpression(ctx, child.children[0]);
+        const Unit indexExpression = expression(ctx, child.children[0]);
 
         indices.push_back(indexExpression);
 

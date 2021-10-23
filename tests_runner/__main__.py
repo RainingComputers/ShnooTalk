@@ -14,8 +14,7 @@ def print_usage() -> None:
 
 def print_gen_warning() -> None:
     print("🤖 Generating test cases...")
-    print("🛑 Run this only if absolutely necessary")
-    print("   Make sure the compiler has passed all core (compiler and llc) tests")
+    print("🛑 Make sure the compiler has passed all core (compiler and llc) tests")
     print("   Review every change using git")
 
 
