@@ -1,0 +1,30 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=1, col=0
+        ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=1, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=2, col=0
+              ├───> nodeType=WHILE, string="while", tokenType=WHILE, line=3, col=4
+              │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=3, col=10
+              │     │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=3, col=10
+              │     │     │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=3, col=10
+              │     │     │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=3, col=10
+              │     │     ├───> nodeType=OPERATOR, string="==", tokenType=CONDN_EQUAL, line=3, col=12
+              │     │     └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=3, col=15
+              │     │           └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=3, col=15
+              │     │                 └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=3, col=15
+              │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=3, col=17
+              │           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=4, col=8
+              │                 └───> nodeType=MULTILINE_STR_LITERAL, string=""foobae"", tokenType=STR_LITERAL, line=4, col=16
+              │                       └───> nodeType=STR_LITERAL, string=""foobae"", tokenType=STR_LITERAL, line=4, col=16
+              └───> nodeType=WHILE, string="while", tokenType=WHILE, line=7, col=4
+                    ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=7, col=10
+                    │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=7, col=10
+                    │     │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=7, col=10
+                    │     │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=7, col=10
+                    │     ├───> nodeType=OPERATOR, string="==", tokenType=CONDN_EQUAL, line=7, col=12
+                    │     └───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=7, col=15
+                    │           └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=7, col=15
+                    │                 └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=7, col=15
+                    └───> nodeType=BLOCK, string="println", tokenType=PRINTLN, line=7, col=17
+                          └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=7, col=17
+                                └───> nodeType=MULTILINE_STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=7, col=25
+                                      └───> nodeType=STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=7, col=25

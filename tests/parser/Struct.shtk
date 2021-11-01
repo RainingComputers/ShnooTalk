@@ -1,0 +1,5 @@
+struct foo {
+    var a: int, b: int
+    var c: int
+    var d: int var e: int
+}

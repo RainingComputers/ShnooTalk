@@ -1,0 +1,8 @@
+fn test() 
+{
+    loop {
+        println("Hello")
+    }
+
+    loop println("lol")
+}

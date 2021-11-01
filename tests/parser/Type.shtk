@@ -1,0 +1,27 @@
+fn test() 
+{
+    var a: int[10]
+
+    var b: int[10][10]
+
+    var c: int[]
+
+    var d: int*
+
+    var a: foo::int[10]
+
+    var b: foo::int[10][10]
+
+    var c: foo::int[]
+
+    var d: foo::int*
+
+    var a: foo::bar::int[10]
+
+    var b: foo::bar::int[10][10]
+
+    var c: foo::bar::int[]
+
+    var d: foo::bar::int*
+
+}

@@ -1,0 +1,3 @@
+extfn sin(num: int) -> int
+extfn foobar()
+extfn test(a: int, b: int, mut c: int) -> int 

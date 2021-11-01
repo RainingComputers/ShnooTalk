@@ -1,3 +1,5 @@
+import os
+
 from tests_runner.utils.result import TestResult
 from tests_runner.utils.validator import compile_phase, command_validator
 from tests_runner.utils.batch import batch_run
@@ -36,4 +38,8 @@ def run_single(file_name: str) -> TestResult:
 
 
 def run() -> None:
+    os.chdir("tests/compiler")
+
     batch_run("compiler", run_single)
+
+    os.chdir("../..")

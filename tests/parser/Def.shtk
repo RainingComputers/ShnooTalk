@@ -1,0 +1,5 @@
+def ZERO 0
+def HELLO "HELLO"
+def PI 3.14
+def MINUS_ONE -1
+def MINUS_PI -3.14

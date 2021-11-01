@@ -1,0 +1,7 @@
+fn main() -> int
+{
+    loop {
+        break
+        continue
+    }
+}

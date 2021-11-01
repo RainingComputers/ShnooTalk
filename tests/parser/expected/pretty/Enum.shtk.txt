@@ -1,0 +1,7 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=ENUM, string="enum", tokenType=ENUM, line=1, col=0
+  │     └───> nodeType=IDENTIFIER, string="OnlyOne", tokenType=IDENTIFIER, line=1, col=6
+  └───> nodeType=ENUM, string="enum", tokenType=ENUM, line=2, col=0
+        ├───> nodeType=IDENTIFIER, string="LED0", tokenType=IDENTIFIER, line=2, col=6
+        ├───> nodeType=IDENTIFIER, string="LED1", tokenType=IDENTIFIER, line=2, col=12
+        └───> nodeType=IDENTIFIER, string="LED2", tokenType=IDENTIFIER, line=2, col=18

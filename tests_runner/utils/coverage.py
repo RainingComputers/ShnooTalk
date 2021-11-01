@@ -17,9 +17,11 @@ def setup_coverage_dir() -> None:
 
 
 def prepare_coverage_report() -> None:
+    os.chdir("tests")
     print("🤖 Preparing coverage report...")
     shell(f"lcov -c  -b ../ -d {OBJ_DIR} -o total_unfiltered.info")
     shell("lcov --remove total_unfiltered.info '/usr/include/*' '/usr/lib/*' -o total.info")
     shell(f"genhtml total.info -o {COVERAGE_INFO_DIR}/")
     print("📜 Opening report...")
     shell(f"xdg-open {COVERAGE_INFO_DIR}/index.html")
+    os.chdir("..")

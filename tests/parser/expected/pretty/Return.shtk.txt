@@ -1,0 +1,14 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=1, col=0
+        ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=1, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=2, col=0
+              ├───> nodeType=RETURN, string="return", tokenType=RETURN, line=3, col=4
+              │     └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=3, col=11
+              │           ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=3, col=11
+              │           │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=3, col=11
+              │           │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=3, col=11
+              │           ├───> nodeType=OPERATOR, string="+", tokenType=PLUS, line=3, col=12
+              │           └───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=3, col=13
+              │                 └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=3, col=13
+              │                       └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=3, col=13
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=4, col=4

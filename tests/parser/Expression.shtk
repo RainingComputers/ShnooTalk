@@ -1,0 +1,11 @@
+fn test() 
+{
+    a = 1 + 2 + foo::bar() + bar::a
+
+    b = foo(1, 2, 3)
+
+    c = a.bar.foo + a.foobar
+
+    k = l[1*2+3] + c[a.foo()]
+    
+}

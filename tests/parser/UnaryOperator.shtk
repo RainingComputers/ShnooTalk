@@ -1,0 +1,6 @@
+fn test() 
+{
+    a = -1
+    a = not b
+    a = ~c
+}

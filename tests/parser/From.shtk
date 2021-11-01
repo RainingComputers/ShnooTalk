@@ -1,0 +1,2 @@
+from Foo use thing1
+from Bar use thing2, thing3

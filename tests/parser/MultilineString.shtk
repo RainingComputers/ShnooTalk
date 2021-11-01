@@ -1,0 +1,9 @@
+fn test() 
+{
+    var a: char[1024] = "hello" "bar" "lol" "foo"
+
+    var b: char[1024] = 
+        "this"
+        "is" "multiline"
+        "string"
+}

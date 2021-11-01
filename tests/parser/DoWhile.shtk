@@ -1,0 +1,9 @@
+fn test() 
+{
+    do {
+        println("Foo")
+    } while(a == 2)
+
+    do println("Bar") while b == 3
+
+}

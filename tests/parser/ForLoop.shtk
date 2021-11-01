@@ -1,0 +1,19 @@
+fn test() 
+{
+    for a = 1; a < 2; a += 1 {
+        println("Hello")
+    }
+
+    for (a = 1; a < 2; a += 1) {
+        println("Hello")
+    }
+
+    for a.foo(); a < 2; a += 1 {
+        println("Hello")
+    }
+
+    for var i: int = 1; i < 10; i += 1 {
+        println(i)
+    }
+
+}

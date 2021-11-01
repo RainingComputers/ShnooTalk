@@ -1,3 +1,5 @@
+import os
+
 from tests_runner.utils.command import run_command
 from tests_runner.utils.result import TestResult, ResultPrinter
 
@@ -62,9 +64,13 @@ def run_file_no_exists() -> TestResult:
 
 
 def run() -> None:
+    os.chdir("tests/compiler")
+
     printer = ResultPrinter('cli args')
 
     printer.print_result('No args', run_invalid_args(empty=True))
     printer.print_result('Invalid args', run_invalid_args(empty=False))
     printer.print_result('File not found', run_file_no_exists())
     printer.print_result('-version', run_version_test())
+
+    os.chdir("../..")

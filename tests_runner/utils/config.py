@@ -1,5 +1,6 @@
 from typing import Optional
 
+import os
 import sys
 
 
@@ -7,8 +8,6 @@ BUILD_TYPE_MAP = {
     "--core": "debug",
     "--test": "debug",
     "--coverage": "gcov",
-    "--gen-ast": "debug",
-    "--gen-ir": "debug",
 }
 
 
@@ -22,14 +21,16 @@ def parse_args() -> Optional[str]:
         return None
 
 
-BUILD_TYPE = parse_args()
+PARSED_ARGS = parse_args()
 
-CLI_ARG = None if BUILD_TYPE is None else sys.argv[1]
+CLI_ARG = None if PARSED_ARGS is None else sys.argv[1]
 
-COMPILER_EXEC_PATH = f"../bin/{BUILD_TYPE}/shtkc"
+BUILD_TYPE = "debug" if PARSED_ARGS is None else PARSED_ARGS
 
-OBJ_DIR = f"../obj/{BUILD_TYPE}/"
+COMPILER_EXEC_PATH = os.path.join(os.getcwd(),  f"bin/{BUILD_TYPE}/shtkc")
 
-COVERAGE_INFO_DIR = "testinfo"
+OBJ_DIR = os.path.join(os.getcwd(),  f"./obj/{BUILD_TYPE}/")
+
+COVERAGE_INFO_DIR = os.path.join(os.getcwd(), "tests",  "testinfo")
 
 TIMEOUT = 5

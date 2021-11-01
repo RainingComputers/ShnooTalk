@@ -1,0 +1,33 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=1, col=0
+  │     ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=1, col=3
+  │     ├───> nodeType=PARAM, string="a", tokenType=IDENTIFIER, line=1, col=8
+  │     │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=1, col=8
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=1, col=11
+  │     ├───> nodeType=PARAM, string="b", tokenType=IDENTIFIER, line=1, col=16
+  │     │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=1, col=16
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=1, col=19
+  │     ├───> nodeType=MUT_PARAM, string="mut", tokenType=MUTABLE, line=1, col=24
+  │     │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=1, col=28
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=1, col=31
+  │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=1, col=39
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=1, col=43
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=5, col=0
+  │     ├───> nodeType=IDENTIFIER, string="hello", tokenType=IDENTIFIER, line=5, col=3
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=5, col=11
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=9, col=0
+  │     ├───> nodeType=IDENTIFIER, string="lol", tokenType=IDENTIFIER, line=9, col=3
+  │     ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=9, col=12
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=9, col=16
+  ├───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=13, col=0
+  │     ├───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=13, col=3
+  │     ├───> nodeType=PARAM, string="c", tokenType=IDENTIFIER, line=13, col=7
+  │     │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=13, col=7
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=13, col=10
+  │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=13, col=15
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=17, col=0
+        ├───> nodeType=IDENTIFIER, string="foo", tokenType=IDENTIFIER, line=17, col=3
+        ├───> nodeType=MUT_PARAM, string="mut", tokenType=MUTABLE, line=17, col=7
+        │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=17, col=11
+        │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=17, col=14
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=17, col=19

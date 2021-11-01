@@ -1,0 +1,2 @@
+enum [OnlyOne]
+enum [LED0, LED1, LED2]

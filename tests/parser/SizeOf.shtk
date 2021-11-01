@@ -1,0 +1,6 @@
+fn test() 
+{
+    s = sizeof(a)
+    s = sizeof(foo::bar)
+    s = sizeof(foo::bar::hello)
+}

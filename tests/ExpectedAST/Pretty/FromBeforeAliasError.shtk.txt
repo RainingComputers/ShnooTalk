@@ -1,5 +1,0 @@
-> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
-  └───> nodeType=FROM, string="from", tokenType=FROM, line=8, col=0
-        ├───> nodeType=IDENTIFIER, string="math", tokenType=IDENTIFIER, line=8, col=5
-        └───> nodeType=USE, string="use", tokenType=USE, line=8, col=10
-              └───> nodeType=IDENTIFIER, string="vec", tokenType=IDENTIFIER, line=8, col=14

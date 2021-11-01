@@ -1,0 +1,10 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=FROM, string="from", tokenType=FROM, line=1, col=0
+  │     ├───> nodeType=IDENTIFIER, string="Foo", tokenType=IDENTIFIER, line=1, col=5
+  │     └───> nodeType=USE, string="use", tokenType=USE, line=1, col=9
+  │           └───> nodeType=IDENTIFIER, string="thing1", tokenType=IDENTIFIER, line=1, col=13
+  └───> nodeType=FROM, string="from", tokenType=FROM, line=2, col=0
+        ├───> nodeType=IDENTIFIER, string="Bar", tokenType=IDENTIFIER, line=2, col=5
+        └───> nodeType=USE, string="use", tokenType=USE, line=2, col=9
+              ├───> nodeType=IDENTIFIER, string="thing2", tokenType=IDENTIFIER, line=2, col=13
+              └───> nodeType=IDENTIFIER, string="thing3", tokenType=IDENTIFIER, line=2, col=21

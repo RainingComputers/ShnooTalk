@@ -1,0 +1,18 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=STRUCT, string="struct", tokenType=STRUCT, line=1, col=0
+        └───> nodeType=IDENTIFIER, string="foo", tokenType=IDENTIFIER, line=1, col=7
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=2, col=4
+              │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=2, col=8
+              │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=2, col=11
+              ├───> nodeType=VAR, string=",", tokenType=COMMA, line=2, col=14
+              │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=2, col=16
+              │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=2, col=19
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=3, col=4
+              │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=3, col=8
+              │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=11
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=4, col=4
+              │     ├───> nodeType=IDENTIFIER, string="d", tokenType=IDENTIFIER, line=4, col=8
+              │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=4, col=11
+              └───> nodeType=VAR, string="var", tokenType=VAR, line=4, col=15
+                    ├───> nodeType=IDENTIFIER, string="e", tokenType=IDENTIFIER, line=4, col=19
+                    └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=4, col=22

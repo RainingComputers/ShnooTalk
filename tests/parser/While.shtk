@@ -1,0 +1,8 @@
+fn test() 
+{
+    while a == 2 {
+        println("foobae")
+    }
+
+    while a == 3 println("Hello")
+}

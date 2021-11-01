@@ -1,0 +1,21 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  ├───> nodeType=EXTERN_FUNCTION, string="extfn", tokenType=EXTERN_FUNCTION, line=1, col=0
+  │     ├───> nodeType=IDENTIFIER, string="sin", tokenType=IDENTIFIER, line=1, col=6
+  │     ├───> nodeType=PARAM, string="num", tokenType=IDENTIFIER, line=1, col=10
+  │     │     ├───> nodeType=IDENTIFIER, string="num", tokenType=IDENTIFIER, line=1, col=10
+  │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=1, col=15
+  │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=1, col=23
+  ├───> nodeType=EXTERN_FUNCTION, string="extfn", tokenType=EXTERN_FUNCTION, line=2, col=0
+  │     └───> nodeType=IDENTIFIER, string="foobar", tokenType=IDENTIFIER, line=2, col=6
+  └───> nodeType=EXTERN_FUNCTION, string="extfn", tokenType=EXTERN_FUNCTION, line=3, col=0
+        ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=3, col=6
+        ├───> nodeType=PARAM, string="a", tokenType=IDENTIFIER, line=3, col=11
+        │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=3, col=11
+        │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=14
+        ├───> nodeType=PARAM, string="b", tokenType=IDENTIFIER, line=3, col=19
+        │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=3, col=19
+        │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=22
+        ├───> nodeType=MUT_PARAM, string="mut", tokenType=MUTABLE, line=3, col=27
+        │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=3, col=31
+        │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=34
+        └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=42

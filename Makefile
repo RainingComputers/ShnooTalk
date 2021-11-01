@@ -1,4 +1,4 @@
-.PHONY : help clean all build install install-gedit uninstall format test coverage tidy gentests
+.PHONY : help clean all build install install-gedit uninstall format test coverage tidy
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
@@ -26,8 +26,6 @@ help :
 	@echo "      Run test and prepare code coverage report, run make build GCOV=1"
 	@echo "tidy"
 	@echo "      Run clang-tidy"
-	@echo "gentests"
-	@echo "      Generate test cases"
 	@echo ""
 
 # Name of the executable
@@ -96,9 +94,9 @@ clean:
 	rm -f -r obj/
 	rm -f -r tests/testinfo/
 	rm -f -r tests/*.info
-	rm -f tests/*.llc
-	rm -f tests/*.llc.s
-	rm -f tests/*.o
+	rm -f tests/compiler/*.llc
+	rm -f tests/compiler/*.llc.s
+	rm -f tests/compiler/*.o
 	rm -f tests/test
 	rm -f tests/*.gmon.out*
 
@@ -138,14 +136,10 @@ format:
 	clang-format -i src/*.cpp
 
 test:
-	python3 -m tests_runner --core
+	python3 -m tests_runner --test
 
 coverage:
 	python3 -m tests_runner --coverage
 
 tidy:
 	clang-tidy src/*.cpp src/*/*.cpp  -- $(CXXFLAGS) -Wextra
-
-gentests:
-	python3 -m tests_runner --gen-ast
-	python3 -m tests_runner --gen-ir

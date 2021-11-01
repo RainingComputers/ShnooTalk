@@ -1,0 +1,19 @@
+fn test(a: int, b: int, mut c: int) -> int {
+
+}
+
+fn hello() {
+
+}
+
+fn lol() -> int {
+
+}
+
+fn bar(c: int) {
+
+}
+
+fn foo(mut a: int) {
+
+}

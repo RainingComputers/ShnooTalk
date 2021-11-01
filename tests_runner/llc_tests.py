@@ -1,3 +1,5 @@
+import os
+
 from tests_runner.utils.batch import batch_run
 from tests_runner.utils.dir import remove_files
 from tests_runner.utils.result import TestResult
@@ -22,6 +24,8 @@ def run_single(file_name: str) -> TestResult:
 
 
 def run() -> None:
+    os.chdir("tests/compiler")
+
     remove_files(".llc")
 
     batch_run("llc", run_single)
@@ -29,3 +33,5 @@ def run() -> None:
     remove_files(".o")
     remove_files(".llc")
     remove_files(".llc.s")
+
+    os.chdir("../..")

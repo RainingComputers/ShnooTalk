@@ -1,0 +1,31 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=1, col=0
+        ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=1, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=2, col=0
+              ├───> nodeType=ASSIGNMENT, string="s", tokenType=IDENTIFIER, line=3, col=4
+              │     ├───> nodeType=TERM, string="s", tokenType=IDENTIFIER, line=3, col=4
+              │     │     └───> nodeType=IDENTIFIER, string="s", tokenType=IDENTIFIER, line=3, col=4
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=3, col=6
+              │     └───> nodeType=EXPRESSION, string="sizeof", tokenType=SIZEOF, line=3, col=8
+              │           └───> nodeType=TERM, string="sizeof", tokenType=SIZEOF, line=3, col=8
+              │                 └───> nodeType=SIZEOF, string="sizeof", tokenType=SIZEOF, line=3, col=8
+              │                       └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=3, col=15
+              ├───> nodeType=ASSIGNMENT, string="s", tokenType=IDENTIFIER, line=4, col=4
+              │     ├───> nodeType=TERM, string="s", tokenType=IDENTIFIER, line=4, col=4
+              │     │     └───> nodeType=IDENTIFIER, string="s", tokenType=IDENTIFIER, line=4, col=4
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=4, col=6
+              │     └───> nodeType=EXPRESSION, string="sizeof", tokenType=SIZEOF, line=4, col=8
+              │           └───> nodeType=TERM, string="sizeof", tokenType=SIZEOF, line=4, col=8
+              │                 └───> nodeType=SIZEOF, string="sizeof", tokenType=SIZEOF, line=4, col=8
+              │                       ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=4, col=15
+              │                       └───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=4, col=20
+              └───> nodeType=ASSIGNMENT, string="s", tokenType=IDENTIFIER, line=5, col=4
+                    ├───> nodeType=TERM, string="s", tokenType=IDENTIFIER, line=5, col=4
+                    │     └───> nodeType=IDENTIFIER, string="s", tokenType=IDENTIFIER, line=5, col=4
+                    ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=5, col=6
+                    └───> nodeType=EXPRESSION, string="sizeof", tokenType=SIZEOF, line=5, col=8
+                          └───> nodeType=TERM, string="sizeof", tokenType=SIZEOF, line=5, col=8
+                                └───> nodeType=SIZEOF, string="sizeof", tokenType=SIZEOF, line=5, col=8
+                                      ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=5, col=15
+                                      ├───> nodeType=MODULE, string="bar", tokenType=IDENTIFIER, line=5, col=20
+                                      └───> nodeType=IDENTIFIER, string="hello", tokenType=IDENTIFIER, line=5, col=25

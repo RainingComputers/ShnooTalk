@@ -1,0 +1,8 @@
+fn test() 
+{
+    var a: int = int`b
+
+    var c: int = int*`c
+
+    var d: int = int[]`k
+}

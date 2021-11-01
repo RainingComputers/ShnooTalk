@@ -1,0 +1,13 @@
+fn test() 
+{
+    foo::something()
+
+    foo::bar::something()
+
+    a.foobar()
+
+    barbar()
+
+    a += 1
+    a = 1 + 1 + 3
+}

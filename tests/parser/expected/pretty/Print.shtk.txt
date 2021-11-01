@@ -1,0 +1,43 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=1, col=0
+        ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=1, col=3
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=2, col=0
+              ├───> nodeType=PRINT, string="print", tokenType=PRINT, line=3, col=4
+              │     └───> nodeType=MULTILINE_STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=3, col=10
+              │           └───> nodeType=STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=3, col=10
+              ├───> nodeType=PRINT, string="print", tokenType=PRINT, line=4, col=4
+              │     ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=4, col=10
+              │     │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=4, col=10
+              │     │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=4, col=10
+              │     ├───> nodeType=SPACE, string=",", tokenType=COMMA, line=4, col=11
+              │     ├───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=4, col=13
+              │     │     └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=4, col=13
+              │     │           └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=4, col=13
+              │     ├───> nodeType=SPACE, string=",", tokenType=COMMA, line=4, col=14
+              │     └───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=4, col=16
+              │           └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=4, col=16
+              │                 └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=4, col=16
+              ├───> nodeType=PRINT, string="print", tokenType=PRINT, line=5, col=4
+              │     ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=5, col=10
+              │     │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=5, col=10
+              │     │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=5, col=10
+              │     ├───> nodeType=MULTILINE_STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=5, col=13
+              │     │     └───> nodeType=STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=5, col=13
+              │     └───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=5, col=22
+              │           └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=5, col=22
+              │                 └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=5, col=22
+              └───> nodeType=PRINT, string="print", tokenType=PRINT, line=6, col=4
+                    ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=6, col=10
+                    │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=6, col=10
+                    │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=6, col=10
+                    ├───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=6, col=13
+                    │     └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=6, col=13
+                    │           └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=6, col=13
+                    ├───> nodeType=SPACE, string=",", tokenType=COMMA, line=6, col=14
+                    ├───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=6, col=16
+                    │     └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=6, col=16
+                    │           └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=6, col=16
+                    ├───> nodeType=SPACE, string=",", tokenType=COMMA, line=6, col=18
+                    └───> nodeType=EXPRESSION, string="4", tokenType=INT_LITERAL, line=6, col=20
+                          └───> nodeType=TERM, string="4", tokenType=INT_LITERAL, line=6, col=20
+                                └───> nodeType=LITERAL, string="4", tokenType=INT_LITERAL, line=6, col=20
