@@ -1,0 +1,168 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "SizeOf.shtk"},
+      "children": [
+        {
+          "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "SizeOf.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "SizeOf.shtk"},
+          "children": [
+            {
+              "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "SizeOf.shtk"},
+              "children": [
+                {
+                  "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "SizeOf.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "SizeOf.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 6, "file": "SizeOf.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 3, "col": 8, "file": "SizeOf.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 3, "col": 8, "file": "SizeOf.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 3, "col": 8, "file": "SizeOf.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "SizeOf.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "SizeOf.shtk"},
+              "children": [
+                {
+                  "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "SizeOf.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "SizeOf.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 4, "col": 6, "file": "SizeOf.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 4, "col": 8, "file": "SizeOf.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 4, "col": 8, "file": "SizeOf.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 4, "col": 8, "file": "SizeOf.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 4, "col": 15, "file": "SizeOf.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 4, "col": 20, "file": "SizeOf.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "SizeOf.shtk"},
+              "children": [
+                {
+                  "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "SizeOf.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "SizeOf.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 6, "file": "SizeOf.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 5, "col": 8, "file": "SizeOf.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 5, "col": 8, "file": "SizeOf.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 5, "col": 8, "file": "SizeOf.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "SizeOf.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 20, "file": "SizeOf.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 5, "col": 25, "file": "SizeOf.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

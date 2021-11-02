@@ -1,7 +1,7 @@
 import os
 
 from tests_runner.utils.result import TestResult
-from tests_runner.utils.validator import compile_phase, command_validator
+from tests_runner.utils.validator import compile_phase, compile_phase_validator
 from tests_runner.utils.batch import batch_run
 
 
@@ -23,12 +23,12 @@ def get_expected_output(file_name: str) -> str:
 def run_single(file_name: str) -> TestResult:
     expected_output = get_expected_output(file_name)
 
-    return command_validator(
+    return compile_phase_validator(
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-c",
             compiler_output_dump_file=None,
-            link_phase=True,
+            create_executable=True,
             skip_on_compile_error=False,
         ),
         expected_on_compile_fail=expected_output,

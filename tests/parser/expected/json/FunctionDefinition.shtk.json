@@ -1,0 +1,187 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "FunctionDefinition.shtk"},
+      "children": [
+        {
+          "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 1, "col": 8, "file": "FunctionDefinition.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 1, "col": 8, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 11, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 1, "col": 16, "file": "FunctionDefinition.shtk"},
+          "children": [
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 1, "col": 16, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 19, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "mut", "tokenType": "MUTABLE", "line": 1, "col": 24, "file": "FunctionDefinition.shtk"},
+          "children": [
+            {
+              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 1, "col": 28, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 31, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 39, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 1, "col": 43, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 5, "col": 0, "file": "FunctionDefinition.shtk"},
+      "children": [
+        {
+          "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 5, "col": 3, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 5, "col": 11, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 9, "col": 0, "file": "FunctionDefinition.shtk"},
+      "children": [
+        {
+          "token": {"string": "lol", "tokenType": "IDENTIFIER", "line": 9, "col": 3, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 9, "col": 12, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 9, "col": 16, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 13, "col": 0, "file": "FunctionDefinition.shtk"},
+      "children": [
+        {
+          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 13, "col": 3, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 13, "col": 7, "file": "FunctionDefinition.shtk"},
+          "children": [
+            {
+              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 13, "col": 7, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 13, "col": 10, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 13, "col": 15, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 17, "col": 0, "file": "FunctionDefinition.shtk"},
+      "children": [
+        {
+          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 3, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "mut", "tokenType": "MUTABLE", "line": 17, "col": 7, "file": "FunctionDefinition.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 17, "col": 11, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 17, "col": 14, "file": "FunctionDefinition.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 17, "col": 19, "file": "FunctionDefinition.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -38,7 +38,7 @@ def compare(expected_output: str, output: str) -> TestResult:
 def compile_phase(file_name: str,
                   compile_flag: str,
                   compiler_output_dump_file: Optional[str],
-                  link_phase: bool,
+                  create_executable: bool,
                   skip_on_compile_error: bool) -> TestResult:
     setup(file_name)
 
@@ -58,13 +58,13 @@ def compile_phase(file_name: str,
         dump_string_to_file(compiler_output_dump_file, compiler_output)
 
     # Link objects if necessary
-    if link_phase:
+    if create_executable:
         link_objects()
 
     return TestResult.passed(compiler_output)
 
 
-def command_validator(compile_phase_result: TestResult,
+def compile_phase_validator(compile_phase_result: TestResult,
                       expected_on_compile_fail: Optional[str],
                       command_on_compile_success: Optional[List[str]],
                       expected_command_output: Optional[str]) -> TestResult:

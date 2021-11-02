@@ -10,6 +10,7 @@ class TestResultType:
     FAILED = 1
     TIMEDOUT = 2
     SKIPPED = 3
+    INVALID = 4
 
 
 class TestResult:
@@ -43,6 +44,10 @@ class TestResult:
     def skipped() -> TestResult:
         return TestResult(TestResultType.SKIPPED, None, None)
 
+    @staticmethod
+    def invalid(test_case: str) -> TestResult:
+        return TestResult(TestResultType.INVALID, test_case, None)
+
     @property
     def has_failed(self) -> bool:
         return self.test_result == TestResultType.FAILED
@@ -62,6 +67,7 @@ class ResultPrinter:
         self._failed: List[str] = []
         self._timedout: List[str] = []
         self._skipped: List[str] = []
+        self._invalid: List[str] = []
 
         print(f"🚀 Running {tests_set_name} tests")
 
@@ -102,6 +108,13 @@ class ResultPrinter:
             print("[Diff]")
             print(result.diff())
 
+        elif result.test_result == TestResultType.INVALID:
+            self._invalid.append(name)
+
+            print("    🤔", name, "invalid test case\n")
+            print("[Defined output]")
+            print(result.output)
+
         elif result.test_result == TestResultType.TIMEDOUT:
             self._timedout.append(name)
             print("    🕒", name, "timedout")
@@ -115,3 +128,4 @@ class ResultPrinter:
         print(f"     {len(self.failed)} tests failed")
         print(f"     {len(self.timedout)} tests timedout")
         print(f"     {len(self._skipped)} tests skipped")
+        print(f"     {len(self._invalid)} tests invalid")

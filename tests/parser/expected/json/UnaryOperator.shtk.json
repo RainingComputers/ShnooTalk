@@ -1,0 +1,165 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "UnaryOperator.shtk"},
+      "children": [
+        {
+          "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "UnaryOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "UnaryOperator.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "UnaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "UnaryOperator.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 6, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "-", "tokenType": "MINUS", "line": 3, "col": 8, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "-", "tokenType": "MINUS", "line": 3, "col": 8, "file": "UnaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "-", "tokenType": "MINUS", "line": 3, "col": 8, "file": "UnaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 9, "file": "UnaryOperator.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 9, "file": "UnaryOperator.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "UnaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "UnaryOperator.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 4, "col": 6, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 4, "col": 8, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 4, "col": 8, "file": "UnaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 4, "col": 8, "file": "UnaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 4, "col": 12, "file": "UnaryOperator.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 4, "col": 12, "file": "UnaryOperator.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "UnaryOperator.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "UnaryOperator.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 6, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "~", "tokenType": "NOT", "line": 5, "col": 8, "file": "UnaryOperator.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "~", "tokenType": "NOT", "line": 5, "col": 8, "file": "UnaryOperator.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "~", "tokenType": "NOT", "line": 5, "col": 8, "file": "UnaryOperator.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 9, "file": "UnaryOperator.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 9, "file": "UnaryOperator.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

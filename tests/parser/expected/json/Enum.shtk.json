@@ -1,0 +1,39 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "enum", "tokenType": "ENUM", "line": 1, "col": 0, "file": "Enum.shtk"},
+      "children": [
+        {
+          "token": {"string": "OnlyOne", "tokenType": "IDENTIFIER", "line": 1, "col": 6, "file": "Enum.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "enum", "tokenType": "ENUM", "line": 2, "col": 0, "file": "Enum.shtk"},
+      "children": [
+        {
+          "token": {"string": "LED0", "tokenType": "IDENTIFIER", "line": 2, "col": 6, "file": "Enum.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "LED1", "tokenType": "IDENTIFIER", "line": 2, "col": 12, "file": "Enum.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "LED2", "tokenType": "IDENTIFIER", "line": 2, "col": 18, "file": "Enum.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    }
+  ]
+}

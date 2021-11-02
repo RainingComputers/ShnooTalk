@@ -1,0 +1,102 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "def", "tokenType": "DEF", "line": 1, "col": 0, "file": "Def.shtk"},
+      "children": [
+        {
+          "token": {"string": "ZERO", "tokenType": "IDENTIFIER", "line": 1, "col": 4, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 1, "col": 9, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "def", "tokenType": "DEF", "line": 2, "col": 0, "file": "Def.shtk"},
+      "children": [
+        {
+          "token": {"string": "HELLO", "tokenType": "IDENTIFIER", "line": 2, "col": 4, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "\"HELLO\"", "tokenType": "STR_LITERAL", "line": 2, "col": 10, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "def", "tokenType": "DEF", "line": 3, "col": 0, "file": "Def.shtk"},
+      "children": [
+        {
+          "token": {"string": "PI", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "3.14", "tokenType": "FLOAT_LITERAL", "line": 3, "col": 7, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "def", "tokenType": "DEF", "line": 4, "col": 0, "file": "Def.shtk"},
+      "children": [
+        {
+          "token": {"string": "MINUS_ONE", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "-", "tokenType": "MINUS", "line": 4, "col": 14, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 4, "col": 15, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "def", "tokenType": "DEF", "line": 5, "col": 0, "file": "Def.shtk"},
+      "children": [
+        {
+          "token": {"string": "MINUS_PI", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "-", "tokenType": "MINUS", "line": 5, "col": 13, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "3.14", "tokenType": "FLOAT_LITERAL", "line": 5, "col": 14, "file": "Def.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    }
+  ]
+}

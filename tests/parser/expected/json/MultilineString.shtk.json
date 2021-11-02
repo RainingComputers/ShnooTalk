@@ -1,0 +1,147 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "MultilineString.shtk"},
+      "children": [
+        {
+          "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "MultilineString.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "MultilineString.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 3, "col": 4, "file": "MultilineString.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "char", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 15, "file": "MultilineString.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1024", "tokenType": "INT_LITERAL", "line": 3, "col": 16, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 22, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 24, "file": "MultilineString.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 24, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "\"bar\"", "tokenType": "STR_LITERAL", "line": 3, "col": 32, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 3, "col": 38, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "\"foo\"", "tokenType": "STR_LITERAL", "line": 3, "col": 44, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 5, "col": 4, "file": "MultilineString.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "char", "tokenType": "IDENTIFIER", "line": 5, "col": 11, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 15, "file": "MultilineString.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1024", "tokenType": "INT_LITERAL", "line": 5, "col": 16, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 22, "file": "MultilineString.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "\"this\"", "tokenType": "STR_LITERAL", "line": 6, "col": 8, "file": "MultilineString.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "\"this\"", "tokenType": "STR_LITERAL", "line": 6, "col": 8, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "\"is\"", "tokenType": "STR_LITERAL", "line": 7, "col": 8, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "\"multiline\"", "tokenType": "STR_LITERAL", "line": 7, "col": 13, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "\"string\"", "tokenType": "STR_LITERAL", "line": 8, "col": 8, "file": "MultilineString.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

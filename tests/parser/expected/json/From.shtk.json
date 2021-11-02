@@ -1,0 +1,55 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "from", "tokenType": "FROM", "line": 1, "col": 0, "file": "From.shtk"},
+      "children": [
+        {
+          "token": {"string": "Foo", "tokenType": "IDENTIFIER", "line": 1, "col": 5, "file": "From.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "use", "tokenType": "USE", "line": 1, "col": 9, "file": "From.shtk"},
+          "children": [
+            {
+              "token": {"string": "thing1", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "From.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "from", "tokenType": "FROM", "line": 2, "col": 0, "file": "From.shtk"},
+      "children": [
+        {
+          "token": {"string": "Bar", "tokenType": "IDENTIFIER", "line": 2, "col": 5, "file": "From.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "use", "tokenType": "USE", "line": 2, "col": 9, "file": "From.shtk"},
+          "children": [
+            {
+              "token": {"string": "thing2", "tokenType": "IDENTIFIER", "line": 2, "col": 13, "file": "From.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "thing3", "tokenType": "IDENTIFIER", "line": 2, "col": 21, "file": "From.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

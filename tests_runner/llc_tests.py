@@ -3,18 +3,18 @@ import os
 from tests_runner.utils.batch import batch_run
 from tests_runner.utils.dir import remove_files
 from tests_runner.utils.result import TestResult
-from tests_runner.utils.validator import compile_phase, command_validator
+from tests_runner.utils.validator import compile_phase, compile_phase_validator
 
 
 def run_single(file_name: str) -> TestResult:
     llc_file = file_name + ".llc"
 
-    return command_validator(
+    return compile_phase_validator(
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag='-llvm',
             compiler_output_dump_file=llc_file,
-            link_phase=False,
+            create_executable=False,
             skip_on_compile_error=True
         ),
         expected_on_compile_fail=None,

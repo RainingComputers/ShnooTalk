@@ -1,0 +1,73 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "InfiniteLoop.shtk"},
+      "children": [
+        {
+          "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "InfiniteLoop.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "InfiniteLoop.shtk"},
+          "children": [
+            {
+              "token": {"string": "loop", "tokenType": "LOOP", "line": 3, "col": 4, "file": "InfiniteLoop.shtk"},
+              "children": [
+                {
+                  "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 3, "col": 9, "file": "InfiniteLoop.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "println", "tokenType": "PRINTLN", "line": 4, "col": 8, "file": "InfiniteLoop.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "InfiniteLoop.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "InfiniteLoop.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "loop", "tokenType": "LOOP", "line": 7, "col": 4, "file": "InfiniteLoop.shtk"},
+              "children": [
+                {
+                  "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 9, "file": "InfiniteLoop.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 9, "file": "InfiniteLoop.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 7, "col": 17, "file": "InfiniteLoop.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 7, "col": 17, "file": "InfiniteLoop.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

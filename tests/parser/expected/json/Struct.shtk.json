@@ -1,0 +1,100 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "struct", "tokenType": "STRUCT", "line": 1, "col": 0, "file": "Struct.shtk"},
+      "children": [
+        {
+          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 1, "col": 7, "file": "Struct.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 2, "col": 4, "file": "Struct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 2, "col": 8, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 2, "col": 11, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": ",", "tokenType": "COMMA", "line": 2, "col": 14, "file": "Struct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 2, "col": 16, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 2, "col": 19, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 3, "col": 4, "file": "Struct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 4, "col": 4, "file": "Struct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 4, "col": 8, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 4, "col": 11, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 4, "col": 15, "file": "Struct.shtk"},
+              "children": [
+                {
+                  "token": {"string": "e", "tokenType": "IDENTIFIER", "line": 4, "col": 19, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 4, "col": 22, "file": "Struct.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

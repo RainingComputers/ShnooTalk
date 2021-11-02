@@ -1,0 +1,218 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "FunctionCallStatement.shtk"},
+      "children": [
+        {
+          "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "FunctionCallStatement.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "FunctionCallStatement.shtk"},
+          "children": [
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "FunctionCallStatement.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "something", "tokenType": "IDENTIFIER", "line": 3, "col": 9, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "FunctionCallStatement.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 9, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "something", "tokenType": "IDENTIFIER", "line": 5, "col": 14, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "FunctionCallStatement.shtk"},
+              "children": [
+                {
+                  "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 7, "col": 6, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 7, "col": 6, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "FunctionCallStatement.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "barbar", "tokenType": "IDENTIFIER", "line": 9, "col": 4, "file": "FunctionCallStatement.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 4, "file": "FunctionCallStatement.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 4, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 4, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 11, "col": 6, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 9, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 9, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 9, "file": "FunctionCallStatement.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "FunctionCallStatement.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 12, "col": 4, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 12, "col": 6, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 8, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 12, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 8, "file": "FunctionCallStatement.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 8, "file": "FunctionCallStatement.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 8, "file": "FunctionCallStatement.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "+", "tokenType": "PLUS", "line": 12, "col": 10, "file": "FunctionCallStatement.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 12, "file": "FunctionCallStatement.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 12, "file": "FunctionCallStatement.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 12, "col": 12, "file": "FunctionCallStatement.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "+", "tokenType": "PLUS", "line": 12, "col": 14, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 12, "col": 16, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 12, "col": 16, "file": "FunctionCallStatement.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 12, "col": 16, "file": "FunctionCallStatement.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

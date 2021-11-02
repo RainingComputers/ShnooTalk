@@ -25,6 +25,9 @@ temp/
 /*.shnoo
 /*.shtk
 todo.txt
+temp.py
+test.py
+temp.txt
 
 # python
 __pycache__/
