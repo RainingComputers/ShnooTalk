@@ -33,7 +33,7 @@ public:
                                bool arrayOnSingleLine = false);
     void endArray();
     void printString(const std::string& key, const std::string& val);
-    void printNumber(const std::string& key, float val);
+    void printNumber(const std::string& key, double val);
     void printIntArray(const std::string& key, const std::vector<int>& val);
     void printStringArray(const std::string& key, const std::vector<std::string>& val);
 };

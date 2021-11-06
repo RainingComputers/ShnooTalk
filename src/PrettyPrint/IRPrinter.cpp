@@ -22,7 +22,9 @@ namespace pp
             case icode::TEMP_PTR:
             case icode::TEMP_PTR_PTR:
             case icode::RET_VALUE:
+            case icode::RET_PTR:
             case icode::CALLEE_RET_VAL:
+            case icode::CALLEE_RET_PTR:
                 jsonp.printString("dtype", icode::dataTypeToString(op.dtype));
                 break;
             case icode::VAR:

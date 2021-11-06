@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 #include "FlatJSONPrinter.hpp"
 
@@ -144,10 +145,16 @@ void FlatJSONPrinter::printString(const std::string& key, const std::string& val
     std::cout << "\"" << val << "\"";
 }
 
-void FlatJSONPrinter::printNumber(const std::string& key, float val)
+void FlatJSONPrinter::printNumber(const std::string& key, double val)
 {
     printCommaAndKey(key);
-    std::cout << val;
+
+    if (std::isnan(val))
+        std::cout << "\"NAN\"";
+    else if (std::isinf(val))
+        std::cout << "\"INFINITY\"";
+    else
+        std::cout << val;
 }
 
 void FlatJSONPrinter::printIntArray(const std::string& key, const std::vector<int>& val)
