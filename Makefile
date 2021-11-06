@@ -49,7 +49,7 @@ else ifeq ($(CXX), x86_64-w64-mingw32-g++)
 	PLATFORM = Windows_NT_AMD64
 	EXEC_NAME := $(EXEC_NAME).exe
 else
-	PLATFORM = $(shell uname -s)_$(shell uname -p)
+	PLATFORM = $(shell uname -s)_$(shell uname -m)
 endif
 
 # Set C++ compiler flags, build type and build path
@@ -72,8 +72,14 @@ else
 	BUILD_TYPE = release_$(PLATFORM)
 endif
 
-# llvm-config bin path, used to set llvm linker flags
-LLVM_CONFIG_BIN = llvm-config-12
+# Get llvm-config bin
+LLMV_CONFIG_12_BIN_EXISTS := $(shell llvm-config-12 --version >/dev/null 2>&1 || (echo "Does not exist"))
+
+ifeq (,${LLMV_CONFIG_12_BIN_EXISTS})
+    LLVM_CONFIG_BIN = llvm-config-12
+else
+    LLVM_CONFIG_BIN = llvm-config
+endif
 
 ifeq ($(shell uname -s), Darwin)
 	LLVM_CONFIG_BIN = /usr/local/opt/llvm@12/bin/llvm-config
