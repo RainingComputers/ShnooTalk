@@ -2,7 +2,7 @@
 #define VERSION_HPP
 
 #ifndef VERSION
-#define VERSION "SNAPSHOT_Unknown"
+#define VERSION "snapshot-unknown"
 #endif
 
 #endif

@@ -36,9 +36,9 @@ CXX ?= clang++
 
 # Set version string
 ifeq ($(VERSION_FILE), 1)
-	VERSION_STRING = RELEASE_$(shell cat version)
+	VERSION_STRING = $(shell cat version)
 else 
-	VERSION_STRING = SNAPSHOT_$(shell date '+%Y-%m-%d_%H:%M:%S_%Z')
+	VERSION_STRING = snapshot_$(shell date '+%Y-%m-%d_%H:%M:%S_%Z')
 endif
 
 # Get platform
@@ -89,41 +89,28 @@ endif
 CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
 LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
-# Find all .cpp files in src/git
+# Find all .hpp files in src/
+HEADERS = $(shell find src/ -name '*.hpp')
+# Find all .cpp files in src/
 SOURCES = $(shell find src/ -name '*.cpp')
 # Set object file names, all object files are in obj/
 OBJECTS = $(SOURCES:src/%.cpp=obj/$(BUILD_TYPE)/%.o)
 
-# Remove object files and executable
-clean:
-	rm -f -r bin/
-	rm -f -r obj/
-	rm -f -r tests/testinfo/
-	rm -f -r tests/*.info
-	rm -f tests/compiler/*.llc
-	rm -f tests/compiler/*.llc.s
-	rm -f tests/compiler/*.o
-	rm -f tests/test
-	rm -f tests/*.gmon.out*
-
 # For compiling .cpp files in src/ to .o object files in obj/
-obj/$(BUILD_TYPE)/%.o: src/%.cpp src/*/*.hpp
+obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS)
 	mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Linking all object files to executable 
+bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
+	$(CXX) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS) $(LDFLAGS)
 
 # For creting directories required for linking and building executable
 dirs:
 	mkdir -p obj/$(BUILD_TYPE)/
 	mkdir -p bin/$(BUILD_TYPE)/
 
-# Linking all object files to executable 
-bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
-	$(CXX) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS) $(LDFLAGS)
-
-all: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME) 
-
-# Build executable
-build: all
+build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME) 
 
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
@@ -149,3 +136,15 @@ coverage:
 
 tidy:
 	clang-tidy src/*.cpp src/*/*.cpp  -- $(CXXFLAGS) -Wextra
+
+clean:
+	rm -f -r bin/
+	rm -f -r obj/
+	rm -f -r tests/testinfo/
+	rm -f -r tests/*.info
+	rm -f tests/compiler/*.llc
+	rm -f tests/compiler/*.llc.s
+	rm -f tests/compiler/*.o
+	rm -f tests/test
+	rm -f tests/*.gmon.out*
+	rm -rf .mypy_cache
