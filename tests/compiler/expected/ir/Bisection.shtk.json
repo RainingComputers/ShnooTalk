@@ -1,0 +1,69 @@
+{
+    "moduleName": "Bisection.shtk",
+    "functions": {
+        "_fn_Bisection_shtk_f": {
+            "icode": [
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 6, "dtype": "float"}, "op2": {"type": "var", "id": 4, "name": "x", "dtype": "float"}, "op3": {"type": "var", "id": 5, "name": "x", "dtype": "float"}},
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 8, "dtype": "float"}, "op2": {"type": "temp", "id": 6, "dtype": "float"}, "op3": {"type": "var", "id": 7, "name": "x", "dtype": "float"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "float"}, "op2": {"type": "literal", "id": 9, "dtype": "autoFloat", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "subtract", "op1": {"type": "temp", "id": 10, "dtype": "float"}, "op2": {"type": "temp", "id": 8, "dtype": "float"}, "op3": {"type": "temp", "id": 11, "dtype": "float"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 3, "dtype": "float"}, "op2": {"type": "temp", "id": 10, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 17, "dtype": "float"}, "op2": {"type": "literal", "id": 16, "dtype": "autoFloat", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 15, "name": "xL", "dtype": "float"}, "op2": {"type": "temp", "id": 17, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 20, "dtype": "float"}, "op2": {"type": "literal", "id": 19, "dtype": "autoFloat", "value": 3}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 18, "name": "xR", "dtype": "float"}, "op2": {"type": "temp", "id": 20, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "float"}, "op2": {"type": "literal", "id": 22, "dtype": "autoFloat", "value": 1e-06}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 21, "name": "epsilon", "dtype": "float"}, "op2": {"type": "temp", "id": 23, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 24, "name": "_while_true_l19_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "subtract", "op1": {"type": "temp", "id": 28, "dtype": "float"}, "op2": {"type": "var", "id": 26, "name": "xR", "dtype": "float"}, "op3": {"type": "var", "id": 27, "name": "xL", "dtype": "float"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 28, "dtype": "float"}, "op2": {"type": "var", "id": 30, "name": "_fn_TestModules_Math_shtk_abs", "dtype": "float"}, "op3": {"type": "module", "id": 31, "name": "TestModules/Math.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 32, "dtype": "float"}, "op2": {"type": "var", "id": 33, "name": "_fn_TestModules_Math_shtk_abs", "dtype": "float"}, "op3": {"type": "module", "id": 34, "name": "TestModules/Math.shtk"}},
+                {"opcode": "greaterThanOrEqualTo", "op1": {"type": "calleeReturnValue", "id": 32, "dtype": "float"}, "op2": {"type": "var", "id": 35, "name": "epsilon", "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 25, "name": "_while_false_l19_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 39, "dtype": "float"}, "op2": {"type": "var", "id": 37, "name": "xL", "dtype": "float"}, "op3": {"type": "var", "id": 38, "name": "xR", "dtype": "float"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 42, "dtype": "float"}, "op2": {"type": "literal", "id": 40, "dtype": "autoFloat", "value": 2}, "op3": {"type": "none"}},
+                {"opcode": "divide", "op1": {"type": "temp", "id": 41, "dtype": "float"}, "op2": {"type": "temp", "id": 39, "dtype": "float"}, "op3": {"type": "temp", "id": 42, "dtype": "float"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 36, "name": "xM", "dtype": "float"}, "op2": {"type": "temp", "id": 41, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 50, "name": "xM", "dtype": "float"}, "op2": {"type": "var", "id": 52, "name": "_fn_Bisection_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 53, "name": "Bisection.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 54, "dtype": "float"}, "op2": {"type": "var", "id": 55, "name": "_fn_Bisection_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 56, "name": "Bisection.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 58, "dtype": "float"}, "op2": {"type": "literal", "id": 57, "dtype": "autoFloat", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "lessThanOrEqualTo", "op1": {"type": "calleeReturnValue", "id": 54, "dtype": "float"}, "op2": {"type": "temp", "id": 58, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 49, "name": "_and_false_l25_c25"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 59, "name": "xL", "dtype": "float"}, "op2": {"type": "var", "id": 61, "name": "_fn_Bisection_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 62, "name": "Bisection.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 63, "dtype": "float"}, "op2": {"type": "var", "id": 64, "name": "_fn_Bisection_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 65, "name": "Bisection.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 67, "dtype": "float"}, "op2": {"type": "literal", "id": 66, "dtype": "autoFloat", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "lessThanOrEqualTo", "op1": {"type": "calleeReturnValue", "id": 63, "dtype": "float"}, "op2": {"type": "temp", "id": 67, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfTrue", "op1": {"type": "label", "id": 46, "name": "_or_true_l25_c43"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 49, "name": "_and_false_l25_c25"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 70, "name": "xM", "dtype": "float"}, "op2": {"type": "var", "id": 72, "name": "_fn_Bisection_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 73, "name": "Bisection.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 74, "dtype": "float"}, "op2": {"type": "var", "id": 75, "name": "_fn_Bisection_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 76, "name": "Bisection.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 78, "dtype": "float"}, "op2": {"type": "literal", "id": 77, "dtype": "autoFloat", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "greaterThan", "op1": {"type": "calleeReturnValue", "id": 74, "dtype": "float"}, "op2": {"type": "temp", "id": 78, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 45, "name": "_if_false_l25_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 79, "name": "xL", "dtype": "float"}, "op2": {"type": "var", "id": 81, "name": "_fn_Bisection_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 82, "name": "Bisection.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 83, "dtype": "float"}, "op2": {"type": "var", "id": 84, "name": "_fn_Bisection_shtk_f", "dtype": "float"}, "op3": {"type": "module", "id": 85, "name": "Bisection.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 87, "dtype": "float"}, "op2": {"type": "literal", "id": 86, "dtype": "autoFloat", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "greaterThan", "op1": {"type": "calleeReturnValue", "id": 83, "dtype": "float"}, "op2": {"type": "temp", "id": 87, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 45, "name": "_if_false_l25_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 46, "name": "_or_true_l25_c43"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 88, "name": "xL", "dtype": "float"}, "op2": {"type": "var", "id": 89, "name": "xM", "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 43, "name": "_ifend_false_l25_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 45, "name": "_if_false_l25_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 92, "name": "xR", "dtype": "float"}, "op2": {"type": "var", "id": 93, "name": "xM", "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 43, "name": "_ifend_false_l25_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 24, "name": "_while_true_l19_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 25, "name": "_while_false_l19_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "var", "id": 94, "name": "xL", "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 97, "dtype": "int"}, "op2": {"type": "literal", "id": 96, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 95, "dtype": "int"}, "op2": {"type": "temp", "id": 97, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

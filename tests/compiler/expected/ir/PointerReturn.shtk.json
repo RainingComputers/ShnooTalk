@@ -1,0 +1,35 @@
+{
+    "moduleName": "PointerReturn.shtk",
+    "functions": {
+        "_fn_PointerReturn_shtk_testfunction": {
+            "icode": [
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "this", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 4}},
+                {"opcode": "pointerAssign", "op1": {"type": "returnPointer", "id": 3, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "icode": [
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 13, "dtype": "int"}, "op2": {"type": "var", "id": 12, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 13, "dtype": "int"}, "op3": {"type": "bytes", "id": 14, "bytes": 0}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "literal", "id": 16, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "temp", "id": 17, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 19, "dtype": "int"}, "op2": {"type": "var", "id": 18, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 21, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 19, "dtype": "int"}, "op3": {"type": "bytes", "id": 20, "bytes": 4}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 21, "dtype": "int"}, "op2": {"type": "temp", "id": 23, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 27, "dtype": "int"}, "op2": {"type": "var", "id": 25, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 27, "dtype": "int"}, "op2": {"type": "var", "id": 28, "name": "_fn_PointerReturn_shtk_testfunction", "dtype": "int"}, "op3": {"type": "module", "id": 29, "name": "PointerReturn.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnPointer", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "_fn_PointerReturn_shtk_testfunction", "dtype": "int"}, "op3": {"type": "module", "id": 32, "name": "PointerReturn.shtk"}},
+                {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 24, "name": "p", "dtype": "int"}, "op2": {"type": "calleeReturnPointer", "id": 30, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 34, "dtype": "int"}, "op2": {"type": "ptr", "id": 33, "name": "p", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "temp", "id": 34, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 37, "dtype": "int"}, "op2": {"type": "literal", "id": 36, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 35, "dtype": "int"}, "op2": {"type": "temp", "id": 37, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

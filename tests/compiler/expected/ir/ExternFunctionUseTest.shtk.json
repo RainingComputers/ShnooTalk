@@ -1,0 +1,18 @@
+{
+    "moduleName": "ExternFunctionUseTest.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                {"opcode": "divide", "op1": {"type": "temp", "id": 5, "dtype": "autoFloat"}, "op2": {"type": "literal", "id": 3, "dtype": "autoFloat", "value": 3.14}, "op3": {"type": "literal", "id": 4, "dtype": "autoFloat", "value": 2}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 7, "dtype": "double"}, "op2": {"type": "temp", "id": 5, "dtype": "autoFloat"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 7, "dtype": "double"}, "op2": {"type": "var", "id": 8, "name": "sin", "dtype": "double"}, "op3": {"type": "module", "id": 9, "name": "TestModules/ExternMath.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 10, "dtype": "double"}, "op2": {"type": "var", "id": 11, "name": "sin", "dtype": "double"}, "op3": {"type": "module", "id": 12, "name": "TestModules/ExternMath.shtk"}},
+                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 10, "dtype": "double"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 13, "dtype": "int"}, "op2": {"type": "temp", "id": 15, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

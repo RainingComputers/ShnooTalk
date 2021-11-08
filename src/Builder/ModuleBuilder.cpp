@@ -288,6 +288,7 @@ void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameT
     if (rootModule.symbolExists(symbolString))
         console.compileErrorOnToken("Symbol already defined", symbolNameToken);
 
+
     if (externalModule->getStruct(symbolString, structDescReturnValue))
         rootModule.structures[symbolString] = structDescReturnValue;
 

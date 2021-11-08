@@ -1,0 +1,19 @@
+{
+    "moduleName": "ExternFunction.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_ExternFunction_shtk__l7_c12", "size": 23}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 6, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 6, "dtype": "int"}, "op2": {"type": "var", "id": 7, "name": "exit", "dtype": "void"}, "op3": {"type": "module", "id": 8, "name": "ExternFunction.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 9, "dtype": "void"}, "op2": {"type": "var", "id": 10, "name": "exit", "dtype": "void"}, "op3": {"type": "module", "id": 11, "name": "ExternFunction.shtk"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 12, "name": "_str_ExternFunction_shtk__l11_c12", "size": 27}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 13, "dtype": "int"}, "op2": {"type": "temp", "id": 15, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

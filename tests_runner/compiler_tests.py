@@ -1,8 +1,10 @@
 import os
+import json
 
 from tests_runner.utils.result import TestResult
-from tests_runner.utils.validator import compile_phase, compile_phase_validator
+from tests_runner.utils.validator import compile_phase, command_validator, string_validator
 from tests_runner.utils.batch import batch_run
+from tests_runner.utils.dir import string_from_file
 
 
 def get_expected_output(file_name: str) -> str:
@@ -20,10 +22,10 @@ def get_expected_output(file_name: str) -> str:
     return expected_output
 
 
-def run_single(file_name: str) -> TestResult:
+def run_single_exec(file_name: str) -> TestResult:
     expected_output = get_expected_output(file_name)
 
-    return compile_phase_validator(
+    return command_validator(
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-c",
@@ -37,9 +39,39 @@ def run_single(file_name: str) -> TestResult:
     )
 
 
+def run_single_ir(file_name: str) -> TestResult:
+    compile_phase_result = compile_phase(
+        file_name=file_name,
+        compile_flag="-json-icode",
+        compiler_output_dump_file=None,
+        create_executable=False,
+        skip_on_compile_error=True,
+    )
+
+    if not compile_phase_result.has_passed:
+        return compile_phase_result
+
+    try:
+        expected_output = string_from_file(os.path.join('expected/ir', file_name)+'.json')
+    except FileNotFoundError:
+        return TestResult.invalid()
+
+    try:
+        json.loads(expected_output)
+    except json.decoder.JSONDecodeError:
+        return TestResult.invalid(expected_output)
+
+    return string_validator(
+        compile_phase_result=compile_phase_result,
+        expected_output_on_success=expected_output
+    )
+
+
 def run() -> None:
     os.chdir("tests/compiler")
 
-    batch_run("compiler", run_single)
+    batch_run("Compiler output executable", run_single_exec)
+
+    batch_run("Compiler output icode", run_single_ir)
 
     os.chdir("../..")

@@ -1,0 +1,30 @@
+{
+    "moduleName": "ArgvTest.shtk",
+    "functions": {
+        "_fn_ArgvTest_shtk_getArg": {
+            "icode": [
+                {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 7, "dtype": "void"}, "op2": {"type": "var", "id": 5, "name": "idx", "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 8}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 8, "dtype": "ulong"}, "op2": {"type": "ptr", "id": 4, "name": "argv", "dtype": "ulong"}, "op3": {"type": "tempPtr", "id": 7, "dtype": "void"}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 11, "dtype": "ulong"}, "op2": {"type": "tempPtr", "id": 8, "dtype": "ulong"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 12, "dtype": "ulong"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 10, "dtype": "ulong"}, "op2": {"type": "temp", "id": 11, "dtype": "ulong"}, "op3": {"type": "temp", "id": 12, "dtype": "ulong"}},
+                {"opcode": "pointerCast", "op1": {"type": "tempPtr", "id": 13, "dtype": "ubyte"}, "op2": {"type": "temp", "id": 10, "dtype": "ulong"}, "op3": {"type": "none"}},
+                {"opcode": "pointerAssign", "op1": {"type": "returnPointer", "id": 3, "dtype": "ubyte"}, "op2": {"type": "tempPtr", "id": 13, "dtype": "ubyte"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "icode": [
+                {"opcode": "passAddress", "op1": {"type": "ptr", "id": 17, "name": "argv", "dtype": "ulong"}, "op2": {"type": "var", "id": 20, "name": "_fn_ArgvTest_shtk_getArg", "dtype": "ubyte"}, "op3": {"type": "module", "id": 21, "name": "ArgvTest.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "var", "id": 24, "name": "_fn_ArgvTest_shtk_getArg", "dtype": "ubyte"}, "op3": {"type": "module", "id": 25, "name": "ArgvTest.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnPointer", "id": 26, "dtype": "ubyte"}, "op2": {"type": "var", "id": 27, "name": "_fn_ArgvTest_shtk_getArg", "dtype": "ubyte"}, "op3": {"type": "module", "id": 28, "name": "ArgvTest.shtk"}},
+                {"opcode": "printString", "op1": {"type": "calleeReturnPointer", "id": 26, "dtype": "ubyte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "literal", "id": 30, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 29, "dtype": "int"}, "op2": {"type": "temp", "id": 31, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

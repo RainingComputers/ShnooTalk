@@ -5,7 +5,6 @@ import sys
 
 
 BUILD_TYPE_MAP = {
-    "--core": "debug",
     "--test": "debug",
     "--coverage": "gcov",
 }

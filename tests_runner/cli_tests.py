@@ -9,12 +9,13 @@ from tests_runner.utils.config import COMPILER_EXEC_PATH
 USAGE_HELP = '''USAGE: shtkc FILE OPTION
 
 Available options:
-    -c         Compile program
-    -ast       Print parse tree
-    -json-ast  Print parse tree in JSON
-    -ir        intermediate code representation
-    -json-ir   Print intermediate code representation completely in JSON
-    -llvm      Print llvm ir
+    -c               Compile program
+    -ast             Print parse tree
+    -json-ast        Print parse tree in JSON
+    -ir              Print ShnooTalk IR
+    -json-ir         Print ShnooTalk IR in JSON
+    -json-icode      Print ShnooTalk IR in JSON, but only the icode
+    -llvm            Print LLVM IR
 
 Use shtkc -version for compiler version
 '''
@@ -30,7 +31,7 @@ def run_version_test() -> TestResult:
     if exit_code != 0 or timedout:
         return TestResult.failed(output)
 
-    if "SNAPSHOT" not in output and "RELEASE" not in output:
+    if "snapshot" not in output and "release" not in output:
         return TestResult.failed(output)
 
     return TestResult.passed(output)

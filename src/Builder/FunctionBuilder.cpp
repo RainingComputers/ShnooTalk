@@ -426,14 +426,16 @@ void FunctionBuilder::createPrint(const Unit& unit)
 
     Entry printEntry;
 
-    Instruction printInstruction = unit.isArray() ? PRINT_STR : PRINT;
-
-    printEntry.opcode = printInstruction;
-
-    if (printInstruction == PRINT)
-        printEntry.op1 = ensureNotPointer(unit.op());
-    else
+    if (unit.isArray())
+    {
+        printEntry.opcode = PRINT_STR;
         printEntry.op1 = unit.op();
+    }
+    else
+    {
+        printEntry.opcode = PRINT;
+        printEntry.op1 = ensureNotPointer(unit.op());
+    }
 
     pushEntry(printEntry);
 }
@@ -595,9 +597,11 @@ void FunctionBuilder::terminateFunction(const Token& nameToken)
     if (doesFunctionTerminate())
         return;
 
-    if (!workingFunction->isVoid())
-        console.compileErrorOnToken("Missing RETURN for this FUNCTION", nameToken);
+    if (workingFunction->isVoid())
+    {
+        noArgumentEntry(RET);
+        return;
+    }
 
-    noArgumentEntry(RET);
-    return;
+    console.compileErrorOnToken("Missing RETURN for this FUNCTION", nameToken);
 }

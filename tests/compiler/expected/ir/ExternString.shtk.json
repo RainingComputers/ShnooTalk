@@ -1,0 +1,14 @@
+{
+    "moduleName": "ExternString.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_TestModules_RandomDefine_shtk__l1_c23", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 6, "dtype": "int"}, "op2": {"type": "literal", "id": 5, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 4, "dtype": "int"}, "op2": {"type": "temp", "id": 6, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

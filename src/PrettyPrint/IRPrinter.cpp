@@ -243,4 +243,43 @@ namespace pp
         jsonp.end();
     }
 
+    void printFunctionDescriptionIcodeOnly(const icode::FunctionDescription& functionDesc, FlatJSONPrinter& jsonp)
+    {
+        jsonp.begin();
+
+        FlatJSONPrinter entryPrinter = jsonp.beginArray("icode", true);
+        for (icode::Entry e : functionDesc.icodeTable)
+            printEntry(e, entryPrinter);
+        jsonp.endArray();
+
+        jsonp.end();
+    }
+
+    void printFunctionDescriptionMapIcodeOnly(const std::map<std::string, icode::FunctionDescription>& functionsMap,
+                                     FlatJSONPrinter& jsonp)
+    {
+        jsonp.begin();
+
+        for (auto pair : functionsMap)
+        {
+            FlatJSONPrinter funcPrinter = jsonp.beginNested(pair.first);
+            printFunctionDescriptionIcodeOnly(pair.second, funcPrinter);
+        }
+
+        jsonp.end();
+    }
+
+    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription)
+    {
+        FlatJSONPrinter jsonp(0);
+        jsonp.begin();
+
+        jsonp.printString("moduleName", moduleDescription.name);
+
+        FlatJSONPrinter functionsPrinter = jsonp.beginNested("functions");
+        printFunctionDescriptionMapIcodeOnly(moduleDescription.functions, functionsPrinter);
+
+        jsonp.end();
+    }
+
 } // namespace mikpp

@@ -1,0 +1,42 @@
+{
+    "moduleName": "TruthyConditionalExpression2.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 12, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "subtract", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "var", "id": 9, "name": "a", "dtype": "int"}, "op3": {"type": "temp", "id": 12, "dtype": "int"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 14, "dtype": "int"}, "op2": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "greaterThan", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "temp", "id": 14, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 8, "name": "_if_false_l9_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 15, "name": "_str_TruthyConditionalExpression2_shtk__l11_c16", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 8, "name": "_if_false_l9_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "literal", "id": 20, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "greaterThan", "op1": {"type": "var", "id": 19, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 21, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 18, "name": "_if_false_l14_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 22, "name": "_str_TruthyConditionalExpression2_shtk__l16_c16", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 18, "name": "_if_false_l14_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 29, "dtype": "int"}, "op2": {"type": "literal", "id": 27, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "subtract", "op1": {"type": "temp", "id": 28, "dtype": "int"}, "op2": {"type": "var", "id": 26, "name": "a", "dtype": "int"}, "op3": {"type": "temp", "id": 29, "dtype": "int"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "literal", "id": 30, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "greaterThan", "op1": {"type": "temp", "id": 28, "dtype": "int"}, "op2": {"type": "temp", "id": 31, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfTrue", "op1": {"type": "label", "id": 25, "name": "_if_false_l19_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 32, "name": "_str_TruthyConditionalExpression2_shtk__l21_c16", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 25, "name": "_if_false_l19_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 37, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "greaterThan", "op1": {"type": "var", "id": 36, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 38, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 35, "name": "_if_false_l24_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 39, "name": "_str_TruthyConditionalExpression2_shtk__l24_c23", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 35, "name": "_if_false_l24_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 42, "dtype": "int"}, "op2": {"type": "literal", "id": 41, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 40, "dtype": "int"}, "op2": {"type": "temp", "id": 42, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

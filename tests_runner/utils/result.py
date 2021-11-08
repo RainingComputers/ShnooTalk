@@ -45,7 +45,7 @@ class TestResult:
         return TestResult(TestResultType.SKIPPED, None, None)
 
     @staticmethod
-    def invalid(test_case: str) -> TestResult:
+    def invalid(test_case: Optional[str] = None) -> TestResult:
         return TestResult(TestResultType.INVALID, test_case, None)
 
     @property

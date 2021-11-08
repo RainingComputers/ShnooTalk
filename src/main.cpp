@@ -18,12 +18,13 @@ void printCLIUsage()
     pp::println("USAGE: shtkc FILE OPTION");
     pp::println("");
     pp::println("Available options:");
-    pp::println("    -c         Compile program");
-    pp::println("    -ast       Print parse tree");
-    pp::println("    -json-ast  Print parse tree in JSON");
-    pp::println("    -ir        intermediate code representation");
-    pp::println("    -json-ir   Print intermediate code representation completely in JSON");
-    pp::println("    -llvm      Print llvm ir");
+    pp::println("    -c               Compile program");
+    pp::println("    -ast             Print parse tree");
+    pp::println("    -json-ast        Print parse tree in JSON");
+    pp::println("    -ir              Print ShnooTalk IR");
+    pp::println("    -json-ir         Print ShnooTalk IR in JSON");
+    pp::println("    -json-icode      Print ShnooTalk IR in JSON, but only the icode");
+    pp::println("    -llvm            Print LLVM IR");
     pp::println("");
     pp::println("Use shtkc -version for compiler version");
 }
@@ -86,6 +87,12 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
     if (option == "-json-ir")
     {
         pp::printModuleDescription(modulesMap[moduleName], true);
+        return 0;
+    }
+
+    if (option == "-json-icode")
+    {
+        pp::printModuleDescriptionIcodeOnly(modulesMap[moduleName]);
         return 0;
     }
 

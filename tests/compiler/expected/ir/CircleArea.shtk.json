@@ -1,0 +1,30 @@
+{
+    "moduleName": "CircleArea.shtk",
+    "functions": {
+        "_fn_CircleArea_shtk_area": {
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 7, "dtype": "autoFloat"}, "op2": {"type": "var", "id": 5, "name": "r", "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 6, "dtype": "autoFloat"}, "op2": {"type": "literal", "id": 4, "dtype": "autoFloat", "value": 3.14}, "op3": {"type": "temp", "id": 7, "dtype": "autoFloat"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 10, "dtype": "autoFloat"}, "op2": {"type": "var", "id": 8, "name": "r", "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 9, "dtype": "autoFloat"}, "op2": {"type": "temp", "id": 6, "dtype": "autoFloat"}, "op3": {"type": "temp", "id": 10, "dtype": "autoFloat"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "float"}, "op2": {"type": "temp", "id": 9, "dtype": "autoFloat"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 3, "dtype": "float"}, "op2": {"type": "temp", "id": 11, "dtype": "float"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "literal", "id": 16, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 15, "name": "r", "dtype": "int"}, "op2": {"type": "temp", "id": 17, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 19, "dtype": "float"}, "op2": {"type": "var", "id": 18, "name": "r", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 19, "dtype": "float"}, "op2": {"type": "var", "id": 21, "name": "_fn_CircleArea_shtk_area", "dtype": "float"}, "op3": {"type": "module", "id": 22, "name": "CircleArea.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 23, "dtype": "float"}, "op2": {"type": "var", "id": 24, "name": "_fn_CircleArea_shtk_area", "dtype": "float"}, "op3": {"type": "module", "id": 25, "name": "CircleArea.shtk"}},
+                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 23, "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 28, "dtype": "int"}, "op2": {"type": "literal", "id": 27, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 26, "dtype": "int"}, "op2": {"type": "temp", "id": 28, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

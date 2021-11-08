@@ -1,0 +1,35 @@
+{
+    "moduleName": "Fibonacci.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "num1", "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 6, "name": "num2", "dtype": "int"}, "op2": {"type": "temp", "id": 8, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 9, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 11, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 12, "name": "_for_true_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "literal", "id": 16, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
+                {"opcode": "lessThanOrEqualTo", "op1": {"type": "var", "id": 15, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 17, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 13, "name": "_for_false_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 20, "dtype": "int"}, "op2": {"type": "var", "id": 18, "name": "num1", "dtype": "int"}, "op3": {"type": "var", "id": 19, "name": "num2", "dtype": "int"}},
+                {"opcode": "print", "op1": {"type": "temp", "id": 20, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 21, "name": "temp", "dtype": "int"}, "op2": {"type": "var", "id": 22, "name": "num1", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 23, "name": "num1", "dtype": "int"}, "op2": {"type": "var", "id": 24, "name": "num2", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "var", "id": 25, "name": "num2", "dtype": "int"}, "op3": {"type": "var", "id": 26, "name": "temp", "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 25, "name": "num2", "dtype": "int"}, "op2": {"type": "temp", "id": 27, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 14, "name": "_for_cont_true_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "literal", "id": 29, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 28, "name": "i", "dtype": "int"}, "op3": {"type": "temp", "id": 31, "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 28, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 30, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 12, "name": "_for_true_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 13, "name": "_for_false_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 34, "dtype": "int"}, "op2": {"type": "literal", "id": 33, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 32, "dtype": "int"}, "op2": {"type": "temp", "id": 34, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

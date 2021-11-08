@@ -1,0 +1,92 @@
+{
+    "moduleName": "Malloc.shtk",
+    "functions": {
+        "_fn_Malloc_shtk_createVector": {
+            "icode": [
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "v", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "var", "id": 8, "name": "x", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op2": {"type": "var", "id": 9, "name": "v", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 12, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op3": {"type": "bytes", "id": 11, "bytes": 4}},
+                {"opcode": "write", "op1": {"type": "tempPtr", "id": 12, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "y", "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 16, "dtype": "int"}, "op2": {"type": "returnValue", "id": 14, "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 17, "dtype": "int"}, "op2": {"type": "var", "id": 15, "name": "v", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 16, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 17, "dtype": "int"}, "op3": {"type": "literal", "id": 18, "dtype": "autoInt", "value": 8}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "_fn_Malloc_shtk_printVec": {
+            "icode": [
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 22, "name": "_str_Malloc_shtk__l31_c12", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 23, "name": "vector", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 26, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 24, "dtype": "int"}, "op3": {"type": "bytes", "id": 25, "bytes": 0}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 26, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "printString", "op1": {"type": "stringData", "id": 28, "name": "_str_Malloc_shtk__l31_c28", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 29, "name": "vector", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 32, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op3": {"type": "bytes", "id": 31, "bytes": 4}},
+                {"opcode": "read", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 32, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "print", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        },
+        "main": {
+            "icode": [
+                {"opcode": "multiply", "op1": {"type": "temp", "id": 40, "dtype": "autoInt"}, "op2": {"type": "literal", "id": 38, "dtype": "autoInt", "value": 8}, "op3": {"type": "literal", "id": 39, "dtype": "autoInt", "value": 10}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 42, "dtype": "ulong"}, "op2": {"type": "temp", "id": 40, "dtype": "autoInt"}, "op3": {"type": "none"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 42, "dtype": "ulong"}, "op2": {"type": "var", "id": 43, "name": "malloc", "dtype": "ubyte"}, "op3": {"type": "module", "id": 44, "name": "Malloc.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnPointer", "id": 45, "dtype": "ubyte"}, "op2": {"type": "var", "id": 46, "name": "malloc", "dtype": "ubyte"}, "op3": {"type": "module", "id": 47, "name": "Malloc.shtk"}},
+                {"opcode": "pointerCast", "op1": {"type": "tempPtr", "id": 48, "dtype": "struct"}, "op2": {"type": "calleeReturnPointer", "id": 45, "dtype": "ubyte"}, "op3": {"type": "none"}},
+                {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 37, "name": "vecArray", "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 48, "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 52, "dtype": "int"}, "op2": {"type": "literal", "id": 51, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 50, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 52, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 53, "name": "_for_true_l39_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 58, "dtype": "int"}, "op2": {"type": "literal", "id": 57, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
+                {"opcode": "lessThan", "op1": {"type": "var", "id": 56, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 58, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 54, "name": "_for_false_l39_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op2": {"type": "ptr", "id": 59, "name": "vecArray", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 63, "dtype": "void"}, "op2": {"type": "var", "id": 60, "name": "i", "dtype": "int"}, "op3": {"type": "bytes", "id": 62, "bytes": 8}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 64, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 63, "dtype": "void"}},
+                {"opcode": "pass", "op1": {"type": "var", "id": 65, "name": "i", "dtype": "int"}, "op2": {"type": "var", "id": 68, "name": "_fn_Malloc_shtk_createVector", "dtype": "struct"}, "op3": {"type": "module", "id": 69, "name": "Malloc.shtk"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 73, "dtype": "int"}, "op2": {"type": "literal", "id": 71, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 72, "dtype": "int"}, "op2": {"type": "var", "id": 70, "name": "i", "dtype": "int"}, "op3": {"type": "temp", "id": 73, "dtype": "int"}},
+                {"opcode": "pass", "op1": {"type": "temp", "id": 72, "dtype": "int"}, "op2": {"type": "var", "id": 74, "name": "_fn_Malloc_shtk_createVector", "dtype": "struct"}, "op3": {"type": "module", "id": 75, "name": "Malloc.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 76, "dtype": "struct"}, "op2": {"type": "var", "id": 77, "name": "_fn_Malloc_shtk_createVector", "dtype": "struct"}, "op3": {"type": "module", "id": 78, "name": "Malloc.shtk"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 79, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 64, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 80, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 76, "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 79, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 80, "dtype": "int"}, "op3": {"type": "literal", "id": 81, "dtype": "autoInt", "value": 8}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 55, "name": "_for_cont_true_l39_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 85, "dtype": "int"}, "op2": {"type": "literal", "id": 83, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 84, "dtype": "int"}, "op2": {"type": "var", "id": 82, "name": "i", "dtype": "int"}, "op3": {"type": "temp", "id": 85, "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 82, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 84, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 53, "name": "_for_true_l39_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 54, "name": "_for_false_l39_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 88, "dtype": "int"}, "op2": {"type": "literal", "id": 87, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 86, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 88, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 89, "name": "_for_true_l42_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 94, "dtype": "int"}, "op2": {"type": "literal", "id": 93, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
+                {"opcode": "lessThan", "op1": {"type": "var", "id": 92, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 94, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 90, "name": "_for_false_l42_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 97, "dtype": "int"}, "op2": {"type": "ptr", "id": 95, "name": "vecArray", "dtype": "struct"}, "op3": {"type": "none"}},
+                {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 99, "dtype": "void"}, "op2": {"type": "var", "id": 96, "name": "i", "dtype": "int"}, "op3": {"type": "bytes", "id": 98, "bytes": 8}},
+                {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 100, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 97, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 99, "dtype": "void"}},
+                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 102, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 100, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 102, "dtype": "int"}, "op2": {"type": "var", "id": 103, "name": "_fn_Malloc_shtk_printVec", "dtype": "void"}, "op3": {"type": "module", "id": 104, "name": "Malloc.shtk"}},
+                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 105, "dtype": "void"}, "op2": {"type": "var", "id": 106, "name": "_fn_Malloc_shtk_printVec", "dtype": "void"}, "op3": {"type": "module", "id": 107, "name": "Malloc.shtk"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 91, "name": "_for_cont_true_l42_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 111, "dtype": "int"}, "op2": {"type": "literal", "id": 109, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                {"opcode": "add", "op1": {"type": "temp", "id": 110, "dtype": "int"}, "op2": {"type": "var", "id": 108, "name": "i", "dtype": "int"}, "op3": {"type": "temp", "id": 111, "dtype": "int"}},
+                {"opcode": "equal", "op1": {"type": "var", "id": 108, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 110, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "goto", "op1": {"type": "label", "id": 89, "name": "_for_true_l42_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "createLabel", "op1": {"type": "label", "id": 90, "name": "_for_false_l42_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                {"opcode": "cast", "op1": {"type": "temp", "id": 114, "dtype": "int"}, "op2": {"type": "literal", "id": 113, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                {"opcode": "equal", "op1": {"type": "returnValue", "id": 112, "dtype": "int"}, "op2": {"type": "temp", "id": 114, "dtype": "int"}, "op3": {"type": "none"}},
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

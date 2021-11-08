@@ -101,7 +101,10 @@
             "type": "python",
             "request": "launch",
             "module": "tests_runner",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "args": [
+                "--test"
+            ],
         }
     ]
 }
