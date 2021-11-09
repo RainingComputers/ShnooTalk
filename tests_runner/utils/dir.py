@@ -28,10 +28,10 @@ def remove_files(file_ext: str) -> None:
 
 
 def dump_string_to_file(file_name: str, content: str) -> None:
-    with open(file_name, 'w') as file:
+    with open(file_name, "w") as file:
         file.write(content)
 
 
 def string_from_file(file_name: str) -> str:
-    with open(file_name, 'r') as file:
+    with open(file_name, "r") as file:
         return file.read()

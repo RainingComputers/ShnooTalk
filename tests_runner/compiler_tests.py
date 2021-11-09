@@ -51,7 +51,7 @@ def run_single_icode_pretty(file_name: str) -> TestResult:
     if not compile_phase_result.has_passed:
         return compile_phase_result
 
-    expected_output = string_from_file(os.path.join('expected/pretty', file_name)+'.txt')
+    expected_output = string_from_file(os.path.join("expected/pretty", file_name)+".txt")
 
     return string_validator(
         compile_phase_result=compile_phase_result,
@@ -71,7 +71,7 @@ def run_single_icode_json(file_name: str) -> TestResult:
     if not compile_phase_result.has_passed:
         return compile_phase_result
 
-    expected_output = string_from_file(os.path.join('expected/json', file_name)+'.json')
+    expected_output = string_from_file(os.path.join("expected/json", file_name)+".json")
 
     try:
         json.loads(expected_output)

@@ -12,13 +12,13 @@ def run_single(file_name: str) -> TestResult:
     return command_validator(
         compile_phase_result=compile_phase(
             file_name=file_name,
-            compile_flag='-llvm',
+            compile_flag="-llvm",
             compiler_output_dump_file=llc_file,
             create_executable=False,
             skip_on_compile_error=True
         ),
         expected_on_compile_fail=None,
-        command_on_compile_success=['llc', llc_file],
+        command_on_compile_success=["llc", llc_file],
         expected_command_output=None,
     )
 

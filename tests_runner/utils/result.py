@@ -113,6 +113,8 @@ class ResultPrinter:
             print(result.diff())
 
         elif result.test_result == TestResultType.INVALID:
+            ResultPrinter.exit_code += 1
+
             self._invalid.append(name)
 
             print("    🤔", name, "invalid test case\n")

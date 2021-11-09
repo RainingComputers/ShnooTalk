@@ -148,3 +148,4 @@ clean:
 	rm -f tests/test
 	rm -f tests/*.gmon.out*
 	rm -rf .mypy_cache
+	find . -type d -name  "__pycache__" -exec rm -r {} +

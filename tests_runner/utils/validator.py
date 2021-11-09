@@ -30,10 +30,10 @@ def link_objects_into_bin() -> None:
 
 def compare(expected_output: str, output: Optional[str]) -> TestResult:
     if output is None:
-        if expected_output == '':
-            return TestResult.passed('')
+        if expected_output == "":
+            return TestResult.passed("")
 
-        return TestResult.failed('', expected_output)
+        return TestResult.failed("", expected_output)
 
     if expected_output == output:
         return TestResult.passed(output)

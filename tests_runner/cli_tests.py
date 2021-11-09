@@ -68,7 +68,7 @@ def run_file_no_exists() -> TestResult:
 def run() -> None:
     os.chdir("tests/compiler")
 
-    printer = ResultPrinter('cli args')
+    printer = ResultPrinter('CLI args')
 
     printer.print_result('No args', run_invalid_args(empty=True))
     printer.print_result('Invalid args', run_invalid_args(empty=False))
