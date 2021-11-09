@@ -1,9 +1,9 @@
 #include "../Builder/TypeCheck.hpp"
 #include "CustomOperator.hpp"
 #include "Module.hpp"
+#include "OperatorTokenToInstruction.hpp"
 #include "PassParamTypeCheck.hpp"
 #include "UnitFromIdentifier.hpp"
-#include "OperatorTokenToInstruction.hpp"
 
 #include "Expression.hpp"
 

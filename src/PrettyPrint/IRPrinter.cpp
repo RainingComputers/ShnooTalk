@@ -243,7 +243,9 @@ namespace pp
         jsonp.end();
     }
 
-    void printFunctionDescriptionIcodeOnly(const icode::FunctionDescription& functionDesc, FlatJSONPrinter& jsonp, bool jsonIR)
+    void printFunctionDescriptionIcodeOnly(const icode::FunctionDescription& functionDesc,
+                                           FlatJSONPrinter& jsonp,
+                                           bool jsonIR)
     {
         jsonp.begin();
 
@@ -263,7 +265,8 @@ namespace pp
     }
 
     void printFunctionDescriptionMapIcodeOnly(const std::map<std::string, icode::FunctionDescription>& functionsMap,
-                                     FlatJSONPrinter& jsonp, bool jsonIR)
+                                              FlatJSONPrinter& jsonp,
+                                              bool jsonIR)
     {
         jsonp.begin();
 
