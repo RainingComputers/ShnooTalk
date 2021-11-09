@@ -1,0 +1,19 @@
+{
+    "moduleName": "PrintSemicolon.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    printString stringData _str_PrintSemicolon_shtk__l5_c12
+                    space
+                    printString stringData _str_PrintSemicolon_shtk__l5_c21
+                    printString stringData _str_PrintSemicolon_shtk__l5_c30
+                    space
+                    printString stringData _str_PrintSemicolon_shtk__l5_c21
+                    newLine
+                    int temp9 = cast autoInt 0
+                    int returnValue7 = equal int temp9
+                    return
+            ]
+        }
+    }
+}

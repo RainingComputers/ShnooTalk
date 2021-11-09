@@ -1,0 +1,14 @@
+{
+    "moduleName": "StringCount.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    printString stringData _str_TestModules_Vector_shtk__l39_c12
+                    newLine
+                    int temp6 = cast autoInt 0
+                    int returnValue4 = equal int temp6
+                    return
+            ]
+        }
+    }
+}

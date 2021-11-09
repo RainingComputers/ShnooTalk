@@ -183,13 +183,3 @@ void prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int inde
 
     std::cout << std::string((indentLevel - 1) * 4, ' ') << "]";
 }
-
-std::vector<std::string> icodeTableToStringArray(const std::vector<icode::Entry>& icodeTable)
-{
-    std::vector<std::string> stringArray;
-
-    for (icode::Entry e : icodeTable)
-        stringArray.push_back(prettyPrintEntry(e));
-
-    return stringArray;
-}

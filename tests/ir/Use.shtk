@@ -1,0 +1,2 @@
+use "TestModules/Random.shtk" as Random
+use "TestModules/Sin.shtk" as Sin

@@ -1,0 +1,5 @@
+def PI 3.14
+def THREE 3
+def MINUS_ONE -1
+def MINUS_PI -3.14
+def HELLO "Hello world"

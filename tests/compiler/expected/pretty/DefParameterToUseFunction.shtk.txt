@@ -1,0 +1,17 @@
+{
+    "moduleName": "DefParameterToUseFunction.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    float temp4 = cast autoInt 5
+                    pass float temp4, float _fn_TestModules_Math_shtk_sin, module TestModules/Math.shtk
+                    float calleeReturnValue8 = call float _fn_TestModules_Math_shtk_sin, module TestModules/Math.shtk
+                    print float calleeReturnValue8
+                    newLine
+                    int temp13 = cast autoInt 0
+                    int returnValue11 = equal int temp13
+                    return
+            ]
+        }
+    }
+}

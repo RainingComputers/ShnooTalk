@@ -1,0 +1,17 @@
+{
+    "moduleName": "ScopeOpInFunctionArg.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int temp6 = cast autoInt 0
+                    pass int temp6, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                    int temp10 = cast autoInt 0
+                    pass int temp10, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                    void calleeReturnValue13 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                    int temp18 = cast autoInt 0
+                    int returnValue16 = equal int temp18
+                    return
+            ]
+        }
+    }
+}

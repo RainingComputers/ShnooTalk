@@ -62,6 +62,8 @@ class TestResult:
 
 
 class ResultPrinter:
+    exit_code = 0
+
     def __init__(self, tests_set_name: str) -> None:
         self._passed: List[str] = []
         self._failed: List[str] = []
@@ -94,6 +96,8 @@ class ResultPrinter:
             print("    👌", name, "passed")
 
         elif result.test_result == TestResultType.FAILED:
+            ResultPrinter.exit_code += 1
+
             self._failed.append(name)
 
             print("    ❌", name, "failed\n")

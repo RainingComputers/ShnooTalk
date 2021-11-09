@@ -1,0 +1,15 @@
+use "TestModules/Random.shtk" as Random
+
+fn main() -> int 
+{
+    var a: char[200] = "This is a multiline string" "it can go on same line\n"
+        "or on different line haha lol"
+
+    var b: char[20] = "Hello world"
+
+    # Redefining existing string from Random.shtk
+    println("foobar")
+
+    return 0
+
+}

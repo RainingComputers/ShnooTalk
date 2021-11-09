@@ -1,0 +1,55 @@
+{
+    "moduleName": "Newton.shtk",
+    "functions": {
+        "_fn_Newton_shtk_f": {
+            "icode": [
+                    float temp6 = multiply float x, float x
+                    float temp8 = multiply float temp6, float x
+                    float temp11 = cast autoFloat 3.000000
+                    float temp10 = subtract float temp8, float temp11
+                    float returnValue3 = equal float temp10
+                    return
+            ]
+        },
+        "_fn_Newton_shtk_f_prime": {
+            "icode": [
+                    autoFloat temp19 = cast float x
+                    autoFloat temp18 = multiply autoFloat 3.000000, autoFloat temp19
+                    autoFloat temp22 = cast float x
+                    autoFloat temp21 = multiply autoFloat temp18, autoFloat temp22
+                    float temp23 = cast autoFloat temp21
+                    float returnValue15 = equal float temp23
+                    return
+            ]
+        },
+        "main": {
+            "icode": [
+                    float temp29 = cast autoFloat 3.000000
+                    float x = equal float temp29
+                    float temp32 = cast autoFloat 0.000010
+                    float epsilon = equal float temp32
+                _while_true_l17_c4:
+                    pass float x, float _fn_Newton_shtk_f, module Newton.shtk
+                    float calleeReturnValue39 = call float _fn_Newton_shtk_f, module Newton.shtk
+                    pass float calleeReturnValue39, float _fn_TestModules_Math_shtk_abs, module TestModules/Math.shtk
+                    float calleeReturnValue45 = call float _fn_TestModules_Math_shtk_abs, module TestModules/Math.shtk
+                    flag = greaterThanOrEqualTo float calleeReturnValue45, float epsilon
+                    if(not flag) goto _while_false_l17_c4
+                    pass float x, float _fn_Newton_shtk_f, module Newton.shtk
+                    float calleeReturnValue55 = call float _fn_Newton_shtk_f, module Newton.shtk
+                    pass float x, float _fn_Newton_shtk_f_prime, module Newton.shtk
+                    float calleeReturnValue62 = call float _fn_Newton_shtk_f_prime, module Newton.shtk
+                    float temp65 = divide float calleeReturnValue55, float calleeReturnValue62
+                    float temp66 = subtract float x, float temp65
+                    float x = equal float temp66
+                    goto _while_true_l17_c4
+                _while_false_l17_c4:
+                    print float x
+                    newLine
+                    int temp70 = cast autoInt 0
+                    int returnValue68 = equal int temp70
+                    return
+            ]
+        }
+    }
+}

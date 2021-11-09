@@ -1,0 +1,42 @@
+{
+    "moduleName": "TruthyConditionalExpression2.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int temp5 = cast autoInt 1
+                    int a = equal int temp5
+                    int temp12 = cast autoInt 1
+                    int temp11 = subtract int a, int temp12
+                    int temp14 = cast autoInt 0
+                    flag = greaterThan int temp11, int temp14
+                    if(not flag) goto _if_false_l9_c4
+                    printString stringData _str_TruthyConditionalExpression2_shtk__l11_c16
+                    newLine
+                _if_false_l9_c4:
+                    int temp21 = cast autoInt 0
+                    flag = greaterThan int a, int temp21
+                    if(not flag) goto _if_false_l14_c4
+                    printString stringData _str_TruthyConditionalExpression2_shtk__l16_c16
+                    newLine
+                _if_false_l14_c4:
+                    int temp29 = cast autoInt 1
+                    int temp28 = subtract int a, int temp29
+                    int temp31 = cast autoInt 0
+                    flag = greaterThan int temp28, int temp31
+                    if(flag) goto _if_false_l19_c4
+                    printString stringData _str_TruthyConditionalExpression2_shtk__l21_c16
+                    newLine
+                _if_false_l19_c4:
+                    int temp38 = cast autoInt 0
+                    flag = greaterThan int a, int temp38
+                    if(not flag) goto _if_false_l24_c4
+                    printString stringData _str_TruthyConditionalExpression2_shtk__l24_c23
+                    newLine
+                _if_false_l24_c4:
+                    int temp42 = cast autoInt 0
+                    int returnValue40 = equal int temp42
+                    return
+            ]
+        }
+    }
+}

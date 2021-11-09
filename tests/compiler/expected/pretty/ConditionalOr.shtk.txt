@@ -1,0 +1,25 @@
+{
+    "moduleName": "ConditionalOr.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int temp5 = cast autoInt 1
+                    int a = equal int temp5
+                    int temp8 = cast autoInt 2
+                    int b = equal int temp8
+                    int temp16 = cast autoInt 0
+                    flag = greaterThan int a, int temp16
+                    if(flag) goto _if_false_l6_c4
+                    int temp19 = cast autoInt 1
+                    flag = lessThan int b, int temp19
+                    if(flag) goto _if_false_l6_c4
+                    printString stringData _str_ConditionalOr_shtk__l7_c16
+                    newLine
+                _if_false_l6_c4:
+                    int temp23 = cast autoInt 0
+                    int returnValue21 = equal int temp23
+                    return
+            ]
+        }
+    }
+}

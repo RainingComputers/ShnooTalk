@@ -1,0 +1,20 @@
+{
+    "moduleName": "SizeOf.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    print autoInt 4
+                    newLine
+                    print autoInt 4
+                    newLine
+                    print autoInt 8
+                    newLine
+                    print autoInt 12
+                    newLine
+                    int temp10 = cast autoInt 0
+                    int returnValue8 = equal int temp10
+                    return
+            ]
+        }
+    }
+}

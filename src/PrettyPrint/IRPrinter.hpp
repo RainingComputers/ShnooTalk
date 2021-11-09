@@ -13,7 +13,7 @@
 namespace pp
 {
     void printModuleDescription(const icode::ModuleDescription& module_desc, bool jsonIR);
-    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription);
+    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription, bool jsonIR);
 }
 
 #endif

@@ -1,0 +1,30 @@
+{
+    "moduleName": "Expression2.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    float temp5 = cast autoFloat 3.400000
+                    float f = equal float temp5
+                    int temp8 = cast autoInt 1
+                    int c = equal int temp8
+                    print float f
+                    newLine
+                    uint temp12 = cast autoInt 2
+                    uint a = equal uint temp12
+                    float temp15 = cast uint a
+                    float b = equal float temp15
+                    print float b
+                    newLine
+                    float temp19 = cast autoFloat 1.200000
+                    float k = equal float temp19
+                    uint temp22 = cast float k
+                    uint m = equal uint temp22
+                    print uint m
+                    newLine
+                    int temp26 = cast autoInt 0
+                    int returnValue24 = equal int temp26
+                    return
+            ]
+        }
+    }
+}

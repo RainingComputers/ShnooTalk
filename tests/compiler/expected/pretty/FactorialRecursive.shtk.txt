@@ -1,0 +1,50 @@
+{
+    "moduleName": "FactorialRecursive.shtk",
+    "functions": {
+        "_fn_FactorialRecursive_shtk_factorial": {
+            "icode": [
+                    int temp8 = cast autoInt 1
+                    flag = lessThanOrEqualTo int num, int temp8
+                    if(not flag) goto _if_false_l8_c4
+                    int temp11 = cast autoInt 1
+                    int returnValue9 = equal int temp11
+                    return
+                _if_false_l8_c4:
+                    int temp17 = cast autoInt 1
+                    int temp16 = subtract int num, int temp17
+                    pass int temp16, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    int calleeReturnValue21 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    int temp24 = multiply int num, int calleeReturnValue21
+                    int returnValue12 = equal int temp24
+                    return
+            ]
+        },
+        "main": {
+            "icode": [
+                    int temp30 = cast autoInt 2
+                    pass int temp30, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    int calleeReturnValue33 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    print int calleeReturnValue33
+                    newLine
+                    int temp38 = cast autoInt 3
+                    pass int temp38, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    int calleeReturnValue41 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    print int calleeReturnValue41
+                    newLine
+                    int temp46 = cast autoInt 4
+                    pass int temp46, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    int calleeReturnValue49 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    print int calleeReturnValue49
+                    newLine
+                    int temp54 = cast autoInt 5
+                    pass int temp54, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    int calleeReturnValue57 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                    print int calleeReturnValue57
+                    newLine
+                    int temp62 = cast autoInt 0
+                    int returnValue60 = equal int temp62
+                    return
+            ]
+        }
+    }
+}

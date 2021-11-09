@@ -243,33 +243,40 @@ namespace pp
         jsonp.end();
     }
 
-    void printFunctionDescriptionIcodeOnly(const icode::FunctionDescription& functionDesc, FlatJSONPrinter& jsonp)
+    void printFunctionDescriptionIcodeOnly(const icode::FunctionDescription& functionDesc, FlatJSONPrinter& jsonp, bool jsonIR)
     {
         jsonp.begin();
 
-        FlatJSONPrinter entryPrinter = jsonp.beginArray("icode", true);
-        for (icode::Entry e : functionDesc.icodeTable)
-            printEntry(e, entryPrinter);
-        jsonp.endArray();
+        if (jsonIR)
+        {
+            FlatJSONPrinter entryPrinter = jsonp.beginArray("icode", true);
+            for (icode::Entry e : functionDesc.icodeTable)
+                printEntry(e, entryPrinter);
+            jsonp.endArray();
+        }
+        else
+        {
+            prettyPrintIcodeTable(functionDesc.icodeTable, 4);
+        }
 
         jsonp.end();
     }
 
     void printFunctionDescriptionMapIcodeOnly(const std::map<std::string, icode::FunctionDescription>& functionsMap,
-                                     FlatJSONPrinter& jsonp)
+                                     FlatJSONPrinter& jsonp, bool jsonIR)
     {
         jsonp.begin();
 
         for (auto pair : functionsMap)
         {
             FlatJSONPrinter funcPrinter = jsonp.beginNested(pair.first);
-            printFunctionDescriptionIcodeOnly(pair.second, funcPrinter);
+            printFunctionDescriptionIcodeOnly(pair.second, funcPrinter, jsonIR);
         }
 
         jsonp.end();
     }
 
-    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription)
+    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription, bool jsonIR)
     {
         FlatJSONPrinter jsonp(0);
         jsonp.begin();
@@ -277,7 +284,7 @@ namespace pp
         jsonp.printString("moduleName", moduleDescription.name);
 
         FlatJSONPrinter functionsPrinter = jsonp.beginNested("functions");
-        printFunctionDescriptionMapIcodeOnly(moduleDescription.functions, functionsPrinter);
+        printFunctionDescriptionMapIcodeOnly(moduleDescription.functions, functionsPrinter, jsonIR);
 
         jsonp.end();
     }

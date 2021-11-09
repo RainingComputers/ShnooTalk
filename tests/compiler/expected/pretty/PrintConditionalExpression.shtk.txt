@@ -1,0 +1,28 @@
+{
+    "moduleName": "PrintConditionalExpression.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int temp5 = cast autoInt 4
+                    int a = equal int temp5
+                    autoInt* tempPtr6 = allocPointer 
+                    int temp13 = cast autoInt 2
+                    int temp12 = remainder int a, int temp13
+                    int temp15 = cast autoInt 0
+                    flag = isEqual int temp12, int temp15
+                    if(not flag) goto _condn_exp_false_l7_c12
+                    autoInt* tempPtr6 = write autoInt 1
+                    goto _condn_exp_end_false_l7_c12
+                _condn_exp_false_l7_c12:
+                    autoInt* tempPtr6 = write autoInt 0
+                _condn_exp_end_false_l7_c12:
+                    autoInt temp18 = read autoInt* tempPtr6
+                    print autoInt temp18
+                    newLine
+                    int temp21 = cast autoInt 0
+                    int returnValue19 = equal int temp21
+                    return
+            ]
+        }
+    }
+}

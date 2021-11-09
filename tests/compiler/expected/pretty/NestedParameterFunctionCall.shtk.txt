@@ -1,0 +1,39 @@
+{
+    "moduleName": "NestedParameterFunctionCall.shtk",
+    "functions": {
+        "_fn_NestedParameterFunctionCall_shtk_foobar": {
+            "icode": [
+                    print float a
+                    newLine
+                    print int b
+                    newLine
+                    return
+            ]
+        },
+        "_fn_NestedParameterFunctionCall_shtk_sum": {
+            "icode": [
+                    int temp11 = add int a, int b
+                    int returnValue8 = equal int temp11
+                    return
+            ]
+        },
+        "main": {
+            "icode": [
+                    float temp17 = cast autoFloat 0.500000
+                    pass float temp17, float _fn_TestModules_Math_shtk_sin, module TestModules/Math.shtk
+                    float calleeReturnValue20 = call float _fn_TestModules_Math_shtk_sin, module TestModules/Math.shtk
+                    pass float calleeReturnValue20, void _fn_NestedParameterFunctionCall_shtk_foobar, module NestedParameterFunctionCall.shtk
+                    int temp30 = cast autoInt 1
+                    pass int temp30, int _fn_NestedParameterFunctionCall_shtk_sum, module NestedParameterFunctionCall.shtk
+                    int temp34 = cast autoInt 2
+                    pass int temp34, int _fn_NestedParameterFunctionCall_shtk_sum, module NestedParameterFunctionCall.shtk
+                    int calleeReturnValue37 = call int _fn_NestedParameterFunctionCall_shtk_sum, module NestedParameterFunctionCall.shtk
+                    pass int calleeReturnValue37, void _fn_NestedParameterFunctionCall_shtk_foobar, module NestedParameterFunctionCall.shtk
+                    void calleeReturnValue42 = call void _fn_NestedParameterFunctionCall_shtk_foobar, module NestedParameterFunctionCall.shtk
+                    int temp47 = cast autoInt 0
+                    int returnValue45 = equal int temp47
+                    return
+            ]
+        }
+    }
+}

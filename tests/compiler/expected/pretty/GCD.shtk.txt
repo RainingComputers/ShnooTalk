@@ -1,0 +1,53 @@
+{
+    "moduleName": "GCD.shtk",
+    "functions": {
+        "_fn_GCD_shtk_gcd": {
+            "icode": [
+                    pass int a, int _fn_TestModules_Math_shtk_minInt, module TestModules/Math.shtk
+                    pass int b, int _fn_TestModules_Math_shtk_minInt, module TestModules/Math.shtk
+                    int calleeReturnValue12 = call int _fn_TestModules_Math_shtk_minInt, module TestModules/Math.shtk
+                    int min = equal int calleeReturnValue12
+                    int x = equal int min
+                _for_true_l11_c4:
+                    int temp22 = cast autoInt 1
+                    flag = greaterThanOrEqualTo int x, int temp22
+                    if(not flag) goto _for_false_l11_c4
+                    int temp30 = remainder int a, int x
+                    int temp32 = cast autoInt 0
+                    flag = isEqual int temp30, int temp32
+                    if(not flag) goto _if_false_l12_c8
+                    int temp35 = remainder int b, int x
+                    int temp37 = cast autoInt 0
+                    flag = isEqual int temp35, int temp37
+                    if(not flag) goto _if_false_l12_c8
+                    int returnValue38 = equal int x
+                    return
+                _if_false_l12_c8:
+                _for_cont_true_l11_c4:
+                    int temp43 = cast autoInt 1
+                    int temp42 = subtract int x, int temp43
+                    int x = equal int temp42
+                    goto _for_true_l11_c4
+                _for_false_l11_c4:
+                    autoInt temp46 = unaryMinus autoInt 1
+                    int temp47 = cast autoInt temp46
+                    int returnValue44 = equal int temp47
+                    return
+            ]
+        },
+        "main": {
+            "icode": [
+                    int temp54 = cast autoInt 45
+                    pass int temp54, int _fn_GCD_shtk_gcd, module GCD.shtk
+                    int temp58 = cast autoInt 60
+                    pass int temp58, int _fn_GCD_shtk_gcd, module GCD.shtk
+                    int calleeReturnValue61 = call int _fn_GCD_shtk_gcd, module GCD.shtk
+                    print int calleeReturnValue61
+                    newLine
+                    int temp66 = cast autoInt 0
+                    int returnValue64 = equal int temp66
+                    return
+            ]
+        }
+    }
+}

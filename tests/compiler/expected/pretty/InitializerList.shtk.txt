@@ -1,0 +1,75 @@
+{
+    "moduleName": "InitializerList.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int* tempPtr5 = createPointer struct elem1
+                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                    int temp9 = cast autoInt 1
+                    int* tempPtr7 = write int temp9
+                    int* tempPtr11 = createPointer struct elem1
+                    int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                    int temp15 = cast autoInt 2
+                    int* tempPtr13 = write int temp15
+                    int* tempPtr18 = createPointer struct elem2
+                    int* tempPtr20 = addressAdd int* tempPtr18, bytes 0
+                    int temp22 = cast autoInt 3
+                    int* tempPtr20 = write int temp22
+                    int* tempPtr24 = createPointer struct elem2
+                    int* tempPtr26 = addressAdd int* tempPtr24, bytes 4
+                    int temp28 = cast autoInt 4
+                    int* tempPtr26 = write int temp28
+                    int* tempPtr31 = createPointer struct elem3
+                    int* tempPtr33 = addressAdd int* tempPtr31, bytes 0
+                    int temp35 = cast autoInt 5
+                    int* tempPtr33 = write int temp35
+                    int* tempPtr37 = createPointer struct elem3
+                    int* tempPtr39 = addressAdd int* tempPtr37, bytes 4
+                    int temp41 = cast autoInt 6
+                    int* tempPtr39 = write int temp41
+                    int* tempPtr46 = createPointer struct a
+                    int* tempPtr47 = createPointer struct elem1
+                    int* tempPtr46 = memoryCopy int* tempPtr47, autoInt 8
+                    int* tempPtr50 = addressAdd int* tempPtr46, bytes 8
+                    int* tempPtr51 = createPointer struct elem2
+                    int* tempPtr50 = memoryCopy int* tempPtr51, autoInt 8
+                    int* tempPtr54 = addressAdd int* tempPtr50, bytes 8
+                    int* tempPtr55 = createPointer struct elem3
+                    int* tempPtr54 = memoryCopy int* tempPtr55, autoInt 8
+                    int* tempPtr58 = createPointer struct elem1
+                    int* tempPtr60 = addressAdd int* tempPtr58, bytes 0
+                    int temp61 = read int* tempPtr60
+                    print int temp61
+                    newLine
+                    int* tempPtr63 = createPointer struct elem1
+                    int* tempPtr65 = addressAdd int* tempPtr63, bytes 4
+                    int temp66 = read int* tempPtr65
+                    print int temp66
+                    newLine
+                    int* tempPtr68 = createPointer struct elem2
+                    int* tempPtr70 = addressAdd int* tempPtr68, bytes 0
+                    int temp71 = read int* tempPtr70
+                    print int temp71
+                    newLine
+                    int* tempPtr73 = createPointer struct elem2
+                    int* tempPtr75 = addressAdd int* tempPtr73, bytes 4
+                    int temp76 = read int* tempPtr75
+                    print int temp76
+                    newLine
+                    int* tempPtr78 = createPointer struct elem3
+                    int* tempPtr80 = addressAdd int* tempPtr78, bytes 0
+                    int temp81 = read int* tempPtr80
+                    print int temp81
+                    newLine
+                    int* tempPtr83 = createPointer struct elem3
+                    int* tempPtr85 = addressAdd int* tempPtr83, bytes 4
+                    int temp86 = read int* tempPtr85
+                    print int temp86
+                    newLine
+                    int temp89 = cast autoInt 0
+                    int returnValue87 = equal int temp89
+                    return
+            ]
+        }
+    }
+}

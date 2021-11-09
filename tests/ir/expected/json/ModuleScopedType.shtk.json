@@ -1,0 +1,40 @@
+{
+    "moduleName": "ModuleScopedType.shtk",
+    "uses": ["TestModules/Random.shtk"],
+    "aliases": {
+        "Random": "TestModules/Random.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": "INFINITY",
+        "nan": "NAN"
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+        "_fn_ModuleScopedType_shtk_test": {
+            "moduleName": "ModuleScopedType.shtk",
+            "parameters": [],
+            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "ModuleScopedType.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+            "symbols": {
+                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
+            },
+            "icode": [
+                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+            ]
+        }
+    }
+}

@@ -39,7 +39,27 @@ def run_single_exec(file_name: str) -> TestResult:
     )
 
 
-def run_single_ir(file_name: str) -> TestResult:
+def run_single_icode_pretty(file_name: str) -> TestResult:
+    compile_phase_result = compile_phase(
+        file_name=file_name,
+        compile_flag="-icode",
+        compiler_output_dump_file=None,
+        create_executable=False,
+        skip_on_compile_error=True,
+    )
+
+    if not compile_phase_result.has_passed:
+        return compile_phase_result
+
+    expected_output = string_from_file(os.path.join('expected/pretty', file_name)+'.txt')
+
+    return string_validator(
+        compile_phase_result=compile_phase_result,
+        expected_output_on_success=expected_output
+    )
+
+
+def run_single_icode_json(file_name: str) -> TestResult:
     compile_phase_result = compile_phase(
         file_name=file_name,
         compile_flag="-json-icode",
@@ -51,10 +71,7 @@ def run_single_ir(file_name: str) -> TestResult:
     if not compile_phase_result.has_passed:
         return compile_phase_result
 
-    try:
-        expected_output = string_from_file(os.path.join('expected/ir', file_name)+'.json')
-    except FileNotFoundError:
-        return TestResult.invalid()
+    expected_output = string_from_file(os.path.join('expected/json', file_name)+'.json')
 
     try:
         json.loads(expected_output)
@@ -72,6 +89,8 @@ def run() -> None:
 
     batch_run("Compiler output executable", run_single_exec)
 
-    batch_run("Compiler output icode", run_single_ir)
+    batch_run("Compiler output icode pretty", run_single_icode_pretty)
+
+    batch_run("Compiler output icode JSON", run_single_icode_json)
 
     os.chdir("../..")

@@ -1,0 +1,27 @@
+{
+    "moduleName": "ImplicitImport.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int* tempPtr8 = createPointer struct a
+                    passAddress int* tempPtr8, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp12 = cast autoInt 1
+                    pass int temp12, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp16 = cast autoInt 2
+                    pass int temp16, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    void calleeReturnValue19 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int* tempPtr24 = createPointer struct a
+                    passAddress int* tempPtr24, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    void calleeReturnValue27 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    int* tempPtr31 = createPointer struct a
+                    int* tempPtr33 = addressAdd int* tempPtr31, bytes 0
+                    int temp34 = read int* tempPtr33
+                    print int temp34
+                    newLine
+                    int temp37 = cast autoInt 0
+                    int returnValue35 = equal int temp37
+                    return
+            ]
+        }
+    }
+}

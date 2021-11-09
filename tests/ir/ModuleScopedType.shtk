@@ -1,0 +1,6 @@
+use "TestModules/Random.shtk" as Random
+
+fn test() 
+{
+    var a: Random::Point
+}

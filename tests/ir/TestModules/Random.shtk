@@ -1,0 +1,19 @@
+use "TestModules/Sin.shtk" as Sin
+
+def ONE 1
+def PI 3.14
+def FOOBAR "foobar"
+
+enum [LED0, LED1, LED2]
+
+extfn extfoobar(num: int) -> int
+
+struct Point
+{
+    var x: int, y: int
+}
+
+fn foobar(foo: int, bar: Point) -> int
+{
+    return 0
+}

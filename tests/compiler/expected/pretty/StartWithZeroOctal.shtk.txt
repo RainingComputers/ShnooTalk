@@ -1,0 +1,14 @@
+{
+    "moduleName": "StartWithZeroOctal.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    print autoInt 668
+                    newLine
+                    int temp6 = cast autoInt 0
+                    int returnValue4 = equal int temp6
+                    return
+            ]
+        }
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "moduleName": "Expression3.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int* tempPtr6 = createPointer int a
+                    int temp7 = cast autoInt 1
+                    int* tempPtr6 = write int temp7
+                    int* tempPtr9 = addressAdd int* tempPtr6, bytes 4
+                    int temp10 = cast autoInt 2
+                    int* tempPtr9 = write int temp10
+                    int* tempPtr13 = createPointer int a
+                    void* tempPtr15 = addressMultiply autoInt 0, bytes 4
+                    int* tempPtr16 = addressAdd int* tempPtr13, void* tempPtr15
+                    int* tempPtr19 = createPointer int a
+                    void* tempPtr21 = addressMultiply autoInt 1, bytes 4
+                    int* tempPtr22 = addressAdd int* tempPtr19, void* tempPtr21
+                    int temp24 = read int* tempPtr16
+                    int temp25 = read int* tempPtr22
+                    int temp23 = add int temp24, int temp25
+                    print int temp23
+                    newLine
+                    int* tempPtr31 = createPointer int b
+                    int temp32 = cast autoInt 1
+                    int* tempPtr31 = write int temp32
+                    int* tempPtr34 = addressAdd int* tempPtr31, bytes 4
+                    int temp35 = cast autoInt 2
+                    int* tempPtr34 = write int temp35
+                    int* tempPtr37 = addressAdd int* tempPtr34, bytes 4
+                    int temp38 = cast autoInt 3
+                    int* tempPtr37 = write int temp38
+                    int* tempPtr40 = addressAdd int* tempPtr37, bytes 4
+                    int temp41 = cast autoInt 4
+                    int* tempPtr40 = write int temp41
+                    int* tempPtr45 = createPointer int b
+                    void* tempPtr47 = addressMultiply autoInt 0, bytes 8
+                    int* tempPtr48 = addressAdd int* tempPtr45, void* tempPtr47
+                    void* tempPtr50 = addressMultiply autoInt 0, bytes 4
+                    int* tempPtr51 = addressAdd int* tempPtr48, void* tempPtr50
+                    int* tempPtr55 = createPointer int b
+                    void* tempPtr57 = addressMultiply autoInt 1, bytes 8
+                    int* tempPtr58 = addressAdd int* tempPtr55, void* tempPtr57
+                    void* tempPtr60 = addressMultiply autoInt 1, bytes 4
+                    int* tempPtr61 = addressAdd int* tempPtr58, void* tempPtr60
+                    int temp63 = read int* tempPtr51
+                    int temp64 = read int* tempPtr61
+                    int temp62 = add int temp63, int temp64
+                    print int temp62
+                    newLine
+                    int* tempPtr68 = createPointer int b
+                    void* tempPtr70 = addressMultiply autoInt 0, bytes 8
+                    int* tempPtr71 = addressAdd int* tempPtr68, void* tempPtr70
+                    void* tempPtr73 = addressMultiply autoInt 1, bytes 4
+                    int* tempPtr74 = addressAdd int* tempPtr71, void* tempPtr73
+                    int* tempPtr78 = createPointer int b
+                    void* tempPtr80 = addressMultiply autoInt 1, bytes 8
+                    int* tempPtr81 = addressAdd int* tempPtr78, void* tempPtr80
+                    void* tempPtr83 = addressMultiply autoInt 0, bytes 4
+                    int* tempPtr84 = addressAdd int* tempPtr81, void* tempPtr83
+                    int temp86 = read int* tempPtr74
+                    int temp87 = read int* tempPtr84
+                    int temp85 = add int temp86, int temp87
+                    print int temp85
+                    newLine
+                    int temp90 = cast autoInt 0
+                    int returnValue88 = equal int temp90
+                    return
+            ]
+        }
+    }
+}

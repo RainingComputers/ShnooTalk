@@ -1,0 +1,11 @@
+struct point 
+{
+    var x: int, y: int
+}
+
+struct foobar 
+{
+    var a: int
+    var b: point*
+    var c: float
+}

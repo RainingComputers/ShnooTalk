@@ -11,11 +11,12 @@ USAGE_HELP = '''USAGE: shtkc FILE OPTION
 Available options:
     -c               Compile program
     -ast             Print parse tree
-    -json-ast        Print parse tree in JSON
     -ir              Print ShnooTalk IR
+    -icode           Print ShnooTalk IR, but only the icode
+    -llvm            Print LLVM IR
+    -json-ast        Print parse tree in JSON
     -json-ir         Print ShnooTalk IR in JSON
     -json-icode      Print ShnooTalk IR in JSON, but only the icode
-    -llvm            Print LLVM IR
 
 Use shtkc -version for compiler version
 '''

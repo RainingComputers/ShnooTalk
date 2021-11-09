@@ -1,0 +1,17 @@
+{
+    "moduleName": "EscapeDoubleQuoteTest.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    ubyte* tempPtr5 = createPointer ubyte c
+                    ubyte* tempPtr6 = createPointer stringData _str_EscapeDoubleQuoteTest_shtk__l5_c22
+                    ubyte* tempPtr5 = memoryCopy ubyte* tempPtr6, autoInt 14
+                    printString ubyte c
+                    newLine
+                    int temp11 = cast autoInt 0
+                    int returnValue9 = equal int temp11
+                    return
+            ]
+        }
+    }
+}

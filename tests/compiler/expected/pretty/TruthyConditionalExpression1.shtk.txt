@@ -1,0 +1,22 @@
+{
+    "moduleName": "TruthyConditionalExpression1.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int temp5 = cast autoInt 2
+                    int a = equal int temp5
+                    int temp12 = cast autoInt 1
+                    int temp11 = add int a, int temp12
+                    int temp14 = cast autoInt 0
+                    flag = greaterThan int temp11, int temp14
+                    if(not flag) goto _if_false_l7_c4
+                    printString stringData _str_TruthyConditionalExpression1_shtk__l7_c22
+                    newLine
+                _if_false_l7_c4:
+                    int temp18 = cast autoInt 0
+                    int returnValue16 = equal int temp18
+                    return
+            ]
+        }
+    }
+}

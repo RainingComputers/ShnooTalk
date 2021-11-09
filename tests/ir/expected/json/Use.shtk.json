@@ -1,0 +1,30 @@
+{
+    "moduleName": "Use.shtk",
+    "uses": ["TestModules/Random.shtk", "TestModules/Sin.shtk"],
+    "aliases": {
+        "Random": "TestModules/Random.shtk",
+        "Sin": "TestModules/Sin.shtk"
+    },
+    "enumerations": {
+    },
+    "intDefines": {
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "infinity": "INFINITY",
+        "nan": "NAN"
+    },
+    "stringDefines": {
+    },
+    "stringsDataCharCounts": {
+    },
+    "globals": {
+    },
+    "structures": {
+    },
+    "externFunctions": {
+    },
+    "functions": {
+    }
+}

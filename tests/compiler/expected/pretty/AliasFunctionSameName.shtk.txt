@@ -1,0 +1,22 @@
+{
+    "moduleName": "AliasFunctionSameName.shtk",
+    "functions": {
+        "_fn_AliasFunctionSameName_shtk_vec": {
+            "icode": [
+                    int temp5 = cast autoInt 0
+                    int returnValue3 = equal int temp5
+                    return
+            ]
+        },
+        "main": {
+            "icode": [
+                    int calleeReturnValue9 = call int _fn_AliasFunctionSameName_shtk_vec, module AliasFunctionSameName.shtk
+                    print int calleeReturnValue9
+                    newLine
+                    int temp14 = cast autoInt 0
+                    int returnValue12 = equal int temp14
+                    return
+            ]
+        }
+    }
+}

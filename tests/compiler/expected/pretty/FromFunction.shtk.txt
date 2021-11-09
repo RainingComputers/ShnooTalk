@@ -1,0 +1,18 @@
+{
+    "moduleName": "FromFunction.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    autoFloat temp5 = divide autoFloat 3.140000, autoFloat 2.000000
+                    float temp7 = cast autoFloat temp5
+                    pass float temp7, float _fn_TestModules_Math_shtk_sin, module TestModules/Math.shtk
+                    float calleeReturnValue10 = call float _fn_TestModules_Math_shtk_sin, module TestModules/Math.shtk
+                    print float calleeReturnValue10
+                    newLine
+                    int temp15 = cast autoInt 0
+                    int returnValue13 = equal int temp15
+                    return
+            ]
+        }
+    }
+}

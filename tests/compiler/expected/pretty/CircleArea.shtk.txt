@@ -1,0 +1,30 @@
+{
+    "moduleName": "CircleArea.shtk",
+    "functions": {
+        "_fn_CircleArea_shtk_area": {
+            "icode": [
+                    autoFloat temp7 = cast float r
+                    autoFloat temp6 = multiply autoFloat 3.140000, autoFloat temp7
+                    autoFloat temp10 = cast float r
+                    autoFloat temp9 = multiply autoFloat temp6, autoFloat temp10
+                    float temp11 = cast autoFloat temp9
+                    float returnValue3 = equal float temp11
+                    return
+            ]
+        },
+        "main": {
+            "icode": [
+                    int temp17 = cast autoInt 4
+                    int r = equal int temp17
+                    float temp19 = cast int r
+                    pass float temp19, float _fn_CircleArea_shtk_area, module CircleArea.shtk
+                    float calleeReturnValue23 = call float _fn_CircleArea_shtk_area, module CircleArea.shtk
+                    print float calleeReturnValue23
+                    newLine
+                    int temp28 = cast autoInt 0
+                    int returnValue26 = equal int temp28
+                    return
+            ]
+        }
+    }
+}

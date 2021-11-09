@@ -1,0 +1,26 @@
+{
+    "moduleName": "ModOperator.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int temp5 = cast autoInt 1
+                    int a = equal int temp5
+                    int temp8 = cast autoInt 2
+                    int b = equal int temp8
+                    float temp11 = cast autoFloat 2.300000
+                    float c = equal float temp11
+                    float temp14 = cast autoFloat 4.000000
+                    float d = equal float temp14
+                    int temp17 = remainder int a, int b
+                    print int temp17
+                    newLine
+                    float temp20 = remainder float c, float d
+                    print float temp20
+                    newLine
+                    int temp23 = cast autoInt 0
+                    int returnValue21 = equal int temp23
+                    return
+            ]
+        }
+    }
+}

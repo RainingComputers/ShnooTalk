@@ -1,0 +1,66 @@
+{
+    "moduleName": "From.shtk",
+    "uses": ["TestModules/Random.shtk", "TestModules/Sin.shtk"],
+    "aliases": {
+        "Random": "TestModules/Random.shtk",
+        "Sin": "TestModules/Sin.shtk"
+    },
+    "enumerations": {
+        "LED0": 0
+    },
+    "intDefines": {
+        "ONE": 1,
+        "false": 0,
+        "true": 1
+    },
+    "floatDefines": {
+        "PI": 3.14,
+        "infinity": "INFINITY",
+        "nan": "NAN"
+    },
+    "stringDefines": {
+        "FOOBAR": "_str_TestModules_Random_shtk__l5_c11"
+    },
+    "stringsDataCharCounts": {
+        "_str_TestModules_Random_shtk__l5_c11": 7
+    },
+    "globals": {
+    },
+    "structures": {
+        "Point": {
+            "structFields": {
+                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
+            },
+            "size": 8,
+            "moduleName": "TestModules/Random.shtk"
+        }
+    },
+    "externFunctions": {
+        "extfoobar": {
+            "moduleName": "TestModules/Random.shtk",
+            "parameters": ["num"],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+            "symbols": {
+                "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                
+            ]
+        },
+        "foobar": {
+            "moduleName": "TestModules/Random.shtk",
+            "parameters": ["foo", "bar"],
+            "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+            "symbols": {
+                "bar": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                "foo": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+            },
+            "icode": [
+                
+            ]
+        }
+    },
+    "functions": {
+    }
+}

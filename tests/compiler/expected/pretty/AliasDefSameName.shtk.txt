@@ -1,0 +1,14 @@
+{
+    "moduleName": "AliasDefSameName.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    print autoInt 0
+                    newLine
+                    int temp6 = cast autoInt 0
+                    int returnValue4 = equal int temp6
+                    return
+            ]
+        }
+    }
+}

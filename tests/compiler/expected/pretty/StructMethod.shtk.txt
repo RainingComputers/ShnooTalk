@@ -1,0 +1,33 @@
+{
+    "moduleName": "StructMethod.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int* tempPtr9 = createPointer struct a
+                    passAddress int* tempPtr9, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp13 = cast autoInt 1
+                    pass int temp13, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp17 = cast autoInt 2
+                    pass int temp17, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    void calleeReturnValue20 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int* tempPtr27 = createPointer struct b
+                    passAddress int* tempPtr27, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp31 = cast autoInt 5
+                    pass int temp31, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp35 = cast autoInt 10
+                    pass int temp35, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    void calleeReturnValue38 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int* tempPtr44 = createPointer struct a
+                    passAddress int* tempPtr44, int _fn_TestModules_Vector_shtk_dot, module TestModules/Vector.shtk
+                    int* tempPtr48 = createPointer struct b
+                    passAddress int* tempPtr48, int _fn_TestModules_Vector_shtk_dot, module TestModules/Vector.shtk
+                    int calleeReturnValue51 = call int _fn_TestModules_Vector_shtk_dot, module TestModules/Vector.shtk
+                    print int calleeReturnValue51
+                    newLine
+                    int temp56 = cast autoInt 0
+                    int returnValue54 = equal int temp56
+                    return
+            ]
+        }
+    }
+}

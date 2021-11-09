@@ -1,0 +1,11 @@
+fn foo(a: int, mut b: int, c: int*, mut d: int*) -> int {
+    return 0
+}
+
+fn bar(a: int) -> int* {
+    return a
+}
+
+fn another(b: int[]) {
+    
+}

@@ -1,0 +1,4 @@
+use "TestModules/Random.shtk" as Random
+
+from Random use Sin, ONE, PI, FOOBAR
+from Random use LED0, foobar, Point, extfoobar
