@@ -1,4 +1,4 @@
-.PHONY : help clean all build install install-gedit uninstall format test coverage tidy
+.PHONY : help build install install-gedit uninstall format test coverage tidy clean
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
@@ -96,21 +96,21 @@ SOURCES = $(shell find src/ -name '*.cpp')
 # Set object file names, all object files are in obj/
 OBJECTS = $(SOURCES:src/%.cpp=obj/$(BUILD_TYPE)/%.o)
 
+# Creating directories required for linking and building executable
+dirs:
+	mkdir -p obj/$(BUILD_TYPE)/
+	mkdir -p bin/$(BUILD_TYPE)/
+	cd src/ && find . -type d -exec mkdir -p ../obj/$(BUILD_TYPE)/{} \;
+
 # For compiling .cpp files in src/ to .o object files in obj/
-obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS)
-	mkdir -p $(@D)
+obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS) dirs
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Linking all object files to executable 
 bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
 	$(CXX) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS) $(LDFLAGS)
 
-# For creting directories required for linking and building executable
-dirs:
-	mkdir -p obj/$(BUILD_TYPE)/
-	mkdir -p bin/$(BUILD_TYPE)/
-
-build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME) 
+build: bin/$(BUILD_TYPE)/$(EXEC_NAME) 
 
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
