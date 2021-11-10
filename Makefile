@@ -4,8 +4,6 @@ help :
 	@echo "      Remove auto-generated files."
 	@echo "build"
 	@echo "      Build release executable."
-	@echo "build VERSION_FILE=1"
-	@echo "      Build release executable and version string comes from version file"
 	@echo "build DEBUG=1"
 	@echo "      Build executable for debugging."
 	@echo "build GPROF=1"
@@ -35,21 +33,14 @@ EXEC_NAME = shtkc
 CXX ?= clang++
 
 # Set version string
-ifeq ($(VERSION_FILE), 1)
-	VERSION_STRING = $(shell cat version)
-else 
-	VERSION_STRING = snapshot_$(shell date '+%Y-%m-%d_%H:%M:%S_%Z')
-endif
+VERSION_STRING = $(shell cat version)
 
 # Get platform
 ifeq ($(OS), Windows_NT)
-	PLATFORM = $(OS)_$(PROCESSOR_ARCHITECTURE)
-	EXEC_NAME := $(EXEC_NAME).exe
-else ifeq ($(CXX), x86_64-w64-mingw32-g++)
-	PLATFORM = Windows_NT_AMD64
+	PLATFORM = $(OS)-$(PROCESSOR_ARCHITECTURE)
 	EXEC_NAME := $(EXEC_NAME).exe
 else
-	PLATFORM = $(shell uname -s)_$(shell uname -m)
+	PLATFORM = $(shell uname -s)-$(shell uname -m)
 endif
 
 # Set C++ compiler flags, build type and build path
@@ -69,7 +60,7 @@ else ifeq ($(GCOV), 1)
 	BUILD_TYPE = gcov
 else
     CXXFLAGS = -O3
-	BUILD_TYPE = release_$(PLATFORM)
+	BUILD_TYPE = $(EXEC_NAME)-$(VERSION_STRING)-$(PLATFORM)
 endif
 
 # Get llvm-config bin
