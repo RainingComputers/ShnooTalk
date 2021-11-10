@@ -18,7 +18,7 @@ def run_single(file_name: str) -> TestResult:
             skip_on_compile_error=True
         ),
         expected_on_compile_fail=None,
-        command_on_compile_success=["llc", llc_file],
+        command_on_compile_success=["llc-12", llc_file],
         expected_command_output=None,
     )
 
