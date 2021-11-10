@@ -4,6 +4,7 @@ bin/*
 
 # test coverage
 tests/testinfo/
+tests/reports/
 tests/*.gmon.out.*
 tests/*.info
 .cccc/*

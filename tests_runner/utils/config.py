@@ -30,7 +30,7 @@ COMPILER_EXEC_PATH = os.path.join(os.getcwd(),  f"bin/{BUILD_TYPE}/shtkc")
 
 OBJ_DIR = os.path.join(os.getcwd(),  f"./obj/{BUILD_TYPE}/")
 
-COVERAGE_INFO_DIR = os.path.join(os.getcwd(), "tests",  "testinfo")
+COVERAGE_REPORT_DIR = os.path.join(os.getcwd(), "tests",  "reports")
 
 VERSION_FILE = os.path.join(os.getcwd(), "version")
 

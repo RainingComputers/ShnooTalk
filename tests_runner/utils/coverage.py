@@ -1,6 +1,6 @@
 import os
 
-from tests_runner.utils.config import COVERAGE_INFO_DIR, OBJ_DIR
+from tests_runner.utils.config import COVERAGE_REPORT_DIR, OBJ_DIR
 
 
 def shell(command: str) -> None:
@@ -12,8 +12,8 @@ def set_gmon_prefix(file_name: str) -> None:
 
 
 def setup_coverage_dir() -> None:
-    shell(f"rm -rf {COVERAGE_INFO_DIR}")
-    shell(f"mkdir -p {COVERAGE_INFO_DIR}")
+    shell(f"rm -rf {COVERAGE_REPORT_DIR}")
+    shell(f"mkdir -p {COVERAGE_REPORT_DIR}")
 
 
 def prepare_coverage_report() -> None:
@@ -21,7 +21,7 @@ def prepare_coverage_report() -> None:
     print("🤖 Preparing coverage report...")
     shell(f"lcov -c  -b ../ -d {OBJ_DIR} -o total_unfiltered.info")
     shell("lcov --remove total_unfiltered.info '/usr/include/*' '/usr/lib/*' -o total.info")
-    shell(f"genhtml total.info -o {COVERAGE_INFO_DIR}/")
+    shell(f"genhtml total.info -o {COVERAGE_REPORT_DIR}/")
     print("📜 Opening report...")
-    shell(f"xdg-open {COVERAGE_INFO_DIR}/index.html")
+    shell(f"xdg-open {COVERAGE_REPORT_DIR}/index.html")
     os.chdir("..")

@@ -24,9 +24,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install LLVM
-        run: sudo apt install llvm-12 llvm-12-dev
+      - name: Install LLVM and LCOV
+        run: sudo apt install llvm-12 llvm-12-dev lcov
       - name: Build debug executable
         run: make build DEBUG=1
       - name: Run tests_runner 
         run: make test
+      - name: 'Upload coverage report'
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: tests/reports
+          retention-days: 5

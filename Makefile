@@ -132,7 +132,7 @@ tidy:
 clean:
 	rm -f -r bin/
 	rm -f -r obj/
-	rm -f -r tests/testinfo/
+	rm -f -r tests/reports/
 	rm -f -r tests/*.info
 	rm -f tests/compiler/*.llc
 	rm -f tests/compiler/*.llc.s
