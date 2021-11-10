@@ -3,8 +3,8 @@ import os
 from tests_runner.utils.command import run_command
 from tests_runner.utils.result import TestResult, ResultPrinter
 
-from tests_runner.utils.config import COMPILER_EXEC_PATH
-
+from tests_runner.utils.config import COMPILER_EXEC_PATH, VERSION_FILE
+from tests_runner.utils.dir import string_from_file
 
 USAGE_HELP = '''USAGE: shtkc FILE OPTION
 
@@ -32,7 +32,7 @@ def run_version_test() -> TestResult:
     if exit_code != 0 or timedout:
         return TestResult.failed(output)
 
-    if "snapshot" not in output and "release" not in output:
+    if string_from_file(VERSION_FILE) == output:
         return TestResult.failed(output)
 
     return TestResult.passed(output)

@@ -32,4 +32,6 @@ OBJ_DIR = os.path.join(os.getcwd(),  f"./obj/{BUILD_TYPE}/")
 
 COVERAGE_INFO_DIR = os.path.join(os.getcwd(), "tests",  "testinfo")
 
+VERSION_FILE = os.path.join(os.getcwd(), "version")
+
 TIMEOUT = 5
