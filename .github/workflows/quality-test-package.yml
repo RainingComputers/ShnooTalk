@@ -27,9 +27,9 @@ jobs:
       - name: Install LLVM and LCOV
         run: sudo apt install llvm-12 llvm-12-dev lcov
       - name: Build debug executable
-        run: make build DEBUG=1
+        run: make build GCOV=1
       - name: Run tests_runner 
-        run: make test
+        run: make coverage
       - name: 'Upload coverage report'
         uses: actions/upload-artifact@v2
         with:
