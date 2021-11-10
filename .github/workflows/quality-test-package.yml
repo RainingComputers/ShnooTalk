@@ -1,7 +1,7 @@
 on: [pull_request, push]
 
 jobs:
-  format:
+  Format:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -10,7 +10,7 @@ jobs:
         run: sudo apt install clang-format
       - name: Run clang format
         run: make format-dry-run
-  tidy:
+  Tidy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,7 +19,7 @@ jobs:
         run: sudo apt install clang-tidy
       - name: Run clang format
         run: make tidy
-  test:
+  Test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
