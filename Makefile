@@ -141,3 +141,20 @@ clean:
 	rm -f tests/*.gmon.out*
 	rm -rf .mypy_cache
 	find . -type d -name  "__pycache__" -exec rm -r {} +
+
+appdir:
+	rm -f -r $(EXEC_NAME).AppDir/
+
+	mkdir $(EXEC_NAME).AppDir/
+	mkdir -p $(EXEC_NAME).AppDir/usr/bin/
+	mkdir -p $(EXEC_NAME).AppDir/usr/lib/llvm-12/lib/
+	
+	cp AppRun $(EXEC_NAME).AppDir/AppRun
+	chmod +x $(EXEC_NAME).AppDir/AppRun
+
+	cp shtkc.desktop $(EXEC_NAME).AppDir/$(EXEC_NAME).desktop
+	cp logo.png $(EXEC_NAME).AppDir/shtkc.png
+
+	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) $(EXEC_NAME).AppDir/usr/bin/$(EXEC_NAME)
+	
+	cp -r /lib/llvm-12/lib/* $(EXEC_NAME).AppDir/usr/lib/llvm-12/lib/

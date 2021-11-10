@@ -51,3 +51,7 @@ zipdata/
 
 # mypy
 .mypy_cache/
+
+# AppImage
+shtkc.AppDir/
+shtkc
