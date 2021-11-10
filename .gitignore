@@ -53,6 +53,6 @@ zipdata/
 .mypy_cache/
 
 # AppImage
-shtkc.AppDir/
+*.AppDir/
 shtkc
 *.AppImage

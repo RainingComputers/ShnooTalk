@@ -141,21 +141,22 @@ clean:
 	rm -f tests/*.gmon.out*
 	rm -rf .mypy_cache
 	find . -type d -name  "__pycache__" -exec rm -r {} +
-	rm -f -r $(EXEC_NAME).AppDir/
+	rm -f -r $(BUILD_TYPE).AppDir/
+	rm -f *.AppImage
 
 appdir:
-	rm -f -r $(EXEC_NAME).AppDir/
+	rm -f -r $(BUILD_TYPE).AppDir/
 
-	mkdir $(EXEC_NAME).AppDir/
-	mkdir -p $(EXEC_NAME).AppDir/usr/bin/
-	mkdir -p $(EXEC_NAME).AppDir/usr/lib/llvm-12/lib/
+	mkdir $(BUILD_TYPE).AppDir/
+	mkdir -p $(BUILD_TYPE).AppDir/usr/bin/
+	mkdir -p $(BUILD_TYPE).AppDir/usr/lib/
 	
-	cp AppRun $(EXEC_NAME).AppDir/AppRun
-	chmod +x $(EXEC_NAME).AppDir/AppRun
+	cp AppRun $(BUILD_TYPE).AppDir/AppRun
+	chmod +x $(BUILD_TYPE).AppDir/AppRun
 
-	cp shtkc.desktop $(EXEC_NAME).AppDir/$(EXEC_NAME).desktop
-	cp logo.png $(EXEC_NAME).AppDir/shtkc.png
+	cp shtkc.desktop $(BUILD_TYPE).AppDir/$(EXEC_NAME).desktop
+	cp logo.png $(BUILD_TYPE).AppDir/shtkc.png
 
-	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) $(EXEC_NAME).AppDir/usr/bin/$(EXEC_NAME)
+	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) $(BUILD_TYPE).AppDir/usr/bin/$(EXEC_NAME)
 	
-	cp -r /lib/llvm-12/lib/libLLVM-12.so.1 $(EXEC_NAME).AppDir/usr/lib/libLLVM-12.so.1
+	cp -r /lib/llvm-12/lib/libLLVM-12.so.1 $(BUILD_TYPE).AppDir/usr/lib/libLLVM-12.so.1
