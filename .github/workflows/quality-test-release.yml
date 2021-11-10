@@ -1,0 +1,32 @@
+on: [pull_request, push]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install clang-format
+        run: sudo apt install clang-format
+      - name: Run clang format
+        run: make format-dry-run
+  tidy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install clang-tidy
+        run: sudo apt install clang-tidy
+      - name: Run clang format
+        run: make tidy
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install LLVM
+        run: sudo apt install llvm-12 llvm-12-dev
+      - name: Build debug executable
+        run: make build DEBUG=1
+      - name: Run tests_runner 
+        run: make test

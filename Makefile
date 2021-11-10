@@ -1,4 +1,4 @@
-.PHONY : help build install install-gedit uninstall format test coverage tidy clean
+.PHONY : help build install install-gedit uninstall format format-dry-run test coverage tidy clean
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
@@ -18,6 +18,8 @@ help :
 	@echo "      Uninstalls the executable from /usr/local/bin directory."
 	@echo "format"
 	@echo "      Run clang-format."
+	@echo "format-dry-run"
+	@echo "      Run clang-format with --dry-run --Werror flags."
 	@echo "test"
 	@echo "      Run tests, run make build DEBUG=1 first"
 	@echo "coverage"
@@ -113,11 +115,10 @@ uninstall:
 	rm /usr/local/bin/$(EXEC_NAME)
 
 format:
-	clang-format -i src/*/*/*.cpp
-	clang-format -i src/*/*/*.cpp
-	clang-format -i src/*/*.cpp
-	clang-format -i src/*/*.hpp
-	clang-format -i src/*.cpp
+	clang-format -i $(SOURCES)
+
+format-dry-run:
+	clang-format -i $(SOURCES) --dry-run --Werror
 
 test:
 	python3 -m tests_runner --test
