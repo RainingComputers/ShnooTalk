@@ -1,4 +1,4 @@
-.PHONY : help build install install-gedit uninstall format format-dry-run test coverage tidy clean
+.PHONY : help build install install-gedit uninstall format format-dry-run test coverage tidy clean appdir
 help :
 	@echo "clean"
 	@echo "      Remove auto-generated files."
@@ -141,6 +141,7 @@ clean:
 	rm -f tests/*.gmon.out*
 	rm -rf .mypy_cache
 	find . -type d -name  "__pycache__" -exec rm -r {} +
+	rm -f -r $(EXEC_NAME).AppDir/
 
 appdir:
 	rm -f -r $(EXEC_NAME).AppDir/
@@ -157,4 +158,4 @@ appdir:
 
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) $(EXEC_NAME).AppDir/usr/bin/$(EXEC_NAME)
 	
-	cp -r /lib/llvm-12/lib/* $(EXEC_NAME).AppDir/usr/lib/llvm-12/lib/
+	cp -r /lib/llvm-12/lib/libLLVM-12.so.1 $(EXEC_NAME).AppDir/usr/lib/libLLVM-12.so.1
