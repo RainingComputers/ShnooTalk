@@ -85,7 +85,7 @@ endif
 
 # Set compiler and linker flags for llvm
 CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
-LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
+LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all` -lstdc++fs
 
 # Find all .hpp files in src/
 HEADERS = $(shell find src/ -name '*.hpp')
@@ -148,20 +148,5 @@ clean:
 	find . -type d -name  "__pycache__" -exec rm -r {} +
 	rm -f -r $(BUILD_TYPE).AppDir/
 	rm -f *.AppImage
-
-appdir:
-	rm -f -r $(BUILD_TYPE).AppDir/
-
-	mkdir $(BUILD_TYPE).AppDir/
-	mkdir -p $(BUILD_TYPE).AppDir/usr/bin/
-	mkdir -p $(BUILD_TYPE).AppDir/usr/lib/
-	
-	cp AppRun $(BUILD_TYPE).AppDir/AppRun
-	chmod +x $(BUILD_TYPE).AppDir/AppRun
-
-	cp shtkc.desktop $(BUILD_TYPE).AppDir/$(EXEC_NAME).desktop
-	cp logo.png $(BUILD_TYPE).AppDir/shtkc.png
-
-	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) $(BUILD_TYPE).AppDir/usr/bin/$(EXEC_NAME)
-	
-	cp -r /lib/llvm-12/lib/libLLVM-12.so.1 $(BUILD_TYPE).AppDir/usr/lib/libLLVM-12.so.1
+	rm *.tar.xz
+	rm -rf llvm

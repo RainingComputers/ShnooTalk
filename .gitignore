@@ -56,3 +56,8 @@ zipdata/
 *.AppDir/
 shtkc
 *.AppImage
+
+# Ci
+*.tar.xz
+.github/workflows/clang+llvm*
+llvm/

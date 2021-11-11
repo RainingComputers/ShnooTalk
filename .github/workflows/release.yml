@@ -1,0 +1,17 @@
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Linux build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: .github/workflows/build-unix.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz g++
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: $(find bin/ -name '*.tar.gz')
