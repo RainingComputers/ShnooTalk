@@ -15,3 +15,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: $(find bin/ -name '*.tar.gz')
+          tag_name: $(cat version)
