@@ -11,14 +11,14 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: .github/workflows/build-unix.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz g++
-      - name: Release
-        uses: softprops/action-gh-release@v1
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
       - name: Set release tag
         id: set_tag
         run: echo "##[set-output name=tag;]$(git branch --show-current)"
+      - name: Release
+        uses: softprops/action-gh-release@v1        
         with:
           files: ${{ steps.set_file.outputs.files }}
           tag_name: ${{ steps.set_tag.outputs.tag }}
