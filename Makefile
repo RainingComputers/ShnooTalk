@@ -41,6 +41,11 @@ VERSION_STRING = $(shell cat version)
 ifeq ($(OS), Windows_NT)
 	PLATFORM = $(OS)-$(PROCESSOR_ARCHITECTURE)
 	EXEC_NAME := $(EXEC_NAME).exe
+else ifeq ($(CXX), x86_64-w64-mingw32-g++)
+	PLATFORM = Windows_NT-AMD64
+	EXEC_NAME := $(EXEC_NAME).exe
+else ifeq ($(CXX), arm-linux-gnueabi-g++)
+	PLATFORM = Linux-arm
 else
 	PLATFORM = $(shell uname -s)-$(shell uname -m)
 endif
@@ -66,16 +71,16 @@ else
 endif
 
 # Get llvm-config bin
-LLMV_CONFIG_12_BIN_EXISTS := $(shell llvm-config-12 --version >/dev/null 2>&1 || (echo "Does not exist"))
+LLVM_CONFIG_12_BIN_EXISTS := $(shell llvm-config-12 --version >/dev/null 2>&1 || (echo "Does not exist"))
 
-ifeq (,${LLMV_CONFIG_12_BIN_EXISTS})
+ifneq (,${LLVM_PATH})
+	LLVM_CONFIG_BIN = $(LLVM_PATH)/bin/llvm-config
+else ifeq (,${LLVM_CONFIG_12_BIN_EXISTS})
     LLVM_CONFIG_BIN = llvm-config-12
+else ifeq ($(shell uname -s), Darwin)
+	LLVM_CONFIG_BIN = /usr/local/opt/llvm@12/bin/llvm-config
 else
     LLVM_CONFIG_BIN = llvm-config
-endif
-
-ifeq ($(shell uname -s), Darwin)
-	LLVM_CONFIG_BIN = /usr/local/opt/llvm@12/bin/llvm-config
 endif
 
 # Set compiler and linker flags for llvm
