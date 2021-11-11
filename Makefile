@@ -101,14 +101,14 @@ dirs:
 	cd src/ && find . -type d -exec mkdir -p ../obj/$(BUILD_TYPE)/{} \;
 
 # For compiling .cpp files in src/ to .o object files in obj/
-obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS) dirs
+obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS) 
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Linking all object files to executable 
 bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
 	$(CXX) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS) $(LDFLAGS)
 
-build: bin/$(BUILD_TYPE)/$(EXEC_NAME) 
+build: bin/$(BUILD_TYPE)/$(EXEC_NAME) dirs
 
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
