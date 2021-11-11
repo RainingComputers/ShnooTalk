@@ -16,7 +16,7 @@ jobs:
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
       - name: Set release tag
         id: set_tag
-        run: echo "##[set-output name=tag;]$(git branch --show-current)"
+        run: echo "##[set-output name=tag;]$(cat version)"
       - name: Release
         uses: softprops/action-gh-release@v1        
         with:
