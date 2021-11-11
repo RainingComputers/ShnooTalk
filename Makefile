@@ -108,7 +108,7 @@ obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS)
 bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
 	$(CXX) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS) $(LDFLAGS)
 
-build: bin/$(BUILD_TYPE)/$(EXEC_NAME) dirs
+build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME)
 
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
@@ -148,5 +148,5 @@ clean:
 	find . -type d -name  "__pycache__" -exec rm -r {} +
 	rm -f -r $(BUILD_TYPE).AppDir/
 	rm -f *.AppImage
-	rm *.tar.xz
+	rm -f *.tar.xz
 	rm -rf llvm
