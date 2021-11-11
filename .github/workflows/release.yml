@@ -1,10 +1,15 @@
-on: 
-  push:
-    branches: [main]
+on:
+  workflow_run:
+    workflows: 
+      - Code formatting quality and testing 
+    branches: 
+      - main
+    types: 
+      - completed
 
 jobs:
   build:
-    name: Linux build
+    name: Linux x86 build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

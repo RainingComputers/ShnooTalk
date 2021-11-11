@@ -1,3 +1,5 @@
+name: Code formatting quality and testing 
+
 on: [pull_request, push]
 
 jobs:
