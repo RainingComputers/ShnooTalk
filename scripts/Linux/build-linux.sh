@@ -11,10 +11,10 @@ tar -xf `basename $1` -C llvm --strip-components 1
 echo '🤖 Building compiler'
 make build
 BUILD_NAME=`cat build-name.txt`
-cd bin/
 
 echo '🤖 Creating tar.gz'
+cd bin/
 tar cvzf $BUILD_NAME.tar.gz $BUILD_NAME
+cd ..
 
 echo '✨ Done.'
-cd ..

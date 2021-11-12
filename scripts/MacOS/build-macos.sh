@@ -7,22 +7,13 @@ brew install llvm@12
 echo '🤖 Building compiler'
 make build
 BUILD_NAME=`cat build-name.txt`
-cd bin/
 
-echo '🤖 Packaging .dylib files'
-cd $BUILD_NAME
-
-for DYLIB in "/usr/local/opt/llvm@12/lib/libLLVM.dylib" \
-             "/usr/local/opt/llvm@12/lib/libc++.1.dylib"
-do
-    cp $DYLIB ./`basename $DYLIB`
-    install_name_tool -change $DYLIB @executable_path/`basename $DYLIB` shtkc
-done
-
-cd ..
+echo '🤖 Rewiring and moving .dylib files'
+python3 scripts/MacOS/dylib_rewire.py bin/$BUILD_NAME/shtkc
 
 echo '🤖 Creating tar.gz'
+cd bin/
 tar cvzf $BUILD_NAME.tar.gz $BUILD_NAME
+cd ..
 
 echo '✨ Done.'
-cd ..
