@@ -9,7 +9,7 @@ mkdir -p llvm
 tar -xf `basename $1` -C llvm --strip-components 1
 
 echo '🤖 Building compiler'
-make build LLVM_PATH=llvm CXX=$2
+make build
 BUILD_NAME=`cat build-name.txt`
 cd bin/
 
