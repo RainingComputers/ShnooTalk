@@ -62,3 +62,6 @@ shtkc
 .github/workflows/clang+llvm*
 llvm/
 build-name.txt
+
+# misc
+.DS_store
