@@ -12,6 +12,13 @@ cd bin/
 echo '🤖 Packaging .dylib files'
 cd $BUILD_NAME
 
+for DYLIB in "/usr/local/opt/llvm@12/lib/libLLVM.dylib" \
+             "/usr/local/opt/llvm@12/lib/libc++.1.dylib"
+do
+    cp $DYLIB ./`basename $DYLIB`
+    install_name_tool -change $DYLIB @executable_path/`basename $DYLIB` shtkc
+done
+
 cd ..
 
 echo '🤖 Creating tar.gz'
