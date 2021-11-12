@@ -2,10 +2,11 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": true,
-    "python.linting.pycodestyleArgs": ["--max-line-length=120"],
+    "python.linting.pycodestyleArgs": [
+        "--max-line-length=120"
+    ],
     "python.linting.pylintCategorySeverity.convention": "Error",
     "python.linting.mypyEnabled": true,
-
     "files.associations": {
         "array": "cpp",
         "atomic": "cpp",
@@ -125,5 +126,9 @@
         "ubyte",
         "uhll",
         "uhllc"
-    ]
+    ],
+    
+    "files.exclude": {
+        "llvm": true
+    }
 }

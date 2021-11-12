@@ -107,6 +107,9 @@ obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS)
 # Linking all object files to executable 
 bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
 	$(CXX) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS) $(LDFLAGS)
+	rm -f build-name.txt
+	touch build-name.txt
+	echo $(BUILD_TYPE) >> build-name.txt
 
 build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME)
 
@@ -150,3 +153,4 @@ clean:
 	rm -f *.AppImage
 	rm -f *.tar.xz
 	rm -rf llvm
+	rm -f build-name.txt
