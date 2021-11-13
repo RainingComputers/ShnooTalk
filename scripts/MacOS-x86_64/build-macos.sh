@@ -11,7 +11,7 @@ make build
 BUILD_NAME=`cat build-name.txt`
 
 echo '🤖 Rewiring and moving .dylib files'
-python3 scripts/MacOS/dylib_rewire.py bin/$BUILD_NAME/shtkc
+python3 scripts/MacOS-x86_64/dylib_rewire.py bin/$BUILD_NAME/shtkc
 
 echo '🤖 Checking executable'
 bin/$BUILD_NAME/shtkc -version
