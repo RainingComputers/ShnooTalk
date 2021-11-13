@@ -7,7 +7,7 @@ echo '🤖 Installing llvm@12 using brew'
 brew install llvm@12
 
 echo '🤖 Building compiler'
-make build
+make build -j 2
 BUILD_NAME=`cat build-name.txt`
 
 echo '🤖 Rewiring and moving .dylib files'
