@@ -1,6 +1,6 @@
 # docker build -f scripts/Linux/Dockerfile .
 
-FROM debian:latest
+FROM debian:bullseye
 
 RUN apt -y update
 RUN apt -y upgrade
