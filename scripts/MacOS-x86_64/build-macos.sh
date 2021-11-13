@@ -3,7 +3,7 @@
 
 set -e
 
-echo '🤖 Installing LLVM using brew'
+echo '🤖 Installing llvm@12 using brew'
 brew install llvm@12
 
 echo '🤖 Building compiler'

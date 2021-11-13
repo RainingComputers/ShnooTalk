@@ -10,14 +10,14 @@ on:
       - completed
 
 jobs:
-  linux-x86-build:
-    name: Linux x86 build
+  linux-x86_64-build:
+    name: Linux x86_64 build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: scripts/Linux/build-linux.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz g++
+        run: scripts/Linux-x86_64/build-linux.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz g++
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
@@ -29,8 +29,8 @@ jobs:
         with:
           files: ${{ steps.set_file.outputs.files }}
           tag_name: ${{ steps.set_tag.outputs.tag }}
-  macos-x86-build:
-    name: MacOS x86 build
+  macos-x86_64-build:
+    name: MacOS x86_64 build
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -38,9 +38,7 @@ jobs:
       - name: Install Homebrew
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       - name: Build
-        run: scripts/MacOS/build-macos.sh
-      - name: Rewire and move .dylib files
-        run: python scripts/MacOS/dylib_rewire.py bin/`cat build-name.txt`/shtkc
+        run: scripts/MacOS-x86_64/build-macos.sh
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
