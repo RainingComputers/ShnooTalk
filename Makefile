@@ -83,9 +83,20 @@ else
     LLVM_CONFIG_BIN = llvm-config
 endif
 
+# Set flags for LLVM
+# If CROSS_LLVM_LDFLAGS is provided, we are cross compiling, so we can't run 
+# llvm-config to get linker flags (because compiled diffrent CPU)
+ifneq (,${CROSS_LLVM_LDFLAGS})
+	LLVM_CXXFLAGS = -I$(LLVM_PATH)/include $(CROSS_LLVM_CXXFLAGS)
+	LLVM_LDFLAGS = -L$(LLVM_PATH)/lib $(CROSS_LLVM_LDFLAGS)
+else
+	LLVM_CXXFLAGS = -I`$(LLVM_CONFIG_BIN) --includedir`
+	LLVM_LDFLAGS = `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
+endif
+
 # Set compiler and linker flags for llvm
-CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
-LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
+CXXFLAGS := $(CXXFLAGS) $(LLVM_CXXFLAGS) --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
+LDFLAGS := $(LDFLAGS) $(LLVM_LDFLAGS)
 
 # Find all .hpp files in src/
 HEADERS = $(shell find src/ -name '*.hpp')
@@ -151,6 +162,6 @@ clean:
 	find . -type d -name  "__pycache__" -exec rm -r {} +
 	rm -f -r $(BUILD_TYPE).AppDir/
 	rm -f *.AppImage
-	rm -f *.tar.xz
-	rm -rf llvm
+	
+
 	rm -f build-name.txt
