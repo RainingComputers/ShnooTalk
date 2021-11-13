@@ -2,10 +2,11 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": true,
-    "python.linting.pycodestyleArgs": ["--max-line-length=120"],
+    "python.linting.pycodestyleArgs": [
+        "--max-line-length=120"
+    ],
     "python.linting.pylintCategorySeverity.convention": "Error",
     "python.linting.mypyEnabled": true,
-
     "files.associations": {
         "array": "cpp",
         "atomic": "cpp",
@@ -85,6 +86,8 @@
         "Dont",
         "dpeek",
         "dtype",
+        "dylib",
+        "dylibs",
         "extfn",
         "gcov",
         "gmon",
@@ -106,14 +109,17 @@
         "Newln",
         "newlnfmt",
         "ntoks",
+        "otool",
         "println",
         "Qualident",
         "RPAREN",
+        "rpath",
         "shnoo",
         "Shnoo",
         "ShnooTalk",
         "shtk",
         "shtkc",
+        "softprops",
         "stod",
         "stof",
         "stoi",
@@ -125,5 +131,9 @@
         "ubyte",
         "uhll",
         "uhllc"
-    ]
+    ],
+    
+    "files.exclude": {
+        "llvm": true
+    }
 }

@@ -85,7 +85,7 @@ endif
 
 # Set compiler and linker flags for llvm
 CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
-LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all` -lstdc++fs
+LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
 # Find all .hpp files in src/
 HEADERS = $(shell find src/ -name '*.hpp')
@@ -107,6 +107,9 @@ obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS)
 # Linking all object files to executable 
 bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
 	$(CXX) -o bin/$(BUILD_TYPE)/$(EXEC_NAME) $(OBJECTS) $(LDFLAGS)
+	rm -f build-name.txt
+	touch build-name.txt
+	echo $(BUILD_TYPE) >> build-name.txt
 
 build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME)
 
@@ -150,3 +153,4 @@ clean:
 	rm -f *.AppImage
 	rm -f *.tar.xz
 	rm -rf llvm
+	rm -f build-name.txt

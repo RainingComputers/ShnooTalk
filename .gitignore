@@ -61,3 +61,7 @@ shtkc
 *.tar.xz
 .github/workflows/clang+llvm*
 llvm/
+build-name.txt
+
+# misc
+.DS_store
