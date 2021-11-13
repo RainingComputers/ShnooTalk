@@ -54,6 +54,8 @@ jobs:
     name: Raspberry Pi 32-bit build
     runs-on: ubuntu-latest
     steps:
+      - name: Install qemu
+        run: sudo apt install qemu binfmt-support qemu-user qemu-user-static
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build docker build environment
