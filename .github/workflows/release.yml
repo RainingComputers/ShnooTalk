@@ -12,58 +12,15 @@ on:
 jobs:
   linux-x86_64-build:
     name: Linux x86_64 build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
         run: scripts/Linux/build.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
-      - name: Set release file
-        id: set_file
-        run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
-      - name: Set release tag
-        id: set_tag
-        run: echo "##[set-output name=tag;]$(cat version)"
-      - name: Release
-        uses: softprops/action-gh-release@v1        
-        with:
-          files: ${{ steps.set_file.outputs.files }}
-          tag_name: ${{ steps.set_tag.outputs.tag }}
-  macos-x86_64-build:
-    name: MacOS x86_64 build
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install Homebrew
-        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - name: Build
-        run: scripts/MacOS-x86_64/build.sh
-      - name: Set release file
-        id: set_file
-        run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
-      - name: Set release tag
-        id: set_tag
-        run: echo "##[set-output name=tag;]$(cat version)"
-      - name: Release
-        uses: softprops/action-gh-release@v1        
-        with:
-          files: ${{ steps.set_file.outputs.files }}
-          tag_name: ${{ steps.set_tag.outputs.tag }}
-  raspberry-pi-32bit-build:
-    name: Raspberry Pi 32-bit build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install qemu
-        run: sudo apt install qemu binfmt-support qemu-user qemu-user-static
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build docker build environment
-        run: docker buildx build --platform linux/arm/v7 -f scripts/Linux/Dockerfile . -t shnootalk-build-env
-      - name: Build 
-        run: |
-          docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest \
-            sh /home/scripts/Linux/build.sh llvmorg-12.0.1/clang+llvm-12.0.1-armv7a-linux-gnueabihf.tar.xz
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
