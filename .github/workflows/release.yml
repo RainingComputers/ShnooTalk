@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install MinGW
-        run: choco install mingw
+        run: choco install mingw --force
       - name: Build
         run: scripts/Linux/build.sh https://github.com/RainingComputers/shnootalk-llvm-windows-build/releases/download/12.0.1/LLVM-12.0.1-Windows_NT-AMD64.tar.xz
       - name: Set release file
