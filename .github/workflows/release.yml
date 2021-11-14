@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: scripts/Linux/build.sh 12.0.1/LLVM-12.0.1-Windows_NT-AMD64.zip
+        run: scripts/Linux/build.sh 12.0.1/LLVM-12.0.1-Windows_NT-AMD64.tar.xz
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"

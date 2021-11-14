@@ -154,3 +154,5 @@ clean:
 	rm -f *.tar.xz
 	rm -rf llvm
 	rm -f build-name.txt
+	rm -rf AppDir
+	rm -rf appimage-builder-cache
