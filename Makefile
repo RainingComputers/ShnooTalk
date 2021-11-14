@@ -85,7 +85,7 @@ endif
 
 # Set compiler and linker flags for llvm
 CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
-LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
+LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all` -ls
 
 # Find all .hpp files in src/
 HEADERS = $(shell find src/ -name '*.hpp')
