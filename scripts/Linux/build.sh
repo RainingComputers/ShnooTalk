@@ -4,7 +4,7 @@
 set -e
 
 echo '🤖 Downloading LLVM release'
-curl -OL https://github.com/llvm/llvm-project/releases/download/$1
+curl -OL $1
 
 echo '🤖 Extracting release'
 mkdir -p llvm
