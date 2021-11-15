@@ -56,6 +56,7 @@ zipdata/
 *.AppDir/
 shtkc
 *.AppImage
+appimage-builder-cache/*
 
 # Ci
 *.tar.xz
@@ -65,3 +66,4 @@ build-name.txt
 
 # misc
 .DS_store
+AppDir

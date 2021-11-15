@@ -25,4 +25,8 @@ cd bin/
 tar cvzf $BUILD_NAME.tar.gz $BUILD_NAME
 cd ..
 
+# echo '🤖 Creating AppImage'
+# appimage-builder --recipe app-image-builder-`uname -m`.yml
+# mv *.AppImage bin/
+
 echo '✨ Done.'

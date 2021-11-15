@@ -8,3 +8,10 @@ RUN apt -y install tar g++ make findutils libncurses5 curl xz-utils zlib*
 
 # Install llvm-11 for shared libraries, this llvm will not be used
 RUN apt -y install llvm-11 
+
+# Install appimage-builder
+RUN sudo apt install -y python3-pip python3-setuptools patchelf desktop-file-utils libgdk-pixbuf2.0-dev fakeroot strace fuse
+
+# Install appimagetool AppImage
+RUN sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
+RUN sudo chmod +x /usr/local/bin/appimagetool

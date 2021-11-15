@@ -1,7 +1,5 @@
 name: Build and release for target platforms
 
-on: [pull_request]
-
 jobs:
   windows-x86_64-build:
     name: Windows x86_64 build
