@@ -11,6 +11,8 @@ mkdir -p llvm
 tar -xf `basename $1` -C llvm --strip-components 1
 
 echo '🤖 Building compiler'
+export PATH=$PATH:/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin
+ldd llvm/bin/llvm-config
 llvm/bin/llvm-config --includedir
 make build LLVM_PATH=llvm -j 8
 BUILD_NAME=`cat build-name.txt`
