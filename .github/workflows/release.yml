@@ -17,6 +17,8 @@ jobs:
       - name: Build
         run: |
           export PATH=$PATH:/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin
+          ls /c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin
+          ldd llvm/bin/llvm-config --includedir
           scripts/Linux/build.sh https://github.com/RainingComputers/shnootalk-llvm-windows-build/releases/download/12.0.1/LLVM-12.0.1-Windows_NT-AMD64.tar.xz
       - name: Set release file
         id: set_file
