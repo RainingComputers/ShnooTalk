@@ -11,6 +11,7 @@ mkdir -p llvm
 tar -xf `basename $1` -C llvm --strip-components 1
 
 echo '🤖 Building compiler'
+llvm/bin/llvm-config --includedir
 make build LLVM_PATH=llvm -j 8
 BUILD_NAME=`cat build-name.txt`
 
