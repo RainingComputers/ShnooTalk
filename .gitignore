@@ -53,9 +53,10 @@ zipdata/
 .mypy_cache/
 
 # AppImage
-*.AppDir/
+AppDir/
 shtkc
 *.AppImage
+appimage-builder-cache
 
 # Ci
 *.tar.xz

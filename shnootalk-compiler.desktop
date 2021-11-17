@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=ShnooTalk
+GenericName=ShnooTalk Compiler
+Comment=ShnooTalk Compiler
+Icon=application-x-executable
+Categories=Development
+Exec=shtkc

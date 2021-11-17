@@ -37,8 +37,6 @@ CXX ?= clang++
 # Set version string
 VERSION_STRING = $(shell cat version)
 
-
-
 # Get platform
 ifeq ($(OS), Windows_NT)
 	PLATFORM = $(OS)-$(PROCESSOR_ARCHITECTURE)
@@ -154,3 +152,5 @@ clean:
 	rm -f *.tar.xz
 	rm -rf llvm
 	rm -f build-name.txt
+	rm -rf appimage-builder-cache
+	rm -rf AppDir
