@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build docker build environment
-        run: docker build scripts/Linux/$DISTRO/Dockerfile . -t shnootalk-build-env
+        run: docker build -f scripts/Linux/$DISTRO/Dockerfile . -t shnootalk-build-env
       - name: Build compiler
         run: |
           docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest \
