@@ -45,6 +45,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install AppImage Builder
+        run: |
+          sudo apt install -y python3-pip python3-setuptools patchelf desktop-file-utils libgdk-pixbuf2.0-dev fakeroot strace fuse
+          sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
+          sudo chmod +x /usr/local/bin/appimagetool
+          sudo pip3 install appimage-builder
       - name: Install LLVM
         run: sudo apt install llvm-12 llvm-12-dev
       - name: Build Compiler
