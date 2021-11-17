@@ -3,12 +3,17 @@
 
 set -e
 
-echo '🤖 Downloading LLVM release'
-curl -OL https://github.com/llvm/llvm-project/releases/download/$1
+TAR_NAME=`basename $1`
 
-echo '🤖 Extracting release'
-mkdir -p llvm
-tar -xf `basename $1` -C llvm --strip-components 1
+if [ ! -f "$TAR_NAME" ]
+then
+    echo '🤖 Downloading LLVM release'
+    curl -OL https://github.com/llvm/llvm-project/releases/download/$1
+
+    echo '🤖 Extracting release'
+    mkdir -p llvm
+    tar -xf $TAR_NAME -C llvm --strip-components 1
+fi
 
 echo '🤖 Building compiler'
 make build LLVM_PATH=llvm -j 8

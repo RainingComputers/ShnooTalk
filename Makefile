@@ -37,15 +37,15 @@ CXX ?= clang++
 # Set version string
 VERSION_STRING = $(shell cat version)
 
+
+
 # Get platform
 ifeq ($(OS), Windows_NT)
 	PLATFORM = $(OS)-$(PROCESSOR_ARCHITECTURE)
 	EXEC_NAME := $(EXEC_NAME).exe
-else ifeq ($(CXX), x86_64-w64-mingw32-g++)
-	PLATFORM = Windows_NT-AMD64
-	EXEC_NAME := $(EXEC_NAME).exe
-else ifeq ($(CXX), arm-linux-gnueabi-g++)
-	PLATFORM = Linux-arm
+else ifeq ($(shell uname -s), Linux)
+	DISTRO = $(shell grep -oP '(?<=^ID=).+' /etc/os-release | tr -d '"')
+	PLATFORM = $(shell uname -s)-$(DISTRO)-$(shell uname -m)
 else
 	PLATFORM = $(shell uname -s)-$(shell uname -m)
 endif

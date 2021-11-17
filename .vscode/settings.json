@@ -86,6 +86,7 @@
         "ccache",
         "chdir",
         "CONDN",
+        "distro",
         "Dont",
         "dpeek",
         "dtype",
