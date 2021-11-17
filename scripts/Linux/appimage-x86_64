@@ -1,7 +1,7 @@
 # appimage-builder recipe see https://appimage-builder.readthedocs.io for details
 version: 1
 AppDir:
-  path: /home/shnoo/Projects/ShnooTalk/AppDir
+  path: ./AppDir
   app_info:
     id: shnootalk-compiler
     name: shtkc
