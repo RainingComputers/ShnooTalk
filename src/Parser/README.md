@@ -43,6 +43,8 @@ literal = intLiteral,
         | binLiteral,
         | ("-" | "+") literal
 
+generic = "generic"  "[" identifier {"," identifier} "]"
+
 use = "use" stringLiteral "as" identifier
 
 from = "from" identifier "use" identifier {"," identifier}
@@ -61,7 +63,9 @@ identifierWithQualidentAndSubscript = identifierWithSubscript<false> {"." identi
 
 moduleQualident = {identifier "::"}
 
-typeDefinition = moduleQualident (identifierWithSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts)
+identifierWithGeneric = identifier "<" typeDefinition ">"
+
+typeDefinition = moduleQualident (identifierWithSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts | identifierWithGeneric)
 
 identifierDeclaration = identifier ":" typeDefinition
 
