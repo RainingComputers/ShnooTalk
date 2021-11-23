@@ -4,8 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/llvm-12",
-                "/usr/include/llvm-c-12"
+                "/opt/homebrew/opt/llvm@12/include/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
