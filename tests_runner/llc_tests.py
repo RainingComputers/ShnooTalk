@@ -3,6 +3,7 @@ import os
 from tests_runner.utils.batch import batch_run
 from tests_runner.utils.dir import remove_files
 from tests_runner.utils.result import TestResult
+from tests_runner.utils.config import LLC_BIN
 from tests_runner.utils.validator import compile_phase, command_validator
 
 
@@ -18,7 +19,7 @@ def run_single(file_name: str) -> TestResult:
             skip_on_compile_error=True
         ),
         expected_on_compile_fail=None,
-        command_on_compile_success=["llc-12", llc_file],
+        command_on_compile_success=[LLC_BIN, llc_file],
         expected_command_output=None,
     )
 
