@@ -233,6 +233,7 @@ namespace lexer
     {
         static std::map<std::string, token::TokenType> stringTypeMap = {
             { "use", token::USE },
+            { "generic", token::GENERIC},
             { "as", token::AS },
             { "from", token::FROM },
             { "fn", token::FUNCTION },

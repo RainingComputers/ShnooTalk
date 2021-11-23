@@ -75,6 +75,7 @@ const std::string tokenTypeToString[] = {
     "BITWISE_AND",
     "CONDN_AND",
     "USE",
+    "GENERIC",
     "AS",
     "FROM",
     "MUTABLE",
@@ -92,6 +93,7 @@ const std::string tokenTypeToString[] = {
 const std::string nodeTypeToString[] = {
     "PROGRAM",
     "USE",
+    "GENERIC",
     "FROM",
     "BLOCK",
     "MODULE",
