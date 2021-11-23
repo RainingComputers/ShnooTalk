@@ -59,6 +59,29 @@ void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
+void identifierWithGeneric(parser::ParserContext& ctx)
+{
+    ctx.addNode(node::IDENTIFIER);
+
+    ctx.expect(token::LESS_THAN);
+    
+    do 
+    {
+        ctx.consume();
+
+        ctx.pushNode();
+
+        ctx.addNodeMakeCurrentNoConsume(node::GENERIC);
+        ctx.addNode(node::IDENTIFIER);
+
+        ctx.popNode();
+
+    }   while(ctx.accept(token::COMMA));
+
+    ctx.expect(token::GREATER_THAN);
+    ctx.consume();
+}
+
 void moduleQualident(parser::ParserContext& ctx)
 {
     while (ctx.peek(token::DOUBLE_COLON))
@@ -79,6 +102,8 @@ void typeDefinition(parser::ParserContext& ctx)
         identifierWithPointerStar(ctx);
     else if (ctx.peek(token::EMPTY_SUBSCRIPT))
         identifierWithEmptySubscript(ctx);
+    else if (ctx.peek(token::LESS_THAN))
+        identifierWithGeneric(ctx);
     else
         identifierWithSubscript(ctx, true);
 }

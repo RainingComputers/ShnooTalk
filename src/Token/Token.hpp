@@ -81,6 +81,7 @@ namespace token
         BITWISE_AND,
         CONDN_AND,
         USE,
+        GENERIC,
         AS,
         FROM,
         MUTABLE,

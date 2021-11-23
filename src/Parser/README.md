@@ -61,9 +61,9 @@ identifierWithEmptySubscripts = identifier "[]"
 
 identifierWithQualidentAndSubscript = identifierWithSubscript<false> {"." identifierWithSubscript<false>}
 
-moduleQualident = {identifier "::"}
-
 identifierWithGeneric = identifier "<" typeDefinition ">"
+
+moduleQualident = {identifier "::"}
 
 typeDefinition = moduleQualident (identifierWithSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts | identifierWithGeneric)
 

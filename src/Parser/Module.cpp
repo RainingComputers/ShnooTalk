@@ -3,6 +3,7 @@
 #include "Enum.hpp"
 #include "Function.hpp"
 #include "Structure.hpp"
+#include "Generic.hpp"
 #include "Use.hpp"
 
 #include "Module.hpp"
@@ -11,6 +12,9 @@ void programModule(parser::ParserContext& ctx)
 {
     token::TokenType expected[] = { token::STRUCT, token::FUNCTION, token::EXTERN_FUNCTION, token::ENUM,
                                     token::DEF,    token::VAR,      token::END_OF_FILE };
+
+    if (ctx.accept(token::GENERIC))
+        generic(ctx);
 
     while (ctx.accept(token::USE))
         use(ctx);

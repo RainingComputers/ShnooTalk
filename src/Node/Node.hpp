@@ -10,6 +10,7 @@ namespace node
     {
         PROGRAM,
         USE,
+        GENERIC,
         FROM,
         BLOCK,
         MODULE,
