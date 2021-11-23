@@ -73,12 +73,23 @@ LLVM_CONFIG_12_BIN_EXISTS := $(shell llvm-config-12 --version >/dev/null 2>&1 ||
 
 ifneq (,${LLVM_PATH})
 	LLVM_CONFIG_BIN = $(LLVM_PATH)/bin/llvm-config
+	LLVM_LLC_BIN = $(LLVM_PATH)/bin/llv
 else ifeq (,${LLVM_CONFIG_12_BIN_EXISTS})
     LLVM_CONFIG_BIN = llvm-config-12
+	LLVM_LLC_BIN = llc-12
 else ifeq ($(shell uname -s), Darwin)
-	LLVM_CONFIG_BIN = /usr/local/opt/llvm@12/bin/llvm-config
+
+	ifeq ($(shell uname -m), arm64) 
+		LLVM_BIN_PATH = /opt/homebrew/opt/llvm@12/bin
+	else
+		LLVM_BIN_PATH = /usr/local/opt/llvm@12/bin
+	endif
+
+	LLVM_CONFIG_BIN = $(LLVM_BIN_PATH)/llvm-config
+	LLVM_LLC_BIN = $(LLVM_BIN_PATH)/llc
 else
     LLVM_CONFIG_BIN = llvm-config
+	LLVM_LLC_BIN = llc
 endif
 
 # Set compiler and linker flags for llvm
@@ -127,7 +138,7 @@ format-dry-run:
 	clang-format -i $(SOURCES) --dry-run --Werror
 
 test:
-	python3 -m tests_runner --test
+	LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner --test
 
 coverage:
 	python3 -m tests_runner --coverage

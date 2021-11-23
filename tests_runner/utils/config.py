@@ -28,6 +28,8 @@ BUILD_TYPE = "debug" if PARSED_ARGS is None else PARSED_ARGS
 
 COMPILER_EXEC_PATH = os.path.join(os.getcwd(),  f"bin/{BUILD_TYPE}/shtkc")
 
+LLC_BIN = os.getenv("LLC_BIN", default="llc-12")
+
 OBJ_DIR = os.path.join(os.getcwd(),  f"./obj/{BUILD_TYPE}/")
 
 COVERAGE_REPORT_DIR = os.path.join(os.getcwd(), "tests",  "reports")
