@@ -64,8 +64,8 @@ void identifierWithGeneric(parser::ParserContext& ctx)
     ctx.addNode(node::IDENTIFIER);
 
     ctx.expect(token::LESS_THAN);
-    
-    do 
+
+    do
     {
         ctx.consume();
 
@@ -76,7 +76,7 @@ void identifierWithGeneric(parser::ParserContext& ctx)
 
         ctx.popNode();
 
-    }   while(ctx.accept(token::COMMA));
+    } while (ctx.accept(token::COMMA));
 
     ctx.expect(token::GREATER_THAN);
     ctx.consume();
