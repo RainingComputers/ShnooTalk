@@ -2,8 +2,8 @@
 #include "Define.hpp"
 #include "Enum.hpp"
 #include "Function.hpp"
-#include "Structure.hpp"
 #include "Generic.hpp"
+#include "Structure.hpp"
 #include "Use.hpp"
 
 #include "Module.hpp"
