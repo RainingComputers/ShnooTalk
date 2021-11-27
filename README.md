@@ -4,7 +4,7 @@
 
 ShnooTalk is a programming language implemented in C++ using the LLVM compiler framework. ShnooTalk works by being compiled to a custom IR format and then translating that to LLVM IR. It is possible to run ShnooTalk on any runtime that supports the clang compiler. ShnooTalk links against standard C libraries/runtime.
 
-See the tests directory for examples, try out the language in your browser on [ShnooTalk Playground](http://rainingcomputers.gitlab.io/shnootalk-playground/).
+See the tests directory for examples, try out the language in your browser on [ShnooTalk Playground](https://rainingcomputers.github.io/shnootalk-playground/).
 
 🛠️ Project under construction, some things may not be fully polished yet 🛠️
 
