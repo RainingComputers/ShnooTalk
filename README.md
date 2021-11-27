@@ -78,7 +78,7 @@ clang app.o -o app
 - [ ] Static variables
 - [ ] Language tour using shnootalk-playground
 - [ ] Language reference in markdown
-- [ ] Setup github workflows and build for other platforms
+- [x] Setup github workflows and build for other platforms
 - [ ] Error recovery
 
 ### Advanced features
