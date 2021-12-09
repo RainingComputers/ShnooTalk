@@ -110,7 +110,7 @@ void typeDefinition(parser::ParserContext& ctx)
 
     ctx.expect(token::IDENTIFIER);
 
-    if (ctx.peek(token::OPEN_SQUARE))
+    if (ctx.peek(token::OPEN_SQUARE) && !ctx.dpeek(token::INT_LITERAL))
         identifierWithGeneric(ctx);
     else if (ctx.peek(token::MULTIPLY))
         identifierWithPointerStar(ctx);
