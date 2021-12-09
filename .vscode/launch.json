@@ -50,6 +50,36 @@
             "externalConsole": false
         },
         {
+            "name": "-icode",
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-icode"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
+            "name": "-json-icode",
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-json-icode"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "name": "-llvm",
             "type": "lldb",
             "request": "launch",
