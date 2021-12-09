@@ -13,6 +13,10 @@
 # 0
 # 1
 # 1
+# x=3 y=3.000000
+# x=2 y=2.000000
+# x=1 y=1.000000
+# x=2 y=2.000000
 # 1
 
 extfn sqrtf(num: float) -> float
@@ -136,6 +140,14 @@ fn main() -> int
     println(a>=b)
     println(a<b)
     println(a<=b)
+
+    a += b
+    printFoo(a)
+    printFoo(b)
+
+    a -= b
+    printFoo(a)
+    printFoo(b)
 
     a = createFoo(1, 1.0)
     b = createFoo(1, 1.0)

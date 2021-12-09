@@ -21,6 +21,11 @@ TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& 
     return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
 }
 
+bool isGenericTypeNode(GeneratorContext& ctx, const Node& root)
+{
+    return root.isNthChildFromLast(node::GENERIC, 1);
+}
+
 TypeDescription typeDescriptionFromNode(GeneratorContext& ctx, const Node& root)
 {
     size_t childNodeCounter = 1;
