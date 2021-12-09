@@ -53,19 +53,21 @@ enumList = "enum" "[" identifier {"," identifier} "]"
 
 def = "def" identifier (literal | stringLiteral)
 
-identifierWithSubscript = identifier {"[" (literalSubscriptOnly? literal : expression)  "]"}
+identifierWithOptionalSubscript = identifier {"[" (literalSubscriptOnly? literal : expression)  "]"}
 
 identifierWithPointerStar = identifier "*"
 
 identifierWithEmptySubscripts = identifier "[]"
 
-identifierWithQualidentAndSubscript = identifierWithSubscript<false> {"." identifierWithSubscript<false>}
+identifierWithQualidentAndSubscript = identifierWithOptionalSubscript<false> {"." identifierWithOptionalSubscript<false>}
 
-identifierWithGeneric = identifier "<" typeDefinition ">"
+identifierWithGeneric = identifier "[" typeDefinitionNoPointer {"," typeDefinitionNoPointer} "]"
 
 moduleQualident = {identifier "::"}
 
-typeDefinition = moduleQualident (identifierWithSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts | identifierWithGeneric)
+typeDefinitionNoPointer = moduleQualident (identifier | identifierWithGeneric)
+
+typeDefinition = moduleQualident (identifierWithOptionalSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts | identifierWithGeneric)
 
 identifierDeclaration = identifier ":" typeDefinition
 

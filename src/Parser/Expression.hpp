@@ -3,9 +3,10 @@
 
 #include "ParserContext.hpp"
 
-void identifierWithSubscript(parser::ParserContext& ctx, bool literalSubscriptOnly);
+void identifierWithOptionalSubscript(parser::ParserContext& ctx, bool literalSubscriptOnly);
 void identifierWithQualidentAndSubscript(parser::ParserContext& ctx);
 void moduleQualident(parser::ParserContext& ctx);
+void typeDefinitionNoPointer(parser::ParserContext& ctx);
 void typeDefinition(parser::ParserContext& ctx);
 void actualParameterList(parser::ParserContext& ctx);
 void functionCall(parser::ParserContext& ctx);
