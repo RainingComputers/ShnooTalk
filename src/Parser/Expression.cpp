@@ -2,7 +2,7 @@
 
 #include "Expression.hpp"
 
-void identifierWithSubscript(parser::ParserContext& ctx, bool literalSubscriptOnly)
+void identifierWithOptionalSubscript(parser::ParserContext& ctx, bool literalSubscriptOnly)
 {
     ctx.addNode(node::IDENTIFIER);
 
@@ -43,7 +43,7 @@ void identifierWithEmptySubscript(parser::ParserContext& ctx)
 
 void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
 {
-    identifierWithSubscript(ctx, false);
+    identifierWithOptionalSubscript(ctx, false);
 
     ctx.pushNode();
 
@@ -53,7 +53,7 @@ void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
     {
         ctx.addNode(node::STRUCT_FIELD);
         ctx.expect(token::IDENTIFIER);
-        identifierWithSubscript(ctx, false);
+        identifierWithOptionalSubscript(ctx, false);
     }
 
     ctx.popNode();
@@ -63,7 +63,7 @@ void identifierWithGeneric(parser::ParserContext& ctx)
 {
     ctx.addNode(node::IDENTIFIER);
 
-    ctx.expect(token::LESS_THAN);
+    ctx.expect(token::OPEN_SQUARE);
 
     do
     {
@@ -72,13 +72,13 @@ void identifierWithGeneric(parser::ParserContext& ctx)
         ctx.pushNode();
 
         ctx.addNodeMakeCurrentNoConsume(node::GENERIC);
-        ctx.addNode(node::IDENTIFIER);
+        typeDefinitionNoPointer(ctx);
 
         ctx.popNode();
 
     } while (ctx.accept(token::COMMA));
 
-    ctx.expect(token::GREATER_THAN);
+    ctx.expect(token::CLOSE_SQUARE);
     ctx.consume();
 }
 
@@ -92,20 +92,32 @@ void moduleQualident(parser::ParserContext& ctx)
     }
 }
 
+void typeDefinitionNoPointer(parser::ParserContext& ctx)
+{
+    moduleQualident(ctx);
+
+    ctx.expect(token::IDENTIFIER);
+
+    if (ctx.peek(token::OPEN_SQUARE))
+        identifierWithGeneric(ctx);
+    else
+        ctx.addNode(node::IDENTIFIER);
+}
+
 void typeDefinition(parser::ParserContext& ctx)
 {
     moduleQualident(ctx);
 
     ctx.expect(token::IDENTIFIER);
 
-    if (ctx.peek(token::MULTIPLY))
+    if (ctx.peek(token::OPEN_SQUARE))
+        identifierWithGeneric(ctx);
+    else if (ctx.peek(token::MULTIPLY))
         identifierWithPointerStar(ctx);
     else if (ctx.peek(token::EMPTY_SUBSCRIPT))
         identifierWithEmptySubscript(ctx);
-    else if (ctx.peek(token::LESS_THAN))
-        identifierWithGeneric(ctx);
     else
-        identifierWithSubscript(ctx, true);
+        identifierWithOptionalSubscript(ctx, true);
 }
 
 void actualParameterList(parser::ParserContext& ctx)
