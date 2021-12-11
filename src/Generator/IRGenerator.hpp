@@ -14,8 +14,6 @@ namespace generator
                     const std::string& moduleName,
                     icode::TargetEnums& target,
                     icode::StringModulesMap& modulesMap);
-
-    void cloneContextAndGenerateIR(generator::GeneratorContext& ctx, const std::string& moduleName);
 }
 
 #endif

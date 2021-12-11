@@ -144,7 +144,7 @@ coverage:
 	python3 -m tests_runner --coverage
 
 tidy:
-	clang-tidy $(SOURCES)  -- $(CXXFLAGS) -Wextra
+	clang-tidy $(SOURCES) -- $(CXXFLAGS) -Wextra
 
 clean:
 	rm -f -r bin/
