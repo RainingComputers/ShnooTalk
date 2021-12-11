@@ -76,7 +76,9 @@
         "queue": "cpp",
         "stack": "cpp",
         "codecvt": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "__config": "cpp",
+        "__threading_support": "cpp"
     },
     "cSpell.words": [
         "aggs",
@@ -94,6 +96,7 @@
         "dylibs",
         "extfn",
         "gcov",
+        "GENERATORIR",
         "gmon",
         "gnueabihf",
         "gprof",

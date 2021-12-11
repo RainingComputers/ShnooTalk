@@ -12,9 +12,12 @@ namespace generator
         ScopeTracker scope;
         Console& console;
 
+        icode::StringModulesMap& modulesMap;
+        icode::TargetEnums& target;
+
         GeneratorContext(icode::TargetEnums& target,
-                         icode::StringModulesMap& modules_map,
-                         const std::string& file_name,
+                         icode::StringModulesMap& modulesMap,
+                         const std::string& fileName,
                          Console& console);
     };
 }

@@ -1,12 +1,21 @@
 #ifndef GENERATORIR_IR_GENERATOR
 #define GENERATORIR_IR_GENERATOR
 
+#include "../Console/Console.hpp"
+#include "../IntermediateRepresentation/ModuleDescription.hpp"
+#include "../Node/Node.hpp"
 #include "GeneratorContext.hpp"
 
 namespace generator
 {
-    void getUses(generator::GeneratorContext& ctx, const Node& root);
-    void generateModule(generator::GeneratorContext& ctx, const Node& root);
+    Node generateAST(Console& console);
+
+    void generateIR(Console& console,
+                    const std::string& moduleName,
+                    icode::TargetEnums& target,
+                    icode::StringModulesMap& modulesMap);
+
+    void cloneContextAndGenerateIR(generator::GeneratorContext& ctx, const std::string& moduleName);
 }
 
 #endif

@@ -4,7 +4,7 @@
 
 ScopeTracker::ScopeTracker()
 {
-    scopeCounter = 0;
+    resetScope();
 }
 
 unsigned int ScopeTracker::getCurrentScope()

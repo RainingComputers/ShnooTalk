@@ -3,8 +3,6 @@
 
 #include "Console/Console.hpp"
 #include "Generator/IRGenerator.hpp"
-#include "Lexer/Lexer.hpp"
-#include "Parser/Parser.hpp"
 #include "PrettyPrint/ASTPrinter.hpp"
 #include "PrettyPrint/IRPrinter.hpp"
 #include "PrettyPrint/PrettyPrintError.hpp"
@@ -30,54 +28,25 @@ void printCLIUsage()
     pp::println("Use shtkc -version for compiler version");
 }
 
-Node generateAST(Console& console)
-{
-    lexer::Lexer lex(*console.getStream(), console);
-    return parser::generateAST(lex, console);
-}
-
-void generateIR(Console& console,
-                const std::string& moduleName,
-                icode::TargetEnums& target,
-                icode::StringModulesMap& modulesMap)
-{
-
-    Node ast = generateAST(console);
-
-    generator::GeneratorContext generatorContext(target, modulesMap, moduleName, console);
-
-    generator::getUses(generatorContext, ast);
-
-    for (std::string use : modulesMap[moduleName].uses)
-        if (modulesMap.find(use) == modulesMap.end())
-        {
-            console.pushModule(use);
-            generateIR(console, use, target, modulesMap);
-            console.popModule();
-        }
-
-    generator::generateModule(generatorContext, ast);
-}
-
 int phaseDriver(const std::string& moduleName, const std::string& option, Console& console)
 {
     console.pushModule(moduleName);
 
     if (option == "-ast")
     {
-        pp::printNode(generateAST(console));
+        pp::printNode(generator::generateAST(console));
         return 0;
     }
 
     if (option == "-json-ast")
     {
-        pp::printJSONAST(generateAST(console));
+        pp::printJSONAST(generator::generateAST(console));
         return 0;
     }
 
     icode::StringModulesMap modulesMap;
     icode::TargetEnums target = translator::getTarget();
-    generateIR(console, moduleName, target, modulesMap);
+    generator::generateIR(console, moduleName, target, modulesMap);
 
     if (option == "-ir")
     {
