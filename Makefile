@@ -150,7 +150,7 @@ clean:
 	rm -f -r bin/
 	rm -f -r obj/
 	rm -f -r tests/reports/
-	rm -f -r tests/*.info
+	rm -f -r tests/compiler/*.info
 	rm -f tests/compiler/*.llc
 	rm -f tests/compiler/*.llc.s
 	rm -f tests/compiler/*.o
