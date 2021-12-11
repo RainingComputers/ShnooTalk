@@ -61,11 +61,9 @@ identifierWithEmptySubscripts = identifier "[]"
 
 identifierWithQualidentAndSubscript = identifierWithOptionalSubscript<false> {"." identifierWithOptionalSubscript<false>}
 
-identifierWithGeneric = identifier "[" typeDefinitionNoPointer {"," typeDefinitionNoPointer} "]"
+identifierWithGeneric = identifier "[" typeDefinition {"," typeDefinition} "]"
 
 moduleQualident = {identifier "::"}
-
-typeDefinitionNoPointer = moduleQualident (identifier | identifierWithGeneric)
 
 typeDefinition = moduleQualident (identifierWithOptionalSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts | identifierWithGeneric)
 
