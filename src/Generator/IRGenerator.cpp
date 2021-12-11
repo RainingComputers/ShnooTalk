@@ -22,13 +22,15 @@ void block(generator::GeneratorContext& ctx,
            const Operand& breakLabel,
            const Operand& continueLabel);
 
+void cloneContextAndGenerateIR(generator::GeneratorContext& ctx, const std::string& moduleName);
+
 void createUse(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& moduleNameToken = root.getNthChildToken(0);
 
     ctx.ir.moduleBuilder.createUse(moduleNameToken, root.getNthChildToken(1));
 
-    generator::cloneContextAndGenerateIR(ctx, moduleNameToken.toUnescapedString());
+    cloneContextAndGenerateIR(ctx, moduleNameToken.toUnescapedString());
 }
 
 TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& typeDescription, size_t startIndex)
@@ -480,7 +482,7 @@ void generator::generateIR(Console& console,
     generateModule(generatorContext, ast);
 }
 
-void generator::cloneContextAndGenerateIR(generator::GeneratorContext& ctx, const std::string& moduleName)
+void cloneContextAndGenerateIR(generator::GeneratorContext& ctx, const std::string& moduleName)
 {
     if (ctx.modulesMap.find(moduleName) != ctx.modulesMap.end())
         return;

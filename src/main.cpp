@@ -6,7 +6,6 @@
 #include "PrettyPrint/ASTPrinter.hpp"
 #include "PrettyPrint/IRPrinter.hpp"
 #include "PrettyPrint/PrettyPrintError.hpp"
-#include "Token/Token.hpp"
 #include "Translator/LLVMTranslator.hpp"
 
 #include "version.hpp"
