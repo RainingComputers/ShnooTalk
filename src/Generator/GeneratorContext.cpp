@@ -1,5 +1,3 @@
-#include "../Builder/NameMangle.hpp"
-
 #include "GeneratorContext.hpp"
 
 namespace generator
@@ -11,6 +9,8 @@ namespace generator
 
         : ir(target, modulesMap, fileName, console)
         , console(console)
+        , modulesMap(modulesMap)
+        , target(target)
     {
     }
 }
