@@ -72,7 +72,7 @@ void identifierWithGeneric(parser::ParserContext& ctx)
         ctx.pushNode();
 
         ctx.addNodeMakeCurrentNoConsume(node::GENERIC);
-        typeDefinitionNoPointer(ctx);
+        typeDefinition(ctx);
 
         ctx.popNode();
 
@@ -90,18 +90,6 @@ void moduleQualident(parser::ParserContext& ctx)
         ctx.addNode(node::MODULE);
         ctx.consume();
     }
-}
-
-void typeDefinitionNoPointer(parser::ParserContext& ctx)
-{
-    moduleQualident(ctx);
-
-    ctx.expect(token::IDENTIFIER);
-
-    if (ctx.peek(token::OPEN_SQUARE))
-        identifierWithGeneric(ctx);
-    else
-        ctx.addNode(node::IDENTIFIER);
 }
 
 void typeDefinition(parser::ParserContext& ctx)
