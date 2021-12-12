@@ -12,7 +12,6 @@ namespace parser
     ParserContext::ParserContext(lexer::Lexer& lexer, Console& console)
         : lex(lexer)
         , console(console)
-        , ast(node::PROGRAM)
     {
         currentNode = &ast;
 

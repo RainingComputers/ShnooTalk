@@ -8,9 +8,9 @@ Node::Node(NodeType nodeType, Token token)
     tok = token;
 }
 
-Node::Node(NodeType nodeType)
+Node::Node()
 {
-    type = nodeType;
+    type = PROGRAM;
     tok = Token();
 }
 

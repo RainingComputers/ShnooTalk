@@ -33,6 +33,14 @@ void createUse(generator::GeneratorContext& ctx, const Node& root)
     cloneContextAndGenerateIR(ctx, moduleNameToken.toUnescapedString());
 }
 
+void createFrom(generator::GeneratorContext& ctx, const Node& root)
+{
+    const Token& moduleNameToken = root.children[0].tok;
+
+    for (Node child : root.children[1].children)
+        ctx.ir.moduleBuilder.createFrom(moduleNameToken, child.tok);
+}
+
 TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& typeDescription, size_t startIndex)
 {
     std::vector<int> dimensions;
@@ -46,11 +54,6 @@ TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& 
     }
 
     return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
-}
-
-bool isGenericTypeNode(generator::GeneratorContext& ctx, const Node& root)
-{
-    return root.isNthChildFromLast(node::GENERIC, 1);
 }
 
 TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
@@ -85,14 +88,6 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
     return typeDescription;
 }
 
-void createFrom(generator::GeneratorContext& ctx, const Node& root)
-{
-    const Token& moduleNameToken = root.children[0].tok;
-
-    for (Node child : root.children[1].children)
-        ctx.ir.moduleBuilder.createFrom(moduleNameToken, child.tok);
-}
-
 TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& paramNode)
 {
     TypeDescription paramType = typeDescriptionFromNode(ctx, paramNode);
@@ -106,6 +101,26 @@ TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& param
 bool isParamNode(const Node& nodeToCheck)
 {
     return nodeToCheck.type == node::PARAM || nodeToCheck.type == node::MUT_PARAM;
+}
+
+void createStructFromNode(generator::GeneratorContext& ctx, const Node& root)
+{
+    const Token& nameToken = root.getNthChildToken(0);
+
+    std::vector<Token> fieldNames;
+    std::vector<icode::TypeDescription> fieldTypes;
+
+    for (size_t i = 0; i < root.children[0].children.size(); i++)
+    {
+        const Token& fieldName = root.children[0].children[i].getNthChildToken(0);
+
+        TypeDescription fieldType = typeDescriptionFromNode(ctx, root.children[0].children[i]);
+
+        fieldNames.push_back(fieldName);
+        fieldTypes.push_back(fieldType);
+    }
+
+    ctx.ir.moduleBuilder.createStruct(nameToken, fieldNames, fieldTypes);
 }
 
 void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
@@ -144,24 +159,37 @@ void createGlobalFromNode(generator::GeneratorContext& ctx, const Node& root)
     ctx.ir.moduleBuilder.createGlobal(globalName, globalType);
 }
 
-void createStructFromNode(generator::GeneratorContext& ctx, const Node& root)
+void generateSymbol(generator::GeneratorContext& ctx, const Node& child)
 {
-    const Token& nameToken = root.getNthChildToken(0);
+    ctx.scope.resetScope();
 
-    std::vector<Token> fieldNames;
-    std::vector<icode::TypeDescription> fieldTypes;
-
-    for (size_t i = 0; i < root.children[0].children.size(); i++)
+    switch (child.type)
     {
-        const Token& fieldName = root.children[0].children[i].getNthChildToken(0);
-
-        TypeDescription fieldType = typeDescriptionFromNode(ctx, root.children[0].children[i]);
-
-        fieldNames.push_back(fieldName);
-        fieldTypes.push_back(fieldType);
+        case node::USE:
+            createUse(ctx, child);
+            break;
+        case node::FROM:
+            createFrom(ctx, child);
+            break;
+        case node::STRUCT:
+            createStructFromNode(ctx, child);
+            break;
+        case node::FUNCTION:
+        case node::EXTERN_FUNCTION:
+            createFunctionFromNode(ctx, child);
+            break;
+        case node::ENUM:
+            createEnumFromNode(ctx, child);
+            break;
+        case node::DEF:
+            createDefineFromNode(ctx, child);
+            break;
+        case node::VAR:
+            createGlobalFromNode(ctx, child);
+            break;
+        default:
+            ctx.console.internalBugErrorOnToken(child.tok);
     }
-
-    ctx.ir.moduleBuilder.createStruct(nameToken, fieldNames, fieldTypes);
 }
 
 void local(generator::GeneratorContext& ctx, const Node& root)
@@ -404,39 +432,6 @@ void block(generator::GeneratorContext& ctx,
     ctx.scope.exitScope();
 }
 
-void generateSymbol(generator::GeneratorContext& ctx, const Node& child)
-{
-    ctx.scope.resetScope();
-
-    switch (child.type)
-    {
-        case node::USE:
-            createUse(ctx, child);
-            break;
-        case node::FROM:
-            createFrom(ctx, child);
-            break;
-        case node::STRUCT:
-            createStructFromNode(ctx, child);
-            break;
-        case node::FUNCTION:
-        case node::EXTERN_FUNCTION:
-            createFunctionFromNode(ctx, child);
-            break;
-        case node::ENUM:
-            createEnumFromNode(ctx, child);
-            break;
-        case node::DEF:
-            createDefineFromNode(ctx, child);
-            break;
-        case node::VAR:
-            createGlobalFromNode(ctx, child);
-            break;
-        default:
-            ctx.console.internalBugErrorOnToken(child.tok);
-    }
-}
-
 void generateFunction(generator::GeneratorContext& ctx, const Node& child)
 {
     const Token& functionNameToken = child.children[0].tok;
@@ -471,14 +466,24 @@ Node generator::generateAST(Console& console)
     return parser::generateAST(lex, console);
 }
 
+bool isGenericModule(const Node& ast)
+{
+    return ast.children[0].type == node::GENERIC;
+}
+
 void generator::generateIR(Console& console,
                            const std::string& moduleName,
                            icode::TargetEnums& target,
-                           icode::StringModulesMap& modulesMap)
+                           icode::StringModulesMap& modulesMap,
+                           monomorphizer::StringGenericASTMap& genericsMap)
 {
 
     Node ast = generateAST(console);
-    generator::GeneratorContext generatorContext(target, modulesMap, moduleName, console);
+
+    if (isGenericModule(ast))
+        console.compileErrorOnToken("Connot compile a GENERIC", ast.children[0].tok);
+
+    generator::GeneratorContext generatorContext(target, modulesMap, genericsMap, moduleName, console);
     generateModule(generatorContext, ast);
 }
 
@@ -488,6 +493,22 @@ void cloneContextAndGenerateIR(generator::GeneratorContext& ctx, const std::stri
         return;
 
     ctx.console.pushModule(moduleName);
-    generator::generateIR(ctx.console, moduleName, ctx.target, ctx.modulesMap);
+
+    Node ast = generator::generateAST(ctx.console);
+
+    if (isGenericModule(ast))
+    {
+        ctx.mm.indexAST(moduleName, ast);
+    }
+    else
+    {
+        generator::GeneratorContext generatorContext(ctx.target,
+                                                     ctx.modulesMap,
+                                                     ctx.genericsMap,
+                                                     moduleName,
+                                                     ctx.console);
+        generateModule(generatorContext, ast);
+    }
+
     ctx.console.popModule();
 }
