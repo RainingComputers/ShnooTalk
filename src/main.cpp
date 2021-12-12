@@ -44,8 +44,9 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
     }
 
     icode::StringModulesMap modulesMap;
+    monomorphizer::StringGenericASTMap genericsMap;
     icode::TargetEnums target = translator::getTarget();
-    generator::generateIR(console, moduleName, target, modulesMap);
+    generator::generateIR(console, moduleName, target, modulesMap, genericsMap);
 
     if (option == "-ir")
     {
