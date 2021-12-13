@@ -93,7 +93,8 @@ namespace token
         TYPEOF,
         PRINT,
         PRINTLN,
-        INPUT
+        INPUT,
+        GENERATED
     };
 }
 

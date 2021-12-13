@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <cmath>
 
-#include "GetMapElement.hpp"
+#include "../TemplateUtils/GetMapElement.hpp"
 
 #include "ModuleDescription.hpp"
 

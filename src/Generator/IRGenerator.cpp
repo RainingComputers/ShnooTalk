@@ -13,6 +13,9 @@
 
 #include "IRGenerator.hpp"
 
+// TODO: DELETE THIS
+#include "../PrettyPrint/ASTPrinter.hpp"
+
 using namespace icode;
 
 void block(generator::GeneratorContext& ctx,
@@ -22,15 +25,57 @@ void block(generator::GeneratorContext& ctx,
            const Operand& breakLabel,
            const Operand& continueLabel);
 
-void cloneContextAndGenerateIR(generator::GeneratorContext& ctx, const std::string& moduleName);
+void generateModule(generator::GeneratorContext& ctx, const Node& root);
+
+TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root);
+
+bool isGenericModule(const Node& ast)
+{
+    return ast.children[0].type == node::GENERIC;
+}
+
+bool cloneContextAndGenerateIRFromName(generator::GeneratorContext& ctx, const std::string& moduleName)
+{
+    if (ctx.modulesMap.find(moduleName) != ctx.modulesMap.end())
+        return false;
+
+    bool isGeneric;
+
+    ctx.console.pushModule(moduleName);
+
+    Node ast = generator::generateAST(ctx.console);
+
+    if (isGenericModule(ast)) {
+        ctx.mm.indexAST(moduleName, ast);
+        isGeneric = true;
+    }
+    else
+    {
+        generator::GeneratorContext generatorContext(ctx.target,
+                                                     ctx.modulesMap,
+                                                     ctx.genericsMap,
+                                                     moduleName,
+                                                     ctx.console);
+        generateModule(generatorContext, ast);
+        isGeneric = false;
+    }
+
+    ctx.console.popModule();
+
+    return isGeneric;
+}
 
 void createUse(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& moduleNameToken = root.getNthChildToken(0);
+    const Token& aliastoken = root.getNthChildToken(1);
 
-    ctx.ir.moduleBuilder.createUse(moduleNameToken, root.getNthChildToken(1));
+    ctx.ir.moduleBuilder.createUse(moduleNameToken, aliastoken);
 
-    cloneContextAndGenerateIR(ctx, moduleNameToken.toUnescapedString());
+    bool isGeneric = cloneContextAndGenerateIRFromName(ctx, moduleNameToken.toUnescapedString());
+
+    if(isGeneric)
+        ctx.mm.createUse(moduleNameToken, aliastoken);
 }
 
 void createFrom(generator::GeneratorContext& ctx, const Node& root)
@@ -56,8 +101,59 @@ TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& 
     return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
 }
 
+void cloneContextAndGenerateIRFromMonomorphizedAST(generator::GeneratorContext& ctx,
+                                                   const std::string& moduleName,
+                                                   const Node& ast)
+{
+    ctx.console.pushModule(moduleName);
+    generator::GeneratorContext generatorContext(ctx.target, ctx.modulesMap, ctx.genericsMap, moduleName, ctx.console);
+    generateModule(generatorContext, ast);
+    ctx.console.popModule();
+}
+
+ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
+{
+    size_t childNodeCounter = 1;
+
+    std::string genericModuleName = "";
+
+    while (root.isNthChild(node::MODULE, childNodeCounter))
+    {
+        const Token& aliasToken = root.getNthChildToken(childNodeCounter);
+
+        if (childNodeCounter > 1)
+            ctx.console.compileErrorOnToken("Invalid MODULE ACCESS from GENERIC", aliasToken);
+
+        genericModuleName = ctx.mm.getGenericModuleNameFromAlias(aliasToken);
+
+        childNodeCounter++;
+    }
+
+    const Token& genericStructNameToken = root.getNthChildToken(childNodeCounter);
+    childNodeCounter++;
+
+    if (genericModuleName == "")
+        genericModuleName = ctx.mm.getGenericModuleNameGenericStruct(genericStructNameToken);
+
+    std::vector<TypeDescription> instantiationTypes;
+    std::vector<Node> instantiationTypeNodes;
+
+    while (root.isNthChild(node::GENERIC, childNodeCounter))
+    {
+        instantiationTypes.push_back(typeDescriptionFromNode(ctx, root.children[childNodeCounter]));
+        instantiationTypeNodes.push_back(root.children[childNodeCounter]);
+
+        childNodeCounter++;
+    }
+
+    pp::printNode(ctx.mm.instantiateGeneric(genericModuleName, instantiationTypes, instantiationTypeNodes));
+}
+
 TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
+    if (root.isNthChildFromLast(node::GENERIC, 1))
+       return getMonomorphizedTypeDescriptionFromNode(ctx, root);
+
     size_t childNodeCounter = 1;
 
     while (root.isNthChild(node::PARAM, childNodeCounter) || root.isNthChild(node::MUT_PARAM, childNodeCounter))
@@ -466,11 +562,6 @@ Node generator::generateAST(Console& console)
     return parser::generateAST(lex, console);
 }
 
-bool isGenericModule(const Node& ast)
-{
-    return ast.children[0].type == node::GENERIC;
-}
-
 void generator::generateIR(Console& console,
                            const std::string& moduleName,
                            icode::TargetEnums& target,
@@ -485,30 +576,4 @@ void generator::generateIR(Console& console,
 
     generator::GeneratorContext generatorContext(target, modulesMap, genericsMap, moduleName, console);
     generateModule(generatorContext, ast);
-}
-
-void cloneContextAndGenerateIR(generator::GeneratorContext& ctx, const std::string& moduleName)
-{
-    if (ctx.modulesMap.find(moduleName) != ctx.modulesMap.end())
-        return;
-
-    ctx.console.pushModule(moduleName);
-
-    Node ast = generator::generateAST(ctx.console);
-
-    if (isGenericModule(ast))
-    {
-        ctx.mm.indexAST(moduleName, ast);
-    }
-    else
-    {
-        generator::GeneratorContext generatorContext(ctx.target,
-                                                     ctx.modulesMap,
-                                                     ctx.genericsMap,
-                                                     moduleName,
-                                                     ctx.console);
-        generateModule(generatorContext, ast);
-    }
-
-    ctx.console.popModule();
 }
