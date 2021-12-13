@@ -1,7 +1,10 @@
+#include "../../TemplateUtils/GetMapElement.hpp"
+#include "Instantiator.hpp"
+#include "MonomorphNameMangle.hpp"
+
 #include "Monomorphizer.hpp"
 
 using namespace monomorphizer;
-
 
 Monomorphizer::Monomorphizer(StringGenericASTMap& genericsMap, Console& console)
     : genericsMap(genericsMap)
@@ -69,7 +72,48 @@ void Monomorphizer::indexAST(const std::string& genericModuleName, const Node& a
     std::vector<std::string> genericIdentifiers = getGenericIdentifiers(ast);
     std::vector<std::string> genericStructs = getGenericStructs(ast, genericIdentifiers);
 
-    GenericASTIndex index = GenericASTIndex{ast, genericIdentifiers, genericStructs};
+    GenericASTIndex index = GenericASTIndex{ ast, genericIdentifiers, genericStructs };
 
     genericsMap[genericModuleName] = index;
+}
+
+void Monomorphizer::createUse(const Token& pathToken, const Token& aliasToken)
+{
+    const std::string& path = pathToken.toUnescapedString();
+    const std::string& alias = aliasToken.toString();
+
+    aliases[alias] = path;
+}
+
+std::string Monomorphizer::getGenericModuleNameFromAlias(const Token& aliasToken)
+{
+    std::string genericModuleName;
+
+    if (getMapElement<std::string, std::string>(aliases, aliasToken.toString(), genericModuleName))
+        return genericModuleName;
+
+    console.compileErrorOnToken("Alias DOES NOT EXIST or NOT GENERIC", aliasToken);
+}
+
+std::string Monomorphizer::getGenericModuleNameGenericStruct(const Token& genericStructNameToken)
+{
+    std::string genericModuleName;
+
+    if (getMapElement<std::string, std::string>(genericUses, genericStructNameToken.toString(), genericModuleName))
+        return genericModuleName;
+
+    console.compileErrorOnToken("GENERIC STRUCT DOES NOT EXIST", genericStructNameToken);
+}
+
+Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
+                                              const std::vector<icode::TypeDescription>& instantiationTypes,
+                                              const std::vector<Node>& typeDescriptionNodes)
+{
+    GenericASTIndex index = genericsMap.at(genericModuleName);
+
+    const std::string& instantiationSuffix = constructInstantiationSuffix(instantiationTypes);
+
+    Node& ast = index.ast;
+    instantiateAST(ast, index.genericIdentifiers, instantiationTypes, typeDescriptionNodes, instantiationSuffix);
+    return ast;
 }

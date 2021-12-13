@@ -88,6 +88,7 @@ const std::string tokenTypeToString[] = {
     "PRINT",
     "PRINTLN",
     "INPUT",
+    "GENERATED",
 };
 
 const std::string nodeTypeToString[] = {

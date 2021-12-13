@@ -1,5 +1,5 @@
-#ifndef MONOMORPHIZER_MONOMORPHIZER
-#define MONOMORPHIZER_MONOMORPHIZER
+#ifndef GENERATOR_MONOMORPHIZER_MONOMORPHIZER
+#define GENERATOR_MONOMORPHIZER_MONOMORPHIZER
 
 #include <map>
 #include <string>
@@ -23,6 +23,7 @@ namespace monomorphizer
     class Monomorphizer
     {
         StringGenericASTMap& genericsMap;
+        std::map<std::string, std::string> aliases;
         std::map<std::string, std::string> genericUses;
 
         Console& console;
@@ -35,13 +36,15 @@ namespace monomorphizer
 
         void indexAST(const std::string& genericModuleName, const Node& ast);
 
-        void instantiateAST(const std::string& genericModuleName,
-                            std::vector<std::string> typeModuleNames,
-                            std::vector<Node> typeDescriptionNodes);
+        void createUse(const Token& genericModuleNameToken, const Token& aliasToken);
 
-        icode::TypeDescription getMonomorphizedTypeDescription(const std::string& genericModuleName,
-                                                               const std::string& genericStructName,
-                                                               const std::vector<icode::TypeDescription>& types);
+        std::string getGenericModuleNameFromAlias(const Token& aliasToken);
+
+        std::string getGenericModuleNameGenericStruct(const Token& genericStructNameToken);
+
+        Node instantiateGeneric(const std::string& genericModuleName,
+                                       const std::vector<icode::TypeDescription>& instantiationTypes,
+                                       const std::vector<Node>& typeDescriptionNodes);
     };
 };
 
