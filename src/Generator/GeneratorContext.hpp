@@ -23,6 +23,8 @@ namespace generator
                          monomorphizer::StringGenericASTMap& genericsMap,
                          const std::string& fileName,
                          Console& console);
+        
+        GeneratorContext clone(const std::string& fileName);
     };
 }
 

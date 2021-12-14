@@ -16,4 +16,9 @@ namespace generator
         , target(target)
     {
     }
+
+    GeneratorContext GeneratorContext::clone(const std::string& fileName)
+    {
+        return GeneratorContext(target, modulesMap, genericsMap, fileName, console);
+    }
 }
