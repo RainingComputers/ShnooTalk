@@ -117,7 +117,9 @@ Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
 
     const std::string& instantiationSuffix = constructInstantiationSuffix(instantiationTypes);
 
-    Node& ast = index.ast;
-    instantiateAST(ast, index.genericIdentifiers, instantiationTypes, typeDescriptionNodes, instantiationSuffix);
-    return ast;
+    return instantiateAST(index.ast,
+                          index.genericIdentifiers,
+                          instantiationTypes,
+                          typeDescriptionNodes,
+                          instantiationSuffix);
 }

@@ -7,7 +7,7 @@
 #include "../../IntermediateRepresentation/TypeDescription.hpp"
 #include "../../Node/Node.hpp"
 
-void instantiateAST(Node& genericModuleAST,
+Node instantiateAST(const Node& genericModuleAST,
                     const std::vector<std::string> genericIdentifiers,
                     std::vector<icode::TypeDescription> instantiationTypes,
                     std::vector<Node> typeDescriptionNodes,

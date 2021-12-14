@@ -14,13 +14,13 @@ std::string dimensionToString(const std::vector<int>& dimensions)
 
 std::string instantiationStringFromType(const icode::TypeDescription& typeDescription)
 {
-    std::string result = mangleModuleName(typeDescription.moduleName) + typeDescription.dtypeName;
+    std::string result = mangleModuleName(typeDescription.moduleName) + '_' + typeDescription.dtypeName;
 
     if (typeDescription.isArray())
     {
         result += "_array";
         result += dimensionToString(typeDescription.dimensions);
-    }    
+    }
 
     if (typeDescription.isPointer())
         result += "_ptr";
@@ -28,7 +28,7 @@ std::string instantiationStringFromType(const icode::TypeDescription& typeDescri
     return result;
 }
 
-std::string constructInstantiationSuffix(const std::vector<icode::TypeDescription>& instantiationTypes) 
+std::string constructInstantiationSuffix(const std::vector<icode::TypeDescription>& instantiationTypes)
 {
     std::string result = "";
 
