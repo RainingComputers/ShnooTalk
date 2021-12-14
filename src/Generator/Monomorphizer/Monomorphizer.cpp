@@ -92,24 +92,28 @@ std::string Monomorphizer::getGenericModuleNameFromAlias(const Token& aliasToken
     if (getMapElement<std::string, std::string>(aliases, aliasToken.toString(), genericModuleName))
         return genericModuleName;
 
-    console.compileErrorOnToken("Alias DOES NOT EXIST or NOT GENERIC", aliasToken);
+    console.compileErrorOnToken("Alias does not exist or NOT GENERIC", aliasToken);
 }
 
-std::string Monomorphizer::getGenericModuleNameGenericStruct(const Token& genericStructNameToken)
+std::string Monomorphizer::getGenericModuleNameFromStruct(const Token& genericStructNameToken)
 {
     std::string genericModuleName;
 
     if (getMapElement<std::string, std::string>(genericUses, genericStructNameToken.toString(), genericModuleName))
         return genericModuleName;
 
-    console.compileErrorOnToken("GENERIC STRUCT DOES NOT EXIST", genericStructNameToken);
+    console.compileErrorOnToken("GENERIC STRUCT does not exist", genericStructNameToken);
 }
 
 Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
-                                              const std::vector<icode::TypeDescription>& instantiationTypes,
-                                              const std::vector<Node>& typeDescriptionNodes)
+                                       const Token& typeRootToken,
+                                       const std::vector<icode::TypeDescription>& instantiationTypes,
+                                       const std::vector<Node>& typeDescriptionNodes)
 {
     GenericASTIndex index = genericsMap.at(genericModuleName);
+
+    if (index.genericIdentifiers.size() != instantiationTypes.size())
+        console.compileErrorOnToken("Number of type parameters don't match", typeRootToken);
 
     const std::string& instantiationSuffix = constructInstantiationSuffix(instantiationTypes);
 

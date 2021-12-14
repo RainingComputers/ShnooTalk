@@ -40,11 +40,12 @@ namespace monomorphizer
 
         std::string getGenericModuleNameFromAlias(const Token& aliasToken);
 
-        std::string getGenericModuleNameGenericStruct(const Token& genericStructNameToken);
+        std::string getGenericModuleNameFromStruct(const Token& genericStructNameToken);
 
         Node instantiateGeneric(const std::string& genericModuleName,
-                                       const std::vector<icode::TypeDescription>& instantiationTypes,
-                                       const std::vector<Node>& typeDescriptionNodes);
+                                const Token& typeRootToken,
+                                const std::vector<icode::TypeDescription>& instantiationTypes,
+                                const std::vector<Node>& typeDescriptionNodes);
     };
 };
 
