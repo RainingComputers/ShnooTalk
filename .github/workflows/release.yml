@@ -96,7 +96,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build docker build environment
-        run: docker buildx build --platform linux/arm/v7 -f scripts/Linux/Dockerfile . -t shnootalk-build-env
+        run: docker buildx build --platform linux/arm/v7 -f scripts/Linux/debian/Dockerfile . -t shnootalk-build-env
       - name: Build 
         run: |
           docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest \
