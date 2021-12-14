@@ -20,15 +20,15 @@ void prependUseNode(Node& root, const std::string& moduleName, const std::string
     root.children.insert(root.children.begin(), useNode);
 }
 
-Node stripModulesFromTypeNode(const Node& root) {}
+void stripModulesFromTypeNode(Node& root) {}
 
-Node prependModulesToTypeNode(const Node& root) {}
+void prependModulesToTypeNode(Node& root)   {}
 
-Node replaceGenericIdentifierInTypeNode(const Node& root, const Node& instantiationTypeNode) {}
+void replaceGenericIdentifierInTypeNode(Node& root, const Node& instantiationTypeNode) {}
 
 bool validateTypeNode(const Node& root) {}
 
-Node appendInstantiationSuffixToStruct(const Node& root, const std::string& instantiationSuffix) {}
+void appendInstantiationSuffixToStruct(Node& root, const std::string& instantiationSuffix) {}
 
 void instantiateASTSingleGenericIdentifier(Node& genericModuleAST,
                                            std::string genericIdentifier,
@@ -42,20 +42,22 @@ void instantiateASTSingleGenericIdentifier(Node& genericModuleAST,
     prependUseNode(genericModuleAST, moduleName, alias);
 }
 
-void instantiateAST(Node& genericModuleAST,
+Node instantiateAST(const Node& genericModuleAST,
                     const std::vector<std::string> genericIdentifiers,
                     std::vector<icode::TypeDescription> instantiationTypes,
                     std::vector<Node> typeDescriptionNodes,
                     const std::string& instantiationSuffix)
 {
-
+    Node genericModuleASTCopy = genericModuleAST;
 
     for (int i = 0; i < genericIdentifiers.size(); i += 1)
     {
-        instantiateASTSingleGenericIdentifier(genericModuleAST,
+        instantiateASTSingleGenericIdentifier(genericModuleASTCopy,
                                               genericIdentifiers[i],
                                               instantiationTypes[i],
                                               typeDescriptionNodes[i],
                                               instantiationSuffix);
     }
+
+    return genericModuleASTCopy;
 }

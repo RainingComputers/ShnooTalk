@@ -79,24 +79,7 @@ void createFrom(generator::GeneratorContext& ctx, const Node& root)
         ctx.ir.moduleBuilder.createFrom(moduleNameToken, child.tok);
 }
 
-TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& typeDescription, size_t startIndex)
-{
-    std::vector<int> dimensions;
-
-    size_t nodeCounter;
-
-    for (nodeCounter = startIndex; root.isNthChild(node::SUBSCRIPT, nodeCounter); nodeCounter++)
-    {
-        const int subscriptInt = root.children[nodeCounter].children[0].tok.toInt();
-        dimensions.push_back(subscriptInt);
-    }
-
-    return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
-}
-
-void generateIRFromInstatiatedAST(generator::GeneratorContext& ctx,
-                                                 const std::string& moduleName,
-                                                 const Node& ast)
+void generateIRFromInstatiatedAST(generator::GeneratorContext& ctx, const std::string& moduleName, const Node& ast)
 {
     ctx.console.pushModule(moduleName);
 
@@ -142,6 +125,23 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
     }
 
     pp::printNode(ctx.mm.instantiateGeneric(genericModuleName, root.tok, instantiationTypes, instantiationTypeNodes));
+
+    return ctx.ir.moduleBuilder.createVoidTypeDescription();
+}
+
+TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& typeDescription, size_t startIndex)
+{
+    std::vector<int> dimensions;
+
+    size_t nodeCounter;
+
+    for (nodeCounter = startIndex; root.isNthChild(node::SUBSCRIPT, nodeCounter); nodeCounter++)
+    {
+        const int subscriptInt = root.children[nodeCounter].children[0].tok.toInt();
+        dimensions.push_back(subscriptInt);
+    }
+
+    return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
 }
 
 TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
