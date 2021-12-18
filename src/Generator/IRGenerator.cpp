@@ -13,9 +13,6 @@
 
 #include "IRGenerator.hpp"
 
-// TODO: DELETE THIS
-#include "../PrettyPrint/ASTPrinter.hpp"
-
 using namespace icode;
 
 void block(generator::GeneratorContext& ctx,
@@ -29,21 +26,25 @@ void generateModule(generator::GeneratorContext& ctx, const Node& root);
 
 TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root);
 
-bool isGenericModule(const Node& ast)
+Node generator::generateAST(Console& console)
 {
-    return ast.children[0].type == node::GENERIC;
+    lexer::Lexer lex(*console.getStream(), console);
+    return parser::generateAST(lex, console);
 }
 
 bool generateIRFromName(generator::GeneratorContext& ctx, const std::string& moduleName)
 {
-    if (ctx.modulesMap.find(moduleName) != ctx.modulesMap.end())
+    if (ctx.moduleExists(moduleName))
         return false;
+
+    if (ctx.genericModuleExists(moduleName))
+        return true;
 
     ctx.console.pushModule(moduleName);
 
     Node ast = generator::generateAST(ctx.console);
 
-    const bool isGeneric = isGenericModule(ast);
+    const bool isGeneric = ast.isGenericModule();
 
     if (isGeneric)
         ctx.mm.indexAST(moduleName, ast);
@@ -91,9 +92,15 @@ void generateIRFromInstatiatedAST(generator::GeneratorContext& ctx, const std::s
 
 TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
+    ctx.ir.pushWorkingModule();
+    ctx.ir.resetWorkingModule();
+
     size_t childNodeCounter = 1;
 
     std::string genericModuleName = "";
+
+    while (root.isNthChild(node::PARAM, childNodeCounter) || root.isNthChild(node::MUT_PARAM, childNodeCounter))
+        childNodeCounter++;
 
     while (root.isNthChild(node::MODULE, childNodeCounter))
     {
@@ -116,7 +123,7 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
     std::vector<TypeDescription> instantiationTypes;
     std::vector<Node> instantiationTypeNodes;
 
-    while (root.isNthChild(node::GENERIC, childNodeCounter))
+    while (root.isNthChild(node::GENERIC_TYPE_PARAM, childNodeCounter))
     {
         instantiationTypes.push_back(typeDescriptionFromNode(ctx, root.children[childNodeCounter]));
         instantiationTypeNodes.push_back(root.children[childNodeCounter]);
@@ -124,7 +131,9 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
         childNodeCounter++;
     }
 
-    pp::printNode(ctx.mm.instantiateGeneric(genericModuleName, root.tok, instantiationTypes, instantiationTypeNodes));
+    ctx.mm.instantiateGeneric(genericModuleName, genericStructNameToken, instantiationTypes, instantiationTypeNodes);
+
+    ctx.ir.popWorkingModule();
 
     return ctx.ir.moduleBuilder.createVoidTypeDescription();
 }
@@ -146,10 +155,15 @@ TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& 
 
 TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
-    if (root.isNthChildFromLast(node::GENERIC, 1))
+    ctx.ir.pushWorkingModule();
+    ctx.ir.resetWorkingModule();
+
+    if (root.isNthChildFromLast(node::GENERIC_TYPE_PARAM, 1))
         return getMonomorphizedTypeDescriptionFromNode(ctx, root);
 
     size_t childNodeCounter = 1;
+    if (root.type == node::GENERIC_TYPE_PARAM)
+        childNodeCounter = 0;
 
     while (root.isNthChild(node::PARAM, childNodeCounter) || root.isNthChild(node::MUT_PARAM, childNodeCounter))
         childNodeCounter++;
@@ -174,24 +188,9 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
         typeDescription = arrayTypeFromSubscript(root, typeDescription, childNodeCounter);
 
-    ctx.ir.resetWorkingModule();
+    ctx.ir.popWorkingModule();
 
     return typeDescription;
-}
-
-TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& paramNode)
-{
-    TypeDescription paramType = typeDescriptionFromNode(ctx, paramNode);
-
-    if (paramNode.type == node::MUT_PARAM)
-        paramType.becomeMutable();
-
-    return paramType;
-}
-
-bool isParamNode(const Node& nodeToCheck)
-{
-    return nodeToCheck.type == node::PARAM || nodeToCheck.type == node::MUT_PARAM;
 }
 
 void createStructFromNode(generator::GeneratorContext& ctx, const Node& root)
@@ -214,6 +213,16 @@ void createStructFromNode(generator::GeneratorContext& ctx, const Node& root)
     ctx.ir.moduleBuilder.createStruct(nameToken, fieldNames, fieldTypes);
 }
 
+TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& paramNode)
+{
+    TypeDescription paramType = typeDescriptionFromNode(ctx, paramNode);
+
+    if (paramNode.type == node::MUT_PARAM)
+        paramType.becomeMutable();
+
+    return paramType;
+}
+
 void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& nameToken = root.getNthChildToken(0);
@@ -222,7 +231,7 @@ void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
     std::vector<Token> paramNames;
     std::vector<icode::TypeDescription> paramTypes;
 
-    for (size_t i = 1; isParamNode(root.children[i]); i += 1)
+    for (size_t i = 1; root.children[i].isParamNode(); i += 1)
     {
         const Token& paramName = root.children[i].getNthChildToken(0);
         TypeDescription paramType = getParamType(ctx, root.children[i]);
@@ -517,7 +526,7 @@ void block(generator::GeneratorContext& ctx,
 {
     ctx.scope.createScope();
 
-    for (Node stmt : root.children)
+    for (const Node& stmt : root.children)
         statement(ctx, stmt, isLoopBlock, loopLabel, breakLabel, continueLabel);
 
     ctx.scope.exitScope();
@@ -551,12 +560,6 @@ void generateModule(generator::GeneratorContext& ctx, const Node& root)
             generateFunction(ctx, child);
 }
 
-Node generator::generateAST(Console& console)
-{
-    lexer::Lexer lex(*console.getStream(), console);
-    return parser::generateAST(lex, console);
-}
-
 void generator::generateIR(Console& console,
                            const std::string& moduleName,
                            icode::TargetEnums& target,
@@ -566,7 +569,7 @@ void generator::generateIR(Console& console,
 
     Node ast = generateAST(console);
 
-    if (isGenericModule(ast))
+    if (ast.isGenericModule())
         console.compileErrorOnToken("Connot compile a GENERIC", ast.children[0].tok);
 
     generator::GeneratorContext generatorContext(target, modulesMap, genericsMap, moduleName, console);

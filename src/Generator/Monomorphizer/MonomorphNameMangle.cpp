@@ -28,11 +28,11 @@ std::string instantiationStringFromType(const icode::TypeDescription& typeDescri
     return result;
 }
 
-std::string constructInstantiationSuffix(const std::vector<icode::TypeDescription>& instantiationTypes)
+std::string constructInstantiationSuffix(const std::vector<icode::TypeDescription>& types)
 {
     std::string result = "";
 
-    for (const icode::TypeDescription& type : instantiationTypes)
+    for (const icode::TypeDescription& type : types)
         result += "_" + instantiationStringFromType(type);
 
     return result;

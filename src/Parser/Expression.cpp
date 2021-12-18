@@ -71,7 +71,7 @@ void identifierWithGeneric(parser::ParserContext& ctx)
 
         ctx.pushNode();
 
-        ctx.addNodeMakeCurrentNoConsume(node::GENERIC);
+        ctx.addNodeMakeCurrentNoConsume(node::GENERIC_TYPE_PARAM);
         typeDefinition(ctx);
 
         ctx.popNode();

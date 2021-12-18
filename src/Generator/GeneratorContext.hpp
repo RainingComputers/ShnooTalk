@@ -25,6 +25,10 @@ namespace generator
                          Console& console);
         
         GeneratorContext clone(const std::string& fileName);
+
+        bool moduleExists(const std::string& name);
+
+        bool genericModuleExists(const std::string& name);
     };
 }
 

@@ -5,6 +5,6 @@
 
 #include "../../IntermediateRepresentation/TypeDescription.hpp"
 
-std::string constructInstantiationSuffix(const std::vector<icode::TypeDescription>& instantiationTypes);
+std::string constructInstantiationSuffix(const std::vector<icode::TypeDescription>& types);
 
 #endif

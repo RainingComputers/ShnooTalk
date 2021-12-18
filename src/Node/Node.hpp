@@ -11,6 +11,7 @@ namespace node
         PROGRAM,
         USE,
         GENERIC,
+        GENERIC_TYPE_PARAM,
         FROM,
         BLOCK,
         MODULE,
@@ -75,6 +76,8 @@ struct Node
     Token getNthChildToken(size_t N) const;
     Token getNthChildTokenFromLast(size_t N) const;
     bool isConditionalExpression() const;
+    bool isParamNode() const;
+    bool isGenericModule() const;
 };
 
 #endif

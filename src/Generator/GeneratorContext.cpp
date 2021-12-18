@@ -21,4 +21,14 @@ namespace generator
     {
         return GeneratorContext(target, modulesMap, genericsMap, fileName, console);
     }
+
+    bool GeneratorContext::moduleExists(const std::string& name)
+    {
+        return modulesMap.find(name) != modulesMap.end();
+    }
+
+    bool GeneratorContext::genericModuleExists(const std::string& name)
+    {
+        return genericsMap.find(name) != genericsMap.end();
+    }
 }
