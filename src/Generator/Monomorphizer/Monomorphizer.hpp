@@ -8,16 +8,10 @@
 #include "../../Console/Console.hpp"
 #include "../../IntermediateRepresentation/TypeDescription.hpp"
 #include "../../Node/Node.hpp"
+#include "GenericASTIndex.hpp"
 
 namespace monomorphizer
 {
-    struct GenericASTIndex
-    {
-        Node ast;
-        std::vector<std::string> genericIdentifiers;
-        std::vector<std::string> genericStructs;
-    };
-
     typedef std::map<std::string, GenericASTIndex> StringGenericASTMap;
 
     class Monomorphizer
@@ -40,12 +34,12 @@ namespace monomorphizer
 
         std::string getGenericModuleNameFromAlias(const Token& aliasToken);
 
-        std::string getGenericModuleNameFromStruct(const Token& genericStructNameToken);
+        std::string getGenericModuleNameFromStruct(const Token& nameToken);
 
         Node instantiateGeneric(const std::string& genericModuleName,
                                 const Token& typeRootToken,
                                 const std::vector<icode::TypeDescription>& instantiationTypes,
-                                const std::vector<Node>& typeDescriptionNodes);
+                                const std::vector<Node>& instantiationTypeNodes);
     };
 };
 

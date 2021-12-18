@@ -95,6 +95,7 @@ const std::string nodeTypeToString[] = {
     "PROGRAM",
     "USE",
     "GENERIC",
+    "GENERIC_TYPE_PARAM",
     "FROM",
     "BLOCK",
     "MODULE",

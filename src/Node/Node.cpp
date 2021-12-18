@@ -62,3 +62,13 @@ bool Node::isConditionalExpression() const
 
     return false;
 }
+
+bool Node::isParamNode() const
+{
+    return type == node::PARAM || type == node::MUT_PARAM;
+}
+
+bool Node::isGenericModule() const
+{
+    return type == node::PROGRAM && isNthChild(node::GENERIC, 0);
+}

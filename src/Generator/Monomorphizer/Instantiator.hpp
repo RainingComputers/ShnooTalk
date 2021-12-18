@@ -6,11 +6,14 @@
 
 #include "../../IntermediateRepresentation/TypeDescription.hpp"
 #include "../../Node/Node.hpp"
+#include "../../Console/Console.hpp"
+#include "GenericASTIndex.hpp"
 
-Node instantiateAST(const Node& genericModuleAST,
-                    const std::vector<std::string> genericIdentifiers,
-                    std::vector<icode::TypeDescription> instantiationTypes,
-                    std::vector<Node> typeDescriptionNodes,
-                    const std::string& instantiationSuffix);
+Node instantiateAST(GenericASTIndex index,
+                    const Token& typeRootToken,
+                    const std::vector<icode::TypeDescription>& instantiationTypes,
+                    const std::vector<Node>& instTypeNodes,
+                    const std::string& instantiationSuffix,
+                    Console& console);
 
 #endif

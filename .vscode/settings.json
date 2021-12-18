@@ -118,6 +118,7 @@
         "ibuild",
         "icode",
         "ifend",
+        "Instatiator",
         "irgen",
         "lcov",
         "LLVM",

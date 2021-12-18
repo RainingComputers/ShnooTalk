@@ -12,8 +12,6 @@ help :
 	@echo "      Build executable for gcov (code coverage)."
 	@echo "install"
 	@echo "      Installs the executable to /usr/local/bin directory. Execute 'make build' first."
-	@echo "install-gedit"
-	@echo "      Installs syntax highlighting rule file for gedit"
 	@echo "uninstall"
 	@echo "      Uninstalls the executable from /usr/local/bin directory."
 	@echo "format"
@@ -124,9 +122,6 @@ build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME)
 
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
-
-install-gedit:
-	cp shnootalk.lang /usr/share/gtksourceview-4/language-specs/shnootalk.lang
 
 uninstall:
 	rm /usr/local/bin/$(EXEC_NAME)

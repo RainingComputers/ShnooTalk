@@ -95,31 +95,32 @@ std::string Monomorphizer::getGenericModuleNameFromAlias(const Token& aliasToken
     console.compileErrorOnToken("Alias does not exist or NOT GENERIC", aliasToken);
 }
 
-std::string Monomorphizer::getGenericModuleNameFromStruct(const Token& genericStructNameToken)
+std::string Monomorphizer::getGenericModuleNameFromStruct(const Token& nameToken)
 {
     std::string genericModuleName;
 
-    if (getMapElement<std::string, std::string>(genericUses, genericStructNameToken.toString(), genericModuleName))
+    if (getMapElement<std::string, std::string>(genericUses, nameToken.toString(), genericModuleName))
         return genericModuleName;
 
-    console.compileErrorOnToken("GENERIC STRUCT does not exist", genericStructNameToken);
+    console.compileErrorOnToken("GENERIC STRUCT does not exist", nameToken);
 }
 
 Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
                                        const Token& typeRootToken,
                                        const std::vector<icode::TypeDescription>& instantiationTypes,
-                                       const std::vector<Node>& typeDescriptionNodes)
+                                       const std::vector<Node>& instantiationTypeNodes)
 {
-    GenericASTIndex index = genericsMap.at(genericModuleName);
+    const GenericASTIndex& index = genericsMap.at(genericModuleName);
 
     if (index.genericIdentifiers.size() != instantiationTypes.size())
         console.compileErrorOnToken("Number of type parameters don't match", typeRootToken);
 
     const std::string& instantiationSuffix = constructInstantiationSuffix(instantiationTypes);
 
-    return instantiateAST(index.ast,
-                          index.genericIdentifiers,
+    return instantiateAST(index,
+                          typeRootToken,
                           instantiationTypes,
-                          typeDescriptionNodes,
-                          instantiationSuffix);
+                          instantiationTypeNodes,
+                          instantiationSuffix,
+                          console);
 }
