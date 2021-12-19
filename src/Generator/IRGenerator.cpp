@@ -74,10 +74,18 @@ void createUse(generator::GeneratorContext& ctx, const Node& root)
 
 void createFrom(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& moduleNameToken = root.children[0].tok;
+    const Token& aliasToken = root.children[0].tok;
 
-    for (Node child : root.children[1].children)
-        ctx.ir.moduleBuilder.createFrom(moduleNameToken, child.tok);
+    if (ctx.mm.aliasExists(aliasToken))
+    {
+        for (const Node& child : root.children[1].children)
+            ctx.mm.createFrom(aliasToken, child.tok);
+    }
+    else
+    {
+        for (const Node& child : root.children[1].children)
+            ctx.ir.moduleBuilder.createFrom(aliasToken, child.tok);
+    }
 }
 
 std::pair<std::string, std::string> generateIRUsingMonomorphizer(generator::GeneratorContext& ctx,

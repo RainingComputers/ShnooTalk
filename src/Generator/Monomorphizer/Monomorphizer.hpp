@@ -33,6 +33,10 @@ namespace monomorphizer
 
         void createUse(const Token& genericModuleNameToken, const Token& aliasToken);
 
+        bool aliasExists(const Token& aliasToken);
+
+        void createFrom(const Token& aliasToken, const Token& symbolToken);
+
         std::string getGenericModuleNameFromAlias(const Token& aliasToken);
 
         std::string getGenericModuleNameFromStruct(const Token& nameToken);
