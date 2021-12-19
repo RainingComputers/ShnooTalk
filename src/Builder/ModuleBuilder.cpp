@@ -46,23 +46,40 @@ std::pair<int, std::string> ModuleBuilder::getSizeAndModuleName(const Token& dat
     return std::pair<int, std::string>(structDesc.size, structDesc.moduleName);
 }
 
+TypeDescription constructType(DataType dtype,
+                              const std::string& dtypeName,
+                              int dtypeSize,
+                              const std::string& moduleName)
+{
+    TypeDescription typeDescription;
+
+    typeDescription.dtype = dtype;
+    typeDescription.dtypeName = dtypeName;
+    typeDescription.dtypeSize = dtypeSize;
+    typeDescription.size = dtypeSize;
+    typeDescription.offset = 0;
+    typeDescription.properties = 0;
+    typeDescription.moduleName = moduleName;
+
+    return typeDescription;
+}
+
 TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
 {
     icode::DataType dtype = stringToDataType(dataTypeToken.toString());
 
     std::pair<int, std::string> sizeAndModuleName = getSizeAndModuleName(dataTypeToken, dtype);
 
-    TypeDescription typeDescription;
+    return constructType(dtype, dataTypeToken.toString(), sizeAndModuleName.first, sizeAndModuleName.second);
+}
 
-    typeDescription.dtype = dtype;
-    typeDescription.dtypeName = dataTypeToken.toString();
-    typeDescription.dtypeSize = sizeAndModuleName.first;
-    typeDescription.size = typeDescription.dtypeSize;
-    typeDescription.offset = 0;
-    typeDescription.properties = 0;
-    typeDescription.moduleName = sizeAndModuleName.second;
+TypeDescription ModuleBuilder::createTypeDescriptionFromStructName(const std::string& dtype)
+{
+    icode::StructDescription structDesc;
+    if (!workingModule->getStruct(dtype, structDesc))
+        console.internalBugError();
 
-    return typeDescription;
+    return constructType(STRUCT, dtype, structDesc.size, structDesc.moduleName);
 }
 
 void ModuleBuilder::createIntDefine(const Token& nameToken, int value)

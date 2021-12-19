@@ -9,6 +9,7 @@
 #include "../../IntermediateRepresentation/TypeDescription.hpp"
 #include "../../Node/Node.hpp"
 #include "GenericASTIndex.hpp"
+#include "MonomorphNameMangle.hpp"
 
 namespace monomorphizer
 {
@@ -37,7 +38,8 @@ namespace monomorphizer
         std::string getGenericModuleNameFromStruct(const Token& nameToken);
 
         Node instantiateGeneric(const std::string& genericModuleName,
-                                const Token& typeRootToken,
+                                const std::string& instantiationSuffix,
+                                const Token& genericStructNameToken,
                                 const std::vector<icode::TypeDescription>& instantiationTypes,
                                 const std::vector<Node>& instantiationTypeNodes);
     };

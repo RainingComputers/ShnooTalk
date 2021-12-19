@@ -29,6 +29,8 @@ public:
 
     icode::TypeDescription createTypeDescription(const Token& dataTypeToken);
 
+    icode::TypeDescription createTypeDescriptionFromStructName(const std::string& dtype);
+
     void createIntDefine(const Token& nameToken, int value);
 
     void createFloatDefine(const Token& nameToken, float value);

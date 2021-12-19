@@ -1,6 +1,5 @@
 #include "../../TemplateUtils/GetMapElement.hpp"
 #include "Instantiator.hpp"
-#include "MonomorphNameMangle.hpp"
 
 #include "Monomorphizer.hpp"
 
@@ -106,19 +105,18 @@ std::string Monomorphizer::getGenericModuleNameFromStruct(const Token& nameToken
 }
 
 Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
-                                       const Token& typeRootToken,
+                                       const std::string& instantiationSuffix,
+                                       const Token& genericStructNameToken,
                                        const std::vector<icode::TypeDescription>& instantiationTypes,
                                        const std::vector<Node>& instantiationTypeNodes)
 {
     const GenericASTIndex& index = genericsMap.at(genericModuleName);
 
     if (index.genericIdentifiers.size() != instantiationTypes.size())
-        console.compileErrorOnToken("Number of type parameters don't match", typeRootToken);
-
-    const std::string& instantiationSuffix = constructInstantiationSuffix(instantiationTypes);
+        console.compileErrorOnToken("Number of type parameters don't match", genericStructNameToken);
 
     return instantiateAST(index,
-                          typeRootToken,
+                          genericStructNameToken,
                           instantiationTypes,
                           instantiationTypeNodes,
                           instantiationSuffix,

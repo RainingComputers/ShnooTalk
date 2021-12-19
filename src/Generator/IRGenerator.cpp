@@ -80,14 +80,60 @@ void createFrom(generator::GeneratorContext& ctx, const Node& root)
         ctx.ir.moduleBuilder.createFrom(moduleNameToken, child.tok);
 }
 
-void generateIRFromInstatiatedAST(generator::GeneratorContext& ctx, const std::string& moduleName, const Node& ast)
+std::pair<std::string, std::string> generateIRUsingMonomorphizer(generator::GeneratorContext& ctx,
+                                                                 const std::string& genericModuleName,
+                                                                 const Token& genericStructNameToken,
+                                                                 const std::vector<TypeDescription>& instantiationTypes,
+                                                                 const std::vector<Node>& instantiationTypeNodes)
 {
-    ctx.console.pushModule(moduleName);
+    const std::string& instantiationSuffix = constructInstantiationSuffix(instantiationTypes);
 
-    generator::GeneratorContext generatorContext = ctx.clone(moduleName);
-    generateModule(generatorContext, ast);
+    const std::string& instantiatedModuleName = getInstantiatedModuleName(instantiationSuffix, genericModuleName);
 
-    ctx.console.popModule();
+    if (!ctx.moduleExists(instantiatedModuleName))
+    {
+        ctx.console.pushModule(genericModuleName);
+
+        Node ast = ctx.mm.instantiateGeneric(genericModuleName,
+                                             instantiationSuffix,
+                                             genericStructNameToken,
+                                             instantiationTypes,
+                                             instantiationTypeNodes);
+
+        generator::GeneratorContext generatorContext = ctx.clone(instantiatedModuleName);
+        generateModule(generatorContext, ast);
+
+        ctx.console.popModule();
+    }
+
+    std::string instantiatedStructName = getInstantiatedStructName(instantiationSuffix, genericStructNameToken);
+
+    return std::pair<std::string, std::string>(instantiatedModuleName, instantiatedStructName);
+}
+
+TypeDescription instantiateGenericAndGetType(generator::GeneratorContext& ctx,
+                                             const std::string& genericModuleName,
+                                             const Token& genericStructNameToken,
+                                             const std::vector<TypeDescription>& instantiationTypes,
+                                             const std::vector<Node>& instantiationTypeNodes)
+{
+    ctx.ir.pushWorkingModule();
+
+    std::pair<std::string, std::string> moduleNameStructNamePair =
+        generateIRUsingMonomorphizer(ctx,
+                                     genericModuleName,
+                                     genericStructNameToken,
+                                     instantiationTypes,
+                                     instantiationTypeNodes);
+
+    ctx.ir.setWorkingModule(&ctx.modulesMap.at(moduleNameStructNamePair.first));
+
+    TypeDescription monomorphizedType =
+        ctx.ir.moduleBuilder.createTypeDescriptionFromStructName(moduleNameStructNamePair.second);
+
+    ctx.ir.popWorkingModule();
+
+    return monomorphizedType;
 }
 
 TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
@@ -131,11 +177,15 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
         childNodeCounter++;
     }
 
-    ctx.mm.instantiateGeneric(genericModuleName, genericStructNameToken, instantiationTypes, instantiationTypeNodes);
+    TypeDescription monomorphizedType = instantiateGenericAndGetType(ctx,
+                                                                     genericModuleName,
+                                                                     genericStructNameToken,
+                                                                     instantiationTypes,
+                                                                     instantiationTypeNodes);
 
     ctx.ir.popWorkingModule();
 
-    return ctx.ir.moduleBuilder.createVoidTypeDescription();
+    return monomorphizedType;
 }
 
 TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& typeDescription, size_t startIndex)
@@ -158,7 +208,7 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
     ctx.ir.pushWorkingModule();
     ctx.ir.resetWorkingModule();
 
-    if (root.isNthChildFromLast(node::GENERIC_TYPE_PARAM, 1))
+    if (root.isGenericTypeParamPresent())
         return getMonomorphizedTypeDescriptionFromNode(ctx, root);
 
     size_t childNodeCounter = 1;
@@ -265,6 +315,8 @@ void generateSymbol(generator::GeneratorContext& ctx, const Node& child)
 
     switch (child.type)
     {
+        case node::GENERIC:
+            break;
         case node::USE:
             createUse(ctx, child);
             break;

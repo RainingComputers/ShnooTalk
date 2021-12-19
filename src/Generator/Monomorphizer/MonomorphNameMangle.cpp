@@ -37,3 +37,13 @@ std::string constructInstantiationSuffix(const std::vector<icode::TypeDescriptio
 
     return result;
 }
+
+std::string getInstantiatedStructName(const std::string& instantiationSuffix, const Token& nameToken)
+{
+    return nameToken.toString() + "_" + instantiationSuffix;
+}
+
+std::string getInstantiatedModuleName(const std::string& instantiationSuffix, const std::string& genericModuleName)
+{
+    return genericModuleName + "_" + instantiationSuffix;
+}
