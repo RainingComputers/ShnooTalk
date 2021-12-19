@@ -1,6 +1,6 @@
 name: Code formatting quality and testing 
 
-on: [pull_request, push]
+on: [pull_request, push, workflow_dispatch]
 
 jobs:
   Format:
