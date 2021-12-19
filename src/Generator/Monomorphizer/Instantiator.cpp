@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "../../Builder/NameMangle.hpp"
 #include "GenericASTIndex.hpp"
 #include "MonomorphNameMangle.hpp"
@@ -255,7 +257,7 @@ Node instantiateAST(GenericASTIndex index,
 {
     Node& genericModuleAST = index.ast;
 
-    for (int i = 0; i < index.genericIdentifiers.size(); i += 1)
+    for (size_t i = 0; i < index.genericIdentifiers.size(); i += 1)
     {
         InstiatorContext ctx =
             InstiatorContext{ index.genericIdentifiers[i], index.genericStructs, typeRootToken, instTypeNodes[i],

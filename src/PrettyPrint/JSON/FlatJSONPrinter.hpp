@@ -29,8 +29,7 @@ public:
     void end();
     FlatJSONPrinter beginNested(const std::string& key, bool nestedOnSingleLine = false);
     FlatJSONPrinter beginArray(const std::string& key,
-                               bool elementOnSingleLine = false,
-                               bool arrayOnSingleLine = false);
+                               bool elementOnSingleLine = false);
     void endArray();
     void printString(const std::string& key, const std::string& val);
     void printNumber(const std::string& key, double val);
