@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "../../TemplateUtils/GetMapElement.hpp"
 #include "Instantiator.hpp"
 

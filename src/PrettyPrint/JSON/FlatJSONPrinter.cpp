@@ -107,7 +107,7 @@ FlatJSONPrinter FlatJSONPrinter::beginNested(const std::string& key, bool nested
     return nestedPrinter;
 }
 
-FlatJSONPrinter FlatJSONPrinter::beginArray(const std::string& key, bool elementOnSingleLine, bool arrayOnSameLine)
+FlatJSONPrinter FlatJSONPrinter::beginArray(const std::string& key, bool elementOnSingleLine)
 {
     printCommaAndKey(key);
 
