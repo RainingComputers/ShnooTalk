@@ -84,6 +84,25 @@ void Monomorphizer::createUse(const Token& pathToken, const Token& aliasToken)
     aliases[alias] = path;
 }
 
+bool Monomorphizer::aliasExists(const Token& aliasToken)
+{
+    return aliases.find(aliasToken.toString()) != aliases.end();
+}
+
+void Monomorphizer::createFrom(const Token& aliasToken, const Token& symbolToken)
+{
+    const std::string& structName = symbolToken.toString();
+    const std::string& genericModuleName = aliases.at(aliasToken.toString());
+
+    GenericASTIndex& index = genericsMap.at(genericModuleName);
+    const std::vector<std::string>& genericStructs = index.genericStructs;
+
+    if (std::find(genericStructs.begin(), genericStructs.end(), structName) == genericStructs.end())
+        console.compileErrorOnToken("GENERIC does not exist", symbolToken);
+
+    genericUses[structName] = genericModuleName;
+}
+
 std::string Monomorphizer::getGenericModuleNameFromAlias(const Token& aliasToken)
 {
     std::string genericModuleName;

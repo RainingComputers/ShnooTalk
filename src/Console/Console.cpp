@@ -69,7 +69,7 @@ void Console::pushModule(const std::string& moduleName)
     if (streamsMap.find(moduleName) == streamsMap.end())
     {
         streamsMap[moduleName].exceptions(std::ifstream::failbit | std::ifstream::badbit);
-        streamsMap[moduleName].open(moduleName);   
+        streamsMap[moduleName].open(moduleName);
     }
 
     fileName = moduleName;
