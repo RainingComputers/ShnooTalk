@@ -72,3 +72,9 @@ bool Node::isGenericModule() const
 {
     return type == node::PROGRAM && isNthChild(node::GENERIC, 0);
 }
+
+bool Node::isGenericTypeParamPresent() const
+{
+    return isNthChildFromLast(node::GENERIC_TYPE_PARAM, 1) || isNthChildFromLast(node::GENERIC_TYPE_PARAM, 2) ||
+           isNthChildFromLast(node::GENERIC_TYPE_PARAM, 3);
+}

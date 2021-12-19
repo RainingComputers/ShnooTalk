@@ -1,10 +1,8 @@
 #include "../../Builder/NameMangle.hpp"
 #include "GenericASTIndex.hpp"
+#include "MonomorphNameMangle.hpp"
 
 #include "Instantiator.hpp"
-
-// TODO Delete this
-#include "../../PrettyPrint/ASTPrinter.hpp"
 
 struct InstiatorContext
 {
@@ -22,11 +20,6 @@ struct InstiatorContext
 bool InstiatorContext::isGenericStruct(const Token& nameToken) const
 {
     return std::find(genericStructs.begin(), genericStructs.end(), nameToken.toString()) != genericStructs.end();
-}
-
-std::string getInstantiatedStructName(const InstiatorContext& ctx, const Token& nameToken)
-{
-    return nameToken.toString() + "_" + ctx.instantiationSuffix;
 }
 
 Token modToken(const Token& tok, const std::string& tokenString)
@@ -72,7 +65,7 @@ void validateTypeNode(const InstiatorContext& ctx, Node& root)
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
         typeModifierCount++;
 
-    if (typeModifierCount != 1)
+    if (typeModifierCount > 1)
         ctx.console.compileErrorOnToken("Invalid type parameters for this generic", ctx.typeRootToken);
 }
 
@@ -104,7 +97,8 @@ void monomorphizeTypeNode(const InstiatorContext& ctx, Node& root)
     if (ctx.isGenericStruct(root.getNthChildToken(childNodeCounter)))
     {
         const Token& nameToken = root.children[childNodeCounter].tok;
-        root.children[childNodeCounter].tok = modToken(nameToken, getInstantiatedStructName(ctx, nameToken));
+        root.children[childNodeCounter].tok =
+            modToken(nameToken, getInstantiatedStructName(ctx.instantiationSuffix, nameToken));
 
         return;
     }
@@ -183,15 +177,6 @@ void monomorphizeTypeNodes(const InstiatorContext& ctx, Node& root)
     }
 }
 
-void prependUseNode(Node& root, const std::string& moduleName, const std::string& alias)
-{
-    Node useNode = constructNode(node::USE, "use");
-    useNode.children.push_back(constructNode(node::STR_LITERAL, '\"' + moduleName + '\"'));
-    useNode.children.push_back(constructNode(node::IDENTIFIER, alias));
-
-    root.children.insert(root.children.begin(), useNode);
-}
-
 void appendInstantiationSuffixToStruct(const InstiatorContext& ctx, Node& root)
 {
     const Token& nameToken = root.children[0].tok;
@@ -199,7 +184,27 @@ void appendInstantiationSuffixToStruct(const InstiatorContext& ctx, Node& root)
     if (!ctx.isGenericStruct(nameToken))
         return;
 
-    root.children[0].tok = modToken(nameToken, getInstantiatedStructName(ctx, nameToken));
+    root.children[0].tok = modToken(nameToken, getInstantiatedStructName(ctx.instantiationSuffix, nameToken));
+}
+
+void instantiateASTSingle(InstiatorContext& ctx, Node& genericModuleAST)
+{
+    for (Node& child : genericModuleAST.children)
+    {
+        monomorphizeTypeNodes(ctx, child);
+
+        if (child.type == node::STRUCT)
+            appendInstantiationSuffixToStruct(ctx, child);
+    }
+}
+
+void prependUseNode(Node& root, const std::string& moduleName, const std::string& alias)
+{
+    Node useNode = constructNode(node::USE, "use");
+    useNode.children.push_back(constructNode(node::STR_LITERAL, '\"' + moduleName + '\"'));
+    useNode.children.push_back(constructNode(node::IDENTIFIER, alias));
+
+    root.children.insert(root.children.begin(), useNode);
 }
 
 void stripModulesFromTypeNode(Node& root)
@@ -217,21 +222,27 @@ void prependModuleToTypeNode(Node& root, const std::string& alias)
     root.children.insert(root.children.begin(), constructNode(node::MODULE, alias));
 }
 
-void instantiateASTSingle(InstiatorContext& ctx, Node& genericModuleAST)
+void prependUseNodes(const std::vector<icode::TypeDescription>& instantiationTypes,
+                     std::vector<Node>& instTypeNodes,
+                     Node& genericModuleAST)
 {
-    const std::string& moduleName = ctx.instantiationType.moduleName;
-    const std::string& alias = mangleModuleName(moduleName);
+    std::vector<std::string> prependedModules;
 
-    prependUseNode(genericModuleAST, moduleName, alias);
-    stripModulesFromTypeNode(ctx.instTypeNode);
-    prependModuleToTypeNode(ctx.instTypeNode, alias);
-
-    for (Node& child : genericModuleAST.children)
+    for (size_t i = 0; i < instantiationTypes.size(); i += 1)
     {
-        monomorphizeTypeNodes(ctx, child);
+        const icode::TypeDescription& type = instantiationTypes[i];
+        Node& typeNode = instTypeNodes[i];
 
-        if (child.type == node::STRUCT)
-            appendInstantiationSuffixToStruct(ctx, child);
+        const std::string& moduleName = type.moduleName;
+        const std::string& alias = mangleModuleName(moduleName);
+
+        stripModulesFromTypeNode(typeNode);
+        prependModuleToTypeNode(typeNode, alias);
+
+        if (std::find(prependedModules.begin(), prependedModules.end(), moduleName) != prependedModules.end())
+            continue;
+
+        prependUseNode(genericModuleAST, moduleName, alias);
     }
 }
 
@@ -252,8 +263,6 @@ Node instantiateAST(GenericASTIndex index,
 
         instantiateASTSingle(ctx, genericModuleAST);
     }
-
-    pp::printNode(genericModuleAST);
 
     return genericModuleAST;
 }

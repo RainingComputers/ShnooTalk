@@ -44,7 +44,7 @@ Token::Token(std::string fileName,
     column = columnNumber;
     line = lineNumber;
 
-    if (type == STR_LITERAL || type == CHAR_LITERAL)
+    if (type == STR_LITERAL || type == CHAR_LITERAL || type == GENERATED)
         initializeUnescapedString();
 }
 

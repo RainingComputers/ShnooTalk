@@ -78,6 +78,7 @@ struct Node
     bool isConditionalExpression() const;
     bool isParamNode() const;
     bool isGenericModule() const;
+    bool isGenericTypeParamPresent() const;
 };
 
 #endif
