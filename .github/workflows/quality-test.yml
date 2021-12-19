@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install LLVM
+        run: sudo apt install llvm-12 llvm-12-dev
       - name: Install clang-tidy
         run: sudo apt install clang-tidy
       - name: Run clang-tidy
