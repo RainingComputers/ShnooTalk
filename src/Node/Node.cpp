@@ -27,7 +27,7 @@ bool Node::isNthChildFromLast(NodeType nodeType, size_t N) const
 {
     size_t index = children.size() - N;
 
-    if (index > 0)
+    if (index > 0 && index < children.size())
         if (children[index].type == nodeType)
             return true;
 
