@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "-ast",
+            "name": "-ast (MacOS)",
             "type": "lldb",
             "request": "launch",
             "preLaunchTask": "debugbuild",
@@ -20,7 +20,7 @@
             "externalConsole": false
         },
         {
-            "name": "-ir",
+            "name": "-ir (MacOS)",
             "type": "lldb",
             "request": "launch",
             "preLaunchTask": "debugbuild",
@@ -35,7 +35,7 @@
             "externalConsole": false
         },
         {
-            "name": "-json-ir",
+            "name": "-json-ir (MacOS)",
             "type": "lldb",
             "request": "launch",
             "preLaunchTask": "debugbuild",
@@ -50,7 +50,7 @@
             "externalConsole": false
         },
         {
-            "name": "-icode",
+            "name": "-icode (MacOS)",
             "type": "lldb",
             "request": "launch",
             "preLaunchTask": "debugbuild",
@@ -65,7 +65,7 @@
             "externalConsole": false
         },
         {
-            "name": "-json-icode",
+            "name": "-json-icode (MacOS)",
             "type": "lldb",
             "request": "launch",
             "preLaunchTask": "debugbuild",
@@ -80,7 +80,7 @@
             "externalConsole": false
         },
         {
-            "name": "-llvm",
+            "name": "-llvm (MacOS)",
             "type": "lldb",
             "request": "launch",
             "preLaunchTask": "debugbuild",
@@ -95,7 +95,7 @@
             "externalConsole": false
         },
         {
-            "name": "-c",
+            "name": "-c (MacOS)",
             "type": "lldb",
             "request": "launch",
             "preLaunchTask": "debugbuild",
@@ -108,6 +108,121 @@
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false
+        },
+        {
+            "name": "-ast (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-ast"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-ir (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-ir"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-json-ir (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-json-ir"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-llvm (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-llvm"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-c (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-c"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         },
         {
             "name": "Debug test runner",
