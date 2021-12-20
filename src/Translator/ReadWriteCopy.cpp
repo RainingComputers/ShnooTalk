@@ -14,6 +14,7 @@ void createPointer(ModuleContext& ctx, const icode::Entry& e)
         case icode::TEMP_PTR:
             ctx.operandValueMap[e.op1.operandId] = ctx.operandValueMap[e.op2.operandId];
             break;
+        case icode::TEMP_PTR_PTR:
         case icode::VAR:
         case icode::GBL_VAR:
         case icode::PTR:

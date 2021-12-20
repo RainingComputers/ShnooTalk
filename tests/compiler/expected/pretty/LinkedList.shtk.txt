@@ -1,0 +1,185 @@
+{
+    "moduleName": "LinkedList.shtk",
+    "functions": {
+        "_fn_LinkedList_shtk_createLinkedList": {
+            "icode": [
+                    struct* tempPtr58 = createPointer struct linkedList
+                    struct** tempPtrPtr60 = addressAdd struct* tempPtr58, bytes 0
+                    int temp63 = cast autoInt 13
+                    pass int temp63, ubyte malloc, module LinkedList.shtk
+                    ubyte* calleeReturnPointer66 = call ubyte malloc, module LinkedList.shtk
+                    struct* tempPtr69 = pointerCast ubyte* calleeReturnPointer66
+                    struct** tempPtrPtr60 = pointerAssign struct* tempPtr69
+                    struct* tempPtr71 = createPointer struct linkedList
+                    struct** tempPtrPtr73 = addressAdd struct* tempPtr71, bytes 0
+                    struct calleeReturnValue74 = call struct _fn_LinkedList_shtk_createNullNode, module LinkedList.shtk
+                    int* tempPtr77 = createPointer struct** tempPtrPtr73
+                    int* tempPtr78 = createPointer struct calleeReturnValue74
+                    int* tempPtr77 = memoryCopy int* tempPtr78, autoInt 13
+                    struct* tempPtr82 = createPointer struct returnValue80
+                    struct* tempPtr83 = createPointer struct linkedList
+                    struct* tempPtr82 = memoryCopy struct* tempPtr83, autoInt 8
+                    return
+            ]
+        },
+        "_fn_LinkedList_shtk_createNode": {
+            "icode": [
+                    int* tempPtr5 = createPointer struct node
+                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                    int* tempPtr7 = write int data
+                    int* tempPtr10 = createPointer struct node
+                    int** tempPtrPtr12 = addressAdd int* tempPtr10, bytes 4
+                    ubyte* tempPtr14 = pointerCast struct* next
+                    ubyte** tempPtrPtr12 = pointerAssign ubyte* tempPtr14
+                    int* tempPtr16 = createPointer struct node
+                    int* tempPtr18 = addressAdd int* tempPtr16, bytes 12
+                    byte temp20 = cast autoInt 0
+                    byte* tempPtr18 = write byte temp20
+                    int* tempPtr23 = createPointer struct returnValue21
+                    int* tempPtr24 = createPointer struct node
+                    int* tempPtr23 = memoryCopy int* tempPtr24, autoInt 13
+                    return
+            ]
+        },
+        "_fn_LinkedList_shtk_createNullNode": {
+            "icode": [
+                    int* tempPtr31 = createPointer struct node
+                    int* tempPtr33 = addressAdd int* tempPtr31, bytes 0
+                    int temp35 = cast autoInt 0
+                    int* tempPtr33 = write int temp35
+                    int* tempPtr37 = createPointer struct node
+                    int** tempPtrPtr39 = addressAdd int* tempPtr37, bytes 4
+                    ubyte* tempPtr41 = pointerCast autoInt 0
+                    ubyte** tempPtrPtr39 = pointerAssign ubyte* tempPtr41
+                    int* tempPtr43 = createPointer struct node
+                    int* tempPtr45 = addressAdd int* tempPtr43, bytes 12
+                    byte temp47 = cast autoInt 1
+                    byte* tempPtr45 = write byte temp47
+                    int* tempPtr50 = createPointer struct returnValue48
+                    int* tempPtr51 = createPointer struct node
+                    int* tempPtr50 = memoryCopy int* tempPtr51, autoInt 13
+                    return
+            ]
+        },
+        "_fn_LinkedList_shtk_pop": {
+            "icode": [
+                    struct* tempPtr133 = createPointer struct self
+                    struct** tempPtrPtr135 = addressAdd struct* tempPtr133, bytes 0
+                    int* tempPtr136 = createPointer struct** tempPtrPtr135
+                    int** tempPtrPtr138 = addressAdd int* tempPtr136, bytes 4
+                    struct* tempPtr139 = pointerCast ubyte** tempPtrPtr138
+                    struct* newTop = pointerAssign struct* tempPtr139
+                    struct* tempPtr142 = createPointer struct self
+                    struct** tempPtrPtr144 = addressAdd struct* tempPtr142, bytes 0
+                    int* tempPtr145 = createPointer struct** tempPtrPtr144
+                    int* tempPtr147 = addressAdd int* tempPtr145, bytes 0
+                    int temp148 = read int* tempPtr147
+                    int poppedData = equal int temp148
+                    struct* tempPtr150 = createPointer struct self
+                    struct** tempPtrPtr152 = addressAdd struct* tempPtr150, bytes 0
+                    ubyte* tempPtr153 = pointerCast struct** tempPtrPtr152
+                    passAddress ubyte* tempPtr153, void free, module LinkedList.shtk
+                    void calleeReturnValue157 = call void free, module LinkedList.shtk
+                    struct* tempPtr161 = createPointer struct self
+                    struct** tempPtrPtr163 = addressAdd struct* tempPtr161, bytes 0
+                    struct** tempPtrPtr163 = pointerAssign struct* newTop
+                    int returnValue165 = equal int poppedData
+                    return
+            ]
+        },
+        "_fn_LinkedList_shtk_printList": {
+            "icode": [
+                    struct* tempPtr172 = createPointer struct self
+                    struct** tempPtrPtr174 = addressAdd struct* tempPtr172, bytes 0
+                    struct* current = pointerAssign struct** tempPtrPtr174
+                _while_true_l81_c4:
+                    int* tempPtr178 = createPointer struct* current
+                    int* tempPtr180 = addressAdd int* tempPtr178, bytes 12
+                    byte temp182 = read byte* tempPtr180
+                    byte temp183 = cast autoInt 0
+                    flag = greaterThan byte temp182, byte temp183
+                    if(flag) goto _while_false_l81_c4
+                    int* tempPtr185 = createPointer struct* current
+                    int* tempPtr187 = addressAdd int* tempPtr185, bytes 0
+                    int temp188 = read int* tempPtr187
+                    print int temp188
+                    newLine
+                    int* tempPtr191 = createPointer struct* current
+                    int** tempPtrPtr193 = addressAdd int* tempPtr191, bytes 4
+                    struct* tempPtr194 = pointerCast ubyte** tempPtrPtr193
+                    struct* current = pointerAssign struct* tempPtr194
+                    goto _while_true_l81_c4
+                _while_false_l81_c4:
+                    return
+            ]
+        },
+        "_fn_LinkedList_shtk_push": {
+            "icode": [
+                    pass int data, struct _fn_LinkedList_shtk_createNode, module LinkedList.shtk
+                    struct* tempPtr95 = createPointer struct self
+                    struct** tempPtrPtr97 = addressAdd struct* tempPtr95, bytes 0
+                    int* tempPtr98 = createPointer struct** tempPtrPtr97
+                    passAddress int* tempPtr98, struct _fn_LinkedList_shtk_createNode, module LinkedList.shtk
+                    struct calleeReturnValue101 = call struct _fn_LinkedList_shtk_createNode, module LinkedList.shtk
+                    int* tempPtr104 = createPointer struct newNode
+                    int* tempPtr105 = createPointer struct calleeReturnValue101
+                    int* tempPtr104 = memoryCopy int* tempPtr105, autoInt 13
+                    struct* tempPtr108 = createPointer struct self
+                    struct** tempPtrPtr110 = addressAdd struct* tempPtr108, bytes 0
+                    int temp113 = cast autoInt 13
+                    pass int temp113, ubyte malloc, module LinkedList.shtk
+                    ubyte* calleeReturnPointer116 = call ubyte malloc, module LinkedList.shtk
+                    struct* tempPtr119 = pointerCast ubyte* calleeReturnPointer116
+                    struct** tempPtrPtr110 = pointerAssign struct* tempPtr119
+                    struct* tempPtr121 = createPointer struct self
+                    struct** tempPtrPtr123 = addressAdd struct* tempPtr121, bytes 0
+                    int* tempPtr125 = createPointer struct** tempPtrPtr123
+                    int* tempPtr126 = createPointer struct newNode
+                    int* tempPtr125 = memoryCopy int* tempPtr126, autoInt 13
+                    return
+            ]
+        },
+        "main": {
+            "icode": [
+                    struct calleeReturnValue199 = call struct _fn_LinkedList_shtk_createLinkedList, module LinkedList.shtk
+                    struct* tempPtr202 = createPointer struct list
+                    struct* tempPtr203 = createPointer struct calleeReturnValue199
+                    struct* tempPtr202 = memoryCopy struct* tempPtr203, autoInt 8
+                    struct* tempPtr208 = createPointer struct list
+                    passAddress struct* tempPtr208, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    int temp212 = cast autoInt 10
+                    pass int temp212, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    void calleeReturnValue215 = call void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    struct* tempPtr221 = createPointer struct list
+                    passAddress struct* tempPtr221, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    int temp225 = cast autoInt 5
+                    pass int temp225, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    void calleeReturnValue228 = call void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    struct* tempPtr234 = createPointer struct list
+                    passAddress struct* tempPtr234, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    int temp238 = cast autoInt 23
+                    pass int temp238, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    void calleeReturnValue241 = call void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    struct* tempPtr246 = createPointer struct list
+                    passAddress struct* tempPtr246, void _fn_LinkedList_shtk_printList, module LinkedList.shtk
+                    void calleeReturnValue249 = call void _fn_LinkedList_shtk_printList, module LinkedList.shtk
+                    struct* tempPtr254 = createPointer struct list
+                    passAddress struct* tempPtr254, int _fn_LinkedList_shtk_pop, module LinkedList.shtk
+                    int calleeReturnValue257 = call int _fn_LinkedList_shtk_pop, module LinkedList.shtk
+                    print int calleeReturnValue257
+                    newLine
+                    struct* tempPtr262 = createPointer struct list
+                    passAddress struct* tempPtr262, int _fn_LinkedList_shtk_pop, module LinkedList.shtk
+                    int calleeReturnValue265 = call int _fn_LinkedList_shtk_pop, module LinkedList.shtk
+                    print int calleeReturnValue265
+                    newLine
+                    struct* tempPtr270 = createPointer struct list
+                    passAddress struct* tempPtr270, void _fn_LinkedList_shtk_printList, module LinkedList.shtk
+                    void calleeReturnValue273 = call void _fn_LinkedList_shtk_printList, module LinkedList.shtk
+                    int temp278 = cast autoInt 0
+                    int returnValue276 = equal int temp278
+                    return
+            ]
+        }
+    }
+}
