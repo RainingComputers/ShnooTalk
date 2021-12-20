@@ -1,0 +1,104 @@
+# 23
+# 5
+# 10
+# 23
+# 5
+# 10
+
+extfn malloc(bytes: int) -> ubyte*
+extfn free(ptr: ubyte*)
+
+def NULL 0
+
+class Node 
+{
+    var data: int
+    var next: ubyte*
+    var isNull: bool
+}
+
+fn createNode(data: int, next: Node*) -> Node 
+{
+    var node: Node
+
+    node.data = data
+    node.next <- ubyte*`next
+    node.isNull = false
+
+    return node
+}
+
+fn createNullNode() -> Node 
+{
+    var node: Node
+
+    node.data = 0
+    node.next <- ubyte*`NULL
+    node.isNull = true
+
+    return node
+}
+
+class LinkedList 
+{
+    var top: Node*
+}
+
+fn createLinkedList() -> LinkedList 
+{
+    var linkedList: LinkedList
+ 
+    linkedList.top <- Node*`malloc(sizeof(Node))
+    linkedList.top = createNullNode()
+ 
+    return linkedList
+}
+
+fn push(mut self: LinkedList, data: int) 
+{
+    var newNode: Node = createNode(data, self.top)
+
+    self.top <- Node*`malloc(sizeof(Node))
+    self.top = newNode
+}
+
+fn pop(mut self: LinkedList) -> int
+{
+    var newTop: Node* <- Node*`self.top.next
+    var poppedData: int = self.top.data
+
+    free(ubyte*`self.top)
+
+    self.top <- newTop
+
+    return poppedData
+}
+
+fn printList(self: LinkedList) 
+{
+    var current: Node* <- self.top
+    
+    while not current.isNull
+    {
+        println(current.data)
+        current <- Node*`current.next
+    }
+}
+
+fn main() -> int
+ {
+    var list: LinkedList = createLinkedList()
+
+    list.push(10)
+    list.push(5)
+    list.push(23)
+    
+    list.printList()
+
+    println(list.pop())
+    println(list.pop())
+
+    list.printList()
+    
+    return 0
+}

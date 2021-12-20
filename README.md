@@ -80,11 +80,13 @@ clang app.o -o app
 - [ ] Language reference in markdown
 - [x] Setup github workflows and build for other platforms
 - [ ] Error recovery
+- [ ] Incomplete types and type composing of a pointer to itself
+- [ ] Function forward declaration
 
 ### Advanced features
 
 - [x] Custom operators
-- [ ] Templates
+- [ ] Generics
 - [ ] Standard library
 - [ ] Passing functions as arguments
 - [ ] Constructor and destructor
