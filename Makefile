@@ -58,8 +58,13 @@ else ifeq ($(GPROF), 1)
 	LDFLAGS = -pg
 	BUILD_TYPE = gprof
 else ifeq ($(GCOV), 1)
-    LDFLAGS = -lgcov --coverage
-    CXXFLAGS = -fprofile-arcs -ftest-coverage -g
+    LDFLAGS = --coverage
+
+	ifneq ($(shell uname -s), Darwin)
+		LDFLAGS := $(LDFLAGS) -lgcov
+	endif
+	
+	CXXFLAGS = -fprofile-arcs -ftest-coverage -g
 	BUILD_TYPE = gcov
 else
     CXXFLAGS = -O3
@@ -136,7 +141,7 @@ test:
 	LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner --test
 
 coverage:
-	python3 -m tests_runner --coverage
+	LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner --coverage
 
 tidy:
 	clang-tidy $(SOURCES) -- $(CXXFLAGS) -Wextra

@@ -1,0 +1,16 @@
+generic K, V
+
+struct Pair
+{
+    var first: K, second: V
+}
+
+fn add(a: Pair, b: Pair) -> Pair
+{
+    var result: Pair
+
+    result.first = a.first + b.first
+    result.second = a.second + b.second
+
+    return result
+}

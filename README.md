@@ -82,6 +82,7 @@ clang app.o -o app
 - [ ] Error recovery
 - [ ] Incomplete types and type composing of a pointer to itself
 - [ ] Function forward declaration
+- [ ] Direct from
 
 ### Advanced features
 

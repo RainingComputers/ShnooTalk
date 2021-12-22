@@ -1,0 +1,46 @@
+{
+    "moduleName": "GenericsPairTest.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    float* tempPtr5 = createPointer struct a
+                    float* tempPtr7 = addressAdd float* tempPtr5, bytes 0
+                    float temp9 = cast autoFloat 3.000000
+                    float* tempPtr7 = write float temp9
+                    float* tempPtr11 = createPointer struct a
+                    float* tempPtr13 = addressAdd float* tempPtr11, bytes 4
+                    int temp15 = cast autoInt 5
+                    int* tempPtr13 = write int temp15
+                    float* tempPtr18 = createPointer struct b
+                    float* tempPtr20 = addressAdd float* tempPtr18, bytes 0
+                    float temp22 = cast autoFloat 5.000000
+                    float* tempPtr20 = write float temp22
+                    float* tempPtr24 = createPointer struct b
+                    float* tempPtr26 = addressAdd float* tempPtr24, bytes 4
+                    int temp28 = cast autoInt 3
+                    int* tempPtr26 = write int temp28
+                    float* tempPtr34 = createPointer struct a
+                    passAddress float* tempPtr34, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int
+                    float* tempPtr37 = createPointer struct b
+                    passAddress float* tempPtr37, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int
+                    struct calleeReturnValue40 = call struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int
+                    float* tempPtr43 = createPointer struct c
+                    float* tempPtr44 = createPointer struct calleeReturnValue40
+                    float* tempPtr43 = memoryCopy float* tempPtr44, autoInt 8
+                    float* tempPtr47 = createPointer struct c
+                    float* tempPtr49 = addressAdd float* tempPtr47, bytes 0
+                    float temp50 = read float* tempPtr49
+                    print float temp50
+                    newLine
+                    float* tempPtr52 = createPointer struct c
+                    float* tempPtr54 = addressAdd float* tempPtr52, bytes 4
+                    int temp55 = read int* tempPtr54
+                    print int temp55
+                    newLine
+                    int temp58 = cast autoInt 0
+                    int returnValue56 = equal int temp58
+                    return
+            ]
+        }
+    }
+}
