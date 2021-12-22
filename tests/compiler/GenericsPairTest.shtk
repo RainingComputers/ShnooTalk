@@ -1,0 +1,27 @@
+# 8.000000
+# 8
+
+
+use "TestModules/Pair.shtk" as Pair
+
+from Pair use Pair
+
+fn main() -> int
+{
+    var a: Pair[float, int]
+
+    a.first = 3.0
+    a.second = 5
+
+    var b: Pair[float, int]
+
+    b.first = 5.0
+    b.second = 3
+
+    var c: Pair[float, int] = a + b
+
+    println(c.first)
+    println(c.second)
+
+    return 0
+}

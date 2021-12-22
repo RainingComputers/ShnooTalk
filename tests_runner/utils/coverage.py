@@ -1,6 +1,6 @@
 import os
 
-from tests_runner.utils.config import COVERAGE_REPORT_DIR, OBJ_DIR
+from tests_runner.utils.config import COVERAGE_REPORT_DIR, OBJ_DIR, OPEN_BIN, LCOV_EXCLUDE
 
 
 def shell(command: str) -> None:
@@ -20,8 +20,8 @@ def prepare_coverage_report() -> None:
     os.chdir("tests")
     print("🤖 Preparing coverage report...")
     shell(f"lcov -c  -b ../ -d {OBJ_DIR} -o total_unfiltered.info")
-    shell("lcov --remove total_unfiltered.info '/usr/include/*' '/usr/lib/*' -o total.info")
+    shell(f"lcov --remove total_unfiltered.info {LCOV_EXCLUDE} -o total.info")
     shell(f"genhtml total.info -o {COVERAGE_REPORT_DIR}/")
     print("📜 Opening report...")
-    shell(f"xdg-open {COVERAGE_REPORT_DIR}/index.html")
+    shell(f"{OPEN_BIN} {COVERAGE_REPORT_DIR}/index.html")
     os.chdir("..")

@@ -37,3 +37,14 @@ COVERAGE_REPORT_DIR = os.path.join(os.getcwd(), "tests",  "reports")
 VERSION_FILE = os.path.join(os.getcwd(), "version")
 
 TIMEOUT = 5
+
+OPEN_BIN = 'open' if sys.platform.title() == 'Darwin' else 'xdg-open'
+
+LCOV_EXCLUDE_LIST = [
+    '/usr/include/*',
+    '/usr/lib/*',
+    '/Library/*',
+    '/opt/*'
+]
+
+LCOV_EXCLUDE = ' '.join(list(map(lambda x: f"'{x}'", LCOV_EXCLUDE_LIST)))
