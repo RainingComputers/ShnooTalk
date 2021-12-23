@@ -1,4 +1,5 @@
 import os
+from typing import List
 
 from tests_runner.utils.command import run_command
 from tests_runner.utils.result import TestResult, ResultPrinter
@@ -38,9 +39,8 @@ def run_version_test() -> TestResult:
     return TestResult.passed(output)
 
 
-def run_invalid_args(empty: bool) -> TestResult:
-    cmd = \
-        [COMPILER_EXEC_PATH] if empty else [COMPILER_EXEC_PATH, "TestModules/Math.shtk", "-invalid"]
+def run_invalid_args(args: List[str]) -> TestResult:
+    cmd = [COMPILER_EXEC_PATH] + args
 
     timedout, output, exit_code = run_command(cmd)
 
@@ -70,9 +70,20 @@ def run() -> None:
 
     printer = ResultPrinter('CLI args')
 
-    printer.print_result('No args', run_invalid_args(empty=True))
-    printer.print_result('Invalid args', run_invalid_args(empty=False))
+    printer.print_result('No args', run_invalid_args([]))
+
+    printer.print_result(
+        'Invalid args',
+        run_invalid_args(["TestModules/Math.shtk", "-invalid"])
+    )
+
+    printer.print_result(
+        'Too many args',
+        run_invalid_args(["TestModules/Math.shtk", "-invalid", "-too-many"])
+    )
+
     printer.print_result('File not found', run_file_no_exists())
+
     printer.print_result('-version', run_version_test())
 
     os.chdir("../..")

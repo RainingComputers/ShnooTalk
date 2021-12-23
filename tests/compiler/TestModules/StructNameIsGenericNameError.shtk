@@ -1,0 +1,7 @@
+generic K, V
+
+struct V
+{
+    var a: int
+    var b: float
+}

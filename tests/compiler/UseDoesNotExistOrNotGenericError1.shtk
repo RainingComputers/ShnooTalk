@@ -1,0 +1,15 @@
+# MODULE UseDoesNotExistOrNotGenericError1.shtk
+# ERROR in Line 12 Col 12
+# 
+#     var a: Math::Foo[int, float]
+#            ^
+# Use does not exist or NOT GENERIC
+
+use "TestModules/Math.shtk" as Math
+
+fn main() -> int
+{
+    var a: Math::Foo[int, float]
+
+    return 0
+}

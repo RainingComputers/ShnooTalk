@@ -112,7 +112,7 @@ std::string Monomorphizer::getGenericModuleNameFromAlias(const Token& aliasToken
     if (getMapElement<std::string, std::string>(aliases, aliasToken.toString(), genericModuleName))
         return genericModuleName;
 
-    console.compileErrorOnToken("Alias does not exist or NOT GENERIC", aliasToken);
+    console.compileErrorOnToken("Use does not exist or NOT GENERIC", aliasToken);
 }
 
 std::string Monomorphizer::getGenericModuleNameFromStruct(const Token& nameToken)

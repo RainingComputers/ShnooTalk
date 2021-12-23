@@ -83,6 +83,7 @@ clang app.o -o app
 - [ ] Incomplete types and type composing of a pointer to itself
 - [ ] Function forward declaration
 - [ ] Direct from
+- [ ] Unsafe keyword
 
 ### Advanced features
 

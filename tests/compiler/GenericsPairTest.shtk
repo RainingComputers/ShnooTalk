@@ -1,8 +1,11 @@
 # 8.000000
 # 8
+# 5
+# x: 5 y: 5
 
 
 use "TestModules/Pair.shtk" as Pair
+use "TestModules/Vector.shtk" as Vector
 
 from Pair use Pair
 
@@ -22,6 +25,18 @@ fn main() -> int
 
     println(c.first)
     println(c.second)
+
+    var foo: Pair[int, Vector::Vec]
+    foo.first = 3
+    foo.second.setVec(1, 2)
+
+    var bar: Pair[int, Vector::Vec]
+    bar.first = 2
+    bar.second.setVec(4, 3)
+
+    var foobar: Pair[int, Vector::Vec] = foo + bar
+    println(foobar.first)
+    Vector::printVec(foobar.second)
 
     return 0
 }
