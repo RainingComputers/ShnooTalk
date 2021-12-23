@@ -37,8 +37,52 @@
                     int temp55 = read int* tempPtr54
                     print int temp55
                     newLine
-                    int temp58 = cast autoInt 0
-                    int returnValue56 = equal int temp58
+                    int* tempPtr58 = createPointer struct foo
+                    int* tempPtr60 = addressAdd int* tempPtr58, bytes 0
+                    int temp62 = cast autoInt 3
+                    int* tempPtr60 = write int temp62
+                    int* tempPtr64 = createPointer struct foo
+                    int* tempPtr66 = addressAdd int* tempPtr64, bytes 4
+                    int* tempPtr70 = createPointer struct* tempPtr66
+                    passAddress int* tempPtr70, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp74 = cast autoInt 1
+                    pass int temp74, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp78 = cast autoInt 2
+                    pass int temp78, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    void calleeReturnValue81 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int* tempPtr86 = createPointer struct bar
+                    int* tempPtr88 = addressAdd int* tempPtr86, bytes 0
+                    int temp90 = cast autoInt 2
+                    int* tempPtr88 = write int temp90
+                    int* tempPtr92 = createPointer struct bar
+                    int* tempPtr94 = addressAdd int* tempPtr92, bytes 4
+                    int* tempPtr98 = createPointer struct* tempPtr94
+                    passAddress int* tempPtr98, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp102 = cast autoInt 4
+                    pass int temp102, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int temp106 = cast autoInt 3
+                    pass int temp106, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    void calleeReturnValue109 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    int* tempPtr117 = createPointer struct foo
+                    passAddress int* tempPtr117, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec
+                    int* tempPtr120 = createPointer struct bar
+                    passAddress int* tempPtr120, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec
+                    struct calleeReturnValue123 = call struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec
+                    int* tempPtr126 = createPointer struct foobar
+                    int* tempPtr127 = createPointer struct calleeReturnValue123
+                    int* tempPtr126 = memoryCopy int* tempPtr127, autoInt 12
+                    int* tempPtr130 = createPointer struct foobar
+                    int* tempPtr132 = addressAdd int* tempPtr130, bytes 0
+                    int temp133 = read int* tempPtr132
+                    print int temp133
+                    newLine
+                    int* tempPtr135 = createPointer struct foobar
+                    int* tempPtr137 = addressAdd int* tempPtr135, bytes 4
+                    int* tempPtr139 = createPointer struct* tempPtr137
+                    passAddress int* tempPtr139, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    void calleeReturnValue142 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    int temp147 = cast autoInt 0
+                    int returnValue145 = equal int temp147
                     return
             ]
         }
