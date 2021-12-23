@@ -4,16 +4,16 @@
 #include <string>
 #include <vector>
 
+#include "../../Console/Console.hpp"
 #include "../../IntermediateRepresentation/TypeDescription.hpp"
 #include "../../Node/Node.hpp"
-#include "../../Console/Console.hpp"
 #include "GenericASTIndex.hpp"
 
 Node instantiateAST(GenericASTIndex index,
-                    const Token& typeRootToken,
-                    const std::vector<icode::TypeDescription>& instantiationTypes,
-                    const std::vector<Node>& instTypeNodes,
-                    const std::string& instantiationSuffix,
+                    Token typeRootToken,
+                    std::vector<icode::TypeDescription> instantiationTypes,
+                    std::vector<Node> instTypeNodes,
+                    std::string instantiationSuffix,
                     Console& console);
 
 #endif
