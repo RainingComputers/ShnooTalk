@@ -84,6 +84,7 @@ clang app.o -o app
 - [ ] Function forward declaration
 - [ ] Direct from
 - [ ] Unsafe keyword
+- [ ] := initializer
 
 ### Advanced features
 
