@@ -6,14 +6,15 @@
 
 #include "Instantiator.hpp"
 
+
 struct InstiatorContext
 {
     std::string& genericIdentifier;
     std::vector<std::string>& genericStructs;
-    Token typeRootToken;
-    Node instTypeNode;
-    icode::TypeDescription instantiationType;
-    std::string instantiationSuffix;
+    Token& typeRootToken;
+    Node& instTypeNode;
+    icode::TypeDescription& instantiationType;
+    std::string& instantiationSuffix;
     Console& console;
 
     bool isGenericStruct(const Token& nameToken) const;
@@ -243,19 +244,23 @@ void prependUseNodes(const std::vector<icode::TypeDescription>& instantiationTyp
 
         if (std::find(prependedModules.begin(), prependedModules.end(), moduleName) != prependedModules.end())
             continue;
+        
+        prependedModules.push_back(moduleName);
 
         prependUseNode(genericModuleAST, moduleName, alias);
     }
 }
 
 Node instantiateAST(GenericASTIndex index,
-                    const Token& typeRootToken,
-                    const std::vector<icode::TypeDescription>& instantiationTypes,
-                    const std::vector<Node>& instTypeNodes,
-                    const std::string& instantiationSuffix,
+                    Token typeRootToken,
+                    std::vector<icode::TypeDescription> instantiationTypes,
+                    std::vector<Node> instTypeNodes,
+                    std::string instantiationSuffix,
                     Console& console)
 {
     Node& genericModuleAST = index.ast;
+
+    prependUseNodes(instantiationTypes, instTypeNodes, genericModuleAST);
 
     for (size_t i = 0; i < index.genericIdentifiers.size(); i += 1)
     {
