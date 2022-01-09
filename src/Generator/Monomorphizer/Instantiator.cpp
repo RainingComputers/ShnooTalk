@@ -6,7 +6,6 @@
 
 #include "Instantiator.hpp"
 
-
 struct InstiatorContext
 {
     std::string& genericIdentifier;
@@ -19,6 +18,8 @@ struct InstiatorContext
 
     bool isGenericStruct(const Token& nameToken) const;
 };
+
+void block(const InstiatorContext& ctx, Node& root);
 
 bool InstiatorContext::isGenericStruct(const Token& nameToken) const
 {
@@ -117,10 +118,64 @@ void monomorphizeTypeNode(const InstiatorContext& ctx, Node& root)
     }
 }
 
+void sizeOf(const InstiatorContext& ctx, Node& root)
+{
+    if (!root.isNthChild(node::IDENTIFIER, 0))
+        return;
+
+    const Token& typeToken = root.getNthChildToken(0);
+
+    if (typeToken.toString() != ctx.genericIdentifier)
+        return;
+
+    root.children[0].tok = modToken(typeToken, ctx.instantiationType.dtypeName);
+
+    const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
+    root.children.insert(root.children.begin(), constructNode(node::MODULE, alias));
+}
+
+void pointerCast(const InstiatorContext& ctx, Node& root)
+{
+    const Token& typeToken = root.getNthChildToken(0);
+
+    if (typeToken.toString() != ctx.genericIdentifier)
+        return;
+
+    root.children[0].tok = modToken(typeToken, ctx.instantiationType.dtypeName);
+
+    Node newRootNode = constructNode(node::TERM, typeToken.toString());
+
+    const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
+    newRootNode.children.push_back(constructNode(node::MODULE, alias));
+}
+
+void expression(const InstiatorContext& ctx, Node& root)
+{
+    if (root.type == node::SIZEOF)
+    {
+        sizeOf(ctx, root);
+        return;
+    }
+
+    if (root.isNthChild(node::PTR_CAST, 0) || root.isNthChild(node::PTR_ARRAY_CAST, 0))
+        pointerCast(ctx, root);
+
+    for (Node& child : root.children)
+        expression(ctx, child);
+}
+
 void forLoop(const InstiatorContext& ctx, Node& root)
 {
     if (root.isNthChild(node::VAR, 0))
         monomorphizeTypeNode(ctx, root.children[0]);
+
+    block(ctx, root.children[3]);
+}
+
+void ifStatement(const InstiatorContext& ctx, Node& root)
+{
+    for (Node& child : root.children)
+        block(ctx, child);
 }
 
 void statement(const InstiatorContext& ctx, Node& root)
@@ -134,9 +189,23 @@ void statement(const InstiatorContext& ctx, Node& root)
         case node::FOR:
             forLoop(ctx, root);
             break;
+        case node::IF:
+            ifStatement(ctx, root);
+            break;
+        case node::WHILE:
+            block(ctx, root.children[1]);
+            break;
+        case node::DO_WHILE:
+            block(ctx, root.children[0]);
+            break;
+        case node::LOOP:
+            block(ctx, root.children[0]);
+            break;
         default:
             break;
     }
+
+    expression(ctx, root);
 }
 
 void block(const InstiatorContext& ctx, Node& root)
@@ -244,7 +313,7 @@ void prependUseNodes(const std::vector<icode::TypeDescription>& instantiationTyp
 
         if (std::find(prependedModules.begin(), prependedModules.end(), moduleName) != prependedModules.end())
             continue;
-        
+
         prependedModules.push_back(moduleName);
 
         prependUseNode(genericModuleAST, moduleName, alias);

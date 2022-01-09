@@ -1,0 +1,13 @@
+# 1
+
+fn main() -> int
+{
+    var a: int = 1
+    var b: int = 2
+
+    var c: int = b > a
+
+    println(c)
+
+    return 0
+}

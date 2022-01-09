@@ -12,6 +12,8 @@ using namespace icode;
 Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
+    ctx.ir.resetWorkingModule();
+
     setWorkingModuleFromNode(ctx, root, 0);
 
     int size = ctx.ir.descriptionFinder.getDataTypeSizeFromToken(root.children.back().tok);
@@ -64,17 +66,23 @@ Unit cast(generator::GeneratorContext& ctx, const Node& root)
 
 Unit pointerCast(generator::GeneratorContext& ctx, const Node& root)
 {
+    ctx.ir.pushWorkingModule();
+
+    TypeDescription destinationType = ctx.ir.moduleBuilder.createTypeDescription(root.tok);
+
+    ctx.ir.resetWorkingModule();
+
     Unit termToCast = term(ctx, root.children[0]);
 
     if (!termToCast.isValidForPointerAssignment() && !termToCast.isIntegerType())
         ctx.console.compileErrorOnToken("Invalid expression for POINTER CAST", root.tok);
 
-    TypeDescription destinationType = ctx.ir.moduleBuilder.createTypeDescription(root.tok);
-
     if (root.type == node::PTR_ARRAY_CAST)
         destinationType.becomeArrayPointer();
     else
         destinationType.becomePointer();
+
+    ctx.ir.popWorkingModule();
 
     return ctx.ir.functionBuilder.pointerCastOperator(termToCast, destinationType);
 }
@@ -148,6 +156,8 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 
     if (root.children.size() != callee.numParameters())
         ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
+
+    ctx.ir.resetWorkingModule();
 
     for (size_t i = 0; i < root.children.size(); i++)
     {

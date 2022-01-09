@@ -3,6 +3,6 @@
 
 #include "../IntermediateRepresentation/Entry.hpp"
 
-void prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int indentLevel);
+void prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int indentLevel, int indentWidth);
 
 #endif

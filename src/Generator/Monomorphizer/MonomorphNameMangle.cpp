@@ -7,7 +7,7 @@ std::string dimensionToString(const std::vector<int>& dimensions)
     std::string result = "";
 
     for (const int dim : dimensions)
-        result += dim;
+        result += std::to_string(dim);
 
     return result;
 }

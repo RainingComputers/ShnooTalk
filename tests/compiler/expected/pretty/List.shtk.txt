@@ -1,0 +1,60 @@
+{
+    "moduleName": "List.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int* tempPtr8 = createPointer struct a
+                    passAddress int* tempPtr8, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr16 = allocArrayPointer bytes 20
+                    int temp18 = cast autoInt 1
+                    int* tempPtr16 = write int temp18
+                    int* tempPtr20 = addressAdd int* tempPtr16, bytes 4
+                    int temp21 = cast autoInt 2
+                    int* tempPtr20 = write int temp21
+                    int* tempPtr23 = addressAdd int* tempPtr20, bytes 4
+                    int temp24 = cast autoInt 3
+                    int* tempPtr23 = write int temp24
+                    int* tempPtr26 = addressAdd int* tempPtr23, bytes 4
+                    int temp27 = cast autoInt 4
+                    int* tempPtr26 = write int temp27
+                    int* tempPtr29 = addressAdd int* tempPtr26, bytes 4
+                    int temp30 = cast autoInt 5
+                    int* tempPtr29 = write int temp30
+                    passAddress int* tempPtr16, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
+                    int temp34 = cast autoInt 5
+                    pass int temp34, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
+                    void calleeReturnValue37 = call void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr42 = createPointer struct a
+                    passAddress int* tempPtr42, void _fn_TestModules_List_shtk__List_shtk_int_printList, module TestModules/List.shtk__List_shtk_int
+                    void calleeReturnValue45 = call void _fn_TestModules_List_shtk__List_shtk_int_printList, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr52 = createPointer struct a
+                    passAddress int* tempPtr52, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr60 = allocArrayPointer bytes 20
+                    int temp62 = cast autoInt 6
+                    int* tempPtr60 = write int temp62
+                    int* tempPtr64 = addressAdd int* tempPtr60, bytes 4
+                    int temp65 = cast autoInt 7
+                    int* tempPtr64 = write int temp65
+                    int* tempPtr67 = addressAdd int* tempPtr64, bytes 4
+                    int temp68 = cast autoInt 8
+                    int* tempPtr67 = write int temp68
+                    int* tempPtr70 = addressAdd int* tempPtr67, bytes 4
+                    int temp71 = cast autoInt 9
+                    int* tempPtr70 = write int temp71
+                    int* tempPtr73 = addressAdd int* tempPtr70, bytes 4
+                    int temp74 = cast autoInt 10
+                    int* tempPtr73 = write int temp74
+                    passAddress int* tempPtr60, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
+                    int temp78 = cast autoInt 5
+                    pass int temp78, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
+                    void calleeReturnValue81 = call void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr86 = createPointer struct a
+                    passAddress int* tempPtr86, void _fn_TestModules_List_shtk__List_shtk_int_printList, module TestModules/List.shtk__List_shtk_int
+                    void calleeReturnValue89 = call void _fn_TestModules_List_shtk__List_shtk_int_printList, module TestModules/List.shtk__List_shtk_int
+                    int temp94 = cast autoInt 0
+                    int returnValue92 = equal int temp94
+                    return
+            ]
+        }
+    }
+}

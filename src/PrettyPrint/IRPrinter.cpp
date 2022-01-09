@@ -180,7 +180,7 @@ namespace pp
         }
         else
         {
-            prettyPrintIcodeTable(functionDesc.icodeTable, 4);
+            prettyPrintIcodeTable(functionDesc.icodeTable, jsonp.getBaseIndentLevel(), jsonp.getIndentWidth());
         }
 
         jsonp.end();
@@ -201,9 +201,8 @@ namespace pp
         jsonp.end();
     }
 
-    void printModuleDescription(const icode::ModuleDescription& moduleDescription, bool jsonIR)
+    void printModuleDescription(const icode::ModuleDescription& moduleDescription, FlatJSONPrinter& jsonp, bool jsonIR)
     {
-        FlatJSONPrinter jsonp(0);
         jsonp.begin();
 
         jsonp.printString("moduleName", moduleDescription.name);
@@ -243,6 +242,26 @@ namespace pp
         jsonp.end();
     }
 
+    void printModulesMap(const icode::StringModulesMap& modulesMap, bool jsonIR)
+    {
+        FlatJSONPrinter jsonp(0);
+        jsonp.begin();
+
+        for (auto pair : modulesMap)
+        {
+            FlatJSONPrinter moduleDescriptionPrinter = jsonp.beginNested(pair.first);
+            printModuleDescription(pair.second, moduleDescriptionPrinter, jsonIR);
+        }
+
+        jsonp.end();
+    }
+
+    void printModule(const icode::ModuleDescription& moduleDescription, bool jsonIR)
+    {
+        FlatJSONPrinter jsonp(0);
+        printModuleDescription(moduleDescription, jsonp, jsonIR);
+    }
+
     void printFunctionDescriptionIcodeOnly(const icode::FunctionDescription& functionDesc,
                                            FlatJSONPrinter& jsonp,
                                            bool jsonIR)
@@ -258,7 +277,7 @@ namespace pp
         }
         else
         {
-            prettyPrintIcodeTable(functionDesc.icodeTable, 4);
+            prettyPrintIcodeTable(functionDesc.icodeTable, jsonp.getBaseIndentLevel(), jsonp.getIndentWidth());
         }
 
         jsonp.end();
@@ -279,7 +298,7 @@ namespace pp
         jsonp.end();
     }
 
-    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription, bool jsonIR)
+    void printModuleIcodeOnly(const icode::ModuleDescription& moduleDescription, bool jsonIR)
     {
         FlatJSONPrinter jsonp(0);
         jsonp.begin();

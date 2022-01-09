@@ -18,6 +18,16 @@ void FlatJSONPrinter::setIndentWidth(int indentWidth)
     this->indentWidth = indentWidth;
 }
 
+int FlatJSONPrinter::getBaseIndentLevel()
+{
+    return this->indentLevel;
+}
+
+int FlatJSONPrinter::getIndentWidth()
+{
+    return this->indentWidth;
+}
+
 void printKey(const std::string& key)
 {
     std::cout << "\"" << key << "\": ";

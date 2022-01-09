@@ -20,6 +20,7 @@ namespace icode
         WRITE,
         CREATE_PTR,
         ALLOC_PTR,
+        ALLOC_ARRAY_PTR,
         CAST,
         PTR_CAST,
         UNARY_MINUS,

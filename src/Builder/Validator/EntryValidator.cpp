@@ -87,6 +87,14 @@ void allocPointer(const icode::Entry& e, Console& con)
     con.check(allOperandNonVoidBaseDataType(e));
 }
 
+void allocArrayPointer(const icode::Entry& e, Console& con)
+{
+    con.check(twoOperand(e));
+    con.check(e.op1.isPointer());
+    con.check(e.op2.operandType == icode::BYTES);
+    con.check(allOperandNonVoidBaseDataType(e));
+}
+
 void addrAdd(const icode::Entry& e, Console& con)
 {
     con.check(threeOperand(e));
@@ -242,6 +250,9 @@ void validateEntry(const icode::Entry& entry, Console& con)
             break;
         case icode::ALLOC_PTR:
             allocPointer(entry, con);
+            break;
+        case icode::ALLOC_ARRAY_PTR:
+            allocArrayPointer(entry, con);
             break;
         case icode::ADDR_ADD:
             addrAdd(entry, con);

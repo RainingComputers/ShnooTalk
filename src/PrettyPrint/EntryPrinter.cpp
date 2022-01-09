@@ -138,6 +138,7 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::MEMCPY:
         case icode::CALL:
         case icode::ALLOC_PTR:
+        case icode::ALLOC_ARRAY_PTR:
             return prettyPrintEntryEqualLHS(entry);
         case icode::EQ:
         case icode::NEQ:
@@ -171,15 +172,15 @@ std::string prettyPrintEntry(const icode::Entry& entry)
     }
 }
 
-void prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int indentLevel)
+void prettyPrintIcodeTable(const std::vector<icode::Entry>& icodeTable, int indentLevel, int indentWidth)
 {
-    std::cout << std::endl << std::string((indentLevel - 1) * 4, ' ') << "\"icode\": [" << std::endl;
+    std::cout << std::endl << std::string((indentLevel + 1) * indentWidth, ' ') << "\"icode\": [" << std::endl;
 
     for (const icode::Entry& e : icodeTable)
     {
-        std::cout << std::string(indentLevel * 4, ' ');
+        std::cout << std::string((indentLevel + 2) * indentWidth, ' ');
         std::cout << prettyPrintEntry(e) << std::endl;
     }
 
-    std::cout << std::string((indentLevel - 1) * 4, ' ') << "]";
+    std::cout << std::string((indentLevel + 1) * indentWidth, ' ') << "]";
 }
