@@ -4,5 +4,6 @@
 #include "ModuleContext.hpp"
 
 void allocPointer(ModuleContext& ctx, const icode::Entry& e);
+void allocArrayPointer(ModuleContext& ctx, const icode::Entry& e);
 
 #endif

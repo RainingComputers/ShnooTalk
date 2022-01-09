@@ -9,38 +9,30 @@
 # x: 8 y: 18
 # x: 9 y: 19
 
-def NUM_ELEM 10
+use "TestModules/Vector.shtk" as Vec
 
 extfn malloc(size: ulong) -> char[]
 
-struct Vector
-{
-    var x: int, y: int
-}
+def NUM_ELEM 10
 
-fn createVector(x: int, y: int) -> Vector
+fn createVector(x: int, y: int) -> Vec::Vec
 {
-    var v: Vector
+    var v: Vec::Vec
     v.x = x
     v.y = y
     return v
 }
 
-fn printVec(vector: Vector)
-{
-    println("x:", vector.x, "y:", vector.y)
-}
-
 fn main() -> int
 {
-    var vecArray: Vector[] <- Vector[]`malloc(sizeof(Vector)*10)
+    var vecArray: Vec::Vec[] <- Vec::Vec[]`malloc(sizeof(Vec::Vec)*10)
     var i: int
 
     for (i = 0; i < NUM_ELEM; i += 1)
         vecArray[i] = createVector(i, i+10)
 
     for (i = 0; i < NUM_ELEM; i += 1)
-        printVec(vecArray[i])
+        Vec::printVec(vecArray[i])
 
     return 0
 }

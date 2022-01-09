@@ -80,6 +80,36 @@
             "externalConsole": false
         },
         {
+            "name": "-ir-all (MacOS)",
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-ir-all"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
+            "name": "-json-ir-all (MacOS)",
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-json-ir-all"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "name": "-llvm (MacOS)",
             "type": "lldb",
             "request": "launch",
@@ -164,6 +194,98 @@
             "args": [
                 "${fileBasename}",
                 "-json-ir"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-icode (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-icode"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-json-icode (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-json-icode"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-ir-all (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-ir-all"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-json-ir-all (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-json-ir-all"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

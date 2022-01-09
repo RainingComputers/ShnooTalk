@@ -84,6 +84,9 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::ALLOC_PTR:
                 allocPointer(ctx, e);
                 break;
+            case icode::ALLOC_ARRAY_PTR:
+                allocArrayPointer(ctx, e);
+                break;
             case icode::ADDR_ADD:
             case icode::ADDR_MUL:
                 addressBinaryOperator(ctx, e);

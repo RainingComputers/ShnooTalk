@@ -12,8 +12,9 @@
 
 namespace pp
 {
-    void printModuleDescription(const icode::ModuleDescription& module_desc, bool jsonIR);
-    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription, bool jsonIR);
+    void printModule(const icode::ModuleDescription& module_desc, bool jsonIR);
+    void printModulesMap(const icode::StringModulesMap& modulesMap, bool jsonIR);
+    void printModuleIcodeOnly(const icode::ModuleDescription& moduleDescription, bool jsonIR);
 }
 
 #endif

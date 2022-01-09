@@ -1,0 +1,61 @@
+generic T
+
+extfn malloc(bytes: int) -> ubyte*
+extfn free(ptr: ubyte*)
+
+fn copy(mut dest: T[], src: T[], len: int, destOffset: int)
+{
+    for var i: int = 0; i < len; i += 1 {
+        dest[i+destOffset] = src[i]
+    }  
+}
+
+struct List
+{
+    var items: T[]
+    var cap: int
+    var len: int
+}
+
+fn init(mut self: List, items: T[], len: int)
+{
+    self.len = len
+    self.cap = len
+    self.items <- T[]`malloc(sizeof(T)*len)
+
+    copy(self.items, items, len, 0)
+}
+
+fn expand(mut self: List, cap: int)
+{
+    if cap <= self.cap return void
+
+    var oldItems: T[] <- self.items
+
+    self.items <- T[]`malloc(sizeof(T)*cap)
+    
+    copy(self.items, oldItems, self.cap, 0)
+    self.cap = cap
+    
+    free(ubyte*`oldItems)
+}
+
+fn appendArray(mut self: List, items: T[], len: int)
+{
+    const newLen: int = self.len + len
+    
+    if self.cap < newLen
+        self.expand(newLen*2)
+    
+    copy(self.items, items, len, self.len)
+    
+    self.len = newLen
+}   
+
+fn printList(self: List)
+{
+    for var i: int = 0; i < self.len; i += 1
+        print(self.items[i]; ", ")
+
+    println("")
+}

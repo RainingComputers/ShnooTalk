@@ -98,10 +98,10 @@ Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op)
             return ctx.builder->CreateLoad(getLLVMPointer(ctx, op), op.name.c_str());
         case icode::PTR:
         case icode::CALLEE_RET_PTR:
+        case icode::TEMP_PTR_PTR:
             return ctx.builder->CreatePtrToInt(getLLVMPointer(ctx, op), dataTypeToLLVMType(ctx, icode::I64));
         case icode::TEMP_PTR:
         case icode::TEMP:
-        case icode::TEMP_PTR_PTR:
             return ctx.operandValueMap.at(op.operandId);
         default:
             ctx.console.internalBugError();

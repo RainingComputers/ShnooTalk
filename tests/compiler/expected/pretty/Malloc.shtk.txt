@@ -15,76 +15,57 @@
                     return
             ]
         },
-        "_fn_Malloc_shtk_printVec": {
-            "icode": [
-                    printString stringData _str_Malloc_shtk__l31_c12
-                    space
-                    int* tempPtr24 = createPointer struct vector
-                    int* tempPtr26 = addressAdd int* tempPtr24, bytes 0
-                    int temp27 = read int* tempPtr26
-                    print int temp27
-                    space
-                    printString stringData _str_Malloc_shtk__l31_c28
-                    space
-                    int* tempPtr30 = createPointer struct vector
-                    int* tempPtr32 = addressAdd int* tempPtr30, bytes 4
-                    int temp33 = read int* tempPtr32
-                    print int temp33
-                    newLine
-                    return
-            ]
-        },
         "main": {
             "icode": [
-                    autoInt temp40 = multiply autoInt 8, autoInt 10
-                    ulong temp42 = cast autoInt temp40
-                    pass ulong temp42, ubyte malloc, module Malloc.shtk
-                    ubyte* calleeReturnPointer45 = call ubyte malloc, module Malloc.shtk
-                    struct* tempPtr48 = pointerCast ubyte* calleeReturnPointer45
-                    struct* vecArray = pointerAssign struct* tempPtr48
-                    int temp52 = cast autoInt 0
-                    int i = equal int temp52
-                _for_true_l39_c4:
-                    int temp58 = cast autoInt 10
-                    flag = lessThan int i, int temp58
-                    if(not flag) goto _for_false_l39_c4
-                    int* tempPtr61 = createPointer struct* vecArray
-                    void* tempPtr63 = addressMultiply int i, bytes 8
-                    int* tempPtr64 = addressAdd int* tempPtr61, void* tempPtr63
+                    autoInt temp25 = multiply autoInt 8, autoInt 10
+                    ulong temp27 = cast autoInt temp25
+                    pass ulong temp27, ubyte malloc, module Malloc.shtk
+                    ubyte* calleeReturnPointer30 = call ubyte malloc, module Malloc.shtk
+                    struct* tempPtr33 = pointerCast ubyte* calleeReturnPointer30
+                    struct* vecArray = pointerAssign struct* tempPtr33
+                    int temp37 = cast autoInt 0
+                    int i = equal int temp37
+                _for_true_l31_c4:
+                    int temp43 = cast autoInt 10
+                    flag = lessThan int i, int temp43
+                    if(not flag) goto _for_false_l31_c4
+                    int* tempPtr46 = createPointer struct* vecArray
+                    void* tempPtr48 = addressMultiply int i, bytes 8
+                    int* tempPtr49 = addressAdd int* tempPtr46, void* tempPtr48
                     pass int i, struct _fn_Malloc_shtk_createVector, module Malloc.shtk
-                    int temp73 = cast autoInt 10
-                    int temp72 = add int i, int temp73
-                    pass int temp72, struct _fn_Malloc_shtk_createVector, module Malloc.shtk
-                    struct calleeReturnValue76 = call struct _fn_Malloc_shtk_createVector, module Malloc.shtk
-                    int* tempPtr79 = createPointer int* tempPtr64
-                    int* tempPtr80 = createPointer struct calleeReturnValue76
-                    int* tempPtr79 = memoryCopy int* tempPtr80, autoInt 8
-                _for_cont_true_l39_c4:
-                    int temp85 = cast autoInt 1
-                    int temp84 = add int i, int temp85
-                    int i = equal int temp84
-                    goto _for_true_l39_c4
-                _for_false_l39_c4:
-                    int temp88 = cast autoInt 0
-                    int i = equal int temp88
-                _for_true_l42_c4:
-                    int temp94 = cast autoInt 10
-                    flag = lessThan int i, int temp94
-                    if(not flag) goto _for_false_l42_c4
-                    int* tempPtr97 = createPointer struct* vecArray
-                    void* tempPtr99 = addressMultiply int i, bytes 8
-                    int* tempPtr100 = addressAdd int* tempPtr97, void* tempPtr99
-                    int* tempPtr102 = createPointer int* tempPtr100
-                    passAddress int* tempPtr102, void _fn_Malloc_shtk_printVec, module Malloc.shtk
-                    void calleeReturnValue105 = call void _fn_Malloc_shtk_printVec, module Malloc.shtk
-                _for_cont_true_l42_c4:
-                    int temp111 = cast autoInt 1
-                    int temp110 = add int i, int temp111
-                    int i = equal int temp110
-                    goto _for_true_l42_c4
-                _for_false_l42_c4:
-                    int temp114 = cast autoInt 0
-                    int returnValue112 = equal int temp114
+                    int temp58 = cast autoInt 10
+                    int temp57 = add int i, int temp58
+                    pass int temp57, struct _fn_Malloc_shtk_createVector, module Malloc.shtk
+                    struct calleeReturnValue61 = call struct _fn_Malloc_shtk_createVector, module Malloc.shtk
+                    int* tempPtr64 = createPointer int* tempPtr49
+                    int* tempPtr65 = createPointer struct calleeReturnValue61
+                    int* tempPtr64 = memoryCopy int* tempPtr65, autoInt 8
+                _for_cont_true_l31_c4:
+                    int temp70 = cast autoInt 1
+                    int temp69 = add int i, int temp70
+                    int i = equal int temp69
+                    goto _for_true_l31_c4
+                _for_false_l31_c4:
+                    int temp73 = cast autoInt 0
+                    int i = equal int temp73
+                _for_true_l34_c4:
+                    int temp79 = cast autoInt 10
+                    flag = lessThan int i, int temp79
+                    if(not flag) goto _for_false_l34_c4
+                    int* tempPtr82 = createPointer struct* vecArray
+                    void* tempPtr84 = addressMultiply int i, bytes 8
+                    int* tempPtr85 = addressAdd int* tempPtr82, void* tempPtr84
+                    int* tempPtr87 = createPointer int* tempPtr85
+                    passAddress int* tempPtr87, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    void calleeReturnValue90 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                _for_cont_true_l34_c4:
+                    int temp96 = cast autoInt 1
+                    int temp95 = add int i, int temp96
+                    int i = equal int temp95
+                    goto _for_true_l34_c4
+                _for_false_l34_c4:
+                    int temp99 = cast autoInt 0
+                    int returnValue97 = equal int temp99
                     return
             ]
         }

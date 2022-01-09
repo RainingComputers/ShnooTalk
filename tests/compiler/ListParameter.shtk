@@ -1,0 +1,18 @@
+# 1
+# 2
+# 3
+# 4
+
+fn printArr(arr: int[], N: int)
+{
+    for var i: int = 0; i < N; i += 1
+        println(arr[i])
+
+}
+
+fn main() -> int
+{
+    printArr([1, 2, 3, 4], 4)
+
+    return 0
+}

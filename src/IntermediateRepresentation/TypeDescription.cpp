@@ -30,6 +30,7 @@ namespace icode
     void TypeDescription::becomeArrayPointer()
     {
         setProperty(IS_PTR);
+        dimensions.clear();
         dimensions.push_back(1);
     }
 

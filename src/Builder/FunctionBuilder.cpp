@@ -30,41 +30,6 @@ void FunctionBuilder::pushEntry(Entry entry)
     (*workingFunction).icodeTable.push_back(entry);
 }
 
-Operand FunctionBuilder::getCreatePointerDestOperand(const Unit& unit)
-{
-    /* If not a struct, just copy the operand but change its type to a pointer */
-
-    if (!unit.isStruct())
-        return opBuilder.createTempPtrOperand(unit.dtype());
-
-    /* If it a struct, create pointer to the first field */
-    ModuleDescription* workingModule = &modulesMap.at(unit.moduleName());
-
-    DataType firstFieldDataType = workingModule->structures.at(unit.dtypeName()).getFirstFieldDataType();
-
-    return opBuilder.createTempPtrOperand(firstFieldDataType);
-}
-
-Operand FunctionBuilder::createPointer(const Unit& unit)
-{
-    if (unit.isPointer() && !unit.isStruct())
-        return unit.op();
-
-    /* Converted TEMP_PTR */
-    Operand pointerOperand = getCreatePointerDestOperand(unit);
-
-    /* Construct CREATE_PTR instruction */
-    Entry createPointerEntry;
-
-    createPointerEntry.opcode = CREATE_PTR;
-    createPointerEntry.op1 = pointerOperand;
-    createPointerEntry.op2 = unit.op();
-
-    pushEntry(createPointerEntry);
-
-    return pointerOperand;
-}
-
 Operand FunctionBuilder::autoCast(const Operand& op, DataType destinationDataType)
 {
     /* This compiler does not support implicit type casting, this function
@@ -143,6 +108,73 @@ void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
     pushEntry(memCpyEntry);
 }
 
+Operand FunctionBuilder::getCreatePointerDestOperand(const Unit& unit)
+{
+    /* If not a struct, just copy the operand but change its type to a pointer */
+
+    if (!unit.isStruct())
+        return opBuilder.createTempPtrOperand(unit.dtype());
+
+    /* If it a struct, create pointer to the first field */
+    ModuleDescription* workingModule = &modulesMap.at(unit.moduleName());
+
+    DataType firstFieldDataType = workingModule->structures.at(unit.dtypeName()).getFirstFieldDataType();
+
+    return opBuilder.createTempPtrOperand(firstFieldDataType);
+}
+
+Operand FunctionBuilder::createPointer(const Unit& unit)
+{
+    if (unit.isPointer() && !unit.isStruct())
+        return unit.op();
+
+    /* Converted TEMP_PTR */
+    Operand pointerOperand = getCreatePointerDestOperand(unit);
+
+    /* Construct CREATE_PTR instruction */
+    Entry createPointerEntry;
+
+    createPointerEntry.opcode = CREATE_PTR;
+    createPointerEntry.op1 = pointerOperand;
+    createPointerEntry.op2 = unit.op();
+
+    pushEntry(createPointerEntry);
+
+    return pointerOperand;
+}
+
+Unit FunctionBuilder::createTemp(DataType dtype)
+{
+    Operand tempPointer = opBuilder.createTempPtrOperand(dtype);
+
+    icode::Entry entry;
+
+    entry.op1 = tempPointer;
+    entry.opcode = ALLOC_PTR;
+
+    pushEntry(entry);
+
+    return Unit(typeDescriptionFromDataType(dtype), tempPointer);
+}
+
+Unit FunctionBuilder::createTempArray(const TypeDescription& type, unsigned int numElements)
+{
+    Operand tempPointer = opBuilder.createTempPtrOperand(type.dtype);
+
+    icode::Entry entry;
+
+    entry.op1 = tempPointer;
+    entry.op2 = opBuilder.createBytesOperand(type.dtypeSize * numElements);
+    entry.opcode = ALLOC_ARRAY_PTR;
+
+    pushEntry(entry);
+
+    TypeDescription pointerType = type;
+    pointerType.becomeArrayPointer();
+
+    return Unit(pointerType, entry.op1);
+}
+
 void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 {
     Operand destPointer = createPointer(dest);
@@ -196,20 +228,6 @@ void FunctionBuilder::unitPointerAssign(const Unit& to, const Unit& src)
     entry.opcode = PTR_ASSIGN;
 
     pushEntry(entry);
-}
-
-Unit FunctionBuilder::createTemp(DataType dtype)
-{
-    Operand tempPointer = opBuilder.createTempPtrOperand(dtype);
-
-    icode::Entry entry;
-
-    entry.op1 = tempPointer;
-    entry.opcode = ALLOC_PTR;
-
-    pushEntry(entry);
-
-    return Unit(typeDescriptionFromDataType(dtype), tempPointer);
 }
 
 Unit FunctionBuilder::binaryOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
@@ -484,6 +502,23 @@ std::string FunctionBuilder::getCalleeName(const Token& calleeNameToken, const F
     return nameMangle(calleeNameToken, callee.moduleName);
 }
 
+Operand FunctionBuilder::createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam)
+{
+    if (!actualParam.isList())
+        return createPointer(actualParam);
+
+    /* NOTE: actual param could be AUTO_INT or AUTO_FLOAT and formal
+        param could be a different type, in the case the type size would mismatch */
+
+    unsigned int numElements = actualParam.size() / actualParam.dtypeSize();
+
+    Unit tempArray = createTempArray(formalParam.type(), numElements);
+
+    unitListCopy(tempArray, actualParam);
+
+    return tempArray.op();
+}
+
 void FunctionBuilder::passParameter(const Token& calleeNameToken,
                                     FunctionDescription callee,
                                     const Unit& formalParam,
@@ -504,7 +539,7 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
     else if (formalParam.isMutableOrPointer() || formalParam.isStruct() || formalParam.isArray())
     {
         entry.opcode = PASS_ADDR;
-        entry.op1 = createPointer(actualParam);
+        entry.op1 = createPointerForPassAddress(actualParam, formalParam);
     }
     else
     {

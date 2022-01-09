@@ -1,0 +1,6 @@
+generic K, V
+
+struct Pair
+{
+    var first: K, second: V
+}

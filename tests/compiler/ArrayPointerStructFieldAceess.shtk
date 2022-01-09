@@ -1,0 +1,36 @@
+# 1
+# 2
+# 3
+# 4
+# 5
+
+fn copy(mut dest: int[], src: int[], len: int)
+{
+    for var i: int = 0; i < len; i += 1 {
+        dest[i] = src[i]
+    }  
+}
+
+struct foobar
+{
+    var dest: int[]
+}
+
+fn main() -> int
+{
+    var actdest: int[5] = [10, 20, 30, 40, 50]
+    var foo: foobar
+    foo.dest <- actdest
+    
+    var src: int[5] = [1, 2, 3, 4, 5]
+
+    copy(foo.dest, src, 5)
+
+    println(foo.dest[0])
+    println(foo.dest[1])
+    println(foo.dest[2])
+    println(foo.dest[3])
+    println(foo.dest[4])
+
+    return 0
+}

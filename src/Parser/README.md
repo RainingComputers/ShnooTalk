@@ -57,7 +57,7 @@ identifierWithOptionalSubscript = identifier {"[" (literalSubscriptOnly? literal
 
 identifierWithPointerStar = identifier "*"
 
-identifierWithEmptySubscripts = identifier "[]"
+identifierWithEmptySubscript = identifier "[]"
 
 identifierWithQualidentAndSubscript = identifierWithOptionalSubscript<false> {"." identifierWithOptionalSubscript<false>}
 

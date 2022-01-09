@@ -150,11 +150,12 @@ clean:
 	rm -f -r bin/
 	rm -f -r obj/
 	rm -f -r tests/reports/
-	rm -f -r tests/compiler/*.info
+	rm -f -r tests/*.info
 	rm -f tests/compiler/*.llc
 	rm -f tests/compiler/*.llc.s
 	rm -f tests/compiler/*.o
-	rm -f tests/test
+	rm -f tests/compiler/TestModules/*.o
+	rm -f tests/compiler/test
 	rm -f tests/*.gmon.out*
 	rm -rf .mypy_cache
 	find . -type d -name  "__pycache__" -exec rm -r {} +

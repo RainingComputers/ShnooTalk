@@ -1,0 +1,49 @@
+{
+    "moduleName": "ListParameter.shtk",
+    "functions": {
+        "_fn_ListParameter_shtk_printArr": {
+            "icode": [
+                    int temp5 = cast autoInt 0
+                    int i = equal int temp5
+                _for_true_l8_c4:
+                    flag = lessThan int i, int N
+                    if(not flag) goto _for_false_l8_c4
+                    void* tempPtr14 = addressMultiply int i, bytes 4
+                    int* tempPtr15 = addressAdd int* arr, void* tempPtr14
+                    int temp16 = read int* tempPtr15
+                    print int temp16
+                    newLine
+                _for_cont_true_l8_c4:
+                    int temp20 = cast autoInt 1
+                    int temp19 = add int i, int temp20
+                    int i = equal int temp19
+                    goto _for_true_l8_c4
+                _for_false_l8_c4:
+                    return
+            ]
+        },
+        "main": {
+            "icode": [
+                    int* tempPtr30 = allocArrayPointer bytes 16
+                    int temp32 = cast autoInt 1
+                    int* tempPtr30 = write int temp32
+                    int* tempPtr34 = addressAdd int* tempPtr30, bytes 4
+                    int temp35 = cast autoInt 2
+                    int* tempPtr34 = write int temp35
+                    int* tempPtr37 = addressAdd int* tempPtr34, bytes 4
+                    int temp38 = cast autoInt 3
+                    int* tempPtr37 = write int temp38
+                    int* tempPtr40 = addressAdd int* tempPtr37, bytes 4
+                    int temp41 = cast autoInt 4
+                    int* tempPtr40 = write int temp41
+                    passAddress int* tempPtr30, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
+                    int temp45 = cast autoInt 4
+                    pass int temp45, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
+                    void calleeReturnValue48 = call void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
+                    int temp53 = cast autoInt 0
+                    int returnValue51 = equal int temp53
+                    return
+            ]
+        }
+    }
+}

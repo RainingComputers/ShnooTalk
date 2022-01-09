@@ -25,6 +25,8 @@ class FlatJSONPrinter
 public:
     FlatJSONPrinter(int indentLevel = 0, bool onSingleLine = false, bool beginOnSameLine = false);
     void setIndentWidth(int indentWidth);
+    int getBaseIndentLevel();
+    int getIndentWidth();
     void begin();
     void end();
     FlatJSONPrinter beginNested(const std::string& key, bool nestedOnSingleLine = false);

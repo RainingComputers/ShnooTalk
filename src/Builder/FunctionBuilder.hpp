@@ -20,10 +20,6 @@ class FunctionBuilder
 
     void pushEntry(icode::Entry entry);
 
-    icode::Operand getCreatePointerDestOperand(const Unit& unit);
-
-    icode::Operand createPointer(const Unit& unit);
-
     icode::Operand autoCast(const icode::Operand& op, icode::DataType destinationDataType);
 
     icode::Operand ensureNotPointer(icode::Operand op);
@@ -31,6 +27,12 @@ class FunctionBuilder
     void operandCopy(icode::Operand op1, icode::Operand op2);
 
     void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
+
+    icode::Operand getCreatePointerDestOperand(const Unit& unit);
+
+    icode::Operand createPointer(const Unit& unit);
+
+    Unit createTempArray(const icode::TypeDescription& type, unsigned int bytes);
 
     void unitListCopy(const Unit& dest, const Unit& src);
 
@@ -42,6 +44,8 @@ class FunctionBuilder
 
     std::string getCalleeName(const Token& calleeNameToken, const icode::FunctionDescription& callee);
 
+    icode::Operand createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam);
+
     bool doesFunctionTerminate();
 
 public:
@@ -52,11 +56,11 @@ public:
 
     void setWorkingFunction(icode::FunctionDescription* functionDesc);
 
+    Unit createTemp(icode::DataType dtype);
+
     void unitCopy(const Unit& dest, const Unit& src);
 
     void unitPointerAssign(const Unit& to, const Unit& src);
-
-    Unit createTemp(icode::DataType dtype);
 
     Unit binaryOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
 
