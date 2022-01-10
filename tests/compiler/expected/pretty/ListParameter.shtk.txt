@@ -36,7 +36,7 @@
                     int* tempPtr40 = addressAdd int* tempPtr37, bytes 4
                     int temp41 = cast autoInt 4
                     int* tempPtr40 = write int temp41
-                    passAddress int* tempPtr30, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
+                    passPointer int* tempPtr30, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
                     int temp45 = cast autoInt 4
                     pass int temp45, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
                     void calleeReturnValue48 = call void _fn_ListParameter_shtk_printArr, module ListParameter.shtk

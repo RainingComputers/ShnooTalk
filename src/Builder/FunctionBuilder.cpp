@@ -533,12 +533,12 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
 
     if (formalParam.isMutableAndPointer())
     {
-        entry.opcode = PASS_PTR;
+        entry.opcode = PASS_PTR_PTR;
         entry.op1 = actualParam.op();
     }
-    else if (formalParam.isMutableOrPointer() || formalParam.isStruct() || formalParam.isArray())
+    else if (formalParam.isMutableOrPointer() || formalParam.isStructOrArray())
     {
-        entry.opcode = PASS_ADDR;
+        entry.opcode = PASS_PTR;
         entry.op1 = createPointerForPassAddress(actualParam, formalParam);
     }
     else

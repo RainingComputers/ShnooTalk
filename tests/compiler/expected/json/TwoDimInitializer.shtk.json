@@ -4,7 +4,7 @@
         "_fn_TwoDimInitializer_shtk_newVec": {
             "icode": [
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 8, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "new", "dtype": "struct"}, "op3": {"type": "none"}},
-                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 8, "dtype": "int"}, "op2": {"type": "var", "id": 9, "name": "_fn_TestModules_Vector_shtk_setVec", "dtype": "void"}, "op3": {"type": "module", "id": 10, "name": "TestModules/Vector.shtk"}},
+                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 8, "dtype": "int"}, "op2": {"type": "var", "id": 9, "name": "_fn_TestModules_Vector_shtk_setVec", "dtype": "void"}, "op3": {"type": "module", "id": 10, "name": "TestModules/Vector.shtk"}},
                 {"opcode": "pass", "op1": {"type": "var", "id": 11, "name": "x", "dtype": "int"}, "op2": {"type": "var", "id": 12, "name": "_fn_TestModules_Vector_shtk_setVec", "dtype": "void"}, "op3": {"type": "module", "id": 13, "name": "TestModules/Vector.shtk"}},
                 {"opcode": "pass", "op1": {"type": "var", "id": 14, "name": "y", "dtype": "int"}, "op2": {"type": "var", "id": 15, "name": "_fn_TestModules_Vector_shtk_setVec", "dtype": "void"}, "op3": {"type": "module", "id": 16, "name": "TestModules/Vector.shtk"}},
                 {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 17, "dtype": "void"}, "op2": {"type": "var", "id": 18, "name": "_fn_TestModules_Vector_shtk_setVec", "dtype": "void"}, "op3": {"type": "module", "id": 19, "name": "TestModules/Vector.shtk"}},
@@ -26,7 +26,7 @@
                 {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 41, "dtype": "void"}, "op2": {"type": "var", "id": 38, "name": "i", "dtype": "int"}, "op3": {"type": "bytes", "id": 40, "bytes": 8}},
                 {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 42, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 41, "dtype": "void"}},
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 44, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 42, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 44, "dtype": "int"}, "op2": {"type": "var", "id": 45, "name": "_fn_TestModules_Vector_shtk_printVec", "dtype": "void"}, "op3": {"type": "module", "id": 46, "name": "TestModules/Vector.shtk"}},
+                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 44, "dtype": "int"}, "op2": {"type": "var", "id": 45, "name": "_fn_TestModules_Vector_shtk_printVec", "dtype": "void"}, "op3": {"type": "module", "id": 46, "name": "TestModules/Vector.shtk"}},
                 {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 47, "dtype": "void"}, "op2": {"type": "var", "id": 48, "name": "_fn_TestModules_Vector_shtk_printVec", "dtype": "void"}, "op3": {"type": "module", "id": 49, "name": "TestModules/Vector.shtk"}},
                 {"opcode": "createLabel", "op1": {"type": "label", "id": 33, "name": "_for_cont_true_l29_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                 {"opcode": "cast", "op1": {"type": "temp", "id": 53, "dtype": "int"}, "op2": {"type": "literal", "id": 51, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
@@ -121,7 +121,7 @@
                 {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 223, "dtype": "void"}, "op2": {"type": "var", "id": 220, "name": "i", "dtype": "int"}, "op3": {"type": "bytes", "id": 222, "bytes": 24}},
                 {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 224, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 221, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 223, "dtype": "void"}},
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 226, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 224, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 226, "dtype": "int"}, "op2": {"type": "var", "id": 227, "name": "_fn_TwoDimInitializer_shtk_printVecArray", "dtype": "void"}, "op3": {"type": "module", "id": 228, "name": "TwoDimInitializer.shtk"}},
+                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 226, "dtype": "int"}, "op2": {"type": "var", "id": 227, "name": "_fn_TwoDimInitializer_shtk_printVecArray", "dtype": "void"}, "op3": {"type": "module", "id": 228, "name": "TwoDimInitializer.shtk"}},
                 {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 229, "dtype": "void"}, "op2": {"type": "var", "id": 230, "name": "_fn_TwoDimInitializer_shtk_printVecArray", "dtype": "void"}, "op3": {"type": "module", "id": 231, "name": "TwoDimInitializer.shtk"}},
                 {"opcode": "printString", "op1": {"type": "stringData", "id": 232, "name": "_str_TwoDimInitializer_shtk__l44_c16", "size": 1}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                 {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

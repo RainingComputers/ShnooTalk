@@ -40,6 +40,7 @@ public:
 
     bool isStruct() const;
     bool isArray() const;
+    bool isStructOrArray() const;
     bool isMultiDimArray() const;
 
     bool isEnum() const;

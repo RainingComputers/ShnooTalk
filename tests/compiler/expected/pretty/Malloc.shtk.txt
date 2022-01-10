@@ -56,7 +56,7 @@
                     void* tempPtr84 = addressMultiply int i, bytes 8
                     int* tempPtr85 = addressAdd int* tempPtr82, void* tempPtr84
                     int* tempPtr87 = createPointer int* tempPtr85
-                    passAddress int* tempPtr87, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr87, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                     void calleeReturnValue90 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                 _for_cont_true_l34_c4:
                     int temp96 = cast autoInt 1

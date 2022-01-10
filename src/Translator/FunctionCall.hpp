@@ -6,7 +6,7 @@
 void call(ModuleContext& ctx, const icode::Entry& e);
 void ret(const ModuleContext& ctx, const icode::TypeDescription& functionReturnType);
 void pass(ModuleContext& ctx, const icode::Entry& e);
-void passAddress(ModuleContext& ctx, const icode::Entry& e);
 void passPointer(ModuleContext& ctx, const icode::Entry& e);
+void passPointerPointer(ModuleContext& ctx, const icode::Entry& e);
 
 #endif

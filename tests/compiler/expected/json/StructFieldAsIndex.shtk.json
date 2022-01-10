@@ -30,7 +30,7 @@
                 {"opcode": "cast", "op1": {"type": "temp", "id": 36, "dtype": "int"}, "op2": {"type": "literal", "id": 28, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
                 {"opcode": "write", "op1": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op2": {"type": "temp", "id": 36, "dtype": "int"}, "op3": {"type": "none"}},
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op2": {"type": "var", "id": 37, "name": "arr", "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op2": {"type": "var", "id": 40, "name": "_fn_StructFieldAsIndex_shtk_changeArr", "dtype": "void"}, "op3": {"type": "module", "id": 41, "name": "StructFieldAsIndex.shtk"}},
+                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op2": {"type": "var", "id": 40, "name": "_fn_StructFieldAsIndex_shtk_changeArr", "dtype": "void"}, "op3": {"type": "module", "id": 41, "name": "StructFieldAsIndex.shtk"}},
                 {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 42, "dtype": "void"}, "op2": {"type": "var", "id": 43, "name": "_fn_StructFieldAsIndex_shtk_changeArr", "dtype": "void"}, "op3": {"type": "module", "id": 44, "name": "StructFieldAsIndex.shtk"}},
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 47, "dtype": "int"}, "op2": {"type": "var", "id": 45, "name": "arr", "dtype": "int"}, "op3": {"type": "none"}},
                 {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 49, "dtype": "void"}, "op2": {"type": "literal", "id": 46, "dtype": "autoInt", "value": 0}, "op3": {"type": "bytes", "id": 48, "bytes": 4}},

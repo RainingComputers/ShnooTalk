@@ -20,9 +20,9 @@
                     int temp28 = cast autoInt 3
                     int* tempPtr26 = write int temp28
                     float* tempPtr34 = createPointer struct a
-                    passAddress float* tempPtr34, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int
+                    passPointer float* tempPtr34, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int
                     float* tempPtr37 = createPointer struct b
-                    passAddress float* tempPtr37, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int
+                    passPointer float* tempPtr37, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int
                     struct calleeReturnValue40 = call struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int
                     float* tempPtr43 = createPointer struct c
                     float* tempPtr44 = createPointer struct calleeReturnValue40
@@ -44,7 +44,7 @@
                     int* tempPtr64 = createPointer struct foo
                     int* tempPtr66 = addressAdd int* tempPtr64, bytes 4
                     int* tempPtr70 = createPointer struct* tempPtr66
-                    passAddress int* tempPtr70, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr70, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp74 = cast autoInt 1
                     pass int temp74, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp78 = cast autoInt 2
@@ -57,16 +57,16 @@
                     int* tempPtr92 = createPointer struct bar
                     int* tempPtr94 = addressAdd int* tempPtr92, bytes 4
                     int* tempPtr98 = createPointer struct* tempPtr94
-                    passAddress int* tempPtr98, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr98, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp102 = cast autoInt 4
                     pass int temp102, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp106 = cast autoInt 3
                     pass int temp106, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     void calleeReturnValue109 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int* tempPtr117 = createPointer struct foo
-                    passAddress int* tempPtr117, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec
+                    passPointer int* tempPtr117, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec
                     int* tempPtr120 = createPointer struct bar
-                    passAddress int* tempPtr120, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec
+                    passPointer int* tempPtr120, struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec
                     struct calleeReturnValue123 = call struct _fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add, module TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec
                     int* tempPtr126 = createPointer struct foobar
                     int* tempPtr127 = createPointer struct calleeReturnValue123
@@ -79,7 +79,7 @@
                     int* tempPtr135 = createPointer struct foobar
                     int* tempPtr137 = addressAdd int* tempPtr135, bytes 4
                     int* tempPtr139 = createPointer struct* tempPtr137
-                    passAddress int* tempPtr139, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr139, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                     void calleeReturnValue142 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                     int temp147 = cast autoInt 0
                     int returnValue145 = equal int temp147

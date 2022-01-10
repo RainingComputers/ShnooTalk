@@ -30,7 +30,7 @@
                     int temp36 = cast autoInt 3
                     int* tempPtr35 = write int temp36
                     int* tempPtr39 = createPointer int arr
-                    passAddress int* tempPtr39, void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
+                    passPointer int* tempPtr39, void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
                     void calleeReturnValue42 = call void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
                     int* tempPtr47 = createPointer int arr
                     void* tempPtr49 = addressMultiply autoInt 0, bytes 4

@@ -32,10 +32,10 @@
                     int* tempPtr28 = write int temp30
                     struct* b = pointerAssign struct a
                     int* tempPtr35 = createPointer struct a
-                    passAddress int* tempPtr35, void _fn_PassPointer_shtk_printVector, module PassPointer.shtk
+                    passPointer int* tempPtr35, void _fn_PassPointer_shtk_printVector, module PassPointer.shtk
                     void calleeReturnValue38 = call void _fn_PassPointer_shtk_printVector, module PassPointer.shtk
                     int* tempPtr43 = createPointer struct* b
-                    passAddress int* tempPtr43, void _fn_PassPointer_shtk_printVector, module PassPointer.shtk
+                    passPointer int* tempPtr43, void _fn_PassPointer_shtk_printVector, module PassPointer.shtk
                     void calleeReturnValue46 = call void _fn_PassPointer_shtk_printVector, module PassPointer.shtk
                     int temp51 = cast autoInt 0
                     int returnValue49 = equal int temp51

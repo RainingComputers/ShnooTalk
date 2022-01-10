@@ -4,23 +4,23 @@
         "main": {
             "icode": [
                     int* tempPtr9 = createPointer struct a
-                    passAddress int* tempPtr9, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr9, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp13 = cast autoInt 4
                     pass int temp13, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp17 = cast autoInt 4
                     pass int temp17, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     void calleeReturnValue20 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int* tempPtr27 = createPointer struct b
-                    passAddress int* tempPtr27, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr27, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp31 = cast autoInt 1
                     pass int temp31, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp35 = cast autoInt 1
                     pass int temp35, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     void calleeReturnValue38 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int* tempPtr48 = createPointer struct a
-                    passAddress int* tempPtr48, byte _fn_TestModules_Vector_shtk_greaterThan, module TestModules/Vector.shtk
+                    passPointer int* tempPtr48, byte _fn_TestModules_Vector_shtk_greaterThan, module TestModules/Vector.shtk
                     int* tempPtr51 = createPointer struct b
-                    passAddress int* tempPtr51, byte _fn_TestModules_Vector_shtk_greaterThan, module TestModules/Vector.shtk
+                    passPointer int* tempPtr51, byte _fn_TestModules_Vector_shtk_greaterThan, module TestModules/Vector.shtk
                     byte calleeReturnValue54 = call byte _fn_TestModules_Vector_shtk_greaterThan, module TestModules/Vector.shtk
                     byte temp58 = cast autoInt 0
                     flag = greaterThan byte calleeReturnValue54, byte temp58

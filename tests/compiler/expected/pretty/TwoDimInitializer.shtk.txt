@@ -4,7 +4,7 @@
         "_fn_TwoDimInitializer_shtk_newVec": {
             "icode": [
                     int* tempPtr8 = createPointer struct new
-                    passAddress int* tempPtr8, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr8, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     pass int x, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     pass int y, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     void calleeReturnValue17 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
@@ -26,7 +26,7 @@
                     void* tempPtr41 = addressMultiply int i, bytes 8
                     int* tempPtr42 = addressAdd int* tempPtr39, void* tempPtr41
                     int* tempPtr44 = createPointer int* tempPtr42
-                    passAddress int* tempPtr44, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr44, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                     void calleeReturnValue47 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                 _for_cont_true_l29_c4:
                     int temp53 = cast autoInt 1
@@ -121,7 +121,7 @@
                     void* tempPtr223 = addressMultiply int i, bytes 24
                     int* tempPtr224 = addressAdd int* tempPtr221, void* tempPtr223
                     int* tempPtr226 = createPointer int* tempPtr224
-                    passAddress int* tempPtr226, void _fn_TwoDimInitializer_shtk_printVecArray, module TwoDimInitializer.shtk
+                    passPointer int* tempPtr226, void _fn_TwoDimInitializer_shtk_printVecArray, module TwoDimInitializer.shtk
                     void calleeReturnValue229 = call void _fn_TwoDimInitializer_shtk_printVecArray, module TwoDimInitializer.shtk
                     printString stringData _str_TwoDimInitializer_shtk__l44_c16
                     newLine

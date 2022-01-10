@@ -42,7 +42,7 @@
                     flag = greaterThan int i, int temp52
                     if(not flag) goto _for_false_l27_c4
                     int* tempPtr57 = createPointer int a
-                    passAddress int* tempPtr57, int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
+                    passPointer int* tempPtr57, int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
                     pass int i, int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
                     int calleeReturnValue63 = call int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
                     int pos = equal int calleeReturnValue63
@@ -109,7 +109,7 @@
                     int temp146 = cast autoInt 55
                     int* tempPtr145 = write int temp146
                     int* tempPtr149 = createPointer int a
-                    passAddress int* tempPtr149, void _fn_SelectionSort_shtk_selSort, module SelectionSort.shtk
+                    passPointer int* tempPtr149, void _fn_SelectionSort_shtk_selSort, module SelectionSort.shtk
                     void calleeReturnValue152 = call void _fn_SelectionSort_shtk_selSort, module SelectionSort.shtk
                     int temp157 = cast autoInt 0
                     int i = equal int temp157

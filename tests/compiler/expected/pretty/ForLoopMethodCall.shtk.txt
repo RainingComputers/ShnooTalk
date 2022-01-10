@@ -13,7 +13,7 @@
                     int temp10 = cast autoInt 0
                     int i = equal int temp10
                     struct* tempPtr13 = createPointer struct a
-                    passAddress struct* tempPtr13, void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
+                    passPointer struct* tempPtr13, void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
                     void calleeReturnValue16 = call void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
                 _for_true_l22_c4:
                     int temp24 = cast autoInt 2
@@ -26,7 +26,7 @@
                     int i = equal int temp28
                 _for_cont_true_l22_c4:
                     struct* tempPtr32 = createPointer struct a
-                    passAddress struct* tempPtr32, void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
+                    passPointer struct* tempPtr32, void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
                     void calleeReturnValue35 = call void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
                     goto _for_true_l22_c4
                 _for_false_l22_c4:

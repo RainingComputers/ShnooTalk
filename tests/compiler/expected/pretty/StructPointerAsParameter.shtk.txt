@@ -28,11 +28,11 @@
                     int** tempPtrPtr26 = write int temp28
                     int* tempPtr32 = createPointer struct foobar
                     int* tempPtr34 = addressAdd int* tempPtr32, bytes 0
-                    passAddress int* tempPtr34, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                    passPointer int* tempPtr34, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
                     void calleeReturnValue38 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
                     int* tempPtr42 = createPointer struct foobar
                     int** tempPtrPtr44 = addressAdd int* tempPtr42, bytes 4
-                    passAddress int** tempPtrPtr44, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                    passPointer int** tempPtrPtr44, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
                     void calleeReturnValue48 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
                     print int c
                     newLine

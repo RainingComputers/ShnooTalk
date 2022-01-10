@@ -87,11 +87,11 @@
                     int temp107 = cast autoInt 1
                     int* tempPtr106 = write int temp107
                     int* tempPtr114 = createPointer int c
-                    passAddress int* tempPtr114, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
+                    passPointer int* tempPtr114, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
                     int* tempPtr118 = createPointer int a
-                    passAddress int* tempPtr118, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
+                    passPointer int* tempPtr118, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
                     int* tempPtr122 = createPointer int b
-                    passAddress int* tempPtr122, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
+                    passPointer int* tempPtr122, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
                     int temp126 = cast autoInt 2
                     pass int temp126, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
                     void calleeReturnValue129 = call void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk

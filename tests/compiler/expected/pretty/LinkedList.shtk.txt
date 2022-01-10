@@ -78,7 +78,7 @@
                     struct* tempPtr150 = createPointer struct self
                     struct** tempPtrPtr152 = addressAdd struct* tempPtr150, bytes 0
                     ubyte* tempPtr153 = pointerCast struct** tempPtrPtr152
-                    passAddress ubyte* tempPtr153, void free, module LinkedList.shtk
+                    passPointer ubyte* tempPtr153, void free, module LinkedList.shtk
                     void calleeReturnValue157 = call void free, module LinkedList.shtk
                     struct* tempPtr161 = createPointer struct self
                     struct** tempPtrPtr163 = addressAdd struct* tempPtr161, bytes 0
@@ -119,7 +119,7 @@
                     struct* tempPtr95 = createPointer struct self
                     struct** tempPtrPtr97 = addressAdd struct* tempPtr95, bytes 0
                     int* tempPtr98 = createPointer struct** tempPtrPtr97
-                    passAddress int* tempPtr98, struct _fn_LinkedList_shtk_createNode, module LinkedList.shtk
+                    passPointer int* tempPtr98, struct _fn_LinkedList_shtk_createNode, module LinkedList.shtk
                     struct calleeReturnValue101 = call struct _fn_LinkedList_shtk_createNode, module LinkedList.shtk
                     int* tempPtr104 = createPointer struct newNode
                     int* tempPtr105 = createPointer struct calleeReturnValue101
@@ -146,35 +146,35 @@
                     struct* tempPtr203 = createPointer struct calleeReturnValue199
                     struct* tempPtr202 = memoryCopy struct* tempPtr203, autoInt 8
                     struct* tempPtr208 = createPointer struct list
-                    passAddress struct* tempPtr208, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    passPointer struct* tempPtr208, void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     int temp212 = cast autoInt 10
                     pass int temp212, void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     void calleeReturnValue215 = call void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     struct* tempPtr221 = createPointer struct list
-                    passAddress struct* tempPtr221, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    passPointer struct* tempPtr221, void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     int temp225 = cast autoInt 5
                     pass int temp225, void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     void calleeReturnValue228 = call void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     struct* tempPtr234 = createPointer struct list
-                    passAddress struct* tempPtr234, void _fn_LinkedList_shtk_push, module LinkedList.shtk
+                    passPointer struct* tempPtr234, void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     int temp238 = cast autoInt 23
                     pass int temp238, void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     void calleeReturnValue241 = call void _fn_LinkedList_shtk_push, module LinkedList.shtk
                     struct* tempPtr246 = createPointer struct list
-                    passAddress struct* tempPtr246, void _fn_LinkedList_shtk_printList, module LinkedList.shtk
+                    passPointer struct* tempPtr246, void _fn_LinkedList_shtk_printList, module LinkedList.shtk
                     void calleeReturnValue249 = call void _fn_LinkedList_shtk_printList, module LinkedList.shtk
                     struct* tempPtr254 = createPointer struct list
-                    passAddress struct* tempPtr254, int _fn_LinkedList_shtk_pop, module LinkedList.shtk
+                    passPointer struct* tempPtr254, int _fn_LinkedList_shtk_pop, module LinkedList.shtk
                     int calleeReturnValue257 = call int _fn_LinkedList_shtk_pop, module LinkedList.shtk
                     print int calleeReturnValue257
                     newLine
                     struct* tempPtr262 = createPointer struct list
-                    passAddress struct* tempPtr262, int _fn_LinkedList_shtk_pop, module LinkedList.shtk
+                    passPointer struct* tempPtr262, int _fn_LinkedList_shtk_pop, module LinkedList.shtk
                     int calleeReturnValue265 = call int _fn_LinkedList_shtk_pop, module LinkedList.shtk
                     print int calleeReturnValue265
                     newLine
                     struct* tempPtr270 = createPointer struct list
-                    passAddress struct* tempPtr270, void _fn_LinkedList_shtk_printList, module LinkedList.shtk
+                    passPointer struct* tempPtr270, void _fn_LinkedList_shtk_printList, module LinkedList.shtk
                     void calleeReturnValue273 = call void _fn_LinkedList_shtk_printList, module LinkedList.shtk
                     int temp278 = cast autoInt 0
                     int returnValue276 = equal int temp278

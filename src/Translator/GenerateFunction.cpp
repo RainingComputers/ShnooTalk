@@ -112,11 +112,11 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::PASS:
                 pass(ctx, e);
                 break;
-            case icode::PASS_ADDR:
-                passAddress(ctx, e);
-                break;
             case icode::PASS_PTR:
                 passPointer(ctx, e);
+                break;
+            case icode::PASS_PTR_PTR:
+                passPointerPointer(ctx, e);
                 break;
             case icode::CALL:
                 call(ctx, e);

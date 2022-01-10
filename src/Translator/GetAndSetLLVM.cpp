@@ -83,7 +83,7 @@ Value* getLLVMPointer(ModuleContext& ctx, const icode::Operand& op)
         default:
             ctx.console.internalBugError();
     }
-}
+} 
 
 Value* getLLVMValue(ModuleContext& ctx, const icode::Operand& op)
 {
