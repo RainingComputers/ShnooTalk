@@ -4,14 +4,14 @@
         "main": {
             "icode": [
                     int* tempPtr8 = createPointer struct a
-                    passAddress int* tempPtr8, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr8, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp12 = cast autoInt 1
                     pass int temp12, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int temp16 = cast autoInt 2
                     pass int temp16, void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     void calleeReturnValue19 = call void _fn_TestModules_Vector_shtk_setVec, module TestModules/Vector.shtk
                     int* tempPtr24 = createPointer struct a
-                    passAddress int* tempPtr24, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    passPointer int* tempPtr24, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                     void calleeReturnValue27 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                     int* tempPtr31 = createPointer struct a
                     int* tempPtr33 = addressAdd int* tempPtr31, bytes 0

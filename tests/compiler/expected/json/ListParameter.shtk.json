@@ -36,7 +36,7 @@
                 {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 40, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op3": {"type": "bytes", "id": 39, "bytes": 4}},
                 {"opcode": "cast", "op1": {"type": "temp", "id": 41, "dtype": "int"}, "op2": {"type": "literal", "id": 27, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
                 {"opcode": "write", "op1": {"type": "tempPtr", "id": 40, "dtype": "int"}, "op2": {"type": "temp", "id": 41, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 42, "name": "_fn_ListParameter_shtk_printArr", "dtype": "void"}, "op3": {"type": "module", "id": 43, "name": "ListParameter.shtk"}},
+                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 42, "name": "_fn_ListParameter_shtk_printArr", "dtype": "void"}, "op3": {"type": "module", "id": 43, "name": "ListParameter.shtk"}},
                 {"opcode": "cast", "op1": {"type": "temp", "id": 45, "dtype": "int"}, "op2": {"type": "literal", "id": 44, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
                 {"opcode": "pass", "op1": {"type": "temp", "id": 45, "dtype": "int"}, "op2": {"type": "var", "id": 46, "name": "_fn_ListParameter_shtk_printArr", "dtype": "void"}, "op3": {"type": "module", "id": 47, "name": "ListParameter.shtk"}},
                 {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 48, "dtype": "void"}, "op2": {"type": "var", "id": 49, "name": "_fn_ListParameter_shtk_printArr", "dtype": "void"}, "op3": {"type": "module", "id": 50, "name": "ListParameter.shtk"}},

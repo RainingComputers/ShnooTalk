@@ -33,7 +33,7 @@
                     flag = lessThan int x, int temp45
                     if(not flag) goto _if_false_l13_c4
                     int* tempPtr52 = createPointer int a
-                    passAddress int* tempPtr52, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                    passPointer int* tempPtr52, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
                     pass int S, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
                     pass int H, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
                     pass int x, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
@@ -42,7 +42,7 @@
                     return
                 _if_false_l13_c4:
                     int* tempPtr73 = createPointer int a
-                    passAddress int* tempPtr73, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                    passPointer int* tempPtr73, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
                     int temp78 = add int S, int H
                     pass int temp78, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
                     int temp83 = subtract int L, int H
@@ -86,7 +86,7 @@
                     int temp134 = cast autoInt 51
                     int* tempPtr133 = write int temp134
                     int* tempPtr140 = createPointer int a
-                    passAddress int* tempPtr140, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                    passPointer int* tempPtr140, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
                     int temp144 = cast autoInt 0
                     pass int temp144, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
                     int temp148 = cast autoInt 10

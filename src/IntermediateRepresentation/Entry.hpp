@@ -8,8 +8,8 @@ namespace icode
     enum Instruction
     {
         PASS,
-        PASS_ADDR,
         PASS_PTR,
+        PASS_PTR_PTR,
         CALL,
         RET,
         ADDR_ADD,

@@ -158,8 +158,8 @@ const std::string operandTypeToString[] = {
 const std::string dimensionTypesToString[] = { "fixedDim", "stringLiteralDim" };
 
 const std::string instructionToString[] = { "pass",
-                                            "passAddress",
                                             "passPointer",
+                                            "passPointerPointer",
                                             "call",
                                             "return",
                                             "addressAdd",

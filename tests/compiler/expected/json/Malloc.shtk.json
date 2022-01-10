@@ -56,7 +56,7 @@
                 {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 84, "dtype": "void"}, "op2": {"type": "var", "id": 81, "name": "i", "dtype": "int"}, "op3": {"type": "bytes", "id": 83, "bytes": 8}},
                 {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 85, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 82, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 84, "dtype": "void"}},
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 87, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 85, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 87, "dtype": "int"}, "op2": {"type": "var", "id": 88, "name": "_fn_TestModules_Vector_shtk_printVec", "dtype": "void"}, "op3": {"type": "module", "id": 89, "name": "TestModules/Vector.shtk"}},
+                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 87, "dtype": "int"}, "op2": {"type": "var", "id": 88, "name": "_fn_TestModules_Vector_shtk_printVec", "dtype": "void"}, "op3": {"type": "module", "id": 89, "name": "TestModules/Vector.shtk"}},
                 {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 90, "dtype": "void"}, "op2": {"type": "var", "id": 91, "name": "_fn_TestModules_Vector_shtk_printVec", "dtype": "void"}, "op3": {"type": "module", "id": 92, "name": "TestModules/Vector.shtk"}},
                 {"opcode": "createLabel", "op1": {"type": "label", "id": 76, "name": "_for_cont_true_l34_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                 {"opcode": "cast", "op1": {"type": "temp", "id": 96, "dtype": "int"}, "op2": {"type": "literal", "id": 94, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},

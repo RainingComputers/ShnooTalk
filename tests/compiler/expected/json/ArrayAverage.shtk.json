@@ -47,7 +47,7 @@
                 {"opcode": "cast", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "literal", "id": 41, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
                 {"opcode": "write", "op1": {"type": "tempPtr", "id": 54, "dtype": "int"}, "op2": {"type": "temp", "id": 55, "dtype": "int"}, "op3": {"type": "none"}},
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 58, "dtype": "int"}, "op2": {"type": "var", "id": 56, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 58, "dtype": "int"}, "op2": {"type": "var", "id": 59, "name": "_fn_ArrayAverage_shtk_avg", "dtype": "int"}, "op3": {"type": "module", "id": 60, "name": "ArrayAverage.shtk"}},
+                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 58, "dtype": "int"}, "op2": {"type": "var", "id": 59, "name": "_fn_ArrayAverage_shtk_avg", "dtype": "int"}, "op3": {"type": "module", "id": 60, "name": "ArrayAverage.shtk"}},
                 {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 61, "dtype": "int"}, "op2": {"type": "var", "id": 62, "name": "_fn_ArrayAverage_shtk_avg", "dtype": "int"}, "op3": {"type": "module", "id": 63, "name": "ArrayAverage.shtk"}},
                 {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 61, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                 {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

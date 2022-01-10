@@ -20,7 +20,7 @@
                 {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
                 {"opcode": "write", "op1": {"type": "tempPtr", "id": 21, "dtype": "int"}, "op2": {"type": "temp", "id": 23, "dtype": "int"}, "op3": {"type": "none"}},
                 {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 27, "dtype": "int"}, "op2": {"type": "var", "id": 25, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
-                {"opcode": "passAddress", "op1": {"type": "tempPtr", "id": 27, "dtype": "int"}, "op2": {"type": "var", "id": 28, "name": "_fn_PointerReturn_shtk_testfunction", "dtype": "int"}, "op3": {"type": "module", "id": 29, "name": "PointerReturn.shtk"}},
+                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 27, "dtype": "int"}, "op2": {"type": "var", "id": 28, "name": "_fn_PointerReturn_shtk_testfunction", "dtype": "int"}, "op3": {"type": "module", "id": 29, "name": "PointerReturn.shtk"}},
                 {"opcode": "call", "op1": {"type": "calleeReturnPointer", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "_fn_PointerReturn_shtk_testfunction", "dtype": "int"}, "op3": {"type": "module", "id": 32, "name": "PointerReturn.shtk"}},
                 {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 24, "name": "p", "dtype": "int"}, "op2": {"type": "calleeReturnPointer", "id": 30, "dtype": "int"}, "op3": {"type": "none"}},
                 {"opcode": "read", "op1": {"type": "temp", "id": 34, "dtype": "int"}, "op2": {"type": "ptr", "id": 33, "name": "p", "dtype": "int"}, "op3": {"type": "none"}},

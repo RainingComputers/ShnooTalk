@@ -15,7 +15,7 @@
         },
         "main": {
             "icode": [
-                    passAddress ulong* argv, ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
+                    passPointer ulong* argv, ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
                     int temp23 = cast autoInt 0
                     pass int temp23, ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
                     ubyte* calleeReturnPointer26 = call ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk

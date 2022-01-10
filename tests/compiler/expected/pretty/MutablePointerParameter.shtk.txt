@@ -17,9 +17,9 @@
                     int temp17 = read int* p
                     print int temp17
                     newLine
-                    passPointer int* p, void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
+                    passPointerPointer int* p, void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
                     int* tempPtr24 = createPointer int y
-                    passAddress int* tempPtr24, void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
+                    passPointer int* tempPtr24, void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
                     void calleeReturnValue27 = call void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
                     int temp31 = read int* p
                     print int temp31

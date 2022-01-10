@@ -17,7 +17,7 @@
                     pass int temp23, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                     void calleeReturnValue26 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                     int* tempPtr34 = createPointer struct a
-                    passAddress int* tempPtr34, byte _fn_TestModules_Vector_shtk_isUnitVector, module TestModules/Vector.shtk
+                    passPointer int* tempPtr34, byte _fn_TestModules_Vector_shtk_isUnitVector, module TestModules/Vector.shtk
                     byte calleeReturnValue37 = call byte _fn_TestModules_Vector_shtk_isUnitVector, module TestModules/Vector.shtk
                     byte temp41 = cast autoInt 1
                     flag = isEqual byte calleeReturnValue37, byte temp41

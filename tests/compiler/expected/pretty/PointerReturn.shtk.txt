@@ -20,7 +20,7 @@
                     int temp23 = cast autoInt 2
                     int* tempPtr21 = write int temp23
                     int* tempPtr27 = createPointer struct a
-                    passAddress int* tempPtr27, int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
+                    passPointer int* tempPtr27, int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
                     int* calleeReturnPointer30 = call int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
                     int* p = pointerAssign int* calleeReturnPointer30
                     int temp34 = read int* p

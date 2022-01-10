@@ -47,7 +47,7 @@
                     int temp55 = cast autoInt 5
                     int* tempPtr54 = write int temp55
                     int* tempPtr58 = createPointer int a
-                    passAddress int* tempPtr58, int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
+                    passPointer int* tempPtr58, int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
                     int calleeReturnValue61 = call int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
                     print int calleeReturnValue61
                     newLine

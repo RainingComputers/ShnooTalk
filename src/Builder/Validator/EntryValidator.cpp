@@ -275,10 +275,10 @@ void validateEntry(const icode::Entry& entry, Console& con)
         case icode::PASS:
             pass(entry, con);
             break;
-        case icode::PASS_ADDR:
+        case icode::PASS_PTR:
             passAddress(entry, con);
             break;
-        case icode::PASS_PTR:
+        case icode::PASS_PTR_PTR:
             passPointer(entry, con);
             break;
         case icode::CALL:

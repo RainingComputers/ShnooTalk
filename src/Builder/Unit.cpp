@@ -114,6 +114,11 @@ bool Unit::isArray() const
     return typeDescription.isArray();
 }
 
+bool Unit::isStructOrArray() const
+{
+    return typeDescription.isStructOrArray();
+}
+
 bool Unit::isMultiDimArray() const
 {
     return typeDescription.isMultiDimArray();
