@@ -17,8 +17,10 @@ Node::Node()
 bool Node::isNthChild(NodeType nodeType, size_t N) const
 {
     if (N < children.size())
+    {
         if (children[N].type == nodeType)
             return true;
+    }
 
     return false;
 }

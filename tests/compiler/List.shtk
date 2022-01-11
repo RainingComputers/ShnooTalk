@@ -2,14 +2,22 @@
 # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
 
 use "TestModules/List.shtk" as List
+use "TestModules/ResultGeneric.shtk" as Result
 
+from Result use Result
 
 from List use List
 
 fn printIntList(list: List[int]) 
 {
     for var i: int = 0; i < list.len(); i += 1
-        print(list.at(i); ", ")
+    {
+        var result: Result[int] = list.at(i)
+
+        if result.error print("Error, ")
+        else print(result.item; ", ")
+    }
+        
 
     println("")
 }

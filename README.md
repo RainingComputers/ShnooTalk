@@ -81,12 +81,12 @@ clang app.o -o app
 - [x] Setup github workflows and build for other platforms
 - [ ] Error recovery
 - [ ] Incomplete types and type composing of a pointer to itself
-- [ ] Destructuring
+- [ ] Destructuring 1 w
 - [ ] := initializer
 - [ ] Function forward declaration
-- [ ] Direct from
 - [ ] Unsafe keyword
 - [ ] null pointer check
+- [ ] Direct from
 - [ ] Generic function call
 
 

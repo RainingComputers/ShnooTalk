@@ -112,9 +112,9 @@ void monomorphizeTypeNode(const InstiatorContext& ctx, Node& root)
     while (root.isNthChild(node::GENERIC_TYPE_PARAM, childNodeCounter))
     {
         monomorphizeTypeNode(ctx, root.children[childNodeCounter]);
-        childNodeCounter++;
-
         validateTypeNode(ctx, root.children[childNodeCounter]);
+    
+        childNodeCounter++;
     }
 }
 

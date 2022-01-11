@@ -1,0 +1,7 @@
+generic T
+
+struct Result 
+{
+    var error: bool
+    var item: T
+}

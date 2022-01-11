@@ -19,92 +19,108 @@
             "icode": [
                     int temp24 = cast autoInt 0
                     int i = equal int temp24
-                _for_true_l27_c4:
+                _for_true_l29_c4:
                     int* tempPtr31 = createPointer struct list
                     passPointer int* tempPtr31, int _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_len, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
                     int calleeReturnValue34 = call int _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_len, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
                     flag = lessThan int i, int calleeReturnValue34
-                    if(not flag) goto _for_false_l27_c4
-                    int* tempPtr40 = createPointer struct list
-                    passPointer int* tempPtr40, struct _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_at, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    if(not flag) goto _for_false_l29_c4
+                    int* tempPtr41 = createPointer struct list
+                    passPointer int* tempPtr41, struct _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_at, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
                     pass int i, struct _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_at, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    struct calleeReturnValue46 = call struct _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_at, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    int* tempPtr50 = createPointer struct calleeReturnValue46
-                    passPointer int* tempPtr50, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                    void calleeReturnValue53 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                _for_cont_true_l27_c4:
-                    int temp59 = cast autoInt 1
-                    int temp58 = add int i, int temp59
-                    int i = equal int temp58
-                    goto _for_true_l27_c4
-                _for_false_l27_c4:
+                    struct calleeReturnValue47 = call struct _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_at, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    byte* tempPtr50 = createPointer struct result
+                    byte* tempPtr51 = createPointer struct calleeReturnValue47
+                    byte* tempPtr50 = memoryCopy byte* tempPtr51, autoInt 9
+                    byte* tempPtr57 = createPointer struct result
+                    byte* tempPtr59 = addressAdd byte* tempPtr57, bytes 0
+                    byte temp61 = read byte* tempPtr59
+                    byte temp62 = cast autoInt 0
+                    flag = greaterThan byte temp61, byte temp62
+                    if(not flag) goto _if_false_l31_c8
+                    printString stringData _str_ListStruct_shtk__l31_c32
+                    newLine
+                    goto _ifend_false_l31_c8
+                _if_false_l31_c8:
+                    byte* tempPtr67 = createPointer struct result
+                    byte* tempPtr69 = addressAdd byte* tempPtr67, bytes 1
+                    int* tempPtr71 = createPointer struct* tempPtr69
+                    passPointer int* tempPtr71, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                    void calleeReturnValue74 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                _ifend_false_l31_c8:
+                _for_cont_true_l29_c4:
+                    int temp80 = cast autoInt 1
+                    int temp79 = add int i, int temp80
+                    int i = equal int temp79
+                    goto _for_true_l29_c4
+                _for_false_l29_c4:
                     return
             ]
         },
         "main": {
             "icode": [
-                    int* tempPtr68 = createPointer struct a
-                    passPointer int* tempPtr68, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_init, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    int temp74 = cast autoInt 1
-                    pass int temp74, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    int temp78 = cast autoInt 2
-                    pass int temp78, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    struct calleeReturnValue81 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    int temp87 = cast autoInt 2
-                    pass int temp87, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    int temp91 = cast autoInt 3
-                    pass int temp91, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    struct calleeReturnValue94 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    int temp100 = cast autoInt 3
-                    pass int temp100, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    int temp104 = cast autoInt 4
-                    pass int temp104, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    struct calleeReturnValue107 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    struct* tempPtr110 = allocArrayPointer bytes 24
-                    int* tempPtr112 = createPointer struct* tempPtr110
-                    int* tempPtr113 = createPointer struct calleeReturnValue81
-                    int* tempPtr112 = memoryCopy int* tempPtr113, autoInt 8
-                    int* tempPtr116 = addressAdd int* tempPtr112, bytes 8
-                    int* tempPtr117 = createPointer struct calleeReturnValue94
-                    int* tempPtr116 = memoryCopy int* tempPtr117, autoInt 8
-                    int* tempPtr120 = addressAdd int* tempPtr116, bytes 8
-                    int* tempPtr121 = createPointer struct calleeReturnValue107
-                    int* tempPtr120 = memoryCopy int* tempPtr121, autoInt 8
-                    passPointer struct* tempPtr110, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_init, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    int temp126 = cast autoInt 3
-                    pass int temp126, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_init, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    void calleeReturnValue129 = call void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_init, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    int* tempPtr134 = createPointer struct a
-                    passPointer int* tempPtr134, void _fn_ListStruct_shtk_printVecList, module ListStruct.shtk
-                    void calleeReturnValue137 = call void _fn_ListStruct_shtk_printVecList, module ListStruct.shtk
-                    int* tempPtr144 = createPointer struct a
-                    passPointer int* tempPtr144, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_appendArray, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    int temp150 = cast autoInt 5
-                    pass int temp150, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    int temp154 = cast autoInt 6
-                    pass int temp154, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    struct calleeReturnValue157 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    int temp163 = cast autoInt 7
-                    pass int temp163, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    int temp167 = cast autoInt 8
-                    pass int temp167, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    struct calleeReturnValue170 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
-                    struct* tempPtr173 = allocArrayPointer bytes 16
-                    int* tempPtr175 = createPointer struct* tempPtr173
-                    int* tempPtr176 = createPointer struct calleeReturnValue157
-                    int* tempPtr175 = memoryCopy int* tempPtr176, autoInt 8
-                    int* tempPtr179 = addressAdd int* tempPtr175, bytes 8
-                    int* tempPtr180 = createPointer struct calleeReturnValue170
-                    int* tempPtr179 = memoryCopy int* tempPtr180, autoInt 8
-                    passPointer struct* tempPtr173, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_appendArray, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    int temp185 = cast autoInt 2
-                    pass int temp185, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_appendArray, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    void calleeReturnValue188 = call void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_appendArray, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
-                    int* tempPtr193 = createPointer struct a
-                    passPointer int* tempPtr193, void _fn_ListStruct_shtk_printVecList, module ListStruct.shtk
-                    void calleeReturnValue196 = call void _fn_ListStruct_shtk_printVecList, module ListStruct.shtk
-                    int temp201 = cast autoInt 0
-                    int returnValue199 = equal int temp201
+                    int* tempPtr89 = createPointer struct a
+                    passPointer int* tempPtr89, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_init, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    int temp95 = cast autoInt 1
+                    pass int temp95, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    int temp99 = cast autoInt 2
+                    pass int temp99, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    struct calleeReturnValue102 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    int temp108 = cast autoInt 2
+                    pass int temp108, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    int temp112 = cast autoInt 3
+                    pass int temp112, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    struct calleeReturnValue115 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    int temp121 = cast autoInt 3
+                    pass int temp121, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    int temp125 = cast autoInt 4
+                    pass int temp125, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    struct calleeReturnValue128 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    struct* tempPtr131 = allocArrayPointer bytes 24
+                    int* tempPtr133 = createPointer struct* tempPtr131
+                    int* tempPtr134 = createPointer struct calleeReturnValue102
+                    int* tempPtr133 = memoryCopy int* tempPtr134, autoInt 8
+                    int* tempPtr137 = addressAdd int* tempPtr133, bytes 8
+                    int* tempPtr138 = createPointer struct calleeReturnValue115
+                    int* tempPtr137 = memoryCopy int* tempPtr138, autoInt 8
+                    int* tempPtr141 = addressAdd int* tempPtr137, bytes 8
+                    int* tempPtr142 = createPointer struct calleeReturnValue128
+                    int* tempPtr141 = memoryCopy int* tempPtr142, autoInt 8
+                    passPointer struct* tempPtr131, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_init, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    int temp147 = cast autoInt 3
+                    pass int temp147, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_init, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    void calleeReturnValue150 = call void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_init, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    int* tempPtr155 = createPointer struct a
+                    passPointer int* tempPtr155, void _fn_ListStruct_shtk_printVecList, module ListStruct.shtk
+                    void calleeReturnValue158 = call void _fn_ListStruct_shtk_printVecList, module ListStruct.shtk
+                    int* tempPtr165 = createPointer struct a
+                    passPointer int* tempPtr165, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_appendArray, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    int temp171 = cast autoInt 5
+                    pass int temp171, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    int temp175 = cast autoInt 6
+                    pass int temp175, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    struct calleeReturnValue178 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    int temp184 = cast autoInt 7
+                    pass int temp184, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    int temp188 = cast autoInt 8
+                    pass int temp188, struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    struct calleeReturnValue191 = call struct _fn_ListStruct_shtk_createVec, module ListStruct.shtk
+                    struct* tempPtr194 = allocArrayPointer bytes 16
+                    int* tempPtr196 = createPointer struct* tempPtr194
+                    int* tempPtr197 = createPointer struct calleeReturnValue178
+                    int* tempPtr196 = memoryCopy int* tempPtr197, autoInt 8
+                    int* tempPtr200 = addressAdd int* tempPtr196, bytes 8
+                    int* tempPtr201 = createPointer struct calleeReturnValue191
+                    int* tempPtr200 = memoryCopy int* tempPtr201, autoInt 8
+                    passPointer struct* tempPtr194, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_appendArray, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    int temp206 = cast autoInt 2
+                    pass int temp206, void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_appendArray, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    void calleeReturnValue209 = call void _fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_appendArray, module TestModules/List.shtk__TestModules_Vector_shtk_Vec
+                    int* tempPtr214 = createPointer struct a
+                    passPointer int* tempPtr214, void _fn_ListStruct_shtk_printVecList, module ListStruct.shtk
+                    void calleeReturnValue217 = call void _fn_ListStruct_shtk_printVecList, module ListStruct.shtk
+                    int temp222 = cast autoInt 0
+                    int returnValue220 = equal int temp222
                     return
             ]
         }
