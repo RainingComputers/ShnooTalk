@@ -52,10 +52,12 @@ fn appendArray(mut self: List, items: T[], len: int)
     self.len = newLen
 }   
 
-fn printList(self: List)
+fn len(self: List) -> int
 {
-    for var i: int = 0; i < self.len; i += 1
-        print(self.items[i]; ", ")
+    return self.len
+}
 
-    println("")
+fn at(self: List, index: int) -> T
+{
+    return self.items[index]
 }
