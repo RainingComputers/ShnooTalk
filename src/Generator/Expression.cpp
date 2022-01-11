@@ -126,7 +126,9 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
 
     int nodeCounter = setWorkingModuleFromNode(ctx, root, 0);
 
-    if (root.children[nodeCounter].tok.getType() != token::IDENTIFIER)
+    const token::TokenType& tokenType = root.children[nodeCounter].tok.getType();
+
+    if (tokenType != token::IDENTIFIER && tokenType != token::GENERATED)
         ctx.console.compileErrorOnToken("Invalid use of MODULE ACCESS", root.tok);
 
     Unit result = term(ctx, root.children[nodeCounter]);

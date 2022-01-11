@@ -92,7 +92,7 @@ void allocArrayPointer(const icode::Entry& e, Console& con)
     con.check(twoOperand(e));
     con.check(e.op1.isPointer());
     con.check(e.op2.operandType == icode::BYTES);
-    con.check(allOperandNonVoidBaseDataType(e));
+    con.check(allOperandNonVoidDataType(e));
 }
 
 void addrAdd(const icode::Entry& e, Console& con)

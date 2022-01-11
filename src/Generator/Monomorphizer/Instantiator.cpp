@@ -147,6 +147,9 @@ void pointerCast(const InstiatorContext& ctx, Node& root)
 
     const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
     newRootNode.children.push_back(constructNode(node::MODULE, alias));
+    newRootNode.children.push_back(root);
+
+    root = newRootNode;
 }
 
 void expression(const InstiatorContext& ctx, Node& root)

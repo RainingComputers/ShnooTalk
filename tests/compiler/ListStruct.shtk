@@ -1,0 +1,51 @@
+# x: 1 y: 2
+# x: 2 y: 3
+# x: 3 y: 4
+# x: 1 y: 2
+# x: 2 y: 3
+# x: 3 y: 4
+# x: 5 y: 6
+# x: 7 y: 8
+
+use "TestModules/List.shtk" as List
+use "TestModules/Vector.shtk" as Vector
+
+from List use List
+
+fn createVec(x: int, y: int) -> Vector::Vec
+{
+    var res: Vector::Vec
+
+    res.x = x
+    res.y = y
+
+    return res
+}
+
+fn printVecList(list: List[Vector::Vec]) 
+{
+    for var i: int = 0; i < list.len(); i += 1
+        Vector::printVec(list.at(i))
+}
+
+fn main() -> int
+{
+    var a: List[Vector::Vec]
+
+    a.init([
+        createVec(1, 2),
+        createVec(2, 3),
+        createVec(3, 4)
+    ], 3)
+
+    printVecList(a)
+
+    a.appendArray([
+        createVec(5, 6),
+        createVec(7, 8)        
+    ], 2)
+
+    printVecList(a)
+
+    return 0
+}

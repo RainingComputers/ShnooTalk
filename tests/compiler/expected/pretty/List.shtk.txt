@@ -1,58 +1,85 @@
 {
     "moduleName": "List.shtk",
     "functions": {
+        "_fn_List_shtk_printIntList": {
+            "icode": [
+                    int temp5 = cast autoInt 0
+                    int i = equal int temp5
+                _for_true_l11_c4:
+                    int* tempPtr12 = createPointer struct list
+                    passPointer int* tempPtr12, int _fn_TestModules_List_shtk__List_shtk_int_len, module TestModules/List.shtk__List_shtk_int
+                    int calleeReturnValue15 = call int _fn_TestModules_List_shtk__List_shtk_int_len, module TestModules/List.shtk__List_shtk_int
+                    flag = lessThan int i, int calleeReturnValue15
+                    if(not flag) goto _for_false_l11_c4
+                    int* tempPtr21 = createPointer struct list
+                    passPointer int* tempPtr21, int _fn_TestModules_List_shtk__List_shtk_int_at, module TestModules/List.shtk__List_shtk_int
+                    pass int i, int _fn_TestModules_List_shtk__List_shtk_int_at, module TestModules/List.shtk__List_shtk_int
+                    int calleeReturnValue27 = call int _fn_TestModules_List_shtk__List_shtk_int_at, module TestModules/List.shtk__List_shtk_int
+                    print int calleeReturnValue27
+                    printString stringData _str_List_shtk__l12_c26
+                _for_cont_true_l11_c4:
+                    int temp34 = cast autoInt 1
+                    int temp33 = add int i, int temp34
+                    int i = equal int temp33
+                    goto _for_true_l11_c4
+                _for_false_l11_c4:
+                    printString stringData _str_List_shtk__l14_c12
+                    newLine
+                    return
+            ]
+        },
         "main": {
             "icode": [
-                    int* tempPtr8 = createPointer struct a
-                    passPointer int* tempPtr8, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
-                    int* tempPtr16 = allocArrayPointer bytes 20
-                    int temp18 = cast autoInt 1
-                    int* tempPtr16 = write int temp18
-                    int* tempPtr20 = addressAdd int* tempPtr16, bytes 4
-                    int temp21 = cast autoInt 2
-                    int* tempPtr20 = write int temp21
-                    int* tempPtr23 = addressAdd int* tempPtr20, bytes 4
-                    int temp24 = cast autoInt 3
-                    int* tempPtr23 = write int temp24
-                    int* tempPtr26 = addressAdd int* tempPtr23, bytes 4
-                    int temp27 = cast autoInt 4
-                    int* tempPtr26 = write int temp27
-                    int* tempPtr29 = addressAdd int* tempPtr26, bytes 4
-                    int temp30 = cast autoInt 5
-                    int* tempPtr29 = write int temp30
-                    passPointer int* tempPtr16, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
-                    int temp34 = cast autoInt 5
-                    pass int temp34, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
-                    void calleeReturnValue37 = call void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
-                    int* tempPtr42 = createPointer struct a
-                    passPointer int* tempPtr42, void _fn_TestModules_List_shtk__List_shtk_int_printList, module TestModules/List.shtk__List_shtk_int
-                    void calleeReturnValue45 = call void _fn_TestModules_List_shtk__List_shtk_int_printList, module TestModules/List.shtk__List_shtk_int
-                    int* tempPtr52 = createPointer struct a
-                    passPointer int* tempPtr52, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
-                    int* tempPtr60 = allocArrayPointer bytes 20
-                    int temp62 = cast autoInt 6
-                    int* tempPtr60 = write int temp62
-                    int* tempPtr64 = addressAdd int* tempPtr60, bytes 4
-                    int temp65 = cast autoInt 7
-                    int* tempPtr64 = write int temp65
-                    int* tempPtr67 = addressAdd int* tempPtr64, bytes 4
-                    int temp68 = cast autoInt 8
-                    int* tempPtr67 = write int temp68
-                    int* tempPtr70 = addressAdd int* tempPtr67, bytes 4
-                    int temp71 = cast autoInt 9
-                    int* tempPtr70 = write int temp71
-                    int* tempPtr73 = addressAdd int* tempPtr70, bytes 4
-                    int temp74 = cast autoInt 10
-                    int* tempPtr73 = write int temp74
-                    passPointer int* tempPtr60, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
-                    int temp78 = cast autoInt 5
-                    pass int temp78, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
-                    void calleeReturnValue81 = call void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
-                    int* tempPtr86 = createPointer struct a
-                    passPointer int* tempPtr86, void _fn_TestModules_List_shtk__List_shtk_int_printList, module TestModules/List.shtk__List_shtk_int
-                    void calleeReturnValue89 = call void _fn_TestModules_List_shtk__List_shtk_int_printList, module TestModules/List.shtk__List_shtk_int
-                    int temp94 = cast autoInt 0
-                    int returnValue92 = equal int temp94
+                    int* tempPtr44 = createPointer struct a
+                    passPointer int* tempPtr44, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr52 = allocArrayPointer bytes 20
+                    int temp54 = cast autoInt 1
+                    int* tempPtr52 = write int temp54
+                    int* tempPtr56 = addressAdd int* tempPtr52, bytes 4
+                    int temp57 = cast autoInt 2
+                    int* tempPtr56 = write int temp57
+                    int* tempPtr59 = addressAdd int* tempPtr56, bytes 4
+                    int temp60 = cast autoInt 3
+                    int* tempPtr59 = write int temp60
+                    int* tempPtr62 = addressAdd int* tempPtr59, bytes 4
+                    int temp63 = cast autoInt 4
+                    int* tempPtr62 = write int temp63
+                    int* tempPtr65 = addressAdd int* tempPtr62, bytes 4
+                    int temp66 = cast autoInt 5
+                    int* tempPtr65 = write int temp66
+                    passPointer int* tempPtr52, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
+                    int temp70 = cast autoInt 5
+                    pass int temp70, void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
+                    void calleeReturnValue73 = call void _fn_TestModules_List_shtk__List_shtk_int_init, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr78 = createPointer struct a
+                    passPointer int* tempPtr78, void _fn_List_shtk_printIntList, module List.shtk
+                    void calleeReturnValue81 = call void _fn_List_shtk_printIntList, module List.shtk
+                    int* tempPtr88 = createPointer struct a
+                    passPointer int* tempPtr88, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr96 = allocArrayPointer bytes 20
+                    int temp98 = cast autoInt 6
+                    int* tempPtr96 = write int temp98
+                    int* tempPtr100 = addressAdd int* tempPtr96, bytes 4
+                    int temp101 = cast autoInt 7
+                    int* tempPtr100 = write int temp101
+                    int* tempPtr103 = addressAdd int* tempPtr100, bytes 4
+                    int temp104 = cast autoInt 8
+                    int* tempPtr103 = write int temp104
+                    int* tempPtr106 = addressAdd int* tempPtr103, bytes 4
+                    int temp107 = cast autoInt 9
+                    int* tempPtr106 = write int temp107
+                    int* tempPtr109 = addressAdd int* tempPtr106, bytes 4
+                    int temp110 = cast autoInt 10
+                    int* tempPtr109 = write int temp110
+                    passPointer int* tempPtr96, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
+                    int temp114 = cast autoInt 5
+                    pass int temp114, void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
+                    void calleeReturnValue117 = call void _fn_TestModules_List_shtk__List_shtk_int_appendArray, module TestModules/List.shtk__List_shtk_int
+                    int* tempPtr122 = createPointer struct a
+                    passPointer int* tempPtr122, void _fn_List_shtk_printIntList, module List.shtk
+                    void calleeReturnValue125 = call void _fn_List_shtk_printIntList, module List.shtk
+                    int temp130 = cast autoInt 0
+                    int returnValue128 = equal int temp130
                     return
             ]
         }

@@ -3,7 +3,16 @@
 
 use "TestModules/List.shtk" as List
 
+
 from List use List
+
+fn printIntList(list: List[int]) 
+{
+    for var i: int = 0; i < list.len(); i += 1
+        print(list.at(i); ", ")
+
+    println("")
+}
 
 fn main() -> int
 {
@@ -11,11 +20,11 @@ fn main() -> int
 
     a.init([1, 2, 3, 4, 5], 5)
 
-    a.printList()
+    printIntList(a)
 
     a.appendArray([6, 7, 8, 9, 10], 5)
 
-    a.printList()
+    printIntList(a)
 
     return 0
 }
