@@ -9,8 +9,10 @@
 
 use "TestModules/List.shtk" as List
 use "TestModules/Vector.shtk" as Vector
+use "TestModules/ResultGeneric.shtk" as Result
 
 from List use List
+from Result use Result
 
 fn createVec(x: int, y: int) -> Vector::Vec
 {
@@ -24,8 +26,11 @@ fn createVec(x: int, y: int) -> Vector::Vec
 
 fn printVecList(list: List[Vector::Vec]) 
 {
-    for var i: int = 0; i < list.len(); i += 1
-        Vector::printVec(list.at(i))
+    for var i: int = 0; i < list.len(); i += 1 {
+        var result: Result[Vector::Vec] = list.at(i)
+        if result.error println("Error")
+        else Vector::printVec(result.item)
+    }      
 }
 
 fn main() -> int

@@ -1,5 +1,8 @@
 generic T
 
+use "TestModules/ResultGeneric.shtk" as Result
+from Result use Result
+
 extfn malloc(bytes: int) -> ubyte*
 extfn free(ptr: ubyte*)
 
@@ -52,12 +55,27 @@ fn appendArray(mut self: List, items: T[], len: int)
     self.len = newLen
 }   
 
+fn appendElement(mut self: List, item: T)
+{
+    self.appendArray([item], 1)
+}
+
 fn len(self: List) -> int
 {
     return self.len
 }
 
-fn at(self: List, index: int) -> T
+fn at(self: List, index: int) -> Result[T]
 {
-    return self.items[index]
+    var result: Result[T]
+
+    if index >= self.len {
+        result.error = true
+        return result
+    }
+
+    result.item = self.items[index]
+    result.error = false
+    return result
 }
+
