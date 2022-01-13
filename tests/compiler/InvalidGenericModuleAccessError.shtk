@@ -1,0 +1,13 @@
+# MODULE InvalidGenericModuleAccessError.shtk
+# ERROR in Line 12 Col 5
+# 
+#     Pair::lol::foo()
+#     ^
+# Invalid MODULE ACCESS from GENERIC
+
+use "TestModules/Pair.shtk" as Pair
+
+fn main() -> int
+{
+    Pair::lol::foo()
+}

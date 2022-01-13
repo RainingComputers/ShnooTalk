@@ -1,0 +1,13 @@
+# MODULE CannotCompileGenericError.shtk
+# ERROR in Line 8 Col 1
+# 
+# generic T
+# ^
+# Connot compile a GENERIC
+
+generic T
+
+fn main() -> int
+{
+    return 0
+}
