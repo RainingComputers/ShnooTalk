@@ -1,11 +1,9 @@
 import os
-from typing import List
 
-from tests_runner.framework import run_command
 from tests_runner.framework import TestResult, ResultPrinter
 
-from tests_runner.framework import COMPILER_EXEC_PATH, VERSION_FILE
-from tests_runner.framework import string_from_file
+from tests_runner.framework import COMPILER_VERSION
+from tests_runner.framework import simple_output_assert
 
 USAGE_HELP = '''USAGE: shtkc FILE OPTION
 
@@ -28,43 +26,26 @@ FILE_IO_ERROR = "File I/O error\n"
 
 
 def run_version_test() -> TestResult:
-    cmd = [COMPILER_EXEC_PATH, "-version"]
-
-    timedout, output, exit_code = run_command(cmd)
-
-    if exit_code != 0 or timedout:
-        return TestResult.failed(output)
-
-    if string_from_file(VERSION_FILE) == output:
-        return TestResult.failed(output)
-
-    return TestResult.passed(output)
+    return simple_output_assert(["-version"], COMPILER_VERSION, False)
 
 
-def run_invalid_args(args: List[str]) -> TestResult:
-    cmd = [COMPILER_EXEC_PATH] + args
+def run_no_args() -> TestResult:
+    return simple_output_assert([], USAGE_HELP, True)
 
-    timedout, output, exit_code = run_command(cmd)
 
-    if exit_code == 0 or timedout:
-        return TestResult.failed(output)
+def run_invalid_args() -> TestResult:
+    return simple_output_assert(["TestModules/Math.shtk", "-invalid"], USAGE_HELP, True)
 
-    if output != USAGE_HELP:
-        return TestResult.failed(output, USAGE_HELP)
 
-    return TestResult.passed(output)
+def run_too_many_args() -> TestResult:
+    return simple_output_assert(
+        ["TestModules/Math.shtk", "-invalid", "-too-many"],
+        USAGE_HELP, True
+    )
 
 
 def run_file_no_exists() -> TestResult:
-    timedout, output, exit_code = run_command([COMPILER_EXEC_PATH, "NoExist.shtk", "-c"])
-
-    if exit_code == 0 or timedout:
-        return TestResult.failed(output)
-
-    if output != FILE_IO_ERROR:
-        return TestResult.failed(output, FILE_IO_ERROR)
-
-    return TestResult.passed(output)
+    return simple_output_assert(["NoExist.shtk", "-c"], FILE_IO_ERROR, True)
 
 
 def run() -> None:
@@ -72,17 +53,11 @@ def run() -> None:
 
     printer = ResultPrinter('CLI args')
 
-    printer.print_result('No args', run_invalid_args([]))
+    printer.print_result('No args', run_no_args())
 
-    printer.print_result(
-        'Invalid args',
-        run_invalid_args(["TestModules/Math.shtk", "-invalid"])
-    )
+    printer.print_result('Invalid args', run_invalid_args())
 
-    printer.print_result(
-        'Too many args',
-        run_invalid_args(["TestModules/Math.shtk", "-invalid", "-too-many"])
-    )
+    printer.print_result('Too many args', run_too_many_args())
 
     printer.print_result('File not found', run_file_no_exists())
 

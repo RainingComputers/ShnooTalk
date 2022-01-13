@@ -69,10 +69,10 @@ def compile_phase(file_name: str,
     return TestResult.passed(compiler_output)
 
 
-def command_validator(compile_phase_result: TestResult,
-                      expected_on_compile_fail: Optional[str],
-                      command_on_compile_success: List[str],
-                      expected_command_output: Optional[str]) -> TestResult:
+def command_on_compiler_output_assert(compile_phase_result: TestResult,
+                                      expected_on_compile_fail: Optional[str],
+                                      command_on_compile_success: List[str],
+                                      expected_command_output: Optional[str]) -> TestResult:
 
     if compile_phase_result.has_failed and expected_on_compile_fail is not None:
         return compare(expected_on_compile_fail, compile_phase_result.output)
@@ -96,10 +96,25 @@ def command_validator(compile_phase_result: TestResult,
     return TestResult.passed(command_output)
 
 
-def string_validator(compile_phase_result: TestResult,
-                     expected_output_on_success: str) -> TestResult:
+def compiler_output_assert(compile_phase_result: TestResult,
+                           expected_output_on_success: str) -> TestResult:
 
     if not compile_phase_result.has_passed:
         return compile_phase_result
 
     return compare(expected_output_on_success, compile_phase_result.output)
+
+
+def simple_output_assert(compiler_args: List[str], expected_output: str,
+                         expect_non_zero_exit_code: bool) -> TestResult:
+    cmd = [COMPILER_EXEC_PATH] + compiler_args
+
+    timedout, output, exit_code = run_command(cmd)
+
+    if exit_code == 0 and expect_non_zero_exit_code:
+        return TestResult.failed(output, expected_output)
+
+    if timedout:
+        return TestResult.failed(output, expected_output)
+
+    return compare(expected_output, output)

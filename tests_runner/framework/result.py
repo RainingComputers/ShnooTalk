@@ -45,8 +45,8 @@ class TestResult:
         return TestResult(TestResultType.SKIPPED, None, None)
 
     @staticmethod
-    def invalid(test_case: Optional[str] = None) -> TestResult:
-        return TestResult(TestResultType.INVALID, test_case, None)
+    def invalid(reason: Optional[str] = None) -> TestResult:
+        return TestResult(TestResultType.INVALID, reason, None)
 
     @property
     def has_failed(self) -> bool:
@@ -117,9 +117,7 @@ class ResultPrinter:
 
             self._invalid.append(name)
 
-            print("    🤔", name, "invalid test case\n")
-            print("[Defined output]")
-            print(result.output)
+            print("    🤔", name, f"invalid test case, {result.output}")
 
         elif result.test_result == TestResultType.TIMEDOUT:
             self._timedout.append(name)
