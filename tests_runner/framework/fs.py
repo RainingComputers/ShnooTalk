@@ -2,7 +2,6 @@ from typing import List
 
 import os
 import glob
-import json
 
 
 def remove_if_exists(filename: str) -> None:
@@ -36,10 +35,3 @@ def dump_string_to_file(file_name: str, content: str) -> None:
 def string_from_file(file_name: str) -> str:
     with open(file_name, "r") as file:
         return file.read()
-
-
-def json_from_file(file_name: str) -> str:
-    with open(file_name, "r") as file:
-        _ = json.load(file)
-
-    return string_from_file(file_name)

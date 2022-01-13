@@ -1,9 +1,12 @@
 from typing import List, Optional, Tuple
 
+import json
+
 from tests_runner.framework.config import COMPILER_EXEC_PATH
 
 from tests_runner.framework.command import run_command
 from tests_runner.framework.fs import get_files, remove_if_exists, dump_string_to_file, remove_files
+from tests_runner.framework.fs import string_from_file
 from tests_runner.framework.result import TestResult
 from tests_runner.framework.coverage import set_gmon_prefix, setup_coverage_dir
 
@@ -43,7 +46,7 @@ def compare(expected_output: str, output: Optional[str]) -> TestResult:
 
 def compile_phase(file_name: str,
                   compile_flag: str,
-                  compiler_output_dump_file: Optional[str],
+                  compiler_output_dump_file_path: Optional[str],
                   create_executable: bool,
                   skip_on_compile_error: bool) -> TestResult:
     setup(file_name)
@@ -60,8 +63,8 @@ def compile_phase(file_name: str,
 
         return TestResult.failed(compiler_output)
 
-    if compiler_output_dump_file is not None:
-        dump_string_to_file(compiler_output_dump_file, compiler_output)
+    if compiler_output_dump_file_path is not None:
+        dump_string_to_file(compiler_output_dump_file_path, compiler_output)
 
     if create_executable:
         link_objects_into_bin()
@@ -69,18 +72,19 @@ def compile_phase(file_name: str,
     return TestResult.passed(compiler_output)
 
 
-def command_on_compiler_output_assert(compile_phase_result: TestResult,
-                                      expected_on_compile_fail: Optional[str],
-                                      command_on_compile_success: List[str],
-                                      expected_command_output: Optional[str]) -> TestResult:
+def command_on_compile_success_output_assert(compile_phase_result: TestResult,
+                                             expected_on_compile_result_fail: Optional[str],
+                                             command_on_compile_result_pass: List[str],
+                                             expected_command_output: Optional[str]) -> TestResult:
 
-    if compile_phase_result.has_failed and expected_on_compile_fail is not None:
-        return compare(expected_on_compile_fail, compile_phase_result.output)
+    if compile_phase_result.has_failed and expected_on_compile_result_fail is not None:
+        return compare(expected_on_compile_result_fail, compile_phase_result.output)
 
     if not compile_phase_result.has_passed:
         return compile_phase_result
 
-    command_timedout, command_output, command_exit_code = run_command(command_on_compile_success)
+    command_timedout, command_output, command_exit_code = \
+        run_command(command_on_compile_result_pass)
 
     remove_if_exists("./test_executable")
 
@@ -96,13 +100,19 @@ def command_on_compiler_output_assert(compile_phase_result: TestResult,
     return TestResult.passed(command_output)
 
 
-def compiler_output_assert(compile_phase_result: TestResult,
-                           expected_output_on_success: str) -> TestResult:
+def compile_success_output_assert(compile_phase_result: TestResult,
+                                  expected_test_case_file_path: str,
+                                  check_json: bool) -> TestResult:
 
     if not compile_phase_result.has_passed:
         return compile_phase_result
 
-    return compare(expected_output_on_success, compile_phase_result.output)
+    expected_output = string_from_file(expected_test_case_file_path)
+
+    if check_json:
+        _ = json.loads(expected_output)
+
+    return compare(expected_output, compile_phase_result.output)
 
 
 def simple_output_assert(compiler_args: List[str], expected_output: str,
