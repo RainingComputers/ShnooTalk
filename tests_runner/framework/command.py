@@ -2,7 +2,7 @@ from typing import Tuple, List, Optional
 
 import subprocess
 
-from tests_runner.utils.config import TIMEOUT
+from tests_runner.framework.config import TIMEOUT
 
 
 def run_command(command: List[str]) -> Tuple[bool, str, Optional[int]]:

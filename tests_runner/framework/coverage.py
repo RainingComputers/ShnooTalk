@@ -1,6 +1,6 @@
 import os
 
-from tests_runner.utils.config import COVERAGE_REPORT_DIR, OBJ_DIR, OPEN_BIN, LCOV_EXCLUDE
+from tests_runner.framework.config import COVERAGE_REPORT_DIR, OBJ_DIR, OPEN_BIN, LCOV_EXCLUDE
 
 
 def shell(command: str) -> None:

@@ -3,11 +3,12 @@ from typing import Optional
 import os
 import sys
 
-
 BUILD_TYPE_MAP = {
     "--test": "debug",
     "--coverage": "gcov",
 }
+
+CLI_ARG_OPTIONS = ' '.join(list(BUILD_TYPE_MAP.keys()))
 
 
 def parse_args() -> Optional[str]:

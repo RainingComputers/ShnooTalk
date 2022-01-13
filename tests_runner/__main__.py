@@ -1,15 +1,15 @@
 import sys
 
-from tests_runner.utils.config import CLI_ARG, BUILD_TYPE_MAP
-from tests_runner.utils.coverage import prepare_coverage_report
-from tests_runner.utils.result import ResultPrinter
+from tests_runner.framework import CLI_ARG, CLI_ARG_OPTIONS
+from tests_runner.framework import ResultPrinter
+from tests_runner.framework import prepare_coverage_report
 
 from tests_runner import compiler_tests, llc_tests, cli_tests, parser_tests, ir_tests
 
 
 def print_usage() -> None:
     print("🙁 Invalid CLI ARGS, available option are:")
-    print(f"    {' '.join(list(BUILD_TYPE_MAP.keys()))}")
+    print(f"    {CLI_ARG_OPTIONS}")
 
 
 def run_all_tests() -> None:
@@ -30,15 +30,14 @@ def main() -> int:
         print_done()
         return ResultPrinter.exit_code
 
-    elif CLI_ARG == "--coverage":
+    if CLI_ARG == "--coverage":
         run_all_tests()
         prepare_coverage_report()
         print_done()
         return ResultPrinter.exit_code
 
-    else:
-        print_usage()
-        return -1
+    print_usage()
+    return -1
 
 
 if __name__ == "__main__":

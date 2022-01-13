@@ -1,11 +1,11 @@
 from typing import List, Optional, Tuple
 
-from tests_runner.utils.config import COMPILER_EXEC_PATH
+from tests_runner.framework.config import COMPILER_EXEC_PATH
 
-from tests_runner.utils.command import run_command
-from tests_runner.utils.dir import get_files, remove_if_exists, dump_string_to_file, remove_files
-from tests_runner.utils.result import TestResult
-from tests_runner.utils.coverage import set_gmon_prefix, setup_coverage_dir
+from tests_runner.framework.command import run_command
+from tests_runner.framework.fs import get_files, remove_if_exists, dump_string_to_file, remove_files
+from tests_runner.framework.result import TestResult
+from tests_runner.framework.coverage import set_gmon_prefix, setup_coverage_dir
 
 
 def setup(file_name: str) -> None:

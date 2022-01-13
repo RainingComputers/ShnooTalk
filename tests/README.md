@@ -2,7 +2,7 @@
 
 These are detailed end to end tests which can be used to test an implementation of ShnooTalk. The `tests_runner` python application can be use 
 to run the tests. The `tests_runner` application expects the output executable to be in `bin/debug/shtkc` or `bin/gcov/shtkc` (for coverage). 
-See `COMPILER_EXEC_PATH` in `tests_runner/util/config.py` for more info.
+See `COMPILER_EXEC_PATH` in `tests_runner/framework/config.py` for more info.
 
 ## Directories
 

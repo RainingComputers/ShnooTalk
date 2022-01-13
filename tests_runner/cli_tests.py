@@ -1,11 +1,11 @@
 import os
 from typing import List
 
-from tests_runner.utils.command import run_command
-from tests_runner.utils.result import TestResult, ResultPrinter
+from tests_runner.framework import run_command
+from tests_runner.framework import TestResult, ResultPrinter
 
-from tests_runner.utils.config import COMPILER_EXEC_PATH, VERSION_FILE
-from tests_runner.utils.dir import string_from_file
+from tests_runner.framework import COMPILER_EXEC_PATH, VERSION_FILE
+from tests_runner.framework import string_from_file
 
 USAGE_HELP = '''USAGE: shtkc FILE OPTION
 
