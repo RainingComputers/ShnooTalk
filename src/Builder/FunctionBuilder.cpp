@@ -108,17 +108,17 @@ void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
     pushEntry(memCpyEntry);
 }
 
-Operand FunctionBuilder::getCreatePointerDestOperand(const Unit& unit)
+Operand FunctionBuilder::getCreatePointerDestOperand(const TypeDescription& type)
 {
     /* If not a struct, just copy the operand but change its type to a pointer */
 
-    if (!unit.isStruct())
-        return opBuilder.createTempPtrOperand(unit.dtype());
+    if (!type.isStruct())
+        return opBuilder.createTempPtrOperand(type.dtype);
 
     /* If it a struct, create pointer to the first field */
-    ModuleDescription* workingModule = &modulesMap.at(unit.moduleName());
+    ModuleDescription* workingModule = &modulesMap.at(type.moduleName);
 
-    DataType firstFieldDataType = workingModule->structures.at(unit.dtypeName()).getFirstFieldDataType();
+    DataType firstFieldDataType = workingModule->structures.at(type.dtypeName).getFirstFieldDataType();
 
     return opBuilder.createTempPtrOperand(firstFieldDataType);
 }
@@ -129,7 +129,7 @@ Operand FunctionBuilder::createPointer(const Unit& unit)
         return unit.op();
 
     /* Converted TEMP_PTR */
-    Operand pointerOperand = getCreatePointerDestOperand(unit);
+    Operand pointerOperand = getCreatePointerDestOperand(unit.type());
 
     /* Construct CREATE_PTR instruction */
     Entry createPointerEntry;
@@ -159,7 +159,7 @@ Unit FunctionBuilder::createTemp(DataType dtype)
 
 Unit FunctionBuilder::createTempArray(const TypeDescription& type, unsigned int numElements)
 {
-    Operand tempPointer = opBuilder.createTempPtrOperand(type.dtype);
+    Operand tempPointer = getCreatePointerDestOperand(type);
 
     icode::Entry entry;
 

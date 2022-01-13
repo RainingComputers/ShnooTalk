@@ -81,7 +81,7 @@ clang app.o -o app
 - [x] Setup github workflows and build for other platforms
 - [ ] Error recovery
 - [ ] Incomplete types and type composing of a pointer to itself
-- [ ] Destructuring 1 w
+- [ ] Destructuring
 - [ ] := initializer
 - [ ] Function forward declaration
 - [ ] Unsafe keyword

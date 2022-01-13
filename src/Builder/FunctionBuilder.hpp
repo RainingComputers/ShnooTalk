@@ -28,7 +28,7 @@ class FunctionBuilder
 
     void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
 
-    icode::Operand getCreatePointerDestOperand(const Unit& unit);
+    icode::Operand getCreatePointerDestOperand(const icode::TypeDescription& type);
 
     icode::Operand createPointer(const Unit& unit);
 
