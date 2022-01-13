@@ -7,7 +7,7 @@ from tests_runner.framework import batch_run
 
 
 def run_single_ir(file_name: str) -> TestResult:
-    test_case_file = os.path.join("expected/json", file_name+".json")
+    test_case_file_path = os.path.join("expected/json", file_name+".json")
 
     return compile_success_output_assert(
         compile_phase_result=compile_phase(
@@ -17,7 +17,7 @@ def run_single_ir(file_name: str) -> TestResult:
             create_executable=False,
             skip_on_compile_error=False
         ),
-        expected_test_case_file_path=test_case_file,
+        expected_test_case_file_path=test_case_file_path,
         check_json=True
     )
 

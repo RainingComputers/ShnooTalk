@@ -40,7 +40,7 @@ def run_single_exec(file_name: str) -> TestResult:
 
 
 def run_single_icode_pretty(file_name: str) -> TestResult:
-    test_case_file = os.path.join("expected/pretty", file_name)+".txt"
+    test_case_file_path = os.path.join("expected/pretty", file_name)+".txt"
 
     return compile_success_output_assert(
         compile_phase_result=compile_phase(
@@ -50,13 +50,13 @@ def run_single_icode_pretty(file_name: str) -> TestResult:
             create_executable=False,
             skip_on_compile_error=True,
         ),
-        expected_test_case_file_path=test_case_file,
+        expected_test_case_file_path=test_case_file_path,
         check_json=False
     )
 
 
 def run_single_icode_json(file_name: str) -> TestResult:
-    test_case_file = os.path.join("expected/json", file_name)+".json"
+    test_case_file_path = os.path.join("expected/json", file_name)+".json"
 
     return compile_success_output_assert(
         compile_phase_result=compile_phase(
@@ -66,7 +66,7 @@ def run_single_icode_json(file_name: str) -> TestResult:
             create_executable=False,
             skip_on_compile_error=True,
         ),
-        expected_test_case_file_path=test_case_file,
+        expected_test_case_file_path=test_case_file_path,
         check_json=True
     )
 
