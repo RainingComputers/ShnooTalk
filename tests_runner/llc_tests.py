@@ -1,10 +1,10 @@
 import os
 
-from tests_runner.utils.batch import batch_run
-from tests_runner.utils.dir import remove_files
-from tests_runner.utils.result import TestResult
-from tests_runner.utils.config import LLC_BIN
-from tests_runner.utils.validator import compile_phase, command_validator
+from tests_runner.framework import batch_run
+from tests_runner.framework import remove_files
+from tests_runner.framework import TestResult
+from tests_runner.framework import LLC_BIN
+from tests_runner.framework import compile_phase, command_validator
 
 
 def run_single(file_name: str) -> TestResult:

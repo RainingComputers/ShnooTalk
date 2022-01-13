@@ -2,10 +2,10 @@
 import os
 import json
 
-from tests_runner.utils.result import TestResult
-from tests_runner.utils.validator import compile_phase, string_validator
-from tests_runner.utils.dir import string_from_file
-from tests_runner.utils.batch import batch_run
+from tests_runner.framework import TestResult
+from tests_runner.framework import compile_phase, string_validator
+from tests_runner.framework import string_from_file
+from tests_runner.framework import batch_run
 
 
 def run_single_ir(file_name: str) -> TestResult:

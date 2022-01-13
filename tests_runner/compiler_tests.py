@@ -1,10 +1,10 @@
 import os
 import json
 
-from tests_runner.utils.result import TestResult
-from tests_runner.utils.validator import compile_phase, command_validator, string_validator
-from tests_runner.utils.batch import batch_run
-from tests_runner.utils.dir import string_from_file
+from tests_runner.framework import TestResult
+from tests_runner.framework import compile_phase, command_validator, string_validator
+from tests_runner.framework import batch_run
+from tests_runner.framework import string_from_file
 
 
 def get_expected_output(file_name: str) -> str:
