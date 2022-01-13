@@ -4,13 +4,13 @@ from tests_runner.framework import batch_run
 from tests_runner.framework import remove_files
 from tests_runner.framework import TestResult
 from tests_runner.framework import LLC_BIN
-from tests_runner.framework import compile_phase, command_validator
+from tests_runner.framework import compile_phase, command_on_compiler_output_assert
 
 
 def run_single(file_name: str) -> TestResult:
     llc_file = file_name + ".llc"
 
-    return command_validator(
+    return command_on_compiler_output_assert(
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-llvm",

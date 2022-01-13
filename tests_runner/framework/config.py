@@ -3,6 +3,8 @@ from typing import Optional
 import os
 import sys
 
+from tests_runner.framework.fs import string_from_file
+
 BUILD_TYPE_MAP = {
     "--test": "debug",
     "--coverage": "gcov",
@@ -36,6 +38,8 @@ OBJ_DIR = os.path.join(os.getcwd(),  f"./obj/{BUILD_TYPE}/")
 COVERAGE_REPORT_DIR = os.path.join(os.getcwd(), "tests",  "reports")
 
 VERSION_FILE = os.path.join(os.getcwd(), "version")
+
+COMPILER_VERSION = string_from_file(VERSION_FILE)
 
 TIMEOUT = 5
 

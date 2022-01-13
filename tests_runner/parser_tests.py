@@ -1,17 +1,16 @@
 
 import os
-import json
 
 from tests_runner.framework import TestResult
-from tests_runner.framework import compile_phase, string_validator
-from tests_runner.framework import string_from_file
+from tests_runner.framework import compile_phase, compiler_output_assert
+from tests_runner.framework import string_from_file, json_from_file
 from tests_runner.framework import batch_run
 
 
 def run_single_pretty(file_name: str) -> TestResult:
     expected_output = string_from_file(os.path.join("expected/pretty", file_name+".txt"))
 
-    return string_validator(
+    return compiler_output_assert(
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-ast",
@@ -24,14 +23,9 @@ def run_single_pretty(file_name: str) -> TestResult:
 
 
 def run_single_json(file_name: str) -> TestResult:
-    expected_output = string_from_file(os.path.join("expected/json", file_name+".json"))
+    expected_output = json_from_file(os.path.join("expected/json", file_name+".json"))
 
-    try:
-        json.loads(expected_output)
-    except json.decoder.JSONDecodeError:
-        return TestResult.invalid(expected_output)
-
-    return string_validator(
+    return compiler_output_assert(
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-json-ast",

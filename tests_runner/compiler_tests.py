@@ -1,10 +1,10 @@
 import os
-import json
 
 from tests_runner.framework import TestResult
-from tests_runner.framework import compile_phase, command_validator, string_validator
+from tests_runner.framework import compile_phase
+from tests_runner.framework import command_on_compiler_output_assert, compiler_output_assert
 from tests_runner.framework import batch_run
-from tests_runner.framework import string_from_file
+from tests_runner.framework import string_from_file, json_from_file
 
 
 def get_expected_output(file_name: str) -> str:
@@ -25,7 +25,7 @@ def get_expected_output(file_name: str) -> str:
 def run_single_exec(file_name: str) -> TestResult:
     expected_output = get_expected_output(file_name)
 
-    return command_validator(
+    return command_on_compiler_output_assert(
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-c",
@@ -53,7 +53,7 @@ def run_single_icode_pretty(file_name: str) -> TestResult:
 
     expected_output = string_from_file(os.path.join("expected/pretty", file_name)+".txt")
 
-    return string_validator(
+    return compiler_output_assert(
         compile_phase_result=compile_phase_result,
         expected_output_on_success=expected_output
     )
@@ -71,14 +71,9 @@ def run_single_icode_json(file_name: str) -> TestResult:
     if not compile_phase_result.has_passed:
         return compile_phase_result
 
-    expected_output = string_from_file(os.path.join("expected/json", file_name)+".json")
+    expected_output = json_from_file(os.path.join("expected/json", file_name)+".json")
 
-    try:
-        json.loads(expected_output)
-    except json.decoder.JSONDecodeError:
-        return TestResult.invalid(expected_output)
-
-    return string_validator(
+    return compiler_output_assert(
         compile_phase_result=compile_phase_result,
         expected_output_on_success=expected_output
     )
