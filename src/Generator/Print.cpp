@@ -16,8 +16,9 @@ void print(generator::GeneratorContext& ctx, const Node& root)
         {
             Unit unit = expression(ctx, child);
 
-            if (unit.isStruct() || unit.isMultiDimArray())
-                ctx.console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY", child.tok);
+            if (unit.isStruct() || unit.isMultiDimArray() || (unit.isArray() && !unit.isChar()))
+                ctx.console.compileErrorOnToken("Cannot print STRUCT or multi-dimensional ARRAY or non CHAR ARRAY",
+                                                child.tok);
 
             ctx.ir.functionBuilder.createPrint(unit);
         }

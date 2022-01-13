@@ -1,0 +1,14 @@
+# MODULE IndexMustBeIntegerError.shtk
+# ERROR in Line 13 Col 20
+# 
+#     var c: int = a[b]
+#                    ^
+# Index must be an integer
+
+fn main() -> int
+{
+    var a: int[3] = [1, 2, 3]
+    var b: float = 2.3
+
+    var c: int = a[b]
+}

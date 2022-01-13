@@ -1,4 +1,4 @@
-# MODULE PrintArrayError.shtk
+# MODULE PrintNonCharArrayError.shtk
 # ERROR in Line 12 Col 13
 # 
 #     println(a)
@@ -7,7 +7,7 @@
 
 fn main()
 {
-    var a:int[3][3]
+    var a:int[3]
 
     println(a)
 }
