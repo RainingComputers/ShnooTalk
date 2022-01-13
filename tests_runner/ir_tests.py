@@ -2,23 +2,23 @@
 import os
 
 from tests_runner.framework import TestResult
-from tests_runner.framework import compile_phase, compiler_output_assert
-from tests_runner.framework import json_from_file
+from tests_runner.framework import compile_phase, compile_success_output_assert
 from tests_runner.framework import batch_run
 
 
 def run_single_ir(file_name: str) -> TestResult:
-    expected_output = json_from_file(os.path.join("expected/json", file_name+".json"))
+    test_case_file = os.path.join("expected/json", file_name+".json")
 
-    return compiler_output_assert(
+    return compile_success_output_assert(
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-json-ir",
-            compiler_output_dump_file=None,
+            compiler_output_dump_file_path=None,
             create_executable=False,
             skip_on_compile_error=False
         ),
-        expected_output_on_success=expected_output
+        expected_test_case_file_path=test_case_file,
+        check_json=True
     )
 
 
