@@ -1,9 +1,11 @@
-import os
-
-from tests_runner.framework import TestResult, ResultPrinter
+from tests_runner.framework import TestResult
 
 from tests_runner.framework import COMPILER_VERSION
 from tests_runner.framework import simple_output_assert
+
+from tests_runner.framework import tester
+
+TEST_GROUP = 'CLI args'
 
 USAGE_HELP = '''USAGE: shtkc FILE OPTION
 
@@ -25,18 +27,22 @@ Use shtkc -version for compiler version
 FILE_IO_ERROR = "File I/O error\n"
 
 
+@tester.single(TEST_GROUP, '-version')
 def run_version_test() -> TestResult:
     return simple_output_assert(["-version"], COMPILER_VERSION, False)
 
 
+@tester.single(TEST_GROUP, 'No args')
 def run_no_args() -> TestResult:
     return simple_output_assert([], USAGE_HELP, True)
 
 
+@tester.single(TEST_GROUP, 'Invalid args', "tests/compiler")
 def run_invalid_args() -> TestResult:
     return simple_output_assert(["TestModules/Math.shtk", "-invalid"], USAGE_HELP, True)
 
 
+@tester.single(TEST_GROUP, 'Too many args')
 def run_too_many_args() -> TestResult:
     return simple_output_assert(
         ["TestModules/Math.shtk", "-invalid", "-too-many"],
@@ -44,23 +50,14 @@ def run_too_many_args() -> TestResult:
     )
 
 
+@tester.single(TEST_GROUP, '-version', "tests/compiler")
 def run_file_no_exists() -> TestResult:
     return simple_output_assert(["NoExist.shtk", "-c"], FILE_IO_ERROR, True)
 
 
-def run() -> None:
-    os.chdir("tests/compiler")
-
-    printer = ResultPrinter('CLI args')
-
-    printer.print_result('No args', run_no_args())
-
-    printer.print_result('Invalid args', run_invalid_args())
-
-    printer.print_result('Too many args', run_too_many_args())
-
-    printer.print_result('File not found', run_file_no_exists())
-
-    printer.print_result('-version', run_version_test())
-
-    os.chdir("../..")
+def register() -> None:
+    run_version_test()
+    run_no_args()
+    run_invalid_args()
+    run_too_many_args()
+    run_file_no_exists()

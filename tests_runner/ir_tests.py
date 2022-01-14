@@ -3,9 +3,10 @@ import os
 
 from tests_runner.framework import TestResult
 from tests_runner.framework import compile_phase, compile_success_output_assert
-from tests_runner.framework import batch_run
+from tests_runner.framework import tester
 
 
+@tester.batch("IR JSON", "tests/ir")
 def run_single_ir(file_name: str) -> TestResult:
     test_case_file_path = os.path.join("expected/json", file_name+".json")
 
@@ -22,12 +23,6 @@ def run_single_ir(file_name: str) -> TestResult:
     )
 
 
-def run() -> None:
-    os.chdir("tests/ir")
-
-    batch_run(
-        "IR JSON",
-        run_single_ir
-    )
-
-    os.chdir("../..")
+def register() -> None:
+    # pylint: disable=no-value-for-parameter
+    run_single_ir()

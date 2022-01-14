@@ -1,12 +1,10 @@
-import os
-
-from tests_runner.framework import batch_run
-from tests_runner.framework import remove_files
 from tests_runner.framework import TestResult
 from tests_runner.framework import LLC_BIN
 from tests_runner.framework import compile_phase, command_on_compile_success_output_assert
+from tests_runner.framework import tester
 
 
+@tester.batch("llc", "tests/compiler", [".o", ".llc", ".llc.s"])
 def run_single(file_name: str) -> TestResult:
     llc_file_name = file_name + ".llc"
 
@@ -24,15 +22,6 @@ def run_single(file_name: str) -> TestResult:
     )
 
 
-def run() -> None:
-    os.chdir("tests/compiler")
-
-    remove_files(".llc")
-
-    batch_run("llc", run_single)
-
-    remove_files(".o")
-    remove_files(".llc")
-    remove_files(".llc.s")
-
-    os.chdir("../..")
+def register() -> None:
+    # pylint: disable=no-value-for-parameter
+    run_single()

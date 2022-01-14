@@ -3,9 +3,10 @@ import os
 
 from tests_runner.framework import TestResult
 from tests_runner.framework import compile_phase, compile_success_output_assert
-from tests_runner.framework import batch_run
+from tests_runner.framework import tester
 
 
+@tester.batch("Parser AST pretty", "tests/parser")
 def run_single_pretty(file_name: str) -> TestResult:
     test_case_file_path = os.path.join("expected/pretty", file_name+".txt")
 
@@ -22,6 +23,7 @@ def run_single_pretty(file_name: str) -> TestResult:
     )
 
 
+@tester.batch("Parser AST JSON", "tests/parser")
 def run_single_json(file_name: str) -> TestResult:
     test_case_file_path = os.path.join("expected/json", file_name+".json")
 
@@ -38,17 +40,7 @@ def run_single_json(file_name: str) -> TestResult:
     )
 
 
-def run() -> None:
-    os.chdir("tests/parser")
-
-    batch_run(
-        "Parser AST pretty",
-        run_single_pretty
-    )
-
-    batch_run(
-        "Parser AST JSON",
-        run_single_json
-    )
-
-    os.chdir("../..")
+def register() -> None:
+    # pylint: disable=no-value-for-parameter
+    run_single_pretty()
+    run_single_json()
