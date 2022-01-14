@@ -22,7 +22,7 @@ def get_expected_output(file_name: str) -> str:
     return expected_output
 
 
-@tester.batch("output executable", "tests/compiler")
+@tester.batch("tests/compiler")
 def output_executable(file_name: str) -> TestResult:
     expected_output = get_expected_output(file_name)
 
@@ -40,7 +40,7 @@ def output_executable(file_name: str) -> TestResult:
     )
 
 
-@tester.batch("icode pretty", "tests/compiler")
+@tester.batch("tests/compiler")
 def icode_pretty(file_name: str) -> TestResult:
     test_case_file_path = os.path.join("expected/pretty", file_name)+".txt"
 
@@ -57,7 +57,7 @@ def icode_pretty(file_name: str) -> TestResult:
     )
 
 
-@tester.batch("icode json", "tests/compiler")
+@tester.batch("tests/compiler")
 def icode_json(file_name: str) -> TestResult:
     test_case_file_path = os.path.join("expected/json", file_name)+".json"
 
