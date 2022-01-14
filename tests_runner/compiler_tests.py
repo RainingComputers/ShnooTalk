@@ -22,8 +22,8 @@ def get_expected_output(file_name: str) -> str:
     return expected_output
 
 
-@tester.batch("Compiler output executable", "tests/compiler")
-def run_single_exec(file_name: str) -> TestResult:
+@tester.batch("output executable", "tests/compiler")
+def output_executable(file_name: str) -> TestResult:
     expected_output = get_expected_output(file_name)
 
     return command_on_compile_success_output_assert(
@@ -40,8 +40,8 @@ def run_single_exec(file_name: str) -> TestResult:
     )
 
 
-@tester.batch("Compiler output icode pretty", "tests/compiler")
-def run_single_icode_pretty(file_name: str) -> TestResult:
+@tester.batch("icode pretty", "tests/compiler")
+def icode_pretty(file_name: str) -> TestResult:
     test_case_file_path = os.path.join("expected/pretty", file_name)+".txt"
 
     return compile_success_output_assert(
@@ -57,8 +57,8 @@ def run_single_icode_pretty(file_name: str) -> TestResult:
     )
 
 
-@tester.batch("Compiler output icode JSON", "tests/compiler")
-def run_single_icode_json(file_name: str) -> TestResult:
+@tester.batch("icode json", "tests/compiler")
+def icode_json(file_name: str) -> TestResult:
     test_case_file_path = os.path.join("expected/json", file_name)+".json"
 
     return compile_success_output_assert(
@@ -76,6 +76,6 @@ def run_single_icode_json(file_name: str) -> TestResult:
 
 def register() -> None:
     # pylint: disable=no-value-for-parameter
-    run_single_exec()
-    run_single_icode_pretty()
-    run_single_icode_json()
+    output_executable()
+    icode_pretty()
+    icode_json()
