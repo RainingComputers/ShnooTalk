@@ -8,7 +8,7 @@ from tests_runner.framework.fs import remove_files
 from tests_runner.framework.fs import list_test_files
 from tests_runner.framework.coverage import prepare_coverage_report
 
-from tests_runner.framework.config import CLI_ARG, CLI_ARG_OPTIONS
+from tests_runner.framework.config import CLI_ARG, CLI_ARG_OPTIONS, COMPILER_EXEC_PATH
 
 
 class Tester:
@@ -47,8 +47,7 @@ class Tester:
                 result_printer.print_result(file, TestResult.invalid(str(error)))
 
     def batch(
-        self, group: str, path: str,
-        clean: Optional[List[str]] = None
+        self, path: str, clean: Optional[List[str]] = None
     ) -> Callable[[Callable[[str], TestResult]], Callable[[], None]]:
 
         def batch_decorator(test_func: Callable[[str], TestResult]) -> Callable[[], None]:
@@ -58,6 +57,7 @@ class Tester:
                 os.chdir(path)
                 Tester.clean_files(clean)
 
+                group = test_func.__name__
                 self.batch_run(group, test_func)
 
                 Tester.clean_files(clean)
@@ -71,8 +71,7 @@ class Tester:
         return batch_decorator
 
     def single(
-        self, group: str, name: str,
-        path: Optional[str] = None
+        self, group: str, path: Optional[str] = None
     ) -> Callable[[Callable[[], TestResult]], Callable[[], None]]:
 
         def single_decorator(test_func: Callable[[], TestResult]) -> Callable[[], None]:
@@ -85,6 +84,7 @@ class Tester:
 
                 result_printer = self.upsert_printer(group)
                 test_result = test_func()
+                name = test_func.__name__
                 result_printer.print_result(name, test_result)
 
                 if path is not None:
@@ -110,9 +110,17 @@ class Tester:
         print("🙁 Invalid CLI ARGS, available option are:")
         print(f"    {CLI_ARG_OPTIONS}")
 
+    @staticmethod
+    def _print_compiler_not_found() -> None:
+        print(f"🙁 compiler not found at {COMPILER_EXEC_PATH}")
+
     def run(self) -> int:
         if CLI_ARG is None:
             Tester._print_usage()
+            return -1
+
+        if not os.path.exists(COMPILER_EXEC_PATH):
+            self._print_compiler_not_found()
             return -1
 
         self._run_tests_list()

@@ -4,8 +4,8 @@ from tests_runner.framework import compile_phase, command_on_compile_success_out
 from tests_runner.framework import tester
 
 
-@tester.batch("llc", "tests/compiler", [".o", ".llc", ".llc.s"])
-def run_single(file_name: str) -> TestResult:
+@tester.batch("tests/compiler", [".o", ".llc", ".llc.s"])
+def llc(file_name: str) -> TestResult:
     llc_file_name = file_name + ".llc"
 
     return command_on_compile_success_output_assert(
@@ -24,4 +24,4 @@ def run_single(file_name: str) -> TestResult:
 
 def register() -> None:
     # pylint: disable=no-value-for-parameter
-    run_single()
+    llc()

@@ -27,22 +27,22 @@ Use shtkc -version for compiler version
 FILE_IO_ERROR = "File I/O error\n"
 
 
-@tester.single(TEST_GROUP, '-version')
+@tester.single(TEST_GROUP)
 def version() -> TestResult:
     return simple_output_assert(["-version"], COMPILER_VERSION, False)
 
 
-@tester.single(TEST_GROUP, 'No args')
+@tester.single(TEST_GROUP)
 def no_args() -> TestResult:
     return simple_output_assert([], USAGE_HELP, True)
 
 
-@tester.single(TEST_GROUP, 'Invalid args', "tests/compiler")
+@tester.single(TEST_GROUP, "tests/compiler")
 def invalid_args() -> TestResult:
     return simple_output_assert(["TestModules/Math.shtk", "-invalid"], USAGE_HELP, True)
 
 
-@tester.single(TEST_GROUP, 'Too many args')
+@tester.single(TEST_GROUP)
 def too_many_args() -> TestResult:
     return simple_output_assert(
         ["TestModules/Math.shtk", "-invalid", "-too-many"],
@@ -50,8 +50,8 @@ def too_many_args() -> TestResult:
     )
 
 
-@tester.single(TEST_GROUP, '-version', "tests/compiler")
-def file_no_exists() -> TestResult:
+@tester.single(TEST_GROUP, "tests/compiler")
+def file_does_not_exists() -> TestResult:
     return simple_output_assert(["NoExist.shtk", "-c"], FILE_IO_ERROR, True)
 
 
@@ -60,4 +60,4 @@ def register() -> None:
     no_args()
     invalid_args()
     too_many_args()
-    file_no_exists()
+    file_does_not_exists()
