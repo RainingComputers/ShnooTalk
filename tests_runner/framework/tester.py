@@ -46,8 +46,6 @@ class Tester:
             except JSONDecodeError as error:
                 result_printer.print_result(file, TestResult.invalid(str(error)))
 
-        result_printer.print_summary()
-
     def batch(
         self, group: str, path: str,
         clean: Optional[List[str]] = None
@@ -99,10 +97,6 @@ class Tester:
 
         return single_decorator
 
-    @property
-    def exit_code(self) -> int:
-        return ResultPrinter.exit_code
-
     def _run_tests_list(self) -> None:
         for test_func in self._tests:
             test_func()
@@ -117,19 +111,19 @@ class Tester:
         print(f"    {CLI_ARG_OPTIONS}")
 
     def run(self) -> int:
-        if CLI_ARG == "--test":
-            self._run_tests_list()
-            Tester._print_done()
-            return tester.exit_code
+        if CLI_ARG is None:
+            Tester._print_usage()
+            return -1
+
+        self._run_tests_list()
 
         if CLI_ARG == "--coverage":
-            self._run_tests_list()
             prepare_coverage_report()
-            Tester._print_done()
-            return tester.exit_code
 
-        Tester._print_usage()
-        return -1
+        ResultPrinter.print_summary()
+        Tester._print_done()
+
+        return ResultPrinter.exit_code
 
 
 tester = Tester()

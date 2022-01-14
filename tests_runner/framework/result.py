@@ -63,42 +63,26 @@ class TestResult:
 
 class ResultPrinter:
     exit_code = 0
+    _passed: List[str] = []
+    _failed: List[str] = []
+    _timedout: List[str] = []
+    _skipped: List[str] = []
+    _invalid: List[str] = []
 
     def __init__(self, group: str) -> None:
-        self._passed: List[str] = []
-        self._failed: List[str] = []
-        self._timedout: List[str] = []
-        self._skipped: List[str] = []
-        self._invalid: List[str] = []
-
         print(f"🚀 Running {group} tests")
 
-    @property
-    def total(self) -> int:
-        return len(self._passed) + len(self._failed) + len(self._timedout)
-
-    @property
-    def passed(self) -> List[str]:
-        return self._passed
-
-    @property
-    def failed(self) -> List[str]:
-        return self._failed
-
-    @property
-    def timedout(self) -> List[str]:
-        return self._timedout
-
-    def print_result(self, name: str, result: TestResult) -> None:
+    @staticmethod
+    def print_result(name: str, result: TestResult) -> None:
 
         if result.test_result == TestResultType.PASSED:
-            self._passed.append(name)
+            ResultPrinter._passed.append(name)
             print("    👌", name, "passed")
 
         elif result.test_result == TestResultType.FAILED:
             ResultPrinter.exit_code += 1
 
-            self._failed.append(name)
+            ResultPrinter._failed.append(name)
 
             print("    ❌", name, "failed\n")
             print("[Output]")
@@ -115,21 +99,29 @@ class ResultPrinter:
         elif result.test_result == TestResultType.INVALID:
             ResultPrinter.exit_code += 1
 
-            self._invalid.append(name)
+            ResultPrinter._invalid.append(name)
 
             print("    🤔", name, f"invalid test case, {result.output}")
 
         elif result.test_result == TestResultType.TIMEDOUT:
-            self._timedout.append(name)
+            ResultPrinter._timedout.append(name)
             print("    🕒", name, "timedout")
 
         else:
-            self._skipped.append(name)
+            ResultPrinter._skipped.append(name)
 
-    def print_summary(self) -> None:
-        print(f"  ✨ Ran {self.total} tests")
-        print(f"     {len(self.passed)} tests passed")
-        print(f"     {len(self.failed)} tests failed")
-        print(f"     {len(self.timedout)} tests timedout")
-        print(f"     {len(self._skipped)} tests skipped")
-        print(f"     {len(self._invalid)} tests invalid")
+    @staticmethod
+    def print_summary() -> None:
+        num_passed = len(ResultPrinter._passed)
+        num_failed = len(ResultPrinter._failed)
+        num_timedout = len(ResultPrinter._timedout)
+        num_skipped = len(ResultPrinter._skipped)
+        num_invalid = len(ResultPrinter._invalid)
+        total = num_passed + num_failed + num_timedout + num_skipped + num_invalid
+
+        print(f"✨ Ran {total} tests")
+        print(f"    👉 {num_passed} tests passed")
+        print(f"    👉 {num_failed} tests failed")
+        print(f"    👉 {num_timedout} tests timedout")
+        print(f"    👉 {num_skipped} tests skipped")
+        print(f"    👉 {num_invalid} tests invalid")
