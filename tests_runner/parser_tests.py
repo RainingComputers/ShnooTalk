@@ -38,9 +38,3 @@ def ast_json(file_name: str) -> TestResult:
         expected_test_case_file_path=test_case_file_path,
         check_json=True
     )
-
-
-def register() -> None:
-    # pylint: disable=no-value-for-parameter
-    ast_pretty()
-    ast_json()

@@ -20,8 +20,3 @@ def llc(file_name: str) -> TestResult:
         command_on_compile_result_pass=[LLC_BIN, llc_file_name],
         expected_command_output=None,
     )
-
-
-def register() -> None:
-    # pylint: disable=no-value-for-parameter
-    llc()

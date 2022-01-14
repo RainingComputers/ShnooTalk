@@ -120,6 +120,7 @@
         "ifend",
         "Instatiator",
         "irgen",
+        "isfunction",
         "lcov",
         "LLVM",
         "llvmorg",

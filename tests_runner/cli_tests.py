@@ -51,11 +51,3 @@ def too_many_args() -> TestResult:
 @tester.single("tests/compiler")
 def file_does_not_exists() -> TestResult:
     return simple_output_assert(["NoExist.shtk", "-c"], FILE_IO_ERROR, True)
-
-
-def register() -> None:
-    version()
-    no_args()
-    invalid_args()
-    too_many_args()
-    file_does_not_exists()

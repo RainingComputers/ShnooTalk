@@ -72,10 +72,3 @@ def icode_json(file_name: str) -> TestResult:
         expected_test_case_file_path=test_case_file_path,
         check_json=True
     )
-
-
-def register() -> None:
-    # pylint: disable=no-value-for-parameter
-    output_executable()
-    icode_pretty()
-    icode_json()
