@@ -5,8 +5,6 @@ from tests_runner.framework import simple_output_assert
 
 from tests_runner.framework import tester
 
-TEST_GROUP = 'CLI args'
-
 USAGE_HELP = '''USAGE: shtkc FILE OPTION
 
 Available options:
@@ -27,22 +25,22 @@ Use shtkc -version for compiler version
 FILE_IO_ERROR = "File I/O error\n"
 
 
-@tester.single(TEST_GROUP)
+@tester.single()
 def version() -> TestResult:
     return simple_output_assert(["-version"], COMPILER_VERSION, False)
 
 
-@tester.single(TEST_GROUP)
+@tester.single()
 def no_args() -> TestResult:
     return simple_output_assert([], USAGE_HELP, True)
 
 
-@tester.single(TEST_GROUP, "tests/compiler")
+@tester.single("tests/compiler")
 def invalid_args() -> TestResult:
     return simple_output_assert(["TestModules/Math.shtk", "-invalid"], USAGE_HELP, True)
 
 
-@tester.single(TEST_GROUP)
+@tester.single()
 def too_many_args() -> TestResult:
     return simple_output_assert(
         ["TestModules/Math.shtk", "-invalid", "-too-many"],
@@ -50,7 +48,7 @@ def too_many_args() -> TestResult:
     )
 
 
-@tester.single(TEST_GROUP, "tests/compiler")
+@tester.single("tests/compiler")
 def file_does_not_exists() -> TestResult:
     return simple_output_assert(["NoExist.shtk", "-c"], FILE_IO_ERROR, True)
 
