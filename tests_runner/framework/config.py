@@ -37,16 +37,6 @@ if len(sys.argv) == 2:
         print("🙁 Invalid CLI ARGS, available option are:")
         print(f"    {CLI_ARG_OPTIONS}")
 
-# Find compiler
-
-COMPILER_EXEC_PATH = os.path.join(os.getcwd(), f"bin/{BUILD_TYPE}/shtkc")
-COMPILER_NOT_FOUND = True
-
-if os.path.exists(COMPILER_EXEC_PATH):
-    COMPILER_NOT_FOUND = False
-else:
-    print(f"🙁 compiler not found at {COMPILER_EXEC_PATH}")
-
 # Get compiler version
 
 VERSION_FILE = os.path.join(os.getcwd(), "version")
@@ -74,3 +64,24 @@ LLC_BIN = os.getenv("LLC_BIN", default="llc-12")
 OBJ_DIR = os.path.join(os.getcwd(),  f"./obj/{BUILD_TYPE}/")
 
 TIMEOUT = 5
+
+# Build the compiler
+
+BUILD_COMMAND_MAP = {
+    BuildType.DEBUG: os.getenv("DEBUG_BUILD_COMMAND", "make build DEBUG=1 CXX=ccache\\ g++ -j 4"),
+    BuildType.GCOV: os.getenv("COVERAGE_BUILD_COMMAND", "make build GCOV=1 CXX=ccache\\ g++ -j 4")
+}
+
+if BUILD_TYPE is not None:
+    print("🤖 Building compiler...")
+    os.system(BUILD_COMMAND_MAP[BUILD_TYPE])
+
+# Find compiler
+
+COMPILER_EXEC_PATH = os.path.join(os.getcwd(), f"bin/{BUILD_TYPE}/shtkc")
+COMPILER_NOT_FOUND = True
+
+if os.path.exists(COMPILER_EXEC_PATH):
+    COMPILER_NOT_FOUND = False
+else:
+    print(f"🙁 compiler not found at {COMPILER_EXEC_PATH}")
