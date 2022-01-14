@@ -71,7 +71,7 @@ class Tester:
         return batch_decorator
 
     def single(
-        self, group: str, path: Optional[str] = None
+        self, path: Optional[str] = None
     ) -> Callable[[Callable[[], TestResult]], Callable[[], None]]:
 
         def single_decorator(test_func: Callable[[], TestResult]) -> Callable[[], None]:
@@ -82,9 +82,10 @@ class Tester:
                 if path is not None:
                     os.chdir(path)
 
+                name = test_func.__name__
+                group = test_func.__module__
                 result_printer = self.upsert_printer(group)
                 test_result = test_func()
-                name = test_func.__name__
                 result_printer.print_result(name, test_result)
 
                 if path is not None:
