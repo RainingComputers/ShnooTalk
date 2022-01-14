@@ -1,35 +1,53 @@
-from typing import Optional
-
 import os
 import sys
+import enum
 
 from tests_runner.framework.fs import string_from_file
 
+
+class CLIArg(str, enum.Enum):
+    TEST = "--test"
+    COVERAGE = "--coverage"
+
+
+class BuildType(str, enum.Enum):
+    DEBUG = "debug"
+    GCOV = "gcov"
+
+
 BUILD_TYPE_MAP = {
-    "--test": "debug",
-    "--coverage": "gcov",
+    CLIArg.TEST: BuildType.DEBUG,
+    CLIArg.COVERAGE: BuildType.GCOV,
 }
 
 CLI_ARG_OPTIONS = ' '.join(list(BUILD_TYPE_MAP.keys()))
 
+# Parse CLI arguments
 
-def parse_args() -> Optional[str]:
-    if len(sys.argv) != 2:
-        return None
+CLI_ARG = None
+BUILD_TYPE = None
+INVALID_CLI_ARGS = True
 
+if len(sys.argv) == 2:
     try:
-        return BUILD_TYPE_MAP[sys.argv[1]]
-    except KeyError:
-        return None
+        CLI_ARG = CLIArg(sys.argv[1])
+        BUILD_TYPE = BUILD_TYPE_MAP[CLI_ARG]
+        INVALID_CLI_ARGS = False
+    except ValueError:
+        print("🙁 Invalid CLI ARGS, available option are:")
+        print(f"    {CLI_ARG_OPTIONS}")
 
+# Find compiler
 
-PARSED_ARGS = parse_args()
+COMPILER_EXEC_PATH = os.path.join(os.getcwd(), f"bin/{BUILD_TYPE}/shtkc")
+COMPILER_NOT_FOUND = True
 
-CLI_ARG = None if PARSED_ARGS is None else sys.argv[1]
+if os.path.exists(COMPILER_EXEC_PATH):
+    COMPILER_NOT_FOUND = False
+else:
+    print(f"🙁 compiler not found at {COMPILER_EXEC_PATH}")
 
-BUILD_TYPE = "debug" if PARSED_ARGS is None else PARSED_ARGS
-
-COMPILER_EXEC_PATH = os.path.join(os.getcwd(),  f"bin/{BUILD_TYPE}/shtkc")
+# Setup other constants
 
 LLC_BIN = os.getenv("LLC_BIN", default="llc-12")
 

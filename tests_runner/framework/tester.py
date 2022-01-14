@@ -10,7 +10,9 @@ from tests_runner.framework.fs import remove_files
 from tests_runner.framework.fs import list_test_files
 from tests_runner.framework.coverage import prepare_coverage_report
 
-from tests_runner.framework.config import CLI_ARG, CLI_ARG_OPTIONS, COMPILER_EXEC_PATH
+from tests_runner.framework.config import CLI_ARG, INVALID_CLI_ARGS
+from tests_runner.framework.config import COMPILER_NOT_FOUND
+from tests_runner.framework.config import CLIArg
 
 
 class Tester:
@@ -105,19 +107,6 @@ class Tester:
             test_func()
 
     @staticmethod
-    def _print_done() -> None:
-        print("🏁 Done.")
-
-    @staticmethod
-    def _print_usage() -> None:
-        print("🙁 Invalid CLI ARGS, available option are:")
-        print(f"    {CLI_ARG_OPTIONS}")
-
-    @staticmethod
-    def _print_compiler_not_found() -> None:
-        print(f"🙁 compiler not found at {COMPILER_EXEC_PATH}")
-
-    @staticmethod
     def register(test_modules: List[types.ModuleType]) -> None:
         for test_module in test_modules:
             test_module_functions = list(map(
@@ -134,21 +123,19 @@ class Tester:
                 register_func()
 
     def run(self) -> int:
-        if CLI_ARG is None:
-            Tester._print_usage()
+        if INVALID_CLI_ARGS:
             return -1
 
-        if not os.path.exists(COMPILER_EXEC_PATH):
-            self._print_compiler_not_found()
+        if COMPILER_NOT_FOUND:
             return -1
 
         self._run_tests_list()
 
-        if CLI_ARG == "--coverage":
+        if CLI_ARG == CLIArg.COVERAGE:
             prepare_coverage_report()
 
         ResultPrinter.print_summary()
-        Tester._print_done()
+        print("🏁 Done.")
 
         return ResultPrinter.exit_code
 
