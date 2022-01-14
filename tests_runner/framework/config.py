@@ -47,21 +47,14 @@ if os.path.exists(COMPILER_EXEC_PATH):
 else:
     print(f"🙁 compiler not found at {COMPILER_EXEC_PATH}")
 
-# Setup other constants
-
-LLC_BIN = os.getenv("LLC_BIN", default="llc-12")
-
-OBJ_DIR = os.path.join(os.getcwd(),  f"./obj/{BUILD_TYPE}/")
-
-COVERAGE_REPORT_DIR = os.path.join(os.getcwd(), "tests",  "reports")
+# Get compiler version
 
 VERSION_FILE = os.path.join(os.getcwd(), "version")
-
 COMPILER_VERSION = string_from_file(VERSION_FILE)
 
-TIMEOUT = 5
+# Set coverage report directory, coverage exclude list and executable to open html report
 
-OPEN_BIN = 'open' if sys.platform.title() == 'Darwin' else 'xdg-open'
+COVERAGE_REPORT_DIR = os.path.join(os.getcwd(), "tests",  "reports")
 
 LCOV_EXCLUDE_LIST = [
     '/usr/include/*',
@@ -71,3 +64,13 @@ LCOV_EXCLUDE_LIST = [
 ]
 
 LCOV_EXCLUDE = ' '.join(list(map(lambda x: f"'{x}'", LCOV_EXCLUDE_LIST)))
+
+OPEN_BIN = 'open' if sys.platform.title() == 'Darwin' else 'xdg-open'
+
+# Setup other constants related to test cases
+
+LLC_BIN = os.getenv("LLC_BIN", default="llc-12")
+
+OBJ_DIR = os.path.join(os.getcwd(),  f"./obj/{BUILD_TYPE}/")
+
+TIMEOUT = 5
