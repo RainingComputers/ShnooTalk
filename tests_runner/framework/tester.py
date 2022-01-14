@@ -1,7 +1,9 @@
 from typing import List, Callable, Optional, Dict
 
 import os
+import types
 from json.decoder import JSONDecodeError
+from inspect import getmembers, isfunction
 
 from tests_runner.framework.result import TestResult, ResultPrinter
 from tests_runner.framework.fs import remove_files
@@ -114,6 +116,22 @@ class Tester:
     @staticmethod
     def _print_compiler_not_found() -> None:
         print(f"🙁 compiler not found at {COMPILER_EXEC_PATH}")
+
+    @staticmethod
+    def register(test_modules: List[types.ModuleType]) -> None:
+        for test_module in test_modules:
+            test_module_functions = list(map(
+                lambda member: member[1],
+                getmembers(test_module, isfunction)
+            ))
+
+            register_functions = list(filter(
+                lambda func: func.__module__ == __name__,
+                test_module_functions
+            ))
+
+            for register_func in register_functions:
+                register_func()
 
     def run(self) -> int:
         if CLI_ARG is None:
