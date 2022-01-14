@@ -64,14 +64,14 @@ class TestResult:
 class ResultPrinter:
     exit_code = 0
 
-    def __init__(self, tests_set_name: str) -> None:
+    def __init__(self, group: str) -> None:
         self._passed: List[str] = []
         self._failed: List[str] = []
         self._timedout: List[str] = []
         self._skipped: List[str] = []
         self._invalid: List[str] = []
 
-        print(f"🚀 Running {tests_set_name} tests")
+        print(f"🚀 Running {group} tests")
 
     @property
     def total(self) -> int:
