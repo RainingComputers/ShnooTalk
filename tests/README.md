@@ -41,11 +41,5 @@ pretty printer.
 
 ## How to run the tests?
 
-+ Build debug executable
-    + `make build DEBUG=1` or `make build DEBUG=1 CXX=ccache\ g++ -j 4` (for faster compilation)
-
-+ Run the `tests_runner` application
-    + `make test` or `python3 -m tests_runner --test`
-
-+ Coverage
-    + `make coverage` or `python3 -m tests_runner --coverage`
++ Install ccache and g++
++ Run `make test` or `make coverage`

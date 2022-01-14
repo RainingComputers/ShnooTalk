@@ -50,6 +50,12 @@ clang app.o -o app
 ./app
 ```
 
+## Running compiler tests
+
+```
+make test
+```
+
 ## TODO
 
 ### Language core
