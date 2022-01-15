@@ -54,13 +54,13 @@ void validateTypeNode(const InstiatorContext& ctx, Node& root)
     if (root.isNthChild(node::IDENTIFIER, childNodeCounter))
         childNodeCounter++;
 
-    if (root.isNthChild(node::POINTER_STAR, childNodeCounter))
+    while (root.isNthChild(node::POINTER_STAR, childNodeCounter))
     {
         typeModifierCount++;
         childNodeCounter++;
     }
 
-    if (root.isNthChild(node::EMPTY_SUBSCRIPT, childNodeCounter))
+    while (root.isNthChild(node::EMPTY_SUBSCRIPT, childNodeCounter))
     {
         typeModifierCount++;
         childNodeCounter++;

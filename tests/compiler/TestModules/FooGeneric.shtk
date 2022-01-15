@@ -1,0 +1,6 @@
+generic T
+
+struct Foo
+{
+    var bar: T
+}

@@ -1,0 +1,72 @@
+# 1
+# 10
+# 3
+# 3
+# 3
+# 10
+# 2
+# 2
+# 3
+# 3
+
+
+
+use "TestModules/FooGeneric.shtk" as FooGeneric
+use "TestModules/FooGenericStar.shtk" as FooGenericStar
+use "TestModules/FooGenericEmptySubs.shtk" as FooGenericEmptySubs
+use "TestModules/FooGenericSubs.shtk" as FooGenericSubs
+use "TestModules/FooGenericSubsSubs.shtk" as FooGenericSubsSubs
+
+from FooGeneric use Foo
+from FooGenericStar use FooStar
+from FooGenericEmptySubs use FooEmptySubs
+from FooGenericSubs use FooSubs
+from FooGenericSubsSubs use FooSubsSubs
+
+fn main() -> int
+{
+    var test: int = 10
+    var testArr: int[3] = [1, 2, 3]
+
+    var a: Foo[int]
+    a.bar = 1
+    println(a.bar)
+
+    var b: FooStar[int]
+    b.bar <- test
+    println(b.bar)
+
+    var c: FooEmptySubs[int]
+    c.bar <- testArr
+    println(c.bar[2])
+
+    var d: FooSubs[int]
+    d.bar[1] = 3
+    println(d.bar[1])
+
+    var e: FooSubsSubs[int]
+    e.bar[0][1] = 3
+    println(e.bar[0][1])
+
+    var f: Foo[int*]
+    f.bar <- test
+    println(f.bar)
+
+    var g: Foo[int[]]
+    g.bar <- testArr
+    println(g.bar[1])
+
+    var h: Foo[int[2]]
+    h.bar = [1, 2]
+    println(h.bar[1])
+
+    var i: Foo[int[2][2]]
+    i.bar = [[1, 2], [2, 3]]
+    println(i.bar[1][1])
+
+    var j: FooSubs[int[2]]
+    j.bar = [[1, 2], [2, 3]]
+    println(j.bar[1][1])
+
+    return 0
+}

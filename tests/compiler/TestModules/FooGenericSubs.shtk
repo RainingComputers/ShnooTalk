@@ -1,0 +1,6 @@
+generic T
+
+struct FooSubs
+{
+    var bar: T[2]
+}

@@ -1,0 +1,17 @@
+# MODULE GenericsTypeValidationError2.shtk
+# ERROR in Line 14 Col 12
+# 
+#     var a: FooSubs[int*]
+#            ^
+# Invalid type parameters for this generic
+
+use "TestModules/FooGenericSubs.shtk" as FooGenericSubs
+
+from FooGenericSubs use FooSubs
+
+fn main() -> int
+{
+    var a: FooSubs[int*]
+
+    return 0
+}
