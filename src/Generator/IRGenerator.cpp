@@ -302,6 +302,11 @@ void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
 
     if (root.type == node::FUNCTION)
         ctx.ir.moduleBuilder.createFunction(nameToken, returnType, paramNames, paramTypes);
+    else if (root.isNthChildFromLast(node::MODULE, 1))
+    {
+        const Token& moduleNameToken = root.children.back().tok;
+        ctx.ir.moduleBuilder.createExternFunctionModule(nameToken, returnType, paramNames, paramTypes, moduleNameToken);
+    }
     else
         ctx.ir.moduleBuilder.createExternFunction(nameToken, returnType, paramNames, paramTypes);
 }

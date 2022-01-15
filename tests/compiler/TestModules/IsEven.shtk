@@ -1,0 +1,10 @@
+extfn is_odd(n: int) -> bool "FunctionForwardDecl.shtk"
+
+fn is_even(n: int) -> bool 
+{
+    if n == 0
+        return true
+    
+    return is_odd(n - 1)
+}
+

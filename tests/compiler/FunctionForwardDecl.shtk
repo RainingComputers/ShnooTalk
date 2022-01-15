@@ -1,0 +1,20 @@
+# 1
+
+use "TestModules/IsEven.shtk" as IsEven
+
+from IsEven use is_even
+
+fn is_odd(n: int) -> bool
+{
+    if (n == 0)
+        return false
+
+    return is_even(n - 1)
+}
+
+fn main() -> int
+{
+    println(is_even(10))
+
+    return 0
+}
