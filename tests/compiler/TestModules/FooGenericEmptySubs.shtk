@@ -1,0 +1,6 @@
+generic T
+
+struct FooEmptySubs
+{
+    var bar: T[]
+}

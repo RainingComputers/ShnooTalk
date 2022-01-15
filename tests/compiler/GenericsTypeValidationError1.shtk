@@ -1,0 +1,17 @@
+# MODULE GenericsTypeValidationError1.shtk
+# ERROR in Line 14 Col 12
+# 
+#     var a: FooStar[int*]
+#            ^
+# Invalid type parameters for this generic
+
+use "TestModules/FooGenericStar.shtk" as FooGenericStar
+
+from FooGenericStar use FooStar
+
+fn main() -> int
+{
+    var a: FooStar[int*]
+
+    return 0
+}
