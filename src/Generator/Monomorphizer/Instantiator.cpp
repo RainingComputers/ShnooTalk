@@ -113,7 +113,7 @@ void monomorphizeTypeNode(const InstiatorContext& ctx, Node& root)
     {
         monomorphizeTypeNode(ctx, root.children[childNodeCounter]);
         validateTypeNode(ctx, root.children[childNodeCounter]);
-    
+
         childNodeCounter++;
     }
 }
