@@ -18,7 +18,8 @@ class ModuleBuilder
 
     icode::FunctionDescription createFunctionDescription(const icode::TypeDescription& returnType,
                                                          const std::vector<Token>& paramNames,
-                                                         std::vector<icode::TypeDescription>& paramTypes);
+                                                         std::vector<icode::TypeDescription>& paramTypes, 
+                                                         const std::string& moduleName);
 
 public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
@@ -52,6 +53,14 @@ public:
                               const icode::TypeDescription& returnType,
                               const std::vector<Token>& paramNames,
                               std::vector<icode::TypeDescription>& paramTypes);
+
+
+    void createExternFunctionModule(const Token& nameToken,
+                                    const icode::TypeDescription& returnType,
+                                    const std::vector<Token>& paramNames,
+                                    std::vector<icode::TypeDescription>& paramTypes,
+                                    const Token& moduleNameToken);
+
 
     void createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription);
 

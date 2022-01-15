@@ -73,5 +73,8 @@ void externFunctionDefinition(parser::ParserContext& ctx)
 
     functionDecleration(ctx);
 
+    if (ctx.accept(token::STR_LITERAL))
+        ctx.addNode(node::MODULE);
+
     ctx.popNode();
 }

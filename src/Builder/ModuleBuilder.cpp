@@ -165,11 +165,12 @@ void ModuleBuilder::createEnum(const std::vector<Token>& enums)
 
 FunctionDescription ModuleBuilder::createFunctionDescription(const icode::TypeDescription& returnType,
                                                              const std::vector<Token>& paramNames,
-                                                             std::vector<icode::TypeDescription>& paramTypes)
+                                                             std::vector<icode::TypeDescription>& paramTypes,
+                                                             const std::string& moduleName)
 {
     icode::FunctionDescription functionDescription;
     functionDescription.functionReturnType = returnType;
-    functionDescription.moduleName = rootModule.name;
+    functionDescription.moduleName = moduleName;
 
     for (size_t i = 0; i < paramNames.size(); i++)
     {
@@ -196,7 +197,8 @@ void ModuleBuilder::createFunction(const Token& nameToken,
     if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
-    rootModule.functions[mangledFunctionName] = createFunctionDescription(returnType, paramNames, paramTypes);
+    rootModule.functions[mangledFunctionName] =
+        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
 }
 
 void ModuleBuilder::createExternFunction(const Token& nameToken,
@@ -209,7 +211,25 @@ void ModuleBuilder::createExternFunction(const Token& nameToken,
     if (rootModule.symbolExists(externFunctionName))
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
-    rootModule.externFunctions[externFunctionName] = createFunctionDescription(returnType, paramNames, paramTypes);
+    rootModule.externFunctions[externFunctionName] =
+        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
+}
+
+void ModuleBuilder::createExternFunctionModule(const Token& nameToken,
+                                               const icode::TypeDescription& returnType,
+                                               const std::vector<Token>& paramNames,
+                                               std::vector<icode::TypeDescription>& paramTypes,
+                                               const Token& moduleNameToken)
+{
+    const std::string& moduleName = moduleNameToken.toUnescapedString();
+    std::string mangledFunctionName = nameMangle(nameToken, rootModule.name);
+    const std::string& externFunctionName = nameToken.toString();
+
+    if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(externFunctionName))
+        console.compileErrorOnToken("Symbol already defined", nameToken);
+
+    rootModule.externFunctions[externFunctionName] =
+        createFunctionDescription(returnType, paramNames, paramTypes, moduleName);
 }
 
 void ModuleBuilder::createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription)
