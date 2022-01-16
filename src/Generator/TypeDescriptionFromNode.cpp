@@ -7,7 +7,6 @@ using namespace icode;
 
 void generateModule(generator::GeneratorContext& ctx, const Node& root);
 
-
 std::pair<std::string, std::string> generateIRUsingMonomorphizer(generator::GeneratorContext& ctx,
                                                                  const std::string& genericModuleName,
                                                                  const Token& genericStructNameToken,

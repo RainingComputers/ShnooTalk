@@ -15,15 +15,6 @@
 
 using namespace icode;
 
-void block(generator::GeneratorContext& ctx,
-           const Node& root,
-           bool isLoopBlock,
-           const Operand& loopLabel,
-           const Operand& breakLabel,
-           const Operand& continueLabel);
-
-void generateModule(generator::GeneratorContext& ctx, const Node& root);
-
 Node generator::generateAST(Console& console)
 {
     lexer::Lexer lex(*console.getStream(), console);
