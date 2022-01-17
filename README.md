@@ -60,6 +60,16 @@ make test
 
 ### Language core
 
+*Priority*
+- [ ] Incomplete types and type composing of a pointer to itself
+- [ ] Destructuring
+- [ ] := initializer
+- [ ] null pointer check
+- [ ] Direct from
+- [ ] Generic function call
+- [ ] Struct alignment and padding
+
+*Backlog*
 - [x] Fix bugs in the LLVM translator backend
 - [x] Array return types
 - [x] Fix def
@@ -86,20 +96,13 @@ make test
 - [ ] Language reference in markdown
 - [x] Setup github workflows and build for other platforms
 - [ ] Error recovery
-- [ ] Incomplete types and type composing of a pointer to itself
-- [ ] Destructuring
-- [ ] := initializer
-- [ ] Function forward declaration
+- [x] Function forward declaration
 - [ ] Unsafe keyword
-- [ ] null pointer check
-- [ ] Direct from
-- [ ] Generic function call
-
 
 ### Advanced features
 
 - [x] Custom operators
-- [ ] Generics
+- [x] Generics
 - [ ] Standard library
 - [ ] Passing functions as arguments
 - [ ] Constructor and destructor
@@ -124,6 +127,7 @@ make test
 ### Language tools
 
 - [ ] STPM package manager
+- [ ] Primitive tests runner
 - [ ] Code formatter
 - [ ] Static analyser
 - [ ] Language server
