@@ -62,11 +62,11 @@ make test
 
 *Priority*
 - [ ] Incomplete types and type composing of a pointer to itself
-- [ ] Destructuring
-- [ ] := initializer
 - [ ] null pointer check
 - [ ] Direct from
 - [ ] Generic function call
+- [ ] Destructuring
+- [ ] := initializer
 - [ ] Struct alignment and padding
 
 *Backlog*
