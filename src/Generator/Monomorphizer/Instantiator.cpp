@@ -85,6 +85,9 @@ void monomorphizeTypeNode(const InstiatorContext& ctx, Node& root)
     while (root.isNthChild(node::MODULE, childNodeCounter))
         childNodeCounter++;
 
+    if (childNodeCounter >= root.children.size())
+        return;
+
     if (root.getNthChildToken(childNodeCounter).toString() == ctx.genericIdentifier)
     {
         root.children.erase(root.children.begin() + childNodeCounter);
