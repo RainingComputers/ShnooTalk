@@ -12,6 +12,7 @@
 #include "Input.hpp"
 #include "Print.hpp"
 #include "ReadWriteCopy.hpp"
+#include "StackAlloca.hpp"
 #include "ToLLVMType.hpp"
 #include "UnaryOperator.hpp"
 
@@ -171,9 +172,9 @@ void setCurrentFunctionReturnValue(ModuleContext& ctx,
     else
     {
         ctx.currentFunctionReturnValue =
-            ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, functionDesc.functionReturnType),
-                                      nullptr,
-                                      name + "_retValue");
+            stackAllocName(ctx,
+                           typeDescriptionToAllocaLLVMType(ctx, functionDesc.functionReturnType),
+                           name + "_retValue");
     }
 }
 
@@ -187,6 +188,7 @@ void generateFunction(ModuleContext& ctx,
     branchContext.clear();
 
     Function* function = getLLVMFunction(ctx, name, functionDesc);
+    ctx.currentWorkingFunction = function;
 
     /* Set insertion point to function body */
     BasicBlock* functionBlock = BasicBlock::Create(*ctx.context, "entry", function);

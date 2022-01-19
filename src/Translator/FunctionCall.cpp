@@ -1,4 +1,5 @@
 #include "GetAndSetLLVM.hpp"
+#include "StackAlloca.hpp"
 #include "ToLLVMType.hpp"
 
 #include "FunctionCall.hpp"
@@ -17,7 +18,7 @@ Value* createCalleeReturnValue(const ModuleContext& ctx, const icode::TypeDescri
     if (returnType.dtype == icode::VOID)
         return nullptr;
 
-    return ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, returnType));
+    return stackAlloc(ctx, typeDescriptionToAllocaLLVMType(ctx, returnType));
 }
 
 void call(ModuleContext& ctx, const icode::Entry& e)

@@ -1,6 +1,7 @@
 #include "llvm/IR/GlobalVariable.h"
 
 #include "CreateSymbol.hpp"
+#include "StackAlloca.hpp"
 #include "ToLLVMType.hpp"
 
 using namespace llvm;
@@ -59,8 +60,7 @@ void createFunctionParameter(ModuleContext& ctx,
     }
     else
     {
-        Value* alloca =
-            ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, typeDescription), nullptr, name);
+        Value* alloca = stackAllocName(ctx, typeDescriptionToAllocaLLVMType(ctx, typeDescription), name);
 
         Value* castedArg = arg;
 
@@ -76,6 +76,5 @@ void createFunctionParameter(ModuleContext& ctx,
 
 void createLocalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name)
 {
-    ctx.symbolNamePointersMap[name] =
-        ctx.builder->CreateAlloca(typeDescriptionToAllocaLLVMType(ctx, typeDescription), nullptr, name);
+    ctx.symbolNamePointersMap[name] = stackAllocName(ctx, typeDescriptionToAllocaLLVMType(ctx, typeDescription), name);
 }

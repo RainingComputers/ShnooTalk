@@ -14,6 +14,7 @@ ModuleContext::ModuleContext(icode::ModuleDescription& moduleDescription,
     context = std::make_unique<LLVMContext>();
     LLVMModule = std::make_unique<Module>(moduleDescription.name, *context);
     builder = std::make_unique<IRBuilder<>>(*context);
+    currentWorkingFunction = nullptr;
 }
 
 void ModuleContext::clear()

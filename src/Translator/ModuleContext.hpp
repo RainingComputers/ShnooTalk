@@ -28,6 +28,7 @@ struct ModuleContext
 
     std::map<std::string, std::vector<llvm::Value*>> params;
     llvm::Value* currentFunctionReturnValue;
+    llvm::Function* currentWorkingFunction;
 
     Console& console;
 

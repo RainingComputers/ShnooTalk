@@ -1,4 +1,5 @@
 #include "GetAndSetLLVM.hpp"
+#include "StackAlloca.hpp"
 #include "ToLLVMType.hpp"
 
 #include "AllocPointer.hpp"
@@ -9,7 +10,7 @@ void allocPointer(ModuleContext& ctx, const icode::Entry& e)
 {
     /* Converts ShnooTalk ALLOC_PTR to llvm ir */
 
-    Value* allocPointer = ctx.builder->CreateAlloca(dataTypeToLLVMType(ctx, e.op1.dtype));
+    Value* allocPointer = stackAlloc(ctx, dataTypeToLLVMType(ctx, e.op1.dtype));
 
     allocPointer = ctx.builder->CreatePtrToInt(allocPointer, dataTypeToLLVMType(ctx, icode::I64));
 
@@ -22,7 +23,7 @@ void allocArrayPointer(ModuleContext& ctx, const icode::Entry& e)
 
     Type* bytesArrayType = ArrayType::get(Type::getInt8Ty(*ctx.context), e.op2.val.bytes);
 
-    Value* allocPointer = ctx.builder->CreateAlloca(bytesArrayType);
+    Value* allocPointer = stackAlloc(ctx, bytesArrayType);
     allocPointer = ctx.builder->CreateBitCast(allocPointer, dataTypeToLLVMPointerType(ctx, e.op1.dtype));
 
     allocPointer = ctx.builder->CreatePtrToInt(allocPointer, dataTypeToLLVMType(ctx, icode::I64));
