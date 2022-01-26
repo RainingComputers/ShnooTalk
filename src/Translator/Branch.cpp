@@ -89,9 +89,11 @@ void processGotoBackpatches(const ModuleContext& ctx, BranchContext& branchConte
         BasicBlock* gotoBlock = branchContext.labelToBasicBlockMap.at(e.op1.name);
         BasicBlock* fallBlock = branchContext.fallBlocks.at(entryIndex);
 
-        /* Branch instruction are always follwed by compare instructions that set
+        /* Conditional branch instruction are always follwed by compare instructions that set
          the imaginary flag register */
-        Value* flag = branchContext.branchFlags.front();
+        Value* flag = nullptr;
+        if (e.opcode != icode::GOTO)
+            flag = branchContext.branchFlags.front();
 
         /* Get insertion point corresponding to the entry */
         InsertionPoint insertPoint = branchContext.insertionPoints.at(entryIndex);
