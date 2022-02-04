@@ -61,25 +61,6 @@ jobs:
         with:
           files: ${{ steps.set_file.outputs.files }}
           tag_name: ${{ steps.set_tag.outputs.tag }}      
-  macos-x86_64-build:
-    name: MacOS x86_64 Build
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build
-        run: scripts/MacOS-x86_64/build.sh
-      - name: Set release file
-        id: set_file
-        run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
-      - name: Set release tag
-        id: set_tag
-        run: echo "##[set-output name=tag;]$(cat version)"
-      - name: Release
-        uses: softprops/action-gh-release@v1        
-        with:
-          files: ${{ steps.set_file.outputs.files }}
-          tag_name: ${{ steps.set_tag.outputs.tag }}
   raspberry-pi-32bit-build:
     name: Raspberry Pi 32-bit Build
     runs-on: ubuntu-latest
