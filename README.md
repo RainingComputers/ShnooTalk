@@ -10,10 +10,8 @@ See the tests directory for examples, try out the language in your browser on [S
 
 ![](blockdiag.png)
 
-## Installing the compiler
-
-### Ubuntu 20.04 
-
+### Installing from source (Ubuntu)
+Download the source from latest [release](https://github.com/RainingComputers/ShnooTalk/releases)
 ```
 sudo apt install llvm-12 llvm-12-dev
 make build
