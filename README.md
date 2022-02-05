@@ -20,12 +20,11 @@ make build
 sudo make install
 ```
 
-### Mac OS
+### Homebrew (MacOS/Linux)
 
 ```
-brew install llvm@12
-make build
-sudo make install
+brew tap rainingcomputers/shnootalk
+brew install shtkc
 ```
 
 ### VS Code syntax highlight extension
