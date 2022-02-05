@@ -10,19 +10,24 @@ See the tests directory for examples, try out the language in your browser on [S
 
 ![](blockdiag.png)
 
+### Linux (Ubuntu / Arch / Debian / Fedora / RaspberryPi 32 bit)
+```
+sudo curl -L https://raw.githubusercontent.com/RainingComputers/ShnooTalk/main/install.sh | bash
+```
+
+### MacOS
+
+```
+brew tap rainingcomputers/shnootalk
+brew install shtkc
+```
+
 ### Installing from source (Ubuntu)
 Download the source from latest [release](https://github.com/RainingComputers/ShnooTalk/releases)
 ```
 sudo apt install llvm-12 llvm-12-dev
 make build
 sudo make install
-```
-
-### Homebrew (MacOS/Linux)
-
-```
-brew tap rainingcomputers/shnootalk
-brew install shtkc
 ```
 
 ### VS Code syntax highlight extension

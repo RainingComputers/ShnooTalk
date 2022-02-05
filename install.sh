@@ -1,6 +1,9 @@
-set -xe
+set -e
 
 DISTRO=`grep -oP '(?<=^ID=).+' /etc/os-release | tr -d '"'`
+if [ $DISTRO = "raspbian" ]; then
+    DISTRO="debian"
+fi
 PLATFORM=`uname -s`-$DISTRO-`uname -m`
 REPOSITORY="https://github.com/RainingComputers/Shnootalk"
 TAGS=`git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' $REPOSITORY`
@@ -17,7 +20,7 @@ echo "🤖 Extracting $ASSET_NAME"
 tar -xf $ASSET_NAME
 
 echo "🤖 Installing compiler"
-mv $BIN_DIR_NAME/shtkc .
+mv $BIN_DIR_NAME/shtkc /usr/local/bin
 
 echo "🤖 Removing temp files"
 rm -rf $BIN_DIR_NAME
