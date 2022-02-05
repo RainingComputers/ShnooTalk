@@ -10,6 +10,8 @@ See the tests directory for examples, try out the language in your browser on [S
 
 ![](blockdiag.png)
 
+## Install
+
 ### Linux (Ubuntu / Arch / Debian / Fedora / RaspberryPi 32 bit)
 ```
 sudo curl -L https://raw.githubusercontent.com/RainingComputers/ShnooTalk/main/install.sh | bash
