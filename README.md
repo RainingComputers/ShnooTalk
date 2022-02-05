@@ -24,6 +24,10 @@ brew tap rainingcomputers/shnootalk
 brew install shtkc
 ```
 
+### Linux AppImage
+
+Download app image from [releases](https://github.com/RainingComputers/ShnooTalk/releases) page
+
 ### Installing from source (Ubuntu)
 Download the source from latest [release](https://github.com/RainingComputers/ShnooTalk/releases)
 ```
@@ -53,6 +57,7 @@ shtkc app.shtk -c
 clang app.o -o app
 ./app
 ```
+(You can also use gcc instead of clang)
 
 ## Running compiler tests
 
