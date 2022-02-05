@@ -1,8 +1,13 @@
 set -e
 
+DISTRO_LIST="arch debian ubuntu fedora"
 DISTRO=`grep -oP '(?<=^ID=).+' /etc/os-release | tr -d '"'`
+
 if [ $DISTRO = "raspbian" ]; then
     DISTRO="debian"
+elif ! echo $DISTRO_LIST | grep -w -q $DISTRO; then
+    echo "🤖 Unknown distribution, defaulting to ubuntu"
+    DISTRO="ubuntu"
 fi
 PLATFORM=`uname -s`-$DISTRO-`uname -m`
 REPOSITORY="https://github.com/RainingComputers/Shnootalk"

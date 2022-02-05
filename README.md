@@ -14,7 +14,7 @@ See the tests directory for examples, try out the language in your browser on [S
 
 ### Linux (Ubuntu / Arch / Debian / Fedora / RaspberryPi 32 bit)
 ```
-curl -L https://raw.githubusercontent.com/RainingComputers/ShnooTalk/main/install.sh | sudo bash
+curl -sf -L https://raw.githubusercontent.com/RainingComputers/ShnooTalk/main/install.sh | sudo sh
 ```
 
 ### MacOS
