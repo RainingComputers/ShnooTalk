@@ -77,7 +77,7 @@ make test
 - [ ] Destructuring
 - [ ] := initializer
 - [ ] Struct alignment and padding
-- [ ] Clean up packaging process
+- [x] Clean up packaging process
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend
