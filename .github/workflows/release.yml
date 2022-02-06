@@ -61,20 +61,30 @@ jobs:
         with:
           files: ${{ steps.set_file.outputs.files }}
           tag_name: ${{ steps.set_tag.outputs.tag }}      
-  raspberry-pi-32bit-build:
-    name: Raspberry Pi 32-bit Build
+  raspberry-pi-build:
+    name: RaspberryPi
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: 
+          - docker: linux/arm/v7
+            llvm: clang+llvm-12.0.1-armv7a-linux-gnueabihf.tar.xz
+          - docker: linux/arm64
+            llvm: clang+llvm-12.0.1-aarch64-linux-gnueabihf.tar.xz
+    env:
+      ARCH: ${{ matrix.arch.docker }}
+      LLVM_ZIP: ${{ matrix.arch.llvm }}
     steps:
       - name: Install qemu
         run: sudo apt install qemu binfmt-support qemu-user qemu-user-static
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build docker build environment
-        run: docker buildx build --platform linux/arm/v7 -f scripts/Linux/debian/Dockerfile . -t shnootalk-build-env
+        run: docker buildx build --platform $ARCH -f scripts/Linux/debian/Dockerfile . -t shnootalk-build-env
       - name: Build 
         run: |
-          docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest \
-            sh /home/scripts/Linux/build.sh llvmorg-12.0.1/clang+llvm-12.0.1-armv7a-linux-gnueabihf.tar.xz
+          docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest sh /home/scripts/Linux/build.sh llvmorg-12.0.1/$LLVM_ZIP
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
