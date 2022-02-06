@@ -15,16 +15,16 @@ then
     tar -xf $TAR_NAME -C llvm --strip-components 1
 fi
 
-echo '🤖 Building compiler'
-make build LLVM_PATH=llvm -j 8
-BUILD_NAME=`cat build-name.txt`
-
-echo '🤖 Checking executable'
-bin/$BUILD_NAME/shtkc -version
-
-echo '🤖 Creating tar.gz'
-cd bin/
-tar cvzf $BUILD_NAME.tar.gz $BUILD_NAME
-cd ..
-
-echo '✨ Done.'
+#echo '🤖 Building compiler'
+#make build LLVM_PATH=llvm -j 8
+#BUILD_NAME=`cat build-name.txt`
+#
+#echo '🤖 Checking executable'
+#bin/$BUILD_NAME/shtkc -version
+#
+#echo '🤖 Creating tar.gz'
+#cd bin/
+#tar cvzf $BUILD_NAME.tar.gz $BUILD_NAME
+#cd ..
+#
+#echo '✨ Done.'
