@@ -71,7 +71,7 @@ jobs:
           - docker: linux/arm/v7
             llvm: clang+llvm-12.0.1-armv7a-linux-gnueabihf.tar.xz
           - docker: linux/arm64
-            llvm: clang+llvm-12.0.1-aarch64-linux-gnueabihf.tar.xz
+            llvm: clang+llvm-12.0.0-aarch64-linux-gnu.tar.xz
     env:
       ARCH: ${{ matrix.arch.docker }}
       LLVM_ZIP: ${{ matrix.arch.llvm }}
