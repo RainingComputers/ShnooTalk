@@ -12,7 +12,7 @@
 
 using namespace llvm;
 
-/* Contains some LLVM boiler plate setup code */
+/* Contains some LLVM setup code */
 
 void initializeTargetRegistry()
 {
