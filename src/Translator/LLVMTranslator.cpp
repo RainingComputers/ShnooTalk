@@ -1,9 +1,9 @@
 #include <string>
 
+#include "llvm/Analysis/AliasAnalysis.h"
 #include "llvm/Analysis/CGSCCPassManager.h"
 #include "llvm/Analysis/LoopAnalysisManager.h"
 #include "llvm/Passes/PassBuilder.h"
-#include "llvm/Analysis/AliasAnalysis.h"
 
 #include "BranchContext.hpp"
 #include "FormatStringsContext.hpp"
