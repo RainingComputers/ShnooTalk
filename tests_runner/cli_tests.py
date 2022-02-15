@@ -8,7 +8,8 @@ from tests_runner.framework import tester
 USAGE_HELP = '''USAGE: shtkc FILE OPTION
 
 Available options:
-    -c               Compile program
+    -c               Create debug executable
+    -release         Create release executable
     -ast             Print parse tree
     -ir              Print ShnooTalk IR
     -icode           Print ShnooTalk IR, but only the icode

@@ -15,7 +15,8 @@ void printCLIUsage()
     pp::println("USAGE: shtkc FILE OPTION");
     pp::println("");
     pp::println("Available options:");
-    pp::println("    -c               Compile program");
+    pp::println("    -c               Create debug executable");
+    pp::println("    -release         Create release executable");
     pp::println("    -ast             Print parse tree");
     pp::println("    -ir              Print ShnooTalk IR");
     pp::println("    -icode           Print ShnooTalk IR, but only the icode");
@@ -95,7 +96,15 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
     if (option == "-c")
     {
         for (auto stringModulePair : modulesMap)
-            translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, console);
+            translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, false, console);
+
+        return 0;
+    }
+
+    if (option == "-release")
+    {
+        for (auto stringModulePair : modulesMap)
+            translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, true, console);
 
         return 0;
     }

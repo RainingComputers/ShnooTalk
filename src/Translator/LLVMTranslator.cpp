@@ -1,5 +1,10 @@
 #include <string>
 
+#include "llvm/Analysis/CGSCCPassManager.h"
+#include "llvm/Analysis/LoopAnalysisManager.h"
+#include "llvm/Passes/PassBuilder.h"
+#include "llvm/Analysis/AliasAnalysis.h"
+
 #include "BranchContext.hpp"
 #include "FormatStringsContext.hpp"
 #include "GenerateModule.hpp"
@@ -28,8 +33,31 @@ std::string getLLVMModuleString(const Module& LLVMModule)
     return moduleString;
 }
 
+void optimizeModule(ModuleContext& ctx)
+{
+    LoopAnalysisManager LAM;
+    FunctionAnalysisManager FAM;
+    CGSCCAnalysisManager CGAM;
+    ModuleAnalysisManager MAM;
+
+    PassBuilder PB;
+
+    FAM.registerPass([&] { return PB.buildDefaultAAPipeline(); });
+
+    PB.registerModuleAnalyses(MAM);
+    PB.registerCGSCCAnalyses(CGAM);
+    PB.registerFunctionAnalyses(FAM);
+    PB.registerLoopAnalyses(LAM);
+    PB.crossRegisterProxies(LAM, FAM, CGAM, MAM);
+
+    ModulePassManager MPM = PB.buildPerModuleDefaultPipeline(PassBuilder::OptimizationLevel::O3);
+
+    MPM.run(*ctx.LLVMModule, MAM);
+}
+
 void translator::generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,
                                           icode::StringModulesMap& modulesMap,
+                                          bool release,
                                           Console& console)
 {
     ModuleContext moduleContext(moduleDescription, modulesMap, console);
@@ -40,6 +68,8 @@ void translator::generateLLVMModuleObject(icode::ModuleDescription& moduleDescri
 
     initializeTargetRegistry();
     TargetMachine* targetMachine = setupTargetTripleAndDataLayout(moduleContext);
+    if (release)
+        optimizeModule(moduleContext);
     setupPassManagerAndCreateObject(moduleContext, targetMachine);
 }
 

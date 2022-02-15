@@ -102,6 +102,8 @@
         "binfmt",
         "buildx",
         "ccache",
+        "CGAM",
+        "CGSCC",
         "chdir",
         "CONDN",
         "distro",
