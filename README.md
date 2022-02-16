@@ -73,10 +73,10 @@ make test
 - [ ] Incomplete types and type composing of a pointer to itself
 - [ ] null pointer check
 - [ ] Direct from
-- [ ] Generic function call
 - [ ] Destructuring
 - [ ] := initializer
 - [ ] Struct alignment and padding
+- [ ] Constructor and destructor
 - [x] Clean up packaging process
 
 *Backlog*
@@ -108,6 +108,7 @@ make test
 - [ ] Error recovery
 - [x] Function forward declaration
 - [ ] Unsafe keyword
+- [ ] Generic function call
 
 ### Advanced features
 
@@ -115,7 +116,6 @@ make test
 - [x] Generics
 - [ ] Standard library
 - [ ] Passing functions as arguments
-- [ ] Constructor and destructor
 - [ ] Exceptions
 - [ ] Unions
 
