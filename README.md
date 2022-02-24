@@ -77,6 +77,7 @@ make test
 - [ ] Constructor and destructor
 - [ ] Destructuring
 - [x] Clean up packaging process
+- [ ] Spike static linking everything
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend
