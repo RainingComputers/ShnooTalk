@@ -69,7 +69,7 @@ namespace icode
         return isPointer() || isMutable();
     }
 
-    bool TypeDescription::isIncompleteType() const 
+    bool TypeDescription::isIncompleteType() const
     {
         return checkProperty(IS_INCOMPLETE_TYPE);
     }

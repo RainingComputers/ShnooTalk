@@ -24,7 +24,7 @@ Node generator::generateAST(Console& console)
 void generateIncompleteType(generator::GeneratorContext& ctx, const Node& child)
 {
     ctx.scope.resetScope();
- 
+
     switch (child.type)
     {
         case node::STRUCT:

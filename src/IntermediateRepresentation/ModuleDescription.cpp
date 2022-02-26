@@ -63,7 +63,7 @@ namespace icode
 
     bool ModuleDescription::getIncompleteTypeModule(const std::string& typeName, std::string& returnValue)
     {
-         return getMapElement<std::string, std::string>(incompleteTypes, typeName, returnValue);
+        return getMapElement<std::string, std::string>(incompleteTypes, typeName, returnValue);
     }
 
     bool ModuleDescription::useExists(const std::string& name)
