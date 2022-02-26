@@ -4,5 +4,6 @@
 #include "GeneratorContext.hpp"
 
 void createStructFromNode(generator::GeneratorContext& ctx, const Node& root);
+void registerIncompleteTypeFromNode(generator::GeneratorContext& ctx, const Node& root);
 
 #endif

@@ -23,3 +23,9 @@ void createStructFromNode(generator::GeneratorContext& ctx, const Node& root)
 
     ctx.ir.moduleBuilder.createStruct(nameToken, fieldNames, fieldTypes);
 }
+
+void registerIncompleteTypeFromNode(generator::GeneratorContext& ctx, const Node& root)
+{
+    const Token& nameToken = root.getNthChildToken(0);
+    ctx.ir.moduleBuilder.registerIncompleteType(nameToken);
+}

@@ -16,7 +16,7 @@ Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 
     setWorkingModuleFromNode(ctx, root, 0);
 
-    int size = ctx.ir.descriptionFinder.getDataTypeSizeFromToken(root.children.back().tok);
+    unsigned int size = ctx.ir.descriptionFinder.getDataTypeSizeFromToken(root.children.back().tok);
 
     ctx.ir.popWorkingModule();
 

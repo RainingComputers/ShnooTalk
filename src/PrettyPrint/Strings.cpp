@@ -146,8 +146,8 @@ const std::string nodeTypeToString[] = {
     "INPUT",
 };
 
-const std::string typePropertiesString[] = { "isMutable", "isPointer", "isParameter",
-                                             "isGlobal",  "isLocal",   "isStringLiteral" };
+const std::string typePropertiesString[] = { "isMutable", "isPointer",       "isParameter",   "isGlobal",
+                                             "isLocal",   "isStringLiteral", "isIncompleteType" };
 
 const std::string operandTypeToString[] = {
     "temp",      "tempPtr", "tempPtrPtr",  "bytes",         "stringData",        "var",

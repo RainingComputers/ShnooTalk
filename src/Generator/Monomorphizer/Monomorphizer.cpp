@@ -23,23 +23,28 @@ std::vector<std::string> getGenericIdentifiers(const Node& root)
     return genericIdentifiers;
 }
 
-bool isGenericIdentifier(const std::string& identifier, const std::vector<std::string>& genericIdentifiers)
+bool elementInList(const std::string& identifier, const std::vector<std::string>& genericIdentifiers)
 {
     auto it = std::find(genericIdentifiers.begin(), genericIdentifiers.end(), identifier);
     return it != genericIdentifiers.end();
 }
 
-bool isGenericIdentifierPresent(const Node& root, const std::vector<std::string>& genericIdentifiers)
+bool genericTypePresent(const Node& root,
+                                const std::vector<std::string>& genericIdentifiers,
+                                const std::vector<std::string> genericStructs)
 {
     if (root.type == node::IDENTIFIER)
     {
-        if (isGenericIdentifier(root.tok.toString(), genericIdentifiers))
+        if (elementInList(root.tok.toString(), genericIdentifiers))
+            return true;
+
+        if (elementInList(root.tok.toString(), genericStructs))
             return true;
     }
 
     for (const Node& child : root.children)
     {
-        if (isGenericIdentifierPresent(child, genericIdentifiers))
+        if (genericTypePresent(child, genericIdentifiers, genericStructs))
             return true;
     }
 
@@ -58,10 +63,10 @@ std::vector<std::string> Monomorphizer::getGenericStructs(const Node& root,
 
         const Token& structNameToken = child.children[0].tok;
 
-        if (isGenericIdentifier(structNameToken.toString(), genericIdentifiers))
+        if (elementInList(structNameToken.toString(), genericIdentifiers))
             console.compileErrorOnToken("STRUCT name cannot be a GENERIC IDENTIFIER", structNameToken);
 
-        if (isGenericIdentifierPresent(child.children[0], genericIdentifiers))
+        if (genericTypePresent(child.children[0], genericIdentifiers, genericStructs))
             genericStructs.push_back(structNameToken.toString());
     }
 

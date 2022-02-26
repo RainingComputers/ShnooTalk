@@ -1,0 +1,77 @@
+generic T
+
+extfn malloc(bytes: int) -> ubyte*
+extfn free(ptr: ubyte*)
+
+def NULL 0
+
+class Node 
+{
+    var data: T
+    var next: Node*
+    var isNull: bool
+}
+
+fn createNode(data: T, next: Node*) -> Node 
+{
+    var node: Node
+
+    node.data = data
+    node.next <- next
+    node.isNull = false
+
+    return node
+}
+
+fn createNullNode() -> Node 
+{
+    var node: Node
+
+    node.data = 0
+    node.next <- Node*`NULL
+    node.isNull = true
+
+    return node
+}
+
+class LinkedList 
+{
+    var top: Node*
+}
+
+fn init(mut self: LinkedList) 
+{
+    self.top <- Node*`malloc(sizeof(Node))
+    self.top = createNullNode()
+}
+
+fn push(mut self: LinkedList, data: T) 
+{
+    var newNode: Node = createNode(data, self.top)
+
+    self.top <- Node*`malloc(sizeof(Node))
+    self.top = newNode
+}
+
+fn pop(mut self: LinkedList) -> T
+{
+    var newTop: Node* <- self.top.next
+    var poppedData: T = self.top.data
+
+    free(ubyte*`self.top)
+
+    self.top <- newTop
+
+    return poppedData
+}
+
+fn printList(self: LinkedList) 
+{
+    var current: Node* <- self.top
+    
+    while not current.isNull
+    {
+        println(current.data)
+        current <- current.next
+    }
+}

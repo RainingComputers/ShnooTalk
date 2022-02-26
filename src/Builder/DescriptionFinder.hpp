@@ -40,7 +40,7 @@ public:
 
     Unit getUnitFromToken(const Token& nameToken);
 
-    int getDataTypeSizeFromToken(const Token& nameToken);
+    unsigned int getDataTypeSizeFromToken(const Token& nameToken);
 
     icode::FunctionDescription getFunction(const Token& nameToken);
 

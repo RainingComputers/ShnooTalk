@@ -17,6 +17,7 @@ namespace icode
         std::vector<std::string> uses;
         std::map<std::string, std::string> aliases;
 
+        std::map<std::string, std::string> incompleteTypes;
         std::map<std::string, StructDescription> structures;
 
         std::map<std::string, FunctionDescription> functions;
@@ -42,6 +43,7 @@ namespace icode
         bool getFloatDefine(const std::string& name, double& returnValue);
         bool getStringDefine(const std::string& name, std::string& returnValue);
         bool getGlobal(const std::string& name, TypeDescription& returnValue);
+        bool getIncompleteTypeModule(const std::string& typeName, std::string& returnValue);
         bool useExists(const std::string&);
         bool aliasExists(const std::string&);
         bool symbolExists(const std::string&);

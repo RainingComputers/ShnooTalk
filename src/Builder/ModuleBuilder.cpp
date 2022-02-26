@@ -19,6 +19,11 @@ void ModuleBuilder::setWorkingModule(icode::ModuleDescription* moduleDescription
     workingModule = moduleDescription;
 }
 
+void ModuleBuilder::registerIncompleteType(const Token& typeName)
+{
+    rootModule.incompleteTypes[typeName.toString()] = rootModule.name;
+}
+
 TypeDescription ModuleBuilder::createVoidTypeDescription()
 {
     TypeDescription voidTypeDescription;
@@ -32,18 +37,6 @@ TypeDescription ModuleBuilder::createVoidTypeDescription()
     voidTypeDescription.moduleName = rootModule.name;
 
     return voidTypeDescription;
-}
-
-std::pair<int, std::string> ModuleBuilder::getSizeAndModuleName(const Token& dataTypeToken, DataType dtype)
-{
-    if (dtype != icode::STRUCT)
-        return std::pair<int, std::string>(getDataTypeSize(dtype), workingModule->name);
-
-    icode::StructDescription structDesc;
-    if (!workingModule->getStruct(dataTypeToken.toString(), structDesc))
-        console.compileErrorOnToken("Data type does not exist", dataTypeToken);
-
-    return std::pair<int, std::string>(structDesc.size, structDesc.moduleName);
 }
 
 TypeDescription constructType(DataType dtype,
@@ -64,13 +57,36 @@ TypeDescription constructType(DataType dtype,
     return typeDescription;
 }
 
+TypeInformation ModuleBuilder::getTypeInformation(const Token& dataTypeToken, DataType dtype)
+{
+    const std::string& dataTypeName = dataTypeToken.toString();
+
+    if (dtype != icode::STRUCT)
+        return TypeInformation{ getDataTypeSize(dtype), workingModule->name, false };
+
+    icode::StructDescription structDesc;
+    if (workingModule->getStruct(dataTypeName, structDesc))
+        return TypeInformation{ structDesc.size, structDesc.moduleName, false };
+
+    std::string incompleteTypeModuleName;
+    if (workingModule->getIncompleteTypeModule(dataTypeName, incompleteTypeModuleName))
+        return TypeInformation{ 0, incompleteTypeModuleName, true };
+
+    console.compileErrorOnToken("Data type does not exist", dataTypeToken);
+}
+
 TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
 {
     icode::DataType dtype = stringToDataType(dataTypeToken.toString());
 
-    std::pair<int, std::string> sizeAndModuleName = getSizeAndModuleName(dataTypeToken, dtype);
+    TypeInformation typeInfo = getTypeInformation(dataTypeToken, dtype);
 
-    return constructType(dtype, dataTypeToken.toString(), sizeAndModuleName.first, sizeAndModuleName.second);
+    TypeDescription type = constructType(dtype, dataTypeToken.toString(), typeInfo.dtypeSize, typeInfo.moduleName);
+
+    if (typeInfo.incompleteType)
+        type.becomeIncompleteType();
+
+    return type;
 }
 
 TypeDescription ModuleBuilder::createTypeDescriptionFromStructName(const std::string& dtype)

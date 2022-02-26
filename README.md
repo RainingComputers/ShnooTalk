@@ -70,7 +70,7 @@ make test
 ### Language core
 
 *Priority*
-- [ ] Incomplete types and type composing of a pointer to itself
+- [x] Incomplete types and type composing of a pointer to itself
 - [ ] null pointer check
 - [ ] Direct from
 - [ ] := initializer
@@ -78,6 +78,7 @@ make test
 - [ ] Destructuring
 - [x] Clean up packaging process
 - [ ] Spike static linking everything
+- [ ] Change compiler tests to use `-ir-all`
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend

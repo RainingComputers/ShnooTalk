@@ -4,6 +4,13 @@
 #include "../Console/Console.hpp"
 #include "../IntermediateRepresentation/All.hpp"
 
+struct TypeInformation
+{
+    unsigned int dtypeSize;
+    std::string moduleName;
+    bool incompleteType;
+};
+
 class ModuleBuilder
 {
     icode::ModuleDescription& rootModule;
@@ -14,7 +21,7 @@ class ModuleBuilder
 
     icode::StructDescription createEmptyStructDescription();
 
-    std::pair<int, std::string> getSizeAndModuleName(const Token& dataTypeToken, icode::DataType dtype);
+    TypeInformation getTypeInformation(const Token& dataTypeToken, icode::DataType dtype);
 
     icode::FunctionDescription createFunctionDescription(const icode::TypeDescription& returnType,
                                                          const std::vector<Token>& paramNames,
@@ -25,6 +32,8 @@ public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
 
     void setWorkingModule(icode::ModuleDescription* moduleDescription);
+
+    void registerIncompleteType(const Token& typeToken);
 
     icode::TypeDescription createVoidTypeDescription();
 

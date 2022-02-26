@@ -39,6 +39,11 @@ namespace icode
         setProperty(IS_STRING_LTRL);
     }
 
+    void TypeDescription::becomeIncompleteType()
+    {
+        setProperty(IS_INCOMPLETE_TYPE);
+    }
+
     bool TypeDescription::isMutable() const
     {
         return checkProperty(IS_MUT);
@@ -62,6 +67,11 @@ namespace icode
     bool TypeDescription::isMutableOrPointer() const
     {
         return isPointer() || isMutable();
+    }
+
+    bool TypeDescription::isIncompleteType() const 
+    {
+        return checkProperty(IS_INCOMPLETE_TYPE);
     }
 
     bool TypeDescription::isStruct() const

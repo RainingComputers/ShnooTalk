@@ -53,9 +53,9 @@ namespace icode
         return STRUCT;
     }
 
-    int getDataTypeSize(const DataType dtype)
+    unsigned int getDataTypeSize(const DataType dtype)
     {
-        const int dataTypeSizesArray[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 8, 8, 0, 0 };
+        const unsigned int dataTypeSizesArray[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 8, 8, 0, 0 };
         return dataTypeSizesArray[dtype];
     }
 
