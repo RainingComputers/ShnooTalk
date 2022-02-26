@@ -6,7 +6,7 @@
 bool validDataType(const icode::Operand& op);
 bool nonVoidBaseDataType(const icode::Operand& op);
 bool nonVoidDataType(const icode::Operand& op);
-
+bool isInteger(const icode::Operand& op);
 
 bool none(const icode::Operand& op);
 bool notNone(const icode::Operand& op);

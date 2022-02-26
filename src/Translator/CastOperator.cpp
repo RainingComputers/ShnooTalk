@@ -95,3 +95,10 @@ void pointerCastOperator(ModuleContext& ctx, const icode::Entry& e)
 
     setLLVMValue(ctx, e.op1, castedPointer);
 }
+
+void addrOperator(ModuleContext& ctx, const icode::Entry& e)
+{
+    Type* destinationLLVMType = dataTypeToLLVMType(ctx, e.op1.dtype);
+
+    setLLVMValue(ctx, e.op1, ctx.builder->CreatePtrToInt(getLLVMPointer(ctx, e.op2), destinationLLVMType));
+}

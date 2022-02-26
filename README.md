@@ -71,7 +71,7 @@ make test
 
 *Priority*
 - [x] Incomplete types and type composing of a pointer to itself
-- [ ] null pointer check
+- [x] null pointer check
 - [ ] Direct from
 - [ ] := initializer
 - [ ] Constructor and destructor

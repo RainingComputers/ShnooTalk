@@ -9,6 +9,7 @@
         "ZERO": 0
     },
     "intDefines": {
+        "NULL": 0,
         "false": 0,
         "true": 1
     },

@@ -1,0 +1,17 @@
+{
+    "moduleName": "AddrOperatorTest.shtk",
+    "functions": {
+        "main": {
+            "icode": [
+                    int* tempPtr5 = pointerCast autoInt 42
+                    int* a = pointerAssign int* tempPtr5
+                    autoInt temp7 = addr int* a
+                    print autoInt temp7
+                    newLine
+                    int temp10 = cast autoInt 0
+                    int returnValue8 = equal int temp10
+                    return
+            ]
+        }
+    }
+}

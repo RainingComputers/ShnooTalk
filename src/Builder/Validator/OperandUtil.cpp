@@ -1,3 +1,5 @@
+#include "../../IntermediateRepresentation/DataType.hpp"
+
 #include "OperandUtil.hpp"
 
 bool validDataType(const icode::Operand& op)
@@ -13,6 +15,11 @@ bool nonVoidBaseDataType(const icode::Operand& op)
 bool nonVoidDataType(const icode::Operand& op)
 {
     return op.dtype != icode::VOID;
+}
+
+bool isInteger(const icode::Operand& op)
+{
+    return icode::isInteger(op.dtype);
 }
 
 bool none(const icode::Operand& op)

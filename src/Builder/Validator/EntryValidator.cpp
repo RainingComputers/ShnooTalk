@@ -43,6 +43,13 @@ void unaryOrCastOperator(const icode::Entry& e, Console& con)
     con.check(allOperandNonVoidBaseDataType(e));
 }
 
+void addrOperator(const icode::Entry& e, Console& con)
+{
+    con.check(twoOperand(e));
+    con.check(isInteger(e.op1));
+    con.check(e.op2.isPointer());
+}
+
 void pointerCastOperator(const icode::Entry& e, Console& con)
 {
     con.check(twoOperand(e));
@@ -227,6 +234,9 @@ void validateEntry(const icode::Entry& entry, Console& con)
         case icode::UNARY_MINUS:
         case icode::CAST:
             unaryOrCastOperator(entry, con);
+            break;
+        case icode::ADDR:
+            addrOperator(entry, con);
             break;
         case icode::PTR_CAST:
             pointerCastOperator(entry, con);

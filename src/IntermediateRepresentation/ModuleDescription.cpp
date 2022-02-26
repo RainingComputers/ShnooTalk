@@ -7,11 +7,9 @@
 
 namespace icode
 {
-    void ModuleDescription::initializeTarget(const TargetEnums& target)
+    ModuleDescription::ModuleDescription()
     {
-        intDefines = target.intDefines;
-
-        intDefines = { { "false", 0 }, { "true", 1 } };
+        intDefines = { { "false", 0 }, { "true", 1 }, { "NULL", 0 } };
 
         floatDefines = { { "nan", NAN }, { "infinity", INFINITY } };
     }

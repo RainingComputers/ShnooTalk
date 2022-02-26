@@ -275,6 +275,20 @@ Unit FunctionBuilder::castOperator(const Unit& unitToCast, DataType destinationD
     return Unit(typeDescriptionFromDataType(destinationDataType), result);
 }
 
+Unit FunctionBuilder::addrOperator(const Unit& unit)
+{
+    /* Construct icode for CAST */
+    icode::Entry entry;
+
+    entry.opcode = ADDR;
+    entry.op1 = opBuilder.createTempOperand(icode::AUTO_INT);
+    entry.op2 = unit.op();
+
+    pushEntry(entry);
+
+    return Unit(typeDescriptionFromDataType(icode::AUTO_INT), entry.op1);
+}
+
 Unit FunctionBuilder::pointerCastOperator(const Unit& unitToCast, TypeDescription destinationType)
 {
     Entry entry;

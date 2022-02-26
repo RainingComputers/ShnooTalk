@@ -35,10 +35,7 @@ public:
 
     void setWorkingFunction(const Token& functionNameToken);
 
-    IRBuilder(icode::TargetEnums& target,
-              icode::StringModulesMap& modules_map,
-              const std::string& file_name,
-              Console& console);
+    IRBuilder(icode::StringModulesMap& modules_map, const std::string& file_name, Console& console);
 };
 
 #endif

@@ -12,7 +12,6 @@ namespace generator
 
     void generateIR(Console& console,
                     const std::string& moduleName,
-                    icode::TargetEnums& target,
                     icode::StringModulesMap& modulesMap,
                     monomorphizer::StringGenericASTMap& genericsMap);
 }

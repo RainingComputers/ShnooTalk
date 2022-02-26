@@ -7,7 +7,6 @@
 
 #include "FunctionDescription.hpp"
 #include "StructDescription.hpp"
-#include "TargetDescription.hpp"
 
 namespace icode
 {
@@ -32,7 +31,7 @@ namespace icode
         std::map<std::string, std::string> stringsData;
         std::map<std::string, int> stringsDataCharCounts;
 
-        void initializeTarget(const TargetEnums& target);
+        ModuleDescription();
 
         bool getModuleNameFromAlias(const std::string& name, std::string& returnValue);
         bool getStruct(const std::string& name, StructDescription& returnValue);

@@ -4,5 +4,4 @@
 #include "ModuleDescription.hpp"
 #include "Operand.hpp"
 #include "StructDescription.hpp"
-#include "TargetDescription.hpp"
 #include "TypeDescription.hpp"

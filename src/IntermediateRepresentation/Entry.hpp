@@ -22,6 +22,7 @@ namespace icode
         ALLOC_PTR,
         ALLOC_ARRAY_PTR,
         CAST,
+        ADDR,
         PTR_CAST,
         UNARY_MINUS,
         NOT,

@@ -64,6 +64,16 @@ Unit cast(generator::GeneratorContext& ctx, const Node& root)
     return ctx.ir.functionBuilder.castOperator(termToCast, destinationDataType);
 }
 
+Unit addrOperator(generator::GeneratorContext& ctx, const Node& root)
+{
+    Unit addrTerm = term(ctx, root.children[0]);
+
+    if (!addrTerm.isPointer())
+        ctx.console.compileErrorOnToken("Connot apply addr operator in NON POINTER", root.tok);
+
+    return ctx.ir.functionBuilder.addrOperator(addrTerm);
+}
+
 Unit pointerCast(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
@@ -195,6 +205,8 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
             return getUnitFromIdentifier(ctx, root);
         case node::CAST:
             return cast(ctx, child);
+        case node::ADDR:
+            return addrOperator(ctx, child);
         case node::PTR_CAST:
         case node::PTR_ARRAY_CAST:
             return pointerCast(ctx, child);
