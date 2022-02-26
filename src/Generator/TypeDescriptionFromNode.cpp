@@ -165,6 +165,9 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
     if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
         typeDescription = arrayTypeFromSubscript(root, typeDescription, childNodeCounter);
 
+    if (typeDescription.isIncompleteType() && !typeDescription.isPointer())
+        ctx.console.compileErrorOnToken("INCOMPLETE TYPE can only be a POINTER", dataTypeToken);
+
     ctx.ir.popWorkingModule();
 
     return typeDescription;

@@ -86,7 +86,7 @@ namespace pp
     {
         std::vector<std::string> propertiesStringArray;
 
-        for (unsigned int i = 0; i <= icode::IS_STRING_LTRL; i += 1)
+        for (unsigned int i = 0; i <= icode::IS_INCOMPLETE_TYPE; i += 1)
             if (typeDescription.checkProperty((icode::TypeProperties)i))
                 propertiesStringArray.push_back(typePropertiesString[i]);
 

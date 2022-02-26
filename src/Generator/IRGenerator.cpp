@@ -21,6 +21,20 @@ Node generator::generateAST(Console& console)
     return parser::generateAST(lex, console);
 }
 
+void generateIncompleteType(generator::GeneratorContext& ctx, const Node& child)
+{
+    ctx.scope.resetScope();
+ 
+    switch (child.type)
+    {
+        case node::STRUCT:
+            registerIncompleteTypeFromNode(ctx, child);
+            break;
+        default:
+            break;
+    }
+}
+
 void generateSymbol(generator::GeneratorContext& ctx, const Node& child)
 {
     ctx.scope.resetScope();
@@ -76,6 +90,9 @@ void generateFunction(generator::GeneratorContext& ctx, const Node& child)
 
 void generateModule(generator::GeneratorContext& ctx, const Node& root)
 {
+    for (const Node& child : root.children)
+        generateIncompleteType(ctx, child);
+
     for (const Node& child : root.children)
         generateSymbol(ctx, child);
 

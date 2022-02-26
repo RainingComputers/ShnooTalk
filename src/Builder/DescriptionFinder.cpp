@@ -139,7 +139,7 @@ Unit DescriptionFinder::getUnitFromToken(const Token& nameToken)
     console.compileErrorOnToken("Symbol does not exist", nameToken);
 }
 
-int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
+unsigned int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
 {
     const std::string& dataTypeString = nameToken.toString();
 

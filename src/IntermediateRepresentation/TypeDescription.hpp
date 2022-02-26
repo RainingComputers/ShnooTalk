@@ -16,6 +16,7 @@ namespace icode
         IS_GLOBAL,
         IS_LOCAL,
         IS_STRING_LTRL,
+        IS_INCOMPLETE_TYPE
     };
 
     enum DimensionType
@@ -46,14 +47,15 @@ namespace icode
         void becomePointer();
         void becomeArrayPointer();
         void becomeString();
+        void becomeIncompleteType();
         bool isMutable() const;
         bool isPassedByReference() const;
         bool isPointer() const;
         bool isMutableAndPointer() const;
         bool isMutableOrPointer() const;
         bool isStringLtrl() const;
+        bool isIncompleteType() const;
 
-        bool isSameType() const;
         bool isStruct() const;
         bool isArray() const;
         bool isStructOrArray() const;

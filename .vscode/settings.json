@@ -93,7 +93,9 @@
         "__string": "cpp",
         "__tree": "cpp",
         "__tuple": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp"
     },
     "cSpell.words": [
         "aarch",

@@ -128,31 +128,42 @@ void sizeOf(const InstiatorContext& ctx, Node& root)
 
     const Token& typeToken = root.getNthChildToken(0);
 
-    if (typeToken.toString() != ctx.genericIdentifier)
-        return;
+    if (typeToken.toString() == ctx.genericIdentifier)
+    {
+        root.children[0].tok = modToken(typeToken, ctx.instantiationType.dtypeName);
 
-    root.children[0].tok = modToken(typeToken, ctx.instantiationType.dtypeName);
+        const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
+        root.children.insert(root.children.begin(), constructNode(node::MODULE, alias));
+    }
 
-    const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
-    root.children.insert(root.children.begin(), constructNode(node::MODULE, alias));
+    if (ctx.isGenericStruct(typeToken))
+    {
+        root.children[0].tok = modToken(typeToken, getInstantiatedStructName(ctx.instantiationSuffix, typeToken));
+    }
 }
 
 void pointerCast(const InstiatorContext& ctx, Node& root)
 {
     const Token& typeToken = root.getNthChildToken(0);
 
-    if (typeToken.toString() != ctx.genericIdentifier)
+    if (typeToken.toString() == ctx.genericIdentifier)
+    {
+        root.children[0].tok = modToken(typeToken, ctx.instantiationType.dtypeName);
+
+        Node newRootNode = constructNode(node::TERM, typeToken.toString());
+
+        const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
+        newRootNode.children.push_back(constructNode(node::MODULE, alias));
+        newRootNode.children.push_back(root);
+
+        root = newRootNode;
+    }
+
+    if (ctx.isGenericStruct(typeToken))
+    {
+        root.children[0].tok = modToken(typeToken, getInstantiatedStructName(ctx.instantiationSuffix, typeToken));
         return;
-
-    root.children[0].tok = modToken(typeToken, ctx.instantiationType.dtypeName);
-
-    Node newRootNode = constructNode(node::TERM, typeToken.toString());
-
-    const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
-    newRootNode.children.push_back(constructNode(node::MODULE, alias));
-    newRootNode.children.push_back(root);
-
-    root = newRootNode;
+    }
 }
 
 void expression(const InstiatorContext& ctx, Node& root)

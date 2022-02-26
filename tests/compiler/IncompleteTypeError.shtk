@@ -1,0 +1,11 @@
+# MODULE IncompleteTypeError.shtk
+# ERROR in Line 10 Col 19
+# 
+#     var children: Node[5]
+#                   ^
+# INCOMPLETE TYPE can only be a POINTER
+
+struct Node
+{
+    var children: Node[5]
+}
