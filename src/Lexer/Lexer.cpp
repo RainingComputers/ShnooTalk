@@ -232,17 +232,17 @@ namespace lexer
     token::TokenType Lexer::typeFromStringMatch(const std::string& string)
     {
         static std::map<std::string, token::TokenType> stringTypeMap = {
-            { "use", token::USE },       { "generic", token::GENERIC }, { "as", token::AS },
-            { "from", token::FROM },     { "fn", token::FUNCTION },     { "extfn", token::EXTERN_FUNCTION },
-            { "struct", token::STRUCT }, { "class", token::STRUCT },    { "enum", token::ENUM },
-            { "def", token::DEF },       { "var", token::VAR },         { "const", token::CONST },
-            { "if", token::IF },         { "elif", token::ELSEIF },     { "else", token::ELSE },
-            { "while", token::WHILE },   { "do", token::DO },           { "for", token::FOR },
-            { "loop", token::LOOP },     { "break", token::BREAK },     { "continue", token::CONTINUE },
-            { "return", token::RETURN }, { "mut", token::MUTABLE },     { "and", token::CONDN_AND },
-            { "or", token::CONDN_OR },   { "not", token::CONDN_NOT },   { "void", token::VOID },
-            { "sizeof", token::SIZEOF }, { "print", token::PRINT },     { "println", token::PRINTLN },
-            { "input", token::INPUT },
+            { "use", token::USE },         { "generic", token::GENERIC }, { "as", token::AS },
+            { "from", token::FROM },       { "fn", token::FUNCTION },     { "extfn", token::EXTERN_FUNCTION },
+            { "struct", token::STRUCT },   { "class", token::STRUCT },    { "enum", token::ENUM },
+            { "def", token::DEF },         { "var", token::VAR },         { "const", token::CONST },
+            { "if", token::IF },           { "elif", token::ELSEIF },     { "else", token::ELSE },
+            { "while", token::WHILE },     { "do", token::DO },           { "for", token::FOR },
+            { "loop", token::LOOP },       { "break", token::BREAK },     { "continue", token::CONTINUE },
+            { "return", token::RETURN },   { "mut", token::MUTABLE },     { "and", token::CONDN_AND },
+            { "or", token::CONDN_OR },     { "not", token::CONDN_NOT },   { "void", token::VOID },
+            { "sizeof", token::SIZEOF },   { "addr", token::ADDR },       { "print", token::PRINT },
+            { "println", token::PRINTLN }, { "input", token::INPUT },
         };
 
         auto search = stringTypeMap.find(string);

@@ -99,6 +99,8 @@ methodCall = {"." identifier actualParameterList}
 
 sizeof = "sizeof" "(" moduleQualident identifier ")"
 
+addr = "addr" "(" expression ")"
+
 initializerList = "[" expression {"," expression} "]"
 
 term = sizeof
