@@ -30,8 +30,8 @@ bool elementInList(const std::string& identifier, const std::vector<std::string>
 }
 
 bool genericTypePresent(const Node& root,
-                                const std::vector<std::string>& genericIdentifiers,
-                                const std::vector<std::string> genericStructs)
+                        const std::vector<std::string>& genericIdentifiers,
+                        const std::vector<std::string> genericStructs)
 {
     if (root.type == node::IDENTIFIER)
     {
