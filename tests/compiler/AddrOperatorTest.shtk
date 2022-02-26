@@ -1,0 +1,9 @@
+# 42
+
+fn main() -> int
+{
+    var a: int* <- int*`42
+    println(addr(a))
+
+    return 0
+}

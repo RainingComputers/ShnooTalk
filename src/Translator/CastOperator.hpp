@@ -5,5 +5,6 @@
 
 void castOperator(ModuleContext& ctx, const icode::Entry& e);
 void pointerCastOperator(ModuleContext& ctx, const icode::Entry& e);
+void addrOperator(ModuleContext& ctx, const icode::Entry& e);
 
 #endif

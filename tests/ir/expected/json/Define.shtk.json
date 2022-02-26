@@ -7,6 +7,7 @@
     },
     "intDefines": {
         "MINUS_ONE": -1,
+        "NULL": 0,
         "THREE": 3,
         "false": 0,
         "true": 1

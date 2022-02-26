@@ -16,14 +16,12 @@ namespace generator
 
         icode::StringModulesMap& modulesMap;
         monomorphizer::StringGenericASTMap& genericsMap;
-        icode::TargetEnums& target;
 
-        GeneratorContext(icode::TargetEnums& target,
-                         icode::StringModulesMap& modulesMap,
+        GeneratorContext(icode::StringModulesMap& modulesMap,
                          monomorphizer::StringGenericASTMap& genericsMap,
                          const std::string& fileName,
                          Console& console);
-        
+
         GeneratorContext clone(const std::string& fileName);
 
         bool moduleExists(const std::string& name);

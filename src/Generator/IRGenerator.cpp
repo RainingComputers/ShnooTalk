@@ -103,7 +103,6 @@ void generateModule(generator::GeneratorContext& ctx, const Node& root)
 
 void generator::generateIR(Console& console,
                            const std::string& moduleName,
-                           icode::TargetEnums& target,
                            icode::StringModulesMap& modulesMap,
                            monomorphizer::StringGenericASTMap& genericsMap)
 {
@@ -113,6 +112,6 @@ void generator::generateIR(Console& console,
     if (ast.isGenericModule())
         console.compileErrorOnToken("Connot compile a GENERIC", ast.children[0].tok);
 
-    generator::GeneratorContext generatorContext(target, modulesMap, genericsMap, moduleName, console);
+    generator::GeneratorContext generatorContext(modulesMap, genericsMap, moduleName, console);
     generateModule(generatorContext, ast);
 }

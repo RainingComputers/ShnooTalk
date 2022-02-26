@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "DataType.hpp"
-#include "TargetDescription.hpp"
 
 namespace icode
 {

@@ -3,13 +3,10 @@ generic T
 extfn malloc(bytes: int) -> ubyte*
 extfn free(ptr: ubyte*)
 
-def NULL 0
-
 class Node 
 {
     var data: T
     var next: Node*
-    var isNull: bool
 }
 
 fn createNode(data: T, next: Node*) -> Node 
@@ -18,18 +15,6 @@ fn createNode(data: T, next: Node*) -> Node
 
     node.data = data
     node.next <- next
-    node.isNull = false
-
-    return node
-}
-
-fn createNullNode() -> Node 
-{
-    var node: Node
-
-    node.data = 0
-    node.next <- Node*`NULL
-    node.isNull = true
 
     return node
 }
@@ -41,8 +26,7 @@ class LinkedList
 
 fn init(mut self: LinkedList) 
 {
-    self.top <- Node*`malloc(sizeof(Node))
-    self.top = createNullNode()
+    self.top <- Node*`NULL
 }
 
 fn push(mut self: LinkedList, data: T) 
@@ -69,7 +53,7 @@ fn printList(self: LinkedList)
 {
     var current: Node* <- self.top
     
-    while not current.isNull
+    while addr(current)
     {
         println(current.data)
         current <- current.next

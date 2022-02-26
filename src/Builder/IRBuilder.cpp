@@ -2,10 +2,7 @@
 
 #include "IRBuilder.hpp"
 
-IRBuilder::IRBuilder(icode::TargetEnums& target,
-                     icode::StringModulesMap& modulesMap,
-                     const std::string& fileName,
-                     Console& console)
+IRBuilder::IRBuilder(icode::StringModulesMap& modulesMap, const std::string& fileName, Console& console)
 
     : rootModule(modulesMap[fileName])
     , console(console)
@@ -18,7 +15,6 @@ IRBuilder::IRBuilder(icode::TargetEnums& target,
     workingModule = &rootModule;
 
     rootModule.name = fileName;
-    rootModule.initializeTarget(target);
 
     setWorkingModule(workingModule);
 }

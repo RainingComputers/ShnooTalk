@@ -16,13 +16,6 @@
 
 using namespace llvm;
 
-icode::TargetEnums translator::getTarget()
-{
-    icode::TargetEnums target;
-
-    return target;
-}
-
 std::string getLLVMModuleString(const Module& LLVMModule)
 {
     std::string moduleString;

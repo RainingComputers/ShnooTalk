@@ -60,6 +60,9 @@ void translateFunctionIcode(ModuleContext& ctx,
             case icode::CAST:
                 castOperator(ctx, e);
                 break;
+            case icode::ADDR:
+                addrOperator(ctx, e);
+                break;
             case icode::PTR_CAST:
                 pointerCastOperator(ctx, e);
                 break;

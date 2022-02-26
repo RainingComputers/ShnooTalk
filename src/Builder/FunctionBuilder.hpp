@@ -68,6 +68,8 @@ public:
 
     Unit castOperator(const Unit& unitToCast, icode::DataType destinationDataType);
 
+    Unit addrOperator(const Unit& unit);
+
     Unit pointerCastOperator(const Unit& unitToCast, icode::TypeDescription destinationType);
 
     void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);

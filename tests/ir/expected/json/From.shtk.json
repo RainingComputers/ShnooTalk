@@ -9,6 +9,7 @@
         "LED0": 0
     },
     "intDefines": {
+        "NULL": 0,
         "ONE": 1,
         "false": 0,
         "true": 1
