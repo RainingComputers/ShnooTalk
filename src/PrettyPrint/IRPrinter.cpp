@@ -298,7 +298,9 @@ namespace pp
         jsonp.end();
     }
 
-    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription, FlatJSONPrinter& jsonp, bool jsonIR) 
+    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription,
+                                         FlatJSONPrinter& jsonp,
+                                         bool jsonIR)
     {
         jsonp.begin();
 

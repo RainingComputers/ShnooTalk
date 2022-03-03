@@ -78,7 +78,7 @@ make test
 - [ ] Destructuring
 - [x] Clean up packaging process
 - [ ] Spike static linking everything
-- [ ] Change compiler tests to use `-ir-all`
+- [x] Change compiler tests to use `-icode-all`
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend
