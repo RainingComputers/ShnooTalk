@@ -55,6 +55,7 @@ namespace node
         INITLIST,
         TERM,
         SIZEOF,
+        MAKE,
         ADDR,
         TYPEOF,
         PRINT,

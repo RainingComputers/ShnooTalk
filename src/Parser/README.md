@@ -99,11 +99,14 @@ methodCall = {"." identifier actualParameterList}
 
 sizeof = "sizeof" "(" moduleQualident identifier ")"
 
+make = "make" "(" typeDefinition {"," expression}  ")"
+
 addr = "addr" "(" expression ")"
 
 initializerList = "[" expression {"," expression} "]"
 
 term = sizeof
+     | make
      | functionCall
      | identifier castOperator term
      | identifier pointerCastOperator term

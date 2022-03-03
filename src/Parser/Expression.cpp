@@ -195,6 +195,32 @@ void addrBuiltIn(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
+void makeBuiltIn(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrent(node::MAKE);
+
+    ctx.expect(token::LPAREN);
+    ctx.consume();
+
+    ctx.pushNode();
+    ctx.addNodeMakeCurrentNoConsume(node::MAKE);
+    typeDefinition(ctx);
+    ctx.popNode();
+
+    while (ctx.accept(token::COMMA))
+    {
+        ctx.consume();
+        expression(ctx);
+    }
+
+    ctx.expect(token::RPAREN);
+    ctx.consume();
+
+    ctx.popNode();
+}
+
 void initializerList(parser::ParserContext& ctx)
 {
     ctx.pushNode();
@@ -223,14 +249,17 @@ void term(parser::ParserContext& ctx)
 
     token::TokenType expected[] = { token::IDENTIFIER,   token::NOT,         token::LPAREN,        token::INT_LITERAL,
                                     token::CHAR_LITERAL, token::HEX_LITERAL, token::FLOAT_LITERAL, token::BIN_LITERAL,
-                                    token::MINUS,        token::CONDN_NOT,   token::SIZEOF,        token::ADDR };
+                                    token::MINUS,        token::CONDN_NOT,   token::SIZEOF,        token::MAKE,
+                                    token::ADDR };
 
-    ctx.expect(expected, 12);
+    ctx.expect(expected, 13);
 
     if (ctx.accept(token::SIZEOF))
         sizeofBuiltIn(ctx);
     else if (ctx.accept(token::ADDR))
         addrBuiltIn(ctx);
+    else if (ctx.accept(token::MAKE))
+        makeBuiltIn(ctx);
     else if (ctx.accept(token::IDENTIFIER))
     {
         if (ctx.peek(token::LPAREN))
@@ -327,10 +356,10 @@ void expression(parser::ParserContext& ctx)
 {
     token::TokenType expected[] = { token::INT_LITERAL, token::CHAR_LITERAL, token::HEX_LITERAL, token::FLOAT_LITERAL,
                                     token::STR_LITERAL, token::BIN_LITERAL,  token::OPEN_SQUARE, token::IDENTIFIER,
-                                    token::MINUS,       token::LPAREN,       token::CONDN_NOT,   token::SIZEOF,
+                                    token::MINUS,       token::LPAREN,       token::CONDN_NOT,   token::SIZEOF, token::MAKE,
                                     token::ADDR,        token::NOT };
 
-    ctx.expect(expected, 14);
+    ctx.expect(expected, 15);
 
     if (ctx.accept(token::OPEN_SQUARE))
         initializerList(ctx);
