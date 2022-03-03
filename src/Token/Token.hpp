@@ -90,6 +90,7 @@ namespace token
         END_OF_FILE,
         INVALID,
         SIZEOF,
+        MAKE,
         ADDR,
         TYPEOF,
         PRINT,
