@@ -78,6 +78,7 @@ make test
 - [ ] Destructuring
 - [x] Clean up packaging process
 - [ ] Spike static linking everything
+- [ ] Improve error messages and module trace list
 - [x] Change compiler tests to use `-icode-all`
 
 *Backlog*

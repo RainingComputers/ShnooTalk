@@ -3,6 +3,7 @@
 #include "Module.hpp"
 #include "OperatorTokenToInstruction.hpp"
 #include "PassParamTypeCheck.hpp"
+#include "TypeDescriptionFromNode.hpp"
 #include "UnitFromIdentifier.hpp"
 
 #include "Expression.hpp"
@@ -193,6 +194,46 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
     return ctx.ir.functionBuilder.callFunction(calleeNameToken, callee);
 }
 
+Unit make(generator::GeneratorContext& ctx, const Node& root)
+{
+    ctx.ir.pushWorkingModule();
+
+    const TypeDescription& type = typeDescriptionFromNode(ctx, root.children[0]);
+
+    ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromType(type));
+
+    std::vector<Unit> actualParams;
+    for (size_t i = 1; i < root.children.size(); i += 1)
+    {
+        Unit param = expression(ctx, root.children[i]);
+
+        actualParams.push_back(param);
+
+        if (param.isList())
+            actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(param.dimensions()[0]));
+    }
+
+    std::pair<std::string, FunctionDescription> constructorNameAndFunction =
+        ctx.ir.descriptionFinder.getFunctionByParamTypes(root.tok, type, actualParams);
+
+    const std::string& constructorFunctionName = constructorNameAndFunction.first;
+    const FunctionDescription& constructorFunction = constructorNameAndFunction.second;
+
+    std::vector<Unit> formalParams = ctx.ir.descriptionFinder.getFormalParameters(constructorFunction);
+
+    for (size_t i = 0; i < actualParams.size(); i += 1)
+    {
+        ctx.ir.functionBuilder.passParameterPreMangled(constructorFunctionName,
+                                                       constructorFunction,
+                                                       formalParams[i],
+                                                       actualParams[i]);
+    }
+
+    ctx.ir.popWorkingModule();
+
+    return ctx.ir.functionBuilder.callFunctionPreMangled(constructorFunctionName, constructorFunction);
+}
+
 Unit term(generator::GeneratorContext& ctx, const Node& root)
 {
     Node child = root.children[0];
@@ -221,6 +262,8 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
             return switchModuleAndCallTerm(ctx, root);
         case node::SIZEOF:
             return sizeOf(ctx, child);
+        case node::MAKE:
+            return make(ctx, child);
         default:
             ctx.console.internalBugErrorOnToken(child.tok);
     }

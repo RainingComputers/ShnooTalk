@@ -42,7 +42,7 @@ class FunctionBuilder
 
     icode::Operand addressMultiplyOperator(icode::Operand op2, icode::Operand op3);
 
-    std::string getCalleeName(const Token& calleeNameToken, const icode::FunctionDescription& callee);
+    std::string getMangledCalleeName(const Token& calleeNameToken, const icode::FunctionDescription& callee);
 
     icode::Operand createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam);
 
@@ -90,12 +90,19 @@ public:
 
     Unit createLocal(const Token nameToken, icode::TypeDescription& typeDescription);
 
+    void passParameterPreMangled(const std::string& mangledCalleeName,
+                       icode::FunctionDescription callee,
+                       const Unit& formalParam,
+                       const Unit& actualParam);
+
     void passParameter(const Token& calleeNameToken,
                        icode::FunctionDescription callee,
                        const Unit& formalParam,
                        const Unit& actualParam);
 
-    Unit callFunction(const Token& calleeNameToken, icode::FunctionDescription callee);
+    Unit callFunctionPreMangled(const std::string& mangledCalleeName, const icode::FunctionDescription& callee);
+
+    Unit callFunction(const Token& calleeNameToken, const icode::FunctionDescription& callee);
 
     void noArgumentEntry(icode::Instruction instruction);
 

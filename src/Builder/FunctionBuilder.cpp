@@ -506,7 +506,7 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
     return unitBuilder.unitFromTypeDescription(typeDescription, nameToken.toString());
 }
 
-std::string FunctionBuilder::getCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)
+std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)
 {
     icode::ModuleDescription& functionModule = modulesMap.at(callee.moduleName);
 
@@ -533,14 +533,11 @@ Operand FunctionBuilder::createPointerForPassAddress(const Unit& actualParam, co
     return tempArray.op();
 }
 
-void FunctionBuilder::passParameter(const Token& calleeNameToken,
-                                    FunctionDescription callee,
-                                    const Unit& formalParam,
-                                    const Unit& actualParam)
+void FunctionBuilder::passParameterPreMangled(const std::string& mangeledCalleeName,
+                                              FunctionDescription callee,
+                                              const Unit& formalParam,
+                                              const Unit& actualParam)
 {
-    /* Construct icode for PASS and PASS_ADDR instructions */
-    std::string calleeName = getCalleeName(calleeNameToken, callee);
-
     DataType functionDataType = callee.functionReturnType.dtype;
 
     Entry entry;
@@ -561,17 +558,26 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
         entry.op1 = autoCast(ensureNotPointer(actualParam.op()), formalParam.dtype());
     }
 
-    entry.op2 = opBuilder.createVarOperand(functionDataType, calleeName);
+    entry.op2 = opBuilder.createVarOperand(functionDataType, mangeledCalleeName);
     entry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(entry);
 }
 
-Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescription callee)
+void FunctionBuilder::passParameter(const Token& calleeNameToken,
+                                    FunctionDescription callee,
+                                    const Unit& formalParam,
+                                    const Unit& actualParam)
+{
+    /* Construct icode for PASS and PASS_ADDR instructions */
+    std::string mangledCalleeName = getMangledCalleeName(calleeNameToken, callee);
+
+    passParameterPreMangled(mangledCalleeName, callee, formalParam, actualParam);
+}
+
+Unit FunctionBuilder::callFunctionPreMangled(const std::string& mangeledCalleeName, const FunctionDescription& callee)
 {
     /* Construct icode for CALL instruction */
-
-    std::string calleeName = getCalleeName(calleeNameToken, callee);
 
     DataType functionDataType = callee.functionReturnType.dtype;
 
@@ -584,12 +590,21 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, FunctionDescrip
     else
         callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
 
-    callEntry.op2 = opBuilder.createVarOperand(functionDataType, calleeName);
+    callEntry.op2 = opBuilder.createVarOperand(functionDataType, mangeledCalleeName);
     callEntry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(callEntry);
 
     return Unit(callee.functionReturnType, callEntry.op1);
+}
+
+Unit FunctionBuilder::callFunction(const Token& calleeNameToken, const FunctionDescription& callee)
+{
+    /* Construct icode for CALL instruction */
+
+    std::string mangeldCalleeName = getMangledCalleeName(calleeNameToken, callee);
+
+    return callFunctionPreMangled(mangeldCalleeName, callee);
 }
 
 void FunctionBuilder::noArgumentEntry(Instruction instruction)
