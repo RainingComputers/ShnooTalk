@@ -1,19 +1,21 @@
 {
-    "moduleName": "ExternFunction.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                    printString stringData _str_ExternFunction_shtk__l7_c12
-                    newLine
-                    int temp6 = cast autoInt 0
-                    pass int temp6, void exit, module ExternFunction.shtk
-                    void calleeReturnValue9 = call void exit, module ExternFunction.shtk
-                    printString stringData _str_ExternFunction_shtk__l11_c12
-                    newLine
-                    int temp15 = cast autoInt 0
-                    int returnValue13 = equal int temp15
-                    return
-            ]
+    "ExternFunction.shtk": {
+        "moduleName": "ExternFunction.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        printString stringData _str_ExternFunction_shtk__l7_c12
+                        newLine
+                        int temp6 = cast autoInt 0
+                        pass int temp6, void exit, module ExternFunction.shtk
+                        void calleeReturnValue9 = call void exit, module ExternFunction.shtk
+                        printString stringData _str_ExternFunction_shtk__l11_c12
+                        newLine
+                        int temp15 = cast autoInt 0
+                        int returnValue13 = equal int temp15
+                        return
+                ]
+            }
         }
     }
 }

@@ -1,59 +1,61 @@
 {
-    "moduleName": "Expression4.shtk",
-    "functions": {
-        "_fn_Expression4_shtk_foobar": {
-            "icode": [
-                    int temp5 = cast autoInt 2
-                    int a = equal int temp5
-                    int temp8 = cast autoInt 3
-                    int b = equal int temp8
-                    int temp11 = multiply int a, int b
-                    print int temp11
-                    newLine
-                    return
-            ]
-        },
-        "main": {
-            "icode": [
-                    int temp18 = cast autoInt 3
-                    int c = equal int temp18
-                    print int c
-                    newLine
-                    void calleeReturnValue20 = call void _fn_Expression4_shtk_foobar, module Expression4.shtk
-                    int temp26 = cast autoInt 3
-                    int temp25 = multiply int c, int temp26
-                    int c = equal int temp25
-                    autoInt temp30 = add autoInt 2, autoInt 3
-                    int temp31 = cast autoInt temp30
-                    int b = equal int temp31
-                    int temp35 = cast autoInt 2
-                    int temp34 = multiply int c, int temp35
-                    int temp38 = cast autoInt 3
-                    int temp37 = multiply int temp34, int temp38
-                    print int temp37
-                    newLine
-                    int temp42 = cast autoInt 3
-                    int temp41 = add int b, int temp42
-                    print int temp41
-                    newLine
-                    float temp45 = cast autoFloat 3.000000
-                    float bar = equal float temp45
-                    float temp51 = cast autoFloat 1.000000
-                    flag = isEqual float bar, float temp51
-                    if(not flag) goto _if_false_l35_c4
-                    printString stringData _str_Expression4_shtk__l35_c28
-                    newLine
-                _if_false_l35_c4:
-                    float temp58 = cast autoFloat 1.000000
-                    flag = isNotEqual float bar, float temp58
-                    if(not flag) goto _if_false_l36_c4
-                    printString stringData _str_Expression4_shtk__l36_c28
-                    newLine
-                _if_false_l36_c4:
-                    int temp62 = cast autoInt 0
-                    int returnValue60 = equal int temp62
-                    return
-            ]
+    "Expression4.shtk": {
+        "moduleName": "Expression4.shtk",
+        "functions": {
+            "_fn_Expression4_shtk_foobar": {
+                "icode": [
+                        int temp5 = cast autoInt 2
+                        int a = equal int temp5
+                        int temp8 = cast autoInt 3
+                        int b = equal int temp8
+                        int temp11 = multiply int a, int b
+                        print int temp11
+                        newLine
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int temp18 = cast autoInt 3
+                        int c = equal int temp18
+                        print int c
+                        newLine
+                        void calleeReturnValue20 = call void _fn_Expression4_shtk_foobar, module Expression4.shtk
+                        int temp26 = cast autoInt 3
+                        int temp25 = multiply int c, int temp26
+                        int c = equal int temp25
+                        autoInt temp30 = add autoInt 2, autoInt 3
+                        int temp31 = cast autoInt temp30
+                        int b = equal int temp31
+                        int temp35 = cast autoInt 2
+                        int temp34 = multiply int c, int temp35
+                        int temp38 = cast autoInt 3
+                        int temp37 = multiply int temp34, int temp38
+                        print int temp37
+                        newLine
+                        int temp42 = cast autoInt 3
+                        int temp41 = add int b, int temp42
+                        print int temp41
+                        newLine
+                        float temp45 = cast autoFloat 3.000000
+                        float bar = equal float temp45
+                        float temp51 = cast autoFloat 1.000000
+                        flag = isEqual float bar, float temp51
+                        if(not flag) goto _if_false_l35_c4
+                        printString stringData _str_Expression4_shtk__l35_c28
+                        newLine
+                    _if_false_l35_c4:
+                        float temp58 = cast autoFloat 1.000000
+                        flag = isNotEqual float bar, float temp58
+                        if(not flag) goto _if_false_l36_c4
+                        printString stringData _str_Expression4_shtk__l36_c28
+                        newLine
+                    _if_false_l36_c4:
+                        int temp62 = cast autoInt 0
+                        int returnValue60 = equal int temp62
+                        return
+                ]
+            }
         }
     }
 }

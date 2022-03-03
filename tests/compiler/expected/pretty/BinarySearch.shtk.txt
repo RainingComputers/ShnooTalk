@@ -1,105 +1,107 @@
 {
-    "moduleName": "BinarySearch.shtk",
-    "functions": {
-        "_fn_BinarySearch_shtk_BSearch": {
-            "icode": [
-                    int temp7 = cast autoInt 2
-                    int temp6 = divide int L, int temp7
-                    int H = equal int temp6
-                    int temp13 = cast autoInt 1
-                    flag = isEqual int L, int temp13
-                    if(not flag) goto _if_false_l7_c4
-                    int* tempPtr19 = createPointer int a
-                    void* tempPtr21 = addressMultiply int S, bytes 4
-                    int* tempPtr22 = addressAdd int* tempPtr19, void* tempPtr21
-                    int temp24 = read int* tempPtr22
-                    flag = isEqual int temp24, int x
-                    if(not flag) goto _if_false_l9_c8
-                    int returnValue25 = equal int S
-                    return
-                    goto _ifend_false_l9_c8
-                _if_false_l9_c8:
-                    autoInt temp31 = unaryMinus autoInt 1
-                    int temp32 = cast autoInt temp31
-                    int returnValue29 = equal int temp32
-                    return
-                _ifend_false_l9_c8:
-                _if_false_l7_c4:
-                    int temp40 = add int S, int H
-                    int* tempPtr41 = createPointer int a
-                    void* tempPtr43 = addressMultiply int temp40, bytes 4
-                    int* tempPtr44 = addressAdd int* tempPtr41, void* tempPtr43
-                    int temp45 = read int* tempPtr44
-                    flag = lessThan int x, int temp45
-                    if(not flag) goto _if_false_l13_c4
-                    int* tempPtr52 = createPointer int a
-                    passPointer int* tempPtr52, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    pass int S, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    pass int H, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    pass int x, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int calleeReturnValue64 = call int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int returnValue46 = equal int calleeReturnValue64
-                    return
-                _if_false_l13_c4:
-                    int* tempPtr73 = createPointer int a
-                    passPointer int* tempPtr73, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int temp78 = add int S, int H
-                    pass int temp78, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int temp83 = subtract int L, int H
-                    pass int temp83, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    pass int x, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int calleeReturnValue89 = call int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int returnValue67 = equal int calleeReturnValue89
-                    return
-            ]
-        },
-        "main": {
-            "icode": [
-                    int* tempPtr106 = createPointer int a
-                    int temp107 = cast autoInt 34
-                    int* tempPtr106 = write int temp107
-                    int* tempPtr109 = addressAdd int* tempPtr106, bytes 4
-                    int temp110 = cast autoInt 5
-                    int* tempPtr109 = write int temp110
-                    int* tempPtr112 = addressAdd int* tempPtr109, bytes 4
-                    int temp113 = cast autoInt 6
-                    int* tempPtr112 = write int temp113
-                    int* tempPtr115 = addressAdd int* tempPtr112, bytes 4
-                    int temp116 = cast autoInt 23
-                    int* tempPtr115 = write int temp116
-                    int* tempPtr118 = addressAdd int* tempPtr115, bytes 4
-                    int temp119 = cast autoInt 67
-                    int* tempPtr118 = write int temp119
-                    int* tempPtr121 = addressAdd int* tempPtr118, bytes 4
-                    int temp122 = cast autoInt 45
-                    int* tempPtr121 = write int temp122
-                    int* tempPtr124 = addressAdd int* tempPtr121, bytes 4
-                    int temp125 = cast autoInt 67
-                    int* tempPtr124 = write int temp125
-                    int* tempPtr127 = addressAdd int* tempPtr124, bytes 4
-                    int temp128 = cast autoInt 35
-                    int* tempPtr127 = write int temp128
-                    int* tempPtr130 = addressAdd int* tempPtr127, bytes 4
-                    int temp131 = cast autoInt 34
-                    int* tempPtr130 = write int temp131
-                    int* tempPtr133 = addressAdd int* tempPtr130, bytes 4
-                    int temp134 = cast autoInt 51
-                    int* tempPtr133 = write int temp134
-                    int* tempPtr140 = createPointer int a
-                    passPointer int* tempPtr140, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int temp144 = cast autoInt 0
-                    pass int temp144, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int temp148 = cast autoInt 10
-                    pass int temp148, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int temp152 = cast autoInt 23
-                    pass int temp152, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    int calleeReturnValue155 = call int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
-                    print int calleeReturnValue155
-                    newLine
-                    int temp160 = cast autoInt 0
-                    int returnValue158 = equal int temp160
-                    return
-            ]
+    "BinarySearch.shtk": {
+        "moduleName": "BinarySearch.shtk",
+        "functions": {
+            "_fn_BinarySearch_shtk_BSearch": {
+                "icode": [
+                        int temp7 = cast autoInt 2
+                        int temp6 = divide int L, int temp7
+                        int H = equal int temp6
+                        int temp13 = cast autoInt 1
+                        flag = isEqual int L, int temp13
+                        if(not flag) goto _if_false_l7_c4
+                        int* tempPtr19 = createPointer int a
+                        void* tempPtr21 = addressMultiply int S, bytes 4
+                        int* tempPtr22 = addressAdd int* tempPtr19, void* tempPtr21
+                        int temp24 = read int* tempPtr22
+                        flag = isEqual int temp24, int x
+                        if(not flag) goto _if_false_l9_c8
+                        int returnValue25 = equal int S
+                        return
+                        goto _ifend_false_l9_c8
+                    _if_false_l9_c8:
+                        autoInt temp31 = unaryMinus autoInt 1
+                        int temp32 = cast autoInt temp31
+                        int returnValue29 = equal int temp32
+                        return
+                    _ifend_false_l9_c8:
+                    _if_false_l7_c4:
+                        int temp40 = add int S, int H
+                        int* tempPtr41 = createPointer int a
+                        void* tempPtr43 = addressMultiply int temp40, bytes 4
+                        int* tempPtr44 = addressAdd int* tempPtr41, void* tempPtr43
+                        int temp45 = read int* tempPtr44
+                        flag = lessThan int x, int temp45
+                        if(not flag) goto _if_false_l13_c4
+                        int* tempPtr52 = createPointer int a
+                        passPointer int* tempPtr52, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        pass int S, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        pass int H, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        pass int x, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int calleeReturnValue64 = call int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int returnValue46 = equal int calleeReturnValue64
+                        return
+                    _if_false_l13_c4:
+                        int* tempPtr73 = createPointer int a
+                        passPointer int* tempPtr73, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int temp78 = add int S, int H
+                        pass int temp78, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int temp83 = subtract int L, int H
+                        pass int temp83, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        pass int x, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int calleeReturnValue89 = call int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int returnValue67 = equal int calleeReturnValue89
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int* tempPtr106 = createPointer int a
+                        int temp107 = cast autoInt 34
+                        int* tempPtr106 = write int temp107
+                        int* tempPtr109 = addressAdd int* tempPtr106, bytes 4
+                        int temp110 = cast autoInt 5
+                        int* tempPtr109 = write int temp110
+                        int* tempPtr112 = addressAdd int* tempPtr109, bytes 4
+                        int temp113 = cast autoInt 6
+                        int* tempPtr112 = write int temp113
+                        int* tempPtr115 = addressAdd int* tempPtr112, bytes 4
+                        int temp116 = cast autoInt 23
+                        int* tempPtr115 = write int temp116
+                        int* tempPtr118 = addressAdd int* tempPtr115, bytes 4
+                        int temp119 = cast autoInt 67
+                        int* tempPtr118 = write int temp119
+                        int* tempPtr121 = addressAdd int* tempPtr118, bytes 4
+                        int temp122 = cast autoInt 45
+                        int* tempPtr121 = write int temp122
+                        int* tempPtr124 = addressAdd int* tempPtr121, bytes 4
+                        int temp125 = cast autoInt 67
+                        int* tempPtr124 = write int temp125
+                        int* tempPtr127 = addressAdd int* tempPtr124, bytes 4
+                        int temp128 = cast autoInt 35
+                        int* tempPtr127 = write int temp128
+                        int* tempPtr130 = addressAdd int* tempPtr127, bytes 4
+                        int temp131 = cast autoInt 34
+                        int* tempPtr130 = write int temp131
+                        int* tempPtr133 = addressAdd int* tempPtr130, bytes 4
+                        int temp134 = cast autoInt 51
+                        int* tempPtr133 = write int temp134
+                        int* tempPtr140 = createPointer int a
+                        passPointer int* tempPtr140, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int temp144 = cast autoInt 0
+                        pass int temp144, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int temp148 = cast autoInt 10
+                        pass int temp148, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int temp152 = cast autoInt 23
+                        pass int temp152, int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        int calleeReturnValue155 = call int _fn_BinarySearch_shtk_BSearch, module BinarySearch.shtk
+                        print int calleeReturnValue155
+                        newLine
+                        int temp160 = cast autoInt 0
+                        int returnValue158 = equal int temp160
+                        return
+                ]
+            }
         }
     }
 }

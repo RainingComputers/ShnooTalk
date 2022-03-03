@@ -1,17 +1,47 @@
 {
-    "moduleName": "ScopeOpInFunctionArg.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                    int temp6 = cast autoInt 0
-                    pass int temp6, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                    int temp10 = cast autoInt 0
-                    pass int temp10, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                    void calleeReturnValue13 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                    int temp18 = cast autoInt 0
-                    int returnValue16 = equal int temp18
-                    return
-            ]
+    "ScopeOpInFunctionArg.shtk": {
+        "moduleName": "ScopeOpInFunctionArg.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp6 = cast autoInt 0
+                        pass int temp6, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp10 = cast autoInt 0
+                        pass int temp10, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        void calleeReturnValue13 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp18 = cast autoInt 0
+                        int returnValue16 = equal int temp18
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/Digital.shtk": {
+        "moduleName": "TestModules/Digital.shtk",
+        "functions": {
+            "_fn_TestModules_Digital_shtk_digitalWrite": {
+                "icode": [
+                        int temp8 = cast autoInt 0
+                        flag = isEqual int val, int temp8
+                        if(not flag) goto _if_false_l5_c4
+                        printString stringData _str_TestModules_Digital_shtk__l5_c27
+                        space
+                        print int pin
+                        space
+                        printString stringData _str_TestModules_Digital_shtk__l5_c39
+                        newLine
+                        goto _ifend_false_l5_c4
+                    _if_false_l5_c4:
+                        printString stringData _str_TestModules_Digital_shtk__l5_c27
+                        space
+                        print int pin
+                        space
+                        printString stringData _str_TestModules_Digital_shtk__l6_c29
+                        newLine
+                    _ifend_false_l5_c4:
+                        return
+                ]
+            }
         }
     }
 }

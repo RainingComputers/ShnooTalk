@@ -47,7 +47,7 @@ def icode_pretty(file_name: str) -> TestResult:
     return compile_success_output_assert(
         compile_phase_result=compile_phase(
             file_name=file_name,
-            compile_flag="-icode",
+            compile_flag="-icode-all",
             compiler_output_dump_file_path=None,
             create_executable=False,
             skip_on_compile_error=True,
@@ -64,7 +64,7 @@ def icode_json(file_name: str) -> TestResult:
     return compile_success_output_assert(
         compile_phase_result=compile_phase(
             file_name=file_name,
-            compile_flag="-json-icode",
+            compile_flag="-json-icode-all",
             compiler_output_dump_file_path=None,
             create_executable=False,
             skip_on_compile_error=True,

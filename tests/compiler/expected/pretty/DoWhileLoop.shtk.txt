@@ -1,25 +1,27 @@
 {
-    "moduleName": "DoWhileLoop.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                    int temp5 = cast autoInt 0
-                    int a = equal int temp5
-                _do_true_l11_c4:
-                    int temp11 = cast autoInt 1
-                    int temp10 = add int a, int temp11
-                    int a = equal int temp10
-                    printString stringData _str_DoWhileLoop_shtk__l14_c16
-                    newLine
-                    int temp15 = cast autoInt 5
-                    flag = lessThan int a, int temp15
-                    if(not flag) goto _do_false_l11_c4
-                    goto _do_true_l11_c4
-                _do_false_l11_c4:
-                    int temp18 = cast autoInt 0
-                    int returnValue16 = equal int temp18
-                    return
-            ]
+    "DoWhileLoop.shtk": {
+        "moduleName": "DoWhileLoop.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp5 = cast autoInt 0
+                        int a = equal int temp5
+                    _do_true_l11_c4:
+                        int temp11 = cast autoInt 1
+                        int temp10 = add int a, int temp11
+                        int a = equal int temp10
+                        printString stringData _str_DoWhileLoop_shtk__l14_c16
+                        newLine
+                        int temp15 = cast autoInt 5
+                        flag = lessThan int a, int temp15
+                        if(not flag) goto _do_false_l11_c4
+                        goto _do_true_l11_c4
+                    _do_false_l11_c4:
+                        int temp18 = cast autoInt 0
+                        int returnValue16 = equal int temp18
+                        return
+                ]
+            }
         }
     }
 }

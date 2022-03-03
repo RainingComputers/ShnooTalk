@@ -1,34 +1,58 @@
 {
-    "moduleName": "FunctionForwardDecl.shtk",
-    "functions": {
-        "_fn_FunctionForwardDecl_shtk_is_odd": {
-            "icode": [
-                    int temp8 = cast autoInt 0
-                    flag = isEqual int n, int temp8
-                    if(not flag) goto _if_false_l9_c4
-                    byte temp11 = cast autoInt 0
-                    byte returnValue9 = equal byte temp11
-                    return
-                _if_false_l9_c4:
-                    int temp16 = cast autoInt 1
-                    int temp15 = subtract int n, int temp16
-                    pass int temp15, byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
-                    byte calleeReturnValue20 = call byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
-                    byte returnValue12 = equal byte calleeReturnValue20
-                    return
-            ]
-        },
-        "main": {
-            "icode": [
-                    int temp28 = cast autoInt 10
-                    pass int temp28, byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
-                    byte calleeReturnValue31 = call byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
-                    print byte calleeReturnValue31
-                    newLine
-                    int temp36 = cast autoInt 0
-                    int returnValue34 = equal int temp36
-                    return
-            ]
+    "FunctionForwardDecl.shtk": {
+        "moduleName": "FunctionForwardDecl.shtk",
+        "functions": {
+            "_fn_FunctionForwardDecl_shtk_is_odd": {
+                "icode": [
+                        int temp8 = cast autoInt 0
+                        flag = isEqual int n, int temp8
+                        if(not flag) goto _if_false_l9_c4
+                        byte temp11 = cast autoInt 0
+                        byte returnValue9 = equal byte temp11
+                        return
+                    _if_false_l9_c4:
+                        int temp16 = cast autoInt 1
+                        int temp15 = subtract int n, int temp16
+                        pass int temp15, byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
+                        byte calleeReturnValue20 = call byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
+                        byte returnValue12 = equal byte calleeReturnValue20
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int temp28 = cast autoInt 10
+                        pass int temp28, byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
+                        byte calleeReturnValue31 = call byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
+                        print byte calleeReturnValue31
+                        newLine
+                        int temp36 = cast autoInt 0
+                        int returnValue34 = equal int temp36
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/IsEven.shtk": {
+        "moduleName": "TestModules/IsEven.shtk",
+        "functions": {
+            "_fn_TestModules_IsEven_shtk_is_even": {
+                "icode": [
+                        int temp8 = cast autoInt 0
+                        flag = isEqual int n, int temp8
+                        if(not flag) goto _if_false_l5_c4
+                        byte temp11 = cast autoInt 1
+                        byte returnValue9 = equal byte temp11
+                        return
+                    _if_false_l5_c4:
+                        int temp16 = cast autoInt 1
+                        int temp15 = subtract int n, int temp16
+                        pass int temp15, byte _fn_FunctionForwardDecl_shtk_is_odd, module FunctionForwardDecl.shtk
+                        byte calleeReturnValue20 = call byte _fn_FunctionForwardDecl_shtk_is_odd, module FunctionForwardDecl.shtk
+                        byte returnValue12 = equal byte calleeReturnValue20
+                        return
+                ]
+            }
         }
     }
 }

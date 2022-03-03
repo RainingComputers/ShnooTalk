@@ -1,25 +1,27 @@
 {
-    "moduleName": "StructPointer.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                    int temp6 = cast autoInt 2
-                    int bar = equal int temp6
-                    int* tempPtr8 = createPointer struct lol
-                    int** tempPtrPtr10 = addressAdd int* tempPtr8, bytes 0
-                    int** tempPtrPtr10 = pointerAssign int bar
-                    int* tempPtr13 = createPointer struct lol
-                    int** tempPtrPtr15 = addressAdd int* tempPtr13, bytes 0
-                    int temp18 = read int** tempPtrPtr15
-                    int temp19 = cast autoInt 2
-                    int temp17 = add int temp18, int temp19
-                    int** tempPtrPtr15 = write int temp17
-                    print int bar
-                    newLine
-                    int temp23 = cast autoInt 0
-                    int returnValue21 = equal int temp23
-                    return
-            ]
+    "StructPointer.shtk": {
+        "moduleName": "StructPointer.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp6 = cast autoInt 2
+                        int bar = equal int temp6
+                        int* tempPtr8 = createPointer struct lol
+                        int** tempPtrPtr10 = addressAdd int* tempPtr8, bytes 0
+                        int** tempPtrPtr10 = pointerAssign int bar
+                        int* tempPtr13 = createPointer struct lol
+                        int** tempPtrPtr15 = addressAdd int* tempPtr13, bytes 0
+                        int temp18 = read int** tempPtrPtr15
+                        int temp19 = cast autoInt 2
+                        int temp17 = add int temp18, int temp19
+                        int** tempPtrPtr15 = write int temp17
+                        print int bar
+                        newLine
+                        int temp23 = cast autoInt 0
+                        int returnValue21 = equal int temp23
+                        return
+                ]
+            }
         }
     }
 }

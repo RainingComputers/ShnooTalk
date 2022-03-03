@@ -1,50 +1,52 @@
 {
-    "moduleName": "FactorialRecursive.shtk",
-    "functions": {
-        "_fn_FactorialRecursive_shtk_factorial": {
-            "icode": [
-                {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
-                {"opcode": "lessThanOrEqualTo", "op1": {"type": "var", "id": 6, "name": "num", "dtype": "int"}, "op2": {"type": "temp", "id": 8, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "int"}, "op2": {"type": "temp", "id": 11, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "literal", "id": 15, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
-                {"opcode": "subtract", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "var", "id": 14, "name": "num", "dtype": "int"}, "op3": {"type": "temp", "id": 17, "dtype": "int"}},
-                {"opcode": "pass", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 20, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 21, "dtype": "int"}, "op2": {"type": "var", "id": 22, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 23, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "multiply", "op1": {"type": "temp", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "num", "dtype": "int"}, "op3": {"type": "calleeReturnValue", "id": 21, "dtype": "int"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "int"}, "op2": {"type": "temp", "id": 24, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
-        },
-        "main": {
-            "icode": [
-                {"opcode": "cast", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "literal", "id": 28, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
-                {"opcode": "pass", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 32, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 33, "dtype": "int"}, "op2": {"type": "var", "id": 34, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 35, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 33, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 36, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
-                {"opcode": "pass", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "var", "id": 39, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 40, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 41, "dtype": "int"}, "op2": {"type": "var", "id": 42, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 43, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 41, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "literal", "id": 44, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
-                {"opcode": "pass", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "var", "id": 47, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 48, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 49, "dtype": "int"}, "op2": {"type": "var", "id": 50, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 51, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 49, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 54, "dtype": "int"}, "op2": {"type": "literal", "id": 52, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
-                {"opcode": "pass", "op1": {"type": "temp", "id": 54, "dtype": "int"}, "op2": {"type": "var", "id": 55, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 56, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 57, "dtype": "int"}, "op2": {"type": "var", "id": 58, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 59, "name": "FactorialRecursive.shtk"}},
-                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 57, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 62, "dtype": "int"}, "op2": {"type": "literal", "id": 61, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 60, "dtype": "int"}, "op2": {"type": "temp", "id": 62, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
+    "FactorialRecursive.shtk": {
+        "moduleName": "FactorialRecursive.shtk",
+        "functions": {
+            "_fn_FactorialRecursive_shtk_factorial": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "lessThanOrEqualTo", "op1": {"type": "var", "id": 6, "name": "num", "dtype": "int"}, "op2": {"type": "temp", "id": 8, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "int"}, "op2": {"type": "temp", "id": 11, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "literal", "id": 15, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "subtract", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "var", "id": 14, "name": "num", "dtype": "int"}, "op3": {"type": "temp", "id": 17, "dtype": "int"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 20, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 21, "dtype": "int"}, "op2": {"type": "var", "id": 22, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 23, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "multiply", "op1": {"type": "temp", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "num", "dtype": "int"}, "op3": {"type": "calleeReturnValue", "id": 21, "dtype": "int"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "int"}, "op2": {"type": "temp", "id": 24, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "literal", "id": 28, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 32, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 33, "dtype": "int"}, "op2": {"type": "var", "id": 34, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 35, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 33, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 36, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "var", "id": 39, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 40, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 41, "dtype": "int"}, "op2": {"type": "var", "id": 42, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 43, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 41, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "literal", "id": 44, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "var", "id": 47, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 48, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 49, "dtype": "int"}, "op2": {"type": "var", "id": 50, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 51, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 49, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 54, "dtype": "int"}, "op2": {"type": "literal", "id": 52, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 54, "dtype": "int"}, "op2": {"type": "var", "id": 55, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 56, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 57, "dtype": "int"}, "op2": {"type": "var", "id": 58, "name": "_fn_FactorialRecursive_shtk_factorial", "dtype": "int"}, "op3": {"type": "module", "id": 59, "name": "FactorialRecursive.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 57, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 62, "dtype": "int"}, "op2": {"type": "literal", "id": 61, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 60, "dtype": "int"}, "op2": {"type": "temp", "id": 62, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
         }
     }
 }

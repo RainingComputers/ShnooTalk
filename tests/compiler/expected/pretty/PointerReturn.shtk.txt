@@ -1,35 +1,37 @@
 {
-    "moduleName": "PointerReturn.shtk",
-    "functions": {
-        "_fn_PointerReturn_shtk_testfunction": {
-            "icode": [
-                    int* tempPtr5 = createPointer struct this
-                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 4
-                    int* returnPointer3 = pointerAssign int* tempPtr7
-                    return
-            ]
-        },
-        "main": {
-            "icode": [
-                    int* tempPtr13 = createPointer struct a
-                    int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
-                    int temp17 = cast autoInt 1
-                    int* tempPtr15 = write int temp17
-                    int* tempPtr19 = createPointer struct a
-                    int* tempPtr21 = addressAdd int* tempPtr19, bytes 4
-                    int temp23 = cast autoInt 2
-                    int* tempPtr21 = write int temp23
-                    int* tempPtr27 = createPointer struct a
-                    passPointer int* tempPtr27, int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
-                    int* calleeReturnPointer30 = call int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
-                    int* p = pointerAssign int* calleeReturnPointer30
-                    int temp34 = read int* p
-                    print int temp34
-                    newLine
-                    int temp37 = cast autoInt 0
-                    int returnValue35 = equal int temp37
-                    return
-            ]
+    "PointerReturn.shtk": {
+        "moduleName": "PointerReturn.shtk",
+        "functions": {
+            "_fn_PointerReturn_shtk_testfunction": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct this
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 4
+                        int* returnPointer3 = pointerAssign int* tempPtr7
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int* tempPtr13 = createPointer struct a
+                        int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
+                        int temp17 = cast autoInt 1
+                        int* tempPtr15 = write int temp17
+                        int* tempPtr19 = createPointer struct a
+                        int* tempPtr21 = addressAdd int* tempPtr19, bytes 4
+                        int temp23 = cast autoInt 2
+                        int* tempPtr21 = write int temp23
+                        int* tempPtr27 = createPointer struct a
+                        passPointer int* tempPtr27, int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
+                        int* calleeReturnPointer30 = call int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
+                        int* p = pointerAssign int* calleeReturnPointer30
+                        int temp34 = read int* p
+                        print int temp34
+                        newLine
+                        int temp37 = cast autoInt 0
+                        int returnValue35 = equal int temp37
+                        return
+                ]
+            }
         }
     }
 }

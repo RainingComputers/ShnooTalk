@@ -12,7 +12,7 @@ This is meant to test the AST generated from the parser and the pretty printer t
 
 ### compile/
 
-Test the output executable produced by the compiler and the generated ShnooTalk icode (not the entire IR just the generated function IR instructions only, see `-icode` option).
+Test the output executable produced by the compiler and the generated ShnooTalk icode (not the entire IR just the generated function IR instructions only, see `-icode-all` option).
 This is also meant to test the compiler's pretty printer (the part that prints function code).
 
 If you are writing you own implementation of ShnooTalk, it is enough to make it pass the compiler tests alone the other tests are optional (probably you will have to write you own).

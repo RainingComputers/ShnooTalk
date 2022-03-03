@@ -1,36 +1,38 @@
 {
-    "moduleName": "GCDRecursive.shtk",
-    "functions": {
-        "_fn_GCDRecursive_shtk_gcd": {
-            "icode": [
-                {"opcode": "remainder", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "var", "id": 6, "name": "m", "dtype": "int"}, "op3": {"type": "var", "id": 7, "name": "n", "dtype": "int"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 10, "dtype": "int"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                {"opcode": "isEqual", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "temp", "id": 10, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 11, "dtype": "int"}, "op2": {"type": "var", "id": 12, "name": "n", "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "pass", "op1": {"type": "var", "id": 14, "name": "n", "dtype": "int"}, "op2": {"type": "var", "id": 17, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 18, "name": "GCDRecursive.shtk"}},
-                {"opcode": "remainder", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "m", "dtype": "int"}, "op3": {"type": "var", "id": 20, "name": "n", "dtype": "int"}},
-                {"opcode": "pass", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "var", "id": 22, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 23, "name": "GCDRecursive.shtk"}},
-                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 25, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 26, "name": "GCDRecursive.shtk"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 13, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 24, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
-        },
-        "main": {
-            "icode": [
-                {"opcode": "cast", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "literal", "id": 30, "dtype": "autoInt", "value": 45}, "op3": {"type": "none"}},
-                {"opcode": "pass", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "var", "id": 34, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 35, "name": "GCDRecursive.shtk"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 37, "dtype": "int"}, "op2": {"type": "literal", "id": 36, "dtype": "autoInt", "value": 60}, "op3": {"type": "none"}},
-                {"opcode": "pass", "op1": {"type": "temp", "id": 37, "dtype": "int"}, "op2": {"type": "var", "id": 38, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 39, "name": "GCDRecursive.shtk"}},
-                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 40, "dtype": "int"}, "op2": {"type": "var", "id": 41, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 42, "name": "GCDRecursive.shtk"}},
-                {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 40, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 45, "dtype": "int"}, "op2": {"type": "literal", "id": 44, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 43, "dtype": "int"}, "op2": {"type": "temp", "id": 45, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
+    "GCDRecursive.shtk": {
+        "moduleName": "GCDRecursive.shtk",
+        "functions": {
+            "_fn_GCDRecursive_shtk_gcd": {
+                "icode": [
+                    {"opcode": "remainder", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "var", "id": 6, "name": "m", "dtype": "int"}, "op3": {"type": "var", "id": 7, "name": "n", "dtype": "int"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 10, "dtype": "int"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "isEqual", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "temp", "id": 10, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 11, "dtype": "int"}, "op2": {"type": "var", "id": 12, "name": "n", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "var", "id": 14, "name": "n", "dtype": "int"}, "op2": {"type": "var", "id": 17, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 18, "name": "GCDRecursive.shtk"}},
+                    {"opcode": "remainder", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "m", "dtype": "int"}, "op3": {"type": "var", "id": 20, "name": "n", "dtype": "int"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "var", "id": 22, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 23, "name": "GCDRecursive.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 25, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 26, "name": "GCDRecursive.shtk"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 13, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 24, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "literal", "id": 30, "dtype": "autoInt", "value": 45}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 33, "dtype": "int"}, "op2": {"type": "var", "id": 34, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 35, "name": "GCDRecursive.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 37, "dtype": "int"}, "op2": {"type": "literal", "id": 36, "dtype": "autoInt", "value": 60}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 37, "dtype": "int"}, "op2": {"type": "var", "id": 38, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 39, "name": "GCDRecursive.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 40, "dtype": "int"}, "op2": {"type": "var", "id": 41, "name": "_fn_GCDRecursive_shtk_gcd", "dtype": "int"}, "op3": {"type": "module", "id": 42, "name": "GCDRecursive.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 40, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 45, "dtype": "int"}, "op2": {"type": "literal", "id": 44, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 43, "dtype": "int"}, "op2": {"type": "temp", "id": 45, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
         }
     }
 }

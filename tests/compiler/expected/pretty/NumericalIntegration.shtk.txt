@@ -1,61 +1,63 @@
 {
-    "moduleName": "NumericalIntegration.shtk",
-    "functions": {
-        "_fn_NumericalIntegration_shtk_f": {
-            "icode": [
-                    float returnValue3 = equal float x
-                    return
-            ]
-        },
-        "_fn_NumericalIntegration_shtk_integrate": {
-            "icode": [
-                    float temp10 = cast autoFloat 0.000000
-                    float sum = equal float temp10
-                    float temp14 = subtract float b, float a
-                    float temp16 = divide float temp14, float n
-                    float w = equal float temp16
-                    int temp19 = cast autoInt 0
-                    int i = equal int temp19
-                _for_true_l17_c4:
-                    int temp25 = cast float n
-                    flag = lessThan int i, int temp25
-                    if(not flag) goto _for_false_l17_c4
-                    float temp30 = cast int i
-                    float temp33 = cast autoFloat 0.500000
-                    float temp32 = add float temp30, float temp33
-                    float temp35 = multiply float temp32, float w
-                    float temp36 = add float a, float temp35
-                    pass float temp36, float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
-                    float calleeReturnValue40 = call float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
-                    float temp43 = multiply float w, float calleeReturnValue40
-                    float area = equal float temp43
-                    float temp46 = add float sum, float area
-                    float sum = equal float temp46
-                _for_cont_true_l17_c4:
-                    int temp50 = cast autoInt 1
-                    int temp49 = add int i, int temp50
-                    int i = equal int temp49
-                    goto _for_true_l17_c4
-                _for_false_l17_c4:
-                    float returnValue51 = equal float sum
-                    return
-            ]
-        },
-        "main": {
-            "icode": [
-                    float temp60 = cast autoFloat 0.000000
-                    pass float temp60, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                    float temp64 = cast autoFloat 3.000000
-                    pass float temp64, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                    float temp68 = cast autoFloat 10000.000000
-                    pass float temp68, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                    float calleeReturnValue71 = call float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                    print float calleeReturnValue71
-                    newLine
-                    int temp76 = cast autoInt 0
-                    int returnValue74 = equal int temp76
-                    return
-            ]
+    "NumericalIntegration.shtk": {
+        "moduleName": "NumericalIntegration.shtk",
+        "functions": {
+            "_fn_NumericalIntegration_shtk_f": {
+                "icode": [
+                        float returnValue3 = equal float x
+                        return
+                ]
+            },
+            "_fn_NumericalIntegration_shtk_integrate": {
+                "icode": [
+                        float temp10 = cast autoFloat 0.000000
+                        float sum = equal float temp10
+                        float temp14 = subtract float b, float a
+                        float temp16 = divide float temp14, float n
+                        float w = equal float temp16
+                        int temp19 = cast autoInt 0
+                        int i = equal int temp19
+                    _for_true_l17_c4:
+                        int temp25 = cast float n
+                        flag = lessThan int i, int temp25
+                        if(not flag) goto _for_false_l17_c4
+                        float temp30 = cast int i
+                        float temp33 = cast autoFloat 0.500000
+                        float temp32 = add float temp30, float temp33
+                        float temp35 = multiply float temp32, float w
+                        float temp36 = add float a, float temp35
+                        pass float temp36, float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
+                        float calleeReturnValue40 = call float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
+                        float temp43 = multiply float w, float calleeReturnValue40
+                        float area = equal float temp43
+                        float temp46 = add float sum, float area
+                        float sum = equal float temp46
+                    _for_cont_true_l17_c4:
+                        int temp50 = cast autoInt 1
+                        int temp49 = add int i, int temp50
+                        int i = equal int temp49
+                        goto _for_true_l17_c4
+                    _for_false_l17_c4:
+                        float returnValue51 = equal float sum
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        float temp60 = cast autoFloat 0.000000
+                        pass float temp60, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float temp64 = cast autoFloat 3.000000
+                        pass float temp64, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float temp68 = cast autoFloat 10000.000000
+                        pass float temp68, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float calleeReturnValue71 = call float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        print float calleeReturnValue71
+                        newLine
+                        int temp76 = cast autoInt 0
+                        int returnValue74 = equal int temp76
+                        return
+                ]
+            }
         }
     }
 }

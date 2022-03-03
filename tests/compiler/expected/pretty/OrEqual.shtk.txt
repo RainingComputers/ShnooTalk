@@ -1,20 +1,22 @@
 {
-    "moduleName": "OrEqual.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                    int temp5 = cast autoInt 2
-                    int a = equal int temp5
-                    int temp8 = cast autoInt 1
-                    int b = equal int temp8
-                    int temp11 = bitwiseOr int b, int a
-                    int b = equal int temp11
-                    print int b
-                    newLine
-                    int temp15 = cast autoInt 0
-                    int returnValue13 = equal int temp15
-                    return
-            ]
+    "OrEqual.shtk": {
+        "moduleName": "OrEqual.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp5 = cast autoInt 2
+                        int a = equal int temp5
+                        int temp8 = cast autoInt 1
+                        int b = equal int temp8
+                        int temp11 = bitwiseOr int b, int a
+                        int b = equal int temp11
+                        print int b
+                        newLine
+                        int temp15 = cast autoInt 0
+                        int returnValue13 = equal int temp15
+                        return
+                ]
+            }
         }
     }
 }

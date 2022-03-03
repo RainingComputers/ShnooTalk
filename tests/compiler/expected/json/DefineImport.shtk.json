@@ -1,30 +1,37 @@
 {
-    "moduleName": "DefineImport.shtk",
-    "functions": {
-        "_fn_DefineImport_shtk_test": {
-            "icode": [
-                {"opcode": "printString", "op1": {"type": "var", "id": 3, "name": "a", "dtype": "ubyte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
-        },
-        "main": {
-            "icode": [
-                {"opcode": "print", "op1": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 123}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "print", "op1": {"type": "literal", "id": 8, "dtype": "autoFloat", "value": 1.23}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "printString", "op1": {"type": "stringData", "id": 9, "name": "_str_TestModules_RandomDefine_shtk__l1_c23", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "printString", "op1": {"type": "stringData", "id": 10, "name": "_str_TestModules_RandomDefine_shtk__l1_c23", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 13, "dtype": "ubyte"}, "op2": {"type": "stringData", "id": 11, "name": "_str_TestModules_RandomDefine_shtk__l1_c23", "size": 7}, "op3": {"type": "none"}},
-                {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 13, "dtype": "ubyte"}, "op2": {"type": "var", "id": 14, "name": "_fn_DefineImport_shtk_test", "dtype": "void"}, "op3": {"type": "module", "id": 15, "name": "DefineImport.shtk"}},
-                {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 16, "dtype": "void"}, "op2": {"type": "var", "id": 17, "name": "_fn_DefineImport_shtk_test", "dtype": "void"}, "op3": {"type": "module", "id": 18, "name": "DefineImport.shtk"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "literal", "id": 20, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 19, "dtype": "int"}, "op2": {"type": "temp", "id": 21, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
+    "DefineImport.shtk": {
+        "moduleName": "DefineImport.shtk",
+        "functions": {
+            "_fn_DefineImport_shtk_test": {
+                "icode": [
+                    {"opcode": "printString", "op1": {"type": "var", "id": 3, "name": "a", "dtype": "ubyte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "print", "op1": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 123}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "literal", "id": 8, "dtype": "autoFloat", "value": 1.23}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 9, "name": "_str_TestModules_RandomDefine_shtk__l1_c23", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 10, "name": "_str_TestModules_RandomDefine_shtk__l1_c23", "size": 7}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 13, "dtype": "ubyte"}, "op2": {"type": "stringData", "id": 11, "name": "_str_TestModules_RandomDefine_shtk__l1_c23", "size": 7}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 13, "dtype": "ubyte"}, "op2": {"type": "var", "id": 14, "name": "_fn_DefineImport_shtk_test", "dtype": "void"}, "op3": {"type": "module", "id": 15, "name": "DefineImport.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 16, "dtype": "void"}, "op2": {"type": "var", "id": 17, "name": "_fn_DefineImport_shtk_test", "dtype": "void"}, "op3": {"type": "module", "id": 18, "name": "DefineImport.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "literal", "id": 20, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 19, "dtype": "int"}, "op2": {"type": "temp", "id": 21, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    },
+    "TestModules/RandomDefine.shtk": {
+        "moduleName": "TestModules/RandomDefine.shtk",
+        "functions": {
         }
     }
 }

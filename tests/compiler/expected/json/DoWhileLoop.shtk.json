@@ -1,25 +1,27 @@
 {
-    "moduleName": "DoWhileLoop.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "createLabel", "op1": {"type": "label", "id": 6, "name": "_do_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
-                {"opcode": "add", "op1": {"type": "temp", "id": 10, "dtype": "int"}, "op2": {"type": "var", "id": 8, "name": "a", "dtype": "int"}, "op3": {"type": "temp", "id": 11, "dtype": "int"}},
-                {"opcode": "equal", "op1": {"type": "var", "id": 8, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 10, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "printString", "op1": {"type": "stringData", "id": 12, "name": "_str_DoWhileLoop_shtk__l14_c16", "size": 5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
-                {"opcode": "lessThan", "op1": {"type": "var", "id": 13, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 15, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 7, "name": "_do_false_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "goto", "op1": {"type": "label", "id": 6, "name": "_do_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "createLabel", "op1": {"type": "label", "id": 7, "name": "_do_false_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 18, "dtype": "int"}, "op2": {"type": "literal", "id": 17, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 16, "dtype": "int"}, "op2": {"type": "temp", "id": 18, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
+    "DoWhileLoop.shtk": {
+        "moduleName": "DoWhileLoop.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 3, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 6, "name": "_do_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 9, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "add", "op1": {"type": "temp", "id": 10, "dtype": "int"}, "op2": {"type": "var", "id": 8, "name": "a", "dtype": "int"}, "op3": {"type": "temp", "id": 11, "dtype": "int"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 8, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 10, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 12, "name": "_str_DoWhileLoop_shtk__l14_c16", "size": 5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
+                    {"opcode": "lessThan", "op1": {"type": "var", "id": 13, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 15, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 7, "name": "_do_false_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "goto", "op1": {"type": "label", "id": 6, "name": "_do_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 7, "name": "_do_false_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 18, "dtype": "int"}, "op2": {"type": "literal", "id": 17, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 16, "dtype": "int"}, "op2": {"type": "temp", "id": 18, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
         }
     }
 }

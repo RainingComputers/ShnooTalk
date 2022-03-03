@@ -1,59 +1,61 @@
 {
-    "moduleName": "StructFieldAsIndex.shtk",
-    "functions": {
-        "_fn_StructFieldAsIndex_shtk_changeArr": {
-            "icode": [
-                    int* tempPtr5 = createPointer struct position
-                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
-                    int temp9 = cast autoInt 0
-                    int* tempPtr7 = write int temp9
-                    int* tempPtr12 = createPointer struct position
-                    int* tempPtr14 = addressAdd int* tempPtr12, bytes 0
-                    int* tempPtr15 = createPointer int arr
-                    int temp18 = read int* tempPtr14
-                    void* tempPtr17 = addressMultiply int temp18, bytes 4
-                    int* tempPtr19 = addressAdd int* tempPtr15, void* tempPtr17
-                    int temp21 = cast autoInt 10
-                    int* tempPtr19 = write int temp21
-                    return
-            ]
-        },
-        "main": {
-            "icode": [
-                    int* tempPtr29 = createPointer int arr
-                    int temp30 = cast autoInt 1
-                    int* tempPtr29 = write int temp30
-                    int* tempPtr32 = addressAdd int* tempPtr29, bytes 4
-                    int temp33 = cast autoInt 2
-                    int* tempPtr32 = write int temp33
-                    int* tempPtr35 = addressAdd int* tempPtr32, bytes 4
-                    int temp36 = cast autoInt 3
-                    int* tempPtr35 = write int temp36
-                    int* tempPtr39 = createPointer int arr
-                    passPointer int* tempPtr39, void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
-                    void calleeReturnValue42 = call void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
-                    int* tempPtr47 = createPointer int arr
-                    void* tempPtr49 = addressMultiply autoInt 0, bytes 4
-                    int* tempPtr50 = addressAdd int* tempPtr47, void* tempPtr49
-                    int temp51 = read int* tempPtr50
-                    print int temp51
-                    newLine
-                    int* tempPtr54 = createPointer int arr
-                    void* tempPtr56 = addressMultiply autoInt 1, bytes 4
-                    int* tempPtr57 = addressAdd int* tempPtr54, void* tempPtr56
-                    int temp58 = read int* tempPtr57
-                    print int temp58
-                    newLine
-                    int* tempPtr61 = createPointer int arr
-                    void* tempPtr63 = addressMultiply autoInt 2, bytes 4
-                    int* tempPtr64 = addressAdd int* tempPtr61, void* tempPtr63
-                    int temp65 = read int* tempPtr64
-                    print int temp65
-                    newLine
-                    int temp68 = cast autoInt 0
-                    int returnValue66 = equal int temp68
-                    return
-            ]
+    "StructFieldAsIndex.shtk": {
+        "moduleName": "StructFieldAsIndex.shtk",
+        "functions": {
+            "_fn_StructFieldAsIndex_shtk_changeArr": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct position
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp9 = cast autoInt 0
+                        int* tempPtr7 = write int temp9
+                        int* tempPtr12 = createPointer struct position
+                        int* tempPtr14 = addressAdd int* tempPtr12, bytes 0
+                        int* tempPtr15 = createPointer int arr
+                        int temp18 = read int* tempPtr14
+                        void* tempPtr17 = addressMultiply int temp18, bytes 4
+                        int* tempPtr19 = addressAdd int* tempPtr15, void* tempPtr17
+                        int temp21 = cast autoInt 10
+                        int* tempPtr19 = write int temp21
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int* tempPtr29 = createPointer int arr
+                        int temp30 = cast autoInt 1
+                        int* tempPtr29 = write int temp30
+                        int* tempPtr32 = addressAdd int* tempPtr29, bytes 4
+                        int temp33 = cast autoInt 2
+                        int* tempPtr32 = write int temp33
+                        int* tempPtr35 = addressAdd int* tempPtr32, bytes 4
+                        int temp36 = cast autoInt 3
+                        int* tempPtr35 = write int temp36
+                        int* tempPtr39 = createPointer int arr
+                        passPointer int* tempPtr39, void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
+                        void calleeReturnValue42 = call void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
+                        int* tempPtr47 = createPointer int arr
+                        void* tempPtr49 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr50 = addressAdd int* tempPtr47, void* tempPtr49
+                        int temp51 = read int* tempPtr50
+                        print int temp51
+                        newLine
+                        int* tempPtr54 = createPointer int arr
+                        void* tempPtr56 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr57 = addressAdd int* tempPtr54, void* tempPtr56
+                        int temp58 = read int* tempPtr57
+                        print int temp58
+                        newLine
+                        int* tempPtr61 = createPointer int arr
+                        void* tempPtr63 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr64 = addressAdd int* tempPtr61, void* tempPtr63
+                        int temp65 = read int* tempPtr64
+                        print int temp65
+                        newLine
+                        int temp68 = cast autoInt 0
+                        int returnValue66 = equal int temp68
+                        return
+                ]
+            }
         }
     }
 }

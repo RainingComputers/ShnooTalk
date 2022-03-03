@@ -1,32 +1,34 @@
 {
-    "moduleName": "PointerCast.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                    int* tempPtr5 = createPointer struct a
-                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
-                    int temp9 = cast autoInt 1
-                    int* tempPtr7 = write int temp9
-                    int* tempPtr11 = createPointer struct a
-                    int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
-                    int temp15 = cast autoInt 2
-                    int* tempPtr13 = write int temp15
-                    int* tempPtr18 = pointerCast struct a
-                    int* p = pointerAssign int* tempPtr18
-                    void* tempPtr22 = addressMultiply autoInt 0, bytes 4
-                    int* tempPtr23 = addressAdd int* p, void* tempPtr22
-                    int temp24 = read int* tempPtr23
-                    print int temp24
-                    newLine
-                    void* tempPtr28 = addressMultiply autoInt 1, bytes 4
-                    int* tempPtr29 = addressAdd int* p, void* tempPtr28
-                    int temp30 = read int* tempPtr29
-                    print int temp30
-                    newLine
-                    int temp33 = cast autoInt 0
-                    int returnValue31 = equal int temp33
-                    return
-            ]
+    "PointerCast.shtk": {
+        "moduleName": "PointerCast.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct a
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp9 = cast autoInt 1
+                        int* tempPtr7 = write int temp9
+                        int* tempPtr11 = createPointer struct a
+                        int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                        int temp15 = cast autoInt 2
+                        int* tempPtr13 = write int temp15
+                        int* tempPtr18 = pointerCast struct a
+                        int* p = pointerAssign int* tempPtr18
+                        void* tempPtr22 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr23 = addressAdd int* p, void* tempPtr22
+                        int temp24 = read int* tempPtr23
+                        print int temp24
+                        newLine
+                        void* tempPtr28 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr29 = addressAdd int* p, void* tempPtr28
+                        int temp30 = read int* tempPtr29
+                        print int temp30
+                        newLine
+                        int temp33 = cast autoInt 0
+                        int returnValue31 = equal int temp33
+                        return
+                ]
+            }
         }
     }
 }

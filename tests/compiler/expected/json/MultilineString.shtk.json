@@ -1,16 +1,18 @@
 {
-    "moduleName": "MultilineString.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "ubyte"}, "op2": {"type": "var", "id": 3, "name": "a", "dtype": "ubyte"}, "op3": {"type": "none"}},
-                {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 6, "dtype": "ubyte"}, "op2": {"type": "stringData", "id": 4, "name": "_str_MultilineString_shtk__l7_c8", "size": 54}, "op3": {"type": "none"}},
-                {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 5, "dtype": "ubyte"}, "op2": {"type": "tempPtr", "id": 6, "dtype": "ubyte"}, "op3": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 54}},
-                {"opcode": "printString", "op1": {"type": "var", "id": 8, "name": "a", "dtype": "ubyte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "int"}, "op2": {"type": "temp", "id": 11, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
+    "MultilineString.shtk": {
+        "moduleName": "MultilineString.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "ubyte"}, "op2": {"type": "var", "id": 3, "name": "a", "dtype": "ubyte"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 6, "dtype": "ubyte"}, "op2": {"type": "stringData", "id": 4, "name": "_str_MultilineString_shtk__l7_c8", "size": 54}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 5, "dtype": "ubyte"}, "op2": {"type": "tempPtr", "id": 6, "dtype": "ubyte"}, "op3": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 54}},
+                    {"opcode": "printString", "op1": {"type": "var", "id": 8, "name": "a", "dtype": "ubyte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "int"}, "op2": {"type": "temp", "id": 11, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
         }
     }
 }

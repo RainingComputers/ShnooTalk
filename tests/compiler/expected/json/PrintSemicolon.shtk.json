@@ -1,19 +1,21 @@
 {
-    "moduleName": "PrintSemicolon.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_PrintSemicolon_shtk__l5_c12", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "printString", "op1": {"type": "stringData", "id": 4, "name": "_str_PrintSemicolon_shtk__l5_c21", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "printString", "op1": {"type": "stringData", "id": 5, "name": "_str_PrintSemicolon_shtk__l5_c30", "size": 8}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "printString", "op1": {"type": "stringData", "id": 6, "name": "_str_PrintSemicolon_shtk__l5_c21", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                {"opcode": "cast", "op1": {"type": "temp", "id": 9, "dtype": "int"}, "op2": {"type": "literal", "id": 8, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                {"opcode": "equal", "op1": {"type": "returnValue", "id": 7, "dtype": "int"}, "op2": {"type": "temp", "id": 9, "dtype": "int"}, "op3": {"type": "none"}},
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
+    "PrintSemicolon.shtk": {
+        "moduleName": "PrintSemicolon.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_PrintSemicolon_shtk__l5_c12", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 4, "name": "_str_PrintSemicolon_shtk__l5_c21", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 5, "name": "_str_PrintSemicolon_shtk__l5_c30", "size": 8}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 6, "name": "_str_PrintSemicolon_shtk__l5_c21", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 9, "dtype": "int"}, "op2": {"type": "literal", "id": 8, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 7, "dtype": "int"}, "op2": {"type": "temp", "id": 9, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
         }
     }
 }

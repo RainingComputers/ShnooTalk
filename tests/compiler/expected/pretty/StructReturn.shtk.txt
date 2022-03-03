@@ -1,52 +1,54 @@
 {
-    "moduleName": "StructReturn.shtk",
-    "functions": {
-        "_fn_StructReturn_shtk_atest": {
-            "icode": [
-                    int* tempPtr5 = createPointer struct res
-                    int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
-                    int temp9 = cast autoInt 2
-                    int* tempPtr7 = write int temp9
-                    int* tempPtr11 = createPointer struct res
-                    int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
-                    int temp15 = cast autoInt 3
-                    int* tempPtr13 = write int temp15
-                    int* tempPtr18 = createPointer struct returnValue16
-                    int* tempPtr19 = createPointer struct res
-                    int* tempPtr18 = memoryCopy int* tempPtr19, autoInt 8
-                    return
-            ]
-        },
-        "_fn_StructReturn_shtk_btest": {
-            "icode": [
-                    int temp26 = cast autoInt 10
-                    int returnValue24 = equal int temp26
-                    return
-            ]
-        },
-        "main": {
-            "icode": [
-                    struct calleeReturnValue31 = call struct _fn_StructReturn_shtk_atest, module StructReturn.shtk
-                    int* tempPtr34 = createPointer struct c
-                    int* tempPtr35 = createPointer struct calleeReturnValue31
-                    int* tempPtr34 = memoryCopy int* tempPtr35, autoInt 8
-                    int* tempPtr38 = createPointer struct c
-                    int* tempPtr40 = addressAdd int* tempPtr38, bytes 0
-                    int temp41 = read int* tempPtr40
-                    print int temp41
-                    newLine
-                    int* tempPtr43 = createPointer struct c
-                    int* tempPtr45 = addressAdd int* tempPtr43, bytes 4
-                    int temp46 = read int* tempPtr45
-                    print int temp46
-                    newLine
-                    int calleeReturnValue47 = call int _fn_StructReturn_shtk_btest, module StructReturn.shtk
-                    print int calleeReturnValue47
-                    newLine
-                    int temp52 = cast autoInt 0
-                    int returnValue50 = equal int temp52
-                    return
-            ]
+    "StructReturn.shtk": {
+        "moduleName": "StructReturn.shtk",
+        "functions": {
+            "_fn_StructReturn_shtk_atest": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct res
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp9 = cast autoInt 2
+                        int* tempPtr7 = write int temp9
+                        int* tempPtr11 = createPointer struct res
+                        int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                        int temp15 = cast autoInt 3
+                        int* tempPtr13 = write int temp15
+                        int* tempPtr18 = createPointer struct returnValue16
+                        int* tempPtr19 = createPointer struct res
+                        int* tempPtr18 = memoryCopy int* tempPtr19, autoInt 8
+                        return
+                ]
+            },
+            "_fn_StructReturn_shtk_btest": {
+                "icode": [
+                        int temp26 = cast autoInt 10
+                        int returnValue24 = equal int temp26
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        struct calleeReturnValue31 = call struct _fn_StructReturn_shtk_atest, module StructReturn.shtk
+                        int* tempPtr34 = createPointer struct c
+                        int* tempPtr35 = createPointer struct calleeReturnValue31
+                        int* tempPtr34 = memoryCopy int* tempPtr35, autoInt 8
+                        int* tempPtr38 = createPointer struct c
+                        int* tempPtr40 = addressAdd int* tempPtr38, bytes 0
+                        int temp41 = read int* tempPtr40
+                        print int temp41
+                        newLine
+                        int* tempPtr43 = createPointer struct c
+                        int* tempPtr45 = addressAdd int* tempPtr43, bytes 4
+                        int temp46 = read int* tempPtr45
+                        print int temp46
+                        newLine
+                        int calleeReturnValue47 = call int _fn_StructReturn_shtk_btest, module StructReturn.shtk
+                        print int calleeReturnValue47
+                        newLine
+                        int temp52 = cast autoInt 0
+                        int returnValue50 = equal int temp52
+                        return
+                ]
+            }
         }
     }
 }

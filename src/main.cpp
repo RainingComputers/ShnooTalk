@@ -68,6 +68,12 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
         return 0;
     }
 
+    if (option == "-icode-all")
+    {
+        pp::printModulesMapIcodeOnly(modulesMap, false);
+        return 0;
+    }
+
     if (option == "-json-ir")
     {
         pp::printModule(modulesMap[moduleName], true);
@@ -83,6 +89,12 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
     if (option == "-json-ir-all")
     {
         pp::printModulesMap(modulesMap, true);
+        return 0;
+    }
+
+    if (option == "-json-icode-all")
+    {
+        pp::printModulesMapIcodeOnly(modulesMap, true);
         return 0;
     }
 

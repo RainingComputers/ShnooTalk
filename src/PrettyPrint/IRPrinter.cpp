@@ -242,6 +242,12 @@ namespace pp
         jsonp.end();
     }
 
+    void printModule(const icode::ModuleDescription& moduleDescription, bool jsonIR)
+    {
+        FlatJSONPrinter jsonp(0);
+        printModuleDescription(moduleDescription, jsonp, jsonIR);
+    }
+
     void printModulesMap(const icode::StringModulesMap& modulesMap, bool jsonIR)
     {
         FlatJSONPrinter jsonp(0);
@@ -254,12 +260,6 @@ namespace pp
         }
 
         jsonp.end();
-    }
-
-    void printModule(const icode::ModuleDescription& moduleDescription, bool jsonIR)
-    {
-        FlatJSONPrinter jsonp(0);
-        printModuleDescription(moduleDescription, jsonp, jsonIR);
     }
 
     void printFunctionDescriptionIcodeOnly(const icode::FunctionDescription& functionDesc,
@@ -298,15 +298,34 @@ namespace pp
         jsonp.end();
     }
 
-    void printModuleIcodeOnly(const icode::ModuleDescription& moduleDescription, bool jsonIR)
+    void printModuleDescriptionIcodeOnly(const icode::ModuleDescription& moduleDescription, FlatJSONPrinter& jsonp, bool jsonIR) 
     {
-        FlatJSONPrinter jsonp(0);
         jsonp.begin();
 
         jsonp.printString("moduleName", moduleDescription.name);
 
         FlatJSONPrinter functionsPrinter = jsonp.beginNested("functions");
         printFunctionDescriptionMapIcodeOnly(moduleDescription.functions, functionsPrinter, jsonIR);
+
+        jsonp.end();
+    }
+
+    void printModuleIcodeOnly(const icode::ModuleDescription& moduleDescription, bool jsonIR)
+    {
+        FlatJSONPrinter jsonp(0);
+        printModuleDescriptionIcodeOnly(moduleDescription, jsonp, jsonIR);
+    }
+
+    void printModulesMapIcodeOnly(const icode::StringModulesMap& modulesMap, bool jsonIR)
+    {
+        FlatJSONPrinter jsonp(0);
+        jsonp.begin();
+
+        for (auto pair : modulesMap)
+        {
+            FlatJSONPrinter moduleDescriptionPrinter = jsonp.beginNested(pair.first);
+            printModuleDescriptionIcodeOnly(pair.second, moduleDescriptionPrinter, jsonIR);
+        }
 
         jsonp.end();
     }

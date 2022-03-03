@@ -1,16 +1,18 @@
 {
-    "moduleName": "MultilineString.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                    ubyte* tempPtr5 = createPointer ubyte a
-                    ubyte* tempPtr6 = createPointer stringData _str_MultilineString_shtk__l7_c8
-                    ubyte* tempPtr5 = memoryCopy ubyte* tempPtr6, autoInt 54
-                    printString ubyte a
-                    int temp11 = cast autoInt 0
-                    int returnValue9 = equal int temp11
-                    return
-            ]
+    "MultilineString.shtk": {
+        "moduleName": "MultilineString.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        ubyte* tempPtr5 = createPointer ubyte a
+                        ubyte* tempPtr6 = createPointer stringData _str_MultilineString_shtk__l7_c8
+                        ubyte* tempPtr5 = memoryCopy ubyte* tempPtr6, autoInt 54
+                        printString ubyte a
+                        int temp11 = cast autoInt 0
+                        int returnValue9 = equal int temp11
+                        return
+                ]
+            }
         }
     }
 }

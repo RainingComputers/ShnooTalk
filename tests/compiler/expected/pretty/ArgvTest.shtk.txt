@@ -1,30 +1,32 @@
 {
-    "moduleName": "ArgvTest.shtk",
-    "functions": {
-        "_fn_ArgvTest_shtk_getArg": {
-            "icode": [
-                    void* tempPtr7 = addressMultiply int idx, bytes 8
-                    ulong* tempPtr8 = addressAdd ulong* argv, void* tempPtr7
-                    ulong temp11 = read ulong* tempPtr8
-                    ulong temp12 = cast autoInt 0
-                    ulong temp10 = add ulong temp11, ulong temp12
-                    ubyte* tempPtr13 = pointerCast ulong temp10
-                    ubyte* returnPointer3 = pointerAssign ubyte* tempPtr13
-                    return
-            ]
-        },
-        "main": {
-            "icode": [
-                    passPointer ulong* argv, ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
-                    int temp23 = cast autoInt 0
-                    pass int temp23, ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
-                    ubyte* calleeReturnPointer26 = call ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
-                    printString ubyte* calleeReturnPointer26
-                    newLine
-                    int temp31 = cast autoInt 0
-                    int returnValue29 = equal int temp31
-                    return
-            ]
+    "ArgvTest.shtk": {
+        "moduleName": "ArgvTest.shtk",
+        "functions": {
+            "_fn_ArgvTest_shtk_getArg": {
+                "icode": [
+                        void* tempPtr7 = addressMultiply int idx, bytes 8
+                        ulong* tempPtr8 = addressAdd ulong* argv, void* tempPtr7
+                        ulong temp11 = read ulong* tempPtr8
+                        ulong temp12 = cast autoInt 0
+                        ulong temp10 = add ulong temp11, ulong temp12
+                        ubyte* tempPtr13 = pointerCast ulong temp10
+                        ubyte* returnPointer3 = pointerAssign ubyte* tempPtr13
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        passPointer ulong* argv, ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
+                        int temp23 = cast autoInt 0
+                        pass int temp23, ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
+                        ubyte* calleeReturnPointer26 = call ubyte _fn_ArgvTest_shtk_getArg, module ArgvTest.shtk
+                        printString ubyte* calleeReturnPointer26
+                        newLine
+                        int temp31 = cast autoInt 0
+                        int returnValue29 = equal int temp31
+                        return
+                ]
+            }
         }
     }
 }

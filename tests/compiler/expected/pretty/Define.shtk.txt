@@ -1,20 +1,22 @@
 {
-    "moduleName": "Define.shtk",
-    "functions": {
-        "main": {
-            "icode": [
-                    print autoInt -5
-                    space
-                    print autoFloat 3.500000
-                    space
-                    printString stringData _str_Define_shtk__l5_c11
-                    space
-                    print autoFloat -3.500000
-                    newLine
-                    int temp9 = cast autoInt 0
-                    int returnValue7 = equal int temp9
-                    return
-            ]
+    "Define.shtk": {
+        "moduleName": "Define.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        print autoInt -5
+                        space
+                        print autoFloat 3.500000
+                        space
+                        printString stringData _str_Define_shtk__l5_c11
+                        space
+                        print autoFloat -3.500000
+                        newLine
+                        int temp9 = cast autoInt 0
+                        int returnValue7 = equal int temp9
+                        return
+                ]
+            }
         }
     }
 }
