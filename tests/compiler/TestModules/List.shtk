@@ -29,6 +29,15 @@ fn init(mut self: List, items: T[], len: int)
     copy(self.items, items, len, 0)
 }
 
+fn createList(items: T[], len: int) -> List
+{
+    var result: List
+
+    result.init(items, len)
+
+    return result
+}
+
 fn expand(mut self: List, cap: int)
 {
     if cap <= self.cap return void

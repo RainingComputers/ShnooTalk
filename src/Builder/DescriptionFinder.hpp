@@ -36,6 +36,8 @@ public:
 
     icode::ModuleDescription* getModuleFromUnit(const Unit& unit);
 
+    icode::ModuleDescription* getModuleFromType(const icode::TypeDescription& type);
+
     icode::ModuleDescription* getModuleFromToken(const Token& moduleNameToken);
 
     Unit getUnitFromToken(const Token& nameToken);
@@ -45,6 +47,10 @@ public:
     icode::FunctionDescription getFunction(const Token& nameToken);
 
     std::vector<Unit> getFormalParameters(const icode::FunctionDescription& function);
+
+    std::pair<std::string, icode::FunctionDescription> getFunctionByParamTypes(const Token& token,
+                                              const icode::TypeDescription& type,
+                                              const std::vector<Unit>& params);
 };
 
 #endif

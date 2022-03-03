@@ -1,4 +1,5 @@
 #include "NameMangle.hpp"
+#include "TypeCheck.hpp"
 
 #include "DescriptionFinder.hpp"
 
@@ -23,6 +24,11 @@ void DescriptionFinder::setWorkingModule(ModuleDescription* moduleDescription)
 void DescriptionFinder::setWorkingFunction(FunctionDescription* functionDescription)
 {
     workingFunction = functionDescription;
+}
+
+ModuleDescription* DescriptionFinder::getModuleFromType(const TypeDescription& type)
+{
+    return &modulesMap.at(type.moduleName);
 }
 
 ModuleDescription* DescriptionFinder::getModuleFromUnit(const Unit& unit)
@@ -182,4 +188,42 @@ std::vector<Unit> DescriptionFinder::getFormalParameters(const FunctionDescripti
     }
 
     return formalParameters;
+}
+
+bool isSameParamsType(const FunctionDescription& function, const std::vector<Unit>& params)
+{
+    for (size_t i = 0; i < params.size(); i += 1)
+    {
+        const TypeDescription& actualParamType = params[i].type();
+        const TypeDescription& formalParamType = function.symbols.at(function.parameters[i]);
+
+        if (!isSameTypeDescription(formalParamType, actualParamType))
+            return false;
+    }
+
+    return true;
+}
+
+std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByParamTypes(const Token& token,
+                                                               const TypeDescription& type,
+                                                               const std::vector<Unit>& params)
+{
+    for (auto pair : workingModule->functions)
+    {
+        const FunctionDescription& function = pair.second;
+        const std::string& functionName = pair.first;
+
+        if (!isSameTypeDescription(function.functionReturnType, type))
+            continue;
+
+        if (function.numParameters() != params.size())
+            continue;
+
+        if (!isSameParamsType(function, params))
+            continue;
+
+        return std::pair<std::string, FunctionDescription>(functionName, function);
+    }
+
+    console.compileErrorOnToken("Cannot find constructor", token);
 }

@@ -69,6 +69,8 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
     ctx.ir.resetWorkingModule();
 
     size_t childNodeCounter = 1;
+    if (root.type == node::MAKE)
+        childNodeCounter = 0;
 
     std::string genericModuleName = "";
 
@@ -139,7 +141,7 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
         return getMonomorphizedTypeDescriptionFromNode(ctx, root);
 
     size_t childNodeCounter = 1;
-    if (root.type == node::GENERIC_TYPE_PARAM)
+    if (root.type == node::GENERIC_TYPE_PARAM || root.type == node::MAKE)
         childNodeCounter = 0;
 
     while (root.isNthChild(node::PARAM, childNodeCounter) || root.isNthChild(node::MUT_PARAM, childNodeCounter))

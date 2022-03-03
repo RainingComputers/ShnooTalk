@@ -29,16 +29,18 @@ bool isSameDim(TypeDescription type1, TypeDescription type2)
     return true;
 }
 
+bool isSameTypeDescription(const TypeDescription& type1, const TypeDescription& type2)
+{
+    if (type1.dtype == STRUCT || type2.dtype == STRUCT)
+        return (type1.dtypeName == type2.dtypeName && isSameDim(type1, type2) && type1.moduleName == type2.moduleName);
+
+    return (dataTypeIsEqual(type1.dtype, type2.dtype) && isSameDim(type1, type2));  
+}
+
 bool isSameType(const Unit& unit1, const Unit& unit2)
 {
     if (unit1.isStringLtrl() && unit2.isStringLtrl())
         return true;
 
-    TypeDescription type1 = unit1.type();
-    TypeDescription type2 = unit2.type();
-
-    if (type1.dtype == STRUCT || type2.dtype == STRUCT)
-        return (type1.dtypeName == type2.dtypeName && isSameDim(type1, type2) && type1.moduleName == type2.moduleName);
-
-    return (dataTypeIsEqual(type1.dtype, type2.dtype) && isSameDim(type1, type2));
+    return isSameTypeDescription(unit1.type(), unit2.type());
 }
