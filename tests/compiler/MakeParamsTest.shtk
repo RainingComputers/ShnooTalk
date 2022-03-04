@@ -1,0 +1,75 @@
+# x:1 y:2.000000 z:3.500000
+# x:10 y:2.000000 z:20.000000
+# x:10 y:2.000000 z:2.500000
+# x:50 y:2.000000 z:60.500000
+
+struct FooBar
+{
+    var x: int, y: float, z: double
+}
+
+fn printFoobar(f: FooBar)
+{
+    println("x:"; f.x, "y:"; f.y, "z:"; f.z)
+}
+
+fn create1() -> FooBar
+{
+    var f: FooBar
+
+    f.x = 1
+    f.y = 2.0
+    f.z = 3.5
+
+    return f
+}
+
+fn create2(x: int, z: double) -> FooBar
+{
+    var f: FooBar
+
+    f.x = x
+    f.y = 2.0
+    f.z = z
+
+    return f
+}
+
+fn create3(g: FooBar, z: double) -> FooBar
+{
+    var f: FooBar
+
+    f.x = g.x
+    f.y = g.y
+    f.z = z
+
+    return f
+}
+
+fn create4(x: int, g: FooBar, z: double) -> FooBar
+{
+    var f: FooBar
+
+    f.x = x
+    f.y = g.y
+    f.z = z
+
+    return f
+}
+
+fn main() -> int
+{
+    var a: FooBar = make(FooBar)
+    printFoobar(a)
+
+    var b: FooBar = make(FooBar, 10, 20.0)
+    printFoobar(b)
+
+    var c: FooBar = make(FooBar, b, 2.5)
+    printFoobar(c)
+
+    var d: FooBar = make(FooBar, 50, c, 60.5)
+    printFoobar(d)
+
+    return 0
+}

@@ -5,3 +5,18 @@ struct Result
     var error: bool
     var item: T
 }
+
+fn createError() -> Result
+{
+    var r: Result
+    r.error = true
+    return r
+}
+
+fn createSuccess(item: T) -> Result
+{
+    var r: Result
+    r.error = false
+    r.item = item
+    return r
+}

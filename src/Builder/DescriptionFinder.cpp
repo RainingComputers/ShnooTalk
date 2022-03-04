@@ -205,8 +205,8 @@ bool isSameParamsType(const FunctionDescription& function, const std::vector<Uni
 }
 
 std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByParamTypes(const Token& token,
-                                                               const TypeDescription& type,
-                                                               const std::vector<Unit>& params)
+                                                                                       const TypeDescription& type,
+                                                                                       const std::vector<Unit>& params)
 {
     for (auto pair : workingModule->functions)
     {
@@ -225,5 +225,5 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
         return std::pair<std::string, FunctionDescription>(functionName, function);
     }
 
-    console.compileErrorOnToken("Cannot find constructor", token);
+    console.compileErrorOnToken("Cannot find function with matching params", token);
 }

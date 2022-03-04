@@ -76,15 +76,9 @@ fn len(self: List) -> int
 
 fn at(self: List, index: int) -> Result[T]
 {
-    var result: Result[T]
+    if index >= self.len 
+        return make(Result[T])
 
-    if index >= self.len {
-        result.error = true
-        return result
-    }
-
-    result.item = self.items[index]
-    result.error = false
-    return result
+    return make(Result[T], self.items[index])
 }
 

@@ -356,8 +356,8 @@ void expression(parser::ParserContext& ctx)
 {
     token::TokenType expected[] = { token::INT_LITERAL, token::CHAR_LITERAL, token::HEX_LITERAL, token::FLOAT_LITERAL,
                                     token::STR_LITERAL, token::BIN_LITERAL,  token::OPEN_SQUARE, token::IDENTIFIER,
-                                    token::MINUS,       token::LPAREN,       token::CONDN_NOT,   token::SIZEOF, token::MAKE,
-                                    token::ADDR,        token::NOT };
+                                    token::MINUS,       token::LPAREN,       token::CONDN_NOT,   token::SIZEOF,
+                                    token::MAKE,        token::ADDR,         token::NOT };
 
     ctx.expect(expected, 15);
 
