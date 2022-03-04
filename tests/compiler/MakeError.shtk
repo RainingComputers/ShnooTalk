@@ -1,0 +1,16 @@
+# MODULE MakeError.shtk
+# ERROR in Line 13 Col 26
+# 
+#     var a: Result[int] = make(Result[int], 4.5)
+#                          ^
+# Cannot find function with matching params
+
+use "TestModules/ResultGeneric.shtk" as Result
+from Result use Result
+
+fn main() -> int
+{
+    var a: Result[int] = make(Result[int], 4.5)
+
+    return 0
+}

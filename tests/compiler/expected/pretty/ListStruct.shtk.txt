@@ -183,37 +183,28 @@
             },
             "_fn_TestModules_List_shtk__TestModules_Vector_shtk_Vec_at": {
                 "icode": [
-                        int* tempPtr296 = createPointer struct self
-                        int* tempPtr298 = addressAdd int* tempPtr296, bytes 12
-                        int temp299 = read int* tempPtr298
-                        flag = greaterThanOrEqualTo int index, int temp299
-                        if(not flag) goto _if_false_l81_c4
-                        byte* tempPtr301 = createPointer struct result
-                        byte* tempPtr303 = addressAdd byte* tempPtr301, bytes 0
-                        byte temp305 = cast autoInt 1
-                        byte* tempPtr303 = write byte temp305
-                        byte* tempPtr308 = createPointer struct returnValue306
-                        byte* tempPtr309 = createPointer struct result
-                        byte* tempPtr308 = memoryCopy byte* tempPtr309, autoInt 9
+                        int* tempPtr295 = createPointer struct self
+                        int* tempPtr297 = addressAdd int* tempPtr295, bytes 12
+                        int temp298 = read int* tempPtr297
+                        flag = greaterThanOrEqualTo int index, int temp298
+                        if(not flag) goto _if_false_l79_c4
+                        struct calleeReturnValue300 = call struct _fn_TestModules_ResultGeneric_shtk__TestModules_Vector_shtk_Vec_createError, module TestModules/ResultGeneric.shtk__TestModules_Vector_shtk_Vec
+                        byte* tempPtr303 = createPointer struct returnValue299
+                        byte* tempPtr304 = createPointer struct calleeReturnValue300
+                        byte* tempPtr303 = memoryCopy byte* tempPtr304, autoInt 9
                         return
-                    _if_false_l81_c4:
-                        byte* tempPtr312 = createPointer struct result
-                        byte* tempPtr314 = addressAdd byte* tempPtr312, bytes 1
-                        int* tempPtr316 = createPointer struct self
-                        int** tempPtrPtr318 = addressAdd int* tempPtr316, bytes 0
-                        int* tempPtr320 = createPointer struct** tempPtrPtr318
-                        void* tempPtr322 = addressMultiply int index, bytes 8
-                        int* tempPtr323 = addressAdd int* tempPtr320, void* tempPtr322
-                        int* tempPtr324 = createPointer struct* tempPtr314
-                        int* tempPtr325 = createPointer int* tempPtr323
-                        int* tempPtr324 = memoryCopy int* tempPtr325, autoInt 8
-                        byte* tempPtr328 = createPointer struct result
-                        byte* tempPtr330 = addressAdd byte* tempPtr328, bytes 0
-                        byte temp332 = cast autoInt 0
-                        byte* tempPtr330 = write byte temp332
-                        byte* tempPtr335 = createPointer struct returnValue333
-                        byte* tempPtr336 = createPointer struct result
-                        byte* tempPtr335 = memoryCopy byte* tempPtr336, autoInt 9
+                    _if_false_l79_c4:
+                        int* tempPtr308 = createPointer struct self
+                        int** tempPtrPtr310 = addressAdd int* tempPtr308, bytes 0
+                        int* tempPtr312 = createPointer struct** tempPtrPtr310
+                        void* tempPtr314 = addressMultiply int index, bytes 8
+                        int* tempPtr315 = addressAdd int* tempPtr312, void* tempPtr314
+                        int* tempPtr317 = createPointer int* tempPtr315
+                        passPointer int* tempPtr317, struct _fn_TestModules_ResultGeneric_shtk__TestModules_Vector_shtk_Vec_createSuccess, module TestModules/ResultGeneric.shtk__TestModules_Vector_shtk_Vec
+                        struct calleeReturnValue320 = call struct _fn_TestModules_ResultGeneric_shtk__TestModules_Vector_shtk_Vec_createSuccess, module TestModules/ResultGeneric.shtk__TestModules_Vector_shtk_Vec
+                        byte* tempPtr323 = createPointer struct returnValue306
+                        byte* tempPtr324 = createPointer struct calleeReturnValue320
+                        byte* tempPtr323 = memoryCopy byte* tempPtr324, autoInt 9
                         return
                 ]
             },
@@ -342,6 +333,35 @@
     "TestModules/ResultGeneric.shtk__TestModules_Vector_shtk_Vec": {
         "moduleName": "TestModules/ResultGeneric.shtk__TestModules_Vector_shtk_Vec",
         "functions": {
+            "_fn_TestModules_ResultGeneric_shtk__TestModules_Vector_shtk_Vec_createError": {
+                "icode": [
+                        byte* tempPtr5 = createPointer struct r
+                        byte* tempPtr7 = addressAdd byte* tempPtr5, bytes 0
+                        byte temp9 = cast autoInt 1
+                        byte* tempPtr7 = write byte temp9
+                        byte* tempPtr12 = createPointer struct returnValue10
+                        byte* tempPtr13 = createPointer struct r
+                        byte* tempPtr12 = memoryCopy byte* tempPtr13, autoInt 9
+                        return
+                ]
+            },
+            "_fn_TestModules_ResultGeneric_shtk__TestModules_Vector_shtk_Vec_createSuccess": {
+                "icode": [
+                        byte* tempPtr20 = createPointer struct r
+                        byte* tempPtr22 = addressAdd byte* tempPtr20, bytes 0
+                        byte temp24 = cast autoInt 0
+                        byte* tempPtr22 = write byte temp24
+                        byte* tempPtr26 = createPointer struct r
+                        byte* tempPtr28 = addressAdd byte* tempPtr26, bytes 1
+                        int* tempPtr30 = createPointer struct* tempPtr28
+                        int* tempPtr31 = createPointer struct item
+                        int* tempPtr30 = memoryCopy int* tempPtr31, autoInt 8
+                        byte* tempPtr35 = createPointer struct returnValue33
+                        byte* tempPtr36 = createPointer struct r
+                        byte* tempPtr35 = memoryCopy byte* tempPtr36, autoInt 9
+                        return
+                ]
+            }
         }
     },
     "TestModules/Vector.shtk": {

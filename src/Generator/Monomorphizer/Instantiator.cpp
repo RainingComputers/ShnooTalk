@@ -166,11 +166,22 @@ void pointerCast(const InstiatorContext& ctx, Node& root)
     }
 }
 
+void make(const InstiatorContext& ctx, Node& root)
+{
+    monomorphizeTypeNode(ctx, root.children[0]);
+}
+
 void expression(const InstiatorContext& ctx, Node& root)
 {
     if (root.type == node::SIZEOF)
     {
         sizeOf(ctx, root);
+        return;
+    }
+
+    if (root.type == node::MAKE)
+    {
+        make(ctx, root);
         return;
     }
 
