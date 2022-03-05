@@ -1,0 +1,6 @@
+fn main() -> int
+{
+    var a: Foo[int] = make(Foo[int], 1, [3, 45, 67], "hello")
+
+    return 0
+}

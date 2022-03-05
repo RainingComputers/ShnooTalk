@@ -1,0 +1,6 @@
+fn main() -> int
+{
+    var a: Foobar[foo::bar[bar, int, float], bar[bar::bar, foo::foo::foo, bar], bar]
+
+    return 0
+}

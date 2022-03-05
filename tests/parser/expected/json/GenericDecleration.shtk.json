@@ -1,0 +1,22 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "generic", "tokenType": "GENERIC", "line": 1, "col": 0, "file": "GenericDecleration.shtk"},
+      "children": [
+        {
+          "token": {"string": "K", "tokenType": "IDENTIFIER", "line": 1, "col": 8, "file": "GenericDecleration.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "V", "tokenType": "IDENTIFIER", "line": 1, "col": 11, "file": "GenericDecleration.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    }
+  ]
+}

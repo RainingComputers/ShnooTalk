@@ -1,0 +1,9 @@
+fn main() -> int
+{
+    var a: int = 1
+    var b: int* <- a
+
+    var c: int = addr(a)
+
+    return 0
+}
