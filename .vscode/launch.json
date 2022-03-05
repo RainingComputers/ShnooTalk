@@ -20,6 +20,21 @@
             "externalConsole": false
         },
         {
+            "name": "-json-ast (MacOS)",
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-json-ast"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "name": "-ir (MacOS)",
             "type": "lldb",
             "request": "launch",
@@ -178,6 +193,29 @@
             "args": [
                 "${fileBasename}",
                 "-ast"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-json-ast (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-json-ast"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

@@ -1,0 +1,136 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "extfn", "tokenType": "EXTERN_FUNCTION", "line": 1, "col": 0, "file": "ExternFunctionForward.shtk"},
+      "children": [
+        {
+          "token": {"string": "sin", "tokenType": "IDENTIFIER", "line": 1, "col": 6, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "num", "tokenType": "IDENTIFIER", "line": 1, "col": 10, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            {
+              "token": {"string": "num", "tokenType": "IDENTIFIER", "line": 1, "col": 10, "file": "ExternFunctionForward.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 15, "file": "ExternFunctionForward.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 23, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "\"math.shtk\"", "tokenType": "STR_LITERAL", "line": 1, "col": 27, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "extfn", "tokenType": "EXTERN_FUNCTION", "line": 2, "col": 0, "file": "ExternFunctionForward.shtk"},
+      "children": [
+        {
+          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 2, "col": 6, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "\"foobar/foo.shtk\"", "tokenType": "STR_LITERAL", "line": 2, "col": 15, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    },
+    {
+      "token": {"string": "extfn", "tokenType": "EXTERN_FUNCTION", "line": 3, "col": 0, "file": "ExternFunctionForward.shtk"},
+      "children": [
+        {
+          "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 3, "col": 6, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            {
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "ExternFunctionForward.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 14, "file": "ExternFunctionForward.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 19, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            {
+              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 19, "file": "ExternFunctionForward.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 22, "file": "ExternFunctionForward.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "mut", "tokenType": "MUTABLE", "line": 3, "col": 27, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            {
+              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 3, "col": 31, "file": "ExternFunctionForward.shtk"},
+              "children": [
+                
+              ]
+            },
+            {
+              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 34, "file": "ExternFunctionForward.shtk"},
+              "children": [
+                
+              ]
+            }
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 42, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "\"tests/testing/test.shtk\"", "tokenType": "STR_LITERAL", "line": 3, "col": 47, "file": "ExternFunctionForward.shtk"},
+          "children": [
+            
+          ]
+        }
+      ]
+    }
+  ]
+}

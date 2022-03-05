@@ -1,0 +1,199 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "Make.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "Make.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "Make.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "Make.shtk"},
+          "children": [
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 3, "col": 4, "file": "Make.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "Make.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "Foo", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "Make.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "Make.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "Make.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 20, "file": "Make.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "make", "tokenType": "MAKE", "line": 3, "col": 22, "file": "Make.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "make", "tokenType": "MAKE", "line": 3, "col": 22, "file": "Make.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "make", "tokenType": "MAKE", "line": 3, "col": 22, "file": "Make.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "Foo", "tokenType": "IDENTIFIER", "line": 3, "col": 27, "file": "Make.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "Foo", "tokenType": "IDENTIFIER", "line": 3, "col": 27, "file": "Make.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 31, "file": "Make.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 31, "file": "Make.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 37, "file": "Make.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 37, "file": "Make.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 37, "file": "Make.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 40, "file": "Make.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 41, "file": "Make.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 41, "file": "Make.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 41, "file": "Make.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "45", "tokenType": "INT_LITERAL", "line": 3, "col": 44, "file": "Make.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "45", "tokenType": "INT_LITERAL", "line": 3, "col": 44, "file": "Make.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "45", "tokenType": "INT_LITERAL", "line": 3, "col": 44, "file": "Make.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "token": {"string": "67", "tokenType": "INT_LITERAL", "line": 3, "col": 48, "file": "Make.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "67", "tokenType": "INT_LITERAL", "line": 3, "col": 48, "file": "Make.shtk"},
+                                      "children": [
+                                        {
+                                          "token": {"string": "67", "tokenType": "INT_LITERAL", "line": 3, "col": 48, "file": "Make.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 53, "file": "Make.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 53, "file": "Make.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 5, "col": 4, "file": "Make.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 11, "file": "Make.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 11, "file": "Make.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 11, "file": "Make.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

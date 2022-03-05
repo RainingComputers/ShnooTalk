@@ -1,0 +1,37 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=1, col=0
+        ├───> nodeType=IDENTIFIER, string="main", tokenType=IDENTIFIER, line=1, col=3
+        ├───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=1, col=13
+        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=2, col=0
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=3, col=4
+              │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=3, col=8
+              │     ├───> nodeType=IDENTIFIER, string="Foo", tokenType=IDENTIFIER, line=3, col=11
+              │     ├───> nodeType=GENERIC_TYPE_PARAM, string="int", tokenType=IDENTIFIER, line=3, col=15
+              │     │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=15
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=3, col=20
+              │     └───> nodeType=EXPRESSION, string="make", tokenType=MAKE, line=3, col=22
+              │           └───> nodeType=TERM, string="make", tokenType=MAKE, line=3, col=22
+              │                 └───> nodeType=MAKE, string="make", tokenType=MAKE, line=3, col=22
+              │                       ├───> nodeType=MAKE, string="Foo", tokenType=IDENTIFIER, line=3, col=27
+              │                       │     ├───> nodeType=IDENTIFIER, string="Foo", tokenType=IDENTIFIER, line=3, col=27
+              │                       │     └───> nodeType=GENERIC_TYPE_PARAM, string="int", tokenType=IDENTIFIER, line=3, col=31
+              │                       │           └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=3, col=31
+              │                       ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=3, col=37
+              │                       │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=3, col=37
+              │                       │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=3, col=37
+              │                       ├───> nodeType=INITLIST, string="[", tokenType=OPEN_SQUARE, line=3, col=40
+              │                       │     ├───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=3, col=41
+              │                       │     │     └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=3, col=41
+              │                       │     │           └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=3, col=41
+              │                       │     ├───> nodeType=EXPRESSION, string="45", tokenType=INT_LITERAL, line=3, col=44
+              │                       │     │     └───> nodeType=TERM, string="45", tokenType=INT_LITERAL, line=3, col=44
+              │                       │     │           └───> nodeType=LITERAL, string="45", tokenType=INT_LITERAL, line=3, col=44
+              │                       │     └───> nodeType=EXPRESSION, string="67", tokenType=INT_LITERAL, line=3, col=48
+              │                       │           └───> nodeType=TERM, string="67", tokenType=INT_LITERAL, line=3, col=48
+              │                       │                 └───> nodeType=LITERAL, string="67", tokenType=INT_LITERAL, line=3, col=48
+              │                       └───> nodeType=MULTILINE_STR_LITERAL, string=""hello"", tokenType=STR_LITERAL, line=3, col=53
+              │                             └───> nodeType=STR_LITERAL, string=""hello"", tokenType=STR_LITERAL, line=3, col=53
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=5, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=5, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=5, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=5, col=11

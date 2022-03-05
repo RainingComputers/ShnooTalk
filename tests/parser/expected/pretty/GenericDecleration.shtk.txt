@@ -1,0 +1,4 @@
+> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
+  └───> nodeType=GENERIC, string="generic", tokenType=GENERIC, line=1, col=0
+        ├───> nodeType=IDENTIFIER, string="K", tokenType=IDENTIFIER, line=1, col=8
+        └───> nodeType=IDENTIFIER, string="V", tokenType=IDENTIFIER, line=1, col=11
