@@ -69,14 +69,24 @@ Operand Unit::op() const
     return operand;
 }
 
-int Unit::size() const
+std::vector<Unit> Unit::destructureUnitList() const
+{
+    return list;
+}
+
+unsigned int Unit::size() const
 {
     return typeDescription.size;
 }
 
-int Unit::dtypeSize() const
+unsigned int Unit::dtypeSize() const
 {
     return typeDescription.dtypeSize;
+}
+
+unsigned int Unit::numElements() const
+{
+    return typeDescription.dimensions[0];
 }
 
 bool Unit::isStringLtrl() const

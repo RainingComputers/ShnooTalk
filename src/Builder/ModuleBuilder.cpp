@@ -270,7 +270,7 @@ icode::StructDescription ModuleBuilder::createEmptyStructDescription()
 }
 
 void ModuleBuilder::createStruct(const Token& nameToken,
-                                 const std::vector<Token>& fieldNames,
+                                 const std::vector<Token>& fieldNameTokens,
                                  const std::vector<icode::TypeDescription>& fieldTypes)
 {
     if (rootModule.symbolExists(nameToken.toString()))
@@ -278,10 +278,12 @@ void ModuleBuilder::createStruct(const Token& nameToken,
 
     icode::StructDescription structDescription = createEmptyStructDescription();
 
-    for (size_t i = 0; i < fieldNames.size(); i++)
+    for (size_t i = 0; i < fieldNameTokens.size(); i++)
     {
-        if (structDescription.fieldExists(fieldNames[i].toString()))
-            console.compileErrorOnToken("Field already defined", fieldNames[i]);
+        const std::string& fieldName = fieldNameTokens[i].toString();
+
+        if (structDescription.fieldExists(fieldName))
+            console.compileErrorOnToken("Field already defined", fieldNameTokens[i]);
 
         icode::TypeDescription field = fieldTypes[i];
         field.offset = structDescription.size;
@@ -291,7 +293,8 @@ void ModuleBuilder::createStruct(const Token& nameToken,
         else
             structDescription.size += field.size;
 
-        structDescription.structFields[fieldNames[i].toString()] = field;
+        structDescription.structFields[fieldName] = field;
+        structDescription.fieldNames.push_back(fieldName);
     }
 
     rootModule.structures[nameToken.toString()] = structDescription;

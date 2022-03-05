@@ -1,0 +1,13 @@
+# MODULE DestructureErrorNumberLocalsNotMatchErrorArray.shtk
+# ERROR in Line 10 Col 5
+# 
+#     const [a, b] := [1, 2, 3]
+#     ^
+# Number of locals do not match
+
+fn main() -> int
+{
+    const [a, b] := [1, 2, 3]
+
+    return 0
+}

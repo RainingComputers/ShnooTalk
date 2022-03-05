@@ -74,7 +74,7 @@ public:
     void createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription);
 
     void createStruct(const Token& nameToken,
-                      const std::vector<Token>& fieldNames,
+                      const std::vector<Token>& fieldNameTokens,
                       const std::vector<icode::TypeDescription>& fieldTypes);
 
     void createUse(const Token& pathToken, const Token& aliasToken);

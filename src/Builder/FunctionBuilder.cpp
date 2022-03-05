@@ -96,7 +96,7 @@ void FunctionBuilder::operandCopy(Operand dest, Operand src)
     pushEntry(copyEntry);
 }
 
-void FunctionBuilder::memCopy(Operand op1, Operand op2, int numBytes)
+void FunctionBuilder::memCopy(Operand op1, Operand op2, unsigned int numBytes)
 {
     Entry memCpyEntry;
 
@@ -194,7 +194,7 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
             break;
 
         /* Move to next element */
-        int updateSize = dest.dtypeSize();
+        unsigned int updateSize = dest.dtypeSize();
 
         if (unit.isArray())
             updateSize *= dest.dimensions().back();
@@ -366,13 +366,11 @@ Operand FunctionBuilder::addressMultiplyOperator(Operand op2, Operand op3)
     return entry.op1;
 }
 
-Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
+Unit FunctionBuilder::getStructFieldFromName(const std::string& fieldName, const Unit& unit)
 {
     StructDescription structDescription = modulesMap[unit.moduleName()].structures[unit.dtypeName()];
 
-    TypeDescription fieldType;
-    if (!structDescription.getField(fieldName.toString(), fieldType))
-        console.compileErrorOnToken("Undefined STRUCT field", fieldName);
+    TypeDescription fieldType = structDescription.structFields.at(fieldName);
 
     if (unit.isMutable())
         fieldType.becomeMutable();
@@ -392,10 +390,22 @@ Unit FunctionBuilder::getStructField(const Token& fieldName, const Unit& unit)
     return Unit(fieldType, fieldOperand);
 }
 
+Unit FunctionBuilder::getStructField(const Token& fieldNameToken, const Unit& unit)
+{
+    StructDescription structDescription = modulesMap[unit.moduleName()].structures[unit.dtypeName()];
+
+    const std::string& fieldName = fieldNameToken.toString();
+
+    if (!structDescription.fieldExists(fieldName))
+        console.compileErrorOnToken("Undefined STRUCT field", fieldNameToken);
+
+    return getStructFieldFromName(fieldName, unit);
+}
+
 Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit>& indices)
 {
     unsigned int dimensionCount = 1;
-    unsigned int elementWidth = unit.size() / unit.dimensions()[0];
+    unsigned int elementWidth = unit.size() / unit.numElements();
 
     Operand elementOperand = createPointer(unit);
 
@@ -419,6 +429,61 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
                                  elementType.dimensions.end() - remainingDimensionCount);
 
     return Unit(elementType, elementOperand);
+}
+
+std::vector<Unit> FunctionBuilder::destructureArray(const Unit& unit)
+{
+    std::vector<Unit> destructuredUnits;
+
+    for (unsigned int i = 0; i < unit.numElements(); i += 1)
+    {
+        std::vector<Unit> indices;
+        indices.push_back(unitBuilder.unitFromIntLiteral(i));
+
+        destructuredUnits.push_back(getIndexedElement(unit, indices));
+    }
+
+    return destructuredUnits;
+}
+
+std::vector<Unit> FunctionBuilder::destructureStruct(const Unit& unit)
+{
+    std::vector<Unit> destructuredUnits;
+
+    const ModuleDescription& structModule = modulesMap.at(unit.moduleName());
+    const StructDescription& structDescription = structModule.structures.at(unit.dtypeName());
+
+    for (const std::string& fieldName : structDescription.fieldNames)
+        destructuredUnits.push_back(getStructFieldFromName(fieldName, unit));
+
+    return destructuredUnits;
+}
+
+std::vector<Unit> FunctionBuilder::destructureUnit(const Unit& unit)
+{
+    if (unit.isList())
+        return unit.destructureUnitList();
+
+    if (unit.isStruct())
+        return destructureStruct(unit);
+
+    if (unit.isArray())
+        return destructureArray(unit);
+
+    console.internalBugError();
+}
+
+std::map<std::string, Unit> FunctionBuilder::destructureStructMapped(const Unit& unit)
+{
+    std::map<std::string, Unit> mappedDestructuredUnits;
+
+    const ModuleDescription& structModule = modulesMap.at(unit.moduleName());
+    const StructDescription& structDescription = structModule.structures.at(unit.dtypeName());
+
+    for (auto field : structDescription.structFields)
+        mappedDestructuredUnits[field.first] = getStructFieldFromName(field.first, unit);
+
+    return mappedDestructuredUnits;
 }
 
 Operand FunctionBuilder::createLabel(const Token& tok, bool isTrueLabel, std::string prefix)
@@ -484,7 +549,7 @@ void FunctionBuilder::createInput(const Unit& unit)
     if (unit.isArray())
     {
         inputInstruction = INPUT_STR;
-        size = unit.dimensions()[0];
+        size = unit.numElements();
     }
 
     inputEntry.opcode = inputInstruction;

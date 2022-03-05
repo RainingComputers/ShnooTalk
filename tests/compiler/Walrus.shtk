@@ -1,0 +1,41 @@
+# 10
+# 1
+# 2
+# 1
+# 100
+
+struct Foo
+{
+    var x: int
+}
+
+fn createFoo(x: int) -> Foo
+{
+    var f: Foo
+    f.x = x
+    return f
+}
+
+fn printFoo(f: Foo)
+{
+    println(f.x)
+}
+
+fn main() -> int
+{
+    var a := createFoo(10)
+    printFoo(a)
+
+    var b := [createFoo(1), createFoo(2)]
+    printFoo(b[0])
+    printFoo(b[1])
+
+    var c: Foo* <- b[0]
+    var d := c
+    d.x = 100
+
+    printFoo(b[0])
+    printFoo(d)
+
+    return 0
+}

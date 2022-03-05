@@ -1,0 +1,88 @@
+{
+    "Walrus.shtk": {
+        "moduleName": "Walrus.shtk",
+        "functions": {
+            "_fn_Walrus_shtk_createFoo": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "f", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "var", "id": 8, "name": "x", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 11, "dtype": "int"}, "op2": {"type": "returnValue", "id": 9, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 12, "dtype": "int"}, "op2": {"type": "var", "id": 10, "name": "f", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 11, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 12, "dtype": "int"}, "op3": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 4}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_Walrus_shtk_printFoo": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op2": {"type": "var", "id": 17, "name": "f", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 20, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op3": {"type": "bytes", "id": 19, "bytes": 0}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 20, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 21, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "literal", "id": 25, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "var", "id": 28, "name": "_fn_Walrus_shtk_createFoo", "dtype": "struct"}, "op3": {"type": "module", "id": 29, "name": "Walrus.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 30, "dtype": "struct"}, "op2": {"type": "var", "id": 31, "name": "_fn_Walrus_shtk_createFoo", "dtype": "struct"}, "op3": {"type": "module", "id": 32, "name": "Walrus.shtk"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "int"}, "op2": {"type": "var", "id": 33, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 30, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 34, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op3": {"type": "literal", "id": 36, "dtype": "autoInt", "value": 4}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op2": {"type": "var", "id": 37, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op2": {"type": "var", "id": 40, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 41, "name": "Walrus.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 42, "dtype": "void"}, "op2": {"type": "var", "id": 43, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 44, "name": "Walrus.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 47, "dtype": "int"}, "op2": {"type": "literal", "id": 45, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 47, "dtype": "int"}, "op2": {"type": "var", "id": 48, "name": "_fn_Walrus_shtk_createFoo", "dtype": "struct"}, "op3": {"type": "module", "id": 49, "name": "Walrus.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 50, "dtype": "struct"}, "op2": {"type": "var", "id": 51, "name": "_fn_Walrus_shtk_createFoo", "dtype": "struct"}, "op3": {"type": "module", "id": 52, "name": "Walrus.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "literal", "id": 53, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "var", "id": 56, "name": "_fn_Walrus_shtk_createFoo", "dtype": "struct"}, "op3": {"type": "module", "id": 57, "name": "Walrus.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 58, "dtype": "struct"}, "op2": {"type": "var", "id": 59, "name": "_fn_Walrus_shtk_createFoo", "dtype": "struct"}, "op3": {"type": "module", "id": 60, "name": "Walrus.shtk"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 62, "dtype": "int"}, "op2": {"type": "var", "id": 61, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 63, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 50, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 62, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 63, "dtype": "int"}, "op3": {"type": "literal", "id": 64, "dtype": "autoInt", "value": 4}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 62, "dtype": "int"}, "op3": {"type": "bytes", "id": 65, "bytes": 4}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 58, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op3": {"type": "literal", "id": 68, "dtype": "autoInt", "value": 4}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op2": {"type": "var", "id": 69, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 73, "dtype": "void"}, "op2": {"type": "literal", "id": 70, "dtype": "autoInt", "value": 0}, "op3": {"type": "bytes", "id": 72, "bytes": 4}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 74, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 73, "dtype": "void"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 76, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 74, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 76, "dtype": "int"}, "op2": {"type": "var", "id": 77, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 78, "name": "Walrus.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 79, "dtype": "void"}, "op2": {"type": "var", "id": 80, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 81, "name": "Walrus.shtk"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 84, "dtype": "int"}, "op2": {"type": "var", "id": 82, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 86, "dtype": "void"}, "op2": {"type": "literal", "id": 83, "dtype": "autoInt", "value": 1}, "op3": {"type": "bytes", "id": 85, "bytes": 4}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 87, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 84, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 86, "dtype": "void"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 89, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 87, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 89, "dtype": "int"}, "op2": {"type": "var", "id": 90, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 91, "name": "Walrus.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 92, "dtype": "void"}, "op2": {"type": "var", "id": 93, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 94, "name": "Walrus.shtk"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 98, "dtype": "int"}, "op2": {"type": "var", "id": 96, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 100, "dtype": "void"}, "op2": {"type": "literal", "id": 97, "dtype": "autoInt", "value": 0}, "op3": {"type": "bytes", "id": 99, "bytes": 4}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 101, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 98, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 100, "dtype": "void"}},
+                    {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 95, "name": "c", "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 101, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 104, "dtype": "int"}, "op2": {"type": "var", "id": 103, "name": "d", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 105, "dtype": "int"}, "op2": {"type": "ptr", "id": 102, "name": "c", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 104, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 105, "dtype": "int"}, "op3": {"type": "literal", "id": 106, "dtype": "autoInt", "value": 4}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 108, "dtype": "int"}, "op2": {"type": "var", "id": 107, "name": "d", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 110, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 108, "dtype": "int"}, "op3": {"type": "bytes", "id": 109, "bytes": 0}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 112, "dtype": "int"}, "op2": {"type": "literal", "id": 111, "dtype": "autoInt", "value": 100}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 110, "dtype": "int"}, "op2": {"type": "temp", "id": 112, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 115, "dtype": "int"}, "op2": {"type": "var", "id": 113, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 117, "dtype": "void"}, "op2": {"type": "literal", "id": 114, "dtype": "autoInt", "value": 0}, "op3": {"type": "bytes", "id": 116, "bytes": 4}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 118, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 115, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 117, "dtype": "void"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 120, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 118, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 120, "dtype": "int"}, "op2": {"type": "var", "id": 121, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 122, "name": "Walrus.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 123, "dtype": "void"}, "op2": {"type": "var", "id": 124, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 125, "name": "Walrus.shtk"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 128, "dtype": "int"}, "op2": {"type": "var", "id": 126, "name": "d", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 128, "dtype": "int"}, "op2": {"type": "var", "id": 129, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 130, "name": "Walrus.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 131, "dtype": "void"}, "op2": {"type": "var", "id": 132, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 133, "name": "Walrus.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 136, "dtype": "int"}, "op2": {"type": "literal", "id": 135, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 134, "dtype": "int"}, "op2": {"type": "temp", "id": 136, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

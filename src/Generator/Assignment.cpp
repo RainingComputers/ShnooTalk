@@ -29,7 +29,7 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
     if (assignOperator.isBitwiseOperator() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
 
-    if (assignOperator.getType() == token::EQUAL)
+    if (assignOperator.getType() == token::EQUAL || assignOperator.getType() == token::WALRUS)
     {
         if (LHS.isPointer() && root.type != node::ASSIGNMENT)
             ctx.console.compileErrorOnToken("Non pointer initialization for POINTER", assignOperator);

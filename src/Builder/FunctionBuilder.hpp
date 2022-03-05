@@ -26,7 +26,7 @@ class FunctionBuilder
 
     void operandCopy(icode::Operand op1, icode::Operand op2);
 
-    void memCopy(icode::Operand op1, icode::Operand op2, int numBytes);
+    void memCopy(icode::Operand op1, icode::Operand op2, unsigned int numBytes);
 
     icode::Operand getCreatePointerDestOperand(const icode::TypeDescription& type);
 
@@ -41,6 +41,12 @@ class FunctionBuilder
     icode::Operand addressAddOperatorPtrPtr(icode::Operand op2, icode::Operand op3);
 
     icode::Operand addressMultiplyOperator(icode::Operand op2, icode::Operand op3);
+
+    Unit getStructFieldFromName(const std::string& fieldName, const Unit& unit);
+
+    std::vector<Unit> destructureArray(const Unit& unit);
+
+    std::vector<Unit> destructureStruct(const Unit& unit);
 
     std::string getMangledCalleeName(const Token& calleeNameToken, const icode::FunctionDescription& callee);
 
@@ -74,9 +80,13 @@ public:
 
     void compareOperator(icode::Instruction instruction, const Unit& LHS, const Unit& RHS);
 
-    Unit getStructField(const Token& fieldName, const Unit& unit);
+    Unit getStructField(const Token& fieldNameToken, const Unit& unit);
 
     Unit getIndexedElement(const Unit& unit, const std::vector<Unit>& indices);
+
+    std::vector<Unit> destructureUnit(const Unit& unit);
+
+    std::map<std::string, Unit> destructureStructMapped(const Unit& unit);
 
     icode::Operand createLabel(const Token& tok, bool isTrueLabel, std::string prefix);
 

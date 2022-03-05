@@ -1,0 +1,19 @@
+# MODULE DestructureErrorNumberLocalsNotMatchErrorStruct.shtk
+# ERROR in Line 16 Col 5
+# 
+#     const [a, b] := foobar
+#     ^
+# Number of locals do not match
+
+struct FooBar
+{
+    var x: int, y: int, z: int
+}
+
+fn main() -> int
+{
+    var foobar: FooBar
+    const [a, b] := foobar
+
+    return 0
+}

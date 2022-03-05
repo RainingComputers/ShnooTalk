@@ -134,6 +134,8 @@ namespace pp
     {
         jsonp.begin();
 
+        jsonp.printStringArray("fieldNames", structDesc.fieldNames);
+
         FlatJSONPrinter fieldsPrinter = jsonp.beginNested("structFields");
         printTypeDescriptionMap(structDesc.structFields, fieldsPrinter);
 

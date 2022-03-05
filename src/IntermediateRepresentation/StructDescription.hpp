@@ -13,6 +13,7 @@ namespace icode
         std::map<std::string, TypeDescription> structFields;
         unsigned int size;
         std::string moduleName;
+        std::vector<std::string> fieldNames;
 
         bool fieldExists(const std::string&) const;
         bool getField(const std::string&, TypeDescription& returnValue);

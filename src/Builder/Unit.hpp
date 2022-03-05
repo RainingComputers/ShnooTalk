@@ -26,9 +26,11 @@ public:
     std::vector<int> dimensions() const;
     icode::TypeDescription type() const;
     icode::Operand op() const;
+    std::vector<Unit> destructureUnitList() const;
 
-    int size() const;
-    int dtypeSize() const;
+    unsigned int size() const;
+    unsigned int dtypeSize() const;
+    unsigned int numElements() const;
 
     bool isStringLtrl() const;
     bool isChar() const;
