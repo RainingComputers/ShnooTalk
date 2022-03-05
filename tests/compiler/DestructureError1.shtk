@@ -1,0 +1,13 @@
+# MODULE DestructureError1.shtk
+# ERROR in Line 10 Col 21
+# 
+#     const [a, b] := 1
+#                     ^
+# Cannot destructure NON STRUCT or NON ARRAY
+
+fn main() -> int
+{
+    const [a, b] := 1
+
+    return 0
+}

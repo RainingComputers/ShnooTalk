@@ -159,6 +159,14 @@ void statement(generator::GeneratorContext& ctx,
         case node::CONST:
             local(ctx, root);
             break;
+        case node::WALRUS_VAR:
+        case node::WALRUS_CONST:
+            walrusLocal(ctx, root);
+            break;
+        case node::DESTRUCTURE_VAR:
+        case node::DESTRUCTURE_CONST:
+            destructureLocal(ctx, root);
+            break;
         case node::ASSIGNMENT:
             assignment(ctx, root);
             break;

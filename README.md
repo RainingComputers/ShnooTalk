@@ -73,9 +73,10 @@ make test
 - [x] Incomplete types and type composing of a pointer to itself
 - [x] null pointer check
 - [ ] Direct from
-- [ ] := initializer
-- [ ] Constructor and destructor
-- [ ] Destructuring
+- [x] make constructors
+- [ ] destructors
+- [x] := initializer
+- [x] Destructuring
 - [x] Clean up packaging process
 - [ ] Spike static linking everything
 - [ ] Improve error messages and module trace list

@@ -1,0 +1,40 @@
+{
+    "NamedDestructure.shtk": {
+        "moduleName": "NamedDestructure.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct foo
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp9 = cast autoInt 1
+                        int* tempPtr7 = write int temp9
+                        int* tempPtr11 = createPointer struct foo
+                        int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                        int temp15 = cast autoInt 2
+                        int* tempPtr13 = write int temp15
+                        int* tempPtr17 = createPointer struct foo
+                        int* tempPtr19 = addressAdd int* tempPtr17, bytes 8
+                        int temp21 = cast autoInt 3
+                        int* tempPtr19 = write int temp21
+                        int* tempPtr23 = createPointer struct foo
+                        int* tempPtr25 = addressAdd int* tempPtr23, bytes 0
+                        int* tempPtr26 = createPointer struct foo
+                        int* tempPtr28 = addressAdd int* tempPtr26, bytes 4
+                        int* tempPtr29 = createPointer struct foo
+                        int* tempPtr31 = addressAdd int* tempPtr29, bytes 8
+                        int temp33 = read int* tempPtr25
+                        int x = equal int temp33
+                        int temp35 = read int* tempPtr31
+                        int z = equal int temp35
+                        print int x
+                        newLine
+                        print int z
+                        newLine
+                        int temp40 = cast autoInt 0
+                        int returnValue38 = equal int temp40
+                        return
+                ]
+            }
+        }
+    }
+}

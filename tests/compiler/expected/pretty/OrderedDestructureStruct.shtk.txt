@@ -1,0 +1,54 @@
+{
+    "OrderedDestructureStruct.shtk": {
+        "moduleName": "OrderedDestructureStruct.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct foo
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp9 = cast autoInt 1
+                        int* tempPtr7 = write int temp9
+                        int* tempPtr11 = createPointer struct foo
+                        int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                        int temp15 = cast autoInt 2
+                        int* tempPtr13 = write int temp15
+                        int* tempPtr17 = createPointer struct foo
+                        int* tempPtr19 = addressAdd int* tempPtr17, bytes 8
+                        int temp21 = cast autoInt 3
+                        int* tempPtr19 = write int temp21
+                        int* tempPtr23 = createPointer struct foo
+                        int* tempPtr25 = addressAdd int* tempPtr23, bytes 12
+                        int temp27 = cast autoInt 4
+                        int* tempPtr25 = write int temp27
+                        int* tempPtr29 = createPointer struct foo
+                        int* tempPtr31 = addressAdd int* tempPtr29, bytes 0
+                        int* tempPtr32 = createPointer struct foo
+                        int* tempPtr34 = addressAdd int* tempPtr32, bytes 4
+                        int* tempPtr35 = createPointer struct foo
+                        int* tempPtr37 = addressAdd int* tempPtr35, bytes 8
+                        int* tempPtr38 = createPointer struct foo
+                        int* tempPtr40 = addressAdd int* tempPtr38, bytes 12
+                        int temp42 = read int* tempPtr31
+                        int a = equal int temp42
+                        int temp44 = read int* tempPtr34
+                        int b = equal int temp44
+                        int temp46 = read int* tempPtr37
+                        int c = equal int temp46
+                        int temp48 = read int* tempPtr40
+                        int d = equal int temp48
+                        print int a
+                        newLine
+                        print int b
+                        newLine
+                        print int c
+                        newLine
+                        print int d
+                        newLine
+                        int temp55 = cast autoInt 0
+                        int returnValue53 = equal int temp55
+                        return
+                ]
+            }
+        }
+    }
+}

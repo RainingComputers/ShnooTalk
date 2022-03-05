@@ -12,6 +12,11 @@ namespace icode
         properties |= (1 << property);
     }
 
+    void TypeDescription::clearProperty(TypeProperties property)
+    {
+        properties &= ~(1 << property);
+    }
+
     bool TypeDescription::checkProperty(TypeProperties property) const
     {
         return properties & (1 << property);
@@ -37,6 +42,16 @@ namespace icode
     void TypeDescription::becomeString()
     {
         setProperty(IS_STRING_LTRL);
+    }
+
+    void TypeDescription::becomeImmutable()
+    {
+        clearProperty(IS_MUT);
+    }
+
+    void TypeDescription::becomeNonPointer()
+    {
+        clearProperty(IS_PTR);
     }
 
     void TypeDescription::becomeIncompleteType()

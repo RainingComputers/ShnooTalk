@@ -22,6 +22,7 @@
     },
     "structures": {
         "foobar": {
+            "fieldNames": ["a", "b", "c"],
             "structFields": {
                 "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
@@ -31,6 +32,7 @@
             "moduleName": "Struct.shtk"
         },
         "point": {
+            "fieldNames": ["x", "y"],
             "structFields": {
                 "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}

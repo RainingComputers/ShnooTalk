@@ -40,12 +40,15 @@ namespace icode
         TypeDescription();
 
         void setProperty(TypeProperties prop);
+        void clearProperty(TypeProperties prop);
         bool checkProperty(TypeProperties prop) const;
 
         void becomeMutable();
         void becomePointer();
         void becomeArrayPointer();
         void becomeString();
+        void becomeImmutable();
+        void becomeNonPointer();
         void becomeIncompleteType();
         bool isMutable() const;
         bool isPassedByReference() const;

@@ -1,0 +1,28 @@
+# 1
+# 2
+# 3
+# 4
+
+struct FooBar
+{
+    var x: int, y: int, j: int, k: int
+}
+
+fn main() -> int
+{
+    var foo: FooBar
+
+    foo.x = 1
+    foo.y = 2
+    foo.j = 3
+    foo.k = 4
+
+    var [a, b, c, d] := foo
+
+    println(a)
+    println(b)
+    println(c)
+    println(d)
+
+    return 0
+}

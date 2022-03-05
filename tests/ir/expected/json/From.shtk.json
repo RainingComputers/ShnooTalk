@@ -29,6 +29,7 @@
     },
     "structures": {
         "Point": {
+            "fieldNames": ["x", "y"],
             "structFields": {
                 "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}

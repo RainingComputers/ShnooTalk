@@ -227,3 +227,14 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
 
     console.compileErrorOnToken("Cannot find function with matching params", token);
 }
+
+bool DescriptionFinder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
+{
+    const StructDescription& structDescription = workingModule->structures.at(structUnit.dtypeName());
+
+    for (auto nameToken : nameTokens)
+        if (!structDescription.fieldExists(nameToken.toString()))
+            return false;
+
+    return true;
+}

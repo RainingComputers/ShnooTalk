@@ -1,0 +1,24 @@
+# 1
+# 3
+
+struct Foobar
+{
+    var x: int
+    var y: int
+    var z: int
+}
+
+fn main() -> int
+{
+    var foo: Foobar
+    foo.x = 1
+    foo.y = 2
+    foo.z = 3
+
+    const [x, z] := foo
+
+    println(x)
+    println(z)
+
+    return 0
+}

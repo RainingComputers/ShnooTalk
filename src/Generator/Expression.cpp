@@ -210,7 +210,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
         actualParams.push_back(param);
 
         if (param.isList())
-            actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(param.dimensions()[0]));
+            actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(param.numElements()));
     }
 
     std::pair<std::string, FunctionDescription> constructorNameAndFunction =

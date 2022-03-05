@@ -51,6 +51,8 @@ public:
     std::pair<std::string, icode::FunctionDescription> getFunctionByParamTypes(const Token& token,
                                               const icode::TypeDescription& type,
                                               const std::vector<Unit>& params);
+
+    bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit);
 };
 
 #endif

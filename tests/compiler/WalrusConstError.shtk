@@ -1,0 +1,16 @@
+# MODULE WalrusConstError.shtk
+# ERROR in Line 13 Col 5
+# 
+#     b += 1
+#     ^
+# Cannot modify IMMUTABLE variable or parameter
+
+fn main() -> int
+{
+    var a: int = 1
+    const b := a
+
+    b += 1
+
+    return 0
+}
