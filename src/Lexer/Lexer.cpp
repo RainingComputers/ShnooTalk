@@ -60,6 +60,8 @@ namespace lexer
                 {
                     case ':':
                         return LenTypePair(2, token::DOUBLE_COLON);
+                    case '=':
+                        return LenTypePair(2, token::WALRUS);
                     default:
                         return LenTypePair(1, token::COLON);
                 }

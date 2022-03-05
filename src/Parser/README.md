@@ -23,6 +23,8 @@ unaryOperator = "!"
 binaryOperator = "+" | "-" | "|" | "^" | ">>" | "<<" | "||"  |  ">" 
        | "<" | ">=" | "<=" | "==" | "!=" | "*" | "/" | "&" | "&&" 
 
+walrusOperator = ":="
+
 castOperator = "`"
 
 pointerCastOperator = "*`"
@@ -76,6 +78,12 @@ identifierDeclareListOptionalInit =  "var" initAllowed? identifierDeclarationOpt
 identifierDeclarationRequiredInit = identifierDeclaration ("=" | "<-") expression
 
 identifierDeclareListRequiredInit "const" identifierDeclarationRequiredInit {"," identifierDeclarationRequiredInit}
+
+walrusDeclaration = ("const" | "var") identifier walrusOperator expression
+
+destructureList = "[" identifier {"," identifier} "]"
+
+destructureDeclaration = ("const" | "var") destructureList walrusOperator expression
 
 structDefinition = "struct" identifier "{" {identifierDeclareList<false>} "}"
 
@@ -142,6 +150,8 @@ returnExpression = "return" (expression | "void")
 statement = functionCall
           | moduleFunctionCall
           | assignmentOrMethodCall
+          | walrusDeclaration
+          | destructureDeclaration
           | identifierDeclarationList<true>
           | ifStatement
           | whileLoop
