@@ -175,9 +175,23 @@ void statement(parser::ParserContext& ctx)
             assignmentOrMethodCall(ctx);
     }
     else if (ctx.accept(token::VAR))
-        identifierDeclareListOptionalInit(ctx, true);
+    {
+        if (ctx.dpeek(token::WALRUS))
+            walrusDeclaration(ctx);
+        else if (ctx.peek(token::OPEN_SQUARE))
+            destructureDeclaration(ctx);
+        else
+            identifierDeclareListOptionalInit(ctx, true);
+    }
     else if (ctx.accept(token::CONST))
-        identifierDeclareListRequiredInit(ctx);
+    {
+        if (ctx.dpeek(token::WALRUS))
+            walrusDeclaration(ctx);
+        else if (ctx.peek(token::OPEN_SQUARE))
+            destructureDeclaration(ctx);
+        else
+            identifierDeclareListRequiredInit(ctx);
+    }
     else if (ctx.accept(token::IF))
         ifStatement(ctx);
     else if (ctx.accept(token::WHILE))

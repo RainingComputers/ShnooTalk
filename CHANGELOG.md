@@ -7,6 +7,7 @@
 # 0.1.0-alpha
 
 - Added generics
+- Added forward function declaration
 
 # 0.0.1-alpha
 

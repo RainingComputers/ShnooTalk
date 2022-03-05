@@ -43,6 +43,7 @@ namespace token
         RETURN,
         VOID,
         EQUAL,
+        WALRUS,
         PLUS_EQUAL,
         MINUS_EQUAL,
         DIVIDE_EQUAL,
