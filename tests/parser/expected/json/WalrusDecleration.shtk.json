@@ -1,0 +1,224 @@
+{
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "WalrusDecleration.shtk"},
+      "children": [
+        {
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "WalrusDecleration.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "WalrusDecleration.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "WalrusDecleration.shtk"},
+          "children": [
+            {
+              "token": {"string": "const", "tokenType": "CONST", "line": 3, "col": 4, "file": "WalrusDecleration.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "WalrusDecleration.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 15, "file": "WalrusDecleration.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 16, "file": "WalrusDecleration.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 16, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 16, "file": "WalrusDecleration.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 19, "file": "WalrusDecleration.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 19, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 19, "file": "WalrusDecleration.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 22, "file": "WalrusDecleration.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 22, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 22, "file": "WalrusDecleration.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 25, "file": "WalrusDecleration.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 25, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 25, "file": "WalrusDecleration.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "var", "tokenType": "VAR", "line": 4, "col": 4, "file": "WalrusDecleration.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 4, "col": 8, "file": "WalrusDecleration.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 4, "col": 13, "file": "WalrusDecleration.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 4, "col": 13, "file": "WalrusDecleration.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 4, "col": 13, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "const", "tokenType": "CONST", "line": 5, "col": 4, "file": "WalrusDecleration.shtk"},
+              "children": [
+                {
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 10, "file": "WalrusDecleration.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "WalrusDecleration.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "WalrusDecleration.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            
+                          ]
+                        },
+                        {
+                          "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 21, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 22, "file": "WalrusDecleration.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 22, "file": "WalrusDecleration.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 22, "file": "WalrusDecleration.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 24, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            {
+                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 25, "file": "WalrusDecleration.shtk"},
+                              "children": [
+                                {
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 25, "file": "WalrusDecleration.shtk"},
+                                  "children": [
+                                    {
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 25, "file": "WalrusDecleration.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "token": {"string": "return", "tokenType": "RETURN", "line": 7, "col": 4, "file": "WalrusDecleration.shtk"},
+              "children": [
+                {
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "WalrusDecleration.shtk"},
+                  "children": [
+                    {
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "WalrusDecleration.shtk"},
+                      "children": [
+                        {
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "WalrusDecleration.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

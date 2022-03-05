@@ -1,0 +1,8 @@
+fn main() -> int
+{
+    const a := [1, 2, 3, 4]
+    var a := foobar
+    const a := foobar[1][2]
+
+    return 0
+}
