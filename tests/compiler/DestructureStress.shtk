@@ -3,6 +3,10 @@
 # 3
 # 4
 # 1
+# 2
+# 3
+# 4
+# 1
 # 8
 # 12
 # 13
@@ -47,6 +51,13 @@ fn main() -> int
     println(a1.y)
     println(a2.x)
     println(a2.y)
+
+    var [j, i] := testBar
+
+    println(i.x)
+    println(i.y)
+    println(j.x)
+    println(j.y)
 
     var testBarArr := [
         [createBar(createFoo(1, 2), createFoo(3, 4)), createBar(createFoo(5, 6), createFoo(7, 8))],
