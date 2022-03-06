@@ -37,7 +37,7 @@ void createWalrusLocal(generator::GeneratorContext& ctx, const Node& root, const
 
     if (root.type == node::WALRUS_VAR || root.type == node::DESTRUCTURE_VAR)
         localType.becomeMutable();
-    else 
+    else
         localType.becomeImmutable();
 
     Unit local = ctx.ir.functionBuilder.createLocal(nameToken, localType);
