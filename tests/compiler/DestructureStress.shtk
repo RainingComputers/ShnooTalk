@@ -1,0 +1,74 @@
+# 1
+# 2
+# 3
+# 4
+# 1
+# 8
+# 12
+# 13
+# 1
+# 8
+# 12
+# 13
+
+struct Foo 
+{
+    var x: int, y: int
+}
+
+struct Bar 
+{
+    var i: Foo, j: Foo
+}
+
+fn createFoo(x: int, y: int) -> Foo
+{
+    var f: Foo
+    f.x = x
+    f.y = y
+    return f
+}
+
+fn createBar(i: Foo, j: Foo) -> Bar
+{
+    var b: Bar
+    b.i = i
+    b.j = j
+    return b
+}
+
+fn main() -> int
+{
+    var testBar := createBar(createFoo(1, 2), createFoo(3, 4))
+
+    var [a1, a2] := testBar
+
+    println(a1.x)
+    println(a1.y)
+    println(a2.x)
+    println(a2.y)
+
+    var testBarArr := [
+        [createBar(createFoo(1, 2), createFoo(3, 4)), createBar(createFoo(5, 6), createFoo(7, 8))],
+        [createBar(createFoo(9, 10), createFoo(11, 12)), createBar(createFoo(13, 14), createFoo(15, 16))]
+    ]
+
+    var [c1, c2] := testBarArr
+
+    println(c1[0].i.x) # 1
+    println(c1[1].j.y) # 8
+    println(c2[0].j.y) # 12
+    println(c2[1].i.x) # 13
+
+     var [d1, d2] := [
+        [createBar(createFoo(1, 2), createFoo(3, 4)), createBar(createFoo(5, 6), createFoo(7, 8))],
+        [createBar(createFoo(9, 10), createFoo(11, 12)), createBar(createFoo(13, 14), createFoo(15, 16))]
+    ]
+
+    println(d1[0].i.x) # 1
+    println(d1[1].j.y) # 8
+    println(d2[0].j.y) # 12
+    println(d2[1].i.x) # 13
+
+    return 0
+}

@@ -1,0 +1,16 @@
+# 1
+# 2
+# 3
+# 4
+
+fn main() -> int
+{
+    var [a, b, c, d] := [1, 2, 3, 4]
+
+    println(a)
+    println(b)
+    println(c)
+    println(d)
+
+    return 0
+}

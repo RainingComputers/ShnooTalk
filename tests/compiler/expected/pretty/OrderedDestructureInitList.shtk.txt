@@ -1,0 +1,26 @@
+{
+    "OrderedDestructureInitList.shtk": {
+        "moduleName": "OrderedDestructureInitList.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        autoInt a = equal autoInt 1
+                        autoInt b = equal autoInt 2
+                        autoInt c = equal autoInt 3
+                        autoInt d = equal autoInt 4
+                        print autoInt a
+                        newLine
+                        print autoInt b
+                        newLine
+                        print autoInt c
+                        newLine
+                        print autoInt d
+                        newLine
+                        int temp17 = cast autoInt 0
+                        int returnValue15 = equal int temp17
+                        return
+                ]
+            }
+        }
+    }
+}
