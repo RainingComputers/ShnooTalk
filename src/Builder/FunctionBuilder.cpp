@@ -415,6 +415,8 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
     {
         Operand subscriptOperand = addressMultiplyOperator(indexUnit.op(), opBuilder.createBytesOperand(elementWidth));
 
+        elementType.size = elementWidth;
+
         if (dimensionCount != elementType.dimensions.size())
             elementWidth /= elementType.dimensions[dimensionCount];
 
@@ -464,11 +466,11 @@ std::vector<Unit> FunctionBuilder::destructureUnit(const Unit& unit)
     if (unit.isList())
         return unit.destructureUnitList();
 
-    if (unit.isStruct())
-        return destructureStruct(unit);
-
     if (unit.isArray())
         return destructureArray(unit);
+
+    if (unit.isStruct())
+        return destructureStruct(unit);
 
     console.internalBugError();
 }

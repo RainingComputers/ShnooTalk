@@ -4,20 +4,54 @@
         "functions": {
             "main": {
                 "icode": [
-                        autoInt a = equal autoInt 1
-                        autoInt b = equal autoInt 2
-                        autoInt c = equal autoInt 3
-                        autoInt d = equal autoInt 4
-                        print autoInt a
+                        int* tempPtr8 = createPointer int a
+                        int temp9 = cast autoInt 1
+                        int* tempPtr8 = write int temp9
+                        int* tempPtr11 = addressAdd int* tempPtr8, bytes 4
+                        int temp12 = cast autoInt 2
+                        int* tempPtr11 = write int temp12
+                        int* tempPtr14 = addressAdd int* tempPtr11, bytes 4
+                        int temp15 = cast autoInt 3
+                        int* tempPtr14 = write int temp15
+                        int* tempPtr17 = addressAdd int* tempPtr14, bytes 4
+                        int temp18 = cast autoInt 4
+                        int* tempPtr17 = write int temp18
+                        int* tempPtr21 = createPointer int a
+                        void* tempPtr23 = addressMultiply autoInt 0, bytes 8
+                        int* tempPtr24 = addressAdd int* tempPtr21, void* tempPtr23
+                        int* tempPtr26 = createPointer int a
+                        void* tempPtr28 = addressMultiply autoInt 1, bytes 8
+                        int* tempPtr29 = addressAdd int* tempPtr26, void* tempPtr28
+                        int* tempPtr31 = createPointer int b
+                        int* tempPtr31 = memoryCopy int* tempPtr24, autoInt 8
+                        int* tempPtr34 = createPointer int c
+                        int* tempPtr34 = memoryCopy int* tempPtr29, autoInt 8
+                        int* tempPtr38 = createPointer int b
+                        void* tempPtr40 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr41 = addressAdd int* tempPtr38, void* tempPtr40
+                        int temp42 = read int* tempPtr41
+                        print int temp42
                         newLine
-                        print autoInt b
+                        int* tempPtr45 = createPointer int b
+                        void* tempPtr47 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr48 = addressAdd int* tempPtr45, void* tempPtr47
+                        int temp49 = read int* tempPtr48
+                        print int temp49
                         newLine
-                        print autoInt c
+                        int* tempPtr52 = createPointer int c
+                        void* tempPtr54 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr55 = addressAdd int* tempPtr52, void* tempPtr54
+                        int temp56 = read int* tempPtr55
+                        print int temp56
                         newLine
-                        print autoInt d
+                        int* tempPtr59 = createPointer int c
+                        void* tempPtr61 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr62 = addressAdd int* tempPtr59, void* tempPtr61
+                        int temp63 = read int* tempPtr62
+                        print int temp63
                         newLine
-                        int temp17 = cast autoInt 0
-                        int returnValue15 = equal int temp17
+                        int temp66 = cast autoInt 0
+                        int returnValue64 = equal int temp66
                         return
                 ]
             }
