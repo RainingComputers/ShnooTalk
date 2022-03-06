@@ -404,12 +404,12 @@ Unit FunctionBuilder::getStructField(const Token& fieldNameToken, const Unit& un
 
 Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit>& indices)
 {
-    unsigned int dimensionCount = 1;
-    unsigned int elementWidth = unit.size() / unit.numElements();
-
     Operand elementOperand = createPointer(unit);
 
     TypeDescription elementType = unit.type();
+
+    unsigned int dimensionCount = 0;
+    unsigned int elementWidth = unit.size() / unit.numElements();
 
     for (const Unit& indexUnit : indices)
     {
@@ -417,15 +417,15 @@ Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit
 
         elementType.size = elementWidth;
 
-        if (dimensionCount != elementType.dimensions.size())
-            elementWidth /= elementType.dimensions[dimensionCount];
+        if (dimensionCount < elementType.dimensions.size() - 1)
+            elementWidth /= elementType.dimensions[dimensionCount + 1];
 
         elementOperand = addressAddOperator(elementOperand, subscriptOperand);
 
         dimensionCount++;
     }
 
-    unsigned int remainingDimensionCount = elementType.dimensions.size() - dimensionCount + 1;
+    unsigned int remainingDimensionCount = elementType.dimensions.size() - dimensionCount;
 
     elementType.dimensions.erase(elementType.dimensions.begin(),
                                  elementType.dimensions.end() - remainingDimensionCount);
