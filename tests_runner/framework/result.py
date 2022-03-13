@@ -5,7 +5,7 @@ from typing import List, Optional
 from difflib import ndiff
 
 
-class TestResultType:
+class ResultType:
     PASSED = 0
     FAILED = 1
     TIMEDOUT = 2
@@ -13,10 +13,10 @@ class TestResultType:
     INVALID = 4
 
 
-class TestResult:
-    def __init__(self, test_result: int,
+class Result:
+    def __init__(self, result_type: int,
                  output: Optional[str], expected_output: Optional[str]) -> None:
-        self.test_result = test_result
+        self.result_type = result_type
         self.output = output
         self.expected = expected_output
 
@@ -29,36 +29,36 @@ class TestResult:
         return "".join(str_diff)
 
     @staticmethod
-    def passed(output: str) -> TestResult:
-        return TestResult(TestResultType.PASSED, output, None)
+    def passed(output: str) -> Result:
+        return Result(ResultType.PASSED, output, None)
 
     @staticmethod
-    def failed(output: str, expected_output: Optional[str] = None) -> TestResult:
-        return TestResult(TestResultType.FAILED, output, expected_output)
+    def failed(output: str, expected_output: Optional[str] = None) -> Result:
+        return Result(ResultType.FAILED, output, expected_output)
 
     @staticmethod
-    def timedout() -> TestResult:
-        return TestResult(TestResultType.TIMEDOUT, None, None)
+    def timedout() -> Result:
+        return Result(ResultType.TIMEDOUT, None, None)
 
     @staticmethod
-    def skipped() -> TestResult:
-        return TestResult(TestResultType.SKIPPED, None, None)
+    def skipped() -> Result:
+        return Result(ResultType.SKIPPED, None, None)
 
     @staticmethod
-    def invalid(reason: Optional[str] = None) -> TestResult:
-        return TestResult(TestResultType.INVALID, reason, None)
+    def invalid(reason: Optional[str] = None) -> Result:
+        return Result(ResultType.INVALID, reason, None)
 
     @property
     def has_failed(self) -> bool:
-        return self.test_result == TestResultType.FAILED
+        return self.result_type == ResultType.FAILED
 
     @property
     def has_passed(self) -> bool:
-        return self.test_result == TestResultType.PASSED
+        return self.result_type == ResultType.PASSED
 
     @property
     def has_timedout(self) -> bool:
-        return self.test_result == TestResultType.TIMEDOUT
+        return self.result_type == ResultType.TIMEDOUT
 
 
 class ResultPrinter:
@@ -69,17 +69,25 @@ class ResultPrinter:
     _skipped: List[str] = []
     _invalid: List[str] = []
 
-    def __init__(self, group: str) -> None:
-        print(f"🚀 Running {group} tests")
+    def __init__(self, group: str, generator: bool = False) -> None:
+        self._generator = generator
 
-    @staticmethod
-    def print_result(name: str, result: TestResult) -> None:
+        if generator:
+            print(f"🚀 Generating {group}")
+        else:
+            print(f"🚀 Running {group} tests")
 
-        if result.test_result == TestResultType.PASSED:
+    def print_result(self, name: str, result: Result) -> None:
+
+        if result.result_type == ResultType.PASSED:
             ResultPrinter._passed.append(name)
-            print("    👌", name, "passed")
 
-        elif result.test_result == TestResultType.FAILED:
+            if self._generator:
+                print("    👌", name, "generated")
+            else:
+                print("    👌", name, "passed")
+
+        elif result.result_type == ResultType.FAILED:
             ResultPrinter.exit_code += 1
 
             ResultPrinter._failed.append(name)
@@ -96,14 +104,14 @@ class ResultPrinter:
             print("[Diff]")
             print(result.diff())
 
-        elif result.test_result == TestResultType.INVALID:
+        elif result.result_type == ResultType.INVALID:
             ResultPrinter.exit_code += 1
 
             ResultPrinter._invalid.append(name)
 
             print("    🤔", name, f"invalid test case, {result.output}")
 
-        elif result.test_result == TestResultType.TIMEDOUT:
+        elif result.result_type == ResultType.TIMEDOUT:
             ResultPrinter._timedout.append(name)
             print("    🕒", name, "timedout")
 

@@ -1,7 +1,9 @@
-from typing import List
+from typing import List, Generator, Optional
 
 import os
 import glob
+
+from contextlib import contextmanager
 
 
 def remove_if_exists(filename: str) -> None:
@@ -35,3 +37,15 @@ def dump_string_to_file(file_name: str, content: str) -> None:
 def string_from_file(file_name: str) -> str:
     with open(file_name, "r") as file:
         return file.read()
+
+
+@contextmanager
+def dirctx(path: Optional[str]) -> Generator[None, None, None]:
+    saved_path = os.getcwd()
+
+    if path is not None:
+        os.chdir(path)
+
+    yield None
+
+    os.chdir(saved_path)

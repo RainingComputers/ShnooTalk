@@ -10,6 +10,8 @@ namespace pp
 {
     void println(const std::string& msg);
 
+    void printModuleLocation(const std::string& moduleName, const Token& tok);
+
     void errorOnLine(const std::string& moduleName,
                      const std::string& errorMessage,
                      const std::string& line,

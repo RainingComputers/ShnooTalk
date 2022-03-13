@@ -12,6 +12,17 @@ namespace pp
         std::cout << msg << std::endl;
     }
 
+    void printModuleLocation(const std::string& moduleName, const Token& tok)
+    {
+        std::cout << moduleName << ":" << tok.getLineNo() << ":" << tok.getColumn() << std::endl;
+    }
+
+    void errorOnModuleName(const std::string& moduleName, const std::string& errorMessage)
+    {
+        std::cout << "MODULE " + moduleName << std::endl;
+        std::cout << errorMessage << std::endl;
+    }
+
     void errorOnLine(const std::string& moduleName,
                      const std::string& errorMessage,
                      const std::string& line,
@@ -27,12 +38,6 @@ namespace pp
         std::cout << std::endl;
         std::cout << line << std::endl;
         std::cout << std::string(col, ' ') << "^" << std::endl;
-        std::cout << errorMessage << std::endl;
-    }
-
-    void errorOnModuleName(const std::string& moduleName, const std::string& errorMessage)
-    {
-        std::cout << "MODULE " + moduleName << std::endl;
         std::cout << errorMessage << std::endl;
     }
 

@@ -1,5 +1,5 @@
 from tests_runner.framework.config import LLC_BIN, COMPILER_VERSION
-from tests_runner.framework.result import TestResult
+from tests_runner.framework.result import Result
 from tests_runner.framework.assertions import compile_phase
 from tests_runner.framework.assertions import compile_success_output_assert
 from tests_runner.framework.assertions import command_on_compile_success_output_assert

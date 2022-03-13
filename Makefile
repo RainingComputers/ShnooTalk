@@ -1,27 +1,29 @@
 .PHONY : help build install install-gedit uninstall format format-dry-run test coverage tidy clean appdir
 help :
 	@echo "clean"
-	@echo "      Remove auto-generated files."
+	@echo "      Remove auto-generated files"
 	@echo "build"
-	@echo "      Build release executable."
+	@echo "      Build release executable"
 	@echo "build DEBUG=1"
-	@echo "      Build executable for debugging."
+	@echo "      Build executable for debugging"
 	@echo "build GPROF=1"
-	@echo "      Build executable for gprof (code profiling)."
+	@echo "      Build executable for gprof (code profiling)"
 	@echo "build GCOV=1"
-	@echo "      Build executable for gcov (code coverage)."
+	@echo "      Build executable for gcov (code coverage)"
 	@echo "install"
-	@echo "      Installs the executable to /usr/local/bin directory. Execute 'make build' first."
+	@echo "      Installs the executable to /usr/local/bin directory. Execute 'make build' first"
 	@echo "uninstall"
-	@echo "      Uninstalls the executable from /usr/local/bin directory."
+	@echo "      Uninstalls the executable from /usr/local/bin directory"
 	@echo "format"
 	@echo "      Run clang-format."
 	@echo "format-dry-run"
-	@echo "      Run clang-format with --dry-run --Werror flags."
+	@echo "      Run clang-format with --dry-run --Werror flag."
 	@echo "test"
 	@echo "      Run tests, run make build DEBUG=1 first"
 	@echo "coverage"
 	@echo "      Run test and prepare code coverage report, run make build GCOV=1"
+	@echo "gen"
+	@echo "      Generate test cases, please review the generated test cases using git diff after running this"
 	@echo "tidy"
 	@echo "      Run clang-tidy"
 	@echo ""
@@ -142,6 +144,9 @@ test:
 
 coverage:
 	LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner --coverage
+
+gen:
+	LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner --gen
 
 tidy:
 	clang-tidy $(SOURCES) -- $(CXXFLAGS) -Wextra

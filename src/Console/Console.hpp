@@ -25,6 +25,10 @@ class Console
     std::vector<std::string> fileNameStack;
     std::vector<std::ifstream*> fileStack;
 
+    void printModuleStackToken(const Token& tok);
+    void printModuleStack();
+
+
 public:
     [[noreturn]] void compileErrorOnToken(const std::string& message, const Token& tok);
 

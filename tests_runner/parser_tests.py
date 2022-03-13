@@ -1,13 +1,13 @@
 
 import os
 
-from tests_runner.framework import TestResult
+from tests_runner.framework import Result
 from tests_runner.framework import compile_phase, compile_success_output_assert
 from tests_runner.framework import tester
 
 
 @tester.batch("tests/parser")
-def ast_pretty(file_name: str) -> TestResult:
+def ast_pretty(file_name: str) -> Result:
     test_case_file_path = os.path.join("expected/pretty", file_name+".txt")
 
     return compile_success_output_assert(
@@ -24,7 +24,7 @@ def ast_pretty(file_name: str) -> TestResult:
 
 
 @tester.batch("tests/parser")
-def ast_json(file_name: str) -> TestResult:
+def ast_json(file_name: str) -> Result:
     test_case_file_path = os.path.join("expected/json", file_name+".json")
 
     return compile_success_output_assert(

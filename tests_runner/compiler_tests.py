@@ -1,6 +1,6 @@
 import os
 
-from tests_runner.framework import TestResult
+from tests_runner.framework import Result
 from tests_runner.framework import compile_phase
 from tests_runner.framework import command_on_compile_success_output_assert
 from tests_runner.framework import compile_success_output_assert
@@ -23,7 +23,7 @@ def get_expected_output(file_name: str) -> str:
 
 
 @tester.batch("tests/compiler")
-def output_executable(file_name: str) -> TestResult:
+def output_executable(file_name: str) -> Result:
     expected_output = get_expected_output(file_name)
 
     return command_on_compile_success_output_assert(
@@ -41,7 +41,7 @@ def output_executable(file_name: str) -> TestResult:
 
 
 @tester.batch("tests/compiler")
-def icode_pretty(file_name: str) -> TestResult:
+def icode_pretty(file_name: str) -> Result:
     test_case_file_path = os.path.join("expected/pretty", file_name)+".txt"
 
     return compile_success_output_assert(
@@ -58,7 +58,7 @@ def icode_pretty(file_name: str) -> TestResult:
 
 
 @tester.batch("tests/compiler")
-def icode_json(file_name: str) -> TestResult:
+def icode_json(file_name: str) -> Result:
     test_case_file_path = os.path.join("expected/json", file_name)+".json"
 
     return compile_success_output_assert(

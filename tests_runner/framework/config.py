@@ -8,6 +8,7 @@ from tests_runner.framework.fs import string_from_file
 class CLIArg(str, enum.Enum):
     TEST = "--test"
     COVERAGE = "--coverage"
+    GEN = "--gen"
 
 
 class BuildType(str, enum.Enum):
@@ -18,6 +19,7 @@ class BuildType(str, enum.Enum):
 BUILD_TYPE_MAP = {
     CLIArg.TEST: BuildType.DEBUG,
     CLIArg.COVERAGE: BuildType.GCOV,
+    CLIArg.GEN: BuildType.DEBUG
 }
 
 CLI_ARG_OPTIONS = ' '.join(list(BUILD_TYPE_MAP.keys()))
@@ -72,15 +74,20 @@ BUILD_COMMAND_MAP = {
     BuildType.GCOV: os.getenv("COVERAGE_BUILD_COMMAND", "make build GCOV=1 CXX=ccache\\ g++ -j 4")
 }
 
+COMPILER_BUILD_FAILED = True
+
 if BUILD_TYPE is not None:
     print("🤖 Building compiler...")
-    os.system(BUILD_COMMAND_MAP[BUILD_TYPE])
+    exit_code = os.system(BUILD_COMMAND_MAP[BUILD_TYPE])
+    COMPILER_BUILD_FAILED = exit_code != 0
 
 # Find compiler
 
 COMPILER_EXEC_PATH = os.path.join(os.getcwd(), f"bin/{BUILD_TYPE}/shtkc")
 COMPILER_NOT_FOUND = True
 
+if COMPILER_BUILD_FAILED:
+    print("🙁 compiler build failed")
 if os.path.exists(COMPILER_EXEC_PATH):
     COMPILER_NOT_FOUND = False
 else:

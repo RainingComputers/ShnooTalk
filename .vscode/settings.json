@@ -110,6 +110,7 @@
         "CGSCC",
         "chdir",
         "CONDN",
+        "dirctx",
         "distro",
         "Dont",
         "dpeek",

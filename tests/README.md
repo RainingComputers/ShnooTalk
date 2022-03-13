@@ -29,8 +29,8 @@ pretty printer.
 + If you make changes to existing syntax, you will most probably just have to fix failing tests
 + When you make changes to the IR or the IR builder
 + Avoid making changes to the pretty printer or modifying syntax of existing IR 
-  instructions, but if you do, you will have to change a lot of test cases (will probably need automation)
-  and do careful review using `git diff`.
+  instructions, but if you do, you may have to change a lot of test cases, re-generate the test cases,
+  and do careful review using `git diff`
 
 ## Where to add the test?
 
@@ -42,4 +42,11 @@ pretty printer.
 ## How to run the tests?
 
 + Install ccache and g++
++ If you have added a new test case, you will have to run `make gen` to expected output files for the test case
 + Run `make test` or `make coverage`
+
+## How to generate the test cases?
+
++ Install ccache and g++
++ Run `make gen`
++ Carefully review the changes using `git diff`

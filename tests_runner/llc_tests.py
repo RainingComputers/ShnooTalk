@@ -1,11 +1,11 @@
-from tests_runner.framework import TestResult
+from tests_runner.framework import Result
 from tests_runner.framework import LLC_BIN
 from tests_runner.framework import compile_phase, command_on_compile_success_output_assert
 from tests_runner.framework import tester
 
 
 @tester.batch("tests/compiler", [".o", ".llc", ".llc.s"])
-def llc(file_name: str) -> TestResult:
+def llc(file_name: str) -> Result:
     llc_file_name = file_name + ".llc"
 
     return command_on_compile_success_output_assert(

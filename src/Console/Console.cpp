@@ -1,50 +1,76 @@
 #include "Console.hpp"
 
+void Console::printModuleStackToken(const Token& tok)
+{
+    // pp::println("");
+    //
+    // pp::printModuleLocation(fileNameStack.back(), tok);
+    //
+    // for (size_t i = fileNameStack.size() - 2; i <= 0; i -= 1)
+    //    pp::println(fileNameStack[i]);
+}
+
+void Console::printModuleStack()
+{
+    // pp::println("");
+    //
+    // for (size_t i = fileNameStack.size() - 1; i <= 0; i -= 1)
+    //    pp::println(fileNameStack[i]);
+}
+
 void Console::compileErrorOnToken(const std::string& message, const Token& tok)
 {
     pp::errorOnToken(tok.getFileName(), message, streamsMap[tok.getFileName()], tok);
+    printModuleStackToken(tok);
     throw CompileError();
 }
 
 void Console::typeError(const Token& tok, const Unit& expected, const Unit& found)
 {
     pp::typeError(fileName, *file, tok, expected.type(), found.type());
+    printModuleStackToken(tok);
     throw CompileError();
 }
 
 void Console::internalBugErrorOnToken(const Token& tok)
 {
     pp::errorOnToken(fileName, "Internal compiler error, REPORT THIS BUG", *file, tok);
+    printModuleStackToken(tok);
     throw InternalBugError();
 }
 
 void Console::internalBugError()
 {
     pp::errorOnModuleName(fileName, "Internal compiler error, REPORT THIS BUG");
+    printModuleStack();
     throw InternalBugError();
 }
 
 void Console::internalBugErrorMessage(const std::string& message)
 {
     pp::println(message);
+    printModuleStack();
     throw InternalBugError();
 }
 
 void Console::parseError(token::TokenType& expected, Token& found)
 {
     pp::parserError(fileName, expected, found, *file);
+    printModuleStackToken(found);
     throw CompileError();
 }
 
 void Console::parserErrorMultiple(const token::TokenType* expected, int ntoks, const Token& found)
 {
     pp::parserErrorMultiple(fileName, expected, ntoks, found, *file);
+    printModuleStackToken(found);
     throw CompileError();
 }
 
 void Console::lexerError(const std::string& errorMessage, const std::string& line, int lineno, int col)
 {
     pp::errorOnLine(fileName, errorMessage, line, lineno, col);
+    printModuleStack(); // TODO
     throw CompileError();
 }
 
