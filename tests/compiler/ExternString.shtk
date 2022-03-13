@@ -1,5 +1,3 @@
-# random
-
 use "TestModules/RandomDefine.shtk" as Random
 
 fn main() -> int

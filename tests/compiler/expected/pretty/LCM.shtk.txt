@@ -9,27 +9,27 @@
                         int calleeReturnValue12 = call int _fn_TestModules_Math_shtk_maxInt, module TestModules/Math.shtk
                         int max = equal int calleeReturnValue12
                         int x = equal int max
-                    _for_true_l11_c4:
+                    _for_true_l9_c4:
                         int temp23 = multiply int a, int b
                         flag = lessThanOrEqualTo int x, int temp23
-                        if(not flag) goto _for_false_l11_c4
+                        if(not flag) goto _for_false_l9_c4
                         int temp31 = remainder int x, int a
                         int temp33 = cast autoInt 0
                         flag = isEqual int temp31, int temp33
-                        if(not flag) goto _if_false_l12_c8
+                        if(not flag) goto _if_false_l10_c8
                         int temp36 = remainder int x, int b
                         int temp38 = cast autoInt 0
                         flag = isEqual int temp36, int temp38
-                        if(not flag) goto _if_false_l12_c8
+                        if(not flag) goto _if_false_l10_c8
                         int returnValue39 = equal int x
                         return
-                    _if_false_l12_c8:
-                    _for_cont_true_l11_c4:
+                    _if_false_l10_c8:
+                    _for_cont_true_l9_c4:
                         int temp44 = cast autoInt 1
                         int temp43 = add int x, int temp44
                         int x = equal int temp43
-                        goto _for_true_l11_c4
-                    _for_false_l11_c4:
+                        goto _for_true_l9_c4
+                    _for_false_l9_c4:
                         autoInt temp47 = unaryMinus autoInt 1
                         int temp48 = cast autoInt temp47
                         int returnValue45 = equal int temp48

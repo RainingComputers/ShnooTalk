@@ -1,0 +1,6 @@
+MODULE FromAlreadyExistsError.shtk
+ERROR in Line 4 Col 15
+
+from math use vec
+              ^
+Alias already exists

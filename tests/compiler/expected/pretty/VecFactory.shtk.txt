@@ -180,22 +180,22 @@
                 "icode": [
                         int temp31 = cast autoInt 0
                         int i = equal int temp31
-                    _for_true_l28_c4:
+                    _for_true_l18_c4:
                         int temp37 = cast autoInt 4
                         flag = lessThan int i, int temp37
-                        if(not flag) goto _for_false_l28_c4
+                        if(not flag) goto _for_false_l18_c4
                         int* tempPtr40 = createPointer struct foo
                         void* tempPtr42 = addressMultiply int i, bytes 8
                         int* tempPtr43 = addressAdd int* tempPtr40, void* tempPtr42
                         int* tempPtr45 = createPointer int* tempPtr43
                         passPointer int* tempPtr45, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                         void calleeReturnValue48 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                    _for_cont_true_l28_c4:
+                    _for_cont_true_l18_c4:
                         int temp54 = cast autoInt 1
                         int temp53 = add int i, int temp54
                         int i = equal int temp53
-                        goto _for_true_l28_c4
-                    _for_false_l28_c4:
+                        goto _for_true_l18_c4
+                    _for_false_l18_c4:
                         return
                 ]
             },
@@ -233,7 +233,7 @@
                         int* tempPtr123 = addressAdd int* tempPtr119, bytes 8
                         int* tempPtr124 = createPointer struct calleeReturnValue108
                         int* tempPtr123 = memoryCopy int* tempPtr124, autoInt 8
-                        printString stringData _str_VecFactory_shtk__l38_c12
+                        printString stringData _str_VecFactory_shtk__l28_c12
                         space
                         print autoInt 32
                         newLine

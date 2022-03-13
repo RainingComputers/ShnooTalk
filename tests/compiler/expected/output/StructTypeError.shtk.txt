@@ -1,0 +1,7 @@
+MODULE StructTypeError.shtk
+ERROR in Line 15 Col 9
+
+    a = b
+        ^
+Type error, did not expect foo,
+expected bar

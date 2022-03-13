@@ -1,0 +1,6 @@
+MODULE AssignOnImmutableArrayElem.shtk
+ERROR in Line 5 Col 5
+
+    a[2] = 5
+    ^
+Cannot modify IMMUTABLE variable or parameter

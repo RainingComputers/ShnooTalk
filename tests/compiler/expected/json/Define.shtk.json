@@ -8,7 +8,7 @@
                     {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "print", "op1": {"type": "literal", "id": 4, "dtype": "autoFloat", "value": 3.5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "printString", "op1": {"type": "stringData", "id": 5, "name": "_str_Define_shtk__l5_c11", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 5, "name": "_str_Define_shtk__l3_c11", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "print", "op1": {"type": "literal", "id": 6, "dtype": "autoFloat", "value": -3.5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

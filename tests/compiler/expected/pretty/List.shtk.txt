@@ -6,12 +6,12 @@
                 "icode": [
                         int temp5 = cast autoInt 0
                         int i = equal int temp5
-                    _for_true_l13_c4:
+                    _for_true_l10_c4:
                         int* tempPtr12 = createPointer struct list
                         passPointer int* tempPtr12, int _fn_TestModules_List_shtk__List_shtk_int_len, module TestModules/List.shtk__List_shtk_int
                         int calleeReturnValue15 = call int _fn_TestModules_List_shtk__List_shtk_int_len, module TestModules/List.shtk__List_shtk_int
                         flag = lessThan int i, int calleeReturnValue15
-                        if(not flag) goto _for_false_l13_c4
+                        if(not flag) goto _for_false_l10_c4
                         int* tempPtr22 = createPointer struct list
                         passPointer int* tempPtr22, struct _fn_TestModules_List_shtk__List_shtk_int_at, module TestModules/List.shtk__List_shtk_int
                         pass int i, struct _fn_TestModules_List_shtk__List_shtk_int_at, module TestModules/List.shtk__List_shtk_int
@@ -24,23 +24,23 @@
                         byte temp42 = read byte* tempPtr40
                         byte temp43 = cast autoInt 0
                         flag = greaterThan byte temp42, byte temp43
-                        if(not flag) goto _if_false_l17_c8
-                        printString stringData _str_List_shtk__l17_c30
-                        goto _ifend_false_l17_c8
-                    _if_false_l17_c8:
+                        if(not flag) goto _if_false_l14_c8
+                        printString stringData _str_List_shtk__l14_c30
+                        goto _ifend_false_l14_c8
+                    _if_false_l14_c8:
                         byte* tempPtr48 = createPointer struct result
                         byte* tempPtr50 = addressAdd byte* tempPtr48, bytes 1
                         int temp51 = read int* tempPtr50
                         print int temp51
-                        printString stringData _str_List_shtk__l18_c32
-                    _ifend_false_l17_c8:
-                    _for_cont_true_l13_c4:
+                        printString stringData _str_List_shtk__l15_c32
+                    _ifend_false_l14_c8:
+                    _for_cont_true_l10_c4:
                         int temp56 = cast autoInt 1
                         int temp55 = add int i, int temp56
                         int i = equal int temp55
-                        goto _for_true_l13_c4
-                    _for_false_l13_c4:
-                        printString stringData _str_List_shtk__l22_c12
+                        goto _for_true_l10_c4
+                    _for_false_l10_c4:
+                        printString stringData _str_List_shtk__l19_c12
                         newLine
                         return
                 ]

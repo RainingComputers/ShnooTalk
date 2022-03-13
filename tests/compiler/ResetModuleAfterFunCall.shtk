@@ -1,6 +1,3 @@
-# Pin 0 low
-# This works
-
 use "TestModules/Vector.shtk" as vec
 use "TestModules/Digital.shtk" as digital
 

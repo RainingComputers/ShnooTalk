@@ -6,11 +6,11 @@
                 "icode": [
                         int temp8 = cast autoInt 0
                         flag = isEqual int n, int temp8
-                        if(not flag) goto _if_false_l9_c4
+                        if(not flag) goto _if_false_l7_c4
                         byte temp11 = cast autoInt 0
                         byte returnValue9 = equal byte temp11
                         return
-                    _if_false_l9_c4:
+                    _if_false_l7_c4:
                         int temp16 = cast autoInt 1
                         int temp15 = subtract int n, int temp16
                         pass int temp15, byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk

@@ -1,0 +1,6 @@
+MODULE AssignmentOnLiteralError.shtk
+ERROR in Line 5 Col 5
+
+    a = 2
+    ^
+Cannot assign to LITERAL

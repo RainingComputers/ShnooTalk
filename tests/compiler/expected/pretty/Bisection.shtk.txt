@@ -20,12 +20,12 @@
                         float xR = equal float temp20
                         float temp23 = cast autoFloat 0.000001
                         float epsilon = equal float temp23
-                    _while_true_l19_c4:
+                    _while_true_l17_c4:
                         float temp28 = subtract float xR, float xL
                         pass float temp28, float _fn_TestModules_Math_shtk_abs, module TestModules/Math.shtk
                         float calleeReturnValue32 = call float _fn_TestModules_Math_shtk_abs, module TestModules/Math.shtk
                         flag = greaterThanOrEqualTo float calleeReturnValue32, float epsilon
-                        if(not flag) goto _while_false_l19_c4
+                        if(not flag) goto _while_false_l17_c4
                         float temp39 = add float xL, float xR
                         float temp42 = cast autoFloat 2.000000
                         float temp41 = divide float temp39, float temp42
@@ -34,31 +34,31 @@
                         float calleeReturnValue54 = call float _fn_Bisection_shtk_f, module Bisection.shtk
                         float temp58 = cast autoFloat 0.000000
                         flag = lessThanOrEqualTo float calleeReturnValue54, float temp58
-                        if(not flag) goto _and_false_l25_c25
+                        if(not flag) goto _and_false_l23_c25
                         pass float xL, float _fn_Bisection_shtk_f, module Bisection.shtk
                         float calleeReturnValue63 = call float _fn_Bisection_shtk_f, module Bisection.shtk
                         float temp67 = cast autoFloat 0.000000
                         flag = lessThanOrEqualTo float calleeReturnValue63, float temp67
-                        if(flag) goto _or_true_l25_c43
-                    _and_false_l25_c25:
+                        if(flag) goto _or_true_l23_c43
+                    _and_false_l23_c25:
                         pass float xM, float _fn_Bisection_shtk_f, module Bisection.shtk
                         float calleeReturnValue74 = call float _fn_Bisection_shtk_f, module Bisection.shtk
                         float temp78 = cast autoFloat 0.000000
                         flag = greaterThan float calleeReturnValue74, float temp78
-                        if(not flag) goto _if_false_l25_c8
+                        if(not flag) goto _if_false_l23_c8
                         pass float xL, float _fn_Bisection_shtk_f, module Bisection.shtk
                         float calleeReturnValue83 = call float _fn_Bisection_shtk_f, module Bisection.shtk
                         float temp87 = cast autoFloat 0.000000
                         flag = greaterThan float calleeReturnValue83, float temp87
-                        if(not flag) goto _if_false_l25_c8
-                    _or_true_l25_c43:
+                        if(not flag) goto _if_false_l23_c8
+                    _or_true_l23_c43:
                         float xL = equal float xM
-                        goto _ifend_false_l25_c8
-                    _if_false_l25_c8:
+                        goto _ifend_false_l23_c8
+                    _if_false_l23_c8:
                         float xR = equal float xM
-                    _ifend_false_l25_c8:
-                        goto _while_true_l19_c4
-                    _while_false_l19_c4:
+                    _ifend_false_l23_c8:
+                        goto _while_true_l17_c4
+                    _while_false_l17_c4:
                         print float xL
                         newLine
                         int temp97 = cast autoInt 0

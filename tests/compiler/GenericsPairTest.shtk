@@ -1,9 +1,3 @@
-# 8.000000
-# 8
-# 5
-# x: 5 y: 5
-
-
 use "TestModules/Pair.shtk" as Pair
 use "TestModules/Vector.shtk" as Vector
 

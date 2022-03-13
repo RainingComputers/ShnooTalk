@@ -1,5 +1,3 @@
-# 12
-
 use "TestModules/Math.shtk" as math
 
 fn lcm(a:int, b:int) -> int

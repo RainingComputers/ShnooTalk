@@ -1,0 +1,6 @@
+MODULE NonIntegerIndexError.shtk
+ERROR in Line 4 Col 15
+
+    println(a[b])
+              ^
+Index must be an integer

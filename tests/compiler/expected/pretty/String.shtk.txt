@@ -5,7 +5,7 @@
             "main": {
                 "icode": [
                         ubyte* tempPtr5 = createPointer ubyte foo
-                        ubyte* tempPtr6 = createPointer stringData _str_String_shtk__l17_c23
+                        ubyte* tempPtr6 = createPointer stringData _str_String_shtk__l9_c23
                         ubyte* tempPtr5 = memoryCopy ubyte* tempPtr6, autoInt 6
                         ubyte* tempPtr12 = createPointer struct a
                         passPointer ubyte* tempPtr12, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
@@ -14,22 +14,22 @@
                         void calleeReturnValue19 = call void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         ubyte* tempPtr26 = createPointer struct b
                         passPointer ubyte* tempPtr26, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
-                        ubyte* tempPtr30 = createPointer stringData _str_String_shtk__l20_c24
+                        ubyte* tempPtr30 = createPointer stringData _str_String_shtk__l12_c24
                         passPointer ubyte* tempPtr30, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         void calleeReturnValue33 = call void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         ubyte* tempPtr40 = createPointer struct c
                         passPointer ubyte* tempPtr40, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
-                        ubyte* tempPtr44 = createPointer stringData _str_String_shtk__l21_c24
+                        ubyte* tempPtr44 = createPointer stringData _str_String_shtk__l13_c24
                         passPointer ubyte* tempPtr44, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         void calleeReturnValue47 = call void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         ubyte* tempPtr54 = createPointer struct d
                         passPointer ubyte* tempPtr54, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
-                        ubyte* tempPtr58 = createPointer stringData _str_String_shtk__l22_c24
+                        ubyte* tempPtr58 = createPointer stringData _str_String_shtk__l14_c24
                         passPointer ubyte* tempPtr58, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         void calleeReturnValue61 = call void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         ubyte* tempPtr68 = createPointer struct e
                         passPointer ubyte* tempPtr68, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
-                        ubyte* tempPtr72 = createPointer stringData _str_String_shtk__l23_c24
+                        ubyte* tempPtr72 = createPointer stringData _str_String_shtk__l15_c24
                         passPointer ubyte* tempPtr72, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         void calleeReturnValue75 = call void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         ubyte* tempPtr82 = createPointer struct c
@@ -93,7 +93,7 @@
                         newLine
                         ubyte* tempPtr193 = createPointer struct h
                         passPointer ubyte* tempPtr193, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
-                        ubyte* tempPtr197 = createPointer stringData _str_String_shtk__l39_c24
+                        ubyte* tempPtr197 = createPointer stringData _str_String_shtk__l31_c24
                         passPointer ubyte* tempPtr197, void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         void calleeReturnValue200 = call void _fn_TestModules_String_shtk_copy, module TestModules/String.shtk
                         ubyte* tempPtr209 = createPointer struct h
@@ -104,10 +104,10 @@
                         int calleeReturnValue218 = call int _fn_TestModules_String_shtk_strcmp, module TestModules/String.shtk
                         int temp222 = cast autoInt 0
                         flag = isEqual int calleeReturnValue218, int temp222
-                        if(not flag) goto _if_false_l40_c4
-                        printString stringData _str_String_shtk__l40_c37
+                        if(not flag) goto _if_false_l32_c4
+                        printString stringData _str_String_shtk__l32_c37
                         newLine
-                    _if_false_l40_c4:
+                    _if_false_l32_c4:
                         int temp226 = cast autoInt 0
                         int returnValue224 = equal int temp226
                         return

@@ -1,0 +1,6 @@
+MODULE GenericsTypeValidationError1.shtk
+ERROR in Line 7 Col 12
+
+    var a: FooStar[int*]
+           ^
+Invalid type parameters for this generic

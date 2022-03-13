@@ -1,8 +1,1 @@
-# MODULE FromBeforeAliasError.shtk
-# ERROR in Line 8 Col 6
-# 
-# from math use vec
-#      ^
-# Use does not exist
-
 from math use vec

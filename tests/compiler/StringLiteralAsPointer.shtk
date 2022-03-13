@@ -1,11 +1,3 @@
-# MODULE StringLiteralAsPointer.shtk
-# ERROR in Line 16 Col 10
-# 
-#     test("leh")
-#          ^
-# Type error, did not expect char[],
-# expected char*
-
 fn test(mut a: char*)
 {
 

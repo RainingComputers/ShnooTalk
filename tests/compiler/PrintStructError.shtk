@@ -1,10 +1,3 @@
-# MODULE PrintStructError.shtk
-# ERROR in Line 15 Col 13
-# 
-#     println(a)
-#             ^
-# Cannot print STRUCT or multi-dimensional ARRAY or non CHAR ARRAY
-
 use "TestModules/Vector.shtk" as vec
 from vec use Vec
 

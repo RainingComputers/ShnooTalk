@@ -1,0 +1,6 @@
+MODULE WalrusConstError.shtk
+ERROR in Line 6 Col 5
+
+    b += 1
+    ^
+Cannot modify IMMUTABLE variable or parameter

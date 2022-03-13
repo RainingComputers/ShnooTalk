@@ -1,5 +1,3 @@
-# ./test_executable
-
 fn getArg(argv: ulong[], idx: int) -> char[]
 {
     return char[]`(argv[idx] + 0)

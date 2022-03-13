@@ -1,0 +1,6 @@
+MODULE FunctionAlreadyExistsError.shtk
+ERROR in Line 6 Col 4
+
+fn foobar() 
+   ^
+Symbol already defined

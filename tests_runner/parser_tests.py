@@ -14,11 +14,11 @@ def ast_pretty(file_name: str) -> Result:
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-ast",
-            compiler_output_dump_file_path=None,
+            compiler_output_dump_file=None,
             create_executable=False,
             skip_on_compile_error=False
         ),
-        expected_test_case_file_path=test_case_file_path,
+        expected_test_case_file=test_case_file_path,
         check_json=False
     )
 
@@ -31,10 +31,10 @@ def ast_json(file_name: str) -> Result:
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-json-ast",
-            compiler_output_dump_file_path=None,
+            compiler_output_dump_file=None,
             create_executable=False,
             skip_on_compile_error=False
         ),
-        expected_test_case_file_path=test_case_file_path,
+        expected_test_case_file=test_case_file_path,
         check_json=True
     )

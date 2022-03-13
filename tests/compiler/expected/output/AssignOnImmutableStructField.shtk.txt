@@ -1,0 +1,6 @@
+MODULE AssignOnImmutableStructField.shtk
+ERROR in Line 19 Col 5
+
+    a.x = 3
+    ^
+Cannot modify IMMUTABLE variable or parameter

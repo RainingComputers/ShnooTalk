@@ -1,0 +1,6 @@
+MODULE GenericsTypeValidationError2.shtk
+ERROR in Line 7 Col 12
+
+    var a: FooSubs[int*]
+           ^
+Invalid type parameters for this generic

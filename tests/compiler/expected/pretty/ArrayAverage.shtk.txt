@@ -8,22 +8,22 @@
                         int tot = equal int temp5
                         int temp8 = cast autoInt 0
                         int i = equal int temp8
-                    _for_true_l7_c4:
+                    _for_true_l5_c4:
                         int temp14 = cast autoInt 5
                         flag = lessThan int i, int temp14
-                        if(not flag) goto _for_false_l7_c4
+                        if(not flag) goto _for_false_l5_c4
                         int* tempPtr18 = createPointer int a
                         void* tempPtr20 = addressMultiply int i, bytes 4
                         int* tempPtr21 = addressAdd int* tempPtr18, void* tempPtr20
                         int temp23 = read int* tempPtr21
                         int temp22 = add int tot, int temp23
                         int tot = equal int temp22
-                    _for_cont_true_l7_c4:
+                    _for_cont_true_l5_c4:
                         int temp27 = cast autoInt 1
                         int temp26 = add int i, int temp27
                         int i = equal int temp26
-                        goto _for_true_l7_c4
-                    _for_false_l7_c4:
+                        goto _for_true_l5_c4
+                    _for_false_l5_c4:
                         int temp32 = cast autoInt 5
                         int temp31 = divide int tot, int temp32
                         int returnValue28 = equal int temp31

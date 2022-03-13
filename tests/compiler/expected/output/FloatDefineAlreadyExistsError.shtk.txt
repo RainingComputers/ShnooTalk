@@ -1,0 +1,6 @@
+MODULE FloatDefineAlreadyExistsError.shtk
+ERROR in Line 5 Col 5
+
+def abs 1.34
+    ^
+Symbol already exists

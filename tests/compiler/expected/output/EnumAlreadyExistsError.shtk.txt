@@ -1,0 +1,6 @@
+MODULE EnumAlreadyExistsError.shtk
+ERROR in Line 2 Col 7
+
+enum [LED_ONE, LED_TWO]
+      ^
+Symbol already defined

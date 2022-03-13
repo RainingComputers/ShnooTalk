@@ -1,11 +1,3 @@
-# MODULE ConstInit.shtk
-# ERROR in Line 13 Col 5
-# 
-#     return 0
-#     ^
-# Did not expect RETURN,
-# expected EQUAL or LEFT_ARROW
-
 fn main() -> int
 {
     const a:int

@@ -1,5 +1,3 @@
-# Pin 0 low
-
 use "TestModules/Digital.shtk" as digital
 
 fn main() -> int

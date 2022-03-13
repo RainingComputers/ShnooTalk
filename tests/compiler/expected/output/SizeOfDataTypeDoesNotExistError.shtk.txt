@@ -1,0 +1,6 @@
+MODULE SizeOfDataTypeDoesNotExistError.shtk
+ERROR in Line 3 Col 20
+
+    println(sizeof(doesnotexist))
+                   ^
+Symbol does not exist

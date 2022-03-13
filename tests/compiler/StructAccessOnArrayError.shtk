@@ -1,10 +1,3 @@
-# MODULE StructAccessOnArrayError.shtk
-# ERROR in Line 24 Col 17
-# 
-#     println(foo.x)
-#                 ^
-# STRUCT access on an ARRAY
-
 use "TestModules/Vector.shtk" as vec
 from vec use Vec
 

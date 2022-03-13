@@ -6,19 +6,19 @@
                 "icode": [
                         int temp5 = cast autoInt 0
                         int a = equal int temp5
-                    _loop_true_l11_c4:
+                    _loop_true_l5_c4:
                         int temp13 = cast autoInt 5
                         flag = isEqual int a, int temp13
-                        if(not flag) goto _if_false_l12_c8
-                        goto _loop_false_l11_c4
-                    _if_false_l12_c8:
+                        if(not flag) goto _if_false_l6_c8
+                        goto _loop_false_l5_c4
+                    _if_false_l6_c8:
                         int temp17 = cast autoInt 1
                         int temp16 = add int a, int temp17
                         int a = equal int temp16
-                        printString stringData _str_InfiniteLoop_shtk__l15_c16
+                        printString stringData _str_InfiniteLoop_shtk__l9_c16
                         newLine
-                        goto _loop_true_l11_c4
-                    _loop_false_l11_c4:
+                        goto _loop_true_l5_c4
+                    _loop_false_l5_c4:
                         int temp21 = cast autoInt 0
                         int returnValue19 = equal int temp21
                         return

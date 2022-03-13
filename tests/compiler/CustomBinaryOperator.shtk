@@ -1,6 +1,3 @@
-# x: 3 y: 3
-# x: 6 y: 6
-
 use "TestModules/Vector.shtk" as Vector
 
 from Vector use Vec, printVec

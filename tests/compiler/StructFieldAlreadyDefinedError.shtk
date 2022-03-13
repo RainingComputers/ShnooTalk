@@ -1,10 +1,3 @@
-# MODULE StructFieldAlreadyDefinedError.shtk
-# ERROR in Line 10 Col 18
-# 
-#     var foo:int, foo:int
-#                  ^
-# Field already defined
-
 struct foobar
 {
     var foo:int, foo:int

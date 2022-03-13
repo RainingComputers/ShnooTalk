@@ -1,5 +1,3 @@
-# 42
-
 fn main() -> int
 {
     var a: int* <- int*`42

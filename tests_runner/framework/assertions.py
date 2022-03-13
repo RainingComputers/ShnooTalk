@@ -1,11 +1,11 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 import json
 
 from tests_runner.framework.config import COMPILER_EXEC_PATH
 
-from tests_runner.framework.command import run_command
-from tests_runner.framework.fs import get_files, remove_if_exists, dump_string_to_file, remove_files
+from tests_runner.framework.command import run_command, link_objects_into_bin, shtk_compile
+from tests_runner.framework.fs import remove_if_exists, dump_string_to_file, remove_files
 from tests_runner.framework.fs import string_from_file
 from tests_runner.framework.result import Result
 from tests_runner.framework.coverage import set_gmon_prefix, setup_coverage_dir
@@ -23,14 +23,6 @@ def setup(file_name: str) -> None:
     setup_coverage_dir()
 
 
-def shtk_compile(file_name: str, compile_flag: str) -> Tuple[bool, str, Optional[int]]:
-    return run_command([COMPILER_EXEC_PATH, file_name, compile_flag])
-
-
-def link_objects_into_bin() -> None:
-    run_command(["gcc"] + get_files(".o") + ["-o", "test_executable", "-lm"])
-
-
 def compare(expected_output: str, output: Optional[str]) -> Result:
     if output is None:
         if expected_output == "":
@@ -46,7 +38,7 @@ def compare(expected_output: str, output: Optional[str]) -> Result:
 
 def compile_phase(file_name: str,
                   compile_flag: str,
-                  compiler_output_dump_file_path: Optional[str],
+                  compiler_output_dump_file: Optional[str],
                   create_executable: bool,
                   skip_on_compile_error: bool) -> Result:
     setup(file_name)
@@ -63,8 +55,8 @@ def compile_phase(file_name: str,
 
         return Result.failed(compiler_output)
 
-    if compiler_output_dump_file_path is not None:
-        dump_string_to_file(compiler_output_dump_file_path, compiler_output)
+    if compiler_output_dump_file is not None:
+        dump_string_to_file(compiler_output_dump_file, compiler_output)
 
     if create_executable:
         link_objects_into_bin()
@@ -72,13 +64,16 @@ def compile_phase(file_name: str,
     return Result.passed(compiler_output)
 
 
-def command_on_compile_success_output_assert(compile_phase_result: Result,
-                                             expected_on_compile_result_fail: Optional[str],
-                                             command_on_compile_result_pass: List[str],
-                                             expected_command_output: Optional[str]) -> Result:
+def command_on_compile_success_output_assert(
+    compile_phase_result: Result,
+    compile_result_fail_test_case_file: Optional[str],
+    command_on_compile_result_pass: List[str],
+    command_output_test_case_file: Optional[str]
+) -> Result:
 
-    if compile_phase_result.has_failed and expected_on_compile_result_fail is not None:
-        return compare(expected_on_compile_result_fail, compile_phase_result.output)
+    if compile_phase_result.has_failed and compile_result_fail_test_case_file is not None:
+        expected = string_from_file(compile_result_fail_test_case_file)
+        return compare(expected, compile_phase_result.output)
 
     if not compile_phase_result.has_passed:
         return compile_phase_result
@@ -94,20 +89,21 @@ def command_on_compile_success_output_assert(compile_phase_result: Result,
     if command_exit_code != 0:
         return Result.failed(command_output)
 
-    if expected_command_output is not None:
-        return compare(expected_command_output, command_output)
+    if command_output_test_case_file is not None:
+        expected = string_from_file(command_output_test_case_file)
+        return compare(expected, command_output)
 
     return Result.passed(command_output)
 
 
 def compile_success_output_assert(compile_phase_result: Result,
-                                  expected_test_case_file_path: str,
+                                  expected_test_case_file: str,
                                   check_json: bool) -> Result:
 
     if not compile_phase_result.has_passed:
         return compile_phase_result
 
-    expected_output = string_from_file(expected_test_case_file_path)
+    expected_output = string_from_file(expected_test_case_file)
 
     if check_json:
         _ = json.loads(expected_output)

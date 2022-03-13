@@ -1,5 +1,3 @@
-# This should be printed
-
 extfn exit(exitCode: int)
 
 fn main() -> int

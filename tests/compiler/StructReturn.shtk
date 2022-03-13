@@ -1,7 +1,3 @@
-# 2
-# 3
-# 10
-
 struct foo
 {
     var a:int, b:int

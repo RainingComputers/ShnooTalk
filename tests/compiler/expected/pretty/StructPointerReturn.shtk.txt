@@ -18,14 +18,14 @@
             },
             "_fn_StructPointerReturn_shtk_printVec": {
                 "icode": [
-                        printString stringData _str_StructPointerReturn_shtk__l29_c12
+                        printString stringData _str_StructPointerReturn_shtk__l18_c12
                         space
                         int* tempPtr24 = createPointer struct vector
                         int* tempPtr26 = addressAdd int* tempPtr24, bytes 0
                         int temp27 = read int* tempPtr26
                         print int temp27
                         space
-                        printString stringData _str_StructPointerReturn_shtk__l29_c28
+                        printString stringData _str_StructPointerReturn_shtk__l18_c28
                         space
                         int* tempPtr30 = createPointer struct vector
                         int* tempPtr32 = addressAdd int* tempPtr30, bytes 4
@@ -45,10 +45,10 @@
                 "icode": [
                         int temp46 = cast autoInt 0
                         int i = equal int temp46
-                    _for_true_l42_c4:
+                    _for_true_l31_c4:
                         int temp52 = cast autoInt 10
                         flag = lessThan int i, int temp52
-                        if(not flag) goto _for_false_l42_c4
+                        if(not flag) goto _for_false_l31_c4
                         int* tempPtr55 = createPointer struct arr
                         void* tempPtr57 = addressMultiply int i, bytes 8
                         int* tempPtr58 = addressAdd int* tempPtr55, void* tempPtr57
@@ -60,34 +60,34 @@
                         int* tempPtr73 = createPointer int* tempPtr58
                         int* tempPtr74 = createPointer struct calleeReturnValue70
                         int* tempPtr73 = memoryCopy int* tempPtr74, autoInt 8
-                    _for_cont_true_l42_c4:
+                    _for_cont_true_l31_c4:
                         int temp79 = cast autoInt 1
                         int temp78 = add int i, int temp79
                         int i = equal int temp78
-                        goto _for_true_l42_c4
-                    _for_false_l42_c4:
+                        goto _for_true_l31_c4
+                    _for_false_l31_c4:
                         int* tempPtr83 = createPointer struct arr
                         passPointer int* tempPtr83, struct _fn_StructPointerReturn_shtk_test, module StructPointerReturn.shtk
                         struct* calleeReturnPointer86 = call struct _fn_StructPointerReturn_shtk_test, module StructPointerReturn.shtk
                         struct* vecArray = pointerAssign struct* calleeReturnPointer86
                         int temp91 = cast autoInt 0
                         int i = equal int temp91
-                    _for_true_l47_c4:
+                    _for_true_l36_c4:
                         int temp97 = cast autoInt 10
                         flag = lessThan int i, int temp97
-                        if(not flag) goto _for_false_l47_c4
+                        if(not flag) goto _for_false_l36_c4
                         int* tempPtr100 = createPointer struct* vecArray
                         void* tempPtr102 = addressMultiply int i, bytes 8
                         int* tempPtr103 = addressAdd int* tempPtr100, void* tempPtr102
                         int* tempPtr105 = createPointer int* tempPtr103
                         passPointer int* tempPtr105, void _fn_StructPointerReturn_shtk_printVec, module StructPointerReturn.shtk
                         void calleeReturnValue108 = call void _fn_StructPointerReturn_shtk_printVec, module StructPointerReturn.shtk
-                    _for_cont_true_l47_c4:
+                    _for_cont_true_l36_c4:
                         int temp114 = cast autoInt 1
                         int temp113 = add int i, int temp114
                         int i = equal int temp113
-                        goto _for_true_l47_c4
-                    _for_false_l47_c4:
+                        goto _for_true_l36_c4
+                    _for_false_l36_c4:
                         int temp117 = cast autoInt 0
                         int returnValue115 = equal int temp117
                         return

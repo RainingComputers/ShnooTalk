@@ -1,5 +1,3 @@
-# 1.442250
-
 use "TestModules/Math.shtk" as math
 
 fn f(x:float) -> float 

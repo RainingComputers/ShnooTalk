@@ -1,8 +1,1 @@
-# MODULE FileDoesNotExistError.shtk
-# ERROR in Line 8 Col 5
-# 
-# use "does_not_exist.shtk" as bar
-#     ^
-# File does not exist
-
 use "does_not_exist.shtk" as bar

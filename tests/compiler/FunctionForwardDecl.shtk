@@ -1,5 +1,3 @@
-# 1
-
 use "TestModules/IsEven.shtk" as IsEven
 
 from IsEven use is_even

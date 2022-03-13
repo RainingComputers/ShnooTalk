@@ -1,0 +1,7 @@
+MODULE ConstInit.shtk
+ERROR in Line 5 Col 5
+
+    return 0
+    ^
+Did not expect RETURN,
+expected EQUAL or LEFT_ARROW

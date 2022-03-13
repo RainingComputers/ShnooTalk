@@ -1,10 +1,3 @@
-# MODULE NumberOfTypeParametersDontMatchError.shtk
-# ERROR in Line 12 Col 18
-# 
-#     var a: Pair::Pair[int, int, int]
-#                  ^
-# Number of type parameters don't match
-
 use "TestModules/Pair.shtk" as Pair
 
 fn main() -> int

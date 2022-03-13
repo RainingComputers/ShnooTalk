@@ -1,0 +1,6 @@
+MODULE StructAlreadyExistsError.shtk
+ERROR in Line 3 Col 8
+
+struct test {}
+       ^
+Symbol already defined

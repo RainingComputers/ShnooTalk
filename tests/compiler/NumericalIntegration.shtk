@@ -1,5 +1,3 @@
-# 4.500001
-
 fn f(x:float) -> float 
 {
     return x

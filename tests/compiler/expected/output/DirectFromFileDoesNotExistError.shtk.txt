@@ -1,0 +1,6 @@
+MODULE DirectFromFileDoesNotExistError.shtk
+ERROR in Line 1 Col 6
+
+from "DoesNotExist.shtk" use foobar
+     ^
+File does not exist

@@ -1,0 +1,7 @@
+MODULE StringAssignmentOnlyOn1dCharrArrayError.shtk
+ERROR in Line 3 Col 21
+
+    var a:int[10] = "Hello"
+                    ^
+Type error, did not expect ubyte[6],
+expected int[10]

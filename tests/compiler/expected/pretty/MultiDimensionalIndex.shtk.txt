@@ -33,16 +33,16 @@
                         int* tempPtr37 = write int temp38
                         int temp41 = cast autoInt 0
                         int i = equal int temp41
-                    _for_true_l15_c4:
+                    _for_true_l5_c4:
                         int temp47 = cast autoInt 3
                         flag = lessThan int i, int temp47
-                        if(not flag) goto _for_false_l15_c4
+                        if(not flag) goto _for_false_l5_c4
                         int temp50 = cast autoInt 0
                         int j = equal int temp50
-                    _for_true_l16_c8:
+                    _for_true_l6_c8:
                         int temp56 = cast autoInt 3
                         flag = lessThan int j, int temp56
-                        if(not flag) goto _for_false_l16_c8
+                        if(not flag) goto _for_false_l6_c8
                         int* tempPtr60 = createPointer int a
                         void* tempPtr62 = addressMultiply int i, bytes 12
                         int* tempPtr63 = addressAdd int* tempPtr60, void* tempPtr62
@@ -51,18 +51,18 @@
                         int temp67 = read int* tempPtr66
                         print int temp67
                         newLine
-                    _for_cont_true_l16_c8:
+                    _for_cont_true_l6_c8:
                         int temp71 = cast autoInt 1
                         int temp70 = add int j, int temp71
                         int j = equal int temp70
-                        goto _for_true_l16_c8
-                    _for_false_l16_c8:
-                    _for_cont_true_l15_c4:
+                        goto _for_true_l6_c8
+                    _for_false_l6_c8:
+                    _for_cont_true_l5_c4:
                         int temp75 = cast autoInt 1
                         int temp74 = add int i, int temp75
                         int i = equal int temp74
-                        goto _for_true_l15_c4
-                    _for_false_l15_c4:
+                        goto _for_true_l5_c4
+                    _for_false_l5_c4:
                         int temp78 = cast autoInt 0
                         int returnValue76 = equal int temp78
                         return

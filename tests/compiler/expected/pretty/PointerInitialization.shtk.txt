@@ -13,14 +13,14 @@
                         int temp15 = cast autoInt 4
                         int* tempPtr13 = write int temp15
                         struct* b = pointerAssign struct a
-                        printString stringData _str_PointerInitialization_shtk__l19_c12
+                        printString stringData _str_PointerInitialization_shtk__l14_c12
                         space
                         int* tempPtr20 = createPointer struct a
                         int* tempPtr22 = addressAdd int* tempPtr20, bytes 0
                         int temp23 = read int* tempPtr22
                         print int temp23
                         newLine
-                        printString stringData _str_PointerInitialization_shtk__l20_c12
+                        printString stringData _str_PointerInitialization_shtk__l15_c12
                         space
                         int* tempPtr26 = createPointer struct a
                         int* tempPtr28 = addressAdd int* tempPtr26, bytes 4
@@ -33,14 +33,14 @@
                         int temp37 = cast autoInt 1
                         int temp35 = add int temp36, int temp37
                         int* tempPtr33 = write int temp35
-                        printString stringData _str_PointerInitialization_shtk__l19_c12
+                        printString stringData _str_PointerInitialization_shtk__l14_c12
                         space
                         int* tempPtr40 = createPointer struct a
                         int* tempPtr42 = addressAdd int* tempPtr40, bytes 0
                         int temp43 = read int* tempPtr42
                         print int temp43
                         newLine
-                        printString stringData _str_PointerInitialization_shtk__l20_c12
+                        printString stringData _str_PointerInitialization_shtk__l15_c12
                         space
                         int* tempPtr46 = createPointer struct a
                         int* tempPtr48 = addressAdd int* tempPtr46, bytes 4

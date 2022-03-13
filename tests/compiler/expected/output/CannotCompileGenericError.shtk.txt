@@ -1,0 +1,6 @@
+MODULE CannotCompileGenericError.shtk
+ERROR in Line 1 Col 1
+
+generic T
+^
+Connot compile a GENERIC

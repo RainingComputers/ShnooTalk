@@ -1,5 +1,3 @@
-# 3
-
 fn avg(a:int[5]) -> int
 {
     var tot:int = 0

@@ -1,8 +1,3 @@
-# 1
-# 2
-# 3
-# 4
-
 struct FooBar
 {
     var x: int, y: int, j: int, k: int

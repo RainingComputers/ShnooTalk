@@ -1,10 +1,3 @@
-# newline
-# backspace
-# tab
-# backslash
-# null
-# a
-
 fn main() -> int
 {
     var foobar:char[10] = "\n\b\t\\\0a"

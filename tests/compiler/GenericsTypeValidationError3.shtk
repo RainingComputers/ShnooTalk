@@ -1,10 +1,3 @@
-# MODULE GenericsTypeValidationError3.shtk
-# ERROR in Line 14 Col 12
-# 
-#     var a: FooEmptySubs[int[]]
-#            ^
-# Invalid type parameters for this generic
-
 use "TestModules/FooGenericEmptySubs.shtk" as FooGenericEmptySubs
 
 from FooGenericEmptySubs use FooEmptySubs

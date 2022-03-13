@@ -1,0 +1,6 @@
+MODULE ExpressionPassAsMutableError.shtk
+ERROR in Line 10 Col 9
+
+    foo(a+1)
+        ^
+Cannot pass IMMUTABLE as MUTABLE

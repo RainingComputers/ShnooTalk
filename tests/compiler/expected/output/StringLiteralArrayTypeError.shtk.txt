@@ -1,0 +1,7 @@
+MODULE StringLiteralArrayTypeError.shtk
+ERROR in Line 3 Col 21
+
+    var a:char[2] = "lol"
+                    ^
+Type error, did not expect char[4],
+expected char[2]

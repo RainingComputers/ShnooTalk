@@ -1,6 +1,3 @@
-# Hello this is multi line string
-# This is another line
-
 fn main() -> int
 {
     var a: char[60] = 

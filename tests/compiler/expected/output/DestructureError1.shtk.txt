@@ -1,0 +1,6 @@
+MODULE DestructureError1.shtk
+ERROR in Line 3 Col 21
+
+    const [a, b] := 1
+                    ^
+Cannot destructure NON STRUCT or NON ARRAY

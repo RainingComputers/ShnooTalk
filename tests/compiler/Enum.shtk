@@ -1,7 +1,3 @@
-# Pin 0 low
-# Pin 1 high
-# Pin 2 high
-
 use "TestModules/Digital.shtk" as digital
 
 from digital use LOW, HIGH

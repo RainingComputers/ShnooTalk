@@ -1,0 +1,6 @@
+MODULE SymbolNotInScopeError.shtk
+ERROR in Line 11 Col 13
+
+    println(b)
+            ^
+Symbol not in scope

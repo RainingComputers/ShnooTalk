@@ -41,16 +41,16 @@
                         float bar = equal float temp45
                         float temp51 = cast autoFloat 1.000000
                         flag = isEqual float bar, float temp51
-                        if(not flag) goto _if_false_l35_c4
-                        printString stringData _str_Expression4_shtk__l35_c28
+                        if(not flag) goto _if_false_l29_c4
+                        printString stringData _str_Expression4_shtk__l29_c28
                         newLine
-                    _if_false_l35_c4:
+                    _if_false_l29_c4:
                         float temp58 = cast autoFloat 1.000000
                         flag = isNotEqual float bar, float temp58
-                        if(not flag) goto _if_false_l36_c4
-                        printString stringData _str_Expression4_shtk__l36_c28
+                        if(not flag) goto _if_false_l30_c4
+                        printString stringData _str_Expression4_shtk__l30_c28
                         newLine
-                    _if_false_l36_c4:
+                    _if_false_l30_c4:
                         int temp62 = cast autoInt 0
                         int returnValue60 = equal int temp62
                         return

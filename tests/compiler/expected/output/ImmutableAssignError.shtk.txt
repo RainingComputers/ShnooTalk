@@ -1,0 +1,6 @@
+MODULE ImmutableAssignError.shtk
+ERROR in Line 5 Col 5
+
+    a = 3
+    ^
+Cannot modify IMMUTABLE variable or parameter

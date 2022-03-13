@@ -1,0 +1,6 @@
+MODULE NumberOfTypeParametersDontMatchError.shtk
+ERROR in Line 5 Col 18
+
+    var a: Pair::Pair[int, int, int]
+                 ^
+Number of type parameters don't match

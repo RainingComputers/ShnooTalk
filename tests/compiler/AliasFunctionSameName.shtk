@@ -1,5 +1,3 @@
-# 0
-
 use "TestModules/Math.shtk" as math
 from math use vec
 

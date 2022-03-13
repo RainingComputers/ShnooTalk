@@ -1,10 +1,3 @@
-# MODULE StructAccessOnDefine.shtk
-# ERROR in Line 12 Col 22
-# 
-#     var a:int = LED0.pin
-#                      ^
-# STRUCT access on a NON-STRUCT data type
-
 def LED0 0
 
 fn main()

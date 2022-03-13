@@ -1,5 +1,3 @@
-# Hello
-
 use "TestModules/String.shtk" as string
 
 var string:char[10]

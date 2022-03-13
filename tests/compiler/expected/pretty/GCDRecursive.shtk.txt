@@ -7,10 +7,10 @@
                         int temp8 = remainder int m, int n
                         int temp10 = cast autoInt 0
                         flag = isEqual int temp8, int temp10
-                        if(not flag) goto _if_false_l5_c4
+                        if(not flag) goto _if_false_l3_c4
                         int returnValue11 = equal int n
                         return
-                    _if_false_l5_c4:
+                    _if_false_l3_c4:
                         pass int n, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
                         int temp21 = remainder int m, int n
                         pass int temp21, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk

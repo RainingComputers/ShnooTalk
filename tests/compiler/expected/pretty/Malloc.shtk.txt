@@ -26,10 +26,10 @@
                         struct* vecArray = pointerAssign struct* tempPtr33
                         int temp37 = cast autoInt 0
                         int i = equal int temp37
-                    _for_true_l31_c4:
+                    _for_true_l20_c4:
                         int temp43 = cast autoInt 10
                         flag = lessThan int i, int temp43
-                        if(not flag) goto _for_false_l31_c4
+                        if(not flag) goto _for_false_l20_c4
                         int* tempPtr46 = createPointer struct* vecArray
                         void* tempPtr48 = addressMultiply int i, bytes 8
                         int* tempPtr49 = addressAdd int* tempPtr46, void* tempPtr48
@@ -41,30 +41,30 @@
                         int* tempPtr64 = createPointer int* tempPtr49
                         int* tempPtr65 = createPointer struct calleeReturnValue61
                         int* tempPtr64 = memoryCopy int* tempPtr65, autoInt 8
-                    _for_cont_true_l31_c4:
+                    _for_cont_true_l20_c4:
                         int temp70 = cast autoInt 1
                         int temp69 = add int i, int temp70
                         int i = equal int temp69
-                        goto _for_true_l31_c4
-                    _for_false_l31_c4:
+                        goto _for_true_l20_c4
+                    _for_false_l20_c4:
                         int temp73 = cast autoInt 0
                         int i = equal int temp73
-                    _for_true_l34_c4:
+                    _for_true_l23_c4:
                         int temp79 = cast autoInt 10
                         flag = lessThan int i, int temp79
-                        if(not flag) goto _for_false_l34_c4
+                        if(not flag) goto _for_false_l23_c4
                         int* tempPtr82 = createPointer struct* vecArray
                         void* tempPtr84 = addressMultiply int i, bytes 8
                         int* tempPtr85 = addressAdd int* tempPtr82, void* tempPtr84
                         int* tempPtr87 = createPointer int* tempPtr85
                         passPointer int* tempPtr87, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                         void calleeReturnValue90 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                    _for_cont_true_l34_c4:
+                    _for_cont_true_l23_c4:
                         int temp96 = cast autoInt 1
                         int temp95 = add int i, int temp96
                         int i = equal int temp95
-                        goto _for_true_l34_c4
-                    _for_false_l34_c4:
+                        goto _for_true_l23_c4
+                    _for_false_l23_c4:
                         int temp99 = cast autoInt 0
                         int returnValue97 = equal int temp99
                         return

@@ -1,5 +1,3 @@
-# 0
-
 use "TestModules/Math.shtk" as math
 
 enum [math, phsysics, chemistry, csc]

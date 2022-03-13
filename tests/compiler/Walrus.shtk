@@ -1,9 +1,3 @@
-# 10
-# 1
-# 2
-# 1
-# 100
-
 struct Foo
 {
     var x: int

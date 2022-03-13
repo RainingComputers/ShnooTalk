@@ -5,7 +5,7 @@
             "main": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "ubyte"}, "op2": {"type": "var", "id": 3, "name": "c", "dtype": "ubyte"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 6, "dtype": "ubyte"}, "op2": {"type": "stringData", "id": 4, "name": "_str_EscapeDoubleQuoteTest_shtk__l5_c22", "size": 14}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 6, "dtype": "ubyte"}, "op2": {"type": "stringData", "id": 4, "name": "_str_EscapeDoubleQuoteTest_shtk__l3_c22", "size": 14}, "op3": {"type": "none"}},
                     {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 5, "dtype": "ubyte"}, "op2": {"type": "tempPtr", "id": 6, "dtype": "ubyte"}, "op3": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 14}},
                     {"opcode": "printString", "op1": {"type": "var", "id": 8, "name": "c", "dtype": "ubyte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

@@ -1,10 +1,3 @@
-# MODULE ArrayAccessOnEnum.shtk
-# ERROR in Line 12 Col 21
-# 
-#     var a:int = LED0[2]
-#                     ^
-# ARRAY access on a NON ARRAY
-
 enum [LED0, LED1]
 
 fn main()

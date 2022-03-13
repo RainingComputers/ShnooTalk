@@ -1,0 +1,6 @@
+MODULE PointerInitializationError.shtk
+ERROR in Line 3 Col 17
+
+    var a: int* = 1
+                ^
+Non pointer initialization for POINTER

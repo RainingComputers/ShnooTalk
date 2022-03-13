@@ -8,17 +8,17 @@
                         int prod = equal int temp5
                         int temp8 = cast autoInt 2
                         int i = equal int temp8
-                    _for_true_l11_c4:
+                    _for_true_l5_c4:
                         flag = lessThanOrEqualTo int i, int num
-                        if(not flag) goto _for_false_l11_c4
+                        if(not flag) goto _for_false_l5_c4
                         int temp16 = multiply int prod, int i
                         int prod = equal int temp16
-                    _for_cont_true_l11_c4:
+                    _for_cont_true_l5_c4:
                         int temp20 = cast autoInt 1
                         int temp19 = add int i, int temp20
                         int i = equal int temp19
-                        goto _for_true_l11_c4
-                    _for_false_l11_c4:
+                        goto _for_true_l5_c4
+                    _for_false_l5_c4:
                         int returnValue21 = equal int prod
                         return
                 ]

@@ -1,10 +1,3 @@
-# MODULE UseDoesNotExistOrNotGenericError2.shtk
-# ERROR in Line 10 Col 12
-# 
-#     var a: Bar::Foo[int, float]
-#            ^
-# Use does not exist or NOT GENERIC
-
 fn main() -> int
 {
     var a: Bar::Foo[int, float]

@@ -1,5 +1,3 @@
-# Hello
-
 fn main() -> int
 {
     var b: bool = false

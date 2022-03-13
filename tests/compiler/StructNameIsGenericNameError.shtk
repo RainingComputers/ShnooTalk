@@ -1,9 +1,1 @@
-# MODULE TestModules/StructNameIsGenericNameError.shtk
-# ERROR in Line 3 Col 8
-# 
-# struct V
-#        ^
-# STRUCT name cannot be a GENERIC IDENTIFIER
-
-
 use "TestModules/StructNameIsGenericNameError.shtk" as Foo

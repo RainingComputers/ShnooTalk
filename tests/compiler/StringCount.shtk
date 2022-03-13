@@ -1,5 +1,3 @@
-# x:
-
 use "TestModules/Vector.shtk" as vec
 
 fn main() -> int

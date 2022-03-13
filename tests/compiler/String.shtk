@@ -1,11 +1,3 @@
-# 6
-# foobar
-# 6
-# 1.234000
-# 23
-# lo Wo
-# Yes
-
 use "TestModules/String.shtk" as string
 use "TestModules/Result.shtk" as result
 

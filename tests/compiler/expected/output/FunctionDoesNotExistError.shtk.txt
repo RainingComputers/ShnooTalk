@@ -1,0 +1,6 @@
+MODULE FunctionDoesNotExistError.shtk
+ERROR in Line 3 Col 5
+
+    foo()
+    ^
+Function does not exist

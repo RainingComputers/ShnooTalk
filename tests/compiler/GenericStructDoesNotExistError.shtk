@@ -1,10 +1,3 @@
-# MODULE GenericStructDoesNotExistError.shtk
-# ERROR in Line 10 Col 12
-# 
-#     var a: Foo[int, float]
-#            ^
-# GENERIC STRUCT does not exist
-
 fn main() -> int
 {
     var a: Foo[int, float]

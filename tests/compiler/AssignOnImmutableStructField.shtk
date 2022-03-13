@@ -1,9 +1,3 @@
-# MODULE AssignOnImmutableStructField.shtk
-# ERROR in Line 25 Col 5
-# 
-#     a.x = 3
-#     ^
-# Cannot modify IMMUTABLE variable or parameter
 
 use "TestModules/Vector.shtk" as vec
 from vec use Vec

@@ -1,0 +1,7 @@
+MODULE ConstNotAllowedInStruct.shtk
+ERROR in Line 3 Col 5
+
+    const a:int, b: int
+    ^
+Did not expect CONST,
+expected CLOSE_BRACE

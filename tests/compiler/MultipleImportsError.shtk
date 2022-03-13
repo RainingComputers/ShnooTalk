@@ -1,9 +1,2 @@
-# MODULE MultipleImportsError.shtk
-# ERROR in Line 9 Col 5
-# 
-# use "TestModules/Math.shtk" as math
-#     ^
-# Multiple imports detected
-
 use "TestModules/Math.shtk" as math
 use "TestModules/Math.shtk" as math

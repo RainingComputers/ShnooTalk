@@ -1,0 +1,7 @@
+MODULE ReturnTypeError.shtk
+ERROR in Line 5 Col 12
+
+    return a
+           ^
+Type error, did not expect int,
+expected float

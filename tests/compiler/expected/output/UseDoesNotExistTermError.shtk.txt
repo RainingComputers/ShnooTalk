@@ -1,0 +1,6 @@
+MODULE UseDoesNotExistTermError.shtk
+ERROR in Line 3 Col 17
+
+    var a:int = doesnotexist::foo
+                ^
+Use does not exist

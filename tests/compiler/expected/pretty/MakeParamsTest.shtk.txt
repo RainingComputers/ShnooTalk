@@ -85,19 +85,19 @@
             },
             "_fn_MakeParamsTest_shtk_printFoobar": {
                 "icode": [
-                        printString stringData _str_MakeParamsTest_shtk__l13_c12
+                        printString stringData _str_MakeParamsTest_shtk__l8_c12
                         int* tempPtr5 = createPointer struct f
                         int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
                         int temp8 = read int* tempPtr7
                         print int temp8
                         space
-                        printString stringData _str_MakeParamsTest_shtk__l13_c23
+                        printString stringData _str_MakeParamsTest_shtk__l8_c23
                         int* tempPtr11 = createPointer struct f
                         int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
                         float temp14 = read float* tempPtr13
                         print float temp14
                         space
-                        printString stringData _str_MakeParamsTest_shtk__l13_c34
+                        printString stringData _str_MakeParamsTest_shtk__l8_c34
                         int* tempPtr17 = createPointer struct f
                         int* tempPtr19 = addressAdd int* tempPtr17, bytes 8
                         double temp20 = read double* tempPtr19

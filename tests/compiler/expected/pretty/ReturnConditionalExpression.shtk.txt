@@ -7,15 +7,15 @@
                         autoInt* tempPtr4 = allocPointer 
                         int temp12 = cast autoInt 0
                         flag = greaterThanOrEqualTo int a, int temp12
-                        if(not flag) goto _condn_exp_false_l8_c11
+                        if(not flag) goto _condn_exp_false_l3_c11
                         int temp15 = cast autoInt 9
                         flag = lessThanOrEqualTo int a, int temp15
-                        if(not flag) goto _condn_exp_false_l8_c11
+                        if(not flag) goto _condn_exp_false_l3_c11
                         autoInt* tempPtr4 = write autoInt 1
-                        goto _condn_exp_end_false_l8_c11
-                    _condn_exp_false_l8_c11:
+                        goto _condn_exp_end_false_l3_c11
+                    _condn_exp_false_l3_c11:
                         autoInt* tempPtr4 = write autoInt 0
-                    _condn_exp_end_false_l8_c11:
+                    _condn_exp_end_false_l3_c11:
                         autoInt temp18 = read autoInt* tempPtr4
                         byte temp19 = cast autoInt temp18
                         byte returnValue3 = equal byte temp19

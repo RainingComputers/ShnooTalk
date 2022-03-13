@@ -1,0 +1,7 @@
+MODULE TestModules/Pair.shtk
+ERROR in Line 12 Col 20
+
+    result.first = a.first + b.first
+                   ^
+Type error, did not expect FooBar,
+expected Pair__GenericOperatorNotPresent_shtk_FooBar_GenericOperatorNotPresent_shtk_int

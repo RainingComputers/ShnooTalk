@@ -10,10 +10,10 @@
                         int temp11 = add int a, int temp12
                         int temp14 = cast autoInt 0
                         flag = greaterThan int temp11, int temp14
-                        if(not flag) goto _if_false_l7_c4
-                        printString stringData _str_TruthyConditionalExpression1_shtk__l7_c22
+                        if(not flag) goto _if_false_l5_c4
+                        printString stringData _str_TruthyConditionalExpression1_shtk__l5_c22
                         newLine
-                    _if_false_l7_c4:
+                    _if_false_l5_c4:
                         int temp18 = cast autoInt 0
                         int returnValue16 = equal int temp18
                         return

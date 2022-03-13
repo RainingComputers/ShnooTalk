@@ -1,0 +1,6 @@
+MODULE MissingReturnError.shtk
+ERROR in Line 1 Col 4
+
+fn isAdult(age:int) -> bool
+   ^
+Missing RETURN for this FUNCTION

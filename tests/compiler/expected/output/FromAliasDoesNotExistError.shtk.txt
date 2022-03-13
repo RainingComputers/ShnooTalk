@@ -1,0 +1,6 @@
+MODULE FromAliasDoesNotExistError.shtk
+ERROR in Line 2 Col 15
+
+from math use doesNotExist
+              ^
+Symbol does not exist

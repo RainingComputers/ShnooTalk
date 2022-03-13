@@ -1,0 +1,6 @@
+MODULE ArrayAccessOnNonArrayError.shtk
+ERROR in Line 4 Col 14
+
+    println(a[2])
+             ^
+ARRAY access on a NON ARRAY

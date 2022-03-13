@@ -1,0 +1,6 @@
+MODULE StructAccessOnEnum.shtk
+ERROR in Line 5 Col 22
+
+    var a:int = LED0.pin
+                     ^
+STRUCT access on a NON-STRUCT data type

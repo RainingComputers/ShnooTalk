@@ -1,0 +1,7 @@
+MODULE InitializerListElementTypeError.shtk
+ERROR in Line 3 Col 26
+
+    var a:int[3] = [1.0, 1, 2]
+                         ^
+Type error, did not expect autoInt,
+expected autoFloat

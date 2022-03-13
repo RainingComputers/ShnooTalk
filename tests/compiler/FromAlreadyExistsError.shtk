@@ -1,10 +1,3 @@
-# MODULE FromAlreadyExistsError.shtk
-# ERROR in Line 11 Col 15
-# 
-# from math use vec
-#               ^
-# Alias already exists
-
 use "TestModules/Math.shtk" as math
 use "TestModules/Vector.shtk" as vec
 

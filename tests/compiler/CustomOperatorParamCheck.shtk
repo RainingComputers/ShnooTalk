@@ -1,10 +1,3 @@
-# MODULE CustomOperatorParamCheck.shtk
-# ERROR in Line 23 Col 25
-# 
-#     var c: foobar = a + b
-#                         ^
-# Cannot pass IMMUTABLE as MUTABLE
-
 struct foobar {
     var x: int, y: int
 }

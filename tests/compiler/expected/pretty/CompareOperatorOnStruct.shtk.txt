@@ -25,10 +25,10 @@
                         byte calleeReturnValue54 = call byte _fn_TestModules_Vector_shtk_greaterThan, module TestModules/Vector.shtk
                         byte temp58 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue54, byte temp58
-                        if(not flag) goto _if_false_l13_c4
-                        printString stringData _str_CompareOperatorOnStruct_shtk__l13_c22
+                        if(not flag) goto _if_false_l11_c4
+                        printString stringData _str_CompareOperatorOnStruct_shtk__l11_c22
                         newLine
-                    _if_false_l13_c4:
+                    _if_false_l11_c4:
                         int temp62 = cast autoInt 0
                         int returnValue60 = equal int temp62
                         return

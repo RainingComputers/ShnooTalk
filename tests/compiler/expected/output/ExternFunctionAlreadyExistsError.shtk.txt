@@ -1,0 +1,6 @@
+MODULE ExternFunctionAlreadyExistsError.shtk
+ERROR in Line 4 Col 7
+
+extfn sin(x: double) -> double
+      ^
+Symbol already defined

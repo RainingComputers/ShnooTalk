@@ -1,5 +1,3 @@
-# -0.958933
-
 use "TestModules/Math.shtk" as math
 
 def BLEH 5

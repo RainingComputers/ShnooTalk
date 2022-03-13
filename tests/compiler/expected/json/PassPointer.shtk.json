@@ -4,14 +4,14 @@
         "functions": {
             "_fn_PassPointer_shtk_printVector": {
                 "icode": [
-                    {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_PassPointer_shtk__l13_c12", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_PassPointer_shtk__l8_c12", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "ptr", "id": 4, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
                     {"opcode": "read", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "print", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "printString", "op1": {"type": "stringData", "id": 9, "name": "_str_PassPointer_shtk__l14_c12", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 9, "name": "_str_PassPointer_shtk__l9_c12", "size": 3}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 11, "dtype": "int"}, "op2": {"type": "ptr", "id": 10, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 13, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 11, "dtype": "int"}, "op3": {"type": "bytes", "id": 12, "bytes": 4}},

@@ -1,0 +1,6 @@
+MODULE BinaryOperatorOnArray.shtk
+ERROR in Line 5 Col 11
+
+    c = a + b
+          ^
+Operator not allowed on ARRAY

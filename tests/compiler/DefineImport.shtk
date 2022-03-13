@@ -1,7 +1,3 @@
-# 123 1.230000 random
-# random
-# random
-
 use "TestModules/RandomDefine.shtk" as RandomDefine
 from RandomDefine use SOME_RANDOM_INT, SOME_RANDOM_STRING
 

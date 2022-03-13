@@ -22,10 +22,10 @@
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 37, "dtype": "byte"}, "op2": {"type": "var", "id": 38, "name": "_fn_TestModules_Vector_shtk_isUnitVector", "dtype": "byte"}, "op3": {"type": "module", "id": 39, "name": "TestModules/Vector.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 41, "dtype": "byte"}, "op2": {"type": "literal", "id": 40, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "isEqual", "op1": {"type": "calleeReturnValue", "id": 37, "dtype": "byte"}, "op2": {"type": "temp", "id": 41, "dtype": "byte"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 31, "name": "_if_false_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "printString", "op1": {"type": "stringData", "id": 42, "name": "_str_ResetModuleAfterFunCall_shtk__l17_c16", "size": 11}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 31, "name": "_if_false_l13_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 42, "name": "_str_ResetModuleAfterFunCall_shtk__l14_c16", "size": 11}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 31, "name": "_if_false_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 31, "name": "_if_false_l13_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 45, "dtype": "int"}, "op2": {"type": "literal", "id": 44, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 43, "dtype": "int"}, "op2": {"type": "temp", "id": 45, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}

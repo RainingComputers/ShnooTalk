@@ -1,0 +1,6 @@
+MODULE FunctionTerminationCheck.shtk
+ERROR in Line 1 Col 4
+
+fn foo() -> int
+   ^
+Missing RETURN for this FUNCTION

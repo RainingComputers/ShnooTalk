@@ -1,0 +1,7 @@
+MODULE WalrusError2.shtk
+ERROR in Line 4 Col 5
+
+    return 0
+    ^
+Did not expect RETURN,
+expected IDENTIFIER

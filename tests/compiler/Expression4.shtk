@@ -1,9 +1,3 @@
-# 3
-# 6
-# 54
-# 8
-# no lol
-
 fn foobar()
 {
     var a:int = 2

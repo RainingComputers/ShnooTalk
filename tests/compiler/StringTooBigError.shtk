@@ -1,11 +1,3 @@
-# MODULE StringTooBigError.shtk
-# ERROR in Line 11 Col 21
-# 
-#     var a:char[4] = "Hello"
-#                     ^
-# Type error, did not expect char[6],
-# expected char[4]
-
 fn main() -> int
 {
     var a:char[4] = "Hello"

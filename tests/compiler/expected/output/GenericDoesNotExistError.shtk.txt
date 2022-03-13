@@ -1,0 +1,6 @@
+MODULE GenericDoesNotExistError.shtk
+ERROR in Line 3 Col 15
+
+from Pair use DoesNotExist
+              ^
+GENERIC does not exist

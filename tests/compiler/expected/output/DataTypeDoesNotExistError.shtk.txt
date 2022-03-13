@@ -1,0 +1,6 @@
+MODULE DataTypeDoesNotExistError.shtk
+ERROR in Line 3 Col 11
+
+    var a:foo
+          ^
+Data type does not exist

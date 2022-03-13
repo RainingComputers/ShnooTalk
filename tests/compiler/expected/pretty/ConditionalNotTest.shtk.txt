@@ -8,10 +8,10 @@
                         byte b = equal byte temp5
                         byte temp11 = cast autoInt 0
                         flag = greaterThan byte b, byte temp11
-                        if(flag) goto _if_false_l7_c4
-                        printString stringData _str_ConditionalNotTest_shtk__l8_c16
+                        if(flag) goto _if_false_l5_c4
+                        printString stringData _str_ConditionalNotTest_shtk__l6_c16
                         newLine
-                    _if_false_l7_c4:
+                    _if_false_l5_c4:
                         int temp15 = cast autoInt 0
                         int returnValue13 = equal int temp15
                         return

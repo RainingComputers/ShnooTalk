@@ -1,6 +1,3 @@
-# 2
-# 3
-
 fn testfunction(mut p: int*, a: int*)
 {
     p <- a

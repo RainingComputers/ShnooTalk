@@ -1,10 +1,3 @@
-# MODULE GenericDoesNotExistError.shtk
-# ERROR in Line 10 Col 15
-# 
-# from Pair use DoesNotExist
-#               ^
-# GENERIC does not exist
-
 use "TestModules/Pair.shtk" as Pair
 
 from Pair use DoesNotExist

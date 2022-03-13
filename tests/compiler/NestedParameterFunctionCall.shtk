@@ -1,6 +1,3 @@
-# 0.479426
-# 3
-
 use "TestModules/Math.shtk" as math
 
 fn foobar(a:float, b:int)

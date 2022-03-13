@@ -1,7 +1,3 @@
-# 0
-# 7
-# 12
-
 fn main() -> int
 {
     var c:int = 3, f:float = 3.4

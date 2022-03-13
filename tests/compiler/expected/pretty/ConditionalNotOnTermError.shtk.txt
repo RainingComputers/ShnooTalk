@@ -9,12 +9,12 @@
                         autoInt* tempPtr7 = allocPointer 
                         int temp13 = cast autoInt 0
                         flag = greaterThan int a, int temp13
-                        if(flag) goto _condn_exp_false_l6_c16
+                        if(flag) goto _condn_exp_false_l4_c16
                         autoInt* tempPtr7 = write autoInt 1
-                        goto _condn_exp_end_false_l6_c16
-                    _condn_exp_false_l6_c16:
+                        goto _condn_exp_end_false_l4_c16
+                    _condn_exp_false_l4_c16:
                         autoInt* tempPtr7 = write autoInt 0
-                    _condn_exp_end_false_l6_c16:
+                    _condn_exp_end_false_l4_c16:
                         autoInt temp16 = read autoInt* tempPtr7
                         int temp17 = cast autoInt temp16
                         int b = equal int temp17

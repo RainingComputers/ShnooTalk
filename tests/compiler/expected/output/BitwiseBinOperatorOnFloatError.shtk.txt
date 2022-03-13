@@ -1,0 +1,6 @@
+MODULE BitwiseBinOperatorOnFloatError.shtk
+ERROR in Line 5 Col 11
+
+    a = b | c
+          ^
+Bitwise operations not allowed on FLOAT

@@ -4,14 +4,14 @@
         "functions": {
             "_fn_PassPointer_shtk_printVector": {
                 "icode": [
-                        printString stringData _str_PassPointer_shtk__l13_c12
+                        printString stringData _str_PassPointer_shtk__l8_c12
                         space
                         int* tempPtr5 = createPointer struct* b
                         int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
                         int temp8 = read int* tempPtr7
                         print int temp8
                         newLine
-                        printString stringData _str_PassPointer_shtk__l14_c12
+                        printString stringData _str_PassPointer_shtk__l9_c12
                         space
                         int* tempPtr11 = createPointer struct* b
                         int* tempPtr13 = addressAdd int* tempPtr11, bytes 4

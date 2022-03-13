@@ -1,11 +1,3 @@
-# MODULE AssignOperatorTypeError.shtk
-# ERROR in Line 14 Col 10
-# 
-#     a += f
-#          ^
-# Type error, did not expect float,
-# expected int
-
 fn main() -> int
 {
     var a:int = 2

@@ -56,7 +56,7 @@
                         newLine
                         print ubyte 100
                         newLine
-                        printString stringData _str_Println_shtk__l48_c12
+                        printString stringData _str_Println_shtk__l31_c12
                         newLine
                         int temp55 = cast autoInt 0
                         int returnValue53 = equal int temp55

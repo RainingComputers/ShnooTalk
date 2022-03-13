@@ -1,0 +1,7 @@
+MODULE StringIntializaerListTypeError.shtk
+ERROR in Line 5 Col 36
+
+    var d: char[2][10] = ["hello", c]
+                                   ^
+Type error, did not expect ubyte[4],
+expected ubyte[6]

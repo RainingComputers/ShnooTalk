@@ -19,22 +19,22 @@
                 "icode": [
                         int temp30 = cast autoInt 0
                         int i = equal int temp30
-                    _for_true_l45_c4:
+                    _for_true_l22_c4:
                         int temp36 = cast autoInt 4
                         flag = lessThan int i, int temp36
-                        if(not flag) goto _for_false_l45_c4
+                        if(not flag) goto _for_false_l22_c4
                         int* tempPtr39 = createPointer struct arr
                         void* tempPtr41 = addressMultiply int i, bytes 8
                         int* tempPtr42 = addressAdd int* tempPtr39, void* tempPtr41
                         int* tempPtr44 = createPointer int* tempPtr42
                         passPointer int* tempPtr44, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                         void calleeReturnValue47 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                    _for_cont_true_l45_c4:
+                    _for_cont_true_l22_c4:
                         int temp53 = cast autoInt 1
                         int temp52 = add int i, int temp53
                         int i = equal int temp52
-                        goto _for_true_l45_c4
-                    _for_false_l45_c4:
+                        goto _for_true_l22_c4
+                    _for_false_l22_c4:
                         return
                 ]
             },
@@ -128,14 +128,14 @@
                         int* tempPtr236 = createPointer struct* tempPtr234
                         passPointer int* tempPtr236, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
                         void calleeReturnValue239 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
-                        printString stringData _str_ArrayCopy_shtk__l59_c12
+                        printString stringData _str_ArrayCopy_shtk__l36_c12
                         newLine
                         struct* tempPtr244 = createPointer struct test
                         struct* tempPtr246 = addressAdd struct* tempPtr244, bytes 64
                         int* tempPtr248 = createPointer struct* tempPtr246
                         passPointer int* tempPtr248, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                         void calleeReturnValue251 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                        printString stringData _str_ArrayCopy_shtk__l59_c12
+                        printString stringData _str_ArrayCopy_shtk__l36_c12
                         newLine
                         struct* tempPtr257 = createPointer struct test2
                         struct* tempPtr258 = createPointer struct test
@@ -150,14 +150,14 @@
                         int* tempPtr276 = createPointer struct* tempPtr274
                         passPointer int* tempPtr276, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
                         void calleeReturnValue279 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
-                        printString stringData _str_ArrayCopy_shtk__l59_c12
+                        printString stringData _str_ArrayCopy_shtk__l36_c12
                         newLine
                         struct* tempPtr284 = createPointer struct test2
                         struct* tempPtr286 = addressAdd struct* tempPtr284, bytes 64
                         int* tempPtr288 = createPointer struct* tempPtr286
                         passPointer int* tempPtr288, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                         void calleeReturnValue291 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                        printString stringData _str_ArrayCopy_shtk__l59_c12
+                        printString stringData _str_ArrayCopy_shtk__l36_c12
                         newLine
                         int temp297 = cast autoInt 0
                         int returnValue295 = equal int temp297

@@ -1,0 +1,6 @@
+MODULE PrintArrayError.shtk
+ERROR in Line 5 Col 13
+
+    println(a)
+            ^
+Cannot print STRUCT or multi-dimensional ARRAY or non CHAR ARRAY

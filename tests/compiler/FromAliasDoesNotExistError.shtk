@@ -1,9 +1,2 @@
-# MODULE FromAliasDoesNotExistError.shtk
-# ERROR in Line 9 Col 15
-# 
-# from math use doesNotExist
-#               ^
-# Symbol does not exist
-
 use "TestModules/Math.shtk" as math 
 from math use doesNotExist

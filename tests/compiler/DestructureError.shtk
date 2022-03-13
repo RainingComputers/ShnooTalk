@@ -1,12 +1,3 @@
-# MODULE DestructureError.shtk
-# ERROR in Line 13 Col 5
-# 
-#     return 0
-#     ^
-# Did not expect RETURN,
-# expected INT_LITERAL or CHAR_LITERAL or HEX_LITERAL or FLOAT_LITERAL or STR_LITERAL or BIN_LITERAL or OPEN_SQUARE or IDENTIFIER or MINUS or LPAREN or CONDN_NOT or SIZEOF or MAKE or ADDR or NOT
-
-
 fn main() -> int
 {
     var a := [1, 2, 3, 

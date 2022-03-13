@@ -1,0 +1,7 @@
+MODULE InvalidCharTest.shtk
+ERROR in Line 3 Col 19
+
+    var c: char = ''
+                  ^
+Did not expect INVALID,
+expected INT_LITERAL or CHAR_LITERAL or HEX_LITERAL or FLOAT_LITERAL or STR_LITERAL or BIN_LITERAL or OPEN_SQUARE or IDENTIFIER or MINUS or LPAREN or CONDN_NOT or SIZEOF or MAKE or ADDR or NOT

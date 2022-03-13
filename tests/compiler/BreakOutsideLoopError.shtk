@@ -1,10 +1,3 @@
-# MODULE BreakOutsideLoopError.shtk
-# ERROR in Line 10 Col 5
-# 
-#     break
-#     ^
-# BREAK outside loop
-
 fn main()
 {
     break

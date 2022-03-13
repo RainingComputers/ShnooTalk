@@ -1,0 +1,6 @@
+MODULE BreakOutsideLoopError.shtk
+ERROR in Line 3 Col 5
+
+    break
+    ^
+BREAK outside loop

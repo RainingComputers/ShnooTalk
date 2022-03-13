@@ -29,13 +29,13 @@
                         float x = equal float temp29
                         float temp32 = cast autoFloat 0.000010
                         float epsilon = equal float temp32
-                    _while_true_l17_c4:
+                    _while_true_l15_c4:
                         pass float x, float _fn_Newton_shtk_f, module Newton.shtk
                         float calleeReturnValue39 = call float _fn_Newton_shtk_f, module Newton.shtk
                         pass float calleeReturnValue39, float _fn_TestModules_Math_shtk_abs, module TestModules/Math.shtk
                         float calleeReturnValue45 = call float _fn_TestModules_Math_shtk_abs, module TestModules/Math.shtk
                         flag = greaterThanOrEqualTo float calleeReturnValue45, float epsilon
-                        if(not flag) goto _while_false_l17_c4
+                        if(not flag) goto _while_false_l15_c4
                         pass float x, float _fn_Newton_shtk_f, module Newton.shtk
                         float calleeReturnValue55 = call float _fn_Newton_shtk_f, module Newton.shtk
                         pass float x, float _fn_Newton_shtk_f_prime, module Newton.shtk
@@ -43,8 +43,8 @@
                         float temp65 = divide float calleeReturnValue55, float calleeReturnValue62
                         float temp66 = subtract float x, float temp65
                         float x = equal float temp66
-                        goto _while_true_l17_c4
-                    _while_false_l17_c4:
+                        goto _while_true_l15_c4
+                    _while_false_l15_c4:
                         print float x
                         newLine
                         int temp70 = cast autoInt 0

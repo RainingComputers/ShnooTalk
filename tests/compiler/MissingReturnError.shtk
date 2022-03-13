@@ -1,10 +1,3 @@
-# MODULE MissingReturnError.shtk
-# ERROR in Line 8 Col 4
-# 
-# fn isAdult(age:int) -> bool
-#    ^
-# Missing RETURN for this FUNCTION
-
 fn isAdult(age:int) -> bool
 {
     if(age > 18) return true

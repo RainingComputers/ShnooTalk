@@ -1,0 +1,2 @@
+Pin 1 high
+Pin 2 low

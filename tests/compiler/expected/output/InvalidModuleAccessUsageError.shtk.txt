@@ -1,0 +1,6 @@
+MODULE InvalidModuleAccessUsageError.shtk
+ERROR in Line 5 Col 13
+
+    println(vec::1)
+            ^
+Invalid use of MODULE ACCESS

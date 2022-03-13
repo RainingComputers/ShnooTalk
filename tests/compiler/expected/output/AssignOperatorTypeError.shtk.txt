@@ -1,0 +1,7 @@
+MODULE AssignOperatorTypeError.shtk
+ERROR in Line 6 Col 10
+
+    a += f
+         ^
+Type error, did not expect float,
+expected int

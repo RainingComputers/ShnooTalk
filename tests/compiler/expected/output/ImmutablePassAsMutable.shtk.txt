@@ -1,0 +1,6 @@
+MODULE ImmutablePassAsMutable.shtk
+ERROR in Line 8 Col 9
+
+    bar(a)
+        ^
+Cannot pass IMMUTABLE as MUTABLE

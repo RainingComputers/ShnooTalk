@@ -1,8 +1,3 @@
-# 4
-# 4
-# 8
-# 12
-
 use "TestModules/Math.shtk" as math
 
 var glbalfoobar:int

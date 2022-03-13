@@ -1,0 +1,2 @@
+Hello this is multi line string
+This is another line

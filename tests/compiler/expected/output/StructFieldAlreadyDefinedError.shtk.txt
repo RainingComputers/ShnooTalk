@@ -1,0 +1,6 @@
+MODULE StructFieldAlreadyDefinedError.shtk
+ERROR in Line 3 Col 18
+
+    var foo:int, foo:int
+                 ^
+Field already defined

@@ -1,0 +1,7 @@
+MODULE CompareOperatorTypeError.shtk
+ERROR in Line 6 Col 12
+
+    if(a < b) println("lol a < b")
+           ^
+Type error, did not expect int,
+expected float

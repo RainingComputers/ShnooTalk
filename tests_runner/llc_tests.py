@@ -12,11 +12,11 @@ def llc(file_name: str) -> Result:
         compile_phase_result=compile_phase(
             file_name=file_name,
             compile_flag="-llvm",
-            compiler_output_dump_file_path=llc_file_name,
+            compiler_output_dump_file=llc_file_name,
             create_executable=False,
             skip_on_compile_error=True
         ),
-        expected_on_compile_result_fail=None,
+        compile_result_fail_test_case_file=None,
         command_on_compile_result_pass=[LLC_BIN, llc_file_name],
-        expected_command_output=None,
+        command_output_test_case_file=None,
     )

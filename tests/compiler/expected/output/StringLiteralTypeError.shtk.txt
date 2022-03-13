@@ -1,0 +1,7 @@
+MODULE StringLiteralTypeError.shtk
+ERROR in Line 3 Col 17
+
+    var a:int = "lol"
+                ^
+Type error, did not expect ubyte[4],
+expected int

@@ -1,0 +1,6 @@
+MODULE SymbolDoesNotExistError.shtk
+ERROR in Line 3 Col 17
+
+    var a:int = b
+                ^
+Symbol does not exist

@@ -158,12 +158,12 @@
                         float RHSLen = equal float calleeReturnValue506
                         autoInt* tempPtr510 = allocPointer 
                         flag = greaterThan float LHSLen, float RHSLen
-                        if(not flag) goto _condn_exp_false_l102_c11
+                        if(not flag) goto _condn_exp_false_l81_c11
                         autoInt* tempPtr510 = write autoInt 1
-                        goto _condn_exp_end_false_l102_c11
-                    _condn_exp_false_l102_c11:
+                        goto _condn_exp_end_false_l81_c11
+                    _condn_exp_false_l81_c11:
                         autoInt* tempPtr510 = write autoInt 0
-                    _condn_exp_end_false_l102_c11:
+                    _condn_exp_end_false_l81_c11:
                         autoInt temp518 = read autoInt* tempPtr510
                         byte temp519 = cast autoInt temp518
                         byte returnValue509 = equal byte temp519
@@ -180,7 +180,7 @@
                         byte calleeReturnValue540 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
                         byte temp544 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue540, byte temp544
-                        if(flag) goto _or_true_l107_c29
+                        if(flag) goto _or_true_l86_c29
                         int* tempPtr548 = createPointer struct LHS
                         passPointer int* tempPtr548, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
                         int* tempPtr552 = createPointer struct RHS
@@ -188,13 +188,13 @@
                         byte calleeReturnValue555 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
                         byte temp559 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue555, byte temp559
-                        if(not flag) goto _condn_exp_false_l107_c11
-                    _or_true_l107_c29:
+                        if(not flag) goto _condn_exp_false_l86_c11
+                    _or_true_l86_c29:
                         autoInt* tempPtr524 = write autoInt 1
-                        goto _condn_exp_end_false_l107_c11
-                    _condn_exp_false_l107_c11:
+                        goto _condn_exp_end_false_l86_c11
+                    _condn_exp_false_l86_c11:
                         autoInt* tempPtr524 = write autoInt 0
-                    _condn_exp_end_false_l107_c11:
+                    _condn_exp_end_false_l86_c11:
                         autoInt temp562 = read autoInt* tempPtr524
                         byte temp563 = cast autoInt temp562
                         byte returnValue523 = equal byte temp563
@@ -211,7 +211,7 @@
                         int temp394 = read int* tempPtr389
                         int temp395 = read int* tempPtr393
                         flag = isEqual int temp394, int temp395
-                        if(not flag) goto _condn_exp_false_l89_c11
+                        if(not flag) goto _condn_exp_false_l68_c11
                         int* tempPtr397 = createPointer struct LHS
                         int* tempPtr399 = addressAdd int* tempPtr397, bytes 4
                         int* tempPtr401 = createPointer struct RHS
@@ -219,12 +219,12 @@
                         float temp404 = read float* tempPtr399
                         float temp405 = read float* tempPtr403
                         flag = isEqual float temp404, float temp405
-                        if(not flag) goto _condn_exp_false_l89_c11
+                        if(not flag) goto _condn_exp_false_l68_c11
                         autoInt* tempPtr380 = write autoInt 1
-                        goto _condn_exp_end_false_l89_c11
-                    _condn_exp_false_l89_c11:
+                        goto _condn_exp_end_false_l68_c11
+                    _condn_exp_false_l68_c11:
                         autoInt* tempPtr380 = write autoInt 0
-                    _condn_exp_end_false_l89_c11:
+                    _condn_exp_end_false_l68_c11:
                         autoInt temp408 = read autoInt* tempPtr380
                         byte temp409 = cast autoInt temp408
                         byte returnValue379 = equal byte temp409
@@ -241,7 +241,7 @@
                         int temp428 = read int* tempPtr423
                         int temp429 = read int* tempPtr427
                         flag = isNotEqual int temp428, int temp429
-                        if(flag) goto _or_true_l94_c26
+                        if(flag) goto _or_true_l73_c26
                         int* tempPtr431 = createPointer struct LHS
                         int* tempPtr433 = addressAdd int* tempPtr431, bytes 4
                         int* tempPtr435 = createPointer struct RHS
@@ -249,13 +249,13 @@
                         float temp438 = read float* tempPtr433
                         float temp439 = read float* tempPtr437
                         flag = isNotEqual float temp438, float temp439
-                        if(not flag) goto _condn_exp_false_l94_c11
-                    _or_true_l94_c26:
+                        if(not flag) goto _condn_exp_false_l73_c11
+                    _or_true_l73_c26:
                         autoInt* tempPtr414 = write autoInt 1
-                        goto _condn_exp_end_false_l94_c11
-                    _condn_exp_false_l94_c11:
+                        goto _condn_exp_end_false_l73_c11
+                    _condn_exp_false_l73_c11:
                         autoInt* tempPtr414 = write autoInt 0
-                    _condn_exp_end_false_l94_c11:
+                    _condn_exp_end_false_l73_c11:
                         autoInt temp442 = read autoInt* tempPtr414
                         byte temp443 = cast autoInt temp442
                         byte returnValue413 = equal byte temp443
@@ -329,12 +329,12 @@
                         float RHSLen = equal float calleeReturnValue626
                         autoInt* tempPtr630 = allocPointer 
                         flag = lessThan float LHSLen, float RHSLen
-                        if(not flag) goto _condn_exp_false_l115_c11
+                        if(not flag) goto _condn_exp_false_l94_c11
                         autoInt* tempPtr630 = write autoInt 1
-                        goto _condn_exp_end_false_l115_c11
-                    _condn_exp_false_l115_c11:
+                        goto _condn_exp_end_false_l94_c11
+                    _condn_exp_false_l94_c11:
                         autoInt* tempPtr630 = write autoInt 0
-                    _condn_exp_end_false_l115_c11:
+                    _condn_exp_end_false_l94_c11:
                         autoInt temp638 = read autoInt* tempPtr630
                         byte temp639 = cast autoInt temp638
                         byte returnValue629 = equal byte temp639
@@ -351,12 +351,12 @@
                         byte calleeReturnValue658 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
                         byte temp662 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue658, byte temp662
-                        if(flag) goto _condn_exp_false_l120_c11
+                        if(flag) goto _condn_exp_false_l99_c11
                         autoInt* tempPtr644 = write autoInt 1
-                        goto _condn_exp_end_false_l120_c11
-                    _condn_exp_false_l120_c11:
+                        goto _condn_exp_end_false_l99_c11
+                    _condn_exp_false_l99_c11:
                         autoInt* tempPtr644 = write autoInt 0
-                    _condn_exp_end_false_l120_c11:
+                    _condn_exp_end_false_l99_c11:
                         autoInt temp665 = read autoInt* tempPtr644
                         byte temp666 = cast autoInt temp665
                         byte returnValue643 = equal byte temp666
@@ -415,13 +415,13 @@
             },
             "_fn_CustomOperatorTest_shtk_printFoo": {
                 "icode": [
-                        printString stringData _str_CustomOperatorTest_shtk__l39_c12
+                        printString stringData _str_CustomOperatorTest_shtk__l18_c12
                         int* tempPtr24 = createPointer struct foo
                         int* tempPtr26 = addressAdd int* tempPtr24, bytes 0
                         int temp27 = read int* tempPtr26
                         print int temp27
                         space
-                        printString stringData _str_CustomOperatorTest_shtk__l39_c25
+                        printString stringData _str_CustomOperatorTest_shtk__l18_c25
                         int* tempPtr30 = createPointer struct foo
                         int* tempPtr32 = addressAdd int* tempPtr30, bytes 4
                         float temp33 = read float* tempPtr32
@@ -578,12 +578,12 @@
                         byte calleeReturnValue898 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
                         byte temp902 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue898, byte temp902
-                        if(not flag) goto _condn_exp_false_l137_c12
+                        if(not flag) goto _condn_exp_false_l116_c12
                         autoInt* tempPtr884 = write autoInt 1
-                        goto _condn_exp_end_false_l137_c12
-                    _condn_exp_false_l137_c12:
+                        goto _condn_exp_end_false_l116_c12
+                    _condn_exp_false_l116_c12:
                         autoInt* tempPtr884 = write autoInt 0
-                    _condn_exp_end_false_l137_c12:
+                    _condn_exp_end_false_l116_c12:
                         autoInt temp905 = read autoInt* tempPtr884
                         print autoInt temp905
                         newLine
@@ -595,12 +595,12 @@
                         byte calleeReturnValue920 = call byte _fn_CustomOperatorTest_shtk_isNotEqual, module CustomOperatorTest.shtk
                         byte temp924 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue920, byte temp924
-                        if(not flag) goto _condn_exp_false_l138_c12
+                        if(not flag) goto _condn_exp_false_l117_c12
                         autoInt* tempPtr906 = write autoInt 1
-                        goto _condn_exp_end_false_l138_c12
-                    _condn_exp_false_l138_c12:
+                        goto _condn_exp_end_false_l117_c12
+                    _condn_exp_false_l117_c12:
                         autoInt* tempPtr906 = write autoInt 0
-                    _condn_exp_end_false_l138_c12:
+                    _condn_exp_end_false_l117_c12:
                         autoInt temp927 = read autoInt* tempPtr906
                         print autoInt temp927
                         newLine
@@ -612,12 +612,12 @@
                         byte calleeReturnValue942 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
                         byte temp946 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue942, byte temp946
-                        if(not flag) goto _condn_exp_false_l139_c12
+                        if(not flag) goto _condn_exp_false_l118_c12
                         autoInt* tempPtr928 = write autoInt 1
-                        goto _condn_exp_end_false_l139_c12
-                    _condn_exp_false_l139_c12:
+                        goto _condn_exp_end_false_l118_c12
+                    _condn_exp_false_l118_c12:
                         autoInt* tempPtr928 = write autoInt 0
-                    _condn_exp_end_false_l139_c12:
+                    _condn_exp_end_false_l118_c12:
                         autoInt temp949 = read autoInt* tempPtr928
                         print autoInt temp949
                         newLine
@@ -629,12 +629,12 @@
                         byte calleeReturnValue964 = call byte _fn_CustomOperatorTest_shtk_greaterThanOrEqual, module CustomOperatorTest.shtk
                         byte temp968 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue964, byte temp968
-                        if(not flag) goto _condn_exp_false_l140_c12
+                        if(not flag) goto _condn_exp_false_l119_c12
                         autoInt* tempPtr950 = write autoInt 1
-                        goto _condn_exp_end_false_l140_c12
-                    _condn_exp_false_l140_c12:
+                        goto _condn_exp_end_false_l119_c12
+                    _condn_exp_false_l119_c12:
                         autoInt* tempPtr950 = write autoInt 0
-                    _condn_exp_end_false_l140_c12:
+                    _condn_exp_end_false_l119_c12:
                         autoInt temp971 = read autoInt* tempPtr950
                         print autoInt temp971
                         newLine
@@ -646,12 +646,12 @@
                         byte calleeReturnValue986 = call byte _fn_CustomOperatorTest_shtk_lessThan, module CustomOperatorTest.shtk
                         byte temp990 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue986, byte temp990
-                        if(not flag) goto _condn_exp_false_l141_c12
+                        if(not flag) goto _condn_exp_false_l120_c12
                         autoInt* tempPtr972 = write autoInt 1
-                        goto _condn_exp_end_false_l141_c12
-                    _condn_exp_false_l141_c12:
+                        goto _condn_exp_end_false_l120_c12
+                    _condn_exp_false_l120_c12:
                         autoInt* tempPtr972 = write autoInt 0
-                    _condn_exp_end_false_l141_c12:
+                    _condn_exp_end_false_l120_c12:
                         autoInt temp993 = read autoInt* tempPtr972
                         print autoInt temp993
                         newLine
@@ -663,12 +663,12 @@
                         byte calleeReturnValue1008 = call byte _fn_CustomOperatorTest_shtk_lessThanOrEqual, module CustomOperatorTest.shtk
                         byte temp1012 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue1008, byte temp1012
-                        if(not flag) goto _condn_exp_false_l142_c12
+                        if(not flag) goto _condn_exp_false_l121_c12
                         autoInt* tempPtr994 = write autoInt 1
-                        goto _condn_exp_end_false_l142_c12
-                    _condn_exp_false_l142_c12:
+                        goto _condn_exp_end_false_l121_c12
+                    _condn_exp_false_l121_c12:
                         autoInt* tempPtr994 = write autoInt 0
-                    _condn_exp_end_false_l142_c12:
+                    _condn_exp_end_false_l121_c12:
                         autoInt temp1015 = read autoInt* tempPtr994
                         print autoInt temp1015
                         newLine
@@ -724,12 +724,12 @@
                         byte calleeReturnValue1128 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
                         byte temp1132 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue1128, byte temp1132
-                        if(not flag) goto _condn_exp_false_l155_c12
+                        if(not flag) goto _condn_exp_false_l134_c12
                         autoInt* tempPtr1114 = write autoInt 1
-                        goto _condn_exp_end_false_l155_c12
-                    _condn_exp_false_l155_c12:
+                        goto _condn_exp_end_false_l134_c12
+                    _condn_exp_false_l134_c12:
                         autoInt* tempPtr1114 = write autoInt 0
-                    _condn_exp_end_false_l155_c12:
+                    _condn_exp_end_false_l134_c12:
                         autoInt temp1135 = read autoInt* tempPtr1114
                         print autoInt temp1135
                         newLine

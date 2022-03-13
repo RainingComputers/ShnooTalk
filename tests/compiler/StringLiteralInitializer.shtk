@@ -1,12 +1,3 @@
-# Shnoo
-# Bob
-# Alice
-# Kenny
-# Shnoo
-# Robby
-# Alice
-# Kenny
-
 fn main() -> int
 {
     var c: char[10] = "Bob"

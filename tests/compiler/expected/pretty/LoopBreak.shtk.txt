@@ -6,18 +6,18 @@
                 "icode": [
                         int temp5 = cast autoInt 0
                         int i = equal int temp5
-                    _while_true_l7_c4:
+                    _while_true_l5_c4:
                         flag = isEqual autoInt 1, autoInt 1
-                        if(not flag) goto _while_false_l7_c4
+                        if(not flag) goto _while_false_l5_c4
                         flag = isEqual int i, int k
-                        if(not flag) goto _if_false_l9_c8
-                        goto _while_false_l7_c4
-                    _if_false_l9_c8:
+                        if(not flag) goto _if_false_l7_c8
+                        goto _while_false_l5_c4
+                    _if_false_l7_c8:
                         int temp18 = cast autoInt 1
                         int temp17 = add int i, int temp18
                         int i = equal int temp17
-                        goto _while_true_l7_c4
-                    _while_false_l7_c4:
+                        goto _while_true_l5_c4
+                    _while_false_l5_c4:
                         int returnValue19 = equal int i
                         return
                 ]

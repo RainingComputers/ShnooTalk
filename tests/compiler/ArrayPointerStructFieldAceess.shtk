@@ -1,9 +1,3 @@
-# 1
-# 2
-# 3
-# 4
-# 5
-
 fn copy(mut dest: int[], src: int[], len: int)
 {
     for var i: int = 0; i < len; i += 1 {

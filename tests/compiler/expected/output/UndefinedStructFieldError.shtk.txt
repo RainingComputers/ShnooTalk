@@ -1,0 +1,6 @@
+MODULE UndefinedStructFieldError.shtk
+ERROR in Line 8 Col 17
+
+    println(foo.z)
+                ^
+Undefined STRUCT field

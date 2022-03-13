@@ -1,0 +1,7 @@
+MODULE StringTooBigError.shtk
+ERROR in Line 3 Col 21
+
+    var a:char[4] = "Hello"
+                    ^
+Type error, did not expect char[6],
+expected char[4]

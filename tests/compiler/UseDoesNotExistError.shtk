@@ -1,10 +1,3 @@
-# MODULE UseDoesNotExistError.shtk
-# ERROR in Line 10 Col 5
-# 
-#     doesnotexist::foo()
-#     ^
-# Use does not exist
-
 fn main()
 {
     doesnotexist::foo()

@@ -1,0 +1,7 @@
+MODULE BinOperatorTypeError.shtk
+ERROR in Line 4 Col 21
+
+    var i:int = 2 + f
+                    ^
+Type error, did not expect float,
+expected autoInt

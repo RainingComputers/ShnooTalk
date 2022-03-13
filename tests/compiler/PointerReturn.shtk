@@ -1,5 +1,3 @@
-# 2
-
 struct Vector
 {
     var x: int, y: int

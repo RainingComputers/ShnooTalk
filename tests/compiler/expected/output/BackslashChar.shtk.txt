@@ -1,0 +1,6 @@
+newline
+backspace
+tab
+backslash
+null
+a

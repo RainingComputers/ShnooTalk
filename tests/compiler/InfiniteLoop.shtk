@@ -1,9 +1,3 @@
-# loop
-# loop
-# loop
-# loop
-# loop
-
 fn main() -> int
 {
     var a: int = 0
