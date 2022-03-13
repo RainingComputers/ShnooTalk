@@ -1,37 +1,46 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "Type.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "Type.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "Type.shtk"},
           "children": [
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 3, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 14, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 3, "col": 15, "file": "Type.shtk"},
                       "children": [
                         
@@ -42,24 +51,29 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 5, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 14, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 5, "col": 15, "file": "Type.shtk"},
                       "children": [
                         
@@ -68,9 +82,11 @@
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 18, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 5, "col": 19, "file": "Type.shtk"},
                       "children": [
                         
@@ -81,21 +97,25 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 7, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EMPTY_SUBSCRIPT",
                   "token": {"string": "[]", "tokenType": "EMPTY_SUBSCRIPT", "line": 7, "col": 14, "file": "Type.shtk"},
                   "children": [
                     
@@ -104,21 +124,25 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 9, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 9, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 9, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "POINTER_STAR",
                   "token": {"string": "*", "tokenType": "MULTIPLY", "line": 9, "col": 14, "file": "Type.shtk"},
                   "children": [
                     
@@ -127,30 +151,36 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 11, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 11, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 11, "col": 16, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 11, "col": 19, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 11, "col": 20, "file": "Type.shtk"},
                       "children": [
                         
@@ -161,30 +191,36 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 13, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 13, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 13, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 13, "col": 16, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 19, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 13, "col": 20, "file": "Type.shtk"},
                       "children": [
                         
@@ -193,9 +229,11 @@
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 13, "col": 23, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 13, "col": 24, "file": "Type.shtk"},
                       "children": [
                         
@@ -206,27 +244,32 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 15, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 15, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 15, "col": 16, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EMPTY_SUBSCRIPT",
                   "token": {"string": "[]", "tokenType": "EMPTY_SUBSCRIPT", "line": 15, "col": 19, "file": "Type.shtk"},
                   "children": [
                     
@@ -235,27 +278,32 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 17, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 17, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 17, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 17, "col": 16, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "POINTER_STAR",
                   "token": {"string": "*", "tokenType": "MULTIPLY", "line": 17, "col": 19, "file": "Type.shtk"},
                   "children": [
                     
@@ -264,36 +312,43 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 19, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 19, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 19, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 19, "col": 16, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 19, "col": 21, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 19, "col": 24, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 19, "col": 25, "file": "Type.shtk"},
                       "children": [
                         
@@ -304,36 +359,43 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 21, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 21, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 21, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 21, "col": 16, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 21, "col": 21, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 21, "col": 24, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 21, "col": 25, "file": "Type.shtk"},
                       "children": [
                         
@@ -342,9 +404,11 @@
                   ]
                 },
                 {
+                  "type": "SUBSCRIPT",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 21, "col": 28, "file": "Type.shtk"},
                   "children": [
                     {
+                      "type": "LITERAL",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 21, "col": 29, "file": "Type.shtk"},
                       "children": [
                         
@@ -355,33 +419,39 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 23, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 23, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 23, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 23, "col": 16, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 23, "col": 21, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EMPTY_SUBSCRIPT",
                   "token": {"string": "[]", "tokenType": "EMPTY_SUBSCRIPT", "line": 23, "col": 24, "file": "Type.shtk"},
                   "children": [
                     
@@ -390,33 +460,39 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 25, "col": 4, "file": "Type.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 25, "col": 8, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 25, "col": 11, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "MODULE",
                   "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 25, "col": 16, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 25, "col": 21, "file": "Type.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "POINTER_STAR",
                   "token": {"string": "*", "tokenType": "MULTIPLY", "line": 25, "col": 24, "file": "Type.shtk"},
                   "children": [
                     

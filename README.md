@@ -72,7 +72,7 @@ make test
 *Priority*
 - [x] Incomplete types and type composing of a pointer to itself
 - [x] null pointer check
-- [ ] Direct from
+- [x] Direct from
 - [x] make constructors
 - [ ] destructors
 - [x] := initializer
@@ -103,16 +103,19 @@ make test
 - [x] Add `fopen()` function
 - [x] Multi-line strings
 - [x] Assigning conditional expressions
-- [ ] Cleanup format strings and function call in Translator
-- [ ] Static variables
-- [ ] Language tour using shnootalk-playground
-- [ ] Language reference in markdown
 - [x] Setup github workflows and build for other platforms
-- [ ] Error recovery
 - [x] Function forward declaration
+- [ ] Cleanup format strings and function call in Translator
+- [ ] Error recovery
+- [ ] Static variables
 - [ ] Unsafe keyword
 - [ ] Generic function call
 - [ ] Struct alignment and padding
+
+### Documentation
+
+- [ ] Language tour using shnootalk-playground
+- [ ] Language reference in markdown
 
 ### Advanced features
 

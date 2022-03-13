@@ -85,6 +85,8 @@ namespace pp
     {
         jsonp.begin();
 
+        jsonp.printString("type", nodeTypeToString[node.type]);
+
         FlatJSONPrinter tokenPrinter = jsonp.beginNested("token", true);
         printTokenJson(node.tok, tokenPrinter);
 

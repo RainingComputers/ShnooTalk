@@ -25,8 +25,10 @@ class ModuleBuilder
 
     icode::FunctionDescription createFunctionDescription(const icode::TypeDescription& returnType,
                                                          const std::vector<Token>& paramNames,
-                                                         std::vector<icode::TypeDescription>& paramTypes, 
+                                                         std::vector<icode::TypeDescription>& paramTypes,
                                                          const std::string& moduleName);
+
+    void createFrom(const std::string& moduleName, const Token& aliasToken);
 
 public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
@@ -63,13 +65,11 @@ public:
                               const std::vector<Token>& paramNames,
                               std::vector<icode::TypeDescription>& paramTypes);
 
-
     void createExternFunctionModule(const Token& nameToken,
                                     const icode::TypeDescription& returnType,
                                     const std::vector<Token>& paramNames,
                                     std::vector<icode::TypeDescription>& paramTypes,
                                     const Token& moduleNameToken);
-
 
     void createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription);
 
@@ -77,9 +77,13 @@ public:
                       const std::vector<Token>& fieldNameTokens,
                       const std::vector<icode::TypeDescription>& fieldTypes);
 
+    void createUseNoAlias(const Token& pathToken);
+
     void createUse(const Token& pathToken, const Token& aliasToken);
 
-    void createFrom(const Token& aliasToken, const Token& symbolNameToken);
+    void createDirectFrom(const Token& pathToken, const Token& symbolNameToken);
+
+    void createAliasFrom(const Token& aliasToken, const Token& symbolNameToken);
 };
 
 #endif

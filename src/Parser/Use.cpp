@@ -7,7 +7,7 @@ void use(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrent(node::USE);
 
     ctx.expect(token::STR_LITERAL);
-    ctx.addNode(node::STR_LITERAL);
+    ctx.addNode(node::MODULE);
     ctx.expect(token::AS);
     ctx.consume();
     ctx.expect(token::IDENTIFIER);
@@ -22,8 +22,14 @@ void from(parser::ParserContext& ctx)
 
     ctx.addNodeMakeCurrent(node::FROM);
 
-    ctx.expect(token::IDENTIFIER);
-    ctx.addNode(node::IDENTIFIER);
+    token::TokenType expected[] = { token::IDENTIFIER, token::STR_LITERAL };
+
+    ctx.expect(expected, 2);
+
+    if (ctx.accept(token::IDENTIFIER))
+        ctx.addNode(node::IDENTIFIER);
+    else
+        ctx.addNode(node::MODULE);
 
     ctx.expect(token::USE);
     ctx.addNodeMakeCurrentNoConsume(node::USE);

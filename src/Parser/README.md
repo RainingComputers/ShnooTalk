@@ -49,7 +49,7 @@ generic = "generic"  "[" identifier {"," identifier} "]"
 
 use = "use" stringLiteral "as" identifier
 
-from = "from" identifier "use" identifier {"," identifier}
+from = "from" (identifier | stringLiteral) "use" identifier {"," identifier}
 
 enumList = "enum" "[" identifier {"," identifier} "]"
 

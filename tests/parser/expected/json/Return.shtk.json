@@ -1,31 +1,40 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "Return.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "Return.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "Return.shtk"},
           "children": [
             {
+              "type": "RETURN",
               "token": {"string": "return", "tokenType": "RETURN", "line": 3, "col": 4, "file": "Return.shtk"},
               "children": [
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "Return.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "Return.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "Return.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "Return.shtk"},
                               "children": [
                                 
@@ -36,18 +45,22 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "+", "tokenType": "PLUS", "line": 3, "col": 12, "file": "Return.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 13, "file": "Return.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 13, "file": "Return.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 13, "file": "Return.shtk"},
                               "children": [
                                 
@@ -62,6 +75,7 @@
               ]
             },
             {
+              "type": "RETURN",
               "token": {"string": "return", "tokenType": "RETURN", "line": 4, "col": 4, "file": "Return.shtk"},
               "children": [
                 

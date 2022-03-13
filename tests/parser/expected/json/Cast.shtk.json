@@ -1,52 +1,65 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "Cast.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "Cast.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "Cast.shtk"},
           "children": [
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 3, "col": 4, "file": "Cast.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 15, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 17, "file": "Cast.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 17, "file": "Cast.shtk"},
                       "children": [
                         {
+                          "type": "CAST",
                           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 17, "file": "Cast.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 21, "file": "Cast.shtk"},
                               "children": [
                                 {
+                                  "type": "IDENTIFIER",
                                   "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 21, "file": "Cast.shtk"},
                                   "children": [
                                     
@@ -63,39 +76,48 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 5, "col": 4, "file": "Cast.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 11, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 15, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 17, "file": "Cast.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 17, "file": "Cast.shtk"},
                       "children": [
                         {
+                          "type": "PTR_CAST",
                           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 17, "file": "Cast.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "Cast.shtk"},
                               "children": [
                                 {
+                                  "type": "IDENTIFIER",
                                   "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "Cast.shtk"},
                                   "children": [
                                     
@@ -112,39 +134,48 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 7, "col": 4, "file": "Cast.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 11, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 7, "col": 15, "file": "Cast.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 17, "file": "Cast.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 17, "file": "Cast.shtk"},
                       "children": [
                         {
+                          "type": "PTR_ARRAY_CAST",
                           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 17, "file": "Cast.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "Cast.shtk"},
                               "children": [
                                 {
+                                  "type": "IDENTIFIER",
                                   "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "Cast.shtk"},
                                   "children": [
                                     

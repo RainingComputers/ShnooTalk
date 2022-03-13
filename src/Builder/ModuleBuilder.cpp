@@ -300,13 +300,21 @@ void ModuleBuilder::createStruct(const Token& nameToken,
     rootModule.structures[nameToken.toString()] = structDescription;
 }
 
+void ModuleBuilder::createUseNoAlias(const Token& pathToken)
+{
+    const std::string& path = pathToken.toUnescapedString();
+
+    if (!std::filesystem::exists(path))
+        console.compileErrorOnToken("File does not exist", pathToken);
+
+    if (!rootModule.useExists(path))
+        rootModule.uses.push_back(path);
+}
+
 void ModuleBuilder::createUse(const Token& pathToken, const Token& aliasToken)
 {
     const std::string& path = pathToken.toUnescapedString();
     const std::string& alias = aliasToken.toString();
-
-    if (!std::filesystem::exists(path))
-        console.compileErrorOnToken("File does not exist", pathToken);
 
     if (rootModule.useExists(path))
         console.compileErrorOnToken("Multiple imports detected", pathToken);
@@ -314,11 +322,11 @@ void ModuleBuilder::createUse(const Token& pathToken, const Token& aliasToken)
     if (rootModule.aliasExists(alias))
         console.compileErrorOnToken("Symbol already defined", aliasToken);
 
-    rootModule.uses.push_back(path);
+    createUseNoAlias(pathToken);
     rootModule.aliases[alias] = path;
 }
 
-void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameToken)
+void ModuleBuilder::createFrom(const std::string& moduleName, const Token& symbolNameToken)
 {
     /* Used to store return values */
     StructDescription structDescReturnValue;
@@ -328,11 +336,6 @@ void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameT
     int enumReturnValue;
     std::string stringDataKeyReturnValue;
     std::string importModuleNameReturnValue;
-
-    /* Get module description from alias */
-    std::string moduleName;
-    if (!rootModule.getModuleNameFromAlias(aliasToken.toString(), moduleName))
-        console.compileErrorOnToken("Use does not exist", aliasToken);
 
     ModuleDescription* externalModule = &(modulesMap.at(moduleName));
 
@@ -383,4 +386,19 @@ void ModuleBuilder::createFrom(const Token& aliasToken, const Token& symbolNameT
 
     else
         console.compileErrorOnToken("Symbol does not exist", symbolNameToken);
+}
+
+void ModuleBuilder::createDirectFrom(const Token& pathToken, const Token& symbolNameToken)
+{
+    createFrom(pathToken.toUnescapedString(), symbolNameToken);
+}
+
+void ModuleBuilder::createAliasFrom(const Token& aliasToken, const Token& symbolNameToken)
+{
+    /* Get module description from alias */
+    std::string moduleName;
+    if (!rootModule.getModuleNameFromAlias(aliasToken.toString(), moduleName))
+        console.compileErrorOnToken("Use does not exist", aliasToken);
+
+    createFrom(moduleName, symbolNameToken);
 }

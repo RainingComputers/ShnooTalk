@@ -1,16 +1,20 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "GENERIC",
       "token": {"string": "generic", "tokenType": "GENERIC", "line": 1, "col": 0, "file": "GenericDecleration.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "K", "tokenType": "IDENTIFIER", "line": 1, "col": 8, "file": "GenericDecleration.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "V", "tokenType": "IDENTIFIER", "line": 1, "col": 11, "file": "GenericDecleration.shtk"},
           "children": [
             

@@ -1,16 +1,20 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "USE",
       "token": {"string": "use", "tokenType": "USE", "line": 1, "col": 0, "file": "Use.shtk"},
       "children": [
         {
+          "type": "MODULE",
           "token": {"string": "\"foobar/bar/bar/bleh.shtk\"", "tokenType": "STR_LITERAL", "line": 1, "col": 4, "file": "Use.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "SomethingIdk", "tokenType": "IDENTIFIER", "line": 1, "col": 34, "file": "Use.shtk"},
           "children": [
             

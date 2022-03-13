@@ -1,49 +1,61 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "InitializerList.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "InitializerList.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "InitializerList.shtk"},
           "children": [
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 3, "col": 4, "file": "InitializerList.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "InitializerList.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "InitializerList.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 15, "file": "InitializerList.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "INITLIST",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 17, "file": "InitializerList.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 18, "file": "InitializerList.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 18, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 18, "file": "InitializerList.shtk"},
                               "children": [
                                 
@@ -54,12 +66,15 @@
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 21, "file": "InitializerList.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 21, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 21, "file": "InitializerList.shtk"},
                               "children": [
                                 
@@ -70,12 +85,15 @@
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 24, "file": "InitializerList.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 24, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 24, "file": "InitializerList.shtk"},
                               "children": [
                                 
@@ -86,12 +104,15 @@
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "InitializerList.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "InitializerList.shtk"},
                               "children": [
                                 
@@ -106,39 +127,48 @@
               ]
             },
             {
+              "type": "VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 4, "col": 4, "file": "InitializerList.shtk"},
               "children": [
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 4, "col": 8, "file": "InitializerList.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "IDENTIFIER",
                   "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 4, "col": 11, "file": "InitializerList.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 4, "col": 15, "file": "InitializerList.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "INITLIST",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 4, "col": 17, "file": "InitializerList.shtk"},
                   "children": [
                     {
+                      "type": "INITLIST",
                       "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 4, "col": 18, "file": "InitializerList.shtk"},
                       "children": [
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 4, "col": 19, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 4, "col": 19, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 4, "col": 19, "file": "InitializerList.shtk"},
                                   "children": [
                                     
@@ -149,12 +179,15 @@
                           ]
                         },
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 22, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 22, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 22, "file": "InitializerList.shtk"},
                                   "children": [
                                     
@@ -165,12 +198,15 @@
                           ]
                         },
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 4, "col": 25, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 4, "col": 25, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 4, "col": 25, "file": "InitializerList.shtk"},
                                   "children": [
                                     
@@ -183,15 +219,19 @@
                       ]
                     },
                     {
+                      "type": "INITLIST",
                       "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 4, "col": 29, "file": "InitializerList.shtk"},
                       "children": [
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 4, "col": 30, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 4, "col": 30, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 4, "col": 30, "file": "InitializerList.shtk"},
                                   "children": [
                                     
@@ -202,12 +242,15 @@
                           ]
                         },
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 4, "col": 33, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 4, "col": 33, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 4, "col": 33, "file": "InitializerList.shtk"},
                                   "children": [
                                     
@@ -218,12 +261,15 @@
                           ]
                         },
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 4, "col": 36, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 4, "col": 36, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "7", "tokenType": "INT_LITERAL", "line": 4, "col": 36, "file": "InitializerList.shtk"},
                                   "children": [
                                     
@@ -236,15 +282,19 @@
                       ]
                     },
                     {
+                      "type": "INITLIST",
                       "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 4, "col": 40, "file": "InitializerList.shtk"},
                       "children": [
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 4, "col": 41, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 4, "col": 41, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "8", "tokenType": "INT_LITERAL", "line": 4, "col": 41, "file": "InitializerList.shtk"},
                                   "children": [
                                     
@@ -255,12 +305,15 @@
                           ]
                         },
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "9", "tokenType": "INT_LITERAL", "line": 4, "col": 44, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "9", "tokenType": "INT_LITERAL", "line": 4, "col": 44, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "9", "tokenType": "INT_LITERAL", "line": 4, "col": 44, "file": "InitializerList.shtk"},
                                   "children": [
                                     
@@ -271,12 +324,15 @@
                           ]
                         },
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 4, "col": 47, "file": "InitializerList.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 4, "col": 47, "file": "InitializerList.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 4, "col": 47, "file": "InitializerList.shtk"},
                                   "children": [
                                     

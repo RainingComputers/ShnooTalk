@@ -1,16 +1,20 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "VAR",
       "token": {"string": "var", "tokenType": "VAR", "line": 1, "col": 0, "file": "GlobalDeclare.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 1, "col": 4, "file": "GlobalDeclare.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 7, "file": "GlobalDeclare.shtk"},
           "children": [
             
@@ -19,15 +23,18 @@
       ]
     },
     {
+      "type": "VAR",
       "token": {"string": ",", "tokenType": "COMMA", "line": 1, "col": 10, "file": "GlobalDeclare.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 1, "col": 12, "file": "GlobalDeclare.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 15, "file": "GlobalDeclare.shtk"},
           "children": [
             
@@ -36,15 +43,18 @@
       ]
     },
     {
+      "type": "VAR",
       "token": {"string": "var", "tokenType": "VAR", "line": 2, "col": 0, "file": "GlobalDeclare.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 2, "col": 4, "file": "GlobalDeclare.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 2, "col": 7, "file": "GlobalDeclare.shtk"},
           "children": [
             

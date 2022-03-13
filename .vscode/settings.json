@@ -126,6 +126,7 @@
         "icode",
         "ifend",
         "Instatiator",
+        "IRBUILDER",
         "irgen",
         "isfunction",
         "lcov",

@@ -1,25 +1,32 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "Print.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "Print.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "Print.shtk"},
           "children": [
             {
+              "type": "PRINT",
               "token": {"string": "print", "tokenType": "PRINT", "line": 3, "col": 4, "file": "Print.shtk"},
               "children": [
                 {
+                  "type": "MULTILINE_STR_LITERAL",
                   "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 10, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "STR_LITERAL",
                       "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 10, "file": "Print.shtk"},
                       "children": [
                         
@@ -30,15 +37,19 @@
               ]
             },
             {
+              "type": "PRINT",
               "token": {"string": "print", "tokenType": "PRINT", "line": 4, "col": 4, "file": "Print.shtk"},
               "children": [
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 4, "col": 10, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 4, "col": 10, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 4, "col": 10, "file": "Print.shtk"},
                           "children": [
                             
@@ -49,18 +60,22 @@
                   ]
                 },
                 {
+                  "type": "SPACE",
                   "token": {"string": ",", "tokenType": "COMMA", "line": 4, "col": 11, "file": "Print.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 13, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 13, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 4, "col": 13, "file": "Print.shtk"},
                           "children": [
                             
@@ -71,18 +86,22 @@
                   ]
                 },
                 {
+                  "type": "SPACE",
                   "token": {"string": ",", "tokenType": "COMMA", "line": 4, "col": 14, "file": "Print.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 4, "col": 16, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 4, "col": 16, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 4, "col": 16, "file": "Print.shtk"},
                           "children": [
                             
@@ -95,15 +114,19 @@
               ]
             },
             {
+              "type": "PRINT",
               "token": {"string": "print", "tokenType": "PRINT", "line": 5, "col": 4, "file": "Print.shtk"},
               "children": [
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 10, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 10, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 10, "file": "Print.shtk"},
                           "children": [
                             
@@ -114,9 +137,11 @@
                   ]
                 },
                 {
+                  "type": "MULTILINE_STR_LITERAL",
                   "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 13, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "STR_LITERAL",
                       "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 13, "file": "Print.shtk"},
                       "children": [
                         
@@ -125,12 +150,15 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 22, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 22, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 22, "file": "Print.shtk"},
                           "children": [
                             
@@ -143,15 +171,19 @@
               ]
             },
             {
+              "type": "PRINT",
               "token": {"string": "print", "tokenType": "PRINT", "line": 6, "col": 4, "file": "Print.shtk"},
               "children": [
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 10, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 10, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 6, "col": 10, "file": "Print.shtk"},
                           "children": [
                             
@@ -162,12 +194,15 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 6, "col": 13, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 6, "col": 13, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 6, "col": 13, "file": "Print.shtk"},
                           "children": [
                             
@@ -178,18 +213,22 @@
                   ]
                 },
                 {
+                  "type": "SPACE",
                   "token": {"string": ",", "tokenType": "COMMA", "line": 6, "col": 14, "file": "Print.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 6, "col": 16, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 6, "col": 16, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 6, "col": 16, "file": "Print.shtk"},
                           "children": [
                             
@@ -200,18 +239,22 @@
                   ]
                 },
                 {
+                  "type": "SPACE",
                   "token": {"string": ",", "tokenType": "COMMA", "line": 6, "col": 18, "file": "Print.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 6, "col": 20, "file": "Print.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 6, "col": 20, "file": "Print.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 6, "col": 20, "file": "Print.shtk"},
                           "children": [
                             

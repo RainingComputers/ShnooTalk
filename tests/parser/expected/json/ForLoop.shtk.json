@@ -1,28 +1,36 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "ForLoop.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "ForLoop.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "ForLoop.shtk"},
           "children": [
             {
+              "type": "FOR",
               "token": {"string": "for", "tokenType": "FOR", "line": 3, "col": 4, "file": "ForLoop.shtk"},
               "children": [
                 {
+                  "type": "ASSIGNMENT",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "IDENTIFIER",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 8, "file": "ForLoop.shtk"},
                           "children": [
                             
@@ -31,18 +39,22 @@
                       ]
                     },
                     {
+                      "type": "ASSIGN_OPERATOR",
                       "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 10, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 12, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 12, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 12, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -55,15 +67,19 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -74,18 +90,22 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "<", "tokenType": "LESS_THAN", "line": 3, "col": 17, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 19, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 19, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 19, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -98,12 +118,15 @@
                   ]
                 },
                 {
+                  "type": "ASSIGNMENT",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 22, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 22, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "IDENTIFIER",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 22, "file": "ForLoop.shtk"},
                           "children": [
                             
@@ -112,18 +135,22 @@
                       ]
                     },
                     {
+                      "type": "ASSIGN_OPERATOR",
                       "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 3, "col": 24, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -136,15 +163,19 @@
                   ]
                 },
                 {
+                  "type": "BLOCK",
                   "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 3, "col": 29, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "PRINTLN",
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 4, "col": 8, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "MULTILINE_STR_LITERAL",
                           "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "STR_LITERAL",
                               "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -159,15 +190,19 @@
               ]
             },
             {
+              "type": "FOR",
               "token": {"string": "for", "tokenType": "FOR", "line": 7, "col": 4, "file": "ForLoop.shtk"},
               "children": [
                 {
+                  "type": "ASSIGNMENT",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 9, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 9, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "IDENTIFIER",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 9, "file": "ForLoop.shtk"},
                           "children": [
                             
@@ -176,18 +211,22 @@
                       ]
                     },
                     {
+                      "type": "ASSIGN_OPERATOR",
                       "token": {"string": "=", "tokenType": "EQUAL", "line": 7, "col": 11, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 13, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 13, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 13, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -200,15 +239,19 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 16, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 16, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 16, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 16, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -219,18 +262,22 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "<", "tokenType": "LESS_THAN", "line": 7, "col": 18, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 7, "col": 20, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -243,12 +290,15 @@
                   ]
                 },
                 {
+                  "type": "ASSIGNMENT",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "IDENTIFIER",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 23, "file": "ForLoop.shtk"},
                           "children": [
                             
@@ -257,18 +307,22 @@
                       ]
                     },
                     {
+                      "type": "ASSIGN_OPERATOR",
                       "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 7, "col": 25, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 28, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 28, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 7, "col": 28, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -281,15 +335,19 @@
                   ]
                 },
                 {
+                  "type": "BLOCK",
                   "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 7, "col": 31, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "PRINTLN",
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 8, "col": 8, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "MULTILINE_STR_LITERAL",
                           "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 8, "col": 16, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "STR_LITERAL",
                               "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 8, "col": 16, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -304,18 +362,23 @@
               ]
             },
             {
+              "type": "FOR",
               "token": {"string": "for", "tokenType": "FOR", "line": 11, "col": 4, "file": "ForLoop.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "METHODCALL",
                       "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 8, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -328,15 +391,19 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 17, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 17, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 17, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 17, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -347,18 +414,22 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "<", "tokenType": "LESS_THAN", "line": 11, "col": 19, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 21, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 21, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 21, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -371,12 +442,15 @@
                   ]
                 },
                 {
+                  "type": "ASSIGNMENT",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 24, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 24, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "IDENTIFIER",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 24, "file": "ForLoop.shtk"},
                           "children": [
                             
@@ -385,18 +459,22 @@
                       ]
                     },
                     {
+                      "type": "ASSIGN_OPERATOR",
                       "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 11, "col": 26, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 29, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 29, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 11, "col": 29, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -409,15 +487,19 @@
                   ]
                 },
                 {
+                  "type": "BLOCK",
                   "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 11, "col": 31, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "PRINTLN",
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 12, "col": 8, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "MULTILINE_STR_LITERAL",
                           "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "STR_LITERAL",
                               "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -432,36 +514,44 @@
               ]
             },
             {
+              "type": "FOR",
               "token": {"string": "for", "tokenType": "FOR", "line": 15, "col": 4, "file": "ForLoop.shtk"},
               "children": [
                 {
+                  "type": "VAR",
                   "token": {"string": "var", "tokenType": "VAR", "line": 15, "col": 8, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 12, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 15, "col": 15, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "ASSIGN_OPERATOR",
                       "token": {"string": "=", "tokenType": "EQUAL", "line": 15, "col": 19, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 21, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 21, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 21, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -474,15 +564,19 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 24, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 24, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 24, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 24, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -493,18 +587,22 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "<", "tokenType": "LESS_THAN", "line": 15, "col": 26, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 15, "col": 28, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 15, "col": 28, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "10", "tokenType": "INT_LITERAL", "line": 15, "col": 28, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -517,12 +615,15 @@
                   ]
                 },
                 {
+                  "type": "ASSIGNMENT",
                   "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 32, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 32, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "IDENTIFIER",
                           "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 15, "col": 32, "file": "ForLoop.shtk"},
                           "children": [
                             
@@ -531,18 +632,22 @@
                       ]
                     },
                     {
+                      "type": "ASSIGN_OPERATOR",
                       "token": {"string": "+=", "tokenType": "PLUS_EQUAL", "line": 15, "col": 34, "file": "ForLoop.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 37, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 37, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 15, "col": 37, "file": "ForLoop.shtk"},
                               "children": [
                                 
@@ -555,18 +660,23 @@
                   ]
                 },
                 {
+                  "type": "BLOCK",
                   "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 15, "col": 39, "file": "ForLoop.shtk"},
                   "children": [
                     {
+                      "type": "PRINTLN",
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 16, "col": 8, "file": "ForLoop.shtk"},
                       "children": [
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 16, "col": 16, "file": "ForLoop.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 16, "col": 16, "file": "ForLoop.shtk"},
                               "children": [
                                 {
+                                  "type": "IDENTIFIER",
                                   "token": {"string": "i", "tokenType": "IDENTIFIER", "line": 16, "col": 16, "file": "ForLoop.shtk"},
                                   "children": [
                                     

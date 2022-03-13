@@ -1,25 +1,32 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "Expression.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "Expression.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "Expression.shtk"},
           "children": [
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "Expression.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "Expression.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "Expression.shtk"},
                       "children": [
                         
@@ -28,27 +35,34 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 6, "file": "Expression.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 8, "file": "Expression.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 16, "file": "Expression.shtk"},
                       "children": [
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 12, "file": "Expression.shtk"},
                           "children": [
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 8, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 8, "file": "Expression.shtk"},
                                   "children": [
                                     {
+                                      "type": "LITERAL",
                                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 8, "file": "Expression.shtk"},
                                       "children": [
                                         
@@ -59,18 +73,22 @@
                               ]
                             },
                             {
+                              "type": "OPERATOR",
                               "token": {"string": "+", "tokenType": "PLUS", "line": 3, "col": 10, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 12, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 12, "file": "Expression.shtk"},
                                   "children": [
                                     {
+                                      "type": "LITERAL",
                                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 12, "file": "Expression.shtk"},
                                       "children": [
                                         
@@ -83,27 +101,33 @@
                           ]
                         },
                         {
+                          "type": "OPERATOR",
                           "token": {"string": "+", "tokenType": "PLUS", "line": 3, "col": 14, "file": "Expression.shtk"},
                           "children": [
                             
                           ]
                         },
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 16, "file": "Expression.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 16, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "MODULE",
                                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 16, "file": "Expression.shtk"},
                                   "children": [
                                     
                                   ]
                                 },
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 21, "file": "Expression.shtk"},
                                   "children": [
                                     {
+                                      "type": "FUNCCALL",
                                       "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 21, "file": "Expression.shtk"},
                                       "children": [
                                         
@@ -118,27 +142,33 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "+", "tokenType": "PLUS", "line": 3, "col": 27, "file": "Expression.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 29, "file": "Expression.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 29, "file": "Expression.shtk"},
                           "children": [
                             {
+                              "type": "MODULE",
                               "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 29, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "TERM",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 34, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "IDENTIFIER",
                                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 34, "file": "Expression.shtk"},
                                   "children": [
                                     
@@ -155,12 +185,15 @@
               ]
             },
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "Expression.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "Expression.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "Expression.shtk"},
                       "children": [
                         
@@ -169,27 +202,34 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 6, "file": "Expression.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "Expression.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "Expression.shtk"},
                       "children": [
                         {
+                          "type": "FUNCCALL",
                           "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "Expression.shtk"},
                           "children": [
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 12, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 12, "file": "Expression.shtk"},
                                   "children": [
                                     {
+                                      "type": "LITERAL",
                                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 12, "file": "Expression.shtk"},
                                       "children": [
                                         
@@ -200,12 +240,15 @@
                               ]
                             },
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 15, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 15, "file": "Expression.shtk"},
                                   "children": [
                                     {
+                                      "type": "LITERAL",
                                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 15, "file": "Expression.shtk"},
                                       "children": [
                                         
@@ -216,12 +259,15 @@
                               ]
                             },
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 18, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 18, "file": "Expression.shtk"},
                                   "children": [
                                     {
+                                      "type": "LITERAL",
                                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 18, "file": "Expression.shtk"},
                                       "children": [
                                         
@@ -240,12 +286,15 @@
               ]
             },
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "Expression.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "Expression.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 4, "file": "Expression.shtk"},
                       "children": [
                         
@@ -254,45 +303,54 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 7, "col": 6, "file": "Expression.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "Expression.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "Expression.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "Expression.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "STRUCT_FIELD",
                               "token": {"string": ".", "tokenType": "DOT", "line": 7, "col": 9, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 7, "col": 10, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "STRUCT_FIELD",
                               "token": {"string": ".", "tokenType": "DOT", "line": 7, "col": 13, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 7, "col": 14, "file": "Expression.shtk"},
                               "children": [
                                 
@@ -303,30 +361,36 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "+", "tokenType": "PLUS", "line": 7, "col": 18, "file": "Expression.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 20, "file": "Expression.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 20, "file": "Expression.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 20, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "STRUCT_FIELD",
                               "token": {"string": ".", "tokenType": "DOT", "line": 7, "col": 21, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 7, "col": 22, "file": "Expression.shtk"},
                               "children": [
                                 
@@ -341,12 +405,15 @@
               ]
             },
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 9, "col": 4, "file": "Expression.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 9, "col": 4, "file": "Expression.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "k", "tokenType": "IDENTIFIER", "line": 9, "col": 4, "file": "Expression.shtk"},
                       "children": [
                         
@@ -355,42 +422,53 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 9, "col": 6, "file": "Expression.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "l", "tokenType": "IDENTIFIER", "line": 9, "col": 8, "file": "Expression.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "l", "tokenType": "IDENTIFIER", "line": 9, "col": 8, "file": "Expression.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "l", "tokenType": "IDENTIFIER", "line": 9, "col": 8, "file": "Expression.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "l", "tokenType": "IDENTIFIER", "line": 9, "col": 8, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "SUBSCRIPT",
                               "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 9, "col": 9, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "EXPRESSION",
                                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 9, "col": 10, "file": "Expression.shtk"},
                                   "children": [
                                     {
+                                      "type": "EXPRESSION",
                                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 9, "col": 12, "file": "Expression.shtk"},
                                       "children": [
                                         {
+                                          "type": "EXPRESSION",
                                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 9, "col": 10, "file": "Expression.shtk"},
                                           "children": [
                                             {
+                                              "type": "TERM",
                                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 9, "col": 10, "file": "Expression.shtk"},
                                               "children": [
                                                 {
+                                                  "type": "LITERAL",
                                                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 9, "col": 10, "file": "Expression.shtk"},
                                                   "children": [
                                                     
@@ -401,18 +479,22 @@
                                           ]
                                         },
                                         {
+                                          "type": "OPERATOR",
                                           "token": {"string": "*", "tokenType": "MULTIPLY", "line": 9, "col": 11, "file": "Expression.shtk"},
                                           "children": [
                                             
                                           ]
                                         },
                                         {
+                                          "type": "EXPRESSION",
                                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 9, "col": 12, "file": "Expression.shtk"},
                                           "children": [
                                             {
+                                              "type": "TERM",
                                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 9, "col": 12, "file": "Expression.shtk"},
                                               "children": [
                                                 {
+                                                  "type": "LITERAL",
                                                   "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 9, "col": 12, "file": "Expression.shtk"},
                                                   "children": [
                                                     
@@ -425,18 +507,22 @@
                                       ]
                                     },
                                     {
+                                      "type": "OPERATOR",
                                       "token": {"string": "+", "tokenType": "PLUS", "line": 9, "col": 13, "file": "Expression.shtk"},
                                       "children": [
                                         
                                       ]
                                     },
                                     {
+                                      "type": "EXPRESSION",
                                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 9, "col": 14, "file": "Expression.shtk"},
                                       "children": [
                                         {
+                                          "type": "TERM",
                                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 9, "col": 14, "file": "Expression.shtk"},
                                           "children": [
                                             {
+                                              "type": "LITERAL",
                                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 9, "col": 14, "file": "Expression.shtk"},
                                               "children": [
                                                 
@@ -455,39 +541,49 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "+", "tokenType": "PLUS", "line": 9, "col": 17, "file": "Expression.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 9, "col": 19, "file": "Expression.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 9, "col": 19, "file": "Expression.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 9, "col": 19, "file": "Expression.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "SUBSCRIPT",
                               "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 9, "col": 20, "file": "Expression.shtk"},
                               "children": [
                                 {
+                                  "type": "EXPRESSION",
                                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 21, "file": "Expression.shtk"},
                                   "children": [
                                     {
+                                      "type": "TERM",
                                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 21, "file": "Expression.shtk"},
                                       "children": [
                                         {
+                                          "type": "METHODCALL",
                                           "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 9, "col": 23, "file": "Expression.shtk"},
                                           "children": [
                                             {
+                                              "type": "TERM",
                                               "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 9, "col": 23, "file": "Expression.shtk"},
                                               "children": [
                                                 {
+                                                  "type": "IDENTIFIER",
                                                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 9, "col": 21, "file": "Expression.shtk"},
                                                   "children": [
                                                     

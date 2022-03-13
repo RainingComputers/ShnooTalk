@@ -1,25 +1,31 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "EXTERN_FUNCTION",
       "token": {"string": "extfn", "tokenType": "EXTERN_FUNCTION", "line": 1, "col": 0, "file": "ExternFunction.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "sin", "tokenType": "IDENTIFIER", "line": 1, "col": 6, "file": "ExternFunction.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "PARAM",
           "token": {"string": "num", "tokenType": "IDENTIFIER", "line": 1, "col": 10, "file": "ExternFunction.shtk"},
           "children": [
             {
+              "type": "IDENTIFIER",
               "token": {"string": "num", "tokenType": "IDENTIFIER", "line": 1, "col": 10, "file": "ExternFunction.shtk"},
               "children": [
                 
               ]
             },
             {
+              "type": "IDENTIFIER",
               "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 15, "file": "ExternFunction.shtk"},
               "children": [
                 
@@ -28,6 +34,7 @@
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 23, "file": "ExternFunction.shtk"},
           "children": [
             
@@ -36,9 +43,11 @@
       ]
     },
     {
+      "type": "EXTERN_FUNCTION",
       "token": {"string": "extfn", "tokenType": "EXTERN_FUNCTION", "line": 2, "col": 0, "file": "ExternFunction.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 2, "col": 6, "file": "ExternFunction.shtk"},
           "children": [
             
@@ -47,24 +56,29 @@
       ]
     },
     {
+      "type": "EXTERN_FUNCTION",
       "token": {"string": "extfn", "tokenType": "EXTERN_FUNCTION", "line": 3, "col": 0, "file": "ExternFunction.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 3, "col": 6, "file": "ExternFunction.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "PARAM",
           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "ExternFunction.shtk"},
           "children": [
             {
+              "type": "IDENTIFIER",
               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "ExternFunction.shtk"},
               "children": [
                 
               ]
             },
             {
+              "type": "IDENTIFIER",
               "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 14, "file": "ExternFunction.shtk"},
               "children": [
                 
@@ -73,15 +87,18 @@
           ]
         },
         {
+          "type": "PARAM",
           "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 19, "file": "ExternFunction.shtk"},
           "children": [
             {
+              "type": "IDENTIFIER",
               "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 19, "file": "ExternFunction.shtk"},
               "children": [
                 
               ]
             },
             {
+              "type": "IDENTIFIER",
               "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 22, "file": "ExternFunction.shtk"},
               "children": [
                 
@@ -90,15 +107,18 @@
           ]
         },
         {
+          "type": "MUT_PARAM",
           "token": {"string": "mut", "tokenType": "MUTABLE", "line": 3, "col": 27, "file": "ExternFunction.shtk"},
           "children": [
             {
+              "type": "IDENTIFIER",
               "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 3, "col": 31, "file": "ExternFunction.shtk"},
               "children": [
                 
               ]
             },
             {
+              "type": "IDENTIFIER",
               "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 34, "file": "ExternFunction.shtk"},
               "children": [
                 
@@ -107,6 +127,7 @@
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 42, "file": "ExternFunction.shtk"},
           "children": [
             

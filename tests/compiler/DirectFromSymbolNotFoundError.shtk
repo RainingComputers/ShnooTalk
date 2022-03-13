@@ -1,0 +1,8 @@
+# MODULE DirectFromSymbolNotFoundError.shtk
+# ERROR in Line 8 Col 37
+# 
+# from "TestModules/Digital.shtk" use DoesNotExist
+#                                     ^
+# Symbol does not exist
+
+from "TestModules/Digital.shtk" use DoesNotExist

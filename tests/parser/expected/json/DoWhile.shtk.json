@@ -1,31 +1,40 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "DoWhile.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "DoWhile.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "DoWhile.shtk"},
           "children": [
             {
+              "type": "DO_WHILE",
               "token": {"string": "do", "tokenType": "DO", "line": 3, "col": 4, "file": "DoWhile.shtk"},
               "children": [
                 {
+                  "type": "BLOCK",
                   "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 3, "col": 7, "file": "DoWhile.shtk"},
                   "children": [
                     {
+                      "type": "PRINTLN",
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 4, "col": 8, "file": "DoWhile.shtk"},
                       "children": [
                         {
+                          "type": "MULTILINE_STR_LITERAL",
                           "token": {"string": "\"Foo\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "DoWhile.shtk"},
                           "children": [
                             {
+                              "type": "STR_LITERAL",
                               "token": {"string": "\"Foo\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "DoWhile.shtk"},
                               "children": [
                                 
@@ -38,21 +47,27 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "(", "tokenType": "LPAREN", "line": 5, "col": 11, "file": "DoWhile.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "(", "tokenType": "LPAREN", "line": 5, "col": 11, "file": "DoWhile.shtk"},
                       "children": [
                         {
+                          "type": "EXPRESSION",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 12, "file": "DoWhile.shtk"},
                           "children": [
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 12, "file": "DoWhile.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 12, "file": "DoWhile.shtk"},
                                   "children": [
                                     {
+                                      "type": "IDENTIFIER",
                                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 12, "file": "DoWhile.shtk"},
                                       "children": [
                                         
@@ -63,18 +78,22 @@
                               ]
                             },
                             {
+                              "type": "OPERATOR",
                               "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 5, "col": 14, "file": "DoWhile.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 17, "file": "DoWhile.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 17, "file": "DoWhile.shtk"},
                                   "children": [
                                     {
+                                      "type": "LITERAL",
                                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 17, "file": "DoWhile.shtk"},
                                       "children": [
                                         
@@ -93,18 +112,23 @@
               ]
             },
             {
+              "type": "DO_WHILE",
               "token": {"string": "do", "tokenType": "DO", "line": 7, "col": 4, "file": "DoWhile.shtk"},
               "children": [
                 {
+                  "type": "BLOCK",
                   "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 7, "file": "DoWhile.shtk"},
                   "children": [
                     {
+                      "type": "PRINTLN",
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 7, "file": "DoWhile.shtk"},
                       "children": [
                         {
+                          "type": "MULTILINE_STR_LITERAL",
                           "token": {"string": "\"Bar\"", "tokenType": "STR_LITERAL", "line": 7, "col": 15, "file": "DoWhile.shtk"},
                           "children": [
                             {
+                              "type": "STR_LITERAL",
                               "token": {"string": "\"Bar\"", "tokenType": "STR_LITERAL", "line": 7, "col": 15, "file": "DoWhile.shtk"},
                               "children": [
                                 
@@ -117,15 +141,19 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 28, "file": "DoWhile.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 28, "file": "DoWhile.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 28, "file": "DoWhile.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 28, "file": "DoWhile.shtk"},
                               "children": [
                                 
@@ -136,18 +164,22 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 7, "col": 30, "file": "DoWhile.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 33, "file": "DoWhile.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 33, "file": "DoWhile.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 33, "file": "DoWhile.shtk"},
                               "children": [
                                 

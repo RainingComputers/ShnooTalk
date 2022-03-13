@@ -7,7 +7,7 @@ namespace generator
     Node generateAST(Console& console);
 }
 
-bool generateIRFromName(generator::GeneratorContext& ctx, const std::string& moduleName)
+bool generateIROrMonomorphizedASTFromName(generator::GeneratorContext& ctx, const std::string& moduleName)
 {
     if (ctx.moduleExists(moduleName))
         return false;
@@ -36,29 +36,57 @@ bool generateIRFromName(generator::GeneratorContext& ctx, const std::string& mod
 
 void createUse(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& moduleNameToken = root.getNthChildToken(0);
+    const Token& pathToken = root.getNthChildToken(0);
     const Token& aliastoken = root.getNthChildToken(1);
 
-    ctx.ir.moduleBuilder.createUse(moduleNameToken, aliastoken);
+    ctx.ir.moduleBuilder.createUse(pathToken, aliastoken);
 
-    bool isGeneric = generateIRFromName(ctx, moduleNameToken.toUnescapedString());
+    bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken.toUnescapedString());
 
     if (isGeneric)
-        ctx.mm.createUse(moduleNameToken, aliastoken);
+        ctx.mm.createUse(pathToken, aliastoken); // TODO: Error on re-imports
 }
 
-void createFrom(generator::GeneratorContext& ctx, const Node& root)
+void createAliasFrom(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& aliasToken = root.children[0].tok;
 
     if (ctx.mm.aliasExists(aliasToken))
     {
         for (const Node& child : root.children[1].children)
-            ctx.mm.createFrom(aliasToken, child.tok);
+            ctx.mm.createAliasFrom(aliasToken, child.tok);
     }
     else
     {
         for (const Node& child : root.children[1].children)
-            ctx.ir.moduleBuilder.createFrom(aliasToken, child.tok);
+            ctx.ir.moduleBuilder.createAliasFrom(aliasToken, child.tok);
     }
+}
+
+void createDirectFrom(generator::GeneratorContext& ctx, const Node& root)
+{
+    const Token& pathToken = root.children[0].tok;
+
+    ctx.ir.moduleBuilder.createUseNoAlias(pathToken);
+
+    bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken.toUnescapedString());
+
+    if (isGeneric)
+    {
+        for (const Node& child : root.children[1].children)
+            ctx.mm.createDirectFrom(pathToken, child.tok);
+    }
+    else
+    {
+        for (const Node& child : root.children[1].children)
+            ctx.ir.moduleBuilder.createDirectFrom(pathToken, child.tok);
+    }
+}
+
+void createFrom(generator::GeneratorContext& ctx, const Node& root)
+{
+    if (root.children[0].tok.getType() == token::STR_LITERAL)
+        createDirectFrom(ctx, root);
+    else
+        createAliasFrom(ctx, root);
 }

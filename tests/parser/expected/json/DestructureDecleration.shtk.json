@@ -1,49 +1,60 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "DestructureDecleration.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "DestructureDecleration.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "DestructureDecleration.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "DestructureDecleration.shtk"},
           "children": [
             {
+              "type": "DESTRUCTURE_CONST",
               "token": {"string": "const", "tokenType": "CONST", "line": 3, "col": 4, "file": "DestructureDecleration.shtk"},
               "children": [
                 {
+                  "type": "DESTRUCTURE_LIST",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 10, "file": "DestructureDecleration.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 11, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 14, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 3, "col": 17, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 3, "col": 20, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
@@ -52,15 +63,19 @@
                   ]
                 },
                 {
+                  "type": "INITLIST",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 26, "file": "DestructureDecleration.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "DestructureDecleration.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "DestructureDecleration.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "DestructureDecleration.shtk"},
                               "children": [
                                 
@@ -71,12 +86,15 @@
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 30, "file": "DestructureDecleration.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 30, "file": "DestructureDecleration.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 30, "file": "DestructureDecleration.shtk"},
                               "children": [
                                 
@@ -87,12 +105,15 @@
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 33, "file": "DestructureDecleration.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 33, "file": "DestructureDecleration.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 33, "file": "DestructureDecleration.shtk"},
                               "children": [
                                 
@@ -103,12 +124,15 @@
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 36, "file": "DestructureDecleration.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 36, "file": "DestructureDecleration.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 36, "file": "DestructureDecleration.shtk"},
                               "children": [
                                 
@@ -123,30 +147,36 @@
               ]
             },
             {
+              "type": "DESTRUCTURE_VAR",
               "token": {"string": "var", "tokenType": "VAR", "line": 4, "col": 4, "file": "DestructureDecleration.shtk"},
               "children": [
                 {
+                  "type": "DESTRUCTURE_LIST",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 4, "col": 8, "file": "DestructureDecleration.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 4, "col": 9, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 4, "col": 12, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 4, "col": 15, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 4, "col": 18, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
@@ -155,12 +185,15 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 4, "col": 24, "file": "DestructureDecleration.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 4, "col": 24, "file": "DestructureDecleration.shtk"},
                       "children": [
                         {
+                          "type": "IDENTIFIER",
                           "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 4, "col": 24, "file": "DestructureDecleration.shtk"},
                           "children": [
                             
@@ -173,30 +206,36 @@
               ]
             },
             {
+              "type": "DESTRUCTURE_CONST",
               "token": {"string": "const", "tokenType": "CONST", "line": 5, "col": 4, "file": "DestructureDecleration.shtk"},
               "children": [
                 {
+                  "type": "DESTRUCTURE_LIST",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 10, "file": "DestructureDecleration.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 11, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 14, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 17, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "d", "tokenType": "IDENTIFIER", "line": 5, "col": 20, "file": "DestructureDecleration.shtk"},
                       "children": [
                         
@@ -205,27 +244,34 @@
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 5, "col": 26, "file": "DestructureDecleration.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 5, "col": 26, "file": "DestructureDecleration.shtk"},
                       "children": [
                         {
+                          "type": "IDENTIFIER",
                           "token": {"string": "foobar", "tokenType": "IDENTIFIER", "line": 5, "col": 26, "file": "DestructureDecleration.shtk"},
                           "children": [
                             
                           ]
                         },
                         {
+                          "type": "SUBSCRIPT",
                           "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 32, "file": "DestructureDecleration.shtk"},
                           "children": [
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 33, "file": "DestructureDecleration.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 33, "file": "DestructureDecleration.shtk"},
                                   "children": [
                                     {
+                                      "type": "LITERAL",
                                       "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 33, "file": "DestructureDecleration.shtk"},
                                       "children": [
                                         
@@ -238,15 +284,19 @@
                           ]
                         },
                         {
+                          "type": "SUBSCRIPT",
                           "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 35, "file": "DestructureDecleration.shtk"},
                           "children": [
                             {
+                              "type": "EXPRESSION",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 36, "file": "DestructureDecleration.shtk"},
                               "children": [
                                 {
+                                  "type": "TERM",
                                   "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 36, "file": "DestructureDecleration.shtk"},
                                   "children": [
                                     {
+                                      "type": "LITERAL",
                                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 36, "file": "DestructureDecleration.shtk"},
                                       "children": [
                                         
@@ -265,15 +315,19 @@
               ]
             },
             {
+              "type": "RETURN",
               "token": {"string": "return", "tokenType": "RETURN", "line": 7, "col": 4, "file": "DestructureDecleration.shtk"},
               "children": [
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "DestructureDecleration.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "DestructureDecleration.shtk"},
                       "children": [
                         {
+                          "type": "LITERAL",
                           "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "DestructureDecleration.shtk"},
                           "children": [
                             

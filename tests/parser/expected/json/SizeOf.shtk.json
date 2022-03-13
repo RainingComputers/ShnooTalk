@@ -1,25 +1,32 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "SizeOf.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "SizeOf.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "SizeOf.shtk"},
           "children": [
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "SizeOf.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "SizeOf.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "SizeOf.shtk"},
                       "children": [
                         
@@ -28,21 +35,26 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 6, "file": "SizeOf.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 3, "col": 8, "file": "SizeOf.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 3, "col": 8, "file": "SizeOf.shtk"},
                       "children": [
                         {
+                          "type": "SIZEOF",
                           "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 3, "col": 8, "file": "SizeOf.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "SizeOf.shtk"},
                               "children": [
                                 
@@ -57,12 +69,15 @@
               ]
             },
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "SizeOf.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "SizeOf.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "SizeOf.shtk"},
                       "children": [
                         
@@ -71,27 +86,33 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 4, "col": 6, "file": "SizeOf.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 4, "col": 8, "file": "SizeOf.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 4, "col": 8, "file": "SizeOf.shtk"},
                       "children": [
                         {
+                          "type": "SIZEOF",
                           "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 4, "col": 8, "file": "SizeOf.shtk"},
                           "children": [
                             {
+                              "type": "MODULE",
                               "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 4, "col": 15, "file": "SizeOf.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 4, "col": 20, "file": "SizeOf.shtk"},
                               "children": [
                                 
@@ -106,12 +127,15 @@
               ]
             },
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "SizeOf.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "SizeOf.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "SizeOf.shtk"},
                       "children": [
                         
@@ -120,33 +144,40 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 6, "file": "SizeOf.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 5, "col": 8, "file": "SizeOf.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 5, "col": 8, "file": "SizeOf.shtk"},
                       "children": [
                         {
+                          "type": "SIZEOF",
                           "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 5, "col": 8, "file": "SizeOf.shtk"},
                           "children": [
                             {
+                              "type": "MODULE",
                               "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "SizeOf.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "MODULE",
                               "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 20, "file": "SizeOf.shtk"},
                               "children": [
                                 
                               ]
                             },
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 5, "col": 25, "file": "SizeOf.shtk"},
                               "children": [
                                 

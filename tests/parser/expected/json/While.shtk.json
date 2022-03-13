@@ -1,31 +1,40 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "While.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "While.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "While.shtk"},
           "children": [
             {
+              "type": "WHILE",
               "token": {"string": "while", "tokenType": "WHILE", "line": 3, "col": 4, "file": "While.shtk"},
               "children": [
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "While.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "While.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "While.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "While.shtk"},
                               "children": [
                                 
@@ -36,18 +45,22 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 3, "col": 12, "file": "While.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 15, "file": "While.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 15, "file": "While.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 15, "file": "While.shtk"},
                               "children": [
                                 
@@ -60,15 +73,19 @@
                   ]
                 },
                 {
+                  "type": "BLOCK",
                   "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 3, "col": 17, "file": "While.shtk"},
                   "children": [
                     {
+                      "type": "PRINTLN",
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 4, "col": 8, "file": "While.shtk"},
                       "children": [
                         {
+                          "type": "MULTILINE_STR_LITERAL",
                           "token": {"string": "\"foobae\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "While.shtk"},
                           "children": [
                             {
+                              "type": "STR_LITERAL",
                               "token": {"string": "\"foobae\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "While.shtk"},
                               "children": [
                                 
@@ -83,18 +100,23 @@
               ]
             },
             {
+              "type": "WHILE",
               "token": {"string": "while", "tokenType": "WHILE", "line": 7, "col": 4, "file": "While.shtk"},
               "children": [
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 10, "file": "While.shtk"},
                   "children": [
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 10, "file": "While.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 10, "file": "While.shtk"},
                           "children": [
                             {
+                              "type": "IDENTIFIER",
                               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 10, "file": "While.shtk"},
                               "children": [
                                 
@@ -105,18 +127,22 @@
                       ]
                     },
                     {
+                      "type": "OPERATOR",
                       "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 7, "col": 12, "file": "While.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "EXPRESSION",
                       "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 15, "file": "While.shtk"},
                       "children": [
                         {
+                          "type": "TERM",
                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 15, "file": "While.shtk"},
                           "children": [
                             {
+                              "type": "LITERAL",
                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 15, "file": "While.shtk"},
                               "children": [
                                 
@@ -129,15 +155,19 @@
                   ]
                 },
                 {
+                  "type": "BLOCK",
                   "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 17, "file": "While.shtk"},
                   "children": [
                     {
+                      "type": "PRINTLN",
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 17, "file": "While.shtk"},
                       "children": [
                         {
+                          "type": "MULTILINE_STR_LITERAL",
                           "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 7, "col": 25, "file": "While.shtk"},
                           "children": [
                             {
+                              "type": "STR_LITERAL",
                               "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 7, "col": 25, "file": "While.shtk"},
                               "children": [
                                 

@@ -89,6 +89,13 @@ void Monomorphizer::createUse(const Token& pathToken, const Token& aliasToken)
     const std::string& alias = aliasToken.toString();
 
     aliases[alias] = path;
+    uses.push_back(path);
+}
+
+bool Monomorphizer::useExists(const Token& pathToken)
+{
+    const std::string& path = pathToken.toUnescapedString();
+    return std::find(uses.begin(), uses.end(), path) != uses.end();
 }
 
 bool Monomorphizer::aliasExists(const Token& aliasToken)
@@ -96,10 +103,9 @@ bool Monomorphizer::aliasExists(const Token& aliasToken)
     return aliases.find(aliasToken.toString()) != aliases.end();
 }
 
-void Monomorphizer::createFrom(const Token& aliasToken, const Token& symbolToken)
+void Monomorphizer::createFrom(const std::string& genericModuleName, const Token& symbolToken)
 {
     const std::string& structName = symbolToken.toString();
-    const std::string& genericModuleName = aliases.at(aliasToken.toString());
 
     GenericASTIndex& index = genericsMap.at(genericModuleName);
     const std::vector<std::string>& genericStructs = index.genericStructs;
@@ -108,6 +114,18 @@ void Monomorphizer::createFrom(const Token& aliasToken, const Token& symbolToken
         console.compileErrorOnToken("GENERIC does not exist", symbolToken);
 
     genericUses[structName] = genericModuleName;
+}
+
+void Monomorphizer::createDirectFrom(const Token& pathToken, const Token& symbolToken)
+{
+    createFrom(pathToken.toUnescapedString(), symbolToken);
+}
+
+void Monomorphizer::createAliasFrom(const Token& aliasToken, const Token& symbolToken)
+{
+    const std::string& genericModuleName = aliases.at(aliasToken.toString());
+
+    createFrom(genericModuleName, symbolToken);
 }
 
 std::string Monomorphizer::getGenericModuleNameFromAlias(const Token& aliasToken)

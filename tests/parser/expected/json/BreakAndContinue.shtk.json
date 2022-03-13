@@ -1,37 +1,46 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "BreakAndContinue.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "BreakAndContinue.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "IDENTIFIER",
           "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "BreakAndContinue.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "BreakAndContinue.shtk"},
           "children": [
             {
+              "type": "LOOP",
               "token": {"string": "loop", "tokenType": "LOOP", "line": 3, "col": 4, "file": "BreakAndContinue.shtk"},
               "children": [
                 {
+                  "type": "BLOCK",
                   "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 3, "col": 9, "file": "BreakAndContinue.shtk"},
                   "children": [
                     {
+                      "type": "BREAK",
                       "token": {"string": "break", "tokenType": "BREAK", "line": 4, "col": 8, "file": "BreakAndContinue.shtk"},
                       "children": [
                         
                       ]
                     },
                     {
+                      "type": "CONTINUE",
                       "token": {"string": "continue", "tokenType": "CONTINUE", "line": 5, "col": 8, "file": "BreakAndContinue.shtk"},
                       "children": [
                         

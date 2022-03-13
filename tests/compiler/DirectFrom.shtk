@@ -1,0 +1,12 @@
+# Pin 1 high
+# Pin 2 low
+
+from "TestModules/Digital.shtk" use LOW, HIGH, digitalWrite
+
+fn main() -> int
+{
+    digitalWrite(1, HIGH)
+    digitalWrite(2, LOW)
+
+    return 0
+}

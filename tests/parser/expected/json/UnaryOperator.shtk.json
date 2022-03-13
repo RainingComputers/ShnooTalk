@@ -1,25 +1,32 @@
 {
+  "type": "PROGRAM",
   "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
   "children": [
     {
+      "type": "FUNCTION",
       "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "UnaryOperator.shtk"},
       "children": [
         {
+          "type": "IDENTIFIER",
           "token": {"string": "test", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "UnaryOperator.shtk"},
           "children": [
             
           ]
         },
         {
+          "type": "BLOCK",
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "UnaryOperator.shtk"},
           "children": [
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "UnaryOperator.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "UnaryOperator.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "UnaryOperator.shtk"},
                       "children": [
                         
@@ -28,24 +35,30 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 3, "col": 6, "file": "UnaryOperator.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "-", "tokenType": "MINUS", "line": 3, "col": 8, "file": "UnaryOperator.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "-", "tokenType": "MINUS", "line": 3, "col": 8, "file": "UnaryOperator.shtk"},
                       "children": [
                         {
+                          "type": "UNARY_OPR",
                           "token": {"string": "-", "tokenType": "MINUS", "line": 3, "col": 8, "file": "UnaryOperator.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 9, "file": "UnaryOperator.shtk"},
                               "children": [
                                 {
+                                  "type": "LITERAL",
                                   "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 9, "file": "UnaryOperator.shtk"},
                                   "children": [
                                     
@@ -62,12 +75,15 @@
               ]
             },
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "UnaryOperator.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "UnaryOperator.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 4, "col": 4, "file": "UnaryOperator.shtk"},
                       "children": [
                         
@@ -76,24 +92,30 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 4, "col": 6, "file": "UnaryOperator.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 4, "col": 8, "file": "UnaryOperator.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 4, "col": 8, "file": "UnaryOperator.shtk"},
                       "children": [
                         {
+                          "type": "UNARY_OPR",
                           "token": {"string": "not", "tokenType": "CONDN_NOT", "line": 4, "col": 8, "file": "UnaryOperator.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 4, "col": 12, "file": "UnaryOperator.shtk"},
                               "children": [
                                 {
+                                  "type": "IDENTIFIER",
                                   "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 4, "col": 12, "file": "UnaryOperator.shtk"},
                                   "children": [
                                     
@@ -110,12 +132,15 @@
               ]
             },
             {
+              "type": "ASSIGNMENT",
               "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "UnaryOperator.shtk"},
               "children": [
                 {
+                  "type": "TERM",
                   "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "UnaryOperator.shtk"},
                   "children": [
                     {
+                      "type": "IDENTIFIER",
                       "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "UnaryOperator.shtk"},
                       "children": [
                         
@@ -124,24 +149,30 @@
                   ]
                 },
                 {
+                  "type": "ASSIGN_OPERATOR",
                   "token": {"string": "=", "tokenType": "EQUAL", "line": 5, "col": 6, "file": "UnaryOperator.shtk"},
                   "children": [
                     
                   ]
                 },
                 {
+                  "type": "EXPRESSION",
                   "token": {"string": "~", "tokenType": "NOT", "line": 5, "col": 8, "file": "UnaryOperator.shtk"},
                   "children": [
                     {
+                      "type": "TERM",
                       "token": {"string": "~", "tokenType": "NOT", "line": 5, "col": 8, "file": "UnaryOperator.shtk"},
                       "children": [
                         {
+                          "type": "UNARY_OPR",
                           "token": {"string": "~", "tokenType": "NOT", "line": 5, "col": 8, "file": "UnaryOperator.shtk"},
                           "children": [
                             {
+                              "type": "TERM",
                               "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 9, "file": "UnaryOperator.shtk"},
                               "children": [
                                 {
+                                  "type": "IDENTIFIER",
                                   "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 9, "file": "UnaryOperator.shtk"},
                                   "children": [
                                     
