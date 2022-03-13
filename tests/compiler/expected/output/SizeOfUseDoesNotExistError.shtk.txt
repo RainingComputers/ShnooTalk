@@ -4,3 +4,5 @@ ERROR in Line 3 Col 20
     println(sizeof(doesnotexist::foo))
                    ^
 Use does not exist
+
+SizeOfUseDoesNotExistError.shtk:3:19

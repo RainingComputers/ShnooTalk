@@ -5,3 +5,5 @@ ERROR in Line 4 Col 5
     ^
 Did not expect RETURN,
 expected IDENTIFIER
+
+WalrusError2.shtk:4:4

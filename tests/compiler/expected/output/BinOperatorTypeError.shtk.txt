@@ -5,3 +5,5 @@ ERROR in Line 4 Col 21
                     ^
 Type error, did not expect float,
 expected autoInt
+
+BinOperatorTypeError.shtk:4:20

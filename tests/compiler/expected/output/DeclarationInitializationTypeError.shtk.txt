@@ -5,3 +5,5 @@ ERROR in Line 3 Col 20
                    ^
 Type error, did not expect int,
 expected int[3]
+
+DeclarationInitializationTypeError.shtk:3:19

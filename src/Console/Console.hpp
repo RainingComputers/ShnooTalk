@@ -25,7 +25,7 @@ class Console
     std::vector<std::string> fileNameStack;
     std::vector<std::ifstream*> fileStack;
 
-    void printModuleStackToken(const Token& tok);
+    void printModuleStackLine(int lineNo, int colNo);
     void printModuleStack();
 
 

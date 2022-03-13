@@ -5,3 +5,5 @@ ERROR in Line 5 Col 5
     ^
 Did not expect RETURN,
 expected EQUAL or LEFT_ARROW
+
+ConstInit.shtk:5:4

@@ -4,3 +4,5 @@ ERROR in Line 6 Col 20
     var c: int = a[b]
                    ^
 Index must be an integer
+
+IndexMustBeIntegerError.shtk:6:19

@@ -4,3 +4,6 @@ ERROR in Line 7 Col 12
     var a: FooStar[int*]
            ^
 Invalid type parameters for this generic
+
+TestModules/FooGenericStar.shtk:7:11
+GenericsTypeValidationError1.shtk

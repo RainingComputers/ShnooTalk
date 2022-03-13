@@ -4,3 +4,5 @@ ERROR in Line 6 Col 4
 fn foobar() 
    ^
 Symbol already defined
+
+FunctionAlreadyExistsError.shtk:6:3

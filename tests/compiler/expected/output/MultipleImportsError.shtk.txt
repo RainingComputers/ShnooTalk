@@ -4,3 +4,5 @@ ERROR in Line 2 Col 5
 use "TestModules/Math.shtk" as math
     ^
 Multiple imports detected
+
+MultipleImportsError.shtk:2:4

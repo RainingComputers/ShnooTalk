@@ -4,3 +4,5 @@ ERROR in Line 3 Col 5
     foo()
     ^
 Function does not exist
+
+FunctionDoesNotExistError.shtk:3:4

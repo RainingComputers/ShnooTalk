@@ -4,3 +4,5 @@ ERROR in Line 5 Col 9
     b = ~a
         ^
 Unary operator NOT not allowed on FLOAT
+
+UnaryOperatorOnFloat.shtk:5:8

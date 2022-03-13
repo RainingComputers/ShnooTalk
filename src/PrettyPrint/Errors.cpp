@@ -12,9 +12,9 @@ namespace pp
         std::cout << msg << std::endl;
     }
 
-    void printModuleLocation(const std::string& moduleName, const Token& tok)
+    void printModuleLocation(const std::string& moduleName, int lineNo, int colNo)
     {
-        std::cout << moduleName << ":" << tok.getLineNo() << ":" << tok.getColumn() << std::endl;
+        std::cout << moduleName << ":" << lineNo << ":" << colNo << std::endl;
     }
 
     void errorOnModuleName(const std::string& moduleName, const std::string& errorMessage)

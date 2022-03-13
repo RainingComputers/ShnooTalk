@@ -5,3 +5,5 @@ ERROR in Line 3 Col 23
                       ^
 Type error, did not expect int[3][2],
 expected int[2][2]
+
+IntializerListExtraDimTypeError.shtk:3:22

@@ -4,3 +4,5 @@ ERROR in Line 5 Col 9
     b = -a
         ^
 Unary operator not allowed on ARRAY
+
+UnaryOperatorOnArrayError.shtk:5:8

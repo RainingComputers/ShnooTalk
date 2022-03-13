@@ -4,3 +4,5 @@ ERROR in Line 5 Col 7
     a += b
       ^
 Only EQUAL operator allowed on ARRAY
+
+AssignmentOnArrayError.shtk:5:6

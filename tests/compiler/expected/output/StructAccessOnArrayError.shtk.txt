@@ -4,3 +4,5 @@ ERROR in Line 17 Col 17
     println(foo.x)
                 ^
 STRUCT access on an ARRAY
+
+StructAccessOnArrayError.shtk:17:16

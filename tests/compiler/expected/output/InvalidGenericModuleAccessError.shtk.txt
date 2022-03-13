@@ -4,3 +4,5 @@ ERROR in Line 5 Col 5
     Pair::lol::foo()
     ^
 Invalid MODULE ACCESS from GENERIC
+
+InvalidGenericModuleAccessError.shtk:5:4

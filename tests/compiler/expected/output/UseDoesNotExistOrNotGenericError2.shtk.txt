@@ -4,3 +4,5 @@ ERROR in Line 3 Col 12
     var a: Bar::Foo[int, float]
            ^
 Use does not exist or NOT GENERIC
+
+UseDoesNotExistOrNotGenericError2.shtk:3:11

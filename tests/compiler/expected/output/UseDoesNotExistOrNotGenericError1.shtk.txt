@@ -4,3 +4,5 @@ ERROR in Line 5 Col 12
     var a: Math::Foo[int, float]
            ^
 Use does not exist or NOT GENERIC
+
+UseDoesNotExistOrNotGenericError1.shtk:5:11

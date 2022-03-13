@@ -4,3 +4,5 @@ ERROR in Line 3 Col 8
 struct test {}
        ^
 Symbol already defined
+
+StructAlreadyExistsError.shtk:3:7

@@ -4,3 +4,5 @@ ERROR in Line 10 Col 11
     a = b + c
           ^
 Function does not exist
+
+BinaryOperatorFunctionDoesNotExistError.shtk:10:10

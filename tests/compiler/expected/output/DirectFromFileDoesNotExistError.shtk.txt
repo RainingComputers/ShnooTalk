@@ -4,3 +4,5 @@ ERROR in Line 1 Col 6
 from "DoesNotExist.shtk" use foobar
      ^
 File does not exist
+
+DirectFromFileDoesNotExistError.shtk:1:5

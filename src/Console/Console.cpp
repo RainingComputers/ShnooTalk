@@ -1,41 +1,41 @@
 #include "Console.hpp"
 
-void Console::printModuleStackToken(const Token& tok)
+void Console::printModuleStackLine(int lineNo, int colNo)
 {
-    // pp::println("");
-    //
-    // pp::printModuleLocation(fileNameStack.back(), tok);
-    //
-    // for (size_t i = fileNameStack.size() - 2; i <= 0; i -= 1)
-    //    pp::println(fileNameStack[i]);
+    pp::println("");
+
+    pp::printModuleLocation(fileNameStack.back(), lineNo, colNo);
+
+    for (size_t i = fileNameStack.size() - 2; i <= 0; i -= 1)
+        pp::println(fileNameStack[i]);
 }
 
 void Console::printModuleStack()
 {
-    // pp::println("");
-    //
-    // for (size_t i = fileNameStack.size() - 1; i <= 0; i -= 1)
-    //    pp::println(fileNameStack[i]);
+    pp::println("");
+
+    for (size_t i = fileNameStack.size() - 1; i <= 0; i -= 1)
+        pp::println(fileNameStack[i]);
 }
 
 void Console::compileErrorOnToken(const std::string& message, const Token& tok)
 {
     pp::errorOnToken(tok.getFileName(), message, streamsMap[tok.getFileName()], tok);
-    printModuleStackToken(tok);
+    printModuleStackLine(tok.getLineNo(), tok.getColumn());
     throw CompileError();
 }
 
 void Console::typeError(const Token& tok, const Unit& expected, const Unit& found)
 {
     pp::typeError(fileName, *file, tok, expected.type(), found.type());
-    printModuleStackToken(tok);
+    printModuleStackLine(tok.getLineNo(), tok.getColumn());
     throw CompileError();
 }
 
 void Console::internalBugErrorOnToken(const Token& tok)
 {
     pp::errorOnToken(fileName, "Internal compiler error, REPORT THIS BUG", *file, tok);
-    printModuleStackToken(tok);
+    printModuleStackLine(tok.getLineNo(), tok.getColumn());
     throw InternalBugError();
 }
 
@@ -56,21 +56,21 @@ void Console::internalBugErrorMessage(const std::string& message)
 void Console::parseError(token::TokenType& expected, Token& found)
 {
     pp::parserError(fileName, expected, found, *file);
-    printModuleStackToken(found);
+    printModuleStackLine(found.getLineNo(), found.getColumn());
     throw CompileError();
 }
 
 void Console::parserErrorMultiple(const token::TokenType* expected, int ntoks, const Token& found)
 {
     pp::parserErrorMultiple(fileName, expected, ntoks, found, *file);
-    printModuleStackToken(found);
+    printModuleStackLine(found.getLineNo(), found.getColumn());
     throw CompileError();
 }
 
 void Console::lexerError(const std::string& errorMessage, const std::string& line, int lineno, int col)
 {
     pp::errorOnLine(fileName, errorMessage, line, lineno, col);
-    printModuleStack(); // TODO
+    printModuleStackLine(lineno, col);
     throw CompileError();
 }
 

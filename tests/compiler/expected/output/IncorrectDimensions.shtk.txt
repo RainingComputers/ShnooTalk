@@ -5,3 +5,5 @@ ERROR in Line 3 Col 35
                                   ^
 Type error, did not expect autoInt,
 expected autoInt[3]
+
+IncorrectDimensions.shtk:3:34

@@ -5,3 +5,6 @@ ERROR in Line 12 Col 20
                    ^
 Type error, did not expect FooBar,
 expected Pair__GenericOperatorNotPresent_shtk_FooBar_GenericOperatorNotPresent_shtk_int
+
+TestModules/Pair.shtk:12:19
+GenericOperatorNotPresent.shtk

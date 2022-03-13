@@ -4,3 +4,5 @@ ERROR in Line 4 Col 19
     var b:int = a.foo
                   ^
 STRUCT access on a NON-STRUCT data type
+
+StructAccessOnNonStructError.shtk:4:18

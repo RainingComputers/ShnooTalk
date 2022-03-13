@@ -5,3 +5,5 @@ ERROR in Line 8 Col 12
            ^
 Type error, did not expect autoFloat,
 expected int
+
+ParameterTypeError.shtk:8:11

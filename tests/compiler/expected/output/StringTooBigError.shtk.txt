@@ -5,3 +5,5 @@ ERROR in Line 3 Col 21
                     ^
 Type error, did not expect char[6],
 expected char[4]
+
+StringTooBigError.shtk:3:20

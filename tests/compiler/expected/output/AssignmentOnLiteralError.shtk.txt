@@ -4,3 +4,5 @@ ERROR in Line 5 Col 5
     a = 2
     ^
 Cannot assign to LITERAL
+
+AssignmentOnLiteralError.shtk:5:4

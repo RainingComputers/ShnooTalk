@@ -4,3 +4,5 @@ ERROR in Line 6 Col 26
     var a: Result[int] = make(Result[int], 4.5)
                          ^
 Cannot find function with matching params
+
+MakeError.shtk:6:25

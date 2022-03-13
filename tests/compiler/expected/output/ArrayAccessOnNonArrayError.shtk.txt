@@ -4,3 +4,5 @@ ERROR in Line 4 Col 14
     println(a[2])
              ^
 ARRAY access on a NON ARRAY
+
+ArrayAccessOnNonArrayError.shtk:4:13

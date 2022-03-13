@@ -4,3 +4,5 @@ ERROR in Line 16 Col 23
     var c: Foobar = a + b
                       ^
 Invalid number of parameters for OPERATOR FUNCTION
+
+CustomOperatorTooManyParamsError.shtk:16:22

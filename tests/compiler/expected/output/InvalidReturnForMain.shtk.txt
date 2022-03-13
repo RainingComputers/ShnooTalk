@@ -4,3 +4,5 @@ ERROR in Line 1 Col 4
 fn main()
    ^
 Invalid return type for MAIN
+
+InvalidReturnForMain.shtk:1:3

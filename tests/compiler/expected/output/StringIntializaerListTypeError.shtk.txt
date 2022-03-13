@@ -5,3 +5,5 @@ ERROR in Line 5 Col 36
                                    ^
 Type error, did not expect ubyte[4],
 expected ubyte[6]
+
+StringIntializaerListTypeError.shtk:5:35

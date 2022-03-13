@@ -4,3 +4,5 @@ ERROR in Line 3 Col 17
     var a:int = b
                 ^
 Symbol does not exist
+
+SymbolDoesNotExistError.shtk:3:16

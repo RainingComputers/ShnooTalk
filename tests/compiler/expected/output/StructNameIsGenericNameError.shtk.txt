@@ -4,3 +4,6 @@ ERROR in Line 3 Col 8
 struct V
        ^
 STRUCT name cannot be a GENERIC IDENTIFIER
+
+TestModules/StructNameIsGenericNameError.shtk:3:7
+StructNameIsGenericNameError.shtk

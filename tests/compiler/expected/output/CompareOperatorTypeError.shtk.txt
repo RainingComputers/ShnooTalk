@@ -5,3 +5,5 @@ ERROR in Line 6 Col 12
            ^
 Type error, did not expect int,
 expected float
+
+CompareOperatorTypeError.shtk:6:11

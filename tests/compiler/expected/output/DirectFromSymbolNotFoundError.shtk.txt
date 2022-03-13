@@ -4,3 +4,5 @@ ERROR in Line 1 Col 37
 from "TestModules/Digital.shtk" use DoesNotExist
                                     ^
 Symbol does not exist
+
+DirectFromSymbolNotFoundError.shtk:1:36

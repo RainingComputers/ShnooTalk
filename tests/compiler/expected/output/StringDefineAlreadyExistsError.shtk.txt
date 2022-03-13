@@ -4,3 +4,5 @@ ERROR in Line 5 Col 5
 def abs "Hello"
     ^
 Symbol already exists
+
+StringDefineAlreadyExistsError.shtk:5:4

@@ -4,3 +4,5 @@ ERROR in Line 4 Col 17
     println(a[1][1])
                 ^
 Too many subscripts
+
+TooManySubscriptsError.shtk:4:16

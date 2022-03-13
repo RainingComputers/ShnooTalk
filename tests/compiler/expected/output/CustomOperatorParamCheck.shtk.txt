@@ -4,3 +4,5 @@ ERROR in Line 16 Col 25
     var c: foobar = a + b
                         ^
 Cannot pass IMMUTABLE as MUTABLE
+
+CustomOperatorParamCheck.shtk:16:24

@@ -4,3 +4,5 @@ ERROR in Line 3 Col 12
     var a: Foo[int, float]
            ^
 GENERIC STRUCT does not exist
+
+GenericStructDoesNotExistError.shtk:3:11

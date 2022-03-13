@@ -4,3 +4,5 @@ ERROR in Line 5 Col 7
     a |= b
       ^
 Bitwise operation not allowed on FLOAT
+
+BitwiseAssignOperatorOnFloat.shtk:5:6

@@ -4,3 +4,5 @@ ERROR in Line 3 Col 5
     doesnotexist::foo()
     ^
 Use does not exist
+
+UseDoesNotExistError.shtk:3:4

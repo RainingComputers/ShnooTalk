@@ -4,3 +4,5 @@ ERROR in Line 5 Col 21
     var a:int = LED0[2]
                     ^
 ARRAY access on a NON ARRAY
+
+ArrayAccessOnDefine.shtk:5:20

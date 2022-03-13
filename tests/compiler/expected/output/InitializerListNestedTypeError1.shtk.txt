@@ -5,3 +5,5 @@ ERROR in Line 3 Col 32
                                ^
 Type error, did not expect autoInt[3],
 expected autoInt[2]
+
+InitializerListNestedTypeError1.shtk:3:31

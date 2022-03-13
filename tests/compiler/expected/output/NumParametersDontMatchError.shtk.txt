@@ -4,3 +4,5 @@ ERROR in Line 10 Col 5
     foo(a)
     ^
 Number of parameters don't match
+
+NumParametersDontMatchError.shtk:10:4

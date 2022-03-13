@@ -4,3 +4,5 @@ ERROR in Line 8 Col 10
     test("hello")
          ^
 Cannot pass EXPRESSION or STRING LITERAL as MUTABLE POINTER
+
+StringLiteralAsMutablePointer.shtk:8:9

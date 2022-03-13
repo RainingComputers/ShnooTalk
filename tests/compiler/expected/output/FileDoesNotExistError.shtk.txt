@@ -4,3 +4,5 @@ ERROR in Line 1 Col 5
 use "does_not_exist.shtk" as bar
     ^
 File does not exist
+
+FileDoesNotExistError.shtk:1:4
