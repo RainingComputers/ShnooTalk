@@ -5,4 +5,4 @@ ERROR in Line 3 Col 23
                       ^
 Invalid STRING LITERAL
 
-HangingStringQuoteTest.shtk
+HangingStringQuoteTest.shtk:3:22

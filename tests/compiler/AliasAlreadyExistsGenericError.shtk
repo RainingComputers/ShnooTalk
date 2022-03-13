@@ -1,0 +1,2 @@
+use "TestModules/Math.shtk" as foobar
+use "TestModules/List.shtk" as foobar

@@ -1,0 +1,2 @@
+from "TestModules/Digital.shtk" use LOW, HIGH
+from "TestModules/Digital.shtk" use LOW

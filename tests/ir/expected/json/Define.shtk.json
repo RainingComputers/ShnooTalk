@@ -1,35 +1,37 @@
 {
-    "moduleName": "Define.shtk",
-    "uses": [],
-    "aliases": {
-    },
-    "enumerations": {
-    },
-    "intDefines": {
-        "MINUS_ONE": -1,
-        "NULL": 0,
-        "THREE": 3,
-        "false": 0,
-        "true": 1
-    },
-    "floatDefines": {
-        "MINUS_PI": -3.14,
-        "PI": 3.14,
-        "infinity": "INFINITY",
-        "nan": "NAN"
-    },
-    "stringDefines": {
-        "HELLO": "_str_Define_shtk__l5_c10"
-    },
-    "stringsDataCharCounts": {
-        "_str_Define_shtk__l5_c10": 12
-    },
-    "globals": {
-    },
-    "structures": {
-    },
-    "externFunctions": {
-    },
-    "functions": {
+    "Define.shtk": {
+        "moduleName": "Define.shtk",
+        "uses": [],
+        "aliases": {
+        },
+        "enumerations": {
+        },
+        "intDefines": {
+            "MINUS_ONE": -1,
+            "NULL": 0,
+            "THREE": 3,
+            "false": 0,
+            "true": 1
+        },
+        "floatDefines": {
+            "MINUS_PI": -3.14,
+            "PI": 3.14,
+            "infinity": "INFINITY",
+            "nan": "NAN"
+        },
+        "stringDefines": {
+            "HELLO": "_str_Define_shtk__l5_c10"
+        },
+        "stringsDataCharCounts": {
+            "_str_Define_shtk__l5_c10": 12
+        },
+        "globals": {
+        },
+        "structures": {
+        },
+        "externFunctions": {
+        },
+        "functions": {
+        }
     }
 }

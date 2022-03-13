@@ -1,48 +1,50 @@
 {
-    "moduleName": "Struct.shtk",
-    "uses": [],
-    "aliases": {
-    },
-    "enumerations": {
-    },
-    "intDefines": {
-        "NULL": 0,
-        "false": 0,
-        "true": 1
-    },
-    "floatDefines": {
-        "infinity": "INFINITY",
-        "nan": "NAN"
-    },
-    "stringDefines": {
-    },
-    "stringsDataCharCounts": {
-    },
-    "globals": {
-    },
-    "structures": {
-        "foobar": {
-            "fieldNames": ["a", "b", "c"],
-            "structFields": {
-                "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
-                "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
-                "c": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 12, "dimensions": [], "dimTypes": [], "properties": []}
-            },
-            "size": 16,
-            "moduleName": "Struct.shtk"
+    "Struct.shtk": {
+        "moduleName": "Struct.shtk",
+        "uses": [],
+        "aliases": {
         },
-        "point": {
-            "fieldNames": ["x", "y"],
-            "structFields": {
-                "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
-                "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
+        "enumerations": {
+        },
+        "intDefines": {
+            "NULL": 0,
+            "false": 0,
+            "true": 1
+        },
+        "floatDefines": {
+            "infinity": "INFINITY",
+            "nan": "NAN"
+        },
+        "stringDefines": {
+        },
+        "stringsDataCharCounts": {
+        },
+        "globals": {
+        },
+        "structures": {
+            "foobar": {
+                "fieldNames": ["a", "b", "c"],
+                "structFields": {
+                    "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                    "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
+                    "c": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 12, "dimensions": [], "dimTypes": [], "properties": []}
+                },
+                "size": 16,
+                "moduleName": "Struct.shtk"
             },
-            "size": 8,
-            "moduleName": "Struct.shtk"
+            "point": {
+                "fieldNames": ["x", "y"],
+                "structFields": {
+                    "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                    "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
+                },
+                "size": 8,
+                "moduleName": "Struct.shtk"
+            }
+        },
+        "externFunctions": {
+        },
+        "functions": {
         }
-    },
-    "externFunctions": {
-    },
-    "functions": {
     }
 }

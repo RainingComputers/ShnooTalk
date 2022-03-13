@@ -1,32 +1,34 @@
 {
-    "moduleName": "Enum.shtk",
-    "uses": [],
-    "aliases": {
-    },
-    "enumerations": {
-        "ONE": 1,
-        "TWO": 2,
-        "ZERO": 0
-    },
-    "intDefines": {
-        "NULL": 0,
-        "false": 0,
-        "true": 1
-    },
-    "floatDefines": {
-        "infinity": "INFINITY",
-        "nan": "NAN"
-    },
-    "stringDefines": {
-    },
-    "stringsDataCharCounts": {
-    },
-    "globals": {
-    },
-    "structures": {
-    },
-    "externFunctions": {
-    },
-    "functions": {
+    "Enum.shtk": {
+        "moduleName": "Enum.shtk",
+        "uses": [],
+        "aliases": {
+        },
+        "enumerations": {
+            "ONE": 1,
+            "TWO": 2,
+            "ZERO": 0
+        },
+        "intDefines": {
+            "NULL": 0,
+            "false": 0,
+            "true": 1
+        },
+        "floatDefines": {
+            "infinity": "INFINITY",
+            "nan": "NAN"
+        },
+        "stringDefines": {
+        },
+        "stringsDataCharCounts": {
+        },
+        "globals": {
+        },
+        "structures": {
+        },
+        "externFunctions": {
+        },
+        "functions": {
+        }
     }
 }

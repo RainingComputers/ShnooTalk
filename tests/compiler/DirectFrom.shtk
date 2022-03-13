@@ -1,4 +1,5 @@
-from "TestModules/Digital.shtk" use LOW, HIGH, digitalWrite
+from "TestModules/Digital.shtk" use LOW, HIGH
+from "TestModules/Digital.shtk" use digitalWrite
 
 fn main() -> int
 {

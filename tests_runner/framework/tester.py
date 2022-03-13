@@ -121,7 +121,8 @@ class Tester:
                 register_func()
 
     def generator(
-        self, path: str, output_path: str, output_ext: str, compiler_flag: str
+        self, path: str, output_path: str, output_ext: str, compiler_flag: str,
+        ignore_error: bool = False
     ) -> None:
         def generator(test_file: str) -> Result:
             command = [COMPILER_EXEC_PATH, test_file, compiler_flag]
@@ -131,7 +132,10 @@ class Tester:
                 return Result.timedout()
 
             if exit_code != 0:
-                return Result.skipped()
+                if ignore_error:
+                    return Result.skipped()
+
+                return Result.failed(output)
 
             dump_string_to_file(os.path.join(output_path, f"{test_file}.{output_ext}"), output)
             return Result.passed(output)
@@ -187,7 +191,7 @@ class Tester:
 
         if CLI_ARG == CLIArg.GEN:
             self._run_generators()
-            return 0
+            return ResultPrinter.exit_code
 
         self._run_tests_list()
 

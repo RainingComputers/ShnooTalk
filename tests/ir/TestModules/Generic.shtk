@@ -1,0 +1,11 @@
+generic K, V
+
+struct Foo
+{
+    var a: K, b: V
+}
+
+struct Bar
+{
+    var a: V
+}

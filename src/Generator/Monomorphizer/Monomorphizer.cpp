@@ -118,7 +118,12 @@ void Monomorphizer::createFrom(const std::string& genericModuleName, const Token
 
 void Monomorphizer::createDirectFrom(const Token& pathToken, const Token& symbolToken)
 {
-    createFrom(pathToken.toUnescapedString(), symbolToken);
+    const std::string& path = pathToken.toUnescapedString();
+
+    if (!useExists(path))
+        uses.push_back(path);
+
+    createFrom(path, symbolToken);
 }
 
 void Monomorphizer::createAliasFrom(const Token& aliasToken, const Token& symbolToken)

@@ -1,5 +1,4 @@
-use "TestModules/LinkedList.shtk" as LinkedList
-from LinkedList use LinkedList
+from "TestModules/LinkedList.shtk" use LinkedList
 
 fn main() -> int
 {

@@ -1,40 +1,42 @@
 {
-    "moduleName": "ExternFunction.shtk",
-    "uses": [],
-    "aliases": {
-    },
-    "enumerations": {
-    },
-    "intDefines": {
-        "NULL": 0,
-        "false": 0,
-        "true": 1
-    },
-    "floatDefines": {
-        "infinity": "INFINITY",
-        "nan": "NAN"
-    },
-    "stringDefines": {
-    },
-    "stringsDataCharCounts": {
-    },
-    "globals": {
-    },
-    "structures": {
-    },
-    "externFunctions": {
-        "sin": {
-            "moduleName": "ExternFunction.shtk",
-            "parameters": ["num"],
-            "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
-            "symbols": {
-                "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
-            },
-            "icode": [
-                
-            ]
+    "ExternFunction.shtk": {
+        "moduleName": "ExternFunction.shtk",
+        "uses": [],
+        "aliases": {
+        },
+        "enumerations": {
+        },
+        "intDefines": {
+            "NULL": 0,
+            "false": 0,
+            "true": 1
+        },
+        "floatDefines": {
+            "infinity": "INFINITY",
+            "nan": "NAN"
+        },
+        "stringDefines": {
+        },
+        "stringsDataCharCounts": {
+        },
+        "globals": {
+        },
+        "structures": {
+        },
+        "externFunctions": {
+            "sin": {
+                "moduleName": "ExternFunction.shtk",
+                "parameters": ["num"],
+                "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "symbols": {
+                    "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+                },
+                "icode": [
+                    
+                ]
+            }
+        },
+        "functions": {
         }
-    },
-    "functions": {
     }
 }

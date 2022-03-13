@@ -1,41 +1,154 @@
 {
-    "moduleName": "ModuleScopedType.shtk",
-    "uses": ["TestModules/Random.shtk"],
-    "aliases": {
-        "Random": "TestModules/Random.shtk"
+    "ModuleScopedType.shtk": {
+        "moduleName": "ModuleScopedType.shtk",
+        "uses": ["TestModules/Random.shtk"],
+        "aliases": {
+            "Random": "TestModules/Random.shtk"
+        },
+        "enumerations": {
+        },
+        "intDefines": {
+            "NULL": 0,
+            "false": 0,
+            "true": 1
+        },
+        "floatDefines": {
+            "infinity": "INFINITY",
+            "nan": "NAN"
+        },
+        "stringDefines": {
+        },
+        "stringsDataCharCounts": {
+        },
+        "globals": {
+        },
+        "structures": {
+        },
+        "externFunctions": {
+        },
+        "functions": {
+            "_fn_ModuleScopedType_shtk_test": {
+                "moduleName": "ModuleScopedType.shtk",
+                "parameters": [],
+                "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "ModuleScopedType.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "symbols": {
+                    "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
+                },
+                "icode": [
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
     },
-    "enumerations": {
+    "TestModules/Random.shtk": {
+        "moduleName": "TestModules/Random.shtk",
+        "uses": ["TestModules/Sin.shtk"],
+        "aliases": {
+            "Sin": "TestModules/Sin.shtk"
+        },
+        "enumerations": {
+            "LED0": 0,
+            "LED1": 1,
+            "LED2": 2
+        },
+        "intDefines": {
+            "NULL": 0,
+            "ONE": 1,
+            "false": 0,
+            "true": 1
+        },
+        "floatDefines": {
+            "PI": 3.14,
+            "infinity": "INFINITY",
+            "nan": "NAN"
+        },
+        "stringDefines": {
+            "FOOBAR": "_str_TestModules_Random_shtk__l5_c11"
+        },
+        "stringsDataCharCounts": {
+            "_str_TestModules_Random_shtk__l5_c11": 7
+        },
+        "globals": {
+        },
+        "structures": {
+            "Point": {
+                "fieldNames": ["x", "y"],
+                "structFields": {
+                    "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                    "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
+                },
+                "size": 8,
+                "moduleName": "TestModules/Random.shtk"
+            }
+        },
+        "externFunctions": {
+            "extfoobar": {
+                "moduleName": "TestModules/Random.shtk",
+                "parameters": ["num"],
+                "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "symbols": {
+                    "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+                },
+                "icode": [
+                    
+                ]
+            }
+        },
+        "functions": {
+            "_fn_TestModules_Random_shtk_foobar": {
+                "moduleName": "TestModules/Random.shtk",
+                "parameters": ["foo", "bar"],
+                "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "symbols": {
+                    "bar": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
+                    "foo": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+                },
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 3, "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
     },
-    "intDefines": {
-        "NULL": 0,
-        "false": 0,
-        "true": 1
-    },
-    "floatDefines": {
-        "infinity": "INFINITY",
-        "nan": "NAN"
-    },
-    "stringDefines": {
-    },
-    "stringsDataCharCounts": {
-    },
-    "globals": {
-    },
-    "structures": {
-    },
-    "externFunctions": {
-    },
-    "functions": {
-        "_fn_ModuleScopedType_shtk_test": {
-            "moduleName": "ModuleScopedType.shtk",
-            "parameters": [],
-            "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "ModuleScopedType.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
-            "symbols": {
-                "a": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
-            },
-            "icode": [
-                {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-            ]
+    "TestModules/Sin.shtk": {
+        "moduleName": "TestModules/Sin.shtk",
+        "uses": [],
+        "aliases": {
+        },
+        "enumerations": {
+        },
+        "intDefines": {
+            "NULL": 0,
+            "false": 0,
+            "true": 1
+        },
+        "floatDefines": {
+            "infinity": "INFINITY",
+            "nan": "NAN"
+        },
+        "stringDefines": {
+        },
+        "stringsDataCharCounts": {
+        },
+        "globals": {
+        },
+        "structures": {
+        },
+        "externFunctions": {
+            "sin": {
+                "moduleName": "TestModules/Sin.shtk",
+                "parameters": ["num"],
+                "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "symbols": {
+                    "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+                },
+                "icode": [
+                    
+                ]
+            }
+        },
+        "functions": {
         }
     }
 }

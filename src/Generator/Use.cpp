@@ -44,7 +44,7 @@ void createUse(generator::GeneratorContext& ctx, const Node& root)
     bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken.toUnescapedString());
 
     if (isGeneric)
-        ctx.mm.createUse(pathToken, aliastoken); // TODO: Error on re-imports
+        ctx.mm.createUse(pathToken, aliastoken);
 }
 
 void createAliasFrom(generator::GeneratorContext& ctx, const Node& root)

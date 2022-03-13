@@ -1,0 +1,8 @@
+MODULE AliasAlreadyExistsGenericError.shtk
+ERROR in Line 2 Col 32
+
+use "TestModules/List.shtk" as foobar
+                               ^
+Symbol already defined
+
+AliasAlreadyExistsGenericError.shtk:2:31

@@ -74,13 +74,13 @@ make test
 - [x] null pointer check
 - [x] Direct from
 - [x] make constructors
-- [ ] destructors
 - [x] := initializer
 - [x] Destructuring
 - [x] Clean up packaging process
-- [ ] Spike static linking everything
-- [ ] Improve error messages and module trace list
+- [x] Improve error messages and module trace list
 - [x] Change compiler tests to use `-icode-all`
+- [ ] destructors
+- [ ] Spike static linking everything
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend

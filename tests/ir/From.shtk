@@ -1,4 +1,16 @@
 use "TestModules/Random.shtk" as Random
+use "TestModules/Generic.shtk" as genfoobar
 
 from Random use Sin, ONE, PI, FOOBAR
-from Random use LED0, foobar, Point, extfoobar
+from Random use LED0, foobar
+from "TestModules/Random.shtk" use Point, extfoobar
+from genfoobar use Foo
+from "TestModules/Generic.shtk" use Bar
+
+fn main() -> int
+{
+    var a: Bar[int, int]
+    var b: Foo[int, int]
+
+    return 0
+}
