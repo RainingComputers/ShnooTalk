@@ -79,7 +79,7 @@ make test
 - [x] Clean up packaging process
 - [x] Improve error messages and module trace list
 - [x] Change compiler tests to use `-icode-all`
-- [ ] destructors
+- [ ] Class or struct destructors
 - [ ] Spike static linking everything
 
 *Backlog*
@@ -112,12 +112,7 @@ make test
 - [ ] Generic function call
 - [ ] Struct alignment and padding
 
-### Documentation
-
-- [ ] Language tour using shnootalk-playground
-- [ ] Language reference in markdown
-
-### Advanced features
+*Advanced Features*
 
 - [x] Custom operators
 - [x] Generics
@@ -125,6 +120,12 @@ make test
 - [ ] Passing functions as arguments
 - [ ] Exceptions
 - [ ] Unions
+- [ ] Interfaces
+
+### Documentation
+
+- [ ] Language tour using shnootalk-playground
+- [ ] Language reference in markdown
 
 ### Translators
 
