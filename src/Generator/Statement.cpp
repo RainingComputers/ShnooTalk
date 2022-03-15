@@ -170,11 +170,8 @@ void statement(generator::GeneratorContext& ctx,
         case node::ASSIGNMENT:
             assignment(ctx, root);
             break;
-        case node::FUNCCALL:
-            functionCall(ctx, root);
-            break;
         case node::TERM:
-            functionCall(ctx, root.children[0]);
+            term(ctx, root);
             break;
         case node::IF:
             ifStatement(ctx, root, isLoopBlock, loopLabel, breakLabel, continueLabel);
@@ -207,14 +204,6 @@ void statement(generator::GeneratorContext& ctx,
         case node::INPUT:
             input(ctx, root);
             break;
-        case node::MODULE:
-        {
-            ctx.ir.pushWorkingModule();
-            int nodeCounter = setWorkingModuleFromNode(ctx, root, 0);
-            functionCall(ctx, root.children[nodeCounter]);
-            ctx.ir.popWorkingModule();
-            break;
-        }
         default:
             ctx.console.internalBugErrorOnToken(root.tok);
     }

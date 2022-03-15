@@ -40,15 +40,6 @@ void assignmentOrMethodCall(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
-void moduleFunctionCall(parser::ParserContext& ctx)
-{
-    ctx.pushNode();
-    ctx.addNodeMakeCurrentNoConsume(node::MODULE);
-    moduleQualident(ctx);
-    functionCall(ctx);
-    ctx.popNode();
-}
-
 void ifStatement(parser::ParserContext& ctx)
 {
     ctx.pushNode();
@@ -168,9 +159,9 @@ void statement(parser::ParserContext& ctx)
     if (ctx.accept(token::IDENTIFIER))
     {
         if (ctx.peek(token::LPAREN))
-            functionCall(ctx);
+            term(ctx);
         else if (ctx.peek(token::DOUBLE_COLON))
-            moduleFunctionCall(ctx);
+            term(ctx);
         else
             assignmentOrMethodCall(ctx);
     }

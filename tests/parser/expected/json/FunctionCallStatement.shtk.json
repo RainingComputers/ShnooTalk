@@ -18,7 +18,7 @@
           "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "FunctionCallStatement.shtk"},
           "children": [
             {
-              "type": "MODULE",
+              "type": "TERM",
               "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "FunctionCallStatement.shtk"},
               "children": [
                 {
@@ -29,16 +29,22 @@
                   ]
                 },
                 {
-                  "type": "FUNCCALL",
+                  "type": "TERM",
                   "token": {"string": "something", "tokenType": "IDENTIFIER", "line": 3, "col": 9, "file": "FunctionCallStatement.shtk"},
                   "children": [
-                    
+                    {
+                      "type": "FUNCCALL",
+                      "token": {"string": "something", "tokenType": "IDENTIFIER", "line": 3, "col": 9, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
                   ]
                 }
               ]
             },
             {
-              "type": "MODULE",
+              "type": "TERM",
               "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "FunctionCallStatement.shtk"},
               "children": [
                 {
@@ -56,10 +62,16 @@
                   ]
                 },
                 {
-                  "type": "FUNCCALL",
+                  "type": "TERM",
                   "token": {"string": "something", "tokenType": "IDENTIFIER", "line": 5, "col": 14, "file": "FunctionCallStatement.shtk"},
                   "children": [
-                    
+                    {
+                      "type": "FUNCCALL",
+                      "token": {"string": "something", "tokenType": "IDENTIFIER", "line": 5, "col": 14, "file": "FunctionCallStatement.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
                   ]
                 }
               ]
@@ -90,10 +102,16 @@
               ]
             },
             {
-              "type": "FUNCCALL",
+              "type": "TERM",
               "token": {"string": "barbar", "tokenType": "IDENTIFIER", "line": 9, "col": 4, "file": "FunctionCallStatement.shtk"},
               "children": [
-                
+                {
+                  "type": "FUNCCALL",
+                  "token": {"string": "barbar", "tokenType": "IDENTIFIER", "line": 9, "col": 4, "file": "FunctionCallStatement.shtk"},
+                  "children": [
+                    
+                  ]
+                }
               ]
             },
             {

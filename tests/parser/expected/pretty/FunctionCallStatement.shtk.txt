@@ -2,18 +2,21 @@
   └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=1, col=0
         ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=1, col=3
         └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=2, col=0
-              ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=3, col=4
+              ├───> nodeType=TERM, string="foo", tokenType=IDENTIFIER, line=3, col=4
               │     ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=3, col=4
-              │     └───> nodeType=FUNCCALL, string="something", tokenType=IDENTIFIER, line=3, col=9
-              ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=5, col=4
+              │     └───> nodeType=TERM, string="something", tokenType=IDENTIFIER, line=3, col=9
+              │           └───> nodeType=FUNCCALL, string="something", tokenType=IDENTIFIER, line=3, col=9
+              ├───> nodeType=TERM, string="foo", tokenType=IDENTIFIER, line=5, col=4
               │     ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=5, col=4
               │     ├───> nodeType=MODULE, string="bar", tokenType=IDENTIFIER, line=5, col=9
-              │     └───> nodeType=FUNCCALL, string="something", tokenType=IDENTIFIER, line=5, col=14
+              │     └───> nodeType=TERM, string="something", tokenType=IDENTIFIER, line=5, col=14
+              │           └───> nodeType=FUNCCALL, string="something", tokenType=IDENTIFIER, line=5, col=14
               ├───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=7, col=4
               │     └───> nodeType=METHODCALL, string="foobar", tokenType=IDENTIFIER, line=7, col=6
               │           └───> nodeType=TERM, string="foobar", tokenType=IDENTIFIER, line=7, col=6
               │                 └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=7, col=4
-              ├───> nodeType=FUNCCALL, string="barbar", tokenType=IDENTIFIER, line=9, col=4
+              ├───> nodeType=TERM, string="barbar", tokenType=IDENTIFIER, line=9, col=4
+              │     └───> nodeType=FUNCCALL, string="barbar", tokenType=IDENTIFIER, line=9, col=4
               ├───> nodeType=ASSIGNMENT, string="a", tokenType=IDENTIFIER, line=11, col=4
               │     ├───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=11, col=4
               │     │     └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=11, col=4
