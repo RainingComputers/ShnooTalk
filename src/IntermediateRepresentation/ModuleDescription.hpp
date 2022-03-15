@@ -19,6 +19,7 @@ namespace icode
         std::map<std::string, std::string> incompleteTypes;
         std::map<std::string, StructDescription> structures;
 
+        std::vector<std::string> definedFunctions;
         std::map<std::string, FunctionDescription> functions;
         std::map<std::string, FunctionDescription> externFunctions;
 

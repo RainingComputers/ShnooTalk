@@ -208,10 +208,9 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
                                                                                        const TypeDescription& type,
                                                                                        const std::vector<Unit>& params)
 {
-    for (auto pair : workingModule->functions)
+    for (auto functionName : workingModule->definedFunctions)
     {
-        const FunctionDescription& function = pair.second;
-        const std::string& functionName = pair.first;
+        const FunctionDescription& function = workingModule->functions.at(functionName);
 
         if (!isSameTypeDescription(function.functionReturnType, type))
             continue;

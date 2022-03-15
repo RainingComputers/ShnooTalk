@@ -1,0 +1,34 @@
+{
+    "MakeOrder.shtk": {
+        "moduleName": "MakeOrder.shtk",
+        "functions": {
+            "_fn_MakeOrder_shtk_a": {
+                "icode": [
+                        int temp11 = cast autoInt 2
+                        int returnValue9 = equal int temp11
+                        return
+                ]
+            },
+            "_fn_MakeOrder_shtk_b": {
+                "icode": [
+                        int temp5 = cast autoInt 1
+                        int returnValue3 = equal int temp5
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int temp17 = cast autoInt 1000
+                        pass int temp17, int _fn_MakeOrder_shtk_b, module MakeOrder.shtk
+                        int calleeReturnValue20 = call int _fn_MakeOrder_shtk_b, module MakeOrder.shtk
+                        int a = equal int calleeReturnValue20
+                        print int a
+                        newLine
+                        int temp27 = cast autoInt 0
+                        int returnValue25 = equal int temp27
+                        return
+                ]
+            }
+        }
+    }
+}

@@ -215,6 +215,8 @@ void ModuleBuilder::createFunction(const Token& nameToken,
 
     rootModule.functions[mangledFunctionName] =
         createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
+
+    rootModule.definedFunctions.push_back(mangledFunctionName);
 }
 
 void ModuleBuilder::createExternFunction(const Token& nameToken,

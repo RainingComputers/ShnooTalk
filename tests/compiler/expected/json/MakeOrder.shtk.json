@@ -1,0 +1,34 @@
+{
+    "MakeOrder.shtk": {
+        "moduleName": "MakeOrder.shtk",
+        "functions": {
+            "_fn_MakeOrder_shtk_a": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "int"}, "op2": {"type": "temp", "id": 11, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_MakeOrder_shtk_b": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 3, "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "literal", "id": 15, "dtype": "autoInt", "value": 1000}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "var", "id": 18, "name": "_fn_MakeOrder_shtk_b", "dtype": "int"}, "op3": {"type": "module", "id": 19, "name": "MakeOrder.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 20, "dtype": "int"}, "op2": {"type": "var", "id": 21, "name": "_fn_MakeOrder_shtk_b", "dtype": "int"}, "op3": {"type": "module", "id": 22, "name": "MakeOrder.shtk"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 23, "name": "a", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 20, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "var", "id": 24, "name": "a", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "literal", "id": 26, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 25, "dtype": "int"}, "op2": {"type": "temp", "id": 27, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

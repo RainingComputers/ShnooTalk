@@ -1,0 +1,17 @@
+fn b(x: int) -> int
+{
+    return 1
+}
+
+fn a(x: int) -> int
+{
+    return 2
+}
+
+fn main() -> int
+{
+    var a := make(int, 1000)
+    println(a)
+
+    return 0
+}

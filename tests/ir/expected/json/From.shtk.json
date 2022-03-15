@@ -65,6 +65,7 @@
                 ]
             }
         },
+        "definedFunctions": ["main"],
         "functions": {
             "main": {
                 "moduleName": "From.shtk",
@@ -126,6 +127,7 @@
         },
         "externFunctions": {
         },
+        "definedFunctions": [],
         "functions": {
         }
     },
@@ -183,6 +185,7 @@
                 ]
             }
         },
+        "definedFunctions": ["_fn_TestModules_Random_shtk_foobar"],
         "functions": {
             "_fn_TestModules_Random_shtk_foobar": {
                 "moduleName": "TestModules/Random.shtk",
@@ -237,6 +240,7 @@
                 ]
             }
         },
+        "definedFunctions": [],
         "functions": {
         }
     }

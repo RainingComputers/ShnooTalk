@@ -80,6 +80,7 @@ make test
 - [x] Improve error messages and module trace list
 - [x] Change compiler tests to use `-icode-all`
 - [ ] Class or struct destructors
+- [ ] Generic function call
 - [ ] Spike static linking everything
 
 *Backlog*
@@ -109,7 +110,6 @@ make test
 - [ ] Error recovery
 - [ ] Static variables
 - [ ] Unsafe keyword
-- [ ] Generic function call
 - [ ] Struct alignment and padding
 
 *Advanced Features*
