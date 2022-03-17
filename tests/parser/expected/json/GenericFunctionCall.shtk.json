@@ -1,0 +1,381 @@
+{
+  "type": "PROGRAM",
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "type": "FUNCTION",
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "GenericFunctionCall.shtk"},
+      "children": [
+        {
+          "type": "IDENTIFIER",
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "GenericFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "type": "IDENTIFIER",
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "GenericFunctionCall.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "type": "BLOCK",
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "GenericFunctionCall.shtk"},
+          "children": [
+            {
+              "type": "TERM",
+              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "GenericFunctionCall.shtk"},
+              "children": [
+                {
+                  "type": "MODULE",
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "GenericFunctionCall.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "MODULE",
+                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 9, "file": "GenericFunctionCall.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "TERM",
+                  "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 3, "col": 14, "file": "GenericFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "type": "GENERIC_FUNCCALL",
+                      "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 3, "col": 14, "file": "GenericFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "type": "GENERIC_TYPE_PARAM",
+                          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 20, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "IDENTIFIER",
+                              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 3, "col": 20, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GENERIC_TYPE_PARAM",
+                          "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 3, "col": 25, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "IDENTIFIER",
+                              "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 3, "col": 25, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "EXPRESSION",
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 32, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "TERM",
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 32, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 32, "file": "GenericFunctionCall.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "EXPRESSION",
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 35, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "TERM",
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 35, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 3, "col": 35, "file": "GenericFunctionCall.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "EXPRESSION",
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 3, "col": 38, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "TERM",
+                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 3, "col": 38, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 3, "col": 38, "file": "GenericFunctionCall.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TERM",
+              "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "GenericFunctionCall.shtk"},
+              "children": [
+                {
+                  "type": "GENERIC_FUNCCALL",
+                  "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "GenericFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "type": "GENERIC_TYPE_PARAM",
+                      "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 10, "file": "GenericFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "type": "IDENTIFIER",
+                          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 10, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GENERIC_TYPE_PARAM",
+                      "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "GenericFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "type": "IDENTIFIER",
+                          "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "EXPRESSION",
+                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "GenericFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "type": "TERM",
+                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "IDENTIFIER",
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "EXPRESSION",
+                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 25, "file": "GenericFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "type": "TERM",
+                          "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 25, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "IDENTIFIER",
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 25, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "EXPRESSION",
+                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 28, "file": "GenericFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "type": "TERM",
+                          "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 28, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "IDENTIFIER",
+                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 5, "col": 28, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "WALRUS_VAR",
+              "token": {"string": "var", "tokenType": "VAR", "line": 7, "col": 4, "file": "GenericFunctionCall.shtk"},
+              "children": [
+                {
+                  "type": "IDENTIFIER",
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "GenericFunctionCall.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "EXPRESSION",
+                  "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 7, "col": 13, "file": "GenericFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 7, "col": 13, "file": "GenericFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "type": "GENERIC_FUNCCALL",
+                          "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 7, "col": 13, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            {
+                              "type": "GENERIC_TYPE_PARAM",
+                              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 19, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 19, "file": "GenericFunctionCall.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GENERIC_TYPE_PARAM",
+                              "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 7, "col": 24, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 7, "col": 24, "file": "GenericFunctionCall.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "EXPRESSION",
+                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 31, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 31, "file": "GenericFunctionCall.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "IDENTIFIER",
+                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 7, "col": 31, "file": "GenericFunctionCall.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "EXPRESSION",
+                              "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 34, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 34, "file": "GenericFunctionCall.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "IDENTIFIER",
+                                      "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 7, "col": 34, "file": "GenericFunctionCall.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "EXPRESSION",
+                              "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 37, "file": "GenericFunctionCall.shtk"},
+                              "children": [
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 37, "file": "GenericFunctionCall.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "IDENTIFIER",
+                                      "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 37, "file": "GenericFunctionCall.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "RETURN",
+              "token": {"string": "return", "tokenType": "RETURN", "line": 9, "col": 4, "file": "GenericFunctionCall.shtk"},
+              "children": [
+                {
+                  "type": "EXPRESSION",
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "GenericFunctionCall.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "GenericFunctionCall.shtk"},
+                      "children": [
+                        {
+                          "type": "LITERAL",
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "GenericFunctionCall.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

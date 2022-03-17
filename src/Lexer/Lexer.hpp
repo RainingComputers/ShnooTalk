@@ -33,6 +33,7 @@ namespace lexer
         bool getToken(Token& symbol);
         Token peekToken();
         Token doublePeekToken();
+        Token matchedBracketPeek(token::TokenType open, token::TokenType close);
     };
 }
 

@@ -1,0 +1,10 @@
+fn main() -> int
+{
+    foo::bar::hello[int, float](a, b, c)
+
+    hello[int, float](a, b, c)
+
+    var a := hello[int, float](a, b, c)
+
+    return 0
+}

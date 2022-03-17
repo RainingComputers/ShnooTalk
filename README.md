@@ -81,6 +81,7 @@ make test
 - [x] Change compiler tests to use `-icode-all`
 - [ ] Class or struct destructors
 - [ ] Generic function call
+- [ ] Fix sizeof
 - [ ] Pretty name for generics
 - [ ] Spike static linking everything
 

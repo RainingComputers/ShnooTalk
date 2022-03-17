@@ -42,6 +42,7 @@ namespace node
         ASSIGNMENT,
         RETURN,
         FUNCCALL,
+        GENERIC_FUNCCALL,
         METHODCALL,
         PARAM,
         MUT_PARAM,
