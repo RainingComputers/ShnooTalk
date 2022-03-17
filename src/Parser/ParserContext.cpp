@@ -36,6 +36,11 @@ namespace parser
         return type == lex.doublePeekToken().getType();
     }
 
+    bool ParserContext::matchedBracketPeek(token::TokenType open, token::TokenType close, token::TokenType type)
+    {
+        return type == lex.matchedBracketPeek(open, close).getType();
+    }
+
     bool ParserContext::accept(token::TokenType type)
     {
         /* Check if symbol is equal to type passed as argument */

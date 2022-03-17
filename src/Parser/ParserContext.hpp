@@ -28,6 +28,7 @@ namespace parser
         void consume();
         bool peek(token::TokenType type);
         bool dpeek(token::TokenType type);
+        bool matchedBracketPeek(token::TokenType open, token::TokenType close, token::TokenType type);
         bool accept(token::TokenType type);
         int getOperatorPrecedence();
         void expect(token::TokenType type);

@@ -59,9 +59,8 @@ void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
-void identifierWithGeneric(parser::ParserContext& ctx)
+void genericParams(parser::ParserContext& ctx)
 {
-    ctx.addNode(node::IDENTIFIER);
 
     ctx.expect(token::OPEN_SQUARE);
 
@@ -79,7 +78,15 @@ void identifierWithGeneric(parser::ParserContext& ctx)
     } while (ctx.accept(token::COMMA));
 
     ctx.expect(token::CLOSE_SQUARE);
+
     ctx.consume();
+}
+
+void identifierWithGeneric(parser::ParserContext& ctx)
+{
+    ctx.addNode(node::IDENTIFIER);
+
+    genericParams(ctx);
 }
 
 void moduleQualident(parser::ParserContext& ctx)
@@ -133,6 +140,19 @@ void functionCall(parser::ParserContext& ctx)
     ctx.pushNode();
 
     ctx.addNodeMakeCurrent(node::FUNCCALL);
+
+    actualParameterList(ctx);
+
+    ctx.popNode();
+}
+
+void genericFunctionCall(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrent(node::GENERIC_FUNCCALL);
+
+    genericParams(ctx);
 
     actualParameterList(ctx);
 
@@ -265,6 +285,10 @@ void term(parser::ParserContext& ctx)
         if (ctx.peek(token::LPAREN))
         {
             functionCall(ctx);
+        }
+        else if (ctx.matchedBracketPeek(token::OPEN_SQUARE, token::CLOSE_SQUARE, token::LPAREN))
+        {
+            genericFunctionCall(ctx);
         }
         else if (ctx.peek(token::CAST))
         {

@@ -63,7 +63,9 @@ identifierWithEmptySubscript = identifier "[]"
 
 identifierWithQualidentAndSubscript = identifierWithOptionalSubscript<false> {"." identifierWithOptionalSubscript<false>}
 
-identifierWithGeneric = identifier "[" typeDefinition {"," typeDefinition} "]"
+genericParams = "[" typeDefinition {"," typeDefinition} "]"
+
+identifierWithGeneric = identifier genericParams
 
 moduleQualident = {identifier "::"}
 
@@ -103,6 +105,8 @@ actualParameterList = "(" [expression {"," expression}] ")"
 
 functionCall = identifier actualParameterList
 
+genericFunctionCall = identifier genericParams actualParameterList
+
 methodCall = {"." identifier actualParameterList}
 
 sizeof = "sizeof" "(" moduleQualident identifier ")"
@@ -116,6 +120,7 @@ initializerList = "[" expression {"," expression} "]"
 term = sizeof
      | make
      | functionCall
+     | genericFunctionCall
      | identifier castOperator term
      | identifier pointerCastOperator term
      | identifier arrayPointerCastOperator term
@@ -133,7 +138,7 @@ expression = initializerList | multiLineStringLiteral | baseExpression
 
 assignmentOrMethodCall = identifierWithQualidentAndSubscript (methodCall | (assignmentOperator expression))
 
-moduleFunctionCall = moduleQualident functionCall
+moduleFunctionCall = moduleQualident (functionCall | genericFunctionCall)
 
 ifStatement = "if" expression block {"elseif" expression block} ["else" block]
 
@@ -148,6 +153,7 @@ infiniteLoop = "loop" block
 returnExpression = "return" (expression | "void")
 
 statement = functionCall
+          | genericFunctionCall
           | moduleFunctionCall
           | assignmentOrMethodCall
           | walrusDeclaration

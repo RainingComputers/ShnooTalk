@@ -162,6 +162,8 @@ void statement(parser::ParserContext& ctx)
             term(ctx);
         else if (ctx.peek(token::DOUBLE_COLON))
             term(ctx);
+        else if (ctx.matchedBracketPeek(token::OPEN_SQUARE, token::CLOSE_SQUARE, token::LPAREN))
+            term(ctx);
         else
             assignmentOrMethodCall(ctx);
     }

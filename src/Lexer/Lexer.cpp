@@ -374,4 +374,36 @@ namespace lexer
     {
         return tokenQueue[getTokenIndex + 1];
     }
+
+    Token Lexer::matchedBracketPeek(token::TokenType open, token::TokenType close)
+    {
+        int bracketCounter = 0;
+        int peekCounter = 0;
+
+        while (true)
+        {
+            const Token& token = tokenQueue[getTokenIndex + peekCounter];
+            peekCounter++;
+
+            if (token.getType() == token::END_OF_FILE)
+                return token;
+
+            if (token.getType() == open)
+            {
+                bracketCounter++;
+                continue;
+            }
+
+            if (token.getType() == close)
+            {
+                bracketCounter--;
+                continue;
+            }
+
+            if (bracketCounter == 0)
+                return token;
+        }
+
+        console.internalBugError();
+    }
 } // namespace lexer
