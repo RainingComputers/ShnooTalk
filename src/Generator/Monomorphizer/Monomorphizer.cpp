@@ -180,17 +180,17 @@ std::string Monomorphizer::getGenericModuleFromToken(const Token& token)
 
 Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
                                        const std::string& instantiationSuffix,
-                                       const Token& genericStructNameToken,
+                                       const Token& genericNameToken,
                                        const std::vector<icode::TypeDescription>& instantiationTypes,
                                        const std::vector<Node>& instantiationTypeNodes)
 {
     const GenericASTIndex& index = genericsMap.at(genericModuleName);
 
     if (index.genericIdentifiers.size() != instantiationTypes.size())
-        console.compileErrorOnToken("Number of type parameters don't match", genericStructNameToken);
+        console.compileErrorOnToken("Number of type parameters don't match", genericNameToken);
 
     return instantiateAST(index,
-                          genericStructNameToken,
+                          genericNameToken,
                           instantiationTypes,
                           instantiationTypeNodes,
                           instantiationSuffix,
