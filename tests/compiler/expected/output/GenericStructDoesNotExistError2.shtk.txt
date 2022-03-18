@@ -1,0 +1,8 @@
+MODULE GenericStructDoesNotExistError2.shtk
+ERROR in Line 1 Col 5
+
+use "tests/compiler/TestModules/Pair.shtk" as Pair
+    ^
+File does not exist
+
+GenericStructDoesNotExistError2.shtk:1:4
