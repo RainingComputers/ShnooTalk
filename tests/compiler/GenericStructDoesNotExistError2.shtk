@@ -1,0 +1,8 @@
+use "tests/compiler/TestModules/Pair.shtk" as Pair
+
+fn main() -> int
+{
+    var a: Pair::FooBar[int, float]
+
+    return 0
+}

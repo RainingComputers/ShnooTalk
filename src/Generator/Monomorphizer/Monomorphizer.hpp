@@ -21,6 +21,7 @@ namespace monomorphizer
         std::map<std::string, std::string> aliases;
         std::vector<std::string> uses;
         std::map<std::string, std::string> genericUses;
+        std::string workingModule;
 
         Console& console;
 
@@ -29,7 +30,13 @@ namespace monomorphizer
 
         void createFrom(const std::string& genericModuleName, const Token& symbolToken);
 
+        std::string getGenericModuleNameFromAlias(const Token& aliasToken);
+
+        std::string getGenericModuleNameFromUse(const Token& nameToken);
+
     public:
+        void resetWorkingModule();
+
         Monomorphizer(StringGenericASTMap& genericsMap, Console& console);
 
         void indexAST(const std::string& genericModuleName, const Node& ast);
@@ -44,9 +51,9 @@ namespace monomorphizer
 
         void createAliasFrom(const Token& aliasToken, const Token& symbolToken);
 
-        std::string getGenericModuleNameFromAlias(const Token& aliasToken);
+        void setWorkingModuleFromAlias(const Token& aliasToken);
 
-        std::string getGenericModuleNameFromStruct(const Token& nameToken);
+        std::string getGenericModuleFromToken(const Token& token);
 
         Node instantiateGeneric(const std::string& genericModuleName,
                                 const std::string& instantiationSuffix,

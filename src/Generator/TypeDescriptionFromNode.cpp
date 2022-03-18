@@ -67,12 +67,11 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
 {
     ctx.ir.pushWorkingModule();
     ctx.ir.resetWorkingModule();
+    ctx.mm.resetWorkingModule();
 
     size_t childNodeCounter = 1;
     if (root.type == node::MAKE)
         childNodeCounter = 0;
-
-    std::string genericModuleName = "";
 
     while (root.isNthChild(node::PARAM, childNodeCounter) || root.isNthChild(node::MUT_PARAM, childNodeCounter))
         childNodeCounter++;
@@ -84,7 +83,7 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
         if (childNodeCounter > 1)
             ctx.console.compileErrorOnToken("Invalid MODULE ACCESS from GENERIC", aliasToken);
 
-        genericModuleName = ctx.mm.getGenericModuleNameFromAlias(aliasToken);
+        ctx.mm.setWorkingModuleFromAlias(aliasToken);
 
         childNodeCounter++;
     }
@@ -92,8 +91,7 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
     const Token& genericStructNameToken = root.getNthChildToken(childNodeCounter);
     childNodeCounter++;
 
-    if (genericModuleName == "")
-        genericModuleName = ctx.mm.getGenericModuleNameFromStruct(genericStructNameToken);
+    std::string genericModuleName = ctx.mm.getGenericModuleFromToken(genericStructNameToken);
 
     std::vector<TypeDescription> instantiationTypes;
     std::vector<Node> instantiationTypeNodes;

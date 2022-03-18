@@ -11,6 +11,12 @@ Monomorphizer::Monomorphizer(StringGenericASTMap& genericsMap, Console& console)
     : genericsMap(genericsMap)
     , console(console)
 {
+    resetWorkingModule();
+}
+
+void Monomorphizer::resetWorkingModule()
+{
+    workingModule = "";
 }
 
 std::vector<std::string> getGenericIdentifiers(const Node& root)
@@ -25,6 +31,7 @@ std::vector<std::string> getGenericIdentifiers(const Node& root)
 
 bool elementInList(const std::string& identifier, const std::vector<std::string>& genericIdentifiers)
 {
+    // TODO: Move this to
     auto it = std::find(genericIdentifiers.begin(), genericIdentifiers.end(), identifier);
     return it != genericIdentifiers.end();
 }
@@ -143,7 +150,7 @@ std::string Monomorphizer::getGenericModuleNameFromAlias(const Token& aliasToken
     console.compileErrorOnToken("Use does not exist or NOT GENERIC", aliasToken);
 }
 
-std::string Monomorphizer::getGenericModuleNameFromStruct(const Token& nameToken)
+std::string Monomorphizer::getGenericModuleNameFromUse(const Token& nameToken)
 {
     std::string genericModuleName;
 
@@ -151,6 +158,24 @@ std::string Monomorphizer::getGenericModuleNameFromStruct(const Token& nameToken
         return genericModuleName;
 
     console.compileErrorOnToken("GENERIC STRUCT does not exist", nameToken);
+}
+
+void Monomorphizer::setWorkingModuleFromAlias(const Token& aliasToken)
+{
+    workingModule = getGenericModuleNameFromAlias(aliasToken);
+}
+
+std::string Monomorphizer::getGenericModuleFromToken(const Token& token)
+{
+    if (workingModule.size() == 0)
+        return getGenericModuleNameFromUse(token);
+
+    const GenericASTIndex& index = genericsMap.at(workingModule);
+
+    if (!elementInList(token.toString(), index.genericStructs))
+        console.compileErrorOnToken("GENERIC STRUCT does not exist", token);
+
+    return workingModule;
 }
 
 Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
