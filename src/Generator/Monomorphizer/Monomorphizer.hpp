@@ -25,8 +25,9 @@ namespace monomorphizer
 
         Console& console;
 
-        std::vector<std::string> getGenericStructs(const Node& root,
-                                                   const std::vector<std::string>& genericIdentifiers);
+        std::pair<std::vector<std::string>, std::vector<std::string>> getGenericStructsAndFunctions(
+            const Node& root,
+            const std::vector<std::string>& genericIdentifiers);
 
         void createFrom(const std::string& genericModuleName, const Token& symbolToken);
 

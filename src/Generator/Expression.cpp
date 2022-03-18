@@ -134,6 +134,7 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
     ctx.ir.resetWorkingModule();
+    ctx.mm.resetWorkingModule();
 
     int nodeCounter = setWorkingModuleFromNode(ctx, root, 0);
 
