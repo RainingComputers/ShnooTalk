@@ -2,16 +2,26 @@
 
 int setWorkingModuleFromNode(generator::GeneratorContext& ctx, const Node& root, size_t startIndex)
 {
+    bool genericModuleSet = false;
+
     size_t nodeCounter;
 
     for (nodeCounter = startIndex; root.isNthChild(node::MODULE, nodeCounter); nodeCounter++)
     {
         const Token& aliasToken = root.children[nodeCounter].tok;
 
-        if (ctx.mm.aliasExists(aliasToken))
+        if (genericModuleSet)
             ctx.console.compileErrorOnToken("Invalid MODULE ACCESS from GENERIC", aliasToken);
 
-        ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromToken(aliasToken));
+        if (ctx.mm.aliasExists(aliasToken))
+        {
+            ctx.mm.setWorkingModuleFromAlias(aliasToken);
+            genericModuleSet = true;
+        }
+        else
+        {
+            ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromToken(aliasToken));
+        }
     }
 
     return nodeCounter;

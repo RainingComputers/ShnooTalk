@@ -1,8 +1,8 @@
 MODULE InvalidGenericModuleAccessError.shtk
-ERROR in Line 5 Col 5
+ERROR in Line 5 Col 11
 
     Pair::lol::foo()
-    ^
+          ^
 Invalid MODULE ACCESS from GENERIC
 
-InvalidGenericModuleAccessError.shtk:5:4
+InvalidGenericModuleAccessError.shtk:5:10

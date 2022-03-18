@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "../../Builder/NameMangle.hpp"
+#include "../../TemplateUtils/ItemInList.hpp"
 #include "GenericASTIndex.hpp"
 #include "MonomorphNameMangle.hpp"
 
@@ -10,6 +11,7 @@ struct InstiatorContext
 {
     std::string& genericIdentifier;
     std::vector<std::string>& genericStructs;
+    std::vector<std::string>& genericFunctions;
     Token& typeRootToken;
     Node& instTypeNode;
     icode::TypeDescription& instantiationType;
@@ -17,13 +19,19 @@ struct InstiatorContext
     Console& console;
 
     bool isGenericStruct(const Token& nameToken) const;
+    bool isGenericFunction(const Token& nameToken) const;
 };
 
 void block(const InstiatorContext& ctx, Node& root);
 
 bool InstiatorContext::isGenericStruct(const Token& nameToken) const
 {
-    return std::find(genericStructs.begin(), genericStructs.end(), nameToken.toString()) != genericStructs.end();
+    return itemInList<std::string>(nameToken.toString(), genericStructs);
+}
+
+bool InstiatorContext::isGenericFunction(const Token& nameToken) const
+{
+    return itemInList<std::string>(nameToken.toString(), genericFunctions);
 }
 
 Token modToken(const Token& tok, const std::string& tokenString)
@@ -171,6 +179,16 @@ void make(const InstiatorContext& ctx, Node& root)
     monomorphizeTypeNode(ctx, root.children[0]);
 }
 
+void functionCall(const InstiatorContext& ctx, Node& root)
+{
+    const Token& nameToken = root.tok;
+
+    if (!ctx.isGenericFunction(nameToken.toString()))
+        return;
+
+    root.tok = modToken(nameToken, getInstantiatedStructName(ctx.instantiationSuffix, nameToken));
+}
+
 void expression(const InstiatorContext& ctx, Node& root)
 {
     if (root.type == node::SIZEOF)
@@ -184,6 +202,9 @@ void expression(const InstiatorContext& ctx, Node& root)
         make(ctx, root);
         return;
     }
+
+    if (root.type == node::FUNCCALL)
+        functionCall(ctx, root);
 
     if (root.isNthChild(node::PTR_CAST, 0) || root.isNthChild(node::PTR_ARRAY_CAST, 0))
         pointerCast(ctx, root);
@@ -277,11 +298,11 @@ void monomorphizeTypeNodes(const InstiatorContext& ctx, Node& root)
     }
 }
 
-void appendInstantiationSuffixToStruct(const InstiatorContext& ctx, Node& root)
+void appendInstantiationSuffix(const InstiatorContext& ctx, Node& root)
 {
     const Token& nameToken = root.children[0].tok;
 
-    if (!ctx.isGenericStruct(nameToken))
+    if (!ctx.isGenericStruct(nameToken) && !ctx.isGenericFunction(nameToken))
         return;
 
     root.children[0].tok = modToken(nameToken, getInstantiatedStructName(ctx.instantiationSuffix, nameToken));
@@ -293,8 +314,8 @@ void instantiateASTSingle(InstiatorContext& ctx, Node& genericModuleAST)
     {
         monomorphizeTypeNodes(ctx, child);
 
-        if (child.type == node::STRUCT)
-            appendInstantiationSuffixToStruct(ctx, child);
+        if (child.type == node::STRUCT || child.type == node::FUNCTION)
+            appendInstantiationSuffix(ctx, child);
     }
 }
 
@@ -339,7 +360,7 @@ void prependUseNodes(const std::vector<icode::TypeDescription>& instantiationTyp
         stripModulesFromTypeNode(typeNode);
         prependModuleToTypeNode(typeNode, alias);
 
-        if (std::find(prependedModules.begin(), prependedModules.end(), moduleName) != prependedModules.end())
+        if (itemInList<std::string>(moduleName, prependedModules))
             continue;
 
         prependedModules.push_back(moduleName);
@@ -361,9 +382,14 @@ Node instantiateAST(GenericASTIndex index,
 
     for (size_t i = 0; i < index.genericIdentifiers.size(); i += 1)
     {
-        InstiatorContext ctx =
-            InstiatorContext{ index.genericIdentifiers[i], index.genericStructs, typeRootToken, instTypeNodes[i],
-                              instantiationTypes[i],       instantiationSuffix,  console };
+        InstiatorContext ctx = InstiatorContext{ index.genericIdentifiers[i],
+                                                 index.genericStructs,
+                                                 index.genericFunctions,
+                                                 typeRootToken,
+                                                 instTypeNodes[i],
+                                                 instantiationTypes[i],
+                                                 instantiationSuffix,
+                                                 console };
 
         instantiateASTSingle(ctx, genericModuleAST);
     }

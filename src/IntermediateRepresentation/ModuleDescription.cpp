@@ -2,6 +2,7 @@
 #include <cmath>
 
 #include "../TemplateUtils/GetMapElement.hpp"
+#include "../TemplateUtils/ItemInList.hpp"
 
 #include "ModuleDescription.hpp"
 
@@ -66,7 +67,7 @@ namespace icode
 
     bool ModuleDescription::useExists(const std::string& name)
     {
-        return std::find(uses.begin(), uses.end(), name) != uses.end();
+        return itemInList(name, uses);
     }
 
     bool ModuleDescription::aliasExists(const std::string& name)

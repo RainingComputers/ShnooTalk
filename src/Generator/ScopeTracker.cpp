@@ -1,5 +1,7 @@
 #include <algorithm>
 
+#include "../TemplateUtils/ItemInList.hpp"
+
 #include "ScopeTracker.hpp"
 
 ScopeTracker::ScopeTracker()
@@ -31,8 +33,8 @@ void ScopeTracker::resetScope()
 
 bool ScopeTracker::isInCurrentScope(const Token& symbol)
 {
-    const int symbolScope = symbolScopeMap.at(symbol.toString());
-    return std::find(scopeStack.begin(), scopeStack.end(), symbolScope) != scopeStack.end();
+    const unsigned int symbolScope = symbolScopeMap.at(symbol.toString());
+    return itemInList<unsigned int>(symbolScope, scopeStack);
 }
 
 void ScopeTracker::putInCurrentScope(const Token& symbol)

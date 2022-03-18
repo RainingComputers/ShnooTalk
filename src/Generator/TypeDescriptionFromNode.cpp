@@ -1,12 +1,10 @@
 #include "../Builder/TypeDescriptionUtil.hpp"
-#include "Module.hpp"
 #include "Generic.hpp"
+#include "Module.hpp"
 
 #include "TypeDescriptionFromNode.hpp"
 
 using namespace icode;
-
-
 
 TypeDescription instantiateGenericAndGetType(generator::GeneratorContext& ctx,
                                              const std::string& genericModuleName,

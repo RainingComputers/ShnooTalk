@@ -223,6 +223,8 @@ namespace pp
         FlatJSONPrinter floatDefinePrinter = jsonp.beginNested("floatDefines");
         printNumberMap<double>(moduleDescription.floatDefines, floatDefinePrinter);
 
+        // TODO print incomplete types
+
         FlatJSONPrinter stringDefinePrinter = jsonp.beginNested("stringDefines");
         printStringMap(moduleDescription.stringDefines, stringDefinePrinter);
 

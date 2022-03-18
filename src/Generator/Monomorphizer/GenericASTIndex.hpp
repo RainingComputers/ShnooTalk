@@ -11,6 +11,7 @@ struct GenericASTIndex
     Node ast;
     std::vector<std::string> genericIdentifiers;
     std::vector<std::string> genericStructs;
+    std::vector<std::string> genericFunctions;
 };
 
 #endif
