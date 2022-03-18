@@ -57,7 +57,7 @@ namespace monomorphizer
 
         Node instantiateGeneric(const std::string& genericModuleName,
                                 const std::string& instantiationSuffix,
-                                const Token& genericStructNameToken,
+                                const Token& genericNameToken,
                                 const std::vector<icode::TypeDescription>& instantiationTypes,
                                 const std::vector<Node>& instantiationTypeNodes);
     };
