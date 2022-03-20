@@ -133,7 +133,11 @@ make test
 
 - [ ] Debug symbols
 - [ ] Python wrapper generator
+
+### Platforms
+
 - [ ] WebAssembly support
+- [ ] Arduino Uno support using avr-gcc as linker and wrapper around arduino core
 
 ### Testing
 - [x] Refactor tests
