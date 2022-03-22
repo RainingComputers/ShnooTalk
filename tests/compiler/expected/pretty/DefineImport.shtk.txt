@@ -19,11 +19,11 @@
                         newLine
                         printString stringData _str_TestModules_RandomDefine_shtk__l1_c23
                         newLine
-                        ubyte* tempPtr13 = createPointer stringData _str_TestModules_RandomDefine_shtk__l1_c23
-                        passPointer ubyte* tempPtr13, void _fn_DefineImport_shtk_test, module DefineImport.shtk
-                        void calleeReturnValue16 = call void _fn_DefineImport_shtk_test, module DefineImport.shtk
-                        int temp21 = cast autoInt 0
-                        int returnValue19 = equal int temp21
+                        ubyte* tempPtr14 = createPointer stringData _str_TestModules_RandomDefine_shtk__l1_c23
+                        passPointer ubyte* tempPtr14, void _fn_DefineImport_shtk_test, module DefineImport.shtk
+                        void calleeReturnValue17 = call void _fn_DefineImport_shtk_test, module DefineImport.shtk
+                        int temp22 = cast autoInt 0
+                        int returnValue20 = equal int temp22
                         return
                 ]
             }

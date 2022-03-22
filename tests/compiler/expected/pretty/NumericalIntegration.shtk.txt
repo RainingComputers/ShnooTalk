@@ -27,34 +27,34 @@
                         float temp35 = multiply float temp32, float w
                         float temp36 = add float a, float temp35
                         pass float temp36, float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
-                        float calleeReturnValue40 = call float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
-                        float temp43 = multiply float w, float calleeReturnValue40
-                        float area = equal float temp43
-                        float temp46 = add float sum, float area
-                        float sum = equal float temp46
+                        float calleeReturnValue41 = call float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
+                        float temp44 = multiply float w, float calleeReturnValue41
+                        float area = equal float temp44
+                        float temp47 = add float sum, float area
+                        float sum = equal float temp47
                     _for_cont_true_l15_c4:
-                        int temp50 = cast autoInt 1
-                        int temp49 = add int i, int temp50
-                        int i = equal int temp49
+                        int temp51 = cast autoInt 1
+                        int temp50 = add int i, int temp51
+                        int i = equal int temp50
                         goto _for_true_l15_c4
                     _for_false_l15_c4:
-                        float returnValue51 = equal float sum
+                        float returnValue52 = equal float sum
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        float temp60 = cast autoFloat 0.000000
-                        pass float temp60, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                        float temp64 = cast autoFloat 3.000000
-                        pass float temp64, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                        float temp68 = cast autoFloat 10000.000000
-                        pass float temp68, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                        float calleeReturnValue71 = call float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                        print float calleeReturnValue71
+                        float temp66 = cast autoFloat 0.000000
+                        pass float temp66, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float temp69 = cast autoFloat 3.000000
+                        pass float temp69, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float temp72 = cast autoFloat 10000.000000
+                        pass float temp72, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float calleeReturnValue75 = call float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        print float calleeReturnValue75
                         newLine
-                        int temp76 = cast autoInt 0
-                        int returnValue74 = equal int temp76
+                        int temp80 = cast autoInt 0
+                        int returnValue78 = equal int temp80
                         return
                 ]
             }

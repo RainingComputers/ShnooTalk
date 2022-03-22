@@ -30,29 +30,29 @@
                         int* tempPtr35 = addressAdd int* tempPtr32, bytes 4
                         int temp36 = cast autoInt 3
                         int* tempPtr35 = write int temp36
-                        int* tempPtr39 = createPointer int arr
-                        passPointer int* tempPtr39, void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
-                        void calleeReturnValue42 = call void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
-                        int* tempPtr47 = createPointer int arr
-                        void* tempPtr49 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr50 = addressAdd int* tempPtr47, void* tempPtr49
-                        int temp51 = read int* tempPtr50
-                        print int temp51
+                        int* tempPtr40 = createPointer int arr
+                        passPointer int* tempPtr40, void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
+                        void calleeReturnValue43 = call void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
+                        int* tempPtr48 = createPointer int arr
+                        void* tempPtr50 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr51 = addressAdd int* tempPtr48, void* tempPtr50
+                        int temp52 = read int* tempPtr51
+                        print int temp52
                         newLine
-                        int* tempPtr54 = createPointer int arr
-                        void* tempPtr56 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr57 = addressAdd int* tempPtr54, void* tempPtr56
-                        int temp58 = read int* tempPtr57
-                        print int temp58
+                        int* tempPtr55 = createPointer int arr
+                        void* tempPtr57 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr58 = addressAdd int* tempPtr55, void* tempPtr57
+                        int temp59 = read int* tempPtr58
+                        print int temp59
                         newLine
-                        int* tempPtr61 = createPointer int arr
-                        void* tempPtr63 = addressMultiply autoInt 2, bytes 4
-                        int* tempPtr64 = addressAdd int* tempPtr61, void* tempPtr63
-                        int temp65 = read int* tempPtr64
-                        print int temp65
+                        int* tempPtr62 = createPointer int arr
+                        void* tempPtr64 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr65 = addressAdd int* tempPtr62, void* tempPtr64
+                        int temp66 = read int* tempPtr65
+                        print int temp66
                         newLine
-                        int temp68 = cast autoInt 0
-                        int returnValue66 = equal int temp68
+                        int temp69 = cast autoInt 0
+                        int returnValue67 = equal int temp69
                         return
                 ]
             }

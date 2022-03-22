@@ -30,15 +30,15 @@
                         int* tempPtr32 = createPointer struct foobar
                         int* tempPtr34 = addressAdd int* tempPtr32, bytes 0
                         passPointer int* tempPtr34, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
-                        void calleeReturnValue38 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
-                        int* tempPtr42 = createPointer struct foobar
-                        int** tempPtrPtr44 = addressAdd int* tempPtr42, bytes 4
-                        passPointer int** tempPtrPtr44, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
-                        void calleeReturnValue48 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                        void calleeReturnValue39 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                        int* tempPtr43 = createPointer struct foobar
+                        int** tempPtrPtr45 = addressAdd int* tempPtr43, bytes 4
+                        passPointer int** tempPtrPtr45, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                        void calleeReturnValue50 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
                         print int c
                         newLine
-                        int temp54 = cast autoInt 0
-                        int returnValue52 = equal int temp54
+                        int temp56 = cast autoInt 0
+                        int returnValue54 = equal int temp56
                         return
                 ]
             }

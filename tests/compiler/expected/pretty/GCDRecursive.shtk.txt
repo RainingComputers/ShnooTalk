@@ -11,25 +11,25 @@
                         int returnValue11 = equal int n
                         return
                     _if_false_l3_c4:
+                        int temp19 = remainder int m, int n
                         pass int n, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
-                        int temp21 = remainder int m, int n
-                        pass int temp21, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
-                        int calleeReturnValue24 = call int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
-                        int returnValue13 = equal int calleeReturnValue24
+                        pass int temp19, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                        int calleeReturnValue26 = call int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                        int returnValue13 = equal int calleeReturnValue26
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        int temp33 = cast autoInt 45
-                        pass int temp33, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
-                        int temp37 = cast autoInt 60
-                        pass int temp37, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
-                        int calleeReturnValue40 = call int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
-                        print int calleeReturnValue40
+                        int temp38 = cast autoInt 45
+                        pass int temp38, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                        int temp41 = cast autoInt 60
+                        pass int temp41, int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                        int calleeReturnValue44 = call int _fn_GCDRecursive_shtk_gcd, module GCDRecursive.shtk
+                        print int calleeReturnValue44
                         newLine
-                        int temp45 = cast autoInt 0
-                        int returnValue43 = equal int temp45
+                        int temp49 = cast autoInt 0
+                        int returnValue47 = equal int temp49
                         return
                 ]
             }

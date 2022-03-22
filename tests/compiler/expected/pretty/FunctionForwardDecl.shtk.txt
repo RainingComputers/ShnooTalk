@@ -14,20 +14,20 @@
                         int temp16 = cast autoInt 1
                         int temp15 = subtract int n, int temp16
                         pass int temp15, byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
-                        byte calleeReturnValue20 = call byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
-                        byte returnValue12 = equal byte calleeReturnValue20
+                        byte calleeReturnValue21 = call byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
+                        byte returnValue12 = equal byte calleeReturnValue21
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        int temp28 = cast autoInt 10
-                        pass int temp28, byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
-                        byte calleeReturnValue31 = call byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
-                        print byte calleeReturnValue31
+                        int temp30 = cast autoInt 10
+                        pass int temp30, byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
+                        byte calleeReturnValue33 = call byte _fn_TestModules_IsEven_shtk_is_even, module TestModules/IsEven.shtk
+                        print byte calleeReturnValue33
                         newLine
-                        int temp36 = cast autoInt 0
-                        int returnValue34 = equal int temp36
+                        int temp38 = cast autoInt 0
+                        int returnValue36 = equal int temp38
                         return
                 ]
             }
@@ -48,8 +48,8 @@
                         int temp16 = cast autoInt 1
                         int temp15 = subtract int n, int temp16
                         pass int temp15, byte _fn_FunctionForwardDecl_shtk_is_odd, module FunctionForwardDecl.shtk
-                        byte calleeReturnValue20 = call byte _fn_FunctionForwardDecl_shtk_is_odd, module FunctionForwardDecl.shtk
-                        byte returnValue12 = equal byte calleeReturnValue20
+                        byte calleeReturnValue21 = call byte _fn_FunctionForwardDecl_shtk_is_odd, module FunctionForwardDecl.shtk
+                        byte returnValue12 = equal byte calleeReturnValue21
                         return
                 ]
             }

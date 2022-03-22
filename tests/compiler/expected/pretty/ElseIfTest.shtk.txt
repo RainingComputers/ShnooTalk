@@ -33,20 +33,20 @@
             },
             "main": {
                 "icode": [
-                        int temp30 = cast autoInt 1
-                        pass int temp30, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
-                        void calleeReturnValue33 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
-                        int temp38 = cast autoInt 2
-                        pass int temp38, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
-                        void calleeReturnValue41 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
-                        int temp46 = cast autoInt 3
-                        pass int temp46, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
-                        void calleeReturnValue49 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
-                        int temp54 = cast autoInt 4
-                        pass int temp54, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
-                        void calleeReturnValue57 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
-                        int temp62 = cast autoInt 0
-                        int returnValue60 = equal int temp62
+                        int temp31 = cast autoInt 1
+                        pass int temp31, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                        void calleeReturnValue34 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                        int temp40 = cast autoInt 2
+                        pass int temp40, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                        void calleeReturnValue43 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                        int temp49 = cast autoInt 3
+                        pass int temp49, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                        void calleeReturnValue52 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                        int temp58 = cast autoInt 4
+                        pass int temp58, void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                        void calleeReturnValue61 = call void _fn_ElseIfTest_shtk_foo, module ElseIfTest.shtk
+                        int temp66 = cast autoInt 0
+                        int returnValue64 = equal int temp66
                         return
                 ]
             }

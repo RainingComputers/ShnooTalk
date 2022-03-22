@@ -6,13 +6,13 @@
                 "icode": [
                         printString stringData _str_ExternFunction_shtk__l5_c12
                         newLine
-                        int temp6 = cast autoInt 0
-                        pass int temp6, void exit, module ExternFunction.shtk
-                        void calleeReturnValue9 = call void exit, module ExternFunction.shtk
+                        int temp7 = cast autoInt 0
+                        pass int temp7, void exit, module ExternFunction.shtk
+                        void calleeReturnValue10 = call void exit, module ExternFunction.shtk
                         printString stringData _str_ExternFunction_shtk__l9_c12
                         newLine
-                        int temp15 = cast autoInt 0
-                        int returnValue13 = equal int temp15
+                        int temp16 = cast autoInt 0
+                        int returnValue14 = equal int temp16
                         return
                 ]
             }

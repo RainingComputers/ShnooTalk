@@ -24,28 +24,28 @@
             },
             "main": {
                 "icode": [
-                        int temp25 = cast autoInt 4
-                        pass int temp25, byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
-                        byte calleeReturnValue28 = call byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
-                        print byte calleeReturnValue28
+                        int temp26 = cast autoInt 4
+                        pass int temp26, byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
+                        byte calleeReturnValue29 = call byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
+                        print byte calleeReturnValue29
                         newLine
-                        int temp33 = cast autoInt 10
-                        pass int temp33, byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
-                        byte calleeReturnValue36 = call byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
-                        print byte calleeReturnValue36
+                        int temp35 = cast autoInt 10
+                        pass int temp35, byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
+                        byte calleeReturnValue38 = call byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
+                        print byte calleeReturnValue38
                         newLine
-                        int temp41 = cast autoInt 6
-                        pass int temp41, byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
-                        byte calleeReturnValue44 = call byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
-                        print byte calleeReturnValue44
+                        int temp44 = cast autoInt 6
+                        pass int temp44, byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
+                        byte calleeReturnValue47 = call byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
+                        print byte calleeReturnValue47
                         newLine
-                        int temp49 = cast autoInt 100
-                        pass int temp49, byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
-                        byte calleeReturnValue52 = call byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
-                        print byte calleeReturnValue52
+                        int temp53 = cast autoInt 100
+                        pass int temp53, byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
+                        byte calleeReturnValue56 = call byte _fn_ReturnConditionalExpression_shtk_isSingleDigitNumber, module ReturnConditionalExpression.shtk
+                        print byte calleeReturnValue56
                         newLine
-                        int temp57 = cast autoInt 0
-                        int returnValue55 = equal int temp57
+                        int temp61 = cast autoInt 0
+                        int returnValue59 = equal int temp61
                         return
                 ]
             }

@@ -87,35 +87,35 @@
                         int* tempPtr106 = addressAdd int* tempPtr103, bytes 4
                         int temp107 = cast autoInt 1
                         int* tempPtr106 = write int temp107
-                        int* tempPtr114 = createPointer int c
-                        passPointer int* tempPtr114, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
-                        int* tempPtr118 = createPointer int a
-                        passPointer int* tempPtr118, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
-                        int* tempPtr122 = createPointer int b
-                        passPointer int* tempPtr122, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
-                        int temp126 = cast autoInt 2
-                        pass int temp126, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
-                        void calleeReturnValue129 = call void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
-                        int temp134 = cast autoInt 0
-                        int i = equal int temp134
+                        int* tempPtr121 = createPointer int c
+                        passPointer int* tempPtr121, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
+                        int* tempPtr124 = createPointer int a
+                        passPointer int* tempPtr124, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
+                        int* tempPtr127 = createPointer int b
+                        passPointer int* tempPtr127, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
+                        int temp130 = cast autoInt 2
+                        pass int temp130, void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
+                        void calleeReturnValue133 = call void _fn_PolynomialMultiply_shtk_multipy_poly, module PolynomialMultiply.shtk
+                        int temp138 = cast autoInt 0
+                        int i = equal int temp138
                     _for_true_l28_c4:
-                        int temp140 = cast autoInt 5
-                        flag = lessThan int i, int temp140
+                        int temp144 = cast autoInt 5
+                        flag = lessThan int i, int temp144
                         if(not flag) goto _for_false_l28_c4
-                        int* tempPtr143 = createPointer int c
-                        void* tempPtr145 = addressMultiply int i, bytes 4
-                        int* tempPtr146 = addressAdd int* tempPtr143, void* tempPtr145
-                        int temp147 = read int* tempPtr146
-                        print int temp147
+                        int* tempPtr147 = createPointer int c
+                        void* tempPtr149 = addressMultiply int i, bytes 4
+                        int* tempPtr150 = addressAdd int* tempPtr147, void* tempPtr149
+                        int temp151 = read int* tempPtr150
+                        print int temp151
                         newLine
                     _for_cont_true_l28_c4:
-                        int temp151 = cast autoInt 1
-                        int temp150 = add int i, int temp151
-                        int i = equal int temp150
+                        int temp155 = cast autoInt 1
+                        int temp154 = add int i, int temp155
+                        int i = equal int temp154
                         goto _for_true_l28_c4
                     _for_false_l28_c4:
-                        int temp154 = cast autoInt 0
-                        int returnValue152 = equal int temp154
+                        int temp158 = cast autoInt 0
+                        int returnValue156 = equal int temp158
                         return
                 ]
             }

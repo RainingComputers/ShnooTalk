@@ -13,21 +13,21 @@
                     {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "subtract", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "n", "dtype": "int"}, "op3": {"type": "temp", "id": 16, "dtype": "int"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 18, "name": "_fn_TestModules_IsEven_shtk_is_even", "dtype": "byte"}, "op3": {"type": "module", "id": 19, "name": "TestModules/IsEven.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 20, "dtype": "byte"}, "op2": {"type": "var", "id": 21, "name": "_fn_TestModules_IsEven_shtk_is_even", "dtype": "byte"}, "op3": {"type": "module", "id": 22, "name": "TestModules/IsEven.shtk"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "byte"}, "op2": {"type": "calleeReturnValue", "id": 20, "dtype": "byte"}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "_fn_TestModules_IsEven_shtk_is_even", "dtype": "byte"}, "op3": {"type": "module", "id": 20, "name": "TestModules/IsEven.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 21, "dtype": "byte"}, "op2": {"type": "var", "id": 22, "name": "_fn_TestModules_IsEven_shtk_is_even", "dtype": "byte"}, "op3": {"type": "module", "id": 23, "name": "TestModules/IsEven.shtk"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "byte"}, "op2": {"type": "calleeReturnValue", "id": 21, "dtype": "byte"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
             "main": {
                 "icode": [
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 28, "dtype": "int"}, "op2": {"type": "literal", "id": 26, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 28, "dtype": "int"}, "op2": {"type": "var", "id": 29, "name": "_fn_TestModules_IsEven_shtk_is_even", "dtype": "byte"}, "op3": {"type": "module", "id": 30, "name": "TestModules/IsEven.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 31, "dtype": "byte"}, "op2": {"type": "var", "id": 32, "name": "_fn_TestModules_IsEven_shtk_is_even", "dtype": "byte"}, "op3": {"type": "module", "id": 33, "name": "TestModules/IsEven.shtk"}},
-                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 31, "dtype": "byte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "literal", "id": 27, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "_fn_TestModules_IsEven_shtk_is_even", "dtype": "byte"}, "op3": {"type": "module", "id": 32, "name": "TestModules/IsEven.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 33, "dtype": "byte"}, "op2": {"type": "var", "id": 34, "name": "_fn_TestModules_IsEven_shtk_is_even", "dtype": "byte"}, "op3": {"type": "module", "id": 35, "name": "TestModules/IsEven.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 33, "dtype": "byte"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 36, "dtype": "int"}, "op2": {"type": "literal", "id": 35, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 34, "dtype": "int"}, "op2": {"type": "temp", "id": 36, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 37, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 36, "dtype": "int"}, "op2": {"type": "temp", "id": 38, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }
@@ -47,9 +47,9 @@
                     {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "subtract", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "n", "dtype": "int"}, "op3": {"type": "temp", "id": 16, "dtype": "int"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 18, "name": "_fn_FunctionForwardDecl_shtk_is_odd", "dtype": "byte"}, "op3": {"type": "module", "id": 19, "name": "FunctionForwardDecl.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 20, "dtype": "byte"}, "op2": {"type": "var", "id": 21, "name": "_fn_FunctionForwardDecl_shtk_is_odd", "dtype": "byte"}, "op3": {"type": "module", "id": 22, "name": "FunctionForwardDecl.shtk"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "byte"}, "op2": {"type": "calleeReturnValue", "id": 20, "dtype": "byte"}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "_fn_FunctionForwardDecl_shtk_is_odd", "dtype": "byte"}, "op3": {"type": "module", "id": 20, "name": "FunctionForwardDecl.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 21, "dtype": "byte"}, "op2": {"type": "var", "id": 22, "name": "_fn_FunctionForwardDecl_shtk_is_odd", "dtype": "byte"}, "op3": {"type": "module", "id": 23, "name": "FunctionForwardDecl.shtk"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "byte"}, "op2": {"type": "calleeReturnValue", "id": 21, "dtype": "byte"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

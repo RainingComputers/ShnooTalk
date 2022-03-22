@@ -13,26 +13,26 @@
                 "icode": [
                         int temp10 = cast autoInt 0
                         int i = equal int temp10
-                        struct* tempPtr13 = createPointer struct a
-                        passPointer struct* tempPtr13, void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
-                        void calleeReturnValue16 = call void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
+                        struct* tempPtr14 = createPointer struct a
+                        passPointer struct* tempPtr14, void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
+                        void calleeReturnValue17 = call void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
                     _for_true_l15_c4:
-                        int temp24 = cast autoInt 2
-                        flag = lessThan int i, int temp24
+                        int temp25 = cast autoInt 2
+                        flag = lessThan int i, int temp25
                         if(not flag) goto _for_false_l15_c4
                         printString stringData _str_ForLoopMethodCall_shtk__l17_c16
                         newLine
-                        int temp29 = cast autoInt 1
-                        int temp28 = add int i, int temp29
-                        int i = equal int temp28
+                        int temp30 = cast autoInt 1
+                        int temp29 = add int i, int temp30
+                        int i = equal int temp29
                     _for_cont_true_l15_c4:
-                        struct* tempPtr32 = createPointer struct a
-                        passPointer struct* tempPtr32, void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
-                        void calleeReturnValue35 = call void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
+                        struct* tempPtr34 = createPointer struct a
+                        passPointer struct* tempPtr34, void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
+                        void calleeReturnValue37 = call void _fn_ForLoopMethodCall_shtk_lol, module ForLoopMethodCall.shtk
                         goto _for_true_l15_c4
                     _for_false_l15_c4:
-                        int temp40 = cast autoInt 0
-                        int returnValue38 = equal int temp40
+                        int temp42 = cast autoInt 0
+                        int returnValue40 = equal int temp42
                         return
                 ]
             }

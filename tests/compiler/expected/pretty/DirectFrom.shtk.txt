@@ -4,18 +4,18 @@
         "functions": {
             "main": {
                 "icode": [
-                        int temp6 = cast autoInt 1
-                        pass int temp6, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp10 = cast autoInt 1
-                        pass int temp10, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        void calleeReturnValue13 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp19 = cast autoInt 2
-                        pass int temp19, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp23 = cast autoInt 0
-                        pass int temp23, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        void calleeReturnValue26 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp31 = cast autoInt 0
-                        int returnValue29 = equal int temp31
+                        int temp9 = cast autoInt 1
+                        pass int temp9, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp12 = cast autoInt 1
+                        pass int temp12, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        void calleeReturnValue15 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp24 = cast autoInt 2
+                        pass int temp24, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp27 = cast autoInt 0
+                        pass int temp27, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        void calleeReturnValue30 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp35 = cast autoInt 0
+                        int returnValue33 = equal int temp35
                         return
                 ]
             }

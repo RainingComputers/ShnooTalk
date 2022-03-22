@@ -150,6 +150,30 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
     return result;
 }
 
+Unit createCallFunction(generator::GeneratorContext& ctx,
+                  const std::vector<Token>& actualParamTokens,
+                  const std::vector<Unit>& actualParams,
+                  const Token& calleeNameToken,
+                  const FunctionDescription& callee)
+{
+    std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
+
+    if (actualParams.size() != callee.numParameters())
+        ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
+
+    for (size_t i = 0; i < actualParams.size(); i += 1)
+    {
+        const Unit& actualParam = actualParams[i];
+        const Unit& formalParam = formalParameters[i];
+
+        passParamTypeCheck(ctx, actualParam, formalParam, actualParamTokens[i]);
+
+        ctx.ir.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);
+    }
+
+    return ctx.ir.functionBuilder.callFunction(calleeNameToken, callee);
+}
+
 Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
@@ -168,31 +192,24 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
     FunctionDescription callee = ctx.ir.descriptionFinder.getFunction(calleeNameToken);
     std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
-    if (root.children.size() != callee.numParameters())
-        ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
-
     ctx.ir.resetWorkingModule();
+
+    std::vector<Token> actualParamTokens;
+    std::vector<Unit> actualParams;
 
     for (size_t i = 0; i < root.children.size(); i++)
     {
-        Unit formalParam = formalParameters[i];
-
-        Unit actualParam;
-        const Token& actualParamToken = root.children[i].tok;
+        actualParamTokens.push_back(root.children[i].tok);
 
         if (i == 0)
-            actualParam = firstActualParam;
+            actualParams.push_back(firstActualParam);
         else
-            actualParam = expression(ctx, root.children[i]);
-
-        passParamTypeCheck(ctx, actualParam, formalParam, actualParamToken);
-
-        ctx.ir.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);
+            actualParams.push_back(expression(ctx, root.children[i]));
     }
 
     ctx.ir.popWorkingModule();
 
-    return ctx.ir.functionBuilder.callFunction(calleeNameToken, callee);
+    return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
 }
 
 Unit make(generator::GeneratorContext& ctx, const Node& root)
