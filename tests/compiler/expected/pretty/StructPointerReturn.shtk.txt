@@ -52,44 +52,44 @@
                         int* tempPtr55 = createPointer struct arr
                         void* tempPtr57 = addressMultiply int i, bytes 8
                         int* tempPtr58 = addressAdd int* tempPtr55, void* tempPtr57
+                        int temp65 = cast autoInt 10
+                        int temp64 = add int i, int temp65
                         pass int i, struct _fn_StructPointerReturn_shtk_createVector, module StructPointerReturn.shtk
-                        int temp67 = cast autoInt 10
-                        int temp66 = add int i, int temp67
-                        pass int temp66, struct _fn_StructPointerReturn_shtk_createVector, module StructPointerReturn.shtk
-                        struct calleeReturnValue70 = call struct _fn_StructPointerReturn_shtk_createVector, module StructPointerReturn.shtk
-                        int* tempPtr73 = createPointer int* tempPtr58
-                        int* tempPtr74 = createPointer struct calleeReturnValue70
-                        int* tempPtr73 = memoryCopy int* tempPtr74, autoInt 8
+                        pass int temp64, struct _fn_StructPointerReturn_shtk_createVector, module StructPointerReturn.shtk
+                        struct calleeReturnValue72 = call struct _fn_StructPointerReturn_shtk_createVector, module StructPointerReturn.shtk
+                        int* tempPtr75 = createPointer int* tempPtr58
+                        int* tempPtr76 = createPointer struct calleeReturnValue72
+                        int* tempPtr75 = memoryCopy int* tempPtr76, autoInt 8
                     _for_cont_true_l31_c4:
-                        int temp79 = cast autoInt 1
-                        int temp78 = add int i, int temp79
-                        int i = equal int temp78
+                        int temp81 = cast autoInt 1
+                        int temp80 = add int i, int temp81
+                        int i = equal int temp80
                         goto _for_true_l31_c4
                     _for_false_l31_c4:
-                        int* tempPtr83 = createPointer struct arr
-                        passPointer int* tempPtr83, struct _fn_StructPointerReturn_shtk_test, module StructPointerReturn.shtk
-                        struct* calleeReturnPointer86 = call struct _fn_StructPointerReturn_shtk_test, module StructPointerReturn.shtk
-                        struct* vecArray = pointerAssign struct* calleeReturnPointer86
-                        int temp91 = cast autoInt 0
-                        int i = equal int temp91
+                        int* tempPtr86 = createPointer struct arr
+                        passPointer int* tempPtr86, struct _fn_StructPointerReturn_shtk_test, module StructPointerReturn.shtk
+                        struct* calleeReturnPointer89 = call struct _fn_StructPointerReturn_shtk_test, module StructPointerReturn.shtk
+                        struct* vecArray = pointerAssign struct* calleeReturnPointer89
+                        int temp94 = cast autoInt 0
+                        int i = equal int temp94
                     _for_true_l36_c4:
-                        int temp97 = cast autoInt 10
-                        flag = lessThan int i, int temp97
+                        int temp100 = cast autoInt 10
+                        flag = lessThan int i, int temp100
                         if(not flag) goto _for_false_l36_c4
-                        int* tempPtr100 = createPointer struct* vecArray
-                        void* tempPtr102 = addressMultiply int i, bytes 8
-                        int* tempPtr103 = addressAdd int* tempPtr100, void* tempPtr102
-                        int* tempPtr105 = createPointer int* tempPtr103
-                        passPointer int* tempPtr105, void _fn_StructPointerReturn_shtk_printVec, module StructPointerReturn.shtk
-                        void calleeReturnValue108 = call void _fn_StructPointerReturn_shtk_printVec, module StructPointerReturn.shtk
+                        int* tempPtr103 = createPointer struct* vecArray
+                        void* tempPtr105 = addressMultiply int i, bytes 8
+                        int* tempPtr106 = addressAdd int* tempPtr103, void* tempPtr105
+                        int* tempPtr109 = createPointer int* tempPtr106
+                        passPointer int* tempPtr109, void _fn_StructPointerReturn_shtk_printVec, module StructPointerReturn.shtk
+                        void calleeReturnValue112 = call void _fn_StructPointerReturn_shtk_printVec, module StructPointerReturn.shtk
                     _for_cont_true_l36_c4:
-                        int temp114 = cast autoInt 1
-                        int temp113 = add int i, int temp114
-                        int i = equal int temp113
+                        int temp118 = cast autoInt 1
+                        int temp117 = add int i, int temp118
+                        int i = equal int temp117
                         goto _for_true_l36_c4
                     _for_false_l36_c4:
-                        int temp117 = cast autoInt 0
-                        int returnValue115 = equal int temp117
+                        int temp121 = cast autoInt 0
+                        int returnValue119 = equal int temp121
                         return
                 ]
             }

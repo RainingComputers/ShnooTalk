@@ -42,36 +42,36 @@
                         int temp52 = cast autoInt 1
                         flag = greaterThan int i, int temp52
                         if(not flag) goto _for_false_l16_c4
-                        int* tempPtr57 = createPointer int a
-                        passPointer int* tempPtr57, int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
+                        int* tempPtr60 = createPointer int a
+                        passPointer int* tempPtr60, int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
                         pass int i, int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
-                        int calleeReturnValue63 = call int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
-                        int pos = equal int calleeReturnValue63
-                        int* tempPtr69 = createPointer int a
-                        void* tempPtr71 = addressMultiply int pos, bytes 4
-                        int* tempPtr72 = addressAdd int* tempPtr69, void* tempPtr71
-                        int temp73 = read int* tempPtr72
-                        int maxval = equal int temp73
-                        int* tempPtr76 = createPointer int a
-                        void* tempPtr78 = addressMultiply int pos, bytes 4
-                        int* tempPtr79 = addressAdd int* tempPtr76, void* tempPtr78
-                        int temp84 = cast autoInt 1
-                        int temp83 = subtract int i, int temp84
-                        int* tempPtr85 = createPointer int a
-                        void* tempPtr87 = addressMultiply int temp83, bytes 4
-                        int* tempPtr88 = addressAdd int* tempPtr85, void* tempPtr87
-                        int temp89 = read int* tempPtr88
-                        int* tempPtr79 = write int temp89
-                        int temp94 = cast autoInt 1
-                        int temp93 = subtract int i, int temp94
-                        int* tempPtr95 = createPointer int a
-                        void* tempPtr97 = addressMultiply int temp93, bytes 4
-                        int* tempPtr98 = addressAdd int* tempPtr95, void* tempPtr97
-                        int* tempPtr98 = write int maxval
+                        int calleeReturnValue65 = call int _fn_SelectionSort_shtk_maxPos, module SelectionSort.shtk
+                        int pos = equal int calleeReturnValue65
+                        int* tempPtr71 = createPointer int a
+                        void* tempPtr73 = addressMultiply int pos, bytes 4
+                        int* tempPtr74 = addressAdd int* tempPtr71, void* tempPtr73
+                        int temp75 = read int* tempPtr74
+                        int maxval = equal int temp75
+                        int* tempPtr78 = createPointer int a
+                        void* tempPtr80 = addressMultiply int pos, bytes 4
+                        int* tempPtr81 = addressAdd int* tempPtr78, void* tempPtr80
+                        int temp86 = cast autoInt 1
+                        int temp85 = subtract int i, int temp86
+                        int* tempPtr87 = createPointer int a
+                        void* tempPtr89 = addressMultiply int temp85, bytes 4
+                        int* tempPtr90 = addressAdd int* tempPtr87, void* tempPtr89
+                        int temp91 = read int* tempPtr90
+                        int* tempPtr81 = write int temp91
+                        int temp96 = cast autoInt 1
+                        int temp95 = subtract int i, int temp96
+                        int* tempPtr97 = createPointer int a
+                        void* tempPtr99 = addressMultiply int temp95, bytes 4
+                        int* tempPtr100 = addressAdd int* tempPtr97, void* tempPtr99
+                        int* tempPtr100 = write int maxval
                     _for_cont_true_l16_c4:
-                        int temp103 = cast autoInt 1
-                        int temp102 = subtract int i, int temp103
-                        int i = equal int temp102
+                        int temp105 = cast autoInt 1
+                        int temp104 = subtract int i, int temp105
+                        int i = equal int temp104
                         goto _for_true_l16_c4
                     _for_false_l16_c4:
                         return
@@ -79,59 +79,59 @@
             },
             "main": {
                 "icode": [
-                        int* tempPtr118 = createPointer int a
-                        int temp119 = cast autoInt 2
-                        int* tempPtr118 = write int temp119
-                        int* tempPtr121 = addressAdd int* tempPtr118, bytes 4
-                        int temp122 = cast autoInt 45
-                        int* tempPtr121 = write int temp122
-                        int* tempPtr124 = addressAdd int* tempPtr121, bytes 4
-                        int temp125 = cast autoInt 64
-                        int* tempPtr124 = write int temp125
-                        int* tempPtr127 = addressAdd int* tempPtr124, bytes 4
-                        int temp128 = cast autoInt 23
-                        int* tempPtr127 = write int temp128
-                        int* tempPtr130 = addressAdd int* tempPtr127, bytes 4
-                        int temp131 = cast autoInt 65
-                        int* tempPtr130 = write int temp131
-                        int* tempPtr133 = addressAdd int* tempPtr130, bytes 4
-                        int temp134 = cast autoInt 1
-                        int* tempPtr133 = write int temp134
-                        int* tempPtr136 = addressAdd int* tempPtr133, bytes 4
-                        int temp137 = cast autoInt 75
-                        int* tempPtr136 = write int temp137
-                        int* tempPtr139 = addressAdd int* tempPtr136, bytes 4
-                        int temp140 = cast autoInt 74
-                        int* tempPtr139 = write int temp140
-                        int* tempPtr142 = addressAdd int* tempPtr139, bytes 4
-                        int temp143 = cast autoInt 43
-                        int* tempPtr142 = write int temp143
-                        int* tempPtr145 = addressAdd int* tempPtr142, bytes 4
-                        int temp146 = cast autoInt 55
-                        int* tempPtr145 = write int temp146
-                        int* tempPtr149 = createPointer int a
-                        passPointer int* tempPtr149, void _fn_SelectionSort_shtk_selSort, module SelectionSort.shtk
-                        void calleeReturnValue152 = call void _fn_SelectionSort_shtk_selSort, module SelectionSort.shtk
-                        int temp157 = cast autoInt 0
-                        int i = equal int temp157
+                        int* tempPtr120 = createPointer int a
+                        int temp121 = cast autoInt 2
+                        int* tempPtr120 = write int temp121
+                        int* tempPtr123 = addressAdd int* tempPtr120, bytes 4
+                        int temp124 = cast autoInt 45
+                        int* tempPtr123 = write int temp124
+                        int* tempPtr126 = addressAdd int* tempPtr123, bytes 4
+                        int temp127 = cast autoInt 64
+                        int* tempPtr126 = write int temp127
+                        int* tempPtr129 = addressAdd int* tempPtr126, bytes 4
+                        int temp130 = cast autoInt 23
+                        int* tempPtr129 = write int temp130
+                        int* tempPtr132 = addressAdd int* tempPtr129, bytes 4
+                        int temp133 = cast autoInt 65
+                        int* tempPtr132 = write int temp133
+                        int* tempPtr135 = addressAdd int* tempPtr132, bytes 4
+                        int temp136 = cast autoInt 1
+                        int* tempPtr135 = write int temp136
+                        int* tempPtr138 = addressAdd int* tempPtr135, bytes 4
+                        int temp139 = cast autoInt 75
+                        int* tempPtr138 = write int temp139
+                        int* tempPtr141 = addressAdd int* tempPtr138, bytes 4
+                        int temp142 = cast autoInt 74
+                        int* tempPtr141 = write int temp142
+                        int* tempPtr144 = addressAdd int* tempPtr141, bytes 4
+                        int temp145 = cast autoInt 43
+                        int* tempPtr144 = write int temp145
+                        int* tempPtr147 = addressAdd int* tempPtr144, bytes 4
+                        int temp148 = cast autoInt 55
+                        int* tempPtr147 = write int temp148
+                        int* tempPtr152 = createPointer int a
+                        passPointer int* tempPtr152, void _fn_SelectionSort_shtk_selSort, module SelectionSort.shtk
+                        void calleeReturnValue155 = call void _fn_SelectionSort_shtk_selSort, module SelectionSort.shtk
+                        int temp160 = cast autoInt 0
+                        int i = equal int temp160
                     _for_true_l31_c4:
-                        int temp163 = cast autoInt 10
-                        flag = lessThan int i, int temp163
+                        int temp166 = cast autoInt 10
+                        flag = lessThan int i, int temp166
                         if(not flag) goto _for_false_l31_c4
-                        int* tempPtr166 = createPointer int a
-                        void* tempPtr168 = addressMultiply int i, bytes 4
-                        int* tempPtr169 = addressAdd int* tempPtr166, void* tempPtr168
-                        int temp170 = read int* tempPtr169
-                        print int temp170
+                        int* tempPtr169 = createPointer int a
+                        void* tempPtr171 = addressMultiply int i, bytes 4
+                        int* tempPtr172 = addressAdd int* tempPtr169, void* tempPtr171
+                        int temp173 = read int* tempPtr172
+                        print int temp173
                         newLine
                     _for_cont_true_l31_c4:
-                        int temp174 = cast autoInt 1
-                        int temp173 = add int i, int temp174
-                        int i = equal int temp173
+                        int temp177 = cast autoInt 1
+                        int temp176 = add int i, int temp177
+                        int i = equal int temp176
                         goto _for_true_l31_c4
                     _for_false_l31_c4:
-                        int temp177 = cast autoInt 0
-                        int returnValue175 = equal int temp177
+                        int temp180 = cast autoInt 0
+                        int returnValue178 = equal int temp180
                         return
                 ]
             }

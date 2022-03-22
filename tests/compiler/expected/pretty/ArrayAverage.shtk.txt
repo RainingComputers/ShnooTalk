@@ -47,13 +47,13 @@
                         int* tempPtr54 = addressAdd int* tempPtr51, bytes 4
                         int temp55 = cast autoInt 5
                         int* tempPtr54 = write int temp55
-                        int* tempPtr58 = createPointer int a
-                        passPointer int* tempPtr58, int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
-                        int calleeReturnValue61 = call int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
-                        print int calleeReturnValue61
+                        int* tempPtr59 = createPointer int a
+                        passPointer int* tempPtr59, int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
+                        int calleeReturnValue62 = call int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
+                        print int calleeReturnValue62
                         newLine
-                        int temp66 = cast autoInt 0
-                        int returnValue64 = equal int temp66
+                        int temp67 = cast autoInt 0
+                        int returnValue65 = equal int temp67
                         return
                 ]
             }

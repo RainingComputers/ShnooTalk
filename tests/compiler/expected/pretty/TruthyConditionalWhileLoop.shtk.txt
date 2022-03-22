@@ -22,19 +22,19 @@
                         int i = equal int temp20
                     _while_true_l12_c4:
                         pass int i, byte _fn_TruthyConditionalWhileLoop_shtk_stop, module TruthyConditionalWhileLoop.shtk
-                        byte calleeReturnValue27 = call byte _fn_TruthyConditionalWhileLoop_shtk_stop, module TruthyConditionalWhileLoop.shtk
-                        byte temp31 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue27, byte temp31
+                        byte calleeReturnValue28 = call byte _fn_TruthyConditionalWhileLoop_shtk_stop, module TruthyConditionalWhileLoop.shtk
+                        byte temp32 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue28, byte temp32
                         if(flag) goto _while_false_l12_c4
                         print int i
                         newLine
-                        int temp36 = cast autoInt 1
-                        int temp35 = add int i, int temp36
-                        int i = equal int temp35
+                        int temp37 = cast autoInt 1
+                        int temp36 = add int i, int temp37
+                        int i = equal int temp36
                         goto _while_true_l12_c4
                     _while_false_l12_c4:
-                        int temp39 = cast autoInt 0
-                        int returnValue37 = equal int temp39
+                        int temp40 = cast autoInt 0
+                        int returnValue38 = equal int temp40
                         return
                 ]
             }

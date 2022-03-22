@@ -27,12 +27,12 @@
                         int temp26 = cast autoInt 5
                         int k = equal int temp26
                         pass int k, int _fn_LoopBreak_shtk_foobar, module LoopBreak.shtk
-                        int calleeReturnValue32 = call int _fn_LoopBreak_shtk_foobar, module LoopBreak.shtk
-                        int l = equal int calleeReturnValue32
+                        int calleeReturnValue33 = call int _fn_LoopBreak_shtk_foobar, module LoopBreak.shtk
+                        int l = equal int calleeReturnValue33
                         print int l
                         newLine
-                        int temp38 = cast autoInt 0
-                        int returnValue36 = equal int temp38
+                        int temp39 = cast autoInt 0
+                        int returnValue37 = equal int temp39
                         return
                 ]
             }

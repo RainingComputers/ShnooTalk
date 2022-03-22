@@ -22,34 +22,34 @@
             },
             "main": {
                 "icode": [
-                        int temp24 = cast autoInt 1
-                        pass int temp24, int _fn_ArrayReturnType_shtk_foobar, module ArrayReturnType.shtk
-                        int temp28 = cast autoInt 2
-                        pass int temp28, int _fn_ArrayReturnType_shtk_foobar, module ArrayReturnType.shtk
-                        int calleeReturnValue31 = call int _fn_ArrayReturnType_shtk_foobar, module ArrayReturnType.shtk
-                        int* tempPtr34 = createPointer int a
-                        int* tempPtr35 = createPointer int calleeReturnValue31
-                        int* tempPtr34 = memoryCopy int* tempPtr35, autoInt 12
-                        int* tempPtr39 = createPointer int a
-                        void* tempPtr41 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr42 = addressAdd int* tempPtr39, void* tempPtr41
-                        int temp43 = read int* tempPtr42
-                        print int temp43
+                        int temp27 = cast autoInt 1
+                        pass int temp27, int _fn_ArrayReturnType_shtk_foobar, module ArrayReturnType.shtk
+                        int temp30 = cast autoInt 2
+                        pass int temp30, int _fn_ArrayReturnType_shtk_foobar, module ArrayReturnType.shtk
+                        int calleeReturnValue33 = call int _fn_ArrayReturnType_shtk_foobar, module ArrayReturnType.shtk
+                        int* tempPtr36 = createPointer int a
+                        int* tempPtr37 = createPointer int calleeReturnValue33
+                        int* tempPtr36 = memoryCopy int* tempPtr37, autoInt 12
+                        int* tempPtr41 = createPointer int a
+                        void* tempPtr43 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr44 = addressAdd int* tempPtr41, void* tempPtr43
+                        int temp45 = read int* tempPtr44
+                        print int temp45
                         newLine
-                        int* tempPtr46 = createPointer int a
-                        void* tempPtr48 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr49 = addressAdd int* tempPtr46, void* tempPtr48
-                        int temp50 = read int* tempPtr49
-                        print int temp50
+                        int* tempPtr48 = createPointer int a
+                        void* tempPtr50 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr51 = addressAdd int* tempPtr48, void* tempPtr50
+                        int temp52 = read int* tempPtr51
+                        print int temp52
                         newLine
-                        int* tempPtr53 = createPointer int a
-                        void* tempPtr55 = addressMultiply autoInt 2, bytes 4
-                        int* tempPtr56 = addressAdd int* tempPtr53, void* tempPtr55
-                        int temp57 = read int* tempPtr56
-                        print int temp57
+                        int* tempPtr55 = createPointer int a
+                        void* tempPtr57 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr58 = addressAdd int* tempPtr55, void* tempPtr57
+                        int temp59 = read int* tempPtr58
+                        print int temp59
                         newLine
-                        int temp60 = cast autoInt 0
-                        int returnValue58 = equal int temp60
+                        int temp62 = cast autoInt 0
+                        int returnValue60 = equal int temp62
                         return
                 ]
             }

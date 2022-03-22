@@ -20,18 +20,18 @@
                         int _fn_Global_shtk_globalFoo = equal int temp17
                         print int _fn_Global_shtk_globalFoo
                         newLine
-                        int temp21 = cast autoInt 3
-                        pass int temp21, void _fn_Global_shtk_foobar, module Global.shtk
-                        void calleeReturnValue24 = call void _fn_Global_shtk_foobar, module Global.shtk
+                        int temp22 = cast autoInt 3
+                        pass int temp22, void _fn_Global_shtk_foobar, module Global.shtk
+                        void calleeReturnValue25 = call void _fn_Global_shtk_foobar, module Global.shtk
                         print int _fn_Global_shtk_globalFoo
                         newLine
-                        int temp31 = cast autoInt 1
-                        int temp30 = add int _fn_Global_shtk_globalFoo, int temp31
-                        int _fn_Global_shtk_globalFoo = equal int temp30
+                        int temp32 = cast autoInt 1
+                        int temp31 = add int _fn_Global_shtk_globalFoo, int temp32
+                        int _fn_Global_shtk_globalFoo = equal int temp31
                         print int _fn_Global_shtk_globalFoo
                         newLine
-                        int temp35 = cast autoInt 0
-                        int returnValue33 = equal int temp35
+                        int temp36 = cast autoInt 0
+                        int returnValue34 = equal int temp36
                         return
                 ]
             }

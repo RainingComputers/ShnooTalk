@@ -14,36 +14,36 @@
                         int temp17 = cast autoInt 1
                         int temp16 = subtract int num, int temp17
                         pass int temp16, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        int calleeReturnValue21 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        int temp24 = multiply int num, int calleeReturnValue21
-                        int returnValue12 = equal int temp24
+                        int calleeReturnValue22 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        int temp25 = multiply int num, int calleeReturnValue22
+                        int returnValue12 = equal int temp25
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        int temp30 = cast autoInt 2
-                        pass int temp30, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        int calleeReturnValue33 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        print int calleeReturnValue33
+                        int temp32 = cast autoInt 2
+                        pass int temp32, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        int calleeReturnValue35 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        print int calleeReturnValue35
                         newLine
-                        int temp38 = cast autoInt 3
-                        pass int temp38, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        int calleeReturnValue41 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        print int calleeReturnValue41
+                        int temp41 = cast autoInt 3
+                        pass int temp41, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        int calleeReturnValue44 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        print int calleeReturnValue44
                         newLine
-                        int temp46 = cast autoInt 4
-                        pass int temp46, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        int calleeReturnValue49 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        print int calleeReturnValue49
+                        int temp50 = cast autoInt 4
+                        pass int temp50, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        int calleeReturnValue53 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        print int calleeReturnValue53
                         newLine
-                        int temp54 = cast autoInt 5
-                        pass int temp54, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        int calleeReturnValue57 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
-                        print int calleeReturnValue57
+                        int temp59 = cast autoInt 5
+                        pass int temp59, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        int calleeReturnValue62 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        print int calleeReturnValue62
                         newLine
-                        int temp62 = cast autoInt 0
-                        int returnValue60 = equal int temp62
+                        int temp67 = cast autoInt 0
+                        int returnValue65 = equal int temp67
                         return
                 ]
             }

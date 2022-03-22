@@ -26,13 +26,13 @@
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 26, "dtype": "int"}, "op2": {"type": "literal", "id": 25, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 24, "name": "k", "dtype": "int"}, "op2": {"type": "temp", "id": 26, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "var", "id": 28, "name": "k", "dtype": "int"}, "op2": {"type": "var", "id": 30, "name": "_fn_LoopBreak_shtk_foobar", "dtype": "int"}, "op3": {"type": "module", "id": 31, "name": "LoopBreak.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 32, "dtype": "int"}, "op2": {"type": "var", "id": 33, "name": "_fn_LoopBreak_shtk_foobar", "dtype": "int"}, "op3": {"type": "module", "id": 34, "name": "LoopBreak.shtk"}},
-                    {"opcode": "equal", "op1": {"type": "var", "id": 27, "name": "l", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 32, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "print", "op1": {"type": "var", "id": 35, "name": "l", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "var", "id": 28, "name": "k", "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "_fn_LoopBreak_shtk_foobar", "dtype": "int"}, "op3": {"type": "module", "id": 32, "name": "LoopBreak.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 33, "dtype": "int"}, "op2": {"type": "var", "id": 34, "name": "_fn_LoopBreak_shtk_foobar", "dtype": "int"}, "op3": {"type": "module", "id": 35, "name": "LoopBreak.shtk"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 27, "name": "l", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 33, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "var", "id": 36, "name": "l", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 37, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 36, "dtype": "int"}, "op2": {"type": "temp", "id": 38, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 39, "dtype": "int"}, "op2": {"type": "literal", "id": 38, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 37, "dtype": "int"}, "op2": {"type": "temp", "id": 39, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }
