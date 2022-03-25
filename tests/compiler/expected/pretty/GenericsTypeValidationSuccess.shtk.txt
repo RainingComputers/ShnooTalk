@@ -155,53 +155,53 @@
             }
         }
     },
-    "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int": {
-        "moduleName": "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int",
+    "TestModules/FooGeneric.shtk[int[2][2]]": {
+        "moduleName": "TestModules/FooGeneric.shtk[int[2][2]]",
         "functions": {
         }
     },
-    "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int_array1_ptr": {
-        "moduleName": "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int_array1_ptr",
+    "TestModules/FooGeneric.shtk[int[2]]": {
+        "moduleName": "TestModules/FooGeneric.shtk[int[2]]",
         "functions": {
         }
     },
-    "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int_array2": {
-        "moduleName": "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int_array2",
+    "TestModules/FooGeneric.shtk[int[]]": {
+        "moduleName": "TestModules/FooGeneric.shtk[int[]]",
         "functions": {
         }
     },
-    "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int_array22": {
-        "moduleName": "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int_array22",
+    "TestModules/FooGeneric.shtk[int]": {
+        "moduleName": "TestModules/FooGeneric.shtk[int]",
         "functions": {
         }
     },
-    "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int_ptr": {
-        "moduleName": "TestModules/FooGeneric.shtk__GenericsTypeValidationSuccess_shtk_int_ptr",
+    "TestModules/FooGeneric.shtk[int~]": {
+        "moduleName": "TestModules/FooGeneric.shtk[int~]",
         "functions": {
         }
     },
-    "TestModules/FooGenericEmptySubs.shtk__GenericsTypeValidationSuccess_shtk_int": {
-        "moduleName": "TestModules/FooGenericEmptySubs.shtk__GenericsTypeValidationSuccess_shtk_int",
+    "TestModules/FooGenericEmptySubs.shtk[int]": {
+        "moduleName": "TestModules/FooGenericEmptySubs.shtk[int]",
         "functions": {
         }
     },
-    "TestModules/FooGenericStar.shtk__GenericsTypeValidationSuccess_shtk_int": {
-        "moduleName": "TestModules/FooGenericStar.shtk__GenericsTypeValidationSuccess_shtk_int",
+    "TestModules/FooGenericStar.shtk[int]": {
+        "moduleName": "TestModules/FooGenericStar.shtk[int]",
         "functions": {
         }
     },
-    "TestModules/FooGenericSubs.shtk__GenericsTypeValidationSuccess_shtk_int": {
-        "moduleName": "TestModules/FooGenericSubs.shtk__GenericsTypeValidationSuccess_shtk_int",
+    "TestModules/FooGenericSubs.shtk[int[2]]": {
+        "moduleName": "TestModules/FooGenericSubs.shtk[int[2]]",
         "functions": {
         }
     },
-    "TestModules/FooGenericSubs.shtk__GenericsTypeValidationSuccess_shtk_int_array2": {
-        "moduleName": "TestModules/FooGenericSubs.shtk__GenericsTypeValidationSuccess_shtk_int_array2",
+    "TestModules/FooGenericSubs.shtk[int]": {
+        "moduleName": "TestModules/FooGenericSubs.shtk[int]",
         "functions": {
         }
     },
-    "TestModules/FooGenericSubsSubs.shtk__GenericsTypeValidationSuccess_shtk_int": {
-        "moduleName": "TestModules/FooGenericSubsSubs.shtk__GenericsTypeValidationSuccess_shtk_int",
+    "TestModules/FooGenericSubsSubs.shtk[int]": {
+        "moduleName": "TestModules/FooGenericSubsSubs.shtk[int]",
         "functions": {
         }
     }

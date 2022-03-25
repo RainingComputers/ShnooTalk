@@ -13,7 +13,6 @@ Node instantiateAST(GenericASTIndex index,
                     Token typeRootToken,
                     std::vector<icode::TypeDescription> instantiationTypes,
                     std::vector<Node> instTypeNodes,
-                    std::string instantiationSuffix,
                     Console& console);
 
 #endif

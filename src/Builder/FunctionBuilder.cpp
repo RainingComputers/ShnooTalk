@@ -366,7 +366,7 @@ Operand FunctionBuilder::addressMultiplyOperator(Operand op2, Operand op3)
     return entry.op1;
 }
 
-Unit FunctionBuilder::getStructFieldFromName(const std::string& fieldName, const Unit& unit)
+Unit FunctionBuilder::getStructFieldFromString(const std::string& fieldName, const Unit& unit)
 {
     StructDescription structDescription = modulesMap[unit.moduleName()].structures[unit.dtypeName()];
 
@@ -399,7 +399,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldNameToken, const Unit& un
     if (!structDescription.fieldExists(fieldName))
         console.compileErrorOnToken("Undefined STRUCT field", fieldNameToken);
 
-    return getStructFieldFromName(fieldName, unit);
+    return getStructFieldFromString(fieldName, unit);
 }
 
 Unit FunctionBuilder::getIndexedElement(const Unit& unit, const std::vector<Unit>& indices)
@@ -456,7 +456,7 @@ std::vector<Unit> FunctionBuilder::destructureStruct(const Unit& unit)
     const StructDescription& structDescription = structModule.structures.at(unit.dtypeName());
 
     for (const std::string& fieldName : structDescription.fieldNames)
-        destructuredUnits.push_back(getStructFieldFromName(fieldName, unit));
+        destructuredUnits.push_back(getStructFieldFromString(fieldName, unit));
 
     return destructuredUnits;
 }
@@ -483,7 +483,7 @@ std::map<std::string, Unit> FunctionBuilder::destructureStructMapped(const Unit&
     const StructDescription& structDescription = structModule.structures.at(unit.dtypeName());
 
     for (auto field : structDescription.structFields)
-        mappedDestructuredUnits[field.first] = getStructFieldFromName(field.first, unit);
+        mappedDestructuredUnits[field.first] = getStructFieldFromString(field.first, unit);
 
     return mappedDestructuredUnits;
 }

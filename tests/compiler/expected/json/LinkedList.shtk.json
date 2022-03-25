@@ -5,39 +5,39 @@
             "main": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 7, "dtype": "struct"}, "op2": {"type": "var", "id": 4, "name": "list", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 7, "dtype": "struct"}, "op2": {"type": "var", "id": 8, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_init", "dtype": "void"}, "op3": {"type": "module", "id": 9, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 10, "dtype": "void"}, "op2": {"type": "var", "id": 11, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_init", "dtype": "void"}, "op3": {"type": "module", "id": 12, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 7, "dtype": "struct"}, "op2": {"type": "var", "id": 8, "name": "_fn_TestModules_LinkedList_shtk[int]_init", "dtype": "void"}, "op3": {"type": "module", "id": 9, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 10, "dtype": "void"}, "op2": {"type": "var", "id": 11, "name": "_fn_TestModules_LinkedList_shtk[int]_init", "dtype": "void"}, "op3": {"type": "module", "id": 12, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 19, "dtype": "struct"}, "op2": {"type": "var", "id": 13, "name": "list", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 19, "dtype": "struct"}, "op2": {"type": "var", "id": 20, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 21, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 19, "dtype": "struct"}, "op2": {"type": "var", "id": 20, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 21, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 22, "dtype": "int"}, "op2": {"type": "literal", "id": 16, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 22, "dtype": "int"}, "op2": {"type": "var", "id": 23, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 24, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 25, "dtype": "void"}, "op2": {"type": "var", "id": 26, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 27, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 22, "dtype": "int"}, "op2": {"type": "var", "id": 23, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 24, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 25, "dtype": "void"}, "op2": {"type": "var", "id": 26, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 27, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "struct"}, "op2": {"type": "var", "id": 28, "name": "list", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "struct"}, "op2": {"type": "var", "id": 35, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 36, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "struct"}, "op2": {"type": "var", "id": 35, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 36, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 37, "dtype": "int"}, "op2": {"type": "literal", "id": 31, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 37, "dtype": "int"}, "op2": {"type": "var", "id": 38, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 39, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 40, "dtype": "void"}, "op2": {"type": "var", "id": 41, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 42, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 37, "dtype": "int"}, "op2": {"type": "var", "id": 38, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 39, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 40, "dtype": "void"}, "op2": {"type": "var", "id": 41, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 42, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 49, "dtype": "struct"}, "op2": {"type": "var", "id": 43, "name": "list", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 49, "dtype": "struct"}, "op2": {"type": "var", "id": 50, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 51, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 49, "dtype": "struct"}, "op2": {"type": "var", "id": 50, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 51, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 52, "dtype": "int"}, "op2": {"type": "literal", "id": 46, "dtype": "autoInt", "value": 23}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 52, "dtype": "int"}, "op2": {"type": "var", "id": 53, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 54, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 55, "dtype": "void"}, "op2": {"type": "var", "id": 56, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push", "dtype": "void"}, "op3": {"type": "module", "id": 57, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 52, "dtype": "int"}, "op2": {"type": "var", "id": 53, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 54, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 55, "dtype": "void"}, "op2": {"type": "var", "id": 56, "name": "_fn_TestModules_LinkedList_shtk[int]_push", "dtype": "void"}, "op3": {"type": "module", "id": 57, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "struct"}, "op2": {"type": "var", "id": 58, "name": "list", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "struct"}, "op2": {"type": "var", "id": 62, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_printList", "dtype": "void"}, "op3": {"type": "module", "id": 63, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 64, "dtype": "void"}, "op2": {"type": "var", "id": 65, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_printList", "dtype": "void"}, "op3": {"type": "module", "id": 66, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "struct"}, "op2": {"type": "var", "id": 62, "name": "_fn_TestModules_LinkedList_shtk[int]_printList", "dtype": "void"}, "op3": {"type": "module", "id": 63, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 64, "dtype": "void"}, "op2": {"type": "var", "id": 65, "name": "_fn_TestModules_LinkedList_shtk[int]_printList", "dtype": "void"}, "op3": {"type": "module", "id": 66, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 70, "dtype": "struct"}, "op2": {"type": "var", "id": 67, "name": "list", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 70, "dtype": "struct"}, "op2": {"type": "var", "id": 71, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_pop", "dtype": "int"}, "op3": {"type": "module", "id": 72, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 73, "dtype": "int"}, "op2": {"type": "var", "id": 74, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_pop", "dtype": "int"}, "op3": {"type": "module", "id": 75, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 70, "dtype": "struct"}, "op2": {"type": "var", "id": 71, "name": "_fn_TestModules_LinkedList_shtk[int]_pop", "dtype": "int"}, "op3": {"type": "module", "id": 72, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 73, "dtype": "int"}, "op2": {"type": "var", "id": 74, "name": "_fn_TestModules_LinkedList_shtk[int]_pop", "dtype": "int"}, "op3": {"type": "module", "id": 75, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 73, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 79, "dtype": "struct"}, "op2": {"type": "var", "id": 76, "name": "list", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 79, "dtype": "struct"}, "op2": {"type": "var", "id": 80, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_pop", "dtype": "int"}, "op3": {"type": "module", "id": 81, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 82, "dtype": "int"}, "op2": {"type": "var", "id": 83, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_pop", "dtype": "int"}, "op3": {"type": "module", "id": 84, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 79, "dtype": "struct"}, "op2": {"type": "var", "id": 80, "name": "_fn_TestModules_LinkedList_shtk[int]_pop", "dtype": "int"}, "op3": {"type": "module", "id": 81, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 82, "dtype": "int"}, "op2": {"type": "var", "id": 83, "name": "_fn_TestModules_LinkedList_shtk[int]_pop", "dtype": "int"}, "op3": {"type": "module", "id": 84, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 82, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 88, "dtype": "struct"}, "op2": {"type": "var", "id": 85, "name": "list", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 88, "dtype": "struct"}, "op2": {"type": "var", "id": 89, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_printList", "dtype": "void"}, "op3": {"type": "module", "id": 90, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 91, "dtype": "void"}, "op2": {"type": "var", "id": 92, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_printList", "dtype": "void"}, "op3": {"type": "module", "id": 93, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 88, "dtype": "struct"}, "op2": {"type": "var", "id": 89, "name": "_fn_TestModules_LinkedList_shtk[int]_printList", "dtype": "void"}, "op3": {"type": "module", "id": 90, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 91, "dtype": "void"}, "op2": {"type": "var", "id": 92, "name": "_fn_TestModules_LinkedList_shtk[int]_printList", "dtype": "void"}, "op3": {"type": "module", "id": 93, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 96, "dtype": "int"}, "op2": {"type": "literal", "id": 95, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 94, "dtype": "int"}, "op2": {"type": "temp", "id": 96, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
@@ -45,10 +45,10 @@
             }
         }
     },
-    "TestModules/LinkedList.shtk__LinkedList_shtk_int": {
-        "moduleName": "TestModules/LinkedList.shtk__LinkedList_shtk_int",
+    "TestModules/LinkedList.shtk[int]": {
+        "moduleName": "TestModules/LinkedList.shtk[int]",
         "functions": {
-            "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_createNode": {
+            "_fn_TestModules_LinkedList_shtk[int]_createNode": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "node", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
@@ -62,7 +62,7 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_init": {
+            "_fn_TestModules_LinkedList_shtk[int]_init": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 23, "dtype": "struct"}, "op2": {"type": "var", "id": 22, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 25, "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 23, "dtype": "struct"}, "op3": {"type": "bytes", "id": 24, "bytes": 0}},
@@ -71,7 +71,7 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_pop": {
+            "_fn_TestModules_LinkedList_shtk[int]_pop": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 79, "dtype": "struct"}, "op2": {"type": "var", "id": 78, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 81, "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 79, "dtype": "struct"}, "op3": {"type": "bytes", "id": 80, "bytes": 0}},
@@ -87,8 +87,8 @@
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 95, "dtype": "struct"}, "op2": {"type": "var", "id": 94, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 97, "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 95, "dtype": "struct"}, "op3": {"type": "bytes", "id": 96, "bytes": 0}},
                     {"opcode": "pointerCast", "op1": {"type": "tempPtr", "id": 98, "dtype": "ubyte"}, "op2": {"type": "tempPtrPtr", "id": 97, "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 98, "dtype": "ubyte"}, "op2": {"type": "var", "id": 101, "name": "free", "dtype": "void"}, "op3": {"type": "module", "id": 102, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 103, "dtype": "void"}, "op2": {"type": "var", "id": 104, "name": "free", "dtype": "void"}, "op3": {"type": "module", "id": 105, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 98, "dtype": "ubyte"}, "op2": {"type": "var", "id": 101, "name": "free", "dtype": "void"}, "op3": {"type": "module", "id": 102, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 103, "dtype": "void"}, "op2": {"type": "var", "id": 104, "name": "free", "dtype": "void"}, "op3": {"type": "module", "id": 105, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 107, "dtype": "struct"}, "op2": {"type": "var", "id": 106, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 109, "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 107, "dtype": "struct"}, "op3": {"type": "bytes", "id": 108, "bytes": 0}},
                     {"opcode": "pointerAssign", "op1": {"type": "tempPtrPtr", "id": 109, "dtype": "struct"}, "op2": {"type": "ptr", "id": 110, "name": "newTop", "dtype": "struct"}, "op3": {"type": "none"}},
@@ -96,7 +96,7 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_printList": {
+            "_fn_TestModules_LinkedList_shtk[int]_printList": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 118, "dtype": "struct"}, "op2": {"type": "var", "id": 117, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 120, "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 118, "dtype": "struct"}, "op3": {"type": "bytes", "id": 119, "bytes": 0}},
@@ -118,22 +118,22 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_push": {
+            "_fn_TestModules_LinkedList_shtk[int]_push": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 36, "dtype": "struct"}, "op2": {"type": "var", "id": 35, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 38, "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 36, "dtype": "struct"}, "op3": {"type": "bytes", "id": 37, "bytes": 0}},
-                    {"opcode": "pass", "op1": {"type": "var", "id": 32, "name": "data", "dtype": "int"}, "op2": {"type": "var", "id": 41, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_createNode", "dtype": "struct"}, "op3": {"type": "module", "id": 42, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "pass", "op1": {"type": "var", "id": 32, "name": "data", "dtype": "int"}, "op2": {"type": "var", "id": 41, "name": "_fn_TestModules_LinkedList_shtk[int]_createNode", "dtype": "struct"}, "op3": {"type": "module", "id": 42, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 43, "dtype": "int"}, "op2": {"type": "tempPtrPtr", "id": 38, "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 43, "dtype": "int"}, "op2": {"type": "var", "id": 44, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_createNode", "dtype": "struct"}, "op3": {"type": "module", "id": 45, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 46, "dtype": "struct"}, "op2": {"type": "var", "id": 47, "name": "_fn_TestModules_LinkedList_shtk__LinkedList_shtk_int_createNode", "dtype": "struct"}, "op3": {"type": "module", "id": 48, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 43, "dtype": "int"}, "op2": {"type": "var", "id": 44, "name": "_fn_TestModules_LinkedList_shtk[int]_createNode", "dtype": "struct"}, "op3": {"type": "module", "id": 45, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 46, "dtype": "struct"}, "op2": {"type": "var", "id": 47, "name": "_fn_TestModules_LinkedList_shtk[int]_createNode", "dtype": "struct"}, "op3": {"type": "module", "id": 48, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 49, "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "newNode", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 50, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 46, "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 49, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 50, "dtype": "int"}, "op3": {"type": "literal", "id": 51, "dtype": "autoInt", "value": 12}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 53, "dtype": "struct"}, "op2": {"type": "var", "id": 52, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 55, "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 53, "dtype": "struct"}, "op3": {"type": "bytes", "id": 54, "bytes": 0}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 59, "dtype": "int"}, "op2": {"type": "literal", "id": 56, "dtype": "autoInt", "value": 12}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 59, "dtype": "int"}, "op2": {"type": "var", "id": 60, "name": "malloc", "dtype": "ubyte"}, "op3": {"type": "module", "id": 61, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnPointer", "id": 62, "dtype": "ubyte"}, "op2": {"type": "var", "id": 63, "name": "malloc", "dtype": "ubyte"}, "op3": {"type": "module", "id": 64, "name": "TestModules/LinkedList.shtk__LinkedList_shtk_int"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 59, "dtype": "int"}, "op2": {"type": "var", "id": 60, "name": "malloc", "dtype": "ubyte"}, "op3": {"type": "module", "id": 61, "name": "TestModules/LinkedList.shtk[int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnPointer", "id": 62, "dtype": "ubyte"}, "op2": {"type": "var", "id": 63, "name": "malloc", "dtype": "ubyte"}, "op3": {"type": "module", "id": 64, "name": "TestModules/LinkedList.shtk[int]"}},
                     {"opcode": "pointerCast", "op1": {"type": "tempPtr", "id": 65, "dtype": "struct"}, "op2": {"type": "calleeReturnPointer", "id": 62, "dtype": "ubyte"}, "op3": {"type": "none"}},
                     {"opcode": "pointerAssign", "op1": {"type": "tempPtrPtr", "id": 55, "dtype": "struct"}, "op2": {"type": "tempPtr", "id": 65, "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 67, "dtype": "struct"}, "op2": {"type": "var", "id": 66, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},

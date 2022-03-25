@@ -45,6 +45,9 @@ bool genericTypePresent(const Node& root,
 
     for (const Node& child : root.children)
     {
+        if (child.type == node::BLOCK)
+            return false;
+
         if (genericTypePresent(child, genericIdentifiers, genericStructs))
             return true;
     }
@@ -61,7 +64,7 @@ std::pair<std::vector<std::string>, std::vector<std::string>> Monomorphizer::get
 
     for (const Node& child : root.children)
     {
-        if (child.type != node::STRUCT)
+        if (child.type != node::STRUCT && child.type != node::FUNCTION)
             continue;
 
         const Token& nameToken = child.children[0].tok;
@@ -69,7 +72,7 @@ std::pair<std::vector<std::string>, std::vector<std::string>> Monomorphizer::get
         if (itemInList<std::string>(nameToken.toString(), genericIdentifiers))
             console.compileErrorOnToken("Name cannot be a GENERIC IDENTIFIER", nameToken);
 
-        if (genericTypePresent(child.children[0], genericIdentifiers, genericStructs))
+        if (genericTypePresent(child, genericIdentifiers, genericStructs))
         {
             if (child.type == node::STRUCT)
                 genericStructs.push_back(nameToken.toString());
@@ -115,17 +118,17 @@ bool Monomorphizer::aliasExists(const Token& aliasToken)
 
 void Monomorphizer::createFrom(const std::string& genericModuleName, const Token& symbolToken)
 {
-    const std::string& structName = symbolToken.toString();
+    const std::string& symbolName = symbolToken.toString();
 
     GenericASTIndex& index = genericsMap.at(genericModuleName);
 
-    const bool isGenericStruct = itemInList<std::string>(structName, index.genericStructs);
-    const bool isGenericFunction = itemInList<std::string>(structName, index.genericFunctions);
+    const bool isGenericStruct = itemInList<std::string>(symbolName, index.genericStructs);
+    const bool isGenericFunction = itemInList<std::string>(symbolName, index.genericFunctions);
 
     if (!isGenericStruct && !isGenericFunction)
         console.compileErrorOnToken("GENERIC does not exist", symbolToken);
 
-    genericUses[structName] = genericModuleName;
+    genericUses[symbolName] = genericModuleName;
 }
 
 void Monomorphizer::createDirectFrom(const Token& pathToken, const Token& symbolToken)
@@ -177,14 +180,15 @@ std::string Monomorphizer::getGenericModuleFromToken(const Token& token)
 
     const GenericASTIndex& index = genericsMap.at(workingModule);
 
-    if (!itemInList<std::string>(token.toString(), index.genericStructs))
+    // TODO: Refactor below
+    if (!itemInList<std::string>(token.toString(), index.genericStructs) &&
+        !itemInList<std::string>(token.toString(), index.genericFunctions))
         console.compileErrorOnToken("GENERIC STRUCT does not exist", token);
 
     return workingModule;
 }
 
 Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
-                                       const std::string& instantiationSuffix,
                                        const Token& genericNameToken,
                                        const std::vector<icode::TypeDescription>& instantiationTypes,
                                        const std::vector<Node>& instantiationTypeNodes)
@@ -194,10 +198,5 @@ Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
     if (index.genericIdentifiers.size() != instantiationTypes.size())
         console.compileErrorOnToken("Number of type parameters don't match", genericNameToken);
 
-    return instantiateAST(index,
-                          genericNameToken,
-                          instantiationTypes,
-                          instantiationTypeNodes,
-                          instantiationSuffix,
-                          console);
+    return instantiateAST(index, genericNameToken, instantiationTypes, instantiationTypeNodes, console);
 }

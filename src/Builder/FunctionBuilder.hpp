@@ -42,7 +42,7 @@ class FunctionBuilder
 
     icode::Operand addressMultiplyOperator(icode::Operand op2, icode::Operand op3);
 
-    Unit getStructFieldFromName(const std::string& fieldName, const Unit& unit);
+    Unit getStructFieldFromString(const std::string& fieldName, const Unit& unit);
 
     std::vector<Unit> destructureArray(const Unit& unit);
 

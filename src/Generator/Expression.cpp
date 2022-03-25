@@ -1,5 +1,6 @@
 #include "../Builder/TypeCheck.hpp"
 #include "CustomOperator.hpp"
+#include "Generic.hpp"
 #include "Module.hpp"
 #include "OperatorTokenToInstruction.hpp"
 #include "PassParamTypeCheck.hpp"
@@ -151,10 +152,10 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
 }
 
 Unit createCallFunction(generator::GeneratorContext& ctx,
-                  const std::vector<Token>& actualParamTokens,
-                  const std::vector<Unit>& actualParams,
-                  const Token& calleeNameToken,
-                  const FunctionDescription& callee)
+                        const std::vector<Token>& actualParamTokens,
+                        const std::vector<Unit>& actualParams,
+                        const Token& calleeNameToken,
+                        const FunctionDescription& callee)
 {
     std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
@@ -208,6 +209,41 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
     }
 
     ctx.ir.popWorkingModule();
+
+    return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
+}
+
+Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
+{
+    const Token& calleeNameToken = root.tok;
+
+    const std::string& genericModuleName = ctx.mm.getGenericModuleFromToken(calleeNameToken);
+
+    std::vector<TypeDescription> instantiationTypes;
+    std::vector<Node> instantiationTypeNodes;
+
+    size_t nodeCounter;
+
+    for (nodeCounter = 0; root.children[nodeCounter].type == node::GENERIC_TYPE_PARAM; nodeCounter += 1)
+    {
+        instantiationTypeNodes.push_back(root.children[nodeCounter]);
+        instantiationTypes.push_back(typeDescriptionFromNode(ctx, root.children[nodeCounter]));
+    }
+
+    std::vector<Token> actualParamTokens;
+    std::vector<Unit> actualParams;
+
+    for (; nodeCounter < root.children.size(); nodeCounter++)
+    {
+        actualParamTokens.push_back(root.children[nodeCounter].tok);
+        actualParams.push_back(expression(ctx, root.children[nodeCounter]));
+    }
+
+    const FunctionDescription& callee = intantiateGenericAndGetFunction(ctx,
+                                                                        genericModuleName,
+                                                                        calleeNameToken,
+                                                                        instantiationTypes,
+                                                                        instantiationTypeNodes);
 
     return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
 }
@@ -276,6 +312,8 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
         case node::METHODCALL:
         case node::FUNCCALL:
             return functionCall(ctx, child);
+        case node::GENERIC_FUNCCALL:
+            return genericFunctionCall(ctx, child);
         case node::MODULE:
             return switchModuleAndCallTerm(ctx, root);
         case node::SIZEOF:

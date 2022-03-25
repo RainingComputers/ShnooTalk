@@ -6,31 +6,6 @@
 
 using namespace icode;
 
-TypeDescription instantiateGenericAndGetType(generator::GeneratorContext& ctx,
-                                             const std::string& genericModuleName,
-                                             const Token& genericStructNameToken,
-                                             const std::vector<TypeDescription>& instantiationTypes,
-                                             const std::vector<Node>& instantiationTypeNodes)
-{
-    ctx.ir.pushWorkingModule();
-
-    std::pair<std::string, std::string> moduleNameStructNamePair =
-        generateIRUsingMonomorphizer(ctx,
-                                     genericModuleName,
-                                     genericStructNameToken,
-                                     instantiationTypes,
-                                     instantiationTypeNodes);
-
-    ctx.ir.setWorkingModule(&ctx.modulesMap.at(moduleNameStructNamePair.first));
-
-    TypeDescription monomorphizedType =
-        ctx.ir.moduleBuilder.createTypeDescriptionFromStructName(moduleNameStructNamePair.second);
-
-    ctx.ir.popWorkingModule();
-
-    return monomorphizedType;
-}
-
 TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
@@ -59,7 +34,7 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
     const Token& genericStructNameToken = root.getNthChildToken(childNodeCounter);
     childNodeCounter++;
 
-    std::string genericModuleName = ctx.mm.getGenericModuleFromToken(genericStructNameToken);
+    const std::string& genericModuleName = ctx.mm.getGenericModuleFromToken(genericStructNameToken);
 
     std::vector<TypeDescription> instantiationTypes;
     std::vector<Node> instantiationTypeNodes;
