@@ -190,6 +190,110 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "ASSIGNMENT",
+              "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 6, "col": 4, "file": "SizeOf.shtk"},
+              "children": [
+                {
+                  "type": "TERM",
+                  "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 6, "col": 4, "file": "SizeOf.shtk"},
+                  "children": [
+                    {
+                      "type": "IDENTIFIER",
+                      "token": {"string": "s", "tokenType": "IDENTIFIER", "line": 6, "col": 4, "file": "SizeOf.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "ASSIGN_OPERATOR",
+                  "token": {"string": "=", "tokenType": "EQUAL", "line": 6, "col": 6, "file": "SizeOf.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "EXPRESSION",
+                  "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 6, "col": 8, "file": "SizeOf.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 6, "col": 8, "file": "SizeOf.shtk"},
+                      "children": [
+                        {
+                          "type": "SIZEOF",
+                          "token": {"string": "sizeof", "tokenType": "SIZEOF", "line": 6, "col": 8, "file": "SizeOf.shtk"},
+                          "children": [
+                            {
+                              "type": "MODULE",
+                              "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 6, "col": 15, "file": "SizeOf.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "type": "IDENTIFIER",
+                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 6, "col": 20, "file": "SizeOf.shtk"},
+                              "children": [
+                                
+                              ]
+                            },
+                            {
+                              "type": "GENERIC_TYPE_PARAM",
+                              "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 6, "col": 24, "file": "SizeOf.shtk"},
+                              "children": [
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 6, "col": 24, "file": "SizeOf.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GENERIC_TYPE_PARAM",
+                              "token": {"string": "flot", "tokenType": "IDENTIFIER", "line": 6, "col": 29, "file": "SizeOf.shtk"},
+                              "children": [
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "flot", "tokenType": "IDENTIFIER", "line": 6, "col": 29, "file": "SizeOf.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GENERIC_TYPE_PARAM",
+                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 6, "col": 35, "file": "SizeOf.shtk"},
+                              "children": [
+                                {
+                                  "type": "MODULE",
+                                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 6, "col": 35, "file": "SizeOf.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                },
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 6, "col": 40, "file": "SizeOf.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

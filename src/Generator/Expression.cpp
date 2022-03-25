@@ -13,16 +13,9 @@ using namespace icode;
 
 Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 {
-    ctx.ir.pushWorkingModule();
-    ctx.ir.resetWorkingModule();
+    const icode::TypeDescription& type = typeDescriptionFromNode(ctx, root);
 
-    setWorkingModuleFromNode(ctx, root, 0);
-
-    unsigned int size = ctx.ir.descriptionFinder.getDataTypeSizeFromToken(root.children.back().tok);
-
-    ctx.ir.popWorkingModule();
-
-    return ctx.ir.unitBuilder.unitFromIntLiteral(size);
+    return ctx.ir.unitBuilder.unitFromIntLiteral(type.size);
 }
 
 Unit literal(generator::GeneratorContext& ctx, const Node& root)

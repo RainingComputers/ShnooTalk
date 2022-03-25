@@ -81,7 +81,7 @@ make test
 - [x] Change compiler tests to use `-icode-all`
 - [ ] Class or struct destructors
 - [x] Generic function call
-- [ ] Fix sizeof
+- [x] Fix sizeof
 - [ ] Pretty name for generics
 - [ ] Spike static linking everything
 
@@ -113,6 +113,8 @@ make test
 - [ ] Static variables
 - [ ] Unsafe keyword
 - [ ] Struct alignment and padding
+- [ ] Revamp AST for type definitions
+- [ ] Arrays of generic type
 
 *Advanced Features*
 
@@ -137,7 +139,7 @@ make test
 ### Platforms
 
 - [ ] WebAssembly support
-- [ ] Arduino Uno support using avr-gcc as linker and wrapper around arduino core
+- [ ] Arduino Uno support
 
 ### Testing
 - [x] Refactor tests

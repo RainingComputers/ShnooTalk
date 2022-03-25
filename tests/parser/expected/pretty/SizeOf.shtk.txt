@@ -19,13 +19,29 @@
               │                 └───> nodeType=SIZEOF, string="sizeof", tokenType=SIZEOF, line=4, col=8
               │                       ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=4, col=15
               │                       └───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=4, col=20
-              └───> nodeType=ASSIGNMENT, string="s", tokenType=IDENTIFIER, line=5, col=4
-                    ├───> nodeType=TERM, string="s", tokenType=IDENTIFIER, line=5, col=4
-                    │     └───> nodeType=IDENTIFIER, string="s", tokenType=IDENTIFIER, line=5, col=4
-                    ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=5, col=6
-                    └───> nodeType=EXPRESSION, string="sizeof", tokenType=SIZEOF, line=5, col=8
-                          └───> nodeType=TERM, string="sizeof", tokenType=SIZEOF, line=5, col=8
-                                └───> nodeType=SIZEOF, string="sizeof", tokenType=SIZEOF, line=5, col=8
-                                      ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=5, col=15
-                                      ├───> nodeType=MODULE, string="bar", tokenType=IDENTIFIER, line=5, col=20
-                                      └───> nodeType=IDENTIFIER, string="hello", tokenType=IDENTIFIER, line=5, col=25
+              ├───> nodeType=ASSIGNMENT, string="s", tokenType=IDENTIFIER, line=5, col=4
+              │     ├───> nodeType=TERM, string="s", tokenType=IDENTIFIER, line=5, col=4
+              │     │     └───> nodeType=IDENTIFIER, string="s", tokenType=IDENTIFIER, line=5, col=4
+              │     ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=5, col=6
+              │     └───> nodeType=EXPRESSION, string="sizeof", tokenType=SIZEOF, line=5, col=8
+              │           └───> nodeType=TERM, string="sizeof", tokenType=SIZEOF, line=5, col=8
+              │                 └───> nodeType=SIZEOF, string="sizeof", tokenType=SIZEOF, line=5, col=8
+              │                       ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=5, col=15
+              │                       ├───> nodeType=MODULE, string="bar", tokenType=IDENTIFIER, line=5, col=20
+              │                       └───> nodeType=IDENTIFIER, string="hello", tokenType=IDENTIFIER, line=5, col=25
+              └───> nodeType=ASSIGNMENT, string="s", tokenType=IDENTIFIER, line=6, col=4
+                    ├───> nodeType=TERM, string="s", tokenType=IDENTIFIER, line=6, col=4
+                    │     └───> nodeType=IDENTIFIER, string="s", tokenType=IDENTIFIER, line=6, col=4
+                    ├───> nodeType=ASSIGN_OPERATOR, string="=", tokenType=EQUAL, line=6, col=6
+                    └───> nodeType=EXPRESSION, string="sizeof", tokenType=SIZEOF, line=6, col=8
+                          └───> nodeType=TERM, string="sizeof", tokenType=SIZEOF, line=6, col=8
+                                └───> nodeType=SIZEOF, string="sizeof", tokenType=SIZEOF, line=6, col=8
+                                      ├───> nodeType=MODULE, string="foo", tokenType=IDENTIFIER, line=6, col=15
+                                      ├───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=6, col=20
+                                      ├───> nodeType=GENERIC_TYPE_PARAM, string="int", tokenType=IDENTIFIER, line=6, col=24
+                                      │     └───> nodeType=IDENTIFIER, string="int", tokenType=IDENTIFIER, line=6, col=24
+                                      ├───> nodeType=GENERIC_TYPE_PARAM, string="flot", tokenType=IDENTIFIER, line=6, col=29
+                                      │     └───> nodeType=IDENTIFIER, string="flot", tokenType=IDENTIFIER, line=6, col=29
+                                      └───> nodeType=GENERIC_TYPE_PARAM, string="bar", tokenType=IDENTIFIER, line=6, col=35
+                                            ├───> nodeType=MODULE, string="bar", tokenType=IDENTIFIER, line=6, col=35
+                                            └───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=6, col=40

@@ -3,6 +3,6 @@ ERROR in Line 3 Col 20
 
     println(sizeof(doesnotexist))
                    ^
-Symbol does not exist
+Data type does not exist
 
 SizeOfDataTypeDoesNotExistError.shtk:3:19

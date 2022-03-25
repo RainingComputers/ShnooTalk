@@ -187,10 +187,7 @@ void sizeofBuiltIn(parser::ParserContext& ctx)
     ctx.expect(token::LPAREN);
     ctx.consume();
 
-    moduleQualident(ctx);
-
-    ctx.expect(token::IDENTIFIER);
-    ctx.addNode(node::IDENTIFIER);
+    typeDefinition(ctx);
 
     ctx.expect(token::RPAREN);
     ctx.consume();
