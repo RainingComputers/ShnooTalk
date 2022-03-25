@@ -1,0 +1,1 @@
+extfn hello(a: int, b: int) -> double "Somewhere.shtk"

@@ -165,6 +165,10 @@ FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
 {
     FunctionDescription functionDescription;
 
+    std::string incompleteFunctionModule;
+    if (workingModule->getIncompleteFunctionModule(nameToken.toString(), incompleteFunctionModule))
+        return workingModule->externFunctions.at(nameMangle(nameToken, incompleteFunctionModule));
+
     if (workingModule->getExternFunction(nameToken.toString(), functionDescription))
         return functionDescription;
 

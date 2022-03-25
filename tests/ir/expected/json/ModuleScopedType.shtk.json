@@ -29,6 +29,8 @@
         "externFunctions": {
         },
         "definedFunctions": ["_fn_ModuleScopedType_shtk_test"],
+        "incompleteFunctions": {
+        },
         "functions": {
             "_fn_ModuleScopedType_shtk_test": {
                 "moduleName": "ModuleScopedType.shtk",
@@ -101,6 +103,8 @@
             }
         },
         "definedFunctions": ["_fn_TestModules_Random_shtk_foobar"],
+        "incompleteFunctions": {
+        },
         "functions": {
             "_fn_TestModules_Random_shtk_foobar": {
                 "moduleName": "TestModules/Random.shtk",
@@ -158,6 +162,8 @@
             }
         },
         "definedFunctions": [],
+        "incompleteFunctions": {
+        },
         "functions": {
         }
     }

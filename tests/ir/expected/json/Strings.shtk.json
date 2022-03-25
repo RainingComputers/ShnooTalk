@@ -32,6 +32,8 @@
         "externFunctions": {
         },
         "definedFunctions": ["main"],
+        "incompleteFunctions": {
+        },
         "functions": {
             "main": {
                 "moduleName": "Strings.shtk",
@@ -115,6 +117,8 @@
             }
         },
         "definedFunctions": ["_fn_TestModules_Random_shtk_foobar"],
+        "incompleteFunctions": {
+        },
         "functions": {
             "_fn_TestModules_Random_shtk_foobar": {
                 "moduleName": "TestModules/Random.shtk",
@@ -172,6 +176,8 @@
             }
         },
         "definedFunctions": [],
+        "incompleteFunctions": {
+        },
         "functions": {
         }
     }

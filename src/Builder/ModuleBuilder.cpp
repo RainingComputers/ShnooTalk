@@ -230,17 +230,19 @@ void ModuleBuilder::createExternFunctionModule(const Token& nameToken,
                                                std::vector<icode::TypeDescription>& paramTypes,
                                                const Token& moduleNameToken)
 {
-    // TODO: fix this
-
-    const std::string& moduleName = moduleNameToken.toUnescapedString();
-    std::string mangledFunctionName = nameMangle(nameToken, rootModule.name);
+    const std::string& functionModuleName = moduleNameToken.toUnescapedString();
+    const std::string& mangledFunctionName = nameMangle(nameToken, functionModuleName);
+    const std::string& mangledFunctionNameRoot = nameMangle(nameToken, rootModule.name);
     const std::string& externFunctionName = nameToken.toString();
 
-    if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(externFunctionName))
+    if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(mangledFunctionNameRoot) ||
+        rootModule.symbolExists(externFunctionName))
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
-    rootModule.externFunctions[externFunctionName] =
-        createFunctionDescription(returnType, paramNames, paramTypes, moduleName);
+    rootModule.externFunctions[mangledFunctionName] =
+        createFunctionDescription(returnType, paramNames, paramTypes, functionModuleName);
+
+    rootModule.incompleteFunctions[externFunctionName] = functionModuleName;
 }
 
 void ModuleBuilder::createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription)

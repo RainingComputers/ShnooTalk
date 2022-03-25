@@ -24,9 +24,13 @@ icode::FunctionDescription getFunctionDescription(const ModuleContext& ctx,
                                                   const std::string& functionName,
                                                   const std::string& moduleName)
 {
-    icode::ModuleDescription& functionModule = ctx.modulesMap.at(moduleName);
-
     icode::FunctionDescription functionDescription;
+
+    /* For forward declared functions */
+    if (ctx.moduleDescription.getExternFunction(functionName, functionDescription))
+        return functionDescription;
+
+    icode::ModuleDescription& functionModule = ctx.modulesMap.at(moduleName);
 
     if (functionModule.getFunction(functionName, functionDescription))
         return functionDescription;
