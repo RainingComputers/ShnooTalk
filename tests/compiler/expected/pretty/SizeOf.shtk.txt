@@ -6,14 +6,207 @@
                 "icode": [
                         print autoInt 4
                         newLine
-                        print autoInt 4
-                        newLine
                         print autoInt 8
                         newLine
                         print autoInt 12
                         newLine
-                        int temp10 = cast autoInt 0
-                        int returnValue8 = equal int temp10
+                        print autoInt 16
+                        newLine
+                        int temp9 = cast autoInt 0
+                        int returnValue7 = equal int temp9
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/List.shtk[float]": {
+        "moduleName": "TestModules/List.shtk[float]",
+        "functions": {
+            "_fn_TestModules_List_shtk[float]_appendArray": {
+                "icode": [
+                        int* tempPtr198 = createPointer struct self
+                        int* tempPtr200 = addressAdd int* tempPtr198, bytes 12
+                        int temp203 = read int* tempPtr200
+                        int temp202 = add int temp203, int len
+                        int newLen = equal int temp202
+                        int* tempPtr208 = createPointer struct self
+                        int* tempPtr210 = addressAdd int* tempPtr208, bytes 8
+                        int temp212 = read int* tempPtr210
+                        flag = lessThan int temp212, int newLen
+                        if(not flag) goto _if_false_l59_c4
+                        int temp219 = cast autoInt 2
+                        int temp218 = multiply int newLen, int temp219
+                        int* tempPtr222 = createPointer struct self
+                        passPointer int* tempPtr222, void _fn_TestModules_List_shtk[float]_expand, module TestModules/List.shtk[float]
+                        pass int temp218, void _fn_TestModules_List_shtk[float]_expand, module TestModules/List.shtk[float]
+                        void calleeReturnValue227 = call void _fn_TestModules_List_shtk[float]_expand, module TestModules/List.shtk[float]
+                    _if_false_l59_c4:
+                        int* tempPtr231 = createPointer struct self
+                        int** tempPtrPtr233 = addressAdd int* tempPtr231, bytes 0
+                        int* tempPtr241 = createPointer struct self
+                        int* tempPtr243 = addressAdd int* tempPtr241, bytes 12
+                        passPointerPointer float** tempPtrPtr233, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        passPointer float* items, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        pass int len, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        int temp254 = read int* tempPtr243
+                        pass int temp254, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        void calleeReturnValue257 = call void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        int* tempPtr261 = createPointer struct self
+                        int* tempPtr263 = addressAdd int* tempPtr261, bytes 12
+                        int* tempPtr263 = write int newLen
+                        return
+                ]
+            },
+            "_fn_TestModules_List_shtk[float]_appendElement": {
+                "icode": [
+                        int* tempPtr277 = createPointer struct self
+                        passPointer int* tempPtr277, void _fn_TestModules_List_shtk[float]_appendArray, module TestModules/List.shtk[float]
+                        float* tempPtr280 = allocArrayPointer bytes 4
+                        float* tempPtr280 = write float item
+                        passPointer float* tempPtr280, void _fn_TestModules_List_shtk[float]_appendArray, module TestModules/List.shtk[float]
+                        int temp284 = cast autoInt 1
+                        pass int temp284, void _fn_TestModules_List_shtk[float]_appendArray, module TestModules/List.shtk[float]
+                        void calleeReturnValue287 = call void _fn_TestModules_List_shtk[float]_appendArray, module TestModules/List.shtk[float]
+                        return
+                ]
+            },
+            "_fn_TestModules_List_shtk[float]_at": {
+                "icode": [
+                        int* tempPtr307 = createPointer struct self
+                        int* tempPtr309 = addressAdd int* tempPtr307, bytes 12
+                        int temp310 = read int* tempPtr309
+                        flag = greaterThanOrEqualTo int index, int temp310
+                        if(not flag) goto _if_false_l79_c4
+                        struct calleeReturnValue312 = call struct _fn_TestModules_ResultGeneric_shtk[float]_error, module TestModules/ResultGeneric.shtk[float]
+                        byte* tempPtr315 = createPointer struct returnValue311
+                        byte* tempPtr316 = createPointer struct calleeReturnValue312
+                        byte* tempPtr315 = memoryCopy byte* tempPtr316, autoInt 5
+                        return
+                    _if_false_l79_c4:
+                        int* tempPtr320 = createPointer struct self
+                        int** tempPtrPtr322 = addressAdd int* tempPtr320, bytes 0
+                        void* tempPtr325 = addressMultiply int index, bytes 4
+                        float* tempPtr326 = addressAdd float** tempPtrPtr322, void* tempPtr325
+                        float temp328 = read float* tempPtr326
+                        pass float temp328, struct _fn_TestModules_ResultGeneric_shtk[float]_success, module TestModules/ResultGeneric.shtk[float]
+                        struct calleeReturnValue331 = call struct _fn_TestModules_ResultGeneric_shtk[float]_success, module TestModules/ResultGeneric.shtk[float]
+                        byte* tempPtr334 = createPointer struct returnValue318
+                        byte* tempPtr335 = createPointer struct calleeReturnValue331
+                        byte* tempPtr334 = memoryCopy byte* tempPtr335, autoInt 5
+                        return
+                ]
+            },
+            "_fn_TestModules_List_shtk[float]_copy": {
+                "icode": [
+                        int temp5 = cast autoInt 0
+                        int i = equal int temp5
+                    _for_true_l11_c4:
+                        flag = lessThan int i, int len
+                        if(not flag) goto _for_false_l11_c4
+                        int temp14 = add int i, int destOffset
+                        void* tempPtr16 = addressMultiply int temp14, bytes 4
+                        float* tempPtr17 = addressAdd float* dest, void* tempPtr16
+                        void* tempPtr21 = addressMultiply int i, bytes 4
+                        float* tempPtr22 = addressAdd float* src, void* tempPtr21
+                        float temp23 = read float* tempPtr22
+                        float* tempPtr17 = write float temp23
+                    _for_cont_true_l11_c4:
+                        int temp27 = cast autoInt 1
+                        int temp26 = add int i, int temp27
+                        int i = equal int temp26
+                        goto _for_true_l11_c4
+                    _for_false_l11_c4:
+                        return
+                ]
+            },
+            "_fn_TestModules_List_shtk[float]_createList": {
+                "icode": [
+                        int* tempPtr98 = createPointer struct result
+                        passPointer int* tempPtr98, void _fn_TestModules_List_shtk[float]_init, module TestModules/List.shtk[float]
+                        passPointer float* items, void _fn_TestModules_List_shtk[float]_init, module TestModules/List.shtk[float]
+                        pass int len, void _fn_TestModules_List_shtk[float]_init, module TestModules/List.shtk[float]
+                        void calleeReturnValue105 = call void _fn_TestModules_List_shtk[float]_init, module TestModules/List.shtk[float]
+                        int* tempPtr110 = createPointer struct returnValue108
+                        int* tempPtr111 = createPointer struct result
+                        int* tempPtr110 = memoryCopy int* tempPtr111, autoInt 16
+                        return
+                ]
+            },
+            "_fn_TestModules_List_shtk[float]_expand": {
+                "icode": [
+                        int* tempPtr121 = createPointer struct self
+                        int* tempPtr123 = addressAdd int* tempPtr121, bytes 8
+                        int temp124 = read int* tempPtr123
+                        flag = lessThanOrEqualTo int cap, int temp124
+                        if(not flag) goto _if_false_l43_c4
+                        return
+                    _if_false_l43_c4:
+                        int* tempPtr128 = createPointer struct self
+                        int** tempPtrPtr130 = addressAdd int* tempPtr128, bytes 0
+                        float* oldItems = pointerAssign float** tempPtrPtr130
+                        int* tempPtr132 = createPointer struct self
+                        int** tempPtrPtr134 = addressAdd int* tempPtr132, bytes 0
+                        autoInt temp138 = cast int cap
+                        autoInt temp137 = multiply autoInt 4, autoInt temp138
+                        int temp141 = cast autoInt temp137
+                        pass int temp141, ubyte malloc, module TestModules/List.shtk[float]
+                        ubyte* calleeReturnPointer144 = call ubyte malloc, module TestModules/List.shtk[float]
+                        float* tempPtr147 = pointerCast ubyte* calleeReturnPointer144
+                        float** tempPtrPtr134 = pointerAssign float* tempPtr147
+                        int* tempPtr149 = createPointer struct self
+                        int** tempPtrPtr151 = addressAdd int* tempPtr149, bytes 0
+                        int* tempPtr158 = createPointer struct self
+                        int* tempPtr160 = addressAdd int* tempPtr158, bytes 8
+                        passPointerPointer float** tempPtrPtr151, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        passPointer float* oldItems, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        int temp170 = read int* tempPtr160
+                        pass int temp170, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        int temp173 = cast autoInt 0
+                        pass int temp173, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        void calleeReturnValue176 = call void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        int* tempPtr180 = createPointer struct self
+                        int* tempPtr182 = addressAdd int* tempPtr180, bytes 8
+                        int* tempPtr182 = write int cap
+                        ubyte* tempPtr185 = pointerCast float* oldItems
+                        passPointer ubyte* tempPtr185, void free, module TestModules/List.shtk[float]
+                        void calleeReturnValue190 = call void free, module TestModules/List.shtk[float]
+                        return
+                ]
+            },
+            "_fn_TestModules_List_shtk[float]_init": {
+                "icode": [
+                        int* tempPtr32 = createPointer struct self
+                        int* tempPtr34 = addressAdd int* tempPtr32, bytes 12
+                        int* tempPtr34 = write int len
+                        int* tempPtr37 = createPointer struct self
+                        int* tempPtr39 = addressAdd int* tempPtr37, bytes 8
+                        int* tempPtr39 = write int len
+                        int* tempPtr42 = createPointer struct self
+                        int** tempPtrPtr44 = addressAdd int* tempPtr42, bytes 0
+                        autoInt temp48 = cast int len
+                        autoInt temp47 = multiply autoInt 4, autoInt temp48
+                        int temp51 = cast autoInt temp47
+                        pass int temp51, ubyte malloc, module TestModules/List.shtk[float]
+                        ubyte* calleeReturnPointer54 = call ubyte malloc, module TestModules/List.shtk[float]
+                        float* tempPtr57 = pointerCast ubyte* calleeReturnPointer54
+                        float** tempPtrPtr44 = pointerAssign float* tempPtr57
+                        int* tempPtr59 = createPointer struct self
+                        int** tempPtrPtr61 = addressAdd int* tempPtr59, bytes 0
+                        passPointerPointer float** tempPtrPtr61, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        passPointer float* items, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        pass int len, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        int temp79 = cast autoInt 0
+                        pass int temp79, void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        void calleeReturnValue82 = call void _fn_TestModules_List_shtk[float]_copy, module TestModules/List.shtk[float]
+                        return
+                ]
+            },
+            "_fn_TestModules_List_shtk[float]_len": {
+                "icode": [
+                        int* tempPtr295 = createPointer struct self
+                        int* tempPtr297 = addressAdd int* tempPtr295, bytes 12
+                        int temp298 = read int* tempPtr297
+                        int returnValue293 = equal int temp298
                         return
                 ]
             }
@@ -142,6 +335,38 @@
                         goto _for_true_l24_c4
                     _for_false_l24_c4:
                         float returnValue76 = equal float sum
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/ResultGeneric.shtk[float]": {
+        "moduleName": "TestModules/ResultGeneric.shtk[float]",
+        "functions": {
+            "_fn_TestModules_ResultGeneric_shtk[float]_error": {
+                "icode": [
+                        byte* tempPtr5 = createPointer struct r
+                        byte* tempPtr7 = addressAdd byte* tempPtr5, bytes 0
+                        byte temp9 = cast autoInt 1
+                        byte* tempPtr7 = write byte temp9
+                        byte* tempPtr12 = createPointer struct returnValue10
+                        byte* tempPtr13 = createPointer struct r
+                        byte* tempPtr12 = memoryCopy byte* tempPtr13, autoInt 5
+                        return
+                ]
+            },
+            "_fn_TestModules_ResultGeneric_shtk[float]_success": {
+                "icode": [
+                        byte* tempPtr20 = createPointer struct r
+                        byte* tempPtr22 = addressAdd byte* tempPtr20, bytes 0
+                        byte temp24 = cast autoInt 0
+                        byte* tempPtr22 = write byte temp24
+                        byte* tempPtr26 = createPointer struct r
+                        byte* tempPtr28 = addressAdd byte* tempPtr26, bytes 1
+                        float* tempPtr28 = write float item
+                        byte* tempPtr32 = createPointer struct returnValue30
+                        byte* tempPtr33 = createPointer struct r
+                        byte* tempPtr32 = memoryCopy byte* tempPtr33, autoInt 5
                         return
                 ]
             }

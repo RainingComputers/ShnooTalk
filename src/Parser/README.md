@@ -109,7 +109,7 @@ genericFunctionCall = identifier genericParams actualParameterList
 
 methodCall = {"." identifier actualParameterList}
 
-sizeof = "sizeof" "(" moduleQualident identifier ")"
+sizeof = "sizeof" "(" typeDefinition ")"
 
 make = "make" "(" typeDefinition {"," expression}  ")"
 

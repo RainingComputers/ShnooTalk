@@ -1,6 +1,6 @@
 use "TestModules/Math.shtk" as math
 
-var glbalfoobar:int
+from "TestModules/List.shtk" use List
 
 struct sprite
 {
@@ -12,9 +12,9 @@ struct sprite
 fn main() -> int
 {
     println(sizeof(int))
-    println(sizeof(glbalfoobar))
     println(sizeof(math::vec::Vec))
     println(sizeof(sprite))
+    println(sizeof(List[float]))
 
     return 0
 }
