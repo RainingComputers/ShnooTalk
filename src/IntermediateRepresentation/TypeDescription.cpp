@@ -59,6 +59,14 @@ namespace icode
         setProperty(IS_INCOMPLETE_TYPE);
     }
 
+    void TypeDescription::decayAutoType()
+    {
+        if (dtype == AUTO_INT)
+            dtype = I64;
+        else if (dtype == AUTO_FLOAT)
+            dtype = F64;
+    }
+
     bool TypeDescription::isMutable() const
     {
         return checkProperty(IS_MUT);
