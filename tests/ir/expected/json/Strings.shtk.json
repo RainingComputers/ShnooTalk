@@ -16,6 +16,8 @@
             "infinity": "INFINITY",
             "nan": "NAN"
         },
+        "incompleteTypes": {
+        },
         "stringDefines": {
         },
         "stringsDataCharCounts": {
@@ -76,6 +78,9 @@
             "PI": 3.14,
             "infinity": "INFINITY",
             "nan": "NAN"
+        },
+        "incompleteTypes": {
+            "Point": "TestModules/Random.shtk"
         },
         "stringDefines": {
             "FOOBAR": "_str_TestModules_Random_shtk__l5_c11"
@@ -142,6 +147,8 @@
         "floatDefines": {
             "infinity": "INFINITY",
             "nan": "NAN"
+        },
+        "incompleteTypes": {
         },
         "stringDefines": {
         },
