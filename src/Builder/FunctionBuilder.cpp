@@ -575,12 +575,19 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
 
 std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)
 {
+    const std::string& mangeledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
+
+    icode::ModuleDescription& workingModule = modulesMap.at(workingFunction->moduleName);
+
+    if (workingModule.incompleteFunctions.find(calleeNameToken.toString()) != workingModule.incompleteFunctions.end())
+        return mangeledCalleeName;
+
     icode::ModuleDescription& functionModule = modulesMap.at(callee.moduleName);
 
     if (functionModule.externFunctions.find(calleeNameToken.toString()) != functionModule.externFunctions.end())
         return calleeNameToken.toString();
 
-    return nameMangle(calleeNameToken, callee.moduleName);
+    return mangeledCalleeName;
 }
 
 Operand FunctionBuilder::createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam)

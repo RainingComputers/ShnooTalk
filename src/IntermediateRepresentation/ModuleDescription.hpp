@@ -20,6 +20,7 @@ namespace icode
         std::map<std::string, StructDescription> structures;
 
         std::vector<std::string> definedFunctions;
+        std::map<std::string, std::string> incompleteFunctions;
         std::map<std::string, FunctionDescription> functions;
         std::map<std::string, FunctionDescription> externFunctions;
 
@@ -44,6 +45,7 @@ namespace icode
         bool getStringDefine(const std::string& name, std::string& returnValue);
         bool getGlobal(const std::string& name, TypeDescription& returnValue);
         bool getIncompleteTypeModule(const std::string& typeName, std::string& returnValue);
+        bool getIncompleteFunctionModule(const std::string& functionName, std::string& returnValue);
         bool useExists(const std::string&);
         bool aliasExists(const std::string&);
         bool symbolExists(const std::string&);

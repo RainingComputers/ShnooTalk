@@ -243,6 +243,9 @@ namespace pp
 
         jsonp.printStringArray("definedFunctions", moduleDescription.definedFunctions);
 
+        FlatJSONPrinter incompleteFunctionsPrinter = jsonp.beginNested("incompleteFunctions");
+        printStringMap(moduleDescription.incompleteFunctions, incompleteFunctionsPrinter);
+
         FlatJSONPrinter functionsPrinter = jsonp.beginNested("functions");
         printFunctionDescriptionMap(moduleDescription.functions, functionsPrinter, jsonIR);
 

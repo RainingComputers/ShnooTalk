@@ -31,6 +31,8 @@
         "externFunctions": {
         },
         "definedFunctions": [],
+        "incompleteFunctions": {
+        },
         "functions": {
         }
     }

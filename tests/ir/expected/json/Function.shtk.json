@@ -28,6 +28,8 @@
         "externFunctions": {
         },
         "definedFunctions": ["_fn_Function_shtk_foo", "_fn_Function_shtk_bar", "_fn_Function_shtk_another"],
+        "incompleteFunctions": {
+        },
         "functions": {
             "_fn_Function_shtk_another": {
                 "moduleName": "Function.shtk",
