@@ -50,6 +50,9 @@ namespace icode
         void becomeImmutable();
         void becomeNonPointer();
         void becomeIncompleteType();
+
+        void decayAutoType();
+
         bool isMutable() const;
         bool isPassedByReference() const;
         bool isPointer() const;

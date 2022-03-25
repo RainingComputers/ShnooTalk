@@ -40,7 +40,7 @@ void createWalrusLocal(generator::GeneratorContext& ctx, const Node& root, const
     else
         localType.becomeImmutable();
 
-    // TODO: Decay auto type
+    localType.decayAutoType();
 
     Unit local = ctx.ir.functionBuilder.createLocal(nameToken, localType);
 
