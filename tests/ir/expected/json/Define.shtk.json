@@ -19,6 +19,8 @@
             "infinity": "INFINITY",
             "nan": "NAN"
         },
+        "incompleteTypes": {
+        },
         "stringDefines": {
             "HELLO": "_str_Define_shtk__l5_c10"
         },

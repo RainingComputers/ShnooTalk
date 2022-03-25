@@ -18,6 +18,8 @@
             "infinity": "INFINITY",
             "nan": "NAN"
         },
+        "incompleteTypes": {
+        },
         "stringDefines": {
         },
         "stringsDataCharCounts": {
