@@ -1,0 +1,71 @@
+{
+    "GenericFunctionCall.shtk": {
+        "moduleName": "GenericFunctionCall.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        struct calleeReturnValue3 = call struct _fn_TestModules_ResultGeneric_shtk[int]_error, module TestModules/ResultGeneric.shtk[int]
+                        byte* tempPtr7 = createPointer struct a
+                        byte* tempPtr8 = createPointer struct calleeReturnValue3
+                        byte* tempPtr7 = memoryCopy byte* tempPtr8, autoInt 5
+                        byte* tempPtr11 = createPointer struct a
+                        byte* tempPtr13 = addressAdd byte* tempPtr11, bytes 0
+                        byte temp14 = read byte* tempPtr13
+                        print byte temp14
+                        newLine
+                        int temp17 = cast autoInt 2
+                        pass int temp17, struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
+                        struct calleeReturnValue20 = call struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
+                        byte* tempPtr24 = createPointer struct b
+                        byte* tempPtr25 = createPointer struct calleeReturnValue20
+                        byte* tempPtr24 = memoryCopy byte* tempPtr25, autoInt 5
+                        byte* tempPtr28 = createPointer struct b
+                        byte* tempPtr30 = addressAdd byte* tempPtr28, bytes 1
+                        int temp31 = read int* tempPtr30
+                        print int temp31
+                        space
+                        byte* tempPtr33 = createPointer struct b
+                        byte* tempPtr35 = addressAdd byte* tempPtr33, bytes 0
+                        byte temp36 = read byte* tempPtr35
+                        print byte temp36
+                        newLine
+                        int temp39 = cast autoInt 0
+                        int returnValue37 = equal int temp39
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/ResultGeneric.shtk[int]": {
+        "moduleName": "TestModules/ResultGeneric.shtk[int]",
+        "functions": {
+            "_fn_TestModules_ResultGeneric_shtk[int]_error": {
+                "icode": [
+                        byte* tempPtr5 = createPointer struct r
+                        byte* tempPtr7 = addressAdd byte* tempPtr5, bytes 0
+                        byte temp9 = cast autoInt 1
+                        byte* tempPtr7 = write byte temp9
+                        byte* tempPtr12 = createPointer struct returnValue10
+                        byte* tempPtr13 = createPointer struct r
+                        byte* tempPtr12 = memoryCopy byte* tempPtr13, autoInt 5
+                        return
+                ]
+            },
+            "_fn_TestModules_ResultGeneric_shtk[int]_success": {
+                "icode": [
+                        byte* tempPtr20 = createPointer struct r
+                        byte* tempPtr22 = addressAdd byte* tempPtr20, bytes 0
+                        byte temp24 = cast autoInt 0
+                        byte* tempPtr22 = write byte temp24
+                        byte* tempPtr26 = createPointer struct r
+                        byte* tempPtr28 = addressAdd byte* tempPtr26, bytes 1
+                        int* tempPtr28 = write int item
+                        byte* tempPtr32 = createPointer struct returnValue30
+                        byte* tempPtr33 = createPointer struct r
+                        byte* tempPtr32 = memoryCopy byte* tempPtr33, autoInt 5
+                        return
+                ]
+            }
+        }
+    }
+}

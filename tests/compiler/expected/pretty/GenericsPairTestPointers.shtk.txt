@@ -176,13 +176,13 @@
             }
         }
     },
-    "TestModules/PairNoOp.shtk__GenericsPairTestPointers_shtk_float_GenericsPairTestPointers_shtk_int_array22": {
-        "moduleName": "TestModules/PairNoOp.shtk__GenericsPairTestPointers_shtk_float_GenericsPairTestPointers_shtk_int_array22",
+    "TestModules/PairNoOp.shtk[float[2]][int~]": {
+        "moduleName": "TestModules/PairNoOp.shtk[float[2]][int~]",
         "functions": {
         }
     },
-    "TestModules/PairNoOp.shtk__GenericsPairTestPointers_shtk_float_array2_GenericsPairTestPointers_shtk_int_ptr": {
-        "moduleName": "TestModules/PairNoOp.shtk__GenericsPairTestPointers_shtk_float_array2_GenericsPairTestPointers_shtk_int_ptr",
+    "TestModules/PairNoOp.shtk[float][int[2][2]]": {
+        "moduleName": "TestModules/PairNoOp.shtk[float][int[2][2]]",
         "functions": {
         }
     },

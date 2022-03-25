@@ -1,0 +1,21 @@
+use "TestModules/ResultGeneric.shtk" as Result
+
+from Result use error
+
+struct foo 
+{
+    var a: int, b: int
+}
+
+fn main() -> int
+{
+    var a := error[int]()
+
+    println(a.error)
+
+    var b := Result::success[int](2)
+
+    println(b.item, b.error)
+
+    return 0
+}

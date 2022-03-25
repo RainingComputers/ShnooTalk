@@ -72,8 +72,8 @@
                 "parameters": [],
                 "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "From.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "a": {"dtype": "struct", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Generic.shtk__From_shtk_int_From_shtk_int", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
-                    "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Generic.shtk__From_shtk_int_From_shtk_int", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
+                    "a": {"dtype": "struct", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Generic.shtk[int][int]", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]},
+                    "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Generic.shtk[int][int]", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 7, "dtype": "int"}, "op2": {"type": "literal", "id": 6, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
@@ -83,8 +83,8 @@
             }
         }
     },
-    "TestModules/Generic.shtk__From_shtk_int_From_shtk_int": {
-        "moduleName": "TestModules/Generic.shtk__From_shtk_int_From_shtk_int",
+    "TestModules/Generic.shtk[int][int]": {
+        "moduleName": "TestModules/Generic.shtk[int][int]",
         "uses": ["From.shtk"],
         "aliases": {
             "From_shtk": "From.shtk"
@@ -107,22 +107,22 @@
         "globals": {
         },
         "structures": {
-            "Bar__From_shtk_int_From_shtk_int": {
+            "Bar": {
                 "fieldNames": ["a"],
                 "structFields": {
                     "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "From.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 4,
-                "moduleName": "TestModules/Generic.shtk__From_shtk_int_From_shtk_int"
+                "moduleName": "TestModules/Generic.shtk[int][int]"
             },
-            "Foo__From_shtk_int_From_shtk_int": {
+            "Foo": {
                 "fieldNames": ["a", "b"],
                 "structFields": {
                     "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "From.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                     "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "From.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 8,
-                "moduleName": "TestModules/Generic.shtk__From_shtk_int_From_shtk_int"
+                "moduleName": "TestModules/Generic.shtk[int][int]"
             }
         },
         "externFunctions": {

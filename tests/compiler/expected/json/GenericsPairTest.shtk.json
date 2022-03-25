@@ -21,10 +21,10 @@
                     {"opcode": "cast", "op1": {"type": "temp", "id": 28, "dtype": "int"}, "op2": {"type": "literal", "id": 27, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 26, "dtype": "int"}, "op2": {"type": "temp", "id": 28, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "float"}, "op2": {"type": "var", "id": 30, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "float"}, "op2": {"type": "var", "id": 35, "name": "_fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add", "dtype": "struct"}, "op3": {"type": "module", "id": 36, "name": "TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "float"}, "op2": {"type": "var", "id": 35, "name": "_fn_TestModules_Pair_shtk[float][int]_add", "dtype": "struct"}, "op3": {"type": "module", "id": 36, "name": "TestModules/Pair.shtk[float][int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 37, "dtype": "float"}, "op2": {"type": "var", "id": 31, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 37, "dtype": "float"}, "op2": {"type": "var", "id": 38, "name": "_fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add", "dtype": "struct"}, "op3": {"type": "module", "id": 39, "name": "TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 40, "dtype": "struct"}, "op2": {"type": "var", "id": 41, "name": "_fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add", "dtype": "struct"}, "op3": {"type": "module", "id": 42, "name": "TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 37, "dtype": "float"}, "op2": {"type": "var", "id": 38, "name": "_fn_TestModules_Pair_shtk[float][int]_add", "dtype": "struct"}, "op3": {"type": "module", "id": 39, "name": "TestModules/Pair.shtk[float][int]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 40, "dtype": "struct"}, "op2": {"type": "var", "id": 41, "name": "_fn_TestModules_Pair_shtk[float][int]_add", "dtype": "struct"}, "op3": {"type": "module", "id": 42, "name": "TestModules/Pair.shtk[float][int]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 43, "dtype": "float"}, "op2": {"type": "var", "id": 29, "name": "c", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 44, "dtype": "float"}, "op2": {"type": "calleeReturnValue", "id": 40, "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 43, "dtype": "float"}, "op2": {"type": "tempPtr", "id": 44, "dtype": "float"}, "op3": {"type": "literal", "id": 45, "dtype": "autoInt", "value": 8}},
@@ -65,10 +65,10 @@
                     {"opcode": "pass", "op1": {"type": "temp", "id": 112, "dtype": "int"}, "op2": {"type": "var", "id": 113, "name": "_fn_TestModules_Vector_shtk_setVec", "dtype": "void"}, "op3": {"type": "module", "id": 114, "name": "TestModules/Vector.shtk"}},
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 115, "dtype": "void"}, "op2": {"type": "var", "id": 116, "name": "_fn_TestModules_Vector_shtk_setVec", "dtype": "void"}, "op3": {"type": "module", "id": 117, "name": "TestModules/Vector.shtk"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 123, "dtype": "int"}, "op2": {"type": "var", "id": 119, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 123, "dtype": "int"}, "op2": {"type": "var", "id": 124, "name": "_fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add", "dtype": "struct"}, "op3": {"type": "module", "id": 125, "name": "TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 123, "dtype": "int"}, "op2": {"type": "var", "id": 124, "name": "_fn_TestModules_Pair_shtk[int][TestModules_Vector_shtk@Vec]_add", "dtype": "struct"}, "op3": {"type": "module", "id": 125, "name": "TestModules/Pair.shtk[int][TestModules/Vector.shtk@Vec]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 126, "dtype": "int"}, "op2": {"type": "var", "id": 120, "name": "bar", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 126, "dtype": "int"}, "op2": {"type": "var", "id": 127, "name": "_fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add", "dtype": "struct"}, "op3": {"type": "module", "id": 128, "name": "TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 129, "dtype": "struct"}, "op2": {"type": "var", "id": 130, "name": "_fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add", "dtype": "struct"}, "op3": {"type": "module", "id": 131, "name": "TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 126, "dtype": "int"}, "op2": {"type": "var", "id": 127, "name": "_fn_TestModules_Pair_shtk[int][TestModules_Vector_shtk@Vec]_add", "dtype": "struct"}, "op3": {"type": "module", "id": 128, "name": "TestModules/Pair.shtk[int][TestModules/Vector.shtk@Vec]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 129, "dtype": "struct"}, "op2": {"type": "var", "id": 130, "name": "_fn_TestModules_Pair_shtk[int][TestModules_Vector_shtk@Vec]_add", "dtype": "struct"}, "op3": {"type": "module", "id": 131, "name": "TestModules/Pair.shtk[int][TestModules/Vector.shtk@Vec]"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 132, "dtype": "int"}, "op2": {"type": "var", "id": 118, "name": "foobar", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 133, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 129, "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 132, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 133, "dtype": "int"}, "op3": {"type": "literal", "id": 134, "dtype": "autoInt", "value": 12}},
@@ -89,10 +89,10 @@
             }
         }
     },
-    "TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int": {
-        "moduleName": "TestModules/Pair.shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int",
+    "TestModules/Pair.shtk[float][int]": {
+        "moduleName": "TestModules/Pair.shtk[float][int]",
         "functions": {
-            "_fn_TestModules_Pair_shtk__GenericsPairTest_shtk_float_GenericsPairTest_shtk_int_add": {
+            "_fn_TestModules_Pair_shtk[float][int]_add": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "float"}, "op2": {"type": "var", "id": 4, "name": "result", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "float"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "float"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
@@ -122,10 +122,10 @@
             }
         }
     },
-    "TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec": {
-        "moduleName": "TestModules/Pair.shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec",
+    "TestModules/Pair.shtk[int][TestModules/Vector.shtk@Vec]": {
+        "moduleName": "TestModules/Pair.shtk[int][TestModules/Vector.shtk@Vec]",
         "functions": {
-            "_fn_TestModules_Pair_shtk__GenericsPairTest_shtk_int_TestModules_Vector_shtk_Vec_add": {
+            "_fn_TestModules_Pair_shtk[int][TestModules_Vector_shtk@Vec]_add": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "result", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},

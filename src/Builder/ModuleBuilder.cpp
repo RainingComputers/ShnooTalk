@@ -89,15 +89,6 @@ TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
     return type;
 }
 
-TypeDescription ModuleBuilder::createTypeDescriptionFromStructName(const std::string& dtype)
-{
-    icode::StructDescription structDesc;
-    if (!workingModule->getStruct(dtype, structDesc))
-        console.internalBugError();
-
-    return constructType(STRUCT, dtype, structDesc.size, structDesc.moduleName);
-}
-
 void ModuleBuilder::createIntDefine(const Token& nameToken, int value)
 {
     if (rootModule.symbolExists(nameToken.toString()))
@@ -239,6 +230,8 @@ void ModuleBuilder::createExternFunctionModule(const Token& nameToken,
                                                std::vector<icode::TypeDescription>& paramTypes,
                                                const Token& moduleNameToken)
 {
+    // TODO: fix this
+
     const std::string& moduleName = moduleNameToken.toUnescapedString();
     std::string mangledFunctionName = nameMangle(nameToken, rootModule.name);
     const std::string& externFunctionName = nameToken.toString();

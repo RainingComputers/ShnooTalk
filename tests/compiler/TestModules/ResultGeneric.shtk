@@ -6,17 +6,18 @@ struct Result
     var item: T
 }
 
-fn createError() -> Result
+fn error() -> Result
 {
     var r: Result
     r.error = true
     return r
 }
 
-fn createSuccess(item: T) -> Result
+fn success(item: T) -> Result
 {
     var r: Result
     r.error = false
     r.item = item
     return r
 }
+
