@@ -12,6 +12,8 @@ struct GenericASTIndex
     std::vector<std::string> genericIdentifiers;
     std::vector<std::string> genericStructs;
     std::vector<std::string> genericFunctions;
+
+    bool isGenericStructOrFunction(const Token& name) const;
 };
 
 #endif

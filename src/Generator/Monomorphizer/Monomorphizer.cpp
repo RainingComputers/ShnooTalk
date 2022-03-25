@@ -118,17 +118,12 @@ bool Monomorphizer::aliasExists(const Token& aliasToken)
 
 void Monomorphizer::createFrom(const std::string& genericModuleName, const Token& symbolToken)
 {
-    const std::string& symbolName = symbolToken.toString();
-
     GenericASTIndex& index = genericsMap.at(genericModuleName);
 
-    const bool isGenericStruct = itemInList<std::string>(symbolName, index.genericStructs);
-    const bool isGenericFunction = itemInList<std::string>(symbolName, index.genericFunctions);
-
-    if (!isGenericStruct && !isGenericFunction)
+    if (!index.isGenericStructOrFunction(symbolToken))
         console.compileErrorOnToken("GENERIC does not exist", symbolToken);
 
-    genericUses[symbolName] = genericModuleName;
+    genericUses[symbolToken.toString()] = genericModuleName;
 }
 
 void Monomorphizer::createDirectFrom(const Token& pathToken, const Token& symbolToken)
@@ -180,9 +175,7 @@ std::string Monomorphizer::getGenericModuleFromToken(const Token& token)
 
     const GenericASTIndex& index = genericsMap.at(workingModule);
 
-    // TODO: Refactor below
-    if (!itemInList<std::string>(token.toString(), index.genericStructs) &&
-        !itemInList<std::string>(token.toString(), index.genericFunctions))
+    if (!index.isGenericStructOrFunction(token))
         console.compileErrorOnToken("GENERIC STRUCT does not exist", token);
 
     return workingModule;
