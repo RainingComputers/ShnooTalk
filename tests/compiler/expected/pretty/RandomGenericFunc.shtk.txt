@@ -1,0 +1,39 @@
+{
+    "RandomGenericFunc.shtk": {
+        "moduleName": "RandomGenericFunc.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp9 = cast autoInt 1
+                        pass int temp9, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        float temp12 = cast autoFloat 2.300000
+                        pass float temp12, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        double temp15 = cast autoFloat 2.300000
+                        pass double temp15, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        void calleeReturnValue18 = call void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        int temp23 = cast autoInt 0
+                        int returnValue21 = equal int temp23
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/RandomGenericFunc.shtk[int][float][double]": {
+        "moduleName": "TestModules/RandomGenericFunc.shtk[int][float][double]",
+        "functions": {
+            "_fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc": {
+                "icode": [
+                        int temp5 = cast float b
+                        int temp6 = add int a, int temp5
+                        print int temp6
+                        newLine
+                        float temp9 = cast double c
+                        float temp10 = add float b, float temp9
+                        print float temp10
+                        newLine
+                        return
+                ]
+            }
+        }
+    }
+}
