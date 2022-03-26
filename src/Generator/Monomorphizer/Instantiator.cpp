@@ -127,9 +127,11 @@ void make(const InstiatorContext& ctx, Node& root)
 
 void genericFunctionCall(const InstiatorContext& ctx, Node& root)
 {
-    for (size_t i = 0; root.children[i].type == node::GENERIC_TYPE_PARAM; i += 1)
+    for (Node& child : root.children)
     {
-        Node& child = root.children[i];
+        if (child.type != node::GENERIC_TYPE_PARAM)
+            break;
+
         monomorphizeTypeNode(ctx, child);
     }
 }
