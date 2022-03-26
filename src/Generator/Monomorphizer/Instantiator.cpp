@@ -5,6 +5,7 @@
 #include "GenericASTIndex.hpp"
 #include "Instantiator.hpp"
 
+
 struct InstiatorContext
 {
     std::string& genericIdentifier;
@@ -102,22 +103,6 @@ void monomorphizeTypeNode(const InstiatorContext& ctx, Node& root)
     }
 }
 
-void sizeOf(const InstiatorContext& ctx, Node& root)
-{
-    if (!root.isNthChild(node::IDENTIFIER, 0))
-        return;
-
-    const Token& typeToken = root.getNthChildToken(0);
-
-    if (typeToken.toString() != ctx.genericIdentifier)
-        return;
-
-    root.children[0].tok = modToken(typeToken, ctx.instantiationType.dtypeName);
-
-    const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
-    root.children.insert(root.children.begin(), constructNode(node::MODULE, alias));
-}
-
 void pointerCast(const InstiatorContext& ctx, Node& root)
 {
     const Token& typeToken = root.getNthChildToken(0);
@@ -141,11 +126,20 @@ void make(const InstiatorContext& ctx, Node& root)
     monomorphizeTypeNode(ctx, root.children[0]);
 }
 
+void genericFunctionCall(const InstiatorContext& ctx, Node& root)
+{
+    for (size_t i = 0; root.children[i].type == node::GENERIC_TYPE_PARAM; i += 1)
+    {
+        Node& child = root.children[i];
+        monomorphizeTypeNode(ctx, child);
+    }
+}
+
 void expression(const InstiatorContext& ctx, Node& root)
 {
     if (root.type == node::SIZEOF)
     {
-        sizeOf(ctx, root);
+        monomorphizeTypeNode(ctx, root);
         return;
     }
 
@@ -155,7 +149,11 @@ void expression(const InstiatorContext& ctx, Node& root)
         return;
     }
 
-    // TODO: monomorphize type in generic function call
+    if (root.type == node::GENERIC_FUNCCALL)
+    {
+        genericFunctionCall(ctx, root);
+        return;
+    }
 
     if (root.isNthChild(node::PTR_CAST, 0) || root.isNthChild(node::PTR_ARRAY_CAST, 0))
         pointerCast(ctx, root);

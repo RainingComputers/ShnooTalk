@@ -1,7 +1,7 @@
 generic T
 
 use "TestModules/ResultGeneric.shtk" as Result
-from Result use Result
+from Result use error, success, Result
 
 extfn malloc(bytes: int) -> ubyte*
 extfn free(ptr: ubyte*)
@@ -77,8 +77,8 @@ fn len(self: List) -> int
 fn at(self: List, index: int) -> Result[T]
 {
     if index >= self.len 
-        return make(Result[T])
+        return error[T]()
 
-    return make(Result[T], self.items[index])
+    return success[T](self.items[index])
 }
 
