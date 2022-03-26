@@ -233,7 +233,8 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
 
 bool DescriptionFinder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
 {
-    const StructDescription& structDescription = workingModule->structures.at(structUnit.dtypeName());
+    const ModuleDescription& unitModule = modulesMap.at(structUnit.moduleName());
+    const StructDescription& structDescription = unitModule.structures.at(structUnit.dtypeName());
 
     for (auto nameToken : nameTokens)
         if (!structDescription.fieldExists(nameToken.toString()))

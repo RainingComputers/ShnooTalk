@@ -1,36 +1,18 @@
 {
-    "RandomGenericFunc.shtk": {
-        "moduleName": "RandomGenericFunc.shtk",
+    "RandomGenericFuncNested.shtk": {
+        "moduleName": "RandomGenericFuncNested.shtk",
         "functions": {
             "main": {
                 "icode": [
                         int temp9 = cast autoInt 1
-                        pass int temp9, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        pass int temp9, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
                         float temp12 = cast autoFloat 2.300000
-                        pass float temp12, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        pass float temp12, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
                         double temp15 = cast autoFloat 2.300000
-                        pass double temp15, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
-                        void calleeReturnValue18 = call void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
-                        int* tempPtr28 = allocArrayPointer bytes 16
-                        int temp30 = cast autoInt 1
-                        int* tempPtr28 = write int temp30
-                        int* tempPtr32 = addressAdd int* tempPtr28, bytes 4
-                        int temp33 = cast autoInt 2
-                        int* tempPtr32 = write int temp33
-                        int* tempPtr35 = addressAdd int* tempPtr32, bytes 4
-                        int temp36 = cast autoInt 3
-                        int* tempPtr35 = write int temp36
-                        int* tempPtr38 = addressAdd int* tempPtr35, bytes 4
-                        int temp39 = cast autoInt 4
-                        int* tempPtr38 = write int temp39
-                        passPointer int* tempPtr28, int _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomListFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
-                        int temp42 = cast autoInt 4
-                        pass int temp42, int _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomListFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
-                        int calleeReturnValue45 = call int _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomListFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
-                        print int calleeReturnValue45
-                        newLine
-                        int temp50 = cast autoInt 0
-                        int returnValue48 = equal int temp50
+                        pass double temp15, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
+                        void calleeReturnValue18 = call void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
+                        int temp23 = cast autoInt 0
+                        int returnValue21 = equal int temp23
                         return
                 ]
             }
@@ -274,6 +256,22 @@
                         return
                     _if_false_l19_c4:
                         int returnValue63 = equal int item
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/RandomGenericFuncNested.shtk[int][float][double]": {
+        "moduleName": "TestModules/RandomGenericFuncNested.shtk[int][float][double]",
+        "functions": {
+            "_fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested": {
+                "icode": [
+                        pass int a, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        pass float b, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        pass double c, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        void calleeReturnValue15 = call void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        print autoInt 40
+                        newLine
                         return
                 ]
             }

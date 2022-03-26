@@ -1,0 +1,9 @@
+generic T, U, V
+
+from "TestModules/RandomGenericFunc.shtk" use randomFunc
+
+fn randomFuncNested(a: T, b: U, c: V) 
+{
+    randomFunc[T, U, V](a, b, c)
+    println(sizeof(T[10]))
+}

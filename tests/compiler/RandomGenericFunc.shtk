@@ -1,8 +1,10 @@
-from "TestModules/RandomGenericFunc.shtk" use randomFunc
+from "TestModules/RandomGenericFunc.shtk" use randomFunc, randomListFunc
 
 fn main() -> int
 {
     randomFunc[int, float, double](1, 2.3, 2.3)
+
+    println(randomListFunc[int, float, double]([1, 2, 3, 4], 4))
 
     return 0
 }

@@ -1,9 +1,21 @@
-
 generic T, U, V
+
+from "TestModules/List.shtk" use List
+from "TestModules/ResultGeneric.shtk" use Result
 
 
 fn randomFunc(a: T, b: U, c: V) 
 {
     println(a + T`b)
     println(b + U`c)
+}
+
+fn randomListFunc(a: T[], len: int) ->T
+{
+    const list := make(List[T], a, len)
+
+    const [item, error] := list.at(3)
+
+    if error return 0
+    return item
 }

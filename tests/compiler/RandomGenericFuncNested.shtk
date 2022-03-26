@@ -1,0 +1,8 @@
+from "TestModules/RandomGenericFuncNested.shtk" use randomFuncNested
+
+fn main() -> int
+{
+    randomFuncNested[int, float, double](1, 2.3, 2.3)
+
+    return 0
+}
