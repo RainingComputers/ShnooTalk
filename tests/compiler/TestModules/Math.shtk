@@ -2,6 +2,8 @@ use "TestModules/Vector.shtk" as vec
 
 def PI 3.14
 
+extfn log10(x: double) -> double
+
 fn pow(num:int, power:int) -> int
 {    
     if(power <= 0) return 1
