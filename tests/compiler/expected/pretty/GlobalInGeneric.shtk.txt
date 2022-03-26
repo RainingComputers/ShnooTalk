@@ -1,0 +1,37 @@
+{
+    "GlobalInGeneric.shtk": {
+        "moduleName": "GlobalInGeneric.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp5 = cast autoInt 100
+                        pass int temp5, void _fn_TestModules_GlobalInGeneric_shtk[int]_init, module TestModules/GlobalInGeneric.shtk[int]
+                        void calleeReturnValue8 = call void _fn_TestModules_GlobalInGeneric_shtk[int]_init, module TestModules/GlobalInGeneric.shtk[int]
+                        int calleeReturnValue11 = call int _fn_TestModules_GlobalInGeneric_shtk[int]_get, module TestModules/GlobalInGeneric.shtk[int]
+                        print int calleeReturnValue11
+                        newLine
+                        int temp16 = cast autoInt 0
+                        int returnValue14 = equal int temp16
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/GlobalInGeneric.shtk[int]": {
+        "moduleName": "TestModules/GlobalInGeneric.shtk[int]",
+        "functions": {
+            "_fn_TestModules_GlobalInGeneric_shtk[int]_get": {
+                "icode": [
+                        int returnValue8 = equal int _fn_TestModules_GlobalInGeneric_shtk[int]_a
+                        return
+                ]
+            },
+            "_fn_TestModules_GlobalInGeneric_shtk[int]_init": {
+                "icode": [
+                        int _fn_TestModules_GlobalInGeneric_shtk[int]_a = equal int val
+                        return
+                ]
+            }
+        }
+    }
+}

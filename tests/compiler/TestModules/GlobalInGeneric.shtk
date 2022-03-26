@@ -1,0 +1,11 @@
+generic T
+
+var a: T
+
+fn init(val: T) {
+    a = val
+}
+
+fn get() -> T {
+    return a
+}

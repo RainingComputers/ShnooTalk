@@ -1,0 +1,10 @@
+from "TestModules/GlobalInGeneric.shtk" use init, get
+
+fn main() -> int
+{
+    init[int](100)
+
+    println(get[int]())
+
+    return 0
+}
