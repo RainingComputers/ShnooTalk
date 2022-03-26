@@ -1,0 +1,14 @@
+from "TestModules/ResultGeneric.shtk" use error, success
+
+fn main() -> int
+{
+    const a := error[int]()
+
+    println(a.error)
+
+    const [item, error] := success[int](2)
+
+    println(item, error)
+
+    return 0
+}

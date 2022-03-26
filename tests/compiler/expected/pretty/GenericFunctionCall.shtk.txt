@@ -16,21 +16,20 @@
                         int temp17 = cast autoInt 2
                         pass int temp17, struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
                         struct calleeReturnValue20 = call struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
-                        byte* tempPtr24 = createPointer struct b
-                        byte* tempPtr25 = createPointer struct calleeReturnValue20
-                        byte* tempPtr24 = memoryCopy byte* tempPtr25, autoInt 5
-                        byte* tempPtr28 = createPointer struct b
-                        byte* tempPtr30 = addressAdd byte* tempPtr28, bytes 1
-                        int temp31 = read int* tempPtr30
-                        print int temp31
+                        byte* tempPtr23 = createPointer struct calleeReturnValue20
+                        byte* tempPtr25 = addressAdd byte* tempPtr23, bytes 0
+                        byte* tempPtr26 = createPointer struct calleeReturnValue20
+                        byte* tempPtr28 = addressAdd byte* tempPtr26, bytes 1
+                        int temp30 = read int* tempPtr28
+                        int item = equal int temp30
+                        byte temp32 = read byte* tempPtr25
+                        byte error = equal byte temp32
+                        print int item
                         space
-                        byte* tempPtr33 = createPointer struct b
-                        byte* tempPtr35 = addressAdd byte* tempPtr33, bytes 0
-                        byte temp36 = read byte* tempPtr35
-                        print byte temp36
+                        print byte error
                         newLine
-                        int temp39 = cast autoInt 0
-                        int returnValue37 = equal int temp39
+                        int temp37 = cast autoInt 0
+                        int returnValue35 = equal int temp37
                         return
                 ]
             }
