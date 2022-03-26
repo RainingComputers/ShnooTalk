@@ -28,14 +28,14 @@
                 "icode": [
                         float temp86 = cast autoFloat 0.000000
                         flag = lessThan float x, float temp86
-                        if(not flag) goto _if_false_l35_c4
+                        if(not flag) goto _if_false_l37_c4
                         autoFloat temp89 = unaryMinus autoFloat 1.000000
                         autoFloat temp92 = cast float x
                         autoFloat temp91 = multiply autoFloat temp89, autoFloat temp92
                         float temp93 = cast autoFloat temp91
                         float returnValue87 = equal float temp93
                         return
-                    _if_false_l35_c4:
+                    _if_false_l37_c4:
                         float returnValue94 = equal float x
                         return
                 ]
@@ -43,10 +43,10 @@
             "_fn_TestModules_Math_shtk_max": {
                 "icode": [
                         flag = greaterThan float a, float b
-                        if(not flag) goto _if_false_l41_c4
+                        if(not flag) goto _if_false_l43_c4
                         float returnValue104 = equal float a
                         return
-                    _if_false_l41_c4:
+                    _if_false_l43_c4:
                         float returnValue106 = equal float b
                         return
                 ]
@@ -54,10 +54,10 @@
             "_fn_TestModules_Math_shtk_maxInt": {
                 "icode": [
                         flag = greaterThan int a, int b
-                        if(not flag) goto _if_false_l47_c4
+                        if(not flag) goto _if_false_l49_c4
                         int returnValue116 = equal int a
                         return
-                    _if_false_l47_c4:
+                    _if_false_l49_c4:
                         int returnValue118 = equal int b
                         return
                 ]
@@ -65,10 +65,10 @@
             "_fn_TestModules_Math_shtk_min": {
                 "icode": [
                         flag = lessThan float a, float b
-                        if(not flag) goto _if_false_l53_c4
+                        if(not flag) goto _if_false_l55_c4
                         float returnValue128 = equal float a
                         return
-                    _if_false_l53_c4:
+                    _if_false_l55_c4:
                         float returnValue130 = equal float b
                         return
                 ]
@@ -76,10 +76,10 @@
             "_fn_TestModules_Math_shtk_minInt": {
                 "icode": [
                         flag = lessThan int a, int b
-                        if(not flag) goto _if_false_l59_c4
+                        if(not flag) goto _if_false_l61_c4
                         int returnValue140 = equal int a
                         return
-                    _if_false_l59_c4:
+                    _if_false_l61_c4:
                         int returnValue142 = equal int b
                         return
                 ]
@@ -88,25 +88,25 @@
                 "icode": [
                         int temp8 = cast autoInt 0
                         flag = lessThanOrEqualTo int power, int temp8
-                        if(not flag) goto _if_false_l7_c4
+                        if(not flag) goto _if_false_l9_c4
                         int temp11 = cast autoInt 1
                         int returnValue9 = equal int temp11
                         return
-                    _if_false_l7_c4:
+                    _if_false_l9_c4:
                         int res = equal int num
                         int temp16 = cast autoInt 2
                         int i = equal int temp16
-                    _for_true_l11_c4:
+                    _for_true_l13_c4:
                         flag = lessThanOrEqualTo int i, int power
-                        if(not flag) goto _for_false_l11_c4
+                        if(not flag) goto _for_false_l13_c4
                         int temp24 = multiply int res, int num
                         int res = equal int temp24
-                    _for_cont_true_l11_c4:
+                    _for_cont_true_l13_c4:
                         int temp28 = cast autoInt 1
                         int temp27 = add int i, int temp28
                         int i = equal int temp27
-                        goto _for_true_l11_c4
-                    _for_false_l11_c4:
+                        goto _for_true_l13_c4
+                    _for_false_l13_c4:
                         int returnValue29 = equal int res
                         return
                 ]
@@ -117,10 +117,10 @@
                         float sum = equal float t
                         int temp40 = cast autoInt 1
                         int k = equal int temp40
-                    _for_true_l24_c4:
+                    _for_true_l26_c4:
                         int temp46 = cast autoInt 10
                         flag = lessThan int k, int temp46
-                        if(not flag) goto _for_false_l24_c4
+                        if(not flag) goto _for_false_l26_c4
                         float temp50 = unaryMinus float x
                         float temp52 = multiply float temp50, float x
                         float temp53 = multiply float t, float temp52
@@ -137,12 +137,12 @@
                         float t = equal float temp67
                         float temp71 = add float sum, float t
                         float sum = equal float temp71
-                    _for_cont_true_l24_c4:
+                    _for_cont_true_l26_c4:
                         int temp75 = cast autoInt 1
                         int temp74 = add int k, int temp75
                         int k = equal int temp74
-                        goto _for_true_l24_c4
-                    _for_false_l24_c4:
+                        goto _for_true_l26_c4
+                    _for_false_l26_c4:
                         float returnValue76 = equal float sum
                         return
                 ]

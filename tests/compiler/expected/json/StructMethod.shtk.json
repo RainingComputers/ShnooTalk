@@ -39,14 +39,14 @@
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 86, "dtype": "float"}, "op2": {"type": "literal", "id": 85, "dtype": "autoFloat", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "lessThan", "op1": {"type": "var", "id": 84, "name": "x", "dtype": "float"}, "op2": {"type": "temp", "id": 86, "dtype": "float"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 83, "name": "_if_false_l35_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 83, "name": "_if_false_l37_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "unaryMinus", "op1": {"type": "temp", "id": 89, "dtype": "autoFloat"}, "op2": {"type": "literal", "id": 88, "dtype": "autoFloat", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 92, "dtype": "autoFloat"}, "op2": {"type": "var", "id": 90, "name": "x", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "multiply", "op1": {"type": "temp", "id": 91, "dtype": "autoFloat"}, "op2": {"type": "temp", "id": 89, "dtype": "autoFloat"}, "op3": {"type": "temp", "id": 92, "dtype": "autoFloat"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 93, "dtype": "float"}, "op2": {"type": "temp", "id": 91, "dtype": "autoFloat"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 87, "dtype": "float"}, "op2": {"type": "temp", "id": 93, "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 83, "name": "_if_false_l35_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 83, "name": "_if_false_l37_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 94, "dtype": "float"}, "op2": {"type": "var", "id": 95, "name": "x", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
@@ -54,10 +54,10 @@
             "_fn_TestModules_Math_shtk_max": {
                 "icode": [
                     {"opcode": "greaterThan", "op1": {"type": "var", "id": 102, "name": "a", "dtype": "float"}, "op2": {"type": "var", "id": 103, "name": "b", "dtype": "float"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 101, "name": "_if_false_l41_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 101, "name": "_if_false_l43_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 104, "dtype": "float"}, "op2": {"type": "var", "id": 105, "name": "a", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 101, "name": "_if_false_l41_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 101, "name": "_if_false_l43_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 106, "dtype": "float"}, "op2": {"type": "var", "id": 107, "name": "b", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
@@ -65,10 +65,10 @@
             "_fn_TestModules_Math_shtk_maxInt": {
                 "icode": [
                     {"opcode": "greaterThan", "op1": {"type": "var", "id": 114, "name": "a", "dtype": "int"}, "op2": {"type": "var", "id": 115, "name": "b", "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 113, "name": "_if_false_l47_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 113, "name": "_if_false_l49_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 116, "dtype": "int"}, "op2": {"type": "var", "id": 117, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 113, "name": "_if_false_l47_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 113, "name": "_if_false_l49_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 118, "dtype": "int"}, "op2": {"type": "var", "id": 119, "name": "b", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
@@ -76,10 +76,10 @@
             "_fn_TestModules_Math_shtk_min": {
                 "icode": [
                     {"opcode": "lessThan", "op1": {"type": "var", "id": 126, "name": "a", "dtype": "float"}, "op2": {"type": "var", "id": 127, "name": "b", "dtype": "float"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 125, "name": "_if_false_l53_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 125, "name": "_if_false_l55_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 128, "dtype": "float"}, "op2": {"type": "var", "id": 129, "name": "a", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 125, "name": "_if_false_l53_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 125, "name": "_if_false_l55_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 130, "dtype": "float"}, "op2": {"type": "var", "id": 131, "name": "b", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
@@ -87,10 +87,10 @@
             "_fn_TestModules_Math_shtk_minInt": {
                 "icode": [
                     {"opcode": "lessThan", "op1": {"type": "var", "id": 138, "name": "a", "dtype": "int"}, "op2": {"type": "var", "id": 139, "name": "b", "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 137, "name": "_if_false_l59_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 137, "name": "_if_false_l61_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 140, "dtype": "int"}, "op2": {"type": "var", "id": 141, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 137, "name": "_if_false_l59_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 137, "name": "_if_false_l61_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 142, "dtype": "int"}, "op2": {"type": "var", "id": 143, "name": "b", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
@@ -99,25 +99,25 @@
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 7, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "lessThanOrEqualTo", "op1": {"type": "var", "id": 6, "name": "power", "dtype": "int"}, "op2": {"type": "temp", "id": 8, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l9_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "int"}, "op2": {"type": "temp", "id": 11, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l7_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l9_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 12, "name": "res", "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "num", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "literal", "id": 15, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 14, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 16, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 17, "name": "_for_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 17, "name": "_for_true_l13_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "lessThanOrEqualTo", "op1": {"type": "var", "id": 20, "name": "i", "dtype": "int"}, "op2": {"type": "var", "id": 21, "name": "power", "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 18, "name": "_for_false_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 18, "name": "_for_false_l13_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "multiply", "op1": {"type": "temp", "id": 24, "dtype": "int"}, "op2": {"type": "var", "id": 22, "name": "res", "dtype": "int"}, "op3": {"type": "var", "id": 23, "name": "num", "dtype": "int"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 22, "name": "res", "dtype": "int"}, "op2": {"type": "temp", "id": 24, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 19, "name": "_for_cont_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 19, "name": "_for_cont_true_l13_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 28, "dtype": "int"}, "op2": {"type": "literal", "id": 26, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "add", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "var", "id": 25, "name": "i", "dtype": "int"}, "op3": {"type": "temp", "id": 28, "dtype": "int"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 25, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 27, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "goto", "op1": {"type": "label", "id": 17, "name": "_for_true_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 18, "name": "_for_false_l11_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "goto", "op1": {"type": "label", "id": 17, "name": "_for_true_l13_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 18, "name": "_for_false_l13_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 29, "dtype": "int"}, "op2": {"type": "var", "id": 30, "name": "res", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
@@ -128,10 +128,10 @@
                     {"opcode": "equal", "op1": {"type": "var", "id": 36, "name": "sum", "dtype": "float"}, "op2": {"type": "var", "id": 37, "name": "t", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 40, "dtype": "int"}, "op2": {"type": "literal", "id": 39, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 38, "name": "k", "dtype": "int"}, "op2": {"type": "temp", "id": 40, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 41, "name": "_for_true_l24_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 41, "name": "_for_true_l26_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "literal", "id": 45, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
                     {"opcode": "lessThan", "op1": {"type": "var", "id": 44, "name": "k", "dtype": "int"}, "op2": {"type": "temp", "id": 46, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 42, "name": "_for_false_l24_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 42, "name": "_for_false_l26_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "unaryMinus", "op1": {"type": "temp", "id": 50, "dtype": "float"}, "op2": {"type": "var", "id": 49, "name": "x", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "multiply", "op1": {"type": "temp", "id": 52, "dtype": "float"}, "op2": {"type": "temp", "id": 50, "dtype": "float"}, "op3": {"type": "var", "id": 51, "name": "x", "dtype": "float"}},
                     {"opcode": "multiply", "op1": {"type": "temp", "id": 53, "dtype": "float"}, "op2": {"type": "var", "id": 48, "name": "t", "dtype": "float"}, "op3": {"type": "temp", "id": 52, "dtype": "float"}},
@@ -148,12 +148,12 @@
                     {"opcode": "equal", "op1": {"type": "var", "id": 47, "name": "t", "dtype": "float"}, "op2": {"type": "temp", "id": 67, "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "add", "op1": {"type": "temp", "id": 71, "dtype": "float"}, "op2": {"type": "var", "id": 69, "name": "sum", "dtype": "float"}, "op3": {"type": "var", "id": 70, "name": "t", "dtype": "float"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 69, "name": "sum", "dtype": "float"}, "op2": {"type": "temp", "id": 71, "dtype": "float"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 43, "name": "_for_cont_true_l24_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 43, "name": "_for_cont_true_l26_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 75, "dtype": "int"}, "op2": {"type": "literal", "id": 73, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "add", "op1": {"type": "temp", "id": 74, "dtype": "int"}, "op2": {"type": "var", "id": 72, "name": "k", "dtype": "int"}, "op3": {"type": "temp", "id": 75, "dtype": "int"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 72, "name": "k", "dtype": "int"}, "op2": {"type": "temp", "id": 74, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "goto", "op1": {"type": "label", "id": 41, "name": "_for_true_l24_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 42, "name": "_for_false_l24_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "goto", "op1": {"type": "label", "id": 41, "name": "_for_true_l26_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 42, "name": "_for_false_l26_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 76, "dtype": "float"}, "op2": {"type": "var", "id": 77, "name": "sum", "dtype": "float"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
