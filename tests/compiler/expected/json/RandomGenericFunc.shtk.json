@@ -1,0 +1,39 @@
+{
+    "RandomGenericFunc.shtk": {
+        "moduleName": "RandomGenericFunc.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 9, "dtype": "int"}, "op2": {"type": "literal", "id": 3, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 9, "dtype": "int"}, "op2": {"type": "var", "id": 10, "name": "_fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc", "dtype": "void"}, "op3": {"type": "module", "id": 11, "name": "TestModules/RandomGenericFunc.shtk[int][float][double]"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 12, "dtype": "float"}, "op2": {"type": "literal", "id": 4, "dtype": "autoFloat", "value": 2.3}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 12, "dtype": "float"}, "op2": {"type": "var", "id": 13, "name": "_fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc", "dtype": "void"}, "op3": {"type": "module", "id": 14, "name": "TestModules/RandomGenericFunc.shtk[int][float][double]"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 15, "dtype": "double"}, "op2": {"type": "literal", "id": 5, "dtype": "autoFloat", "value": 2.3}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 15, "dtype": "double"}, "op2": {"type": "var", "id": 16, "name": "_fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc", "dtype": "void"}, "op3": {"type": "module", "id": 17, "name": "TestModules/RandomGenericFunc.shtk[int][float][double]"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 18, "dtype": "void"}, "op2": {"type": "var", "id": 19, "name": "_fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc", "dtype": "void"}, "op3": {"type": "module", "id": 20, "name": "TestModules/RandomGenericFunc.shtk[int][float][double]"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 21, "dtype": "int"}, "op2": {"type": "temp", "id": 23, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    },
+    "TestModules/RandomGenericFunc.shtk[int][float][double]": {
+        "moduleName": "TestModules/RandomGenericFunc.shtk[int][float][double]",
+        "functions": {
+            "_fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "b", "dtype": "float"}, "op3": {"type": "none"}},
+                    {"opcode": "add", "op1": {"type": "temp", "id": 6, "dtype": "int"}, "op2": {"type": "var", "id": 3, "name": "a", "dtype": "int"}, "op3": {"type": "temp", "id": 5, "dtype": "int"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 6, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 9, "dtype": "float"}, "op2": {"type": "var", "id": 8, "name": "c", "dtype": "double"}, "op3": {"type": "none"}},
+                    {"opcode": "add", "op1": {"type": "temp", "id": 10, "dtype": "float"}, "op2": {"type": "var", "id": 7, "name": "b", "dtype": "float"}, "op3": {"type": "temp", "id": 9, "dtype": "float"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 10, "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

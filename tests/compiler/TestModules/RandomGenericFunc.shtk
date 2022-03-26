@@ -1,0 +1,9 @@
+
+generic T, U, V
+
+
+fn randomFunc(a: T, b: U, c: V) 
+{
+    println(a + T`b)
+    println(b + U`c)
+}

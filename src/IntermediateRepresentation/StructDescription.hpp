@@ -16,7 +16,6 @@ namespace icode
         std::vector<std::string> fieldNames;
 
         bool fieldExists(const std::string&) const;
-        bool getField(const std::string&, TypeDescription& returnValue);
         DataType getFirstFieldDataType() const;
     };
 }

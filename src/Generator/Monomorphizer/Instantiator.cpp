@@ -102,7 +102,7 @@ void monomorphizeTypeNode(const InstiatorContext& ctx, Node& root)
     }
 }
 
-void pointerCast(const InstiatorContext& ctx, Node& root)
+void cast(const InstiatorContext& ctx, Node& root)
 {
     const Token& typeToken = root.getNthChildToken(0);
 
@@ -154,8 +154,9 @@ void expression(const InstiatorContext& ctx, Node& root)
         return;
     }
 
-    if (root.isNthChild(node::PTR_CAST, 0) || root.isNthChild(node::PTR_ARRAY_CAST, 0))
-        pointerCast(ctx, root);
+    if (root.isNthChild(node::PTR_CAST, 0) || root.isNthChild(node::PTR_ARRAY_CAST, 0) ||
+        root.isNthChild(node::CAST, 0))
+        cast(ctx, root);
 
     for (Node& child : root.children)
         expression(ctx, child);

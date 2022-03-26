@@ -79,10 +79,12 @@ make test
 - [x] Clean up packaging process
 - [x] Improve error messages and module trace list
 - [x] Change compiler tests to use `-icode-all`
-- [ ] Class or struct destructors
 - [x] Generic function call
 - [x] Fix sizeof
+- [ ] Class or struct destructors
 - [ ] Pretty name for generics
+- [ ] Revamp AST for type definitions
+- [ ] Arrays of generic type
 - [ ] Spike static linking everything
 
 *Backlog*
@@ -113,8 +115,6 @@ make test
 - [ ] Static variables
 - [ ] Unsafe keyword
 - [ ] Struct alignment and padding
-- [ ] Revamp AST for type definitions
-- [ ] Arrays of generic type
 
 *Advanced Features*
 
