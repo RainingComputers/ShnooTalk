@@ -5,7 +5,6 @@
 #include "GenericASTIndex.hpp"
 #include "Instantiator.hpp"
 
-
 struct InstiatorContext
 {
     std::string& genericIdentifier;

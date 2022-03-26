@@ -160,7 +160,7 @@ std::string Monomorphizer::getGenericModuleNameFromUse(const Token& nameToken)
     if (getMapElement<std::string, std::string>(genericUses, nameToken.toString(), genericModuleName))
         return genericModuleName;
 
-    console.compileErrorOnToken("GENERIC STRUCT does not exist", nameToken);
+    console.compileErrorOnToken("GENERIC does not exist", nameToken);
 }
 
 void Monomorphizer::setWorkingModuleFromAlias(const Token& aliasToken)
@@ -176,7 +176,7 @@ std::string Monomorphizer::getGenericModuleFromToken(const Token& token)
     const GenericASTIndex& index = genericsMap.at(workingModule);
 
     if (!index.isGenericStructOrFunction(token))
-        console.compileErrorOnToken("GENERIC STRUCT does not exist", token);
+        console.compileErrorOnToken("GENERIC does not exist", token);
 
     return workingModule;
 }
