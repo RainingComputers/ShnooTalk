@@ -82,7 +82,7 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
         return getMonomorphizedTypeDescriptionFromNode(ctx, root);
 
     size_t childNodeCounter = 1;
-    if (root.type == node::GENERIC_TYPE_PARAM || root.type == node::MAKE || root.type == node::SIZEOF) 
+    if (root.type == node::GENERIC_TYPE_PARAM || root.type == node::MAKE || root.type == node::SIZEOF)
         childNodeCounter = 0;
 
     while (root.isNthChild(node::PARAM, childNodeCounter) || root.isNthChild(node::MUT_PARAM, childNodeCounter))
