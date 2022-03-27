@@ -1,4 +1,4 @@
-#include "../../TemplateUtils/ItemInList.hpp"
+#include "../../Utils/ItemInList.hpp"
 
 #include "GenericASTIndex.hpp"
 

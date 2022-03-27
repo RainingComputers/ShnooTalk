@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <cmath>
 
-#include "../TemplateUtils/GetMapElement.hpp"
-#include "../TemplateUtils/ItemInList.hpp"
+#include "../Utils/GetMapElement.hpp"
+#include "../Utils/ItemInList.hpp"
 
 #include "ModuleDescription.hpp"
 
