@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "../Generator/Generic.hpp"
-#include "../TemplateUtils/StringReplace.hpp"
+#include "../Utils/StringReplace.hpp"
 #include "Strings.hpp"
 
 #include "Errors.hpp"

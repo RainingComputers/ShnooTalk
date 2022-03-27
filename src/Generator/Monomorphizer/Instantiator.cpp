@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "../../Builder/NameMangle.hpp"
-#include "../../TemplateUtils/ItemInList.hpp"
+#include "../../Utils/ItemInList.hpp"
 #include "GenericASTIndex.hpp"
 #include "Instantiator.hpp"
 
