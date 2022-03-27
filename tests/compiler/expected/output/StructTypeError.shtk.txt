@@ -3,7 +3,7 @@ ERROR in Line 15 Col 9
 
     a = b
         ^
-Type error, did not expect foo,
-expected bar
+Type error, did not expect StructTypeError.shtk::foo,
+expected StructTypeError.shtk::bar
 
 StructTypeError.shtk:15:8

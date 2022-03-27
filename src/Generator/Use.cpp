@@ -1,3 +1,5 @@
+#include <filesystem>
+
 #include "Use.hpp"
 
 void generateModule(generator::GeneratorContext& ctx, const Node& root);
@@ -7,25 +9,42 @@ namespace generator
     Node generateAST(Console& console);
 }
 
-bool generateIROrMonomorphizedASTFromName(generator::GeneratorContext& ctx, const std::string& moduleName)
+bool invalidModuleName(const std::string& path)
 {
-    if (ctx.moduleExists(moduleName))
+    for (const char c : path)
+        if (std::string("[]@:~*").find(c) != std::string::npos)
+            return true;
+
+    return false;
+}
+
+bool generateIROrMonomorphizedASTFromName(generator::GeneratorContext& ctx, const Token& pathToken)
+{
+    const std::string& path = pathToken.toUnescapedString();
+
+    if (ctx.moduleExists(path))
         return false;
 
-    if (ctx.genericModuleExists(moduleName))
+    if (ctx.genericModuleExists(path))
         return true;
 
-    ctx.console.pushModule(moduleName);
+    if (!std::filesystem::exists(path))
+        ctx.console.compileErrorOnToken("File does not exist", pathToken);
+
+    if (invalidModuleName(path))
+        ctx.console.compileErrorOnToken("Invalid module name", pathToken);
+
+    ctx.console.pushModule(path);
 
     Node ast = generator::generateAST(ctx.console);
 
     const bool isGeneric = ast.isGenericModule();
 
     if (isGeneric)
-        ctx.mm.indexAST(moduleName, ast);
+        ctx.mm.indexAST(path, ast);
     else
     {
-        generator::GeneratorContext generatorContext = ctx.clone(moduleName);
+        generator::GeneratorContext generatorContext = ctx.clone(path);
         generateModule(generatorContext, ast);
     }
 
@@ -41,7 +60,7 @@ void createUse(generator::GeneratorContext& ctx, const Node& root)
 
     ctx.ir.moduleBuilder.createUse(pathToken, aliastoken);
 
-    bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken.toUnescapedString());
+    bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken);
 
     if (isGeneric)
         ctx.mm.createUse(pathToken, aliastoken);
@@ -69,7 +88,7 @@ void createDirectFrom(generator::GeneratorContext& ctx, const Node& root)
 
     ctx.ir.moduleBuilder.createUseNoAlias(pathToken);
 
-    bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken.toUnescapedString());
+    bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken);
 
     if (isGeneric)
     {

@@ -120,11 +120,6 @@ void cast(const InstiatorContext& ctx, Node& root)
     root = newRootNode;
 }
 
-void make(const InstiatorContext& ctx, Node& root)
-{
-    monomorphizeTypeNode(ctx, root.children[0]);
-}
-
 void genericFunctionCall(const InstiatorContext& ctx, Node& root)
 {
     for (Node& child : root.children)
@@ -146,7 +141,7 @@ void expression(const InstiatorContext& ctx, Node& root)
 
     if (root.type == node::MAKE)
     {
-        make(ctx, root);
+        monomorphizeTypeNode(ctx, root.children[0]);
         return;
     }
 
@@ -274,6 +269,17 @@ void stripModulesFromTypeNode(Node& root)
     root.children.erase(root.children.begin(), root.children.begin() + numModuleNodes);
 }
 
+void stripStripGenericTypeParamsFromTypeNode(Node& root)
+{
+    int genericTypeParamBegin = 0;
+
+    while (!root.isNthChild(node::GENERIC_TYPE_PARAM, genericTypeParamBegin) &&
+           genericTypeParamBegin < root.children.size())
+        genericTypeParamBegin++;
+
+    root.children.erase(root.children.begin() + genericTypeParamBegin, root.children.end());
+}
+
 void prependModuleToTypeNode(Node& root, const std::string& alias)
 {
     root.children.insert(root.children.begin(), constructNode(node::MODULE, alias));
@@ -295,6 +301,7 @@ void prependUseNodes(const std::vector<icode::TypeDescription>& instantiationTyp
 
         stripModulesFromTypeNode(typeNode);
         prependModuleToTypeNode(typeNode, alias);
+        stripStripGenericTypeParamsFromTypeNode(typeNode);
 
         if (itemInList<std::string>(moduleName, prependedModules))
             continue;

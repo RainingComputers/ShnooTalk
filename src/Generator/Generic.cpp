@@ -6,7 +6,7 @@ using namespace icode;
 
 void generateModule(generator::GeneratorContext& ctx, const Node& root);
 
-std::string typeDescriptionToTypeString(const icode::TypeDescription& typeDescription)
+std::string typeDescriptionToString(const icode::TypeDescription& typeDescription)
 {
     std::string typeDescString = typeDescription.dtypeName;
 
@@ -32,7 +32,7 @@ std::string constructInstantiationSuffix(const std::vector<icode::TypeDescriptio
     std::string result = "";
 
     for (const icode::TypeDescription& type : types)
-        result += "[" + typeDescriptionToTypeString(type) + "]";
+        result += "[" + typeDescriptionToString(type) + "]";
 
     return result;
 }

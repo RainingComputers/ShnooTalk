@@ -1,6 +1,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "../Generator/Generic.hpp"
+#include "../TemplateUtils/StringReplace.hpp"
 #include "Strings.hpp"
 
 #include "Errors.hpp"
@@ -90,22 +92,13 @@ namespace pp
         errorOnToken(moduleName, errorMessage, file, found);
     }
 
-    std::string typeDescriptionToTypeString(const icode::TypeDescription& typeDescription)
+    std::string formatType(const icode::TypeDescription& type)
     {
-        std::string typeDescString = typeDescription.dtypeName;
+        std::string str = typeDescriptionToString(type);
+        str = stringReplace(str, "@", "::");
+        str = stringReplace(str, "~", "*");
 
-        if (typeDescription.isPointer())
-        {
-            if (typeDescription.isArray())
-                return typeDescString + "[]";
-            else
-                return typeDescString + "*";
-        }
-
-        for (const int dim : typeDescription.dimensions)
-            typeDescString += "[" + std::to_string(dim) + "]";
-
-        return typeDescString;
+        return str;
     }
 
     void typeError(const std::string& moduleName,
@@ -124,9 +117,9 @@ namespace pp
         if (expected.isPointer())
             modifiedFound.becomePointer();
 
-        std::string foundString = typeDescriptionToTypeString(modifiedFound);
+        std::string foundString = formatType(modifiedFound);
 
-        std::string expectedString = typeDescriptionToTypeString(expected);
+        std::string expectedString = formatType(expected);
 
         std::string errorMessage = "Type error, did not expect " + foundString;
         errorMessage += ",\nexpected " + expectedString;

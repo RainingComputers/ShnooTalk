@@ -1,10 +1,9 @@
 MODULE TestModules/Pair.shtk
-ERROR in Line 12 Col 20
+ERROR in Line 12 Col 28
 
     result.first = a.first + b.first
-                   ^
-Type error, did not expect FooBar,
-expected Pair
+                           ^
+Function does not exist
 
-TestModules/Pair.shtk:12:19
+TestModules/Pair.shtk:12:27
 GenericOperatorNotPresent.shtk

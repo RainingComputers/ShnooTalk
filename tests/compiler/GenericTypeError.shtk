@@ -1,0 +1,11 @@
+from "TestModules/Pair.shtk" use Pair
+
+fn main() -> int
+{
+    var a: Pair[int, Pair[int, int]]
+    var b: Pair[float, long]
+
+    a = b
+
+    return 0
+}

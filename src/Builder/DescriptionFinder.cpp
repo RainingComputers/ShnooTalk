@@ -176,7 +176,8 @@ FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
         return functionDescription;
 
     if (rootModule.getFunction(nameMangle(nameToken, rootModule.name), functionDescription))
-        return functionDescription;
+        if (!nameToken.isBinaryOperator())
+            return functionDescription;
 
     console.compileErrorOnToken("Function does not exist", nameToken);
 }
