@@ -1,0 +1,9 @@
+MODULE GenericTypeError.shtk
+ERROR in Line 8 Col 9
+
+    a = b
+        ^
+Type error, did not expect TestModules/Pair.shtk[float][long]::Pair,
+expected TestModules/Pair.shtk[int][TestModules/Pair.shtk[int][int]::Pair]::Pair
+
+GenericTypeError.shtk:8:8

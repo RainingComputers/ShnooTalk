@@ -119,6 +119,7 @@ public:
     bool isConditionalOperator() const;
     bool isIntLiteral() const;
     bool isEqualOrLeftArrow() const;
+    bool isBinaryOperator() const;
     long toInt() const;
     double toFloat() const;
     std::string toString() const;

@@ -110,6 +110,11 @@ bool Token::isConditionalOperator() const
            type == CONDN_EQUAL || type == CONDN_NOT_EQUAL || type == CONDN_AND || type == CONDN_OR;
 }
 
+bool Token::isBinaryOperator() const
+{
+    return getPrecedence() != 0;
+}
+
 bool Token::isIntLiteral() const
 {
     return type == INT_LITERAL || type == HEX_LITERAL || type == BIN_LITERAL;
@@ -181,6 +186,10 @@ std::string Token::toFunctionNameString() const
             return "isEqual";
         case token::CONDN_NOT_EQUAL:
             return "isNotEqual";
+        case token::CONDN_AND:
+            return "conditionalAnd";
+        case token::CONDN_OR:
+            return "conditionalOr";
         default:
             return string;
     }

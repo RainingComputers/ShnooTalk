@@ -22,4 +22,6 @@ icode::FunctionDescription intantiateGenericAndGetFunction(
     const std::vector<icode::TypeDescription>& instantiationTypes,
     const std::vector<Node>& instantiationTypeNodes);
 
+std::string typeDescriptionToString(const icode::TypeDescription& typeDescription);
+
 #endif

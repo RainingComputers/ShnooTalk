@@ -1,0 +1,8 @@
+MODULE InvalidModuleName.shtk
+ERROR in Line 1 Col 5
+
+use "TestModules/Invalid~.shtk" as Invalid
+    ^
+Invalid module name
+
+InvalidModuleName.shtk:1:4

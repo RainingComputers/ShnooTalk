@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <filesystem>
 
 #include "NameMangle.hpp"
 
@@ -300,9 +299,6 @@ void ModuleBuilder::createStruct(const Token& nameToken,
 void ModuleBuilder::createUseNoAlias(const Token& pathToken)
 {
     const std::string& path = pathToken.toUnescapedString();
-
-    if (!std::filesystem::exists(path))
-        console.compileErrorOnToken("File does not exist", pathToken);
 
     if (!rootModule.useExists(path))
         rootModule.uses.push_back(path);
