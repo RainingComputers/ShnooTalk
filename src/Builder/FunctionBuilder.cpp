@@ -731,24 +731,31 @@ void FunctionBuilder::callDeconstructors()
 {
     for (auto symbol : workingFunction->symbols)
     {
-        const std::string& name = symbol.first;
+        const std::string& actualParamName = symbol.first;
 
-        if (workingFunction->isParameter(name))
+        if (workingFunction->isParameter(actualParamName))
             return;
 
-        const TypeDescription& type = symbol.second;
+        const TypeDescription& actualType = symbol.second;
 
-        if (type.dtype != STRUCT)
+        if (actualType.dtype != STRUCT)
             continue;
 
-        const std::string& mangledFunctionName = nameMangleString("deconstructor", type.moduleName);
+        const std::string& mangledFunctionName = nameMangleString("deconstructor", actualType.moduleName);
 
-        icode::ModuleDescription& typeModule = modulesMap.at(type.moduleName);
+        icode::ModuleDescription& typeModule = modulesMap.at(actualType.moduleName);
 
         icode::FunctionDescription deconstructorFunction;
         if (!typeModule.getFunction(mangledFunctionName, deconstructorFunction))
             return;
 
+        const std::string& formalName = deconstructorFunction.parameters[0];
+        const TypeDescription& formalType = deconstructorFunction.symbols.at(formalName);
+
+        const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
+        const Unit actualParam = unitBuilder.unitFromTypeDescription(actualType, actualParamName);
+
+        passParameterPreMangled(mangledFunctionName, deconstructorFunction, actualParam, actualParam);
         callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
     }
 }

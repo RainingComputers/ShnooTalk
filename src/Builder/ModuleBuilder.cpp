@@ -193,6 +193,22 @@ FunctionDescription ModuleBuilder::createFunctionDescription(const icode::TypeDe
     return functionDescription;
 }
 
+bool ModuleBuilder::isValidDeconstructor(const icode::FunctionDescription& function)
+{
+    if (!function.isVoid())
+        return false;
+
+    if (function.numParameters() != 1)
+        return false;
+
+    const TypeDescription& symbolType = function.symbols.at(function.parameters[0]);
+
+    if (rootModule.name != symbolType.moduleName)
+        return false;
+
+    return true;
+}
+
 void ModuleBuilder::createFunction(const Token& nameToken,
                                    const icode::TypeDescription& returnType,
                                    const std::vector<Token>& paramNames,
@@ -203,8 +219,14 @@ void ModuleBuilder::createFunction(const Token& nameToken,
     if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
-    rootModule.functions[mangledFunctionName] =
+    const icode::FunctionDescription& function =
         createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
+
+    if (nameToken.toString() == "deconstructor")
+        if (!isValidDeconstructor(function))
+            console.compileErrorOnToken("Invalid deconstructor function", nameToken);
+
+    rootModule.functions[mangledFunctionName] = function;
 
     rootModule.definedFunctions.push_back(mangledFunctionName);
 }
