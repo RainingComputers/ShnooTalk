@@ -30,6 +30,8 @@ class ModuleBuilder
 
     void createFrom(const std::string& moduleName, const Token& aliasToken);
 
+    bool isValidDeconstructor(const icode::FunctionDescription& function);
+
 public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
 

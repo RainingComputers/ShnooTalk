@@ -39,7 +39,7 @@ Unit UnitBuilder::unitFromFloatLiteral(double value)
     return Unit(typeDescription, op);
 }
 
-Unit UnitBuilder::unitFromTypeDescription(TypeDescription& typeDescription, const std::string& name)
+Unit UnitBuilder::unitFromTypeDescription(const TypeDescription& typeDescription, const std::string& name)
 {
     Operand op = opBuilder.operandFromTypeDescription(typeDescription, name);
     return Unit(typeDescription, op);
