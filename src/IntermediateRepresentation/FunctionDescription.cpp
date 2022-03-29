@@ -1,4 +1,5 @@
 #include "../Utils/GetMapElement.hpp"
+#include "../Utils/ItemInList.hpp"
 
 #include "FunctionDescription.hpp"
 
@@ -17,6 +18,11 @@ namespace icode
     size_t FunctionDescription::numParameters() const
     {
         return parameters.size();
+    }
+
+    bool FunctionDescription::isParameter(const std::string& name) const
+    {
+        return itemInList(name, parameters);
     }
 
     bool FunctionDescription::isVoid() const

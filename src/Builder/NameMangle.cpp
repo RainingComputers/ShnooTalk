@@ -16,6 +16,11 @@ std::string lineColNameMangle(const Token& token, const std::string& moduleName)
     return "_str_" + mangleModuleName(moduleName) + '_' + token.getLineColString();
 }
 
+std::string nameMangleString(const std::string& name, const std::string& moduleName)
+{
+    return "_fn_" + mangleModuleName(moduleName) + '_' + name;
+}
+
 std::string nameMangle(const Token& token, const std::string& moduleName)
 {
     if (token.toString() == "main")
