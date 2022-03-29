@@ -85,6 +85,7 @@ make test
 - [ ] Pretty name for generics
 - [ ] Revamp AST for type definitions
 - [ ] Arrays of generic type
+- [ ] extern "C" to prevent name mangling functions
 - [ ] Spike static linking everything
 
 *Backlog*
