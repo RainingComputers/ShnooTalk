@@ -20,6 +20,7 @@ namespace icode
         bool symbolExists(const std::string& name);
         bool getSymbol(const std::string& name, icode::TypeDescription& returnValue);
         size_t numParameters() const;
+        bool isParameter(const std::string& name) const;
         bool isVoid() const;
     };
 }

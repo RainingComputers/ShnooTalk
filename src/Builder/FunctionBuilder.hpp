@@ -118,6 +118,10 @@ public:
 
     Unit getReturnValueUnit();
 
+    void callDeconstructors();
+
+    void createReturn();
+
     void terminateFunction(const Token& nameToken);
 };
 

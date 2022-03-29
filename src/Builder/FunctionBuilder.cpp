@@ -727,6 +727,38 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
     return true;
 }
 
+void FunctionBuilder::callDeconstructors()
+{
+    for (auto symbol : workingFunction->symbols)
+    {
+        const std::string& name = symbol.first;
+
+        if (workingFunction->isParameter(name))
+            return;
+
+        const TypeDescription& type = symbol.second;
+
+        if (type.dtype != STRUCT)
+            continue;
+
+        const std::string& mangledFunctionName = nameMangleString("deconstructor", type.moduleName);
+
+        icode::ModuleDescription& typeModule = modulesMap.at(type.moduleName);
+
+        icode::FunctionDescription deconstructorFunction;
+        if (!typeModule.getFunction(mangledFunctionName, deconstructorFunction))
+            return;
+
+        callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
+    }
+}
+
+void FunctionBuilder::createReturn()
+{
+    callDeconstructors();
+    noArgumentEntry(RET);
+}
+
 void FunctionBuilder::terminateFunction(const Token& nameToken)
 {
     if (nameToken.toString() == "main" && !validMainReturn(*workingFunction))
@@ -737,7 +769,7 @@ void FunctionBuilder::terminateFunction(const Token& nameToken)
 
     if (workingFunction->isVoid())
     {
-        noArgumentEntry(RET);
+        createReturn();
         return;
     }
 
