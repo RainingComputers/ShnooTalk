@@ -1,0 +1,38 @@
+{
+    "Deconstructor.shtk": {
+        "moduleName": "Deconstructor.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "foobar1", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 9, "dtype": "int"}, "op2": {"type": "literal", "id": 8, "dtype": "autoInt", "value": 100}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "temp", "id": 9, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 12, "dtype": "int"}, "op2": {"type": "literal", "id": 11, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 10, "dtype": "int"}, "op2": {"type": "temp", "id": 12, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 14, "name": "foobar1", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 16, "name": "_fn_TestModules_Foobar_shtk_deconstructor", "dtype": "void"}, "op3": {"type": "module", "id": 17, "name": "TestModules/Foobar.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 18, "dtype": "void"}, "op2": {"type": "var", "id": 19, "name": "_fn_TestModules_Foobar_shtk_deconstructor", "dtype": "void"}, "op3": {"type": "module", "id": 20, "name": "TestModules/Foobar.shtk"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    },
+    "TestModules/Foobar.shtk": {
+        "moduleName": "TestModules/Foobar.shtk",
+        "functions": {
+            "_fn_TestModules_Foobar_shtk_deconstructor": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 4, "dtype": "int"}, "op2": {"type": "var", "id": 3, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 6, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 4, "dtype": "int"}, "op3": {"type": "bytes", "id": 5, "bytes": 0}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 6, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 7, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 8, "name": "_str_TestModules_Foobar_shtk__l9_c12", "size": 12}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

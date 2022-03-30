@@ -755,7 +755,7 @@ void FunctionBuilder::callDeconstructors()
         const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
         const Unit actualParam = unitBuilder.unitFromTypeDescription(actualType, actualParamName);
 
-        passParameterPreMangled(mangledFunctionName, deconstructorFunction, actualParam, actualParam);
+        passParameterPreMangled(mangledFunctionName, deconstructorFunction, formalParam, actualParam);
         callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
     }
 }

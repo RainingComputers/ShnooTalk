@@ -1,0 +1,8 @@
+MODULE InvalidDeconstructorNonVoidReturn.shtk
+ERROR in Line 3 Col 4
+
+fn deconstructor(self: Foobar) -> int
+   ^
+Invalid deconstructor function
+
+InvalidDeconstructorNonVoidReturn.shtk:3:3
