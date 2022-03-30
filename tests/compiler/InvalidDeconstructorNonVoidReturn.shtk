@@ -1,0 +1,6 @@
+struct Foobar {}
+
+fn deconstructor(self: Foobar) -> int
+{
+    
+}

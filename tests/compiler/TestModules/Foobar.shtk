@@ -1,0 +1,10 @@
+struct Foobar
+{
+    var a: int
+}
+
+fn deconstructor(self: Foobar)
+{
+    println(self.a)
+    println("deconstruct")
+}
