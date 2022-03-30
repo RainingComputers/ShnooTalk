@@ -52,6 +52,12 @@ class FunctionBuilder
 
     icode::Operand createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam);
 
+    void callDeconstructor(const Unit& symbolUnit);
+
+    bool shouldCallDeconstructor(const std::string& symbolName, const icode::TypeDescription& symbolType);
+
+    void callDeconstructorOnDeclaredSymbols();
+
     bool doesFunctionTerminate();
 
 public:
@@ -117,8 +123,6 @@ public:
     void noArgumentEntry(icode::Instruction instruction);
 
     Unit getReturnValueUnit();
-
-    void callDeconstructors();
 
     void createReturn();
 

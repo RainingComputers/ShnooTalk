@@ -727,42 +727,68 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
     return true;
 }
 
-void FunctionBuilder::callDeconstructors()
+void FunctionBuilder::callDeconstructor(const Unit& symbol)
 {
-    for (auto symbol : workingFunction->symbols)
+    if (symbol.isArray())
     {
-        const std::string& actualParamName = symbol.first;
+        std::vector<Unit> arrayElements = destructureArray(symbol);
 
-        if (workingFunction->isParameter(actualParamName))
-            return;
+        for (const Unit& element : arrayElements)
+            callDeconstructor(element);
 
-        const TypeDescription& actualType = symbol.second;
+        return;
+    }
 
-        if (actualType.dtype != STRUCT)
+    const std::string& mangledFunctionName = nameMangleString("deconstructor", symbol.moduleName());
+
+    icode::ModuleDescription& typeModule = modulesMap.at(symbol.moduleName());
+
+    icode::FunctionDescription deconstructorFunction;
+    if (!typeModule.getFunction(mangledFunctionName, deconstructorFunction))
+        return;
+
+    const std::string& formalName = deconstructorFunction.parameters[0];
+    const TypeDescription& formalType = deconstructorFunction.symbols.at(formalName);
+
+    const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
+
+    passParameterPreMangled(mangledFunctionName, deconstructorFunction, formalParam, symbol);
+    callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
+}
+
+bool FunctionBuilder::shouldCallDeconstructor(const std::string& symbolName, const icode::TypeDescription& symbolType)
+{
+    if (workingFunction->isParameter(symbolName))
+        return false;
+
+    if (!symbolType.isStruct())
+        return false;
+
+    if (symbolType.isPointer())
+        return false;
+
+    return true;
+}
+
+void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
+{
+    for (auto symbolPair : workingFunction->symbols)
+    {
+        const std::string& symbolName = symbolPair.first;
+        const TypeDescription& symbolType = symbolPair.second;
+
+        if (!shouldCallDeconstructor(symbolName, symbolType))
             continue;
 
-        const std::string& mangledFunctionName = nameMangleString("deconstructor", actualType.moduleName);
+        const Unit symbol = unitBuilder.unitFromTypeDescription(symbolType, symbolName);
 
-        icode::ModuleDescription& typeModule = modulesMap.at(actualType.moduleName);
-
-        icode::FunctionDescription deconstructorFunction;
-        if (!typeModule.getFunction(mangledFunctionName, deconstructorFunction))
-            return;
-
-        const std::string& formalName = deconstructorFunction.parameters[0];
-        const TypeDescription& formalType = deconstructorFunction.symbols.at(formalName);
-
-        const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
-        const Unit actualParam = unitBuilder.unitFromTypeDescription(actualType, actualParamName);
-
-        passParameterPreMangled(mangledFunctionName, deconstructorFunction, formalParam, actualParam);
-        callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
+        callDeconstructor(symbol);
     }
 }
 
 void FunctionBuilder::createReturn()
 {
-    callDeconstructors();
+    callDeconstructorOnDeclaredSymbols();
     noArgumentEntry(RET);
 }
 
