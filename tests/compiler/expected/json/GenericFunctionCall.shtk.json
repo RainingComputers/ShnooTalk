@@ -52,16 +52,16 @@
             },
             "_fn_TestModules_ResultGeneric_shtk[int]_success": {
                 "icode": [
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 20, "dtype": "byte"}, "op2": {"type": "var", "id": 19, "name": "r", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 22, "dtype": "byte"}, "op2": {"type": "tempPtr", "id": 20, "dtype": "byte"}, "op3": {"type": "bytes", "id": 21, "bytes": 0}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 24, "dtype": "byte"}, "op2": {"type": "literal", "id": 23, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 22, "dtype": "byte"}, "op2": {"type": "temp", "id": 24, "dtype": "byte"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 26, "dtype": "byte"}, "op2": {"type": "var", "id": 25, "name": "r", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 28, "dtype": "byte"}, "op2": {"type": "tempPtr", "id": 26, "dtype": "byte"}, "op3": {"type": "bytes", "id": 27, "bytes": 1}},
-                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 28, "dtype": "int"}, "op2": {"type": "var", "id": 29, "name": "item", "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 32, "dtype": "byte"}, "op2": {"type": "returnValue", "id": 30, "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 33, "dtype": "byte"}, "op2": {"type": "var", "id": 31, "name": "r", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 32, "dtype": "byte"}, "op2": {"type": "tempPtr", "id": 33, "dtype": "byte"}, "op3": {"type": "literal", "id": 34, "dtype": "autoInt", "value": 5}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 21, "dtype": "byte"}, "op2": {"type": "var", "id": 20, "name": "r", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 23, "dtype": "byte"}, "op2": {"type": "tempPtr", "id": 21, "dtype": "byte"}, "op3": {"type": "bytes", "id": 22, "bytes": 0}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 25, "dtype": "byte"}, "op2": {"type": "literal", "id": 24, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 23, "dtype": "byte"}, "op2": {"type": "temp", "id": 25, "dtype": "byte"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 27, "dtype": "byte"}, "op2": {"type": "var", "id": 26, "name": "r", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 29, "dtype": "byte"}, "op2": {"type": "tempPtr", "id": 27, "dtype": "byte"}, "op3": {"type": "bytes", "id": 28, "bytes": 1}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 29, "dtype": "int"}, "op2": {"type": "var", "id": 30, "name": "item", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 33, "dtype": "byte"}, "op2": {"type": "returnValue", "id": 31, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "byte"}, "op2": {"type": "var", "id": 32, "name": "r", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 33, "dtype": "byte"}, "op2": {"type": "tempPtr", "id": 34, "dtype": "byte"}, "op3": {"type": "literal", "id": 35, "dtype": "autoInt", "value": 5}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

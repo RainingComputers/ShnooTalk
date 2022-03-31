@@ -20,32 +20,32 @@
             },
             "_fn_StructReturn_shtk_btest": {
                 "icode": [
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 26, "dtype": "int"}, "op2": {"type": "literal", "id": 25, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 24, "dtype": "int"}, "op2": {"type": "temp", "id": 26, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "literal", "id": 26, "dtype": "autoInt", "value": 10}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 25, "dtype": "int"}, "op2": {"type": "temp", "id": 27, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
             "main": {
                 "icode": [
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 31, "dtype": "struct"}, "op2": {"type": "var", "id": 32, "name": "_fn_StructReturn_shtk_atest", "dtype": "struct"}, "op3": {"type": "module", "id": 33, "name": "StructReturn.shtk"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "int"}, "op2": {"type": "var", "id": 30, "name": "c", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 31, "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 34, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op3": {"type": "literal", "id": 36, "dtype": "autoInt", "value": 8}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 38, "dtype": "int"}, "op2": {"type": "var", "id": 37, "name": "c", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 40, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 38, "dtype": "int"}, "op3": {"type": "bytes", "id": 39, "bytes": 0}},
-                    {"opcode": "read", "op1": {"type": "temp", "id": 41, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 40, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "print", "op1": {"type": "temp", "id": 41, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 32, "dtype": "struct"}, "op2": {"type": "var", "id": 33, "name": "_fn_StructReturn_shtk_atest", "dtype": "struct"}, "op3": {"type": "module", "id": 34, "name": "StructReturn.shtk"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op2": {"type": "var", "id": 31, "name": "c", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 36, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 32, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 36, "dtype": "int"}, "op3": {"type": "literal", "id": 37, "dtype": "autoInt", "value": 8}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op2": {"type": "var", "id": 38, "name": "c", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 41, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op3": {"type": "bytes", "id": 40, "bytes": 0}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 42, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 41, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 42, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 43, "dtype": "int"}, "op2": {"type": "var", "id": 42, "name": "c", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 43, "dtype": "int"}, "op3": {"type": "bytes", "id": 44, "bytes": 4}},
-                    {"opcode": "read", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "print", "op1": {"type": "temp", "id": 46, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 44, "dtype": "int"}, "op2": {"type": "var", "id": 43, "name": "c", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 46, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 44, "dtype": "int"}, "op3": {"type": "bytes", "id": 45, "bytes": 4}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 47, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 46, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 47, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 47, "dtype": "int"}, "op2": {"type": "var", "id": 48, "name": "_fn_StructReturn_shtk_btest", "dtype": "int"}, "op3": {"type": "module", "id": 49, "name": "StructReturn.shtk"}},
-                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 47, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 48, "dtype": "int"}, "op2": {"type": "var", "id": 49, "name": "_fn_StructReturn_shtk_btest", "dtype": "int"}, "op3": {"type": "module", "id": 50, "name": "StructReturn.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 48, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 52, "dtype": "int"}, "op2": {"type": "literal", "id": 51, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 50, "dtype": "int"}, "op2": {"type": "temp", "id": 52, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 53, "dtype": "int"}, "op2": {"type": "literal", "id": 52, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 51, "dtype": "int"}, "op2": {"type": "temp", "id": 53, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

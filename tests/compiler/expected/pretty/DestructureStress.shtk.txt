@@ -4,19 +4,19 @@
         "functions": {
             "_fn_DestructureStress_shtk_createBar": {
                 "icode": [
-                        struct* tempPtr24 = createPointer struct b
-                        struct* tempPtr26 = addressAdd struct* tempPtr24, bytes 0
-                        int* tempPtr28 = createPointer struct* tempPtr26
-                        int* tempPtr29 = createPointer struct i
-                        int* tempPtr28 = memoryCopy int* tempPtr29, autoInt 8
-                        struct* tempPtr32 = createPointer struct b
-                        struct* tempPtr34 = addressAdd struct* tempPtr32, bytes 8
-                        int* tempPtr36 = createPointer struct* tempPtr34
-                        int* tempPtr37 = createPointer struct j
-                        int* tempPtr36 = memoryCopy int* tempPtr37, autoInt 8
-                        struct* tempPtr41 = createPointer struct returnValue39
-                        struct* tempPtr42 = createPointer struct b
-                        struct* tempPtr41 = memoryCopy struct* tempPtr42, autoInt 16
+                        struct* tempPtr25 = createPointer struct b
+                        struct* tempPtr27 = addressAdd struct* tempPtr25, bytes 0
+                        int* tempPtr29 = createPointer struct* tempPtr27
+                        int* tempPtr30 = createPointer struct i
+                        int* tempPtr29 = memoryCopy int* tempPtr30, autoInt 8
+                        struct* tempPtr33 = createPointer struct b
+                        struct* tempPtr35 = addressAdd struct* tempPtr33, bytes 8
+                        int* tempPtr37 = createPointer struct* tempPtr35
+                        int* tempPtr38 = createPointer struct j
+                        int* tempPtr37 = memoryCopy int* tempPtr38, autoInt 8
+                        struct* tempPtr42 = createPointer struct returnValue40
+                        struct* tempPtr43 = createPointer struct b
+                        struct* tempPtr42 = memoryCopy struct* tempPtr43, autoInt 16
                         return
                 ]
             },
@@ -36,322 +36,364 @@
             },
             "main": {
                 "icode": [
-                        int temp53 = cast autoInt 1
-                        pass int temp53, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp56 = cast autoInt 2
-                        pass int temp56, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue59 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp70 = cast autoInt 3
-                        pass int temp70, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp73 = cast autoInt 4
-                        pass int temp73, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue76 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr81 = createPointer struct calleeReturnValue59
-                        passPointer int* tempPtr81, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr84 = createPointer struct calleeReturnValue76
-                        passPointer int* tempPtr84, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue87 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct* tempPtr91 = createPointer struct testBar
-                        struct* tempPtr92 = createPointer struct calleeReturnValue87
-                        struct* tempPtr91 = memoryCopy struct* tempPtr92, autoInt 16
-                        struct* tempPtr95 = createPointer struct testBar
-                        struct* tempPtr97 = addressAdd struct* tempPtr95, bytes 0
-                        struct* tempPtr98 = createPointer struct testBar
-                        struct* tempPtr100 = addressAdd struct* tempPtr98, bytes 8
-                        int* tempPtr102 = createPointer struct a1
-                        int* tempPtr103 = createPointer struct* tempPtr97
-                        int* tempPtr102 = memoryCopy int* tempPtr103, autoInt 8
-                        int* tempPtr106 = createPointer struct a2
-                        int* tempPtr107 = createPointer struct* tempPtr100
-                        int* tempPtr106 = memoryCopy int* tempPtr107, autoInt 8
-                        int* tempPtr110 = createPointer struct a1
-                        int* tempPtr112 = addressAdd int* tempPtr110, bytes 0
-                        int temp113 = read int* tempPtr112
-                        print int temp113
+                        int temp55 = cast autoInt 1
+                        pass int temp55, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp58 = cast autoInt 2
+                        pass int temp58, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue61 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp72 = cast autoInt 3
+                        pass int temp72, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp75 = cast autoInt 4
+                        pass int temp75, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue78 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr83 = createPointer struct calleeReturnValue61
+                        passPointer int* tempPtr83, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr86 = createPointer struct calleeReturnValue78
+                        passPointer int* tempPtr86, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue89 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct* tempPtr93 = createPointer struct testBar
+                        struct* tempPtr94 = createPointer struct calleeReturnValue89
+                        struct* tempPtr93 = memoryCopy struct* tempPtr94, autoInt 16
+                        struct* tempPtr97 = createPointer struct testBar
+                        struct* tempPtr99 = addressAdd struct* tempPtr97, bytes 0
+                        struct* tempPtr100 = createPointer struct testBar
+                        struct* tempPtr102 = addressAdd struct* tempPtr100, bytes 8
+                        int* tempPtr104 = createPointer struct a1
+                        int* tempPtr105 = createPointer struct* tempPtr99
+                        int* tempPtr104 = memoryCopy int* tempPtr105, autoInt 8
+                        int* tempPtr108 = createPointer struct a2
+                        int* tempPtr109 = createPointer struct* tempPtr102
+                        int* tempPtr108 = memoryCopy int* tempPtr109, autoInt 8
+                        int* tempPtr112 = createPointer struct a1
+                        int* tempPtr114 = addressAdd int* tempPtr112, bytes 0
+                        int temp115 = read int* tempPtr114
+                        print int temp115
                         newLine
-                        int* tempPtr115 = createPointer struct a1
-                        int* tempPtr117 = addressAdd int* tempPtr115, bytes 4
-                        int temp118 = read int* tempPtr117
-                        print int temp118
+                        int* tempPtr117 = createPointer struct a1
+                        int* tempPtr119 = addressAdd int* tempPtr117, bytes 4
+                        int temp120 = read int* tempPtr119
+                        print int temp120
                         newLine
-                        int* tempPtr120 = createPointer struct a2
-                        int* tempPtr122 = addressAdd int* tempPtr120, bytes 0
-                        int temp123 = read int* tempPtr122
-                        print int temp123
+                        int* tempPtr122 = createPointer struct a2
+                        int* tempPtr124 = addressAdd int* tempPtr122, bytes 0
+                        int temp125 = read int* tempPtr124
+                        print int temp125
                         newLine
-                        int* tempPtr125 = createPointer struct a2
-                        int* tempPtr127 = addressAdd int* tempPtr125, bytes 4
-                        int temp128 = read int* tempPtr127
-                        print int temp128
+                        int* tempPtr127 = createPointer struct a2
+                        int* tempPtr129 = addressAdd int* tempPtr127, bytes 4
+                        int temp130 = read int* tempPtr129
+                        print int temp130
                         newLine
-                        struct* tempPtr130 = createPointer struct testBar
-                        struct* tempPtr132 = addressAdd struct* tempPtr130, bytes 0
-                        struct* tempPtr133 = createPointer struct testBar
-                        struct* tempPtr135 = addressAdd struct* tempPtr133, bytes 8
-                        int* tempPtr137 = createPointer struct j
-                        int* tempPtr138 = createPointer struct* tempPtr135
-                        int* tempPtr137 = memoryCopy int* tempPtr138, autoInt 8
-                        int* tempPtr141 = createPointer struct i
-                        int* tempPtr142 = createPointer struct* tempPtr132
-                        int* tempPtr141 = memoryCopy int* tempPtr142, autoInt 8
-                        int* tempPtr145 = createPointer struct i
-                        int* tempPtr147 = addressAdd int* tempPtr145, bytes 0
-                        int temp148 = read int* tempPtr147
-                        print int temp148
+                        struct* tempPtr132 = createPointer struct testBar
+                        struct* tempPtr134 = addressAdd struct* tempPtr132, bytes 0
+                        struct* tempPtr135 = createPointer struct testBar
+                        struct* tempPtr137 = addressAdd struct* tempPtr135, bytes 8
+                        int* tempPtr139 = createPointer struct j
+                        int* tempPtr140 = createPointer struct* tempPtr137
+                        int* tempPtr139 = memoryCopy int* tempPtr140, autoInt 8
+                        int* tempPtr143 = createPointer struct i
+                        int* tempPtr144 = createPointer struct* tempPtr134
+                        int* tempPtr143 = memoryCopy int* tempPtr144, autoInt 8
+                        int* tempPtr147 = createPointer struct i
+                        int* tempPtr149 = addressAdd int* tempPtr147, bytes 0
+                        int temp150 = read int* tempPtr149
+                        print int temp150
                         newLine
-                        int* tempPtr150 = createPointer struct i
-                        int* tempPtr152 = addressAdd int* tempPtr150, bytes 4
-                        int temp153 = read int* tempPtr152
-                        print int temp153
+                        int* tempPtr152 = createPointer struct i
+                        int* tempPtr154 = addressAdd int* tempPtr152, bytes 4
+                        int temp155 = read int* tempPtr154
+                        print int temp155
                         newLine
-                        int* tempPtr155 = createPointer struct j
-                        int* tempPtr157 = addressAdd int* tempPtr155, bytes 0
-                        int temp158 = read int* tempPtr157
-                        print int temp158
+                        int* tempPtr157 = createPointer struct j
+                        int* tempPtr159 = addressAdd int* tempPtr157, bytes 0
+                        int temp160 = read int* tempPtr159
+                        print int temp160
                         newLine
-                        int* tempPtr160 = createPointer struct j
-                        int* tempPtr162 = addressAdd int* tempPtr160, bytes 4
-                        int temp163 = read int* tempPtr162
-                        print int temp163
+                        int* tempPtr162 = createPointer struct j
+                        int* tempPtr164 = addressAdd int* tempPtr162, bytes 4
+                        int temp165 = read int* tempPtr164
+                        print int temp165
                         newLine
-                        int temp170 = cast autoInt 1
-                        pass int temp170, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp173 = cast autoInt 2
-                        pass int temp173, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue176 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp187 = cast autoInt 3
-                        pass int temp187, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp190 = cast autoInt 4
-                        pass int temp190, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue193 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr198 = createPointer struct calleeReturnValue176
-                        passPointer int* tempPtr198, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr201 = createPointer struct calleeReturnValue193
-                        passPointer int* tempPtr201, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue204 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int temp213 = cast autoInt 5
-                        pass int temp213, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp216 = cast autoInt 6
-                        pass int temp216, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue219 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp230 = cast autoInt 7
-                        pass int temp230, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp233 = cast autoInt 8
-                        pass int temp233, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue236 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr241 = createPointer struct calleeReturnValue219
-                        passPointer int* tempPtr241, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr244 = createPointer struct calleeReturnValue236
-                        passPointer int* tempPtr244, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue247 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int temp256 = cast autoInt 9
-                        pass int temp256, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp259 = cast autoInt 10
-                        pass int temp259, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue262 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp273 = cast autoInt 11
-                        pass int temp273, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp276 = cast autoInt 12
-                        pass int temp276, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue279 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr284 = createPointer struct calleeReturnValue262
-                        passPointer int* tempPtr284, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr287 = createPointer struct calleeReturnValue279
-                        passPointer int* tempPtr287, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue290 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int temp299 = cast autoInt 13
-                        pass int temp299, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp302 = cast autoInt 14
-                        pass int temp302, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue305 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp316 = cast autoInt 15
-                        pass int temp316, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp319 = cast autoInt 16
-                        pass int temp319, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue322 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr327 = createPointer struct calleeReturnValue305
-                        passPointer int* tempPtr327, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr330 = createPointer struct calleeReturnValue322
-                        passPointer int* tempPtr330, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue333 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct* tempPtr337 = createPointer struct testBarArr
-                        struct* tempPtr338 = createPointer struct calleeReturnValue204
-                        struct* tempPtr337 = memoryCopy struct* tempPtr338, autoInt 16
-                        struct* tempPtr341 = addressAdd struct* tempPtr337, bytes 16
-                        struct* tempPtr342 = createPointer struct calleeReturnValue247
-                        struct* tempPtr341 = memoryCopy struct* tempPtr342, autoInt 16
-                        struct* tempPtr345 = addressAdd struct* tempPtr341, bytes 16
-                        struct* tempPtr346 = createPointer struct calleeReturnValue290
-                        struct* tempPtr345 = memoryCopy struct* tempPtr346, autoInt 16
-                        struct* tempPtr349 = addressAdd struct* tempPtr345, bytes 16
-                        struct* tempPtr350 = createPointer struct calleeReturnValue333
-                        struct* tempPtr349 = memoryCopy struct* tempPtr350, autoInt 16
-                        struct* tempPtr354 = createPointer struct testBarArr
-                        void* tempPtr356 = addressMultiply autoInt 0, bytes 32
-                        struct* tempPtr357 = addressAdd struct* tempPtr354, void* tempPtr356
-                        struct* tempPtr359 = createPointer struct testBarArr
-                        void* tempPtr361 = addressMultiply autoInt 1, bytes 32
-                        struct* tempPtr362 = addressAdd struct* tempPtr359, void* tempPtr361
-                        struct* tempPtr364 = createPointer struct c1
-                        struct* tempPtr365 = createPointer struct* tempPtr357
-                        struct* tempPtr364 = memoryCopy struct* tempPtr365, autoInt 32
-                        struct* tempPtr368 = createPointer struct c2
-                        struct* tempPtr369 = createPointer struct* tempPtr362
-                        struct* tempPtr368 = memoryCopy struct* tempPtr369, autoInt 32
-                        struct* tempPtr373 = createPointer struct c1
-                        void* tempPtr375 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr376 = addressAdd struct* tempPtr373, void* tempPtr375
-                        struct* tempPtr377 = createPointer struct* tempPtr376
-                        struct* tempPtr379 = addressAdd struct* tempPtr377, bytes 0
-                        int* tempPtr380 = createPointer struct* tempPtr379
-                        int* tempPtr382 = addressAdd int* tempPtr380, bytes 0
-                        int temp383 = read int* tempPtr382
-                        print int temp383
+                        int temp172 = cast autoInt 1
+                        pass int temp172, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp175 = cast autoInt 2
+                        pass int temp175, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue178 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp189 = cast autoInt 3
+                        pass int temp189, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp192 = cast autoInt 4
+                        pass int temp192, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue195 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr200 = createPointer struct calleeReturnValue178
+                        passPointer int* tempPtr200, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr203 = createPointer struct calleeReturnValue195
+                        passPointer int* tempPtr203, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue206 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int temp215 = cast autoInt 5
+                        pass int temp215, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp218 = cast autoInt 6
+                        pass int temp218, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue221 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp232 = cast autoInt 7
+                        pass int temp232, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp235 = cast autoInt 8
+                        pass int temp235, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue238 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr243 = createPointer struct calleeReturnValue221
+                        passPointer int* tempPtr243, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr246 = createPointer struct calleeReturnValue238
+                        passPointer int* tempPtr246, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue249 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int temp258 = cast autoInt 9
+                        pass int temp258, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp261 = cast autoInt 10
+                        pass int temp261, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue264 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp275 = cast autoInt 11
+                        pass int temp275, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp278 = cast autoInt 12
+                        pass int temp278, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue281 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr286 = createPointer struct calleeReturnValue264
+                        passPointer int* tempPtr286, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr289 = createPointer struct calleeReturnValue281
+                        passPointer int* tempPtr289, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue292 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int temp301 = cast autoInt 13
+                        pass int temp301, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp304 = cast autoInt 14
+                        pass int temp304, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue307 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp318 = cast autoInt 15
+                        pass int temp318, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp321 = cast autoInt 16
+                        pass int temp321, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue324 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr329 = createPointer struct calleeReturnValue307
+                        passPointer int* tempPtr329, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr332 = createPointer struct calleeReturnValue324
+                        passPointer int* tempPtr332, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue335 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct* tempPtr339 = createPointer struct testBarArr
+                        struct* tempPtr340 = createPointer struct calleeReturnValue206
+                        struct* tempPtr339 = memoryCopy struct* tempPtr340, autoInt 16
+                        struct* tempPtr343 = addressAdd struct* tempPtr339, bytes 16
+                        struct* tempPtr344 = createPointer struct calleeReturnValue249
+                        struct* tempPtr343 = memoryCopy struct* tempPtr344, autoInt 16
+                        struct* tempPtr347 = addressAdd struct* tempPtr343, bytes 16
+                        struct* tempPtr348 = createPointer struct calleeReturnValue292
+                        struct* tempPtr347 = memoryCopy struct* tempPtr348, autoInt 16
+                        struct* tempPtr351 = addressAdd struct* tempPtr347, bytes 16
+                        struct* tempPtr352 = createPointer struct calleeReturnValue335
+                        struct* tempPtr351 = memoryCopy struct* tempPtr352, autoInt 16
+                        struct* tempPtr356 = createPointer struct testBarArr
+                        void* tempPtr358 = addressMultiply autoInt 0, bytes 32
+                        struct* tempPtr359 = addressAdd struct* tempPtr356, void* tempPtr358
+                        struct* tempPtr361 = createPointer struct testBarArr
+                        void* tempPtr363 = addressMultiply autoInt 1, bytes 32
+                        struct* tempPtr364 = addressAdd struct* tempPtr361, void* tempPtr363
+                        struct* tempPtr366 = createPointer struct c1
+                        struct* tempPtr367 = createPointer struct* tempPtr359
+                        struct* tempPtr366 = memoryCopy struct* tempPtr367, autoInt 32
+                        struct* tempPtr370 = createPointer struct c2
+                        struct* tempPtr371 = createPointer struct* tempPtr364
+                        struct* tempPtr370 = memoryCopy struct* tempPtr371, autoInt 32
+                        struct* tempPtr375 = createPointer struct c1
+                        void* tempPtr377 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr378 = addressAdd struct* tempPtr375, void* tempPtr377
+                        struct* tempPtr379 = createPointer struct* tempPtr378
+                        struct* tempPtr381 = addressAdd struct* tempPtr379, bytes 0
+                        int* tempPtr382 = createPointer struct* tempPtr381
+                        int* tempPtr384 = addressAdd int* tempPtr382, bytes 0
+                        int temp385 = read int* tempPtr384
+                        print int temp385
                         newLine
-                        struct* tempPtr386 = createPointer struct c1
-                        void* tempPtr388 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr389 = addressAdd struct* tempPtr386, void* tempPtr388
-                        struct* tempPtr390 = createPointer struct* tempPtr389
-                        struct* tempPtr392 = addressAdd struct* tempPtr390, bytes 8
-                        int* tempPtr393 = createPointer struct* tempPtr392
-                        int* tempPtr395 = addressAdd int* tempPtr393, bytes 4
-                        int temp396 = read int* tempPtr395
-                        print int temp396
+                        struct* tempPtr388 = createPointer struct c1
+                        void* tempPtr390 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr391 = addressAdd struct* tempPtr388, void* tempPtr390
+                        struct* tempPtr392 = createPointer struct* tempPtr391
+                        struct* tempPtr394 = addressAdd struct* tempPtr392, bytes 8
+                        int* tempPtr395 = createPointer struct* tempPtr394
+                        int* tempPtr397 = addressAdd int* tempPtr395, bytes 4
+                        int temp398 = read int* tempPtr397
+                        print int temp398
                         newLine
-                        struct* tempPtr399 = createPointer struct c2
-                        void* tempPtr401 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr402 = addressAdd struct* tempPtr399, void* tempPtr401
-                        struct* tempPtr403 = createPointer struct* tempPtr402
-                        struct* tempPtr405 = addressAdd struct* tempPtr403, bytes 8
-                        int* tempPtr406 = createPointer struct* tempPtr405
-                        int* tempPtr408 = addressAdd int* tempPtr406, bytes 4
-                        int temp409 = read int* tempPtr408
-                        print int temp409
+                        struct* tempPtr401 = createPointer struct c2
+                        void* tempPtr403 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr404 = addressAdd struct* tempPtr401, void* tempPtr403
+                        struct* tempPtr405 = createPointer struct* tempPtr404
+                        struct* tempPtr407 = addressAdd struct* tempPtr405, bytes 8
+                        int* tempPtr408 = createPointer struct* tempPtr407
+                        int* tempPtr410 = addressAdd int* tempPtr408, bytes 4
+                        int temp411 = read int* tempPtr410
+                        print int temp411
                         newLine
-                        struct* tempPtr412 = createPointer struct c2
-                        void* tempPtr414 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr415 = addressAdd struct* tempPtr412, void* tempPtr414
-                        struct* tempPtr416 = createPointer struct* tempPtr415
-                        struct* tempPtr418 = addressAdd struct* tempPtr416, bytes 0
-                        int* tempPtr419 = createPointer struct* tempPtr418
-                        int* tempPtr421 = addressAdd int* tempPtr419, bytes 0
-                        int temp422 = read int* tempPtr421
-                        print int temp422
+                        struct* tempPtr414 = createPointer struct c2
+                        void* tempPtr416 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr417 = addressAdd struct* tempPtr414, void* tempPtr416
+                        struct* tempPtr418 = createPointer struct* tempPtr417
+                        struct* tempPtr420 = addressAdd struct* tempPtr418, bytes 0
+                        int* tempPtr421 = createPointer struct* tempPtr420
+                        int* tempPtr423 = addressAdd int* tempPtr421, bytes 0
+                        int temp424 = read int* tempPtr423
+                        print int temp424
                         newLine
-                        int temp429 = cast autoInt 1
-                        pass int temp429, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp432 = cast autoInt 2
-                        pass int temp432, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue435 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp446 = cast autoInt 3
-                        pass int temp446, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp449 = cast autoInt 4
-                        pass int temp449, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue452 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr457 = createPointer struct calleeReturnValue435
-                        passPointer int* tempPtr457, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr460 = createPointer struct calleeReturnValue452
-                        passPointer int* tempPtr460, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue463 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int temp472 = cast autoInt 5
-                        pass int temp472, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp475 = cast autoInt 6
-                        pass int temp475, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue478 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp489 = cast autoInt 7
-                        pass int temp489, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp492 = cast autoInt 8
-                        pass int temp492, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue495 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr500 = createPointer struct calleeReturnValue478
-                        passPointer int* tempPtr500, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr503 = createPointer struct calleeReturnValue495
-                        passPointer int* tempPtr503, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue506 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int temp515 = cast autoInt 9
-                        pass int temp515, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp518 = cast autoInt 10
-                        pass int temp518, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue521 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp532 = cast autoInt 11
-                        pass int temp532, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp535 = cast autoInt 12
-                        pass int temp535, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue538 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr543 = createPointer struct calleeReturnValue521
-                        passPointer int* tempPtr543, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr546 = createPointer struct calleeReturnValue538
-                        passPointer int* tempPtr546, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue549 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int temp558 = cast autoInt 13
-                        pass int temp558, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp561 = cast autoInt 14
-                        pass int temp561, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue564 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp575 = cast autoInt 15
-                        pass int temp575, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int temp578 = cast autoInt 16
-                        pass int temp578, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        struct calleeReturnValue581 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
-                        int* tempPtr586 = createPointer struct calleeReturnValue564
-                        passPointer int* tempPtr586, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        int* tempPtr589 = createPointer struct calleeReturnValue581
-                        passPointer int* tempPtr589, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct calleeReturnValue592 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
-                        struct* tempPtr596 = createPointer struct d1
-                        struct* tempPtr597 = createPointer struct calleeReturnValue463
-                        struct* tempPtr596 = memoryCopy struct* tempPtr597, autoInt 16
-                        struct* tempPtr600 = addressAdd struct* tempPtr596, bytes 16
-                        struct* tempPtr601 = createPointer struct calleeReturnValue506
-                        struct* tempPtr600 = memoryCopy struct* tempPtr601, autoInt 16
-                        struct* tempPtr604 = createPointer struct d2
-                        struct* tempPtr605 = createPointer struct calleeReturnValue549
-                        struct* tempPtr604 = memoryCopy struct* tempPtr605, autoInt 16
-                        struct* tempPtr608 = addressAdd struct* tempPtr604, bytes 16
-                        struct* tempPtr609 = createPointer struct calleeReturnValue592
-                        struct* tempPtr608 = memoryCopy struct* tempPtr609, autoInt 16
-                        struct* tempPtr613 = createPointer struct d1
-                        void* tempPtr615 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr616 = addressAdd struct* tempPtr613, void* tempPtr615
-                        struct* tempPtr617 = createPointer struct* tempPtr616
-                        struct* tempPtr619 = addressAdd struct* tempPtr617, bytes 0
-                        int* tempPtr620 = createPointer struct* tempPtr619
-                        int* tempPtr622 = addressAdd int* tempPtr620, bytes 0
-                        int temp623 = read int* tempPtr622
-                        print int temp623
+                        int temp431 = cast autoInt 1
+                        pass int temp431, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp434 = cast autoInt 2
+                        pass int temp434, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue437 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp448 = cast autoInt 3
+                        pass int temp448, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp451 = cast autoInt 4
+                        pass int temp451, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue454 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr459 = createPointer struct calleeReturnValue437
+                        passPointer int* tempPtr459, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr462 = createPointer struct calleeReturnValue454
+                        passPointer int* tempPtr462, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue465 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int temp474 = cast autoInt 5
+                        pass int temp474, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp477 = cast autoInt 6
+                        pass int temp477, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue480 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp491 = cast autoInt 7
+                        pass int temp491, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp494 = cast autoInt 8
+                        pass int temp494, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue497 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr502 = createPointer struct calleeReturnValue480
+                        passPointer int* tempPtr502, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr505 = createPointer struct calleeReturnValue497
+                        passPointer int* tempPtr505, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue508 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int temp517 = cast autoInt 9
+                        pass int temp517, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp520 = cast autoInt 10
+                        pass int temp520, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue523 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp534 = cast autoInt 11
+                        pass int temp534, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp537 = cast autoInt 12
+                        pass int temp537, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue540 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr545 = createPointer struct calleeReturnValue523
+                        passPointer int* tempPtr545, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr548 = createPointer struct calleeReturnValue540
+                        passPointer int* tempPtr548, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue551 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int temp560 = cast autoInt 13
+                        pass int temp560, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp563 = cast autoInt 14
+                        pass int temp563, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue566 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp577 = cast autoInt 15
+                        pass int temp577, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp580 = cast autoInt 16
+                        pass int temp580, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue583 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr588 = createPointer struct calleeReturnValue566
+                        passPointer int* tempPtr588, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr591 = createPointer struct calleeReturnValue583
+                        passPointer int* tempPtr591, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue594 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct* tempPtr598 = createPointer struct d1
+                        struct* tempPtr599 = createPointer struct calleeReturnValue465
+                        struct* tempPtr598 = memoryCopy struct* tempPtr599, autoInt 16
+                        struct* tempPtr602 = addressAdd struct* tempPtr598, bytes 16
+                        struct* tempPtr603 = createPointer struct calleeReturnValue508
+                        struct* tempPtr602 = memoryCopy struct* tempPtr603, autoInt 16
+                        struct* tempPtr606 = createPointer struct d2
+                        struct* tempPtr607 = createPointer struct calleeReturnValue551
+                        struct* tempPtr606 = memoryCopy struct* tempPtr607, autoInt 16
+                        struct* tempPtr610 = addressAdd struct* tempPtr606, bytes 16
+                        struct* tempPtr611 = createPointer struct calleeReturnValue594
+                        struct* tempPtr610 = memoryCopy struct* tempPtr611, autoInt 16
+                        struct* tempPtr615 = createPointer struct d1
+                        void* tempPtr617 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr618 = addressAdd struct* tempPtr615, void* tempPtr617
+                        struct* tempPtr619 = createPointer struct* tempPtr618
+                        struct* tempPtr621 = addressAdd struct* tempPtr619, bytes 0
+                        int* tempPtr622 = createPointer struct* tempPtr621
+                        int* tempPtr624 = addressAdd int* tempPtr622, bytes 0
+                        int temp625 = read int* tempPtr624
+                        print int temp625
                         newLine
-                        struct* tempPtr626 = createPointer struct d1
-                        void* tempPtr628 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr629 = addressAdd struct* tempPtr626, void* tempPtr628
-                        struct* tempPtr630 = createPointer struct* tempPtr629
-                        struct* tempPtr632 = addressAdd struct* tempPtr630, bytes 8
-                        int* tempPtr633 = createPointer struct* tempPtr632
-                        int* tempPtr635 = addressAdd int* tempPtr633, bytes 4
-                        int temp636 = read int* tempPtr635
-                        print int temp636
+                        struct* tempPtr628 = createPointer struct d1
+                        void* tempPtr630 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr631 = addressAdd struct* tempPtr628, void* tempPtr630
+                        struct* tempPtr632 = createPointer struct* tempPtr631
+                        struct* tempPtr634 = addressAdd struct* tempPtr632, bytes 8
+                        int* tempPtr635 = createPointer struct* tempPtr634
+                        int* tempPtr637 = addressAdd int* tempPtr635, bytes 4
+                        int temp638 = read int* tempPtr637
+                        print int temp638
                         newLine
-                        struct* tempPtr639 = createPointer struct d2
-                        void* tempPtr641 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr642 = addressAdd struct* tempPtr639, void* tempPtr641
-                        struct* tempPtr643 = createPointer struct* tempPtr642
-                        struct* tempPtr645 = addressAdd struct* tempPtr643, bytes 8
-                        int* tempPtr646 = createPointer struct* tempPtr645
-                        int* tempPtr648 = addressAdd int* tempPtr646, bytes 4
-                        int temp649 = read int* tempPtr648
-                        print int temp649
+                        struct* tempPtr641 = createPointer struct d2
+                        void* tempPtr643 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr644 = addressAdd struct* tempPtr641, void* tempPtr643
+                        struct* tempPtr645 = createPointer struct* tempPtr644
+                        struct* tempPtr647 = addressAdd struct* tempPtr645, bytes 8
+                        int* tempPtr648 = createPointer struct* tempPtr647
+                        int* tempPtr650 = addressAdd int* tempPtr648, bytes 4
+                        int temp651 = read int* tempPtr650
+                        print int temp651
                         newLine
-                        struct* tempPtr652 = createPointer struct d2
-                        void* tempPtr654 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr655 = addressAdd struct* tempPtr652, void* tempPtr654
-                        struct* tempPtr656 = createPointer struct* tempPtr655
-                        struct* tempPtr658 = addressAdd struct* tempPtr656, bytes 0
-                        int* tempPtr659 = createPointer struct* tempPtr658
-                        int* tempPtr661 = addressAdd int* tempPtr659, bytes 0
-                        int temp662 = read int* tempPtr661
-                        print int temp662
+                        struct* tempPtr654 = createPointer struct d2
+                        void* tempPtr656 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr657 = addressAdd struct* tempPtr654, void* tempPtr656
+                        struct* tempPtr658 = createPointer struct* tempPtr657
+                        struct* tempPtr660 = addressAdd struct* tempPtr658, bytes 0
+                        int* tempPtr661 = createPointer struct* tempPtr660
+                        int* tempPtr663 = addressAdd int* tempPtr661, bytes 0
+                        int temp664 = read int* tempPtr663
+                        print int temp664
                         newLine
-                        int temp665 = cast autoInt 0
-                        int returnValue663 = equal int temp665
+                        int temp667 = cast autoInt 0
+                        int returnValue665 = equal int temp667
+                        struct* tempPtr672 = createPointer struct c1
+                        void* tempPtr674 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr675 = addressAdd struct* tempPtr672, void* tempPtr674
+                        struct* tempPtr677 = createPointer struct c1
+                        void* tempPtr679 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr680 = addressAdd struct* tempPtr677, void* tempPtr679
+                        struct* tempPtr683 = createPointer struct c2
+                        void* tempPtr685 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr686 = addressAdd struct* tempPtr683, void* tempPtr685
+                        struct* tempPtr688 = createPointer struct c2
+                        void* tempPtr690 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr691 = addressAdd struct* tempPtr688, void* tempPtr690
+                        struct* tempPtr694 = createPointer struct d1
+                        void* tempPtr696 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr697 = addressAdd struct* tempPtr694, void* tempPtr696
+                        struct* tempPtr699 = createPointer struct d1
+                        void* tempPtr701 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr702 = addressAdd struct* tempPtr699, void* tempPtr701
+                        struct* tempPtr705 = createPointer struct d2
+                        void* tempPtr707 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr708 = addressAdd struct* tempPtr705, void* tempPtr707
+                        struct* tempPtr710 = createPointer struct d2
+                        void* tempPtr712 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr713 = addressAdd struct* tempPtr710, void* tempPtr712
+                        struct* tempPtr719 = createPointer struct testBarArr
+                        void* tempPtr721 = addressMultiply autoInt 0, bytes 32
+                        struct* tempPtr722 = addressAdd struct* tempPtr719, void* tempPtr721
+                        struct* tempPtr724 = createPointer struct testBarArr
+                        void* tempPtr726 = addressMultiply autoInt 1, bytes 32
+                        struct* tempPtr727 = addressAdd struct* tempPtr724, void* tempPtr726
+                        struct* tempPtr729 = createPointer struct* tempPtr722
+                        void* tempPtr731 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr732 = addressAdd struct* tempPtr729, void* tempPtr731
+                        struct* tempPtr734 = createPointer struct* tempPtr722
+                        void* tempPtr736 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr737 = addressAdd struct* tempPtr734, void* tempPtr736
+                        struct* tempPtr739 = createPointer struct* tempPtr727
+                        void* tempPtr741 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr742 = addressAdd struct* tempPtr739, void* tempPtr741
+                        struct* tempPtr744 = createPointer struct* tempPtr727
+                        void* tempPtr746 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr747 = addressAdd struct* tempPtr744, void* tempPtr746
                         return
                 ]
             }

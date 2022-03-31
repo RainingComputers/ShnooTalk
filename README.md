@@ -81,7 +81,7 @@ make test
 - [x] Change compiler tests to use `-icode-all`
 - [x] Generic function call
 - [x] Fix sizeof
-- [ ] Class or struct destructors
+- [x] Class or struct destructors
 - [ ] Pretty name for generics
 - [ ] Revamp AST for type definitions
 - [ ] Arrays of generic type

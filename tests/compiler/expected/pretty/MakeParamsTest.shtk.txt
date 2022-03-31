@@ -24,62 +24,62 @@
             },
             "_fn_MakeParamsTest_shtk_create2": {
                 "icode": [
-                        int* tempPtr53 = createPointer struct f
-                        int* tempPtr55 = addressAdd int* tempPtr53, bytes 0
-                        int* tempPtr55 = write int x
-                        int* tempPtr58 = createPointer struct f
-                        int* tempPtr60 = addressAdd int* tempPtr58, bytes 4
-                        float temp62 = cast autoFloat 2.000000
-                        float* tempPtr60 = write float temp62
-                        int* tempPtr64 = createPointer struct f
-                        int* tempPtr66 = addressAdd int* tempPtr64, bytes 8
-                        double* tempPtr66 = write double z
-                        int* tempPtr70 = createPointer struct returnValue68
-                        int* tempPtr71 = createPointer struct f
-                        int* tempPtr70 = memoryCopy int* tempPtr71, autoInt 16
+                        int* tempPtr54 = createPointer struct f
+                        int* tempPtr56 = addressAdd int* tempPtr54, bytes 0
+                        int* tempPtr56 = write int x
+                        int* tempPtr59 = createPointer struct f
+                        int* tempPtr61 = addressAdd int* tempPtr59, bytes 4
+                        float temp63 = cast autoFloat 2.000000
+                        float* tempPtr61 = write float temp63
+                        int* tempPtr65 = createPointer struct f
+                        int* tempPtr67 = addressAdd int* tempPtr65, bytes 8
+                        double* tempPtr67 = write double z
+                        int* tempPtr71 = createPointer struct returnValue69
+                        int* tempPtr72 = createPointer struct f
+                        int* tempPtr71 = memoryCopy int* tempPtr72, autoInt 16
                         return
                 ]
             },
             "_fn_MakeParamsTest_shtk_create3": {
                 "icode": [
-                        int* tempPtr78 = createPointer struct f
-                        int* tempPtr80 = addressAdd int* tempPtr78, bytes 0
-                        int* tempPtr82 = createPointer struct g
-                        int* tempPtr84 = addressAdd int* tempPtr82, bytes 0
-                        int temp85 = read int* tempPtr84
-                        int* tempPtr80 = write int temp85
-                        int* tempPtr87 = createPointer struct f
-                        int* tempPtr89 = addressAdd int* tempPtr87, bytes 4
-                        int* tempPtr91 = createPointer struct g
-                        int* tempPtr93 = addressAdd int* tempPtr91, bytes 4
-                        float temp94 = read float* tempPtr93
-                        float* tempPtr89 = write float temp94
-                        int* tempPtr96 = createPointer struct f
-                        int* tempPtr98 = addressAdd int* tempPtr96, bytes 8
-                        double* tempPtr98 = write double z
-                        int* tempPtr102 = createPointer struct returnValue100
-                        int* tempPtr103 = createPointer struct f
-                        int* tempPtr102 = memoryCopy int* tempPtr103, autoInt 16
+                        int* tempPtr80 = createPointer struct f
+                        int* tempPtr82 = addressAdd int* tempPtr80, bytes 0
+                        int* tempPtr84 = createPointer struct g
+                        int* tempPtr86 = addressAdd int* tempPtr84, bytes 0
+                        int temp87 = read int* tempPtr86
+                        int* tempPtr82 = write int temp87
+                        int* tempPtr89 = createPointer struct f
+                        int* tempPtr91 = addressAdd int* tempPtr89, bytes 4
+                        int* tempPtr93 = createPointer struct g
+                        int* tempPtr95 = addressAdd int* tempPtr93, bytes 4
+                        float temp96 = read float* tempPtr95
+                        float* tempPtr91 = write float temp96
+                        int* tempPtr98 = createPointer struct f
+                        int* tempPtr100 = addressAdd int* tempPtr98, bytes 8
+                        double* tempPtr100 = write double z
+                        int* tempPtr104 = createPointer struct returnValue102
+                        int* tempPtr105 = createPointer struct f
+                        int* tempPtr104 = memoryCopy int* tempPtr105, autoInt 16
                         return
                 ]
             },
             "_fn_MakeParamsTest_shtk_create4": {
                 "icode": [
-                        int* tempPtr110 = createPointer struct f
-                        int* tempPtr112 = addressAdd int* tempPtr110, bytes 0
-                        int* tempPtr112 = write int x
-                        int* tempPtr115 = createPointer struct f
-                        int* tempPtr117 = addressAdd int* tempPtr115, bytes 4
-                        int* tempPtr119 = createPointer struct g
-                        int* tempPtr121 = addressAdd int* tempPtr119, bytes 4
-                        float temp122 = read float* tempPtr121
-                        float* tempPtr117 = write float temp122
-                        int* tempPtr124 = createPointer struct f
-                        int* tempPtr126 = addressAdd int* tempPtr124, bytes 8
-                        double* tempPtr126 = write double z
-                        int* tempPtr130 = createPointer struct returnValue128
-                        int* tempPtr131 = createPointer struct f
-                        int* tempPtr130 = memoryCopy int* tempPtr131, autoInt 16
+                        int* tempPtr113 = createPointer struct f
+                        int* tempPtr115 = addressAdd int* tempPtr113, bytes 0
+                        int* tempPtr115 = write int x
+                        int* tempPtr118 = createPointer struct f
+                        int* tempPtr120 = addressAdd int* tempPtr118, bytes 4
+                        int* tempPtr122 = createPointer struct g
+                        int* tempPtr124 = addressAdd int* tempPtr122, bytes 4
+                        float temp125 = read float* tempPtr124
+                        float* tempPtr120 = write float temp125
+                        int* tempPtr127 = createPointer struct f
+                        int* tempPtr129 = addressAdd int* tempPtr127, bytes 8
+                        double* tempPtr129 = write double z
+                        int* tempPtr133 = createPointer struct returnValue131
+                        int* tempPtr134 = createPointer struct f
+                        int* tempPtr133 = memoryCopy int* tempPtr134, autoInt 16
                         return
                 ]
             },
@@ -108,50 +108,50 @@
             },
             "main": {
                 "icode": [
-                        struct calleeReturnValue137 = call struct _fn_MakeParamsTest_shtk_create1, module MakeParamsTest.shtk
-                        int* tempPtr140 = createPointer struct a
-                        int* tempPtr141 = createPointer struct calleeReturnValue137
-                        int* tempPtr140 = memoryCopy int* tempPtr141, autoInt 16
-                        int* tempPtr146 = createPointer struct a
-                        passPointer int* tempPtr146, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        void calleeReturnValue149 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        int temp157 = cast autoInt 10
-                        pass int temp157, struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
-                        double temp160 = cast autoFloat 20.000000
-                        pass double temp160, struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
-                        struct calleeReturnValue163 = call struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
-                        int* tempPtr166 = createPointer struct b
-                        int* tempPtr167 = createPointer struct calleeReturnValue163
-                        int* tempPtr166 = memoryCopy int* tempPtr167, autoInt 16
-                        int* tempPtr172 = createPointer struct b
-                        passPointer int* tempPtr172, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        void calleeReturnValue175 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        int* tempPtr183 = createPointer struct b
-                        passPointer int* tempPtr183, struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
-                        double temp186 = cast autoFloat 2.500000
-                        pass double temp186, struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
-                        struct calleeReturnValue189 = call struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
-                        int* tempPtr192 = createPointer struct c
-                        int* tempPtr193 = createPointer struct calleeReturnValue189
-                        int* tempPtr192 = memoryCopy int* tempPtr193, autoInt 16
-                        int* tempPtr198 = createPointer struct c
-                        passPointer int* tempPtr198, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        void calleeReturnValue201 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        int temp211 = cast autoInt 50
-                        pass int temp211, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
-                        int* tempPtr214 = createPointer struct c
-                        passPointer int* tempPtr214, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
-                        double temp217 = cast autoFloat 60.500000
-                        pass double temp217, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
-                        struct calleeReturnValue220 = call struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
-                        int* tempPtr223 = createPointer struct d
-                        int* tempPtr224 = createPointer struct calleeReturnValue220
-                        int* tempPtr223 = memoryCopy int* tempPtr224, autoInt 16
-                        int* tempPtr229 = createPointer struct d
-                        passPointer int* tempPtr229, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        void calleeReturnValue232 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        int temp237 = cast autoInt 0
-                        int returnValue235 = equal int temp237
+                        struct calleeReturnValue141 = call struct _fn_MakeParamsTest_shtk_create1, module MakeParamsTest.shtk
+                        int* tempPtr144 = createPointer struct a
+                        int* tempPtr145 = createPointer struct calleeReturnValue141
+                        int* tempPtr144 = memoryCopy int* tempPtr145, autoInt 16
+                        int* tempPtr150 = createPointer struct a
+                        passPointer int* tempPtr150, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        void calleeReturnValue153 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        int temp161 = cast autoInt 10
+                        pass int temp161, struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
+                        double temp164 = cast autoFloat 20.000000
+                        pass double temp164, struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
+                        struct calleeReturnValue167 = call struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
+                        int* tempPtr170 = createPointer struct b
+                        int* tempPtr171 = createPointer struct calleeReturnValue167
+                        int* tempPtr170 = memoryCopy int* tempPtr171, autoInt 16
+                        int* tempPtr176 = createPointer struct b
+                        passPointer int* tempPtr176, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        void calleeReturnValue179 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        int* tempPtr187 = createPointer struct b
+                        passPointer int* tempPtr187, struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
+                        double temp190 = cast autoFloat 2.500000
+                        pass double temp190, struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
+                        struct calleeReturnValue193 = call struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
+                        int* tempPtr196 = createPointer struct c
+                        int* tempPtr197 = createPointer struct calleeReturnValue193
+                        int* tempPtr196 = memoryCopy int* tempPtr197, autoInt 16
+                        int* tempPtr202 = createPointer struct c
+                        passPointer int* tempPtr202, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        void calleeReturnValue205 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        int temp215 = cast autoInt 50
+                        pass int temp215, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
+                        int* tempPtr218 = createPointer struct c
+                        passPointer int* tempPtr218, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
+                        double temp221 = cast autoFloat 60.500000
+                        pass double temp221, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
+                        struct calleeReturnValue224 = call struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
+                        int* tempPtr227 = createPointer struct d
+                        int* tempPtr228 = createPointer struct calleeReturnValue224
+                        int* tempPtr227 = memoryCopy int* tempPtr228, autoInt 16
+                        int* tempPtr233 = createPointer struct d
+                        passPointer int* tempPtr233, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        void calleeReturnValue236 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        int temp241 = cast autoInt 0
+                        int returnValue239 = equal int temp241
                         return
                 ]
             }

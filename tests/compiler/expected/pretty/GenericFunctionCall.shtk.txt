@@ -52,16 +52,16 @@
             },
             "_fn_TestModules_ResultGeneric_shtk[int]_success": {
                 "icode": [
-                        byte* tempPtr20 = createPointer struct r
-                        byte* tempPtr22 = addressAdd byte* tempPtr20, bytes 0
-                        byte temp24 = cast autoInt 0
-                        byte* tempPtr22 = write byte temp24
-                        byte* tempPtr26 = createPointer struct r
-                        byte* tempPtr28 = addressAdd byte* tempPtr26, bytes 1
-                        int* tempPtr28 = write int item
-                        byte* tempPtr32 = createPointer struct returnValue30
-                        byte* tempPtr33 = createPointer struct r
-                        byte* tempPtr32 = memoryCopy byte* tempPtr33, autoInt 5
+                        byte* tempPtr21 = createPointer struct r
+                        byte* tempPtr23 = addressAdd byte* tempPtr21, bytes 0
+                        byte temp25 = cast autoInt 0
+                        byte* tempPtr23 = write byte temp25
+                        byte* tempPtr27 = createPointer struct r
+                        byte* tempPtr29 = addressAdd byte* tempPtr27, bytes 1
+                        int* tempPtr29 = write int item
+                        byte* tempPtr33 = createPointer struct returnValue31
+                        byte* tempPtr34 = createPointer struct r
+                        byte* tempPtr33 = memoryCopy byte* tempPtr34, autoInt 5
                         return
                 ]
             }
