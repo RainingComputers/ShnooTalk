@@ -1,0 +1,8 @@
+MODULE DeconstructorNoPointer.shtk
+ERROR in Line 1 Col 6
+
+from "foobar.shtk" use Foobar
+     ^
+File does not exist
+
+DeconstructorNoPointer.shtk:1:5

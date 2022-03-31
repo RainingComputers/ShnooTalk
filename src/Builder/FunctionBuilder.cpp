@@ -749,7 +749,6 @@ void FunctionBuilder::callDeconstructor(const Unit& symbol)
 
     const std::string& formalName = deconstructorFunction.parameters[0];
     const TypeDescription& formalType = deconstructorFunction.symbols.at(formalName);
-
     const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
 
     passParameterPreMangled(mangledFunctionName, deconstructorFunction, formalParam, symbol);
