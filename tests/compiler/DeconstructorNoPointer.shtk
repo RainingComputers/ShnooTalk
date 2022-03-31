@@ -1,0 +1,10 @@
+from "foobar.shtk" use Foobar
+
+
+fn main() -> int
+{
+    var foobarArray: Foobar*
+    println("Should not call deconstructor")
+
+    return 0
+}
