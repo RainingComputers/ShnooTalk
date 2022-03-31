@@ -1,0 +1,14 @@
+from "TestModules/foobar.shtk" use Foobar
+
+
+fn main() -> int
+{
+    var foobarArray: Foobar[2][2]
+    foobarArray[0][0].a = 100
+    foobarArray[0][1].a = 200
+    foobarArray[1][0].a = 300
+    foobarArray[1][1].a = 400
+
+
+    return 0
+}
