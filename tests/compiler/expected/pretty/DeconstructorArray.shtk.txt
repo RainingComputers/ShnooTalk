@@ -1,0 +1,97 @@
+{
+    "DeconstructorArray.shtk": {
+        "moduleName": "DeconstructorArray.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr7 = createPointer struct foobarArray
+                        void* tempPtr9 = addressMultiply autoInt 0, bytes 8
+                        int* tempPtr10 = addressAdd int* tempPtr7, void* tempPtr9
+                        void* tempPtr12 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr13 = addressAdd int* tempPtr10, void* tempPtr12
+                        int* tempPtr14 = createPointer int* tempPtr13
+                        int* tempPtr16 = addressAdd int* tempPtr14, bytes 0
+                        int temp18 = cast autoInt 100
+                        int* tempPtr16 = write int temp18
+                        int* tempPtr22 = createPointer struct foobarArray
+                        void* tempPtr24 = addressMultiply autoInt 0, bytes 8
+                        int* tempPtr25 = addressAdd int* tempPtr22, void* tempPtr24
+                        void* tempPtr27 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr28 = addressAdd int* tempPtr25, void* tempPtr27
+                        int* tempPtr29 = createPointer int* tempPtr28
+                        int* tempPtr31 = addressAdd int* tempPtr29, bytes 0
+                        int temp33 = cast autoInt 200
+                        int* tempPtr31 = write int temp33
+                        int* tempPtr37 = createPointer struct foobarArray
+                        void* tempPtr39 = addressMultiply autoInt 1, bytes 8
+                        int* tempPtr40 = addressAdd int* tempPtr37, void* tempPtr39
+                        void* tempPtr42 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr43 = addressAdd int* tempPtr40, void* tempPtr42
+                        int* tempPtr44 = createPointer int* tempPtr43
+                        int* tempPtr46 = addressAdd int* tempPtr44, bytes 0
+                        int temp48 = cast autoInt 300
+                        int* tempPtr46 = write int temp48
+                        int* tempPtr52 = createPointer struct foobarArray
+                        void* tempPtr54 = addressMultiply autoInt 1, bytes 8
+                        int* tempPtr55 = addressAdd int* tempPtr52, void* tempPtr54
+                        void* tempPtr57 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr58 = addressAdd int* tempPtr55, void* tempPtr57
+                        int* tempPtr59 = createPointer int* tempPtr58
+                        int* tempPtr61 = addressAdd int* tempPtr59, bytes 0
+                        int temp63 = cast autoInt 400
+                        int* tempPtr61 = write int temp63
+                        int temp66 = cast autoInt 0
+                        int returnValue64 = equal int temp66
+                        int* tempPtr69 = createPointer struct foobarArray
+                        void* tempPtr71 = addressMultiply autoInt 0, bytes 8
+                        int* tempPtr72 = addressAdd int* tempPtr69, void* tempPtr71
+                        int* tempPtr74 = createPointer struct foobarArray
+                        void* tempPtr76 = addressMultiply autoInt 1, bytes 8
+                        int* tempPtr77 = addressAdd int* tempPtr74, void* tempPtr76
+                        int* tempPtr79 = createPointer int* tempPtr72
+                        void* tempPtr81 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr82 = addressAdd int* tempPtr79, void* tempPtr81
+                        int* tempPtr84 = createPointer int* tempPtr72
+                        void* tempPtr86 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr87 = addressAdd int* tempPtr84, void* tempPtr86
+                        int* tempPtr89 = createPointer int* tempPtr82
+                        passPointer int* tempPtr89, void _fn_TestModules_foobar_shtk_deconstructor, module TestModules/foobar.shtk
+                        void calleeReturnValue92 = call void _fn_TestModules_foobar_shtk_deconstructor, module TestModules/foobar.shtk
+                        int* tempPtr96 = createPointer int* tempPtr87
+                        passPointer int* tempPtr96, void _fn_TestModules_foobar_shtk_deconstructor, module TestModules/foobar.shtk
+                        void calleeReturnValue99 = call void _fn_TestModules_foobar_shtk_deconstructor, module TestModules/foobar.shtk
+                        int* tempPtr103 = createPointer int* tempPtr77
+                        void* tempPtr105 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr106 = addressAdd int* tempPtr103, void* tempPtr105
+                        int* tempPtr108 = createPointer int* tempPtr77
+                        void* tempPtr110 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr111 = addressAdd int* tempPtr108, void* tempPtr110
+                        int* tempPtr113 = createPointer int* tempPtr106
+                        passPointer int* tempPtr113, void _fn_TestModules_foobar_shtk_deconstructor, module TestModules/foobar.shtk
+                        void calleeReturnValue116 = call void _fn_TestModules_foobar_shtk_deconstructor, module TestModules/foobar.shtk
+                        int* tempPtr120 = createPointer int* tempPtr111
+                        passPointer int* tempPtr120, void _fn_TestModules_foobar_shtk_deconstructor, module TestModules/foobar.shtk
+                        void calleeReturnValue123 = call void _fn_TestModules_foobar_shtk_deconstructor, module TestModules/foobar.shtk
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/foobar.shtk": {
+        "moduleName": "TestModules/foobar.shtk",
+        "functions": {
+            "_fn_TestModules_foobar_shtk_deconstructor": {
+                "icode": [
+                        int* tempPtr4 = createPointer struct self
+                        int* tempPtr6 = addressAdd int* tempPtr4, bytes 0
+                        int temp7 = read int* tempPtr6
+                        print int temp7
+                        newLine
+                        printString stringData _str_TestModules_foobar_shtk__l9_c12
+                        newLine
+                        return
+                ]
+            }
+        }
+    }
+}
