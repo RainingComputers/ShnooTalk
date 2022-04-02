@@ -33,7 +33,7 @@ public:
     void pushWorkingModule();
     void popWorkingModule();
 
-    void setWorkingFunction(const Token& functionNameToken);
+    void setWorkingFunction(const Token& functionNameToken, bool externC);
 
     IRBuilder(icode::StringModulesMap& modules_map, const std::string& file_name, Console& console);
 };

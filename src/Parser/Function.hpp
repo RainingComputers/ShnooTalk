@@ -6,5 +6,6 @@
 void formalParameterList(parser::ParserContext& ctx);
 void functionDefinition(parser::ParserContext& ctx);
 void externFunctionDefinition(parser::ParserContext& ctx);
+void functionDefinitionExternC(parser::ParserContext& ctx);
 
 #endif

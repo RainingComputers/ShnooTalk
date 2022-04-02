@@ -1,0 +1,28 @@
+{
+    "ExternCFunction.shtk": {
+        "moduleName": "ExternCFunction.shtk",
+        "functions": {
+            "add": {
+                "icode": [
+                        int temp6 = add int a, int b
+                        int returnValue3 = equal int temp6
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int temp16 = cast autoInt 100
+                        pass int temp16, int add, module ExternCFunction.shtk
+                        int temp19 = cast autoInt 50
+                        pass int temp19, int add, module ExternCFunction.shtk
+                        int calleeReturnValue22 = call int add, module ExternCFunction.shtk
+                        print int calleeReturnValue22
+                        newLine
+                        int temp27 = cast autoInt 0
+                        int returnValue25 = equal int temp27
+                        return
+                ]
+            }
+        }
+    }
+}

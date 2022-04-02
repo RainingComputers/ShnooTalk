@@ -185,6 +185,21 @@
             "externalConsole": false
         },
         {
+            "name": "-release (MacOS)",
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-release"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "name": "-ast (Linux)",
             "type": "cppdbg",
             "request": "launch",
@@ -446,6 +461,29 @@
             "args": [
                 "${fileBasename}",
                 "-c"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-release (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-release"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

@@ -10,8 +10,9 @@
 
 void programModule(parser::ParserContext& ctx)
 {
-    token::TokenType expected[] = { token::STRUCT, token::FUNCTION, token::EXTERN_FUNCTION, token::ENUM,
-                                    token::DEF,    token::VAR,      token::END_OF_FILE };
+    token::TokenType expected[] = { token::STRUCT,   token::FUNCTION,   token::EXTERN_FUNCTION,
+                                    token::EXTERN_C, token::ENUM,       token::DEF,
+                                    token::VAR,      token::END_OF_FILE };
 
     if (ctx.accept(token::GENERIC))
         generic(ctx);
@@ -24,7 +25,7 @@ void programModule(parser::ParserContext& ctx)
 
     while (true)
     {
-        ctx.expect(expected, 7);
+        ctx.expect(expected, 8);
 
         if (ctx.accept(token::DEF))
             def(ctx);
@@ -38,6 +39,8 @@ void programModule(parser::ParserContext& ctx)
             functionDefinition(ctx);
         else if (ctx.accept(token::EXTERN_FUNCTION))
             externFunctionDefinition(ctx);
+        else if (ctx.accept(token::EXTERN_C))
+            functionDefinitionExternC(ctx);
         else
             break;
     }

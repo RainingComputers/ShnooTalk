@@ -78,3 +78,19 @@ void externFunctionDefinition(parser::ParserContext& ctx)
 
     ctx.popNode();
 }
+
+void functionDefinitionExternC(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.consume();
+
+    ctx.expect(token::FUNCTION);
+    ctx.addNodeMakeCurrent(node::FUNCTION_EXTERN_C);
+
+    functionDecleration(ctx);
+
+    block(ctx);
+
+    ctx.popNode();
+}

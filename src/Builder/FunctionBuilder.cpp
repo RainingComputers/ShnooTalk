@@ -576,16 +576,20 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
 std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)
 {
     const std::string& mangeledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
+    const std::string& calleeName = calleeNameToken.toString();
 
     icode::ModuleDescription& workingModule = modulesMap.at(workingFunction->moduleName);
 
-    if (workingModule.incompleteFunctions.find(calleeNameToken.toString()) != workingModule.incompleteFunctions.end())
+    if (workingModule.incompleteFunctions.find(calleeName) != workingModule.incompleteFunctions.end())
         return mangeledCalleeName;
 
     icode::ModuleDescription& functionModule = modulesMap.at(callee.moduleName);
 
-    if (functionModule.externFunctions.find(calleeNameToken.toString()) != functionModule.externFunctions.end())
-        return calleeNameToken.toString();
+    if (functionModule.externFunctions.find(calleeName) != functionModule.externFunctions.end())
+        return calleeName;
+
+    if (functionModule.functions.find(calleeName) != functionModule.functions.end())
+        return calleeName;
 
     return mangeledCalleeName;
 }

@@ -60,6 +60,11 @@ public:
                         const std::vector<Token>& paramNames,
                         std::vector<icode::TypeDescription>& paramTypes);
 
+    void createFunctionExternC(const Token& nameToken,
+                               const icode::TypeDescription& returnType,
+                               const std::vector<Token>& paramNames,
+                               std::vector<icode::TypeDescription>& paramTypes);
+
     void createExternFunction(const Token& nameToken,
                               const icode::TypeDescription& returnType,
                               const std::vector<Token>& paramNames,

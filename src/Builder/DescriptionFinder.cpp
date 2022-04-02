@@ -175,6 +175,9 @@ FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
     if (workingModule->getFunction(nameMangle(nameToken, workingModule->name), functionDescription))
         return functionDescription;
 
+    if (workingModule->getFunction(nameToken.toString(), functionDescription))
+        return functionDescription;
+
     if (rootModule.getFunction(nameMangle(nameToken, rootModule.name), functionDescription))
         if (!nameToken.isBinaryOperator())
             return functionDescription;

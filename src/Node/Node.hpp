@@ -17,6 +17,7 @@ namespace node
         MODULE,
         FUNCTION,
         EXTERN_FUNCTION,
+        FUNCTION_EXTERN_C,
         STRUCT,
         ENUM,
         DEF,

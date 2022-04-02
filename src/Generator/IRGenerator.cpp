@@ -54,6 +54,7 @@ void generateSymbol(generator::GeneratorContext& ctx, const Node& child)
             break;
         case node::FUNCTION:
         case node::EXTERN_FUNCTION:
+        case node::FUNCTION_EXTERN_C:
             createFunctionFromNode(ctx, child);
             break;
         case node::ENUM:
@@ -74,7 +75,7 @@ void generateFunction(generator::GeneratorContext& ctx, const Node& child)
 {
     const Token& functionNameToken = child.children[0].tok;
 
-    ctx.ir.setWorkingFunction(functionNameToken);
+    ctx.ir.setWorkingFunction(functionNameToken, child.type == node::FUNCTION_EXTERN_C);
 
     ctx.scope.resetScope();
 
@@ -97,7 +98,7 @@ void generateModule(generator::GeneratorContext& ctx, const Node& root)
         generateSymbol(ctx, child);
 
     for (const Node& child : root.children)
-        if (child.type == node::FUNCTION)
+        if (child.type == node::FUNCTION || child.type == node::FUNCTION_EXTERN_C)
             generateFunction(ctx, child);
 }
 

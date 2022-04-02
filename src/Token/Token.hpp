@@ -11,6 +11,7 @@ namespace token
         SPACE,
         FUNCTION,
         EXTERN_FUNCTION,
+        EXTERN_C,
         IDENTIFIER,
         LPAREN,
         RPAREN,

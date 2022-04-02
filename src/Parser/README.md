@@ -95,6 +95,8 @@ functionDeceleration = identifier "(" [formalParameterList] ")" ["->" typeDefini
 
 functionDefinition = "fn" functionDeceleration block
 
+functionDefinitionExternC = "externC" functionDefinition
+
 externFunctionDefinition = "extfn" functionDeceleration [stringLiteral]
 
 print = ("print" | "println") "(" [expression {("," | ";") expression}] ")" 

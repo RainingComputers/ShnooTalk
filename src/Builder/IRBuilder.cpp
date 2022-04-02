@@ -46,11 +46,16 @@ void IRBuilder::popWorkingModule()
     moduleDescriptionStack.pop_back();
 }
 
-void IRBuilder::setWorkingFunction(const Token& functionNameToken)
+void IRBuilder::setWorkingFunction(const Token& functionNameToken, bool externC)
 {
-    std::string mangledFunctionName = nameMangle(functionNameToken, rootModule.name);
+    if (externC)
+        workingFunction = &rootModule.functions.at(functionNameToken.toString());
+    else
+    {
+        std::string mangledFunctionName = nameMangle(functionNameToken, rootModule.name);
+        workingFunction = &rootModule.functions.at(mangledFunctionName);
+    }
 
-    workingFunction = &rootModule.functions[mangledFunctionName];
     functionBuilder.setWorkingFunction(workingFunction);
     descriptionFinder.setWorkingFunction(workingFunction);
 }

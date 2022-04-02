@@ -231,6 +231,22 @@ void ModuleBuilder::createFunction(const Token& nameToken,
     rootModule.definedFunctions.push_back(mangledFunctionName);
 }
 
+void ModuleBuilder::createFunctionExternC(const Token& nameToken,
+                                          const icode::TypeDescription& returnType,
+                                          const std::vector<Token>& paramNames,
+                                          std::vector<icode::TypeDescription>& paramTypes)
+{
+    const std::string& functionName = nameToken.toString();
+
+    if (rootModule.symbolExists(functionName))
+        console.compileErrorOnToken("Symbol already defined", nameToken);
+
+    rootModule.functions[functionName] =
+        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
+
+    rootModule.definedFunctions.push_back(functionName);
+}
+
 void ModuleBuilder::createExternFunction(const Token& nameToken,
                                          const icode::TypeDescription& returnType,
                                          const std::vector<Token>& paramNames,
