@@ -124,7 +124,7 @@ public:
 
     Unit getReturnValueUnit();
 
-    void createReturn();
+    void createReturnAndCallDeconstructors();
 
     void terminateFunction(const Token& nameToken);
 };

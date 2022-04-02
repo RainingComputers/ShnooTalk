@@ -24,5 +24,5 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
     else if (functionReturn.dtype() != VOID)
         ctx.console.compileErrorOnToken("Ret type is not VOID", root.tok);
 
-    ctx.ir.functionBuilder.createReturn();
+    ctx.ir.functionBuilder.createReturnAndCallDeconstructors();
 }

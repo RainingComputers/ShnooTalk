@@ -785,7 +785,7 @@ void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
     }
 }
 
-void FunctionBuilder::createReturn()
+void FunctionBuilder::createReturnAndCallDeconstructors()
 {
     callDeconstructorOnDeclaredSymbols();
     noArgumentEntry(RET);
@@ -801,7 +801,7 @@ void FunctionBuilder::terminateFunction(const Token& nameToken)
 
     if (workingFunction->isVoid())
     {
-        createReturn();
+        createReturnAndCallDeconstructors();
         return;
     }
 
