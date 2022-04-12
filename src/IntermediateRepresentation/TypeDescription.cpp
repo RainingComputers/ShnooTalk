@@ -37,6 +37,7 @@ namespace icode
         setProperty(IS_PTR);
         dimensions.clear();
         dimensions.push_back(1);
+        dimTypes.push_back(ALLOC_FLEXIBLE_DIM);
     }
 
     void TypeDescription::becomeStringLtrl()

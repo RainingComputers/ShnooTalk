@@ -168,7 +168,7 @@ const std::string operandTypeToString[] = {
     "literal",   "label",   "module",      "none"
 };
 
-const std::string dimensionTypesToString[] = { "fixedDim", "stringLiteralDim" };
+const std::string dimensionTypesToString[] = { "fixedDim", "stringLiteralDim", "allocatedFlexibleDim" };
 
 const std::string instructionToString[] = { "pass",
                                             "passPointer",

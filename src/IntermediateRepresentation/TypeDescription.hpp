@@ -22,6 +22,7 @@ namespace icode
     {
         FIXED_DIM,
         STRING_LTRL_DIM,
+        ALLOC_FLEXIBLE_DIM,
     };
 
     struct TypeDescription

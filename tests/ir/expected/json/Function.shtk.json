@@ -36,7 +36,7 @@
                 "parameters": ["b"],
                 "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [1], "dimTypes": [], "properties": ["isPointer", "isParameter", "isLocal"]}
+                    "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [1], "dimTypes": ["allocatedFlexibleDim"], "properties": ["isPointer", "isParameter", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
