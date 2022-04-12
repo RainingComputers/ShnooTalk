@@ -172,7 +172,7 @@ Unit FunctionBuilder::createTempArray(const TypeDescription& type, unsigned int 
     TypeDescription pointerType = type;
     pointerType.becomeArrayPointer();
 
-    return Unit(pointerType, entry.op1);
+    return Unit(pointerType, entry.op1).clearProperties();
 }
 
 void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
@@ -368,7 +368,7 @@ Operand FunctionBuilder::addressMultiplyOperator(Operand op2, Operand op3)
 
 Unit FunctionBuilder::getStructFieldFromString(const std::string& fieldName, const Unit& unit)
 {
-    StructDescription structDescription = modulesMap[unit.moduleName()].structures[unit.dtypeName()];
+    StructDescription structDescription = modulesMap.at(unit.moduleName()).structures.at(unit.dtypeName());
 
     TypeDescription fieldType = structDescription.structFields.at(fieldName);
 
@@ -392,7 +392,7 @@ Unit FunctionBuilder::getStructFieldFromString(const std::string& fieldName, con
 
 Unit FunctionBuilder::getStructField(const Token& fieldNameToken, const Unit& unit)
 {
-    StructDescription structDescription = modulesMap[unit.moduleName()].structures[unit.dtypeName()];
+    StructDescription structDescription = modulesMap.at(unit.moduleName()).structures.at(unit.dtypeName());
 
     const std::string& fieldName = fieldNameToken.toString();
 

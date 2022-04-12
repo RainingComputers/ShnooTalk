@@ -31,7 +31,7 @@
                 "parameters": ["num"],
                 "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+                    "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
                 },
                 "icode": [
                     

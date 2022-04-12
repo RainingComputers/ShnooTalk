@@ -86,7 +86,6 @@ make test
 - [ ] Revamp AST for type definitions
 - [ ] Arrays of generic type
 - [x] extern "C" to prevent name mangling functions
-- [ ] Spike static linking everything
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend
@@ -116,6 +115,7 @@ make test
 - [ ] Static variables
 - [ ] Unsafe keyword
 - [ ] Struct alignment and padding
+- [ ] Spike static linking everything
 
 *Advanced Features*
 

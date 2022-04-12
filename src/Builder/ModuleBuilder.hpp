@@ -32,6 +32,8 @@ class ModuleBuilder
 
     bool isValidDeconstructor(const icode::FunctionDescription& function);
 
+    void createUseNoAlias(const Token& pathToken);
+
 public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
 
@@ -81,8 +83,6 @@ public:
     void createStruct(const Token& nameToken,
                       const std::vector<Token>& fieldNameTokens,
                       const std::vector<icode::TypeDescription>& fieldTypes);
-
-    void createUseNoAlias(const Token& pathToken);
 
     void createUse(const Token& pathToken, const Token& aliasToken);
 

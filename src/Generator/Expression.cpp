@@ -64,7 +64,7 @@ Unit addrOperator(generator::GeneratorContext& ctx, const Node& root)
     Unit addrTerm = term(ctx, root.children[0]);
 
     if (!addrTerm.isPointer())
-        ctx.console.compileErrorOnToken("Connot apply addr operator in NON POINTER", root.tok);
+        ctx.console.compileErrorOnToken("Connot apply addr operator to NON POINTER", root.tok);
 
     return ctx.ir.functionBuilder.addrOperator(addrTerm);
 }

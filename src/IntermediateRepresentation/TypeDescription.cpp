@@ -39,7 +39,7 @@ namespace icode
         dimensions.push_back(1);
     }
 
-    void TypeDescription::becomeString()
+    void TypeDescription::becomeStringLtrl()
     {
         setProperty(IS_STRING_LTRL);
     }

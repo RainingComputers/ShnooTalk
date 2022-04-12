@@ -18,13 +18,13 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
         ctx.console.compileErrorOnToken("Cannot assign to LITERAL", root.children[0].tok);
 
     if (!isSameType(LHS, RHS))
-        ctx.console.typeError(root.getNthChildTokenFromLast(1), LHS, RHS);
+        ctx.console.typeError(RHSToken, LHS, RHS);
 
     if (!LHS.isMutable() && root.type == node::ASSIGNMENT)
         ctx.console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", root.children[0].tok);
 
     if (LHS.isArray() && !assignOperator.isEqualOrLeftArrow())
-        ctx.console.compileErrorOnToken("Only EQUAL operator allowed on ARRAY", assignOperator);
+        ctx.console.compileErrorOnToken("Only EQUAL or LEFT ARROW operator allowed on ARRAY", assignOperator);
 
     if (assignOperator.isBitwiseOperator() && !LHS.isIntegerType())
         ctx.console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
@@ -35,7 +35,7 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
             ctx.console.compileErrorOnToken("Non pointer initialization for POINTER", assignOperator);
 
         if (LHS.isArray() && RHS.isPointer())
-            ctx.console.compileErrorOnToken("Cannot assign POINTER to ARRAY", root.getNthChildTokenFromLast(1));
+            ctx.console.compileErrorOnToken("Cannot assign POINTER to ARRAY", RHSToken);
 
         ctx.ir.functionBuilder.unitCopy(LHS, RHS);
     }
@@ -45,8 +45,10 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
             ctx.console.compileErrorOnToken("Pointer assignment on a NON POINTER", assignOperator);
 
         if (!RHS.isValidForPointerAssignment())
-            ctx.console.compileErrorOnToken("Invalid expression for POINTER ASSIGNMENT",
-                                            root.getNthChildTokenFromLast(1));
+            ctx.console.compileErrorOnToken("Invalid expression for POINTER ASSIGNMENT", RHSToken);
+
+        if (LHS.isMutable() && !RHS.isMutable() && !RHS.isPointer() && RHS.isLocal())
+            ctx.console.compileErrorOnToken("Cannot assign IMMUTABLE to a pointer", RHSToken);
 
         ctx.ir.functionBuilder.unitPointerAssign(LHS, RHS);
     }

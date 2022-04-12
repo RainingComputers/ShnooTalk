@@ -1,0 +1,29 @@
+{
+    "AssignMutableParamToPointer.shtk": {
+        "moduleName": "AssignMutableParamToPointer.shtk",
+        "functions": {
+            "_fn_AssignMutableParamToPointer_shtk_foobar": {
+                "icode": [
+                        int* b = pointerAssign int a
+                        int temp7 = cast autoInt 1
+                        int* b = write int temp7
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int temp13 = cast autoInt 0
+                        int a = equal int temp13
+                        int* tempPtr17 = createPointer int a
+                        passPointer int* tempPtr17, void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
+                        void calleeReturnValue20 = call void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
+                        print int a
+                        newLine
+                        int temp26 = cast autoInt 0
+                        int returnValue24 = equal int temp26
+                        return
+                ]
+            }
+        }
+    }
+}

@@ -23,7 +23,6 @@ public:
     Unit unitFromCharLiteral(char value);
     Unit unitFromFloatLiteral(double value);
     Unit unitFromTypeDescription(const icode::TypeDescription& typeDescription, const std::string& name);
-    Unit unitFromEnum(int enumValue);
     Unit unitFromUnitList(const std::vector<Unit>& unitList);
     Unit unitFromStringDataKey(const std::string& key);
 };

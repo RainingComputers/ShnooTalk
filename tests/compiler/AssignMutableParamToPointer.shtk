@@ -1,0 +1,15 @@
+fn foobar(mut a: int)
+{
+    var b: int* <- a
+
+    b = 1
+}
+
+fn main() -> int
+{
+    var a: int = 0
+    foobar(a)
+    println(a)
+
+    return 0
+}

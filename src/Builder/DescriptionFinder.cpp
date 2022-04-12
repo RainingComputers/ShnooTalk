@@ -80,7 +80,7 @@ bool DescriptionFinder::getEnum(const Token& nameToken, Unit& returnValue)
         if (!rootModule.getEnum(nameToken.toString(), enumValue))
             return false;
 
-    returnValue = unitBuilder.unitFromEnum(enumValue);
+    returnValue = unitBuilder.unitFromIntLiteral(enumValue);
     return true;
 }
 
@@ -143,22 +143,6 @@ Unit DescriptionFinder::getUnitFromToken(const Token& nameToken)
         return unit;
 
     console.compileErrorOnToken("Symbol does not exist", nameToken);
-}
-
-unsigned int DescriptionFinder::getDataTypeSizeFromToken(const Token& nameToken)
-{
-    const std::string& dataTypeString = nameToken.toString();
-
-    DataType dtype = stringToDataType(dataTypeString);
-    if (dtype != STRUCT)
-        return getDataTypeSize(dtype);
-
-    StructDescription structDescription;
-    if (workingModule->getStruct(dataTypeString, structDescription))
-        return structDescription.size;
-
-    Unit unit = getUnitFromToken(nameToken);
-    return unit.size();
 }
 
 FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)

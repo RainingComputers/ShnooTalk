@@ -1,0 +1,6 @@
+fn main() -> int
+{
+    var a: int*
+    println(addr(a))
+    return 0
+}

@@ -86,8 +86,6 @@ void createDirectFrom(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token& pathToken = root.children[0].tok;
 
-    ctx.ir.moduleBuilder.createUseNoAlias(pathToken);
-
     bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken);
 
     if (isGeneric)

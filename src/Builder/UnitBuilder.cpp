@@ -45,15 +45,6 @@ Unit UnitBuilder::unitFromTypeDescription(const TypeDescription& typeDescription
     return Unit(typeDescription, op);
 }
 
-Unit UnitBuilder::unitFromEnum(int enumValue)
-{
-    Operand op = opBuilder.createIntLiteralOperand(AUTO_INT, enumValue);
-
-    TypeDescription typeDescription = typeDescriptionFromDataType(AUTO_INT);
-
-    return Unit(typeDescription, op);
-}
-
 Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
 {
     TypeDescription type = unitList[0].type();
@@ -68,26 +59,16 @@ Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
     return Unit(type, unitList);
 }
 
-int UnitBuilder::getCharCountFromStringDataKey(const std::string& key)
-{
-    auto resultItem = rootModule.stringsDataCharCounts.find(key);
-
-    if (resultItem != rootModule.stringsDataCharCounts.end())
-        return resultItem->second;
-
-    return workingModule->stringsDataCharCounts.at(key);
-}
-
 Unit UnitBuilder::unitFromStringDataKey(const std::string& key)
 {
-    int charCount = getCharCountFromStringDataKey(key);
+    int charCount = workingModule->stringsDataCharCounts.at(key);
 
     std::vector<int> dimensions;
     dimensions.push_back(charCount);
 
     TypeDescription stringType = typeDescriptionFromDataType(icode::UI8);
     stringType = createArrayTypeDescription(stringType, dimensions, icode::STRING_LTRL_DIM);
-    stringType.becomeString();
+    stringType.becomeStringLtrl();
     stringType.moduleName = rootModule.name;
 
     size_t size = charCount * getDataTypeSize(UI8);

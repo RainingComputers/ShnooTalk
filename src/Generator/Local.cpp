@@ -26,6 +26,14 @@ void local(generator::GeneratorContext& ctx, const Node& root)
         Unit RHS = expression(ctx, lastNode);
         assignmentFromTree(ctx, root, nameToken, lastNode.tok, local, RHS);
     }
+    else if (local.isPointer())
+    {
+        /* Make sure pointers are null initialized if not explicitly initialized */
+        const Unit& nullPointerUnit =
+            ctx.ir.functionBuilder.pointerCastOperator(ctx.ir.unitBuilder.unitFromIntLiteral(0), local.type());
+
+        ctx.ir.functionBuilder.unitPointerAssign(local, nullPointerUnit);
+    }
 }
 
 void createWalrusLocal(generator::GeneratorContext& ctx, const Node& root, const Token& nameToken, const Unit& RHS)

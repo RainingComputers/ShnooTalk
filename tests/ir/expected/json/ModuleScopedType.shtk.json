@@ -95,7 +95,7 @@
                 "parameters": ["num"],
                 "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+                    "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
                 },
                 "icode": [
                     
@@ -111,8 +111,8 @@
                 "parameters": ["foo", "bar"],
                 "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "bar": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]},
-                    "foo": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+                    "bar": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]},
+                    "foo": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
@@ -154,7 +154,7 @@
                 "parameters": ["num"],
                 "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter"]}
+                    "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
                 },
                 "icode": [
                     

@@ -1,0 +1,4 @@
+fn foobar(a: int)
+{
+    var b: int* <- a
+}

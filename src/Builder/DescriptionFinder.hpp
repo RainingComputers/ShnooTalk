@@ -42,8 +42,6 @@ public:
 
     Unit getUnitFromToken(const Token& nameToken);
 
-    unsigned int getDataTypeSizeFromToken(const Token& nameToken);
-
     icode::FunctionDescription getFunction(const Token& nameToken);
 
     std::vector<Unit> getFormalParameters(const icode::FunctionDescription& function);

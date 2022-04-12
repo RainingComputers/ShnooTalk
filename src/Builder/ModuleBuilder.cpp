@@ -184,6 +184,7 @@ FunctionDescription ModuleBuilder::createFunctionDescription(const icode::TypeDe
             console.compileErrorOnToken("Symbol already defined", paramNames[i]);
 
         paramTypes[i].setProperty(IS_PARAM);
+        paramTypes[i].setProperty(IS_LOCAL);
 
         /* Append to symbol table */
         functionDescription.parameters.push_back(paramNames[i].toString());
@@ -323,7 +324,7 @@ void ModuleBuilder::createStruct(const Token& nameToken,
         field.offset = structDescription.size;
 
         if (field.isPointer())
-            structDescription.size += getDataTypeSize(icode::I64);
+            structDescription.size += getDataTypeSize(icode::AUTO_INT);
         else
             structDescription.size += field.size;
 
@@ -421,6 +422,7 @@ void ModuleBuilder::createFrom(const std::string& moduleName, const Token& symbo
 
 void ModuleBuilder::createDirectFrom(const Token& pathToken, const Token& symbolNameToken)
 {
+    createUseNoAlias(pathToken);
     createFrom(pathToken.toUnescapedString(), symbolNameToken);
 }
 

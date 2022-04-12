@@ -46,7 +46,7 @@ namespace icode
         void becomeMutable();
         void becomePointer();
         void becomeArrayPointer();
-        void becomeString();
+        void becomeStringLtrl();
         void becomeImmutable();
         void becomeNonPointer();
         void becomeIncompleteType();
