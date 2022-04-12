@@ -12,7 +12,7 @@ See the tests directory for examples, try out the language in your browser on [S
 
 ## Install
 
-### Linux (Ubuntu / Arch / Debian / Fedora / RaspberryPi 32 bit)
+### Linux (Ubuntu / Arch / Debian / Fedora / RaspberryPi)
 ```
 curl -sf -L https://raw.githubusercontent.com/RainingComputers/ShnooTalk/main/install.sh | sudo sh
 ```
@@ -123,9 +123,11 @@ make test
 - [x] Generics
 - [ ] Standard library
 - [ ] Passing functions as arguments
+- [ ] Closures
 - [ ] Exceptions
 - [ ] Unions
 - [ ] Interfaces
+- [ ] Extends
 
 ### Documentation
 
