@@ -116,6 +116,12 @@ make test
 - [ ] Unsafe keyword
 - [ ] Struct alignment and padding
 - [ ] Spike static linking everything
+- [ ] Initializing global variables
+- [ ] typedef
+- [ ] Proper enums
+- [ ] Better error message for using generic as non generic
+- [ ] _ discard variable
+- [ ] Using literal expression as subscript for decleration
 
 *Advanced Features*
 
