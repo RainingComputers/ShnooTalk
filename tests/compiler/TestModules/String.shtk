@@ -72,7 +72,7 @@ fn find(this:String, start:int, c:char) -> Result
 {
     # Returns index of char
 
-    const l:int = this.len()
+    const l: int = this.len()
     
     for(var i:int = start; i < l; i += 1)
         # If char is found return a success result

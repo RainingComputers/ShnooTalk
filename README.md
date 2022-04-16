@@ -111,25 +111,24 @@ make test
 - [x] Setup github workflows and build for other platforms
 - [x] Function forward declaration
 - [ ] Cleanup format strings and function call in Translator
-- [ ] Error recovery
+- [ ] Error recovery in lexer and parser
 - [ ] Static variables
-- [ ] Unsafe keyword
 - [ ] Struct alignment and padding
-- [ ] Spike static linking everything
 - [ ] Initializing global variables
 - [ ] typedef
 - [ ] Proper enums
 - [ ] Better error message for using generic as non generic
-- [ ] _ discard variable
-- [ ] Using literal expression as subscript for decleration
+- [ ] `_` discard variable
+- [ ] Using literal expression as subscript for declaration
+- [ ] Autofill type parameter for generic function call
+- [ ] Struct construction using `Foobar{}` syntax
 
 *Advanced Features*
 
 - [x] Custom operators
 - [x] Generics
 - [ ] Standard library
-- [ ] Passing functions as arguments
-- [ ] Closures
+- [ ] Closures and lambdas
 - [ ] Exceptions
 - [ ] Unions
 - [ ] Interfaces
