@@ -83,8 +83,12 @@ make test
 - [x] Fix sizeof
 - [x] Class or struct destructors
 - [ ] Pretty name for generics
-- [ ] Revamp AST for type definitions
-- [ ] Arrays of generic type
+- [ ] Assignment destructuring
+- [ ] `_` discard variable
+- [ ] Using literal expression as subscript for declaration
+- [ ] Autofill type parameter for generic function call
+- [ ] Struct construction using `Foobar{}` syntax
+- [ ] `in` operator
 - [x] extern "C" to prevent name mangling functions
 
 *Backlog*
@@ -118,10 +122,9 @@ make test
 - [ ] typedef
 - [ ] Proper enums
 - [ ] Better error message for using generic as non generic
-- [ ] `_` discard variable
-- [ ] Using literal expression as subscript for declaration
-- [ ] Autofill type parameter for generic function call
-- [ ] Struct construction using `Foobar{}` syntax
+- [ ] Revamp AST for type definitions
+- [ ] Arrays of generic type
+
 
 *Advanced Features*
 
