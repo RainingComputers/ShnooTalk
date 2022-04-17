@@ -86,7 +86,6 @@ make test
 - [ ] Assignment destructuring
 - [ ] `_` discard variable
 - [ ] Using literal expression as subscript for declaration
-- [ ] Autofill type parameter for generic function call
 - [ ] Struct construction using `Foobar{}` syntax
 - [ ] `in` operator
 - [x] extern "C" to prevent name mangling functions
@@ -124,6 +123,7 @@ make test
 - [ ] Better error message for using generic as non generic
 - [ ] Revamp AST for type definitions
 - [ ] Arrays of generic type
+- [ ] Autofill type parameter for generic function call
 
 
 *Advanced Features*
