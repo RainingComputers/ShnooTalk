@@ -87,6 +87,8 @@ make test
 - [ ] `_` discard variable
 - [ ] Using literal expression as subscript for declaration
 - [ ] Struct construction using `Foobar{}` syntax
+- [ ] Better operator overloading
+- [ ] Reduce binary size
 - [ ] `in` operator
 - [x] extern "C" to prevent name mangling functions
 
