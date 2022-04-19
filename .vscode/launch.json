@@ -170,6 +170,21 @@
             "externalConsole": false
         },
         {
+            "name": "-llvm-release (MacOS)",
+            "type": "lldb",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-llvm-release"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "name": "-c (MacOS)",
             "type": "lldb",
             "request": "launch",
@@ -438,6 +453,29 @@
             "args": [
                 "${fileBasename}",
                 "-llvm"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "-llvm-release (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "debugbuild",
+            "program": "${workspaceFolder}/bin/debug/shtkc",
+            "args": [
+                "${fileBasename}",
+                "-llvm-release"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

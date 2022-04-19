@@ -208,7 +208,7 @@ void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
     if (src.isList())
         unitListCopy(dest, src);
-    else if (dest.isArray() || dest.isStruct())
+    else if (dest.isStructOrArray())
     {
         Operand destPointer = createPointer(dest);
         Operand srcPointer = createPointer(src);

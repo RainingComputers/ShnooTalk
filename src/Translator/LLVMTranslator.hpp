@@ -5,12 +5,16 @@
 
 namespace translator
 {
-    void generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,
-                                  icode::StringModulesMap& modulesMap,
-                                  bool release,
-                                  Console& console);
+    void generateLLVMModule(ModuleContext& ctx, bool release, Console& console);
+
+    void generateObject(icode::ModuleDescription& moduleDescription,
+                        icode::StringModulesMap& modulesMap,
+                        bool release,
+                        Console& console);
+
     std::string generateLLVMModuleString(icode::ModuleDescription& moduleDescription,
                                          icode::StringModulesMap& modulesMap,
+                                         bool release,
                                          Console& console);
 }
 

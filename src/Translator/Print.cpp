@@ -10,7 +10,11 @@ void setupPrintf(const ModuleContext& ctx)
     std::vector<Type*> args;
     args.push_back(Type::getInt8PtrTy(*ctx.context));
     FunctionType* printfFunctionType = FunctionType::get(ctx.builder->getInt32Ty(), args, true);
-    Function::Create(printfFunctionType, Function::ExternalLinkage, "printf", ctx.LLVMModule.get());
+
+    Function* printfFunction = Function::Create(printfFunctionType, Function::ExternalLinkage, "printf", ctx.LLVMModule.get());
+
+    printfFunction->addParamAttr(0, llvm::Attribute::ReadOnly);
+    printfFunction->addParamAttr(0, llvm::Attribute::NoCapture);
 }
 
 void callPrintf(const ModuleContext& ctx, Value* formatString, Value* value)

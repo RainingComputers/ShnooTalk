@@ -15,6 +15,7 @@ Available options:
     -icode           Print ShnooTalk IR, but only the icode
     -ir-all          Print ShnooTalk IR recursively for all modules
     -llvm            Print LLVM IR
+    -llvm-release    Print LLVM IR after optimization
     -json-ast        Print parse tree in JSON
     -json-ir         Print ShnooTalk IR in JSON
     -json-ir-all     Print ShnooTalk IR recursively for all modules in json

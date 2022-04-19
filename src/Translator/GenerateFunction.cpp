@@ -145,6 +145,20 @@ void translateFunctionIcode(ModuleContext& ctx,
     }
 }
 
+void addParameterAttribute(unsigned int argNo,
+                           const icode::TypeDescription& type,
+                           llvm::Argument* arg,
+                           Function* function)
+{
+    if (type.isMutable())
+        return;
+
+    function->addParamAttr(argNo, llvm::Attribute::ReadOnly);
+
+    if (arg->getType()->isPointerTy())
+        function->addParamAttr(argNo, llvm::Attribute::NoCapture);
+}
+
 void setupFunctionStack(ModuleContext& ctx, const icode::FunctionDescription& functionDesc, Function* function)
 {
     /* Allocate space for local variables */
@@ -155,9 +169,14 @@ void setupFunctionStack(ModuleContext& ctx, const icode::FunctionDescription& fu
     for (unsigned int i = 0; i < functionDesc.numParameters(); i++)
     {
         llvm::Argument* arg = function->getArg(i);
+
         const std::string& argumentName = functionDesc.parameters[i];
         arg->setName(argumentName);
-        createFunctionParameter(ctx, functionDesc.symbols.at(argumentName), argumentName, arg);
+
+        const icode::TypeDescription& type = functionDesc.symbols.at(argumentName);
+
+        addParameterAttribute(i, type, arg, function);
+        createFunctionParameter(ctx, type, arg, argumentName);
     }
 }
 

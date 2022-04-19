@@ -22,6 +22,7 @@ void printCLIUsage()
     pp::println("    -icode           Print ShnooTalk IR, but only the icode");
     pp::println("    -ir-all          Print ShnooTalk IR recursively for all modules");
     pp::println("    -llvm            Print LLVM IR");
+    pp::println("    -llvm-release    Print LLVM IR after optimization");
     pp::println("    -json-ast        Print parse tree in JSON");
     pp::println("    -json-ir         Print ShnooTalk IR in JSON");
     pp::println("    -json-ir-all     Print ShnooTalk IR recursively for all modules in json");
@@ -100,14 +101,20 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
 
     if (option == "-llvm")
     {
-        pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, console));
+        pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, false, console));
+        return 0;
+    }
+
+    if (option == "-llvm-release")
+    {
+        pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, true, console));
         return 0;
     }
 
     if (option == "-c")
     {
         for (auto stringModulePair : modulesMap)
-            translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, false, console);
+            translator::generateObject(stringModulePair.second, modulesMap, false, console);
 
         return 0;
     }
@@ -115,7 +122,7 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
     if (option == "-release")
     {
         for (auto stringModulePair : modulesMap)
-            translator::generateLLVMModuleObject(stringModulePair.second, modulesMap, true, console);
+            translator::generateObject(stringModulePair.second, modulesMap, true, console);
 
         return 0;
     }

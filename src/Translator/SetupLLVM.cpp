@@ -46,8 +46,10 @@ TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx)
     return targetMachine;
 }
 
-void setupPassManagerAndCreateObject(ModuleContext& ctx, TargetMachine* targetMachine)
+void setupPassManagerAndCreateObject(ModuleContext& ctx)
 {
+    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx);
+
     auto filename = ctx.moduleDescription.name + ".o";
     std::error_code EC;
     raw_fd_ostream dest(filename, EC, sys::fs::OF_None);

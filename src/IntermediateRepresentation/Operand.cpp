@@ -8,6 +8,7 @@ namespace icode
         dtype = VOID;
         operandType = NONE;
     }
+
     bool Operand::isPointer() const
     {
         return operandType == PTR || operandType == TEMP_PTR || operandType == RET_PTR ||

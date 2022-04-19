@@ -13,8 +13,8 @@ llvm::Value* createExternGlobalString(ModuleContext& ctx, const std::string& key
 
 void createFunctionParameter(ModuleContext& ctx,
                              const icode::TypeDescription& typeDescription,
-                             const std::string& name,
-                             llvm::Value* arg);
+                             llvm::Value* arg,
+                             const std::string& name);
 
 void createLocalSymbol(ModuleContext& ctx, const icode::TypeDescription& typeDescription, const std::string& name);
 

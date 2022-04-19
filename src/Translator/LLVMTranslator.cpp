@@ -16,16 +16,6 @@
 
 using namespace llvm;
 
-std::string getLLVMModuleString(const Module& LLVMModule)
-{
-    std::string moduleString;
-    raw_string_ostream OS(moduleString);
-    OS << LLVMModule;
-    OS.flush();
-
-    return moduleString;
-}
-
 void optimizeModule(ModuleContext& ctx)
 {
     LoopAnalysisManager LAM;
@@ -48,33 +38,45 @@ void optimizeModule(ModuleContext& ctx)
     MPM.run(*ctx.LLVMModule, MAM);
 }
 
-void translator::generateLLVMModuleObject(icode::ModuleDescription& moduleDescription,
-                                          icode::StringModulesMap& modulesMap,
-                                          bool release,
-                                          Console& console)
+void translator::generateLLVMModule(ModuleContext& ctx, bool release, Console& console)
 {
-    ModuleContext moduleContext(moduleDescription, modulesMap, console);
     BranchContext branchContext;
     FormatStringsContext formatStringsContext;
 
-    generateModule(moduleContext, branchContext, formatStringsContext);
+    generateModule(ctx, branchContext, formatStringsContext);
 
     initializeTargetRegistry();
-    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(moduleContext);
+
     if (release)
-        optimizeModule(moduleContext);
-    setupPassManagerAndCreateObject(moduleContext, targetMachine);
+        optimizeModule(ctx);
+}
+
+void translator::generateObject(icode::ModuleDescription& moduleDescription,
+                                icode::StringModulesMap& modulesMap,
+                                bool release,
+                                Console& console)
+{
+    ModuleContext moduleContext(moduleDescription, modulesMap, console);
+    generateLLVMModule(moduleContext, release, console);
+    setupPassManagerAndCreateObject(moduleContext);
+}
+
+std::string getLLVMModuleString(const Module& LLVMModule)
+{
+    std::string moduleString;
+    raw_string_ostream OS(moduleString);
+    OS << LLVMModule;
+    OS.flush();
+
+    return moduleString;
 }
 
 std::string translator::generateLLVMModuleString(icode::ModuleDescription& moduleDescription,
                                                  icode::StringModulesMap& modulesMap,
+                                                 bool release,
                                                  Console& console)
 {
     ModuleContext moduleContext(moduleDescription, modulesMap, console);
-    BranchContext branchContext;
-    FormatStringsContext formatStringsContext;
-
-    generateModule(moduleContext, branchContext, formatStringsContext);
-
+    generateLLVMModule(moduleContext, release, console);
     return getLLVMModuleString(*moduleContext.LLVMModule);
 }

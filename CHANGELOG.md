@@ -11,6 +11,7 @@
 - Error messages now have line and col numbers and module trace
 - Type error messages show generic type errors better
 - Fixed sizeof to accept proper types
+- Added `-llvm-release` flag
 
 # 0.1.1-alpha
 
