@@ -8,7 +8,6 @@
 #include "BranchContext.hpp"
 #include "FormatStringsContext.hpp"
 #include "GenerateModule.hpp"
-#include "ModuleContext.hpp"
 #include "Print.hpp"
 #include "SetupLLVM.hpp"
 

@@ -3,6 +3,8 @@
 
 #include "../IntermediateRepresentation/All.hpp"
 
+#include "ModuleContext.hpp"
+
 namespace translator
 {
     void generateLLVMModule(ModuleContext& ctx, bool release, Console& console);

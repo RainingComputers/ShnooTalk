@@ -11,7 +11,8 @@ void setupPrintf(const ModuleContext& ctx)
     args.push_back(Type::getInt8PtrTy(*ctx.context));
     FunctionType* printfFunctionType = FunctionType::get(ctx.builder->getInt32Ty(), args, true);
 
-    Function* printfFunction = Function::Create(printfFunctionType, Function::ExternalLinkage, "printf", ctx.LLVMModule.get());
+    Function* printfFunction =
+        Function::Create(printfFunctionType, Function::ExternalLinkage, "printf", ctx.LLVMModule.get());
 
     printfFunction->addParamAttr(0, llvm::Attribute::ReadOnly);
     printfFunction->addParamAttr(0, llvm::Attribute::NoCapture);

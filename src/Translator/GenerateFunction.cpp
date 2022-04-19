@@ -150,13 +150,11 @@ void addParameterAttribute(unsigned int argNo,
                            llvm::Argument* arg,
                            Function* function)
 {
-    if (type.isMutable())
+    if (type.isMutable() || !type.isPassedByReference())
         return;
 
     function->addParamAttr(argNo, llvm::Attribute::ReadOnly);
-
-    if (arg->getType()->isPointerTy())
-        function->addParamAttr(argNo, llvm::Attribute::NoCapture);
+    function->addParamAttr(argNo, llvm::Attribute::NoCapture);
 }
 
 void setupFunctionStack(ModuleContext& ctx, const icode::FunctionDescription& functionDesc, Function* function)
