@@ -29,6 +29,6 @@ namespace icode
     bool Operand::isValidForPointerAssignment() const
     {
         return operandType == VAR || operandType == GBL_VAR || operandType == TEMP_PTR || operandType == PTR ||
-               operandType == CALLEE_RET_PTR || operandType == RET_PTR || operandType == TEMP_PTR_PTR;
+               operandType == CALLEE_RET_PTR || operandType == CALLEE_RET_VAL || operandType == RET_PTR || operandType == TEMP_PTR_PTR;
     }
 }
