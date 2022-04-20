@@ -164,6 +164,7 @@ void setupFunctionStack(ModuleContext& ctx, const icode::FunctionDescription& fu
         if (!symbol.second.checkProperty(icode::IS_PARAM))
             createLocalSymbol(ctx, symbol.second, symbol.first);
 
+    /* Create function parameters, add names and attributes to it */
     for (unsigned int i = 0; i < functionDesc.numParameters(); i++)
     {
         llvm::Argument* arg = function->getArg(i);

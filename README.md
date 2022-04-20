@@ -146,7 +146,7 @@ make test
 
 ### Translators
 
-- [ ] Debug symbols
+- [ ] Debug symbols (using LLVM)
 - [ ] Python wrapper generator
 
 ### Platforms
@@ -170,3 +170,11 @@ make test
 - [ ] Code formatter
 - [ ] Static analyser
 - [ ] Language server
+
+### Self hosting and LLVM independence
+
+- [ ] WebAssembly text translator for WASI
+- [ ] Framework for writing and testing optimization passes
+- [ ] C wrapper for LLVM to self host compiler
+- [ ] Module IR validator using
+- [ ] Document IR using [pydantic](https://pydantic-docs.helpmanual.io/)
