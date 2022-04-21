@@ -9,7 +9,7 @@ class Node
     var next: Node*
 }
 
-fn createNode(data: T, next: Node*) -> Node 
+fn createNode(data: T, mut next: Node*) -> Node 
 {
     var node: Node
 

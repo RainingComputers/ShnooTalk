@@ -1,0 +1,14 @@
+fn foobar(foo: char[])
+{
+    var b: char[] <- foo
+}
+
+fn main() -> int
+{
+    const a := "Hello world"
+
+    foobar(a)
+
+    return 0
+}
+

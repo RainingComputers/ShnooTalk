@@ -1,4 +1,4 @@
-fn testfunction(mut p: int*, a: int*)
+fn testfunction(mut p: int*, mut a: int*)
 {
     p <- a
 }
@@ -9,10 +9,11 @@ fn main() -> int
     var y: int = 3
 
     var p: int* <- x
+    var q: int* <- y
 
     println(p)
 
-    testfunction(p, y)
+    testfunction(p, q)
 
     println(p)
 
