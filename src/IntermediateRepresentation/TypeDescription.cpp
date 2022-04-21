@@ -63,9 +63,16 @@ namespace icode
     void TypeDescription::decayAutoType()
     {
         if (dtype == AUTO_INT)
+        {
             dtype = I64;
+            dtypeName = dataTypeToString(I64);
+        }
+
         else if (dtype == AUTO_FLOAT)
+        {
             dtype = F64;
+            dtypeName = dataTypeToString(F64);
+        }
     }
 
     bool TypeDescription::isMutable() const

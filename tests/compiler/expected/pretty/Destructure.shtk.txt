@@ -1,0 +1,57 @@
+{
+    "Destructure.shtk": {
+        "moduleName": "Destructure.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        long* tempPtr8 = createPointer long b
+                        long temp9 = cast autoInt 1
+                        long* tempPtr8 = write long temp9
+                        long* tempPtr11 = addressAdd long* tempPtr8, bytes 8
+                        long temp12 = cast autoInt 2
+                        long* tempPtr11 = write long temp12
+                        long* tempPtr14 = addressAdd long* tempPtr11, bytes 8
+                        long temp15 = cast autoInt 3
+                        long* tempPtr14 = write long temp15
+                        long* tempPtr17 = addressAdd long* tempPtr14, bytes 8
+                        long temp18 = cast autoInt 4
+                        long* tempPtr17 = write long temp18
+                        long* tempPtr22 = createPointer long b
+                        void* tempPtr24 = addressMultiply autoInt 0, bytes 16
+                        long* tempPtr25 = addressAdd long* tempPtr22, void* tempPtr24
+                        void* tempPtr27 = addressMultiply autoInt 0, bytes 8
+                        long* tempPtr28 = addressAdd long* tempPtr25, void* tempPtr27
+                        long temp29 = read long* tempPtr28
+                        print long temp29
+                        space
+                        long* tempPtr33 = createPointer long b
+                        void* tempPtr35 = addressMultiply autoInt 0, bytes 16
+                        long* tempPtr36 = addressAdd long* tempPtr33, void* tempPtr35
+                        void* tempPtr38 = addressMultiply autoInt 1, bytes 8
+                        long* tempPtr39 = addressAdd long* tempPtr36, void* tempPtr38
+                        long temp40 = read long* tempPtr39
+                        print long temp40
+                        space
+                        long* tempPtr44 = createPointer long b
+                        void* tempPtr46 = addressMultiply autoInt 1, bytes 16
+                        long* tempPtr47 = addressAdd long* tempPtr44, void* tempPtr46
+                        void* tempPtr49 = addressMultiply autoInt 0, bytes 8
+                        long* tempPtr50 = addressAdd long* tempPtr47, void* tempPtr49
+                        long temp51 = read long* tempPtr50
+                        print long temp51
+                        space
+                        long* tempPtr55 = createPointer long b
+                        void* tempPtr57 = addressMultiply autoInt 1, bytes 16
+                        long* tempPtr58 = addressAdd long* tempPtr55, void* tempPtr57
+                        void* tempPtr60 = addressMultiply autoInt 1, bytes 8
+                        long* tempPtr61 = addressAdd long* tempPtr58, void* tempPtr60
+                        long temp62 = read long* tempPtr61
+                        print long temp62
+                        int temp65 = cast autoInt 0
+                        int returnValue63 = equal int temp65
+                        return
+                ]
+            }
+        }
+    }
+}

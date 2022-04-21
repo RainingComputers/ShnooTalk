@@ -114,7 +114,7 @@ namespace pp
         if (icode::dataTypeIsEqual(found.dtype, expected.dtype) && found.dtype != icode::STRUCT)
             modifiedFound.dtypeName = expected.dtypeName;
 
-        if (expected.isPointer())
+        if (expected.isPointer() && modifiedFound.dimensions.size() <= 1)
             modifiedFound.becomePointer();
 
         std::string foundString = formatType(modifiedFound);

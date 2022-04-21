@@ -56,6 +56,9 @@ Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
 
     type = prependDimension(type, unitList.size(), dimType);
 
+    if (type.moduleName == "")
+        type.moduleName = workingModule->name;
+
     return Unit(type, unitList);
 }
 
