@@ -20,7 +20,7 @@
                     {"opcode": "print", "op1": {"type": "temp", "id": 19, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "passPointerPointer", "op1": {"type": "ptr", "id": 20, "name": "p", "dtype": "int"}, "op2": {"type": "var", "id": 26, "name": "_fn_MutablePointerParameter_shtk_testfunction", "dtype": "void"}, "op3": {"type": "module", "id": 27, "name": "MutablePointerParameter.shtk"}},
-                    {"opcode": "passPointerPointer", "op1": {"type": "ptr", "id": 23, "name": "q", "dtype": "int"}, "op2": {"type": "var", "id": 28, "name": "_fn_MutablePointerParameter_shtk_testfunction", "dtype": "void"}, "op3": {"type": "module", "id": 29, "name": "MutablePointerParameter.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "ptr", "id": 23, "name": "q", "dtype": "int"}, "op2": {"type": "var", "id": 28, "name": "_fn_MutablePointerParameter_shtk_testfunction", "dtype": "void"}, "op3": {"type": "module", "id": 29, "name": "MutablePointerParameter.shtk"}},
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 30, "dtype": "void"}, "op2": {"type": "var", "id": 31, "name": "_fn_MutablePointerParameter_shtk_testfunction", "dtype": "void"}, "op3": {"type": "module", "id": 32, "name": "MutablePointerParameter.shtk"}},
                     {"opcode": "read", "op1": {"type": "temp", "id": 34, "dtype": "int"}, "op2": {"type": "ptr", "id": 33, "name": "p", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "print", "op1": {"type": "temp", "id": 34, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

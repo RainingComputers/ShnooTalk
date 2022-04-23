@@ -1,8 +1,0 @@
-MODULE CannotAssignImmutableToMutablePointerError.shtk
-ERROR in Line 3 Col 22
-
-    var b: char[] <- foo
-                     ^
-Cannot assign IMMUTABLE to a MUTABLE POINTER
-
-CannotAssignImmutableToMutablePointerError.shtk:3:21

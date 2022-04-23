@@ -23,7 +23,6 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
 
             ctx.ir.functionBuilder.unitPointerAssign(functionReturn, returnValue);
         }
-
         else
             ctx.ir.functionBuilder.unitCopy(functionReturn, returnValue);
     }

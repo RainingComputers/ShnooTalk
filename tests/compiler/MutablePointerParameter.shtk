@@ -1,4 +1,4 @@
-fn testfunction(mut p: int*, mut a: int*)
+fn testfunction(mut p: int*, a: int*)
 {
     p <- a
 }
