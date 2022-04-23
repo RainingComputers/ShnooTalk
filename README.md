@@ -138,6 +138,8 @@ make test
 - [ ] Unions
 - [ ] Interfaces
 - [ ] Extends
+- [ ] Compile time reflection and macros
+- [ ] `constexpr` or `comptime`
 
 ### Documentation
 
@@ -176,5 +178,5 @@ make test
 - [ ] WebAssembly text translator for WASI
 - [ ] Framework for writing and testing optimization passes
 - [ ] C wrapper for LLVM to self host compiler
-- [ ] Module IR validator using
+- [ ] Module IR validator
 - [ ] Document IR using [pydantic](https://pydantic-docs.helpmanual.io/)
