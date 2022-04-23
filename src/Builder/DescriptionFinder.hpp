@@ -47,8 +47,12 @@ public:
     std::vector<Unit> getFormalParameters(const icode::FunctionDescription& function);
 
     std::pair<std::string, icode::FunctionDescription> getFunctionByParamTypes(const Token& token,
-                                              const icode::TypeDescription& type,
-                                              const std::vector<Unit>& params);
+                                                                               const icode::TypeDescription& type,
+                                                                               const std::vector<Unit>& params);
+
+    icode::FunctionDescription getCustomOperatorFunction(const Token& binaryOperator,
+                                                         const Unit& LHS,
+                                                         const Unit& RHS);
 
     bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit);
 };

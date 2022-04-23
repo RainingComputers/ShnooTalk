@@ -28,3 +28,8 @@ std::string nameMangle(const Token& token, const std::string& moduleName)
 
     return "_fn_" + mangleModuleName(moduleName) + '_' + token.toFunctionNameString();
 }
+
+std::string unMangleString(const std::string& name, const std::string& moduleName)
+{
+    return name.substr(0, moduleName.size());
+}

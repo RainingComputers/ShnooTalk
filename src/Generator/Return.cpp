@@ -17,7 +17,13 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
             ctx.console.typeError(root.children[0].tok, functionReturn, returnValue);
 
         if (functionReturn.isPointer())
+        {
+            if (!returnValue.isValidForPointerAssignment())
+                ctx.console.compileErrorOnToken("Invalid expression for pointer return", root.tok);
+
             ctx.ir.functionBuilder.unitPointerAssign(functionReturn, returnValue);
+        }
+
         else
             ctx.ir.functionBuilder.unitCopy(functionReturn, returnValue);
     }

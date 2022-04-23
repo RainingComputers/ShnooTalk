@@ -16,10 +16,7 @@ Unit customOperator(generator::GeneratorContext& ctx,
 
     ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromUnit(LHS));
 
-    FunctionDescription callee = ctx.ir.descriptionFinder.getFunction(binaryOperator);
-
-    if (callee.numParameters() != 2)
-        ctx.console.compileErrorOnToken("Invalid number of parameters for OPERATOR FUNCTION", binaryOperator);
+    FunctionDescription callee = ctx.ir.descriptionFinder.getCustomOperatorFunction(binaryOperator, LHS, RHS);
 
     std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 

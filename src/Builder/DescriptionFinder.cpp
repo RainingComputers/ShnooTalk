@@ -163,8 +163,7 @@ FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
         return functionDescription;
 
     if (rootModule.getFunction(nameMangle(nameToken, rootModule.name), functionDescription))
-        if (!nameToken.isBinaryOperator())
-            return functionDescription;
+        return functionDescription;
 
     console.compileErrorOnToken("Function does not exist", nameToken);
 }
@@ -217,6 +216,31 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
     }
 
     console.compileErrorOnToken("Cannot find function with matching params", token);
+}
+
+FunctionDescription DescriptionFinder::getCustomOperatorFunction(const Token& binaryOperator,
+                                                                 const Unit& LHS,
+                                                                 const Unit& RHS)
+{
+    const std::string& binaryOperatorName = nameMangle(binaryOperator, workingModule->name);
+
+    for (auto functionName : workingModule->definedFunctions)
+    {
+        if (binaryOperatorName != functionName)
+            continue;
+
+        const FunctionDescription& function = workingModule->functions.at(functionName);
+
+        if (function.numParameters() != 2)
+            continue;
+
+        if (!isSameParamsType(function, std::vector<Unit>({ LHS, RHS })))
+            continue;
+
+        return function;
+    }
+
+    console.compileErrorOnToken("Custom operator function does not exist", binaryOperator);
 }
 
 bool DescriptionFinder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
