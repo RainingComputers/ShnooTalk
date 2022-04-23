@@ -1,0 +1,38 @@
+struct Foobar
+{
+    var x: int, y: int
+}
+
+fn main() -> int
+{
+    var a: int, b: Foobar
+
+    b.x = 1
+    b.y = 1
+
+    .[a, b.x, b.y] = [1, 2, 3]
+
+    println(a)
+    println(b.x)
+    println(b.y)
+
+    [b.y, a, b.x] = [1, 2, 3]
+
+    println(a)
+    println(b.x)
+    println(b.y)
+
+    [b.y, a, b.x] += [1, 2, 3]
+
+    println(a)
+    println(b.x)
+    println(b.y)
+
+    [b.y, a, b.x] -= [1, 2, 3]
+
+    println(a)
+    println(b.x)
+    println(b.y)
+
+    return 0
+}

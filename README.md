@@ -83,7 +83,7 @@ make test
 - [x] Fix sizeof
 - [x] Class or struct destructors
 - [ ] Pretty name for generics
-- [ ] Assignment destructuring
+- [x] Assignment destructuring
 - [ ] `_` discard variable
 - [ ] Better operator overloading
 - [ ] `in` operator

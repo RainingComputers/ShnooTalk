@@ -350,50 +350,95 @@
                         int temp664 = read int* tempPtr663
                         print int temp664
                         newLine
-                        int temp667 = cast autoInt 0
-                        int returnValue665 = equal int temp667
-                        struct* tempPtr672 = createPointer struct c1
-                        void* tempPtr674 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr675 = addressAdd struct* tempPtr672, void* tempPtr674
-                        struct* tempPtr677 = createPointer struct c1
-                        void* tempPtr679 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr680 = addressAdd struct* tempPtr677, void* tempPtr679
-                        struct* tempPtr683 = createPointer struct c2
-                        void* tempPtr685 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr686 = addressAdd struct* tempPtr683, void* tempPtr685
-                        struct* tempPtr688 = createPointer struct c2
-                        void* tempPtr690 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr691 = addressAdd struct* tempPtr688, void* tempPtr690
-                        struct* tempPtr694 = createPointer struct d1
-                        void* tempPtr696 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr697 = addressAdd struct* tempPtr694, void* tempPtr696
-                        struct* tempPtr699 = createPointer struct d1
-                        void* tempPtr701 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr702 = addressAdd struct* tempPtr699, void* tempPtr701
-                        struct* tempPtr705 = createPointer struct d2
-                        void* tempPtr707 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr708 = addressAdd struct* tempPtr705, void* tempPtr707
-                        struct* tempPtr710 = createPointer struct d2
-                        void* tempPtr712 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr713 = addressAdd struct* tempPtr710, void* tempPtr712
-                        struct* tempPtr719 = createPointer struct testBarArr
-                        void* tempPtr721 = addressMultiply autoInt 0, bytes 32
-                        struct* tempPtr722 = addressAdd struct* tempPtr719, void* tempPtr721
-                        struct* tempPtr724 = createPointer struct testBarArr
-                        void* tempPtr726 = addressMultiply autoInt 1, bytes 32
-                        struct* tempPtr727 = addressAdd struct* tempPtr724, void* tempPtr726
-                        struct* tempPtr729 = createPointer struct* tempPtr722
-                        void* tempPtr731 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr732 = addressAdd struct* tempPtr729, void* tempPtr731
-                        struct* tempPtr734 = createPointer struct* tempPtr722
-                        void* tempPtr736 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr737 = addressAdd struct* tempPtr734, void* tempPtr736
-                        struct* tempPtr739 = createPointer struct* tempPtr727
-                        void* tempPtr741 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr742 = addressAdd struct* tempPtr739, void* tempPtr741
-                        struct* tempPtr744 = createPointer struct* tempPtr727
-                        void* tempPtr746 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr747 = addressAdd struct* tempPtr744, void* tempPtr746
+                        int temp673 = cast autoInt 1
+                        pass int temp673, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp676 = cast autoInt 2
+                        pass int temp676, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue679 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp690 = cast autoInt 3
+                        pass int temp690, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int temp693 = cast autoInt 4
+                        pass int temp693, struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        struct calleeReturnValue696 = call struct _fn_DestructureStress_shtk_createFoo, module DestructureStress.shtk
+                        int* tempPtr701 = createPointer struct calleeReturnValue679
+                        passPointer int* tempPtr701, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        int* tempPtr704 = createPointer struct calleeReturnValue696
+                        passPointer int* tempPtr704, struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct calleeReturnValue707 = call struct _fn_DestructureStress_shtk_createBar, module DestructureStress.shtk
+                        struct* tempPtr710 = createPointer struct calleeReturnValue707
+                        struct* tempPtr712 = addressAdd struct* tempPtr710, bytes 0
+                        struct* tempPtr713 = createPointer struct calleeReturnValue707
+                        struct* tempPtr715 = addressAdd struct* tempPtr713, bytes 8
+                        int* tempPtr716 = createPointer struct j
+                        int* tempPtr717 = createPointer struct* tempPtr715
+                        int* tempPtr716 = memoryCopy int* tempPtr717, autoInt 8
+                        int* tempPtr719 = createPointer struct i
+                        int* tempPtr720 = createPointer struct* tempPtr712
+                        int* tempPtr719 = memoryCopy int* tempPtr720, autoInt 8
+                        int* tempPtr723 = createPointer struct i
+                        int* tempPtr725 = addressAdd int* tempPtr723, bytes 0
+                        int temp726 = read int* tempPtr725
+                        print int temp726
+                        newLine
+                        int* tempPtr728 = createPointer struct i
+                        int* tempPtr730 = addressAdd int* tempPtr728, bytes 4
+                        int temp731 = read int* tempPtr730
+                        print int temp731
+                        newLine
+                        int* tempPtr733 = createPointer struct j
+                        int* tempPtr735 = addressAdd int* tempPtr733, bytes 0
+                        int temp736 = read int* tempPtr735
+                        print int temp736
+                        newLine
+                        int* tempPtr738 = createPointer struct j
+                        int* tempPtr740 = addressAdd int* tempPtr738, bytes 4
+                        int temp741 = read int* tempPtr740
+                        print int temp741
+                        newLine
+                        int temp744 = cast autoInt 0
+                        int returnValue742 = equal int temp744
+                        struct* tempPtr749 = createPointer struct c1
+                        void* tempPtr751 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr752 = addressAdd struct* tempPtr749, void* tempPtr751
+                        struct* tempPtr754 = createPointer struct c1
+                        void* tempPtr756 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr757 = addressAdd struct* tempPtr754, void* tempPtr756
+                        struct* tempPtr760 = createPointer struct c2
+                        void* tempPtr762 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr763 = addressAdd struct* tempPtr760, void* tempPtr762
+                        struct* tempPtr765 = createPointer struct c2
+                        void* tempPtr767 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr768 = addressAdd struct* tempPtr765, void* tempPtr767
+                        struct* tempPtr771 = createPointer struct d1
+                        void* tempPtr773 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr774 = addressAdd struct* tempPtr771, void* tempPtr773
+                        struct* tempPtr776 = createPointer struct d1
+                        void* tempPtr778 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr779 = addressAdd struct* tempPtr776, void* tempPtr778
+                        struct* tempPtr782 = createPointer struct d2
+                        void* tempPtr784 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr785 = addressAdd struct* tempPtr782, void* tempPtr784
+                        struct* tempPtr787 = createPointer struct d2
+                        void* tempPtr789 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr790 = addressAdd struct* tempPtr787, void* tempPtr789
+                        struct* tempPtr796 = createPointer struct testBarArr
+                        void* tempPtr798 = addressMultiply autoInt 0, bytes 32
+                        struct* tempPtr799 = addressAdd struct* tempPtr796, void* tempPtr798
+                        struct* tempPtr801 = createPointer struct testBarArr
+                        void* tempPtr803 = addressMultiply autoInt 1, bytes 32
+                        struct* tempPtr804 = addressAdd struct* tempPtr801, void* tempPtr803
+                        struct* tempPtr806 = createPointer struct* tempPtr799
+                        void* tempPtr808 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr809 = addressAdd struct* tempPtr806, void* tempPtr808
+                        struct* tempPtr811 = createPointer struct* tempPtr799
+                        void* tempPtr813 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr814 = addressAdd struct* tempPtr811, void* tempPtr813
+                        struct* tempPtr816 = createPointer struct* tempPtr804
+                        void* tempPtr818 = addressMultiply autoInt 0, bytes 16
+                        struct* tempPtr819 = addressAdd struct* tempPtr816, void* tempPtr818
+                        struct* tempPtr821 = createPointer struct* tempPtr804
+                        void* tempPtr823 = addressMultiply autoInt 1, bytes 16
+                        struct* tempPtr824 = addressAdd struct* tempPtr821, void* tempPtr823
                         return
                 ]
             }

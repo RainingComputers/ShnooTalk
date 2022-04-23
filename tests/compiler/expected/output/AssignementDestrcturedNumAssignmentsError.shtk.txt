@@ -1,0 +1,8 @@
+MODULE AssignementDestrcturedNumAssignmentsError.shtk
+ERROR in Line 5 Col 6
+
+    .[a, b] = [1, 2, 3]
+     ^
+Number of assignments do not match
+
+AssignementDestrcturedNumAssignmentsError.shtk:5:5

@@ -21,7 +21,7 @@ namespace parser
     void ParserContext::consume()
     {
         /* Get next token from lexer's token queue */
-        lex.getToken(symbol);
+        symbol = lex.getToken();
     }
 
     bool ParserContext::peek(token::TokenType type)

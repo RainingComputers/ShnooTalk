@@ -1,0 +1,9 @@
+fn main() -> int
+{
+    var a: int, c: int
+    const b: int = 2
+
+    [a, b, c] = [1, 2, 3]
+
+    return 0
+}

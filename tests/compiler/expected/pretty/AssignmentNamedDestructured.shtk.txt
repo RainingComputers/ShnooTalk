@@ -1,0 +1,80 @@
+{
+    "AssignmentNamedDestructured.shtk": {
+        "moduleName": "AssignmentNamedDestructured.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct test
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp9 = cast autoInt 1
+                        int* tempPtr7 = write int temp9
+                        int* tempPtr11 = createPointer struct test
+                        int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                        int temp15 = cast autoInt 2
+                        int* tempPtr13 = write int temp15
+                        int* tempPtr17 = createPointer struct test
+                        int* tempPtr19 = addressAdd int* tempPtr17, bytes 8
+                        int temp21 = cast autoInt 3
+                        int* tempPtr19 = write int temp21
+                        int* tempPtr29 = createPointer struct test
+                        int* tempPtr31 = addressAdd int* tempPtr29, bytes 0
+                        int* tempPtr32 = createPointer struct test
+                        int* tempPtr34 = addressAdd int* tempPtr32, bytes 4
+                        int* tempPtr35 = createPointer struct test
+                        int* tempPtr37 = addressAdd int* tempPtr35, bytes 8
+                        int temp38 = read int* tempPtr34
+                        int second = equal int temp38
+                        int temp39 = read int* tempPtr37
+                        int third = equal int temp39
+                        int temp40 = read int* tempPtr31
+                        int first = equal int temp40
+                        print int first
+                        space
+                        print int second
+                        space
+                        print int third
+                        newLine
+                        int* tempPtr48 = createPointer struct test
+                        int* tempPtr50 = addressAdd int* tempPtr48, bytes 0
+                        int* tempPtr51 = createPointer struct test
+                        int* tempPtr53 = addressAdd int* tempPtr51, bytes 4
+                        int* tempPtr54 = createPointer struct test
+                        int* tempPtr56 = addressAdd int* tempPtr54, bytes 8
+                        int temp57 = read int* tempPtr50
+                        int first = equal int temp57
+                        int temp58 = read int* tempPtr56
+                        int third = equal int temp58
+                        int temp59 = read int* tempPtr53
+                        int second = equal int temp59
+                        print int first
+                        space
+                        print int second
+                        space
+                        print int third
+                        newLine
+                        int* tempPtr70 = createPointer struct test
+                        int* tempPtr72 = addressAdd int* tempPtr70, bytes 0
+                        int* tempPtr73 = createPointer struct test
+                        int* tempPtr75 = addressAdd int* tempPtr73, bytes 4
+                        int* tempPtr76 = createPointer struct test
+                        int* tempPtr78 = addressAdd int* tempPtr76, bytes 8
+                        int temp79 = read int* tempPtr72
+                        int x = equal int temp79
+                        int temp80 = read int* tempPtr75
+                        int y = equal int temp80
+                        int temp81 = read int* tempPtr78
+                        int z = equal int temp81
+                        print int x
+                        space
+                        print int y
+                        space
+                        print int z
+                        newLine
+                        int temp87 = cast autoInt 0
+                        int returnValue85 = equal int temp87
+                        return
+                ]
+            }
+        }
+    }
+}

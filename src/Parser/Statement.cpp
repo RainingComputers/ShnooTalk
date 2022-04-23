@@ -5,6 +5,16 @@
 
 #include "Statement.hpp"
 
+void assignmentOperatorAndExpression(parser::ParserContext& ctx)
+{
+    token::TokenType expected[] = { token::PLUS_EQUAL,     token::MINUS_EQUAL, token::DIVIDE_EQUAL,
+                                    token::MULTIPLY_EQUAL, token::OR_EQUAL,    token::AND_EQUAL,
+                                    token::XOR_EQUAL,      token::EQUAL,       token::LEFT_ARROW };
+
+    ctx.expect(expected, 9);
+    ctx.addNode(node::ASSIGN_OPERATOR);
+}
+
 void assignmentOrMethodCall(parser::ParserContext& ctx)
 {
     ctx.pushNode();
@@ -27,15 +37,28 @@ void assignmentOrMethodCall(parser::ParserContext& ctx)
 
         ctx.insertNode(node::ASSIGNMENT);
 
-        token::TokenType expected[] = { token::PLUS_EQUAL,     token::MINUS_EQUAL, token::DIVIDE_EQUAL,
-                                        token::MULTIPLY_EQUAL, token::OR_EQUAL,    token::AND_EQUAL,
-                                        token::XOR_EQUAL,      token::EQUAL,       token::LEFT_ARROW };
-
-        ctx.expect(expected, 9);
-        ctx.addNode(node::ASSIGN_OPERATOR);
+        assignmentOperatorAndExpression(ctx);
 
         expression(ctx);
     }
+
+    ctx.popNode();
+}
+
+void destructuredAssignment(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    if (ctx.accept(token::DOT))
+        ctx.consume();
+
+    ctx.addNodeMakeCurrentNoConsume(node::DESTRUCTURED_ASSIGNMENT);
+
+    initializerList(ctx);
+
+    assignmentOperatorAndExpression(ctx);
+
+    expression(ctx);
 
     ctx.popNode();
 }
@@ -185,6 +208,8 @@ void statement(parser::ParserContext& ctx)
         else
             identifierDeclareListRequiredInit(ctx);
     }
+    else if (ctx.accept(token::OPEN_SQUARE) || ctx.accept(token::DOT))
+        destructuredAssignment(ctx);
     else if (ctx.accept(token::IF))
         ifStatement(ctx);
     else if (ctx.accept(token::WHILE))
@@ -214,9 +239,9 @@ void block(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrentNoConsume(node::BLOCK);
 
     token::TokenType expected[] = {
-        token::CLOSE_BRACE, token::VAR,    token::CONST, token::IF,      token::WHILE,
-        token::DO,          token::FOR,    token::LOOP,  token::BREAK,   token::CONTINUE,
-        token::IDENTIFIER,  token::RETURN, token::PRINT, token::PRINTLN, token::INPUT,
+        token::CLOSE_BRACE, token::VAR,     token::CONST, token::IF,          token::WHILE,      token::DO,
+        token::FOR,         token::LOOP,    token::BREAK, token::CONTINUE,    token::IDENTIFIER, token::RETURN,
+        token::PRINT,       token::PRINTLN, token::INPUT, token::OPEN_SQUARE, token::DOT,
     };
 
     if (ctx.accept(token::OPEN_BRACE))
@@ -225,7 +250,7 @@ void block(parser::ParserContext& ctx)
 
         while (!ctx.accept(token::CLOSE_BRACE))
         {
-            ctx.expect(expected, 15);
+            ctx.expect(expected, 17);
             statement(ctx);
         }
 
@@ -234,7 +259,7 @@ void block(parser::ParserContext& ctx)
     }
     else
     {
-        ctx.expect(expected, 15);
+        ctx.expect(expected, 17);
         statement(ctx);
     }
 

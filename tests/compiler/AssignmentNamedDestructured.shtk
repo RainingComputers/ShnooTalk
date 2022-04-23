@@ -1,0 +1,31 @@
+struct Foobar
+{
+    var first: int, second: int, third: int
+}
+
+fn main() -> int
+{
+    var test: Foobar
+
+    test.first = 1
+    test.second = 2
+    test.third = 3
+
+    var first: int, second: int, third: int
+
+    .[second, third, first] = test
+
+    println(first, second, third)
+
+    [first, third, second] = test
+
+    println(first, second, third)
+
+    var x: int, y: int, z: int
+
+    .[x, y, z] = test
+
+    println(x, y, z)
+
+    return 0
+}

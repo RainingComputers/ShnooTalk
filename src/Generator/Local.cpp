@@ -24,7 +24,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
         lastNode.type == node::MULTILINE_STR_LITERAL || lastNode.type == node::INITLIST)
     {
         Unit RHS = expression(ctx, lastNode);
-        assignmentFromTree(ctx, root, nameToken, lastNode.tok, local, RHS);
+        assignmentFromTree(ctx, root.type, root.getNthChildTokenFromLast(2), nameToken, lastNode.tok, local, RHS);
     }
     else if (local.isPointer())
     {

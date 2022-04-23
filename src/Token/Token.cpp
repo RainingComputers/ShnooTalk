@@ -122,7 +122,7 @@ bool Token::isIntLiteral() const
 
 bool Token::isEqualOrLeftArrow() const
 {
-    return type == EQUAL || type == LEFT_ARROW;
+    return type == EQUAL || type == LEFT_ARROW || type == WALRUS;
 }
 
 long Token::toInt() const

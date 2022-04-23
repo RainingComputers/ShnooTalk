@@ -1,0 +1,8 @@
+MODULE AssignmentDestructuredError.shtk
+ERROR in Line 6 Col 9
+
+    [a, b, c] = [1, 2, 3]
+        ^
+Cannot modify IMMUTABLE variable or parameter
+
+AssignmentDestructuredError.shtk:6:8

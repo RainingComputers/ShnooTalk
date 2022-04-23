@@ -1,0 +1,36 @@
+{
+    "DestructurePointerAssign.shtk": {
+        "moduleName": "DestructurePointerAssign.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp5 = cast autoInt 1
+                        int x = equal int temp5
+                        int temp8 = cast autoInt 2
+                        int y = equal int temp8
+                        int* tempPtr11 = pointerCast autoInt 0
+                        int* a = pointerAssign int* tempPtr11
+                        int* tempPtr14 = pointerCast autoInt 0
+                        int* b = pointerAssign int* tempPtr14
+                        int* a = pointerAssign int x
+                        int* b = pointerAssign int y
+                        int temp22 = read int* a
+                        int temp23 = cast autoInt 1
+                        int temp21 = add int temp22, int temp23
+                        int* a = write int temp21
+                        int temp27 = read int* b
+                        int temp28 = cast autoInt 1
+                        int temp26 = add int temp27, int temp28
+                        int* b = write int temp26
+                        print int x
+                        space
+                        print int y
+                        newLine
+                        int temp33 = cast autoInt 0
+                        int returnValue31 = equal int temp33
+                        return
+                ]
+            }
+        }
+    }
+}

@@ -354,15 +354,10 @@ namespace lexer
         }
     }
 
-    bool Lexer::getToken(Token& symbol)
+    Token Lexer::getToken()
     {
         /* Return latest token from queue and pop it */
-
-        if (tokenQueue.empty())
-            return false;
-
-        symbol = tokenQueue[getTokenIndex++];
-        return true;
+        return tokenQueue[getTokenIndex++];
     }
 
     Token Lexer::peekToken()

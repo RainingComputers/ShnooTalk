@@ -30,7 +30,7 @@ namespace lexer
 
     public:
         Lexer(std::ifstream& file, Console& console);
-        bool getToken(Token& symbol);
+        Token getToken();
         Token peekToken();
         Token doublePeekToken();
         Token matchedBracketPeek(token::TokenType open, token::TokenType close);

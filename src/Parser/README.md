@@ -45,7 +45,7 @@ literal = intLiteral,
         | binLiteral,
         | ("-" | "+") literal
 
-generic = "generic"  "[" identifier {"," identifier} "]"
+generic = "generic" identifier {"," identifier} 
 
 use = "use" stringLiteral "as" identifier
 
@@ -140,6 +140,8 @@ expression = initializerList | multiLineStringLiteral | baseExpression
 
 assignmentOrMethodCall = identifierWithQualidentAndSubscript (methodCall | (assignmentOperator expression))
 
+destructuredAssignment = initializerList "=" expression
+
 moduleFunctionCall = moduleQualident (functionCall | genericFunctionCall)
 
 ifStatement = "if" expression block {"elseif" expression block} ["else" block]
@@ -158,6 +160,7 @@ statement = functionCall
           | genericFunctionCall
           | moduleFunctionCall
           | assignmentOrMethodCall
+          | destructuredAssignment
           | walrusDeclaration
           | destructureDeclaration
           | identifierDeclarationList<true>

@@ -1,0 +1,38 @@
+{
+    "AssignmentDestructured.shtk": {
+        "moduleName": "AssignmentDestructured.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp12 = cast autoInt 1
+                        int a = equal int temp12
+                        int temp13 = cast autoInt 2
+                        int b = equal int temp13
+                        int temp14 = cast autoInt 3
+                        int c = equal int temp14
+                        print int a
+                        newLine
+                        print int b
+                        newLine
+                        print int c
+                        newLine
+                        int temp24 = cast autoInt 1
+                        int c = equal int temp24
+                        int temp25 = cast autoInt 2
+                        int a = equal int temp25
+                        int temp26 = cast autoInt 3
+                        int b = equal int temp26
+                        print int a
+                        newLine
+                        print int b
+                        newLine
+                        print int c
+                        newLine
+                        int temp32 = cast autoInt 0
+                        int returnValue30 = equal int temp32
+                        return
+                ]
+            }
+        }
+    }
+}

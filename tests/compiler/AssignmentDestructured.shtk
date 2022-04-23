@@ -1,0 +1,18 @@
+fn main() -> int
+{
+    var a: int, b: int, c: int
+
+    .[a, b, c] = [1, 2, 3]
+
+    println(a)
+    println(b)
+    println(c)
+
+    [c, a, b] = [1, 2, 3]
+
+    println(a)
+    println(b)
+    println(c)
+
+    return 0
+}

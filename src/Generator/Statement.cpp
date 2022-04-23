@@ -170,6 +170,9 @@ void statement(generator::GeneratorContext& ctx,
         case node::ASSIGNMENT:
             assignment(ctx, root);
             break;
+        case node::DESTRUCTURED_ASSIGNMENT:
+            destructuredAssignment(ctx, root);
+            break;
         case node::TERM:
             term(ctx, root);
             break;

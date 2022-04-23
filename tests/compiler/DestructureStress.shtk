@@ -64,5 +64,12 @@ fn main() -> int
     println(d2[0].j.y) # 12
     println(d2[1].i.x) # 13
 
+    .[j, i]  = createBar(createFoo(1, 2), createFoo(3, 4))
+
+    println(i.x) # 1
+    println(i.y) # 2
+    println(j.x) # 3
+    println(j.y) # 4
+
     return 0
 }

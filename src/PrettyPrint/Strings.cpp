@@ -129,6 +129,7 @@ const std::string nodeTypeToString[] = {
     "BREAK",
     "CONTINUE",
     "ASSIGNMENT",
+    "DESTRUCTURED_ASSIGNMENT",
     "RETURN",
     "FUNCCALL",
     "GENERIC_FUNCCALL",
