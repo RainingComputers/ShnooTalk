@@ -21,6 +21,9 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
             if (!returnValue.isValidForPointerAssignment())
                 ctx.console.compileErrorOnToken("Invalid expression for pointer return", root.tok);
 
+            if (!returnValue.isMutable() && !returnValue.isPointer())
+                ctx.console.compileErrorOnToken("Cannot return immutable value as pointer", root.tok);
+
             ctx.ir.functionBuilder.unitPointerAssign(functionReturn, returnValue);
         }
         else

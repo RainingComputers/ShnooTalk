@@ -1,0 +1,3 @@
+fn bar(a: int) -> int* {
+    return a
+}

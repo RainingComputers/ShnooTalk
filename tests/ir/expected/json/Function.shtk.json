@@ -47,7 +47,7 @@
                 "parameters": ["a"],
                 "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
                 "symbols": {
-                    "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
+                    "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isParameter", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "pointerAssign", "op1": {"type": "returnPointer", "id": 9, "dtype": "int"}, "op2": {"type": "var", "id": 10, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},

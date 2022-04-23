@@ -1,0 +1,8 @@
+MODULE CannotReturnImmutableValueAsPointer.shtk
+ERROR in Line 2 Col 5
+
+    return a
+    ^
+Cannot return immutable value as pointer
+
+CannotReturnImmutableValueAsPointer.shtk:2:4
