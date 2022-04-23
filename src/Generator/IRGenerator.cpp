@@ -111,7 +111,7 @@ void generator::generateIR(Console& console,
     Node ast = generateAST(console);
 
     if (ast.isGenericModule())
-        console.compileErrorOnToken("Connot compile a GENERIC", ast.children[0].tok);
+        console.compileErrorOnToken("Cannot compile a generic module", ast.children[0].tok);
 
     generator::GeneratorContext generatorContext(modulesMap, genericsMap, moduleName, console);
     generateModule(generatorContext, ast);

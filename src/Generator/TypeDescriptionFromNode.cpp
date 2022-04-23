@@ -24,7 +24,7 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
         const Token& aliasToken = root.getNthChildToken(childNodeCounter);
 
         if (childNodeCounter > 1)
-            ctx.console.compileErrorOnToken("Invalid MODULE ACCESS from GENERIC", aliasToken);
+            ctx.console.compileErrorOnToken("Invalid nameapace access from generic", aliasToken);
 
         ctx.mm.setWorkingModuleFromAlias(aliasToken);
 
@@ -109,7 +109,7 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
         typeDescription = arrayTypeFromSubscript(root, typeDescription, childNodeCounter);
 
     if (typeDescription.isIncompleteType() && !typeDescription.isPointer())
-        ctx.console.compileErrorOnToken("INCOMPLETE TYPE can only be a POINTER", dataTypeToken);
+        ctx.console.compileErrorOnToken("Incomplete type can only be a pointer", dataTypeToken);
 
     ctx.ir.popWorkingModule();
 

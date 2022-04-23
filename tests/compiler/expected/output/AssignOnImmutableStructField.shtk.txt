@@ -3,6 +3,6 @@ ERROR in Line 19 Col 5
 
     a.x = 3
     ^
-Cannot modify IMMUTABLE variable or parameter
+Cannot modify immutable variable or parameter
 
 AssignOnImmutableStructField.shtk:19:4

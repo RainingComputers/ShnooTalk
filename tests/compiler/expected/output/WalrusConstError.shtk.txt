@@ -3,6 +3,6 @@ ERROR in Line 6 Col 5
 
     b += 1
     ^
-Cannot modify IMMUTABLE variable or parameter
+Cannot modify immutable variable or parameter
 
 WalrusConstError.shtk:6:4

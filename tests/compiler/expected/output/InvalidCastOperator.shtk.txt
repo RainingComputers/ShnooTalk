@@ -3,6 +3,6 @@ ERROR in Line 4 Col 20
 
     var b: int* <- int*`(1.2+3.4) 
                    ^
-Invalid expression for POINTER CAST
+Invalid expression for pointer cast
 
 InvalidCastOperator.shtk:4:19

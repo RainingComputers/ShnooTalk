@@ -3,6 +3,6 @@ ERROR in Line 5 Col 11
 
     c = a + b
           ^
-Operator not allowed on ARRAY
+Operator not allowed on array
 
 BinaryOperatorOnArray.shtk:5:10

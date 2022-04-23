@@ -3,6 +3,6 @@ ERROR in Line 8 Col 17
 
     println(foo.z)
                 ^
-Undefined STRUCT field
+Struct field does not exist
 
 UndefinedStructFieldError.shtk:8:16

@@ -3,6 +3,6 @@ ERROR in Line 5 Col 12
 
     var a: Math::Foo[int, float]
            ^
-Use does not exist or NOT GENERIC
+Use does not exist or not a generic module
 
 UseDoesNotExistOrNotGenericError1.shtk:5:11

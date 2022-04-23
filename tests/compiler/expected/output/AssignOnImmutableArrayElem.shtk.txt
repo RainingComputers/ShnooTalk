@@ -3,6 +3,6 @@ ERROR in Line 5 Col 5
 
     a[2] = 5
     ^
-Cannot modify IMMUTABLE variable or parameter
+Cannot modify immutable variable or parameter
 
 AssignOnImmutableArrayElem.shtk:5:4

@@ -3,6 +3,6 @@ ERROR in Line 8 Col 10
 
     test("hello")
          ^
-Cannot pass EXPRESSION or STRING LITERAL as MUTABLE POINTER
+Cannot pass expression or string literal as mutable pointer
 
 StringLiteralAsMutablePointer.shtk:8:9

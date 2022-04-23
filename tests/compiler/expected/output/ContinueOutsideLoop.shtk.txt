@@ -3,6 +3,6 @@ ERROR in Line 3 Col 5
 
     continue
     ^
-CONTINUE outside loop
+continue outside loop
 
 ContinueOutsideLoop.shtk:3:4

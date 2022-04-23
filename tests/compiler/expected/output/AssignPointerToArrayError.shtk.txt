@@ -3,6 +3,6 @@ ERROR in Line 5 Col 23
 
     var arr: int[3] = a
                       ^
-Cannot assign POINTER to ARRAY
+Cannot assign pointer to array
 
 AssignPointerToArrayError.shtk:5:22

@@ -3,6 +3,6 @@ ERROR in Line 2 Col 34
 
 use "TestModules/String.shtk" as foobar
                                  ^
-Symbol already defined
+Symbol already exists
 
 AliasAlreadyExistsError.shtk:2:33

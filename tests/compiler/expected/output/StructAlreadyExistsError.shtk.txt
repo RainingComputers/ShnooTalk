@@ -3,6 +3,6 @@ ERROR in Line 3 Col 8
 
 struct test {}
        ^
-Symbol already defined
+Symbol already exists
 
 StructAlreadyExistsError.shtk:3:7

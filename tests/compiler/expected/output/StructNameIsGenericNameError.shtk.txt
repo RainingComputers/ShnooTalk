@@ -3,7 +3,7 @@ ERROR in Line 3 Col 8
 
 struct V
        ^
-Name cannot be a GENERIC IDENTIFIER
+Name cannot be a generic identifier
 
 TestModules/StructNameIsGenericNameError.shtk:3:7
 StructNameIsGenericNameError.shtk

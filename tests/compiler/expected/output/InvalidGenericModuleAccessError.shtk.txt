@@ -3,6 +3,6 @@ ERROR in Line 5 Col 11
 
     Pair::lol::foo()
           ^
-Invalid MODULE ACCESS from GENERIC
+Invalid namespace access from generic
 
 InvalidGenericModuleAccessError.shtk:5:10

@@ -3,6 +3,6 @@ ERROR in Line 5 Col 9
 
     b = ~a
         ^
-Unary operator NOT not allowed on FLOAT
+Bitwise operation only allowed on integer types
 
 UnaryOperatorOnFloat.shtk:5:8

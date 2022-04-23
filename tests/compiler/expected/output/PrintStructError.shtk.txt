@@ -3,6 +3,6 @@ ERROR in Line 8 Col 13
 
     println(a)
             ^
-Cannot print STRUCT or multi-dimensional ARRAY or non CHAR ARRAY
+Cannot print string or multi dimensional array or non char array
 
 PrintStructError.shtk:8:12

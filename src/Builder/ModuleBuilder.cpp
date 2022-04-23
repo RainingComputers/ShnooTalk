@@ -71,7 +71,7 @@ TypeInformation ModuleBuilder::getTypeInformation(const Token& dataTypeToken, Da
     if (workingModule->getIncompleteTypeModule(dataTypeName, incompleteTypeModuleName))
         return TypeInformation{ 0, incompleteTypeModuleName, true };
 
-    console.compileErrorOnToken("Data type does not exist", dataTypeToken);
+    console.compileErrorOnToken("Type does not exist", dataTypeToken);
 }
 
 TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
@@ -163,7 +163,7 @@ void ModuleBuilder::createEnum(const std::vector<Token>& enums)
     for (size_t i = 0; i < enums.size(); i += 1)
     {
         if (rootModule.symbolExists(enums[i].toString()))
-            console.compileErrorOnToken("Symbol already defined", enums[i]);
+            console.compileErrorOnToken("Symbol already exists", enums[i]);
 
         rootModule.enumerations[enums[i].toString()] = i;
     }
@@ -181,7 +181,7 @@ FunctionDescription ModuleBuilder::createFunctionDescription(const icode::TypeDe
     for (size_t i = 0; i < paramNames.size(); i++)
     {
         if (rootModule.symbolExists(paramNames[i].toString()))
-            console.compileErrorOnToken("Symbol already defined", paramNames[i]);
+            console.compileErrorOnToken("Symbol already exists", paramNames[i]);
 
         paramTypes[i].setProperty(IS_PARAM);
         paramTypes[i].setProperty(IS_LOCAL);
@@ -218,7 +218,7 @@ void ModuleBuilder::createFunction(const Token& nameToken,
     std::string mangledFunctionName = nameMangle(nameToken, rootModule.name);
 
     if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(nameToken.toString()))
-        console.compileErrorOnToken("Symbol already defined", nameToken);
+        console.compileErrorOnToken("Symbol already exists", nameToken);
 
     const icode::FunctionDescription& function =
         createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
@@ -240,7 +240,7 @@ void ModuleBuilder::createFunctionExternC(const Token& nameToken,
     const std::string& functionName = nameToken.toString();
 
     if (rootModule.symbolExists(functionName))
-        console.compileErrorOnToken("Symbol already defined", nameToken);
+        console.compileErrorOnToken("Symbol already exists", nameToken);
 
     rootModule.functions[functionName] =
         createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
@@ -256,7 +256,7 @@ void ModuleBuilder::createExternFunction(const Token& nameToken,
     const std::string& externFunctionName = nameToken.toString();
 
     if (rootModule.symbolExists(externFunctionName))
-        console.compileErrorOnToken("Symbol already defined", nameToken);
+        console.compileErrorOnToken("Symbol already exists", nameToken);
 
     rootModule.externFunctions[externFunctionName] =
         createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
@@ -275,7 +275,7 @@ void ModuleBuilder::createExternFunctionModule(const Token& nameToken,
 
     if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(mangledFunctionNameRoot) ||
         rootModule.symbolExists(externFunctionName))
-        console.compileErrorOnToken("Symbol already defined", nameToken);
+        console.compileErrorOnToken("Symbol already exists", nameToken);
 
     rootModule.externFunctions[mangledFunctionName] =
         createFunctionDescription(returnType, paramNames, paramTypes, functionModuleName);
@@ -288,7 +288,7 @@ void ModuleBuilder::createGlobal(const Token globalNameToken, icode::TypeDescrip
     std::string mangledGlobalName = nameMangle(globalNameToken, rootModule.name);
 
     if (rootModule.symbolExists(mangledGlobalName) || rootModule.symbolExists(globalNameToken.toString()))
-        console.compileErrorOnToken("Symbol already defined", globalNameToken);
+        console.compileErrorOnToken("Symbol already exists", globalNameToken);
 
     typeDescription.setProperty(IS_GLOBAL);
 
@@ -309,7 +309,7 @@ void ModuleBuilder::createStruct(const Token& nameToken,
                                  const std::vector<icode::TypeDescription>& fieldTypes)
 {
     if (rootModule.symbolExists(nameToken.toString()))
-        console.compileErrorOnToken("Symbol already defined", nameToken);
+        console.compileErrorOnToken("Symbol already exists", nameToken);
 
     icode::StructDescription structDescription = createEmptyStructDescription();
 
@@ -318,7 +318,7 @@ void ModuleBuilder::createStruct(const Token& nameToken,
         const std::string& fieldName = fieldNameTokens[i].toString();
 
         if (structDescription.fieldExists(fieldName))
-            console.compileErrorOnToken("Field already defined", fieldNameTokens[i]);
+            console.compileErrorOnToken("Field already exists", fieldNameTokens[i]);
 
         icode::TypeDescription field = fieldTypes[i];
         field.offset = structDescription.size;
@@ -349,10 +349,10 @@ void ModuleBuilder::createUse(const Token& pathToken, const Token& aliasToken)
     const std::string& alias = aliasToken.toString();
 
     if (rootModule.useExists(path))
-        console.compileErrorOnToken("Multiple imports detected", pathToken);
+        console.compileErrorOnToken("Duplicate imports", pathToken);
 
     if (rootModule.aliasExists(alias))
-        console.compileErrorOnToken("Symbol already defined", aliasToken);
+        console.compileErrorOnToken("Symbol already exists", aliasToken);
 
     createUseNoAlias(pathToken);
     rootModule.aliases[alias] = path;
@@ -377,7 +377,7 @@ void ModuleBuilder::createFrom(const std::string& moduleName, const Token& symbo
     const std::string& mangledSymbolString = nameMangle(symbolNameToken, externalModule->name);
 
     if (rootModule.symbolExists(symbolString))
-        console.compileErrorOnToken("Symbol already defined", symbolNameToken);
+        console.compileErrorOnToken("Symbol already exists", symbolNameToken);
 
     if (externalModule->getStruct(symbolString, structDescReturnValue))
         rootModule.structures[symbolString] = structDescReturnValue;

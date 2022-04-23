@@ -11,7 +11,7 @@ int setWorkingModuleFromNode(generator::GeneratorContext& ctx, const Node& root,
         const Token& aliasToken = root.children[nodeCounter].tok;
 
         if (genericModuleSet)
-            ctx.console.compileErrorOnToken("Invalid MODULE ACCESS from GENERIC", aliasToken);
+            ctx.console.compileErrorOnToken("Invalid namespace access from generic", aliasToken);
 
         if (ctx.mm.aliasExists(aliasToken))
         {

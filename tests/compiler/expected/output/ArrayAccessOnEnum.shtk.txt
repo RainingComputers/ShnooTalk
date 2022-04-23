@@ -3,6 +3,6 @@ ERROR in Line 5 Col 21
 
     var a:int = LED0[2]
                     ^
-ARRAY access on a NON ARRAY
+Cannot index a non array
 
 ArrayAccessOnEnum.shtk:5:20

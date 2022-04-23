@@ -397,7 +397,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldNameToken, const Unit& un
     const std::string& fieldName = fieldNameToken.toString();
 
     if (!structDescription.fieldExists(fieldName))
-        console.compileErrorOnToken("Undefined STRUCT field", fieldNameToken);
+        console.compileErrorOnToken("Struct field does not exist", fieldNameToken);
 
     return getStructFieldFromString(fieldName, unit);
 }
@@ -798,7 +798,7 @@ void FunctionBuilder::createReturnAndCallDeconstructors()
 void FunctionBuilder::terminateFunction(const Token& nameToken)
 {
     if (nameToken.toString() == "main" && !validMainReturn(*workingFunction))
-        console.compileErrorOnToken("Invalid return type for MAIN", nameToken);
+        console.compileErrorOnToken("Invalid return type for main", nameToken);
 
     if (doesFunctionTerminate())
         return;
@@ -809,5 +809,5 @@ void FunctionBuilder::terminateFunction(const Token& nameToken)
         return;
     }
 
-    console.compileErrorOnToken("Missing RETURN for this FUNCTION", nameToken);
+    console.compileErrorOnToken("Missing return for function", nameToken);
 }

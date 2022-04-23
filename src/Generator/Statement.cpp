@@ -133,7 +133,7 @@ void continueStatement(generator::GeneratorContext& ctx,
                        const Token& token)
 {
     if (!isLoopBlock)
-        ctx.console.compileErrorOnToken("CONTINUE outside loop", token);
+        ctx.console.compileErrorOnToken("continue outside loop", token);
 
     ctx.ir.functionBuilder.createBranch(GOTO, continueLabel);
 }
@@ -141,7 +141,7 @@ void continueStatement(generator::GeneratorContext& ctx,
 void breakStatement(generator::GeneratorContext& ctx, bool isLoopBlock, const Operand& breakLabel, const Token& token)
 {
     if (!isLoopBlock)
-        ctx.console.compileErrorOnToken("BREAK outside loop", token);
+        ctx.console.compileErrorOnToken("break outside loop", token);
 
     ctx.ir.functionBuilder.createBranch(GOTO, breakLabel);
 }

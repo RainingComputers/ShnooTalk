@@ -51,10 +51,10 @@ Unit cast(generator::GeneratorContext& ctx, const Node& root)
     DataType destinationDataType = stringToDataType(root.tok.toString());
 
     if (destinationDataType == STRUCT)
-        ctx.console.compileErrorOnToken("Cannot cast to STRUCT", root.tok);
+        ctx.console.compileErrorOnToken("Cannot cast to struct", root.tok);
 
     if (termToCast.isArray() || termToCast.isStruct())
-        ctx.console.compileErrorOnToken("Cannot cast STRUCT or ARRAY", root.tok);
+        ctx.console.compileErrorOnToken("Cannot cast struct or array", root.tok);
 
     return ctx.ir.functionBuilder.castOperator(termToCast, destinationDataType);
 }
@@ -64,7 +64,7 @@ Unit addrOperator(generator::GeneratorContext& ctx, const Node& root)
     Unit addrTerm = term(ctx, root.children[0]);
 
     if (!addrTerm.isPointer())
-        ctx.console.compileErrorOnToken("Connot apply addr operator to NON POINTER", root.tok);
+        ctx.console.compileErrorOnToken("Cannot apply addr operator to non pointer", root.tok);
 
     return ctx.ir.functionBuilder.addrOperator(addrTerm);
 }
@@ -80,7 +80,7 @@ Unit pointerCast(generator::GeneratorContext& ctx, const Node& root)
     Unit termToCast = term(ctx, root.children[0]);
 
     if (!termToCast.isValidForPointerAssignment() && !termToCast.isIntegerType())
-        ctx.console.compileErrorOnToken("Invalid expression for POINTER CAST", root.tok);
+        ctx.console.compileErrorOnToken("Invalid expression for pointer cast", root.tok);
 
     if (root.type == node::PTR_ARRAY_CAST)
         destinationType.becomeArrayPointer();
@@ -97,13 +97,13 @@ Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
     Unit unaryOperatorTerm = term(ctx, root.children[0]);
 
     if (unaryOperatorTerm.isArray())
-        ctx.console.compileErrorOnToken("Unary operator not allowed on ARRAY", root.tok);
+        ctx.console.compileErrorOnToken("Unary operator not allowed on array", root.tok);
 
     if (unaryOperatorTerm.isStruct())
-        ctx.console.compileErrorOnToken("Unary operator not allowed on STRUCT", root.tok);
+        ctx.console.compileErrorOnToken("Unary operator not allowed on struct", root.tok);
 
     if (!unaryOperatorTerm.isIntegerType() && root.tok.getType() == token::NOT)
-        ctx.console.compileErrorOnToken("Unary operator NOT not allowed on FLOAT", root.tok);
+        ctx.console.compileErrorOnToken("Bitwise operation only allowed on integer types", root.tok);
 
     Instruction instruction;
     switch (root.tok.getType())
@@ -115,7 +115,7 @@ Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
             instruction = NOT;
             break;
         case token::CONDN_NOT:
-            ctx.console.compileErrorOnToken("Did not expect CONDN NOT", root.tok);
+            ctx.console.compileErrorOnToken("Did not expect conditional not", root.tok);
             break;
         default:
             ctx.console.internalBugErrorOnToken(root.tok);
@@ -135,7 +135,7 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
     const token::TokenType& tokenType = root.children[nodeCounter].tok.getType();
 
     if (tokenType != token::IDENTIFIER && tokenType != token::GENERATED)
-        ctx.console.compileErrorOnToken("Invalid use of MODULE ACCESS", root.tok);
+        ctx.console.compileErrorOnToken("Invalid use of namespace access", root.tok);
 
     Unit result = term(ctx, root.children[nodeCounter]);
 
@@ -369,13 +369,13 @@ Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
     Unit RHS = expression(ctx, root.children[2]);
 
     if (LHS.isArray())
-        ctx.console.compileErrorOnToken("Operator not allowed on ARRAY", expressionOperator);
+        ctx.console.compileErrorOnToken("Operator not allowed on array", expressionOperator);
 
     if (!isSameType(LHS, RHS))
         ctx.console.typeError(root.children[2].tok, LHS, RHS);
 
     if (expressionOperator.isBitwiseOperator() && LHS.isFloatType())
-        ctx.console.compileErrorOnToken("Bitwise operations not allowed on FLOAT", expressionOperator);
+        ctx.console.compileErrorOnToken("Bitwise operation only allowed on integer types", expressionOperator);
 
     return binaryOperator(ctx, expressionOperator, LHSToken, RHSToken, LHS, RHS);
 }
@@ -475,7 +475,7 @@ void relationalExpression(generator::GeneratorContext& ctx,
     Unit RHS = ordinaryExpression(ctx, root.children[2]);
 
     if (LHS.isArray())
-        ctx.console.compileErrorOnToken("Cannot compare ARRAYS", operatorToken);
+        ctx.console.compileErrorOnToken("Cannot compare arrays", operatorToken);
 
     if (!isSameType(LHS, RHS))
         ctx.console.typeError(root.children[2].tok, LHS, RHS);

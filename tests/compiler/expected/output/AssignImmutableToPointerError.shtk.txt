@@ -3,6 +3,6 @@ ERROR in Line 3 Col 20
 
     var b: int* <- a
                    ^
-Cannot assign IMMUTABLE to a MUTABLE POINTER
+Cannot assign immutable value to a mutable pointer
 
 AssignImmutableToPointerError.shtk:3:19

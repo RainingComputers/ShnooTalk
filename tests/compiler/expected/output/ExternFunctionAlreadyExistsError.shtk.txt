@@ -3,6 +3,6 @@ ERROR in Line 4 Col 7
 
 extfn sin(x: double) -> double
       ^
-Symbol already defined
+Symbol already exists
 
 ExternFunctionAlreadyExistsError.shtk:4:6

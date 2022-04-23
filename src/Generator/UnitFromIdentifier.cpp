@@ -27,10 +27,10 @@ std::pair<Unit, size_t> unitFromStructVar(generator::GeneratorContext& ctx,
     const Token& fieldNameToken = root.getNthChildToken(nodeCounter);
 
     if (!unit.isStruct())
-        ctx.console.compileErrorOnToken("STRUCT access on a NON-STRUCT data type", fieldNameToken);
+        ctx.console.compileErrorOnToken("Cannot get struct field on a non struct data type", fieldNameToken);
 
     if (unit.isArray())
-        ctx.console.compileErrorOnToken("STRUCT access on an ARRAY", fieldNameToken);
+        ctx.console.compileErrorOnToken("Cannot get struct on an array", fieldNameToken);
 
     nodeCounter++;
 
@@ -47,7 +47,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext
     size_t nodeCounter = startIndex;
 
     if (!unit.isArray())
-        ctx.console.compileErrorOnToken("ARRAY access on a NON ARRAY", root.children[nodeCounter].tok);
+        ctx.console.compileErrorOnToken("Cannot index a non array", root.children[nodeCounter].tok);
 
     std::vector<Unit> indices;
 

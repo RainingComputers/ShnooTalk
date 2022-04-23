@@ -3,6 +3,6 @@ ERROR in Line 3 Col 11
 
 fn foobar(test: int) {}
           ^
-Symbol already defined
+Symbol already exists
 
 ParamNamesAlreadyExistsError.shtk:3:10

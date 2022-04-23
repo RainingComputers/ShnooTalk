@@ -3,6 +3,6 @@ ERROR in Line 5 Col 21
 
 from ExternMath use sin
                     ^
-Symbol already defined
+Symbol already exists
 
 FromAlreadExistsError.shtk:5:20

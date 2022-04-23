@@ -3,6 +3,6 @@ ERROR in Line 3 Col 17
 
     var a: int* = 1
                 ^
-Non pointer initialization for POINTER
+Non pointer initialization for pointer
 
 PointerInitializationError.shtk:3:16

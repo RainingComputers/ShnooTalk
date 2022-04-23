@@ -3,6 +3,6 @@ ERROR in Line 6 Col 7
 
     a <- b
       ^
-Pointer assignment on a NON POINTER
+Pointer assignment on a non pointer
 
 PointerAssignmentToNonPointer.shtk:6:6

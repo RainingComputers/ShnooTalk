@@ -3,6 +3,6 @@ ERROR in Line 1 Col 4
 
 fn main() -> int[3]
    ^
-Invalid return type for MAIN
+Invalid return type for main
 
 InvalidReturnForMainArray.shtk:1:3

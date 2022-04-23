@@ -3,6 +3,6 @@ ERROR in Line 3 Col 19
 
     var children: Node[5]
                   ^
-INCOMPLETE TYPE can only be a POINTER
+Incomplete type can only be a pointer
 
 IncompleteTypeError.shtk:3:18

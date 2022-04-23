@@ -3,6 +3,6 @@ ERROR in Line 5 Col 7
 
     a += b
       ^
-Only EQUAL or LEFT ARROW operator allowed on ARRAY
+Only '=' or '<-' operator allowed on array
 
 AssignmentOnArrayError.shtk:5:6

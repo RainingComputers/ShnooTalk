@@ -3,6 +3,6 @@ ERROR in Line 10 Col 17
 
     var b:int = int`a
                 ^
-Cannot cast STRUCT or ARRAY
+Cannot cast struct or array
 
 CastOnStructError.shtk:10:16

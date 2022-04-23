@@ -3,6 +3,6 @@ ERROR in Line 10 Col 9
 
     foo(a+1)
         ^
-Cannot pass IMMUTABLE as MUTABLE
+Cannot pass immutable as mutable
 
 ExpressionPassAsMutableError.shtk:10:8

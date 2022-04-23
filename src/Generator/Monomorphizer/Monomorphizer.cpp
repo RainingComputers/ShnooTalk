@@ -70,7 +70,7 @@ std::pair<std::vector<std::string>, std::vector<std::string>> Monomorphizer::get
         const Token& nameToken = child.children[0].tok;
 
         if (itemInList<std::string>(nameToken.toString(), genericIdentifiers))
-            console.compileErrorOnToken("Name cannot be a GENERIC IDENTIFIER", nameToken);
+            console.compileErrorOnToken("Name cannot be a generic identifier", nameToken);
 
         if (genericTypePresent(child, genericIdentifiers, genericStructs))
         {
@@ -121,7 +121,7 @@ void Monomorphizer::createFrom(const std::string& genericModuleName, const Token
     GenericASTIndex& index = genericsMap.at(genericModuleName);
 
     if (!index.isGenericStructOrFunction(symbolToken))
-        console.compileErrorOnToken("GENERIC does not exist", symbolToken);
+        console.compileErrorOnToken("Generic does not exist", symbolToken);
 
     genericUses[symbolToken.toString()] = genericModuleName;
 }
@@ -150,7 +150,7 @@ std::string Monomorphizer::getGenericModuleNameFromAlias(const Token& aliasToken
     if (getMapElement<std::string, std::string>(aliases, aliasToken.toString(), genericModuleName))
         return genericModuleName;
 
-    console.compileErrorOnToken("Use does not exist or NOT GENERIC", aliasToken);
+    console.compileErrorOnToken("Use does not exist or not a generic module", aliasToken);
 }
 
 std::string Monomorphizer::getGenericModuleNameFromUse(const Token& nameToken)
@@ -160,7 +160,7 @@ std::string Monomorphizer::getGenericModuleNameFromUse(const Token& nameToken)
     if (getMapElement<std::string, std::string>(genericUses, nameToken.toString(), genericModuleName))
         return genericModuleName;
 
-    console.compileErrorOnToken("GENERIC does not exist", nameToken);
+    console.compileErrorOnToken("Generic does not exist", nameToken);
 }
 
 void Monomorphizer::setWorkingModuleFromAlias(const Token& aliasToken)
@@ -176,7 +176,7 @@ std::string Monomorphizer::getGenericModuleFromToken(const Token& token)
     const GenericASTIndex& index = genericsMap.at(workingModule);
 
     if (!index.isGenericStructOrFunction(token))
-        console.compileErrorOnToken("GENERIC does not exist", token);
+        console.compileErrorOnToken("Generic does not exist", token);
 
     return workingModule;
 }

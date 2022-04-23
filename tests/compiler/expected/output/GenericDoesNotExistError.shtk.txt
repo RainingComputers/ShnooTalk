@@ -3,6 +3,6 @@ ERROR in Line 3 Col 15
 
 from Pair use DoesNotExist
               ^
-GENERIC does not exist
+Generic does not exist
 
 GenericDoesNotExistError.shtk:3:14

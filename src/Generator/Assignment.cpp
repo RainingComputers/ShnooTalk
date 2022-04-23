@@ -16,40 +16,40 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
     bool assignmentNode = rootNodeType == node::ASSIGNMENT || rootNodeType == node::DESTRUCTURED_ASSIGNMENT;
 
     if (LHS.isLiteral())
-        ctx.console.compileErrorOnToken("Cannot assign to LITERAL", LHSToken);
+        ctx.console.compileErrorOnToken("Cannot assign to literal", LHSToken);
 
     if (!isSameType(LHS, RHS))
         ctx.console.typeError(RHSToken, LHS, RHS);
 
     if (!LHS.isMutable() && assignmentNode)
-        ctx.console.compileErrorOnToken("Cannot modify IMMUTABLE variable or parameter", LHSToken);
+        ctx.console.compileErrorOnToken("Cannot modify immutable variable or parameter", LHSToken);
 
     if (LHS.isArray() && !assignOperator.isEqualOrLeftArrow())
-        ctx.console.compileErrorOnToken("Only EQUAL or LEFT ARROW operator allowed on ARRAY", assignOperator);
+        ctx.console.compileErrorOnToken("Only '=' or '<-' operator allowed on array", assignOperator);
 
     if (assignOperator.isBitwiseOperator() && !LHS.isIntegerType())
-        ctx.console.compileErrorOnToken("Bitwise operation not allowed on FLOAT", assignOperator);
+        ctx.console.compileErrorOnToken("Bitwise operators only allowed on integer types", assignOperator);
 
     if (assignOperator.getType() == token::EQUAL)
     {
         if (LHS.isPointer() && !assignmentNode)
-            ctx.console.compileErrorOnToken("Non pointer initialization for POINTER", assignOperator);
+            ctx.console.compileErrorOnToken("Non pointer initialization for pointer", assignOperator);
 
         if (LHS.isArray() && RHS.isPointer())
-            ctx.console.compileErrorOnToken("Cannot assign POINTER to ARRAY", RHSToken);
+            ctx.console.compileErrorOnToken("Cannot assign pointer to array", RHSToken);
 
         ctx.ir.functionBuilder.unitCopy(LHS, RHS);
     }
     else if (assignOperator.getType() == token::LEFT_ARROW)
     {
         if (!LHS.isPointer())
-            ctx.console.compileErrorOnToken("Pointer assignment on a NON POINTER", assignOperator);
+            ctx.console.compileErrorOnToken("Pointer assignment on a non pointer", assignOperator);
 
         if (!RHS.isValidForPointerAssignment())
-            ctx.console.compileErrorOnToken("Invalid expression for POINTER ASSIGNMENT", RHSToken);
+            ctx.console.compileErrorOnToken("Invalid expression for pointer assignment", RHSToken);
 
         if (LHS.isMutable() && !RHS.isMutable() && !RHS.isPointer() && RHS.isLocal())
-            ctx.console.compileErrorOnToken("Cannot assign IMMUTABLE to a MUTABLE POINTER", RHSToken);
+            ctx.console.compileErrorOnToken("Cannot assign immutable value to a mutable pointer", RHSToken);
 
         ctx.ir.functionBuilder.unitPointerAssign(LHS, RHS);
     }
@@ -153,7 +153,7 @@ void destructuredAssignment(generator::GeneratorContext& ctx, const Node& root)
     Unit RHS = expression(ctx, root.children[2]);
 
     if (!RHS.isStructOrArray())
-        ctx.console.compileErrorOnToken("Cannot destructure NON STRUCT or NON ARRAY", root.children[2].tok);
+        ctx.console.compileErrorOnToken("Cannot destructure non struct or non array", root.children[2].tok);
 
     if (allIdentifierNodes(LHSNode) && RHS.isStruct())
     {

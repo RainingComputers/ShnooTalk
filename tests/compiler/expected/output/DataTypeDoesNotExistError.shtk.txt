@@ -3,6 +3,6 @@ ERROR in Line 3 Col 11
 
     var a:foo
           ^
-Data type does not exist
+Type does not exist
 
 DataTypeDoesNotExistError.shtk:3:10

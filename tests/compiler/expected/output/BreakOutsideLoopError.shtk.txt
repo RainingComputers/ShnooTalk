@@ -3,6 +3,6 @@ ERROR in Line 3 Col 5
 
     break
     ^
-BREAK outside loop
+break outside loop
 
 BreakOutsideLoopError.shtk:3:4

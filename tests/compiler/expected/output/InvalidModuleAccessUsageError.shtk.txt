@@ -3,6 +3,6 @@ ERROR in Line 5 Col 13
 
     println(vec::1)
             ^
-Invalid use of MODULE ACCESS
+Invalid use of namespace access
 
 InvalidModuleAccessUsageError.shtk:5:12

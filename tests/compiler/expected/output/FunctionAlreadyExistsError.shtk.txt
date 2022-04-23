@@ -3,6 +3,6 @@ ERROR in Line 6 Col 4
 
 fn foobar() 
    ^
-Symbol already defined
+Symbol already exists
 
 FunctionAlreadyExistsError.shtk:6:3

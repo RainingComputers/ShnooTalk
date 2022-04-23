@@ -3,6 +3,6 @@ ERROR in Line 8 Col 9
 
     foo("Hello")
         ^
-Cannot pass IMMUTABLE as MUTABLE
+Cannot pass immutable as mutable
 
 StringLiteralPassAsMutable.shtk:8:8

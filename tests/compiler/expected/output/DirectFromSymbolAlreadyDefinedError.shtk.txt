@@ -3,6 +3,6 @@ ERROR in Line 2 Col 37
 
 from "TestModules/Digital.shtk" use LOW
                                     ^
-Symbol already defined
+Symbol already exists
 
 DirectFromSymbolAlreadyDefinedError.shtk:2:36

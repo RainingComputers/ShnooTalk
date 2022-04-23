@@ -3,6 +3,6 @@ ERROR in Line 3 Col 5
 
 var sin: int
     ^
-Symbol already defined
+Symbol already exists
 
 GlobalAlreadyExistsError.shtk:3:4
