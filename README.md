@@ -85,11 +85,9 @@ make test
 - [ ] Pretty name for generics
 - [ ] Assignment destructuring
 - [ ] `_` discard variable
-- [ ] Using literal expression as subscript for declaration
-- [ ] Struct construction using `Foobar{}` syntax
 - [ ] Better operator overloading
-- [ ] Reduce binary size
 - [ ] `in` operator
+- [ ] Reduce binary size
 - [x] extern "C" to prevent name mangling functions
 
 *Backlog*
@@ -126,7 +124,8 @@ make test
 - [ ] Revamp AST for type definitions
 - [ ] Arrays of generic type
 - [ ] Autofill type parameter for generic function call
-
+- [ ] Using literal expression as subscript for declaration
+- [ ] Struct construction using `Foobar{}` syntax
 
 *Advanced Features*
 
