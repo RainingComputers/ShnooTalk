@@ -256,7 +256,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
 
         actualParams.push_back(param);
 
-        if (param.isList())
+        if (param.isArrayWithFixedDim())
             actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(param.numElements()));
     }
 

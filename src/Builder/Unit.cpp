@@ -134,6 +134,11 @@ bool Unit::isMultiDimArray() const
     return typeDescription.isMultiDimArray();
 }
 
+bool Unit::isArrayWithFixedDim() const
+{
+    return isList() || (isArray() && !isUserPointer());
+}
+
 bool Unit::isLocal() const
 {
     return typeDescription.checkProperty(IS_LOCAL);

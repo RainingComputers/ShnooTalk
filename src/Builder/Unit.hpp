@@ -44,6 +44,7 @@ public:
     bool isArray() const;
     bool isStructOrArray() const;
     bool isMultiDimArray() const;
+    bool isArrayWithFixedDim() const;
 
     bool isEnum() const;
     bool isLocal() const;

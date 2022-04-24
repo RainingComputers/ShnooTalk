@@ -69,8 +69,37 @@
                         int* tempPtr99 = createPointer struct a
                         passPointer int* tempPtr99, void _fn_MakeList_shtk_printIntList, module MakeList.shtk
                         void calleeReturnValue102 = call void _fn_MakeList_shtk_printIntList, module MakeList.shtk
-                        int temp107 = cast autoInt 0
-                        int returnValue105 = equal int temp107
+                        int* tempPtr112 = createPointer int b
+                        int temp113 = cast autoInt 5
+                        int* tempPtr112 = write int temp113
+                        int* tempPtr115 = addressAdd int* tempPtr112, bytes 4
+                        int temp116 = cast autoInt 6
+                        int* tempPtr115 = write int temp116
+                        int* tempPtr118 = addressAdd int* tempPtr115, bytes 4
+                        int temp119 = cast autoInt 7
+                        int* tempPtr118 = write int temp119
+                        int* tempPtr121 = addressAdd int* tempPtr118, bytes 4
+                        int temp122 = cast autoInt 8
+                        int* tempPtr121 = write int temp122
+                        int* tempPtr124 = addressAdd int* tempPtr121, bytes 4
+                        int temp125 = cast autoInt 9
+                        int* tempPtr124 = write int temp125
+                        int* tempPtr127 = addressAdd int* tempPtr124, bytes 4
+                        int temp128 = cast autoInt 10
+                        int* tempPtr127 = write int temp128
+                        int* tempPtr133 = createPointer int b
+                        passPointer int* tempPtr133, struct _fn_TestModules_List_shtk[int]_createList, module TestModules/List.shtk[int]
+                        int temp136 = cast autoInt 6
+                        pass int temp136, struct _fn_TestModules_List_shtk[int]_createList, module TestModules/List.shtk[int]
+                        struct calleeReturnValue139 = call struct _fn_TestModules_List_shtk[int]_createList, module TestModules/List.shtk[int]
+                        int* tempPtr143 = createPointer struct c
+                        int* tempPtr144 = createPointer struct calleeReturnValue139
+                        int* tempPtr143 = memoryCopy int* tempPtr144, autoInt 16
+                        int* tempPtr149 = createPointer struct c
+                        passPointer int* tempPtr149, void _fn_MakeList_shtk_printIntList, module MakeList.shtk
+                        void calleeReturnValue152 = call void _fn_MakeList_shtk_printIntList, module MakeList.shtk
+                        int temp157 = cast autoInt 0
+                        int returnValue155 = equal int temp157
                         return
                 ]
             }
