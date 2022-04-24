@@ -299,7 +299,7 @@ Unit FunctionBuilder::pointerCastOperator(const Unit& unitToCast, TypeDescriptio
 
     pushEntry(entry);
 
-    return Unit(destinationType, entry.op1);
+    return Unit(destinationType, entry.op1).clearProperties();
 }
 
 void FunctionBuilder::compareOperator(Instruction instruction, const Unit& LHS, const Unit& RHS)
@@ -374,6 +374,12 @@ Unit FunctionBuilder::getStructFieldFromString(const std::string& fieldName, con
 
     if (unit.isMutable())
         fieldType.becomeMutable();
+
+    if (unit.isLocal())
+        fieldType.setProperty(IS_LOCAL);
+
+    if (unit.isGlobal())
+        fieldType.setProperty(IS_GLOBAL);
 
     Operand pointerOperand = createPointer(unit);
     Operand offsetOperand = opBuilder.createBytesOperand(fieldType.offset);

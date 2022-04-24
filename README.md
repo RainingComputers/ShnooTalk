@@ -89,6 +89,7 @@ make test
 - [ ] `in` operator
 - [ ] Reduce binary size
 - [x] extern "C" to prevent name mangling functions
+- [ ] Decide names and defaulrs for primitive data types
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend

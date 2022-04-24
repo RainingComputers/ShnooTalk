@@ -48,7 +48,7 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
         if (!RHS.isValidForPointerAssignment())
             ctx.console.compileErrorOnToken("Invalid expression for pointer assignment", RHSToken);
 
-        if (LHS.isMutable() && !RHS.isMutable() && !RHS.isPointer() && RHS.isLocal())
+        if (!RHS.isMutable() && RHS.isValue())
             ctx.console.compileErrorOnToken("Cannot assign immutable value to a mutable pointer", RHSToken);
 
         ctx.ir.functionBuilder.unitPointerAssign(LHS, RHS);

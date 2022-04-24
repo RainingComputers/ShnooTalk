@@ -59,7 +59,7 @@ Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
     if (type.moduleName == "")
         type.moduleName = workingModule->name;
 
-    return Unit(type, unitList);
+    return Unit(type, unitList).clearProperties();
 }
 
 Unit UnitBuilder::unitFromStringDataKey(const std::string& key)

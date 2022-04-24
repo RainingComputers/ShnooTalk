@@ -139,6 +139,21 @@ bool Unit::isLocal() const
     return typeDescription.checkProperty(IS_LOCAL);
 }
 
+bool Unit::isGlobal() const
+{
+    return typeDescription.checkProperty(IS_GLOBAL);
+}
+
+bool Unit::isLocalOrGlobal() const
+{
+    return isLocal() || isGlobal();
+}
+
+bool Unit::isValue() const
+{
+    return !isUserPointer() && isLocalOrGlobal();
+}
+
 bool Unit::isPointer() const
 {
     return operand.isPointer();

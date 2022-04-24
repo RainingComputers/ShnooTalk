@@ -3,7 +3,7 @@ struct Vector
     var x: int, y: int
 }
 
-fn testfunction(this: Vector) -> int*
+fn testfunction(mut this: Vector) -> int*
 {
     return this.y
 }

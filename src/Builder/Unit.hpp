@@ -47,6 +47,9 @@ public:
 
     bool isEnum() const;
     bool isLocal() const;
+    bool isGlobal() const;
+    bool isLocalOrGlobal() const;
+    bool isValue() const;
 
     bool isPointer() const;
 
