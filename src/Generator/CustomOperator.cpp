@@ -16,19 +16,28 @@ Unit customOperator(generator::GeneratorContext& ctx,
 
     ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromUnit(LHS));
 
-    FunctionDescription callee = ctx.ir.descriptionFinder.getCustomOperatorFunction(binaryOperator, LHS, RHS);
+    std::vector<Unit> params = { LHS, RHS };
+
+    if (RHS.isArrayWithFixedDim())
+        params.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(RHS.numElements()));
+
+    std::pair<std::string, FunctionDescription> calleeNameAndFunction =
+        ctx.ir.descriptionFinder.getCustomOperatorFunction(binaryOperator, params);
+
+    const std::string& calleeName = calleeNameAndFunction.first;
+    const FunctionDescription& callee = calleeNameAndFunction.second;
 
     std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
     passParamCheck(ctx, LHS, formalParameters[0], LHSToken);
     passParamCheck(ctx, RHS, formalParameters[1], RHSToken);
 
-    ctx.ir.functionBuilder.passParameter(binaryOperator, callee, formalParameters[0], LHS);
-    ctx.ir.functionBuilder.passParameter(binaryOperator, callee, formalParameters[1], RHS);
+    for (size_t i = 0; i < params.size(); i += 1)
+        ctx.ir.functionBuilder.passParameterPreMangled(calleeName, callee, formalParameters[i], params[i]);
 
     ctx.ir.popWorkingModule();
 
-    return ctx.ir.functionBuilder.callFunction(binaryOperator, callee);
+    return ctx.ir.functionBuilder.callFunctionPreMangled(calleeName, callee);
 }
 
 Unit binaryOperator(generator::GeneratorContext& ctx,

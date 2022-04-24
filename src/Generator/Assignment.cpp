@@ -18,8 +18,9 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
     if (LHS.isLiteral())
         ctx.console.compileErrorOnToken("Cannot assign to literal", LHSToken);
 
-    if (!isSameType(LHS, RHS))
-        ctx.console.typeError(RHSToken, LHS, RHS);
+    if (!LHS.isStruct() || assignOperator.isEqualOrLeftArrow())
+        if (!isSameType(LHS, RHS))
+            ctx.console.typeError(RHSToken, LHS, RHS);
 
     if (!LHS.isMutable() && assignmentNode)
         ctx.console.compileErrorOnToken("Cannot modify immutable variable or parameter", LHSToken);

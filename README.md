@@ -85,11 +85,11 @@ make test
 - [ ] Pretty name for generics
 - [x] Assignment destructuring
 - [ ] `_` discard variable
-- [ ] Better operator overloading
+- [x] Better operator overloading
 - [ ] `in` operator
 - [ ] Reduce binary size
 - [x] extern "C" to prevent name mangling functions
-- [ ] Decide names and defaulrs for primitive data types
+- [ ] Decide names and defaults for primitive data types
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend
@@ -123,7 +123,6 @@ make test
 - [ ] Proper enums
 - [ ] Better error message for using generic as non generic
 - [ ] Revamp AST for type definitions
-- [ ] Arrays of generic type
 - [ ] Autofill type parameter for generic function call
 - [ ] Using literal expression as subscript for declaration
 - [ ] Struct construction using `Foobar{}` syntax

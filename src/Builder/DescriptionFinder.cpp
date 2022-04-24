@@ -183,6 +183,9 @@ std::vector<Unit> DescriptionFinder::getFormalParameters(const FunctionDescripti
 
 bool isSameParamsType(const FunctionDescription& function, const std::vector<Unit>& params)
 {
+    if (function.numParameters() != params.size())
+        return false;
+
     for (size_t i = 0; i < params.size(); i += 1)
     {
         const TypeDescription& actualParamType = params[i].type();
@@ -206,9 +209,6 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
         if (!isSameTypeDescription(function.functionReturnType, type))
             continue;
 
-        if (function.numParameters() != params.size())
-            continue;
-
         if (!isSameParamsType(function, params))
             continue;
 
@@ -218,26 +218,25 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
     console.compileErrorOnToken("Cannot find function with matching params", token);
 }
 
-FunctionDescription DescriptionFinder::getCustomOperatorFunction(const Token& binaryOperator,
-                                                                 const Unit& LHS,
-                                                                 const Unit& RHS)
+std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperatorFunction(
+    const Token& binaryOperator,
+    const std::vector<Unit>& params)
 {
-    const std::string& binaryOperatorName = nameMangle(binaryOperator, workingModule->name);
+    const std::string& binaryOperatorName = binaryOperator.toFunctionNameString();
 
     for (auto functionName : workingModule->definedFunctions)
     {
-        if (binaryOperatorName != functionName)
+        const std::string& unmangleFunctionName = unMangleString(functionName, workingModule->name);
+
+        if (unmangleFunctionName.rfind(binaryOperatorName, 0) != 0)
             continue;
 
         const FunctionDescription& function = workingModule->functions.at(functionName);
 
-        if (function.numParameters() != 2)
+        if (!isSameParamsType(function, params))
             continue;
 
-        if (!isSameParamsType(function, std::vector<Unit>({ LHS, RHS })))
-            continue;
-
-        return function;
+        return std::pair<std::string, FunctionDescription>(functionName, function);
     }
 
     console.compileErrorOnToken("Custom operator function does not exist", binaryOperator);

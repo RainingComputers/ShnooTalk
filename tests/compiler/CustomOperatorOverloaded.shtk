@@ -1,0 +1,50 @@
+struct Vector
+{
+    var x: int, y: int, z: int
+}
+
+fn createVector(x: int, y: int, z: int) -> Vector
+{
+    var v: Vector
+    v.x = x
+    v.y = y
+    v.z = z
+    return v
+}
+
+fn addVector(self: Vector, other: Vector) -> Vector
+{
+    return createVector(self.x+other.x, self.y+other.y, self.z+other.z)
+}
+
+fn addVectorArray(self: Vector, arr: int[], n: int) -> Vector
+{
+    if n == 2
+        return createVector(self.x+arr[0], self.y+arr[1], 0)
+
+    if n > 2 
+        return createVector(self.x+arr[0], self.y+arr[1], self.z+arr[2])
+
+    return self
+}
+
+fn printVector(v: Vector)
+{
+    println(v.x, v.y, v.z)
+}
+
+fn main() -> int
+{
+    var a: Vector = createVector(1, 2, 3)
+    var b: Vector = createVector(3, 2, 1)
+
+    a += [1, 1, 1]
+
+    printVector(a) # 2, 3, 4
+
+    a += b
+
+    printVector(a) # 5, 5, 5
+
+    return 0
+}

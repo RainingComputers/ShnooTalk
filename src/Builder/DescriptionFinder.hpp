@@ -50,9 +50,8 @@ public:
                                                                                const icode::TypeDescription& type,
                                                                                const std::vector<Unit>& params);
 
-    icode::FunctionDescription getCustomOperatorFunction(const Token& binaryOperator,
-                                                         const Unit& LHS,
-                                                         const Unit& RHS);
+    std::pair<std::string, icode::FunctionDescription> getCustomOperatorFunction(const Token& binaryOperator,
+                                                         const std::vector<Unit>& params);
 
     bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit);
 };
