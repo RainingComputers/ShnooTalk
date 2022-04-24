@@ -1,0 +1,8 @@
+fn main() -> int
+{
+    var a: int
+
+    const b := addr(a)
+
+    return 0
+}

@@ -16,7 +16,7 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
         if (!isSameType(functionReturn, returnValue))
             ctx.console.typeError(root.children[0].tok, functionReturn, returnValue);
 
-        if (functionReturn.isPointer())
+        if (functionReturn.isUserPointer())
         {
             if (!returnValue.isValidForPointerAssignment())
                 ctx.console.compileErrorOnToken("Invalid expression for pointer return", root.tok);

@@ -1,0 +1,8 @@
+MODULE AddrOperatorOnNonPointerStructFieldError.shtk
+ERROR in Line 10 Col 16
+
+    const b := addr(foo.a[3])
+               ^
+Cannot apply addr operator to non pointer
+
+AddrOperatorOnNonPointerStructFieldError.shtk:10:15

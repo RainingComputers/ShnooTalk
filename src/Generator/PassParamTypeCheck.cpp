@@ -10,12 +10,12 @@ void passParamCheck(const generator::GeneratorContext& ctx,
     if (!isSameType(formalParam, actualParam))
         ctx.console.typeError(actualParamToken, formalParam, actualParam);
 
-    if (formalParam.isPointer() && actualParam.isLiteral())
+    if (formalParam.isUserPointer() && actualParam.isLiteral())
         ctx.console.compileErrorOnToken("Cannot pass literal as mutable or pointer", actualParamToken);
 
     if (formalParam.isMutable())
     {
-        if (formalParam.isPointer() && !actualParam.isUserPointer())
+        if (formalParam.isUserPointer() && !actualParam.isUserPointer())
             ctx.console.compileErrorOnToken("Cannot pass expression or string literal as mutable pointer",
                                             actualParamToken);
 
@@ -25,7 +25,7 @@ void passParamCheck(const generator::GeneratorContext& ctx,
 
     if (!formalParam.isMutable())
     {
-        if (formalParam.isPointer() && !actualParam.isMutable() && actualParam.isValue())
+        if (formalParam.isUserPointer() && !actualParam.isMutable() && actualParam.isValue())
             ctx.console.compileErrorOnToken("Cannot pass immutable value to a pointer", actualParamToken);
     }
 }

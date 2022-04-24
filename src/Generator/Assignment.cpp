@@ -32,17 +32,17 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
 
     if (assignOperator.getType() == token::EQUAL)
     {
-        if (LHS.isPointer() && !assignmentNode)
+        if (LHS.isUserPointer() && !assignmentNode)
             ctx.console.compileErrorOnToken("Non pointer initialization for pointer", assignOperator);
 
-        if (LHS.isArray() && RHS.isPointer())
+        if (LHS.isArray() && RHS.isUserPointer())
             ctx.console.compileErrorOnToken("Cannot assign pointer to array", RHSToken);
 
         ctx.ir.functionBuilder.unitCopy(LHS, RHS);
     }
     else if (assignOperator.getType() == token::LEFT_ARROW)
     {
-        if (!LHS.isPointer())
+        if (!LHS.isUserPointer())
             ctx.console.compileErrorOnToken("Pointer assignment on a non pointer", assignOperator);
 
         if (!RHS.isValidForPointerAssignment())

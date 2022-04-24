@@ -1,0 +1,25 @@
+struct Foobar
+{
+    var a: int[3]
+}
+
+fn createFoobar() -> Foobar
+{
+    var foo: Foobar
+    foo.a[0] = 1
+    foo.a[1] = 2
+    foo.a[2] = 3
+    return foo
+}
+
+fn main() -> int
+{
+    const foo := createFoobar()
+
+    var y: int[3] = foo.a
+
+    println(y[0], y[1], y[2])
+
+    return 0
+}
+

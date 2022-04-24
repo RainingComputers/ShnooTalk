@@ -26,7 +26,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
         Unit RHS = expression(ctx, lastNode);
         assignmentFromTree(ctx, root.type, root.getNthChildTokenFromLast(2), nameToken, lastNode.tok, local, RHS);
     }
-    else if (local.isPointer())
+    else if (local.isUserPointer())
     {
         /* Make sure pointers are null initialized if not explicitly initialized */
         const Unit& nullPointerUnit =

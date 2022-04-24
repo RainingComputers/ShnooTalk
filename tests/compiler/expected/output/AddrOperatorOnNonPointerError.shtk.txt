@@ -1,0 +1,8 @@
+MODULE AddrOperatorOnNonPointerError.shtk
+ERROR in Line 5 Col 16
+
+    const b := addr(a)
+               ^
+Cannot apply addr operator to non pointer
+
+AddrOperatorOnNonPointerError.shtk:5:15

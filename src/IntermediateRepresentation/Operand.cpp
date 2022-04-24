@@ -23,7 +23,7 @@ namespace icode
 
     bool Operand::isUserPointer() const
     {
-        return operandType == PTR || operandType == TEMP_PTR_PTR;
+        return operandType == PTR || operandType == TEMP_PTR_PTR || operandType == RET_PTR;
     }
 
     bool Operand::isValidForPointerAssignment() const
