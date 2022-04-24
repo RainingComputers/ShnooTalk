@@ -1,0 +1,21 @@
+struct Foo
+{
+    var x: int, y: int
+}
+
+fn createFoo() -> Foo
+{
+    var foo: Foo
+    foo.x = 1
+    foo.y = 1
+    return foo
+}
+
+fn main() -> int
+{
+    const a := createFoo()
+
+    const b: int* <- a.y
+
+    return 0
+}

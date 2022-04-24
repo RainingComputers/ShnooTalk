@@ -1,0 +1,8 @@
+MODULE AssignImmutableValueToPointerStructFieldError.shtk
+ERROR in Line 18 Col 22
+
+    const b: int* <- a.y
+                     ^
+Cannot assign immutable value to a pointer
+
+AssignImmutableValueToPointerStructFieldError.shtk:18:21

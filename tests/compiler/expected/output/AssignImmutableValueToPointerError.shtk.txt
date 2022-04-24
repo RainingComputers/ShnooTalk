@@ -1,0 +1,8 @@
+MODULE AssignImmutableValueToPointerError.shtk
+ERROR in Line 3 Col 20
+
+    var b: int* <- a
+                   ^
+Cannot assign immutable value to a pointer
+
+AssignImmutableValueToPointerError.shtk:3:19

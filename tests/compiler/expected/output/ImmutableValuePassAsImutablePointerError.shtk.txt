@@ -1,0 +1,8 @@
+MODULE ImmutableValuePassAsImutablePointerError.shtk
+ERROR in Line 10 Col 12
+
+    foobar(a)
+           ^
+Cannot pass immutable value to a pointer
+
+ImmutableValuePassAsImutablePointerError.shtk:10:11

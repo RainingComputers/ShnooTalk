@@ -2,10 +2,10 @@
 
 #include "PassParamTypeCheck.hpp"
 
-void passParamTypeCheck(const generator::GeneratorContext& ctx,
-                        const Unit& actualParam,
-                        const Unit& formalParam,
-                        const Token& actualParamToken)
+void passParamCheck(const generator::GeneratorContext& ctx,
+                    const Unit& actualParam,
+                    const Unit& formalParam,
+                    const Token& actualParamToken)
 {
     if (!isSameType(formalParam, actualParam))
         ctx.console.typeError(actualParamToken, formalParam, actualParam);
@@ -26,6 +26,6 @@ void passParamTypeCheck(const generator::GeneratorContext& ctx,
     if (!formalParam.isMutable())
     {
         if (formalParam.isPointer() && !actualParam.isMutable() && actualParam.isValue())
-            ctx.console.compileErrorOnToken("Cannot pass immutable value to a immutable pointer", actualParamToken);
+            ctx.console.compileErrorOnToken("Cannot pass immutable value to a pointer", actualParamToken);
     }
 }

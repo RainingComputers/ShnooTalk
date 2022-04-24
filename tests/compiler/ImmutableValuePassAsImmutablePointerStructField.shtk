@@ -1,0 +1,26 @@
+struct Foo
+{
+    var x: int, y: int
+}
+
+fn createFoo() -> Foo
+{
+    var foo: Foo
+    foo.x = 1
+    foo.y = 1
+    return foo
+}
+
+fn foobar(a: int*)
+{
+
+}
+
+fn main() -> int
+{
+    const a := createFoo()
+
+    foobar(a.y)
+
+    return 0
+}

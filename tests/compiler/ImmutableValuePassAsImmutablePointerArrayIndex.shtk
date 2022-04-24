@@ -1,0 +1,13 @@
+fn foobar(a: int*)
+{
+
+}
+
+fn main() -> int
+{
+    const a: int[3] = [1, 2, 3]
+
+    foobar(a[1])
+
+    return 0
+}

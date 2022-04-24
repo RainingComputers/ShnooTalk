@@ -160,7 +160,7 @@ Unit createCallFunction(generator::GeneratorContext& ctx,
         const Unit& actualParam = actualParams[i];
         const Unit& formalParam = formalParameters[i];
 
-        passParamTypeCheck(ctx, actualParam, formalParam, actualParamTokens[i]);
+        passParamCheck(ctx, actualParam, formalParam, actualParamTokens[i]);
 
         ctx.ir.functionBuilder.passParameter(calleeNameToken, callee, formalParam, actualParam);
     }

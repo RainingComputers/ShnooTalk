@@ -3,7 +3,7 @@
 
 #include "GeneratorContext.hpp"
 
-void passParamTypeCheck(const generator::GeneratorContext& ctx,
+void passParamCheck(const generator::GeneratorContext& ctx,
                         const Unit& actualParam,
                         const Unit& formalParam,
                         const Token& actualParamToken);

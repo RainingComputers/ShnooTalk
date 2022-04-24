@@ -1,0 +1,9 @@
+struct Foo
+{
+    var z: int
+}
+
+fn bar(foo: Foo) -> int*
+{
+    return foo.z
+}
