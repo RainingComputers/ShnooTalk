@@ -84,9 +84,9 @@ make test
 - [x] Class or struct destructors
 - [ ] Pretty name for generics
 - [x] Assignment destructuring
-- [ ] `_` discard variable
 - [x] Better operator overloading
 - [ ] `in` operator
+- [ ] slot operator
 - [ ] Reduce binary size
 - [x] extern "C" to prevent name mangling functions
 - [ ] Decide names and defaults for primitive data types
@@ -126,6 +126,7 @@ make test
 - [ ] Autofill type parameter for generic function call
 - [ ] Using literal expression as subscript for declaration
 - [ ] Struct construction using `Foobar{}` syntax
+- [ ] `panic()` function
 
 *Advanced Features*
 
@@ -139,6 +140,7 @@ make test
 - [ ] Extends
 - [ ] Compile time reflection and macros
 - [ ] `constexpr` or `comptime`
+- [ ] Runtime checks like nil pointer dereference and bound checking
 
 ### Documentation
 
