@@ -3,6 +3,6 @@ ERROR in Line 10 Col 11
 
     a = b + c
           ^
-Custom operator function does not exist
+Type error, operator '+' does not exist for BinaryOperatorFunctionDoesNotExistError.shtk::Foobar and BinaryOperatorFunctionDoesNotExistError.shtk::Foobar
 
 BinaryOperatorFunctionDoesNotExistError.shtk:10:10

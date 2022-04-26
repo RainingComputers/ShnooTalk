@@ -1,0 +1,16 @@
+struct Foobar{}
+
+fn add(self: Foobar, a: int*) -> Foobar 
+{
+    var c: Foobar
+    return c
+}
+
+fn main() 
+{
+    var a: Foobar
+
+    a += 2
+
+    return 0
+}

@@ -3,7 +3,6 @@ ERROR in Line 3 Col 21
 
     var a:int[10] = "Hello"
                     ^
-Type error, did not expect ubyte[6],
-expected int[10]
+Type error, did not expect ubyte[6], expected int[10]
 
 StringAssignmentOnlyOn1dCharrArrayError.shtk:3:20

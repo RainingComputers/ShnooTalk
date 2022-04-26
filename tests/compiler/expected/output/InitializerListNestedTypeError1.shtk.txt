@@ -3,7 +3,6 @@ ERROR in Line 3 Col 32
 
     var a:int[2][2] = [[1, 2], [3, 4, 5]]
                                ^
-Type error, did not expect autoInt[3],
-expected autoInt[2]
+Type error, did not expect autoInt[3], expected autoInt[2]
 
 InitializerListNestedTypeError1.shtk:3:31

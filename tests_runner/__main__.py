@@ -12,7 +12,7 @@ def main() -> int:
     tester.generator("tests/compiler", "expected/json", "json", "-json-icode-all", True)
     tester.generator("tests/compiler", "expected/pretty", "txt", "-icode-all", True)
     tester.exec_generator("tests/compiler", "expected/output")
-    tester.register([parser_tests, ir_tests, compiler_tests, llc_tests, cli_tests])
+    tester.register([compiler_tests])
 
     return tester.run()
 

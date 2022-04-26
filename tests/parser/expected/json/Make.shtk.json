@@ -120,60 +120,72 @@
                               ]
                             },
                             {
-                              "type": "INITLIST",
+                              "type": "EXPRESSION",
                               "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 40, "file": "Make.shtk"},
                               "children": [
                                 {
-                                  "type": "EXPRESSION",
-                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 41, "file": "Make.shtk"},
+                                  "type": "TERM",
+                                  "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 40, "file": "Make.shtk"},
                                   "children": [
                                     {
-                                      "type": "TERM",
-                                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 41, "file": "Make.shtk"},
+                                      "type": "INITLIST",
+                                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 40, "file": "Make.shtk"},
                                       "children": [
                                         {
-                                          "type": "LITERAL",
+                                          "type": "EXPRESSION",
                                           "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 41, "file": "Make.shtk"},
                                           "children": [
-                                            
+                                            {
+                                              "type": "TERM",
+                                              "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 41, "file": "Make.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "LITERAL",
+                                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 41, "file": "Make.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
                                           ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "EXPRESSION",
-                                  "token": {"string": "45", "tokenType": "INT_LITERAL", "line": 3, "col": 44, "file": "Make.shtk"},
-                                  "children": [
-                                    {
-                                      "type": "TERM",
-                                      "token": {"string": "45", "tokenType": "INT_LITERAL", "line": 3, "col": 44, "file": "Make.shtk"},
-                                      "children": [
+                                        },
                                         {
-                                          "type": "LITERAL",
+                                          "type": "EXPRESSION",
                                           "token": {"string": "45", "tokenType": "INT_LITERAL", "line": 3, "col": 44, "file": "Make.shtk"},
                                           "children": [
-                                            
+                                            {
+                                              "type": "TERM",
+                                              "token": {"string": "45", "tokenType": "INT_LITERAL", "line": 3, "col": 44, "file": "Make.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "LITERAL",
+                                                  "token": {"string": "45", "tokenType": "INT_LITERAL", "line": 3, "col": 44, "file": "Make.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
                                           ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "EXPRESSION",
-                                  "token": {"string": "67", "tokenType": "INT_LITERAL", "line": 3, "col": 48, "file": "Make.shtk"},
-                                  "children": [
-                                    {
-                                      "type": "TERM",
-                                      "token": {"string": "67", "tokenType": "INT_LITERAL", "line": 3, "col": 48, "file": "Make.shtk"},
-                                      "children": [
+                                        },
                                         {
-                                          "type": "LITERAL",
+                                          "type": "EXPRESSION",
                                           "token": {"string": "67", "tokenType": "INT_LITERAL", "line": 3, "col": 48, "file": "Make.shtk"},
                                           "children": [
-                                            
+                                            {
+                                              "type": "TERM",
+                                              "token": {"string": "67", "tokenType": "INT_LITERAL", "line": 3, "col": 48, "file": "Make.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "LITERAL",
+                                                  "token": {"string": "67", "tokenType": "INT_LITERAL", "line": 3, "col": 48, "file": "Make.shtk"},
+                                                  "children": [
+                                                    
+                                                  ]
+                                                }
+                                              ]
+                                            }
                                           ]
                                         }
                                       ]
@@ -183,14 +195,26 @@
                               ]
                             },
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 53, "file": "Make.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 53, "file": "Make.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 53, "file": "Make.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 53, "file": "Make.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]

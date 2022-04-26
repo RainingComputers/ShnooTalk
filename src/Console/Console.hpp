@@ -34,6 +34,8 @@ public:
 
     [[noreturn]] void typeError(const Token& tok, const Unit& expected, const Unit& found);
 
+    [[noreturn]] void operatorError(const Token& tok, const Unit& expected, const Unit& found);
+
     [[noreturn]] void internalBugErrorOnToken(const Token& tok);
 
     [[noreturn]] void internalBugError();

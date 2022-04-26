@@ -3,7 +3,6 @@ ERROR in Line 6 Col 10
 
     a += f
          ^
-Type error, did not expect float,
-expected int
+Type error, did not expect float, expected int
 
 AssignOperatorTypeError.shtk:6:9

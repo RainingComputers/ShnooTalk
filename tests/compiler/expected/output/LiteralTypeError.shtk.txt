@@ -3,7 +3,6 @@ ERROR in Line 3 Col 17
 
     var i:int = 2.0
                 ^
-Type error, did not expect autoFloat,
-expected int
+Type error, did not expect autoFloat, expected int
 
 LiteralTypeError.shtk:3:16

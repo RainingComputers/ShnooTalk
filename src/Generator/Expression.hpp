@@ -17,4 +17,11 @@ void conditionalExpression(generator::GeneratorContext& ctx,
 
 Unit expression(generator::GeneratorContext& ctx, const Node& root);
 
+Unit binaryOperator(generator::GeneratorContext& ctx,
+                    const Token& binaryOperator,
+                    const Token& LHSToken,
+                    const Token& RHSToken,
+                    const Unit& LHS,
+                    const Unit& RHS);
+
 #endif

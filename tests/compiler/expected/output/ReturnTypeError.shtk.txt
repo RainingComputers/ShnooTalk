@@ -3,7 +3,6 @@ ERROR in Line 5 Col 12
 
     return a
            ^
-Type error, did not expect int,
-expected float
+Type error, did not expect int, expected float
 
 ReturnTypeError.shtk:5:11

@@ -3,7 +3,6 @@ ERROR in Line 8 Col 12
 
     foobar(2.0)
            ^
-Type error, did not expect autoFloat,
-expected int
+Type error, did not expect autoFloat, expected int
 
 ParameterTypeError.shtk:8:11

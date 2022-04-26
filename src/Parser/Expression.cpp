@@ -258,6 +258,21 @@ void initializerList(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
+void multiLineStringLiteral(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrentNoConsume(node::MULTILINE_STR_LITERAL);
+
+    do
+    {
+        ctx.addNode(node::STR_LITERAL);
+
+    } while (ctx.accept(token::STR_LITERAL));
+
+    ctx.popNode();
+}
+
 void term(parser::ParserContext& ctx)
 {
     ctx.pushNode();
@@ -267,9 +282,9 @@ void term(parser::ParserContext& ctx)
     token::TokenType expected[] = { token::IDENTIFIER,   token::NOT,         token::LPAREN,        token::INT_LITERAL,
                                     token::CHAR_LITERAL, token::HEX_LITERAL, token::FLOAT_LITERAL, token::BIN_LITERAL,
                                     token::MINUS,        token::CONDN_NOT,   token::SIZEOF,        token::MAKE,
-                                    token::ADDR };
+                                    token::ADDR,         token::OPEN_SQUARE, token::STR_LITERAL };
 
-    ctx.expect(expected, 13);
+    ctx.expect(expected, 15);
 
     if (ctx.accept(token::SIZEOF))
         sizeofBuiltIn(ctx);
@@ -323,6 +338,14 @@ void term(parser::ParserContext& ctx)
         ctx.expect(token::RPAREN);
         ctx.consume();
     }
+    else if (ctx.accept(token::OPEN_SQUARE))
+    {
+        initializerList(ctx);
+    }
+    else if (ctx.accept(token::STR_LITERAL))
+    {
+        multiLineStringLiteral(ctx);
+    }
     else if (ctx.accept(token::NOT) || ctx.accept(token::MINUS) || ctx.accept(token::CONDN_NOT))
     {
         ctx.addNodeMakeCurrent(node::UNARY_OPR);
@@ -332,21 +355,6 @@ void term(parser::ParserContext& ctx)
     {
         literal(ctx);
     }
-
-    ctx.popNode();
-}
-
-void multiLineStringLiteral(parser::ParserContext& ctx)
-{
-    ctx.pushNode();
-
-    ctx.addNodeMakeCurrentNoConsume(node::MULTILINE_STR_LITERAL);
-
-    do
-    {
-        ctx.addNode(node::STR_LITERAL);
-
-    } while (ctx.accept(token::STR_LITERAL));
 
     ctx.popNode();
 }
@@ -382,10 +390,5 @@ void expression(parser::ParserContext& ctx)
 
     ctx.expect(expected, 15);
 
-    if (ctx.accept(token::OPEN_SQUARE))
-        initializerList(ctx);
-    else if (ctx.accept(token::STR_LITERAL))
-        multiLineStringLiteral(ctx);
-    else
-        baseExpression(ctx, 1);
+    baseExpression(ctx, 1);
 }

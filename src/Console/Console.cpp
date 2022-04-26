@@ -32,6 +32,13 @@ void Console::typeError(const Token& tok, const Unit& expected, const Unit& foun
     throw CompileError();
 }
 
+void Console::operatorError(const Token& tok, const Unit& expected, const Unit& found)
+{
+    pp::operatorError(fileName, *file, tok, expected.type(), found.type());
+    printModuleStackLine(tok.getLineNo(), tok.getColumn());
+    throw CompileError();
+}
+
 void Console::internalBugErrorOnToken(const Token& tok)
 {
     pp::errorOnToken(fileName, "Internal compiler error, REPORT THIS BUG", *file, tok);

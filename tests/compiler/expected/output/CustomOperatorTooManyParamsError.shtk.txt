@@ -3,6 +3,6 @@ ERROR in Line 16 Col 23
 
     var c: Foobar = a + b
                       ^
-Custom operator function does not exist
+Type error, operator '+' does not exist for CustomOperatorTooManyParamsError.shtk::Foobar and CustomOperatorTooManyParamsError.shtk::Foobar
 
 CustomOperatorTooManyParamsError.shtk:16:22

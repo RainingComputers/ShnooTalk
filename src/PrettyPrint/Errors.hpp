@@ -39,6 +39,12 @@ namespace pp
                    const icode::TypeDescription& expected,
                    const icode::TypeDescription& found);
 
+    void operatorError(const std::string& moduleName,
+                       std::ifstream& file,
+                       const Token& tok,
+                       const icode::TypeDescription& expected,
+                       const icode::TypeDescription& found);
+
     void internalCompilerErrorToken(const std::string& moduleName, std::ifstream& file, const Token& tok);
 
     void internalCompileError(const std::string& moduleName);

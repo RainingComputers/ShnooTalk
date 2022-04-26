@@ -1,0 +1,14 @@
+struct Foobar {}
+
+fn create(a: int, b: int*, c: int) -> Foobar 
+{
+    var d: Foobar
+    return d
+}
+
+fn main() -> int
+{
+    const b := make(Foobar, 1, 2, 3)
+
+    return 0
+}

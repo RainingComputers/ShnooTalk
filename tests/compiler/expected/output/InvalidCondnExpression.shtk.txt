@@ -3,6 +3,6 @@ ERROR in Line 3 Col 8
 
     if "hello" {
        ^
-Invalid conditional expression
+Cannot get truth from expression
 
 InvalidCondnExpression.shtk:3:7

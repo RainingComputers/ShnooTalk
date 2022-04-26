@@ -5,8 +5,10 @@
               ├───> nodeType=DO_WHILE, string="do", tokenType=DO, line=3, col=4
               │     ├───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=3, col=7
               │     │     └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=4, col=8
-              │     │           └───> nodeType=MULTILINE_STR_LITERAL, string=""Foo"", tokenType=STR_LITERAL, line=4, col=16
-              │     │                 └───> nodeType=STR_LITERAL, string=""Foo"", tokenType=STR_LITERAL, line=4, col=16
+              │     │           └───> nodeType=EXPRESSION, string=""Foo"", tokenType=STR_LITERAL, line=4, col=16
+              │     │                 └───> nodeType=TERM, string=""Foo"", tokenType=STR_LITERAL, line=4, col=16
+              │     │                       └───> nodeType=MULTILINE_STR_LITERAL, string=""Foo"", tokenType=STR_LITERAL, line=4, col=16
+              │     │                             └───> nodeType=STR_LITERAL, string=""Foo"", tokenType=STR_LITERAL, line=4, col=16
               │     └───> nodeType=EXPRESSION, string="(", tokenType=LPAREN, line=5, col=11
               │           └───> nodeType=TERM, string="(", tokenType=LPAREN, line=5, col=11
               │                 └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=5, col=12
@@ -20,8 +22,10 @@
               └───> nodeType=DO_WHILE, string="do", tokenType=DO, line=7, col=4
                     ├───> nodeType=BLOCK, string="println", tokenType=PRINTLN, line=7, col=7
                     │     └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=7, col=7
-                    │           └───> nodeType=MULTILINE_STR_LITERAL, string=""Bar"", tokenType=STR_LITERAL, line=7, col=15
-                    │                 └───> nodeType=STR_LITERAL, string=""Bar"", tokenType=STR_LITERAL, line=7, col=15
+                    │           └───> nodeType=EXPRESSION, string=""Bar"", tokenType=STR_LITERAL, line=7, col=15
+                    │                 └───> nodeType=TERM, string=""Bar"", tokenType=STR_LITERAL, line=7, col=15
+                    │                       └───> nodeType=MULTILINE_STR_LITERAL, string=""Bar"", tokenType=STR_LITERAL, line=7, col=15
+                    │                             └───> nodeType=STR_LITERAL, string=""Bar"", tokenType=STR_LITERAL, line=7, col=15
                     └───> nodeType=EXPRESSION, string="b", tokenType=IDENTIFIER, line=7, col=28
                           ├───> nodeType=EXPRESSION, string="b", tokenType=IDENTIFIER, line=7, col=28
                           │     └───> nodeType=TERM, string="b", tokenType=IDENTIFIER, line=7, col=28

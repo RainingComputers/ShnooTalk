@@ -3,7 +3,6 @@ ERROR in Line 3 Col 20
 
     var a:int[3] = 2
                    ^
-Type error, did not expect int,
-expected int[3]
+Type error, did not expect int, expected int[3]
 
 DeclarationInitializationTypeError.shtk:3:19

@@ -158,60 +158,72 @@
                   ]
                 },
                 {
-                  "type": "INITLIST",
+                  "type": "EXPRESSION",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 22, "file": "DestructuredAssignment.shtk"},
                   "children": [
                     {
-                      "type": "EXPRESSION",
-                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 23, "file": "DestructuredAssignment.shtk"},
+                      "type": "TERM",
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 22, "file": "DestructuredAssignment.shtk"},
                       "children": [
                         {
-                          "type": "TERM",
-                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 23, "file": "DestructuredAssignment.shtk"},
+                          "type": "INITLIST",
+                          "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 5, "col": 22, "file": "DestructuredAssignment.shtk"},
                           "children": [
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 23, "file": "DestructuredAssignment.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 23, "file": "DestructuredAssignment.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 5, "col": 23, "file": "DestructuredAssignment.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "EXPRESSION",
-                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 26, "file": "DestructuredAssignment.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 26, "file": "DestructuredAssignment.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 26, "file": "DestructuredAssignment.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 26, "file": "DestructuredAssignment.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 5, "col": 26, "file": "DestructuredAssignment.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "EXPRESSION",
-                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 29, "file": "DestructuredAssignment.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 29, "file": "DestructuredAssignment.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 29, "file": "DestructuredAssignment.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 29, "file": "DestructuredAssignment.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 5, "col": 29, "file": "DestructuredAssignment.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]
@@ -336,79 +348,91 @@
                   ]
                 },
                 {
-                  "type": "INITLIST",
+                  "type": "EXPRESSION",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 7, "col": 21, "file": "DestructuredAssignment.shtk"},
                   "children": [
                     {
-                      "type": "EXPRESSION",
-                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 22, "file": "DestructuredAssignment.shtk"},
+                      "type": "TERM",
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 7, "col": 21, "file": "DestructuredAssignment.shtk"},
                       "children": [
                         {
-                          "type": "TERM",
-                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 22, "file": "DestructuredAssignment.shtk"},
+                          "type": "INITLIST",
+                          "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 7, "col": 21, "file": "DestructuredAssignment.shtk"},
                           "children": [
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 22, "file": "DestructuredAssignment.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 22, "file": "DestructuredAssignment.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 7, "col": 22, "file": "DestructuredAssignment.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "EXPRESSION",
-                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 7, "col": 25, "file": "DestructuredAssignment.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 7, "col": 25, "file": "DestructuredAssignment.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 7, "col": 25, "file": "DestructuredAssignment.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 7, "col": 25, "file": "DestructuredAssignment.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 7, "col": 25, "file": "DestructuredAssignment.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "EXPRESSION",
-                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 7, "col": 28, "file": "DestructuredAssignment.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 7, "col": 28, "file": "DestructuredAssignment.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 7, "col": 28, "file": "DestructuredAssignment.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 7, "col": 28, "file": "DestructuredAssignment.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "5", "tokenType": "INT_LITERAL", "line": 7, "col": 28, "file": "DestructuredAssignment.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "EXPRESSION",
-                      "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 7, "col": 31, "file": "DestructuredAssignment.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 7, "col": 31, "file": "DestructuredAssignment.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 7, "col": 31, "file": "DestructuredAssignment.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 7, "col": 31, "file": "DestructuredAssignment.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "6", "tokenType": "INT_LITERAL", "line": 7, "col": 31, "file": "DestructuredAssignment.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]

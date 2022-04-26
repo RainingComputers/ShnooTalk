@@ -30,14 +30,26 @@
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 4, "col": 8, "file": "InfiniteLoop.shtk"},
                       "children": [
                         {
-                          "type": "MULTILINE_STR_LITERAL",
+                          "type": "EXPRESSION",
                           "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "InfiniteLoop.shtk"},
                           "children": [
                             {
-                              "type": "STR_LITERAL",
+                              "type": "TERM",
                               "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "InfiniteLoop.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "MULTILINE_STR_LITERAL",
+                                  "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "InfiniteLoop.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "STR_LITERAL",
+                                      "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "InfiniteLoop.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]
@@ -61,14 +73,26 @@
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 9, "file": "InfiniteLoop.shtk"},
                       "children": [
                         {
-                          "type": "MULTILINE_STR_LITERAL",
+                          "type": "EXPRESSION",
                           "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 7, "col": 17, "file": "InfiniteLoop.shtk"},
                           "children": [
                             {
-                              "type": "STR_LITERAL",
+                              "type": "TERM",
                               "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 7, "col": 17, "file": "InfiniteLoop.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "MULTILINE_STR_LITERAL",
+                                  "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 7, "col": 17, "file": "InfiniteLoop.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "STR_LITERAL",
+                                      "token": {"string": "\"lol\"", "tokenType": "STR_LITERAL", "line": 7, "col": 17, "file": "InfiniteLoop.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]

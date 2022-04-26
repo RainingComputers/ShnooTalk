@@ -30,14 +30,26 @@
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 4, "col": 8, "file": "DoWhile.shtk"},
                       "children": [
                         {
-                          "type": "MULTILINE_STR_LITERAL",
+                          "type": "EXPRESSION",
                           "token": {"string": "\"Foo\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "DoWhile.shtk"},
                           "children": [
                             {
-                              "type": "STR_LITERAL",
+                              "type": "TERM",
                               "token": {"string": "\"Foo\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "DoWhile.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "MULTILINE_STR_LITERAL",
+                                  "token": {"string": "\"Foo\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "DoWhile.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "STR_LITERAL",
+                                      "token": {"string": "\"Foo\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "DoWhile.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]
@@ -124,14 +136,26 @@
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 7, "file": "DoWhile.shtk"},
                       "children": [
                         {
-                          "type": "MULTILINE_STR_LITERAL",
+                          "type": "EXPRESSION",
                           "token": {"string": "\"Bar\"", "tokenType": "STR_LITERAL", "line": 7, "col": 15, "file": "DoWhile.shtk"},
                           "children": [
                             {
-                              "type": "STR_LITERAL",
+                              "type": "TERM",
                               "token": {"string": "\"Bar\"", "tokenType": "STR_LITERAL", "line": 7, "col": 15, "file": "DoWhile.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "MULTILINE_STR_LITERAL",
+                                  "token": {"string": "\"Bar\"", "tokenType": "STR_LITERAL", "line": 7, "col": 15, "file": "DoWhile.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "STR_LITERAL",
+                                      "token": {"string": "\"Bar\"", "tokenType": "STR_LITERAL", "line": 7, "col": 15, "file": "DoWhile.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]

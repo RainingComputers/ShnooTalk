@@ -3,7 +3,6 @@ ERROR in Line 5 Col 20
 
     var b:int[] <- a
                    ^
-Type error, did not expect int*,
-expected int[]
+Type error, did not expect int*, expected int[]
 
 PointerTypeError.shtk:5:19

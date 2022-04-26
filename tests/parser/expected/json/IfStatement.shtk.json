@@ -131,14 +131,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 5, "col": 14, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 22, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 22, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 22, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 22, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -219,14 +231,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 14, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"World\"", "tokenType": "STR_LITERAL", "line": 7, "col": 22, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"World\"", "tokenType": "STR_LITERAL", "line": 7, "col": 22, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"World\"", "tokenType": "STR_LITERAL", "line": 7, "col": 22, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"World\"", "tokenType": "STR_LITERAL", "line": 7, "col": 22, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -250,14 +274,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 8, "col": 9, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 8, "col": 17, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 8, "col": 17, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 8, "col": 17, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 8, "col": 17, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -350,14 +386,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 10, "col": 16, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"Earth\"", "tokenType": "STR_LITERAL", "line": 10, "col": 24, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"Earth\"", "tokenType": "STR_LITERAL", "line": 10, "col": 24, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"Earth\"", "tokenType": "STR_LITERAL", "line": 10, "col": 24, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"Earth\"", "tokenType": "STR_LITERAL", "line": 10, "col": 24, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -444,14 +492,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 12, "col": 8, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -463,14 +523,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 13, "col": 8, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -551,14 +623,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 17, "col": 8, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"Uranus\"", "tokenType": "STR_LITERAL", "line": 17, "col": 16, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"Uranus\"", "tokenType": "STR_LITERAL", "line": 17, "col": 16, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"Uranus\"", "tokenType": "STR_LITERAL", "line": 17, "col": 16, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"Uranus\"", "tokenType": "STR_LITERAL", "line": 17, "col": 16, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -633,14 +717,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 19, "col": 8, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -664,14 +760,26 @@
                           "token": {"string": "println", "tokenType": "PRINTLN", "line": 21, "col": 8, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "MULTILINE_STR_LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "STR_LITERAL",
+                                  "type": "TERM",
                                   "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
                                   "children": [
-                                    
+                                    {
+                                      "type": "MULTILINE_STR_LITERAL",
+                                      "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "STR_LITERAL",
+                                          "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]

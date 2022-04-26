@@ -3,7 +3,6 @@ ERROR in Line 3 Col 17
 
     var a:int = [1, 2, 3]
                 ^
-Type error, did not expect int[3],
-expected int
+Type error, did not expect int[3], expected int
 
 InitializerListTypeError.shtk:3:16

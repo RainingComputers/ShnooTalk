@@ -81,14 +81,26 @@
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 4, "col": 8, "file": "While.shtk"},
                       "children": [
                         {
-                          "type": "MULTILINE_STR_LITERAL",
+                          "type": "EXPRESSION",
                           "token": {"string": "\"foobae\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "While.shtk"},
                           "children": [
                             {
-                              "type": "STR_LITERAL",
+                              "type": "TERM",
                               "token": {"string": "\"foobae\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "While.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "MULTILINE_STR_LITERAL",
+                                  "token": {"string": "\"foobae\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "While.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "STR_LITERAL",
+                                      "token": {"string": "\"foobae\"", "tokenType": "STR_LITERAL", "line": 4, "col": 16, "file": "While.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]
@@ -163,14 +175,26 @@
                       "token": {"string": "println", "tokenType": "PRINTLN", "line": 7, "col": 17, "file": "While.shtk"},
                       "children": [
                         {
-                          "type": "MULTILINE_STR_LITERAL",
+                          "type": "EXPRESSION",
                           "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 7, "col": 25, "file": "While.shtk"},
                           "children": [
                             {
-                              "type": "STR_LITERAL",
+                              "type": "TERM",
                               "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 7, "col": 25, "file": "While.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "MULTILINE_STR_LITERAL",
+                                  "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 7, "col": 25, "file": "While.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "STR_LITERAL",
+                                      "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 7, "col": 25, "file": "While.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]

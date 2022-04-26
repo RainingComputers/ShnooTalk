@@ -3,7 +3,6 @@ ERROR in Line 3 Col 23
 
     var a:int[2][2] = [[1, 2], [3, 4], [5, 6]]
                       ^
-Type error, did not expect int[3][2],
-expected int[2][2]
+Type error, did not expect int[3][2], expected int[2][2]
 
 IntializerListExtraDimTypeError.shtk:3:22

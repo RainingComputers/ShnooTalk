@@ -239,7 +239,7 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperator
         return std::pair<std::string, FunctionDescription>(functionName, function);
     }
 
-    console.compileErrorOnToken("Custom operator function does not exist", binaryOperator);
+    console.operatorError(binaryOperator, params[0], params[1]);
 }
 
 bool DescriptionFinder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)

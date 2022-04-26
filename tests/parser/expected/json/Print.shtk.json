@@ -22,14 +22,26 @@
               "token": {"string": "print", "tokenType": "PRINT", "line": 3, "col": 4, "file": "Print.shtk"},
               "children": [
                 {
-                  "type": "MULTILINE_STR_LITERAL",
+                  "type": "EXPRESSION",
                   "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 10, "file": "Print.shtk"},
                   "children": [
                     {
-                      "type": "STR_LITERAL",
+                      "type": "TERM",
                       "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 10, "file": "Print.shtk"},
                       "children": [
-                        
+                        {
+                          "type": "MULTILINE_STR_LITERAL",
+                          "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 10, "file": "Print.shtk"},
+                          "children": [
+                            {
+                              "type": "STR_LITERAL",
+                              "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 3, "col": 10, "file": "Print.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
                       ]
                     }
                   ]
@@ -137,14 +149,26 @@
                   ]
                 },
                 {
-                  "type": "MULTILINE_STR_LITERAL",
+                  "type": "EXPRESSION",
                   "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 13, "file": "Print.shtk"},
                   "children": [
                     {
-                      "type": "STR_LITERAL",
+                      "type": "TERM",
                       "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 13, "file": "Print.shtk"},
                       "children": [
-                        
+                        {
+                          "type": "MULTILINE_STR_LITERAL",
+                          "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 13, "file": "Print.shtk"},
+                          "children": [
+                            {
+                              "type": "STR_LITERAL",
+                              "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 5, "col": 13, "file": "Print.shtk"},
+                              "children": [
+                                
+                              ]
+                            }
+                          ]
+                        }
                       ]
                     }
                   ]

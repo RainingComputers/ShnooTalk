@@ -107,8 +107,6 @@ namespace pp
                    const icode::TypeDescription& expected,
                    const icode::TypeDescription& found)
     {
-        /* Used by ir generator for type errors */
-
         icode::TypeDescription modifiedFound = found;
 
         if (icode::dataTypeIsEqual(found.dtype, expected.dtype) && found.dtype != icode::STRUCT)
@@ -121,8 +119,23 @@ namespace pp
 
         std::string expectedString = formatType(expected);
 
-        std::string errorMessage = "Type error, did not expect " + foundString;
-        errorMessage += ",\nexpected " + expectedString;
+        std::string errorMessage = "Type error, did not expect " + foundString + ", expected " + expectedString;
+
+        errorOnToken(moduleName, errorMessage, file, tok);
+    }
+
+    void operatorError(const std::string& moduleName,
+                       std::ifstream& file,
+                       const Token& tok,
+                       const icode::TypeDescription& expected,
+                       const icode::TypeDescription& found)
+    {
+        std::string foundString = formatType(found);
+
+        std::string expectedString = formatType(expected);
+
+        std::string errorMessage = "Type error, operator '" + tok.toString() + "' does not exist for " + foundString +
+                                   " and " + expectedString;
 
         errorOnToken(moduleName, errorMessage, file, tok);
     }

@@ -5,19 +5,21 @@
         └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=2, col=0
               ├───> nodeType=WALRUS_CONST, string="const", tokenType=CONST, line=3, col=4
               │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=3, col=10
-              │     └───> nodeType=INITLIST, string="[", tokenType=OPEN_SQUARE, line=3, col=15
-              │           ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=3, col=16
-              │           │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=3, col=16
-              │           │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=3, col=16
-              │           ├───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=3, col=19
-              │           │     └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=3, col=19
-              │           │           └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=3, col=19
-              │           ├───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=3, col=22
-              │           │     └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=3, col=22
-              │           │           └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=3, col=22
-              │           └───> nodeType=EXPRESSION, string="4", tokenType=INT_LITERAL, line=3, col=25
-              │                 └───> nodeType=TERM, string="4", tokenType=INT_LITERAL, line=3, col=25
-              │                       └───> nodeType=LITERAL, string="4", tokenType=INT_LITERAL, line=3, col=25
+              │     └───> nodeType=EXPRESSION, string="[", tokenType=OPEN_SQUARE, line=3, col=15
+              │           └───> nodeType=TERM, string="[", tokenType=OPEN_SQUARE, line=3, col=15
+              │                 └───> nodeType=INITLIST, string="[", tokenType=OPEN_SQUARE, line=3, col=15
+              │                       ├───> nodeType=EXPRESSION, string="1", tokenType=INT_LITERAL, line=3, col=16
+              │                       │     └───> nodeType=TERM, string="1", tokenType=INT_LITERAL, line=3, col=16
+              │                       │           └───> nodeType=LITERAL, string="1", tokenType=INT_LITERAL, line=3, col=16
+              │                       ├───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=3, col=19
+              │                       │     └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=3, col=19
+              │                       │           └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=3, col=19
+              │                       ├───> nodeType=EXPRESSION, string="3", tokenType=INT_LITERAL, line=3, col=22
+              │                       │     └───> nodeType=TERM, string="3", tokenType=INT_LITERAL, line=3, col=22
+              │                       │           └───> nodeType=LITERAL, string="3", tokenType=INT_LITERAL, line=3, col=22
+              │                       └───> nodeType=EXPRESSION, string="4", tokenType=INT_LITERAL, line=3, col=25
+              │                             └───> nodeType=TERM, string="4", tokenType=INT_LITERAL, line=3, col=25
+              │                                   └───> nodeType=LITERAL, string="4", tokenType=INT_LITERAL, line=3, col=25
               ├───> nodeType=WALRUS_VAR, string="var", tokenType=VAR, line=4, col=4
               │     ├───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=4, col=8
               │     └───> nodeType=EXPRESSION, string="foobar", tokenType=IDENTIFIER, line=4, col=13

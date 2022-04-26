@@ -3,7 +3,6 @@ ERROR in Line 3 Col 21
 
     var a:char[4] = "Hello"
                     ^
-Type error, did not expect char[6],
-expected char[4]
+Type error, did not expect char[6], expected char[4]
 
 StringTooBigError.shtk:3:20

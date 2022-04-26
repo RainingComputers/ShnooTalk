@@ -63,79 +63,91 @@
                   ]
                 },
                 {
-                  "type": "INITLIST",
+                  "type": "EXPRESSION",
                   "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 26, "file": "DestructureDecleration.shtk"},
                   "children": [
                     {
-                      "type": "EXPRESSION",
-                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "DestructureDecleration.shtk"},
+                      "type": "TERM",
+                      "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 26, "file": "DestructureDecleration.shtk"},
                       "children": [
                         {
-                          "type": "TERM",
-                          "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "DestructureDecleration.shtk"},
+                          "type": "INITLIST",
+                          "token": {"string": "[", "tokenType": "OPEN_SQUARE", "line": 3, "col": 26, "file": "DestructureDecleration.shtk"},
                           "children": [
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "DestructureDecleration.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "DestructureDecleration.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "1", "tokenType": "INT_LITERAL", "line": 3, "col": 27, "file": "DestructureDecleration.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "EXPRESSION",
-                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 30, "file": "DestructureDecleration.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 30, "file": "DestructureDecleration.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 30, "file": "DestructureDecleration.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 30, "file": "DestructureDecleration.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 3, "col": 30, "file": "DestructureDecleration.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "EXPRESSION",
-                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 33, "file": "DestructureDecleration.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 33, "file": "DestructureDecleration.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 33, "file": "DestructureDecleration.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 33, "file": "DestructureDecleration.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "3", "tokenType": "INT_LITERAL", "line": 3, "col": 33, "file": "DestructureDecleration.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "EXPRESSION",
-                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 36, "file": "DestructureDecleration.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 36, "file": "DestructureDecleration.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "LITERAL",
+                              "type": "EXPRESSION",
                               "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 36, "file": "DestructureDecleration.shtk"},
                               "children": [
-                                
+                                {
+                                  "type": "TERM",
+                                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 36, "file": "DestructureDecleration.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "LITERAL",
+                                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 3, "col": 36, "file": "DestructureDecleration.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    }
+                                  ]
+                                }
                               ]
                             }
                           ]

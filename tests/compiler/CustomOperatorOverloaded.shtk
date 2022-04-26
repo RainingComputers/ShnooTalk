@@ -1,3 +1,5 @@
+extfn sqrt(n: double)
+
 struct Vector
 {
     var x: int, y: int, z: int
@@ -28,6 +30,17 @@ fn addVectorArray(self: Vector, arr: int[], n: int) -> Vector
     return self
 }
 
+fn isEqualArray(self: Vector, arr: int[], n: int) -> bool 
+{
+    if n == 2
+        return self.x == arr[0] and self.y == arr[1] and self.z == 0
+
+    if n == 3
+        return self.x == arr[0] and self.y == arr[1] and self.z == arr[2]
+
+    return false
+}
+
 fn printVector(v: Vector)
 {
     println(v.x, v.y, v.z)
@@ -41,10 +54,16 @@ fn main() -> int
     a += [1, 1, 1]
 
     printVector(a) # 2, 3, 4
+    println(a == [2, 3, 4]) # 1
 
     a += b
 
     printVector(a) # 5, 5, 5
+    println(a == [5, 5, 5]) # 1
+
+    b = createVector(1, 1, 0)
+    println(b == [1, 1]) # 1
+    println(b == [4, 3]) # 0
 
     return 0
 }

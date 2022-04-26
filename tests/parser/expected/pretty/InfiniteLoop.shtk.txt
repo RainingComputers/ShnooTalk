@@ -5,10 +5,14 @@
               ├───> nodeType=LOOP, string="loop", tokenType=LOOP, line=3, col=4
               │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=3, col=9
               │           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=4, col=8
-              │                 └───> nodeType=MULTILINE_STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=4, col=16
-              │                       └───> nodeType=STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=4, col=16
+              │                 └───> nodeType=EXPRESSION, string=""Hello"", tokenType=STR_LITERAL, line=4, col=16
+              │                       └───> nodeType=TERM, string=""Hello"", tokenType=STR_LITERAL, line=4, col=16
+              │                             └───> nodeType=MULTILINE_STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=4, col=16
+              │                                   └───> nodeType=STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=4, col=16
               └───> nodeType=LOOP, string="loop", tokenType=LOOP, line=7, col=4
                     └───> nodeType=BLOCK, string="println", tokenType=PRINTLN, line=7, col=9
                           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=7, col=9
-                                └───> nodeType=MULTILINE_STR_LITERAL, string=""lol"", tokenType=STR_LITERAL, line=7, col=17
-                                      └───> nodeType=STR_LITERAL, string=""lol"", tokenType=STR_LITERAL, line=7, col=17
+                                └───> nodeType=EXPRESSION, string=""lol"", tokenType=STR_LITERAL, line=7, col=17
+                                      └───> nodeType=TERM, string=""lol"", tokenType=STR_LITERAL, line=7, col=17
+                                            └───> nodeType=MULTILINE_STR_LITERAL, string=""lol"", tokenType=STR_LITERAL, line=7, col=17
+                                                  └───> nodeType=STR_LITERAL, string=""lol"", tokenType=STR_LITERAL, line=7, col=17

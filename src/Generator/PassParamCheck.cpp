@@ -1,6 +1,6 @@
 #include "../Builder/TypeCheck.hpp"
 
-#include "PassParamTypeCheck.hpp"
+#include "PassParamCheck.hpp"
 
 void passParamCheck(const generator::GeneratorContext& ctx,
                     const Unit& actualParam,
