@@ -1,0 +1,8 @@
+MODULE MakeParamCheckError.shtk
+ERROR in Line 11 Col 32
+
+    const b := make(Foobar, 1, 2, 3)
+                               ^
+Cannot pass literal as mutable or pointer
+
+MakeParamCheckError.shtk:11:31
