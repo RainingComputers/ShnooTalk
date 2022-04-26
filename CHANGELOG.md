@@ -3,15 +3,19 @@
 - Support for incomplete types
 - Added `addr` built in
 - Added direct from imports
-- Added := initialization
+- Added `:=` initialization
 - Added destructuring
 - Added generic function calls
 - Added `make` built in
-- Added deconstructions
 - Error messages now have line and col numbers and module trace
 - Type error messages show generic type errors better
+- Improved and better formatted error messages
 - Fixed sizeof to accept proper types
 - Added `-llvm-release` flag
+- Changed `sizeof` builtin
+- Added deconstructors
+- Added `externC` functions
+- Fixed bugs related to mutability and pointers
 
 # 0.1.1-alpha
 

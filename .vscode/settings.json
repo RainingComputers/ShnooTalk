@@ -110,6 +110,7 @@
         "CGSCC",
         "chdir",
         "CONDN",
+        "deconstructors",
         "dirctx",
         "distro",
         "Dont",
