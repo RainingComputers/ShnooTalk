@@ -1,0 +1,52 @@
+struct Rect 
+{
+    var x1: int, y1: int
+    var x2: int, y2: int
+}
+
+struct Point
+{
+    var x: int, y: int
+}
+
+fn createRect(x1: int, y1: int, x2: int, y2: int) -> Rect
+{
+    var rect: Rect
+    rect.x1 = x1
+    rect.x2 = x2
+    rect.y1 = y1
+    rect.y2 = y2
+    return rect
+}
+
+fn createPoint(x: int, y: int) -> Point
+{
+    var p: Point
+    p.x = x
+    p.y = y
+    return p
+}
+
+fn inArray(self: Rect, arr: int[], n: int) -> bool
+{
+    if n != 2
+        return false
+
+    return arr[0] > self.x1 and arr[0] < self.x2 and arr[1] > self.y1 and arr[1] < self.y2 
+}
+
+fn inPoint(self: Rect, p: Point) -> bool
+{
+    return [p.x, p.y] in self
+}
+
+fn main() -> int
+{
+    const p := createPoint(2, 2)
+    const r := createRect(1, 1, 3, 3)
+
+    println(p in r)       # 1
+    println([0, 0] in r)  # 0
+
+    return 0
+}

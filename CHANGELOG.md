@@ -16,6 +16,7 @@
 - Added deconstructors
 - Added `externC` functions
 - Fixed bugs related to mutability and pointers
+- Added `in` operator
 
 # 0.1.1-alpha
 

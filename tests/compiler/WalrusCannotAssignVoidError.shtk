@@ -1,0 +1,8 @@
+fn foo() {}
+
+fn main() -> int
+{
+    const a := foo()
+
+    return 0
+}

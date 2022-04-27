@@ -140,6 +140,11 @@ namespace icode
         return isFloat(dtype);
     }
 
+    bool TypeDescription::isVoid() const
+    {
+        return dtype == VOID;
+    }
+
     bool TypeDescription::isStringLtrl() const
     {
         return checkProperty(IS_STRING_LTRL);

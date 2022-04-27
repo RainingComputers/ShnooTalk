@@ -85,7 +85,7 @@ make test
 - [ ] Pretty name for generics
 - [x] Assignment destructuring
 - [x] Better operator overloading
-- [ ] `in` operator
+- [x] `in` operator
 - [ ] slot operator
 - [ ] Reduce binary size
 - [x] extern "C" to prevent name mangling functions

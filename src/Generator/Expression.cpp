@@ -523,12 +523,13 @@ void relationalExpression(generator::GeneratorContext& ctx,
                           const icode::Operand& falseLabel,
                           bool trueFall)
 {
-    icode::Instruction opcode = tokenToCompareOperator(ctx, operatorToken);
-
     const Token& LHSToken = root.children[0].tok;
     const Token& RHSToken = root.children[2].tok;
     Unit LHS = ordinaryExpression(ctx, root.children[0]);
     Unit RHS = ordinaryExpression(ctx, root.children[2]);
+
+    if (operatorToken.getType() == token::IN)
+        std::swap(LHS, RHS);
 
     if (LHS.isArray())
         ctx.console.compileErrorOnToken("Cannot compare arrays", operatorToken);
@@ -544,6 +545,8 @@ void relationalExpression(generator::GeneratorContext& ctx,
     }
     else
     {
+        icode::Instruction opcode = tokenToCompareOperator(ctx, operatorToken);
+
         ctx.ir.functionBuilder.compareOperator(opcode, LHS, RHS);
         createJumps(ctx, trueLabel, falseLabel, trueFall);
     }

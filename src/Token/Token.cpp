@@ -55,6 +55,7 @@ int Token::getPrecedence() const
         case MULTIPLY:
         case DIVIDE:
         case MOD:
+        case IN:
             return 10;
             break;
         case PLUS:
@@ -107,7 +108,7 @@ bool Token::isBitwiseOperator() const
 bool Token::isConditionalOperator() const
 {
     return type == LESS_THAN || type == LESS_THAN_EQUAL || type == GREATER_THAN || type == GREATER_THAN_EQUAL ||
-           type == CONDN_EQUAL || type == CONDN_NOT_EQUAL || type == CONDN_AND || type == CONDN_OR;
+           type == CONDN_EQUAL || type == CONDN_NOT_EQUAL || type == CONDN_AND || type == CONDN_OR || type == IN;
 }
 
 bool Token::isBinaryOperator() const
@@ -190,6 +191,8 @@ std::string Token::toFunctionNameString() const
             return "conditionalAnd";
         case token::CONDN_OR:
             return "conditionalOr";
+        case token::IN:
+            return "in";
         default:
             return string;
     }

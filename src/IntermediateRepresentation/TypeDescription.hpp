@@ -69,6 +69,7 @@ namespace icode
         bool isMultiDimArray() const;
         bool isIntegerType() const;
         bool isFloatType() const;
+        bool isVoid() const;
     };
 }
 

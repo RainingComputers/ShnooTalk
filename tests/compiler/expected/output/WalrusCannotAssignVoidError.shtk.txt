@@ -1,0 +1,8 @@
+MODULE WalrusCannotAssignVoidError.shtk
+ERROR in Line 5 Col 16
+
+    const a := foo()
+               ^
+Cannot assign a void type
+
+WalrusCannotAssignVoidError.shtk:5:15

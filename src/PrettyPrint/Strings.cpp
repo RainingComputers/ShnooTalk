@@ -74,6 +74,7 @@ const std::string tokenTypeToString[] = {
     "MULTIPLY",
     "DIVIDE",
     "MOD",
+    "IN",
     "BITWISE_AND",
     "CONDN_AND",
     "USE",

@@ -1,0 +1,7 @@
+fn foo() {}
+
+fn main() -> int
+{
+    const [a, b] := [foo(), foo()]
+    return 0
+}

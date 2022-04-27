@@ -1,0 +1,8 @@
+MODULE WalrusCannotAssignVoidDestructureError.shtk
+ERROR in Line 5 Col 21
+
+    const [a, b] := [foo(), foo()]
+                    ^
+Cannot assign a void type
+
+WalrusCannotAssignVoidDestructureError.shtk:5:20

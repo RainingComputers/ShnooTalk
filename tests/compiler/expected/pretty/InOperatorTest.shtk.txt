@@ -1,0 +1,195 @@
+{
+    "InOperatorTest.shtk": {
+        "moduleName": "InOperatorTest.shtk",
+        "functions": {
+            "_fn_InOperatorTest_shtk_createPoint": {
+                "icode": [
+                        int* tempPtr35 = createPointer struct p
+                        int* tempPtr37 = addressAdd int* tempPtr35, bytes 0
+                        int* tempPtr37 = write int x
+                        int* tempPtr40 = createPointer struct p
+                        int* tempPtr42 = addressAdd int* tempPtr40, bytes 4
+                        int* tempPtr42 = write int y
+                        int* tempPtr46 = createPointer struct returnValue44
+                        int* tempPtr47 = createPointer struct p
+                        int* tempPtr46 = memoryCopy int* tempPtr47, autoInt 8
+                        return
+                ]
+            },
+            "_fn_InOperatorTest_shtk_createRect": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct rect
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int* tempPtr7 = write int x1
+                        int* tempPtr10 = createPointer struct rect
+                        int* tempPtr12 = addressAdd int* tempPtr10, bytes 8
+                        int* tempPtr12 = write int x2
+                        int* tempPtr15 = createPointer struct rect
+                        int* tempPtr17 = addressAdd int* tempPtr15, bytes 4
+                        int* tempPtr17 = write int y1
+                        int* tempPtr20 = createPointer struct rect
+                        int* tempPtr22 = addressAdd int* tempPtr20, bytes 12
+                        int* tempPtr22 = write int y2
+                        int* tempPtr26 = createPointer struct returnValue24
+                        int* tempPtr27 = createPointer struct rect
+                        int* tempPtr26 = memoryCopy int* tempPtr27, autoInt 16
+                        return
+                ]
+            },
+            "_fn_InOperatorTest_shtk_inArray": {
+                "icode": [
+                        int temp58 = cast autoInt 2
+                        flag = isNotEqual int n, int temp58
+                        if(not flag) goto _if_false_l32_c4
+                        byte temp61 = cast autoInt 0
+                        byte returnValue59 = equal byte temp61
+                        return
+                    _if_false_l32_c4:
+                        autoInt* tempPtr63 = allocPointer 
+                        void* tempPtr76 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr77 = addressAdd int* arr, void* tempPtr76
+                        int* tempPtr79 = createPointer struct self
+                        int* tempPtr81 = addressAdd int* tempPtr79, bytes 0
+                        int temp82 = read int* tempPtr77
+                        int temp83 = read int* tempPtr81
+                        flag = greaterThan int temp82, int temp83
+                        if(not flag) goto _condn_exp_false_l35_c11
+                        void* tempPtr87 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr88 = addressAdd int* arr, void* tempPtr87
+                        int* tempPtr90 = createPointer struct self
+                        int* tempPtr92 = addressAdd int* tempPtr90, bytes 8
+                        int temp93 = read int* tempPtr88
+                        int temp94 = read int* tempPtr92
+                        flag = lessThan int temp93, int temp94
+                        if(not flag) goto _condn_exp_false_l35_c11
+                        void* tempPtr98 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr99 = addressAdd int* arr, void* tempPtr98
+                        int* tempPtr101 = createPointer struct self
+                        int* tempPtr103 = addressAdd int* tempPtr101, bytes 4
+                        int temp104 = read int* tempPtr99
+                        int temp105 = read int* tempPtr103
+                        flag = greaterThan int temp104, int temp105
+                        if(not flag) goto _condn_exp_false_l35_c11
+                        void* tempPtr109 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr110 = addressAdd int* arr, void* tempPtr109
+                        int* tempPtr112 = createPointer struct self
+                        int* tempPtr114 = addressAdd int* tempPtr112, bytes 12
+                        int temp115 = read int* tempPtr110
+                        int temp116 = read int* tempPtr114
+                        flag = lessThan int temp115, int temp116
+                        if(not flag) goto _condn_exp_false_l35_c11
+                        autoInt* tempPtr63 = write autoInt 1
+                        goto _condn_exp_end_false_l35_c11
+                    _condn_exp_false_l35_c11:
+                        autoInt* tempPtr63 = write autoInt 0
+                    _condn_exp_end_false_l35_c11:
+                        autoInt temp119 = read autoInt* tempPtr63
+                        byte temp120 = cast autoInt temp119
+                        byte returnValue62 = equal byte temp120
+                        return
+                ]
+            },
+            "_fn_InOperatorTest_shtk_inPoint": {
+                "icode": [
+                        autoInt* tempPtr125 = allocPointer 
+                        int* tempPtr130 = createPointer struct p
+                        int* tempPtr132 = addressAdd int* tempPtr130, bytes 0
+                        int* tempPtr134 = createPointer struct p
+                        int* tempPtr136 = addressAdd int* tempPtr134, bytes 4
+                        int* tempPtr142 = createPointer struct self
+                        passPointer int* tempPtr142, byte _fn_InOperatorTest_shtk_inArray, module InOperatorTest.shtk
+                        int* tempPtr145 = allocArrayPointer bytes 8
+                        int temp147 = read int* tempPtr132
+                        int* tempPtr145 = write int temp147
+                        int* tempPtr149 = addressAdd int* tempPtr145, bytes 4
+                        int temp150 = read int* tempPtr136
+                        int* tempPtr149 = write int temp150
+                        passPointer int* tempPtr145, byte _fn_InOperatorTest_shtk_inArray, module InOperatorTest.shtk
+                        int temp153 = cast autoInt 2
+                        pass int temp153, byte _fn_InOperatorTest_shtk_inArray, module InOperatorTest.shtk
+                        byte calleeReturnValue156 = call byte _fn_InOperatorTest_shtk_inArray, module InOperatorTest.shtk
+                        byte temp160 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue156, byte temp160
+                        if(not flag) goto _condn_exp_false_l40_c11
+                        autoInt* tempPtr125 = write autoInt 1
+                        goto _condn_exp_end_false_l40_c11
+                    _condn_exp_false_l40_c11:
+                        autoInt* tempPtr125 = write autoInt 0
+                    _condn_exp_end_false_l40_c11:
+                        autoInt temp163 = read autoInt* tempPtr125
+                        byte temp164 = cast autoInt temp163
+                        byte returnValue124 = equal byte temp164
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int temp174 = cast autoInt 2
+                        pass int temp174, struct _fn_InOperatorTest_shtk_createPoint, module InOperatorTest.shtk
+                        int temp177 = cast autoInt 2
+                        pass int temp177, struct _fn_InOperatorTest_shtk_createPoint, module InOperatorTest.shtk
+                        struct calleeReturnValue180 = call struct _fn_InOperatorTest_shtk_createPoint, module InOperatorTest.shtk
+                        int* tempPtr184 = createPointer struct p
+                        int* tempPtr185 = createPointer struct calleeReturnValue180
+                        int* tempPtr184 = memoryCopy int* tempPtr185, autoInt 8
+                        int temp199 = cast autoInt 1
+                        pass int temp199, struct _fn_InOperatorTest_shtk_createRect, module InOperatorTest.shtk
+                        int temp202 = cast autoInt 1
+                        pass int temp202, struct _fn_InOperatorTest_shtk_createRect, module InOperatorTest.shtk
+                        int temp205 = cast autoInt 3
+                        pass int temp205, struct _fn_InOperatorTest_shtk_createRect, module InOperatorTest.shtk
+                        int temp208 = cast autoInt 3
+                        pass int temp208, struct _fn_InOperatorTest_shtk_createRect, module InOperatorTest.shtk
+                        struct calleeReturnValue211 = call struct _fn_InOperatorTest_shtk_createRect, module InOperatorTest.shtk
+                        int* tempPtr215 = createPointer struct r
+                        int* tempPtr216 = createPointer struct calleeReturnValue211
+                        int* tempPtr215 = memoryCopy int* tempPtr216, autoInt 16
+                        autoInt* tempPtr218 = allocPointer 
+                        int* tempPtr226 = createPointer struct r
+                        passPointer int* tempPtr226, byte _fn_InOperatorTest_shtk_inPoint, module InOperatorTest.shtk
+                        int* tempPtr229 = createPointer struct p
+                        passPointer int* tempPtr229, byte _fn_InOperatorTest_shtk_inPoint, module InOperatorTest.shtk
+                        byte calleeReturnValue232 = call byte _fn_InOperatorTest_shtk_inPoint, module InOperatorTest.shtk
+                        byte temp236 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue232, byte temp236
+                        if(not flag) goto _condn_exp_false_l48_c12
+                        autoInt* tempPtr218 = write autoInt 1
+                        goto _condn_exp_end_false_l48_c12
+                    _condn_exp_false_l48_c12:
+                        autoInt* tempPtr218 = write autoInt 0
+                    _condn_exp_end_false_l48_c12:
+                        autoInt temp239 = read autoInt* tempPtr218
+                        print autoInt temp239
+                        newLine
+                        autoInt* tempPtr240 = allocPointer 
+                        int* tempPtr251 = createPointer struct r
+                        passPointer int* tempPtr251, byte _fn_InOperatorTest_shtk_inArray, module InOperatorTest.shtk
+                        int* tempPtr254 = allocArrayPointer bytes 8
+                        int temp256 = cast autoInt 0
+                        int* tempPtr254 = write int temp256
+                        int* tempPtr258 = addressAdd int* tempPtr254, bytes 4
+                        int temp259 = cast autoInt 0
+                        int* tempPtr258 = write int temp259
+                        passPointer int* tempPtr254, byte _fn_InOperatorTest_shtk_inArray, module InOperatorTest.shtk
+                        int temp262 = cast autoInt 2
+                        pass int temp262, byte _fn_InOperatorTest_shtk_inArray, module InOperatorTest.shtk
+                        byte calleeReturnValue265 = call byte _fn_InOperatorTest_shtk_inArray, module InOperatorTest.shtk
+                        byte temp269 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue265, byte temp269
+                        if(not flag) goto _condn_exp_false_l49_c12
+                        autoInt* tempPtr240 = write autoInt 1
+                        goto _condn_exp_end_false_l49_c12
+                    _condn_exp_false_l49_c12:
+                        autoInt* tempPtr240 = write autoInt 0
+                    _condn_exp_end_false_l49_c12:
+                        autoInt temp272 = read autoInt* tempPtr240
+                        print autoInt temp272
+                        newLine
+                        int temp275 = cast autoInt 0
+                        int returnValue273 = equal int temp275
+                        return
+                ]
+            }
+        }
+    }
+}

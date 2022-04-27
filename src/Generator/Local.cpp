@@ -43,6 +43,9 @@ void createWalrusLocal(generator::GeneratorContext& ctx, const Node& root, const
     icode::TypeDescription localType = RHS.type();
     localType.becomeNonPointer();
 
+    if (localType.isVoid())
+        ctx.console.compileErrorOnToken("Cannot assign a void type", root.children.back().tok);
+
     if (root.type == node::WALRUS_VAR || root.type == node::DESTRUCTURE_VAR)
         localType.becomeMutable();
     else

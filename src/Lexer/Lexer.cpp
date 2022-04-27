@@ -245,7 +245,7 @@ namespace lexer
             { "and", token::CONDN_AND },     { "or", token::CONDN_OR },     { "not", token::CONDN_NOT },
             { "void", token::VOID },         { "sizeof", token::SIZEOF },   { "make", token::MAKE },
             { "addr", token::ADDR },         { "print", token::PRINT },     { "println", token::PRINTLN },
-            { "input", token::INPUT },
+            { "input", token::INPUT },       { "in", token::IN },
         };
 
         auto search = stringTypeMap.find(string);

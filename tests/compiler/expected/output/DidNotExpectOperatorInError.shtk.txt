@@ -1,0 +1,8 @@
+MODULE DidNotExpectOperatorInError.shtk
+ERROR in Line 5 Col 10
+
+    if a in b
+         ^
+Invalid conditional expression
+
+DidNotExpectOperatorInError.shtk:5:9

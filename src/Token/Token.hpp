@@ -80,6 +80,7 @@ namespace token
         MULTIPLY,
         DIVIDE,
         MOD,
+        IN,
         BITWISE_AND,
         CONDN_AND,
         USE,

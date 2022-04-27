@@ -6,7 +6,7 @@ AppDir:
     id: shnootalk-compiler
     name: shtkc
     icon: application-x-executable
-    version: 0.0.1-alpha
+    version: 0.2.0-alpha
     exec: usr/bin/shtkc
     exec_args: $@
   apt:
