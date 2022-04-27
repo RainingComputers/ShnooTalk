@@ -141,6 +141,7 @@ make test
 - [ ] Compile time reflection and macros
 - [ ] `constexpr` or `comptime`
 - [ ] Runtime checks like nil pointer dereference and bound checking
+- [ ] Testing framework
 
 ### Documentation
 
