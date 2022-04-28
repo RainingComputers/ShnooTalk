@@ -82,7 +82,7 @@ make test
 - [x] Generic function call
 - [x] Fix sizeof
 - [x] Class or struct destructors
-- [ ] Pretty name for generics
+- [x] Pretty name for generics
 - [x] Assignment destructuring
 - [x] Better operator overloading
 - [x] `in` operator

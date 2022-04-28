@@ -55,7 +55,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext
     {
         const Node& child = root.children[nodeCounter];
 
-        if (!(child.type == node::SUBSCRIPT))
+        if (child.type != node::SUBSCRIPT)
             break;
 
         const Unit indexExpression = expression(ctx, child.children[0]);

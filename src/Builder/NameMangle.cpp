@@ -18,15 +18,15 @@ std::string lineColNameMangle(const Token& token, const std::string& moduleName)
 
 std::string nameMangleString(const std::string& name, const std::string& moduleName)
 {
+    if (name == "main")
+        return "main";
+
     return "_fn_" + mangleModuleName(moduleName) + '_' + name;
 }
 
 std::string nameMangle(const Token& token, const std::string& moduleName)
 {
-    if (token.toString() == "main")
-        return "main";
-
-    return "_fn_" + mangleModuleName(moduleName) + '_' + token.toFunctionNameString();
+    return nameMangleString(token.toString(), moduleName);
 }
 
 std::string unMangleString(const std::string& name, const std::string& moduleName)

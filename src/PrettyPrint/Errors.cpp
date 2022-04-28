@@ -1,8 +1,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "../Generator/Generic.hpp"
-#include "../Utils/StringReplace.hpp"
+#include "FormatType.hpp"
 #include "Strings.hpp"
 
 #include "Errors.hpp"
@@ -90,15 +89,6 @@ namespace pp
         errorMessage += tokenTypeToString[expected[ntoks - 1]];
 
         errorOnToken(moduleName, errorMessage, file, found);
-    }
-
-    std::string formatType(const icode::TypeDescription& type)
-    {
-        std::string str = typeDescriptionToString(type);
-        str = stringReplace(str, "@", "::");
-        str = stringReplace(str, "~", "*");
-
-        return str;
     }
 
     void typeError(const std::string& moduleName,
