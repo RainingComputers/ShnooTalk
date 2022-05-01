@@ -64,8 +64,8 @@ namespace icode
     {
         if (dtype == AUTO_INT)
         {
-            dtype = I64;
-            dtypeName = dataTypeToString(I64);
+            dtype = I32;
+            dtypeName = dataTypeToString(I32);
         }
 
         else if (dtype == AUTO_FLOAT)

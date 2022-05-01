@@ -4,21 +4,21 @@
         "functions": {
             "main": {
                 "icode": [
-                        long temp8 = cast autoInt 1
-                        long a = equal long temp8
-                        long temp10 = cast autoInt 2
-                        long b = equal long temp10
-                        long temp12 = cast autoInt 3
-                        long c = equal long temp12
-                        long temp14 = cast autoInt 4
-                        long d = equal long temp14
-                        print long a
+                        int temp8 = cast autoInt 1
+                        int a = equal int temp8
+                        int temp10 = cast autoInt 2
+                        int b = equal int temp10
+                        int temp12 = cast autoInt 3
+                        int c = equal int temp12
+                        int temp14 = cast autoInt 4
+                        int d = equal int temp14
+                        print int a
                         newLine
-                        print long b
+                        print int b
                         newLine
-                        print long c
+                        print int c
                         newLine
-                        print long d
+                        print int d
                         newLine
                         int temp21 = cast autoInt 0
                         int returnValue19 = equal int temp21

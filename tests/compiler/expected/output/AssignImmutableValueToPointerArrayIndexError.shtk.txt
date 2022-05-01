@@ -1,8 +1,8 @@
 MODULE AssignImmutableValueToPointerArrayIndexError.shtk
-ERROR in Line 5 Col 21
+ERROR in Line 5 Col 20
 
-    var b: long* <- a[4]
-                    ^
+    var b: int* <- a[4]
+                   ^
 Cannot assign immutable value to a pointer
 
-AssignImmutableValueToPointerArrayIndexError.shtk:5:20
+AssignImmutableValueToPointerArrayIndexError.shtk:5:19

@@ -1,8 +1,8 @@
 MODULE PointerArrayDimMismatchError.shtk
-ERROR in Line 5 Col 24
+ERROR in Line 5 Col 23
 
-    const a: long[] <- b
-                       ^
-Type error, did not expect long[2][2], expected long[]
+    const a: int[] <- b
+                      ^
+Type error, did not expect int[2][2], expected int[]
 
-PointerArrayDimMismatchError.shtk:5:23
+PointerArrayDimMismatchError.shtk:5:22

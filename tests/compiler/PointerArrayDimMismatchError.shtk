@@ -2,7 +2,7 @@ fn main() -> int
 {
     const b := [[1, 2], [3, 4]]
 
-    const a: long[] <- b
+    const a: int[] <- b
 
     return 0
 }

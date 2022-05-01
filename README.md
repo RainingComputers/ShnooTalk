@@ -89,7 +89,7 @@ make test
 - [ ] slot operator
 - [ ] Reduce binary size
 - [x] extern "C" to prevent name mangling functions
-- [ ] Decide names and defaults for primitive data types
+- [x] Decide names and defaults for primitive data types
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend

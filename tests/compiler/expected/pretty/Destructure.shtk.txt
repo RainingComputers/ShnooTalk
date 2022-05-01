@@ -4,49 +4,49 @@
         "functions": {
             "main": {
                 "icode": [
-                        long* tempPtr8 = createPointer long b
-                        long temp9 = cast autoInt 1
-                        long* tempPtr8 = write long temp9
-                        long* tempPtr11 = addressAdd long* tempPtr8, bytes 8
-                        long temp12 = cast autoInt 2
-                        long* tempPtr11 = write long temp12
-                        long* tempPtr14 = addressAdd long* tempPtr11, bytes 8
-                        long temp15 = cast autoInt 3
-                        long* tempPtr14 = write long temp15
-                        long* tempPtr17 = addressAdd long* tempPtr14, bytes 8
-                        long temp18 = cast autoInt 4
-                        long* tempPtr17 = write long temp18
-                        long* tempPtr22 = createPointer long b
+                        int* tempPtr8 = createPointer int b
+                        int temp9 = cast autoInt 1
+                        int* tempPtr8 = write int temp9
+                        int* tempPtr11 = addressAdd int* tempPtr8, bytes 8
+                        int temp12 = cast autoInt 2
+                        int* tempPtr11 = write int temp12
+                        int* tempPtr14 = addressAdd int* tempPtr11, bytes 8
+                        int temp15 = cast autoInt 3
+                        int* tempPtr14 = write int temp15
+                        int* tempPtr17 = addressAdd int* tempPtr14, bytes 8
+                        int temp18 = cast autoInt 4
+                        int* tempPtr17 = write int temp18
+                        int* tempPtr22 = createPointer int b
                         void* tempPtr24 = addressMultiply autoInt 0, bytes 16
-                        long* tempPtr25 = addressAdd long* tempPtr22, void* tempPtr24
+                        int* tempPtr25 = addressAdd int* tempPtr22, void* tempPtr24
                         void* tempPtr27 = addressMultiply autoInt 0, bytes 8
-                        long* tempPtr28 = addressAdd long* tempPtr25, void* tempPtr27
-                        long temp29 = read long* tempPtr28
-                        print long temp29
+                        int* tempPtr28 = addressAdd int* tempPtr25, void* tempPtr27
+                        int temp29 = read int* tempPtr28
+                        print int temp29
                         space
-                        long* tempPtr33 = createPointer long b
+                        int* tempPtr33 = createPointer int b
                         void* tempPtr35 = addressMultiply autoInt 0, bytes 16
-                        long* tempPtr36 = addressAdd long* tempPtr33, void* tempPtr35
+                        int* tempPtr36 = addressAdd int* tempPtr33, void* tempPtr35
                         void* tempPtr38 = addressMultiply autoInt 1, bytes 8
-                        long* tempPtr39 = addressAdd long* tempPtr36, void* tempPtr38
-                        long temp40 = read long* tempPtr39
-                        print long temp40
+                        int* tempPtr39 = addressAdd int* tempPtr36, void* tempPtr38
+                        int temp40 = read int* tempPtr39
+                        print int temp40
                         space
-                        long* tempPtr44 = createPointer long b
+                        int* tempPtr44 = createPointer int b
                         void* tempPtr46 = addressMultiply autoInt 1, bytes 16
-                        long* tempPtr47 = addressAdd long* tempPtr44, void* tempPtr46
+                        int* tempPtr47 = addressAdd int* tempPtr44, void* tempPtr46
                         void* tempPtr49 = addressMultiply autoInt 0, bytes 8
-                        long* tempPtr50 = addressAdd long* tempPtr47, void* tempPtr49
-                        long temp51 = read long* tempPtr50
-                        print long temp51
+                        int* tempPtr50 = addressAdd int* tempPtr47, void* tempPtr49
+                        int temp51 = read int* tempPtr50
+                        print int temp51
                         space
-                        long* tempPtr55 = createPointer long b
+                        int* tempPtr55 = createPointer int b
                         void* tempPtr57 = addressMultiply autoInt 1, bytes 16
-                        long* tempPtr58 = addressAdd long* tempPtr55, void* tempPtr57
+                        int* tempPtr58 = addressAdd int* tempPtr55, void* tempPtr57
                         void* tempPtr60 = addressMultiply autoInt 1, bytes 8
-                        long* tempPtr61 = addressAdd long* tempPtr58, void* tempPtr60
-                        long temp62 = read long* tempPtr61
-                        print long temp62
+                        int* tempPtr61 = addressAdd int* tempPtr58, void* tempPtr60
+                        int temp62 = read int* tempPtr61
+                        print int temp62
                         int temp65 = cast autoInt 0
                         int returnValue63 = equal int temp65
                         return

@@ -2,7 +2,7 @@ fn main() -> int
 {
     const a := [1, 2, 3, 4, 5]
 
-    var b: long* <- a[4]
+    var b: int* <- a[4]
 
     return 0
 }
