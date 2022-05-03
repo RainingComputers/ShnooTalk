@@ -116,9 +116,9 @@ Operand FunctionBuilder::getCreatePointerDestOperand(const TypeDescription& type
         return opBuilder.createTempPtrOperand(type.dtype);
 
     /* If it a struct, create pointer to the first field */
-    ModuleDescription* workingModule = &modulesMap.at(type.moduleName);
+    const ModuleDescription workingModule = modulesMap.at(type.moduleName);
 
-    DataType firstFieldDataType = workingModule->structures.at(type.dtypeName).getFirstFieldDataType();
+    const DataType firstFieldDataType = workingModule.structures.at(type.dtypeName).getFirstFieldDataType();
 
     return opBuilder.createTempPtrOperand(firstFieldDataType);
 }
@@ -183,7 +183,7 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 
     for (size_t i = 0; i < unitsToCopy.size(); i++)
     {
-        const Unit& unit = unitsToCopy[i];
+        const Unit unit = unitsToCopy[i];
 
         if (unit.isArray() || unit.isStruct())
             memCopy(destPointer, createPointer(unit), unit.size());
@@ -400,7 +400,7 @@ Unit FunctionBuilder::getStructField(const Token& fieldNameToken, const Unit& un
 {
     StructDescription structDescription = modulesMap.at(unit.moduleName()).structures.at(unit.dtypeName());
 
-    const std::string& fieldName = fieldNameToken.toString();
+    const std::string fieldName = fieldNameToken.toString();
 
     if (!structDescription.fieldExists(fieldName))
         console.compileErrorOnToken("Struct field does not exist", fieldNameToken);
@@ -458,8 +458,8 @@ std::vector<Unit> FunctionBuilder::destructureStruct(const Unit& unit)
 {
     std::vector<Unit> destructuredUnits;
 
-    const ModuleDescription& structModule = modulesMap.at(unit.moduleName());
-    const StructDescription& structDescription = structModule.structures.at(unit.dtypeName());
+    const ModuleDescription structModule = modulesMap.at(unit.moduleName());
+    const StructDescription structDescription = structModule.structures.at(unit.dtypeName());
 
     for (const std::string& fieldName : structDescription.fieldNames)
         destructuredUnits.push_back(getStructFieldFromString(fieldName, unit));
@@ -485,8 +485,8 @@ std::map<std::string, Unit> FunctionBuilder::destructureStructMapped(const Unit&
 {
     std::map<std::string, Unit> mappedDestructuredUnits;
 
-    const ModuleDescription& structModule = modulesMap.at(unit.moduleName());
-    const StructDescription& structDescription = structModule.structures.at(unit.dtypeName());
+    const ModuleDescription structModule = modulesMap.at(unit.moduleName());
+    const StructDescription structDescription = structModule.structures.at(unit.dtypeName());
 
     for (auto field : structDescription.structFields)
         mappedDestructuredUnits[field.first] = getStructFieldFromString(field.first, unit);
@@ -581,15 +581,15 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
 
 std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)
 {
-    const std::string& mangeledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
-    const std::string& calleeName = calleeNameToken.toString();
+    const std::string mangeledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
+    const std::string calleeName = calleeNameToken.toString();
 
-    icode::ModuleDescription& workingModule = modulesMap.at(workingFunction->moduleName);
+    icode::ModuleDescription workingModule = modulesMap.at(workingFunction->moduleName);
 
     if (workingModule.incompleteFunctions.find(calleeName) != workingModule.incompleteFunctions.end())
         return mangeledCalleeName;
 
-    icode::ModuleDescription& functionModule = modulesMap.at(callee.moduleName);
+    icode::ModuleDescription functionModule = modulesMap.at(callee.moduleName);
 
     if (functionModule.externFunctions.find(calleeName) != functionModule.externFunctions.end())
         return calleeName;
@@ -705,7 +705,7 @@ void FunctionBuilder::noArgumentEntry(Instruction instruction)
 
 Unit FunctionBuilder::getReturnValueUnit()
 {
-    const TypeDescription& returnType = workingFunction->functionReturnType;
+    const TypeDescription returnType = workingFunction->functionReturnType;
 
     Operand operand;
 
@@ -749,16 +749,16 @@ void FunctionBuilder::callDeconstructor(const Unit& symbol)
         return;
     }
 
-    const std::string& mangledFunctionName = nameMangleString("deconstructor", symbol.moduleName());
+    const std::string mangledFunctionName = nameMangleString("deconstructor", symbol.moduleName());
 
-    icode::ModuleDescription& typeModule = modulesMap.at(symbol.moduleName());
+    icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
 
     icode::FunctionDescription deconstructorFunction;
     if (!typeModule.getFunction(mangledFunctionName, deconstructorFunction))
         return;
 
-    const std::string& formalName = deconstructorFunction.parameters[0];
-    const TypeDescription& formalType = deconstructorFunction.symbols.at(formalName);
+    const std::string formalName = deconstructorFunction.parameters[0];
+    const TypeDescription formalType = deconstructorFunction.symbols.at(formalName);
     const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
 
     passParameterPreMangled(mangledFunctionName, deconstructorFunction, formalParam, symbol);
@@ -783,8 +783,8 @@ void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
 {
     for (auto symbolPair : workingFunction->symbols)
     {
-        const std::string& symbolName = symbolPair.first;
-        const TypeDescription& symbolType = symbolPair.second;
+        const std::string symbolName = symbolPair.first;
+        const TypeDescription symbolType = symbolPair.second;
 
         if (!shouldCallDeconstructor(symbolName, symbolType))
             continue;

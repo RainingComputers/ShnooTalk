@@ -378,7 +378,7 @@ namespace lexer
 
         while (true)
         {
-            const Token& token = tokenQueue[getTokenIndex + peekCounter];
+            const Token token = tokenQueue[getTokenIndex + peekCounter];
             peekCounter++;
 
             if (token.getType() == token::END_OF_FILE)

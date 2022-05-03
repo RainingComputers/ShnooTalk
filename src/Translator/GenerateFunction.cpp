@@ -169,10 +169,10 @@ void setupFunctionStack(ModuleContext& ctx, const icode::FunctionDescription& fu
     {
         llvm::Argument* arg = function->getArg(i);
 
-        const std::string& argumentName = functionDesc.parameters[i];
+        const std::string argumentName = functionDesc.parameters[i];
         arg->setName(argumentName);
 
-        const icode::TypeDescription& type = functionDesc.symbols.at(argumentName);
+        const icode::TypeDescription type = functionDesc.symbols.at(argumentName);
 
         addParameterAttribute(i, type, arg, function);
         createFunctionParameter(ctx, type, arg, argumentName);

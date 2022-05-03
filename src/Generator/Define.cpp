@@ -2,8 +2,8 @@
 
 void createPosDefine(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.children[0].tok;
-    const Token& valueToken = root.children[1].tok;
+    const Token nameToken = root.children[0].tok;
+    const Token valueToken = root.children[1].tok;
 
     if (valueToken.isIntLiteral())
         ctx.ir.moduleBuilder.createIntDefine(nameToken, valueToken.toInt());
@@ -13,8 +13,8 @@ void createPosDefine(generator::GeneratorContext& ctx, const Node& root)
 
 void createNegDefine(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.children[0].tok;
-    const Token& valueToken = root.children[2].tok;
+    const Token nameToken = root.children[0].tok;
+    const Token valueToken = root.children[2].tok;
 
     if (valueToken.isIntLiteral())
         ctx.ir.moduleBuilder.createIntDefine(nameToken, -1 * valueToken.toInt());
@@ -24,8 +24,8 @@ void createNegDefine(generator::GeneratorContext& ctx, const Node& root)
 
 void createStringDefine(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.children[0].tok;
-    const Token& valueToken = root.children[1].tok;
+    const Token nameToken = root.children[0].tok;
+    const Token valueToken = root.children[1].tok;
 
     ctx.ir.moduleBuilder.createStringDefine(nameToken, valueToken);
 }

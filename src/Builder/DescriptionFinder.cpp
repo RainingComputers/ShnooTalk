@@ -38,7 +38,7 @@ ModuleDescription* DescriptionFinder::getModuleFromUnit(const Unit& unit)
 
 ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& aliasToken)
 {
-    const std::string& alias = aliasToken.toString();
+    const std::string alias = aliasToken.toString();
 
     std::string moduleName;
 
@@ -188,8 +188,8 @@ bool isSameParamsType(const FunctionDescription& function, const std::vector<Uni
 
     for (size_t i = 0; i < params.size(); i += 1)
     {
-        const TypeDescription& actualParamType = params[i].type();
-        const TypeDescription& formalParamType = function.symbols.at(function.parameters[i]);
+        const TypeDescription actualParamType = params[i].type();
+        const TypeDescription formalParamType = function.symbols.at(function.parameters[i]);
 
         if (!isSameTypeDescription(formalParamType, actualParamType))
             return false;
@@ -204,7 +204,7 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
 {
     for (auto functionName : workingModule->definedFunctions)
     {
-        const FunctionDescription& function = workingModule->functions.at(functionName);
+        const FunctionDescription function = workingModule->functions.at(functionName);
 
         if (!isSameTypeDescription(function.functionReturnType, type))
             continue;
@@ -222,16 +222,16 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperator
     const Token& binaryOperator,
     const std::vector<Unit>& params)
 {
-    const std::string& binaryOperatorName = binaryOperator.toFunctionNameString();
+    const std::string binaryOperatorName = binaryOperator.toFunctionNameString();
 
     for (auto functionName : workingModule->definedFunctions)
     {
-        const std::string& unmangleFunctionName = unMangleString(functionName, workingModule->name);
+        const std::string unmangleFunctionName = unMangleString(functionName, workingModule->name);
 
         if (unmangleFunctionName.rfind(binaryOperatorName, 0) != 0)
             continue;
 
-        const FunctionDescription& function = workingModule->functions.at(functionName);
+        const FunctionDescription function = workingModule->functions.at(functionName);
 
         if (!isSameParamsType(function, params))
             continue;
@@ -244,8 +244,8 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperator
 
 bool DescriptionFinder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
 {
-    const ModuleDescription& unitModule = modulesMap.at(structUnit.moduleName());
-    const StructDescription& structDescription = unitModule.structures.at(structUnit.dtypeName());
+    const ModuleDescription unitModule = modulesMap.at(structUnit.moduleName());
+    const StructDescription structDescription = unitModule.structures.at(structUnit.dtypeName());
 
     for (auto nameToken : nameTokens)
         if (!structDescription.fieldExists(nameToken.toString()))

@@ -12,7 +12,7 @@ using namespace icode;
 
 Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 {
-    const icode::TypeDescription& type = typeDescriptionFromNode(ctx, root);
+    const icode::TypeDescription type = typeDescriptionFromNode(ctx, root);
 
     return ctx.ir.unitBuilder.unitFromIntLiteral(type.size);
 }
@@ -131,7 +131,7 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
 
     int nodeCounter = setWorkingModuleFromNode(ctx, root, 0);
 
-    const token::TokenType& tokenType = root.children[nodeCounter].tok.getType();
+    const token::TokenType tokenType = root.children[nodeCounter].tok.getType();
 
     if (tokenType != token::IDENTIFIER && tokenType != token::GENERATED)
         ctx.console.compileErrorOnToken("Invalid use of namespace access", root.tok);
@@ -177,7 +177,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
             ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromUnit(firstActualParam));
     }
 
-    const Token& calleeNameToken = root.tok;
+    const Token calleeNameToken = root.tok;
     FunctionDescription callee = ctx.ir.descriptionFinder.getFunction(calleeNameToken);
     std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
@@ -203,9 +203,9 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 
 Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& calleeNameToken = root.tok;
+    const Token calleeNameToken = root.tok;
 
-    const std::string& genericModuleName = ctx.mm.getGenericModuleFromToken(calleeNameToken);
+    const std::string genericModuleName = ctx.mm.getGenericModuleFromToken(calleeNameToken);
 
     std::vector<TypeDescription> instantiationTypes;
     std::vector<Node> instantiationTypeNodes;
@@ -227,11 +227,11 @@ Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
         actualParams.push_back(expression(ctx, root.children[nodeCounter]));
     }
 
-    const FunctionDescription& callee = intantiateGenericAndGetFunction(ctx,
-                                                                        genericModuleName,
-                                                                        calleeNameToken,
-                                                                        instantiationTypes,
-                                                                        instantiationTypeNodes);
+    const FunctionDescription callee = intantiateGenericAndGetFunction(ctx,
+                                                                       genericModuleName,
+                                                                       calleeNameToken,
+                                                                       instantiationTypes,
+                                                                       instantiationTypeNodes);
 
     return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
 }
@@ -257,7 +257,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
 
-    const TypeDescription& type = typeDescriptionFromNode(ctx, root.children[0]);
+    const TypeDescription type = typeDescriptionFromNode(ctx, root.children[0]);
 
     ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromType(type));
 
@@ -266,7 +266,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
 
     for (size_t i = 1; i < root.children.size(); i += 1)
     {
-        const Token& paramToken = root.children[i].tok;
+        const Token paramToken = root.children[i].tok;
         Unit param = expression(ctx, root.children[i]);
 
         actualParams.push_back(param);
@@ -282,8 +282,8 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
     std::pair<std::string, FunctionDescription> constructorNameAndFunction =
         ctx.ir.descriptionFinder.getFunctionByParamTypes(root.tok, type, actualParams);
 
-    const std::string& calleeName = constructorNameAndFunction.first;
-    const FunctionDescription& callee = constructorNameAndFunction.second;
+    const std::string calleeName = constructorNameAndFunction.first;
+    const FunctionDescription callee = constructorNameAndFunction.second;
 
     ctx.ir.popWorkingModule();
 
@@ -313,8 +313,8 @@ Unit customOperator(generator::GeneratorContext& ctx,
     std::pair<std::string, FunctionDescription> calleeNameAndFunction =
         ctx.ir.descriptionFinder.getCustomOperatorFunction(binaryOperator, params);
 
-    const std::string& calleeName = calleeNameAndFunction.first;
-    const FunctionDescription& callee = calleeNameAndFunction.second;
+    const std::string calleeName = calleeNameAndFunction.first;
+    const FunctionDescription callee = calleeNameAndFunction.second;
 
     ctx.ir.popWorkingModule();
 
@@ -353,7 +353,7 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
 
     for (size_t i = 0; i < root.children.size(); i += 1)
     {
-        const Node& child = root.children[i];
+        const Node child = root.children[i];
 
         units.push_back(expression(ctx, child));
 
@@ -419,8 +419,8 @@ Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
 
     Token expressionOperator = root.children[1].tok;
 
-    const Token& LHSToken = root.children[0].tok;
-    const Token& RHSToken = root.children[2].tok;
+    const Token LHSToken = root.children[0].tok;
+    const Token RHSToken = root.children[2].tok;
     Unit LHS = expression(ctx, root.children[0]);
     Unit RHS = expression(ctx, root.children[2]);
 
@@ -523,8 +523,8 @@ void relationalExpression(generator::GeneratorContext& ctx,
                           const icode::Operand& falseLabel,
                           bool trueFall)
 {
-    const Token& LHSToken = root.children[0].tok;
-    const Token& RHSToken = root.children[2].tok;
+    const Token LHSToken = root.children[0].tok;
+    const Token RHSToken = root.children[2].tok;
     Unit LHS = ordinaryExpression(ctx, root.children[0]);
     Unit RHS = ordinaryExpression(ctx, root.children[2]);
 

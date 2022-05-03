@@ -16,7 +16,7 @@ TypeDescription getParamType(generator::GeneratorContext& ctx, const Node& param
 
 void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.getNthChildToken(0);
+    const Token nameToken = root.getNthChildToken(0);
     TypeDescription returnType = typeDescriptionFromNode(ctx, root);
 
     std::vector<Token> paramNames;
@@ -24,7 +24,7 @@ void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
 
     for (size_t i = 1; root.children[i].isParamNode(); i += 1)
     {
-        const Token& paramName = root.children[i].getNthChildToken(0);
+        const Token paramName = root.children[i].getNthChildToken(0);
         TypeDescription paramType = getParamType(ctx, root.children[i]);
 
         paramNames.push_back(paramName);
@@ -39,7 +39,7 @@ void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
         ctx.ir.moduleBuilder.createFunctionExternC(nameToken, returnType, paramNames, paramTypes);
     else if (root.isNthChildFromLast(node::MODULE, 1))
     {
-        const Token& moduleNameToken = root.children.back().tok;
+        const Token moduleNameToken = root.children.back().tok;
         ctx.ir.moduleBuilder.createExternFunctionModule(nameToken, returnType, paramNames, paramTypes, moduleNameToken);
     }
     else

@@ -43,9 +43,9 @@ std::string generateIRUsingMonomorphizer(generator::GeneratorContext& ctx,
                                          const std::vector<TypeDescription>& instantiationTypes,
                                          const std::vector<Node>& instantiationTypeNodes)
 {
-    const std::string& instantiationSuffix = constructInstantiationSuffix(instantiationTypes);
+    const std::string instantiationSuffix = constructInstantiationSuffix(instantiationTypes);
 
-    const std::string& instantiatedModuleName = genericModuleName + instantiationSuffix;
+    const std::string instantiatedModuleName = genericModuleName + instantiationSuffix;
 
     if (!ctx.moduleExists(instantiatedModuleName))
     {
@@ -71,11 +71,11 @@ TypeDescription instantiateGenericAndGetType(generator::GeneratorContext& ctx,
 {
     ctx.ir.pushWorkingModule();
 
-    const std::string& moduleName = generateIRUsingMonomorphizer(ctx,
-                                                                 genericModuleName,
-                                                                 genericStructNameToken,
-                                                                 instantiationTypes,
-                                                                 instantiationTypeNodes);
+    const std::string moduleName = generateIRUsingMonomorphizer(ctx,
+                                                                genericModuleName,
+                                                                genericStructNameToken,
+                                                                instantiationTypes,
+                                                                instantiationTypeNodes);
 
     ctx.ir.setWorkingModule(&ctx.modulesMap.at(moduleName));
 
@@ -94,11 +94,11 @@ FunctionDescription intantiateGenericAndGetFunction(generator::GeneratorContext&
 {
     ctx.ir.pushWorkingModule();
 
-    const std::string& moduleName = generateIRUsingMonomorphizer(ctx,
-                                                                 genericModuleName,
-                                                                 genericFunctionNameToken,
-                                                                 instantiationTypes,
-                                                                 instantiationTypeNodes);
+    const std::string moduleName = generateIRUsingMonomorphizer(ctx,
+                                                                genericModuleName,
+                                                                genericFunctionNameToken,
+                                                                instantiationTypes,
+                                                                instantiationTypeNodes);
 
     ctx.ir.setWorkingModule(&ctx.modulesMap.at(moduleName));
 

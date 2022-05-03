@@ -104,7 +104,7 @@ void monomorphizeTypeNode(const InstiatorContext& ctx, Node& root)
 
 void cast(const InstiatorContext& ctx, Node& root)
 {
-    const Token& typeToken = root.getNthChildToken(0);
+    const Token typeToken = root.getNthChildToken(0);
 
     if (typeToken.toString() != ctx.genericIdentifier)
         return;
@@ -113,7 +113,7 @@ void cast(const InstiatorContext& ctx, Node& root)
 
     Node newRootNode = constructNode(node::TERM, typeToken.toString());
 
-    const std::string& alias = mangleModuleName(ctx.instantiationType.moduleName);
+    const std::string alias = mangleModuleName(ctx.instantiationType.moduleName);
     newRootNode.children.push_back(constructNode(node::MODULE, alias));
     newRootNode.children.push_back(root);
 
@@ -293,11 +293,11 @@ void prependUseNodes(const std::vector<icode::TypeDescription>& instantiationTyp
 
     for (size_t i = 0; i < instantiationTypes.size(); i += 1)
     {
-        const icode::TypeDescription& type = instantiationTypes[i];
+        const icode::TypeDescription type = instantiationTypes[i];
         Node& typeNode = instTypeNodes[i];
 
-        const std::string& moduleName = type.moduleName;
-        const std::string& alias = mangleModuleName(moduleName);
+        const std::string moduleName = type.moduleName;
+        const std::string alias = mangleModuleName(moduleName);
 
         stripModulesFromTypeNode(typeNode);
         prependModuleToTypeNode(typeNode, alias);
@@ -318,7 +318,7 @@ Node instantiateAST(GenericASTIndex index,
                     std::vector<Node> instTypeNodes,
                     Console& console)
 {
-    Node& genericModuleAST = index.ast;
+    Node genericModuleAST = index.ast;
 
     prependUseNodes(instantiationTypes, instTypeNodes, genericModuleAST);
 

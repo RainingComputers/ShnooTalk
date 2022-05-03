@@ -6,14 +6,14 @@ using namespace icode;
 
 void createStructFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.getNthChildToken(0);
+    const Token nameToken = root.getNthChildToken(0);
 
     std::vector<Token> fieldNames;
     std::vector<icode::TypeDescription> fieldTypes;
 
     for (size_t i = 0; i < root.children[0].children.size(); i++)
     {
-        const Token& fieldName = root.children[0].children[i].getNthChildToken(0);
+        const Token fieldName = root.children[0].children[i].getNthChildToken(0);
 
         TypeDescription fieldType = typeDescriptionFromNode(ctx, root.children[0].children[i]);
 
@@ -26,6 +26,6 @@ void createStructFromNode(generator::GeneratorContext& ctx, const Node& root)
 
 void registerIncompleteTypeFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.getNthChildToken(0);
+    const Token nameToken = root.getNthChildToken(0);
     ctx.ir.moduleBuilder.registerIncompleteType(nameToken);
 }

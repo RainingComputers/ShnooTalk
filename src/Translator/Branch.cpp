@@ -81,9 +81,9 @@ void processGotoBackpatches(const ModuleContext& ctx, BranchContext& branchConte
     for (size_t i = 0; i < branchContext.backpatchQueue.size(); i++)
     {
         /* Get the entry from backpatch q */
-        const EnumeratedEntry& enumeratedEntry = branchContext.backpatchQueue[i];
+        const EnumeratedEntry enumeratedEntry = branchContext.backpatchQueue[i];
         size_t entryIndex = enumeratedEntry.first;
-        const icode::Entry& e = enumeratedEntry.second;
+        const icode::Entry e = enumeratedEntry.second;
 
         /* Get branch flags and blocks for the goto */
         BasicBlock* gotoBlock = branchContext.labelToBasicBlockMap.at(e.op1.name);

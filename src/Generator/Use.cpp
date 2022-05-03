@@ -20,7 +20,7 @@ bool invalidModuleName(const std::string& path)
 
 bool generateIROrMonomorphizedASTFromName(generator::GeneratorContext& ctx, const Token& pathToken)
 {
-    const std::string& path = pathToken.toUnescapedString();
+    const std::string path = pathToken.toUnescapedString();
 
     if (ctx.moduleExists(path))
         return false;
@@ -55,8 +55,8 @@ bool generateIROrMonomorphizedASTFromName(generator::GeneratorContext& ctx, cons
 
 void createUse(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& pathToken = root.getNthChildToken(0);
-    const Token& aliastoken = root.getNthChildToken(1);
+    const Token pathToken = root.getNthChildToken(0);
+    const Token aliastoken = root.getNthChildToken(1);
 
     ctx.ir.moduleBuilder.createUse(pathToken, aliastoken);
 
@@ -68,7 +68,7 @@ void createUse(generator::GeneratorContext& ctx, const Node& root)
 
 void createAliasFrom(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& aliasToken = root.children[0].tok;
+    const Token aliasToken = root.children[0].tok;
 
     if (ctx.mm.aliasExists(aliasToken))
     {
@@ -84,7 +84,7 @@ void createAliasFrom(generator::GeneratorContext& ctx, const Node& root)
 
 void createDirectFrom(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& pathToken = root.children[0].tok;
+    const Token pathToken = root.children[0].tok;
 
     bool isGeneric = generateIROrMonomorphizedASTFromName(ctx, pathToken);
 

@@ -73,7 +73,7 @@ void generateSymbol(generator::GeneratorContext& ctx, const Node& child)
 
 void generateFunction(generator::GeneratorContext& ctx, const Node& child)
 {
-    const Token& functionNameToken = child.children[0].tok;
+    const Token functionNameToken = child.children[0].tok;
 
     ctx.ir.setWorkingFunction(functionNameToken, child.type == node::FUNCTION_EXTERN_C);
 

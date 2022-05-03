@@ -7,7 +7,7 @@
 
 void local(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.getNthChildToken(0);
+    const Token nameToken = root.getNthChildToken(0);
 
     ctx.scope.putInCurrentScope(nameToken);
 
@@ -29,7 +29,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     else if (local.isUserPointer())
     {
         /* Make sure pointers are null initialized if not explicitly initialized */
-        const Unit& nullPointerUnit =
+        const Unit nullPointerUnit =
             ctx.ir.functionBuilder.pointerCastOperator(ctx.ir.unitBuilder.unitFromIntLiteral(0), local.type());
 
         ctx.ir.functionBuilder.unitPointerAssign(local, nullPointerUnit);
@@ -60,8 +60,8 @@ void createWalrusLocal(generator::GeneratorContext& ctx, const Node& root, const
 
 void walrusLocal(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.getNthChildToken(0);
-    const Unit& RHS = expression(ctx, root.children[1]);
+    const Token nameToken = root.getNthChildToken(0);
+    const Unit RHS = expression(ctx, root.children[1]);
 
     createWalrusLocal(ctx, root, nameToken, RHS);
 }

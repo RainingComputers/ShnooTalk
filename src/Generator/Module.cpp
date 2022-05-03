@@ -8,7 +8,7 @@ int setWorkingModuleFromNode(generator::GeneratorContext& ctx, const Node& root,
 
     for (nodeCounter = startIndex; root.isNthChild(node::MODULE, nodeCounter); nodeCounter++)
     {
-        const Token& aliasToken = root.children[nodeCounter].tok;
+        const Token aliasToken = root.children[nodeCounter].tok;
 
         if (genericModuleSet)
             ctx.console.compileErrorOnToken("Invalid namespace access from generic", aliasToken);

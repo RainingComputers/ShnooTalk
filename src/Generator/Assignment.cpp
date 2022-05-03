@@ -61,9 +61,9 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
 
 void assignment(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& LHSToken = root.children[0].tok;
-    const Token& RHSToken = root.children[2].tok;
-    const Token& assignmentOperator = root.getNthChildTokenFromLast(2);
+    const Token LHSToken = root.children[0].tok;
+    const Token RHSToken = root.children[2].tok;
+    const Token assignmentOperator = root.getNthChildTokenFromLast(2);
     Unit LHS = ordinaryExpression(ctx, root.children[0]);
     Unit RHS = expression(ctx, root.children[2]);
 
@@ -99,7 +99,7 @@ std::vector<Token> getNameTokens(const Node& LHSNode)
 
 void orderedDestructuredAssignment(generator::GeneratorContext& ctx, const Node& root, const Unit& LHS, const Unit& RHS)
 {
-    const Token& assignmentOperator = root.getNthChildTokenFromLast(2);
+    const Token assignmentOperator = root.getNthChildTokenFromLast(2);
 
     std::vector<Unit> destructuredLHS = ctx.ir.functionBuilder.destructureUnit(LHS);
     std::vector<Unit> destructuredRHS = ctx.ir.functionBuilder.destructureUnit(RHS);
@@ -109,7 +109,7 @@ void orderedDestructuredAssignment(generator::GeneratorContext& ctx, const Node&
 
     for (size_t i = 0; i < destructuredLHS.size(); i += 1)
     {
-        const Token& LHSToken = root.children[0].children[i].tok;
+        const Token LHSToken = root.children[0].children[i].tok;
 
         assignmentFromTree(ctx,
                            root.type,
@@ -127,14 +127,14 @@ void namedDestructuredAssignment(generator::GeneratorContext& ctx,
                                  const Unit& LHS,
                                  const Unit& RHS)
 {
-    const Token& assignmentOperator = root.getNthChildTokenFromLast(2);
+    const Token assignmentOperator = root.getNthChildTokenFromLast(2);
 
     std::vector<Unit> destructuredLHS = ctx.ir.functionBuilder.destructureUnit(LHS);
     std::map<std::string, Unit> destructuredRHSMapped = ctx.ir.functionBuilder.destructureStructMapped(RHS);
 
     for (size_t i = 0; i < destructuredLHS.size(); i += 1)
     {
-        const Token& LHSToken = root.children[0].children[i].tok;
+        const Token LHSToken = root.children[0].children[i].tok;
 
         assignmentFromTree(ctx,
                            root.type,
@@ -148,7 +148,7 @@ void namedDestructuredAssignment(generator::GeneratorContext& ctx,
 
 void destructuredAssignment(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Node& LHSNode = root.children[0];
+    const Node LHSNode = root.children[0];
     Unit LHS = expression(ctx, root.children[0]);
     Unit RHS = expression(ctx, root.children[2]);
 

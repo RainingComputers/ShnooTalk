@@ -8,7 +8,7 @@ using namespace llvm;
 
 void pushParam(ModuleContext& ctx, const icode::Entry& e, Value* value)
 {
-    const std::string& functionName = e.op2.name;
+    const std::string functionName = e.op2.name;
 
     ctx.params[functionName].push_back(value);
 }
@@ -23,11 +23,11 @@ Value* createCalleeReturnValue(const ModuleContext& ctx, const icode::TypeDescri
 
 void call(ModuleContext& ctx, const icode::Entry& e)
 {
-    const std::string& functionName = e.op2.name;
-    const std::string& moduleName = e.op3.name;
+    const std::string functionName = e.op2.name;
+    const std::string moduleName = e.op3.name;
 
     const icode::FunctionDescription functionDescription = getFunctionDescription(ctx, functionName, moduleName);
-    const icode::TypeDescription& returnType = functionDescription.functionReturnType;
+    const icode::TypeDescription returnType = functionDescription.functionReturnType;
 
     Value* calleeReturnValuePointer = createCalleeReturnValue(ctx, returnType);
 

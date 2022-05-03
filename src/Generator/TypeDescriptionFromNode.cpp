@@ -21,7 +21,7 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
 
     while (root.isNthChild(node::MODULE, childNodeCounter))
     {
-        const Token& aliasToken = root.getNthChildToken(childNodeCounter);
+        const Token aliasToken = root.getNthChildToken(childNodeCounter);
 
         if (childNodeCounter > 1)
             ctx.console.compileErrorOnToken("Invalid nameapace access from generic", aliasToken);
@@ -31,10 +31,10 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
         childNodeCounter++;
     }
 
-    const Token& genericStructNameToken = root.getNthChildToken(childNodeCounter);
+    const Token genericStructNameToken = root.getNthChildToken(childNodeCounter);
     childNodeCounter++;
 
-    const std::string& genericModuleName = ctx.mm.getGenericModuleFromToken(genericStructNameToken);
+    const std::string genericModuleName = ctx.mm.getGenericModuleFromToken(genericStructNameToken);
 
     std::vector<TypeDescription> instantiationTypes;
     std::vector<Node> instantiationTypeNodes;
@@ -94,7 +94,7 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
     if (!root.isNthChild(node::IDENTIFIER, childNodeCounter))
         return ctx.ir.moduleBuilder.createVoidTypeDescription();
 
-    const Token& dataTypeToken = root.getNthChildToken(childNodeCounter);
+    const Token dataTypeToken = root.getNthChildToken(childNodeCounter);
     TypeDescription typeDescription = ctx.ir.moduleBuilder.createTypeDescription(dataTypeToken);
 
     childNodeCounter++;

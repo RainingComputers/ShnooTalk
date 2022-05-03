@@ -58,7 +58,7 @@ TypeDescription constructType(DataType dtype,
 
 TypeInformation ModuleBuilder::getTypeInformation(const Token& dataTypeToken, DataType dtype)
 {
-    const std::string& dataTypeName = dataTypeToken.toString();
+    const std::string dataTypeName = dataTypeToken.toString();
 
     if (dtype != icode::STRUCT)
         return TypeInformation{ getDataTypeSize(dtype), workingModule->name, false };
@@ -130,7 +130,7 @@ std::string ModuleBuilder::createMultilineStringData(const std::vector<Token>& t
 
         if (result != modulesMapItem.second.stringsData.end())
         {
-            const std::string& key = result->first;
+            const std::string key = result->first;
             rootModule.stringsDataCharCounts[key] = modulesMapItem.second.stringsDataCharCounts[key];
             return key;
         }
@@ -202,7 +202,7 @@ bool ModuleBuilder::isValidDeconstructor(const icode::FunctionDescription& funct
     if (function.numParameters() != 1)
         return false;
 
-    const TypeDescription& symbolType = function.symbols.at(function.parameters[0]);
+    const TypeDescription symbolType = function.symbols.at(function.parameters[0]);
 
     if (rootModule.name != symbolType.moduleName)
         return false;
@@ -220,7 +220,7 @@ void ModuleBuilder::createFunction(const Token& nameToken,
     if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
-    const icode::FunctionDescription& function =
+    const icode::FunctionDescription function =
         createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
 
     if (nameToken.toString() == "deconstructor")
@@ -237,7 +237,7 @@ void ModuleBuilder::createFunctionExternC(const Token& nameToken,
                                           const std::vector<Token>& paramNames,
                                           std::vector<icode::TypeDescription>& paramTypes)
 {
-    const std::string& functionName = nameToken.toString();
+    const std::string functionName = nameToken.toString();
 
     if (rootModule.symbolExists(functionName))
         console.compileErrorOnToken("Symbol already exists", nameToken);
@@ -253,7 +253,7 @@ void ModuleBuilder::createExternFunction(const Token& nameToken,
                                          const std::vector<Token>& paramNames,
                                          std::vector<icode::TypeDescription>& paramTypes)
 {
-    const std::string& externFunctionName = nameToken.toString();
+    const std::string externFunctionName = nameToken.toString();
 
     if (rootModule.symbolExists(externFunctionName))
         console.compileErrorOnToken("Symbol already exists", nameToken);
@@ -268,10 +268,10 @@ void ModuleBuilder::createExternFunctionModule(const Token& nameToken,
                                                std::vector<icode::TypeDescription>& paramTypes,
                                                const Token& moduleNameToken)
 {
-    const std::string& functionModuleName = moduleNameToken.toUnescapedString();
-    const std::string& mangledFunctionName = nameMangle(nameToken, functionModuleName);
-    const std::string& mangledFunctionNameRoot = nameMangle(nameToken, rootModule.name);
-    const std::string& externFunctionName = nameToken.toString();
+    const std::string functionModuleName = moduleNameToken.toUnescapedString();
+    const std::string mangledFunctionName = nameMangle(nameToken, functionModuleName);
+    const std::string mangledFunctionNameRoot = nameMangle(nameToken, rootModule.name);
+    const std::string externFunctionName = nameToken.toString();
 
     if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(mangledFunctionNameRoot) ||
         rootModule.symbolExists(externFunctionName))
@@ -315,7 +315,7 @@ void ModuleBuilder::createStruct(const Token& nameToken,
 
     for (size_t i = 0; i < fieldNameTokens.size(); i++)
     {
-        const std::string& fieldName = fieldNameTokens[i].toString();
+        const std::string fieldName = fieldNameTokens[i].toString();
 
         if (structDescription.fieldExists(fieldName))
             console.compileErrorOnToken("Field already exists", fieldNameTokens[i]);
@@ -337,7 +337,7 @@ void ModuleBuilder::createStruct(const Token& nameToken,
 
 void ModuleBuilder::createUseNoAlias(const Token& pathToken)
 {
-    const std::string& path = pathToken.toUnescapedString();
+    const std::string path = pathToken.toUnescapedString();
 
     if (!rootModule.useExists(path))
         rootModule.uses.push_back(path);
@@ -345,8 +345,8 @@ void ModuleBuilder::createUseNoAlias(const Token& pathToken)
 
 void ModuleBuilder::createUse(const Token& pathToken, const Token& aliasToken)
 {
-    const std::string& path = pathToken.toUnescapedString();
-    const std::string& alias = aliasToken.toString();
+    const std::string path = pathToken.toUnescapedString();
+    const std::string alias = aliasToken.toString();
 
     if (rootModule.useExists(path))
         console.compileErrorOnToken("Duplicate imports", pathToken);
@@ -373,8 +373,8 @@ void ModuleBuilder::createFrom(const std::string& moduleName, const Token& symbo
 
     /* Import symbol */
 
-    const std::string& symbolString = symbolNameToken.toString();
-    const std::string& mangledSymbolString = nameMangle(symbolNameToken, externalModule->name);
+    const std::string symbolString = symbolNameToken.toString();
+    const std::string mangledSymbolString = nameMangle(symbolNameToken, externalModule->name);
 
     if (rootModule.symbolExists(symbolString))
         console.compileErrorOnToken("Symbol already exists", symbolNameToken);

@@ -4,7 +4,7 @@
 
 Unit getUnitFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
-    const Token& nameToken = root.getNthChildToken(0);
+    const Token nameToken = root.getNthChildToken(0);
 
     Unit Unit = ctx.ir.descriptionFinder.getUnitFromToken(nameToken);
 
@@ -24,7 +24,7 @@ std::pair<Unit, size_t> unitFromStructVar(generator::GeneratorContext& ctx,
 
     nodeCounter++;
 
-    const Token& fieldNameToken = root.getNthChildToken(nodeCounter);
+    const Token fieldNameToken = root.getNthChildToken(nodeCounter);
 
     if (!unit.isStruct())
         ctx.console.compileErrorOnToken("Cannot get struct field on a non struct data type", fieldNameToken);
@@ -53,7 +53,7 @@ std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext
 
     for (; nodeCounter < root.children.size(); nodeCounter++)
     {
-        const Node& child = root.children[nodeCounter];
+        const Node child = root.children[nodeCounter];
 
         if (child.type != node::SUBSCRIPT)
             break;
