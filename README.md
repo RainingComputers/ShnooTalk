@@ -127,6 +127,7 @@ make test
 - [ ] Using literal expression as subscript for declaration
 - [ ] Struct construction using `Foobar{}` syntax
 - [ ] `panic()` function
+- [ ] Upgrade to using opaque pointers (LLVM IR)
 
 *Advanced Features*
 
