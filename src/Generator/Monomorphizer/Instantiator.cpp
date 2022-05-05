@@ -285,9 +285,9 @@ void prependModuleToTypeNode(Node& root, const std::string& alias)
     root.children.insert(root.children.begin(), constructNode(node::MODULE, alias));
 }
 
-void prependUseNodes(const std::vector<icode::TypeDescription>& instantiationTypes,
-                     std::vector<Node>& instTypeNodes,
-                     Node& genericModuleAST)
+void prependUseNodesInPlace(const std::vector<icode::TypeDescription>& instantiationTypes,
+                            std::vector<Node>& instTypeNodes,
+                            Node& genericModuleAST)
 {
     std::vector<std::string> prependedModules;
 
@@ -320,7 +320,7 @@ Node instantiateAST(GenericASTIndex index,
 {
     Node genericModuleAST = index.ast;
 
-    prependUseNodes(instantiationTypes, instTypeNodes, genericModuleAST);
+    prependUseNodesInPlace(instantiationTypes, instTypeNodes, genericModuleAST);
 
     for (size_t i = 0; i < index.genericIdentifiers.size(); i += 1)
     {

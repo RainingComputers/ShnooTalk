@@ -3,7 +3,11 @@
 
 #include "GeneratorContext.hpp"
 
-Unit functionCall(generator::GeneratorContext& ctx, const Node& root);
+Unit createCallFunctionPremangled(generator::GeneratorContext& ctx,
+                                  const std::vector<Token>& actualParamTokens,
+                                  const std::vector<Unit>& actualParams,
+                                  const std::string& functionName,
+                                  const icode::FunctionDescription& callee);
 
 Unit term(generator::GeneratorContext& ctx, const Node& root);
 

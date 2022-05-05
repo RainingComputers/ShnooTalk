@@ -86,7 +86,7 @@ make test
 - [x] Assignment destructuring
 - [x] Better operator overloading
 - [x] `in` operator
-- [ ] slot operator
+- [x] Subscript operator overloading
 - [ ] Reduce binary size
 - [x] extern "C" to prevent name mangling functions
 - [x] Decide names and defaults for primitive data types

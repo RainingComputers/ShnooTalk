@@ -1,0 +1,26 @@
+struct Foobar
+{
+
+}
+
+fn subscript(self: Foobar, index: float) -> bool
+{
+    if index == 3.14
+        return true
+
+    return false
+}
+
+fn subscriptArray(self: Foobar, a: int[], n: int) -> int
+{
+    if n == 2 
+        if a[0] == 1 and a[1] == 2
+            return -1
+
+    return n
+}
+
+fn subscriptTesting(self: Foobar, mut b: int) -> bool
+{
+    return false
+}

@@ -1,0 +1,8 @@
+MODULE SubscriptOperatorParamError.shtk
+ERROR in Line 7 Col 15
+
+    println(a[1])
+              ^
+Cannot pass immutable as mutable
+
+SubscriptOperatorParamError.shtk:7:14

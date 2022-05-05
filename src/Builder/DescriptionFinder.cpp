@@ -218,12 +218,11 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
     console.compileErrorOnToken("Cannot find function with matching params", token);
 }
 
-std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperatorFunction(
-    const Token& binaryOperator,
+std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperatorFunctionString(
+    const Token& token,
+    const std::string& binaryOperatorName,
     const std::vector<Unit>& params)
 {
-    const std::string binaryOperatorName = binaryOperator.toFunctionNameString();
-
     for (auto functionName : workingModule->definedFunctions)
     {
         const std::string unmangleFunctionName = unMangleString(functionName, workingModule->name);
@@ -239,7 +238,24 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperator
         return std::pair<std::string, FunctionDescription>(functionName, function);
     }
 
-    console.operatorError(binaryOperator, params[0], params[1]);
+    console.operatorError(token, params[0], params[1]);
+}
+
+std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperatorFunction(
+    const Token& binaryOperator,
+    const std::vector<Unit>& params)
+{
+    const std::string binaryOperatorName = binaryOperator.toFunctionNameString();
+
+    return getCustomOperatorFunctionString(binaryOperator, binaryOperatorName, params);
+}
+
+std::pair<std::string, FunctionDescription> DescriptionFinder::getSubscriptOperatorFunction(
+    const Token& token,
+    const Unit& unit,
+    const std::vector<Unit>& params)
+{
+    return getCustomOperatorFunctionString(token, "subscript", params);
 }
 
 bool DescriptionFinder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
@@ -247,7 +263,7 @@ bool DescriptionFinder::isAllNamesStructFields(const std::vector<Token>& nameTok
     const ModuleDescription unitModule = modulesMap.at(structUnit.moduleName());
     const StructDescription structDescription = unitModule.structures.at(structUnit.dtypeName());
 
-    for (auto nameToken : nameTokens)
+    for (auto& nameToken : nameTokens)
         if (!structDescription.fieldExists(nameToken.toString()))
             return false;
 

@@ -1,0 +1,115 @@
+{
+    "SubscriptOperator.shtk": {
+        "moduleName": "SubscriptOperator.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        struct* tempPtr8 = createPointer struct a
+                        passPointer struct* tempPtr8, byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        float temp11 = cast autoFloat 3.140000
+                        pass float temp11, byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        byte calleeReturnValue14 = call byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        print byte calleeReturnValue14
+                        newLine
+                        struct* tempPtr21 = createPointer struct a
+                        passPointer struct* tempPtr21, byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        float temp24 = cast autoFloat 2.340000
+                        pass float temp24, byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        byte calleeReturnValue27 = call byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        print byte calleeReturnValue27
+                        newLine
+                        struct* tempPtr37 = createPointer struct a
+                        passPointer struct* tempPtr37, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        int* tempPtr40 = allocArrayPointer bytes 8
+                        int temp42 = cast autoInt 1
+                        int* tempPtr40 = write int temp42
+                        int* tempPtr44 = addressAdd int* tempPtr40, bytes 4
+                        int temp45 = cast autoInt 2
+                        int* tempPtr44 = write int temp45
+                        passPointer int* tempPtr40, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        int temp48 = cast autoInt 2
+                        pass int temp48, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        int calleeReturnValue51 = call int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        print int calleeReturnValue51
+                        newLine
+                        struct* tempPtr63 = createPointer struct a
+                        passPointer struct* tempPtr63, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        int* tempPtr66 = allocArrayPointer bytes 16
+                        int temp68 = cast autoInt 1
+                        int* tempPtr66 = write int temp68
+                        int* tempPtr70 = addressAdd int* tempPtr66, bytes 4
+                        int temp71 = cast autoInt 2
+                        int* tempPtr70 = write int temp71
+                        int* tempPtr73 = addressAdd int* tempPtr70, bytes 4
+                        int temp74 = cast autoInt 3
+                        int* tempPtr73 = write int temp74
+                        int* tempPtr76 = addressAdd int* tempPtr73, bytes 4
+                        int temp77 = cast autoInt 4
+                        int* tempPtr76 = write int temp77
+                        passPointer int* tempPtr66, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        int temp80 = cast autoInt 4
+                        pass int temp80, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        int calleeReturnValue83 = call int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        print int calleeReturnValue83
+                        newLine
+                        int temp88 = cast autoInt 0
+                        int returnValue86 = equal int temp88
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/SubsFoobar.shtk": {
+        "moduleName": "TestModules/SubsFoobar.shtk",
+        "functions": {
+            "_fn_TestModules_SubsFoobar_shtk_subscript": {
+                "icode": [
+                        float temp8 = cast autoFloat 3.140000
+                        flag = isEqual float index, float temp8
+                        if(not flag) goto _if_false_l8_c4
+                        byte temp11 = cast autoInt 1
+                        byte returnValue9 = equal byte temp11
+                        return
+                    _if_false_l8_c4:
+                        byte temp14 = cast autoInt 0
+                        byte returnValue12 = equal byte temp14
+                        return
+                ]
+            },
+            "_fn_TestModules_SubsFoobar_shtk_subscriptArray": {
+                "icode": [
+                        int temp23 = cast autoInt 2
+                        flag = isEqual int n, int temp23
+                        if(not flag) goto _if_false_l16_c4
+                        void* tempPtr32 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr33 = addressAdd int* a, void* tempPtr32
+                        int temp35 = read int* tempPtr33
+                        int temp36 = cast autoInt 1
+                        flag = isEqual int temp35, int temp36
+                        if(not flag) goto _if_false_l17_c8
+                        void* tempPtr40 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr41 = addressAdd int* a, void* tempPtr40
+                        int temp43 = read int* tempPtr41
+                        int temp44 = cast autoInt 2
+                        flag = isEqual int temp43, int temp44
+                        if(not flag) goto _if_false_l17_c8
+                        autoInt temp47 = unaryMinus autoInt 1
+                        int temp48 = cast autoInt temp47
+                        int returnValue45 = equal int temp48
+                        return
+                    _if_false_l17_c8:
+                    _if_false_l16_c4:
+                        int returnValue49 = equal int n
+                        return
+                ]
+            },
+            "_fn_TestModules_SubsFoobar_shtk_subscriptTesting": {
+                "icode": [
+                        byte temp56 = cast autoInt 0
+                        byte returnValue54 = equal byte temp56
+                        return
+                ]
+            }
+        }
+    }
+}

@@ -17,6 +17,7 @@
 - Added `externC` functions
 - Fixed bugs related to mutability and pointers
 - Added `in` operator
+- Added subscript operator overloading
 
 # 0.1.1-alpha
 

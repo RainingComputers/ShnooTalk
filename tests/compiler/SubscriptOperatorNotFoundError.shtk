@@ -1,0 +1,10 @@
+from "TestModules/SubsFoobar.shtk" use Foobar
+
+fn main() -> int
+{
+    var a:Foobar
+
+    println(a["hello"])
+
+    return 0
+}

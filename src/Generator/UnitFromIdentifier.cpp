@@ -15,10 +15,10 @@ Unit getUnitFromNode(generator::GeneratorContext& ctx, const Node& root)
     return Unit;
 }
 
-std::pair<Unit, size_t> unitFromStructVar(generator::GeneratorContext& ctx,
-                                          const Node& root,
-                                          const Unit& unit,
-                                          size_t startIndex)
+std::pair<Unit, size_t> structField(generator::GeneratorContext& ctx,
+                                    const Node& root,
+                                    const Unit& unit,
+                                    size_t startIndex)
 {
     size_t nodeCounter = startIndex;
 
@@ -39,12 +39,64 @@ std::pair<Unit, size_t> unitFromStructVar(generator::GeneratorContext& ctx,
     return std::pair<Unit, size_t>(returnUnit, nodeCounter);
 }
 
-std::pair<Unit, size_t> unitFromExpressionSubscripts(generator::GeneratorContext& ctx,
-                                                     const Node& root,
-                                                     const Unit& unit,
-                                                     size_t startIndex)
+std::pair<Unit, size_t> subscript(generator::GeneratorContext& ctx,
+                                  const Node& root,
+                                  const Unit& unit,
+                                  size_t startIndex);
+
+std::pair<Unit, size_t> subscriptOperator(generator::GeneratorContext& ctx,
+                                          const Node& root,
+                                          const Unit& unit,
+                                          size_t startIndex)
 {
     size_t nodeCounter = startIndex;
+
+    const Node child = root.children[nodeCounter];
+
+    const Token indexExpressionToken = child.children[0].tok;
+    const Unit indexExpression = expression(ctx, child.children[0]);
+
+    ctx.ir.pushWorkingModule();
+
+    ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromUnit(unit));
+
+    std::vector<Token> paramTokens = { root.tok, indexExpressionToken };
+    std::vector<Unit> params = { unit, indexExpression };
+
+    if (indexExpression.isArrayWithFixedDim())
+    {
+        paramTokens.push_back(indexExpressionToken);
+        params.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(indexExpression.numElements()));
+    }
+
+    const std::pair<std::string, icode::FunctionDescription> subscriptNameAndFunction =
+        ctx.ir.descriptionFinder.getSubscriptOperatorFunction(child.tok, unit, params);
+
+    const Unit result = createCallFunctionPremangled(ctx,
+                                                     paramTokens,
+                                                     params,
+                                                     subscriptNameAndFunction.first,
+                                                     subscriptNameAndFunction.second);
+
+    nodeCounter++;
+
+    if (root.isNthChild(node::SUBSCRIPT, nodeCounter))
+        return subscript(ctx, root, result, nodeCounter);
+
+    ctx.ir.popWorkingModule();
+
+    return std::pair<Unit, size_t>(result, nodeCounter);
+}
+
+std::pair<Unit, size_t> subscript(generator::GeneratorContext& ctx,
+                                  const Node& root,
+                                  const Unit& unit,
+                                  size_t startIndex)
+{
+    size_t nodeCounter = startIndex;
+
+    if (unit.isStruct() && !unit.isArray())
+        return subscriptOperator(ctx, root, unit, startIndex);
 
     if (!unit.isArray())
         ctx.console.compileErrorOnToken("Cannot index a non array", root.children[nodeCounter].tok);
@@ -85,10 +137,10 @@ Unit getUnitFromIdentifier(generator::GeneratorContext& ctx, const Node& root)
         switch (root.children[nodeCounter].type)
         {
             case node::STRUCT_FIELD:
-                unitAndNodeCounter = unitFromStructVar(ctx, root, unit, nodeCounter);
+                unitAndNodeCounter = structField(ctx, root, unit, nodeCounter);
                 break;
             case node::SUBSCRIPT:
-                unitAndNodeCounter = unitFromExpressionSubscripts(ctx, root, unit, nodeCounter);
+                unitAndNodeCounter = subscript(ctx, root, unit, nodeCounter);
                 break;
             default:
                 ctx.console.internalBugErrorOnToken(root.children[nodeCounter].tok);

@@ -1,0 +1,12 @@
+from "TestModules/SubsFoobar.shtk" use Foobar
+
+fn main() -> int
+{
+    var a:Foobar
+
+    println(a[3.14])
+    println(a[2.34])
+    println(a[[1, 2]])
+    println(a[[1, 2, 3, 4]])
+    return 0
+}
