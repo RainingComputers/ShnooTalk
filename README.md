@@ -153,6 +153,7 @@ make test
 
 - [ ] Debug symbols (using LLVM)
 - [ ] Python wrapper generator
+- [ ] Switch to using opaque pointers and `getelementptr` for LLVM
 
 ### Platforms
 
