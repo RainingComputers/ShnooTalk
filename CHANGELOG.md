@@ -18,6 +18,7 @@
 - Fixed bugs related to mutability and pointers
 - Added `in` operator
 - Added subscript operator overloading
+- Added support for arrays and pointers of generic type
 
 # 0.1.1-alpha
 
