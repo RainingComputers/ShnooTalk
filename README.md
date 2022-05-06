@@ -67,7 +67,7 @@ make test
 
 ## TODO
 
-### Language core
+### Compiler core
 
 *Priority*
 - [x] Incomplete types and type composing of a pointer to itself
@@ -90,6 +90,8 @@ make test
 - [ ] Reduce binary size
 - [x] extern "C" to prevent name mangling functions
 - [x] Decide names and defaults for primitive data types
+- [x] Arrays and pointers of generic types
+- [ ] Proper enums
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend
@@ -120,9 +122,7 @@ make test
 - [ ] Struct alignment and padding
 - [ ] Initializing global variables
 - [ ] typedef
-- [ ] Proper enums
 - [ ] Better error message for using generic as non generic
-- [ ] Revamp AST for type definitions
 - [ ] Autofill type parameter for generic function call
 - [ ] Using literal expression as subscript for declaration
 - [ ] Struct construction using `Foobar{}` syntax

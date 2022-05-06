@@ -1,0 +1,70 @@
+{
+    "GenericTypePointer.shtk": {
+        "moduleName": "GenericTypePointer.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct a
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp9 = cast autoInt 1
+                        int* tempPtr7 = write int temp9
+                        int* tempPtr11 = createPointer struct a
+                        int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                        float temp15 = cast autoFloat 2.000000
+                        float* tempPtr13 = write float temp15
+                        struct* b = pointerAssign struct a
+                        int* tempPtr19 = createPointer struct* b
+                        int* tempPtr21 = addressAdd int* tempPtr19, bytes 0
+                        int temp23 = cast autoInt 2
+                        int* tempPtr21 = write int temp23
+                        int* tempPtr25 = createPointer struct a
+                        int* tempPtr27 = addressAdd int* tempPtr25, bytes 0
+                        int temp28 = read int* tempPtr27
+                        print int temp28
+                        newLine
+                        int* tempPtr30 = createPointer struct a
+                        int* tempPtr32 = addressAdd int* tempPtr30, bytes 4
+                        float temp33 = read float* tempPtr32
+                        print float temp33
+                        newLine
+                        int temp36 = cast autoInt 0
+                        int returnValue34 = equal int temp36
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/Pair.shtk[int][float]": {
+        "moduleName": "TestModules/Pair.shtk[int][float]",
+        "functions": {
+            "_fn_TestModules_Pair_shtk[int][float]_add": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct result
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int* tempPtr9 = createPointer struct a
+                        int* tempPtr11 = addressAdd int* tempPtr9, bytes 0
+                        int* tempPtr13 = createPointer struct b
+                        int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
+                        int temp17 = read int* tempPtr11
+                        int temp18 = read int* tempPtr15
+                        int temp16 = add int temp17, int temp18
+                        int* tempPtr7 = write int temp16
+                        int* tempPtr20 = createPointer struct result
+                        int* tempPtr22 = addressAdd int* tempPtr20, bytes 4
+                        int* tempPtr24 = createPointer struct a
+                        int* tempPtr26 = addressAdd int* tempPtr24, bytes 4
+                        int* tempPtr28 = createPointer struct b
+                        int* tempPtr30 = addressAdd int* tempPtr28, bytes 4
+                        float temp32 = read float* tempPtr26
+                        float temp33 = read float* tempPtr30
+                        float temp31 = add float temp32, float temp33
+                        float* tempPtr22 = write float temp31
+                        int* tempPtr36 = createPointer struct returnValue34
+                        int* tempPtr37 = createPointer struct result
+                        int* tempPtr36 = memoryCopy int* tempPtr37, autoInt 8
+                        return
+                ]
+            }
+        }
+    }
+}

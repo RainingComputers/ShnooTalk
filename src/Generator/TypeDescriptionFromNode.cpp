@@ -6,6 +6,46 @@
 
 using namespace icode;
 
+TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& typeDescription, size_t startIndex)
+{
+    std::vector<int> dimensions;
+
+    size_t nodeCounter;
+
+    for (nodeCounter = startIndex; root.isNthChild(node::SUBSCRIPT, nodeCounter); nodeCounter++)
+    {
+        const int subscriptInt = root.children[nodeCounter].children[0].tok.toInt();
+        dimensions.push_back(subscriptInt);
+    }
+
+    return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
+}
+
+TypeDescription addTypeModifiers(generator::GeneratorContext& ctx,
+                                 const Node& root,
+                                 const TypeDescription& typeDescription,
+                                 size_t startIndex,
+                                 const Token& token)
+{
+    size_t nodeCounter = startIndex;
+
+    TypeDescription modifiedTypeDescription = typeDescription;
+
+    if (root.isNthChild(node::POINTER_STAR, nodeCounter))
+        modifiedTypeDescription.becomePointer();
+
+    if (root.isNthChild(node::EMPTY_SUBSCRIPT, nodeCounter))
+        modifiedTypeDescription.becomeArrayPointer();
+
+    if (root.isNthChild(node::SUBSCRIPT, nodeCounter))
+        modifiedTypeDescription = arrayTypeFromSubscript(root, typeDescription, nodeCounter);
+
+    if (modifiedTypeDescription.isIncompleteType() && !modifiedTypeDescription.isPointer())
+        ctx.console.compileErrorOnToken("Incomplete type can only be a pointer", token);
+
+    return modifiedTypeDescription;
+}
+
 TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
@@ -53,24 +93,11 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
                                                                      instantiationTypes,
                                                                      instantiationTypeNodes);
 
+    monomorphizedType = addTypeModifiers(ctx, root, monomorphizedType, childNodeCounter, genericStructNameToken);
+
     ctx.ir.popWorkingModule();
 
     return monomorphizedType;
-}
-
-TypeDescription arrayTypeFromSubscript(const Node& root, const TypeDescription& typeDescription, size_t startIndex)
-{
-    std::vector<int> dimensions;
-
-    size_t nodeCounter;
-
-    for (nodeCounter = startIndex; root.isNthChild(node::SUBSCRIPT, nodeCounter); nodeCounter++)
-    {
-        const int subscriptInt = root.children[nodeCounter].children[0].tok.toInt();
-        dimensions.push_back(subscriptInt);
-    }
-
-    return createArrayTypeDescription(typeDescription, dimensions, FIXED_DIM);
 }
 
 TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const Node& root)
@@ -99,17 +126,7 @@ TypeDescription typeDescriptionFromNode(generator::GeneratorContext& ctx, const 
 
     childNodeCounter++;
 
-    if (root.isNthChild(node::POINTER_STAR, childNodeCounter))
-        typeDescription.becomePointer();
-
-    if (root.isNthChild(node::EMPTY_SUBSCRIPT, childNodeCounter))
-        typeDescription.becomeArrayPointer();
-
-    if (root.isNthChild(node::SUBSCRIPT, childNodeCounter))
-        typeDescription = arrayTypeFromSubscript(root, typeDescription, childNodeCounter);
-
-    if (typeDescription.isIncompleteType() && !typeDescription.isPointer())
-        ctx.console.compileErrorOnToken("Incomplete type can only be a pointer", dataTypeToken);
+    typeDescription = addTypeModifiers(ctx, root, typeDescription, childNodeCounter, dataTypeToken);
 
     ctx.ir.popWorkingModule();
 

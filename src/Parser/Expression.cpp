@@ -65,7 +65,7 @@ void typeModifier(parser::ParserContext& ctx)
 {
     if (ctx.accept(token::OPEN_SQUARE) && !ctx.peek(token::INT_LITERAL))
         genericParams(ctx);
-    
+
     if (ctx.accept(token::MULTIPLY))
         ctx.addNode(node::POINTER_STAR);
     else if (ctx.accept(token::EMPTY_SUBSCRIPT))

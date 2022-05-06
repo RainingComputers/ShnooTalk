@@ -1,0 +1,107 @@
+{
+    "GenericTypeArray.shtk": {
+        "moduleName": "GenericTypeArray.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct a
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp9 = cast autoInt 2
+                        int* tempPtr7 = write int temp9
+                        int* tempPtr11 = createPointer struct a
+                        int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
+                        float temp15 = cast autoFloat 2.000000
+                        float* tempPtr13 = write float temp15
+                        int* tempPtr18 = createPointer struct b
+                        int* tempPtr20 = addressAdd int* tempPtr18, bytes 0
+                        int temp22 = cast autoInt 3
+                        int* tempPtr20 = write int temp22
+                        int* tempPtr24 = createPointer struct b
+                        int* tempPtr26 = addressAdd int* tempPtr24, bytes 4
+                        float temp28 = cast autoFloat 3.000000
+                        float* tempPtr26 = write float temp28
+                        int* tempPtr32 = createPointer struct arr
+                        int* tempPtr33 = createPointer struct a
+                        int* tempPtr32 = memoryCopy int* tempPtr33, autoInt 8
+                        int* tempPtr36 = addressAdd int* tempPtr32, bytes 8
+                        int* tempPtr37 = createPointer struct b
+                        int* tempPtr36 = memoryCopy int* tempPtr37, autoInt 8
+                        int* tempPtr41 = createPointer struct arr
+                        void* tempPtr43 = addressMultiply autoInt 0, bytes 8
+                        int* tempPtr44 = addressAdd int* tempPtr41, void* tempPtr43
+                        int* tempPtr45 = createPointer int* tempPtr44
+                        int* tempPtr47 = addressAdd int* tempPtr45, bytes 0
+                        int temp48 = read int* tempPtr47
+                        print int temp48
+                        newLine
+                        int* tempPtr51 = createPointer struct arr
+                        void* tempPtr53 = addressMultiply autoInt 0, bytes 8
+                        int* tempPtr54 = addressAdd int* tempPtr51, void* tempPtr53
+                        int* tempPtr55 = createPointer int* tempPtr54
+                        int* tempPtr57 = addressAdd int* tempPtr55, bytes 4
+                        float temp58 = read float* tempPtr57
+                        print float temp58
+                        newLine
+                        int* tempPtr61 = createPointer struct arr
+                        void* tempPtr63 = addressMultiply autoInt 1, bytes 8
+                        int* tempPtr64 = addressAdd int* tempPtr61, void* tempPtr63
+                        int* tempPtr65 = createPointer int* tempPtr64
+                        int* tempPtr67 = addressAdd int* tempPtr65, bytes 0
+                        int temp68 = read int* tempPtr67
+                        print int temp68
+                        newLine
+                        int* tempPtr71 = createPointer struct arr
+                        void* tempPtr73 = addressMultiply autoInt 1, bytes 8
+                        int* tempPtr74 = addressAdd int* tempPtr71, void* tempPtr73
+                        int* tempPtr75 = createPointer int* tempPtr74
+                        int* tempPtr77 = addressAdd int* tempPtr75, bytes 4
+                        float temp78 = read float* tempPtr77
+                        print float temp78
+                        newLine
+                        int temp81 = cast autoInt 0
+                        int returnValue79 = equal int temp81
+                        int* tempPtr85 = createPointer struct arr
+                        void* tempPtr87 = addressMultiply autoInt 0, bytes 8
+                        int* tempPtr88 = addressAdd int* tempPtr85, void* tempPtr87
+                        int* tempPtr90 = createPointer struct arr
+                        void* tempPtr92 = addressMultiply autoInt 1, bytes 8
+                        int* tempPtr93 = addressAdd int* tempPtr90, void* tempPtr92
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/Pair.shtk[int][float]": {
+        "moduleName": "TestModules/Pair.shtk[int][float]",
+        "functions": {
+            "_fn_TestModules_Pair_shtk[int][float]_add": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct result
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int* tempPtr9 = createPointer struct a
+                        int* tempPtr11 = addressAdd int* tempPtr9, bytes 0
+                        int* tempPtr13 = createPointer struct b
+                        int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
+                        int temp17 = read int* tempPtr11
+                        int temp18 = read int* tempPtr15
+                        int temp16 = add int temp17, int temp18
+                        int* tempPtr7 = write int temp16
+                        int* tempPtr20 = createPointer struct result
+                        int* tempPtr22 = addressAdd int* tempPtr20, bytes 4
+                        int* tempPtr24 = createPointer struct a
+                        int* tempPtr26 = addressAdd int* tempPtr24, bytes 4
+                        int* tempPtr28 = createPointer struct b
+                        int* tempPtr30 = addressAdd int* tempPtr28, bytes 4
+                        float temp32 = read float* tempPtr26
+                        float temp33 = read float* tempPtr30
+                        float temp31 = add float temp32, float temp33
+                        float* tempPtr22 = write float temp31
+                        int* tempPtr36 = createPointer struct returnValue34
+                        int* tempPtr37 = createPointer struct result
+                        int* tempPtr36 = memoryCopy int* tempPtr37, autoInt 8
+                        return
+                ]
+            }
+        }
+    }
+}

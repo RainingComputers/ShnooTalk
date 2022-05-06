@@ -1,0 +1,17 @@
+from "TestModules/Pair.shtk" use Pair
+
+fn main() -> int
+{
+    var a: Pair[int, float]
+    a.first = 1
+    a.second = 2.0
+
+    var b: Pair[int, float]* <- a
+
+    b.first = 2
+
+    println(a.first)
+    println(a.second)
+
+    return 0
+}
