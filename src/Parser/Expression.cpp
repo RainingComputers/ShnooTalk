@@ -2,7 +2,7 @@
 
 #include "Expression.hpp"
 
-void identifierWithOptionalSubscript(parser::ParserContext& ctx, bool literalSubscriptOnly)
+void identifierWithSubscript(parser::ParserContext& ctx)
 {
     ctx.addNode(node::IDENTIFIER);
 
@@ -12,13 +12,7 @@ void identifierWithOptionalSubscript(parser::ParserContext& ctx, bool literalSub
 
         ctx.addNodeMakeCurrent(node::SUBSCRIPT);
 
-        if (literalSubscriptOnly)
-        {
-            ctx.expect(token::INT_LITERAL);
-            ctx.addNode(node::LITERAL);
-        }
-        else
-            expression(ctx);
+        expression(ctx);
 
         ctx.expect(token::CLOSE_SQUARE);
         ctx.consume();
@@ -27,23 +21,9 @@ void identifierWithOptionalSubscript(parser::ParserContext& ctx, bool literalSub
     }
 }
 
-void identifierWithPointerStar(parser::ParserContext& ctx)
-{
-    ctx.addNode(node::IDENTIFIER);
-    ctx.expect(token::MULTIPLY);
-    ctx.addNode(node::POINTER_STAR);
-}
-
-void identifierWithEmptySubscript(parser::ParserContext& ctx)
-{
-    ctx.addNode(node::IDENTIFIER);
-    ctx.expect(token::EMPTY_SUBSCRIPT);
-    ctx.addNode(node::EMPTY_SUBSCRIPT);
-}
-
 void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
 {
-    identifierWithOptionalSubscript(ctx, false);
+    identifierWithSubscript(ctx);
 
     ctx.pushNode();
 
@@ -53,7 +33,7 @@ void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
     {
         ctx.addNode(node::STRUCT_FIELD);
         ctx.expect(token::IDENTIFIER);
-        identifierWithOptionalSubscript(ctx, false);
+        identifierWithSubscript(ctx);
     }
 
     ctx.popNode();
@@ -61,7 +41,6 @@ void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
 
 void genericParams(parser::ParserContext& ctx)
 {
-
     ctx.expect(token::OPEN_SQUARE);
 
     do
@@ -82,11 +61,32 @@ void genericParams(parser::ParserContext& ctx)
     ctx.consume();
 }
 
-void identifierWithGeneric(parser::ParserContext& ctx)
+void typeModifier(parser::ParserContext& ctx)
 {
-    ctx.addNode(node::IDENTIFIER);
+    if (ctx.accept(token::OPEN_SQUARE) && !ctx.peek(token::INT_LITERAL))
+        genericParams(ctx);
+    
+    if (ctx.accept(token::MULTIPLY))
+        ctx.addNode(node::POINTER_STAR);
+    else if (ctx.accept(token::EMPTY_SUBSCRIPT))
+        ctx.addNode(node::EMPTY_SUBSCRIPT);
+    else if (ctx.accept(token::OPEN_SQUARE))
+    {
+        while (ctx.accept(token::OPEN_SQUARE))
+        {
+            ctx.pushNode();
 
-    genericParams(ctx);
+            ctx.addNodeMakeCurrent(node::SUBSCRIPT);
+
+            ctx.expect(token::INT_LITERAL);
+            ctx.addNode(node::LITERAL);
+
+            ctx.expect(token::CLOSE_SQUARE);
+            ctx.consume();
+
+            ctx.popNode();
+        }
+    }
 }
 
 void moduleQualident(parser::ParserContext& ctx)
@@ -104,15 +104,9 @@ void typeDefinition(parser::ParserContext& ctx)
     moduleQualident(ctx);
 
     ctx.expect(token::IDENTIFIER);
+    ctx.addNode(node::IDENTIFIER);
 
-    if (ctx.peek(token::OPEN_SQUARE) && !ctx.dpeek(token::INT_LITERAL))
-        identifierWithGeneric(ctx);
-    else if (ctx.peek(token::MULTIPLY))
-        identifierWithPointerStar(ctx);
-    else if (ctx.peek(token::EMPTY_SUBSCRIPT))
-        identifierWithEmptySubscript(ctx);
-    else
-        identifierWithOptionalSubscript(ctx, true);
+    typeModifier(ctx);
 }
 
 void actualParameterList(parser::ParserContext& ctx)

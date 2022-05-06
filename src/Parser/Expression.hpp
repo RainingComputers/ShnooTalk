@@ -3,7 +3,6 @@
 
 #include "ParserContext.hpp"
 
-void identifierWithOptionalSubscript(parser::ParserContext& ctx, bool literalSubscriptOnly);
 void identifierWithQualidentAndSubscript(parser::ParserContext& ctx);
 void moduleQualident(parser::ParserContext& ctx);
 void typeDefinitionNoPointer(parser::ParserContext& ctx);

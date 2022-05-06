@@ -28,7 +28,33 @@
               │     │           └───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=3, col=74
               │     └───> nodeType=GENERIC_TYPE_PARAM, string="bar", tokenType=IDENTIFIER, line=3, col=80
               │           └───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=3, col=80
-              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=5, col=4
-                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=5, col=11
-                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=5, col=11
-                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=5, col=11
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=5, col=4
+              │     ├───> nodeType=IDENTIFIER, string="b", tokenType=IDENTIFIER, line=5, col=8
+              │     ├───> nodeType=IDENTIFIER, string="Foo", tokenType=IDENTIFIER, line=5, col=11
+              │     ├───> nodeType=GENERIC_TYPE_PARAM, string="int", tokenType=IDENTIFIER, line=5, col=15
+              │     │     ├───> nodeType=MODULE, string="int", tokenType=IDENTIFIER, line=5, col=15
+              │     │     ├───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=5, col=20
+              │     │     ├───> nodeType=GENERIC_TYPE_PARAM, string="bar", tokenType=IDENTIFIER, line=5, col=24
+              │     │     │     └───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=5, col=24
+              │     │     └───> nodeType=GENERIC_TYPE_PARAM, string="foo", tokenType=IDENTIFIER, line=5, col=29
+              │     │           └───> nodeType=IDENTIFIER, string="foo", tokenType=IDENTIFIER, line=5, col=29
+              │     ├───> nodeType=GENERIC_TYPE_PARAM, string="float", tokenType=IDENTIFIER, line=5, col=35
+              │     │     └───> nodeType=IDENTIFIER, string="float", tokenType=IDENTIFIER, line=5, col=35
+              │     └───> nodeType=POINTER_STAR, string="*", tokenType=MULTIPLY, line=5, col=41
+              ├───> nodeType=VAR, string="var", tokenType=VAR, line=7, col=4
+              │     ├───> nodeType=IDENTIFIER, string="c", tokenType=IDENTIFIER, line=7, col=8
+              │     ├───> nodeType=IDENTIFIER, string="Foo", tokenType=IDENTIFIER, line=7, col=11
+              │     ├───> nodeType=GENERIC_TYPE_PARAM, string="int", tokenType=IDENTIFIER, line=7, col=15
+              │     │     ├───> nodeType=MODULE, string="int", tokenType=IDENTIFIER, line=7, col=15
+              │     │     ├───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=7, col=20
+              │     │     ├───> nodeType=GENERIC_TYPE_PARAM, string="bar", tokenType=IDENTIFIER, line=7, col=24
+              │     │     │     └───> nodeType=IDENTIFIER, string="bar", tokenType=IDENTIFIER, line=7, col=24
+              │     │     └───> nodeType=GENERIC_TYPE_PARAM, string="foo", tokenType=IDENTIFIER, line=7, col=29
+              │     │           └───> nodeType=IDENTIFIER, string="foo", tokenType=IDENTIFIER, line=7, col=29
+              │     ├───> nodeType=GENERIC_TYPE_PARAM, string="float", tokenType=IDENTIFIER, line=7, col=35
+              │     │     └───> nodeType=IDENTIFIER, string="float", tokenType=IDENTIFIER, line=7, col=35
+              │     └───> nodeType=EMPTY_SUBSCRIPT, string="[]", tokenType=EMPTY_SUBSCRIPT, line=7, col=41
+              └───> nodeType=RETURN, string="return", tokenType=RETURN, line=9, col=4
+                    └───> nodeType=EXPRESSION, string="0", tokenType=INT_LITERAL, line=9, col=11
+                          └───> nodeType=TERM, string="0", tokenType=INT_LITERAL, line=9, col=11
+                                └───> nodeType=LITERAL, string="0", tokenType=INT_LITERAL, line=9, col=11

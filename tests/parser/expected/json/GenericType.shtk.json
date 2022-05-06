@@ -190,20 +190,192 @@
               ]
             },
             {
+              "type": "VAR",
+              "token": {"string": "var", "tokenType": "VAR", "line": 5, "col": 4, "file": "GenericType.shtk"},
+              "children": [
+                {
+                  "type": "IDENTIFIER",
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 8, "file": "GenericType.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "IDENTIFIER",
+                  "token": {"string": "Foo", "tokenType": "IDENTIFIER", "line": 5, "col": 11, "file": "GenericType.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "GENERIC_TYPE_PARAM",
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "GenericType.shtk"},
+                  "children": [
+                    {
+                      "type": "MODULE",
+                      "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "GenericType.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "type": "IDENTIFIER",
+                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 20, "file": "GenericType.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "type": "GENERIC_TYPE_PARAM",
+                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 24, "file": "GenericType.shtk"},
+                      "children": [
+                        {
+                          "type": "IDENTIFIER",
+                          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 24, "file": "GenericType.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GENERIC_TYPE_PARAM",
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 29, "file": "GenericType.shtk"},
+                      "children": [
+                        {
+                          "type": "IDENTIFIER",
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 29, "file": "GenericType.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GENERIC_TYPE_PARAM",
+                  "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 5, "col": 35, "file": "GenericType.shtk"},
+                  "children": [
+                    {
+                      "type": "IDENTIFIER",
+                      "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 5, "col": 35, "file": "GenericType.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "POINTER_STAR",
+                  "token": {"string": "*", "tokenType": "MULTIPLY", "line": 5, "col": 41, "file": "GenericType.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "VAR",
+              "token": {"string": "var", "tokenType": "VAR", "line": 7, "col": 4, "file": "GenericType.shtk"},
+              "children": [
+                {
+                  "type": "IDENTIFIER",
+                  "token": {"string": "c", "tokenType": "IDENTIFIER", "line": 7, "col": 8, "file": "GenericType.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "IDENTIFIER",
+                  "token": {"string": "Foo", "tokenType": "IDENTIFIER", "line": 7, "col": 11, "file": "GenericType.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "GENERIC_TYPE_PARAM",
+                  "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 15, "file": "GenericType.shtk"},
+                  "children": [
+                    {
+                      "type": "MODULE",
+                      "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 7, "col": 15, "file": "GenericType.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "type": "IDENTIFIER",
+                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 7, "col": 20, "file": "GenericType.shtk"},
+                      "children": [
+                        
+                      ]
+                    },
+                    {
+                      "type": "GENERIC_TYPE_PARAM",
+                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 7, "col": 24, "file": "GenericType.shtk"},
+                      "children": [
+                        {
+                          "type": "IDENTIFIER",
+                          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 7, "col": 24, "file": "GenericType.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GENERIC_TYPE_PARAM",
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 7, "col": 29, "file": "GenericType.shtk"},
+                      "children": [
+                        {
+                          "type": "IDENTIFIER",
+                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 7, "col": 29, "file": "GenericType.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GENERIC_TYPE_PARAM",
+                  "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 7, "col": 35, "file": "GenericType.shtk"},
+                  "children": [
+                    {
+                      "type": "IDENTIFIER",
+                      "token": {"string": "float", "tokenType": "IDENTIFIER", "line": 7, "col": 35, "file": "GenericType.shtk"},
+                      "children": [
+                        
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "EMPTY_SUBSCRIPT",
+                  "token": {"string": "[]", "tokenType": "EMPTY_SUBSCRIPT", "line": 7, "col": 41, "file": "GenericType.shtk"},
+                  "children": [
+                    
+                  ]
+                }
+              ]
+            },
+            {
               "type": "RETURN",
-              "token": {"string": "return", "tokenType": "RETURN", "line": 5, "col": 4, "file": "GenericType.shtk"},
+              "token": {"string": "return", "tokenType": "RETURN", "line": 9, "col": 4, "file": "GenericType.shtk"},
               "children": [
                 {
                   "type": "EXPRESSION",
-                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 11, "file": "GenericType.shtk"},
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "GenericType.shtk"},
                   "children": [
                     {
                       "type": "TERM",
-                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 11, "file": "GenericType.shtk"},
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "GenericType.shtk"},
                       "children": [
                         {
                           "type": "LITERAL",
-                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 5, "col": 11, "file": "GenericType.shtk"},
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 9, "col": 11, "file": "GenericType.shtk"},
                           "children": [
                             
                           ]

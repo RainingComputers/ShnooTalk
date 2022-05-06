@@ -55,21 +55,13 @@ enumList = "enum" "[" identifier {"," identifier} "]"
 
 def = "def" identifier (literal | stringLiteral)
 
-identifierWithOptionalSubscript = identifier {"[" (literalSubscriptOnly? literal : expression)  "]"}
-
-identifierWithPointerStar = identifier "*"
-
-identifierWithEmptySubscript = identifier "[]"
-
-identifierWithQualidentAndSubscript = identifierWithOptionalSubscript<false> {"." identifierWithOptionalSubscript<false>}
-
 genericParams = "[" typeDefinition {"," typeDefinition} "]"
 
-identifierWithGeneric = identifier genericParams
+typeModifier = "*" | "[]" | genericParams | { "[" intLiteral "]" }
 
 moduleQualident = {identifier "::"}
 
-typeDefinition = moduleQualident (identifierWithOptionalSubscript<true> | identifierWithPointerStar | identifierWithEmptySubscripts | identifierWithGeneric)
+typeDefinition = moduleQualident identifier typeModifier
 
 identifierDeclaration = identifier ":" typeDefinition
 
@@ -118,6 +110,10 @@ make = "make" "(" typeDefinition {"," expression}  ")"
 addr = "addr" "(" expression ")"
 
 initializerList = "[" expression {"," expression} "]"
+
+identifierWithSubscript = identifier {"[" expression "]"}
+
+identifierWithQualidentAndSubscript = identifierWithSubscript {"." identifierWithSubscript}
 
 term = sizeof
      | make
