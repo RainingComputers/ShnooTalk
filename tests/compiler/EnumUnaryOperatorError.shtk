@@ -1,0 +1,8 @@
+enum Greetings {hello, hi}
+
+fn main() -> int
+{
+    var a: Greetings = -hi
+
+    return 0
+}

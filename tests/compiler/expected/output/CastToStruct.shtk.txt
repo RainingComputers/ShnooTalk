@@ -1,8 +1,8 @@
 MODULE CastToStruct.shtk
-ERROR in Line 5 Col 18
+ERROR in Line 7 Col 18
 
-    var a: int = Vector`0
+    var a: int = Foobar`0
                  ^
 Cannot cast to struct
 
-CastToStruct.shtk:5:17
+CastToStruct.shtk:7:17

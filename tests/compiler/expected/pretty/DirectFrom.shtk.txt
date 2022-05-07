@@ -6,16 +6,14 @@
                 "icode": [
                         int temp9 = cast autoInt 1
                         pass int temp9, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp12 = cast autoInt 1
-                        pass int temp12, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        void calleeReturnValue15 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp24 = cast autoInt 2
-                        pass int temp24, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp27 = cast autoInt 0
-                        pass int temp27, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        void calleeReturnValue30 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp35 = cast autoInt 0
-                        int returnValue33 = equal int temp35
+                        pass enum 1, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        void calleeReturnValue14 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp23 = cast autoInt 2
+                        pass int temp23, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        pass enum 0, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        void calleeReturnValue28 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp33 = cast autoInt 0
+                        int returnValue31 = equal int temp33
                         return
                 ]
             }
@@ -26,8 +24,7 @@
         "functions": {
             "_fn_TestModules_Digital_shtk_digitalWrite": {
                 "icode": [
-                        int temp8 = cast autoInt 0
-                        flag = isEqual int val, int temp8
+                        flag = isEqual enum val, enum 0
                         if(not flag) goto _if_false_l5_c4
                         printString stringData _str_TestModules_Digital_shtk__l5_c27
                         space

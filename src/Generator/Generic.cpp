@@ -10,7 +10,7 @@ std::string typeDescriptionToString(const icode::TypeDescription& typeDescriptio
 {
     std::string typeDescString = typeDescription.dtypeName;
 
-    if (typeDescription.isStruct())
+    if (!typeDescription.isPrimitiveType())
         typeDescString = typeDescription.moduleName + "@" + typeDescString;
 
     if (typeDescription.isPointer())

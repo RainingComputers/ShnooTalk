@@ -1,6 +1,6 @@
-enum [LOW, HIGH]
+enum Signal {LOW, HIGH}
 
-fn digitalWrite(pin:int, val:int)
+fn digitalWrite(pin: int, val:Signal)
 {
     if(val == LOW) println("Pin", pin, "low")
     else println("Pin", pin, "high")

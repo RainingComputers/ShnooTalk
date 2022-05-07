@@ -4,10 +4,23 @@
         "uses": [],
         "aliases": {
         },
-        "enumerations": {
-            "ONE": 1,
-            "TWO": 2,
-            "ZERO": 0
+        "definedEnumsTypes": ["Num"],
+        "enums": {
+            "ONE": {
+                "dtypeName": "Num",
+                "value": 1,
+                "moduleName": "Enum.shtk"
+            },
+            "TWO": {
+                "dtypeName": "Num",
+                "value": 2,
+                "moduleName": "Enum.shtk"
+            },
+            "ZERO": {
+                "dtypeName": "Num",
+                "value": 0,
+                "moduleName": "Enum.shtk"
+            }
         },
         "intDefines": {
             "NULL": 0,

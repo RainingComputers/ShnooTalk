@@ -1,0 +1,8 @@
+enum Colours {RED, GREEN, BLUE}
+
+fn main() -> int
+{
+    var a: uint = RED
+
+    return 0
+}

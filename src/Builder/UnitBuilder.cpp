@@ -39,6 +39,17 @@ Unit UnitBuilder::unitFromFloatLiteral(double value)
     return Unit(typeDescription, op);
 }
 
+Unit UnitBuilder::unitFromEnum(const EnumDescription& enumDescription)
+{
+    Operand op = opBuilder.createIntLiteralOperand(ENUM, enumDescription.value);
+    TypeDescription typeDescription = typeDescriptionFromDataType(ENUM);
+
+    typeDescription.dtypeName = enumDescription.dtypeName;
+    typeDescription.moduleName = enumDescription.moduleName;
+
+    return Unit(typeDescription, op);
+}
+
 Unit UnitBuilder::unitFromTypeDescription(const TypeDescription& typeDescription, const std::string& name)
 {
     Operand op = opBuilder.operandFromTypeDescription(typeDescription, name);

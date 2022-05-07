@@ -1,5 +1,5 @@
-enum [LED_ONE, LED_TWO]
-enum [LED_ONE, LED_TWO]
+enum Pins1 {LED_ONE, LED_TWO}
+enum Pins2 {LED_ONE, LED_TWO}
 
 fn main() -> int
 {

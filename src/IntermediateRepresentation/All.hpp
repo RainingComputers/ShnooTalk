@@ -5,3 +5,4 @@
 #include "Operand.hpp"
 #include "StructDescription.hpp"
 #include "TypeDescription.hpp"
+#include "EnumDescription.hpp"

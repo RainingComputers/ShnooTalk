@@ -11,7 +11,7 @@ namespace icode
 
     bool isUnsignedInteger(DataType dtype)
     {
-        return (dtype == UI8 || dtype == UI16 || dtype == UI32 || dtype == UI64);
+        return (dtype == UI8 || dtype == UI16 || dtype == UI32 || dtype == UI64 || dtype == ENUM);
     }
 
     bool isInteger(DataType dtype)
@@ -24,11 +24,18 @@ namespace icode
         return (dtype == F32 || dtype == F64 || dtype == AUTO_FLOAT);
     }
 
+    bool isPrimitive(DataType dtype)
+    {
+        return dtype == I8 || dtype == I16 || dtype == I32 || dtype == I64 || dtype == UI8 || dtype == UI16 ||
+               dtype == UI32 || dtype == UI64 || dtype == F32 || dtype == F64 || dtype == VOID || dtype == AUTO_INT ||
+               dtype == AUTO_FLOAT;
+    }
+
     std::string dataTypeToString(const DataType dtype)
     {
-        static std::string dataTypeStringsArray[] = { "byte",    "ubyte",     "short",  "ushort", "int",
-                                                      "uint",    "long",      "ulong",  "float",  "double",
-                                                      "autoInt", "autoFloat", "struct", "void" };
+        static std::string dataTypeStringsArray[] = { "byte",    "ubyte",     "short", "ushort", "int",
+                                                      "uint",    "long",      "ulong", "float",  "double",
+                                                      "autoInt", "autoFloat", "enum",  "struct", "void" };
 
         return dataTypeStringsArray[dtype];
     }
@@ -43,8 +50,8 @@ namespace icode
             { "float", icode::F32 },        { "double", icode::F64 },
             { "char", icode::UI8 },         { "bool", icode::I8 },
             { "autoInt", icode::AUTO_INT }, { "autoFloat", icode::AUTO_FLOAT },
-            { "struct", icode::STRUCT },    { "void", icode::VOID }
-
+            { "enum", icode::ENUM },        { "struct", icode::STRUCT },
+            { "void", icode::VOID }
         };
 
         if (dataTypeNames.find(dtypeName) != dataTypeNames.end())
@@ -55,7 +62,7 @@ namespace icode
 
     unsigned int getDataTypeSize(const DataType dtype)
     {
-        const unsigned int dataTypeSizesArray[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 8, 8, 0, 0 };
+        const unsigned int dataTypeSizesArray[] = { 1, 1, 2, 2, 4, 4, 8, 8, 4, 8, 8, 8, 4, 0, 0 };
         return dataTypeSizesArray[dtype];
     }
 

@@ -62,6 +62,8 @@ namespace icode
         bool isStringLtrl() const;
         bool isIncompleteType() const;
 
+        bool isPrimitiveType() const;
+        bool isEnum() const;
         bool isStruct() const;
         bool isArray() const;
         bool isStructOrArray() const;

@@ -19,6 +19,7 @@ namespace icode
         F64,
         AUTO_INT,
         AUTO_FLOAT,
+        ENUM,
         STRUCT,
         VOID
     };
@@ -27,6 +28,7 @@ namespace icode
     bool isUnsignedInteger(DataType);
     bool isInteger(DataType);
     bool isFloat(DataType);
+    bool isPrimitive(DataType);
 
     std::string dataTypeToString(const DataType dtype);
     DataType stringToDataType(const std::string& dtypeName);

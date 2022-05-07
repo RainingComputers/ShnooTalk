@@ -1,4 +1,4 @@
-enum [LED0, LED1]
+enum Pins {LED0, LED1}
 
 fn main()
 {

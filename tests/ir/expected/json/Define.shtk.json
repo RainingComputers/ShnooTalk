@@ -4,7 +4,8 @@
         "uses": [],
         "aliases": {
         },
-        "enumerations": {
+        "definedEnumsTypes": [],
+        "enums": {
         },
         "intDefines": {
             "MINUS_ONE": -1,

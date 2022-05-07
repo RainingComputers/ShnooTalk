@@ -51,7 +51,7 @@ use = "use" stringLiteral "as" identifier
 
 from = "from" (identifier | stringLiteral) "use" identifier {"," identifier}
 
-enumList = "enum" "[" identifier {"," identifier} "]"
+enumList = "enum" identifier "{" identifier {"," identifier} "}"
 
 def = "def" identifier (literal | stringLiteral)
 

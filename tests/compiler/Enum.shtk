@@ -2,13 +2,13 @@ use "TestModules/Digital.shtk" as digital
 
 from digital use LOW, HIGH
 
-enum [LED0, LED1, LED2]
+enum Pins {LED0, LED1, LED2}
 
 fn main() -> int
 {
-    digital::digitalWrite(LED0, LOW)
-    digital::digitalWrite(LED1, HIGH)
-    digital::digitalWrite(LED2, HIGH)
+    digital::digitalWrite(int`LED0, LOW)
+    digital::digitalWrite(int`LED1, HIGH)
+    digital::digitalWrite(int`LED2, HIGH)
 
     return 0
 }

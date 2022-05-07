@@ -25,6 +25,9 @@ void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& f
     formatStringsContext.dataTypeFormatStringsMap[icode::AUTO_FLOAT] =
         formatStringsContext.dataTypeFormatStringsMap[icode::F64];
 
+    formatStringsContext.dataTypeFormatStringsMap[icode::ENUM] =
+        formatStringsContext.dataTypeFormatStringsMap[icode::UI32];
+
     formatStringsContext.charInputFormatString =
         ctx.builder->CreateGlobalString(" %c", "charinpfmt", 0U, ctx.LLVMModule.get());
 

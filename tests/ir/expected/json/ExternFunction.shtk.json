@@ -4,7 +4,8 @@
         "uses": [],
         "aliases": {
         },
-        "enumerations": {
+        "definedEnumsTypes": [],
+        "enums": {
         },
         "intDefines": {
             "NULL": 0,
@@ -29,9 +30,9 @@
             "sin": {
                 "moduleName": "ExternFunction.shtk",
                 "parameters": ["num"],
-                "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "functionReturnType": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
+                    "num": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
                 },
                 "icode": [
                     

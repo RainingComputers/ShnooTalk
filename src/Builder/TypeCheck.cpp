@@ -31,7 +31,7 @@ bool isSameDim(TypeDescription type1, TypeDescription type2)
 
 bool isSameTypeDescription(const TypeDescription& type1, const TypeDescription& type2)
 {
-    if (type1.dtype == STRUCT || type2.dtype == STRUCT)
+    if (!type1.isPrimitiveType() || !type2.isPrimitiveType())
         return (type1.dtypeName == type2.dtypeName && isSameDim(type1, type2) && type1.moduleName == type2.moduleName);
 
     return (dataTypeIsEqual(type1.dtype, type2.dtype) && isSameDim(type1, type2));

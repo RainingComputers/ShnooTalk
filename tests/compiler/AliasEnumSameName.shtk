@@ -1,6 +1,6 @@
 use "TestModules/Math.shtk" as math
 
-enum [math, phsysics, chemistry, csc]
+enum Subjects {math, phsysics, chemistry, csc}
 
 fn main() -> int
 {

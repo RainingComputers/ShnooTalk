@@ -47,12 +47,12 @@ Unit cast(generator::GeneratorContext& ctx, const Node& root)
 {
     Unit termToCast = term(ctx, root.children[0]);
 
-    DataType destinationDataType = stringToDataType(root.tok.toString());
+    DataType destinationDataType = ctx.ir.moduleBuilder.tokenToDataType(root.tok);
 
     if (destinationDataType == STRUCT)
         ctx.console.compileErrorOnToken("Cannot cast to struct", root.tok);
 
-    if (termToCast.isArray() || termToCast.isStruct())
+    if (termToCast.isStructOrArray())
         ctx.console.compileErrorOnToken("Cannot cast struct or array", root.tok);
 
     return ctx.ir.functionBuilder.castOperator(termToCast, destinationDataType);
@@ -100,6 +100,9 @@ Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
 
     if (unaryOperatorTerm.isStruct())
         ctx.console.compileErrorOnToken("Unary operator not allowed on struct", root.tok);
+
+    if (unaryOperatorTerm.isEnum())
+        ctx.console.compileErrorOnToken("Unary operator not allowed on enum", root.tok);
 
     if (!unaryOperatorTerm.isIntegerType() && root.tok.getType() == token::NOT)
         ctx.console.compileErrorOnToken("Bitwise operation only allowed on integer types", root.tok);

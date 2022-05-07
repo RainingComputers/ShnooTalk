@@ -114,6 +114,11 @@ bool Unit::isFloatType() const
     return typeDescription.isFloatType();
 }
 
+bool Unit::isEnum() const
+{
+    return typeDescription.isEnum();
+}
+
 bool Unit::isStruct() const
 {
     return typeDescription.isStruct();

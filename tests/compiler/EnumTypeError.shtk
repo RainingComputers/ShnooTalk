@@ -1,0 +1,9 @@
+enum rgb {RED, GREEN, BLUE}
+enum cmyk {CYAN, MAGENTA, YELLOW, BLACK}
+
+fn main() -> int
+{
+    var a: rgb = CYAN
+
+    return 0
+}

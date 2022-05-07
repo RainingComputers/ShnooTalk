@@ -1,0 +1,8 @@
+MODULE EnumIntTypeError.shtk
+ERROR in Line 5 Col 19
+
+    var a: uint = RED
+                  ^
+Type error, did not expect EnumIntTypeError.shtk::Colours, expected uint
+
+EnumIntTypeError.shtk:5:18

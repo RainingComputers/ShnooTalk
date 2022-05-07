@@ -1,8 +1,8 @@
 MODULE EnumAlreadyExistsError.shtk
-ERROR in Line 2 Col 7
+ERROR in Line 2 Col 13
 
-enum [LED_ONE, LED_TWO]
-      ^
+enum Pins2 {LED_ONE, LED_TWO}
+            ^
 Symbol already exists
 
-EnumAlreadyExistsError.shtk:2:6
+EnumAlreadyExistsError.shtk:2:12

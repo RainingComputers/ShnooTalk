@@ -1,6 +1,8 @@
+struct Foobar {}
+
 fn main() -> int
 {
     return 0
 
-    var a: int = Vector`0
+    var a: int = Foobar`0
 }

@@ -107,6 +107,7 @@ namespace pp
     {
         jsonp.begin();
         jsonp.printString("dtype", icode::dataTypeToString(typeDescription.dtype));
+        jsonp.printString("dtypeName", typeDescription.dtypeName);
         jsonp.printNumber("dtypeSize", typeDescription.dtypeSize);
         jsonp.printNumber("size", typeDescription.size);
         jsonp.printString("moduleName", typeDescription.moduleName);
@@ -125,6 +126,30 @@ namespace pp
         {
             FlatJSONPrinter typePrinter = jsonp.beginNested(pair.first, true);
             printTypeDescription(pair.second, typePrinter);
+        }
+
+        jsonp.end();
+    }
+
+    void printEnumDescription(const icode::EnumDescription& enumDescription, FlatJSONPrinter& jsonp)
+    {
+        jsonp.begin();
+
+        jsonp.printString("dtypeName", enumDescription.dtypeName);
+        jsonp.printNumber("value", enumDescription.value);
+        jsonp.printString("moduleName", enumDescription.moduleName);
+
+        jsonp.end();
+    }
+
+    void printEnumDescriptionMap(const std::map<std::string, icode::EnumDescription>& enumsMap, FlatJSONPrinter& jsonp)
+    {
+        jsonp.begin();
+
+        for (auto pair : enumsMap)
+        {
+            FlatJSONPrinter enumPrinter = jsonp.beginNested(pair.first);
+            printEnumDescription(pair.second, enumPrinter);
         }
 
         jsonp.end();
@@ -214,8 +239,10 @@ namespace pp
         FlatJSONPrinter aliasesPrinter = jsonp.beginNested("aliases");
         printStringMap(moduleDescription.aliases, aliasesPrinter);
 
-        FlatJSONPrinter enumPrinter = jsonp.beginNested("enumerations");
-        printNumberMap<int>(moduleDescription.enumerations, enumPrinter);
+        jsonp.printStringArray("definedEnumsTypes", moduleDescription.definedEnumsTypes);
+
+        FlatJSONPrinter enumPrinter = jsonp.beginNested("enums");
+        printEnumDescriptionMap(moduleDescription.enums, enumPrinter);
 
         FlatJSONPrinter intDefinePrinter = jsonp.beginNested("intDefines");
         printNumberMap<long>(moduleDescription.intDefines, intDefinePrinter);

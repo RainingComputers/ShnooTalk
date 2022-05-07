@@ -15,6 +15,7 @@ Type* dataTypeToLLVMType(const ModuleContext& ctx, const icode::DataType dtype)
             return Type::getInt16Ty(*ctx.context);
         case icode::I32:
         case icode::UI32:
+        case icode::ENUM:
             return Type::getInt32Ty(*ctx.context);
         case icode::I64:
         case icode::UI64:

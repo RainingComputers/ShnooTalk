@@ -34,12 +34,15 @@ class ModuleBuilder
 
     void createUseNoAlias(const Token& pathToken);
 
+    void createEnumType(const Token& nameToken);
 public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
 
     void setWorkingModule(icode::ModuleDescription* moduleDescription);
 
     void registerIncompleteType(const Token& typeToken);
+
+    icode::DataType tokenToDataType(const Token& token);
 
     icode::TypeDescription createVoidTypeDescription();
 
@@ -55,7 +58,7 @@ public:
 
     void createStringDefine(const Token& nameToken, const Token& valueToken);
 
-    void createEnum(const std::vector<Token>& enums);
+    void createEnum(const Token& nameToken, const std::vector<Token>& enums);
 
     void createFunction(const Token& nameToken,
                         const icode::TypeDescription& returnType,

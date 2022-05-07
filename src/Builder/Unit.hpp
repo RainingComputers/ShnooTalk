@@ -40,13 +40,13 @@ public:
     bool isIntegerType() const;
     bool isFloatType() const;
 
+    bool isEnum() const;
     bool isStruct() const;
     bool isArray() const;
     bool isStructOrArray() const;
     bool isMultiDimArray() const;
     bool isArrayWithFixedDim() const;
 
-    bool isEnum() const;
     bool isLocal() const;
     bool isGlobal() const;
     bool isLocalOrGlobal() const;

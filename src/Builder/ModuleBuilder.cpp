@@ -23,6 +23,16 @@ void ModuleBuilder::registerIncompleteType(const Token& typeName)
     rootModule.incompleteTypes[typeName.toString()] = rootModule.name;
 }
 
+DataType ModuleBuilder::tokenToDataType(const Token& token)
+{
+    const std::string& tokenString = token.toString();
+
+    if (workingModule->enumTypeExists(tokenString))
+        return ENUM;
+
+    return stringToDataType(tokenString);
+}
+
 TypeDescription ModuleBuilder::createVoidTypeDescription()
 {
     TypeDescription voidTypeDescription;
@@ -76,7 +86,7 @@ TypeInformation ModuleBuilder::getTypeInformation(const Token& dataTypeToken, Da
 
 TypeDescription ModuleBuilder::createTypeDescription(const Token& dataTypeToken)
 {
-    icode::DataType dtype = stringToDataType(dataTypeToken.toString());
+    icode::DataType dtype = tokenToDataType(dataTypeToken);
 
     TypeInformation typeInfo = getTypeInformation(dataTypeToken, dtype);
 
@@ -158,14 +168,28 @@ void ModuleBuilder::createStringDefine(const Token& nameToken, const Token& valu
     rootModule.stringDefines[nameToken.toString()] = key;
 }
 
-void ModuleBuilder::createEnum(const std::vector<Token>& enums)
+void ModuleBuilder::createEnumType(const Token& nameToken)
 {
+    const std::string enumTypeName = nameToken.toString();
+
+    if (rootModule.symbolExists(enumTypeName))
+        console.compileErrorOnToken("Symbol already exists", nameToken);
+
+    rootModule.definedEnumsTypes.push_back(enumTypeName);
+}
+
+void ModuleBuilder::createEnum(const Token& nameToken, const std::vector<Token>& enums)
+{
+    createEnumType(nameToken);
+
     for (size_t i = 0; i < enums.size(); i += 1)
     {
-        if (rootModule.symbolExists(enums[i].toString()))
+        const std::string enumName = enums[i].toString();
+
+        if (rootModule.symbolExists(enumName))
             console.compileErrorOnToken("Symbol already exists", enums[i]);
 
-        rootModule.enumerations[enums[i].toString()] = i;
+        rootModule.enums[enumName] = { nameToken.toString(), long(i), rootModule.name };
     }
 }
 
@@ -365,7 +389,7 @@ void ModuleBuilder::createFrom(const std::string& moduleName, const Token& symbo
     FunctionDescription funcDescReturnValue;
     long intDefineReturnValue;
     double floatDefineReturnValue;
-    int enumReturnValue;
+    EnumDescription enumReturnValue;
     std::string stringDataKeyReturnValue;
     std::string importModuleNameReturnValue;
 
@@ -405,7 +429,7 @@ void ModuleBuilder::createFrom(const std::string& moduleName, const Token& symbo
     }
 
     else if (externalModule->getEnum(symbolString, enumReturnValue))
-        rootModule.enumerations[symbolString] = enumReturnValue;
+        rootModule.enums[symbolString] = enumReturnValue;
 
     else if (externalModule->getModuleNameFromAlias(symbolString, importModuleNameReturnValue))
     {

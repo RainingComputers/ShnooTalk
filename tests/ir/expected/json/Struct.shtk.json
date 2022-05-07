@@ -4,7 +4,8 @@
         "uses": [],
         "aliases": {
         },
-        "enumerations": {
+        "definedEnumsTypes": [],
+        "enums": {
         },
         "intDefines": {
             "NULL": 0,
@@ -29,9 +30,9 @@
             "foobar": {
                 "fieldNames": ["a", "b", "c"],
                 "structFields": {
-                    "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
-                    "b": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
-                    "c": {"dtype": "float", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 12, "dimensions": [], "dimTypes": [], "properties": []}
+                    "a": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                    "b": {"dtype": "struct", "dtypeName": "point", "dtypeSize": 8, "size": 8, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
+                    "c": {"dtype": "float", "dtypeName": "float", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 12, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 16,
                 "moduleName": "Struct.shtk"
@@ -39,8 +40,8 @@
             "point": {
                 "fieldNames": ["x", "y"],
                 "structFields": {
-                    "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
-                    "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
+                    "x": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                    "y": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 8,
                 "moduleName": "Struct.shtk"

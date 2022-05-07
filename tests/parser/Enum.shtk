@@ -1,2 +1,2 @@
-enum [OnlyOne]
-enum [LED0, LED1, LED2]
+enum Only {OnlyOne}
+enum Pins {LED0, LED1, LED2}

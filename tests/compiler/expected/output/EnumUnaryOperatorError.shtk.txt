@@ -1,0 +1,8 @@
+MODULE EnumUnaryOperatorError.shtk
+ERROR in Line 5 Col 24
+
+    var a: Greetings = -hi
+                       ^
+Unary operator not allowed on enum
+
+EnumUnaryOperatorError.shtk:5:23

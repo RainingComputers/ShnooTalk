@@ -99,7 +99,7 @@ namespace pp
     {
         icode::TypeDescription modifiedFound = found;
 
-        if (icode::dataTypeIsEqual(found.dtype, expected.dtype) && found.dtype != icode::STRUCT)
+        if (icode::dataTypeIsEqual(found.dtype, expected.dtype) && found.isPrimitiveType())
             modifiedFound.dtypeName = expected.dtypeName;
 
         if (expected.isPointer() && modifiedFound.dimensions.size() <= 1)

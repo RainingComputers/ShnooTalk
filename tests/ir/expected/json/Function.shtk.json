@@ -4,7 +4,8 @@
         "uses": [],
         "aliases": {
         },
-        "enumerations": {
+        "definedEnumsTypes": [],
+        "enums": {
         },
         "intDefines": {
             "NULL": 0,
@@ -34,9 +35,9 @@
             "_fn_Function_shtk_another": {
                 "moduleName": "Function.shtk",
                 "parameters": ["b"],
-                "functionReturnType": {"dtype": "void", "dtypeSize": 0, "size": 0, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "functionReturnType": {"dtype": "void", "dtypeName": "void", "dtypeSize": 0, "size": 0, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [1], "dimTypes": ["allocatedFlexibleDim"], "properties": ["isPointer", "isParameter", "isLocal"]}
+                    "b": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [1], "dimTypes": ["allocatedFlexibleDim"], "properties": ["isPointer", "isParameter", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
@@ -45,9 +46,9 @@
             "_fn_Function_shtk_bar": {
                 "moduleName": "Function.shtk",
                 "parameters": ["a"],
-                "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
+                "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
                 "symbols": {
-                    "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isParameter", "isLocal"]}
+                    "a": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isParameter", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "pointerAssign", "op1": {"type": "returnPointer", "id": 9, "dtype": "int"}, "op2": {"type": "var", "id": 10, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
@@ -57,12 +58,12 @@
             "_fn_Function_shtk_foo": {
                 "moduleName": "Function.shtk",
                 "parameters": ["a", "b", "c", "d"],
-                "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "a": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]},
-                    "b": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isParameter", "isLocal"]},
-                    "c": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer", "isParameter", "isLocal"]},
-                    "d": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isPointer", "isParameter", "isLocal"]}
+                    "a": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]},
+                    "b": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isParameter", "isLocal"]},
+                    "c": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer", "isParameter", "isLocal"]},
+                    "d": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isPointer", "isParameter", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},

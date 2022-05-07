@@ -1,1 +1,1 @@
-enum [ZERO, ONE, TWO]
+enum Num {ZERO, ONE, TWO}

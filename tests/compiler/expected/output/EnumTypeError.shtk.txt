@@ -1,0 +1,8 @@
+MODULE EnumTypeError.shtk
+ERROR in Line 6 Col 18
+
+    var a: rgb = CYAN
+                 ^
+Type error, did not expect EnumTypeError.shtk::cmyk, expected EnumTypeError.shtk::rgb
+
+EnumTypeError.shtk:6:17

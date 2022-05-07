@@ -19,6 +19,7 @@
 - Added `in` operator
 - Added subscript operator overloading
 - Added support for arrays and pointers of generic type
+- Improved enums
 
 # 0.1.1-alpha
 

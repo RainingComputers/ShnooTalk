@@ -1,0 +1,10 @@
+enum bar {one, two}
+
+fn foobar(a: int) {}
+
+fn main() -> int
+{
+    foobar(one)
+
+    return 0
+}

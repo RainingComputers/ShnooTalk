@@ -5,7 +5,8 @@
         "aliases": {
             "Random": "TestModules/Random.shtk"
         },
-        "enumerations": {
+        "definedEnumsTypes": [],
+        "enums": {
         },
         "intDefines": {
             "NULL": 0,
@@ -38,10 +39,10 @@
             "main": {
                 "moduleName": "Strings.shtk",
                 "parameters": [],
-                "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "Strings.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Strings.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "a": {"dtype": "ubyte", "dtypeSize": 1, "size": 200, "moduleName": "Strings.shtk", "offset": 0, "dimensions": [200], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]},
-                    "b": {"dtype": "ubyte", "dtypeSize": 1, "size": 20, "moduleName": "Strings.shtk", "offset": 0, "dimensions": [20], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]}
+                    "a": {"dtype": "ubyte", "dtypeName": "char", "dtypeSize": 1, "size": 200, "moduleName": "Strings.shtk", "offset": 0, "dimensions": [200], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]},
+                    "b": {"dtype": "ubyte", "dtypeName": "char", "dtypeSize": 1, "size": 20, "moduleName": "Strings.shtk", "offset": 0, "dimensions": [20], "dimTypes": ["fixedDim"], "properties": ["isMutable", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "ubyte"}, "op2": {"type": "var", "id": 3, "name": "a", "dtype": "ubyte"}, "op3": {"type": "none"}},
@@ -65,10 +66,23 @@
         "aliases": {
             "Sin": "TestModules/Sin.shtk"
         },
-        "enumerations": {
-            "LED0": 0,
-            "LED1": 1,
-            "LED2": 2
+        "definedEnumsTypes": ["Pins"],
+        "enums": {
+            "LED0": {
+                "dtypeName": "Pins",
+                "value": 0,
+                "moduleName": "TestModules/Random.shtk"
+            },
+            "LED1": {
+                "dtypeName": "Pins",
+                "value": 1,
+                "moduleName": "TestModules/Random.shtk"
+            },
+            "LED2": {
+                "dtypeName": "Pins",
+                "value": 2,
+                "moduleName": "TestModules/Random.shtk"
+            }
         },
         "intDefines": {
             "NULL": 0,
@@ -96,8 +110,8 @@
             "Point": {
                 "fieldNames": ["x", "y"],
                 "structFields": {
-                    "x": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
-                    "y": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
+                    "x": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                    "y": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 8,
                 "moduleName": "TestModules/Random.shtk"
@@ -107,9 +121,9 @@
             "extfoobar": {
                 "moduleName": "TestModules/Random.shtk",
                 "parameters": ["num"],
-                "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "num": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
+                    "num": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
                 },
                 "icode": [
                     
@@ -123,10 +137,10 @@
             "_fn_TestModules_Random_shtk_foobar": {
                 "moduleName": "TestModules/Random.shtk",
                 "parameters": ["foo", "bar"],
-                "functionReturnType": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "bar": {"dtype": "struct", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]},
-                    "foo": {"dtype": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
+                    "bar": {"dtype": "struct", "dtypeName": "Point", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]},
+                    "foo": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
                 },
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
@@ -141,7 +155,8 @@
         "uses": [],
         "aliases": {
         },
-        "enumerations": {
+        "definedEnumsTypes": [],
+        "enums": {
         },
         "intDefines": {
             "NULL": 0,
@@ -166,9 +181,9 @@
             "sin": {
                 "moduleName": "TestModules/Sin.shtk",
                 "parameters": ["num"],
-                "functionReturnType": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "functionReturnType": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
-                    "num": {"dtype": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
+                    "num": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
                 },
                 "icode": [
                     

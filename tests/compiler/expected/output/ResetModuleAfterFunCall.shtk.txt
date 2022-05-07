@@ -1,2 +1,8 @@
-Pin 0 low
-This works
+MODULE ResetModuleAfterFunCall.shtk
+ERROR in Line 11 Col 30
+
+    digital::digitalWrite(0, 0)
+                             ^
+Type error, did not expect Signal, expected TestModules/Digital.shtk::Signal
+
+ResetModuleAfterFunCall.shtk:11:29

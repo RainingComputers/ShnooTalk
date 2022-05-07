@@ -105,6 +105,16 @@ namespace icode
         return checkProperty(IS_INCOMPLETE_TYPE);
     }
 
+    bool TypeDescription::isPrimitiveType() const
+    {
+        return isPrimitive(dtype);
+    }
+
+    bool TypeDescription::isEnum() const
+    {
+        return dtype == ENUM;
+    }
+
     bool TypeDescription::isStruct() const
     {
         return dtype == STRUCT;

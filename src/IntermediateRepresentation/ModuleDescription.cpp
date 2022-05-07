@@ -35,9 +35,9 @@ namespace icode
         return getMapElement<std::string, FunctionDescription>(externFunctions, name, returnValue);
     }
 
-    bool ModuleDescription::getEnum(const std::string& name, int& returnValue)
+    bool ModuleDescription::getEnum(const std::string& name, EnumDescription& returnValue)
     {
-        return getMapElement<std::string, int>(enumerations, name, returnValue);
+        return getMapElement<std::string, EnumDescription>(enums, name, returnValue);
     }
 
     bool ModuleDescription::getIntDefine(const std::string& name, long& returnValue)
@@ -70,6 +70,11 @@ namespace icode
         return getMapElement<std::string, std::string>(incompleteFunctions, typeName, returnValue);
     }
 
+    bool ModuleDescription::enumTypeExists(const std::string& name)
+    {
+        return itemInList(name, definedEnumsTypes);
+    }
+
     bool ModuleDescription::useExists(const std::string& name)
     {
         return itemInList(name, uses);
@@ -83,7 +88,7 @@ namespace icode
     bool ModuleDescription::symbolExists(const std::string& name)
     {
         return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
-               stringToDataType(name) != STRUCT || enumerations.find(name) != enumerations.end() ||
+               enumTypeExists(name) || stringToDataType(name) != STRUCT || enums.find(name) != enums.end() ||
                globals.find(name) != globals.end() || intDefines.find(name) != intDefines.end() ||
                floatDefines.find(name) != floatDefines.end() || stringDefines.find(name) != stringDefines.end() ||
                externFunctions.find(name) != externFunctions.end();

@@ -91,7 +91,7 @@ make test
 - [x] extern "C" to prevent name mangling functions
 - [x] Decide names and defaults for primitive data types
 - [x] Arrays and pointers of generic types
-- [ ] Proper enums
+- [x] Proper enums
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend

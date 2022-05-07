@@ -4,9 +4,12 @@ void enumList(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
+    ctx.consume();
+
+    ctx.expect(token::IDENTIFIER);
     ctx.addNodeMakeCurrent(node::ENUM);
 
-    ctx.expect(token::OPEN_SQUARE);
+    ctx.expect(token::OPEN_BRACE);
 
     do
     {
@@ -16,7 +19,7 @@ void enumList(parser::ParserContext& ctx)
 
     } while (ctx.accept(token::COMMA));
 
-    ctx.expect(token::CLOSE_SQUARE);
+    ctx.expect(token::CLOSE_BRACE);
     ctx.consume();
 
     ctx.popNode();

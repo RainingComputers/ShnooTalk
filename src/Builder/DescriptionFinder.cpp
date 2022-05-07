@@ -74,13 +74,13 @@ bool DescriptionFinder::getGlobal(const Token& nameToken, Unit& returnValue)
 
 bool DescriptionFinder::getEnum(const Token& nameToken, Unit& returnValue)
 {
-    int enumValue;
+    EnumDescription enumDescription;
 
-    if (!workingModule->getEnum(nameToken.toString(), enumValue))
-        if (!rootModule.getEnum(nameToken.toString(), enumValue))
+    if (!workingModule->getEnum(nameToken.toString(), enumDescription))
+        if (!rootModule.getEnum(nameToken.toString(), enumDescription))
             return false;
 
-    returnValue = unitBuilder.unitFromIntLiteral(enumValue);
+    returnValue = unitBuilder.unitFromEnum(enumDescription);
     return true;
 }
 

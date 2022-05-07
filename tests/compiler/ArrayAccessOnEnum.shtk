@@ -1,6 +1,6 @@
-enum [LED0, LED1]
+enum Pin {LED0, LED1}
 
 fn main()
 {
-    var a:int = LED0[2]
+    var a: Pin = LED0[2]
 }
