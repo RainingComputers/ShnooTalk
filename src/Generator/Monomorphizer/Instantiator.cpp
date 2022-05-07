@@ -269,15 +269,12 @@ void stripModulesFromTypeNode(Node& root)
     root.children.erase(root.children.begin(), root.children.begin() + numModuleNodes);
 }
 
-void stripStripGenericTypeParamsFromTypeNode(Node& root)
+void stripGenericTypeParamsFromTypeNode(Node& root)
 {
-    int genericTypeParamBegin = 0;
-
-    while (!root.isNthChild(node::GENERIC_TYPE_PARAM, genericTypeParamBegin) &&
-           genericTypeParamBegin < root.children.size())
-        genericTypeParamBegin++;
-
-    root.children.erase(root.children.begin() + genericTypeParamBegin, root.children.end());
+    root.children.erase(std::remove_if(root.children.begin(),
+                                       root.children.end(),
+                                       [](const Node& node) { return node.type == node::GENERIC_TYPE_PARAM; }),
+                        root.children.end());
 }
 
 void prependModuleToTypeNode(Node& root, const std::string& alias)
@@ -301,7 +298,7 @@ void prependUseNodesInPlace(const std::vector<icode::TypeDescription>& instantia
 
         stripModulesFromTypeNode(typeNode);
         prependModuleToTypeNode(typeNode, alias);
-        stripStripGenericTypeParamsFromTypeNode(typeNode);
+        stripGenericTypeParamsFromTypeNode(typeNode);
 
         if (itemInList<std::string>(moduleName, prependedModules))
             continue;

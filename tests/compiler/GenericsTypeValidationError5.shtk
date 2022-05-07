@@ -1,0 +1,11 @@
+use "TestModules/FooGenericEmptySubs.shtk" as FooGenericEmptySubs
+from "TestModules/FooGenericSubs.shtk" use FooSubs
+
+from FooGenericEmptySubs use FooEmptySubs
+
+fn main() -> int
+{
+    var a: FooEmptySubs[FooSubs[int][]]
+
+    return 0
+}
