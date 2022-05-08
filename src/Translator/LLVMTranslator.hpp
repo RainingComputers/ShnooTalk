@@ -7,10 +7,19 @@
 
 namespace translator
 {
-    void generateLLVMModule(ModuleContext& ctx, bool release, Console& console);
+    enum Platform {
+        DEFAULT,
+        LINUX_x86_64,
+        LINUX_ARM64,
+        MACOS_x86_64,
+        MACOS_ARM64,
+        WASM32,
+        WASM64,
+    };
 
     void generateObject(icode::ModuleDescription& moduleDescription,
                         icode::StringModulesMap& modulesMap,
+                        Platform platform,
                         bool release,
                         Console& console);
 

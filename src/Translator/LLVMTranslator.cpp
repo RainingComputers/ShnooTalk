@@ -4,6 +4,7 @@
 #include "llvm/Analysis/CGSCCPassManager.h"
 #include "llvm/Analysis/LoopAnalysisManager.h"
 #include "llvm/Passes/PassBuilder.h"
+#include "llvm/Support/Host.h"
 
 #include "BranchContext.hpp"
 #include "FormatStringsContext.hpp"
@@ -14,6 +15,21 @@
 #include "LLVMTranslator.hpp"
 
 using namespace llvm;
+
+std::string getTargetTriple(translator::Platform platform)
+{
+    std::map<translator::Platform, std::string> platformTripleMap = {
+        { translator::DEFAULT, sys::getDefaultTargetTriple() },
+        { translator::LINUX_x86_64, "x86_64-linux-gnu" },
+        { translator::LINUX_ARM64, "arm64-linux-gnu" },
+        { translator::MACOS_x86_64, "x86_64-apple-darwin" },
+        { translator::MACOS_ARM64, "arm64-apple-darwin" },
+        { translator::WASM32, "wasm32" },
+        { translator::WASM64, "wasm64" }
+    };
+
+    return platformTripleMap.at(platform);
+}
 
 void optimizeModule(ModuleContext& ctx)
 {
@@ -37,7 +53,7 @@ void optimizeModule(ModuleContext& ctx)
     MPM.run(*ctx.LLVMModule, MAM);
 }
 
-void translator::generateLLVMModule(ModuleContext& ctx, bool release, Console& console)
+void generateLLVMModule(ModuleContext& ctx, bool release, Console& console)
 {
     BranchContext branchContext;
     FormatStringsContext formatStringsContext;
@@ -52,12 +68,14 @@ void translator::generateLLVMModule(ModuleContext& ctx, bool release, Console& c
 
 void translator::generateObject(icode::ModuleDescription& moduleDescription,
                                 icode::StringModulesMap& modulesMap,
+                                Platform platform,
                                 bool release,
                                 Console& console)
 {
     ModuleContext moduleContext(moduleDescription, modulesMap, console);
     generateLLVMModule(moduleContext, release, console);
-    setupPassManagerAndCreateObject(moduleContext);
+    const std::string targetTriple = getTargetTriple(platform);
+    setupPassManagerAndCreateObject(moduleContext, targetTriple);
 }
 
 std::string getLLVMModuleString(const Module& LLVMModule)

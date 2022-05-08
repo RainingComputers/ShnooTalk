@@ -10,6 +10,15 @@
 
 #include "version.hpp"
 
+static std::map<std::string, translator::Platform> platformMap = {
+    { "-linux-x86_64", translator::LINUX_x86_64 },
+    { "-linux-arm64", translator::LINUX_ARM64 },
+    { "-macos-x86_64", translator::MACOS_x86_64 },
+    { "-macos-arm64", translator::MACOS_ARM64 },
+    { "-wasm32", translator::WASM32 },
+    { "-wasm64", translator::WASM64 },
+};
+
 void printCLIUsage()
 {
     pp::println("USAGE: shtkc FILE OPTION");
@@ -28,7 +37,21 @@ void printCLIUsage()
     pp::println("    -json-ir-all     Print ShnooTalk IR recursively for all modules in json");
     pp::println("    -json-icode      Print ShnooTalk IR in JSON, but only the icode");
     pp::println("");
+    pp::println("Cross compilation options for release executable:");
+    for (const auto& pair : platformMap)
+        pp::println("    " + pair.first);
+    pp::println("");
     pp::println("Use shtkc -version for compiler version");
+}
+
+bool isValidPlatformString(const std::string& platformString)
+{
+    return platformMap.find(platformString) != platformMap.end();
+}
+
+translator::Platform getPlatformFromString(const std::string& platformString)
+{
+    return platformMap.at(platformString);
 }
 
 int phaseDriver(const std::string& moduleName, const std::string& option, Console& console)
@@ -114,7 +137,7 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
     if (option == "-c")
     {
         for (auto stringModulePair : modulesMap)
-            translator::generateObject(stringModulePair.second, modulesMap, false, console);
+            translator::generateObject(stringModulePair.second, modulesMap, translator::DEFAULT, false, console);
 
         return 0;
     }
@@ -122,7 +145,19 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
     if (option == "-release")
     {
         for (auto stringModulePair : modulesMap)
-            translator::generateObject(stringModulePair.second, modulesMap, true, console);
+            translator::generateObject(stringModulePair.second, modulesMap, translator::DEFAULT, true, console);
+
+        return 0;
+    }
+
+    if (isValidPlatformString(option))
+    {
+        for (auto stringModulePair : modulesMap)
+            translator::generateObject(stringModulePair.second,
+                                       modulesMap,
+                                       getPlatformFromString(option),
+                                       true,
+                                       console);
 
         return 0;
     }

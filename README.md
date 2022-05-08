@@ -128,6 +128,7 @@ make test
 - [ ] Struct construction using `Foobar{}` syntax
 - [ ] `panic()` function
 - [ ] Upgrade to using opaque pointers (LLVM IR)
+- [ ] Add linker
 
 *Advanced Features*
 
@@ -157,7 +158,7 @@ make test
 
 ### Platforms
 
-- [ ] WebAssembly support
+- [x] WebAssembly support
 - [ ] Arduino Uno support
 
 ### Testing

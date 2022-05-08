@@ -23,11 +23,8 @@ void initializeTargetRegistry()
     InitializeAllAsmPrinters();
 }
 
-TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx)
+TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx, const std::string& targetTriple)
 {
-    auto targetTriple = sys::getDefaultTargetTriple();
-    ctx.LLVMModule->setTargetTriple(targetTriple);
-
     std::string error;
     auto Target = TargetRegistry::lookupTarget(targetTriple, error);
 
@@ -46,9 +43,9 @@ TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx)
     return targetMachine;
 }
 
-void setupPassManagerAndCreateObject(ModuleContext& ctx)
+void setupPassManagerAndCreateObject(ModuleContext& ctx, const std::string& targetTriple)
 {
-    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx);
+    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple);
 
     auto filename = ctx.moduleDescription.name + ".o";
     std::error_code EC;

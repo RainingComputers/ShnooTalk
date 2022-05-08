@@ -21,6 +21,14 @@ Available options:
     -json-ir-all     Print ShnooTalk IR recursively for all modules in json
     -json-icode      Print ShnooTalk IR in JSON, but only the icode
 
+Cross compilation options for release executable:
+    -linux-arm64
+    -linux-x86_64
+    -macos-arm64
+    -macos-x86_64
+    -wasm32
+    -wasm64
+
 Use shtkc -version for compiler version
 '''
 
