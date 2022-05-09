@@ -36,6 +36,7 @@ namespace icode
     {
         setProperty(IS_PTR);
         dimensions.clear();
+        dimTypes.clear();
         dimensions.push_back(1);
         dimTypes.push_back(ALLOC_FLEXIBLE_DIM);
     }
@@ -123,6 +124,11 @@ namespace icode
     bool TypeDescription::isArray() const
     {
         return dimensions.size() > 0;
+    }
+
+    bool TypeDescription::isArrayWithFixedDim() const
+    {
+        return isArray() && dimTypes.back() != ALLOC_FLEXIBLE_DIM;
     }
 
     bool TypeDescription::isStructOrArray() const

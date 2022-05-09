@@ -247,7 +247,7 @@ Unit createCallFunctionPremangled(generator::GeneratorContext& ctx,
 {
     std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
 
-    for (size_t i = 0; i < actualParams.size(); i += 1)
+    for (size_t i = 0; i < formalParameters.size(); i += 1)
     {
         passParamCheck(ctx, actualParams[i], formalParameters[i], actualParamTokens[i]);
         ctx.ir.functionBuilder.passParameterPreMangled(functionName, callee, formalParameters[i], actualParams[i]);

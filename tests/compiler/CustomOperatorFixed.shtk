@@ -1,0 +1,28 @@
+struct Foobar
+{}
+
+fn subscriptArrayFixed(self: Foobar, a: int[2]) -> int
+{
+    println("fixed")
+
+    return 0
+}
+
+fn subscriptArray(self: Foobar, a: int[], size: long) -> int
+{
+    println("flex")
+
+    return 0
+}
+
+
+fn main() -> int
+{
+    var foo: Foobar
+
+    const a := foo[[1, 2, 3, 4]]
+
+    const b := foo[[2, 3]]
+
+    return 0
+}

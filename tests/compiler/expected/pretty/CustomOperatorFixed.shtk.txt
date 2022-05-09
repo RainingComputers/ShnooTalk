@@ -1,0 +1,62 @@
+{
+    "CustomOperatorFixed.shtk": {
+        "moduleName": "CustomOperatorFixed.shtk",
+        "functions": {
+            "_fn_CustomOperatorFixed_shtk_subscriptArray": {
+                "icode": [
+                        printString stringData _str_CustomOperatorFixed_shtk__l13_c12
+                        newLine
+                        int temp13 = cast autoInt 0
+                        int returnValue11 = equal int temp13
+                        return
+                ]
+            },
+            "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed": {
+                "icode": [
+                        printString stringData _str_CustomOperatorFixed_shtk__l6_c12
+                        newLine
+                        int temp6 = cast autoInt 0
+                        int returnValue4 = equal int temp6
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        struct* tempPtr27 = createPointer struct foo
+                        passPointer struct* tempPtr27, int _fn_CustomOperatorFixed_shtk_subscriptArray, module CustomOperatorFixed.shtk
+                        int* tempPtr30 = allocArrayPointer bytes 16
+                        int temp32 = cast autoInt 1
+                        int* tempPtr30 = write int temp32
+                        int* tempPtr34 = addressAdd int* tempPtr30, bytes 4
+                        int temp35 = cast autoInt 2
+                        int* tempPtr34 = write int temp35
+                        int* tempPtr37 = addressAdd int* tempPtr34, bytes 4
+                        int temp38 = cast autoInt 3
+                        int* tempPtr37 = write int temp38
+                        int* tempPtr40 = addressAdd int* tempPtr37, bytes 4
+                        int temp41 = cast autoInt 4
+                        int* tempPtr40 = write int temp41
+                        passPointer int* tempPtr30, int _fn_CustomOperatorFixed_shtk_subscriptArray, module CustomOperatorFixed.shtk
+                        long temp44 = cast autoInt 4
+                        pass long temp44, int _fn_CustomOperatorFixed_shtk_subscriptArray, module CustomOperatorFixed.shtk
+                        int calleeReturnValue47 = call int _fn_CustomOperatorFixed_shtk_subscriptArray, module CustomOperatorFixed.shtk
+                        int a = equal int calleeReturnValue47
+                        struct* tempPtr57 = createPointer struct foo
+                        passPointer struct* tempPtr57, int _fn_CustomOperatorFixed_shtk_subscriptArrayFixed, module CustomOperatorFixed.shtk
+                        int* tempPtr60 = allocArrayPointer bytes 8
+                        int temp62 = cast autoInt 2
+                        int* tempPtr60 = write int temp62
+                        int* tempPtr64 = addressAdd int* tempPtr60, bytes 4
+                        int temp65 = cast autoInt 3
+                        int* tempPtr64 = write int temp65
+                        passPointer int* tempPtr60, int _fn_CustomOperatorFixed_shtk_subscriptArrayFixed, module CustomOperatorFixed.shtk
+                        int calleeReturnValue68 = call int _fn_CustomOperatorFixed_shtk_subscriptArrayFixed, module CustomOperatorFixed.shtk
+                        int b = equal int calleeReturnValue68
+                        int temp74 = cast autoInt 0
+                        int returnValue72 = equal int temp74
+                        return
+                ]
+            }
+        }
+    }
+}

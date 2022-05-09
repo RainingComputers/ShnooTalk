@@ -218,6 +218,16 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
     console.compileErrorOnToken("Cannot find function with matching params", token);
 }
 
+bool isMatchingOperatorFunction(const FunctionDescription& function, const std::vector<Unit>& params)
+{
+    if (params.size() == 3 && params[1].isArrayWithFixedDim())
+        if (isSameParamsType(function, { params[0], params[1] }))
+            if (function.symbols.at(function.parameters[1]).isArrayWithFixedDim())
+                return true;
+
+    return isSameParamsType(function, params);
+}
+
 std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperatorFunctionString(
     const Token& token,
     const std::string& binaryOperatorName,
@@ -232,7 +242,7 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperator
 
         const FunctionDescription function = workingModule->functions.at(functionName);
 
-        if (!isSameParamsType(function, params))
+        if (!isMatchingOperatorFunction(function, params))
             continue;
 
         return std::pair<std::string, FunctionDescription>(functionName, function);

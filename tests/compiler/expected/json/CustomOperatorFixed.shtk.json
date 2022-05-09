@@ -1,0 +1,62 @@
+{
+    "CustomOperatorFixed.shtk": {
+        "moduleName": "CustomOperatorFixed.shtk",
+        "functions": {
+            "_fn_CustomOperatorFixed_shtk_subscriptArray": {
+                "icode": [
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 10, "name": "_str_CustomOperatorFixed_shtk__l13_c12", "size": 5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 13, "dtype": "int"}, "op2": {"type": "literal", "id": 12, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 11, "dtype": "int"}, "op2": {"type": "temp", "id": 13, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed": {
+                "icode": [
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_CustomOperatorFixed_shtk__l6_c12", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 6, "dtype": "int"}, "op2": {"type": "literal", "id": 5, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 4, "dtype": "int"}, "op2": {"type": "temp", "id": 6, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 27, "dtype": "struct"}, "op2": {"type": "var", "id": 18, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 27, "dtype": "struct"}, "op2": {"type": "var", "id": 28, "name": "_fn_CustomOperatorFixed_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 29, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "allocArrayPointer", "op1": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op2": {"type": "bytes", "id": 31, "bytes": 16}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 32, "dtype": "int"}, "op2": {"type": "literal", "id": 19, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op2": {"type": "temp", "id": 32, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 34, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op3": {"type": "bytes", "id": 33, "bytes": 4}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 35, "dtype": "int"}, "op2": {"type": "literal", "id": 20, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 34, "dtype": "int"}, "op2": {"type": "temp", "id": 35, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 34, "dtype": "int"}, "op3": {"type": "bytes", "id": 36, "bytes": 4}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 21, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op2": {"type": "temp", "id": 38, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 40, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op3": {"type": "bytes", "id": 39, "bytes": 4}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 41, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 40, "dtype": "int"}, "op2": {"type": "temp", "id": 41, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 30, "dtype": "int"}, "op2": {"type": "var", "id": 42, "name": "_fn_CustomOperatorFixed_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 43, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 44, "dtype": "long"}, "op2": {"type": "literal", "id": 23, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 44, "dtype": "long"}, "op2": {"type": "var", "id": 45, "name": "_fn_CustomOperatorFixed_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 46, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 47, "dtype": "int"}, "op2": {"type": "var", "id": 48, "name": "_fn_CustomOperatorFixed_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 49, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 50, "name": "a", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 47, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 57, "dtype": "struct"}, "op2": {"type": "var", "id": 51, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 57, "dtype": "struct"}, "op2": {"type": "var", "id": 58, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 59, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "allocArrayPointer", "op1": {"type": "tempPtr", "id": 60, "dtype": "int"}, "op2": {"type": "bytes", "id": 61, "bytes": 8}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 62, "dtype": "int"}, "op2": {"type": "literal", "id": 52, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 60, "dtype": "int"}, "op2": {"type": "temp", "id": 62, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 64, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 60, "dtype": "int"}, "op3": {"type": "bytes", "id": 63, "bytes": 4}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 65, "dtype": "int"}, "op2": {"type": "literal", "id": 53, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 64, "dtype": "int"}, "op2": {"type": "temp", "id": 65, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 60, "dtype": "int"}, "op2": {"type": "var", "id": 66, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 67, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 68, "dtype": "int"}, "op2": {"type": "var", "id": 69, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 70, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 71, "name": "b", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 68, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 74, "dtype": "int"}, "op2": {"type": "literal", "id": 73, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 72, "dtype": "int"}, "op2": {"type": "temp", "id": 74, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}
