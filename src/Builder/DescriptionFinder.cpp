@@ -218,14 +218,20 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByPara
     console.compileErrorOnToken("Cannot find function with matching params", token);
 }
 
-bool isMatchingOperatorFunction(const FunctionDescription& function, const std::vector<Unit>& params)
+bool isSameParamsTypeFixedDim(const FunctionDescription& function, const std::vector<Unit>& params)
 {
-    if (params.size() == 3 && params[1].isArrayWithFixedDim())
-        if (isSameParamsType(function, { params[0], params[1] }))
-            if (function.symbols.at(function.parameters[1]).isArrayWithFixedDim())
-                return true;
+    if (params.size() != 3)
+        return false;
 
-    return isSameParamsType(function, params);
+    if (!params[1].isArrayWithFixedDim())
+        return false;
+
+    if (!isSameParamsType(function, { params[0], params[1] }))
+        return false;
+
+    const TypeDescription secondFormalParam = function.symbols.at(function.parameters[1]);
+
+    return secondFormalParam.isArrayWithFixedDim();
 }
 
 std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperatorFunctionString(
@@ -242,10 +248,8 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperator
 
         const FunctionDescription function = workingModule->functions.at(functionName);
 
-        if (!isMatchingOperatorFunction(function, params))
-            continue;
-
-        return std::pair<std::string, FunctionDescription>(functionName, function);
+        if (isSameParamsType(function, params) || isSameParamsTypeFixedDim(function, params))
+            return std::pair<std::string, FunctionDescription>(functionName, function);
     }
 
     console.operatorError(token, params[0], params[1]);

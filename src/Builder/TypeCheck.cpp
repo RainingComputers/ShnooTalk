@@ -29,7 +29,7 @@ bool isSameDim(TypeDescription type1, TypeDescription type2)
     return true;
 }
 
-bool isSameTypeDescription(const TypeDescription& type1, const TypeDescription& type2)
+bool isSameTypeDescription(const TypeDescription& type1, const TypeDescription& type2) // strict type checking?
 {
     if (!type1.isPrimitiveType() || !type2.isPrimitiveType())
         return (type1.dtypeName == type2.dtypeName && isSameDim(type1, type2) && type1.moduleName == type2.moduleName);

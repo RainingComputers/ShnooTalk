@@ -1,6 +1,13 @@
 struct Foobar
 {}
 
+fn subscriptArrayTrueFlex(self: Foobar, a: int[]) -> int
+{
+    println("trueflex")
+
+    return 0
+}
+
 fn subscriptArrayFixed(self: Foobar, a: int[2]) -> int
 {
     println("fixed")
@@ -23,6 +30,11 @@ fn main() -> int
     const a := foo[[1, 2, 3, 4]]
 
     const b := foo[[2, 3]]
+
+    var c := [1, 2]
+    const d: int[] <- c
+
+    const e := foo[d]
 
     return 0
 }
