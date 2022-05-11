@@ -1,0 +1,8 @@
+MODULE AssignmentOnImmutableStructFieldOperator.shtk
+ERROR in Line 16 Col 5
+
+    a[0] = 2
+    ^
+Cannot modify immutable variable or parameter
+
+AssignmentOnImmutableStructFieldOperator.shtk:16:4

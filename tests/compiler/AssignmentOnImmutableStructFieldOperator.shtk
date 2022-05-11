@@ -1,0 +1,19 @@
+
+struct FooSlice
+{
+    var a: int[]
+}
+
+fn subscript(self: FooSlice, index: long) -> int
+{
+    return self.a[index]
+}
+
+fn main() -> int
+{
+    var a: FooSlice
+
+    a[0] = 2
+
+    return 0
+}
