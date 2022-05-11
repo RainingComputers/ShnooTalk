@@ -1,0 +1,15 @@
+from "TestModules/SubsFoobar.shtk" use Foobar
+
+fn testing(self: Foobar) 
+{
+    println("it works")
+}
+
+fn main() -> int
+{
+    var a: Foobar
+
+    a.testing()
+
+    return 0
+}

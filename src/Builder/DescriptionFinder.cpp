@@ -165,6 +165,9 @@ FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
     if (rootModule.getFunction(nameMangle(nameToken, rootModule.name), functionDescription))
         return functionDescription;
 
+    if (rootModule.getExternFunction(nameToken.toString(), functionDescription))
+        return functionDescription;
+
     console.compileErrorOnToken("Function does not exist", nameToken);
 }
 

@@ -1,0 +1,82 @@
+{
+    "StructMethodExtensionImport.shtk": {
+        "moduleName": "StructMethodExtensionImport.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 7, "dtype": "struct"}, "op2": {"type": "var", "id": 4, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 7, "dtype": "struct"}, "op2": {"type": "var", "id": 8, "name": "_fn_TestModules_SubsFoobarExtension_shtk_testing", "dtype": "void"}, "op3": {"type": "module", "id": 9, "name": "TestModules/SubsFoobarExtension.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 10, "dtype": "void"}, "op2": {"type": "var", "id": 11, "name": "_fn_TestModules_SubsFoobarExtension_shtk_testing", "dtype": "void"}, "op3": {"type": "module", "id": 12, "name": "TestModules/SubsFoobarExtension.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 15, "dtype": "int"}, "op2": {"type": "literal", "id": 14, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 13, "dtype": "int"}, "op2": {"type": "temp", "id": 15, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    },
+    "TestModules/SubsFoobar.shtk": {
+        "moduleName": "TestModules/SubsFoobar.shtk",
+        "functions": {
+            "_fn_TestModules_SubsFoobar_shtk_subscript": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "float"}, "op2": {"type": "literal", "id": 7, "dtype": "autoFloat", "value": 3.14}, "op3": {"type": "none"}},
+                    {"opcode": "isEqual", "op1": {"type": "var", "id": 6, "name": "index", "dtype": "float"}, "op2": {"type": "temp", "id": 8, "dtype": "float"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "byte"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "byte"}, "op2": {"type": "temp", "id": 11, "dtype": "byte"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 14, "dtype": "byte"}, "op2": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "byte"}, "op2": {"type": "temp", "id": 14, "dtype": "byte"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_TestModules_SubsFoobar_shtk_subscriptArray": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                    {"opcode": "isEqual", "op1": {"type": "var", "id": 21, "name": "n", "dtype": "int"}, "op2": {"type": "temp", "id": 23, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 20, "name": "_if_false_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 32, "dtype": "void"}, "op2": {"type": "literal", "id": 30, "dtype": "autoInt", "value": 0}, "op3": {"type": "bytes", "id": 31, "bytes": 4}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 33, "dtype": "int"}, "op2": {"type": "ptr", "id": 29, "name": "a", "dtype": "int"}, "op3": {"type": "tempPtr", "id": 32, "dtype": "void"}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 35, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 33, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 36, "dtype": "int"}, "op2": {"type": "literal", "id": 34, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "isEqual", "op1": {"type": "temp", "id": 35, "dtype": "int"}, "op2": {"type": "temp", "id": 36, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 26, "name": "_if_false_l17_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 40, "dtype": "void"}, "op2": {"type": "literal", "id": 38, "dtype": "autoInt", "value": 1}, "op3": {"type": "bytes", "id": 39, "bytes": 4}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 41, "dtype": "int"}, "op2": {"type": "ptr", "id": 37, "name": "a", "dtype": "int"}, "op3": {"type": "tempPtr", "id": 40, "dtype": "void"}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 43, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 41, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 44, "dtype": "int"}, "op2": {"type": "literal", "id": 42, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                    {"opcode": "isEqual", "op1": {"type": "temp", "id": 43, "dtype": "int"}, "op2": {"type": "temp", "id": 44, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 26, "name": "_if_false_l17_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "unaryMinus", "op1": {"type": "temp", "id": 47, "dtype": "autoInt"}, "op2": {"type": "literal", "id": 46, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 48, "dtype": "int"}, "op2": {"type": "temp", "id": 47, "dtype": "autoInt"}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 45, "dtype": "int"}, "op2": {"type": "temp", "id": 48, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 26, "name": "_if_false_l17_c8"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 20, "name": "_if_false_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 49, "dtype": "int"}, "op2": {"type": "var", "id": 50, "name": "n", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_TestModules_SubsFoobar_shtk_subscriptTesting": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 56, "dtype": "byte"}, "op2": {"type": "literal", "id": 55, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 54, "dtype": "byte"}, "op2": {"type": "temp", "id": 56, "dtype": "byte"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    },
+    "TestModules/SubsFoobarExtension.shtk": {
+        "moduleName": "TestModules/SubsFoobarExtension.shtk",
+        "functions": {
+            "_fn_TestModules_SubsFoobarExtension_shtk_testing": {
+                "icode": [
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_TestModules_SubsFoobarExtension_shtk__l5_c12", "size": 9}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

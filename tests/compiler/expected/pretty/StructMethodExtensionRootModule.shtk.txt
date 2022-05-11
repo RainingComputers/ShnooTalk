@@ -1,0 +1,77 @@
+{
+    "StructMethodExtensionRootModule.shtk": {
+        "moduleName": "StructMethodExtensionRootModule.shtk",
+        "functions": {
+            "_fn_StructMethodExtensionRootModule_shtk_testing": {
+                "icode": [
+                        printString stringData _str_StructMethodExtensionRootModule_shtk__l5_c12
+                        newLine
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        struct* tempPtr11 = createPointer struct a
+                        passPointer struct* tempPtr11, void _fn_StructMethodExtensionRootModule_shtk_testing, module StructMethodExtensionRootModule.shtk
+                        void calleeReturnValue14 = call void _fn_StructMethodExtensionRootModule_shtk_testing, module StructMethodExtensionRootModule.shtk
+                        int temp19 = cast autoInt 0
+                        int returnValue17 = equal int temp19
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/SubsFoobar.shtk": {
+        "moduleName": "TestModules/SubsFoobar.shtk",
+        "functions": {
+            "_fn_TestModules_SubsFoobar_shtk_subscript": {
+                "icode": [
+                        float temp8 = cast autoFloat 3.140000
+                        flag = isEqual float index, float temp8
+                        if(not flag) goto _if_false_l8_c4
+                        byte temp11 = cast autoInt 1
+                        byte returnValue9 = equal byte temp11
+                        return
+                    _if_false_l8_c4:
+                        byte temp14 = cast autoInt 0
+                        byte returnValue12 = equal byte temp14
+                        return
+                ]
+            },
+            "_fn_TestModules_SubsFoobar_shtk_subscriptArray": {
+                "icode": [
+                        int temp23 = cast autoInt 2
+                        flag = isEqual int n, int temp23
+                        if(not flag) goto _if_false_l16_c4
+                        void* tempPtr32 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr33 = addressAdd int* a, void* tempPtr32
+                        int temp35 = read int* tempPtr33
+                        int temp36 = cast autoInt 1
+                        flag = isEqual int temp35, int temp36
+                        if(not flag) goto _if_false_l17_c8
+                        void* tempPtr40 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr41 = addressAdd int* a, void* tempPtr40
+                        int temp43 = read int* tempPtr41
+                        int temp44 = cast autoInt 2
+                        flag = isEqual int temp43, int temp44
+                        if(not flag) goto _if_false_l17_c8
+                        autoInt temp47 = unaryMinus autoInt 1
+                        int temp48 = cast autoInt temp47
+                        int returnValue45 = equal int temp48
+                        return
+                    _if_false_l17_c8:
+                    _if_false_l16_c4:
+                        int returnValue49 = equal int n
+                        return
+                ]
+            },
+            "_fn_TestModules_SubsFoobar_shtk_subscriptTesting": {
+                "icode": [
+                        byte temp56 = cast autoInt 0
+                        byte returnValue54 = equal byte temp56
+                        return
+                ]
+            }
+        }
+    }
+}

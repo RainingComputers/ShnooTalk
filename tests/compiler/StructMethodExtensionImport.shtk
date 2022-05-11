@@ -1,0 +1,11 @@
+from "TestModules/SubsFoobar.shtk" use Foobar
+from "TestModules/SubsFoobarExtension.shtk" use testing
+
+fn main() -> int
+{
+    var a: Foobar
+
+    a.testing()
+
+    return 0
+}
