@@ -88,6 +88,7 @@ make test
 - [x] `in` operator
 - [x] Subscript operator overloading
 - [ ] Reduce binary size
+- [ ] Fix bug in calling descontructors
 - [x] extern "C" to prevent name mangling functions
 - [x] Decide names and defaults for primitive data types
 - [x] Arrays and pointers of generic types
@@ -142,8 +143,9 @@ make test
 - [ ] Extends
 - [ ] Compile time reflection and macros
 - [ ] `constexpr` or `comptime`
-- [ ] Runtime checks like nil pointer dereference and bound checking
+- [ ] Compile time checks (rust's borrow checker?)
 - [ ] Testing framework
+- [ ] Concurrency
 
 ### Documentation
 
