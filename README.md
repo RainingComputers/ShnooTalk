@@ -89,6 +89,7 @@ make test
 - [x] Subscript operator overloading
 - [ ] Reduce binary size
 - [ ] Fix bug in calling descontructors
+- [ ] Generators and foreach loop
 - [x] extern "C" to prevent name mangling functions
 - [x] Decide names and defaults for primitive data types
 - [x] Arrays and pointers of generic types
