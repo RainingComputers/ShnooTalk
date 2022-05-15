@@ -16,11 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build docker build environment
-        run: docker build -f scripts/Linux/$DISTRO/Dockerfile . -t shnootalk-build-env
+        run: docker build -f ci/Linux/$DISTRO/Dockerfile . -t shnootalk-build-env
       - name: Build compiler
         run: |
           docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest \
-            sh /home/scripts/Linux/build.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
+            sh /home/ci/Linux/build.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
@@ -49,7 +49,7 @@ jobs:
       - name: Build Compiler
         run: make build -j 2
       - name: Build AppImage
-        run: appimage-builder --recipe scripts/Linux/appimage-x86_64 --skip-test
+        run: appimage-builder --recipe ci/Linux/appimage-x86_64 --skip-test
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find . -name '*.AppImage')"
@@ -81,10 +81,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build docker build environment
-        run: docker buildx build --platform $ARCH -f scripts/Linux/debian/Dockerfile . -t shnootalk-build-env
+        run: docker buildx build --platform $ARCH -f ci/Linux/debian/Dockerfile . -t shnootalk-build-env
       - name: Build 
         run: |
-          docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest sh /home/scripts/Linux/build.sh llvmorg-12.0.1/$LLVM_ZIP
+          docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest sh /home/ci/Linux/build.sh llvmorg-12.0.1/$LLVM_ZIP
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find bin/ -name '*.tar.gz')"
