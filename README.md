@@ -18,14 +18,12 @@ curl -sf -L https://raw.githubusercontent.com/RainingComputers/ShnooTalk/main/in
 ```
 
 ### MacOS
-
 ```
 brew tap rainingcomputers/shnootalk
 brew install shtkc
 ```
 
-### Linux AppImage
-
+### Linux x86_64 AppImage
 Download app image from [releases](https://github.com/RainingComputers/ShnooTalk/releases) page
 
 ### Installing from source (Ubuntu)
@@ -39,6 +37,16 @@ sudo make install
 ### VS Code syntax highlight extension
 
 Install the extension from [here](https://marketplace.visualstudio.com/items?itemName=RainingComputers.shnootalk-vscode) 
+
+
+### Installing from source (MacOS)
+Download the source from latest [release](https://github.com/RainingComputers/ShnooTalk/releases)
+```
+brew install llvm@12
+make build
+sudo make install
+```
+
 
 ## Getting started
 
@@ -65,7 +73,7 @@ clang app.o -o app
 make test
 ```
 
-## TODO
+## Project status
 
 ### Compiler core
 
@@ -136,7 +144,6 @@ make test
 
 - [x] Custom operators
 - [x] Generics
-- [ ] Standard library
 - [ ] Closures and lambdas
 - [ ] Exceptions
 - [ ] Unions
@@ -180,6 +187,7 @@ make test
 - [ ] Code formatter
 - [ ] Static analyser
 - [ ] Language server
+- [ ] Standard library
 
 ### Self hosting and LLVM independence
 
