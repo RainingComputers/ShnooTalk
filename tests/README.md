@@ -1,6 +1,6 @@
 # ShnooTalk Compiler Test Suit
 
-These are detailed end to end tests which can be used to test an implementation of ShnooTalk. The `tests_runner` python application can be use 
+These are end to end tests which can be used to test an implementation of ShnooTalk. The `tests_runner` python application can be used 
 to run the tests. The `tests_runner` application expects the output executable to be in `bin/debug/shtkc` or `bin/gcov/shtkc` (for coverage). 
 See `COMPILER_EXEC_PATH` in `tests_runner/framework/config.py` for more info.
 
@@ -10,7 +10,7 @@ See `COMPILER_EXEC_PATH` in `tests_runner/framework/config.py` for more info.
 
 This is meant to test the AST generated from the parser and the pretty printer that prints the AST.
 
-### compile/
+### compiler/
 
 Test the output executable produced by the compiler and the generated ShnooTalk icode (not the entire IR just the generated function IR instructions only, see `-icode-all` option).
 This is also meant to test the compiler's pretty printer (the part that prints function code).
@@ -41,12 +41,9 @@ pretty printer.
 
 ## How to run the tests?
 
-+ Install ccache and g++
-+ If you have added a new test case, you will have to run `make gen` to expected output files for the test case
 + Run `make test` or `make coverage`
 
 ## How to generate the test cases?
 
-+ Install ccache and g++
 + Run `make gen`
 + Carefully review the changes using `git diff`

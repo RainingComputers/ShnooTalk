@@ -1,5 +1,6 @@
 # This script should be run from the root of the project directory
 # After running this script, you will have a .tar.gz build in the bin/ directory
+# The first argument to the script is name of the llvm .tar.gz release
 
 set -e
 
