@@ -34,11 +34,6 @@ make build
 sudo make install
 ```
 
-### VS Code syntax highlight extension
-
-Install the extension from [here](https://marketplace.visualstudio.com/items?itemName=RainingComputers.shnootalk-vscode) 
-
-
 ### Installing from source (MacOS)
 Download the source from latest [release](https://github.com/RainingComputers/ShnooTalk/releases)
 ```
@@ -46,6 +41,10 @@ brew install llvm@12
 make build
 sudo make install
 ```
+
+### VS Code syntax highlight extension
+
+Install the extension from [here](https://marketplace.visualstudio.com/items?itemName=RainingComputers.shnootalk-vscode) 
 
 
 ## Getting started
