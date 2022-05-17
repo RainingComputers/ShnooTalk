@@ -28,6 +28,8 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     }
     else if (local.isUserPointer())
     {
+        // TODO: make sure to null pointers recursively for structs
+
         /* Make sure pointers are null initialized if not explicitly initialized */
         const Unit nullPointerUnit =
             ctx.ir.functionBuilder.pointerCastOperator(ctx.ir.unitBuilder.unitFromIntLiteral(0), local.type());

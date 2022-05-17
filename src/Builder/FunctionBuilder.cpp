@@ -206,6 +206,8 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
+    // TODO: call deconstructor on dest if required
+
     if (src.isList())
         unitListCopy(dest, src);
     else if (dest.isStructOrArray())
@@ -739,6 +741,8 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
 
 void FunctionBuilder::callDeconstructor(const Unit& symbol)
 {
+    // TODO: call deconstructor recursively for structs
+
     if (symbol.isArray())
     {
         std::vector<Unit> arrayElements = destructureArray(symbol);
@@ -781,6 +785,8 @@ bool FunctionBuilder::shouldCallDeconstructor(const std::string& symbolName, con
 
 void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
 {
+    // TODO: don't call on return expression
+
     for (auto symbolPair : workingFunction->symbols)
     {
         const std::string symbolName = symbolPair.first;

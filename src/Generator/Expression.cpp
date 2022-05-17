@@ -230,11 +230,11 @@ Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
         actualParams.push_back(expression(ctx, root.children[nodeCounter]));
     }
 
-    const FunctionDescription callee = intantiateGenericAndGetFunction(ctx,
-                                                                       genericModuleName,
-                                                                       calleeNameToken,
-                                                                       instantiationTypes,
-                                                                       instantiationTypeNodes);
+    const FunctionDescription callee = instantiateGenericAndGetFunction(ctx,
+                                                                        genericModuleName,
+                                                                        calleeNameToken,
+                                                                        instantiationTypes,
+                                                                        instantiationTypeNodes);
 
     return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
 }
@@ -275,7 +275,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
         actualParams.push_back(param);
         actualParamTokens.push_back(paramToken);
 
-        if (param.isArrayWithFixedDim())
+        if (param.isArrayWithFixedDim()) // TODO: DRY this logic
         {
             actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(param.numElements()));
             actualParamTokens.push_back(paramToken);

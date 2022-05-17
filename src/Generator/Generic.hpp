@@ -15,7 +15,7 @@ icode::TypeDescription instantiateGenericAndGetType(generator::GeneratorContext&
                                                     const std::vector<icode::TypeDescription>& instantiationTypes,
                                                     const std::vector<Node>& instantiationTypeNodes);
 
-icode::FunctionDescription intantiateGenericAndGetFunction(
+icode::FunctionDescription instantiateGenericAndGetFunction(
     generator::GeneratorContext& ctx,
     const std::string& genericModuleName,
     const Token& genericFunctionNameToken,

@@ -95,7 +95,7 @@ make test
 - [x] `in` operator
 - [x] Subscript operator overloading
 - [ ] Reduce binary size
-- [ ] Fix bug in calling descontructors
+- [ ] Fix bug in calling deconstructors
 - [ ] Generators and foreach loop
 - [x] extern "C" to prevent name mangling functions
 - [x] Decide names and defaults for primitive data types

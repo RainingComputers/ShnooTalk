@@ -86,11 +86,11 @@ TypeDescription instantiateGenericAndGetType(generator::GeneratorContext& ctx,
     return monomorphizedType;
 }
 
-FunctionDescription intantiateGenericAndGetFunction(generator::GeneratorContext& ctx,
-                                                    const std::string& genericModuleName,
-                                                    const Token& genericFunctionNameToken,
-                                                    const std::vector<TypeDescription>& instantiationTypes,
-                                                    const std::vector<Node>& instantiationTypeNodes)
+FunctionDescription instantiateGenericAndGetFunction(generator::GeneratorContext& ctx,
+                                                     const std::string& genericModuleName,
+                                                     const Token& genericFunctionNameToken,
+                                                     const std::vector<TypeDescription>& instantiationTypes,
+                                                     const std::vector<Node>& instantiationTypeNodes)
 {
     ctx.ir.pushWorkingModule();
 

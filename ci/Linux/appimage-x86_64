@@ -1,4 +1,5 @@
 # appimage-builder recipe see https://appimage-builder.readthedocs.io for details
+# TODO: move this yaml file into appimage folder
 version: 1
 AppDir:
   path: ./AppDir
@@ -6,7 +7,7 @@ AppDir:
     id: shnootalk-compiler
     name: shtkc
     icon: application-x-executable
-    version: 0.2.0-alpha
+    version: 0.2.0-alpha # TODO: set this using python script
     exec: usr/bin/shtkc
     exec_args: $@
   apt:
