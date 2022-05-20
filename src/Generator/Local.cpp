@@ -29,6 +29,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     else if (local.isUserPointer())
     {
         // TODO: make sure to null pointers recursively for structs
+        // TODO: refine uninitialized null pointers
 
         /* Make sure pointers are null initialized if not explicitly initialized */
         const Unit nullPointerUnit =

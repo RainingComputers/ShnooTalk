@@ -12,9 +12,6 @@ void assignmentFromTree(generator::GeneratorContext& ctx,
                         const Unit& LHS,
                         const Unit& RHS)
 {
-    // TODO: refine rules more thoroughly, look into implementing borrow and ownership
-    // TODO: DRY with passParamCheck?
-
     bool assignmentNode = rootNodeType == node::ASSIGNMENT || rootNodeType == node::DESTRUCTURED_ASSIGNMENT;
 
     if (LHS.isLiteral())
