@@ -81,8 +81,10 @@ void doWhileLoop(generator::GeneratorContext& ctx, const Node& root)
 
 void forLoopInitOrUpdateNode(generator::GeneratorContext& ctx, const Node& root)
 {
-    if (root.type == node::VAR) // TODO: add walrus operator
+    if (root.type == node::VAR)
         local(ctx, root);
+    else if (root.type == node::WALRUS_VAR)
+        walrusLocal(ctx, root);
     else if (root.type == node::TERM)
         term(ctx, root);
     else

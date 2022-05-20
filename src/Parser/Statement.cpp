@@ -128,8 +128,14 @@ void forLoop(parser::ParserContext& ctx)
     if (ctx.accept(token::LPAREN))
         ctx.consume();
 
-    if (ctx.accept(token::VAR)) // TODO add walrus operator
-        identifierDeclareListOptionalInit(ctx, true);
+    if (ctx.accept(token::VAR))
+    {
+        if (ctx.dpeek(token::WALRUS))
+            walrusDeclaration(ctx);
+        else
+            identifierDeclareListOptionalInit(ctx, true);
+    }
+
     else
         assignmentOrMethodCall(ctx);
 

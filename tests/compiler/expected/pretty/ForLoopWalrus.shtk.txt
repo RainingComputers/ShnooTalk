@@ -1,0 +1,28 @@
+{
+    "ForLoopWalrus.shtk": {
+        "moduleName": "ForLoopWalrus.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp5 = cast autoInt 0
+                        int i = equal int temp5
+                    _for_true_l3_c4:
+                        int temp11 = cast autoInt 5
+                        flag = lessThan int i, int temp11
+                        if(not flag) goto _for_false_l3_c4
+                        print int i
+                        newLine
+                    _for_cont_true_l3_c4:
+                        int temp16 = cast autoInt 1
+                        int temp15 = add int i, int temp16
+                        int i = equal int temp15
+                        goto _for_true_l3_c4
+                    _for_false_l3_c4:
+                        int temp19 = cast autoInt 0
+                        int returnValue17 = equal int temp19
+                        return
+                ]
+            }
+        }
+    }
+}

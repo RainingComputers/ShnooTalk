@@ -1,0 +1,9 @@
+MODULE FoorLoopConstError.shtk
+ERROR in Line 3 Col 10
+
+    for (const i = 0; i < 10; i += 1) println(i)
+         ^
+Did not expect CONST,
+expected IDENTIFIER
+
+FoorLoopConstError.shtk:3:9

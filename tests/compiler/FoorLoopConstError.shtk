@@ -1,0 +1,6 @@
+fn main() -> int
+{
+    for (const i = 0; i < 10; i += 1) println(i)
+
+    return 0
+}
