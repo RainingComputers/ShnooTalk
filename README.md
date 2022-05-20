@@ -150,7 +150,7 @@ make test
 - [ ] Extends
 - [ ] Compile time reflection and macros
 - [ ] `constexpr` or `comptime`
-- [ ] Compile time checks (rust's borrow checker?)
+- [ ] Memory safety (rust's borrow checker?)
 - [ ] Testing framework
 - [ ] Concurrency
 

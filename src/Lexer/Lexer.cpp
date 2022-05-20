@@ -274,11 +274,11 @@ namespace lexer
         if (startIndex == i)
             return false;
 
-        std::string preceedingTokenString = line.substr(startIndex, i - startIndex);
+        std::string precedingTokenString = line.substr(startIndex, i - startIndex);
 
-        if (std::regex_match(preceedingTokenString, identifierRegex))
+        if (std::regex_match(precedingTokenString, identifierRegex))
         {
-            tokenQueue.push_back(Token(fileName, preceedingTokenString, token::IDENTIFIER, startIndex, lineNo));
+            tokenQueue.push_back(Token(fileName, precedingTokenString, token::IDENTIFIER, startIndex, lineNo));
             return true;
         }
 
