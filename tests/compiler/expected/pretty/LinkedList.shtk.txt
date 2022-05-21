@@ -98,21 +98,21 @@
             },
             "_fn_TestModules_LinkedList_shtk[int]_printList": {
                 "icode": [
-                        struct* tempPtr120 = createPointer struct self
-                        struct** tempPtrPtr122 = addressAdd struct* tempPtr120, bytes 0
-                        struct* current = pointerAssign struct** tempPtrPtr122
+                        struct* tempPtr122 = createPointer struct self
+                        struct** tempPtrPtr124 = addressAdd struct* tempPtr122, bytes 0
+                        struct* current = pointerAssign struct** tempPtrPtr124
                     _while_true_l56_c4:
-                        autoInt temp126 = addr struct* current
-                        flag = greaterThan autoInt temp126, autoInt 0
+                        autoInt temp128 = addr struct* current
+                        flag = greaterThan autoInt temp128, autoInt 0
                         if(not flag) goto _while_false_l56_c4
-                        int* tempPtr129 = createPointer struct* current
-                        int* tempPtr131 = addressAdd int* tempPtr129, bytes 0
-                        int temp132 = read int* tempPtr131
-                        print int temp132
+                        int* tempPtr131 = createPointer struct* current
+                        int* tempPtr133 = addressAdd int* tempPtr131, bytes 0
+                        int temp134 = read int* tempPtr133
+                        print int temp134
                         newLine
-                        int* tempPtr135 = createPointer struct* current
-                        int** tempPtrPtr137 = addressAdd int* tempPtr135, bytes 4
-                        struct* current = pointerAssign struct** tempPtrPtr137
+                        int* tempPtr137 = createPointer struct* current
+                        int** tempPtrPtr139 = addressAdd int* tempPtr137, bytes 4
+                        struct* current = pointerAssign struct** tempPtrPtr139
                         goto _while_true_l56_c4
                     _while_false_l56_c4:
                         return

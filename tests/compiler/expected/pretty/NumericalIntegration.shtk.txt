@@ -44,17 +44,17 @@
             },
             "main": {
                 "icode": [
-                        float temp66 = cast autoFloat 0.000000
-                        pass float temp66, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                        float temp69 = cast autoFloat 3.000000
-                        pass float temp69, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                        float temp72 = cast autoFloat 10000.000000
-                        pass float temp72, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                        float calleeReturnValue75 = call float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
-                        print float calleeReturnValue75
+                        float temp70 = cast autoFloat 0.000000
+                        pass float temp70, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float temp73 = cast autoFloat 3.000000
+                        pass float temp73, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float temp76 = cast autoFloat 10000.000000
+                        pass float temp76, float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        float calleeReturnValue79 = call float _fn_NumericalIntegration_shtk_integrate, module NumericalIntegration.shtk
+                        print float calleeReturnValue79
                         newLine
-                        int temp80 = cast autoInt 0
-                        int returnValue78 = equal int temp80
+                        int temp84 = cast autoInt 0
+                        int returnValue82 = equal int temp84
                         return
                 ]
             }

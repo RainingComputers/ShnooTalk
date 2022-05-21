@@ -27,40 +27,40 @@
                         return
                     _if_false_l7_c8:
                     _for_cont_true_l6_c4:
-                        int temp37 = cast autoInt 1
-                        int temp36 = add int i, int temp37
-                        int i = equal int temp36
+                        int temp38 = cast autoInt 1
+                        int temp37 = add int i, int temp38
+                        int i = equal int temp37
                         goto _for_true_l6_c4
                     _for_false_l6_c4:
-                        int temp40 = cast autoInt 1
-                        int returnValue38 = equal int temp40
+                        int temp41 = cast autoInt 1
+                        int returnValue39 = equal int temp41
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        int temp46 = cast autoInt 3
-                        int num = equal int temp46
+                        int temp48 = cast autoInt 3
+                        int num = equal int temp48
                     _for_true_l15_c4:
-                        int temp52 = cast autoInt 50
-                        flag = lessThanOrEqualTo int num, int temp52
+                        int temp54 = cast autoInt 50
+                        flag = lessThanOrEqualTo int num, int temp54
                         if(not flag) goto _for_false_l15_c4
                         pass int num, int _fn_Primes_shtk_is_prime, module Primes.shtk
-                        int calleeReturnValue61 = call int _fn_Primes_shtk_is_prime, module Primes.shtk
-                        int temp65 = cast autoInt 1
-                        flag = isEqual int calleeReturnValue61, int temp65
+                        int calleeReturnValue63 = call int _fn_Primes_shtk_is_prime, module Primes.shtk
+                        int temp67 = cast autoInt 1
+                        flag = isEqual int calleeReturnValue63, int temp67
                         if(not flag) goto _if_false_l16_c8
                         print int num
                         newLine
                     _if_false_l16_c8:
                     _for_cont_true_l15_c4:
-                        int temp70 = cast autoInt 1
-                        int temp69 = add int num, int temp70
-                        int num = equal int temp69
+                        int temp72 = cast autoInt 1
+                        int temp71 = add int num, int temp72
+                        int num = equal int temp71
                         goto _for_true_l15_c4
                     _for_false_l15_c4:
-                        int temp73 = cast autoInt 0
-                        int returnValue71 = equal int temp73
+                        int temp75 = cast autoInt 0
+                        int returnValue73 = equal int temp75
                         return
                 ]
             }

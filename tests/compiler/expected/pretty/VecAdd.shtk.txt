@@ -4,17 +4,17 @@
         "functions": {
             "_fn_TestModules_Math_shtk_abs": {
                 "icode": [
-                        float temp86 = cast autoFloat 0.000000
-                        flag = lessThan float x, float temp86
+                        float temp91 = cast autoFloat 0.000000
+                        flag = lessThan float x, float temp91
                         if(not flag) goto _if_false_l37_c4
-                        autoFloat temp89 = unaryMinus autoFloat 1.000000
-                        autoFloat temp92 = cast float x
-                        autoFloat temp91 = multiply autoFloat temp89, autoFloat temp92
-                        float temp93 = cast autoFloat temp91
-                        float returnValue87 = equal float temp93
+                        autoFloat temp94 = unaryMinus autoFloat 1.000000
+                        autoFloat temp97 = cast float x
+                        autoFloat temp96 = multiply autoFloat temp94, autoFloat temp97
+                        float temp98 = cast autoFloat temp96
+                        float returnValue92 = equal float temp98
                         return
                     _if_false_l37_c4:
-                        float returnValue94 = equal float x
+                        float returnValue99 = equal float x
                         return
                 ]
             },
@@ -22,10 +22,10 @@
                 "icode": [
                         flag = greaterThan float a, float b
                         if(not flag) goto _if_false_l43_c4
-                        float returnValue104 = equal float a
+                        float returnValue109 = equal float a
                         return
                     _if_false_l43_c4:
-                        float returnValue106 = equal float b
+                        float returnValue111 = equal float b
                         return
                 ]
             },
@@ -33,10 +33,10 @@
                 "icode": [
                         flag = greaterThan int a, int b
                         if(not flag) goto _if_false_l49_c4
-                        int returnValue116 = equal int a
+                        int returnValue121 = equal int a
                         return
                     _if_false_l49_c4:
-                        int returnValue118 = equal int b
+                        int returnValue123 = equal int b
                         return
                 ]
             },
@@ -44,10 +44,10 @@
                 "icode": [
                         flag = lessThan float a, float b
                         if(not flag) goto _if_false_l55_c4
-                        float returnValue128 = equal float a
+                        float returnValue133 = equal float a
                         return
                     _if_false_l55_c4:
-                        float returnValue130 = equal float b
+                        float returnValue135 = equal float b
                         return
                 ]
             },
@@ -55,10 +55,10 @@
                 "icode": [
                         flag = lessThan int a, int b
                         if(not flag) goto _if_false_l61_c4
-                        int returnValue140 = equal int a
+                        int returnValue145 = equal int a
                         return
                     _if_false_l61_c4:
-                        int returnValue142 = equal int b
+                        int returnValue147 = equal int b
                         return
                 ]
             },
@@ -93,35 +93,35 @@
                 "icode": [
                         float t = equal float x
                         float sum = equal float t
-                        int temp40 = cast autoInt 1
-                        int k = equal int temp40
+                        int temp42 = cast autoInt 1
+                        int k = equal int temp42
                     _for_true_l26_c4:
-                        int temp46 = cast autoInt 10
-                        flag = lessThan int k, int temp46
+                        int temp48 = cast autoInt 10
+                        flag = lessThan int k, int temp48
                         if(not flag) goto _for_false_l26_c4
-                        float temp50 = unaryMinus float x
-                        float temp52 = multiply float temp50, float x
-                        float temp53 = multiply float t, float temp52
-                        float temp56 = cast int k
-                        autoFloat temp58 = cast float temp56
-                        autoFloat temp57 = multiply autoFloat 2.000000, autoFloat temp58
-                        float temp61 = cast int k
-                        autoFloat temp63 = cast float temp61
-                        autoFloat temp62 = multiply autoFloat 2.000000, autoFloat temp63
-                        autoFloat temp65 = add autoFloat temp62, autoFloat 1.000000
-                        autoFloat temp66 = multiply autoFloat temp57, autoFloat temp65
-                        float temp68 = cast autoFloat temp66
-                        float temp67 = divide float temp53, float temp68
-                        float t = equal float temp67
-                        float temp71 = add float sum, float t
-                        float sum = equal float temp71
+                        float temp52 = unaryMinus float x
+                        float temp54 = multiply float temp52, float x
+                        float temp55 = multiply float t, float temp54
+                        float temp58 = cast int k
+                        autoFloat temp60 = cast float temp58
+                        autoFloat temp59 = multiply autoFloat 2.000000, autoFloat temp60
+                        float temp63 = cast int k
+                        autoFloat temp65 = cast float temp63
+                        autoFloat temp64 = multiply autoFloat 2.000000, autoFloat temp65
+                        autoFloat temp67 = add autoFloat temp64, autoFloat 1.000000
+                        autoFloat temp68 = multiply autoFloat temp59, autoFloat temp67
+                        float temp70 = cast autoFloat temp68
+                        float temp69 = divide float temp55, float temp70
+                        float t = equal float temp69
+                        float temp73 = add float sum, float t
+                        float sum = equal float temp73
                     _for_cont_true_l26_c4:
-                        int temp75 = cast autoInt 1
-                        int temp74 = add int k, int temp75
-                        int k = equal int temp74
+                        int temp77 = cast autoInt 1
+                        int temp76 = add int k, int temp77
+                        int k = equal int temp76
                         goto _for_true_l26_c4
                     _for_false_l26_c4:
-                        float returnValue76 = equal float sum
+                        float returnValue78 = equal float sum
                         return
                 ]
             }
@@ -160,22 +160,22 @@
             },
             "_fn_TestModules_Vector_shtk_dot": {
                 "icode": [
-                        int* tempPtr136 = createPointer struct this
-                        int* tempPtr138 = addressAdd int* tempPtr136, bytes 0
-                        int* tempPtr140 = createPointer struct other
-                        int* tempPtr142 = addressAdd int* tempPtr140, bytes 0
-                        int temp144 = read int* tempPtr138
-                        int temp145 = read int* tempPtr142
-                        int temp143 = multiply int temp144, int temp145
-                        int* tempPtr147 = createPointer struct this
-                        int* tempPtr149 = addressAdd int* tempPtr147, bytes 4
-                        int* tempPtr151 = createPointer struct other
-                        int* tempPtr153 = addressAdd int* tempPtr151, bytes 4
-                        int temp155 = read int* tempPtr149
-                        int temp156 = read int* tempPtr153
-                        int temp154 = multiply int temp155, int temp156
-                        int temp157 = add int temp143, int temp154
-                        int returnValue134 = equal int temp157
+                        int* tempPtr138 = createPointer struct this
+                        int* tempPtr140 = addressAdd int* tempPtr138, bytes 0
+                        int* tempPtr142 = createPointer struct other
+                        int* tempPtr144 = addressAdd int* tempPtr142, bytes 0
+                        int temp146 = read int* tempPtr140
+                        int temp147 = read int* tempPtr144
+                        int temp145 = multiply int temp146, int temp147
+                        int* tempPtr149 = createPointer struct this
+                        int* tempPtr151 = addressAdd int* tempPtr149, bytes 4
+                        int* tempPtr153 = createPointer struct other
+                        int* tempPtr155 = addressAdd int* tempPtr153, bytes 4
+                        int temp157 = read int* tempPtr151
+                        int temp158 = read int* tempPtr155
+                        int temp156 = multiply int temp157, int temp158
+                        int temp159 = add int temp145, int temp156
+                        int returnValue136 = equal int temp159
                         return
                 ]
             },
@@ -235,24 +235,24 @@
             },
             "_fn_TestModules_Vector_shtk_isUnitVector": {
                 "icode": [
-                        int* tempPtr182 = createPointer struct vector
-                        int* tempPtr184 = addressAdd int* tempPtr182, bytes 0
-                        int temp186 = read int* tempPtr184
-                        int temp187 = cast autoInt 1
-                        flag = isEqual int temp186, int temp187
+                        int* tempPtr184 = createPointer struct vector
+                        int* tempPtr186 = addressAdd int* tempPtr184, bytes 0
+                        int temp188 = read int* tempPtr186
+                        int temp189 = cast autoInt 1
+                        flag = isEqual int temp188, int temp189
                         if(not flag) goto _if_false_l44_c4
-                        int* tempPtr189 = createPointer struct vector
-                        int* tempPtr191 = addressAdd int* tempPtr189, bytes 4
-                        int temp193 = read int* tempPtr191
-                        int temp194 = cast autoInt 1
-                        flag = isEqual int temp193, int temp194
+                        int* tempPtr191 = createPointer struct vector
+                        int* tempPtr193 = addressAdd int* tempPtr191, bytes 4
+                        int temp195 = read int* tempPtr193
+                        int temp196 = cast autoInt 1
+                        flag = isEqual int temp195, int temp196
                         if(not flag) goto _if_false_l44_c4
-                        byte temp197 = cast autoInt 1
-                        byte returnValue195 = equal byte temp197
+                        byte temp199 = cast autoInt 1
+                        byte returnValue197 = equal byte temp199
                         return
                     _if_false_l44_c4:
-                        byte temp200 = cast autoInt 0
-                        byte returnValue198 = equal byte temp200
+                        byte temp202 = cast autoInt 0
+                        byte returnValue200 = equal byte temp202
                         return
                 ]
             },
@@ -260,17 +260,17 @@
                 "icode": [
                         printString stringData _str_TestModules_Vector_shtk__l39_c12
                         space
-                        int* tempPtr163 = createPointer struct vector
-                        int* tempPtr165 = addressAdd int* tempPtr163, bytes 0
-                        int temp166 = read int* tempPtr165
-                        print int temp166
+                        int* tempPtr165 = createPointer struct vector
+                        int* tempPtr167 = addressAdd int* tempPtr165, bytes 0
+                        int temp168 = read int* tempPtr167
+                        print int temp168
                         space
                         printString stringData _str_TestModules_Vector_shtk__l39_c28
                         space
-                        int* tempPtr169 = createPointer struct vector
-                        int* tempPtr171 = addressAdd int* tempPtr169, bytes 4
-                        int temp172 = read int* tempPtr171
-                        print int temp172
+                        int* tempPtr171 = createPointer struct vector
+                        int* tempPtr173 = addressAdd int* tempPtr171, bytes 4
+                        int temp174 = read int* tempPtr173
+                        print int temp174
                         newLine
                         return
                 ]

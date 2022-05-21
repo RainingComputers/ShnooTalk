@@ -90,36 +90,6 @@
                     _for_false_l36_c4:
                         int temp122 = cast autoInt 0
                         int returnValue120 = equal int temp122
-                        int* tempPtr125 = createPointer struct arr
-                        void* tempPtr127 = addressMultiply autoInt 0, bytes 8
-                        int* tempPtr128 = addressAdd int* tempPtr125, void* tempPtr127
-                        int* tempPtr130 = createPointer struct arr
-                        void* tempPtr132 = addressMultiply autoInt 1, bytes 8
-                        int* tempPtr133 = addressAdd int* tempPtr130, void* tempPtr132
-                        int* tempPtr135 = createPointer struct arr
-                        void* tempPtr137 = addressMultiply autoInt 2, bytes 8
-                        int* tempPtr138 = addressAdd int* tempPtr135, void* tempPtr137
-                        int* tempPtr140 = createPointer struct arr
-                        void* tempPtr142 = addressMultiply autoInt 3, bytes 8
-                        int* tempPtr143 = addressAdd int* tempPtr140, void* tempPtr142
-                        int* tempPtr145 = createPointer struct arr
-                        void* tempPtr147 = addressMultiply autoInt 4, bytes 8
-                        int* tempPtr148 = addressAdd int* tempPtr145, void* tempPtr147
-                        int* tempPtr150 = createPointer struct arr
-                        void* tempPtr152 = addressMultiply autoInt 5, bytes 8
-                        int* tempPtr153 = addressAdd int* tempPtr150, void* tempPtr152
-                        int* tempPtr155 = createPointer struct arr
-                        void* tempPtr157 = addressMultiply autoInt 6, bytes 8
-                        int* tempPtr158 = addressAdd int* tempPtr155, void* tempPtr157
-                        int* tempPtr160 = createPointer struct arr
-                        void* tempPtr162 = addressMultiply autoInt 7, bytes 8
-                        int* tempPtr163 = addressAdd int* tempPtr160, void* tempPtr162
-                        int* tempPtr165 = createPointer struct arr
-                        void* tempPtr167 = addressMultiply autoInt 8, bytes 8
-                        int* tempPtr168 = addressAdd int* tempPtr165, void* tempPtr167
-                        int* tempPtr170 = createPointer struct arr
-                        void* tempPtr172 = addressMultiply autoInt 9, bytes 8
-                        int* tempPtr173 = addressAdd int* tempPtr170, void* tempPtr172
                         return
                 ]
             }

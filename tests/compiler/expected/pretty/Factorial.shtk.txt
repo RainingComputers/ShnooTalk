@@ -25,28 +25,28 @@
             },
             "main": {
                 "icode": [
-                        int temp29 = cast autoInt 2
-                        pass int temp29, int _fn_Factorial_shtk_factorial, module Factorial.shtk
-                        int calleeReturnValue32 = call int _fn_Factorial_shtk_factorial, module Factorial.shtk
-                        print int calleeReturnValue32
+                        int temp31 = cast autoInt 2
+                        pass int temp31, int _fn_Factorial_shtk_factorial, module Factorial.shtk
+                        int calleeReturnValue34 = call int _fn_Factorial_shtk_factorial, module Factorial.shtk
+                        print int calleeReturnValue34
                         newLine
-                        int temp38 = cast autoInt 3
-                        pass int temp38, int _fn_Factorial_shtk_factorial, module Factorial.shtk
-                        int calleeReturnValue41 = call int _fn_Factorial_shtk_factorial, module Factorial.shtk
-                        print int calleeReturnValue41
+                        int temp40 = cast autoInt 3
+                        pass int temp40, int _fn_Factorial_shtk_factorial, module Factorial.shtk
+                        int calleeReturnValue43 = call int _fn_Factorial_shtk_factorial, module Factorial.shtk
+                        print int calleeReturnValue43
                         newLine
-                        int temp47 = cast autoInt 4
-                        pass int temp47, int _fn_Factorial_shtk_factorial, module Factorial.shtk
-                        int calleeReturnValue50 = call int _fn_Factorial_shtk_factorial, module Factorial.shtk
-                        print int calleeReturnValue50
+                        int temp49 = cast autoInt 4
+                        pass int temp49, int _fn_Factorial_shtk_factorial, module Factorial.shtk
+                        int calleeReturnValue52 = call int _fn_Factorial_shtk_factorial, module Factorial.shtk
+                        print int calleeReturnValue52
                         newLine
-                        int temp56 = cast autoInt 5
-                        pass int temp56, int _fn_Factorial_shtk_factorial, module Factorial.shtk
-                        int calleeReturnValue59 = call int _fn_Factorial_shtk_factorial, module Factorial.shtk
-                        print int calleeReturnValue59
+                        int temp58 = cast autoInt 5
+                        pass int temp58, int _fn_Factorial_shtk_factorial, module Factorial.shtk
+                        int calleeReturnValue61 = call int _fn_Factorial_shtk_factorial, module Factorial.shtk
+                        print int calleeReturnValue61
                         newLine
-                        int temp64 = cast autoInt 0
-                        int returnValue62 = equal int temp64
+                        int temp66 = cast autoInt 0
+                        int returnValue64 = equal int temp66
                         return
                 ]
             }

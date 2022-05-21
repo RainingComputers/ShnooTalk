@@ -1,0 +1,46 @@
+{
+    "NullInitialized.shtk": {
+        "moduleName": "NullInitialized.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "testing", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
+                    {"opcode": "addr", "op1": {"type": "temp", "id": 8, "dtype": "autoInt"}, "op2": {"type": "tempPtrPtr", "id": 7, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 8, "dtype": "autoInt"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op2": {"type": "var", "id": 9, "name": "testing", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 12, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op3": {"type": "bytes", "id": 11, "bytes": 8}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 13, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 12, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 15, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 13, "dtype": "int"}, "op3": {"type": "bytes", "id": 14, "bytes": 0}},
+                    {"opcode": "addr", "op1": {"type": "temp", "id": 16, "dtype": "autoInt"}, "op2": {"type": "tempPtrPtr", "id": 15, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 16, "dtype": "autoInt"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op2": {"type": "var", "id": 17, "name": "testing", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 20, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op3": {"type": "bytes", "id": 19, "bytes": 20}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 22, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 20, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 24, "dtype": "void"}, "op2": {"type": "literal", "id": 21, "dtype": "autoInt", "value": 0}, "op3": {"type": "bytes", "id": 23, "bytes": 8}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 25, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 22, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 24, "dtype": "void"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 26, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 25, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 28, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 26, "dtype": "int"}, "op3": {"type": "bytes", "id": 27, "bytes": 0}},
+                    {"opcode": "addr", "op1": {"type": "temp", "id": 29, "dtype": "autoInt"}, "op2": {"type": "tempPtrPtr", "id": 28, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 29, "dtype": "autoInt"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 31, "dtype": "int"}, "op2": {"type": "var", "id": 30, "name": "testing", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 33, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 31, "dtype": "int"}, "op3": {"type": "bytes", "id": 32, "bytes": 20}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 33, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 37, "dtype": "void"}, "op2": {"type": "literal", "id": 34, "dtype": "autoInt", "value": 1}, "op3": {"type": "bytes", "id": 36, "bytes": 8}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 38, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 37, "dtype": "void"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 38, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 41, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 39, "dtype": "int"}, "op3": {"type": "bytes", "id": 40, "bytes": 0}},
+                    {"opcode": "addr", "op1": {"type": "temp", "id": 42, "dtype": "autoInt"}, "op2": {"type": "tempPtrPtr", "id": 41, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 42, "dtype": "autoInt"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 45, "dtype": "int"}, "op2": {"type": "literal", "id": 44, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 43, "dtype": "int"}, "op2": {"type": "temp", "id": 45, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

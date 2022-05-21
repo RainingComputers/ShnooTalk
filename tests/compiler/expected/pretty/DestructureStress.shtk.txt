@@ -397,48 +397,6 @@
                         newLine
                         int temp744 = cast autoInt 0
                         int returnValue742 = equal int temp744
-                        struct* tempPtr749 = createPointer struct c1
-                        void* tempPtr751 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr752 = addressAdd struct* tempPtr749, void* tempPtr751
-                        struct* tempPtr754 = createPointer struct c1
-                        void* tempPtr756 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr757 = addressAdd struct* tempPtr754, void* tempPtr756
-                        struct* tempPtr760 = createPointer struct c2
-                        void* tempPtr762 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr763 = addressAdd struct* tempPtr760, void* tempPtr762
-                        struct* tempPtr765 = createPointer struct c2
-                        void* tempPtr767 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr768 = addressAdd struct* tempPtr765, void* tempPtr767
-                        struct* tempPtr771 = createPointer struct d1
-                        void* tempPtr773 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr774 = addressAdd struct* tempPtr771, void* tempPtr773
-                        struct* tempPtr776 = createPointer struct d1
-                        void* tempPtr778 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr779 = addressAdd struct* tempPtr776, void* tempPtr778
-                        struct* tempPtr782 = createPointer struct d2
-                        void* tempPtr784 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr785 = addressAdd struct* tempPtr782, void* tempPtr784
-                        struct* tempPtr787 = createPointer struct d2
-                        void* tempPtr789 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr790 = addressAdd struct* tempPtr787, void* tempPtr789
-                        struct* tempPtr796 = createPointer struct testBarArr
-                        void* tempPtr798 = addressMultiply autoInt 0, bytes 32
-                        struct* tempPtr799 = addressAdd struct* tempPtr796, void* tempPtr798
-                        struct* tempPtr801 = createPointer struct testBarArr
-                        void* tempPtr803 = addressMultiply autoInt 1, bytes 32
-                        struct* tempPtr804 = addressAdd struct* tempPtr801, void* tempPtr803
-                        struct* tempPtr806 = createPointer struct* tempPtr799
-                        void* tempPtr808 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr809 = addressAdd struct* tempPtr806, void* tempPtr808
-                        struct* tempPtr811 = createPointer struct* tempPtr799
-                        void* tempPtr813 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr814 = addressAdd struct* tempPtr811, void* tempPtr813
-                        struct* tempPtr816 = createPointer struct* tempPtr804
-                        void* tempPtr818 = addressMultiply autoInt 0, bytes 16
-                        struct* tempPtr819 = addressAdd struct* tempPtr816, void* tempPtr818
-                        struct* tempPtr821 = createPointer struct* tempPtr804
-                        void* tempPtr823 = addressMultiply autoInt 1, bytes 16
-                        struct* tempPtr824 = addressAdd struct* tempPtr821, void* tempPtr823
                         return
                 ]
             }

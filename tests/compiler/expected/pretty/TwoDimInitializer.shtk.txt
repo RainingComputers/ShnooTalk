@@ -32,22 +32,22 @@
             },
             "_fn_TestModules_Vector_shtk_dot": {
                 "icode": [
-                        int* tempPtr136 = createPointer struct this
-                        int* tempPtr138 = addressAdd int* tempPtr136, bytes 0
-                        int* tempPtr140 = createPointer struct other
-                        int* tempPtr142 = addressAdd int* tempPtr140, bytes 0
-                        int temp144 = read int* tempPtr138
-                        int temp145 = read int* tempPtr142
-                        int temp143 = multiply int temp144, int temp145
-                        int* tempPtr147 = createPointer struct this
-                        int* tempPtr149 = addressAdd int* tempPtr147, bytes 4
-                        int* tempPtr151 = createPointer struct other
-                        int* tempPtr153 = addressAdd int* tempPtr151, bytes 4
-                        int temp155 = read int* tempPtr149
-                        int temp156 = read int* tempPtr153
-                        int temp154 = multiply int temp155, int temp156
-                        int temp157 = add int temp143, int temp154
-                        int returnValue134 = equal int temp157
+                        int* tempPtr138 = createPointer struct this
+                        int* tempPtr140 = addressAdd int* tempPtr138, bytes 0
+                        int* tempPtr142 = createPointer struct other
+                        int* tempPtr144 = addressAdd int* tempPtr142, bytes 0
+                        int temp146 = read int* tempPtr140
+                        int temp147 = read int* tempPtr144
+                        int temp145 = multiply int temp146, int temp147
+                        int* tempPtr149 = createPointer struct this
+                        int* tempPtr151 = addressAdd int* tempPtr149, bytes 4
+                        int* tempPtr153 = createPointer struct other
+                        int* tempPtr155 = addressAdd int* tempPtr153, bytes 4
+                        int temp157 = read int* tempPtr151
+                        int temp158 = read int* tempPtr155
+                        int temp156 = multiply int temp157, int temp158
+                        int temp159 = add int temp145, int temp156
+                        int returnValue136 = equal int temp159
                         return
                 ]
             },
@@ -107,24 +107,24 @@
             },
             "_fn_TestModules_Vector_shtk_isUnitVector": {
                 "icode": [
-                        int* tempPtr182 = createPointer struct vector
-                        int* tempPtr184 = addressAdd int* tempPtr182, bytes 0
-                        int temp186 = read int* tempPtr184
-                        int temp187 = cast autoInt 1
-                        flag = isEqual int temp186, int temp187
+                        int* tempPtr184 = createPointer struct vector
+                        int* tempPtr186 = addressAdd int* tempPtr184, bytes 0
+                        int temp188 = read int* tempPtr186
+                        int temp189 = cast autoInt 1
+                        flag = isEqual int temp188, int temp189
                         if(not flag) goto _if_false_l44_c4
-                        int* tempPtr189 = createPointer struct vector
-                        int* tempPtr191 = addressAdd int* tempPtr189, bytes 4
-                        int temp193 = read int* tempPtr191
-                        int temp194 = cast autoInt 1
-                        flag = isEqual int temp193, int temp194
+                        int* tempPtr191 = createPointer struct vector
+                        int* tempPtr193 = addressAdd int* tempPtr191, bytes 4
+                        int temp195 = read int* tempPtr193
+                        int temp196 = cast autoInt 1
+                        flag = isEqual int temp195, int temp196
                         if(not flag) goto _if_false_l44_c4
-                        byte temp197 = cast autoInt 1
-                        byte returnValue195 = equal byte temp197
+                        byte temp199 = cast autoInt 1
+                        byte returnValue197 = equal byte temp199
                         return
                     _if_false_l44_c4:
-                        byte temp200 = cast autoInt 0
-                        byte returnValue198 = equal byte temp200
+                        byte temp202 = cast autoInt 0
+                        byte returnValue200 = equal byte temp202
                         return
                 ]
             },
@@ -132,17 +132,17 @@
                 "icode": [
                         printString stringData _str_TestModules_Vector_shtk__l39_c12
                         space
-                        int* tempPtr163 = createPointer struct vector
-                        int* tempPtr165 = addressAdd int* tempPtr163, bytes 0
-                        int temp166 = read int* tempPtr165
-                        print int temp166
+                        int* tempPtr165 = createPointer struct vector
+                        int* tempPtr167 = addressAdd int* tempPtr165, bytes 0
+                        int temp168 = read int* tempPtr167
+                        print int temp168
                         space
                         printString stringData _str_TestModules_Vector_shtk__l39_c28
                         space
-                        int* tempPtr169 = createPointer struct vector
-                        int* tempPtr171 = addressAdd int* tempPtr169, bytes 4
-                        int temp172 = read int* tempPtr171
-                        print int temp172
+                        int* tempPtr171 = createPointer struct vector
+                        int* tempPtr173 = addressAdd int* tempPtr171, bytes 4
+                        int temp174 = read int* tempPtr173
+                        print int temp174
                         newLine
                         return
                 ]
@@ -201,136 +201,100 @@
             },
             "main": {
                 "icode": [
-                        int temp69 = cast autoInt 1
-                        pass int temp69, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp72 = cast autoInt 2
-                        pass int temp72, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue75 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp84 = cast autoInt 3
-                        pass int temp84, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp87 = cast autoInt 4
-                        pass int temp87, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue90 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp99 = cast autoInt 5
-                        pass int temp99, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp102 = cast autoInt 6
-                        pass int temp102, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue105 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp114 = cast autoInt 7
-                        pass int temp114, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp117 = cast autoInt 8
-                        pass int temp117, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue120 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp129 = cast autoInt 9
-                        pass int temp129, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp132 = cast autoInt 10
-                        pass int temp132, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue135 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp144 = cast autoInt 11
-                        pass int temp144, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp147 = cast autoInt 12
-                        pass int temp147, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue150 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp159 = cast autoInt 13
-                        pass int temp159, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp162 = cast autoInt 14
-                        pass int temp162, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue165 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp174 = cast autoInt 15
-                        pass int temp174, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp177 = cast autoInt 16
-                        pass int temp177, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue180 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp189 = cast autoInt 17
-                        pass int temp189, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int temp192 = cast autoInt 18
-                        pass int temp192, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        struct calleeReturnValue195 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
-                        int* tempPtr198 = createPointer struct bar
-                        int* tempPtr199 = createPointer struct calleeReturnValue75
-                        int* tempPtr198 = memoryCopy int* tempPtr199, autoInt 8
-                        int* tempPtr202 = addressAdd int* tempPtr198, bytes 8
-                        int* tempPtr203 = createPointer struct calleeReturnValue90
-                        int* tempPtr202 = memoryCopy int* tempPtr203, autoInt 8
-                        int* tempPtr206 = addressAdd int* tempPtr202, bytes 8
-                        int* tempPtr207 = createPointer struct calleeReturnValue105
-                        int* tempPtr206 = memoryCopy int* tempPtr207, autoInt 8
-                        int* tempPtr210 = addressAdd int* tempPtr206, bytes 8
-                        int* tempPtr211 = createPointer struct calleeReturnValue120
-                        int* tempPtr210 = memoryCopy int* tempPtr211, autoInt 8
-                        int* tempPtr214 = addressAdd int* tempPtr210, bytes 8
-                        int* tempPtr215 = createPointer struct calleeReturnValue135
-                        int* tempPtr214 = memoryCopy int* tempPtr215, autoInt 8
-                        int* tempPtr218 = addressAdd int* tempPtr214, bytes 8
-                        int* tempPtr219 = createPointer struct calleeReturnValue150
-                        int* tempPtr218 = memoryCopy int* tempPtr219, autoInt 8
-                        int* tempPtr222 = addressAdd int* tempPtr218, bytes 8
-                        int* tempPtr223 = createPointer struct calleeReturnValue165
-                        int* tempPtr222 = memoryCopy int* tempPtr223, autoInt 8
-                        int* tempPtr226 = addressAdd int* tempPtr222, bytes 8
-                        int* tempPtr227 = createPointer struct calleeReturnValue180
-                        int* tempPtr226 = memoryCopy int* tempPtr227, autoInt 8
-                        int* tempPtr230 = addressAdd int* tempPtr226, bytes 8
-                        int* tempPtr231 = createPointer struct calleeReturnValue195
-                        int* tempPtr230 = memoryCopy int* tempPtr231, autoInt 8
-                        int temp235 = cast autoInt 0
-                        int i = equal int temp235
+                        int temp70 = cast autoInt 1
+                        pass int temp70, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp73 = cast autoInt 2
+                        pass int temp73, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue76 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp85 = cast autoInt 3
+                        pass int temp85, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp88 = cast autoInt 4
+                        pass int temp88, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue91 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp100 = cast autoInt 5
+                        pass int temp100, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp103 = cast autoInt 6
+                        pass int temp103, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue106 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp115 = cast autoInt 7
+                        pass int temp115, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp118 = cast autoInt 8
+                        pass int temp118, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue121 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp130 = cast autoInt 9
+                        pass int temp130, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp133 = cast autoInt 10
+                        pass int temp133, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue136 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp145 = cast autoInt 11
+                        pass int temp145, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp148 = cast autoInt 12
+                        pass int temp148, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue151 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp160 = cast autoInt 13
+                        pass int temp160, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp163 = cast autoInt 14
+                        pass int temp163, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue166 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp175 = cast autoInt 15
+                        pass int temp175, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp178 = cast autoInt 16
+                        pass int temp178, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue181 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp190 = cast autoInt 17
+                        pass int temp190, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int temp193 = cast autoInt 18
+                        pass int temp193, struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        struct calleeReturnValue196 = call struct _fn_TwoDimInitializer_shtk_newVec, module TwoDimInitializer.shtk
+                        int* tempPtr199 = createPointer struct bar
+                        int* tempPtr200 = createPointer struct calleeReturnValue76
+                        int* tempPtr199 = memoryCopy int* tempPtr200, autoInt 8
+                        int* tempPtr203 = addressAdd int* tempPtr199, bytes 8
+                        int* tempPtr204 = createPointer struct calleeReturnValue91
+                        int* tempPtr203 = memoryCopy int* tempPtr204, autoInt 8
+                        int* tempPtr207 = addressAdd int* tempPtr203, bytes 8
+                        int* tempPtr208 = createPointer struct calleeReturnValue106
+                        int* tempPtr207 = memoryCopy int* tempPtr208, autoInt 8
+                        int* tempPtr211 = addressAdd int* tempPtr207, bytes 8
+                        int* tempPtr212 = createPointer struct calleeReturnValue121
+                        int* tempPtr211 = memoryCopy int* tempPtr212, autoInt 8
+                        int* tempPtr215 = addressAdd int* tempPtr211, bytes 8
+                        int* tempPtr216 = createPointer struct calleeReturnValue136
+                        int* tempPtr215 = memoryCopy int* tempPtr216, autoInt 8
+                        int* tempPtr219 = addressAdd int* tempPtr215, bytes 8
+                        int* tempPtr220 = createPointer struct calleeReturnValue151
+                        int* tempPtr219 = memoryCopy int* tempPtr220, autoInt 8
+                        int* tempPtr223 = addressAdd int* tempPtr219, bytes 8
+                        int* tempPtr224 = createPointer struct calleeReturnValue166
+                        int* tempPtr223 = memoryCopy int* tempPtr224, autoInt 8
+                        int* tempPtr227 = addressAdd int* tempPtr223, bytes 8
+                        int* tempPtr228 = createPointer struct calleeReturnValue181
+                        int* tempPtr227 = memoryCopy int* tempPtr228, autoInt 8
+                        int* tempPtr231 = addressAdd int* tempPtr227, bytes 8
+                        int* tempPtr232 = createPointer struct calleeReturnValue196
+                        int* tempPtr231 = memoryCopy int* tempPtr232, autoInt 8
+                        int temp236 = cast autoInt 0
+                        int i = equal int temp236
                     _for_true_l28_c4:
-                        int temp241 = cast autoInt 3
-                        flag = lessThan int i, int temp241
+                        int temp242 = cast autoInt 3
+                        flag = lessThan int i, int temp242
                         if(not flag) goto _for_false_l28_c4
-                        int* tempPtr244 = createPointer struct bar
-                        void* tempPtr246 = addressMultiply int i, bytes 24
-                        int* tempPtr247 = addressAdd int* tempPtr244, void* tempPtr246
-                        int* tempPtr250 = createPointer int* tempPtr247
-                        passPointer int* tempPtr250, void _fn_TwoDimInitializer_shtk_printVecArray, module TwoDimInitializer.shtk
-                        void calleeReturnValue253 = call void _fn_TwoDimInitializer_shtk_printVecArray, module TwoDimInitializer.shtk
+                        int* tempPtr245 = createPointer struct bar
+                        void* tempPtr247 = addressMultiply int i, bytes 24
+                        int* tempPtr248 = addressAdd int* tempPtr245, void* tempPtr247
+                        int* tempPtr251 = createPointer int* tempPtr248
+                        passPointer int* tempPtr251, void _fn_TwoDimInitializer_shtk_printVecArray, module TwoDimInitializer.shtk
+                        void calleeReturnValue254 = call void _fn_TwoDimInitializer_shtk_printVecArray, module TwoDimInitializer.shtk
                         printString stringData _str_TwoDimInitializer_shtk__l31_c16
                         newLine
                     _for_cont_true_l28_c4:
-                        int temp260 = cast autoInt 1
-                        int temp259 = add int i, int temp260
-                        int i = equal int temp259
+                        int temp261 = cast autoInt 1
+                        int temp260 = add int i, int temp261
+                        int i = equal int temp260
                         goto _for_true_l28_c4
                     _for_false_l28_c4:
-                        int temp263 = cast autoInt 0
-                        int returnValue261 = equal int temp263
-                        int* tempPtr266 = createPointer struct bar
-                        void* tempPtr268 = addressMultiply autoInt 0, bytes 24
-                        int* tempPtr269 = addressAdd int* tempPtr266, void* tempPtr268
-                        int* tempPtr271 = createPointer struct bar
-                        void* tempPtr273 = addressMultiply autoInt 1, bytes 24
-                        int* tempPtr274 = addressAdd int* tempPtr271, void* tempPtr273
-                        int* tempPtr276 = createPointer struct bar
-                        void* tempPtr278 = addressMultiply autoInt 2, bytes 24
-                        int* tempPtr279 = addressAdd int* tempPtr276, void* tempPtr278
-                        int* tempPtr281 = createPointer int* tempPtr269
-                        void* tempPtr283 = addressMultiply autoInt 0, bytes 8
-                        int* tempPtr284 = addressAdd int* tempPtr281, void* tempPtr283
-                        int* tempPtr286 = createPointer int* tempPtr269
-                        void* tempPtr288 = addressMultiply autoInt 1, bytes 8
-                        int* tempPtr289 = addressAdd int* tempPtr286, void* tempPtr288
-                        int* tempPtr291 = createPointer int* tempPtr269
-                        void* tempPtr293 = addressMultiply autoInt 2, bytes 8
-                        int* tempPtr294 = addressAdd int* tempPtr291, void* tempPtr293
-                        int* tempPtr296 = createPointer int* tempPtr274
-                        void* tempPtr298 = addressMultiply autoInt 0, bytes 8
-                        int* tempPtr299 = addressAdd int* tempPtr296, void* tempPtr298
-                        int* tempPtr301 = createPointer int* tempPtr274
-                        void* tempPtr303 = addressMultiply autoInt 1, bytes 8
-                        int* tempPtr304 = addressAdd int* tempPtr301, void* tempPtr303
-                        int* tempPtr306 = createPointer int* tempPtr274
-                        void* tempPtr308 = addressMultiply autoInt 2, bytes 8
-                        int* tempPtr309 = addressAdd int* tempPtr306, void* tempPtr308
-                        int* tempPtr311 = createPointer int* tempPtr279
-                        void* tempPtr313 = addressMultiply autoInt 0, bytes 8
-                        int* tempPtr314 = addressAdd int* tempPtr311, void* tempPtr313
-                        int* tempPtr316 = createPointer int* tempPtr279
-                        void* tempPtr318 = addressMultiply autoInt 1, bytes 8
-                        int* tempPtr319 = addressAdd int* tempPtr316, void* tempPtr318
-                        int* tempPtr321 = createPointer int* tempPtr279
-                        void* tempPtr323 = addressMultiply autoInt 2, bytes 8
-                        int* tempPtr324 = addressAdd int* tempPtr321, void* tempPtr323
+                        int temp264 = cast autoInt 0
+                        int returnValue262 = equal int temp264
                         return
                 ]
             }

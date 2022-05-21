@@ -32,28 +32,28 @@
             },
             "main": {
                 "icode": [
-                        int* tempPtr42 = createPointer int a
-                        int temp43 = cast autoInt 1
-                        int* tempPtr42 = write int temp43
-                        int* tempPtr45 = addressAdd int* tempPtr42, bytes 4
-                        int temp46 = cast autoInt 2
-                        int* tempPtr45 = write int temp46
-                        int* tempPtr48 = addressAdd int* tempPtr45, bytes 4
-                        int temp49 = cast autoInt 3
-                        int* tempPtr48 = write int temp49
-                        int* tempPtr51 = addressAdd int* tempPtr48, bytes 4
-                        int temp52 = cast autoInt 4
-                        int* tempPtr51 = write int temp52
-                        int* tempPtr54 = addressAdd int* tempPtr51, bytes 4
-                        int temp55 = cast autoInt 5
-                        int* tempPtr54 = write int temp55
-                        int* tempPtr59 = createPointer int a
-                        passPointer int* tempPtr59, int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
-                        int calleeReturnValue62 = call int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
-                        print int calleeReturnValue62
+                        int* tempPtr44 = createPointer int a
+                        int temp45 = cast autoInt 1
+                        int* tempPtr44 = write int temp45
+                        int* tempPtr47 = addressAdd int* tempPtr44, bytes 4
+                        int temp48 = cast autoInt 2
+                        int* tempPtr47 = write int temp48
+                        int* tempPtr50 = addressAdd int* tempPtr47, bytes 4
+                        int temp51 = cast autoInt 3
+                        int* tempPtr50 = write int temp51
+                        int* tempPtr53 = addressAdd int* tempPtr50, bytes 4
+                        int temp54 = cast autoInt 4
+                        int* tempPtr53 = write int temp54
+                        int* tempPtr56 = addressAdd int* tempPtr53, bytes 4
+                        int temp57 = cast autoInt 5
+                        int* tempPtr56 = write int temp57
+                        int* tempPtr61 = createPointer int a
+                        passPointer int* tempPtr61, int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
+                        int calleeReturnValue64 = call int _fn_ArrayAverage_shtk_avg, module ArrayAverage.shtk
+                        print int calleeReturnValue64
                         newLine
-                        int temp67 = cast autoInt 0
-                        int returnValue65 = equal int temp67
+                        int temp69 = cast autoInt 0
+                        int returnValue67 = equal int temp69
                         return
                 ]
             }

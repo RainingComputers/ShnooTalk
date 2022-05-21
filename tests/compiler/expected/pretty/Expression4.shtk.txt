@@ -16,43 +16,43 @@
             },
             "main": {
                 "icode": [
-                        int temp18 = cast autoInt 3
-                        int c = equal int temp18
+                        int temp20 = cast autoInt 3
+                        int c = equal int temp20
                         print int c
                         newLine
-                        void calleeReturnValue20 = call void _fn_Expression4_shtk_foobar, module Expression4.shtk
-                        int temp26 = cast autoInt 3
-                        int temp25 = multiply int c, int temp26
-                        int c = equal int temp25
-                        autoInt temp30 = add autoInt 2, autoInt 3
-                        int temp31 = cast autoInt temp30
-                        int b = equal int temp31
-                        int temp35 = cast autoInt 2
-                        int temp34 = multiply int c, int temp35
-                        int temp38 = cast autoInt 3
-                        int temp37 = multiply int temp34, int temp38
-                        print int temp37
+                        void calleeReturnValue22 = call void _fn_Expression4_shtk_foobar, module Expression4.shtk
+                        int temp28 = cast autoInt 3
+                        int temp27 = multiply int c, int temp28
+                        int c = equal int temp27
+                        autoInt temp32 = add autoInt 2, autoInt 3
+                        int temp33 = cast autoInt temp32
+                        int b = equal int temp33
+                        int temp37 = cast autoInt 2
+                        int temp36 = multiply int c, int temp37
+                        int temp40 = cast autoInt 3
+                        int temp39 = multiply int temp36, int temp40
+                        print int temp39
                         newLine
-                        int temp42 = cast autoInt 3
-                        int temp41 = add int b, int temp42
-                        print int temp41
+                        int temp44 = cast autoInt 3
+                        int temp43 = add int b, int temp44
+                        print int temp43
                         newLine
-                        float temp45 = cast autoFloat 3.000000
-                        float bar = equal float temp45
-                        float temp51 = cast autoFloat 1.000000
-                        flag = isEqual float bar, float temp51
+                        float temp47 = cast autoFloat 3.000000
+                        float bar = equal float temp47
+                        float temp53 = cast autoFloat 1.000000
+                        flag = isEqual float bar, float temp53
                         if(not flag) goto _if_false_l29_c4
                         printString stringData _str_Expression4_shtk__l29_c28
                         newLine
                     _if_false_l29_c4:
-                        float temp58 = cast autoFloat 1.000000
-                        flag = isNotEqual float bar, float temp58
+                        float temp60 = cast autoFloat 1.000000
+                        flag = isNotEqual float bar, float temp60
                         if(not flag) goto _if_false_l30_c4
                         printString stringData _str_Expression4_shtk__l30_c28
                         newLine
                     _if_false_l30_c4:
-                        int temp62 = cast autoInt 0
-                        int returnValue60 = equal int temp62
+                        int temp64 = cast autoInt 0
+                        int returnValue62 = equal int temp64
                         return
                 ]
             }

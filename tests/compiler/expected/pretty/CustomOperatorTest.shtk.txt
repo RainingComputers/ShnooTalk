@@ -172,32 +172,32 @@
             },
             "_fn_CustomOperatorTest_shtk_greaterThanOrEqual": {
                 "icode": [
-                        autoInt* tempPtr545 = allocPointer 
-                        int* tempPtr557 = createPointer struct LHS
-                        passPointer int* tempPtr557, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        int* tempPtr560 = createPointer struct RHS
-                        passPointer int* tempPtr560, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        byte calleeReturnValue563 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        byte temp567 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue563, byte temp567
+                        autoInt* tempPtr547 = allocPointer 
+                        int* tempPtr559 = createPointer struct LHS
+                        passPointer int* tempPtr559, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        int* tempPtr562 = createPointer struct RHS
+                        passPointer int* tempPtr562, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        byte calleeReturnValue565 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        byte temp569 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue565, byte temp569
                         if(flag) goto _or_true_l86_c29
-                        int* tempPtr574 = createPointer struct LHS
-                        passPointer int* tempPtr574, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        int* tempPtr577 = createPointer struct RHS
-                        passPointer int* tempPtr577, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        byte calleeReturnValue580 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        byte temp584 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue580, byte temp584
+                        int* tempPtr576 = createPointer struct LHS
+                        passPointer int* tempPtr576, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        int* tempPtr579 = createPointer struct RHS
+                        passPointer int* tempPtr579, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        byte calleeReturnValue582 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        byte temp586 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue582, byte temp586
                         if(not flag) goto _condn_exp_false_l86_c11
                     _or_true_l86_c29:
-                        autoInt* tempPtr545 = write autoInt 1
+                        autoInt* tempPtr547 = write autoInt 1
                         goto _condn_exp_end_false_l86_c11
                     _condn_exp_false_l86_c11:
-                        autoInt* tempPtr545 = write autoInt 0
+                        autoInt* tempPtr547 = write autoInt 0
                     _condn_exp_end_false_l86_c11:
-                        autoInt temp587 = read autoInt* tempPtr545
-                        byte temp588 = cast autoInt temp587
-                        byte returnValue544 = equal byte temp588
+                        autoInt temp589 = read autoInt* tempPtr547
+                        byte temp590 = cast autoInt temp589
+                        byte returnValue546 = equal byte temp590
                         return
                 ]
             },
@@ -289,77 +289,77 @@
             },
             "_fn_CustomOperatorTest_shtk_lessThan": {
                 "icode": [
-                        int* tempPtr594 = createPointer struct LHS
-                        int* tempPtr596 = addressAdd int* tempPtr594, bytes 0
-                        int* tempPtr598 = createPointer struct LHS
-                        int* tempPtr600 = addressAdd int* tempPtr598, bytes 0
-                        int temp602 = read int* tempPtr596
-                        int temp603 = read int* tempPtr600
-                        int temp601 = multiply int temp602, int temp603
-                        float temp604 = cast int temp601
-                        int* tempPtr606 = createPointer struct LHS
-                        int* tempPtr608 = addressAdd int* tempPtr606, bytes 4
-                        int* tempPtr610 = createPointer struct LHS
-                        int* tempPtr612 = addressAdd int* tempPtr610, bytes 4
-                        float temp614 = read float* tempPtr608
-                        float temp615 = read float* tempPtr612
-                        float temp613 = multiply float temp614, float temp615
-                        float temp616 = add float temp604, float temp613
-                        pass float temp616, float sqrtf, module CustomOperatorTest.shtk
-                        float calleeReturnValue621 = call float sqrtf, module CustomOperatorTest.shtk
-                        float LHSLen = equal float calleeReturnValue621
-                        int* tempPtr626 = createPointer struct RHS
-                        int* tempPtr628 = addressAdd int* tempPtr626, bytes 0
-                        int* tempPtr630 = createPointer struct RHS
-                        int* tempPtr632 = addressAdd int* tempPtr630, bytes 0
-                        int temp634 = read int* tempPtr628
-                        int temp635 = read int* tempPtr632
-                        int temp633 = multiply int temp634, int temp635
-                        float temp636 = cast int temp633
-                        int* tempPtr638 = createPointer struct RHS
-                        int* tempPtr640 = addressAdd int* tempPtr638, bytes 4
-                        int* tempPtr642 = createPointer struct RHS
-                        int* tempPtr644 = addressAdd int* tempPtr642, bytes 4
-                        float temp646 = read float* tempPtr640
-                        float temp647 = read float* tempPtr644
-                        float temp645 = multiply float temp646, float temp647
-                        float temp648 = add float temp636, float temp645
-                        pass float temp648, float sqrtf, module CustomOperatorTest.shtk
-                        float calleeReturnValue653 = call float sqrtf, module CustomOperatorTest.shtk
-                        float RHSLen = equal float calleeReturnValue653
-                        autoInt* tempPtr657 = allocPointer 
+                        int* tempPtr596 = createPointer struct LHS
+                        int* tempPtr598 = addressAdd int* tempPtr596, bytes 0
+                        int* tempPtr600 = createPointer struct LHS
+                        int* tempPtr602 = addressAdd int* tempPtr600, bytes 0
+                        int temp604 = read int* tempPtr598
+                        int temp605 = read int* tempPtr602
+                        int temp603 = multiply int temp604, int temp605
+                        float temp606 = cast int temp603
+                        int* tempPtr608 = createPointer struct LHS
+                        int* tempPtr610 = addressAdd int* tempPtr608, bytes 4
+                        int* tempPtr612 = createPointer struct LHS
+                        int* tempPtr614 = addressAdd int* tempPtr612, bytes 4
+                        float temp616 = read float* tempPtr610
+                        float temp617 = read float* tempPtr614
+                        float temp615 = multiply float temp616, float temp617
+                        float temp618 = add float temp606, float temp615
+                        pass float temp618, float sqrtf, module CustomOperatorTest.shtk
+                        float calleeReturnValue623 = call float sqrtf, module CustomOperatorTest.shtk
+                        float LHSLen = equal float calleeReturnValue623
+                        int* tempPtr628 = createPointer struct RHS
+                        int* tempPtr630 = addressAdd int* tempPtr628, bytes 0
+                        int* tempPtr632 = createPointer struct RHS
+                        int* tempPtr634 = addressAdd int* tempPtr632, bytes 0
+                        int temp636 = read int* tempPtr630
+                        int temp637 = read int* tempPtr634
+                        int temp635 = multiply int temp636, int temp637
+                        float temp638 = cast int temp635
+                        int* tempPtr640 = createPointer struct RHS
+                        int* tempPtr642 = addressAdd int* tempPtr640, bytes 4
+                        int* tempPtr644 = createPointer struct RHS
+                        int* tempPtr646 = addressAdd int* tempPtr644, bytes 4
+                        float temp648 = read float* tempPtr642
+                        float temp649 = read float* tempPtr646
+                        float temp647 = multiply float temp648, float temp649
+                        float temp650 = add float temp638, float temp647
+                        pass float temp650, float sqrtf, module CustomOperatorTest.shtk
+                        float calleeReturnValue655 = call float sqrtf, module CustomOperatorTest.shtk
+                        float RHSLen = equal float calleeReturnValue655
+                        autoInt* tempPtr659 = allocPointer 
                         flag = lessThan float LHSLen, float RHSLen
                         if(not flag) goto _condn_exp_false_l94_c11
-                        autoInt* tempPtr657 = write autoInt 1
+                        autoInt* tempPtr659 = write autoInt 1
                         goto _condn_exp_end_false_l94_c11
                     _condn_exp_false_l94_c11:
-                        autoInt* tempPtr657 = write autoInt 0
+                        autoInt* tempPtr659 = write autoInt 0
                     _condn_exp_end_false_l94_c11:
-                        autoInt temp665 = read autoInt* tempPtr657
-                        byte temp666 = cast autoInt temp665
-                        byte returnValue656 = equal byte temp666
+                        autoInt temp667 = read autoInt* tempPtr659
+                        byte temp668 = cast autoInt temp667
+                        byte returnValue658 = equal byte temp668
                         return
                 ]
             },
             "_fn_CustomOperatorTest_shtk_lessThanOrEqual": {
                 "icode": [
-                        autoInt* tempPtr671 = allocPointer 
-                        int* tempPtr681 = createPointer struct LHS
-                        passPointer int* tempPtr681, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        int* tempPtr684 = createPointer struct RHS
-                        passPointer int* tempPtr684, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        byte calleeReturnValue687 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        byte temp691 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue687, byte temp691
+                        autoInt* tempPtr675 = allocPointer 
+                        int* tempPtr685 = createPointer struct LHS
+                        passPointer int* tempPtr685, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        int* tempPtr688 = createPointer struct RHS
+                        passPointer int* tempPtr688, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        byte calleeReturnValue691 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        byte temp695 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue691, byte temp695
                         if(flag) goto _condn_exp_false_l99_c11
-                        autoInt* tempPtr671 = write autoInt 1
+                        autoInt* tempPtr675 = write autoInt 1
                         goto _condn_exp_end_false_l99_c11
                     _condn_exp_false_l99_c11:
-                        autoInt* tempPtr671 = write autoInt 0
+                        autoInt* tempPtr675 = write autoInt 0
                     _condn_exp_end_false_l99_c11:
-                        autoInt temp694 = read autoInt* tempPtr671
-                        byte temp695 = cast autoInt temp694
-                        byte returnValue670 = equal byte temp695
+                        autoInt temp698 = read autoInt* tempPtr675
+                        byte temp699 = cast autoInt temp698
+                        byte returnValue674 = equal byte temp699
                         return
                 ]
             },
@@ -482,259 +482,259 @@
             },
             "main": {
                 "icode": [
-                        int temp706 = cast autoInt 1
-                        pass int temp706, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        float temp709 = cast autoFloat 1.000000
-                        pass float temp709, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        struct calleeReturnValue712 = call struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        int* tempPtr715 = createPointer struct a
-                        int* tempPtr716 = createPointer struct calleeReturnValue712
-                        int* tempPtr715 = memoryCopy int* tempPtr716, autoInt 8
-                        int temp725 = cast autoInt 2
-                        pass int temp725, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        float temp728 = cast autoFloat 2.000000
-                        pass float temp728, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        struct calleeReturnValue731 = call struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        int* tempPtr734 = createPointer struct b
-                        int* tempPtr735 = createPointer struct calleeReturnValue731
-                        int* tempPtr734 = memoryCopy int* tempPtr735, autoInt 8
-                        int* tempPtr741 = createPointer struct a
-                        passPointer int* tempPtr741, struct _fn_CustomOperatorTest_shtk_multiply, module CustomOperatorTest.shtk
-                        int* tempPtr744 = createPointer struct b
-                        passPointer int* tempPtr744, struct _fn_CustomOperatorTest_shtk_multiply, module CustomOperatorTest.shtk
-                        struct calleeReturnValue747 = call struct _fn_CustomOperatorTest_shtk_multiply, module CustomOperatorTest.shtk
-                        int* tempPtr752 = createPointer struct calleeReturnValue747
-                        passPointer int* tempPtr752, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue755 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr762 = createPointer struct a
-                        passPointer int* tempPtr762, struct _fn_CustomOperatorTest_shtk_divide, module CustomOperatorTest.shtk
-                        int* tempPtr765 = createPointer struct b
-                        passPointer int* tempPtr765, struct _fn_CustomOperatorTest_shtk_divide, module CustomOperatorTest.shtk
-                        struct calleeReturnValue768 = call struct _fn_CustomOperatorTest_shtk_divide, module CustomOperatorTest.shtk
-                        int* tempPtr773 = createPointer struct calleeReturnValue768
-                        passPointer int* tempPtr773, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue776 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr783 = createPointer struct a
-                        passPointer int* tempPtr783, struct _fn_CustomOperatorTest_shtk_mod, module CustomOperatorTest.shtk
-                        int* tempPtr786 = createPointer struct b
-                        passPointer int* tempPtr786, struct _fn_CustomOperatorTest_shtk_mod, module CustomOperatorTest.shtk
-                        struct calleeReturnValue789 = call struct _fn_CustomOperatorTest_shtk_mod, module CustomOperatorTest.shtk
-                        int* tempPtr794 = createPointer struct calleeReturnValue789
-                        passPointer int* tempPtr794, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue797 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr804 = createPointer struct a
-                        passPointer int* tempPtr804, struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
-                        int* tempPtr807 = createPointer struct b
-                        passPointer int* tempPtr807, struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
-                        struct calleeReturnValue810 = call struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
-                        int* tempPtr815 = createPointer struct calleeReturnValue810
-                        passPointer int* tempPtr815, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue818 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr825 = createPointer struct a
-                        passPointer int* tempPtr825, struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
-                        int* tempPtr828 = createPointer struct b
-                        passPointer int* tempPtr828, struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
-                        struct calleeReturnValue831 = call struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
-                        int* tempPtr836 = createPointer struct calleeReturnValue831
-                        passPointer int* tempPtr836, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue839 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr846 = createPointer struct a
-                        passPointer int* tempPtr846, struct _fn_CustomOperatorTest_shtk_rightShift, module CustomOperatorTest.shtk
-                        int* tempPtr849 = createPointer struct b
-                        passPointer int* tempPtr849, struct _fn_CustomOperatorTest_shtk_rightShift, module CustomOperatorTest.shtk
-                        struct calleeReturnValue852 = call struct _fn_CustomOperatorTest_shtk_rightShift, module CustomOperatorTest.shtk
-                        int* tempPtr857 = createPointer struct calleeReturnValue852
-                        passPointer int* tempPtr857, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue860 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr867 = createPointer struct a
-                        passPointer int* tempPtr867, struct _fn_CustomOperatorTest_shtk_leftShift, module CustomOperatorTest.shtk
-                        int* tempPtr870 = createPointer struct b
-                        passPointer int* tempPtr870, struct _fn_CustomOperatorTest_shtk_leftShift, module CustomOperatorTest.shtk
-                        struct calleeReturnValue873 = call struct _fn_CustomOperatorTest_shtk_leftShift, module CustomOperatorTest.shtk
-                        int* tempPtr878 = createPointer struct calleeReturnValue873
-                        passPointer int* tempPtr878, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue881 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr888 = createPointer struct a
-                        passPointer int* tempPtr888, struct _fn_CustomOperatorTest_shtk_bitwiseAnd, module CustomOperatorTest.shtk
-                        int* tempPtr891 = createPointer struct b
-                        passPointer int* tempPtr891, struct _fn_CustomOperatorTest_shtk_bitwiseAnd, module CustomOperatorTest.shtk
-                        struct calleeReturnValue894 = call struct _fn_CustomOperatorTest_shtk_bitwiseAnd, module CustomOperatorTest.shtk
-                        int* tempPtr899 = createPointer struct calleeReturnValue894
-                        passPointer int* tempPtr899, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue902 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr909 = createPointer struct a
-                        passPointer int* tempPtr909, struct _fn_CustomOperatorTest_shtk_bitwiseOr, module CustomOperatorTest.shtk
-                        int* tempPtr912 = createPointer struct b
-                        passPointer int* tempPtr912, struct _fn_CustomOperatorTest_shtk_bitwiseOr, module CustomOperatorTest.shtk
-                        struct calleeReturnValue915 = call struct _fn_CustomOperatorTest_shtk_bitwiseOr, module CustomOperatorTest.shtk
-                        int* tempPtr920 = createPointer struct calleeReturnValue915
-                        passPointer int* tempPtr920, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue923 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        autoInt* tempPtr926 = allocPointer 
-                        int* tempPtr934 = createPointer struct a
-                        passPointer int* tempPtr934, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        int* tempPtr937 = createPointer struct b
-                        passPointer int* tempPtr937, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        byte calleeReturnValue940 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        byte temp944 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue940, byte temp944
+                        int temp710 = cast autoInt 1
+                        pass int temp710, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        float temp713 = cast autoFloat 1.000000
+                        pass float temp713, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        struct calleeReturnValue716 = call struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        int* tempPtr719 = createPointer struct a
+                        int* tempPtr720 = createPointer struct calleeReturnValue716
+                        int* tempPtr719 = memoryCopy int* tempPtr720, autoInt 8
+                        int temp729 = cast autoInt 2
+                        pass int temp729, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        float temp732 = cast autoFloat 2.000000
+                        pass float temp732, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        struct calleeReturnValue735 = call struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        int* tempPtr738 = createPointer struct b
+                        int* tempPtr739 = createPointer struct calleeReturnValue735
+                        int* tempPtr738 = memoryCopy int* tempPtr739, autoInt 8
+                        int* tempPtr745 = createPointer struct a
+                        passPointer int* tempPtr745, struct _fn_CustomOperatorTest_shtk_multiply, module CustomOperatorTest.shtk
+                        int* tempPtr748 = createPointer struct b
+                        passPointer int* tempPtr748, struct _fn_CustomOperatorTest_shtk_multiply, module CustomOperatorTest.shtk
+                        struct calleeReturnValue751 = call struct _fn_CustomOperatorTest_shtk_multiply, module CustomOperatorTest.shtk
+                        int* tempPtr756 = createPointer struct calleeReturnValue751
+                        passPointer int* tempPtr756, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue759 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr766 = createPointer struct a
+                        passPointer int* tempPtr766, struct _fn_CustomOperatorTest_shtk_divide, module CustomOperatorTest.shtk
+                        int* tempPtr769 = createPointer struct b
+                        passPointer int* tempPtr769, struct _fn_CustomOperatorTest_shtk_divide, module CustomOperatorTest.shtk
+                        struct calleeReturnValue772 = call struct _fn_CustomOperatorTest_shtk_divide, module CustomOperatorTest.shtk
+                        int* tempPtr777 = createPointer struct calleeReturnValue772
+                        passPointer int* tempPtr777, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue780 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr787 = createPointer struct a
+                        passPointer int* tempPtr787, struct _fn_CustomOperatorTest_shtk_mod, module CustomOperatorTest.shtk
+                        int* tempPtr790 = createPointer struct b
+                        passPointer int* tempPtr790, struct _fn_CustomOperatorTest_shtk_mod, module CustomOperatorTest.shtk
+                        struct calleeReturnValue793 = call struct _fn_CustomOperatorTest_shtk_mod, module CustomOperatorTest.shtk
+                        int* tempPtr798 = createPointer struct calleeReturnValue793
+                        passPointer int* tempPtr798, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue801 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr808 = createPointer struct a
+                        passPointer int* tempPtr808, struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
+                        int* tempPtr811 = createPointer struct b
+                        passPointer int* tempPtr811, struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
+                        struct calleeReturnValue814 = call struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
+                        int* tempPtr819 = createPointer struct calleeReturnValue814
+                        passPointer int* tempPtr819, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue822 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr829 = createPointer struct a
+                        passPointer int* tempPtr829, struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
+                        int* tempPtr832 = createPointer struct b
+                        passPointer int* tempPtr832, struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
+                        struct calleeReturnValue835 = call struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
+                        int* tempPtr840 = createPointer struct calleeReturnValue835
+                        passPointer int* tempPtr840, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue843 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr850 = createPointer struct a
+                        passPointer int* tempPtr850, struct _fn_CustomOperatorTest_shtk_rightShift, module CustomOperatorTest.shtk
+                        int* tempPtr853 = createPointer struct b
+                        passPointer int* tempPtr853, struct _fn_CustomOperatorTest_shtk_rightShift, module CustomOperatorTest.shtk
+                        struct calleeReturnValue856 = call struct _fn_CustomOperatorTest_shtk_rightShift, module CustomOperatorTest.shtk
+                        int* tempPtr861 = createPointer struct calleeReturnValue856
+                        passPointer int* tempPtr861, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue864 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr871 = createPointer struct a
+                        passPointer int* tempPtr871, struct _fn_CustomOperatorTest_shtk_leftShift, module CustomOperatorTest.shtk
+                        int* tempPtr874 = createPointer struct b
+                        passPointer int* tempPtr874, struct _fn_CustomOperatorTest_shtk_leftShift, module CustomOperatorTest.shtk
+                        struct calleeReturnValue877 = call struct _fn_CustomOperatorTest_shtk_leftShift, module CustomOperatorTest.shtk
+                        int* tempPtr882 = createPointer struct calleeReturnValue877
+                        passPointer int* tempPtr882, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue885 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr892 = createPointer struct a
+                        passPointer int* tempPtr892, struct _fn_CustomOperatorTest_shtk_bitwiseAnd, module CustomOperatorTest.shtk
+                        int* tempPtr895 = createPointer struct b
+                        passPointer int* tempPtr895, struct _fn_CustomOperatorTest_shtk_bitwiseAnd, module CustomOperatorTest.shtk
+                        struct calleeReturnValue898 = call struct _fn_CustomOperatorTest_shtk_bitwiseAnd, module CustomOperatorTest.shtk
+                        int* tempPtr903 = createPointer struct calleeReturnValue898
+                        passPointer int* tempPtr903, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue906 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr913 = createPointer struct a
+                        passPointer int* tempPtr913, struct _fn_CustomOperatorTest_shtk_bitwiseOr, module CustomOperatorTest.shtk
+                        int* tempPtr916 = createPointer struct b
+                        passPointer int* tempPtr916, struct _fn_CustomOperatorTest_shtk_bitwiseOr, module CustomOperatorTest.shtk
+                        struct calleeReturnValue919 = call struct _fn_CustomOperatorTest_shtk_bitwiseOr, module CustomOperatorTest.shtk
+                        int* tempPtr924 = createPointer struct calleeReturnValue919
+                        passPointer int* tempPtr924, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue927 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        autoInt* tempPtr930 = allocPointer 
+                        int* tempPtr938 = createPointer struct a
+                        passPointer int* tempPtr938, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        int* tempPtr941 = createPointer struct b
+                        passPointer int* tempPtr941, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        byte calleeReturnValue944 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        byte temp948 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue944, byte temp948
                         if(not flag) goto _condn_exp_false_l116_c12
-                        autoInt* tempPtr926 = write autoInt 1
+                        autoInt* tempPtr930 = write autoInt 1
                         goto _condn_exp_end_false_l116_c12
                     _condn_exp_false_l116_c12:
-                        autoInt* tempPtr926 = write autoInt 0
+                        autoInt* tempPtr930 = write autoInt 0
                     _condn_exp_end_false_l116_c12:
-                        autoInt temp947 = read autoInt* tempPtr926
-                        print autoInt temp947
+                        autoInt temp951 = read autoInt* tempPtr930
+                        print autoInt temp951
                         newLine
-                        autoInt* tempPtr948 = allocPointer 
-                        int* tempPtr956 = createPointer struct a
-                        passPointer int* tempPtr956, byte _fn_CustomOperatorTest_shtk_isNotEqual, module CustomOperatorTest.shtk
-                        int* tempPtr959 = createPointer struct b
-                        passPointer int* tempPtr959, byte _fn_CustomOperatorTest_shtk_isNotEqual, module CustomOperatorTest.shtk
-                        byte calleeReturnValue962 = call byte _fn_CustomOperatorTest_shtk_isNotEqual, module CustomOperatorTest.shtk
-                        byte temp966 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue962, byte temp966
+                        autoInt* tempPtr952 = allocPointer 
+                        int* tempPtr960 = createPointer struct a
+                        passPointer int* tempPtr960, byte _fn_CustomOperatorTest_shtk_isNotEqual, module CustomOperatorTest.shtk
+                        int* tempPtr963 = createPointer struct b
+                        passPointer int* tempPtr963, byte _fn_CustomOperatorTest_shtk_isNotEqual, module CustomOperatorTest.shtk
+                        byte calleeReturnValue966 = call byte _fn_CustomOperatorTest_shtk_isNotEqual, module CustomOperatorTest.shtk
+                        byte temp970 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue966, byte temp970
                         if(not flag) goto _condn_exp_false_l117_c12
-                        autoInt* tempPtr948 = write autoInt 1
+                        autoInt* tempPtr952 = write autoInt 1
                         goto _condn_exp_end_false_l117_c12
                     _condn_exp_false_l117_c12:
-                        autoInt* tempPtr948 = write autoInt 0
+                        autoInt* tempPtr952 = write autoInt 0
                     _condn_exp_end_false_l117_c12:
-                        autoInt temp969 = read autoInt* tempPtr948
-                        print autoInt temp969
+                        autoInt temp973 = read autoInt* tempPtr952
+                        print autoInt temp973
                         newLine
-                        autoInt* tempPtr970 = allocPointer 
-                        int* tempPtr978 = createPointer struct a
-                        passPointer int* tempPtr978, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        int* tempPtr981 = createPointer struct b
-                        passPointer int* tempPtr981, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        byte calleeReturnValue984 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
-                        byte temp988 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue984, byte temp988
+                        autoInt* tempPtr974 = allocPointer 
+                        int* tempPtr982 = createPointer struct a
+                        passPointer int* tempPtr982, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        int* tempPtr985 = createPointer struct b
+                        passPointer int* tempPtr985, byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        byte calleeReturnValue988 = call byte _fn_CustomOperatorTest_shtk_greaterThan, module CustomOperatorTest.shtk
+                        byte temp992 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue988, byte temp992
                         if(not flag) goto _condn_exp_false_l118_c12
-                        autoInt* tempPtr970 = write autoInt 1
+                        autoInt* tempPtr974 = write autoInt 1
                         goto _condn_exp_end_false_l118_c12
                     _condn_exp_false_l118_c12:
-                        autoInt* tempPtr970 = write autoInt 0
+                        autoInt* tempPtr974 = write autoInt 0
                     _condn_exp_end_false_l118_c12:
-                        autoInt temp991 = read autoInt* tempPtr970
-                        print autoInt temp991
+                        autoInt temp995 = read autoInt* tempPtr974
+                        print autoInt temp995
                         newLine
-                        autoInt* tempPtr992 = allocPointer 
-                        int* tempPtr1000 = createPointer struct a
-                        passPointer int* tempPtr1000, byte _fn_CustomOperatorTest_shtk_greaterThanOrEqual, module CustomOperatorTest.shtk
-                        int* tempPtr1003 = createPointer struct b
-                        passPointer int* tempPtr1003, byte _fn_CustomOperatorTest_shtk_greaterThanOrEqual, module CustomOperatorTest.shtk
-                        byte calleeReturnValue1006 = call byte _fn_CustomOperatorTest_shtk_greaterThanOrEqual, module CustomOperatorTest.shtk
-                        byte temp1010 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue1006, byte temp1010
+                        autoInt* tempPtr996 = allocPointer 
+                        int* tempPtr1004 = createPointer struct a
+                        passPointer int* tempPtr1004, byte _fn_CustomOperatorTest_shtk_greaterThanOrEqual, module CustomOperatorTest.shtk
+                        int* tempPtr1007 = createPointer struct b
+                        passPointer int* tempPtr1007, byte _fn_CustomOperatorTest_shtk_greaterThanOrEqual, module CustomOperatorTest.shtk
+                        byte calleeReturnValue1010 = call byte _fn_CustomOperatorTest_shtk_greaterThanOrEqual, module CustomOperatorTest.shtk
+                        byte temp1014 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue1010, byte temp1014
                         if(not flag) goto _condn_exp_false_l119_c12
-                        autoInt* tempPtr992 = write autoInt 1
+                        autoInt* tempPtr996 = write autoInt 1
                         goto _condn_exp_end_false_l119_c12
                     _condn_exp_false_l119_c12:
-                        autoInt* tempPtr992 = write autoInt 0
+                        autoInt* tempPtr996 = write autoInt 0
                     _condn_exp_end_false_l119_c12:
-                        autoInt temp1013 = read autoInt* tempPtr992
-                        print autoInt temp1013
+                        autoInt temp1017 = read autoInt* tempPtr996
+                        print autoInt temp1017
                         newLine
-                        autoInt* tempPtr1014 = allocPointer 
-                        int* tempPtr1022 = createPointer struct a
-                        passPointer int* tempPtr1022, byte _fn_CustomOperatorTest_shtk_lessThan, module CustomOperatorTest.shtk
-                        int* tempPtr1025 = createPointer struct b
-                        passPointer int* tempPtr1025, byte _fn_CustomOperatorTest_shtk_lessThan, module CustomOperatorTest.shtk
-                        byte calleeReturnValue1028 = call byte _fn_CustomOperatorTest_shtk_lessThan, module CustomOperatorTest.shtk
-                        byte temp1032 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue1028, byte temp1032
+                        autoInt* tempPtr1018 = allocPointer 
+                        int* tempPtr1026 = createPointer struct a
+                        passPointer int* tempPtr1026, byte _fn_CustomOperatorTest_shtk_lessThan, module CustomOperatorTest.shtk
+                        int* tempPtr1029 = createPointer struct b
+                        passPointer int* tempPtr1029, byte _fn_CustomOperatorTest_shtk_lessThan, module CustomOperatorTest.shtk
+                        byte calleeReturnValue1032 = call byte _fn_CustomOperatorTest_shtk_lessThan, module CustomOperatorTest.shtk
+                        byte temp1036 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue1032, byte temp1036
                         if(not flag) goto _condn_exp_false_l120_c12
-                        autoInt* tempPtr1014 = write autoInt 1
+                        autoInt* tempPtr1018 = write autoInt 1
                         goto _condn_exp_end_false_l120_c12
                     _condn_exp_false_l120_c12:
-                        autoInt* tempPtr1014 = write autoInt 0
+                        autoInt* tempPtr1018 = write autoInt 0
                     _condn_exp_end_false_l120_c12:
-                        autoInt temp1035 = read autoInt* tempPtr1014
-                        print autoInt temp1035
+                        autoInt temp1039 = read autoInt* tempPtr1018
+                        print autoInt temp1039
                         newLine
-                        autoInt* tempPtr1036 = allocPointer 
-                        int* tempPtr1044 = createPointer struct a
-                        passPointer int* tempPtr1044, byte _fn_CustomOperatorTest_shtk_lessThanOrEqual, module CustomOperatorTest.shtk
-                        int* tempPtr1047 = createPointer struct b
-                        passPointer int* tempPtr1047, byte _fn_CustomOperatorTest_shtk_lessThanOrEqual, module CustomOperatorTest.shtk
-                        byte calleeReturnValue1050 = call byte _fn_CustomOperatorTest_shtk_lessThanOrEqual, module CustomOperatorTest.shtk
-                        byte temp1054 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue1050, byte temp1054
+                        autoInt* tempPtr1040 = allocPointer 
+                        int* tempPtr1048 = createPointer struct a
+                        passPointer int* tempPtr1048, byte _fn_CustomOperatorTest_shtk_lessThanOrEqual, module CustomOperatorTest.shtk
+                        int* tempPtr1051 = createPointer struct b
+                        passPointer int* tempPtr1051, byte _fn_CustomOperatorTest_shtk_lessThanOrEqual, module CustomOperatorTest.shtk
+                        byte calleeReturnValue1054 = call byte _fn_CustomOperatorTest_shtk_lessThanOrEqual, module CustomOperatorTest.shtk
+                        byte temp1058 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue1054, byte temp1058
                         if(not flag) goto _condn_exp_false_l121_c12
-                        autoInt* tempPtr1036 = write autoInt 1
+                        autoInt* tempPtr1040 = write autoInt 1
                         goto _condn_exp_end_false_l121_c12
                     _condn_exp_false_l121_c12:
-                        autoInt* tempPtr1036 = write autoInt 0
+                        autoInt* tempPtr1040 = write autoInt 0
                     _condn_exp_end_false_l121_c12:
-                        autoInt temp1057 = read autoInt* tempPtr1036
-                        print autoInt temp1057
+                        autoInt temp1061 = read autoInt* tempPtr1040
+                        print autoInt temp1061
                         newLine
-                        int* tempPtr1062 = createPointer struct a
-                        passPointer int* tempPtr1062, struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
-                        int* tempPtr1065 = createPointer struct b
-                        passPointer int* tempPtr1065, struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
-                        struct calleeReturnValue1068 = call struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
-                        int* tempPtr1071 = createPointer struct a
-                        int* tempPtr1072 = createPointer struct calleeReturnValue1068
-                        int* tempPtr1071 = memoryCopy int* tempPtr1072, autoInt 8
-                        int* tempPtr1077 = createPointer struct a
-                        passPointer int* tempPtr1077, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue1080 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr1086 = createPointer struct b
-                        passPointer int* tempPtr1086, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue1089 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr1096 = createPointer struct a
-                        passPointer int* tempPtr1096, struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
-                        int* tempPtr1099 = createPointer struct b
-                        passPointer int* tempPtr1099, struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
-                        struct calleeReturnValue1102 = call struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
-                        int* tempPtr1105 = createPointer struct a
-                        int* tempPtr1106 = createPointer struct calleeReturnValue1102
-                        int* tempPtr1105 = memoryCopy int* tempPtr1106, autoInt 8
-                        int* tempPtr1111 = createPointer struct a
-                        passPointer int* tempPtr1111, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue1114 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int* tempPtr1120 = createPointer struct b
-                        passPointer int* tempPtr1120, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        void calleeReturnValue1123 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
-                        int temp1133 = cast autoInt 1
-                        pass int temp1133, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        float temp1136 = cast autoFloat 1.000000
-                        pass float temp1136, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        struct calleeReturnValue1139 = call struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        int* tempPtr1142 = createPointer struct a
-                        int* tempPtr1143 = createPointer struct calleeReturnValue1139
-                        int* tempPtr1142 = memoryCopy int* tempPtr1143, autoInt 8
-                        int temp1152 = cast autoInt 1
-                        pass int temp1152, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        float temp1155 = cast autoFloat 1.000000
-                        pass float temp1155, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        struct calleeReturnValue1158 = call struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
-                        int* tempPtr1161 = createPointer struct b
-                        int* tempPtr1162 = createPointer struct calleeReturnValue1158
-                        int* tempPtr1161 = memoryCopy int* tempPtr1162, autoInt 8
-                        autoInt* tempPtr1164 = allocPointer 
-                        int* tempPtr1172 = createPointer struct a
-                        passPointer int* tempPtr1172, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        int* tempPtr1175 = createPointer struct b
-                        passPointer int* tempPtr1175, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        byte calleeReturnValue1178 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
-                        byte temp1182 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue1178, byte temp1182
+                        int* tempPtr1066 = createPointer struct a
+                        passPointer int* tempPtr1066, struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
+                        int* tempPtr1069 = createPointer struct b
+                        passPointer int* tempPtr1069, struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
+                        struct calleeReturnValue1072 = call struct _fn_CustomOperatorTest_shtk_add, module CustomOperatorTest.shtk
+                        int* tempPtr1075 = createPointer struct a
+                        int* tempPtr1076 = createPointer struct calleeReturnValue1072
+                        int* tempPtr1075 = memoryCopy int* tempPtr1076, autoInt 8
+                        int* tempPtr1081 = createPointer struct a
+                        passPointer int* tempPtr1081, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue1084 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr1090 = createPointer struct b
+                        passPointer int* tempPtr1090, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue1093 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr1100 = createPointer struct a
+                        passPointer int* tempPtr1100, struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
+                        int* tempPtr1103 = createPointer struct b
+                        passPointer int* tempPtr1103, struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
+                        struct calleeReturnValue1106 = call struct _fn_CustomOperatorTest_shtk_subtract, module CustomOperatorTest.shtk
+                        int* tempPtr1109 = createPointer struct a
+                        int* tempPtr1110 = createPointer struct calleeReturnValue1106
+                        int* tempPtr1109 = memoryCopy int* tempPtr1110, autoInt 8
+                        int* tempPtr1115 = createPointer struct a
+                        passPointer int* tempPtr1115, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue1118 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int* tempPtr1124 = createPointer struct b
+                        passPointer int* tempPtr1124, void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        void calleeReturnValue1127 = call void _fn_CustomOperatorTest_shtk_printFoo, module CustomOperatorTest.shtk
+                        int temp1137 = cast autoInt 1
+                        pass int temp1137, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        float temp1140 = cast autoFloat 1.000000
+                        pass float temp1140, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        struct calleeReturnValue1143 = call struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        int* tempPtr1146 = createPointer struct a
+                        int* tempPtr1147 = createPointer struct calleeReturnValue1143
+                        int* tempPtr1146 = memoryCopy int* tempPtr1147, autoInt 8
+                        int temp1156 = cast autoInt 1
+                        pass int temp1156, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        float temp1159 = cast autoFloat 1.000000
+                        pass float temp1159, struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        struct calleeReturnValue1162 = call struct _fn_CustomOperatorTest_shtk_createFoo, module CustomOperatorTest.shtk
+                        int* tempPtr1165 = createPointer struct b
+                        int* tempPtr1166 = createPointer struct calleeReturnValue1162
+                        int* tempPtr1165 = memoryCopy int* tempPtr1166, autoInt 8
+                        autoInt* tempPtr1168 = allocPointer 
+                        int* tempPtr1176 = createPointer struct a
+                        passPointer int* tempPtr1176, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        int* tempPtr1179 = createPointer struct b
+                        passPointer int* tempPtr1179, byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        byte calleeReturnValue1182 = call byte _fn_CustomOperatorTest_shtk_isEqual, module CustomOperatorTest.shtk
+                        byte temp1186 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue1182, byte temp1186
                         if(not flag) goto _condn_exp_false_l134_c12
-                        autoInt* tempPtr1164 = write autoInt 1
+                        autoInt* tempPtr1168 = write autoInt 1
                         goto _condn_exp_end_false_l134_c12
                     _condn_exp_false_l134_c12:
-                        autoInt* tempPtr1164 = write autoInt 0
+                        autoInt* tempPtr1168 = write autoInt 0
                     _condn_exp_end_false_l134_c12:
-                        autoInt temp1185 = read autoInt* tempPtr1164
-                        print autoInt temp1185
+                        autoInt temp1189 = read autoInt* tempPtr1168
+                        print autoInt temp1189
                         newLine
-                        int temp1188 = cast autoInt 0
-                        int returnValue1186 = equal int temp1188
+                        int temp1192 = cast autoInt 0
+                        int returnValue1190 = equal int temp1192
                         return
                 ]
             }

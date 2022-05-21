@@ -32,22 +32,22 @@
             },
             "_fn_TestModules_Vector_shtk_dot": {
                 "icode": [
-                        int* tempPtr136 = createPointer struct this
-                        int* tempPtr138 = addressAdd int* tempPtr136, bytes 0
-                        int* tempPtr140 = createPointer struct other
-                        int* tempPtr142 = addressAdd int* tempPtr140, bytes 0
-                        int temp144 = read int* tempPtr138
-                        int temp145 = read int* tempPtr142
-                        int temp143 = multiply int temp144, int temp145
-                        int* tempPtr147 = createPointer struct this
-                        int* tempPtr149 = addressAdd int* tempPtr147, bytes 4
-                        int* tempPtr151 = createPointer struct other
-                        int* tempPtr153 = addressAdd int* tempPtr151, bytes 4
-                        int temp155 = read int* tempPtr149
-                        int temp156 = read int* tempPtr153
-                        int temp154 = multiply int temp155, int temp156
-                        int temp157 = add int temp143, int temp154
-                        int returnValue134 = equal int temp157
+                        int* tempPtr138 = createPointer struct this
+                        int* tempPtr140 = addressAdd int* tempPtr138, bytes 0
+                        int* tempPtr142 = createPointer struct other
+                        int* tempPtr144 = addressAdd int* tempPtr142, bytes 0
+                        int temp146 = read int* tempPtr140
+                        int temp147 = read int* tempPtr144
+                        int temp145 = multiply int temp146, int temp147
+                        int* tempPtr149 = createPointer struct this
+                        int* tempPtr151 = addressAdd int* tempPtr149, bytes 4
+                        int* tempPtr153 = createPointer struct other
+                        int* tempPtr155 = addressAdd int* tempPtr153, bytes 4
+                        int temp157 = read int* tempPtr151
+                        int temp158 = read int* tempPtr155
+                        int temp156 = multiply int temp157, int temp158
+                        int temp159 = add int temp145, int temp156
+                        int returnValue136 = equal int temp159
                         return
                 ]
             },
@@ -107,24 +107,24 @@
             },
             "_fn_TestModules_Vector_shtk_isUnitVector": {
                 "icode": [
-                        int* tempPtr182 = createPointer struct vector
-                        int* tempPtr184 = addressAdd int* tempPtr182, bytes 0
-                        int temp186 = read int* tempPtr184
-                        int temp187 = cast autoInt 1
-                        flag = isEqual int temp186, int temp187
+                        int* tempPtr184 = createPointer struct vector
+                        int* tempPtr186 = addressAdd int* tempPtr184, bytes 0
+                        int temp188 = read int* tempPtr186
+                        int temp189 = cast autoInt 1
+                        flag = isEqual int temp188, int temp189
                         if(not flag) goto _if_false_l44_c4
-                        int* tempPtr189 = createPointer struct vector
-                        int* tempPtr191 = addressAdd int* tempPtr189, bytes 4
-                        int temp193 = read int* tempPtr191
-                        int temp194 = cast autoInt 1
-                        flag = isEqual int temp193, int temp194
+                        int* tempPtr191 = createPointer struct vector
+                        int* tempPtr193 = addressAdd int* tempPtr191, bytes 4
+                        int temp195 = read int* tempPtr193
+                        int temp196 = cast autoInt 1
+                        flag = isEqual int temp195, int temp196
                         if(not flag) goto _if_false_l44_c4
-                        byte temp197 = cast autoInt 1
-                        byte returnValue195 = equal byte temp197
+                        byte temp199 = cast autoInt 1
+                        byte returnValue197 = equal byte temp199
                         return
                     _if_false_l44_c4:
-                        byte temp200 = cast autoInt 0
-                        byte returnValue198 = equal byte temp200
+                        byte temp202 = cast autoInt 0
+                        byte returnValue200 = equal byte temp202
                         return
                 ]
             },
@@ -132,17 +132,17 @@
                 "icode": [
                         printString stringData _str_TestModules_Vector_shtk__l39_c12
                         space
-                        int* tempPtr163 = createPointer struct vector
-                        int* tempPtr165 = addressAdd int* tempPtr163, bytes 0
-                        int temp166 = read int* tempPtr165
-                        print int temp166
+                        int* tempPtr165 = createPointer struct vector
+                        int* tempPtr167 = addressAdd int* tempPtr165, bytes 0
+                        int temp168 = read int* tempPtr167
+                        print int temp168
                         space
                         printString stringData _str_TestModules_Vector_shtk__l39_c28
                         space
-                        int* tempPtr169 = createPointer struct vector
-                        int* tempPtr171 = addressAdd int* tempPtr169, bytes 4
-                        int temp172 = read int* tempPtr171
-                        print int temp172
+                        int* tempPtr171 = createPointer struct vector
+                        int* tempPtr173 = addressAdd int* tempPtr171, bytes 4
+                        int temp174 = read int* tempPtr173
+                        print int temp174
                         newLine
                         return
                 ]
@@ -201,94 +201,82 @@
             },
             "main": {
                 "icode": [
-                        int temp70 = cast autoInt 1
-                        pass int temp70, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp73 = cast autoInt 2
-                        pass int temp73, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        struct calleeReturnValue76 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp85 = cast autoInt 3
-                        pass int temp85, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp88 = cast autoInt 4
-                        pass int temp88, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        struct calleeReturnValue91 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp100 = cast autoInt 5
-                        pass int temp100, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp103 = cast autoInt 6
-                        pass int temp103, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        struct calleeReturnValue106 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp115 = cast autoInt 7
-                        pass int temp115, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp118 = cast autoInt 8
-                        pass int temp118, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        struct calleeReturnValue121 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int* tempPtr124 = createPointer struct foo
-                        int* tempPtr125 = createPointer struct calleeReturnValue76
-                        int* tempPtr124 = memoryCopy int* tempPtr125, autoInt 8
-                        int* tempPtr128 = addressAdd int* tempPtr124, bytes 8
-                        int* tempPtr129 = createPointer struct calleeReturnValue91
-                        int* tempPtr128 = memoryCopy int* tempPtr129, autoInt 8
-                        int* tempPtr132 = addressAdd int* tempPtr128, bytes 8
-                        int* tempPtr133 = createPointer struct calleeReturnValue106
-                        int* tempPtr132 = memoryCopy int* tempPtr133, autoInt 8
-                        int* tempPtr136 = addressAdd int* tempPtr132, bytes 8
-                        int* tempPtr137 = createPointer struct calleeReturnValue121
-                        int* tempPtr136 = memoryCopy int* tempPtr137, autoInt 8
+                        int temp71 = cast autoInt 1
+                        pass int temp71, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp74 = cast autoInt 2
+                        pass int temp74, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        struct calleeReturnValue77 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp86 = cast autoInt 3
+                        pass int temp86, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp89 = cast autoInt 4
+                        pass int temp89, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        struct calleeReturnValue92 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp101 = cast autoInt 5
+                        pass int temp101, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp104 = cast autoInt 6
+                        pass int temp104, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        struct calleeReturnValue107 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp116 = cast autoInt 7
+                        pass int temp116, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp119 = cast autoInt 8
+                        pass int temp119, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        struct calleeReturnValue122 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int* tempPtr125 = createPointer struct foo
+                        int* tempPtr126 = createPointer struct calleeReturnValue77
+                        int* tempPtr125 = memoryCopy int* tempPtr126, autoInt 8
+                        int* tempPtr129 = addressAdd int* tempPtr125, bytes 8
+                        int* tempPtr130 = createPointer struct calleeReturnValue92
+                        int* tempPtr129 = memoryCopy int* tempPtr130, autoInt 8
+                        int* tempPtr133 = addressAdd int* tempPtr129, bytes 8
+                        int* tempPtr134 = createPointer struct calleeReturnValue107
+                        int* tempPtr133 = memoryCopy int* tempPtr134, autoInt 8
+                        int* tempPtr137 = addressAdd int* tempPtr133, bytes 8
+                        int* tempPtr138 = createPointer struct calleeReturnValue122
+                        int* tempPtr137 = memoryCopy int* tempPtr138, autoInt 8
                         printString stringData _str_VecFactory_shtk__l28_c12
                         space
                         print autoInt 32
                         newLine
-                        int* tempPtr144 = createPointer struct foo
-                        passPointer int* tempPtr144, void _fn_VecFactory_shtk_printVecArray, module VecFactory.shtk
-                        void calleeReturnValue147 = call void _fn_VecFactory_shtk_printVecArray, module VecFactory.shtk
-                        int temp157 = cast autoInt 10
-                        pass int temp157, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp160 = cast autoInt 20
-                        pass int temp160, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        struct calleeReturnValue163 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp172 = cast autoInt 30
-                        pass int temp172, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp175 = cast autoInt 40
-                        pass int temp175, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        struct calleeReturnValue178 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp187 = cast autoInt 50
-                        pass int temp187, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp190 = cast autoInt 60
-                        pass int temp190, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        struct calleeReturnValue193 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp202 = cast autoInt 70
-                        pass int temp202, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int temp205 = cast autoInt 80
-                        pass int temp205, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        struct calleeReturnValue208 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
-                        int* tempPtr211 = createPointer struct foo
-                        int* tempPtr212 = createPointer struct calleeReturnValue163
-                        int* tempPtr211 = memoryCopy int* tempPtr212, autoInt 8
-                        int* tempPtr215 = addressAdd int* tempPtr211, bytes 8
-                        int* tempPtr216 = createPointer struct calleeReturnValue178
-                        int* tempPtr215 = memoryCopy int* tempPtr216, autoInt 8
-                        int* tempPtr219 = addressAdd int* tempPtr215, bytes 8
-                        int* tempPtr220 = createPointer struct calleeReturnValue193
-                        int* tempPtr219 = memoryCopy int* tempPtr220, autoInt 8
-                        int* tempPtr223 = addressAdd int* tempPtr219, bytes 8
-                        int* tempPtr224 = createPointer struct calleeReturnValue208
-                        int* tempPtr223 = memoryCopy int* tempPtr224, autoInt 8
-                        int* tempPtr229 = createPointer struct foo
-                        passPointer int* tempPtr229, void _fn_VecFactory_shtk_printVecArray, module VecFactory.shtk
-                        void calleeReturnValue232 = call void _fn_VecFactory_shtk_printVecArray, module VecFactory.shtk
-                        int temp237 = cast autoInt 0
-                        int returnValue235 = equal int temp237
-                        int* tempPtr240 = createPointer struct foo
-                        void* tempPtr242 = addressMultiply autoInt 0, bytes 8
-                        int* tempPtr243 = addressAdd int* tempPtr240, void* tempPtr242
-                        int* tempPtr245 = createPointer struct foo
-                        void* tempPtr247 = addressMultiply autoInt 1, bytes 8
-                        int* tempPtr248 = addressAdd int* tempPtr245, void* tempPtr247
-                        int* tempPtr250 = createPointer struct foo
-                        void* tempPtr252 = addressMultiply autoInt 2, bytes 8
-                        int* tempPtr253 = addressAdd int* tempPtr250, void* tempPtr252
-                        int* tempPtr255 = createPointer struct foo
-                        void* tempPtr257 = addressMultiply autoInt 3, bytes 8
-                        int* tempPtr258 = addressAdd int* tempPtr255, void* tempPtr257
+                        int* tempPtr145 = createPointer struct foo
+                        passPointer int* tempPtr145, void _fn_VecFactory_shtk_printVecArray, module VecFactory.shtk
+                        void calleeReturnValue148 = call void _fn_VecFactory_shtk_printVecArray, module VecFactory.shtk
+                        int temp158 = cast autoInt 10
+                        pass int temp158, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp161 = cast autoInt 20
+                        pass int temp161, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        struct calleeReturnValue164 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp173 = cast autoInt 30
+                        pass int temp173, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp176 = cast autoInt 40
+                        pass int temp176, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        struct calleeReturnValue179 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp188 = cast autoInt 50
+                        pass int temp188, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp191 = cast autoInt 60
+                        pass int temp191, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        struct calleeReturnValue194 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp203 = cast autoInt 70
+                        pass int temp203, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int temp206 = cast autoInt 80
+                        pass int temp206, struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        struct calleeReturnValue209 = call struct _fn_VecFactory_shtk_newVec, module VecFactory.shtk
+                        int* tempPtr212 = createPointer struct foo
+                        int* tempPtr213 = createPointer struct calleeReturnValue164
+                        int* tempPtr212 = memoryCopy int* tempPtr213, autoInt 8
+                        int* tempPtr216 = addressAdd int* tempPtr212, bytes 8
+                        int* tempPtr217 = createPointer struct calleeReturnValue179
+                        int* tempPtr216 = memoryCopy int* tempPtr217, autoInt 8
+                        int* tempPtr220 = addressAdd int* tempPtr216, bytes 8
+                        int* tempPtr221 = createPointer struct calleeReturnValue194
+                        int* tempPtr220 = memoryCopy int* tempPtr221, autoInt 8
+                        int* tempPtr224 = addressAdd int* tempPtr220, bytes 8
+                        int* tempPtr225 = createPointer struct calleeReturnValue209
+                        int* tempPtr224 = memoryCopy int* tempPtr225, autoInt 8
+                        int* tempPtr230 = createPointer struct foo
+                        passPointer int* tempPtr230, void _fn_VecFactory_shtk_printVecArray, module VecFactory.shtk
+                        void calleeReturnValue233 = call void _fn_VecFactory_shtk_printVecArray, module VecFactory.shtk
+                        int temp238 = cast autoInt 0
+                        int returnValue236 = equal int temp238
                         return
                 ]
             }

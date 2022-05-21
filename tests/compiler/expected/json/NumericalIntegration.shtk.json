@@ -44,17 +44,17 @@
             },
             "main": {
                 "icode": [
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 66, "dtype": "float"}, "op2": {"type": "literal", "id": 57, "dtype": "autoFloat", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 66, "dtype": "float"}, "op2": {"type": "var", "id": 67, "name": "_fn_NumericalIntegration_shtk_integrate", "dtype": "float"}, "op3": {"type": "module", "id": 68, "name": "NumericalIntegration.shtk"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 69, "dtype": "float"}, "op2": {"type": "literal", "id": 61, "dtype": "autoFloat", "value": 3}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 69, "dtype": "float"}, "op2": {"type": "var", "id": 70, "name": "_fn_NumericalIntegration_shtk_integrate", "dtype": "float"}, "op3": {"type": "module", "id": 71, "name": "NumericalIntegration.shtk"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 72, "dtype": "float"}, "op2": {"type": "literal", "id": 62, "dtype": "autoFloat", "value": 10000}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 72, "dtype": "float"}, "op2": {"type": "var", "id": 73, "name": "_fn_NumericalIntegration_shtk_integrate", "dtype": "float"}, "op3": {"type": "module", "id": 74, "name": "NumericalIntegration.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 75, "dtype": "float"}, "op2": {"type": "var", "id": 76, "name": "_fn_NumericalIntegration_shtk_integrate", "dtype": "float"}, "op3": {"type": "module", "id": 77, "name": "NumericalIntegration.shtk"}},
-                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 75, "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 70, "dtype": "float"}, "op2": {"type": "literal", "id": 61, "dtype": "autoFloat", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 70, "dtype": "float"}, "op2": {"type": "var", "id": 71, "name": "_fn_NumericalIntegration_shtk_integrate", "dtype": "float"}, "op3": {"type": "module", "id": 72, "name": "NumericalIntegration.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 73, "dtype": "float"}, "op2": {"type": "literal", "id": 65, "dtype": "autoFloat", "value": 3}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 73, "dtype": "float"}, "op2": {"type": "var", "id": 74, "name": "_fn_NumericalIntegration_shtk_integrate", "dtype": "float"}, "op3": {"type": "module", "id": 75, "name": "NumericalIntegration.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 76, "dtype": "float"}, "op2": {"type": "literal", "id": 66, "dtype": "autoFloat", "value": 10000}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 76, "dtype": "float"}, "op2": {"type": "var", "id": 77, "name": "_fn_NumericalIntegration_shtk_integrate", "dtype": "float"}, "op3": {"type": "module", "id": 78, "name": "NumericalIntegration.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 79, "dtype": "float"}, "op2": {"type": "var", "id": 80, "name": "_fn_NumericalIntegration_shtk_integrate", "dtype": "float"}, "op3": {"type": "module", "id": 81, "name": "NumericalIntegration.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 79, "dtype": "float"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 80, "dtype": "int"}, "op2": {"type": "literal", "id": 79, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 78, "dtype": "int"}, "op2": {"type": "temp", "id": 80, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 84, "dtype": "int"}, "op2": {"type": "literal", "id": 83, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 82, "dtype": "int"}, "op2": {"type": "temp", "id": 84, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

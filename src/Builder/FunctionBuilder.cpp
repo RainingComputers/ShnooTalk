@@ -583,13 +583,13 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
 
 std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)
 {
-    const std::string mangeledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
+    const std::string mangledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
     const std::string calleeName = calleeNameToken.toString();
 
     icode::ModuleDescription workingModule = modulesMap.at(workingFunction->moduleName);
 
     if (workingModule.incompleteFunctions.find(calleeName) != workingModule.incompleteFunctions.end())
-        return mangeledCalleeName;
+        return mangledCalleeName;
 
     icode::ModuleDescription functionModule = modulesMap.at(callee.moduleName);
 
@@ -599,7 +599,7 @@ std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, 
     if (functionModule.functions.find(calleeName) != functionModule.functions.end())
         return calleeName;
 
-    return mangeledCalleeName;
+    return mangledCalleeName;
 }
 
 Operand FunctionBuilder::createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam)
@@ -614,12 +614,12 @@ Operand FunctionBuilder::createPointerForPassAddress(const Unit& actualParam, co
 
     Unit tempArray = createTempArray(formalParam.type(), numElements);
 
-    unitListCopy(tempArray, actualParam);
+    unitCopy(tempArray, actualParam);
 
     return tempArray.op();
 }
 
-void FunctionBuilder::passParameterPreMangled(const std::string& mangeledCalleeName,
+void FunctionBuilder::passParameterPreMangled(const std::string& mangledCalleeName,
                                               FunctionDescription callee,
                                               const Unit& formalParam,
                                               const Unit& actualParam)
@@ -644,7 +644,7 @@ void FunctionBuilder::passParameterPreMangled(const std::string& mangeledCalleeN
         entry.op1 = autoCast(ensureNotPointer(actualParam.op()), formalParam.dtype());
     }
 
-    entry.op2 = opBuilder.createVarOperand(functionDataType, mangeledCalleeName);
+    entry.op2 = opBuilder.createVarOperand(functionDataType, mangledCalleeName);
     entry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(entry);
@@ -661,7 +661,7 @@ void FunctionBuilder::passParameter(const Token& calleeNameToken,
     passParameterPreMangled(mangledCalleeName, callee, formalParam, actualParam);
 }
 
-Unit FunctionBuilder::callFunctionPreMangled(const std::string& mangeledCalleeName, const FunctionDescription& callee)
+Unit FunctionBuilder::callFunctionPreMangled(const std::string& mangledCalleeName, const FunctionDescription& callee)
 {
     /* Construct icode for CALL instruction */
 
@@ -676,7 +676,7 @@ Unit FunctionBuilder::callFunctionPreMangled(const std::string& mangeledCalleeNa
     else
         callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
 
-    callEntry.op2 = opBuilder.createVarOperand(functionDataType, mangeledCalleeName);
+    callEntry.op2 = opBuilder.createVarOperand(functionDataType, mangledCalleeName);
     callEntry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(callEntry);
@@ -688,9 +688,9 @@ Unit FunctionBuilder::callFunction(const Token& calleeNameToken, const FunctionD
 {
     /* Construct icode for CALL instruction */
 
-    std::string mangeldCalleeName = getMangledCalleeName(calleeNameToken, callee);
+    std::string mangledCalleeName = getMangledCalleeName(calleeNameToken, callee);
 
-    return callFunctionPreMangled(mangeldCalleeName, callee);
+    return callFunctionPreMangled(mangledCalleeName, callee);
 }
 
 void FunctionBuilder::noArgumentEntry(Instruction instruction)
@@ -739,9 +739,31 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
     return true;
 }
 
+bool shouldCallDeconstructor(const Unit& symbol)
+{
+    if (!symbol.isStruct())
+        return false;
+
+    if (symbol.isUserPointer())
+        return false;
+
+    return true;
+}
+
 void FunctionBuilder::callDeconstructor(const Unit& symbol)
 {
     // TODO: call deconstructor recursively for structs
+
+    if (!shouldCallDeconstructor(symbol))
+        return;
+
+    const std::string mangledFunctionName = nameMangleString("deconstructor", symbol.moduleName());
+
+    icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
+
+    icode::FunctionDescription deconstructorFunction;
+    if (!typeModule.getFunction(mangledFunctionName, deconstructorFunction))
+        return;
 
     if (symbol.isArray())
     {
@@ -753,34 +775,12 @@ void FunctionBuilder::callDeconstructor(const Unit& symbol)
         return;
     }
 
-    const std::string mangledFunctionName = nameMangleString("deconstructor", symbol.moduleName());
-
-    icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
-
-    icode::FunctionDescription deconstructorFunction;
-    if (!typeModule.getFunction(mangledFunctionName, deconstructorFunction))
-        return;
-
     const std::string formalName = deconstructorFunction.parameters[0];
     const TypeDescription formalType = deconstructorFunction.symbols.at(formalName);
     const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
 
     passParameterPreMangled(mangledFunctionName, deconstructorFunction, formalParam, symbol);
     callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
-}
-
-bool FunctionBuilder::shouldCallDeconstructor(const std::string& symbolName, const icode::TypeDescription& symbolType)
-{
-    if (workingFunction->isParameter(symbolName))
-        return false;
-
-    if (!symbolType.isStruct())
-        return false;
-
-    if (symbolType.isPointer())
-        return false;
-
-    return true;
 }
 
 void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
@@ -792,7 +792,7 @@ void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
         const std::string symbolName = symbolPair.first;
         const TypeDescription symbolType = symbolPair.second;
 
-        if (!shouldCallDeconstructor(symbolName, symbolType))
+        if (workingFunction->isParameter(symbolName))
             continue;
 
         const Unit symbol = unitBuilder.unitFromTypeDescription(symbolType, symbolName);

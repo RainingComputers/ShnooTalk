@@ -80,12 +80,6 @@
                         void calleeReturnValue140 = call void _fn_Walrus_shtk_printFoo, module Walrus.shtk
                         int temp145 = cast autoInt 0
                         int returnValue143 = equal int temp145
-                        int* tempPtr149 = createPointer struct b
-                        void* tempPtr151 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr152 = addressAdd int* tempPtr149, void* tempPtr151
-                        int* tempPtr154 = createPointer struct b
-                        void* tempPtr156 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr157 = addressAdd int* tempPtr154, void* tempPtr156
                         return
                 ]
             }

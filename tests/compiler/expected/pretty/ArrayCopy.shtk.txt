@@ -40,127 +40,127 @@
             },
             "main": {
                 "icode": [
-                        struct* tempPtr64 = createPointer struct test
-                        struct* tempPtr66 = addressAdd struct* tempPtr64, bytes 0
-                        int temp73 = cast autoInt 1
-                        pass int temp73, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp76 = cast autoInt 2
-                        pass int temp76, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue79 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp88 = cast autoInt 3
-                        pass int temp88, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp91 = cast autoInt 4
-                        pass int temp91, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue94 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp103 = cast autoInt 5
-                        pass int temp103, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp106 = cast autoInt 6
-                        pass int temp106, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue109 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp118 = cast autoInt 7
-                        pass int temp118, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp121 = cast autoInt 8
-                        pass int temp121, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue124 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int* tempPtr127 = createPointer struct* tempPtr66
-                        int* tempPtr128 = createPointer struct calleeReturnValue79
-                        int* tempPtr127 = memoryCopy int* tempPtr128, autoInt 8
-                        int* tempPtr131 = addressAdd int* tempPtr127, bytes 8
-                        int* tempPtr132 = createPointer struct calleeReturnValue94
-                        int* tempPtr131 = memoryCopy int* tempPtr132, autoInt 8
-                        int* tempPtr135 = addressAdd int* tempPtr131, bytes 8
-                        int* tempPtr136 = createPointer struct calleeReturnValue109
-                        int* tempPtr135 = memoryCopy int* tempPtr136, autoInt 8
-                        int* tempPtr139 = addressAdd int* tempPtr135, bytes 8
-                        int* tempPtr140 = createPointer struct calleeReturnValue124
-                        int* tempPtr139 = memoryCopy int* tempPtr140, autoInt 8
-                        struct* tempPtr143 = createPointer struct test
-                        struct* tempPtr145 = addressAdd struct* tempPtr143, bytes 32
-                        int temp152 = cast autoInt 10
-                        pass int temp152, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp155 = cast autoInt 20
-                        pass int temp155, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue158 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp167 = cast autoInt 30
-                        pass int temp167, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp170 = cast autoInt 40
-                        pass int temp170, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue173 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp182 = cast autoInt 50
-                        pass int temp182, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp185 = cast autoInt 60
-                        pass int temp185, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue188 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp197 = cast autoInt 70
-                        pass int temp197, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp200 = cast autoInt 80
-                        pass int temp200, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue203 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int* tempPtr206 = createPointer struct* tempPtr145
-                        int* tempPtr207 = createPointer struct calleeReturnValue158
-                        int* tempPtr206 = memoryCopy int* tempPtr207, autoInt 8
-                        int* tempPtr210 = addressAdd int* tempPtr206, bytes 8
-                        int* tempPtr211 = createPointer struct calleeReturnValue173
-                        int* tempPtr210 = memoryCopy int* tempPtr211, autoInt 8
-                        int* tempPtr214 = addressAdd int* tempPtr210, bytes 8
-                        int* tempPtr215 = createPointer struct calleeReturnValue188
-                        int* tempPtr214 = memoryCopy int* tempPtr215, autoInt 8
-                        int* tempPtr218 = addressAdd int* tempPtr214, bytes 8
-                        int* tempPtr219 = createPointer struct calleeReturnValue203
-                        int* tempPtr218 = memoryCopy int* tempPtr219, autoInt 8
-                        struct* tempPtr222 = createPointer struct test
-                        struct* tempPtr224 = addressAdd struct* tempPtr222, bytes 64
-                        int temp231 = cast autoInt 2
-                        pass int temp231, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int temp234 = cast autoInt 4
-                        pass int temp234, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        struct calleeReturnValue237 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
-                        int* tempPtr240 = createPointer struct* tempPtr224
-                        int* tempPtr241 = createPointer struct calleeReturnValue237
-                        int* tempPtr240 = memoryCopy int* tempPtr241, autoInt 8
-                        struct* tempPtr244 = createPointer struct test
-                        struct* tempPtr246 = addressAdd struct* tempPtr244, bytes 0
-                        int* tempPtr249 = createPointer struct* tempPtr246
-                        passPointer int* tempPtr249, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
-                        void calleeReturnValue252 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
-                        struct* tempPtr256 = createPointer struct test
-                        struct* tempPtr258 = addressAdd struct* tempPtr256, bytes 32
-                        int* tempPtr261 = createPointer struct* tempPtr258
-                        passPointer int* tempPtr261, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
-                        void calleeReturnValue264 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
+                        struct* tempPtr65 = createPointer struct test
+                        struct* tempPtr67 = addressAdd struct* tempPtr65, bytes 0
+                        int temp74 = cast autoInt 1
+                        pass int temp74, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp77 = cast autoInt 2
+                        pass int temp77, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue80 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp89 = cast autoInt 3
+                        pass int temp89, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp92 = cast autoInt 4
+                        pass int temp92, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue95 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp104 = cast autoInt 5
+                        pass int temp104, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp107 = cast autoInt 6
+                        pass int temp107, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue110 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp119 = cast autoInt 7
+                        pass int temp119, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp122 = cast autoInt 8
+                        pass int temp122, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue125 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int* tempPtr128 = createPointer struct* tempPtr67
+                        int* tempPtr129 = createPointer struct calleeReturnValue80
+                        int* tempPtr128 = memoryCopy int* tempPtr129, autoInt 8
+                        int* tempPtr132 = addressAdd int* tempPtr128, bytes 8
+                        int* tempPtr133 = createPointer struct calleeReturnValue95
+                        int* tempPtr132 = memoryCopy int* tempPtr133, autoInt 8
+                        int* tempPtr136 = addressAdd int* tempPtr132, bytes 8
+                        int* tempPtr137 = createPointer struct calleeReturnValue110
+                        int* tempPtr136 = memoryCopy int* tempPtr137, autoInt 8
+                        int* tempPtr140 = addressAdd int* tempPtr136, bytes 8
+                        int* tempPtr141 = createPointer struct calleeReturnValue125
+                        int* tempPtr140 = memoryCopy int* tempPtr141, autoInt 8
+                        struct* tempPtr144 = createPointer struct test
+                        struct* tempPtr146 = addressAdd struct* tempPtr144, bytes 32
+                        int temp153 = cast autoInt 10
+                        pass int temp153, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp156 = cast autoInt 20
+                        pass int temp156, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue159 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp168 = cast autoInt 30
+                        pass int temp168, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp171 = cast autoInt 40
+                        pass int temp171, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue174 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp183 = cast autoInt 50
+                        pass int temp183, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp186 = cast autoInt 60
+                        pass int temp186, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue189 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp198 = cast autoInt 70
+                        pass int temp198, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp201 = cast autoInt 80
+                        pass int temp201, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue204 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int* tempPtr207 = createPointer struct* tempPtr146
+                        int* tempPtr208 = createPointer struct calleeReturnValue159
+                        int* tempPtr207 = memoryCopy int* tempPtr208, autoInt 8
+                        int* tempPtr211 = addressAdd int* tempPtr207, bytes 8
+                        int* tempPtr212 = createPointer struct calleeReturnValue174
+                        int* tempPtr211 = memoryCopy int* tempPtr212, autoInt 8
+                        int* tempPtr215 = addressAdd int* tempPtr211, bytes 8
+                        int* tempPtr216 = createPointer struct calleeReturnValue189
+                        int* tempPtr215 = memoryCopy int* tempPtr216, autoInt 8
+                        int* tempPtr219 = addressAdd int* tempPtr215, bytes 8
+                        int* tempPtr220 = createPointer struct calleeReturnValue204
+                        int* tempPtr219 = memoryCopy int* tempPtr220, autoInt 8
+                        struct* tempPtr223 = createPointer struct test
+                        struct* tempPtr225 = addressAdd struct* tempPtr223, bytes 64
+                        int temp232 = cast autoInt 2
+                        pass int temp232, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int temp235 = cast autoInt 4
+                        pass int temp235, struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        struct calleeReturnValue238 = call struct _fn_ArrayCopy_shtk_newVec, module ArrayCopy.shtk
+                        int* tempPtr241 = createPointer struct* tempPtr225
+                        int* tempPtr242 = createPointer struct calleeReturnValue238
+                        int* tempPtr241 = memoryCopy int* tempPtr242, autoInt 8
+                        struct* tempPtr245 = createPointer struct test
+                        struct* tempPtr247 = addressAdd struct* tempPtr245, bytes 0
+                        int* tempPtr250 = createPointer struct* tempPtr247
+                        passPointer int* tempPtr250, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
+                        void calleeReturnValue253 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
+                        struct* tempPtr257 = createPointer struct test
+                        struct* tempPtr259 = addressAdd struct* tempPtr257, bytes 32
+                        int* tempPtr262 = createPointer struct* tempPtr259
+                        passPointer int* tempPtr262, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
+                        void calleeReturnValue265 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
                         printString stringData _str_ArrayCopy_shtk__l36_c12
                         newLine
-                        struct* tempPtr269 = createPointer struct test
-                        struct* tempPtr271 = addressAdd struct* tempPtr269, bytes 64
-                        int* tempPtr274 = createPointer struct* tempPtr271
-                        passPointer int* tempPtr274, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                        void calleeReturnValue277 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                        struct* tempPtr270 = createPointer struct test
+                        struct* tempPtr272 = addressAdd struct* tempPtr270, bytes 64
+                        int* tempPtr275 = createPointer struct* tempPtr272
+                        passPointer int* tempPtr275, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                        void calleeReturnValue278 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                         printString stringData _str_ArrayCopy_shtk__l36_c12
                         newLine
-                        struct* tempPtr283 = createPointer struct test2
-                        struct* tempPtr284 = createPointer struct test
-                        struct* tempPtr283 = memoryCopy struct* tempPtr284, autoInt 72
-                        struct* tempPtr287 = createPointer struct test2
-                        struct* tempPtr289 = addressAdd struct* tempPtr287, bytes 0
-                        int* tempPtr292 = createPointer struct* tempPtr289
-                        passPointer int* tempPtr292, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
-                        void calleeReturnValue295 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
-                        struct* tempPtr299 = createPointer struct test2
-                        struct* tempPtr301 = addressAdd struct* tempPtr299, bytes 32
-                        int* tempPtr304 = createPointer struct* tempPtr301
-                        passPointer int* tempPtr304, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
-                        void calleeReturnValue307 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
+                        struct* tempPtr284 = createPointer struct test2
+                        struct* tempPtr285 = createPointer struct test
+                        struct* tempPtr284 = memoryCopy struct* tempPtr285, autoInt 72
+                        struct* tempPtr288 = createPointer struct test2
+                        struct* tempPtr290 = addressAdd struct* tempPtr288, bytes 0
+                        int* tempPtr293 = createPointer struct* tempPtr290
+                        passPointer int* tempPtr293, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
+                        void calleeReturnValue296 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
+                        struct* tempPtr300 = createPointer struct test2
+                        struct* tempPtr302 = addressAdd struct* tempPtr300, bytes 32
+                        int* tempPtr305 = createPointer struct* tempPtr302
+                        passPointer int* tempPtr305, void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
+                        void calleeReturnValue308 = call void _fn_ArrayCopy_shtk_printarr, module ArrayCopy.shtk
                         printString stringData _str_ArrayCopy_shtk__l36_c12
                         newLine
-                        struct* tempPtr312 = createPointer struct test2
-                        struct* tempPtr314 = addressAdd struct* tempPtr312, bytes 64
-                        int* tempPtr317 = createPointer struct* tempPtr314
-                        passPointer int* tempPtr317, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                        void calleeReturnValue320 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                        struct* tempPtr313 = createPointer struct test2
+                        struct* tempPtr315 = addressAdd struct* tempPtr313, bytes 64
+                        int* tempPtr318 = createPointer struct* tempPtr315
+                        passPointer int* tempPtr318, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                        void calleeReturnValue321 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                         printString stringData _str_ArrayCopy_shtk__l36_c12
                         newLine
-                        int temp326 = cast autoInt 0
-                        int returnValue324 = equal int temp326
+                        int temp327 = cast autoInt 0
+                        int returnValue325 = equal int temp327
                         return
                 ]
             }
@@ -199,22 +199,22 @@
             },
             "_fn_TestModules_Vector_shtk_dot": {
                 "icode": [
-                        int* tempPtr136 = createPointer struct this
-                        int* tempPtr138 = addressAdd int* tempPtr136, bytes 0
-                        int* tempPtr140 = createPointer struct other
-                        int* tempPtr142 = addressAdd int* tempPtr140, bytes 0
-                        int temp144 = read int* tempPtr138
-                        int temp145 = read int* tempPtr142
-                        int temp143 = multiply int temp144, int temp145
-                        int* tempPtr147 = createPointer struct this
-                        int* tempPtr149 = addressAdd int* tempPtr147, bytes 4
-                        int* tempPtr151 = createPointer struct other
-                        int* tempPtr153 = addressAdd int* tempPtr151, bytes 4
-                        int temp155 = read int* tempPtr149
-                        int temp156 = read int* tempPtr153
-                        int temp154 = multiply int temp155, int temp156
-                        int temp157 = add int temp143, int temp154
-                        int returnValue134 = equal int temp157
+                        int* tempPtr138 = createPointer struct this
+                        int* tempPtr140 = addressAdd int* tempPtr138, bytes 0
+                        int* tempPtr142 = createPointer struct other
+                        int* tempPtr144 = addressAdd int* tempPtr142, bytes 0
+                        int temp146 = read int* tempPtr140
+                        int temp147 = read int* tempPtr144
+                        int temp145 = multiply int temp146, int temp147
+                        int* tempPtr149 = createPointer struct this
+                        int* tempPtr151 = addressAdd int* tempPtr149, bytes 4
+                        int* tempPtr153 = createPointer struct other
+                        int* tempPtr155 = addressAdd int* tempPtr153, bytes 4
+                        int temp157 = read int* tempPtr151
+                        int temp158 = read int* tempPtr155
+                        int temp156 = multiply int temp157, int temp158
+                        int temp159 = add int temp145, int temp156
+                        int returnValue136 = equal int temp159
                         return
                 ]
             },
@@ -274,24 +274,24 @@
             },
             "_fn_TestModules_Vector_shtk_isUnitVector": {
                 "icode": [
-                        int* tempPtr182 = createPointer struct vector
-                        int* tempPtr184 = addressAdd int* tempPtr182, bytes 0
-                        int temp186 = read int* tempPtr184
-                        int temp187 = cast autoInt 1
-                        flag = isEqual int temp186, int temp187
+                        int* tempPtr184 = createPointer struct vector
+                        int* tempPtr186 = addressAdd int* tempPtr184, bytes 0
+                        int temp188 = read int* tempPtr186
+                        int temp189 = cast autoInt 1
+                        flag = isEqual int temp188, int temp189
                         if(not flag) goto _if_false_l44_c4
-                        int* tempPtr189 = createPointer struct vector
-                        int* tempPtr191 = addressAdd int* tempPtr189, bytes 4
-                        int temp193 = read int* tempPtr191
-                        int temp194 = cast autoInt 1
-                        flag = isEqual int temp193, int temp194
+                        int* tempPtr191 = createPointer struct vector
+                        int* tempPtr193 = addressAdd int* tempPtr191, bytes 4
+                        int temp195 = read int* tempPtr193
+                        int temp196 = cast autoInt 1
+                        flag = isEqual int temp195, int temp196
                         if(not flag) goto _if_false_l44_c4
-                        byte temp197 = cast autoInt 1
-                        byte returnValue195 = equal byte temp197
+                        byte temp199 = cast autoInt 1
+                        byte returnValue197 = equal byte temp199
                         return
                     _if_false_l44_c4:
-                        byte temp200 = cast autoInt 0
-                        byte returnValue198 = equal byte temp200
+                        byte temp202 = cast autoInt 0
+                        byte returnValue200 = equal byte temp202
                         return
                 ]
             },
@@ -299,17 +299,17 @@
                 "icode": [
                         printString stringData _str_TestModules_Vector_shtk__l39_c12
                         space
-                        int* tempPtr163 = createPointer struct vector
-                        int* tempPtr165 = addressAdd int* tempPtr163, bytes 0
-                        int temp166 = read int* tempPtr165
-                        print int temp166
+                        int* tempPtr165 = createPointer struct vector
+                        int* tempPtr167 = addressAdd int* tempPtr165, bytes 0
+                        int temp168 = read int* tempPtr167
+                        print int temp168
                         space
                         printString stringData _str_TestModules_Vector_shtk__l39_c28
                         space
-                        int* tempPtr169 = createPointer struct vector
-                        int* tempPtr171 = addressAdd int* tempPtr169, bytes 4
-                        int temp172 = read int* tempPtr171
-                        print int temp172
+                        int* tempPtr171 = createPointer struct vector
+                        int* tempPtr173 = addressAdd int* tempPtr171, bytes 4
+                        int temp174 = read int* tempPtr173
+                        print int temp174
                         newLine
                         return
                 ]

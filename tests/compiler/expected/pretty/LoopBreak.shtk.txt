@@ -24,15 +24,15 @@
             },
             "main": {
                 "icode": [
-                        int temp26 = cast autoInt 5
-                        int k = equal int temp26
+                        int temp27 = cast autoInt 5
+                        int k = equal int temp27
                         pass int k, int _fn_LoopBreak_shtk_foobar, module LoopBreak.shtk
-                        int calleeReturnValue33 = call int _fn_LoopBreak_shtk_foobar, module LoopBreak.shtk
-                        int l = equal int calleeReturnValue33
+                        int calleeReturnValue34 = call int _fn_LoopBreak_shtk_foobar, module LoopBreak.shtk
+                        int l = equal int calleeReturnValue34
                         print int l
                         newLine
-                        int temp39 = cast autoInt 0
-                        int returnValue37 = equal int temp39
+                        int temp40 = cast autoInt 0
+                        int returnValue38 = equal int temp40
                         return
                 ]
             }

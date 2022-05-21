@@ -12,15 +12,15 @@
             },
             "main": {
                 "icode": [
-                        int temp13 = cast autoInt 0
-                        int a = equal int temp13
-                        int* tempPtr17 = createPointer int a
-                        passPointer int* tempPtr17, void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
-                        void calleeReturnValue20 = call void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
+                        int temp14 = cast autoInt 0
+                        int a = equal int temp14
+                        int* tempPtr18 = createPointer int a
+                        passPointer int* tempPtr18, void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
+                        void calleeReturnValue21 = call void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
                         print int a
                         newLine
-                        int temp26 = cast autoInt 0
-                        int returnValue24 = equal int temp26
+                        int temp27 = cast autoInt 0
+                        int returnValue25 = equal int temp27
                         return
                 ]
             }

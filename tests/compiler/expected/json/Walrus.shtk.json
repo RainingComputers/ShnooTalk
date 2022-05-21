@@ -80,12 +80,6 @@
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 140, "dtype": "void"}, "op2": {"type": "var", "id": 141, "name": "_fn_Walrus_shtk_printFoo", "dtype": "void"}, "op3": {"type": "module", "id": 142, "name": "Walrus.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 145, "dtype": "int"}, "op2": {"type": "literal", "id": 144, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 143, "dtype": "int"}, "op2": {"type": "temp", "id": 145, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 149, "dtype": "int"}, "op2": {"type": "var", "id": 147, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 151, "dtype": "void"}, "op2": {"type": "literal", "id": 148, "dtype": "autoInt", "value": 0}, "op3": {"type": "bytes", "id": 150, "bytes": 4}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 152, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 149, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 151, "dtype": "void"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 154, "dtype": "int"}, "op2": {"type": "var", "id": 147, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 156, "dtype": "void"}, "op2": {"type": "literal", "id": 153, "dtype": "autoInt", "value": 1}, "op3": {"type": "bytes", "id": 155, "bytes": 4}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 157, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 154, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 156, "dtype": "void"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

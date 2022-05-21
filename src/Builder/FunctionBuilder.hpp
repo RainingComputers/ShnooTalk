@@ -54,8 +54,6 @@ class FunctionBuilder
 
     void callDeconstructor(const Unit& symbolUnit);
 
-    bool shouldCallDeconstructor(const std::string& symbolName, const icode::TypeDescription& symbolType);
-
     void callDeconstructorOnDeclaredSymbols();
 
     bool doesFunctionTerminate();

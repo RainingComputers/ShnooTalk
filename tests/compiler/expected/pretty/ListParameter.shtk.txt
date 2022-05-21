@@ -25,24 +25,24 @@
             },
             "main": {
                 "icode": [
-                        int* tempPtr33 = allocArrayPointer bytes 16
-                        int temp35 = cast autoInt 1
-                        int* tempPtr33 = write int temp35
-                        int* tempPtr37 = addressAdd int* tempPtr33, bytes 4
-                        int temp38 = cast autoInt 2
-                        int* tempPtr37 = write int temp38
-                        int* tempPtr40 = addressAdd int* tempPtr37, bytes 4
-                        int temp41 = cast autoInt 3
-                        int* tempPtr40 = write int temp41
-                        int* tempPtr43 = addressAdd int* tempPtr40, bytes 4
-                        int temp44 = cast autoInt 4
-                        int* tempPtr43 = write int temp44
-                        passPointer int* tempPtr33, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
-                        int temp47 = cast autoInt 4
-                        pass int temp47, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
-                        void calleeReturnValue50 = call void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
-                        int temp55 = cast autoInt 0
-                        int returnValue53 = equal int temp55
+                        int* tempPtr34 = allocArrayPointer bytes 16
+                        int temp36 = cast autoInt 1
+                        int* tempPtr34 = write int temp36
+                        int* tempPtr38 = addressAdd int* tempPtr34, bytes 4
+                        int temp39 = cast autoInt 2
+                        int* tempPtr38 = write int temp39
+                        int* tempPtr41 = addressAdd int* tempPtr38, bytes 4
+                        int temp42 = cast autoInt 3
+                        int* tempPtr41 = write int temp42
+                        int* tempPtr44 = addressAdd int* tempPtr41, bytes 4
+                        int temp45 = cast autoInt 4
+                        int* tempPtr44 = write int temp45
+                        passPointer int* tempPtr34, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
+                        int temp48 = cast autoInt 4
+                        pass int temp48, void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
+                        void calleeReturnValue51 = call void _fn_ListParameter_shtk_printArr, module ListParameter.shtk
+                        int temp56 = cast autoInt 0
+                        int returnValue54 = equal int temp56
                         return
                 ]
             }
