@@ -1,3 +1,5 @@
+#include "../Utils/KeyExistsInMap.hpp"
+
 #include "GeneratorContext.hpp"
 
 namespace generator
@@ -22,11 +24,11 @@ namespace generator
 
     bool GeneratorContext::moduleExists(const std::string& name)
     {
-        return modulesMap.find(name) != modulesMap.end();
+        return keyExistsInMap(modulesMap, name);
     }
 
     bool GeneratorContext::genericModuleExists(const std::string& name)
     {
-        return genericsMap.find(name) != genericsMap.end();
+        return keyExistsInMap(genericsMap, name);
     }
 }

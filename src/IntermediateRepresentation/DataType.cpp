@@ -1,5 +1,7 @@
 #include <map>
 
+#include "../Utils/KeyExistsInMap.hpp"
+
 #include "DataType.hpp"
 
 namespace icode
@@ -54,7 +56,7 @@ namespace icode
             { "void", icode::VOID }
         };
 
-        if (dataTypeNames.find(dtypeName) != dataTypeNames.end())
+        if (keyExistsInMap(dataTypeNames, dtypeName))
             return dataTypeNames[dtypeName];
 
         return STRUCT;

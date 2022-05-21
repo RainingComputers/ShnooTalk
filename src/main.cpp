@@ -7,6 +7,7 @@
 #include "PrettyPrint/IRPrinter.hpp"
 #include "PrettyPrint/PrettyPrintError.hpp"
 #include "Translator/LLVMTranslator.hpp"
+#include "Utils/KeyExistsInMap.hpp"
 
 #include "version.hpp"
 
@@ -46,7 +47,7 @@ void printCLIUsage()
 
 bool isValidPlatformString(const std::string& platformString)
 {
-    return platformMap.find(platformString) != platformMap.end();
+    return keyExistsInMap(platformMap, platformString);
 }
 
 translator::Platform getPlatformFromString(const std::string& platformString)

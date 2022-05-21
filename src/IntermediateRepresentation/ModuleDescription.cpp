@@ -3,6 +3,7 @@
 
 #include "../Utils/GetMapElement.hpp"
 #include "../Utils/ItemInList.hpp"
+#include "../Utils/KeyExistsInMap.hpp"
 
 #include "ModuleDescription.hpp"
 
@@ -82,15 +83,14 @@ namespace icode
 
     bool ModuleDescription::aliasExists(const std::string& name)
     {
-        return aliases.find(name) != aliases.end();
+        return keyExistsInMap(aliases, name);
     }
 
     bool ModuleDescription::symbolExists(const std::string& name)
     {
-        return structures.find(name) != structures.end() || functions.find(name) != functions.end() ||
-               enumTypeExists(name) || stringToDataType(name) != STRUCT || enums.find(name) != enums.end() ||
-               globals.find(name) != globals.end() || intDefines.find(name) != intDefines.end() ||
-               floatDefines.find(name) != floatDefines.end() || stringDefines.find(name) != stringDefines.end() ||
-               externFunctions.find(name) != externFunctions.end();
+        return keyExistsInMap(structures, name) || keyExistsInMap(functions, name) || enumTypeExists(name) ||
+               stringToDataType(name) != STRUCT || keyExistsInMap(enums, name) || keyExistsInMap(globals, name) ||
+               keyExistsInMap(intDefines, name) || keyExistsInMap(floatDefines, name) ||
+               keyExistsInMap(stringDefines, name) || keyExistsInMap(externFunctions, name);
     }
 }

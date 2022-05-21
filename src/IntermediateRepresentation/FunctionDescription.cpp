@@ -1,5 +1,6 @@
 #include "../Utils/GetMapElement.hpp"
 #include "../Utils/ItemInList.hpp"
+#include "../Utils/KeyExistsInMap.hpp"
 
 #include "FunctionDescription.hpp"
 
@@ -7,7 +8,7 @@ namespace icode
 {
     bool FunctionDescription::symbolExists(const std::string& name)
     {
-        return symbols.find(name) != symbols.end();
+        return keyExistsInMap(symbols, name);
     }
 
     bool FunctionDescription::getSymbol(const std::string& name, TypeDescription& returnValue)

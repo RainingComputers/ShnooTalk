@@ -1,3 +1,4 @@
+#include "../Utils/KeyExistsInMap.hpp"
 #include "NameMangle.hpp"
 #include "TypeCheck.hpp"
 #include "TypeDescriptionUtil.hpp"
@@ -588,15 +589,15 @@ std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, 
 
     icode::ModuleDescription workingModule = modulesMap.at(workingFunction->moduleName);
 
-    if (workingModule.incompleteFunctions.find(calleeName) != workingModule.incompleteFunctions.end())
+    if (keyExistsInMap(workingModule.incompleteFunctions, calleeName))
         return mangledCalleeName;
 
     icode::ModuleDescription functionModule = modulesMap.at(callee.moduleName);
 
-    if (functionModule.externFunctions.find(calleeName) != functionModule.externFunctions.end())
+    if (keyExistsInMap(functionModule.externFunctions, calleeName))
         return calleeName;
 
-    if (functionModule.functions.find(calleeName) != functionModule.functions.end())
+    if (keyExistsInMap(functionModule.functions, calleeName))
         return calleeName;
 
     return mangledCalleeName;

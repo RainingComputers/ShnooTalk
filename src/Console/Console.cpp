@@ -1,3 +1,5 @@
+#include "../Utils/KeyExistsInMap.hpp"
+
 #include "Console.hpp"
 
 void Console::printModuleStackLine(int lineNo, int colNo)
@@ -99,7 +101,7 @@ std::string Console::getFileName()
 
 void Console::pushModule(const std::string& moduleName)
 {
-    if (streamsMap.find(moduleName) == streamsMap.end())
+    if (!keyExistsInMap(streamsMap, moduleName))
     {
         streamsMap[moduleName].exceptions(std::ifstream::failbit | std::ifstream::badbit);
         streamsMap[moduleName].open(moduleName);

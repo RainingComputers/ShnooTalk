@@ -2,6 +2,7 @@
 
 #include "../../Utils/GetMapElement.hpp"
 #include "../../Utils/ItemInList.hpp"
+#include "../../Utils/KeyExistsInMap.hpp"
 #include "Instantiator.hpp"
 
 #include "Monomorphizer.hpp"
@@ -113,7 +114,7 @@ bool Monomorphizer::useExists(const Token& pathToken)
 
 bool Monomorphizer::aliasExists(const Token& aliasToken)
 {
-    return aliases.find(aliasToken.toString()) != aliases.end();
+    return keyExistsInMap(aliases, aliasToken.toString());
 }
 
 void Monomorphizer::createFrom(const std::string& genericModuleName, const Token& symbolToken)

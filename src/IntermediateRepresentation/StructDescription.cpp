@@ -1,4 +1,5 @@
 #include "../Utils/GetMapElement.hpp"
+#include "../Utils/KeyExistsInMap.hpp"
 
 #include "StructDescription.hpp"
 
@@ -6,7 +7,7 @@ namespace icode
 {
     bool StructDescription::fieldExists(const std::string& name) const
     {
-        return structFields.find(name) != structFields.end();
+        return keyExistsInMap(structFields, name);
     }
 
     DataType StructDescription::getFirstFieldDataType() const
