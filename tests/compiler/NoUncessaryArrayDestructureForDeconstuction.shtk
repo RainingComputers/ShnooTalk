@@ -1,0 +1,11 @@
+struct Foo
+{
+    var a: int
+}
+
+fn main() -> int
+{
+    var test: Foo[3]
+
+    return 0
+}

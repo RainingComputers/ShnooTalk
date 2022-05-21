@@ -1,0 +1,14 @@
+{
+    "NoUncessaryArrayDestructureForDeconstuction.shtk": {
+        "moduleName": "NoUncessaryArrayDestructureForDeconstuction.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp6 = cast autoInt 0
+                        int returnValue4 = equal int temp6
+                        return
+                ]
+            }
+        }
+    }
+}
