@@ -48,6 +48,10 @@ class FunctionBuilder
 
     std::vector<Unit> destructureStruct(const Unit& unit);
 
+    bool containsPointer(const icode::TypeDescription& type);
+
+    void ensurePointersNullInitializer(const Unit& local);
+
     std::string getMangledCalleeName(const Token& calleeNameToken, const icode::FunctionDescription& callee);
 
     icode::Operand createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam);

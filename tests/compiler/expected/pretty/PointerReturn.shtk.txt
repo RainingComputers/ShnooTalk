@@ -20,15 +20,17 @@
                         int* tempPtr21 = addressAdd int* tempPtr19, bytes 4
                         int temp23 = cast autoInt 2
                         int* tempPtr21 = write int temp23
-                        int* tempPtr28 = createPointer struct a
-                        passPointer int* tempPtr28, int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
-                        int* calleeReturnPointer31 = call int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
-                        int* p = pointerAssign int* calleeReturnPointer31
-                        int temp35 = read int* p
-                        print int temp35
+                        int* tempPtr26 = pointerCast autoInt 0
+                        int* p = pointerAssign int* tempPtr26
+                        int* tempPtr30 = createPointer struct a
+                        passPointer int* tempPtr30, int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
+                        int* calleeReturnPointer33 = call int _fn_PointerReturn_shtk_testfunction, module PointerReturn.shtk
+                        int* p = pointerAssign int* calleeReturnPointer33
+                        int temp37 = read int* p
+                        print int temp37
                         newLine
-                        int temp38 = cast autoInt 0
-                        int returnValue36 = equal int temp38
+                        int temp40 = cast autoInt 0
+                        int returnValue38 = equal int temp40
                         return
                 ]
             }

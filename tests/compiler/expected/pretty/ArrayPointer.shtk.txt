@@ -19,57 +19,59 @@
                         int* tempPtr21 = addressAdd int* tempPtr18, bytes 4
                         int temp22 = cast autoInt 5
                         int* tempPtr21 = write int temp22
+                        int* tempPtr25 = pointerCast autoInt 0
+                        int* b = pointerAssign int* tempPtr25
                         int* b = pointerAssign int a
-                        void* tempPtr28 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr29 = addressAdd int* b, void* tempPtr28
-                        int temp32 = read int* tempPtr29
-                        int temp33 = cast autoInt 10
-                        int temp31 = add int temp32, int temp33
-                        int* tempPtr29 = write int temp31
-                        void* tempPtr37 = addressMultiply autoInt 2, bytes 4
-                        int* tempPtr38 = addressAdd int* b, void* tempPtr37
-                        int temp41 = read int* tempPtr38
-                        int temp42 = cast autoInt 10
-                        int temp40 = add int temp41, int temp42
-                        int* tempPtr38 = write int temp40
-                        void* tempPtr46 = addressMultiply autoInt 4, bytes 4
-                        int* tempPtr47 = addressAdd int* b, void* tempPtr46
-                        int temp50 = read int* tempPtr47
-                        int temp51 = cast autoInt 10
-                        int temp49 = add int temp50, int temp51
-                        int* tempPtr47 = write int temp49
-                        int* tempPtr54 = createPointer int a
-                        void* tempPtr56 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr57 = addressAdd int* tempPtr54, void* tempPtr56
-                        int temp58 = read int* tempPtr57
-                        print int temp58
+                        void* tempPtr30 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr31 = addressAdd int* b, void* tempPtr30
+                        int temp34 = read int* tempPtr31
+                        int temp35 = cast autoInt 10
+                        int temp33 = add int temp34, int temp35
+                        int* tempPtr31 = write int temp33
+                        void* tempPtr39 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr40 = addressAdd int* b, void* tempPtr39
+                        int temp43 = read int* tempPtr40
+                        int temp44 = cast autoInt 10
+                        int temp42 = add int temp43, int temp44
+                        int* tempPtr40 = write int temp42
+                        void* tempPtr48 = addressMultiply autoInt 4, bytes 4
+                        int* tempPtr49 = addressAdd int* b, void* tempPtr48
+                        int temp52 = read int* tempPtr49
+                        int temp53 = cast autoInt 10
+                        int temp51 = add int temp52, int temp53
+                        int* tempPtr49 = write int temp51
+                        int* tempPtr56 = createPointer int a
+                        void* tempPtr58 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr59 = addressAdd int* tempPtr56, void* tempPtr58
+                        int temp60 = read int* tempPtr59
+                        print int temp60
                         newLine
-                        int* tempPtr61 = createPointer int a
-                        void* tempPtr63 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr64 = addressAdd int* tempPtr61, void* tempPtr63
-                        int temp65 = read int* tempPtr64
-                        print int temp65
+                        int* tempPtr63 = createPointer int a
+                        void* tempPtr65 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr66 = addressAdd int* tempPtr63, void* tempPtr65
+                        int temp67 = read int* tempPtr66
+                        print int temp67
                         newLine
-                        int* tempPtr68 = createPointer int a
-                        void* tempPtr70 = addressMultiply autoInt 2, bytes 4
-                        int* tempPtr71 = addressAdd int* tempPtr68, void* tempPtr70
-                        int temp72 = read int* tempPtr71
-                        print int temp72
+                        int* tempPtr70 = createPointer int a
+                        void* tempPtr72 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr73 = addressAdd int* tempPtr70, void* tempPtr72
+                        int temp74 = read int* tempPtr73
+                        print int temp74
                         newLine
-                        int* tempPtr75 = createPointer int a
-                        void* tempPtr77 = addressMultiply autoInt 3, bytes 4
-                        int* tempPtr78 = addressAdd int* tempPtr75, void* tempPtr77
-                        int temp79 = read int* tempPtr78
-                        print int temp79
+                        int* tempPtr77 = createPointer int a
+                        void* tempPtr79 = addressMultiply autoInt 3, bytes 4
+                        int* tempPtr80 = addressAdd int* tempPtr77, void* tempPtr79
+                        int temp81 = read int* tempPtr80
+                        print int temp81
                         newLine
-                        int* tempPtr82 = createPointer int a
-                        void* tempPtr84 = addressMultiply autoInt 4, bytes 4
-                        int* tempPtr85 = addressAdd int* tempPtr82, void* tempPtr84
-                        int temp86 = read int* tempPtr85
-                        print int temp86
+                        int* tempPtr84 = createPointer int a
+                        void* tempPtr86 = addressMultiply autoInt 4, bytes 4
+                        int* tempPtr87 = addressAdd int* tempPtr84, void* tempPtr86
+                        int temp88 = read int* tempPtr87
+                        print int temp88
                         newLine
-                        int temp89 = cast autoInt 0
-                        int returnValue87 = equal int temp89
+                        int temp91 = cast autoInt 0
+                        int returnValue89 = equal int temp91
                         return
                 ]
             }

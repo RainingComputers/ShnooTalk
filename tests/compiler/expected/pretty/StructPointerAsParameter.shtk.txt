@@ -14,31 +14,37 @@
                 "icode": [
                         int temp10 = cast autoInt 2
                         int c = equal int temp10
-                        int* tempPtr13 = createPointer struct foobar
-                        int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
-                        int temp17 = cast autoInt 1
-                        int* tempPtr15 = write int temp17
-                        int* tempPtr19 = createPointer struct foobar
-                        int** tempPtrPtr21 = addressAdd int* tempPtr19, bytes 4
-                        int** tempPtrPtr21 = pointerAssign int c
-                        int* tempPtr24 = createPointer struct foobar
-                        int** tempPtrPtr26 = addressAdd int* tempPtr24, bytes 4
-                        int temp29 = read int** tempPtrPtr26
-                        int temp30 = cast autoInt 1
-                        int temp28 = add int temp29, int temp30
-                        int** tempPtrPtr26 = write int temp28
+                        int* tempPtr12 = createPointer struct foobar
+                        int* tempPtr14 = addressAdd int* tempPtr12, bytes 0
+                        int* tempPtr15 = createPointer struct foobar
+                        int** tempPtrPtr17 = addressAdd int* tempPtr15, bytes 4
+                        int* tempPtr19 = pointerCast autoInt 0
+                        int** tempPtrPtr17 = pointerAssign int* tempPtr19
+                        int* tempPtr21 = createPointer struct foobar
+                        int* tempPtr23 = addressAdd int* tempPtr21, bytes 0
+                        int temp25 = cast autoInt 1
+                        int* tempPtr23 = write int temp25
+                        int* tempPtr27 = createPointer struct foobar
+                        int** tempPtrPtr29 = addressAdd int* tempPtr27, bytes 4
+                        int** tempPtrPtr29 = pointerAssign int c
                         int* tempPtr32 = createPointer struct foobar
-                        int* tempPtr34 = addressAdd int* tempPtr32, bytes 0
-                        passPointer int* tempPtr34, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
-                        void calleeReturnValue39 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
-                        int* tempPtr43 = createPointer struct foobar
-                        int** tempPtrPtr45 = addressAdd int* tempPtr43, bytes 4
-                        passPointer int** tempPtrPtr45, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
-                        void calleeReturnValue50 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                        int** tempPtrPtr34 = addressAdd int* tempPtr32, bytes 4
+                        int temp37 = read int** tempPtrPtr34
+                        int temp38 = cast autoInt 1
+                        int temp36 = add int temp37, int temp38
+                        int** tempPtrPtr34 = write int temp36
+                        int* tempPtr40 = createPointer struct foobar
+                        int* tempPtr42 = addressAdd int* tempPtr40, bytes 0
+                        passPointer int* tempPtr42, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                        void calleeReturnValue47 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                        int* tempPtr51 = createPointer struct foobar
+                        int** tempPtrPtr53 = addressAdd int* tempPtr51, bytes 4
+                        passPointer int** tempPtrPtr53, void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
+                        void calleeReturnValue58 = call void _fn_StructPointerAsParameter_shtk_test, module StructPointerAsParameter.shtk
                         print int c
                         newLine
-                        int temp56 = cast autoInt 0
-                        int returnValue54 = equal int temp56
+                        int temp64 = cast autoInt 0
+                        int returnValue62 = equal int temp64
                         return
                 ]
             }

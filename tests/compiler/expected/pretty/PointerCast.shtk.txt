@@ -12,20 +12,22 @@
                         int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
                         int temp15 = cast autoInt 2
                         int* tempPtr13 = write int temp15
-                        int* tempPtr18 = pointerCast struct a
+                        int* tempPtr18 = pointerCast autoInt 0
                         int* p = pointerAssign int* tempPtr18
-                        void* tempPtr22 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr23 = addressAdd int* p, void* tempPtr22
-                        int temp24 = read int* tempPtr23
-                        print int temp24
+                        int* tempPtr20 = pointerCast struct a
+                        int* p = pointerAssign int* tempPtr20
+                        void* tempPtr24 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr25 = addressAdd int* p, void* tempPtr24
+                        int temp26 = read int* tempPtr25
+                        print int temp26
                         newLine
-                        void* tempPtr28 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr29 = addressAdd int* p, void* tempPtr28
-                        int temp30 = read int* tempPtr29
-                        print int temp30
+                        void* tempPtr30 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr31 = addressAdd int* p, void* tempPtr30
+                        int temp32 = read int* tempPtr31
+                        print int temp32
                         newLine
-                        int temp33 = cast autoInt 0
-                        int returnValue31 = equal int temp33
+                        int temp35 = cast autoInt 0
+                        int returnValue33 = equal int temp35
                         return
                 ]
             }

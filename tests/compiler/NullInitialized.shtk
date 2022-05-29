@@ -1,6 +1,7 @@
 struct Crazy
 {
     var x: int*
+    var p: int[]
 }
 
 struct Foo 
@@ -24,6 +25,8 @@ fn main() -> int
     println(addr(testing.d.a))
     println(addr(testing.e[0].x))
     println(addr(testing.e[1].x))
+    println(addr(testing.e[0].p))
+    println(addr(testing.e[1].p))
 
     return 0
 }

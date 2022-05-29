@@ -41,69 +41,73 @@
                         int* tempPtr48 = addressAdd int* tempPtr45, bytes 4
                         int temp49 = cast autoInt 50
                         int* tempPtr48 = write int temp49
-                        int* tempPtr52 = createPointer struct foo
-                        int** tempPtrPtr54 = addressAdd int* tempPtr52, bytes 0
-                        int** tempPtrPtr54 = pointerAssign int actdest
-                        int* tempPtr62 = createPointer int src
-                        int temp63 = cast autoInt 1
-                        int* tempPtr62 = write int temp63
-                        int* tempPtr65 = addressAdd int* tempPtr62, bytes 4
-                        int temp66 = cast autoInt 2
-                        int* tempPtr65 = write int temp66
-                        int* tempPtr68 = addressAdd int* tempPtr65, bytes 4
-                        int temp69 = cast autoInt 3
-                        int* tempPtr68 = write int temp69
-                        int* tempPtr71 = addressAdd int* tempPtr68, bytes 4
-                        int temp72 = cast autoInt 4
-                        int* tempPtr71 = write int temp72
-                        int* tempPtr74 = addressAdd int* tempPtr71, bytes 4
-                        int temp75 = cast autoInt 5
-                        int* tempPtr74 = write int temp75
-                        int* tempPtr77 = createPointer struct foo
-                        int** tempPtrPtr79 = addressAdd int* tempPtr77, bytes 0
-                        passPointerPointer int** tempPtrPtr79, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
-                        int* tempPtr90 = createPointer int src
-                        passPointer int* tempPtr90, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
-                        int temp93 = cast autoInt 5
-                        pass int temp93, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
-                        void calleeReturnValue96 = call void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
-                        int* tempPtr100 = createPointer struct foo
-                        int** tempPtrPtr102 = addressAdd int* tempPtr100, bytes 0
-                        void* tempPtr105 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr106 = addressAdd int** tempPtrPtr102, void* tempPtr105
-                        int temp107 = read int* tempPtr106
-                        print int temp107
+                        int* tempPtr51 = createPointer struct foo
+                        int** tempPtrPtr53 = addressAdd int* tempPtr51, bytes 0
+                        int* tempPtr55 = pointerCast autoInt 0
+                        int** tempPtrPtr53 = pointerAssign int* tempPtr55
+                        int* tempPtr57 = createPointer struct foo
+                        int** tempPtrPtr59 = addressAdd int* tempPtr57, bytes 0
+                        int** tempPtrPtr59 = pointerAssign int actdest
+                        int* tempPtr67 = createPointer int src
+                        int temp68 = cast autoInt 1
+                        int* tempPtr67 = write int temp68
+                        int* tempPtr70 = addressAdd int* tempPtr67, bytes 4
+                        int temp71 = cast autoInt 2
+                        int* tempPtr70 = write int temp71
+                        int* tempPtr73 = addressAdd int* tempPtr70, bytes 4
+                        int temp74 = cast autoInt 3
+                        int* tempPtr73 = write int temp74
+                        int* tempPtr76 = addressAdd int* tempPtr73, bytes 4
+                        int temp77 = cast autoInt 4
+                        int* tempPtr76 = write int temp77
+                        int* tempPtr79 = addressAdd int* tempPtr76, bytes 4
+                        int temp80 = cast autoInt 5
+                        int* tempPtr79 = write int temp80
+                        int* tempPtr82 = createPointer struct foo
+                        int** tempPtrPtr84 = addressAdd int* tempPtr82, bytes 0
+                        passPointerPointer int** tempPtrPtr84, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
+                        int* tempPtr95 = createPointer int src
+                        passPointer int* tempPtr95, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
+                        int temp98 = cast autoInt 5
+                        pass int temp98, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
+                        void calleeReturnValue101 = call void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
+                        int* tempPtr105 = createPointer struct foo
+                        int** tempPtrPtr107 = addressAdd int* tempPtr105, bytes 0
+                        void* tempPtr110 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr111 = addressAdd int** tempPtrPtr107, void* tempPtr110
+                        int temp112 = read int* tempPtr111
+                        print int temp112
                         newLine
-                        int* tempPtr109 = createPointer struct foo
-                        int** tempPtrPtr111 = addressAdd int* tempPtr109, bytes 0
-                        void* tempPtr114 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr115 = addressAdd int** tempPtrPtr111, void* tempPtr114
-                        int temp116 = read int* tempPtr115
-                        print int temp116
+                        int* tempPtr114 = createPointer struct foo
+                        int** tempPtrPtr116 = addressAdd int* tempPtr114, bytes 0
+                        void* tempPtr119 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr120 = addressAdd int** tempPtrPtr116, void* tempPtr119
+                        int temp121 = read int* tempPtr120
+                        print int temp121
                         newLine
-                        int* tempPtr118 = createPointer struct foo
-                        int** tempPtrPtr120 = addressAdd int* tempPtr118, bytes 0
-                        void* tempPtr123 = addressMultiply autoInt 2, bytes 4
-                        int* tempPtr124 = addressAdd int** tempPtrPtr120, void* tempPtr123
-                        int temp125 = read int* tempPtr124
-                        print int temp125
+                        int* tempPtr123 = createPointer struct foo
+                        int** tempPtrPtr125 = addressAdd int* tempPtr123, bytes 0
+                        void* tempPtr128 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr129 = addressAdd int** tempPtrPtr125, void* tempPtr128
+                        int temp130 = read int* tempPtr129
+                        print int temp130
                         newLine
-                        int* tempPtr127 = createPointer struct foo
-                        int** tempPtrPtr129 = addressAdd int* tempPtr127, bytes 0
-                        void* tempPtr132 = addressMultiply autoInt 3, bytes 4
-                        int* tempPtr133 = addressAdd int** tempPtrPtr129, void* tempPtr132
-                        int temp134 = read int* tempPtr133
-                        print int temp134
+                        int* tempPtr132 = createPointer struct foo
+                        int** tempPtrPtr134 = addressAdd int* tempPtr132, bytes 0
+                        void* tempPtr137 = addressMultiply autoInt 3, bytes 4
+                        int* tempPtr138 = addressAdd int** tempPtrPtr134, void* tempPtr137
+                        int temp139 = read int* tempPtr138
+                        print int temp139
                         newLine
-                        int* tempPtr136 = createPointer struct foo
-                        int** tempPtrPtr138 = addressAdd int* tempPtr136, bytes 0
-                        void* tempPtr141 = addressMultiply autoInt 4, bytes 4
-                        int* tempPtr142 = addressAdd int** tempPtrPtr138, void* tempPtr141
-                        int temp143 = read int* tempPtr142
-                        print int temp143
+                        int* tempPtr141 = createPointer struct foo
+                        int** tempPtrPtr143 = addressAdd int* tempPtr141, bytes 0
+                        void* tempPtr146 = addressMultiply autoInt 4, bytes 4
+                        int* tempPtr147 = addressAdd int** tempPtrPtr143, void* tempPtr146
+                        int temp148 = read int* tempPtr147
+                        print int temp148
                         newLine
-                        int temp146 = cast autoInt 0
-                        int returnValue144 = equal int temp146
+                        int temp151 = cast autoInt 0
+                        int returnValue149 = equal int temp151
                         return
                 ]
             }

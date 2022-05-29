@@ -4,23 +4,25 @@
         "functions": {
             "_fn_AssignMutableParamToPointer_shtk_foobar": {
                 "icode": [
-                    {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 3, "name": "b", "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 7, "dtype": "int"}, "op2": {"type": "literal", "id": 6, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
-                    {"opcode": "write", "op1": {"type": "ptr", "id": 5, "name": "b", "dtype": "int"}, "op2": {"type": "temp", "id": 7, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "pointerCast", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 3, "name": "b", "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 3, "name": "b", "dtype": "int"}, "op2": {"type": "var", "id": 6, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 9, "dtype": "int"}, "op2": {"type": "literal", "id": 8, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "write", "op1": {"type": "ptr", "id": 7, "name": "b", "dtype": "int"}, "op2": {"type": "temp", "id": 9, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
             "main": {
                 "icode": [
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 14, "dtype": "int"}, "op2": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "var", "id": 12, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 14, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op2": {"type": "var", "id": 15, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "_fn_AssignMutableParamToPointer_shtk_foobar", "dtype": "void"}, "op3": {"type": "module", "id": 20, "name": "AssignMutableParamToPointer.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 21, "dtype": "void"}, "op2": {"type": "var", "id": 22, "name": "_fn_AssignMutableParamToPointer_shtk_foobar", "dtype": "void"}, "op3": {"type": "module", "id": 23, "name": "AssignMutableParamToPointer.shtk"}},
-                    {"opcode": "print", "op1": {"type": "var", "id": 24, "name": "a", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "literal", "id": 15, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 14, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 16, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 20, "dtype": "int"}, "op2": {"type": "var", "id": 17, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 20, "dtype": "int"}, "op2": {"type": "var", "id": 21, "name": "_fn_AssignMutableParamToPointer_shtk_foobar", "dtype": "void"}, "op3": {"type": "module", "id": 22, "name": "AssignMutableParamToPointer.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 23, "dtype": "void"}, "op2": {"type": "var", "id": 24, "name": "_fn_AssignMutableParamToPointer_shtk_foobar", "dtype": "void"}, "op3": {"type": "module", "id": 25, "name": "AssignMutableParamToPointer.shtk"}},
+                    {"opcode": "print", "op1": {"type": "var", "id": 26, "name": "a", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 27, "dtype": "int"}, "op2": {"type": "literal", "id": 26, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 25, "dtype": "int"}, "op2": {"type": "temp", "id": 27, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 29, "dtype": "int"}, "op2": {"type": "literal", "id": 28, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 27, "dtype": "int"}, "op2": {"type": "temp", "id": 29, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

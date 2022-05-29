@@ -67,14 +67,16 @@
                         int* tempPtr85 = addressAdd int* tempPtr82, bytes 8
                         int temp86 = cast autoInt 2
                         int* tempPtr85 = write int temp86
+                        int* tempPtr89 = pointerCast autoInt 0
+                        int* d = pointerAssign int* tempPtr89
                         int* d = pointerAssign int c
-                        struct* tempPtr93 = createPointer struct foo
-                        passPointer struct* tempPtr93, int _fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex, module CustomOperatorFixed.shtk
+                        struct* tempPtr95 = createPointer struct foo
+                        passPointer struct* tempPtr95, int _fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex, module CustomOperatorFixed.shtk
                         passPointer int* d, int _fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex, module CustomOperatorFixed.shtk
-                        int calleeReturnValue98 = call int _fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex, module CustomOperatorFixed.shtk
-                        int e = equal int calleeReturnValue98
-                        int temp104 = cast autoInt 0
-                        int returnValue102 = equal int temp104
+                        int calleeReturnValue100 = call int _fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex, module CustomOperatorFixed.shtk
+                        int e = equal int calleeReturnValue100
+                        int temp106 = cast autoInt 0
+                        int returnValue104 = equal int temp106
                         return
                 ]
             }

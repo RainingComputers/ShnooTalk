@@ -12,23 +12,25 @@
                         int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
                         float temp15 = cast autoFloat 2.000000
                         float* tempPtr13 = write float temp15
+                        struct* tempPtr18 = pointerCast autoInt 0
+                        struct* b = pointerAssign struct* tempPtr18
                         struct* b = pointerAssign struct a
-                        int* tempPtr19 = createPointer struct* b
-                        int* tempPtr21 = addressAdd int* tempPtr19, bytes 0
-                        int temp23 = cast autoInt 2
-                        int* tempPtr21 = write int temp23
-                        int* tempPtr25 = createPointer struct a
-                        int* tempPtr27 = addressAdd int* tempPtr25, bytes 0
-                        int temp28 = read int* tempPtr27
-                        print int temp28
+                        int* tempPtr21 = createPointer struct* b
+                        int* tempPtr23 = addressAdd int* tempPtr21, bytes 0
+                        int temp25 = cast autoInt 2
+                        int* tempPtr23 = write int temp25
+                        int* tempPtr27 = createPointer struct a
+                        int* tempPtr29 = addressAdd int* tempPtr27, bytes 0
+                        int temp30 = read int* tempPtr29
+                        print int temp30
                         newLine
-                        int* tempPtr30 = createPointer struct a
-                        int* tempPtr32 = addressAdd int* tempPtr30, bytes 4
-                        float temp33 = read float* tempPtr32
-                        print float temp33
+                        int* tempPtr32 = createPointer struct a
+                        int* tempPtr34 = addressAdd int* tempPtr32, bytes 4
+                        float temp35 = read float* tempPtr34
+                        print float temp35
                         newLine
-                        int temp36 = cast autoInt 0
-                        int returnValue34 = equal int temp36
+                        int temp38 = cast autoInt 0
+                        int returnValue36 = equal int temp38
                         return
                 ]
             }

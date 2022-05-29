@@ -14,19 +14,23 @@
                         int x = equal int temp10
                         int temp13 = cast autoInt 3
                         int y = equal int temp13
+                        int* tempPtr16 = pointerCast autoInt 0
+                        int* p = pointerAssign int* tempPtr16
                         int* p = pointerAssign int x
+                        int* tempPtr20 = pointerCast autoInt 0
+                        int* q = pointerAssign int* tempPtr20
                         int* q = pointerAssign int y
-                        int temp19 = read int* p
-                        print int temp19
+                        int temp23 = read int* p
+                        print int temp23
                         newLine
                         passPointerPointer int* p, void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
                         passPointer int* q, void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
-                        void calleeReturnValue30 = call void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
-                        int temp34 = read int* p
-                        print int temp34
+                        void calleeReturnValue34 = call void _fn_MutablePointerParameter_shtk_testfunction, module MutablePointerParameter.shtk
+                        int temp38 = read int* p
+                        print int temp38
                         newLine
-                        int temp37 = cast autoInt 0
-                        int returnValue35 = equal int temp37
+                        int temp41 = cast autoInt 0
+                        int returnValue39 = equal int temp41
                         return
                 ]
             }

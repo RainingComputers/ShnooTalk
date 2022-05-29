@@ -568,6 +568,57 @@ void FunctionBuilder::createInput(const Unit& unit)
     pushEntry(inputEntry);
 }
 
+bool FunctionBuilder::containsPointer(const TypeDescription& type)
+{
+    if (type.isPointer())
+        return true;
+
+    if (!type.isStruct())
+        return false;
+
+    const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
+    const StructDescription structDescription = typeModule.structures.at(type.dtypeName);
+
+    for (const std::string& fieldName : structDescription.fieldNames)
+    {
+        const TypeDescription fieldType = structDescription.structFields.at(fieldName);
+        if (containsPointer(fieldType))
+            return true;
+    }
+
+    return false;
+}
+
+void FunctionBuilder::ensurePointersNullInitializer(const Unit& local)
+{
+    if (!containsPointer(local.type()))
+        return;
+
+    if (local.isUserPointer())
+    {
+        const Unit nullPointerUnit = pointerCastOperator(unitBuilder.unitFromIntLiteral(0), local.type());
+        unitPointerAssign(local, nullPointerUnit);
+    }
+    else if (local.isArray())
+    {
+        const std::vector<Unit> elements = destructureArray(local);
+
+        for (const Unit& element : elements)
+            ensurePointersNullInitializer(element);
+    }
+    else if (local.isStruct())
+    {
+        const icode::ModuleDescription typeModule = modulesMap.at(local.moduleName());
+        const StructDescription structDescription = typeModule.structures.at(local.dtypeName());
+
+        for (const std::string& fieldName : structDescription.fieldNames)
+        {
+            const TypeDescription fieldType = structDescription.structFields.at(fieldName);
+            ensurePointersNullInitializer(getStructFieldFromString(fieldName, local));
+        }
+    }
+}
+
 Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDescription)
 {
     if (workingFunction->symbolExists(nameToken.toString()))
@@ -577,7 +628,10 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
 
     workingFunction->symbols[nameToken.toString()] = typeDescription;
 
-    return unitBuilder.unitFromTypeDescription(typeDescription, nameToken.toString());
+    const Unit local = unitBuilder.unitFromTypeDescription(typeDescription, nameToken.toString());
+    ensurePointersNullInitializer(local);
+
+    return local;
 }
 
 std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)

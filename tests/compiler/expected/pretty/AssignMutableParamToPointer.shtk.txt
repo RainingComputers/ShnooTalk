@@ -4,23 +4,25 @@
         "functions": {
             "_fn_AssignMutableParamToPointer_shtk_foobar": {
                 "icode": [
+                        int* tempPtr5 = pointerCast autoInt 0
+                        int* b = pointerAssign int* tempPtr5
                         int* b = pointerAssign int a
-                        int temp7 = cast autoInt 1
-                        int* b = write int temp7
+                        int temp9 = cast autoInt 1
+                        int* b = write int temp9
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        int temp14 = cast autoInt 0
-                        int a = equal int temp14
-                        int* tempPtr18 = createPointer int a
-                        passPointer int* tempPtr18, void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
-                        void calleeReturnValue21 = call void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
+                        int temp16 = cast autoInt 0
+                        int a = equal int temp16
+                        int* tempPtr20 = createPointer int a
+                        passPointer int* tempPtr20, void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
+                        void calleeReturnValue23 = call void _fn_AssignMutableParamToPointer_shtk_foobar, module AssignMutableParamToPointer.shtk
                         print int a
                         newLine
-                        int temp27 = cast autoInt 0
-                        int returnValue25 = equal int temp27
+                        int temp29 = cast autoInt 0
+                        int returnValue27 = equal int temp29
                         return
                 ]
             }

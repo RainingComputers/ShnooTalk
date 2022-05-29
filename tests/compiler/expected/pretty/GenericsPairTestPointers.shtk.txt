@@ -130,47 +130,53 @@
                         int temp193 = read int* tempPtr192
                         print int temp193
                         newLine
-                        int temp197 = cast autoInt 3
-                        int c = equal int temp197
-                        float* tempPtr199 = createPointer struct b
-                        float* tempPtr201 = addressAdd float* tempPtr199, bytes 0
-                        void* tempPtr204 = addressMultiply autoInt 0, bytes 4
-                        float* tempPtr205 = addressAdd float* tempPtr201, void* tempPtr204
-                        float temp207 = cast autoFloat 1.230000
-                        float* tempPtr205 = write float temp207
-                        float* tempPtr209 = createPointer struct b
-                        float* tempPtr211 = addressAdd float* tempPtr209, bytes 0
-                        void* tempPtr214 = addressMultiply autoInt 1, bytes 4
-                        float* tempPtr215 = addressAdd float* tempPtr211, void* tempPtr214
-                        float temp217 = cast autoFloat 1.110000
-                        float* tempPtr215 = write float temp217
-                        float* tempPtr219 = createPointer struct b
-                        float** tempPtrPtr221 = addressAdd float* tempPtr219, bytes 8
-                        int** tempPtrPtr221 = pointerAssign int c
-                        float* tempPtr224 = createPointer struct b
-                        float** tempPtrPtr226 = addressAdd float* tempPtr224, bytes 8
-                        int temp229 = read int** tempPtrPtr226
-                        int temp230 = cast autoInt 1
-                        int temp228 = add int temp229, int temp230
-                        int** tempPtrPtr226 = write int temp228
+                        float* tempPtr195 = createPointer struct b
+                        float* tempPtr197 = addressAdd float* tempPtr195, bytes 0
+                        float* tempPtr198 = createPointer struct b
+                        float** tempPtrPtr200 = addressAdd float* tempPtr198, bytes 8
+                        int* tempPtr202 = pointerCast autoInt 0
+                        int** tempPtrPtr200 = pointerAssign int* tempPtr202
+                        int temp205 = cast autoInt 3
+                        int c = equal int temp205
+                        float* tempPtr207 = createPointer struct b
+                        float* tempPtr209 = addressAdd float* tempPtr207, bytes 0
+                        void* tempPtr212 = addressMultiply autoInt 0, bytes 4
+                        float* tempPtr213 = addressAdd float* tempPtr209, void* tempPtr212
+                        float temp215 = cast autoFloat 1.230000
+                        float* tempPtr213 = write float temp215
+                        float* tempPtr217 = createPointer struct b
+                        float* tempPtr219 = addressAdd float* tempPtr217, bytes 0
+                        void* tempPtr222 = addressMultiply autoInt 1, bytes 4
+                        float* tempPtr223 = addressAdd float* tempPtr219, void* tempPtr222
+                        float temp225 = cast autoFloat 1.110000
+                        float* tempPtr223 = write float temp225
+                        float* tempPtr227 = createPointer struct b
+                        float** tempPtrPtr229 = addressAdd float* tempPtr227, bytes 8
+                        int** tempPtrPtr229 = pointerAssign int c
                         float* tempPtr232 = createPointer struct b
-                        float* tempPtr234 = addressAdd float* tempPtr232, bytes 0
-                        void* tempPtr237 = addressMultiply autoInt 0, bytes 4
-                        float* tempPtr238 = addressAdd float* tempPtr234, void* tempPtr237
-                        float temp239 = read float* tempPtr238
-                        print float temp239
+                        float** tempPtrPtr234 = addressAdd float* tempPtr232, bytes 8
+                        int temp237 = read int** tempPtrPtr234
+                        int temp238 = cast autoInt 1
+                        int temp236 = add int temp237, int temp238
+                        int** tempPtrPtr234 = write int temp236
+                        float* tempPtr240 = createPointer struct b
+                        float* tempPtr242 = addressAdd float* tempPtr240, bytes 0
+                        void* tempPtr245 = addressMultiply autoInt 0, bytes 4
+                        float* tempPtr246 = addressAdd float* tempPtr242, void* tempPtr245
+                        float temp247 = read float* tempPtr246
+                        print float temp247
                         newLine
-                        float* tempPtr241 = createPointer struct b
-                        float* tempPtr243 = addressAdd float* tempPtr241, bytes 0
-                        void* tempPtr246 = addressMultiply autoInt 1, bytes 4
-                        float* tempPtr247 = addressAdd float* tempPtr243, void* tempPtr246
-                        float temp248 = read float* tempPtr247
-                        print float temp248
+                        float* tempPtr249 = createPointer struct b
+                        float* tempPtr251 = addressAdd float* tempPtr249, bytes 0
+                        void* tempPtr254 = addressMultiply autoInt 1, bytes 4
+                        float* tempPtr255 = addressAdd float* tempPtr251, void* tempPtr254
+                        float temp256 = read float* tempPtr255
+                        print float temp256
                         newLine
                         print int c
                         newLine
-                        int temp252 = cast autoInt 0
-                        int returnValue250 = equal int temp252
+                        int temp260 = cast autoInt 0
+                        int returnValue258 = equal int temp260
                         return
                 ]
             }

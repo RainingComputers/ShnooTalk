@@ -4,13 +4,15 @@
         "functions": {
             "main": {
                 "icode": [
-                        int* tempPtr5 = pointerCast autoInt 42
+                        int* tempPtr5 = pointerCast autoInt 0
                         int* a = pointerAssign int* tempPtr5
-                        autoInt temp7 = addr int* a
-                        print autoInt temp7
+                        int* tempPtr7 = pointerCast autoInt 42
+                        int* a = pointerAssign int* tempPtr7
+                        autoInt temp9 = addr int* a
+                        print autoInt temp9
                         newLine
-                        int temp10 = cast autoInt 0
-                        int returnValue8 = equal int temp10
+                        int temp12 = cast autoInt 0
+                        int returnValue10 = equal int temp12
                         return
                 ]
             }

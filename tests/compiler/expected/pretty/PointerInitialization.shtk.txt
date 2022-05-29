@@ -12,43 +12,45 @@
                         int* tempPtr13 = addressAdd int* tempPtr11, bytes 4
                         int temp15 = cast autoInt 4
                         int* tempPtr13 = write int temp15
+                        struct* tempPtr18 = pointerCast autoInt 0
+                        struct* b = pointerAssign struct* tempPtr18
                         struct* b = pointerAssign struct a
                         printString stringData _str_PointerInitialization_shtk__l14_c12
                         space
-                        int* tempPtr20 = createPointer struct a
-                        int* tempPtr22 = addressAdd int* tempPtr20, bytes 0
-                        int temp23 = read int* tempPtr22
-                        print int temp23
+                        int* tempPtr22 = createPointer struct a
+                        int* tempPtr24 = addressAdd int* tempPtr22, bytes 0
+                        int temp25 = read int* tempPtr24
+                        print int temp25
                         newLine
                         printString stringData _str_PointerInitialization_shtk__l15_c12
                         space
-                        int* tempPtr26 = createPointer struct a
-                        int* tempPtr28 = addressAdd int* tempPtr26, bytes 4
-                        int temp29 = read int* tempPtr28
-                        print int temp29
+                        int* tempPtr28 = createPointer struct a
+                        int* tempPtr30 = addressAdd int* tempPtr28, bytes 4
+                        int temp31 = read int* tempPtr30
+                        print int temp31
                         newLine
-                        int* tempPtr31 = createPointer struct* b
-                        int* tempPtr33 = addressAdd int* tempPtr31, bytes 0
-                        int temp36 = read int* tempPtr33
-                        int temp37 = cast autoInt 1
-                        int temp35 = add int temp36, int temp37
-                        int* tempPtr33 = write int temp35
+                        int* tempPtr33 = createPointer struct* b
+                        int* tempPtr35 = addressAdd int* tempPtr33, bytes 0
+                        int temp38 = read int* tempPtr35
+                        int temp39 = cast autoInt 1
+                        int temp37 = add int temp38, int temp39
+                        int* tempPtr35 = write int temp37
                         printString stringData _str_PointerInitialization_shtk__l14_c12
                         space
-                        int* tempPtr40 = createPointer struct a
-                        int* tempPtr42 = addressAdd int* tempPtr40, bytes 0
-                        int temp43 = read int* tempPtr42
-                        print int temp43
+                        int* tempPtr42 = createPointer struct a
+                        int* tempPtr44 = addressAdd int* tempPtr42, bytes 0
+                        int temp45 = read int* tempPtr44
+                        print int temp45
                         newLine
                         printString stringData _str_PointerInitialization_shtk__l15_c12
                         space
-                        int* tempPtr46 = createPointer struct a
-                        int* tempPtr48 = addressAdd int* tempPtr46, bytes 4
-                        int temp49 = read int* tempPtr48
-                        print int temp49
+                        int* tempPtr48 = createPointer struct a
+                        int* tempPtr50 = addressAdd int* tempPtr48, bytes 4
+                        int temp51 = read int* tempPtr50
+                        print int temp51
                         newLine
-                        int temp52 = cast autoInt 0
-                        int returnValue50 = equal int temp52
+                        int temp54 = cast autoInt 0
+                        int returnValue52 = equal int temp54
                         return
                 ]
             }

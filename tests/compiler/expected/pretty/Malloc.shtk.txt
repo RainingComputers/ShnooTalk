@@ -18,55 +18,57 @@
             },
             "main": {
                 "icode": [
-                        autoInt temp26 = multiply autoInt 8, autoInt 10
-                        ulong temp29 = cast autoInt temp26
-                        pass ulong temp29, ubyte malloc, module Malloc.shtk
-                        ubyte* calleeReturnPointer32 = call ubyte malloc, module Malloc.shtk
-                        struct* tempPtr35 = pointerCast ubyte* calleeReturnPointer32
-                        struct* vecArray = pointerAssign struct* tempPtr35
-                        int temp39 = cast autoInt 0
-                        int i = equal int temp39
+                        struct* tempPtr25 = pointerCast autoInt 0
+                        struct* vecArray = pointerAssign struct* tempPtr25
+                        autoInt temp28 = multiply autoInt 8, autoInt 10
+                        ulong temp31 = cast autoInt temp28
+                        pass ulong temp31, ubyte malloc, module Malloc.shtk
+                        ubyte* calleeReturnPointer34 = call ubyte malloc, module Malloc.shtk
+                        struct* tempPtr37 = pointerCast ubyte* calleeReturnPointer34
+                        struct* vecArray = pointerAssign struct* tempPtr37
+                        int temp41 = cast autoInt 0
+                        int i = equal int temp41
                     _for_true_l20_c4:
-                        int temp45 = cast autoInt 10
-                        flag = lessThan int i, int temp45
+                        int temp47 = cast autoInt 10
+                        flag = lessThan int i, int temp47
                         if(not flag) goto _for_false_l20_c4
-                        int* tempPtr48 = createPointer struct* vecArray
-                        void* tempPtr50 = addressMultiply int i, bytes 8
-                        int* tempPtr51 = addressAdd int* tempPtr48, void* tempPtr50
-                        int temp58 = cast autoInt 10
-                        int temp57 = add int i, int temp58
+                        int* tempPtr50 = createPointer struct* vecArray
+                        void* tempPtr52 = addressMultiply int i, bytes 8
+                        int* tempPtr53 = addressAdd int* tempPtr50, void* tempPtr52
+                        int temp60 = cast autoInt 10
+                        int temp59 = add int i, int temp60
                         pass int i, struct _fn_Malloc_shtk_createVector, module Malloc.shtk
-                        pass int temp57, struct _fn_Malloc_shtk_createVector, module Malloc.shtk
-                        struct calleeReturnValue65 = call struct _fn_Malloc_shtk_createVector, module Malloc.shtk
-                        int* tempPtr68 = createPointer int* tempPtr51
-                        int* tempPtr69 = createPointer struct calleeReturnValue65
-                        int* tempPtr68 = memoryCopy int* tempPtr69, autoInt 8
+                        pass int temp59, struct _fn_Malloc_shtk_createVector, module Malloc.shtk
+                        struct calleeReturnValue67 = call struct _fn_Malloc_shtk_createVector, module Malloc.shtk
+                        int* tempPtr70 = createPointer int* tempPtr53
+                        int* tempPtr71 = createPointer struct calleeReturnValue67
+                        int* tempPtr70 = memoryCopy int* tempPtr71, autoInt 8
                     _for_cont_true_l20_c4:
-                        int temp74 = cast autoInt 1
-                        int temp73 = add int i, int temp74
-                        int i = equal int temp73
+                        int temp76 = cast autoInt 1
+                        int temp75 = add int i, int temp76
+                        int i = equal int temp75
                         goto _for_true_l20_c4
                     _for_false_l20_c4:
-                        int temp77 = cast autoInt 0
-                        int i = equal int temp77
+                        int temp79 = cast autoInt 0
+                        int i = equal int temp79
                     _for_true_l23_c4:
-                        int temp83 = cast autoInt 10
-                        flag = lessThan int i, int temp83
+                        int temp85 = cast autoInt 10
+                        flag = lessThan int i, int temp85
                         if(not flag) goto _for_false_l23_c4
-                        int* tempPtr86 = createPointer struct* vecArray
-                        void* tempPtr88 = addressMultiply int i, bytes 8
-                        int* tempPtr89 = addressAdd int* tempPtr86, void* tempPtr88
-                        int* tempPtr92 = createPointer int* tempPtr89
-                        passPointer int* tempPtr92, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
-                        void calleeReturnValue95 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                        int* tempPtr88 = createPointer struct* vecArray
+                        void* tempPtr90 = addressMultiply int i, bytes 8
+                        int* tempPtr91 = addressAdd int* tempPtr88, void* tempPtr90
+                        int* tempPtr94 = createPointer int* tempPtr91
+                        passPointer int* tempPtr94, void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
+                        void calleeReturnValue97 = call void _fn_TestModules_Vector_shtk_printVec, module TestModules/Vector.shtk
                     _for_cont_true_l23_c4:
-                        int temp101 = cast autoInt 1
-                        int temp100 = add int i, int temp101
-                        int i = equal int temp100
+                        int temp103 = cast autoInt 1
+                        int temp102 = add int i, int temp103
+                        int i = equal int temp102
                         goto _for_true_l23_c4
                     _for_false_l23_c4:
-                        int temp104 = cast autoInt 0
-                        int returnValue102 = equal int temp104
+                        int temp106 = cast autoInt 0
+                        int returnValue104 = equal int temp106
                         return
                 ]
             }
