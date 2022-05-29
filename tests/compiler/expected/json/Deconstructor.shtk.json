@@ -10,9 +10,11 @@
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "temp", "id": 9, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 12, "dtype": "int"}, "op2": {"type": "literal", "id": 11, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 10, "dtype": "int"}, "op2": {"type": "temp", "id": 12, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "foobar1", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 16, "name": "_fn_TestModules_Foobar_shtk_deconstructor", "dtype": "void"}, "op3": {"type": "module", "id": 17, "name": "TestModules/Foobar.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 18, "dtype": "void"}, "op2": {"type": "var", "id": 19, "name": "_fn_TestModules_Foobar_shtk_deconstructor", "dtype": "void"}, "op3": {"type": "module", "id": 20, "name": "TestModules/Foobar.shtk"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 14, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "foobar1", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 16, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 14, "dtype": "int"}, "op3": {"type": "bytes", "id": 15, "bytes": 0}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "foobar1", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 18, "dtype": "int"}, "op2": {"type": "var", "id": 19, "name": "_fn_TestModules_Foobar_shtk_deconstructor", "dtype": "void"}, "op3": {"type": "module", "id": 20, "name": "TestModules/Foobar.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 21, "dtype": "void"}, "op2": {"type": "var", "id": 22, "name": "_fn_TestModules_Foobar_shtk_deconstructor", "dtype": "void"}, "op3": {"type": "module", "id": 23, "name": "TestModules/Foobar.shtk"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

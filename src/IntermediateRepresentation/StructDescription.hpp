@@ -14,6 +14,7 @@ namespace icode
         unsigned int size;
         std::string moduleName;
         std::vector<std::string> fieldNames;
+        std::string deconstructor;
 
         bool fieldExists(const std::string&) const;
         DataType getFirstFieldDataType() const;

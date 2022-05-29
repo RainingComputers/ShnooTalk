@@ -275,7 +275,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
         actualParams.push_back(param);
         actualParamTokens.push_back(paramToken);
 
-        if (param.isArrayWithFixedDim()) // TODO: DRY this logic
+        if (param.isArrayWithFixedDim())
         {
             actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(param.numElements()));
             actualParamTokens.push_back(paramToken);

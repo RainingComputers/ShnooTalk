@@ -63,7 +63,6 @@ TypeDescription getMonomorphizedTypeDescriptionFromNode(generator::GeneratorCont
     {
         const Token aliasToken = root.getNthChildToken(childNodeCounter);
 
-        // TODO: check coverage
         if (childNodeCounter > 1)
             ctx.console.compileErrorOnToken("Invalid namespace access from generic", aliasToken);
 

@@ -1,0 +1,46 @@
+{
+    "NullInitialized.shtk": {
+        "moduleName": "NullInitialized.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct testing
+                        int** tempPtrPtr7 = addressAdd int* tempPtr5, bytes 0
+                        autoInt temp8 = addr int** tempPtrPtr7
+                        print autoInt temp8
+                        newLine
+                        int* tempPtr10 = createPointer struct testing
+                        int* tempPtr12 = addressAdd int* tempPtr10, bytes 8
+                        int* tempPtr13 = createPointer struct* tempPtr12
+                        int** tempPtrPtr15 = addressAdd int* tempPtr13, bytes 0
+                        autoInt temp16 = addr int** tempPtrPtr15
+                        print autoInt temp16
+                        newLine
+                        int* tempPtr18 = createPointer struct testing
+                        int* tempPtr20 = addressAdd int* tempPtr18, bytes 20
+                        int* tempPtr22 = createPointer struct* tempPtr20
+                        void* tempPtr24 = addressMultiply autoInt 0, bytes 8
+                        int* tempPtr25 = addressAdd int* tempPtr22, void* tempPtr24
+                        int* tempPtr26 = createPointer int* tempPtr25
+                        int** tempPtrPtr28 = addressAdd int* tempPtr26, bytes 0
+                        autoInt temp29 = addr int** tempPtrPtr28
+                        print autoInt temp29
+                        newLine
+                        int* tempPtr31 = createPointer struct testing
+                        int* tempPtr33 = addressAdd int* tempPtr31, bytes 20
+                        int* tempPtr35 = createPointer struct* tempPtr33
+                        void* tempPtr37 = addressMultiply autoInt 1, bytes 8
+                        int* tempPtr38 = addressAdd int* tempPtr35, void* tempPtr37
+                        int* tempPtr39 = createPointer int* tempPtr38
+                        int** tempPtrPtr41 = addressAdd int* tempPtr39, bytes 0
+                        autoInt temp42 = addr int** tempPtrPtr41
+                        print autoInt temp42
+                        newLine
+                        int temp45 = cast autoInt 0
+                        int returnValue43 = equal int temp45
+                        return
+                ]
+            }
+        }
+    }
+}

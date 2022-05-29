@@ -207,8 +207,6 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
-    // TODO: call deconstructor on dest if required
-
     if (src.isList())
         unitListCopy(dest, src);
     else if (dest.isStructOrArray())
@@ -740,41 +738,21 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
     return true;
 }
 
-bool shouldCallDeconstructor(const Unit& symbol)
+std::string FunctionBuilder::getDeconstructorName(const TypeDescription& type)
 {
-    if (!symbol.isStruct())
-        return false;
+    const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
+    const icode::StructDescription typeStructDesc = typeModule.structures.at(type.dtypeName);
 
-    if (symbol.isUserPointer())
-        return false;
-
-    return true;
+    return typeStructDesc.deconstructor;
 }
 
-void FunctionBuilder::callDeconstructor(const Unit& symbol)
+void FunctionBuilder::callDeconstructor(const std::string mangledFunctionName, const Unit& symbol)
 {
-    // TODO: call deconstructor recursively for structs
-
-    if (!shouldCallDeconstructor(symbol))
+    if (mangledFunctionName == "")
         return;
 
-    const std::string mangledFunctionName = nameMangleString("deconstructor", symbol.moduleName());
-
-    icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
-
-    icode::FunctionDescription deconstructorFunction;
-    if (!typeModule.getFunction(mangledFunctionName, deconstructorFunction))
-        return;
-
-    if (symbol.isArray())
-    {
-        std::vector<Unit> arrayElements = destructureArray(symbol);
-
-        for (const Unit& element : arrayElements)
-            callDeconstructor(element);
-
-        return;
-    }
+    const icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
+    const icode::FunctionDescription deconstructorFunction = typeModule.functions.at(mangledFunctionName);
 
     const std::string formalName = deconstructorFunction.parameters[0];
     const TypeDescription formalType = deconstructorFunction.symbols.at(formalName);
@@ -784,10 +762,60 @@ void FunctionBuilder::callDeconstructor(const Unit& symbol)
     callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
 }
 
+bool FunctionBuilder::shouldCallDeconstructor(const icode::TypeDescription& type)
+{
+    if (!type.isStruct())
+        return false;
+
+    if (type.isPointer())
+        return false;
+
+    if (getDeconstructorName(type) == "")
+        return false;
+
+    return true;
+}
+
+void FunctionBuilder::deconstructArrayUnit(const Unit& symbol)
+{
+    std::vector<Unit> arrayElements = destructureArray(symbol);
+
+    for (const Unit& element : arrayElements)
+        deconstructUnit(element);
+}
+
+void FunctionBuilder::deconstructStructFields(const Unit& symbol)
+{
+    const icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
+    const StructDescription structDescription = typeModule.structures.at(symbol.dtypeName());
+
+    for (const std::string& fieldName : structDescription.fieldNames)
+    {
+        const TypeDescription fieldType = structDescription.structFields.at(fieldName);
+
+        deconstructUnit(getStructFieldFromString(fieldName, symbol));
+    }
+}
+
+void FunctionBuilder::deconstructUnit(const Unit& symbol)
+{
+    if (!shouldCallDeconstructor(symbol.type()))
+        return;
+
+    if (symbol.isArray())
+    {
+        deconstructArrayUnit(symbol);
+        return;
+    }
+
+    if (symbol.isStruct())
+        deconstructStructFields(symbol);
+
+    callDeconstructor(getDeconstructorName(symbol.type()), symbol);
+}
+
 void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
 {
-    // TODO: don't call on return expression
-
     for (auto symbolPair : workingFunction->symbols)
     {
         const std::string symbolName = symbolPair.first;
@@ -798,7 +826,7 @@ void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
 
         const Unit symbol = unitBuilder.unitFromTypeDescription(symbolType, symbolName);
 
-        callDeconstructor(symbol);
+        deconstructUnit(symbol);
     }
 }
 

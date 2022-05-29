@@ -54,24 +54,32 @@
                         int* tempPtr84 = createPointer int* tempPtr72
                         void* tempPtr86 = addressMultiply autoInt 1, bytes 4
                         int* tempPtr87 = addressAdd int* tempPtr84, void* tempPtr86
-                        int* tempPtr89 = createPointer int* tempPtr82
-                        passPointer int* tempPtr89, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue92 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        int* tempPtr96 = createPointer int* tempPtr87
-                        passPointer int* tempPtr96, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue99 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        int* tempPtr103 = createPointer int* tempPtr77
-                        void* tempPtr105 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr106 = addressAdd int* tempPtr103, void* tempPtr105
-                        int* tempPtr108 = createPointer int* tempPtr77
-                        void* tempPtr110 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr111 = addressAdd int* tempPtr108, void* tempPtr110
-                        int* tempPtr113 = createPointer int* tempPtr106
-                        passPointer int* tempPtr113, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue116 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        int* tempPtr120 = createPointer int* tempPtr111
-                        passPointer int* tempPtr120, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue123 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr88 = createPointer int* tempPtr82
+                        int* tempPtr90 = addressAdd int* tempPtr88, bytes 0
+                        int* tempPtr92 = createPointer int* tempPtr82
+                        passPointer int* tempPtr92, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue95 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr98 = createPointer int* tempPtr87
+                        int* tempPtr100 = addressAdd int* tempPtr98, bytes 0
+                        int* tempPtr102 = createPointer int* tempPtr87
+                        passPointer int* tempPtr102, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue105 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr109 = createPointer int* tempPtr77
+                        void* tempPtr111 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr112 = addressAdd int* tempPtr109, void* tempPtr111
+                        int* tempPtr114 = createPointer int* tempPtr77
+                        void* tempPtr116 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr117 = addressAdd int* tempPtr114, void* tempPtr116
+                        int* tempPtr118 = createPointer int* tempPtr112
+                        int* tempPtr120 = addressAdd int* tempPtr118, bytes 0
+                        int* tempPtr122 = createPointer int* tempPtr112
+                        passPointer int* tempPtr122, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue125 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr128 = createPointer int* tempPtr117
+                        int* tempPtr130 = addressAdd int* tempPtr128, bytes 0
+                        int* tempPtr132 = createPointer int* tempPtr117
+                        passPointer int* tempPtr132, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue135 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
                         return
                 ]
             }

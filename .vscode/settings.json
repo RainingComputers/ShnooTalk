@@ -97,7 +97,8 @@
         "complex": "cpp",
         "set": "cpp",
         "unordered_set": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "__availability": "cpp"
     },
     "cSpell.words": [
         "aarch",
@@ -150,6 +151,7 @@
         "newlnfmt",
         "ntoks",
         "otool",
+        "Premangled",
         "println",
         "Qualident",
         "RPAREN",

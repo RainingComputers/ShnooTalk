@@ -244,12 +244,17 @@ void ModuleBuilder::createFunction(const Token& nameToken,
     if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(nameToken.toString()))
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
-    const icode::FunctionDescription function =
+    icode::FunctionDescription function =
         createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
 
     if (nameToken.toString() == "deconstructor")
+    {
         if (!isValidDeconstructor(function))
             console.compileErrorOnToken("Invalid deconstructor function", nameToken);
+
+        const TypeDescription symbolType = function.symbols.at(function.parameters[0]);
+        rootModule.structures.at(symbolType.dtypeName).deconstructor = mangledFunctionName;
+    }
 
     rootModule.functions[mangledFunctionName] = function;
 

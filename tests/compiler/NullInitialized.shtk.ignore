@@ -1,0 +1,29 @@
+struct Crazy
+{
+    var x: int*
+}
+
+struct Foo 
+{
+    var a: int*
+    var b: int
+}
+
+struct Bar
+{
+    var c: int*
+    var d: Foo
+    var e: Crazy[2]
+}
+
+fn main() -> int
+{
+    var testing: Bar
+
+    println(addr(testing.c))
+    println(addr(testing.d.a))
+    println(addr(testing.e[0].x))
+    println(addr(testing.e[1].x))
+
+    return 0
+}

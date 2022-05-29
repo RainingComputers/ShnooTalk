@@ -1,0 +1,65 @@
+{
+    "DeconstructorStructFieldPropagation.shtk": {
+        "moduleName": "DeconstructorStructFieldPropagation.shtk",
+        "functions": {
+            "_fn_DeconstructorStructFieldPropagation_shtk_deconstructor": {
+                "icode": [
+                        int* tempPtr4 = createPointer struct self
+                        int* tempPtr6 = addressAdd int* tempPtr4, bytes 0
+                        int temp7 = read int* tempPtr6
+                        print int temp7
+                        newLine
+                        printString stringData _str_TestModules_Foobar_shtk__l9_c12
+                        newLine
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int* tempPtr14 = createPointer struct barbar
+                        int* tempPtr16 = addressAdd int* tempPtr14, bytes 0
+                        int temp18 = cast autoInt 500
+                        int* tempPtr16 = write int temp18
+                        int* tempPtr20 = createPointer struct barbar
+                        int* tempPtr22 = addressAdd int* tempPtr20, bytes 4
+                        int* tempPtr23 = createPointer struct* tempPtr22
+                        int* tempPtr25 = addressAdd int* tempPtr23, bytes 0
+                        int temp27 = cast autoInt 100
+                        int* tempPtr25 = write int temp27
+                        int temp30 = cast autoInt 0
+                        int returnValue28 = equal int temp30
+                        int* tempPtr32 = createPointer struct barbar
+                        int* tempPtr34 = addressAdd int* tempPtr32, bytes 0
+                        int* tempPtr35 = createPointer struct barbar
+                        int* tempPtr37 = addressAdd int* tempPtr35, bytes 4
+                        int* tempPtr38 = createPointer struct* tempPtr37
+                        int* tempPtr40 = addressAdd int* tempPtr38, bytes 0
+                        int* tempPtr42 = createPointer struct* tempPtr37
+                        passPointer int* tempPtr42, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue45 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr49 = createPointer struct barbar
+                        passPointer int* tempPtr49, void _fn_DeconstructorStructFieldPropagation_shtk_deconstructor, module DeconstructorStructFieldPropagation.shtk
+                        void calleeReturnValue52 = call void _fn_DeconstructorStructFieldPropagation_shtk_deconstructor, module DeconstructorStructFieldPropagation.shtk
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/Foobar.shtk": {
+        "moduleName": "TestModules/Foobar.shtk",
+        "functions": {
+            "_fn_TestModules_Foobar_shtk_deconstructor": {
+                "icode": [
+                        int* tempPtr4 = createPointer struct self
+                        int* tempPtr6 = addressAdd int* tempPtr4, bytes 0
+                        int temp7 = read int* tempPtr6
+                        print int temp7
+                        newLine
+                        printString stringData _str_TestModules_Foobar_shtk__l9_c12
+                        newLine
+                        return
+                ]
+            }
+        }
+    }
+}

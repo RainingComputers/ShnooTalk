@@ -10,9 +10,11 @@
                         int* tempPtr7 = write int temp9
                         int temp12 = cast autoInt 0
                         int returnValue10 = equal int temp12
-                        int* tempPtr15 = createPointer struct foobar1
-                        passPointer int* tempPtr15, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue18 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr14 = createPointer struct foobar1
+                        int* tempPtr16 = addressAdd int* tempPtr14, bytes 0
+                        int* tempPtr18 = createPointer struct foobar1
+                        passPointer int* tempPtr18, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue21 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
                         return
                 ]
             }

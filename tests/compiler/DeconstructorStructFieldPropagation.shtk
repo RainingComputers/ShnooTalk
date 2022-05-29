@@ -1,0 +1,23 @@
+from "TestModules/Foobar.shtk" use Foobar
+
+struct BarBar
+{
+    var i: int
+    var t: Foobar
+}
+
+fn deconstructor(self: BarBar) 
+{
+    println(self.i)
+    println("deconstruct")
+}
+
+
+fn main() -> int
+{
+    var barbar: BarBar
+    barbar.i = 500
+    barbar.t.a = 100
+
+    return 0
+}
