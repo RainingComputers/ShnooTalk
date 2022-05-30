@@ -7,6 +7,7 @@
 #include "OperandBuilder.hpp"
 #include "Unit.hpp"
 #include "UnitBuilder.hpp"
+#include "DescriptionFinder.hpp"
 
 class FunctionBuilder
 {
@@ -14,6 +15,7 @@ class FunctionBuilder
     icode::StringModulesMap& modulesMap;
     OperandBuilder& opBuilder;
     UnitBuilder& unitBuilder;
+    Finder& finder;
     Console& console;
 
     icode::FunctionDescription* workingFunction;
@@ -58,13 +60,9 @@ class FunctionBuilder
 
     std::string getDeconstructorName(const icode::TypeDescription& type);
 
-    void callDeconstructor(const std::string mangledFunctionName, const Unit& symbol);
+    void callDeconstructor(const Unit& symbol);
 
     bool shouldCallDeconstructor(const icode::TypeDescription& type);
-
-    void deconstructArrayUnit(const Unit& symbol);
-
-    void deconstructStructFields(const Unit& symbol);
 
     void deconstructUnit(const Unit& symbol);
 
@@ -76,6 +74,7 @@ public:
     FunctionBuilder(icode::StringModulesMap& modulesMap,
                     OperandBuilder& opBuilder,
                     UnitBuilder& unitBuilder,
+                    Finder& finder,
                     Console& console);
 
     void setWorkingFunction(icode::FunctionDescription* functionDesc);
@@ -119,9 +118,9 @@ public:
     Unit createLocal(const Token nameToken, icode::TypeDescription& typeDescription);
 
     void passParameterPreMangled(const std::string& mangledCalleeName,
-                       icode::FunctionDescription callee,
-                       const Unit& formalParam,
-                       const Unit& actualParam);
+                                 icode::FunctionDescription callee,
+                                 const Unit& formalParam,
+                                 const Unit& actualParam);
 
     void passParameter(const Token& calleeNameToken,
                        icode::FunctionDescription callee,

@@ -25,7 +25,7 @@ public:
     ModuleBuilder moduleBuilder;
     OperandBuilder opBuilder;
     UnitBuilder unitBuilder;
-    DescriptionFinder descriptionFinder;
+    Finder finder;
     FunctionBuilder functionBuilder;
 
     void resetWorkingModule();

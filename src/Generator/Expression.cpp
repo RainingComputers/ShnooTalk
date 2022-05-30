@@ -152,7 +152,7 @@ Unit createCallFunction(generator::GeneratorContext& ctx,
                         const Token& calleeNameToken,
                         const FunctionDescription& callee)
 {
-    std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
+    std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
 
     if (actualParams.size() != callee.numParameters())
         ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
@@ -177,12 +177,12 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
         firstActualParam = expression(ctx, root.children[0]);
 
         if (root.type == node::METHODCALL)
-            ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromUnit(firstActualParam));
+            ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(firstActualParam));
     }
 
     const Token calleeNameToken = root.tok;
-    FunctionDescription callee = ctx.ir.descriptionFinder.getFunction(calleeNameToken);
-    std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
+    FunctionDescription callee = ctx.ir.finder.getFunction(calleeNameToken);
+    std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
 
     ctx.ir.resetWorkingModule();
 
@@ -245,7 +245,7 @@ Unit createCallFunctionPremangled(generator::GeneratorContext& ctx,
                                   const std::string& functionName,
                                   const FunctionDescription& callee)
 {
-    std::vector<Unit> formalParameters = ctx.ir.descriptionFinder.getFormalParameters(callee);
+    std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
 
     for (size_t i = 0; i < formalParameters.size(); i += 1)
     {
@@ -262,7 +262,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
 
     const TypeDescription type = typeDescriptionFromNode(ctx, root.children[0]);
 
-    ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromType(type));
+    ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromType(type));
 
     std::vector<Token> actualParamTokens;
     std::vector<Unit> actualParams;
@@ -283,7 +283,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
     }
 
     std::pair<std::string, FunctionDescription> constructorNameAndFunction =
-        ctx.ir.descriptionFinder.getFunctionByParamTypes(root.tok, type, actualParams);
+        ctx.ir.finder.getFunctionByParamTypes(root.tok, type, actualParams);
 
     const std::string calleeName = constructorNameAndFunction.first;
     const FunctionDescription callee = constructorNameAndFunction.second;
@@ -302,7 +302,7 @@ Unit customOperator(generator::GeneratorContext& ctx,
 {
     ctx.ir.pushWorkingModule();
 
-    ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromUnit(LHS));
+    ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(LHS));
 
     std::vector<Token> paramTokens = { LHSToken, RHSToken };
     std::vector<Unit> params = { LHS, RHS };
@@ -314,7 +314,7 @@ Unit customOperator(generator::GeneratorContext& ctx,
     }
 
     std::pair<std::string, FunctionDescription> calleeNameAndFunction =
-        ctx.ir.descriptionFinder.getCustomOperatorFunction(binaryOperator, params);
+        ctx.ir.finder.getCustomOperatorFunction(binaryOperator, params);
 
     const std::string calleeName = calleeNameAndFunction.first;
     const FunctionDescription callee = calleeNameAndFunction.second;

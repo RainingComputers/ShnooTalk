@@ -5,10 +5,7 @@
 
 using namespace icode;
 
-DescriptionFinder::DescriptionFinder(ModuleDescription& rootModule,
-                                     StringModulesMap& modulesMap,
-                                     UnitBuilder& unitBuilder,
-                                     Console& console)
+Finder::Finder(ModuleDescription& rootModule, StringModulesMap& modulesMap, UnitBuilder& unitBuilder, Console& console)
     : rootModule(rootModule)
     , modulesMap(modulesMap)
     , unitBuilder(unitBuilder)
@@ -16,27 +13,27 @@ DescriptionFinder::DescriptionFinder(ModuleDescription& rootModule,
 {
 }
 
-void DescriptionFinder::setWorkingModule(ModuleDescription* moduleDescription)
+void Finder::setWorkingModule(ModuleDescription* moduleDescription)
 {
     workingModule = moduleDescription;
 }
 
-void DescriptionFinder::setWorkingFunction(FunctionDescription* functionDescription)
+void Finder::setWorkingFunction(FunctionDescription* functionDescription)
 {
     workingFunction = functionDescription;
 }
 
-ModuleDescription* DescriptionFinder::getModuleFromType(const TypeDescription& type)
+ModuleDescription* Finder::getModuleFromType(const TypeDescription& type)
 {
     return &modulesMap.at(type.moduleName);
 }
 
-ModuleDescription* DescriptionFinder::getModuleFromUnit(const Unit& unit)
+ModuleDescription* Finder::getModuleFromUnit(const Unit& unit)
 {
     return &modulesMap.at(unit.moduleName());
 }
 
-ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& aliasToken)
+ModuleDescription* Finder::getModuleFromToken(const Token& aliasToken)
 {
     const std::string alias = aliasToken.toString();
 
@@ -48,7 +45,34 @@ ModuleDescription* DescriptionFinder::getModuleFromToken(const Token& aliasToken
     return &modulesMap.at(moduleName);
 }
 
-bool DescriptionFinder::getLocal(const Token& nameToken, Unit& returnValue)
+StructDescription Finder::getStructDescFromType(const TypeDescription& type)
+{
+    return modulesMap.at(type.moduleName).structures.at(type.dtypeName);
+}
+
+StructDescription Finder::getStructDescFromUnit(const Unit& unit)
+{
+    return getStructDescFromType(unit.type());
+}
+
+std::vector<TypeDescription> Finder::getFieldTypes(const TypeDescription& type)
+{
+    const StructDescription structDescription = getStructDescFromType(type);
+
+    std::vector<TypeDescription> fieldTypes;
+
+    for (const std::string& fieldName : structDescription.fieldNames)
+        fieldTypes.push_back(structDescription.structFields.at(fieldName));
+
+    return fieldTypes;
+}
+
+std::vector<std::string> Finder::getFieldNames(const Unit& unit)
+{
+    return getStructDescFromUnit(unit).fieldNames;
+}
+
+bool Finder::getLocal(const Token& nameToken, Unit& returnValue)
 {
     TypeDescription typeDescription;
 
@@ -59,7 +83,7 @@ bool DescriptionFinder::getLocal(const Token& nameToken, Unit& returnValue)
     return true;
 }
 
-bool DescriptionFinder::getGlobal(const Token& nameToken, Unit& returnValue)
+bool Finder::getGlobal(const Token& nameToken, Unit& returnValue)
 {
     std::string mangledGlobalName = nameMangle(nameToken, rootModule.name);
 
@@ -72,7 +96,7 @@ bool DescriptionFinder::getGlobal(const Token& nameToken, Unit& returnValue)
     return true;
 }
 
-bool DescriptionFinder::getEnum(const Token& nameToken, Unit& returnValue)
+bool Finder::getEnum(const Token& nameToken, Unit& returnValue)
 {
     EnumDescription enumDescription;
 
@@ -84,7 +108,7 @@ bool DescriptionFinder::getEnum(const Token& nameToken, Unit& returnValue)
     return true;
 }
 
-bool DescriptionFinder::getIntDefine(const Token& nameToken, Unit& returnValue)
+bool Finder::getIntDefine(const Token& nameToken, Unit& returnValue)
 {
     long defineValue;
 
@@ -96,7 +120,7 @@ bool DescriptionFinder::getIntDefine(const Token& nameToken, Unit& returnValue)
     return true;
 }
 
-bool DescriptionFinder::getFloatDefine(const Token& nameToken, Unit& returnValue)
+bool Finder::getFloatDefine(const Token& nameToken, Unit& returnValue)
 {
     double defineValue;
 
@@ -108,7 +132,7 @@ bool DescriptionFinder::getFloatDefine(const Token& nameToken, Unit& returnValue
     return true;
 }
 
-bool DescriptionFinder::getStringDefine(const Token& nameToken, Unit& returnValue)
+bool Finder::getStringDefine(const Token& nameToken, Unit& returnValue)
 {
     std::string defineValue;
 
@@ -120,7 +144,7 @@ bool DescriptionFinder::getStringDefine(const Token& nameToken, Unit& returnValu
     return true;
 }
 
-Unit DescriptionFinder::getUnitFromToken(const Token& nameToken)
+Unit Finder::getUnitFromToken(const Token& nameToken)
 {
     Unit unit;
 
@@ -145,7 +169,7 @@ Unit DescriptionFinder::getUnitFromToken(const Token& nameToken)
     console.compileErrorOnToken("Symbol does not exist", nameToken);
 }
 
-FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
+FunctionDescription Finder::getFunction(const Token& nameToken)
 {
     FunctionDescription functionDescription;
 
@@ -171,14 +195,14 @@ FunctionDescription DescriptionFinder::getFunction(const Token& nameToken)
     console.compileErrorOnToken("Function does not exist", nameToken);
 }
 
-std::vector<Unit> DescriptionFinder::getFormalParameters(const FunctionDescription& function)
+std::vector<Unit> Finder::getFormalParameters(const FunctionDescription& function)
 {
     std::vector<Unit> formalParameters;
 
-    for (const std::string& parameter : function.parameters)
+    for (const std::string& parameterName : function.parameters)
     {
-        TypeDescription paramType = function.symbols.at(parameter);
-        formalParameters.push_back(unitBuilder.unitFromTypeDescription(paramType, parameter));
+        TypeDescription paramType = function.getParamType(parameterName);
+        formalParameters.push_back(unitBuilder.unitFromTypeDescription(paramType, parameterName));
     }
 
     return formalParameters;
@@ -192,7 +216,7 @@ bool isSameParamsType(const FunctionDescription& function, const std::vector<Uni
     for (size_t i = 0; i < params.size(); i += 1)
     {
         const TypeDescription actualParamType = params[i].type();
-        const TypeDescription formalParamType = function.symbols.at(function.parameters[i]);
+        const TypeDescription formalParamType = function.getParamTypePos(i);
 
         if (!isSameTypeDescription(formalParamType, actualParamType))
             return false;
@@ -201,9 +225,9 @@ bool isSameParamsType(const FunctionDescription& function, const std::vector<Uni
     return true;
 }
 
-std::pair<std::string, FunctionDescription> DescriptionFinder::getFunctionByParamTypes(const Token& token,
-                                                                                       const TypeDescription& type,
-                                                                                       const std::vector<Unit>& params)
+std::pair<std::string, FunctionDescription> Finder::getFunctionByParamTypes(const Token& token,
+                                                                            const TypeDescription& type,
+                                                                            const std::vector<Unit>& params)
 {
     for (auto functionName : workingModule->definedFunctions)
     {
@@ -232,12 +256,12 @@ bool isSameParamsTypeFixedDim(const FunctionDescription& function, const std::ve
     if (!isSameParamsType(function, { params[0], params[1] }))
         return false;
 
-    const TypeDescription secondFormalParam = function.symbols.at(function.parameters[1]);
+    const TypeDescription secondFormalParam = function.getParamTypePos(1);
 
     return secondFormalParam.isArrayWithFixedDim();
 }
 
-std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperatorFunctionString(
+std::pair<std::string, FunctionDescription> Finder::getCustomOperatorFunctionString(
     const Token& token,
     const std::string& binaryOperatorName,
     const std::vector<Unit>& params)
@@ -258,27 +282,24 @@ std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperator
     console.operatorError(token, params[0], params[1]);
 }
 
-std::pair<std::string, FunctionDescription> DescriptionFinder::getCustomOperatorFunction(
-    const Token& binaryOperator,
-    const std::vector<Unit>& params)
+std::pair<std::string, FunctionDescription> Finder::getCustomOperatorFunction(const Token& binaryOperator,
+                                                                              const std::vector<Unit>& params)
 {
     const std::string binaryOperatorName = binaryOperator.toFunctionNameString();
 
     return getCustomOperatorFunctionString(binaryOperator, binaryOperatorName, params);
 }
 
-std::pair<std::string, FunctionDescription> DescriptionFinder::getSubscriptOperatorFunction(
-    const Token& token,
-    const Unit& unit,
-    const std::vector<Unit>& params)
+std::pair<std::string, FunctionDescription> Finder::getSubscriptOperatorFunction(const Token& token,
+                                                                                 const Unit& unit,
+                                                                                 const std::vector<Unit>& params)
 {
     return getCustomOperatorFunctionString(token, "subscript", params);
 }
 
-bool DescriptionFinder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
+bool Finder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
 {
-    const ModuleDescription unitModule = modulesMap.at(structUnit.moduleName());
-    const StructDescription structDescription = unitModule.structures.at(structUnit.dtypeName());
+    const StructDescription structDescription = getStructDescFromUnit(structUnit);
 
     for (auto& nameToken : nameTokens)
         if (!structDescription.fieldExists(nameToken.toString()))

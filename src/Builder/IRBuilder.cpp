@@ -8,8 +8,8 @@ IRBuilder::IRBuilder(icode::StringModulesMap& modulesMap, const std::string& fil
     , console(console)
     , moduleBuilder(modulesMap[fileName], modulesMap, console)
     , unitBuilder(modulesMap[fileName], opBuilder)
-    , descriptionFinder(modulesMap[fileName], modulesMap, unitBuilder, console)
-    , functionBuilder(modulesMap, opBuilder, unitBuilder, console)
+    , finder(modulesMap[fileName], modulesMap, unitBuilder, console)
+    , functionBuilder(modulesMap, opBuilder, unitBuilder, finder, console)
 {
     workingFunction = nullptr;
     workingModule = &rootModule;
@@ -23,7 +23,7 @@ void IRBuilder::resetWorkingModule()
 {
     workingModule = &rootModule;
     moduleBuilder.setWorkingModule(&rootModule);
-    descriptionFinder.setWorkingModule(&rootModule);
+    finder.setWorkingModule(&rootModule);
     unitBuilder.setWorkingModule(&rootModule);
 }
 
@@ -31,7 +31,7 @@ void IRBuilder::setWorkingModule(icode::ModuleDescription* moduleDescription)
 {
     workingModule = moduleDescription;
     moduleBuilder.setWorkingModule(moduleDescription);
-    descriptionFinder.setWorkingModule(moduleDescription);
+    finder.setWorkingModule(moduleDescription);
     unitBuilder.setWorkingModule(moduleDescription);
 }
 
@@ -57,5 +57,5 @@ void IRBuilder::setWorkingFunction(const Token& functionNameToken, bool externC)
     }
 
     functionBuilder.setWorkingFunction(workingFunction);
-    descriptionFinder.setWorkingFunction(workingFunction);
+    finder.setWorkingFunction(workingFunction);
 }

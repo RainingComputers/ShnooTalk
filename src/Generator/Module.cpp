@@ -20,7 +20,7 @@ int setWorkingModuleFromNode(generator::GeneratorContext& ctx, const Node& root,
         }
         else
         {
-            ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromToken(aliasToken));
+            ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromToken(aliasToken));
         }
     }
 

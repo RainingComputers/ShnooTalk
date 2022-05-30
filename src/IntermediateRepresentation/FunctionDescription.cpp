@@ -31,4 +31,14 @@ namespace icode
         return functionReturnType.dtype == VOID;
     }
 
+    TypeDescription FunctionDescription::getParamType(const std::string& paramName) const
+    {
+        return symbols.at(paramName);
+    }
+
+    TypeDescription FunctionDescription::getParamTypePos(size_t paramPos) const
+    {
+        return symbols.at(parameters.at(paramPos));
+    }
+
 }

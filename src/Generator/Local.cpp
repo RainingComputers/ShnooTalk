@@ -95,7 +95,7 @@ void destructureLocal(generator::GeneratorContext& ctx, const Node& root)
     if (!RHS.isStructOrArray())
         ctx.console.compileErrorOnToken("Cannot destructure non struct or non array", root.children.back().tok);
 
-    if (RHS.isStruct() && ctx.ir.descriptionFinder.isAllNamesStructFields(nameTokens, RHS))
+    if (RHS.isStruct() && ctx.ir.finder.isAllNamesStructFields(nameTokens, RHS))
         namedDestructure(ctx, root, nameTokens, RHS);
     else
         orderedDestructure(ctx, root, nameTokens, RHS);

@@ -8,7 +8,7 @@
 #include "Unit.hpp"
 #include "UnitBuilder.hpp"
 
-class DescriptionFinder
+class Finder
 {
     icode::ModuleDescription& rootModule;
     icode::StringModulesMap& modulesMap;
@@ -31,10 +31,10 @@ class DescriptionFinder
         const std::vector<Unit>& params);
 
 public:
-    DescriptionFinder(icode::ModuleDescription& rootModule,
-                      icode::StringModulesMap& modulesMap,
-                      UnitBuilder& unitBuilder,
-                      Console& console);
+    Finder(icode::ModuleDescription& rootModule,
+           icode::StringModulesMap& modulesMap,
+           UnitBuilder& unitBuilder,
+           Console& console);
 
     void setWorkingModule(icode::ModuleDescription* module);
     void setWorkingFunction(icode::FunctionDescription* function);
@@ -44,6 +44,14 @@ public:
     icode::ModuleDescription* getModuleFromType(const icode::TypeDescription& type);
 
     icode::ModuleDescription* getModuleFromToken(const Token& moduleNameToken);
+
+    icode::StructDescription getStructDescFromType(const icode::TypeDescription& type);
+
+    icode::StructDescription getStructDescFromUnit(const Unit& unit);
+
+    std::vector<icode::TypeDescription> getFieldTypes(const icode::TypeDescription& type);
+
+    std::vector<std::string> getFieldNames(const Unit& unit);
 
     Unit getUnitFromToken(const Token& nameToken);
 

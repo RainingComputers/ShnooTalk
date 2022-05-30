@@ -159,7 +159,7 @@ void destructuredAssignment(generator::GeneratorContext& ctx, const Node& root)
     {
         std::vector<Token> nameTokens = getNameTokens(LHSNode);
 
-        if (ctx.ir.descriptionFinder.isAllNamesStructFields(nameTokens, RHS))
+        if (ctx.ir.finder.isAllNamesStructFields(nameTokens, RHS))
             namedDestructuredAssignment(ctx, root, nameTokens, LHS, RHS);
         else
             orderedDestructuredAssignment(ctx, root, LHS, RHS);

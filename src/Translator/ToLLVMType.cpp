@@ -91,9 +91,9 @@ FunctionType* funcDescriptionToLLVMType(const ModuleContext& ctx, const icode::F
 {
     std::vector<Type*> parameterTypes;
 
-    for (std::string paramString : functionDesc.parameters)
+    for (std::string paramName : functionDesc.parameters)
     {
-        icode::TypeDescription paramTypeDescription = functionDesc.symbols.at(paramString);
+        icode::TypeDescription paramTypeDescription = functionDesc.getParamType(paramName);
 
         Type* type = typeDescriptionToLLVMType(ctx, paramTypeDescription);
 

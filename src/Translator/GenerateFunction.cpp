@@ -172,7 +172,7 @@ void setupFunctionStack(ModuleContext& ctx, const icode::FunctionDescription& fu
         const std::string argumentName = functionDesc.parameters[i];
         arg->setName(argumentName);
 
-        const icode::TypeDescription type = functionDesc.symbols.at(argumentName);
+        const icode::TypeDescription type = functionDesc.getParamType(argumentName);
 
         addParameterAttribute(i, type, arg, function);
         createFunctionParameter(ctx, type, arg, argumentName);

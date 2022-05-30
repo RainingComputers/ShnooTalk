@@ -6,7 +6,7 @@ Unit getUnitFromNode(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token nameToken = root.getNthChildToken(0);
 
-    Unit Unit = ctx.ir.descriptionFinder.getUnitFromToken(nameToken);
+    Unit Unit = ctx.ir.finder.getUnitFromToken(nameToken);
 
     if (Unit.isLocal())
         if (!ctx.scope.isInCurrentScope(nameToken))
@@ -58,7 +58,7 @@ std::pair<Unit, size_t> subscriptOperator(generator::GeneratorContext& ctx,
 
     ctx.ir.pushWorkingModule();
 
-    ctx.ir.setWorkingModule(ctx.ir.descriptionFinder.getModuleFromUnit(unit));
+    ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(unit));
 
     std::vector<Token> paramTokens = { root.tok, indexExpressionToken };
     std::vector<Unit> params = { unit, indexExpression };
@@ -70,7 +70,7 @@ std::pair<Unit, size_t> subscriptOperator(generator::GeneratorContext& ctx,
     }
 
     const std::pair<std::string, icode::FunctionDescription> subscriptNameAndFunction =
-        ctx.ir.descriptionFinder.getSubscriptOperatorFunction(child.tok, unit, params);
+        ctx.ir.finder.getSubscriptOperatorFunction(child.tok, unit, params);
 
     const Unit result = createCallFunctionPremangled(ctx,
                                                      paramTokens,

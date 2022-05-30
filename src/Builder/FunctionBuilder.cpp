@@ -11,10 +11,12 @@ using namespace icode;
 FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap,
                                  OperandBuilder& opBuilder,
                                  UnitBuilder& unitBuilder,
+                                 Finder& finder,
                                  Console& console)
     : modulesMap(modulesMap)
     , opBuilder(opBuilder)
     , unitBuilder(unitBuilder)
+    , finder(finder)
     , console(console)
 {
 }
@@ -116,10 +118,7 @@ Operand FunctionBuilder::getCreatePointerDestOperand(const TypeDescription& type
     if (!type.isStruct())
         return opBuilder.createTempPtrOperand(type.dtype);
 
-    /* If it a struct, create pointer to the first field */
-    const ModuleDescription workingModule = modulesMap.at(type.moduleName);
-
-    const DataType firstFieldDataType = workingModule.structures.at(type.dtypeName).getFirstFieldDataType();
+    const DataType firstFieldDataType = finder.getStructDescFromType(type).getFirstFieldDataType();
 
     return opBuilder.createTempPtrOperand(firstFieldDataType);
 }
@@ -369,7 +368,7 @@ Operand FunctionBuilder::addressMultiplyOperator(Operand op2, Operand op3)
 
 Unit FunctionBuilder::getStructFieldFromString(const std::string& fieldName, const Unit& unit)
 {
-    StructDescription structDescription = modulesMap.at(unit.moduleName()).structures.at(unit.dtypeName());
+    StructDescription structDescription = finder.getStructDescFromUnit(unit);
 
     TypeDescription fieldType = structDescription.structFields.at(fieldName);
 
@@ -399,7 +398,7 @@ Unit FunctionBuilder::getStructFieldFromString(const std::string& fieldName, con
 
 Unit FunctionBuilder::getStructField(const Token& fieldNameToken, const Unit& unit)
 {
-    StructDescription structDescription = modulesMap.at(unit.moduleName()).structures.at(unit.dtypeName());
+    StructDescription structDescription = finder.getStructDescFromUnit(unit);
 
     const std::string fieldName = fieldNameToken.toString();
 
@@ -459,8 +458,7 @@ std::vector<Unit> FunctionBuilder::destructureStruct(const Unit& unit)
 {
     std::vector<Unit> destructuredUnits;
 
-    const ModuleDescription structModule = modulesMap.at(unit.moduleName());
-    const StructDescription structDescription = structModule.structures.at(unit.dtypeName());
+    const StructDescription structDescription = finder.getStructDescFromUnit(unit);
 
     for (const std::string& fieldName : structDescription.fieldNames)
         destructuredUnits.push_back(getStructFieldFromString(fieldName, unit));
@@ -486,8 +484,7 @@ std::map<std::string, Unit> FunctionBuilder::destructureStructMapped(const Unit&
 {
     std::map<std::string, Unit> mappedDestructuredUnits;
 
-    const ModuleDescription structModule = modulesMap.at(unit.moduleName());
-    const StructDescription structDescription = structModule.structures.at(unit.dtypeName());
+    const StructDescription structDescription = finder.getStructDescFromUnit(unit);
 
     for (auto field : structDescription.structFields)
         mappedDestructuredUnits[field.first] = getStructFieldFromString(field.first, unit);
@@ -576,15 +573,9 @@ bool FunctionBuilder::containsPointer(const TypeDescription& type)
     if (!type.isStruct())
         return false;
 
-    const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
-    const StructDescription structDescription = typeModule.structures.at(type.dtypeName);
-
-    for (const std::string& fieldName : structDescription.fieldNames)
-    {
-        const TypeDescription fieldType = structDescription.structFields.at(fieldName);
+    for (const TypeDescription& fieldType : finder.getFieldTypes(type))
         if (containsPointer(fieldType))
             return true;
-    }
 
     return false;
 }
@@ -608,14 +599,8 @@ void FunctionBuilder::ensurePointersNullInitializer(const Unit& local)
     }
     else if (local.isStruct())
     {
-        const icode::ModuleDescription typeModule = modulesMap.at(local.moduleName());
-        const StructDescription structDescription = typeModule.structures.at(local.dtypeName());
-
-        for (const std::string& fieldName : structDescription.fieldNames)
-        {
-            const TypeDescription fieldType = structDescription.structFields.at(fieldName);
+        for (const std::string& fieldName : finder.getFieldNames(local))
             ensurePointersNullInitializer(getStructFieldFromString(fieldName, local));
-        }
     }
 }
 
@@ -794,22 +779,18 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
 
 std::string FunctionBuilder::getDeconstructorName(const TypeDescription& type)
 {
-    const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
-    const icode::StructDescription typeStructDesc = typeModule.structures.at(type.dtypeName);
-
-    return typeStructDesc.deconstructor;
+    return finder.getStructDescFromType(type).deconstructor;
 }
 
-void FunctionBuilder::callDeconstructor(const std::string mangledFunctionName, const Unit& symbol)
+void FunctionBuilder::callDeconstructor(const Unit& symbol)
 {
-    if (mangledFunctionName == "")
-        return;
+    const std::string mangledFunctionName = getDeconstructorName(symbol.type());
 
     const icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
     const icode::FunctionDescription deconstructorFunction = typeModule.functions.at(mangledFunctionName);
 
     const std::string formalName = deconstructorFunction.parameters[0];
-    const TypeDescription formalType = deconstructorFunction.symbols.at(formalName);
+    const TypeDescription formalType = deconstructorFunction.getParamTypePos(0);
     const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
 
     passParameterPreMangled(mangledFunctionName, deconstructorFunction, formalParam, symbol);
@@ -830,27 +811,6 @@ bool FunctionBuilder::shouldCallDeconstructor(const icode::TypeDescription& type
     return true;
 }
 
-void FunctionBuilder::deconstructArrayUnit(const Unit& symbol)
-{
-    std::vector<Unit> arrayElements = destructureArray(symbol);
-
-    for (const Unit& element : arrayElements)
-        deconstructUnit(element);
-}
-
-void FunctionBuilder::deconstructStructFields(const Unit& symbol)
-{
-    const icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
-    const StructDescription structDescription = typeModule.structures.at(symbol.dtypeName());
-
-    for (const std::string& fieldName : structDescription.fieldNames)
-    {
-        const TypeDescription fieldType = structDescription.structFields.at(fieldName);
-
-        deconstructUnit(getStructFieldFromString(fieldName, symbol));
-    }
-}
-
 void FunctionBuilder::deconstructUnit(const Unit& symbol)
 {
     if (!shouldCallDeconstructor(symbol.type()))
@@ -858,14 +818,19 @@ void FunctionBuilder::deconstructUnit(const Unit& symbol)
 
     if (symbol.isArray())
     {
-        deconstructArrayUnit(symbol);
+        for (const Unit& element : destructureArray(symbol))
+            deconstructUnit(element);
+
         return;
     }
 
     if (symbol.isStruct())
-        deconstructStructFields(symbol);
+    {
+        for (const std::string& fieldName : finder.getFieldNames(symbol))
+            deconstructUnit(getStructFieldFromString(fieldName, symbol));
+    }
 
-    callDeconstructor(getDeconstructorName(symbol.type()), symbol);
+    callDeconstructor(symbol);
 }
 
 void FunctionBuilder::callDeconstructorOnDeclaredSymbols()

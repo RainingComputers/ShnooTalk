@@ -102,7 +102,7 @@ FunctionDescription instantiateGenericAndGetFunction(generator::GeneratorContext
 
     ctx.ir.setWorkingModule(&ctx.modulesMap.at(moduleName));
 
-    FunctionDescription monomorphizedFunction = ctx.ir.descriptionFinder.getFunction(genericFunctionNameToken);
+    FunctionDescription monomorphizedFunction = ctx.ir.finder.getFunction(genericFunctionNameToken);
 
     ctx.ir.popWorkingModule();
 

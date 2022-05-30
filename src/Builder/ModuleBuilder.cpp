@@ -226,7 +226,7 @@ bool ModuleBuilder::isValidDeconstructor(const icode::FunctionDescription& funct
     if (function.numParameters() != 1)
         return false;
 
-    const TypeDescription symbolType = function.symbols.at(function.parameters[0]);
+    const TypeDescription symbolType = function.getParamTypePos(0);
 
     if (rootModule.name != symbolType.moduleName)
         return false;
@@ -252,7 +252,7 @@ void ModuleBuilder::createFunction(const Token& nameToken,
         if (!isValidDeconstructor(function))
             console.compileErrorOnToken("Invalid deconstructor function", nameToken);
 
-        const TypeDescription symbolType = function.symbols.at(function.parameters[0]);
+        const TypeDescription symbolType = function.getParamTypePos(0);
         rootModule.structures.at(symbolType.dtypeName).deconstructor = mangledFunctionName;
     }
 
