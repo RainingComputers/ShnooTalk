@@ -179,6 +179,10 @@ make test
 - [ ] Unit tests for pretty printer
 - [ ] Use multiprocessing for tests runner
 
+### Refactoring
+- [ ] Use optional
+- [ ] Some duplication of code before calling `premangledFunctionCall`
+
 ### Language tools
 
 - [ ] STPM package manager
