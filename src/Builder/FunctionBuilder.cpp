@@ -777,17 +777,10 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
     return true;
 }
 
-std::string FunctionBuilder::getDeconstructorName(const TypeDescription& type)
-{
-    return finder.getStructDescFromType(type).deconstructor;
-}
-
 void FunctionBuilder::callDeconstructor(const Unit& symbol)
 {
-    const std::string mangledFunctionName = getDeconstructorName(symbol.type());
-
-    const icode::ModuleDescription typeModule = modulesMap.at(symbol.moduleName());
-    const icode::FunctionDescription deconstructorFunction = typeModule.functions.at(mangledFunctionName);
+    const std::string mangledFunctionName = finder.getDeconstructorName(symbol.type());
+    const icode::FunctionDescription deconstructorFunction = finder.getDeconstructorFunction(symbol.type());
 
     const std::string formalName = deconstructorFunction.parameters[0];
     const TypeDescription formalType = deconstructorFunction.getParamTypePos(0);
@@ -805,7 +798,7 @@ bool FunctionBuilder::shouldCallDeconstructor(const icode::TypeDescription& type
     if (type.isPointer())
         return false;
 
-    if (getDeconstructorName(type) == "")
+    if (finder.getDeconstructorName(type) == "")
         return false;
 
     return true;

@@ -252,8 +252,7 @@ void ModuleBuilder::createFunction(const Token& nameToken,
         if (!isValidDeconstructor(function))
             console.compileErrorOnToken("Invalid deconstructor function", nameToken);
 
-        const TypeDescription symbolType = function.getParamTypePos(0);
-        rootModule.structures.at(symbolType.dtypeName).deconstructor = mangledFunctionName;
+        rootModule.setDeconstructor(function.getParamTypePos(0), mangledFunctionName);
     }
 
     rootModule.functions[mangledFunctionName] = function;

@@ -1,0 +1,17 @@
+struct Foobar
+{
+    var x: int
+}
+
+fn foo() -> Foobar
+{
+    var f: Foobar
+    return f
+}
+
+fn main() -> int
+{
+    foo().x = 1
+
+    return 0
+}

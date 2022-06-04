@@ -36,12 +36,12 @@ void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& f
     formatStringsContext.spaceString = ctx.builder->CreateGlobalString(" ", "spacefmt", 0U, ctx.LLVMModule.get());
 }
 
-Value* getFromatStringFromDataTypePrintf(const FormatStringsContext& formatStringsContext, icode::DataType dtype)
+Value* getFormatStringFromDataTypePrintf(const FormatStringsContext& formatStringsContext, icode::DataType dtype)
 {
     return formatStringsContext.dataTypeFormatStringsMap.at(dtype);
 }
 
-Value* getFromatStringFromDataTypeScanf(const FormatStringsContext& formatStringsContext, icode::DataType dtype)
+Value* getFormatStringFromDataTypeScanf(const FormatStringsContext& formatStringsContext, icode::DataType dtype)
 {
     if (dtype == icode::UI8)
         return formatStringsContext.charInputFormatString;

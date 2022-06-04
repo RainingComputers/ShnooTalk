@@ -71,6 +71,10 @@ public:
                                                                                     const std::vector<Unit>& params);
 
     bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit);
+
+    std::string getDeconstructorName(const icode::TypeDescription& type);
+
+    icode::FunctionDescription getDeconstructorFunction(const icode::TypeDescription& type);
 };
 
 #endif

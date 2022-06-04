@@ -1,0 +1,9 @@
+MODULE AssignToImutableCalleeReturnValue.shtk
+ERROR in Line 14 Col 11
+
+    foo().x = 1
+          ^
+Did not expect IDENTIFIER,
+expected OPEN_SQUARE
+
+AssignToImutableCalleeReturnValue.shtk:14:10

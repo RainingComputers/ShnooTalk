@@ -97,7 +97,7 @@ void addressBinaryOperator(ModuleContext& ctx, const icode::Entry& e)
             ctx.console.internalBugError();
     }
 
-    /* Store result llvm in map so it can be used by other llvm tranlations */
+    /* Store result llvm in map so it can be used by other llvm translations */
     setLLVMValue(ctx, e.op1, result);
 }
 

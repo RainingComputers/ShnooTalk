@@ -17,9 +17,9 @@ struct FormatStringsContext
 };
 
 void setupFormatStringsContext(const ModuleContext& ctx, FormatStringsContext& formatStringsContext);
-llvm::Value* getFromatStringFromDataTypePrintf(const FormatStringsContext& formatStringsContext,
+llvm::Value* getFormatStringFromDataTypePrintf(const FormatStringsContext& formatStringsContext,
                                                icode::DataType dtype);
-llvm::Value* getFromatStringFromDataTypeScanf(const FormatStringsContext& formatStringsContext, icode::DataType dtype);
+llvm::Value* getFormatStringFromDataTypeScanf(const FormatStringsContext& formatStringsContext, icode::DataType dtype);
 llvm::Value* getFormatStringForStringInput(const ModuleContext& ctx, int charCount);
 
 #endif

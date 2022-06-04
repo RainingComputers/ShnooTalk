@@ -58,8 +58,6 @@ class FunctionBuilder
 
     icode::Operand createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam);
 
-    std::string getDeconstructorName(const icode::TypeDescription& type);
-
     void callDeconstructor(const Unit& symbol);
 
     bool shouldCallDeconstructor(const icode::TypeDescription& type);

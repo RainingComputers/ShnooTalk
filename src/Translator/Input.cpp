@@ -28,7 +28,7 @@ void callScanf(const ModuleContext& ctx, Value* formatString, Value* value)
 
 void input(ModuleContext& ctx, const FormatStringsContext& formatStringsContext, const icode::Entry& e)
 {
-    callScanf(ctx, getFromatStringFromDataTypeScanf(formatStringsContext, e.op1.dtype), getLLVMPointer(ctx, e.op1));
+    callScanf(ctx, getFormatStringFromDataTypeScanf(formatStringsContext, e.op1.dtype), getLLVMPointer(ctx, e.op1));
 }
 
 void inputString(ModuleContext& ctx, const icode::Entry& e)
