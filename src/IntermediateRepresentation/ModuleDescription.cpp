@@ -93,9 +93,4 @@ namespace icode
                keyExistsInMap(intDefines, name) || keyExistsInMap(floatDefines, name) ||
                keyExistsInMap(stringDefines, name) || keyExistsInMap(externFunctions, name);
     }
-
-    void ModuleDescription::setDeconstructor(const TypeDescription& type, const std::string& mangledFunctionName)
-    {
-        structures.at(type.dtypeName).deconstructor = mangledFunctionName;
-    }
 }

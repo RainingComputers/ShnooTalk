@@ -52,7 +52,6 @@ namespace icode
         bool useExists(const std::string&);
         bool aliasExists(const std::string&);
         bool symbolExists(const std::string&);
-        void setDeconstructor(const TypeDescription& type, const std::string& mangledFunctionName);
     };
 
     typedef std::map<std::string, ModuleDescription> StringModulesMap;

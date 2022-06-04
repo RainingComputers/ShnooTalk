@@ -74,6 +74,8 @@ public:
 
     std::string getDeconstructorName(const icode::TypeDescription& type);
 
+    bool deconstructorExists(const icode::TypeDescription& type);
+
     icode::FunctionDescription getDeconstructorFunction(const icode::TypeDescription& type);
 };
 

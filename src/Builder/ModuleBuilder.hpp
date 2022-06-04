@@ -32,6 +32,8 @@ class ModuleBuilder
 
     bool isValidDeconstructor(const icode::FunctionDescription& function);
 
+    void setDeconstructor(const icode::TypeDescription& type, const std::string& mangledFunctionName);
+
     void createUseNoAlias(const Token& pathToken);
 
     void createEnumType(const Token& nameToken);

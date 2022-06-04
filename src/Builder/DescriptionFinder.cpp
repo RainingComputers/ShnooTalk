@@ -313,6 +313,11 @@ std::string Finder::getDeconstructorName(const TypeDescription& type)
     return getStructDescFromType(type).deconstructor;
 }
 
+bool Finder::deconstructorExists(const icode::TypeDescription& type)
+{
+    return getDeconstructorName(type) != "";
+}
+
 FunctionDescription Finder::getDeconstructorFunction(const TypeDescription& type)
 {
     const std::string mangledFunctionName = getDeconstructorName(type);

@@ -798,10 +798,7 @@ bool FunctionBuilder::shouldCallDeconstructor(const icode::TypeDescription& type
     if (type.isPointer())
         return false;
 
-    if (finder.getDeconstructorName(type) == "")
-        return false;
-
-    return true;
+    return finder.deconstructorExists(type);
 }
 
 void FunctionBuilder::deconstructUnit(const Unit& symbol)

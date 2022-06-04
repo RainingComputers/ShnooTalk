@@ -234,6 +234,11 @@ bool ModuleBuilder::isValidDeconstructor(const icode::FunctionDescription& funct
     return true;
 }
 
+void ModuleBuilder::setDeconstructor(const TypeDescription& type, const std::string& mangledFunctionName)
+{
+    rootModule.structures.at(type.dtypeName).deconstructor = mangledFunctionName;
+}
+
 void ModuleBuilder::createFunction(const Token& nameToken,
                                    const icode::TypeDescription& returnType,
                                    const std::vector<Token>& paramNames,
@@ -252,7 +257,7 @@ void ModuleBuilder::createFunction(const Token& nameToken,
         if (!isValidDeconstructor(function))
             console.compileErrorOnToken("Invalid deconstructor function", nameToken);
 
-        rootModule.setDeconstructor(function.getParamTypePos(0), mangledFunctionName);
+        setDeconstructor(function.getParamTypePos(0), mangledFunctionName);
     }
 
     rootModule.functions[mangledFunctionName] = function;
