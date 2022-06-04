@@ -1,0 +1,8 @@
+from "TestModules/Deconstrutable.shtk" use Deconstructable
+
+fn main() -> int
+{
+    var d: Deconstructable
+
+    return 0
+}

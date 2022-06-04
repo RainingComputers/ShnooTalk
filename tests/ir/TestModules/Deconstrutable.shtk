@@ -1,0 +1,9 @@
+struct Deconstructable
+{
+
+}
+
+fn deconstructor(self: Deconstructable) 
+{
+
+}

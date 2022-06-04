@@ -35,7 +35,8 @@
                     "c": {"dtype": "float", "dtypeName": "float", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 12, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 16,
-                "moduleName": "Struct.shtk"
+                "moduleName": "Struct.shtk",
+                "deconstructor": ""
             },
             "point": {
                 "fieldNames": ["x", "y"],
@@ -44,7 +45,8 @@
                     "y": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Struct.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 8,
-                "moduleName": "Struct.shtk"
+                "moduleName": "Struct.shtk",
+                "deconstructor": ""
             }
         },
         "externFunctions": {

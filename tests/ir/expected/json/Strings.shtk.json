@@ -114,7 +114,8 @@
                     "y": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 8,
-                "moduleName": "TestModules/Random.shtk"
+                "moduleName": "TestModules/Random.shtk",
+                "deconstructor": ""
             }
         },
         "externFunctions": {

@@ -166,6 +166,7 @@ namespace pp
 
         jsonp.printNumber("size", structDesc.size);
         jsonp.printString("moduleName", structDesc.moduleName);
+        jsonp.printString("deconstructor", structDesc.deconstructor);
 
         jsonp.end();
     }

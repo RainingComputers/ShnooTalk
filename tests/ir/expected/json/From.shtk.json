@@ -44,7 +44,8 @@
                     "y": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 8,
-                "moduleName": "TestModules/Random.shtk"
+                "moduleName": "TestModules/Random.shtk",
+                "deconstructor": ""
             }
         },
         "externFunctions": {
@@ -127,7 +128,8 @@
                     "a": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "From.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 4,
-                "moduleName": "TestModules/Generic.shtk[int][int]"
+                "moduleName": "TestModules/Generic.shtk[int][int]",
+                "deconstructor": ""
             },
             "Foo": {
                 "fieldNames": ["a", "b"],
@@ -136,7 +138,8 @@
                     "b": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "From.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 8,
-                "moduleName": "TestModules/Generic.shtk[int][int]"
+                "moduleName": "TestModules/Generic.shtk[int][int]",
+                "deconstructor": ""
             }
         },
         "externFunctions": {
@@ -201,7 +204,8 @@
                     "y": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 4, "dimensions": [], "dimTypes": [], "properties": []}
                 },
                 "size": 8,
-                "moduleName": "TestModules/Random.shtk"
+                "moduleName": "TestModules/Random.shtk",
+                "deconstructor": ""
             }
         },
         "externFunctions": {
