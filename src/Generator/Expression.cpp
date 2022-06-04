@@ -170,17 +170,21 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
 
-    Unit firstActualParam;
+    const Token calleeNameToken = root.tok;
 
+    Unit firstActualParam;
     if (root.children.size() != 0)
     {
         firstActualParam = expression(ctx, root.children[0]);
 
         if (root.type == node::METHODCALL)
             ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(firstActualParam));
+
+        if (calleeNameToken.toString() == "deconstructor")
+            if (!ctx.ir.finder.deconstructorExists(firstActualParam.type()))
+                return firstActualParam;
     }
 
-    const Token calleeNameToken = root.tok;
     FunctionDescription callee = ctx.ir.finder.getFunction(calleeNameToken);
     std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
 

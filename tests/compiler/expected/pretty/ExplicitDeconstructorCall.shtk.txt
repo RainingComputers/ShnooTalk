@@ -1,0 +1,25 @@
+{
+    "ExplicitDeconstructorCall.shtk": {
+        "moduleName": "ExplicitDeconstructorCall.shtk",
+        "functions": {
+            "_fn_ExplicitDeconstructorCall_shtk_funcToTestType": {
+                "icode": [
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int* tempPtr9 = createPointer struct b
+                        int* tempPtr10 = createPointer struct a
+                        int* tempPtr9 = memoryCopy int* tempPtr10, autoInt 8
+                        int* tempPtr15 = createPointer struct b
+                        passPointer int* tempPtr15, void _fn_ExplicitDeconstructorCall_shtk_funcToTestType, module ExplicitDeconstructorCall.shtk
+                        void calleeReturnValue18 = call void _fn_ExplicitDeconstructorCall_shtk_funcToTestType, module ExplicitDeconstructorCall.shtk
+                        int temp23 = cast autoInt 0
+                        int returnValue21 = equal int temp23
+                        return
+                ]
+            }
+        }
+    }
+}

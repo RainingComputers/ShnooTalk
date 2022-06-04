@@ -1,0 +1,17 @@
+struct Foobar
+{
+    var a: int
+    var b: int
+}
+
+fn funcToTestType(f: Foobar) {}
+
+fn main() -> int
+{
+    var a: Foobar
+    var b := a.deconstructor()
+
+    funcToTestType(b)
+
+    return 0
+}
