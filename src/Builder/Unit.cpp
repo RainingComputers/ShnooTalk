@@ -164,6 +164,11 @@ bool Unit::isValue() const
     return !isUserPointer() && isLocalOrGlobal();
 }
 
+bool Unit::isReturnValue() const
+{
+    return operand.operandType == RET_VALUE;
+}
+
 bool Unit::isPointer() const
 {
     return operand.isPointer();

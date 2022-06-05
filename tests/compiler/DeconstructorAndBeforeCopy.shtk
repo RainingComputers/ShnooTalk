@@ -1,0 +1,47 @@
+from "TestModules/Foobar.shtk" use Foobar
+
+var foobarGlobal: Foobar
+
+fn testing() -> Foobar
+{
+    # call beforeCopy on copy to return value
+    # 300
+    # beforeCopy
+
+    return foobarGlobal
+}
+
+fn main() -> int
+{
+    foobarGlobal.a = 300
+
+    var foobar1: Foobar
+    foobar1.a = 100
+
+    var foobar2: Foobar 
+    foobar2.a = 1
+    # 1
+    # deconstruct
+    foobar2 = testing()
+
+    # 300
+    # beforeCopy
+    # 100
+    # deconstruct
+    foobar1 = foobar2
+
+    foobarGlobal.a = 1000
+
+    # 300
+    # beforeCopy
+    # 1000
+    # deconstruct
+    foobarGlobal = foobar2
+
+    # deconstruct all locals
+    # 300
+    # deconstruct
+    # 300
+    # deconstruct
+    return 0
+}

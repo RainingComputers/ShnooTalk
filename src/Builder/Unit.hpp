@@ -51,6 +51,8 @@ public:
     bool isGlobal() const;
     bool isLocalOrGlobal() const;
     bool isValue() const;
+    bool isReturnValue() const;
+    
 
     bool isPointer() const;
 

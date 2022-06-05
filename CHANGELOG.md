@@ -13,7 +13,7 @@
 - Fixed sizeof to accept proper types
 - Added `-llvm-release` flag
 - Changed `sizeof` builtin
-- Added deconstructors
+- Added resource management hooks
 - Added `externC` functions
 - Fixed bugs related to mutability and pointers
 - Added `in` operator

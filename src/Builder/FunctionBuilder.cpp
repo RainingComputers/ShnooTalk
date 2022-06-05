@@ -206,6 +206,13 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
+    if (src.isLocalOrGlobal())
+        if (dest.isLocalOrGlobal() || dest.isReturnValue())
+            callResourceMgmtHook(src, "beforeCopy");
+
+    if (dest.isLocalOrGlobal())
+        callResourceMgmtHook(dest, "deconstructor");
+
     if (src.isList())
         unitListCopy(dest, src);
     else if (dest.isStructOrArray())

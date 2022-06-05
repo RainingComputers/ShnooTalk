@@ -1,0 +1,16 @@
+300
+beforeCopy
+1
+deconstruct
+300
+beforeCopy
+100
+deconstruct
+300
+beforeCopy
+1000
+deconstruct
+300
+deconstruct
+300
+deconstruct
