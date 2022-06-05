@@ -185,7 +185,7 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
     {
         const Unit unit = unitsToCopy[i];
 
-        if (unit.isArray() || unit.isStruct())
+        if (unit.isStructOrArray())
             memCopy(destPointer, createPointer(unit), unit.size());
         else
             operandCopy(destPointer, unit.op());
@@ -777,10 +777,21 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
     return true;
 }
 
-void FunctionBuilder::callDeconstructor(const Unit& symbol)
+bool FunctionBuilder::shouldCallResourceMgmtHook(const icode::TypeDescription& type, const std::string& hook)
 {
-    const std::string mangledFunctionName = finder.getDeconstructorName(symbol.type());
-    const icode::FunctionDescription deconstructorFunction = finder.getDeconstructorFunction(symbol.type());
+    if (!type.isStruct())
+        return false;
+
+    if (type.isPointer())
+        return false;
+
+    return finder.resourseMgmtHookExists(type, hook);
+}
+
+void FunctionBuilder::callResourceMgmtHookSingle(const Unit& symbol, const std::string& hook)
+{
+    const std::string mangledFunctionName = finder.getMangledHookName(symbol.type(), hook);
+    const icode::FunctionDescription deconstructorFunction = finder.getResourceMgmtHookFunction(symbol.type(), hook);
 
     const std::string formalName = deconstructorFunction.parameters[0];
     const TypeDescription formalType = deconstructorFunction.getParamTypePos(0);
@@ -790,26 +801,15 @@ void FunctionBuilder::callDeconstructor(const Unit& symbol)
     callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
 }
 
-bool FunctionBuilder::shouldCallDeconstructor(const icode::TypeDescription& type)
+void FunctionBuilder::callResourceMgmtHook(const Unit& symbol, const std::string& hook)
 {
-    if (!type.isStruct())
-        return false;
-
-    if (type.isPointer())
-        return false;
-
-    return finder.deconstructorExists(type);
-}
-
-void FunctionBuilder::deconstructUnit(const Unit& symbol)
-{
-    if (!shouldCallDeconstructor(symbol.type()))
+    if (!shouldCallResourceMgmtHook(symbol.type(), hook))
         return;
 
     if (symbol.isArray())
     {
         for (const Unit& element : destructureArray(symbol))
-            deconstructUnit(element);
+            callResourceMgmtHook(element, hook);
 
         return;
     }
@@ -817,10 +817,10 @@ void FunctionBuilder::deconstructUnit(const Unit& symbol)
     if (symbol.isStruct())
     {
         for (const std::string& fieldName : finder.getFieldNames(symbol))
-            deconstructUnit(getStructFieldFromString(fieldName, symbol));
+            callResourceMgmtHook(getStructFieldFromString(fieldName, symbol), hook);
     }
 
-    callDeconstructor(symbol);
+    callResourceMgmtHookSingle(symbol, hook);
 }
 
 void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
@@ -835,7 +835,7 @@ void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
 
         const Unit symbol = unitBuilder.unitFromTypeDescription(symbolType, symbolName);
 
-        deconstructUnit(symbol);
+        callResourceMgmtHook(symbol, "deconstructor");
     }
 }
 

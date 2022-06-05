@@ -58,11 +58,11 @@ class FunctionBuilder
 
     icode::Operand createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam);
 
-    void callDeconstructor(const Unit& symbol);
+    bool shouldCallResourceMgmtHook(const icode::TypeDescription& type, const std::string& hook);
 
-    bool shouldCallDeconstructor(const icode::TypeDescription& type);
+    void callResourceMgmtHookSingle(const Unit& symbol, const std::string& hook);
 
-    void deconstructUnit(const Unit& symbol);
+    void callResourceMgmtHook(const Unit& symbol, const std::string& hook);
 
     void callDeconstructorOnDeclaredSymbols();
 

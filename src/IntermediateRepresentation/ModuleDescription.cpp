@@ -71,22 +71,27 @@ namespace icode
         return getMapElement<std::string, std::string>(incompleteFunctions, typeName, returnValue);
     }
 
-    bool ModuleDescription::enumTypeExists(const std::string& name)
+    bool ModuleDescription::enumTypeExists(const std::string& name) const
     {
         return itemInList(name, definedEnumsTypes);
     }
 
-    bool ModuleDescription::useExists(const std::string& name)
+    bool ModuleDescription::useExists(const std::string& name) const
     {
         return itemInList(name, uses);
     }
 
-    bool ModuleDescription::aliasExists(const std::string& name)
+    bool ModuleDescription::aliasExists(const std::string& name) const
     {
         return keyExistsInMap(aliases, name);
     }
 
-    bool ModuleDescription::symbolExists(const std::string& name)
+    bool ModuleDescription::functionExists(const std::string& name) const
+    {
+        return keyExistsInMap(functions, name);
+    }
+
+    bool ModuleDescription::symbolExists(const std::string& name) const
     {
         return keyExistsInMap(structures, name) || keyExistsInMap(functions, name) || enumTypeExists(name) ||
                stringToDataType(name) != STRUCT || keyExistsInMap(enums, name) || keyExistsInMap(globals, name) ||

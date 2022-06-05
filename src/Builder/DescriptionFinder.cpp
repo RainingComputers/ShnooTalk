@@ -308,19 +308,25 @@ bool Finder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const 
     return true;
 }
 
-std::string Finder::getDeconstructorName(const TypeDescription& type)
-{
-    return getStructDescFromType(type).deconstructor;
-}
-
 bool Finder::deconstructorExists(const icode::TypeDescription& type)
 {
-    return getDeconstructorName(type) != "";
+    return getStructDescFromType(type).deconstructor != "";
 }
 
-FunctionDescription Finder::getDeconstructorFunction(const TypeDescription& type)
+std::string Finder::getMangledHookName(const TypeDescription& type, const std::string& hook)
 {
-    const std::string mangledFunctionName = getDeconstructorName(type);
+    return nameMangleString(hook, type.moduleName);
+}
+
+bool Finder::resourseMgmtHookExists(const icode::TypeDescription& type, const std::string& hook)
+{
+    const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
+    return typeModule.functionExists(getMangledHookName(type, hook));
+}
+
+FunctionDescription Finder::getResourceMgmtHookFunction(const TypeDescription& type, const std::string& hook)
+{
+    const std::string mangledFunctionName = getMangledHookName(type, hook);
 
     const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
     return typeModule.functions.at(mangledFunctionName);

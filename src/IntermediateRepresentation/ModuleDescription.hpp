@@ -48,10 +48,11 @@ namespace icode
         bool getGlobal(const std::string& name, TypeDescription& returnValue);
         bool getIncompleteTypeModule(const std::string& typeName, std::string& returnValue);
         bool getIncompleteFunctionModule(const std::string& functionName, std::string& returnValue);
-        bool enumTypeExists(const std::string&);
-        bool useExists(const std::string&);
-        bool aliasExists(const std::string&);
-        bool symbolExists(const std::string&);
+        bool enumTypeExists(const std::string&) const;
+        bool useExists(const std::string&) const;
+        bool aliasExists(const std::string&) const;
+        bool functionExists(const std::string&) const;
+        bool symbolExists(const std::string&) const;
     };
 
     typedef std::map<std::string, ModuleDescription> StringModulesMap;

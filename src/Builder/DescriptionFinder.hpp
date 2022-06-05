@@ -72,11 +72,14 @@ public:
 
     bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit);
 
-    std::string getDeconstructorName(const icode::TypeDescription& type);
-
     bool deconstructorExists(const icode::TypeDescription& type);
 
-    icode::FunctionDescription getDeconstructorFunction(const icode::TypeDescription& type);
+    std::string getMangledHookName(const icode::TypeDescription& type, const std::string& hook);
+
+    bool resourseMgmtHookExists(const icode::TypeDescription& type, const std::string& hook);
+
+    icode::FunctionDescription getResourceMgmtHookFunction(const icode::TypeDescription& type,
+                                                           const std::string& hook);
 };
 
 #endif
