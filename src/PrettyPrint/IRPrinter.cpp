@@ -193,6 +193,8 @@ namespace pp
 
         jsonp.printStringArray("parameters", functionDesc.parameters);
 
+        jsonp.printString("absoluteName", functionDesc.absoluteName);
+
         FlatJSONPrinter typePrinter = jsonp.beginNested("functionReturnType", true);
         printTypeDescription(functionDesc.functionReturnType, typePrinter);
 

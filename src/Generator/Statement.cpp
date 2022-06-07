@@ -115,7 +115,7 @@ void forLoop(generator::GeneratorContext& ctx, const Node& root)
     ctx.ir.functionBuilder.insertLabel(breakLabel);
 }
 
-void infniteLoop(generator::GeneratorContext& ctx, const Node& root)
+void infiniteLoop(generator::GeneratorContext& ctx, const Node& root)
 {
     Operand loopLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "loop");
     Operand breakLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "loop");
@@ -191,7 +191,7 @@ void statement(generator::GeneratorContext& ctx,
             forLoop(ctx, root);
             break;
         case node::LOOP:
-            infniteLoop(ctx, root);
+            infiniteLoop(ctx, root);
             break;
         case node::BREAK:
             breakStatement(ctx, isLoopBlock, breakLabel, root.tok);

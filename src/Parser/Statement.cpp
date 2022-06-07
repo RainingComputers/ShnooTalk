@@ -158,7 +158,7 @@ void forLoop(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
-void infniteLoop(parser::ParserContext& ctx)
+void infiniteLoop(parser::ParserContext& ctx)
 {
     ctx.pushNode();
 
@@ -225,7 +225,7 @@ void statement(parser::ParserContext& ctx)
     else if (ctx.accept(token::FOR))
         forLoop(ctx);
     else if (ctx.accept(token::LOOP))
-        infniteLoop(ctx);
+        infiniteLoop(ctx);
     else if (ctx.accept(token::BREAK))
         ctx.addNode(node::BREAK);
     else if (ctx.accept(token::CONTINUE))

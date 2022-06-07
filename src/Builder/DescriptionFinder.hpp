@@ -25,10 +25,9 @@ class Finder
     bool getStringDefine(const Token& nameToken, Unit& returnValue);
     bool getEnum(const Token& nameToken, Unit& returnValue);
 
-    std::pair<std::string, icode::FunctionDescription> getCustomOperatorFunctionString(
-        const Token& token,
-        const std::string& binaryOperatorName,
-        const std::vector<Unit>& params);
+    icode::FunctionDescription getCustomOperatorFunctionString(const std::string& binaryOperatorName,
+                                                               const std::vector<Unit>& params,
+                                                               const Token& errorToken);
 
 public:
     Finder(icode::ModuleDescription& rootModule,
@@ -59,27 +58,27 @@ public:
 
     std::vector<Unit> getFormalParameters(const icode::FunctionDescription& function);
 
-    std::pair<std::string, icode::FunctionDescription> getFunctionByParamTypes(const Token& token,
-                                                                               const icode::TypeDescription& type,
-                                                                               const std::vector<Unit>& params);
+    icode::FunctionDescription getFunctionByParamTypes(const Token& token,
+                                                       const icode::TypeDescription& type,
+                                                       const std::vector<Unit>& params);
 
-    std::pair<std::string, icode::FunctionDescription> getCustomOperatorFunction(const Token& binaryOperator,
-                                                                                 const std::vector<Unit>& params);
+    icode::FunctionDescription getCustomOperatorFunction(const Token& binaryOperator, const std::vector<Unit>& params);
 
-    std::pair<std::string, icode::FunctionDescription> getSubscriptOperatorFunction(const Token& token,
-                                                                                    const Unit& unit,
-                                                                                    const std::vector<Unit>& params);
+    icode::FunctionDescription getSubscriptOperatorFunction(const Unit& unit,
+                                                            const std::vector<Unit>& params,
+                                                            const Token& errorToken);
 
     bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit);
 
     bool deconstructorExists(const icode::TypeDescription& type);
 
-    std::string getMangledHookName(const icode::TypeDescription& type, const std::string& hook);
+    std::string getMangledMethodName(const icode::TypeDescription& type, const std::string& method);
 
-    bool resourseMgmtHookExists(const icode::TypeDescription& type, const std::string& hook);
+    bool methodExists(const icode::TypeDescription& type, const std::string& method);
 
-    icode::FunctionDescription getResourceMgmtHookFunction(const icode::TypeDescription& type,
-                                                           const std::string& hook);
+    icode::FunctionDescription getMethod(const icode::TypeDescription& type, const std::string& method);
+
+    icode::FunctionDescription getMethodFromUnit(const Unit& unit, const std::string& method, const Token& errorToken);
 };
 
 #endif

@@ -43,6 +43,7 @@
             "main": {
                 "moduleName": "Deconstructor.shtk",
                 "parameters": [],
+                "absoluteName": "main",
                 "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Deconstructor.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "d": {"dtype": "struct", "dtypeName": "Deconstructable", "dtypeSize": 0, "size": 0, "moduleName": "TestModules/Deconstrutable.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
@@ -103,6 +104,7 @@
             "_fn_TestModules_Deconstrutable_shtk_deconstructor": {
                 "moduleName": "TestModules/Deconstrutable.shtk",
                 "parameters": ["self"],
+                "absoluteName": "_fn_TestModules_Deconstrutable_shtk_deconstructor",
                 "functionReturnType": {"dtype": "void", "dtypeName": "void", "dtypeSize": 0, "size": 0, "moduleName": "TestModules/Deconstrutable.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "self": {"dtype": "struct", "dtypeName": "Deconstructable", "dtypeSize": 0, "size": 0, "moduleName": "TestModules/Deconstrutable.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}

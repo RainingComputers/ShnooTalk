@@ -35,6 +35,7 @@
             "_fn_Function_shtk_another": {
                 "moduleName": "Function.shtk",
                 "parameters": ["b"],
+                "absoluteName": "_fn_Function_shtk_another",
                 "functionReturnType": {"dtype": "void", "dtypeName": "void", "dtypeSize": 0, "size": 0, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "b": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [1], "dimTypes": ["allocatedFlexibleDim"], "properties": ["isPointer", "isParameter", "isLocal"]}
@@ -46,6 +47,7 @@
             "_fn_Function_shtk_bar": {
                 "moduleName": "Function.shtk",
                 "parameters": ["a"],
+                "absoluteName": "_fn_Function_shtk_bar",
                 "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isPointer"]},
                 "symbols": {
                     "a": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isParameter", "isLocal"]}
@@ -58,6 +60,7 @@
             "_fn_Function_shtk_foo": {
                 "moduleName": "Function.shtk",
                 "parameters": ["a", "b", "c", "d"],
+                "absoluteName": "_fn_Function_shtk_foo",
                 "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "a": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "Function.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]},

@@ -225,9 +225,9 @@ bool isSameParamsType(const FunctionDescription& function, const std::vector<Uni
     return true;
 }
 
-std::pair<std::string, FunctionDescription> Finder::getFunctionByParamTypes(const Token& token,
-                                                                            const TypeDescription& type,
-                                                                            const std::vector<Unit>& params)
+FunctionDescription Finder::getFunctionByParamTypes(const Token& token,
+                                                    const TypeDescription& type,
+                                                    const std::vector<Unit>& params)
 {
     for (auto functionName : workingModule->definedFunctions)
     {
@@ -239,7 +239,7 @@ std::pair<std::string, FunctionDescription> Finder::getFunctionByParamTypes(cons
         if (!isSameParamsType(function, params))
             continue;
 
-        return std::pair<std::string, FunctionDescription>(functionName, function);
+        return function;
     }
 
     console.compileErrorOnToken("Cannot find function with matching params", token);
@@ -261,10 +261,9 @@ bool isSameParamsTypeFixedDim(const FunctionDescription& function, const std::ve
     return secondFormalParam.isArrayWithFixedDim();
 }
 
-std::pair<std::string, FunctionDescription> Finder::getCustomOperatorFunctionString(
-    const Token& token,
-    const std::string& binaryOperatorName,
-    const std::vector<Unit>& params)
+FunctionDescription Finder::getCustomOperatorFunctionString(const std::string& binaryOperatorName,
+                                                            const std::vector<Unit>& params,
+                                                            const Token& errorToken)
 {
     for (auto functionName : workingModule->definedFunctions)
     {
@@ -276,25 +275,24 @@ std::pair<std::string, FunctionDescription> Finder::getCustomOperatorFunctionStr
         const FunctionDescription function = workingModule->functions.at(functionName);
 
         if (isSameParamsType(function, params) || isSameParamsTypeFixedDim(function, params))
-            return std::pair<std::string, FunctionDescription>(functionName, function);
+            return function;
     }
 
-    console.operatorError(token, params[0], params[1]);
+    console.operatorError(errorToken, params[0], params[1]);
 }
 
-std::pair<std::string, FunctionDescription> Finder::getCustomOperatorFunction(const Token& binaryOperator,
-                                                                              const std::vector<Unit>& params)
+FunctionDescription Finder::getCustomOperatorFunction(const Token& binaryOperator, const std::vector<Unit>& params)
 {
     const std::string binaryOperatorName = binaryOperator.toFunctionNameString();
 
-    return getCustomOperatorFunctionString(binaryOperator, binaryOperatorName, params);
+    return getCustomOperatorFunctionString(binaryOperatorName, params, binaryOperator);
 }
 
-std::pair<std::string, FunctionDescription> Finder::getSubscriptOperatorFunction(const Token& token,
-                                                                                 const Unit& unit,
-                                                                                 const std::vector<Unit>& params)
+FunctionDescription Finder::getSubscriptOperatorFunction(const Unit& unit,
+                                                         const std::vector<Unit>& params,
+                                                         const Token& errorToken)
 {
-    return getCustomOperatorFunctionString(token, "subscript", params);
+    return getCustomOperatorFunctionString("subscript", params, errorToken);
 }
 
 bool Finder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
@@ -313,21 +311,34 @@ bool Finder::deconstructorExists(const icode::TypeDescription& type)
     return getStructDescFromType(type).deconstructor != "";
 }
 
-std::string Finder::getMangledHookName(const TypeDescription& type, const std::string& hook)
+std::string Finder::getMangledMethodName(const TypeDescription& type, const std::string& method)
 {
-    return nameMangleString(hook, type.moduleName);
+    return nameMangleString(method, type.moduleName);
 }
 
-bool Finder::resourseMgmtHookExists(const icode::TypeDescription& type, const std::string& hook)
+bool Finder::methodExists(const icode::TypeDescription& type, const std::string& method)
 {
     const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
-    return typeModule.functionExists(getMangledHookName(type, hook));
+    return typeModule.functionExists(getMangledMethodName(type, method));
 }
 
-FunctionDescription Finder::getResourceMgmtHookFunction(const TypeDescription& type, const std::string& hook)
+FunctionDescription Finder::getMethod(const TypeDescription& type, const std::string& method)
 {
-    const std::string mangledFunctionName = getMangledHookName(type, hook);
-
+    const std::string mangledFunctionName = getMangledMethodName(type, method);
     const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
+
     return typeModule.functions.at(mangledFunctionName);
+}
+
+FunctionDescription Finder::getMethodFromUnit(const Unit& unit, const std::string& method, const Token& errorToken)
+{
+    const TypeDescription type = unit.type();
+    const std::string mangledFunctionName = getMangledMethodName(type, method);
+    icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
+
+    icode::FunctionDescription function;
+    if (!typeModule.getFunction(method, function))
+        console.compileErrorOnToken("Method " + method + " does not exist", errorToken);
+
+    return function;
 }

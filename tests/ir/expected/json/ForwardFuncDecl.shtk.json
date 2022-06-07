@@ -30,6 +30,7 @@
             "_fn_Somewhere_shtk_hello": {
                 "moduleName": "Somewhere.shtk",
                 "parameters": ["a", "b"],
+                "absoluteName": "_fn_Somewhere_shtk_hello",
                 "functionReturnType": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "ForwardFuncDecl.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "a": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "ForwardFuncDecl.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]},

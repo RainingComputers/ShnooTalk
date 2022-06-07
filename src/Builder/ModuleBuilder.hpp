@@ -26,7 +26,8 @@ class ModuleBuilder
     icode::FunctionDescription createFunctionDescription(const icode::TypeDescription& returnType,
                                                          const std::vector<Token>& paramNames,
                                                          std::vector<icode::TypeDescription>& paramTypes,
-                                                         const std::string& moduleName);
+                                                         const std::string& moduleName,
+                                                         const std::string& absoluteName);
 
     void createFrom(const std::string& moduleName, const Token& aliasToken);
 
@@ -37,6 +38,7 @@ class ModuleBuilder
     void createUseNoAlias(const Token& pathToken);
 
     void createEnumType(const Token& nameToken);
+
 public:
     ModuleBuilder(icode::ModuleDescription& rootModule, icode::StringModulesMap& modulesMap, Console& console);
 

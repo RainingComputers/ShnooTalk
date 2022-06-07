@@ -146,24 +146,32 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
     return result;
 }
 
+Unit createCallFunctionMust(generator::GeneratorContext& ctx,
+                            const std::vector<Token>& actualParamTokens,
+                            const std::vector<Unit>& actualParams,
+                            const FunctionDescription& callee)
+{
+    std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
+
+    for (size_t i = 0; i < formalParameters.size(); i += 1)
+    {
+        passParamCheck(ctx, actualParams[i], formalParameters[i], actualParamTokens[i]);
+        ctx.ir.functionBuilder.passParameter(callee, formalParameters[i], actualParams[i]);
+    }
+
+    return ctx.ir.functionBuilder.callFunction(callee);
+}
+
 Unit createCallFunction(generator::GeneratorContext& ctx,
                         const std::vector<Token>& actualParamTokens,
                         const std::vector<Unit>& actualParams,
                         const Token& calleeNameToken,
                         const FunctionDescription& callee)
 {
-    std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
-
     if (actualParams.size() != callee.numParameters())
         ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
 
-    for (size_t i = 0; i < actualParams.size(); i += 1)
-    {
-        passParamCheck(ctx, actualParams[i], formalParameters[i], actualParamTokens[i]);
-        ctx.ir.functionBuilder.passParameter(calleeNameToken, callee, formalParameters[i], actualParams[i]);
-    }
-
-    return ctx.ir.functionBuilder.callFunction(calleeNameToken, callee);
+    return createCallFunctionMust(ctx, actualParamTokens, actualParams, callee);
 }
 
 Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
@@ -243,23 +251,6 @@ Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
     return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
 }
 
-Unit createCallFunctionPremangled(generator::GeneratorContext& ctx,
-                                  const std::vector<Token>& actualParamTokens,
-                                  const std::vector<Unit>& actualParams,
-                                  const std::string& functionName,
-                                  const FunctionDescription& callee)
-{
-    std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
-
-    for (size_t i = 0; i < formalParameters.size(); i += 1)
-    {
-        passParamCheck(ctx, actualParams[i], formalParameters[i], actualParamTokens[i]);
-        ctx.ir.functionBuilder.passParameterPreMangled(functionName, callee, formalParameters[i], actualParams[i]);
-    }
-
-    return ctx.ir.functionBuilder.callFunctionPreMangled(functionName, callee);
-}
-
 Unit make(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
@@ -286,15 +277,11 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
         }
     }
 
-    std::pair<std::string, FunctionDescription> constructorNameAndFunction =
-        ctx.ir.finder.getFunctionByParamTypes(root.tok, type, actualParams);
-
-    const std::string calleeName = constructorNameAndFunction.first;
-    const FunctionDescription callee = constructorNameAndFunction.second;
+    FunctionDescription constructor = ctx.ir.finder.getFunctionByParamTypes(root.tok, type, actualParams);
 
     ctx.ir.popWorkingModule();
 
-    return createCallFunctionPremangled(ctx, actualParamTokens, actualParams, calleeName, callee);
+    return createCallFunctionMust(ctx, actualParamTokens, actualParams, constructor);
 }
 
 Unit customOperator(generator::GeneratorContext& ctx,
@@ -317,15 +304,11 @@ Unit customOperator(generator::GeneratorContext& ctx,
         params.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(RHS.numElements()));
     }
 
-    std::pair<std::string, FunctionDescription> calleeNameAndFunction =
-        ctx.ir.finder.getCustomOperatorFunction(binaryOperator, params);
-
-    const std::string calleeName = calleeNameAndFunction.first;
-    const FunctionDescription callee = calleeNameAndFunction.second;
+    FunctionDescription callee = ctx.ir.finder.getCustomOperatorFunction(binaryOperator, params);
 
     ctx.ir.popWorkingModule();
 
-    return createCallFunctionPremangled(ctx, paramTokens, params, calleeName, callee);
+    return createCallFunctionMust(ctx, paramTokens, params, callee);
 }
 
 Unit binaryOperator(generator::GeneratorContext& ctx,

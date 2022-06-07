@@ -3,15 +3,21 @@
 
 #include "GeneratorContext.hpp"
 
-Unit createCallFunctionPremangled(generator::GeneratorContext& ctx,
-                                  const std::vector<Token>& actualParamTokens,
-                                  const std::vector<Unit>& actualParams,
-                                  const std::string& functionName,
-                                  const icode::FunctionDescription& callee);
+Unit createCallFunctionMust(generator::GeneratorContext& ctx,
+                            const std::vector<Token>& actualParamTokens,
+                            const std::vector<Unit>& actualParams,
+                            const icode::FunctionDescription& callee);
 
 Unit term(generator::GeneratorContext& ctx, const Node& root);
 
 Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root);
+
+void truthyOperator(generator::GeneratorContext& ctx,
+                    const Unit& LHS,
+                    const Token& expressionToken,
+                    const icode::Operand& trueLabel,
+                    const icode::Operand& falseLabel,
+                    bool trueFall);
 
 void conditionalExpression(generator::GeneratorContext& ctx,
                            const Node& root,

@@ -30,6 +30,7 @@
             "sin": {
                 "moduleName": "ExternFunction.shtk",
                 "parameters": ["num"],
+                "absoluteName": "sin",
                 "functionReturnType": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "num": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "ExternFunction.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}

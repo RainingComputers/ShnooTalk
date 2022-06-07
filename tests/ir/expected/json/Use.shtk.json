@@ -61,6 +61,7 @@
             "extfoobar": {
                 "moduleName": "TestModules/Random.shtk",
                 "parameters": ["num"],
+                "absoluteName": "extfoobar",
                 "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "num": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
@@ -77,6 +78,7 @@
             "_fn_TestModules_Random_shtk_foobar": {
                 "moduleName": "TestModules/Random.shtk",
                 "parameters": ["foo", "bar"],
+                "absoluteName": "_fn_TestModules_Random_shtk_foobar",
                 "functionReturnType": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "bar": {"dtype": "struct", "dtypeName": "Point", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]},
@@ -121,6 +123,7 @@
             "sin": {
                 "moduleName": "TestModules/Sin.shtk",
                 "parameters": ["num"],
+                "absoluteName": "sin",
                 "functionReturnType": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "num": {"dtype": "double", "dtypeName": "double", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Sin.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}

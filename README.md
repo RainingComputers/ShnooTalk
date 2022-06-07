@@ -182,6 +182,8 @@ make test
 ### Refactoring
 - [ ] Use optional
 - [ ] Some duplication of code before calling `premangledFunctionCall`
+- [ ] Move type checking to builder
+- [ ] Remove tokens from builder
 
 ### Language tools
 

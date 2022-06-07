@@ -196,11 +196,13 @@ void ModuleBuilder::createEnum(const Token& nameToken, const std::vector<Token>&
 FunctionDescription ModuleBuilder::createFunctionDescription(const icode::TypeDescription& returnType,
                                                              const std::vector<Token>& paramNames,
                                                              std::vector<icode::TypeDescription>& paramTypes,
-                                                             const std::string& moduleName)
+                                                             const std::string& moduleName,
+                                                             const std::string& absoluteName)
 {
     icode::FunctionDescription functionDescription;
     functionDescription.functionReturnType = returnType;
     functionDescription.moduleName = moduleName;
+    functionDescription.absoluteName = absoluteName;
 
     for (size_t i = 0; i < paramNames.size(); i++)
     {
@@ -245,14 +247,15 @@ void ModuleBuilder::createFunction(const Token& nameToken,
                                    std::vector<icode::TypeDescription>& paramTypes)
 {
     std::string mangledFunctionName = nameMangle(nameToken, rootModule.name);
+    const std::string functionName = nameToken.toString();
 
-    if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(nameToken.toString()))
+    if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(functionName))
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
     icode::FunctionDescription function =
-        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
+        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name, mangledFunctionName);
 
-    if (nameToken.toString() == "deconstructor")
+    if (functionName == "deconstructor")
     {
         if (!isValidDeconstructor(function))
             console.compileErrorOnToken("Invalid deconstructor function", nameToken);
@@ -276,7 +279,7 @@ void ModuleBuilder::createFunctionExternC(const Token& nameToken,
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
     rootModule.functions[functionName] =
-        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
+        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name, functionName);
 
     rootModule.definedFunctions.push_back(functionName);
 }
@@ -286,13 +289,13 @@ void ModuleBuilder::createExternFunction(const Token& nameToken,
                                          const std::vector<Token>& paramNames,
                                          std::vector<icode::TypeDescription>& paramTypes)
 {
-    const std::string externFunctionName = nameToken.toString();
+    const std::string functionName = nameToken.toString();
 
-    if (rootModule.symbolExists(externFunctionName))
+    if (rootModule.symbolExists(functionName))
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
-    rootModule.externFunctions[externFunctionName] =
-        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name);
+    rootModule.externFunctions[functionName] =
+        createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name, functionName);
 }
 
 void ModuleBuilder::createExternFunctionModule(const Token& nameToken,
@@ -304,16 +307,15 @@ void ModuleBuilder::createExternFunctionModule(const Token& nameToken,
     const std::string functionModuleName = moduleNameToken.toUnescapedString();
     const std::string mangledFunctionName = nameMangle(nameToken, functionModuleName);
     const std::string mangledFunctionNameRoot = nameMangle(nameToken, rootModule.name);
-    const std::string externFunctionName = nameToken.toString();
+    const std::string functionName = nameToken.toString();
 
-    if (rootModule.symbolExists(mangledFunctionName) || rootModule.symbolExists(mangledFunctionNameRoot) ||
-        rootModule.symbolExists(externFunctionName))
+    if (rootModule.symbolExists(mangledFunctionNameRoot) || rootModule.symbolExists(functionName))
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
     rootModule.externFunctions[mangledFunctionName] =
-        createFunctionDescription(returnType, paramNames, paramTypes, functionModuleName);
+        createFunctionDescription(returnType, paramNames, paramTypes, functionModuleName, mangledFunctionName);
 
-    rootModule.incompleteFunctions[externFunctionName] = functionModuleName;
+    rootModule.incompleteFunctions[functionName] = functionModuleName;
 }
 
 void ModuleBuilder::createGlobal(const Token globalNameToken, icode::TypeDescription& typeDescription)

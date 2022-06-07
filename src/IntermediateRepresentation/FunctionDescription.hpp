@@ -15,7 +15,8 @@ namespace icode
         std::vector<std::string> parameters;
         std::map<std::string, TypeDescription> symbols;
         std::vector<icode::Entry> icodeTable;
-        std::string moduleName;
+        std::string moduleName; 
+        std::string absoluteName;
 
         bool symbolExists(const std::string& name);
         bool getSymbol(const std::string& name, icode::TypeDescription& returnValue);

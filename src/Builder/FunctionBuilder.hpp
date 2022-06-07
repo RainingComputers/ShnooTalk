@@ -11,8 +11,6 @@
 
 class FunctionBuilder
 {
-
-    icode::StringModulesMap& modulesMap;
     OperandBuilder& opBuilder;
     UnitBuilder& unitBuilder;
     Finder& finder;
@@ -54,13 +52,11 @@ class FunctionBuilder
 
     void ensurePointersNullInitializer(const Unit& local);
 
-    std::string getMangledCalleeName(const Token& calleeNameToken, const icode::FunctionDescription& callee);
-
     icode::Operand createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam);
 
     bool shouldCallResourceMgmtHook(const icode::TypeDescription& type, const std::string& hook);
 
-    void callResourceMgmtHookSingle(const Unit& symbol, const std::string& hook);
+    void callResourceMgmtHookSingle(const Unit& symbol, const std::string& hook); 
 
     void callResourceMgmtHook(const Unit& symbol, const std::string& hook);
 
@@ -115,19 +111,11 @@ public:
 
     Unit createLocal(const Token nameToken, icode::TypeDescription& typeDescription);
 
-    void passParameterPreMangled(const std::string& mangledCalleeName,
-                                 icode::FunctionDescription callee,
-                                 const Unit& formalParam,
-                                 const Unit& actualParam);
-
-    void passParameter(const Token& calleeNameToken,
-                       icode::FunctionDescription callee,
+    void passParameter(icode::FunctionDescription callee,
                        const Unit& formalParam,
-                       const Unit& actualParam);
+                       const Unit& actualParam); 
 
-    Unit callFunctionPreMangled(const std::string& mangledCalleeName, const icode::FunctionDescription& callee);
-
-    Unit callFunction(const Token& calleeNameToken, const icode::FunctionDescription& callee);
+    Unit callFunction(const icode::FunctionDescription& callee);
 
     void noArgumentEntry(icode::Instruction instruction);
 
@@ -135,7 +123,7 @@ public:
 
     void createReturnAndCallDeconstructors();
 
-    void terminateFunction(const Token& nameToken);
+    void terminateFunction(const Token& functionNameToken);
 };
 
 #endif

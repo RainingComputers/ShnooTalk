@@ -69,14 +69,10 @@ std::pair<Unit, size_t> subscriptOperator(generator::GeneratorContext& ctx,
         params.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(indexExpression.numElements()));
     }
 
-    const std::pair<std::string, icode::FunctionDescription> subscriptNameAndFunction =
-        ctx.ir.finder.getSubscriptOperatorFunction(child.tok, unit, params);
+    const icode::FunctionDescription subscriptFunction =
+        ctx.ir.finder.getSubscriptOperatorFunction(unit, params, child.tok);
 
-    const Unit result = createCallFunctionPremangled(ctx,
-                                                     paramTokens,
-                                                     params,
-                                                     subscriptNameAndFunction.first,
-                                                     subscriptNameAndFunction.second);
+    const Unit result = createCallFunctionMust(ctx, paramTokens, params, subscriptFunction);
 
     nodeCounter++;
 

@@ -13,8 +13,7 @@ FunctionBuilder::FunctionBuilder(StringModulesMap& modulesMap,
                                  UnitBuilder& unitBuilder,
                                  Finder& finder,
                                  Console& console)
-    : modulesMap(modulesMap)
-    , opBuilder(opBuilder)
+    : opBuilder(opBuilder)
     , unitBuilder(unitBuilder)
     , finder(finder)
     , console(console)
@@ -626,27 +625,6 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
     return local;
 }
 
-std::string FunctionBuilder::getMangledCalleeName(const Token& calleeNameToken, const FunctionDescription& callee)
-{
-    const std::string mangledCalleeName = nameMangle(calleeNameToken, callee.moduleName);
-    const std::string calleeName = calleeNameToken.toString();
-
-    icode::ModuleDescription workingModule = modulesMap.at(workingFunction->moduleName);
-
-    if (keyExistsInMap(workingModule.incompleteFunctions, calleeName))
-        return mangledCalleeName;
-
-    icode::ModuleDescription functionModule = modulesMap.at(callee.moduleName);
-
-    if (keyExistsInMap(functionModule.externFunctions, calleeName))
-        return calleeName;
-
-    if (keyExistsInMap(functionModule.functions, calleeName))
-        return calleeName;
-
-    return mangledCalleeName;
-}
-
 Operand FunctionBuilder::createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam)
 {
     if (!actualParam.isList())
@@ -664,10 +642,7 @@ Operand FunctionBuilder::createPointerForPassAddress(const Unit& actualParam, co
     return tempArray.op();
 }
 
-void FunctionBuilder::passParameterPreMangled(const std::string& mangledCalleeName,
-                                              FunctionDescription callee,
-                                              const Unit& formalParam,
-                                              const Unit& actualParam)
+void FunctionBuilder::passParameter(FunctionDescription callee, const Unit& formalParam, const Unit& actualParam)
 {
     DataType functionDataType = callee.functionReturnType.dtype;
 
@@ -689,24 +664,13 @@ void FunctionBuilder::passParameterPreMangled(const std::string& mangledCalleeNa
         entry.op1 = autoCast(ensureNotPointer(actualParam.op()), formalParam.dtype());
     }
 
-    entry.op2 = opBuilder.createVarOperand(functionDataType, mangledCalleeName);
+    entry.op2 = opBuilder.createVarOperand(functionDataType, callee.absoluteName);
     entry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(entry);
 }
 
-void FunctionBuilder::passParameter(const Token& calleeNameToken,
-                                    FunctionDescription callee,
-                                    const Unit& formalParam,
-                                    const Unit& actualParam)
-{
-    /* Construct icode for PASS and PASS_ADDR instructions */
-    std::string mangledCalleeName = getMangledCalleeName(calleeNameToken, callee);
-
-    passParameterPreMangled(mangledCalleeName, callee, formalParam, actualParam);
-}
-
-Unit FunctionBuilder::callFunctionPreMangled(const std::string& mangledCalleeName, const FunctionDescription& callee)
+Unit FunctionBuilder::callFunction(const FunctionDescription& callee)
 {
     /* Construct icode for CALL instruction */
 
@@ -721,21 +685,12 @@ Unit FunctionBuilder::callFunctionPreMangled(const std::string& mangledCalleeNam
     else
         callEntry.op1 = opBuilder.createCalleeRetValOperand(functionDataType);
 
-    callEntry.op2 = opBuilder.createVarOperand(functionDataType, mangledCalleeName);
+    callEntry.op2 = opBuilder.createVarOperand(functionDataType, callee.absoluteName);
     callEntry.op3 = opBuilder.createModuleOperand(callee.moduleName);
 
     pushEntry(callEntry);
 
     return Unit(callee.functionReturnType, callEntry.op1);
-}
-
-Unit FunctionBuilder::callFunction(const Token& calleeNameToken, const FunctionDescription& callee)
-{
-    /* Construct icode for CALL instruction */
-
-    std::string mangledCalleeName = getMangledCalleeName(calleeNameToken, callee);
-
-    return callFunctionPreMangled(mangledCalleeName, callee);
 }
 
 void FunctionBuilder::noArgumentEntry(Instruction instruction)
@@ -792,20 +747,19 @@ bool FunctionBuilder::shouldCallResourceMgmtHook(const icode::TypeDescription& t
     if (type.isPointer())
         return false;
 
-    return finder.resourseMgmtHookExists(type, hook);
+    return finder.methodExists(type, hook);
 }
 
 void FunctionBuilder::callResourceMgmtHookSingle(const Unit& symbol, const std::string& hook)
 {
-    const std::string mangledFunctionName = finder.getMangledHookName(symbol.type(), hook);
-    const icode::FunctionDescription deconstructorFunction = finder.getResourceMgmtHookFunction(symbol.type(), hook);
+    const icode::FunctionDescription deconstructorFunction = finder.getMethod(symbol.type(), hook);
 
     const std::string formalName = deconstructorFunction.parameters[0];
     const TypeDescription formalType = deconstructorFunction.getParamTypePos(0);
     const Unit formalParam = unitBuilder.unitFromTypeDescription(formalType, formalName);
 
-    passParameterPreMangled(mangledFunctionName, deconstructorFunction, formalParam, symbol);
-    callFunctionPreMangled(mangledFunctionName, deconstructorFunction);
+    passParameter(deconstructorFunction, formalParam, symbol);
+    callFunction(deconstructorFunction);
 }
 
 void FunctionBuilder::callResourceMgmtHook(const Unit& symbol, const std::string& hook)
@@ -852,10 +806,10 @@ void FunctionBuilder::createReturnAndCallDeconstructors()
     noArgumentEntry(RET);
 }
 
-void FunctionBuilder::terminateFunction(const Token& nameToken)
+void FunctionBuilder::terminateFunction(const Token& functionNameToken)
 {
-    if (nameToken.toString() == "main" && !validMainReturn(*workingFunction))
-        console.compileErrorOnToken("Invalid return type for main", nameToken);
+    if (functionNameToken.toString() == "main" && !validMainReturn(*workingFunction))
+        console.compileErrorOnToken("Invalid return type for main", functionNameToken);
 
     if (doesFunctionTerminate())
         return;
@@ -866,5 +820,5 @@ void FunctionBuilder::terminateFunction(const Token& nameToken)
         return;
     }
 
-    console.compileErrorOnToken("Missing return for function", nameToken);
+    console.compileErrorOnToken("Missing return for function", functionNameToken);
 }
