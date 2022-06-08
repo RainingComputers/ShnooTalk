@@ -261,9 +261,9 @@ bool isSameParamsTypeFixedDim(const FunctionDescription& function, const std::ve
     return secondFormalParam.isArrayWithFixedDim();
 }
 
-FunctionDescription Finder::getCustomOperatorFunctionString(const std::string& binaryOperatorName,
-                                                            const std::vector<Unit>& params,
-                                                            const Token& errorToken)
+FunctionDescription Finder::getCustomOperatorFunction(const std::string& binaryOperatorName,
+                                                      const std::vector<Unit>& params,
+                                                      const Token& errorToken)
 {
     for (auto functionName : workingModule->definedFunctions)
     {
@@ -279,20 +279,6 @@ FunctionDescription Finder::getCustomOperatorFunctionString(const std::string& b
     }
 
     console.operatorError(errorToken, params[0], params[1]);
-}
-
-FunctionDescription Finder::getCustomOperatorFunction(const Token& binaryOperator, const std::vector<Unit>& params)
-{
-    const std::string binaryOperatorName = binaryOperator.toFunctionNameString();
-
-    return getCustomOperatorFunctionString(binaryOperatorName, params, binaryOperator);
-}
-
-FunctionDescription Finder::getSubscriptOperatorFunction(const Unit& unit,
-                                                         const std::vector<Unit>& params,
-                                                         const Token& errorToken)
-{
-    return getCustomOperatorFunctionString("subscript", params, errorToken);
 }
 
 bool Finder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)

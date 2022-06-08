@@ -304,7 +304,8 @@ Unit customOperator(generator::GeneratorContext& ctx,
         params.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(RHS.numElements()));
     }
 
-    FunctionDescription callee = ctx.ir.finder.getCustomOperatorFunction(binaryOperator, params);
+    const std::string customOperatorName = tokenToCustomOperatorString(ctx, binaryOperator);
+    FunctionDescription callee = ctx.ir.finder.getCustomOperatorFunction(customOperatorName, params, binaryOperator);
 
     ctx.ir.popWorkingModule();
 

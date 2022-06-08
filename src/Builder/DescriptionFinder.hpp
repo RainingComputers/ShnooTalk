@@ -25,10 +25,6 @@ class Finder
     bool getStringDefine(const Token& nameToken, Unit& returnValue);
     bool getEnum(const Token& nameToken, Unit& returnValue);
 
-    icode::FunctionDescription getCustomOperatorFunctionString(const std::string& binaryOperatorName,
-                                                               const std::vector<Unit>& params,
-                                                               const Token& errorToken);
-
 public:
     Finder(icode::ModuleDescription& rootModule,
            icode::StringModulesMap& modulesMap,
@@ -62,11 +58,9 @@ public:
                                                        const icode::TypeDescription& type,
                                                        const std::vector<Unit>& params);
 
-    icode::FunctionDescription getCustomOperatorFunction(const Token& binaryOperator, const std::vector<Unit>& params);
-
-    icode::FunctionDescription getSubscriptOperatorFunction(const Unit& unit,
-                                                            const std::vector<Unit>& params,
-                                                            const Token& errorToken);
+    icode::FunctionDescription getCustomOperatorFunction(const std::string& binaryOperatorName,
+                                                               const std::vector<Unit>& params,
+                                                               const Token& errorToken);
 
     bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit);
 

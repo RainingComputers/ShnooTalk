@@ -70,7 +70,7 @@ std::pair<Unit, size_t> subscriptOperator(generator::GeneratorContext& ctx,
     }
 
     const icode::FunctionDescription subscriptFunction =
-        ctx.ir.finder.getSubscriptOperatorFunction(unit, params, child.tok);
+        ctx.ir.finder.getCustomOperatorFunction("subscript", params, child.tok);
 
     const Unit result = createCallFunctionMust(ctx, paramTokens, params, subscriptFunction);
 
