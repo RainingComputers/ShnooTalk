@@ -13,7 +13,7 @@ on:
 
 jobs:
   Format:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # TODO change back to latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2

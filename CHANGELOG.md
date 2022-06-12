@@ -20,6 +20,7 @@
 - Added subscript operator overloading
 - Added support for arrays and pointers of generic type
 - Improved enums
+- Added for each loop
 
 # 0.1.1-alpha
 
