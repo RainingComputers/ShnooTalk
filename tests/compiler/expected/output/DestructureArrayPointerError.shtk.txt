@@ -1,0 +1,8 @@
+MODULE DestructureArrayPointerError.shtk
+ERROR in Line 5 Col 18
+
+    const [x] := a
+                 ^
+Cannot destructure non struct or non fixed dim array
+
+DestructureArrayPointerError.shtk:5:17

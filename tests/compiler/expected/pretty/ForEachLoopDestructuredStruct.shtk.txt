@@ -1,0 +1,156 @@
+{
+    "ForEachLoopDestructuredStruct.shtk": {
+        "moduleName": "ForEachLoopDestructuredStruct.shtk",
+        "functions": {
+            "_fn_ForEachLoopDestructuredStruct_shtk_createPoint": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct p
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int* tempPtr7 = write int x
+                        int* tempPtr10 = createPointer struct p
+                        int* tempPtr12 = addressAdd int* tempPtr10, bytes 4
+                        float* tempPtr12 = write float y
+                        int* tempPtr16 = createPointer struct returnValue14
+                        int* tempPtr17 = createPointer struct p
+                        int* tempPtr16 = memoryCopy int* tempPtr17, autoInt 8
+                        return
+                ]
+            },
+            "_fn_ForEachLoopDestructuredStruct_shtk_createTestGenerator": {
+                "icode": [
+                        int* tempPtr25 = createPointer struct g
+                        int* tempPtr27 = addressAdd int* tempPtr25, bytes 0
+                        int temp31 = cast autoInt 1
+                        int* tempPtr27 = write int temp31
+                        int* tempPtr33 = addressAdd int* tempPtr27, bytes 4
+                        int temp34 = cast autoInt 2
+                        int* tempPtr33 = write int temp34
+                        int* tempPtr36 = addressAdd int* tempPtr33, bytes 4
+                        int temp37 = cast autoInt 3
+                        int* tempPtr36 = write int temp37
+                        int* tempPtr39 = createPointer struct g
+                        int* tempPtr41 = addressAdd int* tempPtr39, bytes 12
+                        float temp45 = cast autoFloat 4.000000
+                        float* tempPtr41 = write float temp45
+                        float* tempPtr47 = addressAdd float* tempPtr41, bytes 4
+                        float temp48 = cast autoFloat 5.000000
+                        float* tempPtr47 = write float temp48
+                        float* tempPtr50 = addressAdd float* tempPtr47, bytes 4
+                        float temp51 = cast autoFloat 6.000000
+                        float* tempPtr50 = write float temp51
+                        int* tempPtr54 = createPointer struct returnValue52
+                        int* tempPtr55 = createPointer struct g
+                        int* tempPtr54 = memoryCopy int* tempPtr55, autoInt 24
+                        return
+                ]
+            },
+            "_fn_ForEachLoopDestructuredStruct_shtk_length": {
+                "icode": [
+                        ulong temp63 = cast autoInt 3
+                        ulong returnValue61 = equal ulong temp63
+                        return
+                ]
+            },
+            "_fn_ForEachLoopDestructuredStruct_shtk_subscriptItem": {
+                "icode": [
+                        int* tempPtr69 = createPointer struct self
+                        int* tempPtr71 = addressAdd int* tempPtr69, bytes 0
+                        void* tempPtr74 = addressMultiply ulong index, bytes 4
+                        int* tempPtr75 = addressAdd int* tempPtr71, void* tempPtr74
+                        int* tempPtr79 = createPointer struct self
+                        int* tempPtr81 = addressAdd int* tempPtr79, bytes 12
+                        void* tempPtr84 = addressMultiply ulong index, bytes 4
+                        float* tempPtr85 = addressAdd float* tempPtr81, void* tempPtr84
+                        int temp88 = read int* tempPtr75
+                        pass int temp88, struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
+                        float temp91 = read float* tempPtr85
+                        pass float temp91, struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
+                        struct calleeReturnValue94 = call struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
+                        int* tempPtr97 = createPointer struct returnValue67
+                        int* tempPtr98 = createPointer struct calleeReturnValue94
+                        int* tempPtr97 = memoryCopy int* tempPtr98, autoInt 8
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        struct calleeReturnValue103 = call struct _fn_ForEachLoopDestructuredStruct_shtk_createTestGenerator, module ForEachLoopDestructuredStruct.shtk
+                        int* tempPtr107 = createPointer struct a
+                        int* tempPtr108 = createPointer struct calleeReturnValue103
+                        int* tempPtr107 = memoryCopy int* tempPtr108, autoInt 24
+                        autoInt* tempPtr113 = allocPointer 
+                        autoInt* tempPtr113 = write autoInt 0
+                    _for_each_true_l44_c4:
+                        int* tempPtr119 = createPointer struct a
+                        passPointer int* tempPtr119, ulong _fn_ForEachLoopDestructuredStruct_shtk_length, module ForEachLoopDestructuredStruct.shtk
+                        ulong calleeReturnValue122 = call ulong _fn_ForEachLoopDestructuredStruct_shtk_length, module ForEachLoopDestructuredStruct.shtk
+                        autoInt temp125 = read autoInt* tempPtr113
+                        autoInt temp126 = cast ulong calleeReturnValue122
+                        flag = lessThan autoInt temp125, autoInt temp126
+                        if(not flag) goto _for_each_false_l44_c4
+                        int* tempPtr129 = createPointer struct a
+                        passPointer int* tempPtr129, struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        autoInt temp132 = read autoInt* tempPtr113
+                        ulong temp133 = cast autoInt temp132
+                        pass ulong temp133, struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        struct calleeReturnValue136 = call struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        int* tempPtr139 = createPointer struct calleeReturnValue136
+                        int* tempPtr141 = addressAdd int* tempPtr139, bytes 0
+                        int* tempPtr142 = createPointer struct calleeReturnValue136
+                        int* tempPtr144 = addressAdd int* tempPtr142, bytes 4
+                        int temp145 = read int* tempPtr141
+                        int p = equal int temp145
+                        float temp146 = read float* tempPtr144
+                        float q = equal float temp146
+                        print int p
+                        space
+                        print float q
+                        newLine
+                    _for_each_cont_true_l44_c4:
+                        autoInt temp151 = read autoInt* tempPtr113
+                        autoInt temp150 = add autoInt temp151, autoInt 1
+                        autoInt* tempPtr113 = write autoInt temp150
+                        goto _for_each_true_l44_c4
+                    _for_each_false_l44_c4:
+                        autoInt* tempPtr155 = allocPointer 
+                        autoInt* tempPtr155 = write autoInt 0
+                    _for_each_true_l48_c4:
+                        int* tempPtr161 = createPointer struct a
+                        passPointer int* tempPtr161, ulong _fn_ForEachLoopDestructuredStruct_shtk_length, module ForEachLoopDestructuredStruct.shtk
+                        ulong calleeReturnValue164 = call ulong _fn_ForEachLoopDestructuredStruct_shtk_length, module ForEachLoopDestructuredStruct.shtk
+                        autoInt temp167 = read autoInt* tempPtr155
+                        autoInt temp168 = cast ulong calleeReturnValue164
+                        flag = lessThan autoInt temp167, autoInt temp168
+                        if(not flag) goto _for_each_false_l48_c4
+                        int* tempPtr171 = createPointer struct a
+                        passPointer int* tempPtr171, struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        autoInt temp174 = read autoInt* tempPtr155
+                        ulong temp175 = cast autoInt temp174
+                        pass ulong temp175, struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        struct calleeReturnValue178 = call struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        int* tempPtr181 = createPointer struct calleeReturnValue178
+                        int* tempPtr183 = addressAdd int* tempPtr181, bytes 0
+                        int* tempPtr184 = createPointer struct calleeReturnValue178
+                        int* tempPtr186 = addressAdd int* tempPtr184, bytes 4
+                        int temp187 = read int* tempPtr183
+                        int x = equal int temp187
+                        float temp188 = read float* tempPtr186
+                        float y = equal float temp188
+                        print int x
+                        space
+                        print float y
+                        newLine
+                    _for_each_cont_true_l48_c4:
+                        autoInt temp193 = read autoInt* tempPtr155
+                        autoInt temp192 = add autoInt temp193, autoInt 1
+                        autoInt* tempPtr155 = write autoInt temp192
+                        goto _for_each_true_l48_c4
+                    _for_each_false_l48_c4:
+                        int temp196 = cast autoInt 0
+                        int returnValue194 = equal int temp196
+                        return
+                ]
+            }
+        }
+    }
+}

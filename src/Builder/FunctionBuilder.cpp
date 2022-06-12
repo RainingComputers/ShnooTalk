@@ -605,7 +605,7 @@ void FunctionBuilder::ensurePointersNullInitializer(const Unit& local)
     }
     else if (local.isStruct())
     {
-        for (const std::string& fieldName : finder.getFieldNames(local))
+        for (const std::string& fieldName : finder.getFieldNames(local.type()))
             ensurePointersNullInitializer(getStructFieldFromString(fieldName, local));
     }
 }
@@ -777,7 +777,7 @@ void FunctionBuilder::callResourceMgmtHook(const Unit& symbol, const std::string
 
     if (symbol.isStruct())
     {
-        for (const std::string& fieldName : finder.getFieldNames(symbol))
+        for (const std::string& fieldName : finder.getFieldNames(symbol.type()))
             callResourceMgmtHook(getStructFieldFromString(fieldName, symbol), hook);
     }
 

@@ -8,6 +8,12 @@ Unit createCallFunctionMust(generator::GeneratorContext& ctx,
                             const std::vector<Unit>& actualParams,
                             const icode::FunctionDescription& callee);
 
+Unit createCallFunction(generator::GeneratorContext& ctx,
+                        const std::vector<Token>& actualParamTokens,
+                        const std::vector<Unit>& actualParams,
+                        const Token& errorToken,
+                        const icode::FunctionDescription& callee);
+
 Unit term(generator::GeneratorContext& ctx, const Node& root);
 
 Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root);
@@ -18,6 +24,11 @@ void truthyOperator(generator::GeneratorContext& ctx,
                     const icode::Operand& trueLabel,
                     const icode::Operand& falseLabel,
                     bool trueFall);
+
+void createJumps(generator::GeneratorContext& ctx,
+                 const icode::Operand& trueLabel,
+                 const icode::Operand& falseLabel,
+                 bool trueFall);
 
 void conditionalExpression(generator::GeneratorContext& ctx,
                            const Node& root,

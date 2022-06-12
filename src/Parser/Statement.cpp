@@ -158,6 +158,30 @@ void forLoop(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
+void forEachLoop(parser::ParserContext& ctx)
+{
+    ctx.pushNode();
+
+    ctx.addNodeMakeCurrent(node::FOR_EACH);
+
+    if (ctx.accept(token::OPEN_SQUARE))
+        destructureList(ctx);
+    else
+    {
+        ctx.expect(token::IDENTIFIER);
+        ctx.addNode(node::IDENTIFIER);
+    }
+
+    ctx.expect(token::IN);
+    ctx.consume();
+
+    expression(ctx);
+
+    block(ctx);
+
+    ctx.popNode();
+}
+
 void infiniteLoop(parser::ParserContext& ctx)
 {
     ctx.pushNode();
@@ -223,7 +247,12 @@ void statement(parser::ParserContext& ctx)
     else if (ctx.accept(token::DO))
         doWhileLoop(ctx);
     else if (ctx.accept(token::FOR))
-        forLoop(ctx);
+    {
+        if (ctx.peek(token::OPEN_SQUARE) || ctx.dpeek(token::IN))
+            forEachLoop(ctx);
+        else
+            forLoop(ctx);
+    }
     else if (ctx.accept(token::LOOP))
         infiniteLoop(ctx);
     else if (ctx.accept(token::BREAK))

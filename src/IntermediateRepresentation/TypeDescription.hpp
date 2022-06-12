@@ -73,6 +73,8 @@ namespace icode
         bool isIntegerType() const;
         bool isFloatType() const;
         bool isVoid() const;
+
+        unsigned int numElements() const;
     };
 }
 

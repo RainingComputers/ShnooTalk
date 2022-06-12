@@ -165,4 +165,9 @@ namespace icode
     {
         return checkProperty(IS_STRING_LTRL);
     }
+
+    unsigned int TypeDescription::numElements() const
+    {
+        return dimensions[0];
+    }
 }

@@ -1,0 +1,8 @@
+MODULE AssignmentDestructuredArrayPointerError.shtk
+ERROR in Line 7 Col 12
+
+    .[b] = a
+           ^
+Cannot destructure non struct or non fixed dim array
+
+AssignmentDestructuredArrayPointerError.shtk:7:11

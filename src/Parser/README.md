@@ -148,6 +148,8 @@ doWhileLoop = "do" block "while" expression
 
 forLoop = "for" ["("] (identifierDeclareList<true> | assignmentOrMethodCall) ";" expression ";" assignmentOrMethodCall [")"] block
 
+forEachLoop = "for" (identifier | destructureList) "in" expression block
+
 infiniteLoop = "loop" block
 
 returnExpression = "return" (expression | "void")

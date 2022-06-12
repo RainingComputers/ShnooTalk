@@ -1,0 +1,8 @@
+MODULE ForEachLoopDestructuredArrayPointerError.shtk
+ERROR in Line 18 Col 9
+
+    for [x] in t println(x)
+        ^
+Cannot destructure non struct or non fixed dim array
+
+ForEachLoopDestructuredArrayPointerError.shtk:18:8

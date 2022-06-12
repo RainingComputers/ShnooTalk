@@ -1,0 +1,21 @@
+struct TestGenerator {}
+
+fn length(self: TestGenerator) -> int
+{
+    return 1
+}
+
+fn subscriptItem(self: TestGenerator, index: ulong) -> int[]
+{
+    var a: int[]
+    return a
+}
+
+fn main() -> int
+{
+    var t: TestGenerator
+
+    for [x] in t println(x)
+
+    return 0
+}

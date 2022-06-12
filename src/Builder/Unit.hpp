@@ -44,6 +44,7 @@ public:
     bool isStruct() const;
     bool isArray() const;
     bool isStructOrArray() const;
+    bool isStructOrArrayAndNotPointer() const;
     bool isMultiDimArray() const;
     bool isArrayWithFixedDim() const;
 

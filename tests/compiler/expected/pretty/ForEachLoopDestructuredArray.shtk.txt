@@ -1,0 +1,115 @@
+{
+    "ForEachLoopDestructuredArray.shtk": {
+        "moduleName": "ForEachLoopDestructuredArray.shtk",
+        "functions": {
+            "_fn_ForEachLoopDestructuredArray_shtk_createTestGenerator": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct g
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp17 = cast autoInt 1
+                        int* tempPtr7 = write int temp17
+                        int* tempPtr19 = addressAdd int* tempPtr7, bytes 4
+                        int temp20 = cast autoInt 2
+                        int* tempPtr19 = write int temp20
+                        int* tempPtr22 = addressAdd int* tempPtr19, bytes 4
+                        int temp23 = cast autoInt 3
+                        int* tempPtr22 = write int temp23
+                        int* tempPtr25 = addressAdd int* tempPtr22, bytes 4
+                        int temp26 = cast autoInt 4
+                        int* tempPtr25 = write int temp26
+                        int* tempPtr28 = addressAdd int* tempPtr25, bytes 4
+                        int temp29 = cast autoInt 5
+                        int* tempPtr28 = write int temp29
+                        int* tempPtr31 = addressAdd int* tempPtr28, bytes 4
+                        int temp32 = cast autoInt 6
+                        int* tempPtr31 = write int temp32
+                        int* tempPtr34 = addressAdd int* tempPtr31, bytes 4
+                        int temp35 = cast autoInt 7
+                        int* tempPtr34 = write int temp35
+                        int* tempPtr37 = addressAdd int* tempPtr34, bytes 4
+                        int temp38 = cast autoInt 8
+                        int* tempPtr37 = write int temp38
+                        int* tempPtr40 = addressAdd int* tempPtr37, bytes 4
+                        int temp41 = cast autoInt 9
+                        int* tempPtr40 = write int temp41
+                        int* tempPtr44 = createPointer struct returnValue42
+                        int* tempPtr45 = createPointer struct g
+                        int* tempPtr44 = memoryCopy int* tempPtr45, autoInt 36
+                        return
+                ]
+            },
+            "_fn_ForEachLoopDestructuredArray_shtk_length": {
+                "icode": [
+                        ulong temp53 = cast autoInt 3
+                        ulong returnValue51 = equal ulong temp53
+                        return
+                ]
+            },
+            "_fn_ForEachLoopDestructuredArray_shtk_subscriptItem": {
+                "icode": [
+                        int* tempPtr59 = createPointer struct self
+                        int* tempPtr61 = addressAdd int* tempPtr59, bytes 0
+                        void* tempPtr64 = addressMultiply ulong index, bytes 12
+                        int* tempPtr65 = addressAdd int* tempPtr61, void* tempPtr64
+                        int* tempPtr66 = createPointer int returnValue57
+                        int* tempPtr66 = memoryCopy int* tempPtr65, autoInt 12
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        struct calleeReturnValue71 = call struct _fn_ForEachLoopDestructuredArray_shtk_createTestGenerator, module ForEachLoopDestructuredArray.shtk
+                        int* tempPtr75 = createPointer struct a
+                        int* tempPtr76 = createPointer struct calleeReturnValue71
+                        int* tempPtr75 = memoryCopy int* tempPtr76, autoInt 36
+                        autoInt* tempPtr82 = allocPointer 
+                        autoInt* tempPtr82 = write autoInt 0
+                    _for_each_true_l27_c4:
+                        int* tempPtr88 = createPointer struct a
+                        passPointer int* tempPtr88, ulong _fn_ForEachLoopDestructuredArray_shtk_length, module ForEachLoopDestructuredArray.shtk
+                        ulong calleeReturnValue91 = call ulong _fn_ForEachLoopDestructuredArray_shtk_length, module ForEachLoopDestructuredArray.shtk
+                        autoInt temp94 = read autoInt* tempPtr82
+                        autoInt temp95 = cast ulong calleeReturnValue91
+                        flag = lessThan autoInt temp94, autoInt temp95
+                        if(not flag) goto _for_each_false_l27_c4
+                        int* tempPtr98 = createPointer struct a
+                        passPointer int* tempPtr98, int _fn_ForEachLoopDestructuredArray_shtk_subscriptItem, module ForEachLoopDestructuredArray.shtk
+                        autoInt temp101 = read autoInt* tempPtr82
+                        ulong temp102 = cast autoInt temp101
+                        pass ulong temp102, int _fn_ForEachLoopDestructuredArray_shtk_subscriptItem, module ForEachLoopDestructuredArray.shtk
+                        int calleeReturnValue105 = call int _fn_ForEachLoopDestructuredArray_shtk_subscriptItem, module ForEachLoopDestructuredArray.shtk
+                        int* tempPtr109 = createPointer int calleeReturnValue105
+                        void* tempPtr111 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr112 = addressAdd int* tempPtr109, void* tempPtr111
+                        int* tempPtr114 = createPointer int calleeReturnValue105
+                        void* tempPtr116 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr117 = addressAdd int* tempPtr114, void* tempPtr116
+                        int* tempPtr119 = createPointer int calleeReturnValue105
+                        void* tempPtr121 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr122 = addressAdd int* tempPtr119, void* tempPtr121
+                        int temp123 = read int* tempPtr112
+                        int x = equal int temp123
+                        int temp124 = read int* tempPtr117
+                        int y = equal int temp124
+                        int temp125 = read int* tempPtr122
+                        int z = equal int temp125
+                        print int x
+                        space
+                        print int y
+                        space
+                        print int z
+                        newLine
+                    _for_each_cont_true_l27_c4:
+                        autoInt temp131 = read autoInt* tempPtr82
+                        autoInt temp130 = add autoInt temp131, autoInt 1
+                        autoInt* tempPtr82 = write autoInt temp130
+                        goto _for_each_true_l27_c4
+                    _for_each_false_l27_c4:
+                        int temp134 = cast autoInt 0
+                        int returnValue132 = equal int temp134
+                        return
+                ]
+            }
+        }
+    }
+}

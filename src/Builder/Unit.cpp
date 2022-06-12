@@ -86,7 +86,7 @@ unsigned int Unit::dtypeSize() const
 
 unsigned int Unit::numElements() const
 {
-    return typeDescription.dimensions[0];
+    return typeDescription.numElements();
 }
 
 bool Unit::isStringLtrl() const
@@ -132,6 +132,11 @@ bool Unit::isArray() const
 bool Unit::isStructOrArray() const
 {
     return typeDescription.isStructOrArray();
+}
+
+bool Unit::isStructOrArrayAndNotPointer() const
+{
+    return typeDescription.isStructOrArrayAndNotPointer();
 }
 
 bool Unit::isMultiDimArray() const

@@ -3,6 +3,6 @@ ERROR in Line 3 Col 21
 
     const [a, b] := 1
                     ^
-Cannot destructure non struct or non array
+Cannot destructure non struct or non fixed dim array
 
 DestructureError1.shtk:3:20

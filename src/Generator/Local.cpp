@@ -5,18 +5,22 @@
 
 #include "Local.hpp"
 
+Unit createLocal(generator::GeneratorContext& ctx, const Token& nameToken, icode::TypeDescription& type)
+{
+    ctx.scope.putInCurrentScope(nameToken);
+    return ctx.ir.functionBuilder.createLocal(nameToken, type);
+}
+
 void local(generator::GeneratorContext& ctx, const Node& root)
 {
     const Token nameToken = root.getNthChildToken(0);
-
-    ctx.scope.putInCurrentScope(nameToken);
 
     icode::TypeDescription localType = typeDescriptionFromNode(ctx, root);
 
     if (root.type == node::VAR)
         localType.becomeMutable();
 
-    Unit local = ctx.ir.functionBuilder.createLocal(nameToken, localType);
+    Unit local = createLocal(ctx, nameToken, localType);
 
     Node lastNode = root.children.back();
 
@@ -30,7 +34,6 @@ void local(generator::GeneratorContext& ctx, const Node& root)
 
 void createWalrusLocal(generator::GeneratorContext& ctx, const Node& root, const Token& nameToken, const Unit& RHS)
 {
-    ctx.scope.putInCurrentScope(nameToken);
 
     icode::TypeDescription localType = RHS.type();
     localType.becomeNonPointer();
@@ -45,7 +48,7 @@ void createWalrusLocal(generator::GeneratorContext& ctx, const Node& root, const
 
     localType.decayAutoType();
 
-    Unit local = ctx.ir.functionBuilder.createLocal(nameToken, localType);
+    Unit local = createLocal(ctx, nameToken, localType);
 
     ctx.ir.functionBuilder.unitCopy(local, RHS);
 }
@@ -85,17 +88,15 @@ void namedDestructure(generator::GeneratorContext& ctx,
 
 void destructureLocal(generator::GeneratorContext& ctx, const Node& root)
 {
-    std::vector<Token> nameTokens;
-
-    for (const Node& child : root.children[0].children)
-        nameTokens.push_back(child.tok);
+    const std::vector<Token> nameTokens = root.children[0].getAllChildTokens();
 
     Unit RHS = expression(ctx, root.children.back());
 
-    if (!RHS.isStructOrArray())
-        ctx.console.compileErrorOnToken("Cannot destructure non struct or non array", root.children.back().tok);
+    if (!RHS.isStructOrArrayAndNotPointer())
+        ctx.console.compileErrorOnToken("Cannot destructure non struct or non fixed dim array",
+                                        root.children.back().tok);
 
-    if (RHS.isStruct() && ctx.ir.finder.isAllNamesStructFields(nameTokens, RHS))
+    if (ctx.ir.finder.isAllNamesStructFields(nameTokens, RHS.type()))
         namedDestructure(ctx, root, nameTokens, RHS);
     else
         orderedDestructure(ctx, root, nameTokens, RHS);

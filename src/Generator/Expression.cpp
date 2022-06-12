@@ -165,11 +165,11 @@ Unit createCallFunctionMust(generator::GeneratorContext& ctx,
 Unit createCallFunction(generator::GeneratorContext& ctx,
                         const std::vector<Token>& actualParamTokens,
                         const std::vector<Unit>& actualParams,
-                        const Token& calleeNameToken,
+                        const Token& errorToken,
                         const FunctionDescription& callee)
 {
     if (actualParams.size() != callee.numParameters())
-        ctx.console.compileErrorOnToken("Number of parameters don't match", calleeNameToken);
+        ctx.console.compileErrorOnToken("Number of parameters don't match", errorToken);
 
     return createCallFunctionMust(ctx, actualParamTokens, actualParams, callee);
 }

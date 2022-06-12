@@ -67,9 +67,33 @@ std::vector<TypeDescription> Finder::getFieldTypes(const TypeDescription& type)
     return fieldTypes;
 }
 
-std::vector<std::string> Finder::getFieldNames(const Unit& unit)
+std::vector<std::string> Finder::getFieldNames(const TypeDescription& type)
 {
-    return getStructDescFromUnit(unit).fieldNames;
+    return getStructDescFromType(type).fieldNames;
+}
+
+std::vector<TypeDescription> Finder::destructureStructType(const TypeDescription& type)
+{
+    const StructDescription structDescription = getStructDescFromType(type);
+
+    std::vector<TypeDescription> types;
+
+    for (const std::string& fieldName : structDescription.fieldNames)
+        types.push_back(structDescription.structFields.at(fieldName));
+
+    return types;
+}
+
+std::map<std::string, TypeDescription> Finder::destructureStructTypeMapped(const TypeDescription& type)
+{
+    const StructDescription structDescription = getStructDescFromType(type);
+
+    std::map<std::string, TypeDescription> typeMap;
+
+    for (const std::string& fieldName : structDescription.fieldNames)
+        typeMap[fieldName] = structDescription.structFields.at(fieldName);
+
+    return typeMap;
 }
 
 bool Finder::getLocal(const Token& nameToken, Unit& returnValue)
@@ -281,9 +305,12 @@ FunctionDescription Finder::getCustomOperatorFunction(const std::string& binaryO
     console.operatorError(errorToken, params[0], params[1]);
 }
 
-bool Finder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit)
+bool Finder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const TypeDescription& type)
 {
-    const StructDescription structDescription = getStructDescFromUnit(structUnit);
+    if (!type.isStruct())
+        return false;
+
+    const StructDescription structDescription = getStructDescFromType(type);
 
     for (auto& nameToken : nameTokens)
         if (!structDescription.fieldExists(nameToken.toString()))
@@ -323,7 +350,7 @@ FunctionDescription Finder::getMethodFromUnit(const Unit& unit, const std::strin
     icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
 
     icode::FunctionDescription function;
-    if (!typeModule.getFunction(method, function))
+    if (!typeModule.getFunction(mangledFunctionName, function))
         console.compileErrorOnToken("Method " + method + " does not exist", errorToken);
 
     return function;

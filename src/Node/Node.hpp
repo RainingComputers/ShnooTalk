@@ -34,6 +34,7 @@ namespace node
         WHILE,
         DO_WHILE,
         FOR,
+        FOR_EACH,
         LOOP,
         CAST,
         PTR_CAST,
@@ -85,6 +86,7 @@ struct Node
     bool isNthChildFromLast(node::NodeType nodeType, size_t N) const;
     Token getNthChildToken(size_t N) const;
     Token getNthChildTokenFromLast(size_t N) const;
+    std::vector<Token> getAllChildTokens() const;
     bool isConditionalExpression() const;
     bool isParamNode() const;
     bool isGenericModule() const;

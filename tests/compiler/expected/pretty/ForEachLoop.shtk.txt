@@ -1,0 +1,79 @@
+{
+    "ForEachLoop.shtk": {
+        "moduleName": "ForEachLoop.shtk",
+        "functions": {
+            "_fn_ForEachLoop_shtk_createTestGenerator": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct g
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp11 = cast autoInt 1
+                        int* tempPtr7 = write int temp11
+                        int* tempPtr13 = addressAdd int* tempPtr7, bytes 4
+                        int temp14 = cast autoInt 2
+                        int* tempPtr13 = write int temp14
+                        int* tempPtr16 = addressAdd int* tempPtr13, bytes 4
+                        int temp17 = cast autoInt 3
+                        int* tempPtr16 = write int temp17
+                        int* tempPtr20 = createPointer struct returnValue18
+                        int* tempPtr21 = createPointer struct g
+                        int* tempPtr20 = memoryCopy int* tempPtr21, autoInt 12
+                        return
+                ]
+            },
+            "_fn_ForEachLoop_shtk_length": {
+                "icode": [
+                        ulong temp29 = cast autoInt 3
+                        ulong returnValue27 = equal ulong temp29
+                        return
+                ]
+            },
+            "_fn_ForEachLoop_shtk_subscriptItem": {
+                "icode": [
+                        int* tempPtr35 = createPointer struct self
+                        int* tempPtr37 = addressAdd int* tempPtr35, bytes 0
+                        void* tempPtr40 = addressMultiply ulong index, bytes 4
+                        int* tempPtr41 = addressAdd int* tempPtr37, void* tempPtr40
+                        int temp42 = read int* tempPtr41
+                        int returnValue33 = equal int temp42
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        struct calleeReturnValue46 = call struct _fn_ForEachLoop_shtk_createTestGenerator, module ForEachLoop.shtk
+                        int* tempPtr50 = createPointer struct a
+                        int* tempPtr51 = createPointer struct calleeReturnValue46
+                        int* tempPtr50 = memoryCopy int* tempPtr51, autoInt 12
+                        autoInt* tempPtr55 = allocPointer 
+                        autoInt* tempPtr55 = write autoInt 0
+                    _for_each_true_l27_c4:
+                        int* tempPtr61 = createPointer struct a
+                        passPointer int* tempPtr61, ulong _fn_ForEachLoop_shtk_length, module ForEachLoop.shtk
+                        ulong calleeReturnValue64 = call ulong _fn_ForEachLoop_shtk_length, module ForEachLoop.shtk
+                        autoInt temp67 = read autoInt* tempPtr55
+                        autoInt temp68 = cast ulong calleeReturnValue64
+                        flag = lessThan autoInt temp67, autoInt temp68
+                        if(not flag) goto _for_each_false_l27_c4
+                        int* tempPtr71 = createPointer struct a
+                        passPointer int* tempPtr71, int _fn_ForEachLoop_shtk_subscriptItem, module ForEachLoop.shtk
+                        autoInt temp74 = read autoInt* tempPtr55
+                        ulong temp75 = cast autoInt temp74
+                        pass ulong temp75, int _fn_ForEachLoop_shtk_subscriptItem, module ForEachLoop.shtk
+                        int calleeReturnValue78 = call int _fn_ForEachLoop_shtk_subscriptItem, module ForEachLoop.shtk
+                        int x = equal int calleeReturnValue78
+                        print int x
+                        newLine
+                    _for_each_cont_true_l27_c4:
+                        autoInt temp84 = read autoInt* tempPtr55
+                        autoInt temp83 = add autoInt temp84, autoInt 1
+                        autoInt* tempPtr55 = write autoInt temp83
+                        goto _for_each_true_l27_c4
+                    _for_each_false_l27_c4:
+                        int temp87 = cast autoInt 0
+                        int returnValue85 = equal int temp87
+                        return
+                ]
+            }
+        }
+    }
+}

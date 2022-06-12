@@ -123,6 +123,7 @@ const std::string nodeTypeToString[] = {
     "WHILE",
     "DO_WHILE",
     "FOR",
+    "FOR_EACH",
     "LOOP",
     "CAST",
     "PTR_CAST",

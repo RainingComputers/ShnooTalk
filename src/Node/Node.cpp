@@ -46,6 +46,16 @@ Token Node::getNthChildTokenFromLast(size_t N) const
     return children[children.size() - N].tok;
 }
 
+std::vector<Token> Node::getAllChildTokens() const
+{
+    std::vector<Token> tokens;
+
+    for (const Node& child : children)
+        tokens.push_back(child.tok);
+
+    return tokens;
+}
+
 bool Node::isConditionalExpression() const
 {
     if (tok.getType() == token::CONDN_NOT)

@@ -39,3 +39,18 @@ TypeDescription prependDimension(const TypeDescription& typeDescription, int dim
 
     return modifiedTypeDescription;
 }
+
+TypeDescription getElementType(const TypeDescription& typeDescription)
+{
+    TypeDescription modifiedTypeDescription = typeDescription;
+
+    modifiedTypeDescription.size /= modifiedTypeDescription.numElements();
+
+    modifiedTypeDescription.dimensions.erase(modifiedTypeDescription.dimensions.begin(),
+                                             modifiedTypeDescription.dimensions.begin() + 1);
+
+    modifiedTypeDescription.dimTypes.erase(modifiedTypeDescription.dimTypes.begin(),
+                                           modifiedTypeDescription.dimTypes.begin() + 1);
+
+    return modifiedTypeDescription;
+}

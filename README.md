@@ -97,6 +97,7 @@ make test
 - [ ] Reduce binary size
 - [x] Fix bug in calling deconstructors
 - [ ] Generators and foreach loop
+- [ ] Add `clone` built in
 - [x] extern "C" to prevent name mangling functions
 - [x] Decide names and defaults for primitive data types
 - [x] Arrays and pointers of generic types

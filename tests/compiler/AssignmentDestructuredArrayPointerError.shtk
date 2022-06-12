@@ -1,0 +1,10 @@
+fn main() -> int
+{
+    var a: int[]
+
+    var b: int
+
+    .[b] = a
+
+    return 0
+}

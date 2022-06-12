@@ -87,16 +87,6 @@ bool allIdentifierNodes(const Node& LHSNode)
     return true;
 }
 
-std::vector<Token> getNameTokens(const Node& LHSNode)
-{
-    std::vector<Token> nameTokens;
-
-    for (const Node& child : LHSNode.children)
-        nameTokens.push_back(child.children[0].children[0].tok);
-
-    return nameTokens;
-}
-
 void orderedDestructuredAssignment(generator::GeneratorContext& ctx, const Node& root, const Unit& LHS, const Unit& RHS)
 {
     const Token assignmentOperator = root.getNthChildTokenFromLast(2);
@@ -152,14 +142,14 @@ void destructuredAssignment(generator::GeneratorContext& ctx, const Node& root)
     Unit LHS = expression(ctx, root.children[0]);
     Unit RHS = expression(ctx, root.children[2]);
 
-    if (!RHS.isStructOrArray())
-        ctx.console.compileErrorOnToken("Cannot destructure non struct or non array", root.children[2].tok);
+    if (!RHS.isStructOrArrayAndNotPointer())
+        ctx.console.compileErrorOnToken("Cannot destructure non struct or non fixed dim array", root.children[2].tok);
 
-    if (allIdentifierNodes(LHSNode) && RHS.isStruct())
+    if (allIdentifierNodes(LHSNode))
     {
-        std::vector<Token> nameTokens = getNameTokens(LHSNode);
+        const std::vector<Token> nameTokens = LHSNode.getAllChildTokens();
 
-        if (ctx.ir.finder.isAllNamesStructFields(nameTokens, RHS))
+        if (ctx.ir.finder.isAllNamesStructFields(nameTokens, RHS.type()))
             namedDestructuredAssignment(ctx, root, nameTokens, LHS, RHS);
         else
             orderedDestructuredAssignment(ctx, root, LHS, RHS);

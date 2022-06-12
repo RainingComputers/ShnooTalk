@@ -46,7 +46,11 @@ public:
 
     std::vector<icode::TypeDescription> getFieldTypes(const icode::TypeDescription& type);
 
-    std::vector<std::string> getFieldNames(const Unit& unit);
+    std::vector<std::string> getFieldNames(const icode::TypeDescription& type);
+
+    std::vector<icode::TypeDescription> destructureStructType(const icode::TypeDescription& type);
+
+    std::map<std::string, icode::TypeDescription> destructureStructTypeMapped(const icode::TypeDescription& type);
 
     Unit getUnitFromToken(const Token& nameToken);
 
@@ -59,10 +63,10 @@ public:
                                                        const std::vector<Unit>& params);
 
     icode::FunctionDescription getCustomOperatorFunction(const std::string& binaryOperatorName,
-                                                               const std::vector<Unit>& params,
-                                                               const Token& errorToken);
+                                                         const std::vector<Unit>& params,
+                                                         const Token& errorToken);
 
-    bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const Unit& structUnit);
+    bool isAllNamesStructFields(const std::vector<Token>& nameTokens, const icode::TypeDescription& type);
 
     bool deconstructorExists(const icode::TypeDescription& type);
 

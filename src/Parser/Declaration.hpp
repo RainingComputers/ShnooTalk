@@ -10,6 +10,7 @@ void identifierDeclarationRequiredInit(parser::ParserContext& ctx);
 void identifierDeclareListRequiredInit(parser::ParserContext& ctx);
 
 void walrusDeclaration(parser::ParserContext& ctx);
+void destructureList(parser::ParserContext& ctx);
 void destructureDeclaration(parser::ParserContext& ctx);
 
 #endif
