@@ -82,6 +82,9 @@ bool allIdentifierNodes(const Node& LHSNode)
 
         if (child.children[0].children[0].type != node::IDENTIFIER)
             return false;
+
+        if (child.children[0].children.size() != 1)
+            return false;
     }
 
     return true;

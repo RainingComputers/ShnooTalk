@@ -1,0 +1,8 @@
+MODULE InvalidGenericModuleAccessTypeError.shtk
+ERROR in Line 5 Col 18
+
+    var a: Pair::Pair::Pair[int, int]
+                 ^
+Invalid namespace access from generic
+
+InvalidGenericModuleAccessTypeError.shtk:5:17

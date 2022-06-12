@@ -1,0 +1,8 @@
+MODULE ForEachLoopDestructuredStructError.shtk
+ERROR in Line 44 Col 5
+
+    for [p, q, r] in a {
+    ^
+Number of for each locals do not match
+
+ForEachLoopDestructuredStructError.shtk:44:4

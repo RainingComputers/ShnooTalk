@@ -1,0 +1,32 @@
+struct TestGenerator
+{
+    var a: int[1][3]
+}
+
+fn createTestGenerator() -> TestGenerator
+{
+    var g: TestGenerator
+    g.a = [[1, 2, 3]]
+    return g
+}
+
+fn length(self: TestGenerator) -> ulong
+{
+    return 1
+}
+
+fn subscriptItem(self: TestGenerator, index: ulong) -> int[3]
+{
+    return self.a[index]
+}
+
+fn main() -> int
+{
+    const a := createTestGenerator()
+    
+    for [x, y, z, zz] in a {
+        println(x, y, z, zz)
+    }
+
+    return 0
+}

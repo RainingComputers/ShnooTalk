@@ -1,0 +1,8 @@
+use "TestModules/Pair.shtk" as Pair
+
+fn main() -> int
+{
+    var a: Pair::Pair::Pair[int, int]
+
+    return 0
+}

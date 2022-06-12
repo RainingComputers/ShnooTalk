@@ -94,14 +94,16 @@ make test
 - [x] Better operator overloading
 - [x] `in` operator
 - [x] Subscript operator overloading
-- [ ] Reduce binary size
-- [x] Fix bug in calling deconstructors
-- [ ] Generators and foreach loop
-- [ ] Add `clone` built in
 - [x] extern "C" to prevent name mangling functions
 - [x] Decide names and defaults for primitive data types
 - [x] Arrays and pointers of generic types
 - [x] Proper enums
+- [x] Fix bug in calling deconstructors
+- [x] Generators and foreach loop
+- [ ] Enumerated foreach loop
+- [ ] `?` operator
+- [ ] Add `clone` built in
+- [ ] Reduce binary size
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend

@@ -1,0 +1,49 @@
+struct Point
+{
+    var x: int
+    var y: float
+}
+
+fn createPoint(x: int, y: float) -> Point
+{
+    var p: Point
+    p.x = x
+    p.y = y
+    return p
+}
+
+struct TestGenerator
+{
+    var a: int[3]
+    var b: float[3]
+}
+
+
+fn createTestGenerator() -> TestGenerator
+{
+    var g: TestGenerator
+    g.a = [1, 2, 3]
+    g.b = [4.0, 5.0, 6.0]
+    return g
+}
+
+fn length(self: TestGenerator) -> ulong
+{
+    return 3
+}
+
+fn subscriptItem(self: TestGenerator, index: ulong) -> Point
+{
+    return createPoint(self.a[index], self.b[index])
+}
+
+fn main() -> int
+{
+    const a := createTestGenerator()
+    
+    for [p, q, r] in a {
+        println(p, q)
+    }
+
+    return 0
+}

@@ -1,0 +1,4 @@
+fn foobar() -> int*
+{
+    return 1
+}

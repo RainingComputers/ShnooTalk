@@ -1,0 +1,15 @@
+struct Foobar{}
+
+fn subscript(self: Foobar, index: ulong) -> int[3]
+{
+    return [1, 2, 3]
+}
+
+fn main() -> int
+{
+    var a: Foobar
+
+    println(a[0][2])
+
+    return 0
+}
