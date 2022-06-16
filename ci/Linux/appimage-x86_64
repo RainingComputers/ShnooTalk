@@ -6,7 +6,7 @@ AppDir:
   app_info:
     id: shnootalk-compiler
     name: shtkc
-    icon: application-x-executable
+    icon: utilities-terminal
     version: 0.2.0-alpha # TODO: set this using python script
     exec: usr/bin/shtkc
     exec_args: $@
