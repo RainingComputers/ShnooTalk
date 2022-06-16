@@ -8,7 +8,7 @@ from tests_runner.framework.command import run_command, link_objects_into_bin, s
 from tests_runner.framework.fs import remove_if_exists, dump_string_to_file, remove_files
 from tests_runner.framework.fs import string_from_file
 from tests_runner.framework.result import Result
-from tests_runner.framework.coverage import set_gmon_prefix, setup_coverage_dir
+from tests_runner.framework.coverage import set_gmon_prefix
 
 
 def setup(file_name: str) -> None:
@@ -18,9 +18,6 @@ def setup(file_name: str) -> None:
 
     # Set profile output file name (applicable if lcov build)
     set_gmon_prefix(file_name)
-
-    # Create dir for string .info files (lcov)
-    setup_coverage_dir()
 
 
 def compare(expected_output: str, output: Optional[str]) -> Result:

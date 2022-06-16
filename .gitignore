@@ -3,11 +3,11 @@ obj/*
 bin/*
 
 # test coverage
-tests/testinfo/
-tests/reports/
-tests/*.gmon.out.*
-tests/*.info
-tests/compiler/*.info
+compiler/tests/testinfo/
+compiler/tests/reports/
+compiler/tests/*.gmon.out.*
+compiler/tests/*.info
+compiler/tests/compiler/*.info
 .cccc/*
 
 # shnootalk testing
