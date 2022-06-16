@@ -2,7 +2,7 @@ from typing import Tuple, List, Optional
 
 import subprocess
 
-from tests_runner.framework.fs import get_files
+from tests_runner.framework.fs import get_files_parent_dir
 from tests_runner.framework.config import TIMEOUT, COMPILER_EXEC_PATH
 
 
@@ -29,4 +29,4 @@ def shtk_compile(file_name: str, compile_flag: str) -> Tuple[bool, str, Optional
 
 
 def link_objects_into_bin() -> None:
-    run_command(["gcc"] + get_files(".o") + ["-o", "test_executable", "-lm"])
+    run_command(["gcc"] + get_files_parent_dir(".o") + ["-o", "test_executable", "-lm"])

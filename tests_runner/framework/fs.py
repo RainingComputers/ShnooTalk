@@ -22,6 +22,10 @@ def get_files(file_ext: str) -> List[str]:
     return glob.glob(f"**/*{file_ext}", recursive=True)
 
 
+def get_files_parent_dir(file_ext: str) -> List[str]:
+    return glob.glob(f"../**/*{file_ext}", recursive=True)
+
+
 def remove_files(file_ext: str) -> None:
     files = get_files(file_ext)
 

@@ -6,7 +6,7 @@ from tests_runner.framework import compile_phase, compile_success_output_assert
 from tests_runner.framework import tester
 
 
-@tester.batch("tests/ir")
+@tester.batch("compiler/tests/ir")
 def ir_json(file_name: str) -> Result:
     test_case_file_path = os.path.join("expected/json", file_name+".json")
 

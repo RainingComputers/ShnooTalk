@@ -17,7 +17,8 @@ tests/log.txt
 *.o
 test
 test.o
-tests/compiler/test_executable
+compiler/tests/compiler/test_executable
+stdlib/tests/test_executable
 
 # temp dir in test dir
 tests/temp/*

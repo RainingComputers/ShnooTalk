@@ -101,21 +101,21 @@ endif
 CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
 LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
-# Find all .hpp files in src/
-HEADERS = $(shell find src/ -name '*.hpp')
-# Find all .cpp files in src/
-SOURCES = $(shell find src/ -name '*.cpp')
+# Find all .hpp files in compiler/src/
+HEADERS = $(shell find compiler/src/ -name '*.hpp')
+# Find all .cpp files in compiler/src/
+SOURCES = $(shell find compiler/src/ -name '*.cpp')
 # Set object file names, all object files are in obj/
-OBJECTS = $(SOURCES:src/%.cpp=obj/$(BUILD_TYPE)/%.o)
+OBJECTS = $(SOURCES:compiler/src/%.cpp=obj/$(BUILD_TYPE)/%.o)
 
 # Creating directories required for linking and building executable
 dirs:
 	mkdir -p obj/$(BUILD_TYPE)/
 	mkdir -p bin/$(BUILD_TYPE)/
-	cd src/ && find . -type d -exec mkdir -p ../obj/$(BUILD_TYPE)/{} \;
+	cd compiler/src/ && find . -type d -exec mkdir -p ../../obj/$(BUILD_TYPE)/{} \;
 
-# For compiling .cpp files in src/ to .o object files in obj/
-obj/$(BUILD_TYPE)/%.o: src/%.cpp $(HEADERS) 
+# For compiling .cpp files in compiler/src/ to .o object files in obj/
+obj/$(BUILD_TYPE)/%.o: compiler/src/%.cpp $(HEADERS) 
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Linking all object files to executable 
@@ -154,14 +154,17 @@ tidy:
 clean:
 	rm -f -r bin/
 	rm -f -r obj/
-	rm -f -r tests/reports/
+	rm -f -r compiler/tests/reports/
 	rm -f -r tests/*.info
-	rm -f tests/compiler/*.llc
-	rm -f tests/compiler/*.llc.s
-	rm -f tests/compiler/*.o
-	rm -f tests/compiler/TestModules/*.o
-	rm -f tests/compiler/test
-	rm -f tests/*.gmon.out*
+	rm -f compiler/tests/compiler/*.llc
+	rm -f compiler/tests/compiler/*.llc.s
+	rm -f compiler/tests/compiler/*.o
+	rm -f compiler/tests/compiler/TestModules/*.o
+	rm -f compiler/tests/compiler/test
+	rm -f compiler/tests/*.gmon.out*
+	rm -f stdlib/tests/*.o
+	rm -f stdlib/tests/test_executable
+	rm -f stdlib/stdlib/*.o
 	rm -rf .mypy_cache
 	find . -type d -name  "__pycache__" -exec rm -r {} +
 	rm -f -r $(BUILD_TYPE).AppDir/

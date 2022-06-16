@@ -46,7 +46,7 @@ COMPILER_VERSION = string_from_file(VERSION_FILE)
 
 # Set coverage report directory, coverage exclude list and executable to open html report
 
-COVERAGE_REPORT_DIR = os.path.join(os.getcwd(), "tests",  "reports")
+COVERAGE_REPORT_DIR = os.path.join(os.getcwd(), "compiler/tests",  "reports")
 
 LCOV_EXCLUDE_LIST = [
     '/usr/include/*',

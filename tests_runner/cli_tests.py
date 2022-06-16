@@ -45,7 +45,7 @@ def no_args() -> Result:
     return simple_output_assert([], USAGE_HELP, True)
 
 
-@tester.single("tests/compiler")
+@tester.single("compiler/tests/compiler")
 def invalid_args() -> Result:
     return simple_output_assert(["TestModules/Math.shtk", "-invalid"], USAGE_HELP, True)
 
@@ -58,6 +58,6 @@ def too_many_args() -> Result:
     )
 
 
-@tester.single("tests/compiler")
+@tester.single("compiler/tests/compiler")
 def file_does_not_exists() -> Result:
     return simple_output_assert(["NoExist.shtk", "-c"], FILE_IO_ERROR, True)

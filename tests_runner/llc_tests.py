@@ -4,7 +4,7 @@ from tests_runner.framework import compile_phase, command_on_compile_success_out
 from tests_runner.framework import tester
 
 
-@tester.batch("tests/compiler", [".o", ".llc", ".llc.s"])
+@tester.batch("compiler/tests/compiler", [".o", ".llc", ".llc.s"])
 def llc(file_name: str) -> Result:
     llc_file_name = file_name + ".llc"
 

@@ -2,17 +2,18 @@ import sys
 
 from tests_runner.framework import tester
 
-from tests_runner import parser_tests, ir_tests, compiler_tests, llc_tests, cli_tests
+from tests_runner import parser_tests, ir_tests, compiler_tests, llc_tests, cli_tests, stdlib_tests
 
 
 def main() -> int:
-    tester.generator("tests/parser", "expected/json", "json", "-json-ast")
-    tester.generator("tests/parser", "expected/pretty", "txt", "-ast")
-    tester.generator("tests/ir", "expected/json", "json", "-json-ir-all")
-    tester.generator("tests/compiler", "expected/json", "json", "-json-icode-all", True)
-    tester.generator("tests/compiler", "expected/pretty", "txt", "-icode-all", True)
-    tester.exec_generator("tests/compiler", "expected/output")
-    tester.register([parser_tests, ir_tests, compiler_tests, llc_tests, cli_tests])
+    tester.generator("compiler/tests/parser", "expected/json", "json", "-json-ast")
+    tester.generator("compiler/tests/parser", "expected/pretty", "txt", "-ast")
+    tester.generator("compiler/tests/ir", "expected/json", "json", "-json-ir-all")
+    tester.generator("compiler/tests/compiler", "expected/json", "json", "-json-icode-all", True)
+    tester.generator("compiler/tests/compiler", "expected/pretty", "txt", "-icode-all", True)
+    tester.exec_generator("compiler/tests/compiler", "expected/output")
+    tester.exec_generator("stdlib/tests", "expected/output")
+    tester.register([parser_tests, ir_tests, compiler_tests, llc_tests, cli_tests, stdlib_tests])
 
     return tester.run()
 
