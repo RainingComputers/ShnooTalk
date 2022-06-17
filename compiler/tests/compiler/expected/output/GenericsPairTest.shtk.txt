@@ -1,3 +1,4 @@
-LLVM ERROR: Could not open file: No such file or directory
-
-GenericsPairTest.shtk
+8.000000
+8
+5
+x: 5 y: 5

@@ -1,3 +1,5 @@
+#include <filesystem>
+
 #include "llvm/IR/IRBuilder.h"
 #include "llvm/IR/LLVMContext.h"
 #include "llvm/IR/LegacyPassManager.h"
@@ -7,6 +9,8 @@
 #include "llvm/Support/TargetRegistry.h"
 #include "llvm/Support/TargetSelect.h"
 #include "llvm/Target/TargetMachine.h"
+
+#include "../Builder/NameMangle.hpp"
 
 #include "SetupLLVM.hpp"
 
@@ -43,11 +47,24 @@ TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx, const st
     return targetMachine;
 }
 
+std::string createDirectoriesAndGetOutputObjName(const std::string& moduleName)
+{
+    std::filesystem::path objFileName(mangleModuleName(moduleName));
+    objFileName += ".o";
+
+    const std::filesystem::path objDir("_obj");
+    const std::filesystem::path objPath = objDir / objFileName;
+
+    std::filesystem::create_directory(objDir);
+
+    return objPath.string();
+}
+
 void setupPassManagerAndCreateObject(ModuleContext& ctx, const std::string& targetTriple)
 {
     TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple);
 
-    auto filename = ctx.moduleDescription.name + ".o";
+    auto filename = createDirectoriesAndGetOutputObjName(ctx.moduleDescription.name);
     std::error_code EC;
     raw_fd_ostream dest(filename, EC, sys::fs::OF_None);
 

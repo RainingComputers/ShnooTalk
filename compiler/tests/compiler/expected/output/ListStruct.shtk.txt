@@ -1,3 +1,8 @@
-LLVM ERROR: Could not open file: No such file or directory
-
-ListStruct.shtk
+x: 1 y: 2
+x: 2 y: 3
+x: 3 y: 4
+x: 1 y: 2
+x: 2 y: 3
+x: 3 y: 4
+x: 5 y: 6
+x: 7 y: 8

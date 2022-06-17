@@ -161,12 +161,15 @@ clean:
 	rm -f compiler/tests/compiler/*.o
 	rm -f compiler/tests/compiler/TestModules/*.o
 	rm -f compiler/tests/compiler/test
+	rm -f compiler/tests/compiler/test_executable
 	rm -f compiler/tests/*.gmon.out*
 	rm -f stdlib/tests/*.o
 	rm -f stdlib/tests/test_executable
+	rm -f stdlib/tests/test
 	rm -f stdlib/stdlib/*.o
 	rm -rf .mypy_cache
 	find . -type d -name  "__pycache__" -exec rm -r {} +
+	find . -type d -name  "_obj" -exec rm -r {} +
 	rm -f -r $(BUILD_TYPE).AppDir/
 	rm -f *.AppImage
 	rm -f *.tar.xz
