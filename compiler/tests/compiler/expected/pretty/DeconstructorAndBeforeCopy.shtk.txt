@@ -30,56 +30,61 @@
                         int temp40 = cast autoInt 1
                         int* tempPtr38 = write int temp40
                         struct calleeReturnValue42 = call struct _fn_DeconstructorAndBeforeCopy_shtk_testing, module DeconstructorAndBeforeCopy.shtk
-                        int* tempPtr45 = createPointer struct foobar2
+                        int* tempPtr45 = createPointer struct calleeReturnValue42
                         int* tempPtr47 = addressAdd int* tempPtr45, bytes 0
-                        int* tempPtr49 = createPointer struct foobar2
-                        passPointer int* tempPtr49, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue52 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr49 = createPointer struct calleeReturnValue42
+                        passPointer int* tempPtr49, void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
+                        void calleeReturnValue52 = call void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
                         int* tempPtr55 = createPointer struct foobar2
-                        int* tempPtr56 = createPointer struct calleeReturnValue42
-                        int* tempPtr55 = memoryCopy int* tempPtr56, autoInt 4
-                        int* tempPtr60 = createPointer struct foobar2
-                        int* tempPtr62 = addressAdd int* tempPtr60, bytes 0
-                        int* tempPtr64 = createPointer struct foobar2
-                        passPointer int* tempPtr64, void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
-                        void calleeReturnValue67 = call void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
-                        int* tempPtr70 = createPointer struct foobar1
+                        int* tempPtr57 = addressAdd int* tempPtr55, bytes 0
+                        int* tempPtr59 = createPointer struct foobar2
+                        passPointer int* tempPtr59, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue62 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr65 = createPointer struct foobar2
+                        int* tempPtr66 = createPointer struct calleeReturnValue42
+                        int* tempPtr65 = memoryCopy int* tempPtr66, autoInt 4
+                        int* tempPtr70 = createPointer struct foobar2
                         int* tempPtr72 = addressAdd int* tempPtr70, bytes 0
-                        int* tempPtr74 = createPointer struct foobar1
-                        passPointer int* tempPtr74, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue77 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr74 = createPointer struct foobar2
+                        passPointer int* tempPtr74, void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
+                        void calleeReturnValue77 = call void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
                         int* tempPtr80 = createPointer struct foobar1
-                        int* tempPtr81 = createPointer struct foobar2
-                        int* tempPtr80 = memoryCopy int* tempPtr81, autoInt 4
-                        int* tempPtr84 = createPointer struct _fn_DeconstructorAndBeforeCopy_shtk_foobarGlobal
-                        int* tempPtr86 = addressAdd int* tempPtr84, bytes 0
-                        int temp88 = cast autoInt 1000
-                        int* tempPtr86 = write int temp88
+                        int* tempPtr82 = addressAdd int* tempPtr80, bytes 0
+                        int* tempPtr84 = createPointer struct foobar1
+                        passPointer int* tempPtr84, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue87 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr90 = createPointer struct foobar1
                         int* tempPtr91 = createPointer struct foobar2
-                        int* tempPtr93 = addressAdd int* tempPtr91, bytes 0
-                        int* tempPtr95 = createPointer struct foobar2
-                        passPointer int* tempPtr95, void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
-                        void calleeReturnValue98 = call void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
-                        int* tempPtr101 = createPointer struct _fn_DeconstructorAndBeforeCopy_shtk_foobarGlobal
+                        int* tempPtr90 = memoryCopy int* tempPtr91, autoInt 4
+                        int* tempPtr94 = createPointer struct _fn_DeconstructorAndBeforeCopy_shtk_foobarGlobal
+                        int* tempPtr96 = addressAdd int* tempPtr94, bytes 0
+                        int temp98 = cast autoInt 1000
+                        int* tempPtr96 = write int temp98
+                        int* tempPtr101 = createPointer struct foobar2
                         int* tempPtr103 = addressAdd int* tempPtr101, bytes 0
-                        int* tempPtr105 = createPointer struct _fn_DeconstructorAndBeforeCopy_shtk_foobarGlobal
-                        passPointer int* tempPtr105, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue108 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr105 = createPointer struct foobar2
+                        passPointer int* tempPtr105, void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
+                        void calleeReturnValue108 = call void _fn_TestModules_Foobar_shtk_beforeCopy, module TestModules/Foobar.shtk
                         int* tempPtr111 = createPointer struct _fn_DeconstructorAndBeforeCopy_shtk_foobarGlobal
-                        int* tempPtr112 = createPointer struct foobar2
-                        int* tempPtr111 = memoryCopy int* tempPtr112, autoInt 4
-                        int temp116 = cast autoInt 0
-                        int returnValue114 = equal int temp116
-                        int* tempPtr118 = createPointer struct foobar1
-                        int* tempPtr120 = addressAdd int* tempPtr118, bytes 0
-                        int* tempPtr122 = createPointer struct foobar1
-                        passPointer int* tempPtr122, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue125 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        int* tempPtr129 = createPointer struct foobar2
-                        int* tempPtr131 = addressAdd int* tempPtr129, bytes 0
-                        int* tempPtr133 = createPointer struct foobar2
-                        passPointer int* tempPtr133, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue136 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr113 = addressAdd int* tempPtr111, bytes 0
+                        int* tempPtr115 = createPointer struct _fn_DeconstructorAndBeforeCopy_shtk_foobarGlobal
+                        passPointer int* tempPtr115, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue118 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr121 = createPointer struct _fn_DeconstructorAndBeforeCopy_shtk_foobarGlobal
+                        int* tempPtr122 = createPointer struct foobar2
+                        int* tempPtr121 = memoryCopy int* tempPtr122, autoInt 4
+                        int temp126 = cast autoInt 0
+                        int returnValue124 = equal int temp126
+                        int* tempPtr128 = createPointer struct foobar1
+                        int* tempPtr130 = addressAdd int* tempPtr128, bytes 0
+                        int* tempPtr132 = createPointer struct foobar1
+                        passPointer int* tempPtr132, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue135 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        int* tempPtr139 = createPointer struct foobar2
+                        int* tempPtr141 = addressAdd int* tempPtr139, bytes 0
+                        int* tempPtr143 = createPointer struct foobar2
+                        passPointer int* tempPtr143, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        void calleeReturnValue146 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
                         return
                 ]
             }

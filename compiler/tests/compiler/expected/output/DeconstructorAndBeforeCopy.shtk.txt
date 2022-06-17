@@ -1,5 +1,7 @@
 300
 beforeCopy
+300
+beforeCopy
 1
 deconstruct
 300

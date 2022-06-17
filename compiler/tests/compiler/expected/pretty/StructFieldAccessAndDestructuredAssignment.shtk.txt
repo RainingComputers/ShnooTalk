@@ -1,0 +1,25 @@
+{
+    "StructFieldAccessAndDestructuredAssignment.shtk": {
+        "moduleName": "StructFieldAccessAndDestructuredAssignment.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int temp5 = cast autoInt 5
+                        int a = equal int temp5
+                        int b = equal int a
+                        int temp12 = cast autoInt 1
+                        int a = equal int temp12
+                        int temp13 = cast autoInt 2
+                        int b = equal int temp13
+                        print int a
+                        space
+                        print int b
+                        newLine
+                        int temp18 = cast autoInt 0
+                        int returnValue16 = equal int temp18
+                        return
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "StructFieldAccessAndDestructuredAssignment.shtk": {
+        "moduleName": "StructFieldAccessAndDestructuredAssignment.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 5, "dtype": "int"}, "op2": {"type": "literal", "id": 3, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 4, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 5, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 7, "name": "b", "dtype": "int"}, "op2": {"type": "var", "id": 6, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 12, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 8, "name": "a", "dtype": "int"}, "op2": {"type": "temp", "id": 12, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 13, "dtype": "int"}, "op2": {"type": "literal", "id": 11, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 9, "name": "b", "dtype": "int"}, "op2": {"type": "temp", "id": 13, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "var", "id": 14, "name": "a", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "var", "id": 15, "name": "b", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 18, "dtype": "int"}, "op2": {"type": "literal", "id": 17, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 16, "dtype": "int"}, "op2": {"type": "temp", "id": 18, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

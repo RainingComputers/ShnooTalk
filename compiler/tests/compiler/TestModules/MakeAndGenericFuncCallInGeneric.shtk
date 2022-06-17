@@ -1,0 +1,13 @@
+generic T
+
+from "TestModules/List.shtk" use List, createList
+
+
+fn test() 
+{
+    const a := ['a', 'b', 'd', 'e']
+
+    const b := createList[T](T[]`a, 4)
+
+    const c := make(List[T], T[]`a, 4)
+}

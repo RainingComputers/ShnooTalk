@@ -126,9 +126,9 @@ void genericFunctionCall(const InstiatorContext& ctx, Node& root)
     for (Node& child : root.children)
     {
         if (child.type != node::GENERIC_TYPE_PARAM)
-            break;
-
-        monomorphizeTypeNode(ctx, child);
+            expression(ctx, child);
+        else
+            monomorphizeTypeNode(ctx, child);
     }
 }
 

@@ -45,13 +45,8 @@ bool genericTypePresent(const Node& root,
     }
 
     for (const Node& child : root.children)
-    {
-        if (child.type == node::BLOCK)
-            return false;
-
         if (genericTypePresent(child, genericIdentifiers, genericStructs))
             return true;
-    }
 
     return false;
 }

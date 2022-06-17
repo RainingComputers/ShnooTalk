@@ -104,6 +104,7 @@ make test
 - [ ] `?` operator
 - [ ] Add `clone` built in
 - [ ] Reduce binary size
+- [ ] Add SHNOOTALK_PATH environment variable, and use PATH by default
 
 *Backlog*
 - [x] Fix bugs in the LLVM translator backend
@@ -164,8 +165,8 @@ make test
 - [ ] Cleanup format strings and function call in Translator
 
 *Bugs*
-- [ ] Fix `.[` clash between destructured assignment and struct field `.`
-- [ ] Fix generic function call in instatiator
+- [x] Fix `.[` clash between destructured assignment and struct field `.`
+- [x] Fix generic function call in instatiator
 
 ### Documentation
 

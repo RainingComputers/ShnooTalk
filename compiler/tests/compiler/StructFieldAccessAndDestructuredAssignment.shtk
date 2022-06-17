@@ -1,0 +1,11 @@
+fn main() -> int
+{
+    var a := 5
+    var b := a
+
+    .[a, b] = [1, 2]
+
+    println(a, b)
+
+    return 0
+}

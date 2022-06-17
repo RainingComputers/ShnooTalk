@@ -1,0 +1,7 @@
+from "TestModules/MakeAndGenericFuncCallInGeneric.shtk" use test
+
+fn main() -> int
+{
+    test[ubyte]()
+    return 0
+}

@@ -29,7 +29,7 @@ void identifierWithQualidentAndSubscript(parser::ParserContext& ctx)
 
     /* The dpeek is so that it does not collide with methodCall */
 
-    while (ctx.accept(token::DOT) && !ctx.dpeek(token::LPAREN))
+    while (ctx.accept(token::DOT) && !ctx.peek(token::OPEN_SQUARE) && !ctx.dpeek(token::LPAREN))
     {
         ctx.addNode(node::STRUCT_FIELD);
         ctx.expect(token::IDENTIFIER);
