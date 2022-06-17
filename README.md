@@ -128,7 +128,6 @@ make test
 - [x] Assigning conditional expressions
 - [x] Setup github workflows and build for other platforms
 - [x] Function forward declaration
-- [ ] Cleanup format strings and function call in Translator
 - [ ] Error recovery in lexer and parser
 - [ ] Static variables
 - [ ] Struct alignment and padding
@@ -157,6 +156,17 @@ make test
 - [ ] Testing framework
 - [ ] Concurrency
 
+*Refactoring*
+- [ ] Use optional
+- [ ] Some duplication of code before calling `premangledFunctionCall`
+- [ ] Move type checking to builder
+- [ ] Remove tokens from builder
+- [ ] Cleanup format strings and function call in Translator
+
+*Bugs*
+- [ ] Fix `.[` clash between destructured assignment and struct field `.`
+- [ ] Fix generic function call in instatiator
+
 ### Documentation
 
 - [ ] Language tour using shnootalk-playground
@@ -181,12 +191,6 @@ make test
 - [ ] Unit tests for ir builder
 - [ ] Unit tests for pretty printer
 - [ ] Use multiprocessing for tests runner
-
-### Refactoring
-- [ ] Use optional
-- [ ] Some duplication of code before calling `premangledFunctionCall`
-- [ ] Move type checking to builder
-- [ ] Remove tokens from builder
 
 ### Language tools
 
