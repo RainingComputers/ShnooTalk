@@ -1,0 +1,19 @@
+generic P, Q, R, S
+
+struct Triple
+{
+    var first: P
+    var second: Q
+    var third: R
+    var fourth: S
+}
+
+fn triple(first: P, second: Q, third: R, fourth: S) -> Triple
+{
+    var self: Triple
+    self.first = first
+    self.second = second
+    self.third = third
+    self.fourth = fourth
+    return self
+}

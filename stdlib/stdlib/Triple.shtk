@@ -1,0 +1,17 @@
+generic I, J, K
+
+struct Triple
+{
+    var first: I
+    var second: J
+    var third: K
+}
+
+fn triple(first: I, second: J, third: K) -> Triple
+{
+    var self: Triple
+    self.first = first
+    self.second = second
+    self.third = third
+    return self
+}
