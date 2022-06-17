@@ -1,0 +1,42 @@
+from "../stdlib/LibC.shtk" use malloc, free
+
+struct ReferenceCounter
+{
+    var _count: ulong*
+}
+
+fn createCounter() -> ReferenceCounter
+{
+    var self: ReferenceCounter
+
+    self._count <- ulong*`malloc(sizeof(ulong))
+    self._count = 0
+
+    return self
+}
+
+fn initialized(self: ReferenceCounter) -> bool
+{
+    return addr(self._count) != 0
+}
+
+fn beforeCopy(mut self: ReferenceCounter)
+{
+    if not self.initialized() return void
+    self._count += 1
+}
+
+fn deconstructor(mut self: ReferenceCounter)
+{
+    if not self.initialized() return void
+    self._count -= 1
+}
+
+fn isZero(self: ReferenceCounter) -> bool
+{
+    if not self.initialized() return false
+    if self._count != 0 return false
+
+    free(ubyte*`self._count)
+    return true
+}

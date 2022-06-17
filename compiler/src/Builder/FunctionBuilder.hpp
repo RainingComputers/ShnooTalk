@@ -54,7 +54,7 @@ class FunctionBuilder
 
     icode::Operand createPointerForPassAddress(const Unit& actualParam, const Unit& formalParam);
 
-    bool shouldCallResourceMgmtHook(const icode::TypeDescription& type, const std::string& hook);
+    bool shouldCallResourceMgmtHook(const Unit& unit, const std::string& hook);
 
     void callResourceMgmtHookSingle(const Unit& symbol, const std::string& hook); 
 

@@ -66,6 +66,8 @@ public:
     bool isLiteral() const;
 
     bool isList() const;
+
+    bool isSelf() const;
 };
 
 #endif

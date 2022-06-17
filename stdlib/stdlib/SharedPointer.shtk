@@ -1,0 +1,43 @@
+generic T
+
+from "../stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
+from "../stdlib/Slice.shtk" use Slice, allocateHeap
+
+struct SharedPointer
+{
+    var _count: ReferenceCounter
+    var _slice: Slice[T]
+}
+
+fn allocateHeap(length: ulong) -> SharedPointer
+{
+    var self: SharedPointer
+
+    self._count = createCounter()
+    self._slice = allocateHeap[T](length)
+
+    return self
+}
+
+fn deconstructor(mut self: SharedPointer)
+{
+    if not self._count.isZero() return void
+
+    println("freeing memory")
+    self._slice.free()
+}
+
+fn subscriptItem(self: SharedPointer, index: ulong) -> T
+{
+    return self._slice[index]
+}
+
+fn length(self: SharedPointer) -> ulong
+{
+    return self._slice.length()
+}
+
+fn slice(self: SharedPointer) -> Slice[T]
+{
+    return self._slice
+}

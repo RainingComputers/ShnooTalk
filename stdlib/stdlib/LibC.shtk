@@ -1,0 +1,3 @@
+extfn malloc(bytes: ulong) -> ubyte*
+extfn free(ptr: ubyte*)
+extfn exit(status: int)

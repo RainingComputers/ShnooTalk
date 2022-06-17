@@ -146,7 +146,7 @@ bool Unit::isMultiDimArray() const
 
 bool Unit::isArrayWithFixedDim() const
 {
-    return isList() || (isArray() && !isUserPointer());
+    return isList() || typeDescription.isArrayWithFixedDim();
 }
 
 bool Unit::isLocal() const
@@ -207,4 +207,13 @@ bool Unit::isLiteral() const
 bool Unit::isList() const
 {
     return list.size() > 0;
+}
+
+bool Unit::isSelf() const
+{
+    if (operand.operandType == icode::VAR)
+        if (operand.name == "self")
+            return true;
+
+    return false;
 }

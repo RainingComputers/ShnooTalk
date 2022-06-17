@@ -1,0 +1,44 @@
+generic T
+
+use "../stdlib/LibC.shtk" as libc
+from "../stdlib/OS.shtk" use panic
+
+struct Slice
+{
+    var _ptr: T[]
+    var _length: ulong
+}
+
+fn slice(ptr: T[], length: ulong) -> Slice
+{
+    var self: Slice
+    self._ptr <- ptr
+    self._length = length
+    return self
+}
+
+fn allocateHeap(length: ulong) -> Slice
+{
+    return slice(T[]`libc::malloc(sizeof(T)*length), length)
+}
+
+fn free(self: Slice)
+{
+    libc::free(ubyte*`self._ptr)
+}
+
+fn subscriptItem(self: Slice, index: ulong) -> T
+{
+    if addr(self._ptr) == 0
+        panic("Null pointer on slice subscript", 1)
+    
+    if index >= self._length
+        panic("Out of bounds on slice subscript", 1)
+
+    return self._ptr[index]
+}
+
+fn length(self: Slice) -> ulong
+{
+    return self._length
+}

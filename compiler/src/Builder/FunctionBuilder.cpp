@@ -205,9 +205,8 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
-    if (src.isLocalOrGlobal())
-        if (dest.isLocalOrGlobal() || dest.isReturnValue())
-            callResourceMgmtHook(src, "beforeCopy");
+    if (dest.isLocalOrGlobal() || dest.isReturnValue())
+        callResourceMgmtHook(src, "beforeCopy");
 
     if (dest.isLocalOrGlobal())
         callResourceMgmtHook(dest, "deconstructor");
@@ -739,15 +738,18 @@ bool validMainReturn(const icode::FunctionDescription& functionDescription)
     return true;
 }
 
-bool FunctionBuilder::shouldCallResourceMgmtHook(const icode::TypeDescription& type, const std::string& hook)
+bool FunctionBuilder::shouldCallResourceMgmtHook(const Unit& unit, const std::string& hook)
 {
-    if (!type.isStruct())
+    if (!unit.isStruct())
         return false;
 
-    if (type.isPointer())
+    if (unit.isUserPointer())
         return false;
 
-    return finder.methodExists(type, hook);
+    if (unit.isSelf())
+        return false;
+
+    return finder.methodExists(unit.type(), hook);
 }
 
 void FunctionBuilder::callResourceMgmtHookSingle(const Unit& symbol, const std::string& hook)
@@ -764,7 +766,7 @@ void FunctionBuilder::callResourceMgmtHookSingle(const Unit& symbol, const std::
 
 void FunctionBuilder::callResourceMgmtHook(const Unit& symbol, const std::string& hook)
 {
-    if (!shouldCallResourceMgmtHook(symbol.type(), hook))
+    if (!shouldCallResourceMgmtHook(symbol, hook))
         return;
 
     if (symbol.isArray())

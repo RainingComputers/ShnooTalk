@@ -15,6 +15,7 @@ struct InstiatorContext
 };
 
 void block(const InstiatorContext& ctx, Node& root);
+void expression(const InstiatorContext& ctx, Node& root);
 
 Token modToken(const Token& tok, const std::string& tokenString)
 {
@@ -131,6 +132,14 @@ void genericFunctionCall(const InstiatorContext& ctx, Node& root)
     }
 }
 
+void make(const InstiatorContext& ctx, Node& root)
+{
+    monomorphizeTypeNode(ctx, root.children[0]);
+
+    for (size_t i = 1; i < root.children.size(); i += 1)
+        expression(ctx, root.children[i]);
+}
+
 void expression(const InstiatorContext& ctx, Node& root)
 {
     if (root.type == node::SIZEOF)
@@ -141,7 +150,7 @@ void expression(const InstiatorContext& ctx, Node& root)
 
     if (root.type == node::MAKE)
     {
-        monomorphizeTypeNode(ctx, root.children[0]);
+        make(ctx, root);
         return;
     }
 
