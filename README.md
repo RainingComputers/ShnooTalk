@@ -77,6 +77,7 @@ make test
 ### Compiler core
 
 *Priority*
+
 - [x] Incomplete types and type composing of a pointer to itself
 - [x] null pointer check
 - [x] Direct from
@@ -107,6 +108,7 @@ make test
 - [ ] Add SHNOOTALK_PATH environment variable, and use PATH by default
 
 *Backlog*
+
 - [x] Fix bugs in the LLVM translator backend
 - [x] Array return types
 - [x] Fix def
@@ -158,13 +160,16 @@ make test
 - [ ] Concurrency
 
 *Refactoring*
+
 - [ ] Use optional
 - [ ] Some duplication of code before calling `premangledFunctionCall`
 - [ ] Move type checking to builder
 - [ ] Remove tokens from builder
 - [ ] Cleanup format strings and function call in Translator
+- [ ] Cleanup compiler test suite and test runner
 
 *Bugs*
+
 - [x] Fix `.[` clash between destructured assignment and struct field `.`
 - [x] Fix generic function call in instatiator
 
