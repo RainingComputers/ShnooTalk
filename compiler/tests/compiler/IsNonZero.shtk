@@ -1,0 +1,22 @@
+struct Foo
+{
+    var bar: int
+}
+
+fn isNonZero(self: Foo) -> int
+{
+    return self.bar
+}
+
+fn main() -> int
+{
+    var a: Foo
+
+    a.bar = 1
+    if a println("non zero")
+
+    a.bar = 0
+    if a println("this should not print")
+
+    return 0
+}

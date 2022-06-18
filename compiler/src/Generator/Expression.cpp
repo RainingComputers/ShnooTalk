@@ -489,10 +489,25 @@ void truthyOperator(generator::GeneratorContext& ctx,
 {
     Unit RHS = ctx.ir.unitBuilder.unitFromIntLiteral(0);
 
-    if (LHS.isStruct() || LHS.isArray() || !LHS.isIntegerType())
+    if (LHS.isArray() || (!LHS.isIntegerType() && !LHS.isStruct()))
         ctx.console.compileErrorOnToken("Cannot get truth from expression", expressionToken);
 
-    ctx.ir.functionBuilder.compareOperator(icode::GT, LHS, RHS);
+    if (LHS.isStruct())
+    {
+        const icode::FunctionDescription isNonZeroFunc = ctx.ir.finder.getMethod(LHS.type(), "isNonZero");
+
+        const Unit isNonZeroFuncRetVal =
+            createCallFunction(ctx, { expressionToken }, { LHS }, expressionToken, isNonZeroFunc);
+
+        if (!isNonZeroFuncRetVal.isIntegerType() || isNonZeroFuncRetVal.isArray())
+            ctx.console.compileErrorOnToken("Invalid return type for isNonZero function", expressionToken);
+
+        ctx.ir.functionBuilder.compareOperator(icode::GT, isNonZeroFuncRetVal, RHS);
+    }
+    else
+    {
+        ctx.ir.functionBuilder.compareOperator(icode::GT, LHS, RHS);
+    }
 
     createJumps(ctx, trueLabel, falseLabel, trueFall);
 }

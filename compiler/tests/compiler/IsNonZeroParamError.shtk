@@ -1,0 +1,24 @@
+struct Foo
+{
+    var bar: int
+}
+
+fn isNonZero(mut self: Foo) -> int
+{
+    return 0
+}
+
+fn createFoo() -> Foo
+{
+    var self: Foo
+    self.bar = 0
+    return self
+}
+
+fn main() -> int
+{
+    const a := createFoo() 
+    if a println("non zero")
+
+    return 0
+}
