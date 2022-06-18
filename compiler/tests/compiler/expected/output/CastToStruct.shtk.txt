@@ -1,8 +1,0 @@
-MODULE CastToStruct.shtk
-ERROR in Line 7 Col 18
-
-    var a: int = Foobar`0
-                 ^
-Cannot cast to struct
-
-CastToStruct.shtk:7:17

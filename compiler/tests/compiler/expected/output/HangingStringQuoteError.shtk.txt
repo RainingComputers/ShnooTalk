@@ -1,0 +1,8 @@
+MODULE HangingStringQuoteError.shtk
+ERROR in Line 3 Col 23
+
+    var c: char[10] = " 
+                      ^
+Invalid STRING LITERAL
+
+HangingStringQuoteError.shtk:3:22

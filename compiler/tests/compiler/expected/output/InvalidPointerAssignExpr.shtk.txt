@@ -1,8 +1,0 @@
-MODULE InvalidPointerAssignExpr.shtk
-ERROR in Line 3 Col 20
-
-    var a: int* <- 1
-                   ^
-Invalid expression for pointer assignment
-
-InvalidPointerAssignExpr.shtk:3:19

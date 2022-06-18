@@ -1,8 +1,0 @@
-MODULE InvalidCondnExpression.shtk
-ERROR in Line 3 Col 8
-
-    if "hello" {
-       ^
-Cannot get truth from expression
-
-InvalidCondnExpression.shtk:3:7

@@ -1,0 +1,8 @@
+MODULE IsNonZeroNumParamError.shtk
+ERROR in Line 21 Col 8
+
+    if a println("non zero")
+       ^
+Cannot pass immutable as mutable
+
+IsNonZeroNumParamError.shtk:21:7

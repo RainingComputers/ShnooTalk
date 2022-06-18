@@ -1,0 +1,8 @@
+MODULE DeconstructorInvalidNumParamsError.shtk
+ERROR in Line 3 Col 4
+
+fn deconstructor(self: Foobar, a: int)
+   ^
+Invalid deconstructor function
+
+DeconstructorInvalidNumParamsError.shtk:3:3

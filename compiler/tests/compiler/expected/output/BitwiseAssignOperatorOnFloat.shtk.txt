@@ -1,8 +1,0 @@
-MODULE BitwiseAssignOperatorOnFloat.shtk
-ERROR in Line 5 Col 7
-
-    a |= b
-      ^
-Bitwise operators only allowed on integer types
-
-BitwiseAssignOperatorOnFloat.shtk:5:6

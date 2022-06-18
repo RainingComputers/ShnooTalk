@@ -1,0 +1,8 @@
+MODULE VoidReturnOnNonVoidFunctionError.shtk
+ERROR in Line 3 Col 5
+
+    return void
+    ^
+Ret type is not VOID
+
+VoidReturnOnNonVoidFunctionError.shtk:3:4

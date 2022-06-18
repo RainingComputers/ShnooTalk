@@ -1,0 +1,8 @@
+MODULE DestructureErrorNumberLocalsNotMatchStructError.shtk
+ERROR in Line 9 Col 5
+
+    const [a, b] := foobar
+    ^
+Number of locals do not match
+
+DestructureErrorNumberLocalsNotMatchStructError.shtk:9:4

@@ -1,0 +1,8 @@
+MODULE PointerAssignmentToNonPointerError.shtk
+ERROR in Line 6 Col 7
+
+    a <- b
+      ^
+Pointer assignment on a non pointer
+
+PointerAssignmentToNonPointerError.shtk:6:6

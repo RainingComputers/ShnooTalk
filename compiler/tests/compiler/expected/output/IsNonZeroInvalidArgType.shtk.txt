@@ -1,8 +1,0 @@
-MODULE IsNonZeroInvalidArgType.shtk
-ERROR in Line 15 Col 8
-
-    if a println("non zero")
-       ^
-Number of parameters don't match
-
-IsNonZeroInvalidArgType.shtk:15:7

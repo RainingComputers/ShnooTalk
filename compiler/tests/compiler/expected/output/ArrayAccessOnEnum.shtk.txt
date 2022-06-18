@@ -1,8 +1,0 @@
-MODULE ArrayAccessOnEnum.shtk
-ERROR in Line 5 Col 22
-
-    var a: Pin = LED0[2]
-                     ^
-Cannot index a non array
-
-ArrayAccessOnEnum.shtk:5:21

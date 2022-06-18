@@ -1,8 +1,0 @@
-MODULE HangingStringQuoteTest.shtk
-ERROR in Line 3 Col 23
-
-    var c: char[10] = " 
-                      ^
-Invalid STRING LITERAL
-
-HangingStringQuoteTest.shtk:3:22

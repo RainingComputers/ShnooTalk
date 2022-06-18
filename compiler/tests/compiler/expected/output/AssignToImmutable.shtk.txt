@@ -1,8 +1,0 @@
-MODULE AssignToImmutable.shtk
-ERROR in Line 3 Col 5
-
-    a = 2
-    ^
-Cannot modify immutable variable or parameter
-
-AssignToImmutable.shtk:3:4

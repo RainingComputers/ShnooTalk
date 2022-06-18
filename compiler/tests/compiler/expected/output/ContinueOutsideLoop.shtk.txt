@@ -1,8 +1,0 @@
-MODULE ContinueOutsideLoop.shtk
-ERROR in Line 3 Col 5
-
-    continue
-    ^
-continue outside loop
-
-ContinueOutsideLoop.shtk:3:4

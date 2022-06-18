@@ -1,0 +1,8 @@
+MODULE UnaryOperatorOnStructError.shtk
+ERROR in Line 10 Col 9
+
+    a = -b 
+        ^
+Unary operator not allowed on struct
+
+UnaryOperatorOnStructError.shtk:10:8

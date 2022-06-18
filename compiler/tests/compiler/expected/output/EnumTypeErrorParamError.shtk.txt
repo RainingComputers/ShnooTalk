@@ -1,0 +1,8 @@
+MODULE EnumTypeErrorParamError.shtk
+ERROR in Line 7 Col 12
+
+    foobar(one)
+           ^
+Type error, did not expect EnumTypeErrorParamError.shtk::bar, expected int
+
+EnumTypeErrorParamError.shtk:7:11

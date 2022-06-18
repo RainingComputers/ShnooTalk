@@ -1,0 +1,8 @@
+MODULE StringLiteralAsMutablePointerError.shtk
+ERROR in Line 8 Col 10
+
+    test("hello")
+         ^
+Cannot pass expression or string literal as mutable pointer
+
+StringLiteralAsMutablePointerError.shtk:8:9

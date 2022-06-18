@@ -1,0 +1,8 @@
+MODULE ContinueOutsideLoopError.shtk
+ERROR in Line 3 Col 5
+
+    continue
+    ^
+continue outside loop
+
+ContinueOutsideLoopError.shtk:3:4

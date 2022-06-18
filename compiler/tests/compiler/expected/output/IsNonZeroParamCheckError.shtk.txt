@@ -1,0 +1,8 @@
+MODULE IsNonZeroParamCheckError.shtk
+ERROR in Line 15 Col 8
+
+    if a println("non zero")
+       ^
+Number of parameters don't match
+
+IsNonZeroParamCheckError.shtk:15:7

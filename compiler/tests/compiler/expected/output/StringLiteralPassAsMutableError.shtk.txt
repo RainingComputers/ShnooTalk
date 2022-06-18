@@ -1,0 +1,8 @@
+MODULE StringLiteralPassAsMutableError.shtk
+ERROR in Line 8 Col 9
+
+    foo("Hello")
+        ^
+Cannot pass immutable as mutable
+
+StringLiteralPassAsMutableError.shtk:8:8

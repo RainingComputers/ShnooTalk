@@ -1,0 +1,8 @@
+MODULE InvalidExpressionForPointerReturnError.shtk
+ERROR in Line 3 Col 5
+
+    return 1
+    ^
+Invalid expression for pointer return
+
+InvalidExpressionForPointerReturnError.shtk:3:4

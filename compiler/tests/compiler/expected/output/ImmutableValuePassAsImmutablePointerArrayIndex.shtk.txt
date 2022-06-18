@@ -1,8 +1,0 @@
-MODULE ImmutableValuePassAsImmutablePointerArrayIndex.shtk
-ERROR in Line 10 Col 12
-
-    foobar(a[1])
-           ^
-Cannot pass immutable value to a pointer
-
-ImmutableValuePassAsImmutablePointerArrayIndex.shtk:10:11

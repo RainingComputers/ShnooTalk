@@ -1,8 +1,0 @@
-MODULE ReturnVoidOnNonVoid.shtk
-ERROR in Line 3 Col 5
-
-    return void
-    ^
-Ret type is not VOID
-
-ReturnVoidOnNonVoid.shtk:3:4

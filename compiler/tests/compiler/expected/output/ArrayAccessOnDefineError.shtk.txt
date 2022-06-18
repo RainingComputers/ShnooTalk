@@ -1,0 +1,8 @@
+MODULE ArrayAccessOnDefineError.shtk
+ERROR in Line 5 Col 21
+
+    var a:int = LED0[2]
+                    ^
+Cannot index a non array
+
+ArrayAccessOnDefineError.shtk:5:20

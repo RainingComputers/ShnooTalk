@@ -1,8 +1,0 @@
-MODULE ArrayTruthyConditionalExpression.shtk
-ERROR in Line 5 Col 8
-
-    if a 
-       ^
-Cannot get truth from expression
-
-ArrayTruthyConditionalExpression.shtk:5:7

@@ -1,8 +1,0 @@
-MODULE StringLiteralAsPointer.shtk
-ERROR in Line 8 Col 10
-
-    test("leh")
-         ^
-Type error, did not expect char[], expected char*
-
-StringLiteralAsPointer.shtk:8:9

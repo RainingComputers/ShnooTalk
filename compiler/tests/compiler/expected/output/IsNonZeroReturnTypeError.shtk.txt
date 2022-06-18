@@ -1,0 +1,8 @@
+MODULE IsNonZeroReturnTypeError.shtk
+ERROR in Line 15 Col 8
+
+    if a println("non zero")
+       ^
+Invalid return type for isNonZero function
+
+IsNonZeroReturnTypeError.shtk:15:7

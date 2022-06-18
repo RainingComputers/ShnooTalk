@@ -1,0 +1,8 @@
+MODULE StringLiteralAsPointerError.shtk
+ERROR in Line 8 Col 10
+
+    test("leh")
+         ^
+Type error, did not expect char[], expected char*
+
+StringLiteralAsPointerError.shtk:8:9

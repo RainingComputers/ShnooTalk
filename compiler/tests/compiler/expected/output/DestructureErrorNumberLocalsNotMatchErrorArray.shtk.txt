@@ -1,8 +1,0 @@
-MODULE DestructureErrorNumberLocalsNotMatchErrorArray.shtk
-ERROR in Line 3 Col 5
-
-    const [a, b] := [1, 2, 3]
-    ^
-Number of locals do not match
-
-DestructureErrorNumberLocalsNotMatchErrorArray.shtk:3:4

@@ -1,0 +1,8 @@
+MODULE StructAccessOnDefineError.shtk
+ERROR in Line 5 Col 22
+
+    var a:int = LED0.pin
+                     ^
+Cannot get struct field on a non struct data type
+
+StructAccessOnDefineError.shtk:5:21

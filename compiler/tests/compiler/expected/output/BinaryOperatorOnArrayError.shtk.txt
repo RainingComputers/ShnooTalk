@@ -1,0 +1,8 @@
+MODULE BinaryOperatorOnArrayError.shtk
+ERROR in Line 5 Col 11
+
+    c = a + b
+          ^
+Operator not allowed on array
+
+BinaryOperatorOnArrayError.shtk:5:10

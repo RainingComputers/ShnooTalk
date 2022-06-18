@@ -1,8 +1,0 @@
-MODULE InvalidReturnForMain.shtk
-ERROR in Line 1 Col 4
-
-fn main()
-   ^
-Invalid return type for main
-
-InvalidReturnForMain.shtk:1:3

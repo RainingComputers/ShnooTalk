@@ -1,0 +1,8 @@
+MODULE CannotReturnImmutableValueAsPointerArrayIndexError.shtk
+ERROR in Line 3 Col 5
+
+    return a[2]
+    ^
+Cannot return immutable value as pointer
+
+CannotReturnImmutableValueAsPointerArrayIndexError.shtk:3:4

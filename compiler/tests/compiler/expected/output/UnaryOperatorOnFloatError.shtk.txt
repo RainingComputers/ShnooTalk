@@ -1,0 +1,8 @@
+MODULE UnaryOperatorOnFloatError.shtk
+ERROR in Line 5 Col 9
+
+    b = ~a
+        ^
+Bitwise operation only allowed on integer types
+
+UnaryOperatorOnFloatError.shtk:5:8

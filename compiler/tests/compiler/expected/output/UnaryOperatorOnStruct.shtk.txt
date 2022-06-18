@@ -1,8 +1,0 @@
-MODULE UnaryOperatorOnStruct.shtk
-ERROR in Line 10 Col 9
-
-    a = -b 
-        ^
-Unary operator not allowed on struct
-
-UnaryOperatorOnStruct.shtk:10:8

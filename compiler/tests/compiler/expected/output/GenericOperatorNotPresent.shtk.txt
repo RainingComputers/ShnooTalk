@@ -1,9 +1,0 @@
-MODULE TestModules/Pair.shtk
-ERROR in Line 12 Col 28
-
-    result.first = a.first + b.first
-                           ^
-Type error, operator '+' does not exist for GenericOperatorNotPresent.shtk::FooBar and GenericOperatorNotPresent.shtk::FooBar
-
-TestModules/Pair.shtk:12:27
-GenericOperatorNotPresent.shtk

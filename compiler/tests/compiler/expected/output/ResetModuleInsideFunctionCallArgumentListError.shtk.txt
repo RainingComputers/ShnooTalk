@@ -1,0 +1,8 @@
+MODULE ResetModuleInsideFunctionCallArgumentListError.shtk
+ERROR in Line 11 Col 30
+
+    digital::digitalWrite(0, LOW)
+                             ^
+Symbol does not exist
+
+ResetModuleInsideFunctionCallArgumentListError.shtk:11:29

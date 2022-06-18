@@ -1,4 +1,4 @@
-from "foobar.shtk" use Foobar
+from "TestModules/foobar.shtk" use Foobar
 
 
 fn main() -> int

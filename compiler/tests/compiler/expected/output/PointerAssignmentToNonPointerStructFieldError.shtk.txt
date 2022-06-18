@@ -1,0 +1,8 @@
+MODULE PointerAssignmentToNonPointerStructFieldError.shtk
+ERROR in Line 21 Col 14
+
+    foo.a[0] <- test
+             ^
+Pointer assignment on a non pointer
+
+PointerAssignmentToNonPointerStructFieldError.shtk:21:13

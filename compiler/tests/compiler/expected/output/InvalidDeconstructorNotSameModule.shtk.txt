@@ -1,8 +1,0 @@
-MODULE InvalidDeconstructorNotSameModule.shtk
-ERROR in Line 3 Col 4
-
-fn deconstructor(self: Foobar)
-   ^
-Invalid deconstructor function
-
-InvalidDeconstructorNotSameModule.shtk:3:3

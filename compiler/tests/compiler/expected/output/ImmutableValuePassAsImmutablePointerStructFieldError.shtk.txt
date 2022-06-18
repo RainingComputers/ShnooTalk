@@ -1,0 +1,8 @@
+MODULE ImmutableValuePassAsImmutablePointerStructFieldError.shtk
+ERROR in Line 23 Col 12
+
+    foobar(a.y)
+           ^
+Cannot pass immutable value to a pointer
+
+ImmutableValuePassAsImmutablePointerStructFieldError.shtk:23:11

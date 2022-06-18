@@ -1,0 +1,8 @@
+MODULE InvalidConditionalExpressionError.shtk
+ERROR in Line 3 Col 8
+
+    if "hello" {
+       ^
+Cannot get truth from expression
+
+InvalidConditionalExpressionError.shtk:3:7

@@ -1,0 +1,8 @@
+MODULE AssignOnImmutableStructFieldError.shtk
+ERROR in Line 19 Col 5
+
+    a.x = 3
+    ^
+Cannot modify immutable variable or parameter
+
+AssignOnImmutableStructFieldError.shtk:19:4

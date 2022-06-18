@@ -1,8 +1,0 @@
-MODULE CompareOperatorOnArray.shtk
-ERROR in Line 5 Col 10
-
-    if a > b println("Hello")
-         ^
-Cannot compare arrays
-
-CompareOperatorOnArray.shtk:5:9

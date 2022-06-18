@@ -1,0 +1,8 @@
+MODULE InvalidExpressionForPointerCastError.shtk
+ERROR in Line 4 Col 20
+
+    var b: int* <- int*`(1.2+3.4) 
+                   ^
+Invalid expression for pointer cast
+
+InvalidExpressionForPointerCastError.shtk:4:19
