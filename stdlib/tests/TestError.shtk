@@ -1,0 +1,15 @@
+from "../stdlib/Error.shtk" use Error, createError, createNilError
+
+enum TestErrorEnum {TEST_ERROR_0, TEST_ERROR_1}
+
+fn main() -> int
+{
+    const a := createNilError[TestErrorEnum]()
+    if a println("This should not be printed")
+
+    const b := createError[TestErrorEnum](TEST_ERROR_1)
+    println(b.getError() == TEST_ERROR_1)
+    if b println("This should be printed")
+
+    return 0
+}

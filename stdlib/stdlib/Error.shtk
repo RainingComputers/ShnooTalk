@@ -1,0 +1,32 @@
+generic E
+
+struct Error
+{
+    var _error: E
+    var _nil: bool
+}
+
+fn createNilError() -> Error
+{
+    var self: Error
+    self._nil = true
+    return self
+}
+
+fn createError(error: E) -> Error
+{
+    var self: Error
+    self._error = error
+    self._nil = false
+    return self
+}
+
+fn isNonZero(self: Error) -> bool
+{
+    return not self._nil
+}
+
+fn getError(self: Error) -> E
+{
+    return self._error
+}

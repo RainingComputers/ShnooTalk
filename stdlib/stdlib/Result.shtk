@@ -1,0 +1,57 @@
+generic T, E
+
+from "../stdlib/Error.shtk" use Error, createError, createNilError
+from "../stdlib/OS.shtk" use panic
+
+def EXPECT_ON_ERROR_RESULT "Called expect on a error result"
+
+struct Result
+{
+    var item: T
+    var error: Error[E]
+}
+
+fn success(item: T) -> Result
+{
+    var self: Result
+    self.item = item
+    self.error = createNilError[E]()
+    return self
+}
+
+fn error(error: E) -> Result
+{
+    var self: Result
+    self.error = createError[E](error)
+    return self
+}
+
+fn hasValue(self: Result) -> bool
+{
+    return not self.error.isNonZero()
+}
+
+fn isError(self: Result) -> bool
+{
+    return self.error.isNonZero()
+}
+
+fn expect(self: Result) -> T
+{
+    if self.error panic(EXPECT_ON_ERROR_RESULT, 1)
+
+    return self.item
+}
+
+fn bitwiseOrItem(self: Result, other: T) -> T
+{
+    if not self.error return self.item
+
+    return other
+}
+
+fn bitwiseOrResult(self: Result, other: Result) -> Result
+{
+    if not other.error return other
+    return self
+}
