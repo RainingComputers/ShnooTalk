@@ -63,6 +63,11 @@ fn bitwiseOr(LHS: Foobar, RHS: Foobar) -> Foobar
     return createFoo(LHS.x|RHS.x, LHS.y+RHS.y)
 }
 
+fn bitwiseOrInteger(LHS: Foobar, RHS: int) -> Foobar
+{
+    return createFoo(LHS.x|RHS, LHS.y+float`RHS)
+}
+
 fn isEqual(LHS: Foobar, RHS: Foobar) -> bool
 {
     return LHS.x == RHS.x and LHS.y == RHS.y
@@ -119,6 +124,7 @@ fn main() -> int
     println(a>=b)
     println(a<b)
     println(a<=b)
+    printFoo(a|2)
 
     a += b
     printFoo(a)

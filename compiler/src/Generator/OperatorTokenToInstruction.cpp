@@ -111,10 +111,6 @@ std::string tokenToCustomOperatorString(const generator::GeneratorContext& ctx, 
             return "isEqual";
         case token::CONDN_NOT_EQUAL:
             return "isNotEqual";
-        case token::CONDN_AND:
-            return "conditionalAnd";
-        case token::CONDN_OR:
-            return "conditionalOr";
         case token::IN:
             return "in";
         default:

@@ -418,8 +418,9 @@ Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
     if (LHS.isArray())
         ctx.console.compileErrorOnToken("Operator not allowed on array", expressionOperator);
 
-    if (!isSameType(LHS, RHS))
-        ctx.console.typeError(root.children[2].tok, LHS, RHS);
+    if (!LHS.isStruct())
+        if (!isSameType(LHS, RHS))
+            ctx.console.typeError(root.children[2].tok, LHS, RHS);
 
     if (expressionOperator.isBitwiseOperator() && LHS.isFloatType())
         ctx.console.compileErrorOnToken("Bitwise operation only allowed on integer types", expressionOperator);
@@ -494,7 +495,8 @@ void truthyOperator(generator::GeneratorContext& ctx,
 
     if (LHS.isStruct())
     {
-        const icode::FunctionDescription isNonZeroFunc = ctx.ir.finder.getMethod(LHS.type(), "isNonZero");
+        const icode::FunctionDescription isNonZeroFunc =
+            ctx.ir.finder.getMethodFromUnit(LHS, "isNonZero", expressionToken);
 
         const Unit isNonZeroFuncRetVal =
             createCallFunction(ctx, { expressionToken }, { LHS }, expressionToken, isNonZeroFunc);

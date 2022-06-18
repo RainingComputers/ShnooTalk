@@ -46,6 +46,7 @@ Type* dataTypeToLLVMPointerType(const ModuleContext& ctx, const icode::DataType 
             return Type::getInt16PtrTy(*ctx.context);
         case icode::I32:
         case icode::UI32:
+        case icode::ENUM:
             return Type::getInt32PtrTy(*ctx.context);
         case icode::I64:
         case icode::UI64:

@@ -1,0 +1,8 @@
+MODULE IsNonZeroMethodDoesNotExistError.shtk
+ERROR in Line 11 Col 8
+
+    if a println("non zero")
+       ^
+Method isNonZero does not exist
+
+IsNonZeroMethodDoesNotExistError.shtk:11:7

@@ -1,0 +1,14 @@
+struct Foo
+{
+    var bar: int
+}
+
+
+fn main() -> int
+{
+    var a: Foo
+
+    if a println("non zero")
+
+    return 0
+}
