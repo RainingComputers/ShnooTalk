@@ -18,5 +18,6 @@ def llc(file_name: str) -> Result:
         ),
         compile_result_fail_test_case_file=None,
         command_on_compile_result_pass=[LLC_BIN, llc_file_name],
+        command_ignore_non_zero_exit_code=False,
         command_output_test_case_file=None,
     )

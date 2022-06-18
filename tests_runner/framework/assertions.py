@@ -65,6 +65,7 @@ def command_on_compile_success_output_assert(
     compile_phase_result: Result,
     compile_result_fail_test_case_file: Optional[str],
     command_on_compile_result_pass: List[str],
+    command_ignore_non_zero_exit_code: bool,
     command_output_test_case_file: Optional[str]
 ) -> Result:
 
@@ -83,7 +84,7 @@ def command_on_compile_success_output_assert(
     if command_timedout:
         return Result.timedout()
 
-    if command_exit_code != 0:
+    if command_exit_code != 0 and not command_ignore_non_zero_exit_code:
         return Result.failed(command_output)
 
     if command_output_test_case_file is not None:

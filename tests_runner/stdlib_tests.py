@@ -20,5 +20,6 @@ def stdlib(file_name: str) -> Result:
         ),
         compile_result_fail_test_case_file=test_case_file_path,
         command_on_compile_result_pass=["./test_executable"],
+        command_ignore_non_zero_exit_code=True,
         command_output_test_case_file=test_case_file_path
     )
