@@ -8,7 +8,7 @@ struct Triple
     var fourth: S
 }
 
-fn triple(first: P, second: Q, third: R, fourth: S) -> Triple
+fn quad(first: P, second: Q, third: R, fourth: S) -> Triple
 {
     var self: Triple
     self.first = first

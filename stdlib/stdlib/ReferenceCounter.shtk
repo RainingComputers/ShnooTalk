@@ -40,3 +40,8 @@ fn isZero(self: ReferenceCounter) -> bool
     free(ubyte*`self._count)
     return true
 }
+
+fn count(self: ReferenceCounter) -> ulong
+{
+    return self._count
+}

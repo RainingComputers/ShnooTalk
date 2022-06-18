@@ -3,6 +3,9 @@ generic T
 use "../stdlib/LibC.shtk" as libc
 from "../stdlib/OS.shtk" use panic
 
+def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
+def NULL_POINTER_ERROR "Null pointer dereference error"
+
 struct Slice
 {
     var _ptr: T[]
@@ -27,15 +30,27 @@ fn free(self: Slice)
     libc::free(ubyte*`self._ptr)
 }
 
-fn subscriptItem(self: Slice, index: ulong) -> T
+fn validateIndex(self: Slice, index: ulong) 
 {
     if addr(self._ptr) == 0
-        panic("Null pointer on slice subscript", 1)
+        panic(OUT_OF_BOUNDS_ERROR, 1)
     
     if index >= self._length
-        panic("Out of bounds on slice subscript", 1)
+        panic(NULL_POINTER_ERROR, 1)
+}
+
+fn subscriptItem(self: Slice, index: ulong) -> T
+{
+    self.validateIndex(index)
 
     return self._ptr[index]
+}
+
+fn setItem(mut self: Slice, index: ulong, item: T)
+{
+    self.validateIndex(index)
+
+    self._ptr[index] = item
 }
 
 fn length(self: Slice) -> ulong

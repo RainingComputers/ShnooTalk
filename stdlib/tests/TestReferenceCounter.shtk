@@ -1,0 +1,23 @@
+from "../stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
+
+fn main() -> int
+{
+    var a := createCounter()
+
+    println(a.count())
+
+    var b := a
+
+    println(a.count())
+
+    b.deconstructor()
+
+    println(a.count())
+
+    a.deconstructor()
+
+    println(a.count())
+    println(a.isZero())
+
+    return 0
+}

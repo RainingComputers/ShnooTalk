@@ -22,14 +22,17 @@ fn allocateHeap(length: ulong) -> SharedPointer
 fn deconstructor(mut self: SharedPointer)
 {
     if not self._count.isZero() return void
-
-    println("freeing memory")
     self._slice.free()
 }
 
 fn subscriptItem(self: SharedPointer, index: ulong) -> T
 {
     return self._slice[index]
+}
+
+fn setItem(mut self: SharedPointer, index: ulong, item: T)
+{
+    self._slice.setItem(index, item)
 }
 
 fn length(self: SharedPointer) -> ulong

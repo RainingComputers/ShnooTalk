@@ -1,0 +1,10 @@
+from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
+
+fn main() -> int
+{
+    var b: SharedPointer[int]
+
+    println(b[4])
+
+    return 0
+}
