@@ -1,0 +1,13 @@
+from "../stdlib/Triple.shtk" use triple
+
+fn main() -> int
+{
+    const a := triple[int, float, double](1, 2.0, 3.0)
+    const [first, second, third] := a
+
+    println(first)
+    println(second)
+    println(third)
+
+    return 0
+}

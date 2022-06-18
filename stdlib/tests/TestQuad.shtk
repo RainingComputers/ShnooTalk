@@ -1,0 +1,14 @@
+from "../stdlib/Quad.shtk" use quad
+
+fn main() -> int
+{
+    const a := quad[int, float, double, long](1, 2.0, 3.0, 4)
+    const [first, second, third, fourth] := a
+
+    println(first)
+    println(second)
+    println(third)
+    println(fourth)
+
+    return 0
+}

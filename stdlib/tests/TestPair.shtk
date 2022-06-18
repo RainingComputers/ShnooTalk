@@ -1,0 +1,12 @@
+from "../stdlib/Pair.shtk" use pair
+
+fn main() -> int
+{
+    const a := pair[int, float](1, 2.0)
+    const [first, second] := a
+
+    println(first)
+    println(second)
+
+    return 0
+}

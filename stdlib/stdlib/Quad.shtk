@@ -1,6 +1,6 @@
 generic P, Q, R, S
 
-struct Triple
+struct Quad
 {
     var first: P
     var second: Q
@@ -8,9 +8,9 @@ struct Triple
     var fourth: S
 }
 
-fn quad(first: P, second: Q, third: R, fourth: S) -> Triple
+fn quad(first: P, second: Q, third: R, fourth: S) -> Quad
 {
-    var self: Triple
+    var self: Quad
     self.first = first
     self.second = second
     self.third = third
