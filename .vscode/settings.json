@@ -153,6 +153,7 @@
         "otool",
         "Premangled",
         "println",
+        "pydantic",
         "Qualident",
         "RPAREN",
         "rpath",
@@ -172,7 +173,8 @@
         "tqdm",
         "ubyte",
         "uhll",
-        "uhllc"
+        "uhllc",
+        "WASI"
     ],
     
     "files.exclude": {

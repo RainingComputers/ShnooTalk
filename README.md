@@ -166,7 +166,6 @@ make test
 - [ ] Move type checking to builder
 - [ ] Remove tokens from builder
 - [ ] Cleanup format strings and function call in Translator
-- [ ] Cleanup compiler test suite and test runner
 
 *Bugs*
 
@@ -190,8 +189,9 @@ make test
 - [ ] Arduino Uno support
 
 ### Testing
-- [x] Refactor tests
-- [x] Refactor the test runner 
+
+- [ ] Refactor tests
+- [ ] Refactor the test runner 
 - [x] ~95% test coverage
 - [x] Tests for ast and ir
 - [ ] Unit tests for ir builder
@@ -203,7 +203,7 @@ make test
 - [ ] STPM package manager
 - [ ] Primitive tests runner
 - [ ] Code formatter
-- [ ] Static analyser
+- [ ] Static analyzer
 - [ ] Language server
 - [ ] Standard library
 
