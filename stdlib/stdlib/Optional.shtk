@@ -1,0 +1,56 @@
+generic T
+
+from "../stdlib/OS.shtk" use panic
+
+def EXPECT_ON_ERROR_RESULT "Called expect on a none optional"
+
+struct Optional
+{
+    var item: T
+    var none: bool
+}
+
+fn some(item: T) -> Optional
+{
+    var self: Optional
+    self.item = item
+    self.none = false
+    return self
+}
+
+fn none() -> Optional
+{
+    var self: Optional
+    self.none = true
+    return self
+}
+
+fn hasValue(self: Optional) -> bool
+{
+    return not self.none
+}
+
+fn isNone(self: Optional) -> bool
+{
+    return self.none
+}
+
+fn expect(self: Optional) -> T
+{
+    if self.none panic(EXPECT_ON_ERROR_RESULT, 1)
+
+    return self.item
+}
+
+fn bitwiseOrItem(self: Optional, other: T) -> T
+{
+    if not self.none return self.item
+
+    return other
+}
+
+fn bitwiseOrOptional(self: Optional, other: Optional) -> Optional
+{
+    if not other.none return other
+    return self
+}

@@ -1,0 +1,32 @@
+from "../stdlib/Optional.shtk" use Optional, some, none
+
+fn main() -> int
+{
+    const a := some[int](10)
+    println(a.hasValue())
+    println(a.isNone())
+    println(a.expect())
+    println(a | 2)
+
+    const [itemA, errA] := a
+    println(itemA)
+
+    const b := none[int]()
+    println(b.hasValue())
+    println(b.isNone())
+    println(b | 100)
+
+    const [itemB, errB] := b
+    println(errB)
+
+    const c := a | b
+    println(c.hasValue())
+    println(c.expect())
+
+    const d := none[int]()
+    const e := d | b
+    const [itemE, errE] := e
+    println(errE)
+
+    return 0
+}

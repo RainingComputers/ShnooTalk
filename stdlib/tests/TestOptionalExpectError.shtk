@@ -1,0 +1,9 @@
+from "../stdlib/Optional.shtk" use none
+
+fn main() -> int
+{
+    const a := none[int]()
+    println(a.expect())
+
+    return 0
+}
