@@ -1,4 +1,4 @@
-MODULE ConstInitError.shtk
+MODULE ConstInitializeError.shtk
 ERROR in Line 5 Col 5
 
     return 0
@@ -6,4 +6,4 @@ ERROR in Line 5 Col 5
 Did not expect RETURN,
 expected EQUAL or LEFT_ARROW
 
-ConstInitError.shtk:5:4
+ConstInitializeError.shtk:5:4

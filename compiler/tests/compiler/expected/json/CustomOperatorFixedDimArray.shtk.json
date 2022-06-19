@@ -1,28 +1,28 @@
 {
-    "CustomOperatorFixed.shtk": {
-        "moduleName": "CustomOperatorFixed.shtk",
+    "CustomOperatorFixedDimArray.shtk": {
+        "moduleName": "CustomOperatorFixedDimArray.shtk",
         "functions": {
-            "_fn_CustomOperatorFixed_shtk_subscriptArray": {
+            "_fn_CustomOperatorFixedDimArray_shtk_subscriptArray": {
                 "icode": [
-                    {"opcode": "printString", "op1": {"type": "stringData", "id": 17, "name": "_str_CustomOperatorFixed_shtk__l20_c12", "size": 5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 17, "name": "_str_CustomOperatorFixedDimArray_shtk__l20_c12", "size": 5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 20, "dtype": "int"}, "op2": {"type": "literal", "id": 19, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 18, "dtype": "int"}, "op2": {"type": "temp", "id": 20, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed": {
+            "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayFixed": {
                 "icode": [
-                    {"opcode": "printString", "op1": {"type": "stringData", "id": 10, "name": "_str_CustomOperatorFixed_shtk__l13_c12", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 10, "name": "_str_CustomOperatorFixedDimArray_shtk__l13_c12", "size": 6}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 13, "dtype": "int"}, "op2": {"type": "literal", "id": 12, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 11, "dtype": "int"}, "op2": {"type": "temp", "id": 13, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex": {
+            "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayTrueFlex": {
                 "icode": [
-                    {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_CustomOperatorFixed_shtk__l6_c12", "size": 9}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_CustomOperatorFixedDimArray_shtk__l6_c12", "size": 9}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 6, "dtype": "int"}, "op2": {"type": "literal", "id": 5, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 4, "dtype": "int"}, "op2": {"type": "temp", "id": 6, "dtype": "int"}, "op3": {"type": "none"}},
@@ -32,7 +32,7 @@
             "main": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "struct"}, "op2": {"type": "var", "id": 25, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "struct"}, "op2": {"type": "var", "id": 35, "name": "_fn_CustomOperatorFixed_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 36, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 34, "dtype": "struct"}, "op2": {"type": "var", "id": 35, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 36, "name": "CustomOperatorFixedDimArray.shtk"}},
                     {"opcode": "allocArrayPointer", "op1": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op2": {"type": "bytes", "id": 38, "bytes": 16}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 39, "dtype": "int"}, "op2": {"type": "literal", "id": 26, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op2": {"type": "temp", "id": 39, "dtype": "int"}, "op3": {"type": "none"}},
@@ -45,21 +45,21 @@
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 47, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 44, "dtype": "int"}, "op3": {"type": "bytes", "id": 46, "bytes": 4}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 48, "dtype": "int"}, "op2": {"type": "literal", "id": 29, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 47, "dtype": "int"}, "op2": {"type": "temp", "id": 48, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op2": {"type": "var", "id": 49, "name": "_fn_CustomOperatorFixed_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 50, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op2": {"type": "var", "id": 49, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 50, "name": "CustomOperatorFixedDimArray.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 51, "dtype": "long"}, "op2": {"type": "literal", "id": 30, "dtype": "autoInt", "value": 4}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 51, "dtype": "long"}, "op2": {"type": "var", "id": 52, "name": "_fn_CustomOperatorFixed_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 53, "name": "CustomOperatorFixed.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 54, "dtype": "int"}, "op2": {"type": "var", "id": 55, "name": "_fn_CustomOperatorFixed_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 56, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 51, "dtype": "long"}, "op2": {"type": "var", "id": 52, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 53, "name": "CustomOperatorFixedDimArray.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 54, "dtype": "int"}, "op2": {"type": "var", "id": 55, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArray", "dtype": "int"}, "op3": {"type": "module", "id": 56, "name": "CustomOperatorFixedDimArray.shtk"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 57, "name": "a", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 54, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 64, "dtype": "struct"}, "op2": {"type": "var", "id": 58, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 64, "dtype": "struct"}, "op2": {"type": "var", "id": 65, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 66, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 64, "dtype": "struct"}, "op2": {"type": "var", "id": 65, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 66, "name": "CustomOperatorFixedDimArray.shtk"}},
                     {"opcode": "allocArrayPointer", "op1": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op2": {"type": "bytes", "id": 68, "bytes": 8}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 69, "dtype": "int"}, "op2": {"type": "literal", "id": 59, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op2": {"type": "temp", "id": 69, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op3": {"type": "bytes", "id": 70, "bytes": 4}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 72, "dtype": "int"}, "op2": {"type": "literal", "id": 60, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op2": {"type": "temp", "id": 72, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op2": {"type": "var", "id": 73, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 74, "name": "CustomOperatorFixed.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 75, "dtype": "int"}, "op2": {"type": "var", "id": 76, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 77, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op2": {"type": "var", "id": 73, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 74, "name": "CustomOperatorFixedDimArray.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 75, "dtype": "int"}, "op2": {"type": "var", "id": 76, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayFixed", "dtype": "int"}, "op3": {"type": "module", "id": 77, "name": "CustomOperatorFixedDimArray.shtk"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 78, "name": "b", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 75, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 82, "dtype": "int"}, "op2": {"type": "var", "id": 81, "name": "c", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 83, "dtype": "int"}, "op2": {"type": "literal", "id": 79, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
@@ -71,9 +71,9 @@
                     {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 87, "name": "d", "dtype": "int"}, "op2": {"type": "tempPtr", "id": 89, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "pointerAssign", "op1": {"type": "ptr", "id": 87, "name": "d", "dtype": "int"}, "op2": {"type": "var", "id": 90, "name": "c", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 95, "dtype": "struct"}, "op2": {"type": "var", "id": 91, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 95, "dtype": "struct"}, "op2": {"type": "var", "id": 96, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex", "dtype": "int"}, "op3": {"type": "module", "id": 97, "name": "CustomOperatorFixed.shtk"}},
-                    {"opcode": "passPointer", "op1": {"type": "ptr", "id": 92, "name": "d", "dtype": "int"}, "op2": {"type": "var", "id": 98, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex", "dtype": "int"}, "op3": {"type": "module", "id": 99, "name": "CustomOperatorFixed.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 100, "dtype": "int"}, "op2": {"type": "var", "id": 101, "name": "_fn_CustomOperatorFixed_shtk_subscriptArrayTrueFlex", "dtype": "int"}, "op3": {"type": "module", "id": 102, "name": "CustomOperatorFixed.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 95, "dtype": "struct"}, "op2": {"type": "var", "id": 96, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayTrueFlex", "dtype": "int"}, "op3": {"type": "module", "id": 97, "name": "CustomOperatorFixedDimArray.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "ptr", "id": 92, "name": "d", "dtype": "int"}, "op2": {"type": "var", "id": 98, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayTrueFlex", "dtype": "int"}, "op3": {"type": "module", "id": 99, "name": "CustomOperatorFixedDimArray.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 100, "dtype": "int"}, "op2": {"type": "var", "id": 101, "name": "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayTrueFlex", "dtype": "int"}, "op3": {"type": "module", "id": 102, "name": "CustomOperatorFixedDimArray.shtk"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 103, "name": "e", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 100, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 106, "dtype": "int"}, "op2": {"type": "literal", "id": 105, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 104, "dtype": "int"}, "op2": {"type": "temp", "id": 106, "dtype": "int"}, "op3": {"type": "none"}},

@@ -1,8 +1,0 @@
-MODULE CannotReturnImmutableValueAsPointerStructFieldError.shtk
-ERROR in Line 8 Col 5
-
-    return foo.z
-    ^
-Cannot return immutable value as pointer
-
-CannotReturnImmutableValueAsPointerStructFieldError.shtk:8:4

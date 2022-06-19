@@ -1,8 +1,8 @@
-MODULE ExpressionPassAsMutableError.shtk
+MODULE PassAsMutableError.shtk
 ERROR in Line 10 Col 9
 
     foo(a+1)
         ^
 Cannot pass immutable as mutable
 
-ExpressionPassAsMutableError.shtk:10:8
+PassAsMutableError.shtk:10:8

@@ -1,11 +1,11 @@
 {
-    "EscapeDoubleQuoteTest.shtk": {
-        "moduleName": "EscapeDoubleQuoteTest.shtk",
+    "EscapeDoubleQuote.shtk": {
+        "moduleName": "EscapeDoubleQuote.shtk",
         "functions": {
             "main": {
                 "icode": [
                         ubyte* tempPtr5 = createPointer ubyte c
-                        ubyte* tempPtr6 = createPointer stringData _str_EscapeDoubleQuoteTest_shtk__l3_c22
+                        ubyte* tempPtr6 = createPointer stringData _str_EscapeDoubleQuote_shtk__l3_c22
                         ubyte* tempPtr5 = memoryCopy ubyte* tempPtr6, autoInt 14
                         printString ubyte c
                         newLine

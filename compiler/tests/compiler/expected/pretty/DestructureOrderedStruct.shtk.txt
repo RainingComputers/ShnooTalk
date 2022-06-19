@@ -1,6 +1,6 @@
 {
-    "OrderedDestructureStruct.shtk": {
-        "moduleName": "OrderedDestructureStruct.shtk",
+    "DestructureOrderedStruct.shtk": {
+        "moduleName": "DestructureOrderedStruct.shtk",
         "functions": {
             "main": {
                 "icode": [

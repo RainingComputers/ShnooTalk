@@ -1,6 +1,6 @@
 {
-    "DefParameterToUseFunction.shtk": {
-        "moduleName": "DefParameterToUseFunction.shtk",
+    "DefineParameterToUseFunction.shtk": {
+        "moduleName": "DefineParameterToUseFunction.shtk",
         "functions": {
             "main": {
                 "icode": [

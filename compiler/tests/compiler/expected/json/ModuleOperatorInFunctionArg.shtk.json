@@ -1,6 +1,6 @@
 {
-    "ScopeOpInFunctionArg.shtk": {
-        "moduleName": "ScopeOpInFunctionArg.shtk",
+    "ModuleOperatorInFunctionArg.shtk": {
+        "moduleName": "ModuleOperatorInFunctionArg.shtk",
         "functions": {
             "main": {
                 "icode": [

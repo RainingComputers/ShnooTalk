@@ -1,0 +1,8 @@
+MODULE CustomOperatorParamCheckError1.shtk
+ERROR in Line 13 Col 10
+
+    a += 2
+         ^
+Cannot pass literal as mutable or pointer
+
+CustomOperatorParamCheckError1.shtk:13:9

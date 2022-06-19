@@ -1,0 +1,8 @@
+MODULE TypeDoesNotExistError.shtk
+ERROR in Line 3 Col 11
+
+    var a:foo
+          ^
+Type does not exist
+
+TypeDoesNotExistError.shtk:3:10

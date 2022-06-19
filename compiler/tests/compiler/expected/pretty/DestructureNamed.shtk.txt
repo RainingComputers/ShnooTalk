@@ -1,6 +1,6 @@
 {
-    "NamedDestructure.shtk": {
-        "moduleName": "NamedDestructure.shtk",
+    "DestructureNamed.shtk": {
+        "moduleName": "DestructureNamed.shtk",
         "functions": {
             "main": {
                 "icode": [

@@ -1,6 +1,6 @@
 {
-    "OrderedDestructureInitList.shtk": {
-        "moduleName": "OrderedDestructureInitList.shtk",
+    "DestructureOrderedInitList.shtk": {
+        "moduleName": "DestructureOrderedInitList.shtk",
         "functions": {
             "main": {
                 "icode": [

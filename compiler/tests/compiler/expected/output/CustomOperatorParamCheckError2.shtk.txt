@@ -1,8 +1,8 @@
-MODULE CustomOperatorParamCheckError.shtk
+MODULE CustomOperatorParamCheckError2.shtk
 ERROR in Line 16 Col 25
 
     var c: foobar = a + b
                         ^
 Cannot pass immutable as mutable
 
-CustomOperatorParamCheckError.shtk:16:24
+CustomOperatorParamCheckError2.shtk:16:24

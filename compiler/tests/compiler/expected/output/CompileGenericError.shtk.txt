@@ -1,0 +1,8 @@
+MODULE CompileGenericError.shtk
+ERROR in Line 1 Col 1
+
+generic T
+^
+Cannot compile a generic module
+
+CompileGenericError.shtk:1:0
