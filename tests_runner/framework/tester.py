@@ -13,7 +13,7 @@ from tests_runner.framework.coverage import prepare_coverage_report
 from tests_runner.framework.command import run_command
 from tests_runner.framework.assertions import link_objects_into_bin
 
-from tests_runner.framework.config import CLI_ARG, INVALID_CLI_ARGS
+from tests_runner.framework.config import CLI_ARG, FILE_FILTER, GROUP_FILTER
 from tests_runner.framework.config import COMPILER_EXEC_PATH, COMPILER_BUILD_FAILED
 from tests_runner.framework.config import COMPILER_NOT_FOUND
 from tests_runner.framework.config import CLIArg
@@ -41,13 +41,36 @@ class Tester:
         for file_ext in ext_list:
             remove_files(file_ext)
 
+    @staticmethod
+    def _is_filtered_group(group: str) -> bool:
+        if not GROUP_FILTER:
+            return False
+
+        return group not in GROUP_FILTER
+
+    @staticmethod
+    def _get_files_for_batch_run() -> List[str]:
+        files = list_test_files()
+        if FILE_FILTER:
+            files = list(filter(lambda x: x in FILE_FILTER, files))
+
+        return files
+
     def batch_run(
         self, group: str, test_func: Callable[[str], Result], generator: bool = False
     ) -> None:
 
+        if Tester._is_filtered_group(group):
+            return
+
+        files = Tester._get_files_for_batch_run()
+
+        if len(files) == 0:
+            return
+
         result_printer = self.upsert_printer(group, generator)
 
-        for file in list_test_files():
+        for file in files:
             try:
                 test_result = test_func(file)
                 result_printer.print_result(file, test_result)
@@ -56,6 +79,17 @@ class Tester:
                 result_printer.print_result(file, Result.invalid(reason))
             except JSONDecodeError as error:
                 result_printer.print_result(file, Result.invalid(str(error)))
+
+    def single_run(self, group: str, name: str, test_func: Callable[[], Result]) -> None:
+        if Tester._is_filtered_group(group):
+            return
+
+        if FILE_FILTER:
+            return
+
+        result_printer = self.upsert_printer(group)
+        test_result = test_func()
+        result_printer.print_result(name, test_result)
 
     def batch(
         self, path: str, clean: Optional[List[str]] = None
@@ -88,10 +122,8 @@ class Tester:
             @dirctx(path)
             def single_run_wrapper() -> None:
                 name = test_func.__name__
-                group = test_func.__module__
-                result_printer = self.upsert_printer(group)
-                test_result = test_func()
-                result_printer.print_result(name, test_result)
+                group = test_func.__module__.split('.')[-1]
+                self.single_run(group, name, test_func)
 
             def register_test() -> None:
                 self._tests.append(single_run_wrapper)
@@ -186,7 +218,7 @@ class Tester:
             gen_func()
 
     def run(self) -> int:
-        if INVALID_CLI_ARGS or COMPILER_NOT_FOUND or COMPILER_BUILD_FAILED:
+        if COMPILER_NOT_FOUND or COMPILER_BUILD_FAILED:
             return -1
 
         if CLI_ARG == CLIArg.GEN:

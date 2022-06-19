@@ -1,14 +1,15 @@
 import os
 import sys
 import enum
+import argparse
 
 from tests_runner.framework.fs import string_from_file
 
 
 class CLIArg(str, enum.Enum):
-    TEST = "--test"
-    COVERAGE = "--coverage"
-    GEN = "--gen"
+    TEST = "test"
+    COVERAGE = "coverage"
+    GEN = "gen"
 
 
 class BuildType(str, enum.Enum):
@@ -28,16 +29,17 @@ CLI_ARG_OPTIONS = ' '.join(list(BUILD_TYPE_MAP.keys()))
 
 CLI_ARG = None
 BUILD_TYPE = None
-INVALID_CLI_ARGS = True
 
-if len(sys.argv) == 2:
-    try:
-        CLI_ARG = CLIArg(sys.argv[1])
-        BUILD_TYPE = BUILD_TYPE_MAP[CLI_ARG]
-        INVALID_CLI_ARGS = False
-    except ValueError:
-        print("🙁 Invalid CLI ARGS, available option are:")
-        print(f"    {CLI_ARG_OPTIONS}")
+parser = argparse.ArgumentParser()
+parser.add_argument("run_type", type=CLIArg, help="The type of runs, can be test, coverage or gen")
+parser.add_argument("--file", nargs="*")
+parser.add_argument("--group", nargs="*")
+args = parser.parse_args()
+
+CLI_ARG = args.run_type
+BUILD_TYPE = BUILD_TYPE_MAP[CLI_ARG]
+FILE_FILTER = args.file
+GROUP_FILTER = args.group
 
 # Get compiler version
 

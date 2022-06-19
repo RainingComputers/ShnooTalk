@@ -68,9 +68,61 @@ clang app.o -o app
 
 ## Running compiler tests
 
-```
-make test
-```
+These are end to end tests which can be used to test an implementation of ShnooTalk. The `tests_runner` python application is used to run the tests.
+
+### Directories
+
+#### compiler/tests/parser/
+
+This is meant to test the AST generated from the parser.
+
+#### compiler/tests/compiler/
+
+Test the output executable produced by the compiler and the generated ShnooTalk icode (not the entire IR just the generated function IR instructions only, see `-icode-all` option).
+
+#### compiler/tests/ir/
+
+This is meant to test the overall structure of the generated IR (i.e the parts that were not tested in compiler/tests/compiler/ tests).
+
+### stdlib/stdlib/tests/
+
+Tests for the standard library
+
+### When to add a test?
+
++ When you discover a compiler bug
++ When you add a new grammar or syntax
++ If you make changes to existing syntax, you will most probably just have to fix failing tests
++ When you make changes to the IR or the IR builder
++ Avoid making changes to the pretty printer or modifying syntax of existing IR 
+  instructions, but if you do, you may have to change a lot of test cases, re-generate the test cases,
+  and do careful review using `git diff`
+
+### Where to add the test?
+
++ If you made changes to the parser, add test to the parser/ directory
++ If you have made changes to the icode (IR instructions) or added a new IR instruction, add test to the compiler/ directory
++ If you have fixed a compiler bug, add a test to compiler/ directory
++ If you have made changes to the IR but not icode (IR instructions), add test to the ir/ directory
+
+### How to add a test
+
++ Create a .shtk files in appropriate test directory, add print statements for asserting
++ After adding the test, run `make gen FILTERS='--file <test-file-name>'`
++ Run `make test` to run all tests
+
+### How to run the tests?
+
++ To run all tests, run `make test` or `make coverage`
++ To run a single file, run `make test FILTERS='--file <test-file-name>'`
++ To run only a group of tests, run `make test FILTERS='--group <group-name>'`
+
+### How to generate the test cases?
+
++ Run `make gen` to generate all test cases
++ Run `make gen FILTERS='--file <test-file-name>'` to generate for a particular test file
++ Carefully review the changes using `git diff`
+
 
 ## Project status
 
@@ -84,13 +136,8 @@ make test
 - [x] make constructors
 - [x] := initializer
 - [x] Destructuring
-- [x] Clean up packaging process
-- [x] Improve error messages and module trace list
-- [x] Change compiler tests to use `-icode-all`
 - [x] Generic function call
-- [x] Fix sizeof
 - [x] Class or struct destructors
-- [x] Pretty name for generics
 - [x] Assignment destructuring
 - [x] Better operator overloading
 - [x] `in` operator
@@ -109,24 +156,14 @@ make test
 
 *Backlog*
 
-- [x] Fix bugs in the LLVM translator backend
 - [x] Array return types
-- [x] Fix def
 - [x] IR Validator
-- [x] Change IR pretty print to JSON
-- [x] IR renaming and cleanup
 - [x] Main function return type check
-- [x] Fix `input()` and `print()` and `println()` functions
-- [x] `exit()` function
 - [x] Extern C functions and function imports
 - [x] Node style module imports
 - [x] `loop {}` syntax for looping forever
 - [x] `do {} while()` loop
 - [x] NaN and infinity
-- [x] 01234 bug
-- [x] Check limits for primitive data types
-- [x] Dynamic allocation and pointers
-- [x] Add `fopen()` function
 - [x] Multi-line strings
 - [x] Assigning conditional expressions
 - [x] Setup github workflows and build for other platforms
@@ -167,11 +204,6 @@ make test
 - [ ] Remove tokens from builder
 - [ ] Cleanup format strings and function call in Translator
 
-*Bugs*
-
-- [x] Fix `.[` clash between destructured assignment and struct field `.`
-- [x] Fix generic function call in instatiator
-
 ### Documentation
 
 - [ ] Language tour using shnootalk-playground
@@ -181,7 +213,6 @@ make test
 
 - [ ] Debug symbols (using LLVM)
 - [ ] Python wrapper generator
-- [ ] Switch to using opaque pointers and `getelementptr` for LLVM
 
 ### Platforms
 
@@ -190,10 +221,6 @@ make test
 
 ### Testing
 
-- [ ] Refactor tests
-- [ ] Refactor the test runner 
-- [x] ~95% test coverage
-- [x] Tests for ast and ir
 - [ ] Unit tests for ir builder
 - [ ] Unit tests for pretty printer
 - [ ] Use multiprocessing for tests runner

@@ -73,9 +73,9 @@ class ResultPrinter:
         self._generator = generator
 
         if generator:
-            print(f"🚀 Generating {group}")
+            print(f"🚀 Generating group {group}")
         else:
-            print(f"🚀 Running {group} tests")
+            print(f"🚀 Running group {group} tests")
 
     def print_result(self, name: str, result: Result) -> None:
 
