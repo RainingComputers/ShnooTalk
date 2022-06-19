@@ -3,6 +3,6 @@ ERROR in Line 7 Col 14
 
     println(a["hello"])
              ^
-Type error, operator '[' does not exist for ubyte[6] and TestModules/SubsFoobar.shtk::Foobar
+Type error, operator '[' does not exist for ubyte[6] and TestModules/FoobarSubscript.shtk::Foobar
 
 SubscriptOperatorNotFoundError.shtk:7:13

@@ -5,35 +5,35 @@
             "main": {
                 "icode": [
                         struct* tempPtr8 = createPointer struct a
-                        passPointer struct* tempPtr8, byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        passPointer struct* tempPtr8, byte _fn_TestModules_FoobarSubscript_shtk_subscript, module TestModules/FoobarSubscript.shtk
                         float temp11 = cast autoFloat 3.140000
-                        pass float temp11, byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
-                        byte calleeReturnValue14 = call byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        pass float temp11, byte _fn_TestModules_FoobarSubscript_shtk_subscript, module TestModules/FoobarSubscript.shtk
+                        byte calleeReturnValue14 = call byte _fn_TestModules_FoobarSubscript_shtk_subscript, module TestModules/FoobarSubscript.shtk
                         print byte calleeReturnValue14
                         newLine
                         struct* tempPtr21 = createPointer struct a
-                        passPointer struct* tempPtr21, byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        passPointer struct* tempPtr21, byte _fn_TestModules_FoobarSubscript_shtk_subscript, module TestModules/FoobarSubscript.shtk
                         float temp24 = cast autoFloat 2.340000
-                        pass float temp24, byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
-                        byte calleeReturnValue27 = call byte _fn_TestModules_SubsFoobar_shtk_subscript, module TestModules/SubsFoobar.shtk
+                        pass float temp24, byte _fn_TestModules_FoobarSubscript_shtk_subscript, module TestModules/FoobarSubscript.shtk
+                        byte calleeReturnValue27 = call byte _fn_TestModules_FoobarSubscript_shtk_subscript, module TestModules/FoobarSubscript.shtk
                         print byte calleeReturnValue27
                         newLine
                         struct* tempPtr37 = createPointer struct a
-                        passPointer struct* tempPtr37, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        passPointer struct* tempPtr37, int _fn_TestModules_FoobarSubscript_shtk_subscriptArray, module TestModules/FoobarSubscript.shtk
                         int* tempPtr40 = allocArrayPointer bytes 8
                         int temp42 = cast autoInt 1
                         int* tempPtr40 = write int temp42
                         int* tempPtr44 = addressAdd int* tempPtr40, bytes 4
                         int temp45 = cast autoInt 2
                         int* tempPtr44 = write int temp45
-                        passPointer int* tempPtr40, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        passPointer int* tempPtr40, int _fn_TestModules_FoobarSubscript_shtk_subscriptArray, module TestModules/FoobarSubscript.shtk
                         int temp48 = cast autoInt 2
-                        pass int temp48, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
-                        int calleeReturnValue51 = call int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        pass int temp48, int _fn_TestModules_FoobarSubscript_shtk_subscriptArray, module TestModules/FoobarSubscript.shtk
+                        int calleeReturnValue51 = call int _fn_TestModules_FoobarSubscript_shtk_subscriptArray, module TestModules/FoobarSubscript.shtk
                         print int calleeReturnValue51
                         newLine
                         struct* tempPtr63 = createPointer struct a
-                        passPointer struct* tempPtr63, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        passPointer struct* tempPtr63, int _fn_TestModules_FoobarSubscript_shtk_subscriptArray, module TestModules/FoobarSubscript.shtk
                         int* tempPtr66 = allocArrayPointer bytes 16
                         int temp68 = cast autoInt 1
                         int* tempPtr66 = write int temp68
@@ -46,10 +46,10 @@
                         int* tempPtr76 = addressAdd int* tempPtr73, bytes 4
                         int temp77 = cast autoInt 4
                         int* tempPtr76 = write int temp77
-                        passPointer int* tempPtr66, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        passPointer int* tempPtr66, int _fn_TestModules_FoobarSubscript_shtk_subscriptArray, module TestModules/FoobarSubscript.shtk
                         int temp80 = cast autoInt 4
-                        pass int temp80, int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
-                        int calleeReturnValue83 = call int _fn_TestModules_SubsFoobar_shtk_subscriptArray, module TestModules/SubsFoobar.shtk
+                        pass int temp80, int _fn_TestModules_FoobarSubscript_shtk_subscriptArray, module TestModules/FoobarSubscript.shtk
+                        int calleeReturnValue83 = call int _fn_TestModules_FoobarSubscript_shtk_subscriptArray, module TestModules/FoobarSubscript.shtk
                         print int calleeReturnValue83
                         newLine
                         int temp88 = cast autoInt 0
@@ -59,10 +59,10 @@
             }
         }
     },
-    "TestModules/SubsFoobar.shtk": {
-        "moduleName": "TestModules/SubsFoobar.shtk",
+    "TestModules/FoobarSubscript.shtk": {
+        "moduleName": "TestModules/FoobarSubscript.shtk",
         "functions": {
-            "_fn_TestModules_SubsFoobar_shtk_subscript": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscript": {
                 "icode": [
                         float temp8 = cast autoFloat 3.140000
                         flag = isEqual float index, float temp8
@@ -76,7 +76,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_SubsFoobar_shtk_subscriptArray": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscriptArray": {
                 "icode": [
                         int temp23 = cast autoInt 2
                         flag = isEqual int n, int temp23
@@ -103,7 +103,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_SubsFoobar_shtk_subscriptTesting": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscriptTesting": {
                 "icode": [
                         byte temp56 = cast autoInt 0
                         byte returnValue54 = equal byte temp56

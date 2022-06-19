@@ -1,5 +1,5 @@
-from "TestModules/SubsFoobar.shtk" use Foobar
-from "TestModules/SubsFoobarExtension.shtk" use testing
+from "TestModules/FoobarSubscript.shtk" use Foobar
+from "TestModules/FoobarMethodExtension.shtk" use testing
 
 fn main() -> int
 {

@@ -5,8 +5,8 @@
             "main": {
                 "icode": [
                         struct* tempPtr7 = createPointer struct a
-                        passPointer struct* tempPtr7, void _fn_TestModules_SubsFoobarExtension_shtk_testing, module TestModules/SubsFoobarExtension.shtk
-                        void calleeReturnValue10 = call void _fn_TestModules_SubsFoobarExtension_shtk_testing, module TestModules/SubsFoobarExtension.shtk
+                        passPointer struct* tempPtr7, void _fn_TestModules_FoobarMethodExtension_shtk_testing, module TestModules/FoobarMethodExtension.shtk
+                        void calleeReturnValue10 = call void _fn_TestModules_FoobarMethodExtension_shtk_testing, module TestModules/FoobarMethodExtension.shtk
                         int temp15 = cast autoInt 0
                         int returnValue13 = equal int temp15
                         return
@@ -14,10 +14,22 @@
             }
         }
     },
-    "TestModules/SubsFoobar.shtk": {
-        "moduleName": "TestModules/SubsFoobar.shtk",
+    "TestModules/FoobarMethodExtension.shtk": {
+        "moduleName": "TestModules/FoobarMethodExtension.shtk",
         "functions": {
-            "_fn_TestModules_SubsFoobar_shtk_subscript": {
+            "_fn_TestModules_FoobarMethodExtension_shtk_testing": {
+                "icode": [
+                        printString stringData _str_TestModules_FoobarMethodExtension_shtk__l5_c12
+                        newLine
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/FoobarSubscript.shtk": {
+        "moduleName": "TestModules/FoobarSubscript.shtk",
+        "functions": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscript": {
                 "icode": [
                         float temp8 = cast autoFloat 3.140000
                         flag = isEqual float index, float temp8
@@ -31,7 +43,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_SubsFoobar_shtk_subscriptArray": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscriptArray": {
                 "icode": [
                         int temp23 = cast autoInt 2
                         flag = isEqual int n, int temp23
@@ -58,22 +70,10 @@
                         return
                 ]
             },
-            "_fn_TestModules_SubsFoobar_shtk_subscriptTesting": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscriptTesting": {
                 "icode": [
                         byte temp56 = cast autoInt 0
                         byte returnValue54 = equal byte temp56
-                        return
-                ]
-            }
-        }
-    },
-    "TestModules/SubsFoobarExtension.shtk": {
-        "moduleName": "TestModules/SubsFoobarExtension.shtk",
-        "functions": {
-            "_fn_TestModules_SubsFoobarExtension_shtk_testing": {
-                "icode": [
-                        printString stringData _str_TestModules_SubsFoobarExtension_shtk__l5_c12
-                        newLine
                         return
                 ]
             }

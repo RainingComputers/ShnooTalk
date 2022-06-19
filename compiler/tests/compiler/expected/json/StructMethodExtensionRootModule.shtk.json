@@ -21,10 +21,10 @@
             }
         }
     },
-    "TestModules/SubsFoobar.shtk": {
-        "moduleName": "TestModules/SubsFoobar.shtk",
+    "TestModules/FoobarSubscript.shtk": {
+        "moduleName": "TestModules/FoobarSubscript.shtk",
         "functions": {
-            "_fn_TestModules_SubsFoobar_shtk_subscript": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscript": {
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "float"}, "op2": {"type": "literal", "id": 7, "dtype": "autoFloat", "value": 3.14}, "op3": {"type": "none"}},
                     {"opcode": "isEqual", "op1": {"type": "var", "id": 6, "name": "index", "dtype": "float"}, "op2": {"type": "temp", "id": 8, "dtype": "float"}, "op3": {"type": "none"}},
@@ -38,7 +38,7 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_TestModules_SubsFoobar_shtk_subscriptArray": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscriptArray": {
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
                     {"opcode": "isEqual", "op1": {"type": "var", "id": 21, "name": "n", "dtype": "int"}, "op2": {"type": "temp", "id": 23, "dtype": "int"}, "op3": {"type": "none"}},
@@ -65,7 +65,7 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_TestModules_SubsFoobar_shtk_subscriptTesting": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscriptTesting": {
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 56, "dtype": "byte"}, "op2": {"type": "literal", "id": 55, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 54, "dtype": "byte"}, "op2": {"type": "temp", "id": 56, "dtype": "byte"}, "op3": {"type": "none"}},

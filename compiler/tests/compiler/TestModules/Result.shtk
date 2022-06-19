@@ -1,6 +1,3 @@
-# Library for error handling and returning 
-# success or failure results
-
 extfn exit(exitCode: int)
 
 struct Result
@@ -10,9 +7,6 @@ struct Result
 
 fn val(this:Result) -> int
 {
-    # Return the value if error flag is not set,
-    # other wise print an error message and exit
-
     if(this.err == true) 
     {
         println("ERROR: Called val() on result with error")
@@ -23,9 +17,7 @@ fn val(this:Result) -> int
 }
 
 fn fail() -> Result
-{
-    # Factory function for creating a failure result
-    
+{ 
     var res:Result
     
     res.err = true
@@ -35,8 +27,6 @@ fn fail() -> Result
 
 fn success(value:int) -> Result
 {
-    # Factory function for creating a success result
-    
     var res:Result
     
     res.err = false
@@ -52,9 +42,6 @@ struct FloatResult
 
 fn floatVal(this:FloatResult) -> float
 {
-    # Return the value if error flag is not set,
-    # other wise print an error message and exit
-    
     if(this.err == true)
     {
         println("ERROR: Called val() on floatResult with error")
@@ -62,13 +49,10 @@ fn floatVal(this:FloatResult) -> float
     }
     
     return this._fVal
-    
 }
 
 fn floatFail() -> FloatResult
 {
-    # Factory function for creating a success result
-
     var res:FloatResult
     
     res.err = true
@@ -78,8 +62,6 @@ fn floatFail() -> FloatResult
 
 fn floatSuccess(value:float) -> FloatResult
 {
-    # Factory function for creating a success result
-
     var res:FloatResult
     
     res.err = false
@@ -87,4 +69,3 @@ fn floatSuccess(value:float) -> FloatResult
     
     return res
 }
-

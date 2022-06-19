@@ -2,8 +2,6 @@ use "TestModules/Math.shtk" as math
 use "TestModules/Result.shtk" as result
 from result use Result, FloatResult
 
-# Library for handling string
-
 struct String
 {
     var arr:char[80]
@@ -162,4 +160,3 @@ fn strcmp(this:String, arr:char[80]) -> int
 
     return -1
 }
-

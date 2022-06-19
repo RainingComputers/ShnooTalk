@@ -1,4 +1,4 @@
-from "TestModules/SubsFoobar.shtk" use Foobar
+from "TestModules/FoobarSubscript.shtk" use Foobar
 
 fn testing(self: Foobar) 
 {

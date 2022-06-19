@@ -21,10 +21,10 @@
             }
         }
     },
-    "TestModules/SubsFoobar.shtk": {
-        "moduleName": "TestModules/SubsFoobar.shtk",
+    "TestModules/FoobarSubscript.shtk": {
+        "moduleName": "TestModules/FoobarSubscript.shtk",
         "functions": {
-            "_fn_TestModules_SubsFoobar_shtk_subscript": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscript": {
                 "icode": [
                         float temp8 = cast autoFloat 3.140000
                         flag = isEqual float index, float temp8
@@ -38,7 +38,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_SubsFoobar_shtk_subscriptArray": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscriptArray": {
                 "icode": [
                         int temp23 = cast autoInt 2
                         flag = isEqual int n, int temp23
@@ -65,7 +65,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_SubsFoobar_shtk_subscriptTesting": {
+            "_fn_TestModules_FoobarSubscript_shtk_subscriptTesting": {
                 "icode": [
                         byte temp56 = cast autoInt 0
                         byte returnValue54 = equal byte temp56
