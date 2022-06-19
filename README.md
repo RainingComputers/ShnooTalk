@@ -84,7 +84,7 @@ Test the output executable produced by the compiler and the generated ShnooTalk 
 
 This is meant to test the overall structure of the generated IR (i.e the parts that were not tested in compiler/tests/compiler/ tests).
 
-### stdlib/stdlib/tests/
+#### stdlib/stdlib/tests/
 
 Tests for the standard library
 
@@ -105,7 +105,7 @@ Tests for the standard library
 + If you have fixed a compiler bug, add a test to compiler/ directory
 + If you have made changes to the IR but not icode (IR instructions), add test to the ir/ directory
 
-### How to add a test
+### How to add a test?
 
 + Create a .shtk files in appropriate test directory, add print statements for asserting
 + After adding the test, run `make gen FILTERS='--file <test-file-name>'`
