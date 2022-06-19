@@ -154,6 +154,7 @@ Tests for the standard library
 - [ ] Add `clone` built in
 - [ ] Reduce binary size
 - [ ] Add SHNOOTALK_PATH environment variable, and use PATH by default
+- [ ] `setSubscript` hook
 
 *Backlog*
 
