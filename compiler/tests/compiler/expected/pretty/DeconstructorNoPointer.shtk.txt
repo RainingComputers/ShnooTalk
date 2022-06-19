@@ -15,29 +15,29 @@
             }
         }
     },
-    "TestModules/foobar.shtk": {
-        "moduleName": "TestModules/foobar.shtk",
+    "TestModules/Foobar.shtk": {
+        "moduleName": "TestModules/Foobar.shtk",
         "functions": {
-            "_fn_TestModules_foobar_shtk_beforeCopy": {
+            "_fn_TestModules_Foobar_shtk_beforeCopy": {
                 "icode": [
                         int* tempPtr13 = createPointer struct self
                         int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
                         int temp16 = read int* tempPtr15
                         print int temp16
                         newLine
-                        printString stringData _str_TestModules_foobar_shtk__l15_c12
+                        printString stringData _str_TestModules_Foobar_shtk__l15_c12
                         newLine
                         return
                 ]
             },
-            "_fn_TestModules_foobar_shtk_deconstructor": {
+            "_fn_TestModules_Foobar_shtk_deconstructor": {
                 "icode": [
                         int* tempPtr4 = createPointer struct self
                         int* tempPtr6 = addressAdd int* tempPtr4, bytes 0
                         int temp7 = read int* tempPtr6
                         print int temp7
                         newLine
-                        printString stringData _str_TestModules_foobar_shtk__l9_c12
+                        printString stringData _str_TestModules_Foobar_shtk__l9_c12
                         newLine
                         return
                 ]
