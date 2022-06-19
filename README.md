@@ -109,6 +109,7 @@ Tests for the standard library
 
 + Create a .shtk files in appropriate test directory, add print statements for asserting
 + After adding the test, run `make gen FILTERS='--file <test-file-name>'`
++ Check generated files
 + Run `make test` to run all tests
 
 ### How to run the tests?
