@@ -1,38 +1,37 @@
 # appimage-builder recipe see https://appimage-builder.readthedocs.io for details
-# TODO: move this yaml file into appimage folder
 version: 1
 AppDir:
   path: ./AppDir
   app_info:
     id: shnootalk-compiler
     name: shtkc
-    icon: utilities-terminal
-    version: 0.2.0-alpha # TODO: set this using python script
+    icon: shnootalk
+    version: <filled-by-yq-in-ci>
     exec: usr/bin/shtkc
     exec_args: $@
   apt:
     arch:
-    - amd64
+      - amd64
     allow_unauthenticated: true
     sources:
-    - sourceline: deb http://archive.ubuntu.com/ubuntu focal main
+      - sourceline: deb http://archive.ubuntu.com/ubuntu focal main
     include:
-    - libgcc-s1:amd64
-    - libtinfo6:amd64
-    - zlib1g:amd64
+      - libgcc-s1:amd64
+      - libtinfo6:amd64
+      - zlib1g:amd64
   files:
     include:
-    - /lib/x86_64-linux-gnu/libLLVM-12.so.1
-    - /lib/x86_64-linux-gnu/libbsd.so.0
-    - /lib/x86_64-linux-gnu/libedit.so.2
-    - /lib/x86_64-linux-gnu/libffi.so.7
-    - /lib/x86_64-linux-gnu/libstdc++.so.6
+      - /lib/x86_64-linux-gnu/libLLVM-12.so.1
+      - /lib/x86_64-linux-gnu/libbsd.so.0
+      - /lib/x86_64-linux-gnu/libedit.so.2
+      - /lib/x86_64-linux-gnu/libffi.so.7
+      - /lib/x86_64-linux-gnu/libstdc++.so.6
     exclude:
-    - usr/share/man
-    - usr/share/doc/*/README.*
-    - usr/share/doc/*/changelog.*
-    - usr/share/doc/*/NEWS.*
-    - usr/share/doc/*/TODO.*
+      - usr/share/man
+      - usr/share/doc/*/README.*
+      - usr/share/doc/*/changelog.*
+      - usr/share/doc/*/NEWS.*
+      - usr/share/doc/*/TODO.*
   test:
     fedora-30:
       image: appimagecrafters/tests-env:fedora-30
@@ -58,10 +57,12 @@ AppImage:
   arch: x86_64
   update-information: guess
 script: |
-    # remove any existent binaries
-    rm -rf AppDir
+  # remove any existent binaries
+  rm -rf AppDir
 
-    # compile and install binaries into AppDir
-    make build -j 2
-    mkdir -p AppDir/usr/bin/
-    cp bin/`cat build-name.txt`/shtkc AppDir/usr/bin/shtkc
+  # compile and install binaries into AppDir
+  make build -j 2
+  mkdir -p AppDir/usr/bin/
+  mkdir -p AppDir/usr/share/icons/
+  cp logo.svg AppDir/usr/share/icons/shnootalk.svg
+  cp bin/`cat build-name.txt`/shtkc AppDir/usr/bin/shtkc
