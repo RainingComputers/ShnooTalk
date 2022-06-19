@@ -5,7 +5,7 @@
 #include "../IntermediateRepresentation/FunctionDescription.hpp"
 #include "../IntermediateRepresentation/ModuleDescription.hpp"
 #include "../Node/Node.hpp"
-#include "DescriptionFinder.hpp"
+#include "Finder.hpp"
 #include "FunctionBuilder.hpp"
 #include "ModuleBuilder.hpp"
 #include "UnitBuilder.hpp"
