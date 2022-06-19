@@ -1,6 +1,8 @@
-# c++
-obj/*
-bin/*
+# c++ and ShnooTalk
+obj/
+_obj/
+bin/
+*.o
 
 # test coverage
 compiler/tests/testinfo/
@@ -10,7 +12,7 @@ compiler/tests/*.info
 compiler/tests/compiler/*.info
 .cccc/*
 
-# shnootalk testing
+# ShnooTalk testing
 tests/log.txt
 *.llc
 *.llc.s

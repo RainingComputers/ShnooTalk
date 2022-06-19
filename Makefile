@@ -101,10 +101,10 @@ endif
 CXXFLAGS := $(CXXFLAGS) -I`$(LLVM_CONFIG_BIN) --includedir` --std=c++17  -Wall -DVERSION=\"$(VERSION_STRING)\"
 LDFLAGS := $(LDFLAGS) `$(LLVM_CONFIG_BIN) --ldflags --system-libs --libs all`
 
-# Find all .hpp files in compiler/src/
-HEADERS = $(shell find compiler/src/ -name '*.hpp')
-# Find all .cpp files in compiler/src/
-SOURCES = $(shell find compiler/src/ -name '*.cpp')
+# Find all .hpp files in compiler/src
+HEADERS = $(shell find compiler/src -name '*.hpp')
+# Find all .cpp files in compiler/src
+SOURCES = $(shell find compiler/src -name '*.cpp')
 # Set object file names, all object files are in obj/
 OBJECTS = $(SOURCES:compiler/src/%.cpp=obj/$(BUILD_TYPE)/%.o)
 
@@ -155,7 +155,7 @@ clean:
 	rm -f -r bin/
 	rm -f -r obj/
 	rm -f -r compiler/tests/reports/
-	rm -f -r tests/*.info
+	rm -f -r compiler/tests/*.info
 	rm -f compiler/tests/compiler/*.llc
 	rm -f compiler/tests/compiler/*.llc.s
 	rm -f compiler/tests/compiler/*.o
