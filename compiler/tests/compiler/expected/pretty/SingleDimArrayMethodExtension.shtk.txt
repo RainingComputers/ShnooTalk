@@ -1,0 +1,57 @@
+{
+    "SingleDimArrayMethodExtension.shtk": {
+        "moduleName": "SingleDimArrayMethodExtension.shtk",
+        "functions": {
+            "_fn_SingleDimArrayMethodExtension_shtk_sum": {
+                "icode": [
+                        int temp5 = cast autoInt 0
+                        int sum = equal int temp5
+                        ulong temp8 = cast autoInt 0
+                        ulong i = equal ulong temp8
+                    _for_true_l5_c4:
+                        flag = lessThan ulong i, ulong len
+                        if(not flag) goto _for_false_l5_c4
+                        void* tempPtr18 = addressMultiply ulong i, bytes 4
+                        int* tempPtr19 = addressAdd int* a, void* tempPtr18
+                        int temp21 = read int* tempPtr19
+                        int temp20 = add int sum, int temp21
+                        int sum = equal int temp20
+                    _for_cont_true_l5_c4:
+                        ulong temp25 = cast autoInt 1
+                        ulong temp24 = add ulong i, ulong temp25
+                        ulong i = equal ulong temp24
+                        goto _for_true_l5_c4
+                    _for_false_l5_c4:
+                        int returnValue26 = equal int sum
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        int* tempPtr42 = allocArrayPointer bytes 16
+                        int temp44 = cast autoInt 1
+                        int* tempPtr42 = write int temp44
+                        int* tempPtr46 = addressAdd int* tempPtr42, bytes 4
+                        int temp47 = cast autoInt 2
+                        int* tempPtr46 = write int temp47
+                        int* tempPtr49 = addressAdd int* tempPtr46, bytes 4
+                        int temp50 = cast autoInt 3
+                        int* tempPtr49 = write int temp50
+                        int* tempPtr52 = addressAdd int* tempPtr49, bytes 4
+                        int temp53 = cast autoInt 4
+                        int* tempPtr52 = write int temp53
+                        passPointer int* tempPtr42, int _fn_SingleDimArrayMethodExtension_shtk_sum, module SingleDimArrayMethodExtension.shtk
+                        ulong temp56 = cast autoInt 4
+                        pass ulong temp56, int _fn_SingleDimArrayMethodExtension_shtk_sum, module SingleDimArrayMethodExtension.shtk
+                        int calleeReturnValue59 = call int _fn_SingleDimArrayMethodExtension_shtk_sum, module SingleDimArrayMethodExtension.shtk
+                        int a = equal int calleeReturnValue59
+                        print int a
+                        newLine
+                        int temp66 = cast autoInt 0
+                        int returnValue64 = equal int temp66
+                        return
+                ]
+            }
+        }
+    }
+}

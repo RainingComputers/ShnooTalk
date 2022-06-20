@@ -1,0 +1,17 @@
+fn sum(a: int[], len: ulong) -> int
+{
+    var sum := 0
+
+    for var i: ulong = 0; i < len; i += 1 sum += a[i]
+
+    return sum
+}
+
+fn main() -> int
+{
+    const a := [1, 2, 3, 4].sum()
+
+    println(a)
+
+    return 0
+}

@@ -144,6 +144,11 @@ bool Unit::isMultiDimArray() const
     return typeDescription.isMultiDimArray();
 }
 
+bool Unit::isSingleDimCharArray() const
+{
+    return typeDescription.dimensions.size() == 1 && isChar();
+}
+
 bool Unit::isArrayWithFixedDim() const
 {
     return isList() || typeDescription.isArrayWithFixedDim();

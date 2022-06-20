@@ -139,6 +139,7 @@
         "Ltrl",
         "Malloc",
         "MEMCPY",
+        "METHODCALL",
         "mikpp",
         "mkdocs",
         "Monomorphization",

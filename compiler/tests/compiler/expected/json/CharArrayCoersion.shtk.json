@@ -1,0 +1,43 @@
+{
+    "CharArrayCoersion.shtk": {
+        "moduleName": "CharArrayCoersion.shtk",
+        "functions": {
+            "_fn_CharArrayCoersion_shtk_coerceCharArray": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "ulong"}, "op2": {"type": "var", "id": 4, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "ulong"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "ulong"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 7, "dtype": "ulong"}, "op2": {"type": "var", "id": 8, "name": "lengthIncNull", "dtype": "ulong"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 11, "dtype": "ulong"}, "op2": {"type": "returnValue", "id": 9, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 12, "dtype": "ulong"}, "op2": {"type": "var", "id": 10, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 11, "dtype": "ulong"}, "op2": {"type": "tempPtr", "id": 12, "dtype": "ulong"}, "op3": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 8}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_CharArrayCoersion_shtk_testArgCoercion": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 19, "dtype": "ulong"}, "op2": {"type": "var", "id": 18, "name": "foobar", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 21, "dtype": "ulong"}, "op2": {"type": "tempPtr", "id": 19, "dtype": "ulong"}, "op3": {"type": "bytes", "id": 20, "bytes": 0}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 22, "dtype": "ulong"}, "op2": {"type": "tempPtr", "id": 21, "dtype": "ulong"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 22, "dtype": "ulong"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 32, "dtype": "ubyte"}, "op2": {"type": "stringData", "id": 26, "name": "_str_CharArrayCoersion_shtk__l20_c20", "size": 6}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 32, "dtype": "ubyte"}, "op2": {"type": "var", "id": 33, "name": "_fn_CharArrayCoersion_shtk_coerceCharArray", "dtype": "struct"}, "op3": {"type": "module", "id": 34, "name": "CharArrayCoersion.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 35, "dtype": "ulong"}, "op2": {"type": "literal", "id": 29, "dtype": "autoInt", "value": 6}, "op3": {"type": "none"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 35, "dtype": "ulong"}, "op2": {"type": "var", "id": 36, "name": "_fn_CharArrayCoersion_shtk_coerceCharArray", "dtype": "struct"}, "op3": {"type": "module", "id": 37, "name": "CharArrayCoersion.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 38, "dtype": "struct"}, "op2": {"type": "var", "id": 39, "name": "_fn_CharArrayCoersion_shtk_coerceCharArray", "dtype": "struct"}, "op3": {"type": "module", "id": 40, "name": "CharArrayCoersion.shtk"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 41, "dtype": "ulong"}, "op2": {"type": "calleeReturnValue", "id": 38, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 41, "dtype": "ulong"}, "op2": {"type": "var", "id": 42, "name": "_fn_CharArrayCoersion_shtk_testArgCoercion", "dtype": "void"}, "op3": {"type": "module", "id": 43, "name": "CharArrayCoersion.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 44, "dtype": "void"}, "op2": {"type": "var", "id": 45, "name": "_fn_CharArrayCoersion_shtk_testArgCoercion", "dtype": "void"}, "op3": {"type": "module", "id": 46, "name": "CharArrayCoersion.shtk"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 49, "dtype": "int"}, "op2": {"type": "literal", "id": 48, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 47, "dtype": "int"}, "op2": {"type": "temp", "id": 49, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

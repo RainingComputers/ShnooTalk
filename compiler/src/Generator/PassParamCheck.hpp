@@ -4,8 +4,8 @@
 #include "GeneratorContext.hpp"
 
 void passParamCheck(const generator::GeneratorContext& ctx,
-                    const Unit& actualParam,
                     const Unit& formalParam,
+                    const Unit& actualParam,
                     const Token& actualParamToken);
 
 #endif

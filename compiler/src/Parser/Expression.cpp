@@ -335,10 +335,12 @@ void term(parser::ParserContext& ctx)
     else if (ctx.accept(token::OPEN_SQUARE))
     {
         initializerList(ctx);
+        methodCall(ctx);
     }
     else if (ctx.accept(token::STR_LITERAL))
     {
         multiLineStringLiteral(ctx);
+        methodCall(ctx);
     }
     else if (ctx.accept(token::NOT) || ctx.accept(token::MINUS) || ctx.accept(token::CONDN_NOT))
     {

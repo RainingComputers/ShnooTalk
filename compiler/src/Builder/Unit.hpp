@@ -47,6 +47,7 @@ public:
     bool isStructOrArrayAndNotPointer() const;
     bool isMultiDimArray() const;
     bool isArrayWithFixedDim() const;
+    bool isSingleDimCharArray() const;
 
     bool isLocal() const;
     bool isGlobal() const;

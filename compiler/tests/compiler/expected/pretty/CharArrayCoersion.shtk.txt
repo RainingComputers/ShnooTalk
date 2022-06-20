@@ -1,0 +1,43 @@
+{
+    "CharArrayCoersion.shtk": {
+        "moduleName": "CharArrayCoersion.shtk",
+        "functions": {
+            "_fn_CharArrayCoersion_shtk_coerceCharArray": {
+                "icode": [
+                        ulong* tempPtr5 = createPointer struct self
+                        ulong* tempPtr7 = addressAdd ulong* tempPtr5, bytes 0
+                        ulong* tempPtr7 = write ulong lengthIncNull
+                        ulong* tempPtr11 = createPointer struct returnValue9
+                        ulong* tempPtr12 = createPointer struct self
+                        ulong* tempPtr11 = memoryCopy ulong* tempPtr12, autoInt 8
+                        return
+                ]
+            },
+            "_fn_CharArrayCoersion_shtk_testArgCoercion": {
+                "icode": [
+                        ulong* tempPtr19 = createPointer struct foobar
+                        ulong* tempPtr21 = addressAdd ulong* tempPtr19, bytes 0
+                        ulong temp22 = read ulong* tempPtr21
+                        print ulong temp22
+                        newLine
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        ubyte* tempPtr32 = createPointer stringData _str_CharArrayCoersion_shtk__l20_c20
+                        passPointer ubyte* tempPtr32, struct _fn_CharArrayCoersion_shtk_coerceCharArray, module CharArrayCoersion.shtk
+                        ulong temp35 = cast autoInt 6
+                        pass ulong temp35, struct _fn_CharArrayCoersion_shtk_coerceCharArray, module CharArrayCoersion.shtk
+                        struct calleeReturnValue38 = call struct _fn_CharArrayCoersion_shtk_coerceCharArray, module CharArrayCoersion.shtk
+                        ulong* tempPtr41 = createPointer struct calleeReturnValue38
+                        passPointer ulong* tempPtr41, void _fn_CharArrayCoersion_shtk_testArgCoercion, module CharArrayCoersion.shtk
+                        void calleeReturnValue44 = call void _fn_CharArrayCoersion_shtk_testArgCoercion, module CharArrayCoersion.shtk
+                        int temp49 = cast autoInt 0
+                        int returnValue47 = equal int temp49
+                        return
+                ]
+            }
+        }
+    }
+}

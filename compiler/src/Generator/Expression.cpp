@@ -151,12 +151,25 @@ Unit createCallFunctionMust(generator::GeneratorContext& ctx,
                             const std::vector<Unit>& actualParams,
                             const FunctionDescription& callee)
 {
-    std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
+    std::vector<Unit> formalParams = ctx.ir.finder.getFormalParameters(callee);
 
-    for (size_t i = 0; i < formalParameters.size(); i += 1)
+    for (size_t i = 0; i < formalParams.size(); i += 1)
     {
-        passParamCheck(ctx, actualParams[i], formalParameters[i], actualParamTokens[i]);
-        ctx.ir.functionBuilder.passParameter(callee, formalParameters[i], actualParams[i]);
+        Unit actualParam = actualParams[i];
+        const Token token = actualParamTokens[i];
+        const Unit formalParam = formalParams[i];
+
+        /* Coerce single dim char arrays (c style strings) if hook is present */
+        if (actualParam.isSingleDimCharArray() && formalParam.isStruct() &&
+            ctx.ir.finder.methodExists(formalParam.type(), "coerceCharArray"))
+        {
+            const FunctionDescription stringFunc = ctx.ir.finder.getMethod(formalParam.type(), "coerceCharArray");
+            const Unit lengthParam = ctx.ir.unitBuilder.unitFromIntLiteral(actualParam.numElements());
+            actualParam = createCallFunction(ctx, { token, token }, { actualParam, lengthParam }, token, stringFunc);
+        }
+
+        passParamCheck(ctx, formalParam, actualParam, token);
+        ctx.ir.functionBuilder.passParameter(callee, formalParam, actualParam);
     }
 
     return ctx.ir.functionBuilder.callFunction(callee);
@@ -209,6 +222,17 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
             actualParams.push_back(firstActualParam);
         else
             actualParams.push_back(expression(ctx, root.children[i]));
+    }
+
+    if (root.type == node::METHODCALL && root.children.size() == 1)
+    {
+        const Unit lastParam = actualParams.back();
+
+        if (lastParam.isArrayWithFixedDim())
+        {
+            actualParamTokens.push_back(actualParamTokens.back());
+            actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(lastParam.numElements()));
+        }
     }
 
     ctx.ir.popWorkingModule();

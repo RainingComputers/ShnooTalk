@@ -1,0 +1,23 @@
+struct Foobar
+{
+    var a: ulong
+}
+
+fn coerceCharArray(a: char[], lengthIncNull: ulong) -> Foobar
+{
+    var self: Foobar
+    self.a = lengthIncNull
+    return self
+}
+
+fn testArgCoercion(foobar: Foobar)
+{
+    println(foobar.a)
+}
+
+fn main() -> int
+{
+    testArgCoercion("Hello")
+
+    return 0
+}
