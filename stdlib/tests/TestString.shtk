@@ -1,11 +1,18 @@
-from "../stdlib/String.shtk" use string
+from "../stdlib/String.shtk" use string, String
+
+fn testStringArgCoercion(str: String)
+{
+    println(str.toCharArray())
+}
 
 fn main() -> int
 {
-    const a := string("Hello world")
+    const a := "Hello world".string()
 
     println(a.length())
     println(a.toCharArray())
+
+    testStringArgCoercion("Coerce this to string type")
 
     return 0
 }

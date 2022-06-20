@@ -155,6 +155,7 @@ Tests for the standard library
 - [ ] Reduce binary size
 - [ ] Add SHNOOTALK_PATH environment variable, and use PATH by default
 - [ ] `setSubscript` hook
+- [ ] `usize` type instead of `ulong`
 
 *Backlog*
 
