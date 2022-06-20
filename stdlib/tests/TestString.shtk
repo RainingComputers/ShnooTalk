@@ -1,0 +1,11 @@
+from "../stdlib/String.shtk" use string
+
+fn main() -> int
+{
+    const a := string("Hello world")
+
+    println(a.length())
+    println(a.toCharArray())
+
+    return 0
+}
