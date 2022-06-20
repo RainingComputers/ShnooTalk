@@ -5,24 +5,25 @@ from "../stdlib/OS.shtk" use panic
 
 def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
 def NULL_POINTER_ERROR "Null pointer dereference error"
+def OUT_OF_CAPACITY "Slice out of capacity error"
 
 struct Slice
 {
     var _ptr: T[]
-    var _length: ulong
+    var _capacity: ulong
 }
 
-fn slice(ptr: T[], length: ulong) -> Slice
+fn slice(ptr: T[], capacity: ulong) -> Slice
 {
     var self: Slice
     self._ptr <- ptr
-    self._length = length
+    self._capacity = capacity
     return self
 }
 
-fn allocateHeap(length: ulong) -> Slice
+fn allocateHeap(capacity: ulong) -> Slice
 {
-    return slice(T[]`libc::malloc(sizeof(T)*length), length)
+    return slice(T[]`libc::malloc(sizeof(T)*capacity), capacity)
 }
 
 fn free(self: Slice)
@@ -33,10 +34,19 @@ fn free(self: Slice)
 fn validateIndex(self: Slice, index: ulong) 
 {
     if addr(self._ptr) == 0
-        panic(OUT_OF_BOUNDS_ERROR, 1)
-    
-    if index >= self._length
         panic(NULL_POINTER_ERROR, 1)
+    
+    if index >= self._capacity
+        panic(OUT_OF_BOUNDS_ERROR, 1)
+}
+
+fn validateLength(self: Slice, length: ulong)
+{
+    if addr(self._ptr) == 0
+        panic(NULL_POINTER_ERROR, 1)
+    
+    if length > self._capacity
+        panic(OUT_OF_CAPACITY, 1)
 }
 
 fn subscriptItem(self: Slice, index: ulong) -> T
@@ -53,7 +63,13 @@ fn setItem(mut self: Slice, index: ulong, item: T)
     self._ptr[index] = item
 }
 
-fn length(self: Slice) -> ulong
+fn capacity(self: Slice) -> ulong
 {
-    return self._length
+    return self._capacity
+}
+
+fn copy(self: Slice, items: T[], length: ulong)
+{
+    self.validateLength(length)
+    libc::memcpy(ubyte[]`self._ptr, ubyte[]`items, length*sizeof(T))
 }

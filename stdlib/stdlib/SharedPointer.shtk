@@ -9,12 +9,12 @@ struct SharedPointer
     var _slice: Slice[T]
 }
 
-fn allocateHeap(length: ulong) -> SharedPointer
+fn allocateHeap(capacity: ulong) -> SharedPointer
 {
     var self: SharedPointer
 
     self._count = createCounter()
-    self._slice = allocateHeap[T](length)
+    self._slice = allocateHeap[T](capacity)
 
     return self
 }
@@ -35,12 +35,17 @@ fn setItem(mut self: SharedPointer, index: ulong, item: T)
     self._slice.setItem(index, item)
 }
 
-fn length(self: SharedPointer) -> ulong
+fn capacity(self: SharedPointer) -> ulong
 {
-    return self._slice.length()
+    return self._slice.capacity()
 }
 
 fn slice(self: SharedPointer) -> Slice[T]
 {
     return self._slice
+}
+
+fn copy(self: SharedPointer, items: T[], length: ulong)
+{
+    self._slice.copy(items, length)
 }

@@ -4,14 +4,21 @@ fn main() -> int
 {
     const a := make(Slice[int], [1, 2, 3, 4, 5, 6])
 
-    println(a.length())
+    println(a.capacity())
     println(a[3])
 
     var b := allocateHeap[int](10)
     b.setItem(4, 5)
 
-    println(b.length())
+    println(b.capacity())
     println(b[4])
+
+    var c := allocateHeap[int](5)
+    c.copy([1, 2, 3, 4, 5], 5)
+
+    println(c.capacity())
+    println(c[2])
+    println(c[3])
 
     return 0
 }

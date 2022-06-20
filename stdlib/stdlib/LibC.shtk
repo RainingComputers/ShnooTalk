@@ -1,3 +1,5 @@
 extfn malloc(bytes: ulong) -> ubyte*
 extfn free(ptr: ubyte*)
 extfn exit(status: int)
+extfn strlen(charArray: char[]) -> ulong
+extfn memcpy(dest: ubyte[], src: ubyte[], length: ulong)

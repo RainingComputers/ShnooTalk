@@ -2,11 +2,8 @@ from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
 
 fn main() -> int
 {
-    var b := allocateHeap[int](10)
-    b.setItem(4, 5)
-
-    println(b.capacity())
-    println(b[4])
+    var c := allocateHeap[int](3)
+    c.copy([1, 2, 3, 4, 5], 5)
 
     return 0
 }
