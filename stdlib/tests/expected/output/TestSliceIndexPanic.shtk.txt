@@ -1,1 +1,1 @@
-Null pointer dereference error
+Index out of bounds error

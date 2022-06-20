@@ -26,9 +26,10 @@ fn allocateHeap(capacity: ulong) -> Slice
     return slice(T[]`libc::malloc(sizeof(T)*capacity), capacity)
 }
 
-fn free(self: Slice)
+fn free(mut self: Slice)
 {
     libc::free(ubyte*`self._ptr)
+    self._ptr <- T[]`0
 }
 
 fn validateIndex(self: Slice, index: ulong) 
@@ -72,4 +73,9 @@ fn copy(self: Slice, items: T[], length: ulong)
 {
     self.validateLength(length)
     libc::memcpy(ubyte[]`self._ptr, ubyte[]`items, length*sizeof(T))
+}
+
+fn pointer(self: Slice) -> T[]
+{
+    return self._ptr
 }
