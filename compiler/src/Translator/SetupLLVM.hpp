@@ -6,8 +6,10 @@
 #include "llvm/Target/TargetMachine.h"
 
 #include "ModuleContext.hpp"
+#include "Platform.hpp"
 
 void initializeTargetRegistry();
-void setupPassManagerAndCreateObject(ModuleContext& ctx, const std::string& targetTriple);
+void setupPassManagerAndCreateObject(ModuleContext& ctx,
+                                     translator::Platform platform);
 
 #endif

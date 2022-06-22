@@ -21,6 +21,9 @@ test
 test.o
 compiler/tests/compiler/test_executable
 stdlib/tests/test_executable
+test.js
+test.wasm
+test.shtk.dylib
 
 # temp dir in test dir
 tests/temp/*
@@ -72,3 +75,6 @@ build-name.txt
 
 # misc
 .DS_store
+
+# vscode 
+*.log

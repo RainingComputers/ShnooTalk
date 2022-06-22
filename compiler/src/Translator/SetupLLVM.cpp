@@ -18,6 +18,44 @@ using namespace llvm;
 
 /* Contains some LLVM setup code */
 
+std::string getTargetTriple(translator::Platform platform)
+{
+    std::map<translator::Platform, std::string> platformTripleMap = {
+        { translator::DEFAULT, sys::getDefaultTargetTriple() },
+        { translator::LINUX_x86_64, "x86_64-linux-gnu" },
+        { translator::LINUX_ARM64, "arm64-linux-gnu" },
+        { translator::MACOS_x86_64, "x86_64-apple-darwin" },
+        { translator::MACOS_ARM64, "arm64-apple-darwin" },
+        { translator::WASM32, "wasm32" },
+        { translator::WASM64, "wasm64" },
+        { translator::LINUX_x86_64_DYN, "x86_64-linux-gnu" },
+        { translator::LINUX_ARM64_DYN, "arm64-linux-gnu" },
+        { translator::MACOS_x86_64_DYN, "x86_64-apple-darwin" },
+        { translator::MACOS_ARM64_DYN, "arm64-apple-darwin" },
+    };
+
+    return platformTripleMap.at(platform);
+}
+
+Reloc::Model getRelocModel(translator::Platform platform)
+{
+    std::map<translator::Platform, Reloc::Model> platformRelocMap = {
+        { translator::DEFAULT, Reloc::Model::PIC_ },
+        { translator::LINUX_x86_64, Reloc::Model::PIC_ },
+        { translator::LINUX_ARM64, Reloc::Model::PIC_ },
+        { translator::MACOS_x86_64, Reloc::Model::PIC_ },
+        { translator::MACOS_ARM64, Reloc::Model::PIC_ },
+        { translator::WASM32, Reloc::Model::PIC_ },
+        { translator::WASM64, Reloc::Model::PIC_ },
+        { translator::LINUX_x86_64_DYN, Reloc::Model::DynamicNoPIC },
+        { translator::LINUX_ARM64_DYN, Reloc::Model::DynamicNoPIC },
+        { translator::MACOS_x86_64_DYN, Reloc::Model::DynamicNoPIC },
+        { translator::MACOS_ARM64_DYN, Reloc::Model::DynamicNoPIC },
+    };
+
+    return platformRelocMap.at(platform);
+}
+
 void initializeTargetRegistry()
 {
     InitializeAllTargetInfos();
@@ -27,7 +65,9 @@ void initializeTargetRegistry()
     InitializeAllAsmPrinters();
 }
 
-TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx, const std::string& targetTriple)
+TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx,
+                                              const std::string& targetTriple,
+                                              llvm::Reloc::Model relocModel)
 {
     std::string error;
     auto Target = TargetRegistry::lookupTarget(targetTriple, error);
@@ -39,7 +79,7 @@ TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx, const st
     std::string features = "";
 
     TargetOptions opt;
-    auto RM = Optional<Reloc::Model>(Reloc::Model::PIC_);
+    auto RM = Optional<Reloc::Model>(relocModel);
     auto targetMachine = Target->createTargetMachine(targetTriple, CPU, features, opt, RM);
 
     ctx.LLVMModule->setDataLayout(targetMachine->createDataLayout());
@@ -47,7 +87,7 @@ TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx, const st
     return targetMachine;
 }
 
-std::string createDirectoriesAndGetOutputObjName(const std::string& moduleName)
+std::string createDirsAndGetOutputObjNameStatic(const std::string& moduleName)
 {
     std::filesystem::path objFileName(mangleModuleName(moduleName));
     objFileName += ".o";
@@ -60,11 +100,26 @@ std::string createDirectoriesAndGetOutputObjName(const std::string& moduleName)
     return objPath.string();
 }
 
-void setupPassManagerAndCreateObject(ModuleContext& ctx, const std::string& targetTriple)
+std::string createDirsAndGetOutputObjName(const std::string& moduleName, translator::Platform platform)
 {
-    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple);
+    if (platform == translator::MACOS_ARM64_DYN || platform == translator::MACOS_x86_64_DYN)
+        return moduleName + ".dylib";
 
-    auto filename = createDirectoriesAndGetOutputObjName(ctx.moduleDescription.name);
+    if (platform == translator::LINUX_ARM64_DYN || platform == translator::LINUX_x86_64_DYN)
+        return moduleName + ".so";
+
+    return createDirsAndGetOutputObjNameStatic(moduleName);
+}
+
+void setupPassManagerAndCreateObject(ModuleContext& ctx, translator::Platform platform)
+{
+    Reloc::Model relocModel = getRelocModel(platform);
+    std::string targetTriple = getTargetTriple(platform);
+
+    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple, relocModel);
+
+    std::string filename = createDirsAndGetOutputObjName(ctx.moduleDescription.name, platform);
+
     std::error_code EC;
     raw_fd_ostream dest(filename, EC, sys::fs::OF_None);
 

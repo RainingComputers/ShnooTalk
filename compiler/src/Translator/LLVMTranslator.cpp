@@ -16,21 +16,6 @@
 
 using namespace llvm;
 
-std::string getTargetTriple(translator::Platform platform)
-{
-    std::map<translator::Platform, std::string> platformTripleMap = {
-        { translator::DEFAULT, sys::getDefaultTargetTriple() },
-        { translator::LINUX_x86_64, "x86_64-linux-gnu" },
-        { translator::LINUX_ARM64, "arm64-linux-gnu" },
-        { translator::MACOS_x86_64, "x86_64-apple-darwin" },
-        { translator::MACOS_ARM64, "arm64-apple-darwin" },
-        { translator::WASM32, "wasm32" },
-        { translator::WASM64, "wasm64" }
-    };
-
-    return platformTripleMap.at(platform);
-}
-
 void optimizeModule(ModuleContext& ctx)
 {
     LoopAnalysisManager LAM;
@@ -74,8 +59,7 @@ void translator::generateObject(icode::ModuleDescription& moduleDescription,
 {
     ModuleContext moduleContext(moduleDescription, modulesMap, console);
     generateLLVMModule(moduleContext, release, console);
-    const std::string targetTriple = getTargetTriple(platform);
-    setupPassManagerAndCreateObject(moduleContext, targetTriple);
+    setupPassManagerAndCreateObject(moduleContext, platform);
 }
 
 std::string getLLVMModuleString(const Module& LLVMModule)
