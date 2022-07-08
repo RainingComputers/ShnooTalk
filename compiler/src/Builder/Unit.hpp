@@ -22,6 +22,7 @@ public:
     std::string moduleName() const;
 
     icode::DataType dtype() const;
+    std::string name() const;
     std::string dtypeName() const;
     std::vector<int> dimensions() const;
     icode::TypeDescription type() const;
@@ -51,7 +52,9 @@ public:
 
     bool isLocal() const;
     bool isGlobal() const;
+    bool isParam() const;
     bool isLocalOrGlobal() const;
+    bool isLocalOrGlobalAndNotParam() const;
     bool isValue() const;
     bool isReturnValue() const;
     

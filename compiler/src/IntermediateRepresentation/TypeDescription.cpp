@@ -126,6 +126,11 @@ namespace icode
         return dimensions.size() > 0;
     }
 
+    bool TypeDescription::isParam() const
+    {
+        return checkProperty(IS_PARAM);
+    }
+
     bool TypeDescription::isArrayWithFixedDim() const
     {
         return isArray() && dimTypes.back() != ALLOC_FLEXIBLE_DIM;

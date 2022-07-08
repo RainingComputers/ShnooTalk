@@ -1,0 +1,8 @@
+beforeCopy 2
+beforeCopy 1
+deconstructor 10
+deconstructor 20
+deconstructor 2
+deconstructor 1
+deconstructor 1
+deconstructor 2

@@ -1,0 +1,36 @@
+struct Foo
+{
+    var x: int
+}
+
+fn beforeCopy(self: Foo) 
+{
+    println("beforeCopy", self.x)
+}
+
+fn deconstructor(self: Foo)
+{
+    println("deconstructor", self.x)
+}
+
+fn testing(list: Foo[2]) -> Foo[2]
+{
+    return  list
+}
+
+
+fn main() -> int
+{
+    var f: Foo
+    f.x = 1
+    var g: Foo
+    g.x = 2
+
+    var a: Foo[2]
+    a[0].x = 10
+    a[1].x = 20 
+    
+    a = testing([g, f])
+
+    return 0
+}

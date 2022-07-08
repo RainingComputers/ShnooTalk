@@ -66,6 +66,7 @@ namespace icode
         bool isEnum() const;
         bool isStruct() const;
         bool isArray() const;
+        bool isParam() const;
         bool isArrayWithFixedDim() const;
         bool isStructOrArray() const;
         bool isStructOrArrayAndNotPointer() const;

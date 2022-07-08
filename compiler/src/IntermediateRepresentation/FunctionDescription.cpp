@@ -21,11 +21,6 @@ namespace icode
         return parameters.size();
     }
 
-    bool FunctionDescription::isParameter(const std::string& name) const
-    {
-        return itemInList(name, parameters);
-    }
-
     bool FunctionDescription::isVoid() const
     {
         return functionReturnType.dtype == VOID;

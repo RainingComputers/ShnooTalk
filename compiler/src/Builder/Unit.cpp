@@ -50,10 +50,16 @@ DataType Unit::dtype() const
     return typeDescription.dtype;
 }
 
+std::string Unit::name() const
+{
+    return operand.name;
+}
+
 std::string Unit::dtypeName() const
 {
     return typeDescription.dtypeName;
 }
+
 std::vector<int> Unit::dimensions() const
 {
     return typeDescription.dimensions;
@@ -164,9 +170,19 @@ bool Unit::isGlobal() const
     return typeDescription.checkProperty(IS_GLOBAL);
 }
 
+bool Unit::isParam() const
+{
+    return typeDescription.isParam();
+}
+
 bool Unit::isLocalOrGlobal() const
 {
     return isLocal() || isGlobal();
+}
+
+bool Unit::isLocalOrGlobalAndNotParam() const
+{
+    return isLocalOrGlobal() && !isParam();
 }
 
 bool Unit::isValue() const
@@ -216,9 +232,5 @@ bool Unit::isList() const
 
 bool Unit::isSelf() const
 {
-    if (operand.operandType == icode::VAR)
-        if (operand.name == "self")
-            return true;
-
-    return false;
+    return name() == "self";
 }

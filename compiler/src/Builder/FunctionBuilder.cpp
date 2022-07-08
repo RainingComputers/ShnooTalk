@@ -205,10 +205,10 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
-    if (dest.isLocalOrGlobal() || dest.isReturnValue())
+    if (dest.isLocalOrGlobalAndNotParam() || (dest.isReturnValue() && src.isLocalOrGlobalAndNotParam()))
         callResourceMgmtHook(src, "beforeCopy");
 
-    if (dest.isLocalOrGlobal())
+    if (dest.isLocalOrGlobalAndNotParam())
         callResourceMgmtHook(dest, "deconstructor");
 
     if (src.isList())
@@ -793,7 +793,7 @@ void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
         const std::string symbolName = symbolPair.first;
         const TypeDescription symbolType = symbolPair.second;
 
-        if (workingFunction->isParameter(symbolName))
+        if (symbolType.isParam())
             continue;
 
         const Unit symbol = unitBuilder.unitFromTypeDescription(symbolType, symbolName);
