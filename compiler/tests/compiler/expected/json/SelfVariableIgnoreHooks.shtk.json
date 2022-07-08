@@ -1,0 +1,40 @@
+{
+    "SelfVariableIgnoreHooks.shtk": {
+        "moduleName": "SelfVariableIgnoreHooks.shtk",
+        "functions": {
+            "_fn_SelfVariableIgnoreHooks_shtk_beforeCopy": {
+                "icode": [
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_SelfVariableIgnoreHooks_shtk__l8_c12", "size": 11}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_SelfVariableIgnoreHooks_shtk_deconstructor": {
+                "icode": [
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 12, "name": "_str_SelfVariableIgnoreHooks_shtk__l13_c12", "size": 14}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 14, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 16, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 14, "dtype": "int"}, "op3": {"type": "bytes", "id": 15, "bytes": 0}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 16, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "temp", "id": 17, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 22, "name": "_str_SelfVariableIgnoreHooks_shtk__l20_c12", "size": 25}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 25, "dtype": "int"}, "op2": {"type": "literal", "id": 24, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 23, "dtype": "int"}, "op2": {"type": "temp", "id": 25, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

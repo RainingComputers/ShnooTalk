@@ -1,0 +1,23 @@
+struct Foo
+{
+    var x: int
+}
+
+fn beforeCopy(self: Foo) 
+{
+    println("beforeCopy", self.x)
+}
+
+fn deconstructor(self: Foo)
+{
+    println("deconstructor", self.x)
+}
+
+fn main() -> int
+{
+    var self: Foo
+
+    println("No hooks would be called")
+
+    return 0
+}

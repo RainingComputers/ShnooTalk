@@ -1,0 +1,40 @@
+{
+    "SelfVariableIgnoreHooks.shtk": {
+        "moduleName": "SelfVariableIgnoreHooks.shtk",
+        "functions": {
+            "_fn_SelfVariableIgnoreHooks_shtk_beforeCopy": {
+                "icode": [
+                        printString stringData _str_SelfVariableIgnoreHooks_shtk__l8_c12
+                        space
+                        int* tempPtr5 = createPointer struct self
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp8 = read int* tempPtr7
+                        print int temp8
+                        newLine
+                        return
+                ]
+            },
+            "_fn_SelfVariableIgnoreHooks_shtk_deconstructor": {
+                "icode": [
+                        printString stringData _str_SelfVariableIgnoreHooks_shtk__l13_c12
+                        space
+                        int* tempPtr14 = createPointer struct self
+                        int* tempPtr16 = addressAdd int* tempPtr14, bytes 0
+                        int temp17 = read int* tempPtr16
+                        print int temp17
+                        newLine
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        printString stringData _str_SelfVariableIgnoreHooks_shtk__l20_c12
+                        newLine
+                        int temp25 = cast autoInt 0
+                        int returnValue23 = equal int temp25
+                        return
+                ]
+            }
+        }
+    }
+}
