@@ -79,3 +79,12 @@ fn pointer(self: Slice) -> T[]
 {
     return self._ptr
 }
+
+fn deconstructor(self: Slice)
+{
+    if not addr(self._ptr) 
+        return void
+
+    for var i: ulong = 0; i < self._capacity; i += 1 
+        self._ptr[i].deconstructor()
+}

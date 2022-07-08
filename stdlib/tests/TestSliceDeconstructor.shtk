@@ -1,0 +1,21 @@
+from "../stdlib/Slice.shtk" use Slice, allocateHeap
+
+struct Foobar {}
+
+fn deconstructor(self: Foobar) 
+{
+    println("Deconstructor for foobar")
+}
+
+fn createFoobar() -> Foobar 
+{
+    var self: Foobar
+    return self
+}
+
+fn main() -> int
+{
+    const a := make(Slice[Foobar], [createFoobar(), createFoobar(), createFoobar()])
+
+    return 0
+}
