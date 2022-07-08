@@ -321,6 +321,9 @@ bool Finder::isAllNamesStructFields(const std::vector<Token>& nameTokens, const 
 
 bool Finder::deconstructorExists(const icode::TypeDescription& type)
 {
+    if (type.isPrimitiveType())
+        return false;
+
     return getStructDescFromType(type).deconstructor != "";
 }
 
