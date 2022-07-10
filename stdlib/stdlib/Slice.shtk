@@ -32,7 +32,7 @@ fn free(mut self: Slice)
     self._ptr <- T[]`0
 }
 
-fn validateIndex(self: Slice, index: ulong) 
+fn _validateIndex(self: Slice, index: ulong) 
 {
     if addr(self._ptr) == 0
         panic(NULL_POINTER_ERROR, 1)
@@ -41,7 +41,7 @@ fn validateIndex(self: Slice, index: ulong)
         panic(OUT_OF_BOUNDS_ERROR, 1)
 }
 
-fn validateLength(self: Slice, length: ulong)
+fn _validateLength(self: Slice, length: ulong)
 {
     if addr(self._ptr) == 0
         panic(NULL_POINTER_ERROR, 1)
@@ -52,14 +52,14 @@ fn validateLength(self: Slice, length: ulong)
 
 fn subscriptItem(self: Slice, index: ulong) -> T
 {
-    self.validateIndex(index)
+    self._validateIndex(index)
 
     return self._ptr[index]
 }
 
 fn setItem(mut self: Slice, index: ulong, item: T)
 {
-    self.validateIndex(index)
+    self._validateIndex(index)
 
     self._ptr[index] = item
 }
@@ -71,7 +71,7 @@ fn capacity(self: Slice) -> ulong
 
 fn copy(self: Slice, items: T[], length: ulong)
 {
-    self.validateLength(length)
+    self._validateLength(length)
     libc::memcpy(ubyte[]`self._ptr, ubyte[]`items, length*sizeof(T))
 }
 
