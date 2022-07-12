@@ -1,0 +1,9 @@
+from "../stdlib/MathGeneric.shtk" use min, max
+
+fn main() -> int
+{
+    println(max[int](1, 2))
+    println(min[int](1, 2))
+
+    return 0
+}
