@@ -174,7 +174,7 @@ Tests for the standard library
 - [ ] Error recovery in lexer and parser
 - [ ] Static variables
 - [ ] Struct alignment and padding
-- [ ] Initializing global variables
+- [ ] Initializing global variables (module init function)
 - [ ] typedef
 - [ ] Better error message for using generic as non generic
 - [ ] Autofill type parameter for generic function call
