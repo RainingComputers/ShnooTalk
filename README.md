@@ -183,6 +183,7 @@ Tests for the standard library
 - [ ] `panic()` function
 - [ ] Upgrade to using opaque pointers (LLVM IR)
 - [ ] Add linker
+- [ ] Add bounds checking for raw arrays
 
 *Advanced Features*
 
@@ -195,7 +196,7 @@ Tests for the standard library
 - [ ] Extends
 - [ ] Compile time reflection and macros
 - [ ] `constexpr` or `comptime`
-- [ ] Memory safety (rust's borrow checker?)
+- [ ] Memory safety rules
 - [ ] Testing framework
 - [ ] Concurrency
 
