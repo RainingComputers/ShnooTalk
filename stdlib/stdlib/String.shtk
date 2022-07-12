@@ -33,6 +33,11 @@ fn length(self: String) -> ulong
     return self._length
 }
 
+fn subscriptItem(self: String, index: ulong) -> char
+{
+    return self._sp[index]
+}
+
 fn toCharArray(self: String) -> char[]
 {
     return self._sp.slice().pointer()

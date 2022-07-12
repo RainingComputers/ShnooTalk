@@ -1,3 +1,4 @@
 11
 Hello world
+o
 Coerce this to string type

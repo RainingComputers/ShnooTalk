@@ -11,6 +11,7 @@ fn main() -> int
 
     println(a.length())
     println(a.toCharArray())
+    println(a[4])
 
     testStringArgCoercion("Coerce this to string type")
 
