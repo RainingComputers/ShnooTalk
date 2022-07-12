@@ -1,0 +1,113 @@
+fn abs(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn absInt(x: int) -> int
+{
+    # TODO
+    return 0
+}
+
+fn absLong(x: int) -> long
+{
+    # TODO
+    return 0
+}
+
+fn ceil(x: double) -> int
+{
+    # TODO
+    return 0
+}
+
+fn ceilLong(x: double) -> long
+{
+    # TODO
+    return 0
+}
+
+fn floor(x: double) -> int
+{
+    # TODO
+    return 0
+}
+
+fn floorLong(x: double) -> long
+{
+    # TODO
+    return 0
+}
+
+fn exp(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn log(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn sqrt(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn pow(base: double, to: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn degrees(angleRadians: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn radians(angleDegrees: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn cos(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn sin(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn tan(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn acos(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn asin(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn atan(x: double) -> double
+{
+    # TODO
+    return 0.0
+}
