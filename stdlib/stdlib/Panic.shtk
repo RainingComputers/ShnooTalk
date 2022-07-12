@@ -1,0 +1,7 @@
+use "../stdlib/LibC.shtk" as libc
+
+fn panic(message: char[], status: int)
+{
+    println(message)
+    libc::exit(status)
+}

@@ -1,7 +1,7 @@
 generic T
 
 use "../stdlib/LibC.shtk" as libc
-from "../stdlib/OS.shtk" use panic
+from "../stdlib/Panic.shtk" use panic
 
 def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
 def NULL_POINTER_ERROR "Null pointer dereference error"

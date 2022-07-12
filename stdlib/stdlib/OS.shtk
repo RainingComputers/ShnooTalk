@@ -1,12 +1,54 @@
-use "../stdlib/LibC.shtk" as libc
+from "../stdlib/Panic.shtk" use panic
+from "../stdlib/String.shtk" use String, string
+from "../stdlib/Pair.shtk" use Pair, pair
+from "../stdlib/Triple.shtk" use Triple, triple
+from "../stdlib/Optional.shtk" use Optional, none, some
 
 fn getArg(argv: ulong[], idx: int) -> char[]
 {
     return char[]`(argv[idx] + 0)
 }
 
-fn panic(message: char[], status: int)
+fn panicString(message: String, status: int)
 {
-    println(message)
-    libc::exit(status)
+    panic(message.toCharArray(), status)
+}
+
+fn system(command: String) -> Pair[String, int]
+{
+    # TODO
+    return pair[String, int]("".string(), 0)
+}
+
+fn systemWithTimeout(command: String, milliseconds: uint) -> Triple[String, int, bool]
+{
+    # TODO
+    return triple[String, int, bool]("".string(), 0, false)
+}
+
+fn getEnv(key: String) -> Optional[String]
+{
+    # TODO
+    return none[String]()
+}
+
+fn getcwd() -> String
+{
+    # TODO
+    return "".string()
+}
+
+fn chdir(path: String)
+{
+    # TODO
+}
+
+fn mkdir(path: String)
+{
+    # TODO
+}
+
+fn rmdir(path: String)
+{
+    # TODO
 }

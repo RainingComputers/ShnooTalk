@@ -1,0 +1,22 @@
+fn randomSeed(seed: double)
+{
+    # TODO
+}
+
+fn random(start: double, end: double) -> double
+{
+    # TODO
+    return 0.0
+}
+
+fn randomInt(start: int, end: int) -> int
+{
+    # TODO
+    return 0
+}
+
+fn randomLong(start: long, end: long) -> long
+{
+    # TODO
+    return 0
+}

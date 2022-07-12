@@ -1,0 +1,10 @@
+fn sleep(milliseconds: ulong)
+{
+    # TODO
+}
+
+fn time() -> ulong
+{
+    # TODO
+    return 0
+}

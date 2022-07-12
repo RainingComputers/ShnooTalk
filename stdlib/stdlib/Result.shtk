@@ -1,7 +1,7 @@
 generic T, E
 
 from "../stdlib/Error.shtk" use Error, createError, createNilError
-from "../stdlib/OS.shtk" use panic
+from "../stdlib/Panic.shtk" use panic
 
 def EXPECT_ON_ERROR_RESULT "Called expect on a error result"
 

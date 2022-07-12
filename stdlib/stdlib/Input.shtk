@@ -1,0 +1,6 @@
+from "../stdlib/String.shtk" use String, string
+
+fn getConsoleInput() -> String
+{
+    return "".string()
+}

@@ -1,6 +1,6 @@
 generic T
 
-from "../stdlib/OS.shtk" use panic
+from "../stdlib/Panic.shtk" use panic
 
 def EXPECT_ON_ERROR_RESULT "Called expect on a none optional"
 

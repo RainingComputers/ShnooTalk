@@ -1,5 +1,7 @@
 use "../stdlib/LibC.shtk" as libc
 from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
+from "../stdlib/Slice.shtk" use Slice
+from "../stdlib/Optional.shtk" use Optional, some, none
 
 struct String
 {
@@ -36,3 +38,143 @@ fn toCharArray(self: String) -> char[]
     return self._sp.slice().pointer()
 }
 
+fn slice(self: String) -> Slice[char]
+{
+    return self._sp.slice()
+}
+
+fn clone(self: String) -> String
+{
+    return string(self._sp.slice().pointer(), self.length())
+}
+
+fn isAlphanumeric(self: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn isSpace(self: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn isUpper(self: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn isLower(self: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn isInteger(self: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn isNumber(self: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn lower(self: String) -> String
+{
+    # TODO
+    return "".string()
+}
+
+fn upper(self: String) -> String
+{
+    # TODO
+    return "".string()
+}
+
+# TODO
+# fn split(self: String, delimeter: char) -> List[String]
+# {
+#     return make(List[String], "")
+# }
+
+fn startsWith(self: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn endsWith(self: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn find(self: String, subString: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn subString(self: String, range: long[2]) -> String
+{
+    # TODO
+    return "".string()
+}
+
+fn strip(self: String) -> String
+{
+    # TODO
+    return "".string()
+}
+
+fn parseInt(self: String) -> Optional[int]
+{
+    # TODO
+    return none[int]()
+}
+
+fn parseLong(self: String) -> Optional[long]
+{
+    # TODO
+    return none[long]()
+}
+
+fn parseFloat(self: String) -> Optional[float]
+{
+    # TODO
+    return none[float]()  
+}
+
+fn parseDouble(self: String) -> Optional[double]
+{
+    # TODO
+    return none[double]()
+}
+
+fn isEqual(self: String, other: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn lessThan(self: String, other: String) -> bool
+{
+    # TODO
+    return false
+}
+
+fn plus(self: String, other: String) -> String
+{
+    # TODO
+    return "".string()
+}
+
+fn plusEqual(mut self: String, other: String)
+{
+    # TODO
+}
