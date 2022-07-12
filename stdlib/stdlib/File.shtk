@@ -1,0 +1,49 @@
+from "../stdlib/Optional.shtk" use Optional, none, some
+from "../stdlib/String.shtk" use String, string
+
+struct File
+{
+    # TODO
+}
+
+fn open(path: String) -> Optional[File]
+{
+    # TODO
+    return none[File]()
+}
+
+fn read(self: File) -> String
+{
+    # TODO
+    return "".string()
+}
+
+fn readLine(self: File) -> String
+{
+    # TODO
+    return "".string()
+}
+
+fn seekFromStart(self: File, offset: ulong)
+{
+    # TODO
+}
+
+fn seekEnd(self: File) -> ulong
+{
+    # TODO
+    return 0
+}
+
+fn tell(self: File) -> ulong
+{
+    # TODO
+    return 0
+}
+
+fn write(mut self: File, content: String) -> ulong
+{
+    # TODO
+    return 0
+}
+
