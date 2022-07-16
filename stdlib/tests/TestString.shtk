@@ -15,5 +15,54 @@ fn main() -> int
 
     testStringArgCoercion("Coerce this to string type")
 
+    println("isAlphaNumeric test")
+    println("abcdef012334".string().isAlphaNumeric())
+    println("abcde.f012334".string().isAlphaNumeric())
+    println("abcde[f]012334".string().isAlphaNumeric())
+
+    println("isSpace test")
+    println("   \t\n".string().isSpace())
+    println("   \t\n.".string().isSpace())
+
+    println("isUpper test")
+    println("ABCDEF".string().isUpper())
+    println("ABcd".string().isUpper())
+
+    println("isLower test")
+    println("abcdef".string().isLower())
+    println("ABcd".string().isLower())
+
+    println("isInteger test")
+    println("-1234".string().isInteger())
+    println("2345".string().isInteger())
+    println("12-23".string().isInteger())
+    println("12.23".string().isInteger())
+
+    println("isNumber test")
+    println("5678".string().isNumber())
+    println(".1234".string().isNumber())
+    println("-.345".string().isNumber())
+    println("23.45".string().isNumber())
+    println("-23.45".string().isNumber())
+    println("12..23".string().isNumber())
+    println("-..345".string().isNumber())
+
+    println("lower test")
+    println("567aav[.]--0ABCD".string().lower().toCharArray())
+
+    println("upper test")
+    println("567AAV[.]--0abcd".string().upper().toCharArray())
+
+    println("startsWith test")
+    println("abcdef".string().startsWith("abc"))
+    println("abcdef".string().startsWith("abcdefghijk"))
+    println("abcdef".string().startsWith("def"))
+
+    println("endsWith test")
+    println("abcdef".string().endsWith("def"))
+    println("abcdef".string().endsWith("cef"))
+    println("abcdef".string().endsWith("abcdefghijk"))
+    println("abcdef".string().endsWith("abc"))
+
     return 0
 }

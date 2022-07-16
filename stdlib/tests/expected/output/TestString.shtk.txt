@@ -2,3 +2,42 @@
 Hello world
 o
 Coerce this to string type
+isAlphaNumeric test
+1
+0
+0
+isSpace test
+1
+0
+isUpper test
+1
+0
+isLower test
+1
+0
+isInteger test
+1
+1
+0
+0
+isNumber test
+1
+1
+1
+1
+1
+0
+0
+lower test
+567aav[.]--0abcd
+upper test
+567AAV[.]--0ABCD
+startsWith test
+1
+0
+0
+endsWith test
+1
+0
+0
+0

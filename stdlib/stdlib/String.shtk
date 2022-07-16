@@ -1,4 +1,5 @@
 use "../stdlib/LibC.shtk" as libc
+use "../stdlib/Char.shtk" as char
 from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
 from "../stdlib/Slice.shtk" use Slice
 from "../stdlib/Optional.shtk" use Optional, some, none
@@ -18,7 +19,7 @@ fn string(charArray: char[], lengthIncNull: ulong) -> String
 
     self._length = length
     self._sp = allocateHeap[char](capacity)
-    self._sp.copy(charArray, length+1)
+    self._sp.copy(charArray, lengthIncNull)
 
     return self
 }
@@ -40,7 +41,7 @@ fn subscriptItem(self: String, index: ulong) -> char
 
 fn toCharArray(self: String) -> char[]
 {
-    return self._sp.slice().pointer()
+    return self._sp.pointer()
 }
 
 fn slice(self: String) -> Slice[char]
@@ -50,55 +51,102 @@ fn slice(self: String) -> Slice[char]
 
 fn clone(self: String) -> String
 {
-    return string(self._sp.slice().pointer(), self.length())
+    return string(self.toCharArray(), self.length()+1)
 }
 
-fn isAlphanumeric(self: String) -> bool
+fn isAlphaNumeric(self: String) -> bool
 {
-    # TODO
-    return false
+    for c in self
+        if not char::isAlphaNumeric(c)
+            return false
+
+    return true
 }
 
 fn isSpace(self: String) -> bool
 {
-    # TODO
-    return false
+    for c in self
+        if not char::isSpace(c)
+            return false
+
+    return true
 }
 
 fn isUpper(self: String) -> bool
 {
-    # TODO
-    return false
+    for c in self
+        if not char::isUpper(c)
+            return false
+
+    return true
 }
 
 fn isLower(self: String) -> bool
 {
-    # TODO
-    return false
+    for c in self
+        if not char::isLower(c)
+            return false
+
+    return true
 }
 
 fn isInteger(self: String) -> bool
 {
-    # TODO
-    return false
+    for var i: ulong = 0; i < self.length(); i += 1
+    {
+        if self[i] == '-' and i == 0
+            continue
+        
+        if not char::isDigit(self[i])
+            return false
+    }
+
+    return true
 }
 
 fn isNumber(self: String) -> bool
 {
-    # TODO
-    return false
+    var dotFound: bool = false
+
+    for var i: ulong = 0; i < self.length(); i += 1
+    {
+        if self[i] == '-' and i == 0
+            continue
+        
+        if self[i] == '.'
+        {
+            if dotFound
+                return false
+
+            dotFound = true
+            continue
+        }
+
+        if not char::isDigit(self[i])
+            return false
+    }
+
+    return true
 }
 
 fn lower(self: String) -> String
 {
-    # TODO
-    return "".string()
+    var new := self.clone()
+
+    for var i: ulong = 0; i < self.length(); i += 1
+        new._sp.setItem(i, char::lower(new[i]))
+
+    return new
 }
 
 fn upper(self: String) -> String
 {
-    # TODO
-    return "".string()
+    var new := self.clone()
+
+    for var i: ulong = 0; i < self.length(); i += 1
+        new._sp.setItem(i, char::upper(new[i]))
+
+    return new
 }
 
 # TODO
@@ -107,16 +155,30 @@ fn upper(self: String) -> String
 #     return make(List[String], "")
 # }
 
-fn startsWith(self: String) -> bool
+fn startsWith(self: String, other: String) -> bool
 {
-    # TODO
-    return false
+    if self.length() < other.length()
+        return false
+
+    for var i: ulong = 0; i < other.length(); i += 1
+        if self[i] != other[i]
+            return false
+
+    return true
 }
 
-fn endsWith(self: String) -> bool
+fn endsWith(self: String, other: String) -> bool
 {
-    # TODO
-    return false
+    if self.length() < other.length()
+        return false
+    
+    for var i: ulong = self.length(); i >= (self.length() - other.length()); i -= 1
+    {
+        if self[i] != other[i - other.length()]
+            return false    
+    }
+ 
+    return true
 }
 
 fn find(self: String, subString: String) -> bool
@@ -125,7 +187,7 @@ fn find(self: String, subString: String) -> bool
     return false
 }
 
-fn subString(self: String, range: long[2]) -> String
+fn subString(self: String, range: ulong[2]) -> String
 {
     # TODO
     return "".string()

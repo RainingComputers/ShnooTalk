@@ -184,6 +184,7 @@ Tests for the standard library
 - [ ] Upgrade to using opaque pointers (LLVM IR)
 - [ ] Add linker
 - [ ] Add bounds checking for raw arrays
+- [ ] Attributes
 
 *Advanced Features*
 

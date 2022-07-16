@@ -82,6 +82,8 @@ fn pointer(self: Slice) -> T[]
 
 fn deconstructor(self: Slice)
 {
+    # TODO should not be called for heap allocated slice
+
     if not addr(self._ptr) 
         return void
 

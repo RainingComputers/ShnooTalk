@@ -1,0 +1,36 @@
+isUpper test
+0
+1
+0
+0
+0
+isLower test
+1
+0
+0
+0
+0
+isDigit test
+0
+0
+1
+0
+0
+isAlphaNumeric test
+1
+1
+1
+0
+0
+lower test
+f
+g
+8
+.
+[
+upper test
+F
+G
+8
+.
+[

@@ -1,0 +1,41 @@
+fn isSpace(c: char) -> bool
+{
+    return c == 0x20 or c == 0x0c or c == 0x0a or c == 0x0d or c == 0x09 or c == 0x0b
+}
+
+fn isUpper(c: char) -> bool
+{
+    return c >= 'A' and c <= 'Z'
+}
+
+fn isLower(c: char) -> bool
+{
+    return c >= 'a' and c <= 'z'
+}
+
+fn isDigit(c: char) -> bool 
+{
+    return c >= '0' and c <= '9'
+}
+
+fn isAlphaNumeric(c: char) -> bool
+{
+    return isUpper(c) or isLower(c) or isDigit(c)
+}
+
+fn lower(c: char) -> char
+{
+    if isUpper(c)
+        return c + 32
+
+    return c
+}
+
+fn upper(c: char) -> char
+{
+    if isLower(c)
+        return c - 32
+
+    return c
+}
+

@@ -1,0 +1,48 @@
+from "../stdlib/Char.shtk" use isUpper, isLower, isDigit, isAlphaNumeric, lower, upper
+
+fn main() -> int
+{
+    println("isUpper test")
+    println(isUpper('f'))
+    println(isUpper('G'))
+    println(isUpper('8'))
+    println(isUpper('.'))
+    println(isUpper('['))
+
+    println("isLower test")
+    println(isLower('f'))
+    println(isLower('G'))
+    println(isLower('8'))
+    println(isLower('.'))
+    println(isLower('['))
+
+    println("isDigit test")
+    println(isDigit('f'))
+    println(isDigit('G'))
+    println(isDigit('8'))
+    println(isDigit('.'))
+    println(isDigit('['))
+
+    println("isAlphaNumeric test")
+    println(isAlphaNumeric('f'))
+    println(isAlphaNumeric('G'))
+    println(isAlphaNumeric('8'))
+    println(isAlphaNumeric('.'))
+    println(isAlphaNumeric('['))
+
+    println("lower test")
+    println(lower('f'))
+    println(lower('G'))
+    println(lower('8'))
+    println(lower('.'))
+    println(lower('['))
+
+    println("upper test")
+    println(upper('f'))
+    println(upper('G'))
+    println(upper('8'))
+    println(upper('.'))
+    println(upper('['))
+
+    return 0
+}

@@ -49,3 +49,8 @@ fn copy(self: SharedPointer, items: T[], length: ulong)
 {
     self._slice.copy(items, length)
 }
+
+fn pointer(self: SharedPointer) -> T[]
+{
+    return self._slice.pointer()
+}
