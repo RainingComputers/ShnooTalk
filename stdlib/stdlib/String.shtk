@@ -3,6 +3,10 @@ use "../stdlib/Char.shtk" as char
 from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
 from "../stdlib/Slice.shtk" use Slice
 from "../stdlib/Optional.shtk" use Optional, some, none
+from "../stdlib/Panic.shtk" use panic
+
+
+def INVALID_RANGE "Invalid range for subString"
 
 struct String
 {
@@ -15,11 +19,12 @@ fn string(charArray: char[], lengthIncNull: ulong) -> String
     var self: String
 
     const length := lengthIncNull - 1
-    const capacity := length*2 
+    const capacity := lengthIncNull * 2 
 
     self._length = length
     self._sp = allocateHeap[char](capacity)
     self._sp.copy(charArray, lengthIncNull)
+    self._sp.setItem(length, '\0')
 
     return self
 }
@@ -173,30 +178,67 @@ fn endsWith(self: String, other: String) -> bool
         return false
     
     for var i: ulong = self.length(); i >= (self.length() - other.length()); i -= 1
-    {
         if self[i] != other[i - other.length()]
-            return false    
-    }
+            return false
  
     return true
 }
 
-fn find(self: String, subString: String) -> bool
+fn _startsWithOffset(self: String, other: String, offset: ulong) -> bool
 {
-    # TODO
-    return false
+    for var i: ulong = 0; i < other.length(); i += 1
+        if self[i+offset] != other[i]
+            return false
+
+    return true
+}
+
+fn find(self: String, other: String) -> Optional[ulong]
+{
+    if self.length() < other.length()
+        return none[ulong]()
+    
+    for var i: ulong = 0; i <= (self.length() - other.length()); i += 1
+        if self._startsWithOffset(other, i)
+            return some[ulong](i)
+
+    return none[ulong]()
 }
 
 fn subString(self: String, range: ulong[2]) -> String
 {
-    # TODO
-    return "".string()
+    # TODO result?
+
+    if range[0] > range[1]
+        panic(INVALID_RANGE, 1)
+
+    if range[1] > self.length()
+        panic(INVALID_RANGE, 1)
+
+    const lengthIncNull := range[1] - range[0] + 1
+    
+    return string(char[]`(addr(self.toCharArray())+range[0]), lengthIncNull)
+}
+
+fn subscriptSubString(self: String, range: ulong[2]) -> String
+{
+    return self.subString(range)
 }
 
 fn strip(self: String) -> String
 {
-    # TODO
-    return "".string()
+    if self.length() == 0
+        return self
+    
+    var start: ulong = 0
+    while start < self.length() and char::isSpace(self[start]) 
+        start += 1 
+
+    var end: ulong = self.length() - 1
+    while end > start and char::isSpace(self[end]) 
+        end -= 1 
+
+    return self[[start, end+1]]
 }
 
 fn parseInt(self: String) -> Optional[int]

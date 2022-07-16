@@ -64,5 +64,30 @@ fn main() -> int
     println("abcdef".string().endsWith("abcdefghijk"))
     println("abcdef".string().endsWith("abc"))
 
+    println("find test")
+    println("abcdef".string().find("bcd").expect())
+    println("abcdef".string().find("def").expect())
+    println("abcdef".string().find("abh").isNone())
+    println("abcdef".string().find("abc").expect())
+
+    println("subString test")
+    println("abcdef".string().subString([1, 4]).toCharArray())
+    const test := "abcdef".string()
+    println(test[[1, 5]].toCharArray())
+
+    println("strip test")
+    println("   abcdef   ".string().strip().toCharArray())
+    println("abcdef   ".string().strip().toCharArray())
+    println("   abcdef".string().strip().toCharArray())
+    println("a".string().strip().toCharArray())
+    println(" a".string().strip().toCharArray())
+    println("a ".string().strip().toCharArray())
+    println("   a  ".string().strip().toCharArray())
+    println(" ".string().strip().toCharArray())
+    println("".string().strip().toCharArray())
+
+
+
+
     return 0
 }
