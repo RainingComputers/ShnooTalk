@@ -17,5 +17,12 @@ fn main() -> int
 {
     const a := make(Slice[Foobar], [createFoobar(), createFoobar(), createFoobar()])
 
+    const b := allocateHeap[Foobar](2)
+    b.copy([createFoobar(), createFoobar()], 2)
+
+    var c := allocateHeap[Foobar](2)
+    c.copy([createFoobar(), createFoobar()], 2)
+    c.free()
+
     return 0
 }

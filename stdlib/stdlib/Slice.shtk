@@ -2,7 +2,7 @@ generic T
 
 use "../stdlib/LibC.shtk" as libc
 from "../stdlib/Panic.shtk" use panic
-from "../stdlib/RawPointerUtils.shtk" use malloc, addOffset, memcpy, memcpyOffset
+from "../stdlib/RawPointerUtils.shtk" use malloc, free, addOffset, memcpy, memcpyOffset, nullptr
 
 def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
 def NULL_POINTER_ERROR "Null pointer dereference error"
@@ -12,6 +12,7 @@ struct Slice
 {
     var _ptr: T[]
     var _capacity: ulong
+    var _heapAllocated: bool
 }
 
 fn slice(ptr: T[], capacity: ulong) -> Slice
@@ -19,12 +20,17 @@ fn slice(ptr: T[], capacity: ulong) -> Slice
     var self: Slice
     self._ptr <- ptr
     self._capacity = capacity
+    self._heapAllocated = false
     return self
 }
 
 fn allocateHeap(capacity: ulong) -> Slice
 {
-    return slice(malloc[T](capacity), capacity)
+    var self: Slice
+    self._ptr <- malloc[T](capacity)
+    self._capacity = capacity
+    self._heapAllocated = true
+    return self
 }
 
 fn expand(mut self: Slice, capacity: ulong)
@@ -34,9 +40,9 @@ fn expand(mut self: Slice, capacity: ulong)
 
     const newPtr: T[] <- malloc[T](capacity)
 
-    libc::memcpy(ubyte[]`newPtr, ubyte[]`self._ptr, self._capacity*sizeof(T))
+    memcpy[T](newPtr, self._ptr, self._capacity)
 
-    libc::free(ubyte*`self._ptr)
+    free[T](self._ptr)
 
     self._ptr <- newPtr
     self._capacity = capacity
@@ -44,8 +50,12 @@ fn expand(mut self: Slice, capacity: ulong)
 
 fn free(mut self: Slice)
 {
-    libc::free(ubyte*`self._ptr)
-    self._ptr <- T[]`0
+    if not addr(self._ptr) 
+        return void
+
+    self._deconstructor()
+    free[T](self._ptr)
+    self._ptr <- nullptr[T]()
 }
 
 fn _validateIndex(self: Slice, index: ulong) 
@@ -102,13 +112,19 @@ fn pointer(self: Slice) -> T[]
     return self._ptr
 }
 
+fn _deconstructor(self: Slice)
+{
+    for var i: ulong = 0; i < self._capacity; i += 1 
+        self._ptr[i].deconstructor()
+}
+
 fn deconstructor(self: Slice)
 {
-    # TODO should not be called for heap allocated slice
-
     if not addr(self._ptr) 
         return void
 
-    for var i: ulong = 0; i < self._capacity; i += 1 
-        self._ptr[i].deconstructor()
+    if self._heapAllocated
+        return void
+
+    self._deconstructor()
 }
