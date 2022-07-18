@@ -4,7 +4,7 @@ use "../stdlib/LibC.shtk" as libc
 
 fn addOffset(ptr: T[], offset: ulong) -> T[]
 {
-    return T[]`(addr(ptr) + offset)
+    return T[]`(addr(ptr) + offset*sizeof(T))
 }
 
 fn memcpy(dest: T[], src: T[], length: ulong)
