@@ -156,6 +156,7 @@ Tests for the standard library
 - [ ] Add SHNOOTALK_PATH environment variable, and use PATH by default
 - [ ] `setSubscript` hook
 - [ ] `usize` type instead of `ulong`
+- [ ] `toCharArray` hook for print statements 
 
 *Backlog*
 
