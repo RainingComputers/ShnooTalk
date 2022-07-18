@@ -19,6 +19,11 @@ fn allocateHeap(capacity: ulong) -> SharedPointer
     return self
 }
 
+fn expand(mut self: SharedPointer, capacity: ulong)
+{
+    self._slice.expand(capacity)
+}
+
 fn deconstructor(mut self: SharedPointer)
 {
     if not self._count.isZero() return void
@@ -48,6 +53,11 @@ fn slice(self: SharedPointer) -> Slice[T]
 fn copy(self: SharedPointer, items: T[], length: ulong)
 {
     self._slice.copy(items, length)
+}
+
+fn copyOffset(self: SharedPointer, items: T[], length: ulong, offset: ulong)
+{
+    self._slice.copyOffset(items, length, offset)
 }
 
 fn pointer(self: SharedPointer) -> T[]

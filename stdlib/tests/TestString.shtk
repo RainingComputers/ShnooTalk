@@ -86,8 +86,12 @@ fn main() -> int
     println(" ".string().strip().toCharArray())
     println("".string().strip().toCharArray())
 
-
-
+    println("add test")
+    const hello := "hello".string() + " world".string()
+    println(hello.toCharArray())
+    var hello2 := "hello".string()
+    hello2 += " world".string()
+    println(hello2.toCharArray())
 
     return 0
 }

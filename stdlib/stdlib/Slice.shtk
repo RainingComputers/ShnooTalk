@@ -2,6 +2,7 @@ generic T
 
 use "../stdlib/LibC.shtk" as libc
 from "../stdlib/Panic.shtk" use panic
+from "../stdlib/RawPointerUtils.shtk" use malloc, addOffset, memcpy, memcpyOffset
 
 def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
 def NULL_POINTER_ERROR "Null pointer dereference error"
@@ -23,7 +24,22 @@ fn slice(ptr: T[], capacity: ulong) -> Slice
 
 fn allocateHeap(capacity: ulong) -> Slice
 {
-    return slice(T[]`libc::malloc(sizeof(T)*capacity), capacity)
+    return slice(malloc[T](capacity), capacity)
+}
+
+fn expand(mut self: Slice, capacity: ulong)
+{
+    if capacity < self._capacity
+        panic(OUT_OF_CAPACITY, 1)
+
+    const newPtr: T[] <- malloc[T](capacity)
+
+    libc::memcpy(ubyte[]`newPtr, ubyte[]`self._ptr, self._capacity*sizeof(T))
+
+    libc::free(ubyte*`self._ptr)
+
+    self._ptr <- newPtr
+    self._capacity = capacity
 }
 
 fn free(mut self: Slice)
@@ -72,7 +88,13 @@ fn capacity(self: Slice) -> ulong
 fn copy(self: Slice, items: T[], length: ulong)
 {
     self._validateLength(length)
-    libc::memcpy(ubyte[]`self._ptr, ubyte[]`items, length*sizeof(T))
+    memcpy[T](self._ptr, items, length)
+}
+
+fn copyOffset(self: Slice, items: T[], length: ulong, offset: ulong)
+{
+    self._validateLength(length+offset)
+    memcpyOffset[T](self._ptr, items, length, offset)
 }
 
 fn pointer(self: Slice) -> T[]

@@ -4,6 +4,7 @@ from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
 from "../stdlib/Slice.shtk" use Slice
 from "../stdlib/Optional.shtk" use Optional, some, none
 from "../stdlib/Panic.shtk" use panic
+from "../stdlib/RawPointerUtils.shtk" use addOffset
 
 
 def INVALID_RANGE "Invalid range for subString"
@@ -47,6 +48,11 @@ fn subscriptItem(self: String, index: ulong) -> char
 fn toCharArray(self: String) -> char[]
 {
     return self._sp.pointer()
+}
+
+fn toCharArrayOffset(self: String, offset: ulong) -> char[]
+{
+    return addOffset[char](self.toCharArray(), offset)
 }
 
 fn slice(self: String) -> Slice[char]
@@ -217,7 +223,7 @@ fn subString(self: String, range: ulong[2]) -> String
 
     const lengthIncNull := range[1] - range[0] + 1
     
-    return string(char[]`(addr(self.toCharArray())+range[0]), lengthIncNull)
+    return string(self.toCharArrayOffset(range[0]), lengthIncNull)
 }
 
 fn subscriptSubString(self: String, range: ulong[2]) -> String
@@ -277,13 +283,12 @@ fn lessThan(self: String, other: String) -> bool
     return false
 }
 
-fn plus(self: String, other: String) -> String
+fn add(self: String, other: String) -> String
 {
-    # TODO
-    return "".string()
-}
+    var new := self.clone()
+    
+    new._sp.expand(self.length() + other.length() + 1)
+    new._sp.copyOffset(other._sp.pointer(), other.length() + 1, self.length())
 
-fn plusEqual(mut self: String, other: String)
-{
-    # TODO
+    return new
 }

@@ -1,0 +1,23 @@
+generic T
+
+use "../stdlib/LibC.shtk" as libc
+
+fn addOffset(ptr: T[], offset: ulong) -> T[]
+{
+    return T[]`(addr(ptr) + offset)
+}
+
+fn memcpy(dest: T[], src: T[], length: ulong)
+{
+    libc::memcpy(ubyte[]`dest, ubyte[]`src, length*sizeof(T))
+}
+
+fn memcpyOffset(dest: T[], src: T[], length: ulong, offset: ulong)
+{
+    libc::memcpy(ubyte[]`(addOffset(dest, offset)), ubyte[]`src, length*sizeof(T))
+}
+
+fn malloc(length: ulong) -> T[]
+{
+    return T[]`libc::malloc(sizeof(T)*length)
+}
