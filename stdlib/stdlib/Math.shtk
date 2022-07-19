@@ -1,113 +1,109 @@
+use "../stdlib/LibC.shtk" as libc
+
+def PI 3.14159265358979323846264338327950288
+def E 2.71828182845904523536
+
 fn abs(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::fabs(x)
 }
 
 fn absInt(x: int) -> int
 {
-    # TODO
-    return 0
+    return libc::abs(x)
 }
 
-fn absLong(x: int) -> long
+fn absLong(x: long) -> long
 {
-    # TODO
-    return 0
+    return libc::labs(x)
 }
 
-fn ceil(x: double) -> int
+fn ceil(x: double) -> double
 {
-    # TODO
-    return 0
+    return libc::ceil(x)
+}
+
+fn ceilInt(x: double) -> int
+{
+    return int`libc::ceil(x)
 }
 
 fn ceilLong(x: double) -> long
 {
-    # TODO
-    return 0
+    return long`libc::ceil(x)
 }
 
-fn floor(x: double) -> int
+fn floor(x: double) -> double
 {
-    # TODO
-    return 0
+    return libc::floor(x)
+}
+
+fn floorInt(x: double) -> int
+{
+    return int`libc::floor(x)
 }
 
 fn floorLong(x: double) -> long
 {
-    # TODO
-    return 0
+    return long`libc::floor(x)
 }
 
 fn exp(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::exp(x)
 }
 
 fn log(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::log(x)
 }
 
 fn sqrt(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::sqrt(x)
 }
 
 fn pow(base: double, to: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::pow(base, to)
 }
 
 fn degrees(angleRadians: double) -> double
 {
-    # TODO
-    return 0.0
+    return angleRadians*(180.0/PI)
 }
 
 fn radians(angleDegrees: double) -> double
 {
-    # TODO
-    return 0.0
+    return angleDegrees*(PI/180.0)
 }
 
 fn cos(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::cos(x)
 }
 
 fn sin(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::sin(x)
 }
 
 fn tan(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::tan(x)
 }
 
 fn acos(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::acos(x)
 }
 
 fn asin(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::asin(x)
 }
 
 fn atan(x: double) -> double
 {
-    # TODO
-    return 0.0
+    return libc::atan(x)
 }

@@ -1,4 +1,25 @@
 extfn malloc(bytes: ulong) -> ubyte*
 extfn free(ptr: ubyte*)
-extfn exit(status: int)
 extfn memcpy(dest: ubyte[], src: ubyte[], length: ulong)
+
+extfn exit(status: int)
+
+extfn fabs(x: double) -> double
+extfn abs(x: int) -> int
+extfn labs(x: long) -> long
+
+extfn ceil(x: double) -> double
+extfn floor(x: double) -> double
+
+extfn exp(x: double) -> double
+extfn log(x: double) -> double
+
+extfn sqrt(x: double) -> double
+extfn pow(base: double, to: double) -> double
+
+extfn cos(x: double) -> double
+extfn sin(x: double) -> double
+extfn tan(x: double) -> double
+extfn acos(x: double) -> double
+extfn asin(x: double) -> double
+extfn atan(x: double) -> double

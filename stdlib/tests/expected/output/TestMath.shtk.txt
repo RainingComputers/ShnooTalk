@@ -1,0 +1,23 @@
+abs
+2.500000
+2
+2
+ceil
+3.000000
+3
+3
+floor
+2.000000
+2
+2
+exp log sqrt pow
+7.389056
+1.000000
+1.414214
+4.000000
+0.5 radians is 90.000000 degrees
+180 degrees is 3.141593 radians
+trigonometry
+1.047198
+1.047198
+1.047198

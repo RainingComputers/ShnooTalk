@@ -1,0 +1,35 @@
+use "../stdlib/Math.shtk" as math
+
+fn main() -> int
+{
+    println("abs")
+    println(math::abs(-2.5))
+    println(math::absInt(2))
+    println(math::absLong(-2))
+
+    println("ceil")
+    println(math::ceil(2.5))
+    println(math::ceilInt(2.5))
+    println(math::ceilLong(2.5))
+
+    println("floor")
+    println(math::floor(2.5))
+    println(math::floorInt(2.5))
+    println(math::floorLong(2.5))
+
+    println("exp log sqrt pow")
+    println(math::exp(2.0))
+    println(math::log(math::E))
+    println(math::sqrt(2.0))
+    println(math::pow(2.0, 2.0))
+
+    println("0.5 radians is", math::degrees(math::PI/2.0), "degrees")
+    println("180 degrees is", math::radians(180.0), "radians")
+
+    println("trigonometry")
+    println(math::acos(math::cos(math::PI/3.0)))
+    println(math::asin(math::sin(math::PI/3.0)))
+    println(math::atan(math::tan(math::PI/3.0)))
+
+    return 0
+}
