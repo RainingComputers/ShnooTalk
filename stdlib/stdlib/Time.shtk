@@ -1,10 +1,12 @@
-fn sleep(milliseconds: ulong)
+use "../stdlib/LibC.shtk" as libc
+from "../stdlib/RawPointerUtils.shtk" use nullptr
+
+fn sleep(microseconds: int)
 {
-    # TODO
+    libc::usleep(microseconds)
 }
 
-fn time() -> ulong
+fn time() -> long
 {
-    # TODO
-    return 0
+    return libc::time(nullptr[long]())
 }

@@ -1,0 +1,9 @@
+from "../stdlib/Time.shtk" use sleep, time
+
+fn main() -> int
+{
+    sleep(100)
+    println(time() > 0)
+
+    return 0
+}

@@ -23,3 +23,6 @@ extfn tan(x: double) -> double
 extfn acos(x: double) -> double
 extfn asin(x: double) -> double
 extfn atan(x: double) -> double
+
+extfn time(t: long*) -> long
+extfn usleep(us: int)

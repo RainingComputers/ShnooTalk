@@ -27,7 +27,12 @@ fn free(ptr: T[])
     libc::free(ubyte*`ptr)
 }
 
-fn nullptr() -> T[]
+fn nullptrArray() -> T[]
 {
     return T[]`0
+}
+
+fn nullptr() -> T*
+{
+    return T*`0
 }

@@ -2,7 +2,7 @@ generic T
 
 use "../stdlib/LibC.shtk" as libc
 from "../stdlib/Panic.shtk" use panic
-from "../stdlib/RawPointerUtils.shtk" use malloc, free, addOffset, memcpy, memcpyOffset, nullptr
+from "../stdlib/RawPointerUtils.shtk" use malloc, free, addOffset, memcpy, memcpyOffset, nullptrArray
 
 def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
 def NULL_POINTER_ERROR "Null pointer dereference error"
@@ -55,7 +55,7 @@ fn free(mut self: Slice)
 
     self._deconstructor()
     free[T](self._ptr)
-    self._ptr <- nullptr[T]()
+    self._ptr <- nullptrArray[T]()
 }
 
 fn _validateIndex(self: Slice, index: ulong) 

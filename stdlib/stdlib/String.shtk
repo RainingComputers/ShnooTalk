@@ -213,8 +213,6 @@ fn find(self: String, other: String) -> Optional[ulong]
 
 fn subString(self: String, range: ulong[2]) -> String
 {
-    # TODO result?
-
     if range[0] > range[1]
         panic(INVALID_RANGE, 1)
 
