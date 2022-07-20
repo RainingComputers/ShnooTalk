@@ -271,14 +271,32 @@ fn parseDouble(self: String) -> Optional[double]
 
 fn isEqual(self: String, other: String) -> bool
 {
-    # TODO
-    return false
+    return libc::strcmp(self.toCharArray(), other.toCharArray()) == 0
 }
 
 fn lessThan(self: String, other: String) -> bool
 {
-    # TODO
-    return false
+    return libc::strcmp(self.toCharArray(), other.toCharArray()) < 0
+}
+
+fn lessThanOrEqual(LHS: String, RHS: String) -> bool
+{
+    return LHS < RHS or LHS == RHS
+}
+
+fn greaterThan(self: String, other: String) -> bool
+{
+    return libc::strcmp(self.toCharArray(), other.toCharArray()) > 0
+}
+
+fn greaterThanOrEqual(LHS: String, RHS: String) -> bool
+{
+    return LHS > RHS or LHS == RHS
+}
+
+fn isNotEqual(LHS: String, RHS: String) -> bool
+{
+    return not (LHS == RHS)
 }
 
 fn add(self: String, other: String) -> String

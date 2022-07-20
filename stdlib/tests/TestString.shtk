@@ -93,5 +93,15 @@ fn main() -> int
     hello2 += " world".string()
     println(hello2.toCharArray())
 
+    println("relational operators")
+    println("abcdef".string() > "bcdef".string())
+    println("bcdef".string() > "abcdef".string())
+    println("abcdef".string() < "bcdef".string())
+    println("bcdef".string() < "abcdef".string())
+    println("abcdef".string() == "bcdef".string())
+    println("abcdef".string() != "bcdef".string())
+    println("abcdef".string() >= "bcdef".string())
+    println("hello".string() <= "hello".string())
+
     return 0
 }
