@@ -1,22 +1,25 @@
-fn randomSeed(seed: double)
-{
-    # TODO
-}
-
-fn random(start: double, end: double) -> double
-{
-    # TODO
-    return 0.0
-}
+use "../stdlib/LibC.shtk" as libc
 
 fn randomInt(start: int, end: int) -> int
 {
-    # TODO
-    return 0
+    const range := uint`(end - start)
+    return int`libc::arc4random_uniform(range) + start
 }
 
 fn randomLong(start: long, end: long) -> long
 {
-    # TODO
-    return 0
+    const range := uint`(end - start)
+    return long`libc::arc4random_uniform(range) + start
+}
+
+fn random(start: double, end: double) -> double
+{
+    const scale := 1000000.0
+
+    const startInt := int`(start*scale)
+    const endInt := int`(end*scale)
+
+    const randomInt := randomInt(startInt, endInt)
+
+    return (double`randomInt)/scale   
 }

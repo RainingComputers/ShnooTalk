@@ -31,3 +31,5 @@ extfn strcmp(lhs: char[], rhs: char[]) -> int
 extfn atoi(str: char[]) -> int
 extfn atol(str: char[]) -> long
 extfn atof(str: char[]) -> double
+
+extfn arc4random_uniform(limit: uint) -> uint
