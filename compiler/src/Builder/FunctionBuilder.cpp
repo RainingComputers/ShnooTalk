@@ -632,7 +632,7 @@ Operand FunctionBuilder::createPointerForPassAddress(const Unit& actualParam, co
     /* NOTE: actual param could be AUTO_INT or AUTO_FLOAT and formal
         param could be a different type, in the case the type size would mismatch */
 
-    unsigned int numElements = actualParam.size() / actualParam.dtypeSize();
+    unsigned int numElements = actualParam.numElements();
 
     Unit tempArray = createTempArray(formalParam.type(), numElements);
 
