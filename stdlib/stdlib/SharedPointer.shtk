@@ -50,12 +50,12 @@ fn slice(self: SharedPointer) -> Slice[T]
     return self._slice
 }
 
-fn copy(self: SharedPointer, items: T[], length: ulong)
+fn copy(mut self: SharedPointer, items: T[], length: ulong)
 {
     self._slice.copy(items, length)
 }
 
-fn copyOffset(self: SharedPointer, items: T[], length: ulong, offset: ulong)
+fn copyOffset(mut self: SharedPointer, items: T[], length: ulong, offset: ulong)
 {
     self._slice.copyOffset(items, length, offset)
 }

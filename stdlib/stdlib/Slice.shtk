@@ -38,7 +38,7 @@ fn expand(mut self: Slice, capacity: ulong)
     if capacity < self._capacity
         panic(OUT_OF_CAPACITY, 1)
 
-    const newPtr: T[] <- malloc[T](capacity)
+    var newPtr: T[] <- malloc[T](capacity)
 
     memcpy[T](newPtr, self._ptr, self._capacity)
 
@@ -95,13 +95,13 @@ fn capacity(self: Slice) -> ulong
     return self._capacity
 }
 
-fn copy(self: Slice, items: T[], length: ulong)
+fn copy(mut self: Slice, items: T[], length: ulong)
 {
     self._validateLength(length)
     memcpy[T](self._ptr, items, length)
 }
 
-fn copyOffset(self: Slice, items: T[], length: ulong, offset: ulong)
+fn copyOffset(mut self: Slice, items: T[], length: ulong, offset: ulong)
 {
     self._validateLength(length+offset)
     memcpyOffset[T](self._ptr, items, length, offset)
