@@ -155,8 +155,8 @@ Tests for the standard library
 - [ ] Reduce binary size
 - [ ] Add SHNOOTALK_PATH environment variable, and use PATH by default
 - [ ] `setSubscript` hook
-- [ ] `usize` type instead of `ulong`
 - [ ] `toCharArray` hook for print statements 
+- [ ] Refactor CLI args
 
 *Backlog*
 
@@ -186,6 +186,7 @@ Tests for the standard library
 - [ ] Add linker
 - [ ] Add bounds checking for raw arrays
 - [ ] Attributes
+- [ ] `usize` type instead of `ulong`
 
 *Advanced Features*
 
