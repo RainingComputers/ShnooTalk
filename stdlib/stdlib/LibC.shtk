@@ -28,3 +28,6 @@ extfn time(t: long*) -> long
 extfn usleep(us: int)
 
 extfn strcmp(lhs: char[], rhs: char[]) -> int
+extfn atoi(str: char[]) -> int
+extfn atol(str: char[]) -> long
+extfn atof(str: char[]) -> double

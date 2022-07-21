@@ -247,26 +247,34 @@ fn strip(self: String) -> String
 
 fn parseInt(self: String) -> Optional[int]
 {
-    # TODO
-    return none[int]()
+    if not self.isInteger()
+        return none[int]()
+
+    return some[int](libc::atoi(self.toCharArray()))
 }
 
 fn parseLong(self: String) -> Optional[long]
 {
-    # TODO
-    return none[long]()
+    if not self.isInteger()
+        return none[long]()
+
+    return some[long](libc::atol(self.toCharArray()))
 }
 
 fn parseFloat(self: String) -> Optional[float]
 {
-    # TODO
-    return none[float]()  
+    if not self.isNumber()
+        return none[float]()
+
+    return some[float](float`libc::atof(self.toCharArray()))
 }
 
 fn parseDouble(self: String) -> Optional[double]
 {
-    # TODO
-    return none[double]()
+    if not self.isNumber()
+        return none[double]()
+
+    return some[double](libc::atof(self.toCharArray()))
 }
 
 fn isEqual(self: String, other: String) -> bool

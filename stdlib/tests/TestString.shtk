@@ -103,5 +103,22 @@ fn main() -> int
     println("abcdef".string() >= "bcdef".string())
     println("hello".string() <= "hello".string())
 
+    println("string parsing")
+    println("12345".string().parseInt().expect())
+    println("12345".string().parseLong().expect())
+    println("12345".string().parseFloat().expect())
+    println("12345".string().parseDouble().expect())
+    println("123.45".string().parseFloat().expect())
+    println("123.45".string().parseDouble().expect())
+
+    println("string parsing errors")
+    println("a34bcd".string().parseInt().hasValue())
+    println("bcdef".string().parseLong().hasValue())
+    println("abf".string().parseFloat().hasValue())
+    println("123s45".string().parseDouble().hasValue())
+    println("12f3.45".string().parseFloat().hasValue())
+    println("123..45".string().parseDouble().hasValue())
+
+
     return 0
 }

@@ -71,3 +71,17 @@ relational operators
 1
 0
 1
+string parsing
+12345
+12345
+12345.000000
+12345.000000
+123.449997
+123.450000
+string parsing errors
+0
+0
+0
+0
+0
+0
