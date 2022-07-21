@@ -1,0 +1,11 @@
+use "../stdlib/OS.shtk" as os
+
+fn main(argc: int, argv: ulong[]) -> int
+{
+    println("getArg", os::getArg(argv, 0))  
+
+    const path := os::getcwd()
+    println("getcwd", path.expect().toCharArray())
+
+    return 0
+}

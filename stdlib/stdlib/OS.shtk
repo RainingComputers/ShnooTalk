@@ -1,3 +1,4 @@
+use "../stdlib/LibC.shtk" as libc
 from "../stdlib/Panic.shtk" use panic
 from "../stdlib/String.shtk" use String, string
 from "../stdlib/Pair.shtk" use Pair, pair
@@ -32,10 +33,16 @@ fn getEnv(key: String) -> Optional[String]
     return none[String]()
 }
 
-fn getcwd() -> String
+fn getcwd() -> Optional[String]
 {
-    # TODO
-    return "".string()
+    var charBuffer: char[256]
+
+    const success: char* <- libc::getcwd(charBuffer, 256) 
+
+    if not addr(success)
+        return none[String]()
+
+    return some[String](charBuffer.string())
 }
 
 fn chdir(path: String)

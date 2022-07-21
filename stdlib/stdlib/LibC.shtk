@@ -33,3 +33,5 @@ extfn atol(str: char[]) -> long
 extfn atof(str: char[]) -> double
 
 extfn arc4random_uniform(limit: uint) -> uint
+
+extfn getcwd(buf: char[], size: ulong) -> char*

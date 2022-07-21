@@ -1,0 +1,2 @@
+getArg ./test_executable
+getcwd /Users/shnoo/Projects/ShnooTalk/stdlib/tests
