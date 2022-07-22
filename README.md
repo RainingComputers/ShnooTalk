@@ -129,67 +129,6 @@ Tests for the standard library
 
 ### Compiler core
 
-*Priority*
-
-- [x] Incomplete types and type composing of a pointer to itself
-- [x] null pointer check
-- [x] Direct from
-- [x] make constructors
-- [x] := initializer
-- [x] Destructuring
-- [x] Generic function call
-- [x] Class or struct destructors
-- [x] Assignment destructuring
-- [x] Better operator overloading
-- [x] `in` operator
-- [x] Subscript operator overloading
-- [x] extern "C" to prevent name mangling functions
-- [x] Decide names and defaults for primitive data types
-- [x] Arrays and pointers of generic types
-- [x] Proper enums
-- [x] Fix bug in calling deconstructors
-- [x] Generators and foreach loop
-- [ ] Enumerated foreach loop
-- [ ] `?` operator
-- [ ] Add `clone` built in
-- [ ] Reduce binary size
-- [ ] Add SHNOOTALK_PATH environment variable, and use PATH by default
-- [ ] `setSubscript` hook
-- [ ] `toCharArray` hook for print statements 
-- [ ] Refactor CLI args
-
-*Backlog*
-
-- [x] Array return types
-- [x] IR Validator
-- [x] Main function return type check
-- [x] Extern C functions and function imports
-- [x] Node style module imports
-- [x] `loop {}` syntax for looping forever
-- [x] `do {} while()` loop
-- [x] NaN and infinity
-- [x] Multi-line strings
-- [x] Assigning conditional expressions
-- [x] Setup github workflows and build for other platforms
-- [x] Function forward declaration
-- [ ] Error recovery in lexer and parser
-- [ ] Static variables
-- [ ] Struct alignment and padding
-- [ ] Initializing global variables (module init function)
-- [ ] typedef
-- [ ] Better error message for using generic as non generic
-- [ ] Autofill type parameter for generic function call
-- [ ] Using literal expression as subscript for declaration
-- [ ] Struct construction using `Foobar{}` syntax
-- [ ] `panic()` function
-- [ ] Upgrade to using opaque pointers (LLVM IR)
-- [ ] Add linker
-- [ ] Add bounds checking for raw arrays
-- [ ] Attributes
-- [ ] `usize` type instead of `ulong`
-
-*Advanced Features*
-
 - [x] Custom operators
 - [x] Generics
 - [ ] Closures and lambdas
@@ -203,14 +142,6 @@ Tests for the standard library
 - [ ] Testing framework
 - [ ] Concurrency
 
-*Refactoring*
-
-- [ ] Use optional
-- [ ] Some duplication of code before calling `premangledFunctionCall`
-- [ ] Move type checking to builder
-- [ ] Remove tokens from builder
-- [ ] Cleanup format strings and function call in Translator
-
 ### Documentation
 
 - [ ] Language tour using shnootalk-playground
@@ -220,17 +151,12 @@ Tests for the standard library
 
 - [ ] Debug symbols (using LLVM)
 - [ ] Python wrapper generator
+- [ ] WebAssembly text translator for WASI
 
 ### Platforms
 
 - [x] WebAssembly support
 - [ ] Arduino Uno support
-
-### Testing
-
-- [ ] Unit tests for ir builder
-- [ ] Unit tests for pretty printer
-- [ ] Use multiprocessing for tests runner
 
 ### Language tools
 
@@ -240,11 +166,3 @@ Tests for the standard library
 - [ ] Static analyzer
 - [ ] Language server
 - [ ] Standard library
-
-### Self hosting and LLVM independence
-
-- [ ] WebAssembly text translator for WASI
-- [ ] Framework for writing and testing optimization passes
-- [ ] C wrapper for LLVM to self host compiler
-- [ ] Module IR validator
-- [ ] Document IR using [pydantic](https://pydantic-docs.helpmanual.io/)
