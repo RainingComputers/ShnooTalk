@@ -1,10 +1,10 @@
 getArg ./test_executable
-getcwd /Users/shnoo/Projects/ShnooTalk/stdlib/tests
+getcwd 1
 mkdir foobar 1
 chdir foobar 1
-getcwd /Users/shnoo/Projects/ShnooTalk/stdlib/tests/foobar
+getcwd 1
 chdir .. 1
-getcwd /Users/shnoo/Projects/ShnooTalk/stdlib/tests
+getcwd 1
 rmdir foobar 1
 mkdir foobar 1
 rmdir foobar 1

@@ -47,13 +47,14 @@ extfn time(t: long*) -> long
 extfn usleep(us: int)
 
 extfn strcmp(lhs: char[], rhs: char[]) -> int
+extfn strlen(str: char[]) -> ulong
 extfn atoi(str: char[]) -> int
 extfn atol(str: char[]) -> long
 extfn atof(str: char[]) -> double
 
 extfn arc4random_uniform(limit: uint) -> uint
 
-extfn getcwd(buf: char[], size: ulong) -> char*
+extfn getcwd(buf: char[], size: ulong) -> char[]
 extfn chdir(path: char[]) -> int
 extfn mkdir(path: char[], mode: int) -> int
 extfn rmdir(path: char[]) -> int

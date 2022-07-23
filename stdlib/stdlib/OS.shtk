@@ -1,9 +1,10 @@
 use "../stdlib/LibC.shtk" as libc
 from "../stdlib/Panic.shtk" use panic
-from "../stdlib/String.shtk" use String, string
+from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
 from "../stdlib/Pair.shtk" use Pair, pair
 from "../stdlib/Triple.shtk" use Triple, triple
 from "../stdlib/Optional.shtk" use Optional, none, some
+from "../stdlib/RawPointerUtils.shtk" use nullptrArray
 
 
 fn getArg(argv: ulong[], idx: int) -> char[]
@@ -37,14 +38,14 @@ fn getEnv(key: String) -> Optional[String]
 
 fn getcwd() -> Optional[String]
 {
-    var charBuffer: char[256]
+    const charArray: char[] <- libc::getcwd(nullptrArray[char](), 0) 
 
-    const success: char* <- libc::getcwd(charBuffer, 256) 
-
-    if not addr(success)
+    if not addr(charArray)
         return none[String]()
 
-    return some[String](charBuffer.string())
+    const length := libc::strlen(charArray)
+
+    return some[String](stringFromPreAllocated(charArray, length+1, length))
 }
 
 fn chdir(path: String) -> bool

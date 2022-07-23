@@ -193,8 +193,10 @@ fn endsWith(self: String, other: String) -> bool
     if self.length() < other.length()
         return false
     
-    for var i: ulong = self.length(); i >= (self.length() - other.length()); i -= 1
-        if self[i] != other[i - other.length()]
+    const delta := self.length() - other.length()
+
+    for var i: ulong = 0; i < other.length(); i += 1
+        if self[i + delta] != other[i]
             return false
  
     return true

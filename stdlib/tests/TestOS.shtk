@@ -5,15 +5,15 @@ fn main(argc: int, argv: ulong[]) -> int
     println("getArg", os::getArg(argv, 0))  
 
     const path := os::getcwd()
-    println("getcwd", path.expect().toCharArray())
+    println("getcwd", path.expect().endsWith("ShnooTalk/stdlib/tests"))
 
     println("mkdir foobar", os::mkdir("foobar"))
     println("chdir foobar", os::chdir("foobar"))
     const path1 := os::getcwd()
-    println("getcwd", path1.expect().toCharArray())
+    println("getcwd", path1.expect().endsWith("ShnooTalk/stdlib/tests/foobar"))
     println("chdir ..", os::chdir(".."))
     const path2 := os::getcwd()
-    println("getcwd", path2.expect().toCharArray())
+    println("getcwd", path2.expect().endsWith("ShnooTalk/stdlib/tests"))
     println("rmdir foobar", os::rmdir("foobar"))
     println("mkdir foobar", os::mkdir("foobar"))
     println("rmdir foobar", os::rmdir("foobar"))
