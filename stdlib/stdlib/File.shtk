@@ -1,27 +1,43 @@
+use "../stdlib/LibC.shtk" as libc
 from "../stdlib/Optional.shtk" use Optional, none, some
-from "../stdlib/String.shtk" use String, string
+from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
+from "../stdlib/RawPointerUtils.shtk" use nullptrArray
 
 struct File
 {
-    # TODO
+    var libcFile: libc::FILE*
 }
 
-fn open(path: String) -> Optional[File]
+fn open(path: String, mode: String) -> Optional[File]
 {
-    # TODO
-    return none[File]()
+    var libcFile: libc::FILE* <- libc::fopen(path.toCharArray(), mode.toCharArray())
+
+    if not addr(libcFile)
+        return none[File]()
+
+    var self: File
+    self.libcFile <- libcFile
+
+    return some[File](self)
 }
 
-fn read(self: File) -> String
+fn readLine(self: File) -> Optional[String]
 {
-    # TODO
-    return "".string()
+    var buffer: char[] <- nullptrArray[char]()
+    var bufferLength: ulong
+    
+    const length: long = libc::getline(buffer, bufferLength, self.libcFile)
+
+    if length < 0
+        return none[String]()
+
+    return some[String](stringFromPreAllocated(buffer, bufferLength, ulong`length))
 }
 
-fn readLine(self: File) -> String
+fn read(self: File) -> Optional[String]
 {
     # TODO
-    return "".string()
+    return none[String]()
 }
 
 fn seekFromStart(self: File, offset: ulong)

@@ -1,7 +1,7 @@
 generic T
 
 from "../stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
-from "../stdlib/Slice.shtk" use Slice, allocateHeap
+from "../stdlib/Slice.shtk" use Slice, slice, allocateHeap
 
 struct SharedPointer
 {
@@ -15,6 +15,16 @@ fn allocateHeap(capacity: ulong) -> SharedPointer
 
     self._count = createCounter()
     self._slice = allocateHeap[T](capacity)
+
+    return self
+}
+
+fn fromPreAllocated(buffer: T[], bufferLength: ulong) -> SharedPointer
+{
+    var self: SharedPointer
+
+    self._count = createCounter()
+    self._slice = slice[T](buffer, bufferLength)
 
     return self
 }

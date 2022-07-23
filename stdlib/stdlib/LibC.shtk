@@ -13,6 +13,9 @@ def S_IROTH 0004
 def S_IWOTH 0002
 def S_IXOTH 0001
 def S_IRWXO 0007
+def EOF -1
+
+struct FILE {}
 
 extfn malloc(bytes: ulong) -> ubyte*
 extfn free(ptr: ubyte*)
@@ -54,3 +57,7 @@ extfn getcwd(buf: char[], size: ulong) -> char*
 extfn chdir(path: char[]) -> int
 extfn mkdir(path: char[], mode: int) -> int
 extfn rmdir(path: char[]) -> int
+
+extfn fopen(path: char[], mode: char[]) -> FILE*
+extfn fclose(file: FILE*) -> int
+extfn getline(mut buffer: char[], mut bufferLength: ulong, file: FILE*) -> long

@@ -1,6 +1,6 @@
 from "../stdlib/String.shtk" use String, string
 
-fn getConsoleInput() -> String
+fn consoleInput() -> String
 {
     # TODO
     return "".string()

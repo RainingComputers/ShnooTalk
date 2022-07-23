@@ -1,0 +1,11 @@
+use "../stdlib/File.shtk" as file
+
+fn main() -> int
+{
+    const fileOptional := file::open("TestError.shtk", "r")
+    const file := fileOptional.expect()
+
+    println(file.readLine().expect().toCharArray())
+
+    return 0
+}

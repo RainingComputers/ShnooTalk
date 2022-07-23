@@ -1,6 +1,6 @@
 use "../stdlib/LibC.shtk" as libc
 use "../stdlib/Char.shtk" as char
-from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
+from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap, fromPreAllocated
 from "../stdlib/Slice.shtk" use Slice
 from "../stdlib/Optional.shtk" use Optional, some, none
 from "../stdlib/Panic.shtk" use panic
@@ -27,6 +27,16 @@ fn string(charArray: char[], lengthIncNull: ulong) -> String
     self._sp.copy(charArray, lengthIncNull)
     self._sp.setItem(length, '\0')
 
+    return self
+}
+
+fn stringFromPreAllocated(charArray: char[], bufferLength: ulong, length: ulong) -> String
+{
+    var self: String
+
+    self._length = length
+    self._sp = fromPreAllocated[char](charArray, bufferLength)
+    
     return self
 }
 
