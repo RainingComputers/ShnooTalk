@@ -5,6 +5,7 @@ from "../stdlib/Pair.shtk" use Pair, pair
 from "../stdlib/Triple.shtk" use Triple, triple
 from "../stdlib/Optional.shtk" use Optional, none, some
 
+
 fn getArg(argv: ulong[], idx: int) -> char[]
 {
     # TODO change to String
@@ -46,17 +47,17 @@ fn getcwd() -> Optional[String]
     return some[String](charBuffer.string())
 }
 
-fn chdir(path: String)
+fn chdir(path: String) -> bool
 {
-    # TODO
+    return libc::chdir(path.toCharArray()) == 0
 }
 
-fn mkdir(path: String)
+fn mkdir(path: String) -> bool
 {
-    # TODO
+    return libc::mkdir(path.toCharArray(), libc::S_IRWXU | libc::S_IRWXG | libc::S_IROTH | libc::S_IXOTH) == 0
 }
 
-fn rmdir(path: String)
+fn rmdir(path: String) -> bool
 {
-    # TODO
+    return libc::rmdir(path.toCharArray()) == 0
 }

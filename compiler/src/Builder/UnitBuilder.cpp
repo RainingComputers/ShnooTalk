@@ -73,9 +73,19 @@ Unit UnitBuilder::unitFromUnitList(const std::vector<Unit>& unitList)
     return Unit(type, unitList).clearProperties();
 }
 
+int UnitBuilder::getCharCountFromStringDataKey(const std::string& key)
+{
+    auto resultItem = rootModule.stringsDataCharCounts.find(key);
+
+    if (resultItem != rootModule.stringsDataCharCounts.end())
+        return resultItem->second;
+
+    return workingModule->stringsDataCharCounts.at(key);
+}
+
 Unit UnitBuilder::unitFromStringDataKey(const std::string& key)
 {
-    int charCount = workingModule->stringsDataCharCounts.at(key);
+    int charCount = getCharCountFromStringDataKey(key);
 
     std::vector<int> dimensions;
     dimensions.push_back(charCount);

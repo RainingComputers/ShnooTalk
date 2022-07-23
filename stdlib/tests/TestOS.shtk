@@ -7,5 +7,16 @@ fn main(argc: int, argv: ulong[]) -> int
     const path := os::getcwd()
     println("getcwd", path.expect().toCharArray())
 
+    println("mkdir foobar", os::mkdir("foobar"))
+    println("chdir foobar", os::chdir("foobar"))
+    const path1 := os::getcwd()
+    println("getcwd", path1.expect().toCharArray())
+    println("chdir ..", os::chdir(".."))
+    const path2 := os::getcwd()
+    println("getcwd", path2.expect().toCharArray())
+    println("rmdir foobar", os::rmdir("foobar"))
+    println("mkdir foobar", os::mkdir("foobar"))
+    println("rmdir foobar", os::rmdir("foobar"))
+
     return 0
 }

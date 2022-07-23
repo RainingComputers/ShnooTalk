@@ -1,3 +1,19 @@
+def S_ISUID 04000
+def S_ISGID 02000
+def S_ISVTX 01000
+def S_IRUSR 0400
+def S_IWUSR 0200
+def S_IXUSR 0100
+def S_IRWXU 0700
+def S_IRGRP 0040
+def S_IWGRP 0020
+def S_IXGRP 0010
+def S_IRWXG 0070
+def S_IROTH 0004
+def S_IWOTH 0002
+def S_IXOTH 0001
+def S_IRWXO 0007
+
 extfn malloc(bytes: ulong) -> ubyte*
 extfn free(ptr: ubyte*)
 extfn memcpy(dest: ubyte[], src: ubyte[], length: ulong)
@@ -35,3 +51,6 @@ extfn atof(str: char[]) -> double
 extfn arc4random_uniform(limit: uint) -> uint
 
 extfn getcwd(buf: char[], size: ulong) -> char*
+extfn chdir(path: char[]) -> int
+extfn mkdir(path: char[], mode: int) -> int
+extfn rmdir(path: char[]) -> int
