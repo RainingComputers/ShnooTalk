@@ -7,6 +7,7 @@ from "../stdlib/Optional.shtk" use Optional, none, some
 
 fn getArg(argv: ulong[], idx: int) -> char[]
 {
+    # TODO change to String
     return char[]`(argv[idx] + 0)
 }
 

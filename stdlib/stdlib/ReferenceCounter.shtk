@@ -17,7 +17,7 @@ fn createCounter() -> ReferenceCounter
 
 fn _initialized(self: ReferenceCounter) -> bool
 {
-    return addr(self._count) != 0
+    return addr(self._count)
 }
 
 fn beforeCopy(mut self: ReferenceCounter)

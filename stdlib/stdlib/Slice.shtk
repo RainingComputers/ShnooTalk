@@ -60,7 +60,7 @@ fn free(mut self: Slice)
 
 fn _validateIndex(self: Slice, index: ulong) 
 {
-    if addr(self._ptr) == 0
+    if not addr(self._ptr)
         panic(NULL_POINTER_ERROR, 1)
     
     if index >= self._capacity
@@ -69,7 +69,7 @@ fn _validateIndex(self: Slice, index: ulong)
 
 fn _validateLength(self: Slice, length: ulong)
 {
-    if addr(self._ptr) == 0
+    if not addr(self._ptr)
         panic(NULL_POINTER_ERROR, 1)
     
     if length > self._capacity
