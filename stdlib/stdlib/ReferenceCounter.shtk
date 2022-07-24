@@ -15,26 +15,21 @@ fn createCounter() -> ReferenceCounter
     return self
 }
 
-fn _initialized(self: ReferenceCounter) -> bool
-{
-    return addr(self._count)
-}
-
 fn beforeCopy(mut self: ReferenceCounter)
 {
-    if not self._initialized() return void
+    if not addr(self._count) return void
     self._count += 1
 }
 
 fn deconstructor(mut self: ReferenceCounter)
 {
-    if not self._initialized() return void
+    if not addr(self._count) return void
     self._count -= 1
 }
 
 fn isZero(self: ReferenceCounter) -> bool
 {
-    if not self._initialized() return false
+    if not addr(self._count) return false
     if self._count != 0 return false
 
     free(ubyte*`self._count)
