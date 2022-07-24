@@ -62,3 +62,5 @@ extfn rmdir(path: char[]) -> int
 extfn fopen(path: char[], mode: char[]) -> FILE*
 extfn fclose(file: FILE*) -> int
 extfn getline(mut buffer: char[], mut bufferLength: ulong, file: FILE*) -> long
+extfn fseek(file: FILE*, offset: long, whence: int)
+extfn ftell(file: FILE*) -> long

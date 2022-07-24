@@ -14,6 +14,12 @@ fn main() -> int
 
     println(file2.read().toCharArray())
 
+    file2.seek(-10, file::SEEK_END)
+
+    println("tell", file2.tell())
+
+    println(file2.read().toCharArray())
+
     file2.close()
 
     return 0

@@ -9,3 +9,6 @@ fn main() -> int
 
     return 0
 }
+tell 142
+return 0
+}
