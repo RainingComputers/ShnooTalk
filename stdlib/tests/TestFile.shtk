@@ -1,4 +1,5 @@
 use "../stdlib/File.shtk" as file
+use "../stdlib/OS.shtk" as os
 
 fn main() -> int
 {
@@ -7,20 +8,33 @@ fn main() -> int
 
     println(file1.readLine().expect().toCharArray())
 
-    file1.close()
+    println("close", file1.close())
 
     const fileOptional2 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
     const file2 := fileOptional2.expect()
 
-    println(file2.read().toCharArray())
+    println("read", file2.read().toCharArray())
 
     file2.seek(-10, file::SEEK_END)
 
     println("tell", file2.tell())
 
-    println(file2.read().toCharArray())
+    println("seek read", file2.read().toCharArray())
 
     file2.close()
+
+    os::rm("foobar")
+    const fileOptional3 := file::open("foobar", "w")
+    const file3 := fileOptional3.expect()
+
+    file3.write("this works")
+
+    file3.close()
+
+    const fileOptional4 := file::open("foobar", "r")   
+    println(fileOptional4.expect().read().toCharArray())
+
+    println(os::rm("foobar"))
 
     return 0
 }

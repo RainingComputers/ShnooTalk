@@ -1,10 +1,10 @@
 getArg ./test_executable
 getcwd 1
-mkdir foobar 1
-chdir foobar 1
+mkdir foobar 0
+chdir foobar 0
 getcwd 1
-chdir .. 1
+chdir .. 0
 getcwd 1
-rmdir foobar 1
-mkdir foobar 1
-rmdir foobar 1
+rmdir foobar 0
+mkdir foobar 0
+rmdir foobar 0

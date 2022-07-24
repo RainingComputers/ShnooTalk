@@ -50,15 +50,20 @@ fn getcwd() -> Optional[String]
 
 fn chdir(path: String) -> bool
 {
-    return libc::chdir(path.toCharArray()) == 0
+    return libc::chdir(path.toCharArray()) < 0
 }
 
 fn mkdir(path: String) -> bool
 {
-    return libc::mkdir(path.toCharArray(), libc::S_IRWXU | libc::S_IRWXG | libc::S_IROTH | libc::S_IXOTH) == 0
+    return libc::mkdir(path.toCharArray(), libc::S_IRWXU | libc::S_IRWXG | libc::S_IROTH | libc::S_IXOTH) < 0
 }
 
 fn rmdir(path: String) -> bool
 {
-    return libc::rmdir(path.toCharArray()) == 0
+    return libc::rmdir(path.toCharArray()) < 0
+}
+
+fn rm(path: String) -> bool
+{
+    return libc::remove(path.toCharArray()) < 0
 }

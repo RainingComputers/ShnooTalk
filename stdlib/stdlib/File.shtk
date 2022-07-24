@@ -64,14 +64,13 @@ fn tell(self: File) -> long
     return libc::ftell(self.libcFile)
 }
 
-fn write(mut self: File, content: String) -> ulong
+fn write(self: File, content: String) -> bool
 {
-    # TODO
-    return 0
+    return libc::fputs(content.toCharArray(), self.libcFile) < 0
 }
 
 fn close(self: File) -> bool
 {
-    return libc::fclose(self.libcFile) == 0
+    return libc::fclose(self.libcFile) < 0
 }
 

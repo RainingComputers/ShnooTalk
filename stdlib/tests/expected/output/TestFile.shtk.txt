@@ -1,6 +1,7 @@
 from "../stdlib/Slice.shtk" use Slice, allocateHeap
 
-from "../stdlib/Slice.shtk" use Slice, allocateHeap
+close 0
+read from "../stdlib/Slice.shtk" use Slice, allocateHeap
 
 fn main() -> int
 {
@@ -10,5 +11,7 @@ fn main() -> int
     return 0
 }
 tell 142
-return 0
+seek read return 0
 }
+this works
+0
