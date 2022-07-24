@@ -2,10 +2,19 @@ use "../stdlib/File.shtk" as file
 
 fn main() -> int
 {
-    const fileOptional := file::open("TestError.shtk", "r")
-    const file := fileOptional.expect()
+    const fileOptional1 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
+    const file1 := fileOptional1.expect()
 
-    println(file.readLine().expect().toCharArray())
+    println(file1.readLine().expect().toCharArray())
+
+    file1.close()
+
+    const fileOptional2 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
+    const file2 := fileOptional2.expect()
+
+    println(file2.read().toCharArray())
+
+    file2.close()
 
     return 0
 }

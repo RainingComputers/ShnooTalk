@@ -325,6 +325,7 @@ fn add(self: String, other: String) -> String
     
     new._sp.expand(self.length() + other.length() + 1)
     new._sp.copyOffset(other._sp.pointer(), other.length() + 1, self.length())
+    new._length += other.length()
 
     return new
 }

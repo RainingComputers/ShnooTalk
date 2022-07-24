@@ -36,7 +36,7 @@ fn allocateHeap(capacity: ulong) -> Slice
 fn expand(mut self: Slice, capacity: ulong)
 {
     if capacity < self._capacity
-        panic(OUT_OF_CAPACITY, 1)
+        return void
 
     var newPtr: T[] <- malloc[T](capacity)
 

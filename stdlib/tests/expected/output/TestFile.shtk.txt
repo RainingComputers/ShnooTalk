@@ -1,2 +1,11 @@
-from "../stdlib/Error.shtk" use Error, createError, createNilError
+from "../stdlib/Slice.shtk" use Slice, allocateHeap
 
+from "../stdlib/Slice.shtk" use Slice, allocateHeap
+
+fn main() -> int
+{
+    var c := allocateHeap[int](3)
+    c.copy([1, 2, 3, 4, 5], 5)
+
+    return 0
+}

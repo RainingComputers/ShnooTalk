@@ -23,6 +23,8 @@ fn open(path: String, mode: String) -> Optional[File]
 
 fn readLine(self: File) -> Optional[String]
 {
+    # TODO diffrentiate error and eof
+
     var buffer: char[] <- nullptrArray[char]()
     var bufferLength: ulong
     
@@ -34,10 +36,20 @@ fn readLine(self: File) -> Optional[String]
     return some[String](stringFromPreAllocated(buffer, bufferLength, ulong`length))
 }
 
-fn read(self: File) -> Optional[String]
+fn read(self: File) -> String
 {
-    # TODO
-    return none[String]()
+    # TODO diffrentiate error and eof
+
+    var contents := "".string()
+
+    loop {
+        const [line, err] := self.readLine()
+        if err break
+
+        contents = contents + line
+    }
+
+    return contents
 }
 
 fn seekFromStart(self: File, offset: ulong)
@@ -61,5 +73,10 @@ fn write(mut self: File, content: String) -> ulong
 {
     # TODO
     return 0
+}
+
+fn close(self: File) -> bool
+{
+    return libc::fclose(self.libcFile) == 0
 }
 
