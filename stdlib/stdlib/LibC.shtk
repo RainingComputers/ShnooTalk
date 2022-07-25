@@ -17,7 +17,8 @@ def EOF -1
 
 struct FILE {}
 
-extfn malloc(bytes: ulong) -> ubyte*
+extfn malloc(bytes: ulong) -> ubyte[]
+extfn realloc(ptr: ubyte[], size: ulong) -> ubyte[]
 extfn free(ptr: ubyte*)
 extfn memcpy(dest: ubyte[], src: ubyte[], length: ulong)
 

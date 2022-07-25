@@ -22,6 +22,11 @@ fn malloc(length: ulong) -> T[]
     return T[]`libc::malloc(sizeof(T)*length)
 }
 
+fn realloc(ptr: T[], size: ulong) -> T[]
+{
+    return T[]`libc::realloc(ubyte[]`ptr, size)
+}
+
 fn free(ptr: T[])
 {
     libc::free(ubyte*`ptr)

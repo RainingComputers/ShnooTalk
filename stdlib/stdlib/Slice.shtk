@@ -2,7 +2,7 @@ generic T
 
 use "../stdlib/LibC.shtk" as libc
 from "../stdlib/Panic.shtk" use panic
-from "../stdlib/RawPointerUtils.shtk" use malloc, free, addOffset, memcpy, memcpyOffset, nullptrArray
+from "../stdlib/RawPointerUtils.shtk" use malloc, realloc, free, addOffset, memcpy, memcpyOffset, nullptrArray
 
 def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
 def NULL_POINTER_ERROR "Null pointer dereference error"
@@ -35,16 +35,7 @@ fn allocateHeap(capacity: ulong) -> Slice
 
 fn expand(mut self: Slice, capacity: ulong)
 {
-    if capacity < self._capacity
-        return void
-
-    var newPtr: T[] <- malloc[T](capacity)
-
-    memcpy[T](newPtr, self._ptr, self._capacity)
-
-    free[T](self._ptr)
-
-    self._ptr <- newPtr
+    self._ptr <- realloc[T](self._ptr, capacity)
     self._capacity = capacity
 }
 
