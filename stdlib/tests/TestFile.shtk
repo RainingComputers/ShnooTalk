@@ -17,7 +17,7 @@ fn main() -> int
 
     file2.seek(-10, file::SEEK_END)
 
-    println("tell", file2.tell())
+    println("tell", file2.tell().expect())
 
     println("seek read", file2.read().toCharArray())
 

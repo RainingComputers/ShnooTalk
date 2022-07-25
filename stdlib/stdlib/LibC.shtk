@@ -45,7 +45,7 @@ extfn asin(x: double) -> double
 extfn atan(x: double) -> double
 
 extfn time(t: long*) -> long
-extfn usleep(us: int)
+extfn usleep(us: int) -> int
 
 extfn strcmp(lhs: char[], rhs: char[]) -> int
 extfn strlen(str: char[]) -> ulong
@@ -64,6 +64,6 @@ extfn remove(path: char[]) -> int
 extfn fopen(path: char[], mode: char[]) -> FILE*
 extfn fclose(file: FILE*) -> int
 extfn getline(mut buffer: char[], mut bufferLength: ulong, file: FILE*) -> long
-extfn fseek(file: FILE*, offset: long, whence: int)
+extfn fseek(file: FILE*, offset: long, whence: int) -> int
 extfn ftell(file: FILE*) -> long
 extfn fputs(content: char[], file: FILE*) -> int

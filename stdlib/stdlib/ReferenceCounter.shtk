@@ -1,4 +1,4 @@
-from "../stdlib/LibC.shtk" use malloc, free
+from "../stdlib/RawPointerUtils.shtk" use malloc, free
 
 struct ReferenceCounter
 {
@@ -9,7 +9,7 @@ fn createCounter() -> ReferenceCounter
 {
     var self: ReferenceCounter
 
-    self._count <- ulong*`malloc(sizeof(ulong))
+    self._count <- ulong*`malloc[ulong](1)
     self._count = 0
 
     return self
@@ -32,7 +32,7 @@ fn isZero(self: ReferenceCounter) -> bool
     if not addr(self._count) return false
     if self._count != 0 return false
 
-    free(ubyte*`self._count)
+    free[ulong](ulong[]`self._count)
     return true
 }
 

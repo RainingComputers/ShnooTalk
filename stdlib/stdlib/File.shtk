@@ -54,14 +54,19 @@ fn read(self: File) -> String
     return contents
 }
 
-fn seek(self: File, offset: long, whence: SeekType)
+fn seek(self: File, offset: long, whence: SeekType) -> bool
 {
-    libc::fseek(self.libcFile, offset, int`whence)
+    return libc::fseek(self.libcFile, offset, int`whence) < 0
 }
 
-fn tell(self: File) -> long
+fn tell(self: File) -> Optional[long]
 {
-    return libc::ftell(self.libcFile)
+    const pos := libc::ftell(self.libcFile)
+
+    if pos < 0
+        return none[long]()
+
+    return some[long](pos)
 }
 
 fn write(self: File, content: String) -> bool

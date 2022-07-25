@@ -1,9 +1,9 @@
 use "../stdlib/LibC.shtk" as libc
 from "../stdlib/RawPointerUtils.shtk" use nullptr
 
-fn sleep(microseconds: int)
+fn sleep(microseconds: int) -> bool
 {
-    libc::usleep(microseconds)
+    return libc::usleep(microseconds) < 0
 }
 
 fn time() -> long
