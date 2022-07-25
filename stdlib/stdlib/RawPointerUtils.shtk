@@ -1,6 +1,9 @@
 generic T
 
 use "../stdlib/LibC.shtk" as libc
+from "../stdlib/Panic.shtk" use panic
+
+def UNABLE_TO_MALLOC "Unable to allocate memory"
 
 fn addOffset(ptr: T[], offset: ulong) -> T[]
 {
@@ -19,12 +22,22 @@ fn memcpyOffset(mut dest: T[], src: T[], length: ulong, offset: ulong)
 
 fn malloc(length: ulong) -> T[]
 {
-    return T[]`libc::malloc(sizeof(T)*length)
+    const ptr: T[] <- T[]`libc::malloc(sizeof(T)*length)
+
+    if not addr(ptr)
+        panic(UNABLE_TO_MALLOC, 1)
+
+    return ptr
 }
 
 fn realloc(ptr: T[], size: ulong) -> T[]
 {
-    return T[]`libc::realloc(ubyte[]`ptr, size)
+    const newPtr: T[] <- T[]`libc::realloc(ubyte[]`ptr, size)
+
+    if not addr(newPtr)
+        panic(UNABLE_TO_MALLOC, 1)
+
+    return newPtr
 }
 
 fn free(ptr: T[])
