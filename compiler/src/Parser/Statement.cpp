@@ -1,6 +1,5 @@
 #include "Declaration.hpp"
 #include "Expression.hpp"
-#include "Input.hpp"
 #include "Print.hpp"
 
 #include "Statement.hpp"
@@ -261,8 +260,6 @@ void statement(parser::ParserContext& ctx)
         ctx.addNode(node::CONTINUE);
     else if (ctx.accept(token::PRINTLN) || ctx.accept(token::PRINT))
         print(ctx);
-    else if (ctx.accept(token::INPUT))
-        input(ctx);
     else if (ctx.accept(token::RETURN))
         returnExpression(ctx);
 }
@@ -274,9 +271,9 @@ void block(parser::ParserContext& ctx)
     ctx.addNodeMakeCurrentNoConsume(node::BLOCK);
 
     token::TokenType expected[] = {
-        token::CLOSE_BRACE, token::VAR,     token::CONST, token::IF,          token::WHILE,      token::DO,
-        token::FOR,         token::LOOP,    token::BREAK, token::CONTINUE,    token::IDENTIFIER, token::RETURN,
-        token::PRINT,       token::PRINTLN, token::INPUT, token::OPEN_SQUARE, token::DOT,
+        token::CLOSE_BRACE, token::VAR,     token::CONST,       token::IF,       token::WHILE,      token::DO,
+        token::FOR,         token::LOOP,    token::BREAK,       token::CONTINUE, token::IDENTIFIER, token::RETURN,
+        token::PRINT,       token::PRINTLN, token::OPEN_SQUARE, token::DOT,
     };
 
     if (ctx.accept(token::OPEN_BRACE))
@@ -285,7 +282,7 @@ void block(parser::ParserContext& ctx)
 
         while (!ctx.accept(token::CLOSE_BRACE))
         {
-            ctx.expect(expected, 17);
+            ctx.expect(expected, 16);
             statement(ctx);
         }
 
@@ -294,7 +291,7 @@ void block(parser::ParserContext& ctx)
     }
     else
     {
-        ctx.expect(expected, 17);
+        ctx.expect(expected, 16);
         statement(ctx);
     }
 

@@ -40,23 +40,3 @@ Value* getFormatStringFromDataTypePrintf(const FormatStringsContext& formatStrin
 {
     return formatStringsContext.dataTypeFormatStringsMap.at(dtype);
 }
-
-Value* getFormatStringFromDataTypeScanf(const FormatStringsContext& formatStringsContext, icode::DataType dtype)
-{
-    if (dtype == icode::UI8)
-        return formatStringsContext.charInputFormatString;
-
-    return formatStringsContext.dataTypeFormatStringsMap.at(dtype);
-}
-
-Value* getFormatStringForStringInput(const ModuleContext& ctx, int charCount)
-{
-    std::string formatString;
-
-    if (charCount == -1)
-        formatString = " %s";
-    else
-        formatString = " %" + std::to_string(charCount - 1) + "s";
-
-    return ctx.builder->CreateGlobalString(formatString, "", 0U, ctx.LLVMModule.get());
-}

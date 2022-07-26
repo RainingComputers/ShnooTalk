@@ -3,7 +3,6 @@
 #include "../Builder/TypeDescriptionUtil.hpp"
 #include "Assignment.hpp"
 #include "Expression.hpp"
-#include "Input.hpp"
 #include "Local.hpp"
 #include "Module.hpp"
 #include "Print.hpp"
@@ -385,9 +384,6 @@ void statement(generator::GeneratorContext& ctx,
         case node::PRINT:
         case node::PRINTLN:
             print(ctx, root);
-            break;
-        case node::INPUT:
-            input(ctx, root);
             break;
         default:
             ctx.console.internalBugErrorOnToken(root.tok);

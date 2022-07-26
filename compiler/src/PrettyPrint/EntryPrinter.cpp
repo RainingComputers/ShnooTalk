@@ -161,8 +161,6 @@ std::string prettyPrintEntry(const icode::Entry& entry)
         case icode::PASS:
         case icode::PASS_PTR:
         case icode::PASS_PTR_PTR:
-        case icode::INPUT:
-        case icode::INPUT_STR:
             return prettyPrintNoLHS(entry);
         case icode::NEWLN:
         case icode::SPACE:

@@ -50,8 +50,6 @@ namespace icode
         PRINT_STR,
         SPACE,
         NEWLN,
-        INPUT,
-        INPUT_STR,
         MEMCPY
     };
 

@@ -92,7 +92,6 @@ const std::string tokenTypeToString[] = {
     "TYPEOF",
     "PRINT",
     "PRINTLN",
-    "INPUT",
     "GENERATED",
 };
 
@@ -159,7 +158,6 @@ const std::string nodeTypeToString[] = {
     "PRINT",
     "PRINTLN",
     "SPACE",
-    "INPUT",
 };
 
 const std::string typePropertiesString[] = { "isMutable", "isPointer",       "isParameter",     "isGlobal",
@@ -216,6 +214,4 @@ const std::string instructionToString[] = { "pass",
                                             "printString",
                                             "space",
                                             "newLine",
-                                            "input",
-                                            "inputString",
                                             "memoryCopy" };

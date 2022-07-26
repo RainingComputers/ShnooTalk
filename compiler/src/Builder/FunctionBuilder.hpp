@@ -107,8 +107,6 @@ public:
 
     void createPrint(const Unit& unit);
 
-    void createInput(const Unit& unit);
-
     Unit createLocal(const Token nameToken, icode::TypeDescription& typeDescription);
 
     void passParameter(icode::FunctionDescription callee,

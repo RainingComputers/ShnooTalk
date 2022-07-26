@@ -70,7 +70,6 @@ namespace node
         PRINT,
         PRINTLN,
         SPACE,
-        INPUT
     };
 }
 

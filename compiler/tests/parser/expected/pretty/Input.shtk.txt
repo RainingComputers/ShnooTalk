@@ -1,7 +1,0 @@
-> nodeType=PROGRAM, string="", tokenType=NONE, line=0, col=0
-  └───> nodeType=FUNCTION, string="fn", tokenType=FUNCTION, line=1, col=0
-        ├───> nodeType=IDENTIFIER, string="test", tokenType=IDENTIFIER, line=1, col=3
-        └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=2, col=0
-              └───> nodeType=INPUT, string="input", tokenType=INPUT, line=3, col=4
-                    └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=3, col=10
-                          └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=3, col=10

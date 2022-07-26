@@ -175,24 +175,6 @@ void call(const icode::Entry& e, Console& con)
     con.check(e.op3.operandType == icode::MODULE);
 }
 
-void input(const icode::Entry& e, Console& con)
-{
-    con.check(twoOperand(e));
-    con.check(e.op1.isValidForPointerAssignment());
-    con.check(e.op2.operandType == icode::LITERAL);
-    con.check(nonVoidBaseDataType(e.op1));
-    con.check(e.op2.dtype == icode::AUTO_INT);
-}
-
-void inputString(const icode::Entry& e, Console& con)
-{
-    con.check(twoOperand(e));
-    con.check(e.op1.isValidForPointerAssignment());
-    con.check(e.op2.operandType == icode::LITERAL);
-    con.check(e.op1.dtype == icode::UI8);
-    con.check(e.op2.dtype == icode::AUTO_INT);
-}
-
 void memoryCopy(const icode::Entry& e, Console& con)
 {
     con.check(threeOperand(e));
@@ -293,12 +275,6 @@ void validateEntry(const icode::Entry& entry, Console& con)
             break;
         case icode::CALL:
             call(entry, con);
-            break;
-        case icode::INPUT:
-            input(entry, con);
-            break;
-        case icode::INPUT_STR:
-            inputString(entry, con);
             break;
         case icode::MEMCPY:
             memoryCopy(entry, con);

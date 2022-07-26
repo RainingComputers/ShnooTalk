@@ -548,28 +548,6 @@ void FunctionBuilder::createPrint(const Unit& unit)
     pushEntry(printEntry);
 }
 
-void FunctionBuilder::createInput(const Unit& unit)
-{
-    /* Construct icode for INPUT, INPUT_STR */
-
-    Entry inputEntry;
-
-    Instruction inputInstruction = INPUT;
-    int size = 0;
-
-    if (unit.isArray())
-    {
-        inputInstruction = INPUT_STR;
-        size = unit.numElements();
-    }
-
-    inputEntry.opcode = inputInstruction;
-    inputEntry.op1 = unit.op();
-    inputEntry.op2 = opBuilder.createIntLiteralOperand(AUTO_INT, (int)size);
-
-    pushEntry(inputEntry);
-}
-
 bool FunctionBuilder::containsPointer(const TypeDescription& type)
 {
     if (type.isPointer())

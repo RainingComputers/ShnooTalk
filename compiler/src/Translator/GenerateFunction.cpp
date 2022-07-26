@@ -9,7 +9,6 @@
 #include "CreateSymbol.hpp"
 #include "FunctionCall.hpp"
 #include "GetAndSetLLVM.hpp"
-#include "Input.hpp"
 #include "Print.hpp"
 #include "ReadWriteCopy.hpp"
 #include "StackAlloca.hpp"
@@ -127,12 +126,6 @@ void translateFunctionIcode(ModuleContext& ctx,
                 break;
             case icode::RET:
                 ret(ctx, functionDesc.functionReturnType);
-                break;
-            case icode::INPUT:
-                input(ctx, formatStringsContext, e);
-                break;
-            case icode::INPUT_STR:
-                inputString(ctx, e);
                 break;
             case icode::MEMCPY:
                 memCopy(ctx, e);
