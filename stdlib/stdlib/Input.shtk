@@ -3,7 +3,7 @@ from "../stdlib/String.shtk" use String, stringFromPreAllocated
 from "../stdlib/RawPointerUtils.shtk" use malloc, realloc, free
 from "../stdlib/Optional.shtk" use Optional, some, none
 
-fn consoleInput() -> Optional[String]
+fn input() -> Optional[String]
 {
     const stride: ulong = 256
 
