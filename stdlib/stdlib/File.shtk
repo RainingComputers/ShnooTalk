@@ -29,6 +29,8 @@ fn open(path: String, mode: String) -> Optional[File]
 
 fn readLine(self: File) -> Optional[String]
 {
+    # TODO diffrentiate errors using feof
+
     var buffer: char[] <- nullptrArray[char]()
     var bufferLength: ulong
     
@@ -42,6 +44,8 @@ fn readLine(self: File) -> Optional[String]
 
 fn read(self: File) -> String
 {
+    # TODO diffrentiate errors using feof
+
     var contents := "".string()
 
     loop {

@@ -67,3 +67,4 @@ extfn getline(mut buffer: char[], mut bufferLength: ulong, file: FILE*) -> long
 extfn fseek(file: FILE*, offset: long, whence: int) -> int
 extfn ftell(file: FILE*) -> long
 extfn fputs(content: char[], file: FILE*) -> int
+extfn getchar() -> int

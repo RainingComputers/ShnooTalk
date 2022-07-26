@@ -1,7 +1,40 @@
-from "../stdlib/String.shtk" use String, string
+use "../stdlib/Libc.shtk" as libc
+from "../stdlib/String.shtk" use String, stringFromPreAllocated
+from "../stdlib/RawPointerUtils.shtk" use malloc, realloc, free
+from "../stdlib/Optional.shtk" use Optional, some, none
 
-fn consoleInput() -> String
+fn consoleInput() -> Optional[String]
 {
-    # TODO
-    return "".string()
+    const stride: ulong = 256
+
+    var i: ulong = 0
+    var currentSize: ulong = stride
+    var ptr: char[] <- malloc[char](currentSize)
+    
+    loop {
+        const intChar := libc::getchar()
+
+        if intChar < 0 {
+            free[char](ptr)
+            return none[String]()
+        }
+
+        if i == currentSize - 1 {
+            currentSize += stride
+            ptr <- realloc[char](ptr, currentSize)
+        }
+
+        const character := char`intChar
+
+        if character == '\n' {
+            ptr[i] = '\0'
+            break
+        }
+
+        ptr[i] = character
+
+        i += 1
+    }
+
+    return some[String](stringFromPreAllocated(ptr, currentSize, i-1))
 }
