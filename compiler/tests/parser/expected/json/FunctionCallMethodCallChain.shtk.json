@@ -1,0 +1,155 @@
+{
+  "type": "PROGRAM",
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "type": "FUNCTION",
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "FunctionCallMethodCallChain.shtk"},
+      "children": [
+        {
+          "type": "IDENTIFIER",
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "FunctionCallMethodCallChain.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "type": "IDENTIFIER",
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "FunctionCallMethodCallChain.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "type": "BLOCK",
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "FunctionCallMethodCallChain.shtk"},
+          "children": [
+            {
+              "type": "TERM",
+              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "FunctionCallMethodCallChain.shtk"},
+              "children": [
+                {
+                  "type": "METHODCALL",
+                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 18, "file": "FunctionCallMethodCallChain.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 18, "file": "FunctionCallMethodCallChain.shtk"},
+                      "children": [
+                        {
+                          "type": "METHODCALL",
+                          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 12, "file": "FunctionCallMethodCallChain.shtk"},
+                          "children": [
+                            {
+                              "type": "TERM",
+                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 3, "col": 12, "file": "FunctionCallMethodCallChain.shtk"},
+                              "children": [
+                                {
+                                  "type": "METHODCALL",
+                                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 6, "file": "FunctionCallMethodCallChain.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "TERM",
+                                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 3, "col": 6, "file": "FunctionCallMethodCallChain.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "IDENTIFIER",
+                                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 4, "file": "FunctionCallMethodCallChain.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TERM",
+              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "FunctionCallMethodCallChain.shtk"},
+              "children": [
+                {
+                  "type": "METHODCALL",
+                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "FunctionCallMethodCallChain.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "FunctionCallMethodCallChain.shtk"},
+                      "children": [
+                        {
+                          "type": "METHODCALL",
+                          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 16, "file": "FunctionCallMethodCallChain.shtk"},
+                          "children": [
+                            {
+                              "type": "TERM",
+                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 16, "file": "FunctionCallMethodCallChain.shtk"},
+                              "children": [
+                                {
+                                  "type": "METHODCALL",
+                                  "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 10, "file": "FunctionCallMethodCallChain.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "TERM",
+                                      "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 10, "file": "FunctionCallMethodCallChain.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "FUNCCALL",
+                                          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 4, "file": "FunctionCallMethodCallChain.shtk"},
+                                          "children": [
+                                            
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "RETURN",
+              "token": {"string": "return", "tokenType": "RETURN", "line": 7, "col": 4, "file": "FunctionCallMethodCallChain.shtk"},
+              "children": [
+                {
+                  "type": "EXPRESSION",
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "FunctionCallMethodCallChain.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "FunctionCallMethodCallChain.shtk"},
+                      "children": [
+                        {
+                          "type": "LITERAL",
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "FunctionCallMethodCallChain.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -291,6 +291,7 @@ void term(parser::ParserContext& ctx)
         if (ctx.peek(token::LPAREN))
         {
             functionCall(ctx);
+            methodCall(ctx);
         }
         else if (ctx.matchedBracketPeek(token::OPEN_SQUARE, token::CLOSE_SQUARE, token::LPAREN))
         {

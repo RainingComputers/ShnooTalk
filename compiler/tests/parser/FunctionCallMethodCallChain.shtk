@@ -1,0 +1,8 @@
+fn main() -> int
+{
+    a.foo().bar().bar()
+
+    bar().bar().bar().bar()
+
+    return 0
+}

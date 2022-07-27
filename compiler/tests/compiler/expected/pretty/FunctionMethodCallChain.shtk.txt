@@ -1,0 +1,41 @@
+{
+    "FunctionMethodCallChain.shtk": {
+        "moduleName": "FunctionMethodCallChain.shtk",
+        "functions": {
+            "_fn_FunctionMethodCallChain_shtk_bar": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct self
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int temp8 = read int* tempPtr7
+                        int returnValue3 = equal int temp8
+                        return
+                ]
+            },
+            "_fn_FunctionMethodCallChain_shtk_createFoobar": {
+                "icode": [
+                        int* tempPtr14 = createPointer struct self
+                        int* tempPtr16 = addressAdd int* tempPtr14, bytes 0
+                        int temp18 = cast autoInt 10
+                        int* tempPtr16 = write int temp18
+                        int* tempPtr21 = createPointer struct returnValue19
+                        int* tempPtr22 = createPointer struct self
+                        int* tempPtr21 = memoryCopy int* tempPtr22, autoInt 4
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        struct calleeReturnValue28 = call struct _fn_FunctionMethodCallChain_shtk_createFoobar, module FunctionMethodCallChain.shtk
+                        int* tempPtr33 = createPointer struct calleeReturnValue28
+                        passPointer int* tempPtr33, int _fn_FunctionMethodCallChain_shtk_bar, module FunctionMethodCallChain.shtk
+                        int calleeReturnValue36 = call int _fn_FunctionMethodCallChain_shtk_bar, module FunctionMethodCallChain.shtk
+                        print int calleeReturnValue36
+                        newLine
+                        int temp41 = cast autoInt 0
+                        int returnValue39 = equal int temp41
+                        return
+                ]
+            }
+        }
+    }
+}

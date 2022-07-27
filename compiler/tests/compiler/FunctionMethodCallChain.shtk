@@ -1,0 +1,22 @@
+struct Foobar
+{
+    var x: int    
+}
+
+fn bar(self: Foobar) -> int
+{
+    return self.x
+}
+
+fn createFoobar() -> Foobar
+{
+    var self: Foobar
+    self.x = 10
+    return self
+}
+
+fn main() -> int
+{
+    println(createFoobar().bar())
+    return 0
+}
