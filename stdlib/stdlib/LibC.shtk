@@ -69,3 +69,4 @@ extfn ftell(file: FILE*) -> long
 extfn fputs(content: char[], file: FILE*) -> int
 extfn feof(file: FILE*) -> int
 extfn getchar() -> int
+

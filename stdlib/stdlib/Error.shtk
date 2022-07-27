@@ -1,5 +1,9 @@
 generic E
 
+from "../stdlib/Panic.shtk" use panic
+
+def EXPECT_ON_NON_NIL_ERROR "Called expect on error that is not nil"
+
 struct Error
 {
     var _error: E
@@ -42,4 +46,10 @@ fn isEqual(self: Error, other: E) -> bool
         return self._error == other
 
     return false
+}
+
+fn expect(self: Error) 
+{
+    if self
+        panic(EXPECT_ON_NON_NIL_ERROR, 1)
 }

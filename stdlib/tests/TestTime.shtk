@@ -2,7 +2,7 @@ from "../stdlib/Time.shtk" use sleep, time
 
 fn main() -> int
 {
-    sleep(100)
+    sleep(100).expect()
     println(time() > 0)
 
     return 0

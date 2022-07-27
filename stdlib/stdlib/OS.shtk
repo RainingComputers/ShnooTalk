@@ -5,9 +5,9 @@ from "../stdlib/Pair.shtk" use Pair, pair
 from "../stdlib/Triple.shtk" use Triple, triple
 from "../stdlib/Optional.shtk" use Optional, none, some
 from "../stdlib/RawPointerUtils.shtk" use nullptrArray
-from "../stdlib/Error.shtk" use Error, error, nil
-from "../stdlib/ErrorTypes.shtk" use StdlibError, OSError
-
+from "../stdlib/Error.shtk" use Error
+from "../stdlib/ErrorTypes.shtk" use StdlibError
+from "../stdlib/_ErrorUtils.shtk" use _intToError
 
 fn getArg(argv: ulong[], idx: int) -> char[]
 {
@@ -50,13 +50,6 @@ fn getcwd() -> Optional[String]
     return some[String](stringFromPreAllocated(charArray, length+1, length))
 }
 
-fn _intToError(n: int) -> Error[StdlibError]
-{
-    if n < 0 
-        return error[StdlibError](OSError)
-    
-    return nil[StdlibError]()
-}
 
 fn chdir(path: String) -> Error[StdlibError]
 {
@@ -65,7 +58,10 @@ fn chdir(path: String) -> Error[StdlibError]
 
 fn mkdir(path: String) -> Error[StdlibError]
 {
-    return _intToError(libc::mkdir(path.toCharArray(), libc::S_IRWXU | libc::S_IRWXG | libc::S_IROTH | libc::S_IXOTH))
+    return _intToError(
+        libc::mkdir(path.toCharArray(),
+        libc::S_IRWXU | libc::S_IRWXG | libc::S_IROTH | libc::S_IXOTH)
+    )
 }
 
 fn rmdir(path: String) -> Error[StdlibError]
