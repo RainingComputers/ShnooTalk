@@ -1,7 +1,8 @@
 use "../stdlib/LibC.shtk" as libc
-from "../stdlib/Optional.shtk" use Optional, none, some
+from "../stdlib/Result.shtk" use Result, success, error
 from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
 from "../stdlib/RawPointerUtils.shtk" use nullptrArray
+from "../stdlib/ErrorTypes.shtk" use StdlibError, EOF, OSError
 
 enum SeekType {
     SEEK_SET,
@@ -14,48 +15,55 @@ struct File
     var libcFile: libc::FILE*
 }
 
-fn open(path: String, mode: String) -> Optional[File]
+fn open(path: String, mode: String) -> Result[File, StdlibError]
 {
     var libcFile: libc::FILE* <- libc::fopen(path.toCharArray(), mode.toCharArray())
 
     if not addr(libcFile)
-        return none[File]()
+       return error[File, StdlibError](OSError)
 
     var self: File
     self.libcFile <- libcFile
 
-    return some[File](self)
+    return success[File, StdlibError](self)
 }
 
-fn readLine(self: File) -> Optional[String]
+fn readLine(self: File) -> Result[String, StdlibError]
 {
-    # TODO diffrentiate errors using feof
-
     var buffer: char[] <- nullptrArray[char]()
     var bufferLength: ulong
     
     const length: long = libc::getline(buffer, bufferLength, self.libcFile)
 
-    if length < 0
-        return none[String]()
+    if length < 0 {
+        if libc::feof(self.libcFile)
+            return error[String, StdlibError](EOF)
 
-    return some[String](stringFromPreAllocated(buffer, bufferLength, ulong`length))
+        return error[String, StdlibError](OSError)
+    }
+        
+    const line := stringFromPreAllocated(buffer, bufferLength, ulong`length)
+    return success[String, StdlibError](line)
 }
 
-fn read(self: File) -> String
+fn read(self: File) -> Result[String, StdlibError]
 {
-    # TODO diffrentiate errors using feof
-
     var contents := "".string()
 
     loop {
         const [line, err] := self.readLine()
-        if err break
+        
+        if err {
+            if err == OSError
+                return error[String, StdlibError](OSError)
+            else 
+                break
+        }
 
         contents = contents + line
     }
 
-    return contents
+    return success[String, StdlibError](contents)
 }
 
 fn seek(self: File, offset: long, whence: SeekType) -> bool
@@ -63,14 +71,14 @@ fn seek(self: File, offset: long, whence: SeekType) -> bool
     return libc::fseek(self.libcFile, offset, int`whence) < 0
 }
 
-fn tell(self: File) -> Optional[long]
+fn tell(self: File) -> Result[long, StdlibError]
 {
     const pos := libc::ftell(self.libcFile)
 
     if pos < 0
-        return none[long]()
+        return error[long, StdlibError](OSError)
 
-    return some[long](pos)
+    return success[long, StdlibError](pos)
 }
 
 fn write(self: File, content: String) -> bool
