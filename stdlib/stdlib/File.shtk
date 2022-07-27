@@ -1,5 +1,5 @@
 use "../stdlib/LibC.shtk" as libc
-from "../stdlib/Result.shtk" use Result, success, error
+from "../stdlib/Result.shtk" use Result, ok, fail
 from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
 from "../stdlib/RawPointerUtils.shtk" use nullptrArray
 from "../stdlib/ErrorTypes.shtk" use StdlibError, EOF, OSError
@@ -20,12 +20,12 @@ fn open(path: String, mode: String) -> Result[File, StdlibError]
     var libcFile: libc::FILE* <- libc::fopen(path.toCharArray(), mode.toCharArray())
 
     if not addr(libcFile)
-       return error[File, StdlibError](OSError)
+       return fail[File, StdlibError](OSError)
 
     var self: File
     self.libcFile <- libcFile
 
-    return success[File, StdlibError](self)
+    return ok[File, StdlibError](self)
 }
 
 fn readLine(self: File) -> Result[String, StdlibError]
@@ -37,13 +37,13 @@ fn readLine(self: File) -> Result[String, StdlibError]
 
     if length < 0 {
         if libc::feof(self.libcFile)
-            return error[String, StdlibError](EOF)
+            return fail[String, StdlibError](EOF)
 
-        return error[String, StdlibError](OSError)
+        return fail[String, StdlibError](OSError)
     }
         
     const line := stringFromPreAllocated(buffer, bufferLength, ulong`length)
-    return success[String, StdlibError](line)
+    return ok[String, StdlibError](line)
 }
 
 fn read(self: File) -> Result[String, StdlibError]
@@ -51,11 +51,11 @@ fn read(self: File) -> Result[String, StdlibError]
     var contents := "".string()
 
     loop {
-        const [line, err] := self.readLine()
+        const [line, error] := self.readLine()
         
-        if err {
-            if err == OSError
-                return error[String, StdlibError](OSError)
+        if error {
+            if error == OSError
+                return fail[String, StdlibError](OSError)
             else 
                 break
         }
@@ -63,7 +63,7 @@ fn read(self: File) -> Result[String, StdlibError]
         contents = contents + line
     }
 
-    return success[String, StdlibError](contents)
+    return ok[String, StdlibError](contents)
 }
 
 fn seek(self: File, offset: long, whence: SeekType) -> bool
@@ -76,9 +76,9 @@ fn tell(self: File) -> Result[long, StdlibError]
     const pos := libc::ftell(self.libcFile)
 
     if pos < 0
-        return error[long, StdlibError](OSError)
+        return fail[long, StdlibError](OSError)
 
-    return success[long, StdlibError](pos)
+    return ok[long, StdlibError](pos)
 }
 
 fn write(self: File, content: String) -> bool

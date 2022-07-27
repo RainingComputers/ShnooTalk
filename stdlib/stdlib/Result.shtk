@@ -1,6 +1,6 @@
 generic T, E
 
-from "../stdlib/Error.shtk" use Error, createError, createNilError
+from "../stdlib/Error.shtk" use Error, error, nil
 from "../stdlib/Panic.shtk" use panic
 
 def EXPECT_ON_ERROR_RESULT "Called expect on a error result"
@@ -11,18 +11,18 @@ struct Result
     var error: Error[E]
 }
 
-fn success(item: T) -> Result
+fn ok(item: T) -> Result
 {
     var self: Result
     self.item = item
-    self.error = createNilError[E]()
+    self.error = nil[E]()
     return self
 }
 
-fn error(error: E) -> Result
+fn fail(error: E) -> Result
 {
     var self: Result
-    self.error = createError[E](error)
+    self.error = error[E](error)
     return self
 }
 

@@ -1,9 +1,10 @@
 use "../stdlib/Libc.shtk" as libc
 from "../stdlib/String.shtk" use String, stringFromPreAllocated
 from "../stdlib/RawPointerUtils.shtk" use malloc, realloc, free
-from "../stdlib/Optional.shtk" use Optional, some, none
+from "../stdlib/Result.shtk" use Result, ok, error
+from "../stdlib/ErrorTypes.shtk" use StdlibError, OSError
 
-fn input() -> Optional[String]
+fn input() -> Result[String, StdlibError]
 {
     const stride: ulong = 256
 
@@ -16,7 +17,7 @@ fn input() -> Optional[String]
 
         if intChar < 0 {
             free[char](ptr)
-            return none[String]()
+            return fail[String, StdlibError](OSError)
         }
 
         if i == currentSize - 1 {
@@ -36,5 +37,6 @@ fn input() -> Optional[String]
         i += 1
     }
 
-    return some[String](stringFromPreAllocated(ptr, currentSize, i-1))
+    const line := stringFromPreAllocated(ptr, currentSize, i-1)
+    return ok[String, StdlibError](line)
 }

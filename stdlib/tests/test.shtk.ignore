@@ -1,0 +1,10 @@
+from "../stdlib/Input.shtk" use input
+
+fn main() -> int
+{
+    const a := input()
+
+    println(a.expect().toCharArray())
+
+    return 0
+}

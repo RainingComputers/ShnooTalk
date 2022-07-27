@@ -1,10 +1,10 @@
-from "../stdlib/Result.shtk" use Result, success, error
+from "../stdlib/Result.shtk" use Result, ok, fail
 
 enum TestErrorEnum {TEST_ERROR_0, TEST_ERROR_1}
 
 fn main() -> int
 {
-    const a := error[int, TestErrorEnum](TEST_ERROR_1)
+    const a := fail[int, TestErrorEnum](TEST_ERROR_1)
     println(a.expect())
 
     return 0

@@ -6,14 +6,14 @@ struct Error
     var _nil: bool
 }
 
-fn createNilError() -> Error
+fn nil() -> Error
 {
     var self: Error
     self._nil = true
     return self
 }
 
-fn createError(error: E) -> Error
+fn error(error: E) -> Error
 {
     var self: Error
     self._error = error
