@@ -70,6 +70,9 @@ TypeInformation ModuleBuilder::getTypeInformation(const Token& dataTypeToken, Da
 {
     const std::string dataTypeName = dataTypeToken.toString();
 
+    if (dtype == icode::ENUM)
+        return TypeInformation{ getDataTypeSize(dtype), workingModule->definedEnumsTypes.at(dataTypeName), false };
+
     if (dtype != icode::STRUCT)
         return TypeInformation{ getDataTypeSize(dtype), workingModule->name, false };
 
@@ -175,7 +178,7 @@ void ModuleBuilder::createEnumType(const Token& nameToken)
     if (rootModule.symbolExists(enumTypeName))
         console.compileErrorOnToken("Symbol already exists", nameToken);
 
-    rootModule.definedEnumsTypes.push_back(enumTypeName);
+    rootModule.definedEnumsTypes[enumTypeName] = workingModule->name;
 }
 
 void ModuleBuilder::createEnum(const Token& nameToken, const std::vector<Token>& enums)
@@ -438,6 +441,9 @@ void ModuleBuilder::createFrom(const std::string& moduleName, const Token& symbo
         rootModule.stringsDataCharCounts[stringDataKeyReturnValue] =
             externalModule->stringsDataCharCounts[stringDataKeyReturnValue];
     }
+
+    else if (externalModule->enumTypeExists(symbolString))
+        rootModule.definedEnumsTypes[symbolString] = externalModule->definedEnumsTypes.at(symbolString);
 
     else if (externalModule->getEnum(symbolString, enumReturnValue))
         rootModule.enums[symbolString] = enumReturnValue;

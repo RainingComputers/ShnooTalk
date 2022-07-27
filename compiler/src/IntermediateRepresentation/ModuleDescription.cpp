@@ -73,7 +73,7 @@ namespace icode
 
     bool ModuleDescription::enumTypeExists(const std::string& name) const
     {
-        return itemInList(name, definedEnumsTypes);
+        return keyExistsInMap(definedEnumsTypes, name);
     }
 
     bool ModuleDescription::useExists(const std::string& name) const

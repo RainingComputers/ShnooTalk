@@ -7,7 +7,8 @@
             "Sin": "TestModules/Sin.shtk",
             "genfoobar": "TestModules/Generic.shtk"
         },
-        "definedEnumsTypes": [],
+        "definedEnumsTypes": {
+        },
         "enums": {
             "LED0": {
                 "dtypeName": "Pins",
@@ -102,7 +103,8 @@
         "aliases": {
             "From_shtk": "From.shtk"
         },
-        "definedEnumsTypes": [],
+        "definedEnumsTypes": {
+        },
         "enums": {
         },
         "intDefines": {
@@ -159,7 +161,9 @@
         "aliases": {
             "Sin": "TestModules/Sin.shtk"
         },
-        "definedEnumsTypes": ["Pins"],
+        "definedEnumsTypes": {
+            "Pins": "TestModules/Random.shtk"
+        },
         "enums": {
             "LED0": {
                 "dtypeName": "Pins",
@@ -251,7 +255,8 @@
         "uses": [],
         "aliases": {
         },
-        "definedEnumsTypes": [],
+        "definedEnumsTypes": {
+        },
         "enums": {
         },
         "intDefines": {

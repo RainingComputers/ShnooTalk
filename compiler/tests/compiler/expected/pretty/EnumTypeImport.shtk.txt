@@ -1,0 +1,50 @@
+{
+    "EnumTypeImport.shtk": {
+        "moduleName": "EnumTypeImport.shtk",
+        "functions": {
+            "_fn_EnumTypeImport_shtk_testing": {
+                "icode": [
+                        enum returnValue3 = equal enum 0
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        enum calleeReturnValue8 = call enum _fn_EnumTypeImport_shtk_testing, module EnumTypeImport.shtk
+                        print enum calleeReturnValue8
+                        newLine
+                        int temp13 = cast autoInt 0
+                        int returnValue11 = equal int temp13
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/Digital.shtk": {
+        "moduleName": "TestModules/Digital.shtk",
+        "functions": {
+            "_fn_TestModules_Digital_shtk_digitalWrite": {
+                "icode": [
+                        flag = isEqual enum val, enum 0
+                        if(not flag) goto _if_false_l5_c4
+                        printString stringData _str_TestModules_Digital_shtk__l5_c27
+                        space
+                        print int pin
+                        space
+                        printString stringData _str_TestModules_Digital_shtk__l5_c39
+                        newLine
+                        goto _ifend_false_l5_c4
+                    _if_false_l5_c4:
+                        printString stringData _str_TestModules_Digital_shtk__l5_c27
+                        space
+                        print int pin
+                        space
+                        printString stringData _str_TestModules_Digital_shtk__l6_c29
+                        newLine
+                    _ifend_false_l5_c4:
+                        return
+                ]
+            }
+        }
+    }
+}

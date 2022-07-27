@@ -5,7 +5,9 @@
         "aliases": {
             "Sin": "TestModules/Sin.shtk"
         },
-        "definedEnumsTypes": ["Pins"],
+        "definedEnumsTypes": {
+            "Pins": "TestModules/Random.shtk"
+        },
         "enums": {
             "LED0": {
                 "dtypeName": "Pins",
@@ -97,7 +99,8 @@
         "uses": [],
         "aliases": {
         },
-        "definedEnumsTypes": [],
+        "definedEnumsTypes": {
+        },
         "enums": {
         },
         "intDefines": {
@@ -146,7 +149,8 @@
             "Random": "TestModules/Random.shtk",
             "Sin": "TestModules/Sin.shtk"
         },
-        "definedEnumsTypes": [],
+        "definedEnumsTypes": {
+        },
         "enums": {
         },
         "intDefines": {

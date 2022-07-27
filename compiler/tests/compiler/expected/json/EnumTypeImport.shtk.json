@@ -1,0 +1,50 @@
+{
+    "EnumTypeImport.shtk": {
+        "moduleName": "EnumTypeImport.shtk",
+        "functions": {
+            "_fn_EnumTypeImport_shtk_testing": {
+                "icode": [
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 3, "dtype": "enum"}, "op2": {"type": "literal", "id": 4, "dtype": "enum", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "main": {
+                "icode": [
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 8, "dtype": "enum"}, "op2": {"type": "var", "id": 9, "name": "_fn_EnumTypeImport_shtk_testing", "dtype": "enum"}, "op3": {"type": "module", "id": 10, "name": "EnumTypeImport.shtk"}},
+                    {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 8, "dtype": "enum"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 13, "dtype": "int"}, "op2": {"type": "literal", "id": 12, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 11, "dtype": "int"}, "op2": {"type": "temp", "id": 13, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    },
+    "TestModules/Digital.shtk": {
+        "moduleName": "TestModules/Digital.shtk",
+        "functions": {
+            "_fn_TestModules_Digital_shtk_digitalWrite": {
+                "icode": [
+                    {"opcode": "isEqual", "op1": {"type": "var", "id": 6, "name": "val", "dtype": "enum"}, "op2": {"type": "literal", "id": 7, "dtype": "enum", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 8, "name": "_str_TestModules_Digital_shtk__l5_c27", "size": 4}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "var", "id": 9, "name": "pin", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 10, "name": "_str_TestModules_Digital_shtk__l5_c39", "size": 4}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "goto", "op1": {"type": "label", "id": 3, "name": "_ifend_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 13, "name": "_str_TestModules_Digital_shtk__l5_c27", "size": 4}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "print", "op1": {"type": "var", "id": 14, "name": "pin", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "printString", "op1": {"type": "stringData", "id": 15, "name": "_str_TestModules_Digital_shtk__l6_c29", "size": 5}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 3, "name": "_ifend_false_l5_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

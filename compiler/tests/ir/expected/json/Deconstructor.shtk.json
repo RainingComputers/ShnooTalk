@@ -4,7 +4,8 @@
         "uses": ["TestModules/Deconstrutable.shtk"],
         "aliases": {
         },
-        "definedEnumsTypes": [],
+        "definedEnumsTypes": {
+        },
         "enums": {
         },
         "intDefines": {
@@ -64,7 +65,8 @@
         "uses": [],
         "aliases": {
         },
-        "definedEnumsTypes": [],
+        "definedEnumsTypes": {
+        },
         "enums": {
         },
         "intDefines": {

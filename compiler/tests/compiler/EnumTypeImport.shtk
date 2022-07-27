@@ -1,0 +1,13 @@
+from "TestModules/Digital.shtk" use Signal, LOW
+
+fn testing() -> Signal
+{
+    return LOW
+}
+
+fn main() -> int
+{
+    println(testing())
+
+    return 0
+}

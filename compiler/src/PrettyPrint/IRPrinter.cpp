@@ -242,7 +242,8 @@ namespace pp
         FlatJSONPrinter aliasesPrinter = jsonp.beginNested("aliases");
         printStringMap(moduleDescription.aliases, aliasesPrinter);
 
-        jsonp.printStringArray("definedEnumsTypes", moduleDescription.definedEnumsTypes);
+        FlatJSONPrinter enumTypesPrinter = jsonp.beginNested("definedEnumsTypes");
+        printStringMap(moduleDescription.definedEnumsTypes, enumTypesPrinter);
 
         FlatJSONPrinter enumPrinter = jsonp.beginNested("enums");
         printEnumDescriptionMap(moduleDescription.enums, enumPrinter);

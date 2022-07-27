@@ -25,7 +25,7 @@ namespace icode
         std::map<std::string, FunctionDescription> functions;
         std::map<std::string, FunctionDescription> externFunctions;
 
-        std::vector<std::string> definedEnumsTypes;
+        std::map<std::string, std::string> definedEnumsTypes;
         std::map<std::string, EnumDescription> enums;
         std::map<std::string, long> intDefines;
         std::map<std::string, double> floatDefines;

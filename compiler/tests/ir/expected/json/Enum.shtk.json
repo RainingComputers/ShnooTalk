@@ -4,7 +4,9 @@
         "uses": [],
         "aliases": {
         },
-        "definedEnumsTypes": ["Num"],
+        "definedEnumsTypes": {
+            "Num": "Enum.shtk"
+        },
         "enums": {
             "ONE": {
                 "dtypeName": "Num",
