@@ -34,7 +34,7 @@ fn main() -> int
     const fileOptional4 := file::open("foobar", "r")   
     println(fileOptional4.expect().read().expect().toCharArray())
 
-    println(os::rm("foobar"))
+    println(os::rm("foobar").isNonZero())
 
     return 0
 }

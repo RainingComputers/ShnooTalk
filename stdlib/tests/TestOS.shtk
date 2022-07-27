@@ -7,16 +7,16 @@ fn main(argc: int, argv: ulong[]) -> int
     const path := os::getcwd()
     println("getcwd", path.expect().endsWith("ShnooTalk/stdlib/tests"))
 
-    println("mkdir foobar", os::mkdir("foobar"))
-    println("chdir foobar", os::chdir("foobar"))
+    println("mkdir foobar", os::mkdir("foobar").isNonZero())
+    println("chdir foobar", os::chdir("foobar").isNonZero())
     const path1 := os::getcwd()
     println("getcwd", path1.expect().endsWith("ShnooTalk/stdlib/tests/foobar"))
-    println("chdir ..", os::chdir(".."))
+    println("chdir ..", os::chdir("..").isNonZero())
     const path2 := os::getcwd()
     println("getcwd", path2.expect().endsWith("ShnooTalk/stdlib/tests"))
-    println("rmdir foobar", os::rmdir("foobar"))
-    println("mkdir foobar", os::mkdir("foobar"))
-    println("rmdir foobar", os::rmdir("foobar"))
+    println("rmdir foobar", os::rmdir("foobar").isNonZero())
+    println("mkdir foobar", os::mkdir("foobar").isNonZero())
+    println("rmdir foobar", os::rmdir("foobar").isNonZero())
 
     return 0
 }
