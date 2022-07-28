@@ -39,8 +39,16 @@ fn systemWithTimeout(command: String, milliseconds: uint) -> Triple[String, int,
 
 fn getEnv(key: String) -> Optional[String]
 {
-    # TODO
-    return none[String]()
+    const valPtr: char[] <- libc::getenv(key.toCharArray())
+    
+    if not addr(valPtr)
+        return none[String]()
+    
+    const length := libc::strlen(valPtr)
+
+    const val := string(valPtr, length+1)
+
+    return some[String](val)
 }
 
 fn getcwd() -> Optional[String]

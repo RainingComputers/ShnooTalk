@@ -1,4 +1,5 @@
 use "../stdlib/OS.shtk" as os
+from "../stdlib/String.shtk" use string
 
 fn main(argc: int, argv: ulong[]) -> int
 {
@@ -17,6 +18,9 @@ fn main(argc: int, argv: ulong[]) -> int
     println("rmdir foobar", os::rmdir("foobar").isNonZero())
     println("mkdir foobar", os::mkdir("foobar").isNonZero())
     println("rmdir foobar", os::rmdir("foobar").isNonZero())
+
+    println("getenv LLC_BIN", os::getEnv("PATH".string()).expect().length() > 0)
+    println("getenv DOES_NOT_EXIST", os::getEnv("DOES_NOT_EXIST").hasValue())
 
     return 0
 }
