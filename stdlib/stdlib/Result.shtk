@@ -33,7 +33,6 @@ fn hasValue(self: Result) -> bool
 
 fn isFail(self: Result) -> bool
 {
-    # TODO change to isFail
     return self.error.isNonZero()
 }
 

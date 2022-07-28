@@ -9,10 +9,15 @@ from "../stdlib/Error.shtk" use Error
 from "../stdlib/ErrorTypes.shtk" use StdlibError
 from "../stdlib/_ErrorUtils.shtk" use _intToError
 
-fn getArg(argv: ulong[], idx: int) -> char[]
+fn getArg(argc: int, argv: ulong[], idx: int) -> Optional[String]
 {
-    # TODO change to String
-    return char[]`(argv[idx] + 0)
+    if idx > argc
+        return none[String]()
+
+    const arg: char[] <- char[]`(argv[idx] + 0)
+    const length := libc::strlen(arg)
+
+    return some[String](string(arg, length+1))
 }
 
 fn panicString(message: String, status: int)

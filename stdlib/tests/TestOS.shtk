@@ -2,7 +2,7 @@ use "../stdlib/OS.shtk" as os
 
 fn main(argc: int, argv: ulong[]) -> int
 {
-    println("getArg", os::getArg(argv, 0))  
+    println("getArg", os::getArg(argc, argv, 0).expect().toCharArray())  
 
     const path := os::getcwd()
     println("getcwd", path.expect().endsWith("ShnooTalk/stdlib/tests"))

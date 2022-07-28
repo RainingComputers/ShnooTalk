@@ -45,7 +45,6 @@ fn getError(self: Error) -> E
     return self._error
 }
 
-
 fn isEqual(self: Error, other: E) -> bool
 {
     if self
