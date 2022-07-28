@@ -3,6 +3,8 @@ from "../stdlib/Result.shtk" use Result, ok, fail
 from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
 from "../stdlib/RawPointerUtils.shtk" use nullptrArray
 from "../stdlib/ErrorTypes.shtk" use StdlibError, EOF, OSError
+from "../stdlib/Error.shtk" use Error
+from "../stdlib/_ErrorUtils.shtk" use _intToError
 
 enum SeekType {
     SEEK_SET,
@@ -66,9 +68,9 @@ fn read(self: File) -> Result[String, StdlibError]
     return ok[String, StdlibError](contents)
 }
 
-fn seek(self: File, offset: long, whence: SeekType) -> bool
+fn seek(self: File, offset: long, whence: SeekType) -> Error[StdlibError]
 {
-    return libc::fseek(self.libcFile, offset, int`whence) < 0
+    return _intToError(libc::fseek(self.libcFile, offset, int`whence))
 }
 
 fn tell(self: File) -> Result[long, StdlibError]
@@ -81,13 +83,13 @@ fn tell(self: File) -> Result[long, StdlibError]
     return ok[long, StdlibError](pos)
 }
 
-fn write(self: File, content: String) -> bool
+fn write(self: File, content: String) -> Error[StdlibError]
 {
-    return libc::fputs(content.toCharArray(), self.libcFile) < 0
+    return _intToError(libc::fputs(content.toCharArray(), self.libcFile))
 }
 
-fn close(self: File) -> bool
+fn close(self: File) -> Error[StdlibError]
 {
-    return libc::fclose(self.libcFile) < 0
+    return _intToError(libc::fclose(self.libcFile))
 }
 

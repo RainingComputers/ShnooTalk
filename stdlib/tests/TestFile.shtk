@@ -8,7 +8,7 @@ fn main() -> int
 
     println(file1.readLine().expect().toCharArray())
 
-    println("close", file1.close())
+    println("close", file1.close().isError())
 
     const fileOptional2 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
     const file2 := fileOptional2.expect()
