@@ -25,11 +25,6 @@ fn error(error: E) -> Error
     return self
 }
 
-fn isNonZero(self: Error) -> bool
-{
-    return not self._nil
-}
-
 fn isNil(self: Error) -> bool
 {
     return self._nil
@@ -40,10 +35,16 @@ fn isError(self: Error) -> bool
     return not self._nil
 }
 
+fn isNonZero(self: Error) -> bool
+{
+    return not self._nil
+}
+
 fn getError(self: Error) -> E
 {
     return self._error
 }
+
 
 fn isEqual(self: Error, other: E) -> bool
 {

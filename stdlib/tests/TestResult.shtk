@@ -6,7 +6,7 @@ fn main() -> int
 {
     const a := ok[int, TestErrorEnum](10)
     println(a.hasValue())
-    println(a.isError())
+    println(a.isFail())
     println(a.expect())
     println(a | 2)
 
@@ -15,7 +15,7 @@ fn main() -> int
 
     const b := fail[int, TestErrorEnum](TEST_ERROR_1)
     println(b.hasValue())
-    println(b.isError())
+    println(b.isFail())
     println(b | 100)
 
     const [itemB, errB] := b
