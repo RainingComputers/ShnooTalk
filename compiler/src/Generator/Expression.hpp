@@ -14,7 +14,11 @@ Unit createCallFunction(generator::GeneratorContext& ctx,
                         const Token& errorToken,
                         const icode::FunctionDescription& callee);
 
+Unit termWithHint(generator::GeneratorContext& ctx, const Node& root, const icode::TypeDescription& typeHint);
+
 Unit term(generator::GeneratorContext& ctx, const Node& root);
+
+Unit ordinaryExpressionWithHint(generator::GeneratorContext& ctx, const Node& root, const icode::TypeDescription& typeHint);
 
 Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root);
 
@@ -35,6 +39,8 @@ void conditionalExpression(generator::GeneratorContext& ctx,
                            const icode::Operand& trueLabel,
                            const icode::Operand& falseLabel,
                            bool trueFall);
+
+Unit expressionWithHint(generator::GeneratorContext& ctx, const Node& root, const icode::TypeDescription& typeHint);
 
 Unit expression(generator::GeneratorContext& ctx, const Node& root);
 

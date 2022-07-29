@@ -4,8 +4,8 @@
         "functions": {
             "main": {
                 "icode": [
-                        autoFloat temp5 = divide autoFloat 3.140000, autoFloat 2.000000
-                        double temp8 = cast autoFloat temp5
+                        autoFloat temp6 = divide autoFloat 3.140000, autoFloat 2.000000
+                        double temp8 = cast autoFloat temp6
                         pass double temp8, double sin, module TestModules/ExternMath.shtk
                         double calleeReturnValue11 = call double sin, module TestModules/ExternMath.shtk
                         print double calleeReturnValue11

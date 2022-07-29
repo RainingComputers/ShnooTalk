@@ -11,9 +11,9 @@
                         int returnValue9 = equal int temp11
                         return
                     _if_false_l3_c4:
-                        int temp17 = cast autoInt 1
-                        int temp16 = subtract int num, int temp17
-                        pass int temp16, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
+                        int temp18 = cast autoInt 1
+                        int temp17 = subtract int num, int temp18
+                        pass int temp17, int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
                         int calleeReturnValue22 = call int _fn_FactorialRecursive_shtk_factorial, module FactorialRecursive.shtk
                         int temp25 = multiply int num, int calleeReturnValue22
                         int returnValue12 = equal int temp25

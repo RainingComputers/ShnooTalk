@@ -12,7 +12,7 @@
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 9, "dtype": "int"}, "op2": {"type": "var", "id": 8, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op2": {"type": "var", "id": 7, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 9, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op3": {"type": "literal", "id": 11, "dtype": "autoInt", "value": 8}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 12, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 13, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 15, "dtype": "int"}, "op2": {"type": "var", "id": 16, "name": "_fn_ExplicitDeconstructorCall_shtk_funcToTestType", "dtype": "void"}, "op3": {"type": "module", "id": 17, "name": "ExplicitDeconstructorCall.shtk"}},
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 18, "dtype": "void"}, "op2": {"type": "var", "id": 19, "name": "_fn_ExplicitDeconstructorCall_shtk_funcToTestType", "dtype": "void"}, "op3": {"type": "module", "id": 20, "name": "ExplicitDeconstructorCall.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},

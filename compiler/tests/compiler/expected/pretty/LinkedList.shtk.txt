@@ -96,10 +96,10 @@
                         int* tempPtr112 = addressAdd int* tempPtr110, bytes 0
                         int temp113 = read int* tempPtr112
                         int poppedData = equal int temp113
-                        struct* tempPtr115 = createPointer struct self
-                        struct** tempPtrPtr117 = addressAdd struct* tempPtr115, bytes 0
-                        ubyte* tempPtr118 = pointerCast struct** tempPtrPtr117
-                        passPointer ubyte* tempPtr118, void free, module TestModules/LinkedList.shtk[int]
+                        struct* tempPtr116 = createPointer struct self
+                        struct** tempPtrPtr118 = addressAdd struct* tempPtr116, bytes 0
+                        ubyte* tempPtr119 = pointerCast struct** tempPtrPtr118
+                        passPointer ubyte* tempPtr119, void free, module TestModules/LinkedList.shtk[int]
                         void calleeReturnValue123 = call void free, module TestModules/LinkedList.shtk[int]
                         struct* tempPtr127 = createPointer struct self
                         struct** tempPtrPtr129 = addressAdd struct* tempPtr127, bytes 0

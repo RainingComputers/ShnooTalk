@@ -59,7 +59,6 @@ std::pair<Unit, size_t> subscriptOperator(generator::GeneratorContext& ctx,
     ctx.ir.pushWorkingModule();
 
     ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(unit));
-
     std::vector<Token> paramTokens = { root.tok, indexExpressionToken };
     std::vector<Unit> params = { unit, indexExpression };
 

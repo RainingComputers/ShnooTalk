@@ -63,9 +63,9 @@
                         int* tempPtr79 = addressAdd int* tempPtr76, bytes 4
                         int temp80 = cast autoInt 5
                         int* tempPtr79 = write int temp80
-                        int* tempPtr82 = createPointer struct foo
-                        int** tempPtrPtr84 = addressAdd int* tempPtr82, bytes 0
-                        passPointerPointer int** tempPtrPtr84, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
+                        int* tempPtr85 = createPointer struct foo
+                        int** tempPtrPtr87 = addressAdd int* tempPtr85, bytes 0
+                        passPointerPointer int** tempPtrPtr87, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
                         int* tempPtr95 = createPointer int src
                         passPointer int* tempPtr95, void _fn_ArrayPointerStructFieldAceess_shtk_copy, module ArrayPointerStructFieldAceess.shtk
                         int temp98 = cast autoInt 5

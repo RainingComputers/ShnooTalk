@@ -20,7 +20,7 @@
                     {"opcode": "equal", "op1": {"type": "globalVar", "id": 15, "name": "_fn_Global_shtk_globalFoo", "dtype": "int"}, "op2": {"type": "temp", "id": 17, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "print", "op1": {"type": "globalVar", "id": 18, "name": "_fn_Global_shtk_globalFoo", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 22, "dtype": "int"}, "op2": {"type": "literal", "id": 19, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 22, "dtype": "int"}, "op2": {"type": "literal", "id": 20, "dtype": "autoInt", "value": 3}, "op3": {"type": "none"}},
                     {"opcode": "pass", "op1": {"type": "temp", "id": 22, "dtype": "int"}, "op2": {"type": "var", "id": 23, "name": "_fn_Global_shtk_foobar", "dtype": "void"}, "op3": {"type": "module", "id": 24, "name": "Global.shtk"}},
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 25, "dtype": "void"}, "op2": {"type": "var", "id": 26, "name": "_fn_Global_shtk_foobar", "dtype": "void"}, "op3": {"type": "module", "id": 27, "name": "Global.shtk"}},
                     {"opcode": "print", "op1": {"type": "globalVar", "id": 28, "name": "_fn_Global_shtk_globalFoo", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

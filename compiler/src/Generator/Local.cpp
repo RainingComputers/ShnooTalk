@@ -27,7 +27,7 @@ void local(generator::GeneratorContext& ctx, const Node& root)
     if (lastNode.type == node::EXPRESSION || lastNode.type == node::TERM ||
         lastNode.type == node::MULTILINE_STR_LITERAL || lastNode.type == node::INITLIST)
     {
-        Unit RHS = expression(ctx, lastNode);
+        Unit RHS = expressionWithHint(ctx, lastNode, local.type());
         assignmentFromTree(ctx, root.type, root.getNthChildTokenFromLast(2), nameToken, lastNode.tok, local, RHS);
     }
 }

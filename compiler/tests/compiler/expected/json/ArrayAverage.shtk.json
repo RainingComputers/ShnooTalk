@@ -47,7 +47,7 @@
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 56, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 53, "dtype": "int"}, "op3": {"type": "bytes", "id": 55, "bytes": 4}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 57, "dtype": "int"}, "op2": {"type": "literal", "id": 43, "dtype": "autoInt", "value": 5}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 56, "dtype": "int"}, "op2": {"type": "temp", "id": 57, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op2": {"type": "var", "id": 58, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op2": {"type": "var", "id": 59, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op2": {"type": "var", "id": 62, "name": "_fn_ArrayAverage_shtk_avg", "dtype": "int"}, "op3": {"type": "module", "id": 63, "name": "ArrayAverage.shtk"}},
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 64, "dtype": "int"}, "op2": {"type": "var", "id": 65, "name": "_fn_ArrayAverage_shtk_avg", "dtype": "int"}, "op3": {"type": "module", "id": 66, "name": "ArrayAverage.shtk"}},
                     {"opcode": "print", "op1": {"type": "calleeReturnValue", "id": 64, "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

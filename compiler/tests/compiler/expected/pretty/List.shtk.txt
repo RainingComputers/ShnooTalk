@@ -132,11 +132,11 @@
                         pass int temp234, void _fn_TestModules_List_shtk[int]_expand, module TestModules/List.shtk[int]
                         void calleeReturnValue243 = call void _fn_TestModules_List_shtk[int]_expand, module TestModules/List.shtk[int]
                     _if_false_l59_c4:
-                        int* tempPtr247 = createPointer struct self
-                        int** tempPtrPtr249 = addressAdd int* tempPtr247, bytes 0
+                        int* tempPtr251 = createPointer struct self
+                        int** tempPtrPtr253 = addressAdd int* tempPtr251, bytes 0
                         int* tempPtr257 = createPointer struct self
                         int* tempPtr259 = addressAdd int* tempPtr257, bytes 12
-                        passPointerPointer int** tempPtrPtr249, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
+                        passPointerPointer int** tempPtrPtr253, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
                         passPointer int* items, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
                         pass int len, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
                         int temp270 = read int* tempPtr259
@@ -247,18 +247,18 @@
                         int* oldItems = pointerAssign int** tempPtrPtr145
                         int* tempPtr147 = createPointer struct self
                         int** tempPtrPtr149 = addressAdd int* tempPtr147, bytes 0
-                        autoInt temp153 = cast int cap
-                        autoInt temp152 = multiply autoInt 4, autoInt temp153
-                        int temp156 = cast autoInt temp152
+                        autoInt temp154 = cast int cap
+                        autoInt temp153 = multiply autoInt 4, autoInt temp154
+                        int temp156 = cast autoInt temp153
                         pass int temp156, ubyte malloc, module TestModules/List.shtk[int]
                         ubyte* calleeReturnPointer159 = call ubyte malloc, module TestModules/List.shtk[int]
                         int* tempPtr162 = pointerCast ubyte* calleeReturnPointer159
                         int** tempPtrPtr149 = pointerAssign int* tempPtr162
-                        int* tempPtr164 = createPointer struct self
-                        int** tempPtrPtr166 = addressAdd int* tempPtr164, bytes 0
+                        int* tempPtr168 = createPointer struct self
+                        int** tempPtrPtr170 = addressAdd int* tempPtr168, bytes 0
                         int* tempPtr173 = createPointer struct self
                         int* tempPtr175 = addressAdd int* tempPtr173, bytes 8
-                        passPointerPointer int** tempPtrPtr166, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
+                        passPointerPointer int** tempPtrPtr170, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
                         passPointer int* oldItems, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
                         int temp185 = read int* tempPtr175
                         pass int temp185, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
@@ -268,8 +268,8 @@
                         int* tempPtr195 = createPointer struct self
                         int* tempPtr197 = addressAdd int* tempPtr195, bytes 8
                         int* tempPtr197 = write int cap
-                        ubyte* tempPtr200 = pointerCast int* oldItems
-                        passPointer ubyte* tempPtr200, void free, module TestModules/List.shtk[int]
+                        ubyte* tempPtr201 = pointerCast int* oldItems
+                        passPointer ubyte* tempPtr201, void free, module TestModules/List.shtk[int]
                         void calleeReturnValue205 = call void free, module TestModules/List.shtk[int]
                         return
                 ]
@@ -284,16 +284,16 @@
                         int* tempPtr40 = write int len
                         int* tempPtr43 = createPointer struct self
                         int** tempPtrPtr45 = addressAdd int* tempPtr43, bytes 0
-                        autoInt temp49 = cast int len
-                        autoInt temp48 = multiply autoInt 4, autoInt temp49
-                        int temp52 = cast autoInt temp48
+                        autoInt temp50 = cast int len
+                        autoInt temp49 = multiply autoInt 4, autoInt temp50
+                        int temp52 = cast autoInt temp49
                         pass int temp52, ubyte malloc, module TestModules/List.shtk[int]
                         ubyte* calleeReturnPointer55 = call ubyte malloc, module TestModules/List.shtk[int]
                         int* tempPtr58 = pointerCast ubyte* calleeReturnPointer55
                         int** tempPtrPtr45 = pointerAssign int* tempPtr58
-                        int* tempPtr60 = createPointer struct self
-                        int** tempPtrPtr62 = addressAdd int* tempPtr60, bytes 0
-                        passPointerPointer int** tempPtrPtr62, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
+                        int* tempPtr64 = createPointer struct self
+                        int** tempPtrPtr66 = addressAdd int* tempPtr64, bytes 0
+                        passPointerPointer int** tempPtrPtr66, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
                         passPointer int* items, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
                         pass int len, void _fn_TestModules_List_shtk[int]_copy, module TestModules/List.shtk[int]
                         int temp80 = cast autoInt 0

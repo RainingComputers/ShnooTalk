@@ -21,7 +21,7 @@
                     {"opcode": "cast", "op1": {"type": "temp", "id": 20, "dtype": "int"}, "op2": {"type": "literal", "id": 19, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 18, "name": "i", "dtype": "int"}, "op2": {"type": "temp", "id": 20, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "createLabel", "op1": {"type": "label", "id": 21, "name": "_while_true_l12_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "var", "id": 23, "name": "i", "dtype": "int"}, "op2": {"type": "var", "id": 26, "name": "_fn_TruthyConditionalWhileLoop_shtk_stop", "dtype": "byte"}, "op3": {"type": "module", "id": 27, "name": "TruthyConditionalWhileLoop.shtk"}},
+                    {"opcode": "pass", "op1": {"type": "var", "id": 24, "name": "i", "dtype": "int"}, "op2": {"type": "var", "id": 26, "name": "_fn_TruthyConditionalWhileLoop_shtk_stop", "dtype": "byte"}, "op3": {"type": "module", "id": 27, "name": "TruthyConditionalWhileLoop.shtk"}},
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 28, "dtype": "byte"}, "op2": {"type": "var", "id": 29, "name": "_fn_TruthyConditionalWhileLoop_shtk_stop", "dtype": "byte"}, "op3": {"type": "module", "id": 30, "name": "TruthyConditionalWhileLoop.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 32, "dtype": "byte"}, "op2": {"type": "literal", "id": 31, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "greaterThan", "op1": {"type": "calleeReturnValue", "id": 28, "dtype": "byte"}, "op2": {"type": "temp", "id": 32, "dtype": "byte"}, "op3": {"type": "none"}},

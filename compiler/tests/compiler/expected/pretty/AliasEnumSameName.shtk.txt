@@ -195,42 +195,42 @@
             },
             "_fn_TestModules_Vector_shtk_greaterThan": {
                 "icode": [
-                        int* tempPtr58 = createPointer struct this
-                        int* tempPtr60 = addressAdd int* tempPtr58, bytes 0
-                        int* tempPtr62 = createPointer struct this
-                        int* tempPtr64 = addressAdd int* tempPtr62, bytes 0
-                        int temp66 = read int* tempPtr60
-                        int temp67 = read int* tempPtr64
-                        int temp65 = multiply int temp66, int temp67
-                        int* tempPtr69 = createPointer struct this
-                        int* tempPtr71 = addressAdd int* tempPtr69, bytes 4
-                        int* tempPtr73 = createPointer struct this
-                        int* tempPtr75 = addressAdd int* tempPtr73, bytes 4
-                        int temp77 = read int* tempPtr71
-                        int temp78 = read int* tempPtr75
-                        int temp76 = multiply int temp77, int temp78
-                        int temp79 = add int temp65, int temp76
-                        float temp80 = cast int temp79
-                        pass float temp80, float sqrtf, module TestModules/Vector.shtk
+                        int* tempPtr59 = createPointer struct this
+                        int* tempPtr61 = addressAdd int* tempPtr59, bytes 0
+                        int* tempPtr63 = createPointer struct this
+                        int* tempPtr65 = addressAdd int* tempPtr63, bytes 0
+                        int temp67 = read int* tempPtr61
+                        int temp68 = read int* tempPtr65
+                        int temp66 = multiply int temp67, int temp68
+                        int* tempPtr70 = createPointer struct this
+                        int* tempPtr72 = addressAdd int* tempPtr70, bytes 4
+                        int* tempPtr74 = createPointer struct this
+                        int* tempPtr76 = addressAdd int* tempPtr74, bytes 4
+                        int temp78 = read int* tempPtr72
+                        int temp79 = read int* tempPtr76
+                        int temp77 = multiply int temp78, int temp79
+                        int temp80 = add int temp66, int temp77
+                        float temp81 = cast int temp80
+                        pass float temp81, float sqrtf, module TestModules/Vector.shtk
                         float calleeReturnValue85 = call float sqrtf, module TestModules/Vector.shtk
                         float thisLen = equal float calleeReturnValue85
-                        int* tempPtr90 = createPointer struct other
-                        int* tempPtr92 = addressAdd int* tempPtr90, bytes 0
-                        int* tempPtr94 = createPointer struct other
-                        int* tempPtr96 = addressAdd int* tempPtr94, bytes 0
-                        int temp98 = read int* tempPtr92
-                        int temp99 = read int* tempPtr96
-                        int temp97 = multiply int temp98, int temp99
-                        int* tempPtr101 = createPointer struct other
-                        int* tempPtr103 = addressAdd int* tempPtr101, bytes 4
-                        int* tempPtr105 = createPointer struct other
-                        int* tempPtr107 = addressAdd int* tempPtr105, bytes 4
-                        int temp109 = read int* tempPtr103
-                        int temp110 = read int* tempPtr107
-                        int temp108 = multiply int temp109, int temp110
-                        int temp111 = add int temp97, int temp108
-                        float temp112 = cast int temp111
-                        pass float temp112, float sqrtf, module TestModules/Vector.shtk
+                        int* tempPtr91 = createPointer struct other
+                        int* tempPtr93 = addressAdd int* tempPtr91, bytes 0
+                        int* tempPtr95 = createPointer struct other
+                        int* tempPtr97 = addressAdd int* tempPtr95, bytes 0
+                        int temp99 = read int* tempPtr93
+                        int temp100 = read int* tempPtr97
+                        int temp98 = multiply int temp99, int temp100
+                        int* tempPtr102 = createPointer struct other
+                        int* tempPtr104 = addressAdd int* tempPtr102, bytes 4
+                        int* tempPtr106 = createPointer struct other
+                        int* tempPtr108 = addressAdd int* tempPtr106, bytes 4
+                        int temp110 = read int* tempPtr104
+                        int temp111 = read int* tempPtr108
+                        int temp109 = multiply int temp110, int temp111
+                        int temp112 = add int temp98, int temp109
+                        float temp113 = cast int temp112
+                        pass float temp113, float sqrtf, module TestModules/Vector.shtk
                         float calleeReturnValue117 = call float sqrtf, module TestModules/Vector.shtk
                         float otherLen = equal float calleeReturnValue117
                         autoInt* tempPtr121 = allocPointer 

@@ -65,7 +65,7 @@ void assignment(generator::GeneratorContext& ctx, const Node& root)
     const Token RHSToken = root.children[2].tok;
     const Token assignmentOperator = root.getNthChildTokenFromLast(2);
     Unit LHS = ordinaryExpression(ctx, root.children[0]);
-    Unit RHS = expression(ctx, root.children[2]);
+    Unit RHS = expressionWithHint(ctx, root.children[2], LHS.type());
 
     assignmentFromTree(ctx, root.type, assignmentOperator, LHSToken, RHSToken, LHS, RHS);
 }

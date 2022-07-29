@@ -45,7 +45,7 @@
                     {"opcode": "cast", "op1": {"type": "temp", "id": 54, "dtype": "int"}, "op2": {"type": "literal", "id": 53, "dtype": "autoInt", "value": 50}, "op3": {"type": "none"}},
                     {"opcode": "lessThanOrEqualTo", "op1": {"type": "var", "id": 52, "name": "num", "dtype": "int"}, "op2": {"type": "temp", "id": 54, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 50, "name": "_for_false_l15_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "var", "id": 58, "name": "num", "dtype": "int"}, "op2": {"type": "var", "id": 61, "name": "_fn_Primes_shtk_is_prime", "dtype": "int"}, "op3": {"type": "module", "id": 62, "name": "Primes.shtk"}},
+                    {"opcode": "pass", "op1": {"type": "var", "id": 59, "name": "num", "dtype": "int"}, "op2": {"type": "var", "id": 61, "name": "_fn_Primes_shtk_is_prime", "dtype": "int"}, "op3": {"type": "module", "id": 62, "name": "Primes.shtk"}},
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 63, "dtype": "int"}, "op2": {"type": "var", "id": 64, "name": "_fn_Primes_shtk_is_prime", "dtype": "int"}, "op3": {"type": "module", "id": 65, "name": "Primes.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 67, "dtype": "int"}, "op2": {"type": "literal", "id": 66, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "isEqual", "op1": {"type": "calleeReturnValue", "id": 63, "dtype": "int"}, "op2": {"type": "temp", "id": 67, "dtype": "int"}, "op3": {"type": "none"}},

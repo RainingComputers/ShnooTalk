@@ -21,12 +21,12 @@
                         int temp25 = cast float n
                         flag = lessThan int i, int temp25
                         if(not flag) goto _for_false_l15_c4
-                        float temp30 = cast int i
-                        float temp33 = cast autoFloat 0.500000
-                        float temp32 = add float temp30, float temp33
-                        float temp35 = multiply float temp32, float w
-                        float temp36 = add float a, float temp35
-                        pass float temp36, float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
+                        float temp31 = cast int i
+                        float temp34 = cast autoFloat 0.500000
+                        float temp33 = add float temp31, float temp34
+                        float temp36 = multiply float temp33, float w
+                        float temp37 = add float a, float temp36
+                        pass float temp37, float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
                         float calleeReturnValue41 = call float _fn_NumericalIntegration_shtk_f, module NumericalIntegration.shtk
                         float temp44 = multiply float w, float calleeReturnValue41
                         float area = equal float temp44

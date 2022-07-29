@@ -11,7 +11,7 @@ void functionReturn(generator::GeneratorContext& ctx, const Node& root)
 
     if (root.children.size() != 0)
     {
-        Unit returnValue = expression(ctx, root.children[0]);
+        Unit returnValue = expressionWithHint(ctx, root.children[0], functionReturn.type());
 
         if (!isSameType(functionReturn, returnValue))
             ctx.console.typeError(root.children[0].tok, functionReturn, returnValue);

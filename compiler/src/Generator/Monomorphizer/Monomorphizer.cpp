@@ -177,6 +177,16 @@ std::string Monomorphizer::getGenericModuleFromToken(const Token& token)
     return workingModule;
 }
 
+bool Monomorphizer::genericExists(const Token& token)
+{
+    if (workingModule.size() == 0)
+        return keyExistsInMap(genericUses, token.toString());
+
+    const GenericASTIndex index = genericsMap.at(workingModule);
+
+    return index.isGenericStructOrFunction(token);
+}
+
 Node Monomorphizer::instantiateGeneric(const std::string& genericModuleName,
                                        const Token& genericNameToken,
                                        const std::vector<icode::TypeDescription>& instantiationTypes,

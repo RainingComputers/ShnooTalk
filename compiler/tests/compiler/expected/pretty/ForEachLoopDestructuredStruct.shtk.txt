@@ -53,15 +53,15 @@
             },
             "_fn_ForEachLoopDestructuredStruct_shtk_subscriptItem": {
                 "icode": [
-                        int* tempPtr69 = createPointer struct self
-                        int* tempPtr71 = addressAdd int* tempPtr69, bytes 0
-                        void* tempPtr74 = addressMultiply ulong index, bytes 4
-                        int* tempPtr75 = addressAdd int* tempPtr71, void* tempPtr74
+                        int* tempPtr71 = createPointer struct self
+                        int* tempPtr73 = addressAdd int* tempPtr71, bytes 0
+                        void* tempPtr76 = addressMultiply ulong index, bytes 4
+                        int* tempPtr77 = addressAdd int* tempPtr73, void* tempPtr76
                         int* tempPtr79 = createPointer struct self
                         int* tempPtr81 = addressAdd int* tempPtr79, bytes 12
                         void* tempPtr84 = addressMultiply ulong index, bytes 4
                         float* tempPtr85 = addressAdd float* tempPtr81, void* tempPtr84
-                        int temp88 = read int* tempPtr75
+                        int temp88 = read int* tempPtr77
                         pass int temp88, struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
                         float temp91 = read float* tempPtr85
                         pass float temp91, struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk

@@ -55,6 +55,8 @@ namespace monomorphizer
 
         std::string getGenericModuleFromToken(const Token& token);
 
+        bool genericExists(const Token& token);
+
         Node instantiateGeneric(const std::string& genericModuleName,
                                 const Token& genericNameToken,
                                 const std::vector<icode::TypeDescription>& instantiationTypes,

@@ -46,16 +46,16 @@
                         int* tempPtr71 = addressAdd int* tempPtr67, bytes 4
                         int* tempPtr72 = createPointer struct calleeReturnValue63
                         int* tempPtr71 = memoryCopy int* tempPtr72, autoInt 4
-                        int* tempPtr76 = createPointer struct b
-                        void* tempPtr78 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr79 = addressAdd int* tempPtr76, void* tempPtr78
-                        int* tempPtr82 = createPointer int* tempPtr79
+                        int* tempPtr77 = createPointer struct b
+                        void* tempPtr79 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr80 = addressAdd int* tempPtr77, void* tempPtr79
+                        int* tempPtr82 = createPointer int* tempPtr80
                         passPointer int* tempPtr82, void _fn_Walrus_shtk_printFoo, module Walrus.shtk
                         void calleeReturnValue85 = call void _fn_Walrus_shtk_printFoo, module Walrus.shtk
-                        int* tempPtr90 = createPointer struct b
-                        void* tempPtr92 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr93 = addressAdd int* tempPtr90, void* tempPtr92
-                        int* tempPtr96 = createPointer int* tempPtr93
+                        int* tempPtr91 = createPointer struct b
+                        void* tempPtr93 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr94 = addressAdd int* tempPtr91, void* tempPtr93
+                        int* tempPtr96 = createPointer int* tempPtr94
                         passPointer int* tempPtr96, void _fn_Walrus_shtk_printFoo, module Walrus.shtk
                         void calleeReturnValue99 = call void _fn_Walrus_shtk_printFoo, module Walrus.shtk
                         struct* tempPtr104 = pointerCast autoInt 0
@@ -71,10 +71,10 @@
                         int* tempPtr119 = addressAdd int* tempPtr117, bytes 0
                         int temp121 = cast autoInt 100
                         int* tempPtr119 = write int temp121
-                        int* tempPtr124 = createPointer struct b
-                        void* tempPtr126 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr127 = addressAdd int* tempPtr124, void* tempPtr126
-                        int* tempPtr130 = createPointer int* tempPtr127
+                        int* tempPtr125 = createPointer struct b
+                        void* tempPtr127 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr128 = addressAdd int* tempPtr125, void* tempPtr127
+                        int* tempPtr130 = createPointer int* tempPtr128
                         passPointer int* tempPtr130, void _fn_Walrus_shtk_printFoo, module Walrus.shtk
                         void calleeReturnValue133 = call void _fn_Walrus_shtk_printFoo, module Walrus.shtk
                         int* tempPtr139 = createPointer struct d

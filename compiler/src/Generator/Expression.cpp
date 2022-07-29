@@ -1,4 +1,5 @@
 #include "../Builder/TypeCheck.hpp"
+#include "../Builder/TypeDescriptionUtil.hpp"
 #include "Generic.hpp"
 #include "Module.hpp"
 #include "OperatorTokenToInstruction.hpp"
@@ -126,7 +127,7 @@ Unit unaryOperator(generator::GeneratorContext& ctx, const Node& root)
     return ctx.ir.functionBuilder.unaryOperator(instruction, unaryOperatorTerm);
 }
 
-Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
+Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root, const TypeDescription& typeHint)
 {
     ctx.ir.pushWorkingModule();
     ctx.ir.resetWorkingModule();
@@ -139,11 +140,28 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root)
     if (tokenType != token::IDENTIFIER && tokenType != token::GENERATED)
         ctx.console.compileErrorOnToken("Invalid use of namespace access", root.tok);
 
-    Unit result = term(ctx, root.children[nodeCounter]);
+    Unit result = termWithHint(ctx, root.children[nodeCounter], typeHint);
 
     ctx.ir.popWorkingModule();
 
     return result;
+}
+
+Unit coerceStringTypes(generator::GeneratorContext& ctx,
+                       const Token& token,
+                       const Unit& actualParam,
+                       const Unit& formalParam)
+{
+    /* Coerce single dim char arrays (c style strings) if hook is present */
+    if (actualParam.isSingleDimCharArray() && formalParam.isStruct() &&
+        ctx.ir.finder.methodExists(formalParam.type(), "coerceCharArray"))
+    {
+        const FunctionDescription stringFunc = ctx.ir.finder.getMethod(formalParam.type(), "coerceCharArray");
+        const Unit lengthParam = ctx.ir.unitBuilder.unitFromIntLiteral(actualParam.numElements());
+        return createCallFunction(ctx, { token, token }, { actualParam, lengthParam }, token, stringFunc);
+    }
+
+    return actualParam;
 }
 
 Unit createCallFunctionMust(generator::GeneratorContext& ctx,
@@ -159,14 +177,7 @@ Unit createCallFunctionMust(generator::GeneratorContext& ctx,
         const Token token = actualParamTokens[i];
         const Unit formalParam = formalParams[i];
 
-        /* Coerce single dim char arrays (c style strings) if hook is present */
-        if (actualParam.isSingleDimCharArray() && formalParam.isStruct() &&
-            ctx.ir.finder.methodExists(formalParam.type(), "coerceCharArray"))
-        {
-            const FunctionDescription stringFunc = ctx.ir.finder.getMethod(formalParam.type(), "coerceCharArray");
-            const Unit lengthParam = ctx.ir.unitBuilder.unitFromIntLiteral(actualParam.numElements());
-            actualParam = createCallFunction(ctx, { token, token }, { actualParam, lengthParam }, token, stringFunc);
-        }
+        actualParam = coerceStringTypes(ctx, token, actualParam, formalParam);
 
         passParamCheck(ctx, formalParam, actualParam, token);
         ctx.ir.functionBuilder.passParameter(callee, formalParam, actualParam);
@@ -187,24 +198,49 @@ Unit createCallFunction(generator::GeneratorContext& ctx,
     return createCallFunctionMust(ctx, actualParamTokens, actualParams, callee);
 }
 
-Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
+Unit methodCall(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
 
     const Token calleeNameToken = root.tok;
 
-    Unit firstActualParam;
-    if (root.children.size() != 0)
+    const Unit firstActualParam = expression(ctx, root.children[0]);
+
+    ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(firstActualParam));
+
+    if (calleeNameToken.toString() == "deconstructor")
+        if (!ctx.ir.finder.deconstructorExists(firstActualParam.type()))
+            return firstActualParam;
+
+    const FunctionDescription callee = ctx.ir.finder.getFunction(calleeNameToken);
+    const std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
+
+    ctx.ir.resetWorkingModule();
+
+    std::vector<Token> actualParamTokens = { root.children[0].tok };
+    std::vector<Unit> actualParams = { firstActualParam };
+
+    for (size_t i = 1; i < root.children.size(); i++)
     {
-        firstActualParam = expression(ctx, root.children[0]);
-
-        if (root.type == node::METHODCALL)
-            ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(firstActualParam));
-
-        if (calleeNameToken.toString() == "deconstructor")
-            if (!ctx.ir.finder.deconstructorExists(firstActualParam.type()))
-                return firstActualParam;
+        actualParamTokens.push_back(root.children[i].tok);
+        actualParams.push_back(expressionWithHint(ctx, root.children[i], formalParameters[i].type()));
     }
+
+    if (firstActualParam.isArrayWithFixedDim() && formalParameters.size() == 2 && actualParams.size() == 1)
+    {
+        actualParamTokens.push_back(actualParamTokens[0]);
+        actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(firstActualParam.numElements()));
+    }
+
+    ctx.ir.popWorkingModule();
+    return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
+}
+
+Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
+{
+    ctx.ir.pushWorkingModule();
+
+    const Token calleeNameToken = root.tok;
 
     FunctionDescription callee = ctx.ir.finder.getFunction(calleeNameToken);
     std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
@@ -217,22 +253,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
     for (size_t i = 0; i < root.children.size(); i++)
     {
         actualParamTokens.push_back(root.children[i].tok);
-
-        if (i == 0)
-            actualParams.push_back(firstActualParam);
-        else
-            actualParams.push_back(expression(ctx, root.children[i]));
-    }
-
-    if (root.type == node::METHODCALL && root.children.size() == 1)
-    {
-        const Unit lastParam = actualParams.back();
-
-        if (lastParam.isArrayWithFixedDim())
-        {
-            actualParamTokens.push_back(actualParamTokens.back());
-            actualParams.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(lastParam.numElements()));
-        }
+        actualParams.push_back(expressionWithHint(ctx, root.children[i], formalParameters[i].type()));
     }
 
     ctx.ir.popWorkingModule();
@@ -273,6 +294,26 @@ Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
                                                                         instantiationTypeNodes);
 
     return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
+}
+
+Unit genericFunctionCallWithHint(generator::GeneratorContext& ctx, const Node& root, const TypeDescription& typeHint)
+{
+    ctx.ir.pushWorkingModule();
+
+    ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromType(typeHint));
+    const Unit& result = functionCall(ctx, root);
+
+    ctx.ir.popWorkingModule();
+
+    return result;
+}
+
+Unit functionCallWithHint(generator::GeneratorContext& ctx, const Node& root, const TypeDescription& typeHint)
+{
+    if (!typeHint.isVoid() && !typeHint.isPointer() && ctx.mm.genericExists(root.tok))
+        return genericFunctionCallWithHint(ctx, root, typeHint);
+
+    return functionCall(ctx, root);
 }
 
 Unit make(generator::GeneratorContext& ctx, const Node& root)
@@ -362,7 +403,7 @@ Unit multilineStringLiteral(generator::GeneratorContext& ctx, const Node& root)
     return ctx.ir.unitBuilder.unitFromStringDataKey(key);
 }
 
-Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
+Unit initializerList(generator::GeneratorContext& ctx, const Node& root, const TypeDescription& typeHint)
 {
     std::vector<Unit> units;
 
@@ -370,7 +411,7 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
     {
         const Node child = root.children[i];
 
-        units.push_back(expression(ctx, child));
+        units.push_back(expressionWithHint(ctx, child, getElementType(typeHint)));
 
         if (i != 0)
             if (!isSameType(units[i - 1], units[i]))
@@ -380,7 +421,7 @@ Unit initializerList(generator::GeneratorContext& ctx, const Node& root)
     return ctx.ir.unitBuilder.unitFromUnitList(units);
 }
 
-Unit term(generator::GeneratorContext& ctx, const Node& root)
+Unit termWithHint(generator::GeneratorContext& ctx, const Node& root, const TypeDescription& typeHint)
 {
     Node child = root.children[0];
 
@@ -400,14 +441,15 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
         case node::UNARY_OPR:
             return unaryOperator(ctx, child);
         case node::EXPRESSION:
-            return expression(ctx, child);
+            return expressionWithHint(ctx, child, typeHint);
         case node::METHODCALL:
+            return methodCall(ctx, child);
         case node::FUNCCALL:
-            return functionCall(ctx, child);
+            return functionCallWithHint(ctx, child, typeHint);
         case node::GENERIC_FUNCCALL:
             return genericFunctionCall(ctx, child);
         case node::MODULE:
-            return switchModuleAndCallTerm(ctx, root);
+            return switchModuleAndCallTerm(ctx, root, typeHint);
         case node::SIZEOF:
             return sizeOf(ctx, child);
         case node::MAKE:
@@ -415,22 +457,27 @@ Unit term(generator::GeneratorContext& ctx, const Node& root)
         case node::MULTILINE_STR_LITERAL:
             return multilineStringLiteral(ctx, child);
         case node::INITLIST:
-            return initializerList(ctx, child);
+            return initializerList(ctx, child, typeHint);
         default:
             ctx.console.internalBugErrorOnToken(child.tok);
     }
 }
 
-Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
+Unit term(generator::GeneratorContext& ctx, const Node& root)
+{
+    return termWithHint(ctx, root, ctx.ir.moduleBuilder.createVoidTypeDescription());
+}
+
+Unit ordinaryExpressionWithHint(generator::GeneratorContext& ctx, const Node& root, const TypeDescription& typeHint)
 {
     if (root.type == node::INITLIST)
-        return initializerList(ctx, root);
+        return initializerList(ctx, root, typeHint);
 
     if (root.type == node::TERM)
-        return term(ctx, root);
+        return termWithHint(ctx, root, typeHint);
 
     if (root.children.size() == 1)
-        return expression(ctx, root.children[0]);
+        return expressionWithHint(ctx, root.children[0], typeHint);
 
     Token expressionOperator = root.children[1].tok;
 
@@ -450,6 +497,11 @@ Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
         ctx.console.compileErrorOnToken("Bitwise operation only allowed on integer types", expressionOperator);
 
     return binaryOperator(ctx, expressionOperator, LHSToken, RHSToken, LHS, RHS);
+}
+
+Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root)
+{
+    return ordinaryExpressionWithHint(ctx, root, ctx.ir.moduleBuilder.createVoidTypeDescription());
 }
 
 void conditionalAndOperator(generator::GeneratorContext& ctx,
@@ -623,10 +675,10 @@ void conditionalExpression(generator::GeneratorContext& ctx,
     }
 }
 
-Unit expression(generator::GeneratorContext& ctx, const Node& root)
+Unit expressionWithHint(generator::GeneratorContext& ctx, const Node& root, const TypeDescription& typeHint)
 {
     if (!root.isConditionalExpression())
-        return ordinaryExpression(ctx, root);
+        return ordinaryExpressionWithHint(ctx, root, typeHint);
 
     Unit LHS = ctx.ir.functionBuilder.createTemp(icode::AUTO_INT);
 
@@ -647,4 +699,9 @@ Unit expression(generator::GeneratorContext& ctx, const Node& root)
     ctx.ir.functionBuilder.insertLabel(endLabel);
 
     return LHS;
+}
+
+Unit expression(generator::GeneratorContext& ctx, const Node& root)
+{
+    return expressionWithHint(ctx, root, ctx.ir.moduleBuilder.createVoidTypeDescription());
 }

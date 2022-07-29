@@ -16,7 +16,7 @@
             },
             "main": {
                 "icode": [
-                    {"opcode": "passPointer", "op1": {"type": "ptr", "id": 17, "name": "argv", "dtype": "ulong"}, "op2": {"type": "var", "id": 23, "name": "_fn_ArgvTest_shtk_getArg", "dtype": "ubyte"}, "op3": {"type": "module", "id": 24, "name": "ArgvTest.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "ptr", "id": 19, "name": "argv", "dtype": "ulong"}, "op2": {"type": "var", "id": 23, "name": "_fn_ArgvTest_shtk_getArg", "dtype": "ubyte"}, "op3": {"type": "module", "id": 24, "name": "ArgvTest.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 25, "dtype": "int"}, "op2": {"type": "literal", "id": 20, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "pass", "op1": {"type": "temp", "id": 25, "dtype": "int"}, "op2": {"type": "var", "id": 26, "name": "_fn_ArgvTest_shtk_getArg", "dtype": "ubyte"}, "op3": {"type": "module", "id": 27, "name": "ArgvTest.shtk"}},
                     {"opcode": "call", "op1": {"type": "calleeReturnPointer", "id": 28, "dtype": "ubyte"}, "op2": {"type": "var", "id": 29, "name": "_fn_ArgvTest_shtk_getArg", "dtype": "ubyte"}, "op3": {"type": "module", "id": 30, "name": "ArgvTest.shtk"}},

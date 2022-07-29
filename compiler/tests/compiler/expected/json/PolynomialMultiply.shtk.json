@@ -87,7 +87,7 @@
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 109, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 106, "dtype": "int"}, "op3": {"type": "bytes", "id": 108, "bytes": 4}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 110, "dtype": "int"}, "op2": {"type": "literal", "id": 102, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 109, "dtype": "int"}, "op2": {"type": "temp", "id": 110, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 124, "dtype": "int"}, "op2": {"type": "var", "id": 112, "name": "c", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 124, "dtype": "int"}, "op2": {"type": "var", "id": 116, "name": "c", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 124, "dtype": "int"}, "op2": {"type": "var", "id": 125, "name": "_fn_PolynomialMultiply_shtk_multipy_poly", "dtype": "void"}, "op3": {"type": "module", "id": 126, "name": "PolynomialMultiply.shtk"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 127, "dtype": "int"}, "op2": {"type": "var", "id": 117, "name": "a", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 127, "dtype": "int"}, "op2": {"type": "var", "id": 128, "name": "_fn_PolynomialMultiply_shtk_multipy_poly", "dtype": "void"}, "op3": {"type": "module", "id": 129, "name": "PolynomialMultiply.shtk"}},

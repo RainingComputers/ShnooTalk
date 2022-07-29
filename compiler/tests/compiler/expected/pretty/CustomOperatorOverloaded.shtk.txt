@@ -4,13 +4,13 @@
         "functions": {
             "_fn_CustomOperatorOverloaded_shtk_addVector": {
                 "icode": [
-                        int* tempPtr30 = createPointer struct self
-                        int* tempPtr32 = addressAdd int* tempPtr30, bytes 0
-                        int* tempPtr34 = createPointer struct other
-                        int* tempPtr36 = addressAdd int* tempPtr34, bytes 0
-                        int temp38 = read int* tempPtr32
-                        int temp39 = read int* tempPtr36
-                        int temp37 = add int temp38, int temp39
+                        int* tempPtr33 = createPointer struct self
+                        int* tempPtr35 = addressAdd int* tempPtr33, bytes 0
+                        int* tempPtr37 = createPointer struct other
+                        int* tempPtr39 = addressAdd int* tempPtr37, bytes 0
+                        int temp41 = read int* tempPtr35
+                        int temp42 = read int* tempPtr39
+                        int temp40 = add int temp41, int temp42
                         int* tempPtr44 = createPointer struct self
                         int* tempPtr46 = addressAdd int* tempPtr44, bytes 4
                         int* tempPtr48 = createPointer struct other
@@ -25,7 +25,7 @@
                         int temp63 = read int* tempPtr57
                         int temp64 = read int* tempPtr61
                         int temp62 = add int temp63, int temp64
-                        pass int temp37, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
+                        pass int temp40, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
                         pass int temp51, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
                         pass int temp62, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
                         struct calleeReturnValue74 = call struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
@@ -40,13 +40,13 @@
                         int temp88 = cast autoInt 2
                         flag = isEqual int n, int temp88
                         if(not flag) goto _if_false_l24_c4
-                        int* tempPtr91 = createPointer struct self
-                        int* tempPtr93 = addressAdd int* tempPtr91, bytes 0
-                        void* tempPtr97 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr98 = addressAdd int* arr, void* tempPtr97
-                        int temp100 = read int* tempPtr93
-                        int temp101 = read int* tempPtr98
-                        int temp99 = add int temp100, int temp101
+                        int* tempPtr94 = createPointer struct self
+                        int* tempPtr96 = addressAdd int* tempPtr94, bytes 0
+                        void* tempPtr100 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr101 = addressAdd int* arr, void* tempPtr100
+                        int temp103 = read int* tempPtr96
+                        int temp104 = read int* tempPtr101
+                        int temp102 = add int temp103, int temp104
                         int* tempPtr106 = createPointer struct self
                         int* tempPtr108 = addressAdd int* tempPtr106, bytes 4
                         void* tempPtr112 = addressMultiply autoInt 1, bytes 4
@@ -54,7 +54,7 @@
                         int temp115 = read int* tempPtr108
                         int temp116 = read int* tempPtr113
                         int temp114 = add int temp115, int temp116
-                        pass int temp99, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
+                        pass int temp102, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
                         pass int temp114, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
                         int temp125 = cast autoInt 0
                         pass int temp125, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
@@ -67,13 +67,13 @@
                         int temp139 = cast autoInt 2
                         flag = greaterThan int n, int temp139
                         if(not flag) goto _if_false_l27_c4
-                        int* tempPtr142 = createPointer struct self
-                        int* tempPtr144 = addressAdd int* tempPtr142, bytes 0
-                        void* tempPtr148 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr149 = addressAdd int* arr, void* tempPtr148
-                        int temp151 = read int* tempPtr144
-                        int temp152 = read int* tempPtr149
-                        int temp150 = add int temp151, int temp152
+                        int* tempPtr145 = createPointer struct self
+                        int* tempPtr147 = addressAdd int* tempPtr145, bytes 0
+                        void* tempPtr151 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr152 = addressAdd int* arr, void* tempPtr151
+                        int temp154 = read int* tempPtr147
+                        int temp155 = read int* tempPtr152
+                        int temp153 = add int temp154, int temp155
                         int* tempPtr157 = createPointer struct self
                         int* tempPtr159 = addressAdd int* tempPtr157, bytes 4
                         void* tempPtr163 = addressMultiply autoInt 1, bytes 4
@@ -88,7 +88,7 @@
                         int temp178 = read int* tempPtr171
                         int temp179 = read int* tempPtr176
                         int temp177 = add int temp178, int temp179
-                        pass int temp150, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
+                        pass int temp153, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
                         pass int temp165, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
                         pass int temp177, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
                         struct calleeReturnValue189 = call struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk

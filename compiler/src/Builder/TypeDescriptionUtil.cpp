@@ -44,6 +44,14 @@ TypeDescription getElementType(const TypeDescription& typeDescription)
 {
     TypeDescription modifiedTypeDescription = typeDescription;
 
+    if (!typeDescription.isArrayWithFixedDim())
+    {
+        modifiedTypeDescription.becomeNonPointer();
+        modifiedTypeDescription.dimTypes.clear();
+        modifiedTypeDescription.dimensions.clear();
+        return modifiedTypeDescription;
+    }
+
     modifiedTypeDescription.size /= modifiedTypeDescription.numElements();
 
     modifiedTypeDescription.dimensions.erase(modifiedTypeDescription.dimensions.begin(),

@@ -4,13 +4,13 @@
         "functions": {
             "_fn_CustomOperator_shtk_add": {
                 "icode": [
-                        int* tempPtr160 = createPointer struct LHS
-                        int* tempPtr162 = addressAdd int* tempPtr160, bytes 0
-                        int* tempPtr164 = createPointer struct RHS
-                        int* tempPtr166 = addressAdd int* tempPtr164, bytes 0
-                        int temp168 = read int* tempPtr162
-                        int temp169 = read int* tempPtr166
-                        int temp167 = add int temp168, int temp169
+                        int* tempPtr162 = createPointer struct LHS
+                        int* tempPtr164 = addressAdd int* tempPtr162, bytes 0
+                        int* tempPtr166 = createPointer struct RHS
+                        int* tempPtr168 = addressAdd int* tempPtr166, bytes 0
+                        int temp170 = read int* tempPtr164
+                        int temp171 = read int* tempPtr168
+                        int temp169 = add int temp170, int temp171
                         int* tempPtr173 = createPointer struct LHS
                         int* tempPtr175 = addressAdd int* tempPtr173, bytes 4
                         int* tempPtr177 = createPointer struct RHS
@@ -18,7 +18,7 @@
                         float temp181 = read float* tempPtr175
                         float temp182 = read float* tempPtr179
                         float temp180 = add float temp181, float temp182
-                        pass int temp167, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp169, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp180, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue189 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr192 = createPointer struct returnValue158
@@ -29,13 +29,13 @@
             },
             "_fn_CustomOperator_shtk_bitwiseAnd": {
                 "icode": [
-                        int* tempPtr320 = createPointer struct LHS
-                        int* tempPtr322 = addressAdd int* tempPtr320, bytes 0
-                        int* tempPtr324 = createPointer struct RHS
-                        int* tempPtr326 = addressAdd int* tempPtr324, bytes 0
-                        int temp328 = read int* tempPtr322
-                        int temp329 = read int* tempPtr326
-                        int temp327 = bitwiseAnd int temp328, int temp329
+                        int* tempPtr322 = createPointer struct LHS
+                        int* tempPtr324 = addressAdd int* tempPtr322, bytes 0
+                        int* tempPtr326 = createPointer struct RHS
+                        int* tempPtr328 = addressAdd int* tempPtr326, bytes 0
+                        int temp330 = read int* tempPtr324
+                        int temp331 = read int* tempPtr328
+                        int temp329 = bitwiseAnd int temp330, int temp331
                         int* tempPtr333 = createPointer struct LHS
                         int* tempPtr335 = addressAdd int* tempPtr333, bytes 4
                         int* tempPtr337 = createPointer struct RHS
@@ -43,7 +43,7 @@
                         float temp341 = read float* tempPtr335
                         float temp342 = read float* tempPtr339
                         float temp340 = subtract float temp341, float temp342
-                        pass int temp327, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp329, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp340, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue349 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr352 = createPointer struct returnValue318
@@ -54,13 +54,13 @@
             },
             "_fn_CustomOperator_shtk_bitwiseOr": {
                 "icode": [
-                        int* tempPtr360 = createPointer struct LHS
-                        int* tempPtr362 = addressAdd int* tempPtr360, bytes 0
-                        int* tempPtr364 = createPointer struct RHS
-                        int* tempPtr366 = addressAdd int* tempPtr364, bytes 0
-                        int temp368 = read int* tempPtr362
-                        int temp369 = read int* tempPtr366
-                        int temp367 = bitwiseOr int temp368, int temp369
+                        int* tempPtr362 = createPointer struct LHS
+                        int* tempPtr364 = addressAdd int* tempPtr362, bytes 0
+                        int* tempPtr366 = createPointer struct RHS
+                        int* tempPtr368 = addressAdd int* tempPtr366, bytes 0
+                        int temp370 = read int* tempPtr364
+                        int temp371 = read int* tempPtr368
+                        int temp369 = bitwiseOr int temp370, int temp371
                         int* tempPtr373 = createPointer struct LHS
                         int* tempPtr375 = addressAdd int* tempPtr373, bytes 4
                         int* tempPtr377 = createPointer struct RHS
@@ -68,7 +68,7 @@
                         float temp381 = read float* tempPtr375
                         float temp382 = read float* tempPtr379
                         float temp380 = add float temp381, float temp382
-                        pass int temp367, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp369, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp380, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue389 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr392 = createPointer struct returnValue358
@@ -79,16 +79,16 @@
             },
             "_fn_CustomOperator_shtk_bitwiseOrInteger": {
                 "icode": [
-                        int* tempPtr400 = createPointer struct LHS
-                        int* tempPtr402 = addressAdd int* tempPtr400, bytes 0
-                        int temp405 = read int* tempPtr402
-                        int temp404 = bitwiseOr int temp405, int RHS
+                        int* tempPtr402 = createPointer struct LHS
+                        int* tempPtr404 = addressAdd int* tempPtr402, bytes 0
+                        int temp407 = read int* tempPtr404
+                        int temp406 = bitwiseOr int temp407, int RHS
                         int* tempPtr409 = createPointer struct LHS
                         int* tempPtr411 = addressAdd int* tempPtr409, bytes 4
                         float temp413 = cast int RHS
                         float temp415 = read float* tempPtr411
                         float temp414 = add float temp415, float temp413
-                        pass int temp404, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp406, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp414, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue422 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr425 = createPointer struct returnValue398
@@ -113,13 +113,13 @@
             },
             "_fn_CustomOperator_shtk_divide": {
                 "icode": [
-                        int* tempPtr80 = createPointer struct LHS
-                        int* tempPtr82 = addressAdd int* tempPtr80, bytes 0
-                        int* tempPtr84 = createPointer struct RHS
-                        int* tempPtr86 = addressAdd int* tempPtr84, bytes 0
-                        int temp88 = read int* tempPtr82
-                        int temp89 = read int* tempPtr86
-                        int temp87 = divide int temp88, int temp89
+                        int* tempPtr82 = createPointer struct LHS
+                        int* tempPtr84 = addressAdd int* tempPtr82, bytes 0
+                        int* tempPtr86 = createPointer struct RHS
+                        int* tempPtr88 = addressAdd int* tempPtr86, bytes 0
+                        int temp90 = read int* tempPtr84
+                        int temp91 = read int* tempPtr88
+                        int temp89 = divide int temp90, int temp91
                         int* tempPtr93 = createPointer struct LHS
                         int* tempPtr95 = addressAdd int* tempPtr93, bytes 4
                         int* tempPtr97 = createPointer struct RHS
@@ -127,7 +127,7 @@
                         float temp101 = read float* tempPtr95
                         float temp102 = read float* tempPtr99
                         float temp100 = divide float temp101, float temp102
-                        pass int temp87, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp89, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp100, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue109 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr112 = createPointer struct returnValue78
@@ -138,42 +138,42 @@
             },
             "_fn_CustomOperator_shtk_greaterThan": {
                 "icode": [
-                        int* tempPtr501 = createPointer struct LHS
-                        int* tempPtr503 = addressAdd int* tempPtr501, bytes 0
-                        int* tempPtr505 = createPointer struct LHS
-                        int* tempPtr507 = addressAdd int* tempPtr505, bytes 0
-                        int temp509 = read int* tempPtr503
-                        int temp510 = read int* tempPtr507
-                        int temp508 = multiply int temp509, int temp510
-                        float temp511 = cast int temp508
-                        int* tempPtr513 = createPointer struct LHS
-                        int* tempPtr515 = addressAdd int* tempPtr513, bytes 4
-                        int* tempPtr517 = createPointer struct LHS
-                        int* tempPtr519 = addressAdd int* tempPtr517, bytes 4
-                        float temp521 = read float* tempPtr515
-                        float temp522 = read float* tempPtr519
-                        float temp520 = multiply float temp521, float temp522
-                        float temp523 = add float temp511, float temp520
-                        pass float temp523, float sqrtf, module CustomOperator.shtk
+                        int* tempPtr502 = createPointer struct LHS
+                        int* tempPtr504 = addressAdd int* tempPtr502, bytes 0
+                        int* tempPtr506 = createPointer struct LHS
+                        int* tempPtr508 = addressAdd int* tempPtr506, bytes 0
+                        int temp510 = read int* tempPtr504
+                        int temp511 = read int* tempPtr508
+                        int temp509 = multiply int temp510, int temp511
+                        float temp512 = cast int temp509
+                        int* tempPtr514 = createPointer struct LHS
+                        int* tempPtr516 = addressAdd int* tempPtr514, bytes 4
+                        int* tempPtr518 = createPointer struct LHS
+                        int* tempPtr520 = addressAdd int* tempPtr518, bytes 4
+                        float temp522 = read float* tempPtr516
+                        float temp523 = read float* tempPtr520
+                        float temp521 = multiply float temp522, float temp523
+                        float temp524 = add float temp512, float temp521
+                        pass float temp524, float sqrtf, module CustomOperator.shtk
                         float calleeReturnValue528 = call float sqrtf, module CustomOperator.shtk
                         float LHSLen = equal float calleeReturnValue528
-                        int* tempPtr533 = createPointer struct RHS
-                        int* tempPtr535 = addressAdd int* tempPtr533, bytes 0
-                        int* tempPtr537 = createPointer struct RHS
-                        int* tempPtr539 = addressAdd int* tempPtr537, bytes 0
-                        int temp541 = read int* tempPtr535
-                        int temp542 = read int* tempPtr539
-                        int temp540 = multiply int temp541, int temp542
-                        float temp543 = cast int temp540
-                        int* tempPtr545 = createPointer struct RHS
-                        int* tempPtr547 = addressAdd int* tempPtr545, bytes 4
-                        int* tempPtr549 = createPointer struct RHS
-                        int* tempPtr551 = addressAdd int* tempPtr549, bytes 4
-                        float temp553 = read float* tempPtr547
-                        float temp554 = read float* tempPtr551
-                        float temp552 = multiply float temp553, float temp554
-                        float temp555 = add float temp543, float temp552
-                        pass float temp555, float sqrtf, module CustomOperator.shtk
+                        int* tempPtr534 = createPointer struct RHS
+                        int* tempPtr536 = addressAdd int* tempPtr534, bytes 0
+                        int* tempPtr538 = createPointer struct RHS
+                        int* tempPtr540 = addressAdd int* tempPtr538, bytes 0
+                        int temp542 = read int* tempPtr536
+                        int temp543 = read int* tempPtr540
+                        int temp541 = multiply int temp542, int temp543
+                        float temp544 = cast int temp541
+                        int* tempPtr546 = createPointer struct RHS
+                        int* tempPtr548 = addressAdd int* tempPtr546, bytes 4
+                        int* tempPtr550 = createPointer struct RHS
+                        int* tempPtr552 = addressAdd int* tempPtr550, bytes 4
+                        float temp554 = read float* tempPtr548
+                        float temp555 = read float* tempPtr552
+                        float temp553 = multiply float temp554, float temp555
+                        float temp556 = add float temp544, float temp553
+                        pass float temp556, float sqrtf, module CustomOperator.shtk
                         float calleeReturnValue560 = call float sqrtf, module CustomOperator.shtk
                         float RHSLen = equal float calleeReturnValue560
                         autoInt* tempPtr564 = allocPointer 
@@ -284,13 +284,13 @@
             },
             "_fn_CustomOperator_shtk_leftShift": {
                 "icode": [
-                        int* tempPtr280 = createPointer struct LHS
-                        int* tempPtr282 = addressAdd int* tempPtr280, bytes 0
-                        int* tempPtr284 = createPointer struct RHS
-                        int* tempPtr286 = addressAdd int* tempPtr284, bytes 0
-                        int temp288 = read int* tempPtr282
-                        int temp289 = read int* tempPtr286
-                        int temp287 = leftShift int temp288, int temp289
+                        int* tempPtr282 = createPointer struct LHS
+                        int* tempPtr284 = addressAdd int* tempPtr282, bytes 0
+                        int* tempPtr286 = createPointer struct RHS
+                        int* tempPtr288 = addressAdd int* tempPtr286, bytes 0
+                        int temp290 = read int* tempPtr284
+                        int temp291 = read int* tempPtr288
+                        int temp289 = leftShift int temp290, int temp291
                         int* tempPtr293 = createPointer struct LHS
                         int* tempPtr295 = addressAdd int* tempPtr293, bytes 4
                         int* tempPtr297 = createPointer struct RHS
@@ -298,7 +298,7 @@
                         float temp301 = read float* tempPtr295
                         float temp302 = read float* tempPtr299
                         float temp300 = add float temp301, float temp302
-                        pass int temp287, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp289, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp300, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue309 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr312 = createPointer struct returnValue278
@@ -309,42 +309,42 @@
             },
             "_fn_CustomOperator_shtk_lessThan": {
                 "icode": [
-                        int* tempPtr629 = createPointer struct LHS
-                        int* tempPtr631 = addressAdd int* tempPtr629, bytes 0
-                        int* tempPtr633 = createPointer struct LHS
-                        int* tempPtr635 = addressAdd int* tempPtr633, bytes 0
-                        int temp637 = read int* tempPtr631
-                        int temp638 = read int* tempPtr635
-                        int temp636 = multiply int temp637, int temp638
-                        float temp639 = cast int temp636
-                        int* tempPtr641 = createPointer struct LHS
-                        int* tempPtr643 = addressAdd int* tempPtr641, bytes 4
-                        int* tempPtr645 = createPointer struct LHS
-                        int* tempPtr647 = addressAdd int* tempPtr645, bytes 4
-                        float temp649 = read float* tempPtr643
-                        float temp650 = read float* tempPtr647
-                        float temp648 = multiply float temp649, float temp650
-                        float temp651 = add float temp639, float temp648
-                        pass float temp651, float sqrtf, module CustomOperator.shtk
+                        int* tempPtr630 = createPointer struct LHS
+                        int* tempPtr632 = addressAdd int* tempPtr630, bytes 0
+                        int* tempPtr634 = createPointer struct LHS
+                        int* tempPtr636 = addressAdd int* tempPtr634, bytes 0
+                        int temp638 = read int* tempPtr632
+                        int temp639 = read int* tempPtr636
+                        int temp637 = multiply int temp638, int temp639
+                        float temp640 = cast int temp637
+                        int* tempPtr642 = createPointer struct LHS
+                        int* tempPtr644 = addressAdd int* tempPtr642, bytes 4
+                        int* tempPtr646 = createPointer struct LHS
+                        int* tempPtr648 = addressAdd int* tempPtr646, bytes 4
+                        float temp650 = read float* tempPtr644
+                        float temp651 = read float* tempPtr648
+                        float temp649 = multiply float temp650, float temp651
+                        float temp652 = add float temp640, float temp649
+                        pass float temp652, float sqrtf, module CustomOperator.shtk
                         float calleeReturnValue656 = call float sqrtf, module CustomOperator.shtk
                         float LHSLen = equal float calleeReturnValue656
-                        int* tempPtr661 = createPointer struct RHS
-                        int* tempPtr663 = addressAdd int* tempPtr661, bytes 0
-                        int* tempPtr665 = createPointer struct RHS
-                        int* tempPtr667 = addressAdd int* tempPtr665, bytes 0
-                        int temp669 = read int* tempPtr663
-                        int temp670 = read int* tempPtr667
-                        int temp668 = multiply int temp669, int temp670
-                        float temp671 = cast int temp668
-                        int* tempPtr673 = createPointer struct RHS
-                        int* tempPtr675 = addressAdd int* tempPtr673, bytes 4
-                        int* tempPtr677 = createPointer struct RHS
-                        int* tempPtr679 = addressAdd int* tempPtr677, bytes 4
-                        float temp681 = read float* tempPtr675
-                        float temp682 = read float* tempPtr679
-                        float temp680 = multiply float temp681, float temp682
-                        float temp683 = add float temp671, float temp680
-                        pass float temp683, float sqrtf, module CustomOperator.shtk
+                        int* tempPtr662 = createPointer struct RHS
+                        int* tempPtr664 = addressAdd int* tempPtr662, bytes 0
+                        int* tempPtr666 = createPointer struct RHS
+                        int* tempPtr668 = addressAdd int* tempPtr666, bytes 0
+                        int temp670 = read int* tempPtr664
+                        int temp671 = read int* tempPtr668
+                        int temp669 = multiply int temp670, int temp671
+                        float temp672 = cast int temp669
+                        int* tempPtr674 = createPointer struct RHS
+                        int* tempPtr676 = addressAdd int* tempPtr674, bytes 4
+                        int* tempPtr678 = createPointer struct RHS
+                        int* tempPtr680 = addressAdd int* tempPtr678, bytes 4
+                        float temp682 = read float* tempPtr676
+                        float temp683 = read float* tempPtr680
+                        float temp681 = multiply float temp682, float temp683
+                        float temp684 = add float temp672, float temp681
+                        pass float temp684, float sqrtf, module CustomOperator.shtk
                         float calleeReturnValue688 = call float sqrtf, module CustomOperator.shtk
                         float RHSLen = equal float calleeReturnValue688
                         autoInt* tempPtr692 = allocPointer 
@@ -385,13 +385,13 @@
             },
             "_fn_CustomOperator_shtk_mod": {
                 "icode": [
-                        int* tempPtr120 = createPointer struct LHS
-                        int* tempPtr122 = addressAdd int* tempPtr120, bytes 0
-                        int* tempPtr124 = createPointer struct RHS
-                        int* tempPtr126 = addressAdd int* tempPtr124, bytes 0
-                        int temp128 = read int* tempPtr122
-                        int temp129 = read int* tempPtr126
-                        int temp127 = remainder int temp128, int temp129
+                        int* tempPtr122 = createPointer struct LHS
+                        int* tempPtr124 = addressAdd int* tempPtr122, bytes 0
+                        int* tempPtr126 = createPointer struct RHS
+                        int* tempPtr128 = addressAdd int* tempPtr126, bytes 0
+                        int temp130 = read int* tempPtr124
+                        int temp131 = read int* tempPtr128
+                        int temp129 = remainder int temp130, int temp131
                         int* tempPtr133 = createPointer struct LHS
                         int* tempPtr135 = addressAdd int* tempPtr133, bytes 4
                         int* tempPtr137 = createPointer struct RHS
@@ -399,7 +399,7 @@
                         float temp141 = read float* tempPtr135
                         float temp142 = read float* tempPtr139
                         float temp140 = remainder float temp141, float temp142
-                        pass int temp127, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp129, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp140, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue149 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr152 = createPointer struct returnValue118
@@ -410,13 +410,13 @@
             },
             "_fn_CustomOperator_shtk_multiply": {
                 "icode": [
-                        int* tempPtr40 = createPointer struct LHS
-                        int* tempPtr42 = addressAdd int* tempPtr40, bytes 0
-                        int* tempPtr44 = createPointer struct RHS
-                        int* tempPtr46 = addressAdd int* tempPtr44, bytes 0
-                        int temp48 = read int* tempPtr42
-                        int temp49 = read int* tempPtr46
-                        int temp47 = multiply int temp48, int temp49
+                        int* tempPtr42 = createPointer struct LHS
+                        int* tempPtr44 = addressAdd int* tempPtr42, bytes 0
+                        int* tempPtr46 = createPointer struct RHS
+                        int* tempPtr48 = addressAdd int* tempPtr46, bytes 0
+                        int temp50 = read int* tempPtr44
+                        int temp51 = read int* tempPtr48
+                        int temp49 = multiply int temp50, int temp51
                         int* tempPtr53 = createPointer struct LHS
                         int* tempPtr55 = addressAdd int* tempPtr53, bytes 4
                         int* tempPtr57 = createPointer struct RHS
@@ -424,7 +424,7 @@
                         float temp61 = read float* tempPtr55
                         float temp62 = read float* tempPtr59
                         float temp60 = multiply float temp61, float temp62
-                        pass int temp47, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp49, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp60, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue69 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr72 = createPointer struct returnValue38
@@ -452,13 +452,13 @@
             },
             "_fn_CustomOperator_shtk_rightShift": {
                 "icode": [
-                        int* tempPtr240 = createPointer struct LHS
-                        int* tempPtr242 = addressAdd int* tempPtr240, bytes 0
-                        int* tempPtr244 = createPointer struct RHS
-                        int* tempPtr246 = addressAdd int* tempPtr244, bytes 0
-                        int temp248 = read int* tempPtr242
-                        int temp249 = read int* tempPtr246
-                        int temp247 = rightShift int temp248, int temp249
+                        int* tempPtr242 = createPointer struct LHS
+                        int* tempPtr244 = addressAdd int* tempPtr242, bytes 0
+                        int* tempPtr246 = createPointer struct RHS
+                        int* tempPtr248 = addressAdd int* tempPtr246, bytes 0
+                        int temp250 = read int* tempPtr244
+                        int temp251 = read int* tempPtr248
+                        int temp249 = rightShift int temp250, int temp251
                         int* tempPtr253 = createPointer struct LHS
                         int* tempPtr255 = addressAdd int* tempPtr253, bytes 4
                         int* tempPtr257 = createPointer struct RHS
@@ -466,7 +466,7 @@
                         float temp261 = read float* tempPtr255
                         float temp262 = read float* tempPtr259
                         float temp260 = subtract float temp261, float temp262
-                        pass int temp247, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp249, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp260, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue269 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr272 = createPointer struct returnValue238
@@ -477,13 +477,13 @@
             },
             "_fn_CustomOperator_shtk_subtract": {
                 "icode": [
-                        int* tempPtr200 = createPointer struct LHS
-                        int* tempPtr202 = addressAdd int* tempPtr200, bytes 0
-                        int* tempPtr204 = createPointer struct RHS
-                        int* tempPtr206 = addressAdd int* tempPtr204, bytes 0
-                        int temp208 = read int* tempPtr202
-                        int temp209 = read int* tempPtr206
-                        int temp207 = subtract int temp208, int temp209
+                        int* tempPtr202 = createPointer struct LHS
+                        int* tempPtr204 = addressAdd int* tempPtr202, bytes 0
+                        int* tempPtr206 = createPointer struct RHS
+                        int* tempPtr208 = addressAdd int* tempPtr206, bytes 0
+                        int temp210 = read int* tempPtr204
+                        int temp211 = read int* tempPtr208
+                        int temp209 = subtract int temp210, int temp211
                         int* tempPtr213 = createPointer struct LHS
                         int* tempPtr215 = addressAdd int* tempPtr213, bytes 4
                         int* tempPtr217 = createPointer struct RHS
@@ -491,7 +491,7 @@
                         float temp221 = read float* tempPtr215
                         float temp222 = read float* tempPtr219
                         float temp220 = subtract float temp221, float temp222
-                        pass int temp207, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
+                        pass int temp209, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         pass float temp220, struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         struct calleeReturnValue229 = call struct _fn_CustomOperator_shtk_createFoo, module CustomOperator.shtk
                         int* tempPtr232 = createPointer struct returnValue198
@@ -518,76 +518,76 @@
                         int* tempPtr771 = createPointer struct b
                         int* tempPtr772 = createPointer struct calleeReturnValue768
                         int* tempPtr771 = memoryCopy int* tempPtr772, autoInt 8
-                        int* tempPtr778 = createPointer struct a
-                        passPointer int* tempPtr778, struct _fn_CustomOperator_shtk_multiply, module CustomOperator.shtk
-                        int* tempPtr781 = createPointer struct b
-                        passPointer int* tempPtr781, struct _fn_CustomOperator_shtk_multiply, module CustomOperator.shtk
-                        struct calleeReturnValue784 = call struct _fn_CustomOperator_shtk_multiply, module CustomOperator.shtk
-                        int* tempPtr789 = createPointer struct calleeReturnValue784
+                        int* tempPtr779 = createPointer struct a
+                        passPointer int* tempPtr779, struct _fn_CustomOperator_shtk_multiply, module CustomOperator.shtk
+                        int* tempPtr782 = createPointer struct b
+                        passPointer int* tempPtr782, struct _fn_CustomOperator_shtk_multiply, module CustomOperator.shtk
+                        struct calleeReturnValue785 = call struct _fn_CustomOperator_shtk_multiply, module CustomOperator.shtk
+                        int* tempPtr789 = createPointer struct calleeReturnValue785
                         passPointer int* tempPtr789, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue792 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
-                        int* tempPtr799 = createPointer struct a
-                        passPointer int* tempPtr799, struct _fn_CustomOperator_shtk_divide, module CustomOperator.shtk
-                        int* tempPtr802 = createPointer struct b
-                        passPointer int* tempPtr802, struct _fn_CustomOperator_shtk_divide, module CustomOperator.shtk
-                        struct calleeReturnValue805 = call struct _fn_CustomOperator_shtk_divide, module CustomOperator.shtk
-                        int* tempPtr810 = createPointer struct calleeReturnValue805
+                        int* tempPtr800 = createPointer struct a
+                        passPointer int* tempPtr800, struct _fn_CustomOperator_shtk_divide, module CustomOperator.shtk
+                        int* tempPtr803 = createPointer struct b
+                        passPointer int* tempPtr803, struct _fn_CustomOperator_shtk_divide, module CustomOperator.shtk
+                        struct calleeReturnValue806 = call struct _fn_CustomOperator_shtk_divide, module CustomOperator.shtk
+                        int* tempPtr810 = createPointer struct calleeReturnValue806
                         passPointer int* tempPtr810, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue813 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
-                        int* tempPtr820 = createPointer struct a
-                        passPointer int* tempPtr820, struct _fn_CustomOperator_shtk_mod, module CustomOperator.shtk
-                        int* tempPtr823 = createPointer struct b
-                        passPointer int* tempPtr823, struct _fn_CustomOperator_shtk_mod, module CustomOperator.shtk
-                        struct calleeReturnValue826 = call struct _fn_CustomOperator_shtk_mod, module CustomOperator.shtk
-                        int* tempPtr831 = createPointer struct calleeReturnValue826
+                        int* tempPtr821 = createPointer struct a
+                        passPointer int* tempPtr821, struct _fn_CustomOperator_shtk_mod, module CustomOperator.shtk
+                        int* tempPtr824 = createPointer struct b
+                        passPointer int* tempPtr824, struct _fn_CustomOperator_shtk_mod, module CustomOperator.shtk
+                        struct calleeReturnValue827 = call struct _fn_CustomOperator_shtk_mod, module CustomOperator.shtk
+                        int* tempPtr831 = createPointer struct calleeReturnValue827
                         passPointer int* tempPtr831, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue834 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
-                        int* tempPtr841 = createPointer struct a
-                        passPointer int* tempPtr841, struct _fn_CustomOperator_shtk_add, module CustomOperator.shtk
-                        int* tempPtr844 = createPointer struct b
-                        passPointer int* tempPtr844, struct _fn_CustomOperator_shtk_add, module CustomOperator.shtk
-                        struct calleeReturnValue847 = call struct _fn_CustomOperator_shtk_add, module CustomOperator.shtk
-                        int* tempPtr852 = createPointer struct calleeReturnValue847
+                        int* tempPtr842 = createPointer struct a
+                        passPointer int* tempPtr842, struct _fn_CustomOperator_shtk_add, module CustomOperator.shtk
+                        int* tempPtr845 = createPointer struct b
+                        passPointer int* tempPtr845, struct _fn_CustomOperator_shtk_add, module CustomOperator.shtk
+                        struct calleeReturnValue848 = call struct _fn_CustomOperator_shtk_add, module CustomOperator.shtk
+                        int* tempPtr852 = createPointer struct calleeReturnValue848
                         passPointer int* tempPtr852, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue855 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
-                        int* tempPtr862 = createPointer struct a
-                        passPointer int* tempPtr862, struct _fn_CustomOperator_shtk_subtract, module CustomOperator.shtk
-                        int* tempPtr865 = createPointer struct b
-                        passPointer int* tempPtr865, struct _fn_CustomOperator_shtk_subtract, module CustomOperator.shtk
-                        struct calleeReturnValue868 = call struct _fn_CustomOperator_shtk_subtract, module CustomOperator.shtk
-                        int* tempPtr873 = createPointer struct calleeReturnValue868
+                        int* tempPtr863 = createPointer struct a
+                        passPointer int* tempPtr863, struct _fn_CustomOperator_shtk_subtract, module CustomOperator.shtk
+                        int* tempPtr866 = createPointer struct b
+                        passPointer int* tempPtr866, struct _fn_CustomOperator_shtk_subtract, module CustomOperator.shtk
+                        struct calleeReturnValue869 = call struct _fn_CustomOperator_shtk_subtract, module CustomOperator.shtk
+                        int* tempPtr873 = createPointer struct calleeReturnValue869
                         passPointer int* tempPtr873, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue876 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
-                        int* tempPtr883 = createPointer struct a
-                        passPointer int* tempPtr883, struct _fn_CustomOperator_shtk_rightShift, module CustomOperator.shtk
-                        int* tempPtr886 = createPointer struct b
-                        passPointer int* tempPtr886, struct _fn_CustomOperator_shtk_rightShift, module CustomOperator.shtk
-                        struct calleeReturnValue889 = call struct _fn_CustomOperator_shtk_rightShift, module CustomOperator.shtk
-                        int* tempPtr894 = createPointer struct calleeReturnValue889
+                        int* tempPtr884 = createPointer struct a
+                        passPointer int* tempPtr884, struct _fn_CustomOperator_shtk_rightShift, module CustomOperator.shtk
+                        int* tempPtr887 = createPointer struct b
+                        passPointer int* tempPtr887, struct _fn_CustomOperator_shtk_rightShift, module CustomOperator.shtk
+                        struct calleeReturnValue890 = call struct _fn_CustomOperator_shtk_rightShift, module CustomOperator.shtk
+                        int* tempPtr894 = createPointer struct calleeReturnValue890
                         passPointer int* tempPtr894, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue897 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
-                        int* tempPtr904 = createPointer struct a
-                        passPointer int* tempPtr904, struct _fn_CustomOperator_shtk_leftShift, module CustomOperator.shtk
-                        int* tempPtr907 = createPointer struct b
-                        passPointer int* tempPtr907, struct _fn_CustomOperator_shtk_leftShift, module CustomOperator.shtk
-                        struct calleeReturnValue910 = call struct _fn_CustomOperator_shtk_leftShift, module CustomOperator.shtk
-                        int* tempPtr915 = createPointer struct calleeReturnValue910
+                        int* tempPtr905 = createPointer struct a
+                        passPointer int* tempPtr905, struct _fn_CustomOperator_shtk_leftShift, module CustomOperator.shtk
+                        int* tempPtr908 = createPointer struct b
+                        passPointer int* tempPtr908, struct _fn_CustomOperator_shtk_leftShift, module CustomOperator.shtk
+                        struct calleeReturnValue911 = call struct _fn_CustomOperator_shtk_leftShift, module CustomOperator.shtk
+                        int* tempPtr915 = createPointer struct calleeReturnValue911
                         passPointer int* tempPtr915, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue918 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
-                        int* tempPtr925 = createPointer struct a
-                        passPointer int* tempPtr925, struct _fn_CustomOperator_shtk_bitwiseAnd, module CustomOperator.shtk
-                        int* tempPtr928 = createPointer struct b
-                        passPointer int* tempPtr928, struct _fn_CustomOperator_shtk_bitwiseAnd, module CustomOperator.shtk
-                        struct calleeReturnValue931 = call struct _fn_CustomOperator_shtk_bitwiseAnd, module CustomOperator.shtk
-                        int* tempPtr936 = createPointer struct calleeReturnValue931
+                        int* tempPtr926 = createPointer struct a
+                        passPointer int* tempPtr926, struct _fn_CustomOperator_shtk_bitwiseAnd, module CustomOperator.shtk
+                        int* tempPtr929 = createPointer struct b
+                        passPointer int* tempPtr929, struct _fn_CustomOperator_shtk_bitwiseAnd, module CustomOperator.shtk
+                        struct calleeReturnValue932 = call struct _fn_CustomOperator_shtk_bitwiseAnd, module CustomOperator.shtk
+                        int* tempPtr936 = createPointer struct calleeReturnValue932
                         passPointer int* tempPtr936, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue939 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
-                        int* tempPtr946 = createPointer struct a
-                        passPointer int* tempPtr946, struct _fn_CustomOperator_shtk_bitwiseOr, module CustomOperator.shtk
-                        int* tempPtr949 = createPointer struct b
-                        passPointer int* tempPtr949, struct _fn_CustomOperator_shtk_bitwiseOr, module CustomOperator.shtk
-                        struct calleeReturnValue952 = call struct _fn_CustomOperator_shtk_bitwiseOr, module CustomOperator.shtk
-                        int* tempPtr957 = createPointer struct calleeReturnValue952
+                        int* tempPtr947 = createPointer struct a
+                        passPointer int* tempPtr947, struct _fn_CustomOperator_shtk_bitwiseOr, module CustomOperator.shtk
+                        int* tempPtr950 = createPointer struct b
+                        passPointer int* tempPtr950, struct _fn_CustomOperator_shtk_bitwiseOr, module CustomOperator.shtk
+                        struct calleeReturnValue953 = call struct _fn_CustomOperator_shtk_bitwiseOr, module CustomOperator.shtk
+                        int* tempPtr957 = createPointer struct calleeReturnValue953
                         passPointer int* tempPtr957, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue960 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         autoInt* tempPtr963 = allocPointer 
@@ -692,12 +692,12 @@
                         autoInt temp1094 = read autoInt* tempPtr1073
                         print autoInt temp1094
                         newLine
-                        int* tempPtr1099 = createPointer struct a
-                        passPointer int* tempPtr1099, struct _fn_CustomOperator_shtk_bitwiseOrInteger, module CustomOperator.shtk
-                        int temp1102 = cast autoInt 2
-                        pass int temp1102, struct _fn_CustomOperator_shtk_bitwiseOrInteger, module CustomOperator.shtk
-                        struct calleeReturnValue1105 = call struct _fn_CustomOperator_shtk_bitwiseOrInteger, module CustomOperator.shtk
-                        int* tempPtr1110 = createPointer struct calleeReturnValue1105
+                        int* tempPtr1100 = createPointer struct a
+                        passPointer int* tempPtr1100, struct _fn_CustomOperator_shtk_bitwiseOrInteger, module CustomOperator.shtk
+                        int temp1103 = cast autoInt 2
+                        pass int temp1103, struct _fn_CustomOperator_shtk_bitwiseOrInteger, module CustomOperator.shtk
+                        struct calleeReturnValue1106 = call struct _fn_CustomOperator_shtk_bitwiseOrInteger, module CustomOperator.shtk
+                        int* tempPtr1110 = createPointer struct calleeReturnValue1106
                         passPointer int* tempPtr1110, void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         void calleeReturnValue1113 = call void _fn_CustomOperator_shtk_printFoo, module CustomOperator.shtk
                         int* tempPtr1120 = createPointer struct a

@@ -11,7 +11,7 @@
             },
             "main": {
                 "icode": [
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 100}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "literal", "id": 12, "dtype": "autoInt", "value": 100}, "op3": {"type": "none"}},
                     {"opcode": "pass", "op1": {"type": "temp", "id": 16, "dtype": "int"}, "op2": {"type": "var", "id": 17, "name": "add", "dtype": "int"}, "op3": {"type": "module", "id": 18, "name": "ExternCFunction.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 19, "dtype": "int"}, "op2": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 50}, "op3": {"type": "none"}},
                     {"opcode": "pass", "op1": {"type": "temp", "id": 19, "dtype": "int"}, "op2": {"type": "var", "id": 20, "name": "add", "dtype": "int"}, "op3": {"type": "module", "id": 21, "name": "ExternCFunction.shtk"}},

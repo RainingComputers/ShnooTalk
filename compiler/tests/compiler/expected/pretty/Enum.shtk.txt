@@ -4,16 +4,16 @@
         "functions": {
             "main": {
                 "icode": [
-                        int temp4 = cast enum 0
-                        pass int temp4, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp6 = cast enum 0
+                        pass int temp6, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                         pass enum 0, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                         void calleeReturnValue14 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp18 = cast enum 1
-                        pass int temp18, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp20 = cast enum 1
+                        pass int temp20, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                         pass enum 1, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                         void calleeReturnValue28 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
-                        int temp32 = cast enum 2
-                        pass int temp32, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
+                        int temp34 = cast enum 2
+                        pass int temp34, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                         pass enum 1, void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                         void calleeReturnValue42 = call void _fn_TestModules_Digital_shtk_digitalWrite, module TestModules/Digital.shtk
                         int temp47 = cast autoInt 0

@@ -78,10 +78,10 @@
                         int temp103 = cast autoInt 10
                         flag = lessThan int i, int temp103
                         if(not flag) goto _for_false_l36_c4
-                        int* tempPtr106 = createPointer struct* vecArray
-                        void* tempPtr108 = addressMultiply int i, bytes 8
-                        int* tempPtr109 = addressAdd int* tempPtr106, void* tempPtr108
-                        int* tempPtr112 = createPointer int* tempPtr109
+                        int* tempPtr107 = createPointer struct* vecArray
+                        void* tempPtr109 = addressMultiply int i, bytes 8
+                        int* tempPtr110 = addressAdd int* tempPtr107, void* tempPtr109
+                        int* tempPtr112 = createPointer int* tempPtr110
                         passPointer int* tempPtr112, void _fn_StructPointerReturn_shtk_printVec, module StructPointerReturn.shtk
                         void calleeReturnValue115 = call void _fn_StructPointerReturn_shtk_printVec, module StructPointerReturn.shtk
                     _for_cont_true_l36_c4:
