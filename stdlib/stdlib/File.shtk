@@ -62,7 +62,7 @@ fn read(self: File) -> Result[String, StdlibError]
                 break
         }
 
-        contents = contents + line
+        contents += line
     }
 
     return ok(contents)
