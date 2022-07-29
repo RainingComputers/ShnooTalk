@@ -26,6 +26,13 @@ fn fail(error: E) -> Result
     return self
 }
 
+fn failFrom(error: Error[E]) -> Result
+{
+    var self: Result
+    self.error = error
+    return self
+}
+
 fn hasValue(self: Result) -> bool
 {
     return not self.error.isNonZero()

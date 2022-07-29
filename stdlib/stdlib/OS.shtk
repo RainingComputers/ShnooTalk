@@ -4,7 +4,7 @@ from "../stdlib/Panic.shtk" use panic
 from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
 from "../stdlib/Pair.shtk" use Pair, pair
 from "../stdlib/Triple.shtk" use Triple, triple
-from "../stdlib/Result.shtk" use Result, fail, ok
+from "../stdlib/Result.shtk" use Result, fail, failFrom, ok
 from "../stdlib/Optional.shtk" use Optional, none, some
 from "../stdlib/RawPointerUtils.shtk" use nullptrArray
 from "../stdlib/Error.shtk" use Error
@@ -43,12 +43,12 @@ fn system(command: String) -> Result[Pair[String, int], StdlibError]
     const [file, err1] := _popen(command)
 
     if err1
-        return fail(err1.get())
+        return failFrom(err1)
     
     const [output, err2] := file.read()
 
     if err2
-        return fail(err2.get())
+        return failFrom(err2)
 
     const pcloseRet := libc::pclose(file.libcFile)
 
