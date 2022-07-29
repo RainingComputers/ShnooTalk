@@ -40,7 +40,7 @@ fn isNonZero(self: Error) -> bool
     return not self._nil
 }
 
-fn getError(self: Error) -> E
+fn get(self: Error) -> E
 {
     return self._error
 }

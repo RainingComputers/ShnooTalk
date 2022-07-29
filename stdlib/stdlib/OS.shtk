@@ -43,12 +43,12 @@ fn system(command: String) -> Result[Pair[String, int], StdlibError]
     const [file, err1] := _popen(command)
 
     if err1
-        return fail(err1.getError())
+        return fail(err1.get())
     
     const [output, err2] := file.read()
 
     if err2
-        return fail(err2.getError())
+        return fail(err2.get())
 
     const pcloseRet := libc::pclose(file.libcFile)
 

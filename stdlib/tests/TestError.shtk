@@ -8,7 +8,7 @@ fn main() -> int
     if a println("This should not be printed")
 
     const b := error[TestErrorEnum](TEST_ERROR_1)
-    println(b.getError() == TEST_ERROR_1)
+    println(b.get() == TEST_ERROR_1)
     if b println("This should be printed")
 
     return 0

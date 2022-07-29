@@ -19,7 +19,7 @@ fn main() -> int
     println(b | 100)
 
     const [itemB, errB] := b
-    println(errB.getError() == TEST_ERROR_1)
+    println(errB.get() == TEST_ERROR_1)
 
     const c := a | b
     println(c.hasValue())
@@ -28,7 +28,7 @@ fn main() -> int
     const d := fail[int, TestErrorEnum](TEST_ERROR_0)
     const e := d | b
     const [itemE, errE] := e
-    println(errE.getError() == TEST_ERROR_0)
+    println(errE.get() == TEST_ERROR_0)
 
     return 0
 }
