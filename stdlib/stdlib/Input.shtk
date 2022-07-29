@@ -17,7 +17,7 @@ fn input() -> Result[String, StdlibError]
 
         if intChar < 0 {
             free[char](ptr)
-            return fail[String, StdlibError](OSError)
+            return fail(OSError)
         }
 
         if i == currentSize - 1 {
@@ -38,5 +38,5 @@ fn input() -> Result[String, StdlibError]
     }
 
     const line := stringFromPreAllocated(ptr, currentSize, i-1)
-    return ok[String, StdlibError](line)
+    return ok(line)
 }

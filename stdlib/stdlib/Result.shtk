@@ -15,14 +15,14 @@ fn ok(item: T) -> Result
 {
     var self: Result
     self.item = item
-    self.error = nil[E]()
+    self.error = nil()
     return self
 }
 
 fn fail(error: E) -> Result
 {
     var self: Result
-    self.error = error[E](error)
+    self.error = error(error)
     return self
 }
 

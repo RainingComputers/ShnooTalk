@@ -14,7 +14,7 @@ fn allocateHeap(capacity: ulong) -> SharedPointer
     var self: SharedPointer
 
     self._count = createCounter()
-    self._slice = allocateHeap[T](capacity)
+    self._slice = allocateHeap(capacity)
 
     return self
 }
@@ -24,7 +24,7 @@ fn fromPreAllocated(buffer: T[], bufferLength: ulong) -> SharedPointer
     var self: SharedPointer
 
     self._count = createCounter()
-    self._slice = slice[T](buffer, bufferLength)
+    self._slice = slice(buffer, bufferLength)
 
     return self
 }

@@ -4,7 +4,7 @@ from "../stdlib/ErrorTypes.shtk" use StdlibError, OSError
 fn _intToError(n: int) -> Error[StdlibError]
 {
     if n < 0 
-        return error[StdlibError](OSError)
+        return error(OSError)
     
-    return nil[StdlibError]()
+    return nil()
 }

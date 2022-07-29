@@ -14,12 +14,12 @@ from "../stdlib/_ErrorUtils.shtk" use _intToError
 fn getArg(argc: int, argv: ulong[], idx: int) -> Optional[String]
 {
     if idx > argc
-        return none[String]()
+        return none()
 
     const arg: char[] <- char[]`(argv[idx] + 0)
     const length := libc::strlen(arg)
 
-    return some[String](string(arg, length+1))
+    return some(string(arg, length+1))
 }
 
 fn panicString(message: String, status: int)
@@ -33,9 +33,9 @@ fn _popen(command: String) -> Result[File, StdlibError]
     file.libcFile <- libc::popen(command.toCharArray(), "r")
 
     if not addr(file.libcFile)
-        return fail[File, StdlibError](OSError)
+        return fail(OSError)
 
-    return ok[File, StdlibError](file)
+    return ok(file)
 }
 
 fn system(command: String) -> Result[Pair[String, int], StdlibError]
@@ -43,21 +43,21 @@ fn system(command: String) -> Result[Pair[String, int], StdlibError]
     const [file, err1] := _popen(command)
 
     if err1
-        return fail[Pair[String, int], StdlibError](err1.getError())
+        return fail(err1.getError())
     
     const [output, err2] := file.read()
 
     if err2
-        return fail[Pair[String, int], StdlibError](err2.getError())
+        return fail(err2.getError())
 
     const pcloseRet := libc::pclose(file.libcFile)
 
     if pcloseRet < 0
-        return fail[Pair[String, int], StdlibError](OSError)
+        return fail(OSError)
 
     const exitCode := (pcloseRet & 0xff00) >> 8
 
-    return ok[Pair[String, int], StdlibError](pair[String, int](output, exitCode))
+    return ok(pair(output, exitCode))
 }
 
 fn getEnv(key: String) -> Optional[String]
@@ -65,13 +65,13 @@ fn getEnv(key: String) -> Optional[String]
     const valPtr: char[] <- libc::getenv(key.toCharArray())
     
     if not addr(valPtr)
-        return none[String]()
+        return none()
     
     const length := libc::strlen(valPtr)
 
     const val := string(valPtr, length+1)
 
-    return some[String](val)
+    return some(val)
 }
 
 fn getcwd() -> Optional[String]
@@ -79,11 +79,11 @@ fn getcwd() -> Optional[String]
     const charArray: char[] <- libc::getcwd(nullptrArray[char](), 0) 
 
     if not addr(charArray)
-        return none[String]()
+        return none()
 
     const length := libc::strlen(charArray)
 
-    return some[String](stringFromPreAllocated(charArray, length+1, length))
+    return some(stringFromPreAllocated(charArray, length+1, length))
 }
 
 

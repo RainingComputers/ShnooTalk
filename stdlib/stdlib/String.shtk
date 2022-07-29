@@ -23,7 +23,7 @@ fn string(charArray: char[], lengthIncNull: ulong) -> String
     const capacity := lengthIncNull * 2 
 
     self._length = length
-    self._sp = allocateHeap[char](capacity)
+    self._sp = allocateHeap(capacity)
     self._sp.copy(charArray, lengthIncNull)
     self._sp.setItem(length, '\0')
 
@@ -35,7 +35,7 @@ fn stringFromPreAllocated(charArray: char[], bufferLength: ulong, length: ulong)
     var self: String
 
     self._length = length
-    self._sp = fromPreAllocated[char](charArray, bufferLength)
+    self._sp = fromPreAllocated(charArray, bufferLength)
     
     return self
 }
@@ -214,13 +214,13 @@ fn _startsWithOffset(self: String, other: String, offset: ulong) -> bool
 fn find(self: String, other: String) -> Optional[ulong]
 {
     if self.length() < other.length()
-        return none[ulong]()
+        return none()
     
     for var i: ulong = 0; i <= (self.length() - other.length()); i += 1
         if self._startsWithOffset(other, i)
-            return some[ulong](i)
+            return some(i)
 
-    return none[ulong]()
+    return none()
 }
 
 fn subString(self: String, range: ulong[2]) -> String
@@ -260,33 +260,33 @@ fn strip(self: String) -> String
 fn parseInt(self: String) -> Optional[int]
 {
     if not self.isInteger()
-        return none[int]()
+        return none()
 
-    return some[int](libc::atoi(self.toCharArray()))
+    return some(libc::atoi(self.toCharArray()))
 }
 
 fn parseLong(self: String) -> Optional[long]
 {
     if not self.isInteger()
-        return none[long]()
+        return none()
 
-    return some[long](libc::atol(self.toCharArray()))
+    return some(libc::atol(self.toCharArray()))
 }
 
 fn parseFloat(self: String) -> Optional[float]
 {
     if not self.isNumber()
-        return none[float]()
+        return none()
 
-    return some[float](float`libc::atof(self.toCharArray()))
+    return some(float`libc::atof(self.toCharArray()))
 }
 
 fn parseDouble(self: String) -> Optional[double]
 {
     if not self.isNumber()
-        return none[double]()
+        return none()
 
-    return some[double](libc::atof(self.toCharArray()))
+    return some(libc::atof(self.toCharArray()))
 }
 
 fn isEqual(self: String, other: String) -> bool
