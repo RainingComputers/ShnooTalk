@@ -8,3 +8,5 @@ getcwd 1
 rmdir foobar 0
 mkdir foobar 0
 rmdir foobar 0
+getenv LLC_BIN 1
+getenv DOES_NOT_EXIST 0

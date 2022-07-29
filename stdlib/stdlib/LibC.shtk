@@ -72,3 +72,5 @@ extfn fputs(content: char[], file: FILE*) -> int
 extfn feof(file: FILE*) -> int
 extfn getchar() -> int
 
+extfn popen(command: char[], mode: char[]) -> FILE*
+extfn pclose(file: FILE*) -> int

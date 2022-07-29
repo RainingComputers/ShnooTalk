@@ -22,5 +22,16 @@ fn main(argc: int, argv: ulong[]) -> int
     println("getenv LLC_BIN", os::getEnv("PATH".string()).expect().length() > 0)
     println("getenv DOES_NOT_EXIST", os::getEnv("DOES_NOT_EXIST").hasValue())
 
+
+    const sysTestCmd1 := "echo \"Hello world\"".string()
+    const sysTest1 := os::system(sysTestCmd1).expect()
+    println("system", sysTestCmd1.toCharArray())
+    println(sysTest1.first.toCharArray(), sysTest1.second)
+
+    const sysTestCmd2 := "echo \"NANI\" && exit 1".string()
+    const sysTest2 := os::system(sysTestCmd2).expect()
+    println("system", sysTestCmd2.toCharArray())
+    println(sysTest2.first.toCharArray(), sysTest2.second)
+
     return 0
 }

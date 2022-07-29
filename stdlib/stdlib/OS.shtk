@@ -1,12 +1,14 @@
 use "../stdlib/LibC.shtk" as libc
+from "../stdlib/File.shtk" use File
 from "../stdlib/Panic.shtk" use panic
 from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
 from "../stdlib/Pair.shtk" use Pair, pair
 from "../stdlib/Triple.shtk" use Triple, triple
+from "../stdlib/Result.shtk" use Result, fail, ok
 from "../stdlib/Optional.shtk" use Optional, none, some
 from "../stdlib/RawPointerUtils.shtk" use nullptrArray
 from "../stdlib/Error.shtk" use Error
-from "../stdlib/ErrorTypes.shtk" use StdlibError
+from "../stdlib/ErrorTypes.shtk" use StdlibError, OSError
 from "../stdlib/_ErrorUtils.shtk" use _intToError
 
 fn getArg(argc: int, argv: ulong[], idx: int) -> Optional[String]
@@ -25,16 +27,37 @@ fn panicString(message: String, status: int)
     panic(message.toCharArray(), status)
 }
 
-fn system(command: String) -> Pair[String, int]
+fn _popen(command: String) -> Result[File, StdlibError]
 {
-    # TODO
-    return pair[String, int]("".string(), 0)
+    var file: File
+    file.libcFile <- libc::popen(command.toCharArray(), "r")
+
+    if not addr(file.libcFile)
+        return fail[File, StdlibError](OSError)
+
+    return ok[File, StdlibError](file)
 }
 
-fn systemWithTimeout(command: String, milliseconds: uint) -> Triple[String, int, bool]
+fn system(command: String) -> Result[Pair[String, int], StdlibError]
 {
-    # TODO
-    return triple[String, int, bool]("".string(), 0, false)
+    const [file, err1] := _popen(command)
+
+    if err1
+        return fail[Pair[String, int], StdlibError](err1.getError())
+    
+    const [output, err2] := file.read()
+
+    if err2
+        return fail[Pair[String, int], StdlibError](err2.getError())
+
+    const pcloseRet := libc::pclose(file.libcFile)
+
+    if pcloseRet < 0
+        return fail[Pair[String, int], StdlibError](OSError)
+
+    const exitCode := (pcloseRet & 0xff00) >> 8
+
+    return ok[Pair[String, int], StdlibError](pair[String, int](output, exitCode))
 }
 
 fn getEnv(key: String) -> Optional[String]
