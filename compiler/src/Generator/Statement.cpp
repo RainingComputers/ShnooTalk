@@ -181,9 +181,9 @@ std::vector<Unit> forEachLoopInitItemNamedDestructure(generator::GeneratorContex
 
     for (const auto& fieldNameAndType : mappedTypes)
     {
-        auto result = std::find_if(nameTokens.begin(),
-                                   nameTokens.end(),
-                                   [fieldNameAndType](Token tok) { return tok.toString() == fieldNameAndType.first; });
+        auto result = std::find_if(nameTokens.begin(), nameTokens.end(), [fieldNameAndType](Token tok) {
+            return tok.toString() == fieldNameAndType.first;
+        });
 
         if (result == nameTokens.end())
             ctx.console.internalBugErrorOnToken(root.tok);

@@ -22,8 +22,11 @@ void createFunctionFromNode(generator::GeneratorContext& ctx, const Node& root)
     std::vector<Token> paramNames;
     std::vector<icode::TypeDescription> paramTypes;
 
-    for (size_t i = 1; root.children[i].isParamNode(); i += 1)
+    for (size_t i = 1; i < root.children.size(); i += 1)
     {
+        if (!root.children[i].isParamNode())
+            break;
+
         const Token paramName = root.children[i].getNthChildToken(0);
         TypeDescription paramType = getParamType(ctx, root.children[i]);
 
