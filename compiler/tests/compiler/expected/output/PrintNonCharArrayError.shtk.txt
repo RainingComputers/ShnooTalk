@@ -3,6 +3,6 @@ ERROR in Line 5 Col 13
 
     println(a)
             ^
-Cannot print string or multi dimensional array or non char array
+Cannot print arrays that are not single dimensional char array
 
 PrintNonCharArrayError.shtk:5:12

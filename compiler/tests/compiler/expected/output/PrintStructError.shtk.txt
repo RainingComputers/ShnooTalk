@@ -3,6 +3,6 @@ ERROR in Line 8 Col 13
 
     println(a)
             ^
-Cannot print string or multi dimensional array or non char array
+Cannot print type without 'toCharArray' or 'toString' method
 
 PrintStructError.shtk:8:12

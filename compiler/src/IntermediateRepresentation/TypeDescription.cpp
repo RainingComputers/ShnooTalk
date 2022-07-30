@@ -136,6 +136,11 @@ namespace icode
         return isArray() && dimTypes.back() != ALLOC_FLEXIBLE_DIM;
     }
 
+    bool TypeDescription::isSingleDimCharArray() const
+    {
+        return dimensions.size() == 1 && dtype == UI8;
+    }
+
     bool TypeDescription::isStructOrArray() const
     {
         return isStruct() || isArray();

@@ -68,6 +68,7 @@ namespace icode
         bool isArray() const;
         bool isParam() const;
         bool isArrayWithFixedDim() const;
+        bool isSingleDimCharArray() const;
         bool isStructOrArray() const;
         bool isStructOrArrayAndNotPointer() const;
         bool isMultiDimArray() const;

@@ -100,7 +100,7 @@ bool Unit::isStringLtrl() const
     return typeDescription.checkProperty(IS_STRING_LTRL);
 }
 
-bool Unit::isChar() const
+bool Unit::isChar() const // TODO remove this
 {
     return typeDescription.dtype == UI8;
 }
