@@ -2,13 +2,13 @@ from "../stdlib/String.shtk" use string, String
 
 fn testStringArgCoercion(str: String)
 {
-    println(str.toCharArray())
+    println(str)
 }
 
 fn main() -> int
 {
     const test := "abcdef".string()
-    println(test[[5, 1]].toCharArray())
+    println(test[[5, 1]])
 
 
     return 0

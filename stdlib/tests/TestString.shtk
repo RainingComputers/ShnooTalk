@@ -2,7 +2,7 @@ from "../stdlib/String.shtk" use string, String
 
 fn testStringArgCoercion(str: String)
 {
-    println(str.toCharArray())
+    println(str)
 }
 
 fn main() -> int
@@ -10,7 +10,7 @@ fn main() -> int
     const a := "Hello world".string()
 
     println(a.length())
-    println(a.toCharArray())
+    println(a)
     println(a[4])
 
     testStringArgCoercion("Coerce this to string type")
@@ -48,10 +48,10 @@ fn main() -> int
     println("-..345".string().isNumber())
 
     println("lower test")
-    println("567aav[.]--0ABCD".string().lower().toCharArray())
+    println("567aav[.]--0ABCD".string().lower())
 
     println("upper test")
-    println("567AAV[.]--0abcd".string().upper().toCharArray())
+    println("567AAV[.]--0abcd".string().upper())
 
     println("startsWith test")
     println("abcdef".string().startsWith("abc"))
@@ -71,27 +71,27 @@ fn main() -> int
     println("abcdef".string().find("abc").expect())
 
     println("subString test")
-    println("abcdef".string().subString([1, 4]).toCharArray())
+    println("abcdef".string().subString([1, 4]))
     const test := "abcdef".string()
-    println(test[[1, 5]].toCharArray())
+    println(test[[1, 5]])
 
     println("strip test")
-    println("   abcdef   ".string().strip().toCharArray())
-    println("abcdef   ".string().strip().toCharArray())
-    println("   abcdef".string().strip().toCharArray())
-    println("a".string().strip().toCharArray())
-    println(" a".string().strip().toCharArray())
-    println("a ".string().strip().toCharArray())
-    println("   a  ".string().strip().toCharArray())
-    println(" ".string().strip().toCharArray())
-    println("".string().strip().toCharArray())
+    println("   abcdef   ".string().strip())
+    println("abcdef   ".string().strip())
+    println("   abcdef".string().strip())
+    println("a".string().strip())
+    println(" a".string().strip())
+    println("a ".string().strip())
+    println("   a  ".string().strip())
+    println(" ".string().strip())
+    println("".string().strip())
 
     println("add test")
     const hello := "hello".string() + " world".string()
-    println(hello.toCharArray())
+    println(hello)
     var hello2 := "hello".string()
     hello2 += " world".string()
-    println(hello2.toCharArray())
+    println(hello2)
 
     println("relational operators")
     println("abcdef".string() > "bcdef".string())

@@ -1,6 +1,6 @@
 use "../stdlib/LibC.shtk" as libc
+use "../stdlib/Panic.shtk" as panic
 from "../stdlib/File.shtk" use File
-from "../stdlib/Panic.shtk" use panic
 from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
 from "../stdlib/Pair.shtk" use Pair, pair
 from "../stdlib/Triple.shtk" use Triple, triple
@@ -22,9 +22,9 @@ fn getArg(argc: int, argv: ulong[], idx: int) -> Optional[String]
     return some(string(arg, length+1))
 }
 
-fn panicString(message: String, status: int)
+fn panic(message: String, status: int)
 {
-    panic(message.toCharArray(), status)
+    panic::panic(message.toCharArray(), status)
 }
 
 fn _popen(command: String) -> Result[File, StdlibError]

@@ -6,20 +6,20 @@ fn main() -> int
     const fileOptional1 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
     const file1 := fileOptional1.expect()
 
-    println(file1.readLine().expect().toCharArray())
+    println(file1.readLine().expect())
 
     println("close", file1.close().isError())
 
     const fileOptional2 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
     const file2 := fileOptional2.expect()
 
-    println("read", file2.read().expect().toCharArray())
+    println("read", file2.read().expect())
 
     file2.seek(-10, file::SEEK_END)
 
     println("tell", file2.tell().expect())
 
-    println("seek read", file2.read().expect().toCharArray())
+    println("seek read", file2.read().expect())
 
     file2.close()
 
@@ -32,7 +32,7 @@ fn main() -> int
     file3.close()
 
     const fileOptional4 := file::open("foobar", "r")   
-    println(fileOptional4.expect().read().expect().toCharArray())
+    println(fileOptional4.expect().read().expect())
 
     println(os::rm("foobar").isNonZero())
 
