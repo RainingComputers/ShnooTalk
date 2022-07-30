@@ -95,6 +95,20 @@
                     {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 36, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op3": {"type": "literal", "id": 38, "dtype": "autoInt", "value": 8}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
+            },
+            "_fn_TestModules_Pair_shtk[int][float]_pair": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op2": {"type": "var", "id": 44, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 47, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op3": {"type": "bytes", "id": 46, "bytes": 0}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 47, "dtype": "int"}, "op2": {"type": "var", "id": 48, "name": "first", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 50, "dtype": "int"}, "op2": {"type": "var", "id": 49, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 52, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 50, "dtype": "int"}, "op3": {"type": "bytes", "id": 51, "bytes": 4}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 52, "dtype": "float"}, "op2": {"type": "var", "id": 53, "name": "second", "dtype": "float"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 56, "dtype": "int"}, "op2": {"type": "returnValue", "id": 54, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 57, "dtype": "int"}, "op2": {"type": "var", "id": 55, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 56, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 57, "dtype": "int"}, "op3": {"type": "literal", "id": 58, "dtype": "autoInt", "value": 8}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
             }
         }
     }

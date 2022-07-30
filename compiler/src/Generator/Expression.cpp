@@ -484,7 +484,7 @@ Unit ordinaryExpressionWithHint(generator::GeneratorContext& ctx, const Node& ro
     const Token LHSToken = root.children[0].tok;
     const Token RHSToken = root.children[2].tok;
     Unit LHS = expression(ctx, root.children[0]);
-    Unit RHS = expression(ctx, root.children[2]);
+    Unit RHS = expressionWithHint(ctx, root.children[2], LHS.type());
 
     if (LHS.isArray())
         ctx.console.compileErrorOnToken("Operator not allowed on array", expressionOperator);

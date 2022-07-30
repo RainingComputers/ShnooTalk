@@ -119,6 +119,20 @@
                     {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 36, "dtype": "float"}, "op2": {"type": "tempPtr", "id": 37, "dtype": "float"}, "op3": {"type": "literal", "id": 38, "dtype": "autoInt", "value": 8}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
+            },
+            "_fn_TestModules_Pair_shtk[float][int]_pair": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 45, "dtype": "float"}, "op2": {"type": "var", "id": 44, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 47, "dtype": "float"}, "op2": {"type": "tempPtr", "id": 45, "dtype": "float"}, "op3": {"type": "bytes", "id": 46, "bytes": 0}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 47, "dtype": "float"}, "op2": {"type": "var", "id": 48, "name": "first", "dtype": "float"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 50, "dtype": "float"}, "op2": {"type": "var", "id": 49, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 52, "dtype": "float"}, "op2": {"type": "tempPtr", "id": 50, "dtype": "float"}, "op3": {"type": "bytes", "id": 51, "bytes": 4}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 52, "dtype": "int"}, "op2": {"type": "var", "id": 53, "name": "second", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 56, "dtype": "float"}, "op2": {"type": "returnValue", "id": 54, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 57, "dtype": "float"}, "op2": {"type": "var", "id": 55, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 56, "dtype": "float"}, "op2": {"type": "tempPtr", "id": 57, "dtype": "float"}, "op3": {"type": "literal", "id": 58, "dtype": "autoInt", "value": 8}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
             }
         }
     },
@@ -154,6 +168,22 @@
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 47, "dtype": "int"}, "op2": {"type": "returnValue", "id": 45, "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 48, "dtype": "int"}, "op2": {"type": "var", "id": 46, "name": "result", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 47, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 48, "dtype": "int"}, "op3": {"type": "literal", "id": 49, "dtype": "autoInt", "value": 12}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_TestModules_Pair_shtk[int][TestModules_Vector_shtk@Vec]_pair": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 56, "dtype": "int"}, "op2": {"type": "var", "id": 55, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 58, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 56, "dtype": "int"}, "op3": {"type": "bytes", "id": 57, "bytes": 0}},
+                    {"opcode": "write", "op1": {"type": "tempPtr", "id": 58, "dtype": "int"}, "op2": {"type": "var", "id": 59, "name": "first", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op2": {"type": "var", "id": 60, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 63, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op3": {"type": "bytes", "id": 62, "bytes": 4}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 65, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 63, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op2": {"type": "var", "id": 64, "name": "second", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 65, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op3": {"type": "literal", "id": 67, "dtype": "autoInt", "value": 8}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 70, "dtype": "int"}, "op2": {"type": "returnValue", "id": 68, "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op2": {"type": "var", "id": 69, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 70, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op3": {"type": "literal", "id": 72, "dtype": "autoInt", "value": 12}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

@@ -58,8 +58,8 @@ fn read(self: File) -> Result[String, StdlibError]
         if error {
             if error == OSError
                 return fail(OSError)
-            else 
-                break
+            
+            break
         }
 
         contents += line

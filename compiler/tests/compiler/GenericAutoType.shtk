@@ -1,0 +1,43 @@
+use "TestModules/Pair.shtk" as pair
+from "TestModules/Pair.shtk" use Pair, pair, add
+
+fn foobar() -> Pair[int, int]
+{
+    return pair(1, 2)
+}
+
+fn printPair(p: Pair[int, int])
+{
+    println(p.first, p.second)
+}
+
+fn printPairArray(p: Pair[int, int][])
+{
+    printPair(p[0])
+    printPair(p[1])
+}
+
+fn main() -> int
+{
+    const a: Pair[int, int] = pair(1, 2)
+    printPair(a)
+
+    var b := foobar() + pair(1, 1)
+    printPair(b)
+
+    b = pair(10, 10)
+    printPair(b)
+
+    const c: Pair[int, int][2] = [pair(1, 1), pair(2, 2)]
+    printPair(c[0])
+    printPair(c[1])
+
+    printPair(pair::add(b, pair(2, 3)))
+    printPair(add(b, pair(2, 3)))
+    printPair(b.add(pair(2, 3)))
+
+    printPairArray([pair(1, 2), pair(1, 2)])
+
+
+    return 0
+}

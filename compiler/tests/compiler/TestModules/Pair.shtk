@@ -14,3 +14,11 @@ fn add(a: Pair, b: Pair) -> Pair
 
     return result
 }
+
+fn pair(first: K, second: V) -> Pair
+{
+    var self: Pair
+    self.first = first
+    self.second = second
+    return self
+}

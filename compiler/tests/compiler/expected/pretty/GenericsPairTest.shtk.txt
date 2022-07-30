@@ -119,6 +119,20 @@
                         float* tempPtr36 = memoryCopy float* tempPtr37, autoInt 8
                         return
                 ]
+            },
+            "_fn_TestModules_Pair_shtk[float][int]_pair": {
+                "icode": [
+                        float* tempPtr45 = createPointer struct self
+                        float* tempPtr47 = addressAdd float* tempPtr45, bytes 0
+                        float* tempPtr47 = write float first
+                        float* tempPtr50 = createPointer struct self
+                        float* tempPtr52 = addressAdd float* tempPtr50, bytes 4
+                        int* tempPtr52 = write int second
+                        float* tempPtr56 = createPointer struct returnValue54
+                        float* tempPtr57 = createPointer struct self
+                        float* tempPtr56 = memoryCopy float* tempPtr57, autoInt 8
+                        return
+                ]
             }
         }
     },
@@ -154,6 +168,22 @@
                         int* tempPtr47 = createPointer struct returnValue45
                         int* tempPtr48 = createPointer struct result
                         int* tempPtr47 = memoryCopy int* tempPtr48, autoInt 12
+                        return
+                ]
+            },
+            "_fn_TestModules_Pair_shtk[int][TestModules_Vector_shtk@Vec]_pair": {
+                "icode": [
+                        int* tempPtr56 = createPointer struct self
+                        int* tempPtr58 = addressAdd int* tempPtr56, bytes 0
+                        int* tempPtr58 = write int first
+                        int* tempPtr61 = createPointer struct self
+                        int* tempPtr63 = addressAdd int* tempPtr61, bytes 4
+                        int* tempPtr65 = createPointer struct* tempPtr63
+                        int* tempPtr66 = createPointer struct second
+                        int* tempPtr65 = memoryCopy int* tempPtr66, autoInt 8
+                        int* tempPtr70 = createPointer struct returnValue68
+                        int* tempPtr71 = createPointer struct self
+                        int* tempPtr70 = memoryCopy int* tempPtr71, autoInt 12
                         return
                 ]
             }

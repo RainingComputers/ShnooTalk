@@ -66,6 +66,20 @@
                         int* tempPtr36 = memoryCopy int* tempPtr37, autoInt 8
                         return
                 ]
+            },
+            "_fn_TestModules_Pair_shtk[int][float]_pair": {
+                "icode": [
+                        int* tempPtr45 = createPointer struct self
+                        int* tempPtr47 = addressAdd int* tempPtr45, bytes 0
+                        int* tempPtr47 = write int first
+                        int* tempPtr50 = createPointer struct self
+                        int* tempPtr52 = addressAdd int* tempPtr50, bytes 4
+                        float* tempPtr52 = write float second
+                        int* tempPtr56 = createPointer struct returnValue54
+                        int* tempPtr57 = createPointer struct self
+                        int* tempPtr56 = memoryCopy int* tempPtr57, autoInt 8
+                        return
+                ]
             }
         }
     }
