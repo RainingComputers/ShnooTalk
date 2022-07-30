@@ -1,0 +1,6 @@
+fn main() -> int
+{
+    const a: int = [1, 2, 3, 4]
+
+    return 0
+}

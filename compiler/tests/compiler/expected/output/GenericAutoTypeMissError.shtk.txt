@@ -1,0 +1,8 @@
+MODULE GenericAutoTypeMissError.shtk
+ERROR in Line 3 Col 20
+
+    const a: int = [1, 2, 3, 4]
+                   ^
+Type error, did not expect int[4], expected int
+
+GenericAutoTypeMissError.shtk:3:19
