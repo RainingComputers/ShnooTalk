@@ -127,7 +127,7 @@ Tests for the standard library
 
 ## Project status
 
-For more detailed status see github [project](https://github.com/users/RainingComputers/projects/1/views/1?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%5D) or github [issues](https://github.com/RainingComputers/ShnooTalk/issues)
+For more detailed status see github [project](https://github.com/users/RainingComputers/projects/1/views/1) or github [issues](https://github.com/RainingComputers/ShnooTalk/issues)
 
 ### Compiler core
 
