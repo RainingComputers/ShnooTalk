@@ -70,8 +70,6 @@ public:
 
     bool deconstructorExists(const icode::TypeDescription& type);
 
-    std::string getMangledMethodName(const icode::TypeDescription& type, const std::string& method);
-
     bool methodExists(const icode::TypeDescription& type, const std::string& method);
 
     icode::FunctionDescription getMethod(const icode::TypeDescription& type, const std::string& method);

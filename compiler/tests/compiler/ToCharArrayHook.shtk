@@ -1,0 +1,24 @@
+struct Foo {}
+
+fn toCharArray(self: Foo) -> char[20]
+{
+    return "Hello world"
+}
+
+struct Bar {}
+
+fn toString(self: Bar) -> Foo
+{
+    var f: Foo
+    return f
+}
+
+fn main() -> int
+{
+    var f: Foo, b: Bar
+
+    println(f)
+    println(b)
+
+    return 0
+}

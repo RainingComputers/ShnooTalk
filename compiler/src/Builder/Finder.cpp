@@ -327,15 +327,24 @@ bool Finder::deconstructorExists(const icode::TypeDescription& type)
     return getStructDescFromType(type).deconstructor != "";
 }
 
-std::string Finder::getMangledMethodName(const TypeDescription& type, const std::string& method)
+std::string getMangledMethodName(const TypeDescription& type, const std::string& method)
 {
     return nameMangleString(method, type.moduleName);
 }
 
 bool Finder::methodExists(const icode::TypeDescription& type, const std::string& method)
 {
-    const icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
-    return typeModule.functionExists(getMangledMethodName(type, method));
+    icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
+
+    icode::FunctionDescription function;
+
+    if (!typeModule.getFunction(getMangledMethodName(type, method), function))
+        return false;
+
+    if (!isSameTypeDescription(function.getParamTypePos(0), type))
+        return false;
+
+    return true;
 }
 
 FunctionDescription Finder::getMethod(const TypeDescription& type, const std::string& method)

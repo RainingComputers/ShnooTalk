@@ -1,0 +1,43 @@
+{
+    "ToCharArrayHook.shtk": {
+        "moduleName": "ToCharArrayHook.shtk",
+        "functions": {
+            "_fn_ToCharArrayHook_shtk_toCharArray": {
+                "icode": [
+                        ubyte* tempPtr5 = createPointer ubyte returnValue3
+                        ubyte* tempPtr6 = createPointer stringData _str_ToCharArrayHook_shtk__l5_c11
+                        ubyte* tempPtr5 = memoryCopy ubyte* tempPtr6, autoInt 12
+                        return
+                ]
+            },
+            "_fn_ToCharArrayHook_shtk_toString": {
+                "icode": [
+                        struct* tempPtr14 = createPointer struct returnValue12
+                        struct* tempPtr15 = createPointer struct f
+                        struct* tempPtr14 = memoryCopy struct* tempPtr15, autoInt 0
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        struct* tempPtr25 = createPointer struct f
+                        passPointer struct* tempPtr25, ubyte _fn_ToCharArrayHook_shtk_toCharArray, module ToCharArrayHook.shtk
+                        ubyte calleeReturnValue28 = call ubyte _fn_ToCharArrayHook_shtk_toCharArray, module ToCharArrayHook.shtk
+                        printString ubyte calleeReturnValue28
+                        newLine
+                        struct* tempPtr33 = createPointer struct b
+                        passPointer struct* tempPtr33, struct _fn_ToCharArrayHook_shtk_toString, module ToCharArrayHook.shtk
+                        struct calleeReturnValue36 = call struct _fn_ToCharArrayHook_shtk_toString, module ToCharArrayHook.shtk
+                        struct* tempPtr40 = createPointer struct calleeReturnValue36
+                        passPointer struct* tempPtr40, ubyte _fn_ToCharArrayHook_shtk_toCharArray, module ToCharArrayHook.shtk
+                        ubyte calleeReturnValue43 = call ubyte _fn_ToCharArrayHook_shtk_toCharArray, module ToCharArrayHook.shtk
+                        printString ubyte calleeReturnValue43
+                        newLine
+                        int temp48 = cast autoInt 0
+                        int returnValue46 = equal int temp48
+                        return
+                ]
+            }
+        }
+    }
+}
