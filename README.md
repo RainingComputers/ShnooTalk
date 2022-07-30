@@ -140,7 +140,6 @@ For more detailed status see github [project](https://github.com/users/RainingCo
 - [ ] Extends
 - [ ] Compile time reflection and macros
 - [ ] `constexpr` or `comptime`
-- [ ] Memory safety rules
 - [ ] Testing framework
 - [ ] Concurrency
 
