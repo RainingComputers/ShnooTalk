@@ -40,17 +40,22 @@ TypeDescription prependDimension(const TypeDescription& typeDescription, int dim
     return modifiedTypeDescription;
 }
 
+TypeDescription getBaseType(const TypeDescription& typeDescription)
+{
+    TypeDescription modifiedTypeDescription = typeDescription;
+
+    modifiedTypeDescription.becomeNonPointer();
+    modifiedTypeDescription.dimTypes.clear();
+    modifiedTypeDescription.dimensions.clear();
+    return modifiedTypeDescription;
+}
+
 TypeDescription getElementType(const TypeDescription& typeDescription)
 {
     TypeDescription modifiedTypeDescription = typeDescription;
 
     if (!typeDescription.isArrayWithFixedDim())
-    {
-        modifiedTypeDescription.becomeNonPointer();
-        modifiedTypeDescription.dimTypes.clear();
-        modifiedTypeDescription.dimensions.clear();
-        return modifiedTypeDescription;
-    }
+        return getBaseType(modifiedTypeDescription);
 
     modifiedTypeDescription.size /= modifiedTypeDescription.numElements();
 

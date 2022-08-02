@@ -72,6 +72,8 @@ public:
 
     bool methodExists(const icode::TypeDescription& type, const std::string& method);
 
+    bool functionExists(const icode::TypeDescription& type, const std::string& method);
+
     icode::FunctionDescription getMethod(const icode::TypeDescription& type, const std::string& method);
 
     icode::FunctionDescription getMethodFromUnit(const Unit& unit, const std::string& method, const Token& errorToken);

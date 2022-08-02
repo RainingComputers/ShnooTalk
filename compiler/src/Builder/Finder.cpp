@@ -1,5 +1,6 @@
 #include "NameMangle.hpp"
 #include "TypeCheck.hpp"
+#include "TypeDescriptionUtil.hpp"
 
 #include "Finder.hpp"
 
@@ -341,10 +342,16 @@ bool Finder::methodExists(const icode::TypeDescription& type, const std::string&
     if (!typeModule.getFunction(getMangledMethodName(type, method), function))
         return false;
 
-    if (!isSameTypeDescription(function.getParamTypePos(0), type))
+    if (!isSameTypeDescription(function.getParamTypePos(0), getBaseType(type)))
         return false;
 
     return true;
+}
+
+bool Finder::functionExists(const icode::TypeDescription& type, const std::string& function)
+{
+    icode::ModuleDescription typeModule = modulesMap.at(type.moduleName);
+    return typeModule.functionExists(getMangledMethodName(type, function));
 }
 
 FunctionDescription Finder::getMethod(const TypeDescription& type, const std::string& method)

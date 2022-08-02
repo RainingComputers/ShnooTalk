@@ -154,7 +154,7 @@ Unit coerceStringTypes(generator::GeneratorContext& ctx,
 {
     /* Coerce single dim char arrays (c style strings) if hook is present */
     if (actualParam.isSingleDimCharArray() && formalParam.isStruct() &&
-        ctx.ir.finder.methodExists(formalParam.type(), "coerceCharArray"))
+        ctx.ir.finder.functionExists(formalParam.type(), "coerceCharArray"))
     {
         const FunctionDescription stringFunc = ctx.ir.finder.getMethod(formalParam.type(), "coerceCharArray");
         const Unit lengthParam = ctx.ir.unitBuilder.unitFromIntLiteral(actualParam.numElements());

@@ -15,6 +15,8 @@ icode::TypeDescription prependDimension(const icode::TypeDescription& typeDescri
                                         int dimension,
                                         icode::DimensionType dimType);
 
+icode::TypeDescription getBaseType(const icode::TypeDescription& typeDescription);
+
 icode::TypeDescription getElementType(const icode::TypeDescription& typeDescription);
 
 #endif
