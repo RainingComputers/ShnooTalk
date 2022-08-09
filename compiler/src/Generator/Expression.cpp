@@ -11,6 +11,8 @@
 
 using namespace icode;
 
+Unit questionMarkOperator(generator::GeneratorContext& ctx, const Node& root);
+
 Unit sizeOf(generator::GeneratorContext& ctx, const Node& root)
 {
     const icode::TypeDescription type = typeDescriptionFromNode(ctx, root);
@@ -145,6 +147,50 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root,
     ctx.ir.popWorkingModule();
 
     return result;
+}
+
+void createReturnValue(generator::GeneratorContext& ctx,
+                       const Unit& functionReturn,
+                       const Unit& returnValue,
+                       const Token& errorToken)
+{
+    if (!isSameType(functionReturn, returnValue))
+        ctx.console.typeError(errorToken, functionReturn, returnValue);
+
+    if (functionReturn.isUserPointer())
+    {
+        if (!returnValue.isValidForPointerAssignment())
+            ctx.console.compileErrorOnToken("Invalid expression for pointer return", errorToken);
+
+        if (!returnValue.isMutable() && returnValue.isValue())
+            ctx.console.compileErrorOnToken("Cannot return immutable value as pointer", errorToken);
+
+        ctx.ir.functionBuilder.unitPointerAssign(functionReturn, returnValue);
+    }
+    else
+        ctx.ir.functionBuilder.unitCopy(functionReturn, returnValue);
+}
+
+void createReturn(generator::GeneratorContext& ctx, const Unit& returnValue, const Token& errorToken)
+{
+    Unit functionReturn = ctx.ir.functionBuilder.getReturnValueUnit();
+    createReturnValue(ctx, functionReturn, returnValue, errorToken);
+    ctx.ir.functionBuilder.createReturnAndCallDeconstructors();
+}
+
+void functionReturn(generator::GeneratorContext& ctx, const Node& root)
+{
+    Unit functionReturn = ctx.ir.functionBuilder.getReturnValueUnit();
+
+    if (root.children.size() != 0)
+    {
+        Unit returnValue = expressionWithHint(ctx, root.children[0], functionReturn.type());
+        createReturnValue(ctx, functionReturn, returnValue, root.tok);
+    }
+    else if (functionReturn.dtype() != VOID)
+        ctx.console.compileErrorOnToken("Ret type is not VOID", root.tok);
+
+    ctx.ir.functionBuilder.createReturnAndCallDeconstructors();
 }
 
 Unit coerceStringTypes(generator::GeneratorContext& ctx,
@@ -458,6 +504,8 @@ Unit termWithHint(generator::GeneratorContext& ctx, const Node& root, const Type
             return multilineStringLiteral(ctx, child);
         case node::INITLIST:
             return initializerList(ctx, child, typeHint);
+        case node::QUESTION_OPR:
+            return questionMarkOperator(ctx, child);
         default:
             ctx.console.internalBugErrorOnToken(child.tok);
     }
@@ -598,6 +646,32 @@ void truthyExpression(generator::GeneratorContext& ctx,
 {
     Unit LHS = ordinaryExpression(ctx, root);
     truthyOperator(ctx, LHS, root.tok, trueLabel, falseLabel, trueFall);
+}
+
+Unit questionMarkOperator(generator::GeneratorContext& ctx, const Node& root)
+{
+    const Unit term = expression(ctx, root.children[0]);
+    const Token expressionToken = root.children[0].tok;
+
+    if (!ctx.ir.finder.methodExists(term.type(), "hasValue") || (!ctx.ir.finder.methodExists(term.type(), "get")))
+        ctx.console.compileErrorOnToken("Cannot use ? operator on type without 'hasValue' or 'get' method", root.tok);
+
+    const FunctionDescription hasValueFunc = ctx.ir.finder.getMethod(term.type(), "hasValue");
+    const Unit hasValueFuncRet = createCallFunctionMust(ctx, { expressionToken }, { term }, hasValueFunc);
+
+    const icode::Operand falseLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "question_op");
+    const icode::Operand trueLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "question_op");
+
+    truthyOperator(ctx, hasValueFuncRet, root.tok, trueLabel, falseLabel, false);
+
+    ctx.ir.functionBuilder.insertLabel(falseLabel);
+
+    createReturn(ctx, term, root.tok);
+
+    ctx.ir.functionBuilder.insertLabel(trueLabel);
+
+    const FunctionDescription getValueFunc = ctx.ir.finder.getMethod(term.type(), "get");
+    return createCallFunctionMust(ctx, { expressionToken }, { term }, getValueFunc);
 }
 
 void relationalExpression(generator::GeneratorContext& ctx,

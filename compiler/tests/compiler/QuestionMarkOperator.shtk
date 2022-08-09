@@ -1,0 +1,43 @@
+struct Foobar 
+{
+    var hasValue: bool
+}
+
+fn hasValue(self: Foobar) -> bool
+{
+    return self.hasValue
+}
+
+fn get(self: Foobar) -> int
+{
+    return 100
+}
+
+fn isError(self: Foobar) -> bool
+{
+    return not self.hasValue
+}
+
+fn testError(f: Foobar) -> Foobar
+{
+    const val := f?
+
+    println(val)
+
+    return f
+}
+
+fn main() -> int
+{
+    var f: Foobar
+
+    f.hasValue = false
+    println("false")
+    println(testError(f).isError())
+
+    f.hasValue = true
+    println("true")
+    println(testError(f).isError())
+
+    return 0
+}

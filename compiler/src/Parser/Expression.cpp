@@ -353,6 +353,12 @@ void term(parser::ParserContext& ctx)
         literal(ctx);
     }
 
+    if (ctx.accept(token::QUESTION_MARK))
+    {
+        ctx.duplicateNode();
+        ctx.insertNodeBeginning(node::QUESTION_OPR);
+    }
+
     ctx.popNode();
 }
 

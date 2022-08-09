@@ -77,6 +77,7 @@ namespace token
         LESS_THAN_EQUAL,
         CONDN_EQUAL,
         CONDN_NOT_EQUAL,
+        QUESTION_MARK,
         MULTIPLY,
         DIVIDE,
         MOD,

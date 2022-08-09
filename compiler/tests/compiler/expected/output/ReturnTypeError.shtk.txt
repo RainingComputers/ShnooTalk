@@ -1,8 +1,8 @@
 MODULE ReturnTypeError.shtk
-ERROR in Line 5 Col 12
+ERROR in Line 5 Col 5
 
     return a
-           ^
+    ^
 Type error, did not expect int, expected float
 
-ReturnTypeError.shtk:5:11
+ReturnTypeError.shtk:5:4

@@ -3,6 +3,8 @@
 
 #include "GeneratorContext.hpp"
 
+void functionReturn(generator::GeneratorContext& ctx, const Node& node);
+
 Unit createCallFunctionMust(generator::GeneratorContext& ctx,
                             const std::vector<Token>& actualParamTokens,
                             const std::vector<Unit>& actualParams,

@@ -1,0 +1,104 @@
+{
+    "QuestionMarkOperator.shtk": {
+        "moduleName": "QuestionMarkOperator.shtk",
+        "functions": {
+            "_fn_QuestionMarkOperator_shtk_get": {
+                "icode": [
+                        int temp14 = cast autoInt 100
+                        int returnValue12 = equal int temp14
+                        return
+                ]
+            },
+            "_fn_QuestionMarkOperator_shtk_hasValue": {
+                "icode": [
+                        byte* tempPtr5 = createPointer struct self
+                        byte* tempPtr7 = addressAdd byte* tempPtr5, bytes 0
+                        byte temp8 = read byte* tempPtr7
+                        byte returnValue3 = equal byte temp8
+                        return
+                ]
+            },
+            "_fn_QuestionMarkOperator_shtk_isError": {
+                "icode": [
+                        autoInt* tempPtr19 = allocPointer 
+                        byte* tempPtr24 = createPointer struct self
+                        byte* tempPtr26 = addressAdd byte* tempPtr24, bytes 0
+                        byte temp28 = read byte* tempPtr26
+                        byte temp29 = cast autoInt 0
+                        flag = greaterThan byte temp28, byte temp29
+                        if(flag) goto _condn_exp_false_l18_c11
+                        autoInt* tempPtr19 = write autoInt 1
+                        goto _condn_exp_end_false_l18_c11
+                    _condn_exp_false_l18_c11:
+                        autoInt* tempPtr19 = write autoInt 0
+                    _condn_exp_end_false_l18_c11:
+                        autoInt temp32 = read autoInt* tempPtr19
+                        byte temp33 = cast autoInt temp32
+                        byte returnValue18 = equal byte temp33
+                        return
+                ]
+            },
+            "_fn_QuestionMarkOperator_shtk_testError": {
+                "icode": [
+                        byte* tempPtr39 = createPointer struct f
+                        passPointer byte* tempPtr39, byte _fn_QuestionMarkOperator_shtk_hasValue, module QuestionMarkOperator.shtk
+                        byte calleeReturnValue42 = call byte _fn_QuestionMarkOperator_shtk_hasValue, module QuestionMarkOperator.shtk
+                        byte temp48 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue42, byte temp48
+                        if(flag) goto _question_op_true_l23_c18
+                    _question_op_false_l23_c18:
+                        byte* tempPtr50 = createPointer struct returnValue49
+                        byte* tempPtr51 = createPointer struct f
+                        byte* tempPtr50 = memoryCopy byte* tempPtr51, autoInt 1
+                        return
+                    _question_op_true_l23_c18:
+                        byte* tempPtr54 = createPointer struct f
+                        passPointer byte* tempPtr54, int _fn_QuestionMarkOperator_shtk_get, module QuestionMarkOperator.shtk
+                        int calleeReturnValue57 = call int _fn_QuestionMarkOperator_shtk_get, module QuestionMarkOperator.shtk
+                        int val = equal int calleeReturnValue57
+                        print int val
+                        newLine
+                        byte* tempPtr64 = createPointer struct returnValue62
+                        byte* tempPtr65 = createPointer struct f
+                        byte* tempPtr64 = memoryCopy byte* tempPtr65, autoInt 1
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        byte* tempPtr73 = createPointer struct f
+                        byte* tempPtr75 = addressAdd byte* tempPtr73, bytes 0
+                        byte temp77 = cast autoInt 0
+                        byte* tempPtr75 = write byte temp77
+                        printString stringData _str_QuestionMarkOperator_shtk__l35_c12
+                        newLine
+                        byte* tempPtr82 = createPointer struct f
+                        passPointer byte* tempPtr82, struct _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
+                        struct calleeReturnValue85 = call struct _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
+                        byte* tempPtr90 = createPointer struct calleeReturnValue85
+                        passPointer byte* tempPtr90, byte _fn_QuestionMarkOperator_shtk_isError, module QuestionMarkOperator.shtk
+                        byte calleeReturnValue93 = call byte _fn_QuestionMarkOperator_shtk_isError, module QuestionMarkOperator.shtk
+                        print byte calleeReturnValue93
+                        newLine
+                        byte* tempPtr97 = createPointer struct f
+                        byte* tempPtr99 = addressAdd byte* tempPtr97, bytes 0
+                        byte temp101 = cast autoInt 1
+                        byte* tempPtr99 = write byte temp101
+                        printString stringData _str_QuestionMarkOperator_shtk__l39_c12
+                        newLine
+                        byte* tempPtr106 = createPointer struct f
+                        passPointer byte* tempPtr106, struct _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
+                        struct calleeReturnValue109 = call struct _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
+                        byte* tempPtr114 = createPointer struct calleeReturnValue109
+                        passPointer byte* tempPtr114, byte _fn_QuestionMarkOperator_shtk_isError, module QuestionMarkOperator.shtk
+                        byte calleeReturnValue117 = call byte _fn_QuestionMarkOperator_shtk_isError, module QuestionMarkOperator.shtk
+                        print byte calleeReturnValue117
+                        newLine
+                        int temp122 = cast autoInt 0
+                        int returnValue120 = equal int temp122
+                        return
+                ]
+            }
+        }
+    }
+}

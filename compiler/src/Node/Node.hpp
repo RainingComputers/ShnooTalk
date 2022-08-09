@@ -57,6 +57,7 @@ namespace node
         ASSIGN_OPERATOR,
         OPERATOR,
         UNARY_OPR,
+        QUESTION_OPR,
         SUBSCRIPT,
         POINTER_STAR,
         EMPTY_SUBSCRIPT,

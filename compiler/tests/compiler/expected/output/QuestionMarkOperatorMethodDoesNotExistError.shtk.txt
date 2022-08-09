@@ -1,0 +1,8 @@
+MODULE QuestionMarkOperatorMethodDoesNotExistError.shtk
+ERROR in Line 15 Col 17
+
+    const g := f?
+                ^
+Cannot use ? operator on type without 'hasValue' or 'get' method
+
+QuestionMarkOperatorMethodDoesNotExistError.shtk:15:16

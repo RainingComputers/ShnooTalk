@@ -203,6 +203,8 @@ namespace lexer
                 return LenTypePair(1, token::SEMICOLON);
             case '.':
                 return LenTypePair(1, token::DOT);
+            case '?':
+                return LenTypePair(1, token::QUESTION_MARK);
             case '"':
             {
                 /* Find ending quote that is not escaped with backslash */

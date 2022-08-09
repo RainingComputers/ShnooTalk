@@ -1,0 +1,18 @@
+struct Foobar 
+{
+    var hasValue: bool
+}
+
+fn get(self: Foobar) -> int
+{
+    return 100
+}
+
+fn main() -> int
+{
+    var f: Foobar
+
+    const g := f?
+
+    return 0
+}
