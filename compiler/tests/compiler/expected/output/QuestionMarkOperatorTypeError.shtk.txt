@@ -1,8 +1,0 @@
-MODULE QuestionMarkOperatorTypeError.shtk
-ERROR in Line 18 Col 19
-
-    const val := f?
-                  ^
-Type error, did not expect QuestionMarkOperatorTypeError.shtk::Foobar, expected float
-
-QuestionMarkOperatorTypeError.shtk:18:18

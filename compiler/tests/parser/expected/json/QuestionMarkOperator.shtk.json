@@ -1,0 +1,181 @@
+{
+  "type": "PROGRAM",
+  "token": {"string": "", "tokenType": "NONE", "line": 0, "col": 0, "file": ""},
+  "children": [
+    {
+      "type": "FUNCTION",
+      "token": {"string": "fn", "tokenType": "FUNCTION", "line": 1, "col": 0, "file": "QuestionMarkOperator.shtk"},
+      "children": [
+        {
+          "type": "IDENTIFIER",
+          "token": {"string": "main", "tokenType": "IDENTIFIER", "line": 1, "col": 3, "file": "QuestionMarkOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "type": "IDENTIFIER",
+          "token": {"string": "int", "tokenType": "IDENTIFIER", "line": 1, "col": 13, "file": "QuestionMarkOperator.shtk"},
+          "children": [
+            
+          ]
+        },
+        {
+          "type": "BLOCK",
+          "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 2, "col": 0, "file": "QuestionMarkOperator.shtk"},
+          "children": [
+            {
+              "type": "WALRUS_CONST",
+              "token": {"string": "const", "tokenType": "CONST", "line": 3, "col": 4, "file": "QuestionMarkOperator.shtk"},
+              "children": [
+                {
+                  "type": "IDENTIFIER",
+                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 3, "col": 10, "file": "QuestionMarkOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "EXPRESSION",
+                  "token": {"string": "g", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "QuestionMarkOperator.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "g", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "QuestionMarkOperator.shtk"},
+                      "children": [
+                        {
+                          "type": "QUESTION_OPR",
+                          "token": {"string": "?", "tokenType": "QUESTION_MARK", "line": 3, "col": 16, "file": "QuestionMarkOperator.shtk"},
+                          "children": [
+                            {
+                              "type": "TERM",
+                              "token": {"string": "?", "tokenType": "QUESTION_MARK", "line": 3, "col": 16, "file": "QuestionMarkOperator.shtk"},
+                              "children": [
+                                {
+                                  "type": "IDENTIFIER",
+                                  "token": {"string": "g", "tokenType": "IDENTIFIER", "line": 3, "col": 15, "file": "QuestionMarkOperator.shtk"},
+                                  "children": [
+                                    
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "WALRUS_CONST",
+              "token": {"string": "const", "tokenType": "CONST", "line": 5, "col": 4, "file": "QuestionMarkOperator.shtk"},
+              "children": [
+                {
+                  "type": "IDENTIFIER",
+                  "token": {"string": "b", "tokenType": "IDENTIFIER", "line": 5, "col": 10, "file": "QuestionMarkOperator.shtk"},
+                  "children": [
+                    
+                  ]
+                },
+                {
+                  "type": "EXPRESSION",
+                  "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "QuestionMarkOperator.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "QuestionMarkOperator.shtk"},
+                      "children": [
+                        {
+                          "type": "METHODCALL",
+                          "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 5, "col": 29, "file": "QuestionMarkOperator.shtk"},
+                          "children": [
+                            {
+                              "type": "TERM",
+                              "token": {"string": "hello", "tokenType": "IDENTIFIER", "line": 5, "col": 29, "file": "QuestionMarkOperator.shtk"},
+                              "children": [
+                                {
+                                  "type": "QUESTION_OPR",
+                                  "token": {"string": "?", "tokenType": "QUESTION_MARK", "line": 5, "col": 27, "file": "QuestionMarkOperator.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "TERM",
+                                      "token": {"string": "?", "tokenType": "QUESTION_MARK", "line": 5, "col": 27, "file": "QuestionMarkOperator.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "METHODCALL",
+                                          "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "QuestionMarkOperator.shtk"},
+                                          "children": [
+                                            {
+                                              "type": "TERM",
+                                              "token": {"string": "bar", "tokenType": "IDENTIFIER", "line": 5, "col": 22, "file": "QuestionMarkOperator.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "QUESTION_OPR",
+                                                  "token": {"string": "?", "tokenType": "QUESTION_MARK", "line": 5, "col": 20, "file": "QuestionMarkOperator.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "type": "TERM",
+                                                      "token": {"string": "?", "tokenType": "QUESTION_MARK", "line": 5, "col": 20, "file": "QuestionMarkOperator.shtk"},
+                                                      "children": [
+                                                        {
+                                                          "type": "FUNCCALL",
+                                                          "token": {"string": "foo", "tokenType": "IDENTIFIER", "line": 5, "col": 15, "file": "QuestionMarkOperator.shtk"},
+                                                          "children": [
+                                                            
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "RETURN",
+              "token": {"string": "return", "tokenType": "RETURN", "line": 7, "col": 4, "file": "QuestionMarkOperator.shtk"},
+              "children": [
+                {
+                  "type": "EXPRESSION",
+                  "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "QuestionMarkOperator.shtk"},
+                  "children": [
+                    {
+                      "type": "TERM",
+                      "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "QuestionMarkOperator.shtk"},
+                      "children": [
+                        {
+                          "type": "LITERAL",
+                          "token": {"string": "0", "tokenType": "INT_LITERAL", "line": 7, "col": 11, "file": "QuestionMarkOperator.shtk"},
+                          "children": [
+                            
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -204,7 +204,7 @@ Unit coerceStringTypes(generator::GeneratorContext& ctx,
     {
         const FunctionDescription stringFunc = ctx.ir.finder.getMethod(formalParam.type(), "coerceCharArray");
         const Unit lengthParam = ctx.ir.unitBuilder.unitFromIntLiteral(actualParam.numElements());
-        return createCallFunction(ctx, { token, token }, { actualParam, lengthParam }, token, stringFunc);
+        return createCallFunction(ctx, { token, token }, { actualParam, lengthParam }, stringFunc, token);
     }
 
     return actualParam;
@@ -235,8 +235,8 @@ Unit createCallFunctionMust(generator::GeneratorContext& ctx,
 Unit createCallFunction(generator::GeneratorContext& ctx,
                         const std::vector<Token>& actualParamTokens,
                         const std::vector<Unit>& actualParams,
-                        const Token& errorToken,
-                        const FunctionDescription& callee)
+                        const FunctionDescription& callee,
+                        const Token& errorToken)
 {
     if (actualParams.size() != callee.numParameters())
         ctx.console.compileErrorOnToken("Number of parameters don't match", errorToken);
@@ -279,7 +279,7 @@ Unit methodCall(generator::GeneratorContext& ctx, const Node& root)
     }
 
     ctx.ir.popWorkingModule();
-    return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
+    return createCallFunction(ctx, actualParamTokens, actualParams, callee, calleeNameToken);
 }
 
 Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
@@ -304,7 +304,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
 
     ctx.ir.popWorkingModule();
 
-    return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
+    return createCallFunction(ctx, actualParamTokens, actualParams, callee, calleeNameToken);
 }
 
 Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
@@ -339,7 +339,7 @@ Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
                                                                         instantiationTypes,
                                                                         instantiationTypeNodes);
 
-    return createCallFunction(ctx, actualParamTokens, actualParams, calleeNameToken, callee);
+    return createCallFunction(ctx, actualParamTokens, actualParams, callee, calleeNameToken);
 }
 
 Unit genericFunctionCallWithHint(generator::GeneratorContext& ctx, const Node& root, const TypeDescription& typeHint)
@@ -362,13 +362,27 @@ Unit functionCallWithHint(generator::GeneratorContext& ctx, const Node& root, co
     return functionCall(ctx, root);
 }
 
-Unit make(generator::GeneratorContext& ctx, const Node& root)
+Unit createMake(generator::GeneratorContext& ctx,
+                const std::vector<Token>& actualParamTokens,
+                const std::vector<Unit>& actualParams,
+                const TypeDescription& type,
+                const Token& errorToken)
 {
     ctx.ir.pushWorkingModule();
 
-    const TypeDescription type = typeDescriptionFromNode(ctx, root.children[0]);
-
     ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromType(type));
+
+    FunctionDescription constructor = ctx.ir.finder.getFunctionByParamTypes(errorToken, type, actualParams);
+
+    ctx.ir.popWorkingModule();
+
+    return createCallFunctionMust(ctx, actualParamTokens, actualParams, constructor);
+}
+
+Unit make(generator::GeneratorContext& ctx, const Node& root)
+{
+
+    const TypeDescription type = typeDescriptionFromNode(ctx, root.children[0]);
 
     std::vector<Token> actualParamTokens;
     std::vector<Unit> actualParams;
@@ -388,11 +402,7 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
         }
     }
 
-    FunctionDescription constructor = ctx.ir.finder.getFunctionByParamTypes(root.tok, type, actualParams);
-
-    ctx.ir.popWorkingModule();
-
-    return createCallFunctionMust(ctx, actualParamTokens, actualParams, constructor);
+    return createMake(ctx, actualParamTokens, actualParams, type, root.tok);
 }
 
 Unit customOperator(generator::GeneratorContext& ctx,
@@ -623,7 +633,7 @@ void truthyOperator(generator::GeneratorContext& ctx,
             ctx.ir.finder.getMethodFromUnit(LHS, "isNonZero", expressionToken);
 
         const Unit isNonZeroFuncRetVal =
-            createCallFunction(ctx, { expressionToken }, { LHS }, expressionToken, isNonZeroFunc);
+            createCallFunction(ctx, { expressionToken }, { LHS }, isNonZeroFunc, expressionToken);
 
         if (!isNonZeroFuncRetVal.isIntegerType() || isNonZeroFuncRetVal.isArray())
             ctx.console.compileErrorOnToken("Invalid return type for isNonZero function", expressionToken);
@@ -652,26 +662,54 @@ Unit questionMarkOperator(generator::GeneratorContext& ctx, const Node& root)
 {
     const Unit term = expression(ctx, root.children[0]);
     const Token expressionToken = root.children[0].tok;
+    const TypeDescription returnType = ctx.ir.functionBuilder.getReturnValueUnit().type();
 
-    if (!ctx.ir.finder.methodExists(term.type(), "hasValue") || (!ctx.ir.finder.methodExists(term.type(), "get")))
-        ctx.console.compileErrorOnToken("Cannot use ? operator on type without 'hasValue' or 'get' method", root.tok);
+    const std::string continueHook = "__questionMarkContinue__";
+    const std::string unwrapHook = "__questionMarkUnwrap__";
+    const std::string errorHook = "__questionMarkError__";
+    const std::string constructorHook = "__questionMarkConstruct__";
 
-    const FunctionDescription hasValueFunc = ctx.ir.finder.getMethod(term.type(), "hasValue");
-    const Unit hasValueFuncRet = createCallFunctionMust(ctx, { expressionToken }, { term }, hasValueFunc);
+    if (!ctx.ir.finder.methodExists(term.type(), continueHook))
+        ctx.console.compileErrorOnToken("Cannot use ? operator on type without " + continueHook + " method", root.tok);
+
+    if (!ctx.ir.finder.methodExists(term.type(), unwrapHook))
+        ctx.console.compileErrorOnToken("Cannot use ? operator on type without " + unwrapHook + " method", root.tok);
+
+    if (!ctx.ir.finder.methodExists(term.type(), errorHook))
+        ctx.console.compileErrorOnToken("Cannot use ? operator on type without " + errorHook + " method", root.tok);
+
+    if (!ctx.ir.finder.functionExists(returnType, constructorHook))
+        ctx.console.compileErrorOnToken("Cannot use ? operator without " + constructorHook +
+                                            " function for return type",
+                                        root.tok);
+
+    const FunctionDescription continueFunc = ctx.ir.finder.getMethod(term.type(), continueHook);
+    const Unit continueFuncRet = createCallFunctionMust(ctx, { expressionToken }, { term }, continueFunc);
 
     const icode::Operand falseLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "question_op");
     const icode::Operand trueLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "question_op");
 
-    truthyOperator(ctx, hasValueFuncRet, root.tok, trueLabel, falseLabel, false);
+    truthyOperator(ctx, continueFuncRet, root.tok, trueLabel, falseLabel, false);
 
     ctx.ir.functionBuilder.insertLabel(falseLabel);
 
-    createReturn(ctx, term, root.tok);
+    const FunctionDescription errorFunc = ctx.ir.finder.getMethod(term.type(), errorHook);
+    const Unit errorFuncRet = createCallFunctionMust(ctx, { expressionToken }, { term }, errorFunc);
+
+    const FunctionDescription constructorFunc = ctx.ir.finder.getMethod(returnType, constructorHook);
+    Unit constructorFuncRet;
+
+    if (constructorFunc.numParameters() == 0)
+        constructorFuncRet = createCallFunctionMust(ctx, {}, {}, constructorFunc);
+    else
+        constructorFuncRet = createCallFunctionMust(ctx, { expressionToken }, { errorFuncRet }, constructorFunc);
+
+    createReturn(ctx, constructorFuncRet, expressionToken);
 
     ctx.ir.functionBuilder.insertLabel(trueLabel);
 
-    const FunctionDescription getValueFunc = ctx.ir.finder.getMethod(term.type(), "get");
-    return createCallFunctionMust(ctx, { expressionToken }, { term }, getValueFunc);
+    const FunctionDescription unwrapFunc = ctx.ir.finder.getMethod(term.type(), unwrapHook);
+    return createCallFunctionMust(ctx, { expressionToken }, { term }, unwrapFunc);
 }
 
 void relationalExpression(generator::GeneratorContext& ctx,

@@ -62,3 +62,23 @@ fn bitwiseOrResult(self: Result, other: Result) -> Result
     if not other.error return other
     return self
 }
+
+fn __questionMarkContinue__(self: Result) -> bool
+{
+    return self.hasValue()
+}
+
+fn __questionMarkUnwrap__(self: Result) -> T
+{
+    return self.item
+}
+
+fn __questionMarkError__(self: Result) -> Error[E]
+{
+    return self.error
+}
+
+fn __questionMarkConstruct__(error: Error[E]) -> Result
+{
+    return failFrom(error)
+}

@@ -40,15 +40,9 @@ fn _popen(command: String) -> Result[File, StdlibError]
 
 fn system(command: String) -> Result[Pair[String, int], StdlibError]
 {
-    const [file, err1] := _popen(command)
-
-    if err1
-        return failFrom(err1)
+    const file := _popen(command)?
     
-    const [output, err2] := file.read()
-
-    if err2
-        return failFrom(err2)
+    const output := file.read()?
 
     const pcloseRet := libc::pclose(file.libcFile)
 

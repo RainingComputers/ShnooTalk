@@ -3,29 +3,54 @@ struct Foobar
     var hasValue: bool
 }
 
-fn hasValue(self: Foobar) -> bool
+fn __questionMarkContinue__(self: Foobar) -> bool
 {
     return self.hasValue
 }
 
-fn get(self: Foobar) -> int
+fn __questionMarkUnwrap__(self: Foobar) -> int
 {
     return 100
 }
 
-fn isError(self: Foobar) -> bool
+fn __questionMarkError__(self: Foobar) -> bool
 {
     return not self.hasValue
 }
 
-fn testError(f: Foobar) -> Foobar
+fn __questionMarkConstruct__(hasValue: bool) -> bool
+{
+    return hasValue
+}
+
+fn testError(f: Foobar) -> bool
 {
     const val := f?
 
     println(val)
 
+    return false
+}
+
+fn chain1() -> Foobar
+{
+    var f: Foobar
+    f.hasValue = true
     return f
 }
+
+fn chain2(n: int) -> int
+{
+    return n
+}
+
+fn testErrorChain() -> bool
+{
+    println(chain1()?.chain2())
+
+    return false
+}
+
 
 fn main() -> int
 {
@@ -33,11 +58,13 @@ fn main() -> int
 
     f.hasValue = false
     println("false")
-    println(testError(f).isError())
+    println(testError(f))
 
     f.hasValue = true
     println("true")
-    println(testError(f).isError())
+    println(testError(f))
+
+    println(testErrorChain())
 
     return 0
 }

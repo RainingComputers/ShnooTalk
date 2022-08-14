@@ -11,13 +11,13 @@ Unit coerceToCharArray(generator::GeneratorContext& ctx, const Token& token, con
         if (!charArrayFunc.functionReturnType.isSingleDimCharArray())
             ctx.console.compileErrorOnToken("Invalid return type for method 'toCharArray'", token);
 
-        return createCallFunction(ctx, { token }, { unit }, token, charArrayFunc);
+        return createCallFunction(ctx, { token }, { unit }, charArrayFunc, token);
     }
     else if (ctx.ir.finder.methodExists(unit.type(), "toString"))
     {
         const icode::FunctionDescription stringFunc = ctx.ir.finder.getMethod(unit.type(), "toString");
 
-        const Unit stringReturn = createCallFunction(ctx, { token }, { unit }, token, stringFunc);
+        const Unit stringReturn = createCallFunction(ctx, { token }, { unit }, stringFunc, token);
 
         return coerceToCharArray(ctx, token, stringReturn);
     }

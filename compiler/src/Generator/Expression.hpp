@@ -13,14 +13,16 @@ Unit createCallFunctionMust(generator::GeneratorContext& ctx,
 Unit createCallFunction(generator::GeneratorContext& ctx,
                         const std::vector<Token>& actualParamTokens,
                         const std::vector<Unit>& actualParams,
-                        const Token& errorToken,
-                        const icode::FunctionDescription& callee);
+                        const icode::FunctionDescription& callee,
+                        const Token& errorToken);
 
 Unit termWithHint(generator::GeneratorContext& ctx, const Node& root, const icode::TypeDescription& typeHint);
 
 Unit term(generator::GeneratorContext& ctx, const Node& root);
 
-Unit ordinaryExpressionWithHint(generator::GeneratorContext& ctx, const Node& root, const icode::TypeDescription& typeHint);
+Unit ordinaryExpressionWithHint(generator::GeneratorContext& ctx,
+                                const Node& root,
+                                const icode::TypeDescription& typeHint);
 
 Unit ordinaryExpression(generator::GeneratorContext& ctx, const Node& root);
 

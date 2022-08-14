@@ -264,13 +264,13 @@ void forEachLoop(generator::GeneratorContext& ctx, const Node& root)
     ctx.ir.functionBuilder.insertLabel(loopLabel);
 
     /* Loop condition counter < generator.length() */
-    const Unit len = createCallFunction(ctx, { expressionToken }, { generator }, expressionToken, lenFunc);
+    const Unit len = createCallFunction(ctx, { expressionToken }, { generator }, lenFunc, expressionToken);
     ctx.ir.functionBuilder.compareOperator(icode::LT, counter, len);
     createJumps(ctx, loopLabel, breakLabel, true);
 
     /* Loop item x = generator.subscriptItem(counter) */
     const Unit nextItem =
-        createCallFunction(ctx, { expressionToken, itemToken }, { generator, counter }, expressionToken, subscriptFunc);
+        createCallFunction(ctx, { expressionToken, itemToken }, { generator, counter }, subscriptFunc, expressionToken);
     forEachLoopNextItem(ctx, root, item, nextItem);
 
     /* For loop block */

@@ -153,10 +153,22 @@ void genericFunctionCall(parser::ParserContext& ctx)
     ctx.popNode();
 }
 
+void questionMark(parser::ParserContext& ctx)
+{
+    ctx.duplicateNode();
+    ctx.insertNodeBeginning(node::QUESTION_OPR);
+}
+
 void methodCall(parser::ParserContext& ctx)
 {
-    while (ctx.accept(token::DOT) && ctx.dpeek(token::LPAREN))
+    while ((ctx.accept(token::DOT) && ctx.dpeek(token::LPAREN)) || ctx.accept(token::QUESTION_MARK))
     {
+        if (ctx.accept(token::QUESTION_MARK))
+        {
+            questionMark(ctx);
+            continue;
+        }
+
         ctx.consume();
 
         ctx.expect(token::IDENTIFIER);
@@ -355,8 +367,7 @@ void term(parser::ParserContext& ctx)
 
     if (ctx.accept(token::QUESTION_MARK))
     {
-        ctx.duplicateNode();
-        ctx.insertNodeBeginning(node::QUESTION_OPR);
+        questionMark(ctx);
     }
 
     ctx.popNode();
