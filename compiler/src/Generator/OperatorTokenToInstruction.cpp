@@ -74,45 +74,45 @@ std::string tokenToCustomOperatorString(const generator::GeneratorContext& ctx, 
     {
         case token::MULTIPLY:
         case token::MULTIPLY_EQUAL:
-            return "multiply";
+            return "__multiply";
         case token::DIVIDE:
         case token::DIVIDE_EQUAL:
-            return "divide";
+            return "__divide";
         case token::MOD:
-            return "mod";
+            return "__mod";
         case token::PLUS:
         case token::PLUS_EQUAL:
-            return "add";
+            return "__add";
         case token::MINUS:
         case token::MINUS_EQUAL:
-            return "subtract";
+            return "__subtract";
         case token::RIGHT_SHIFT:
-            return "rightShift";
+            return "__rightShift";
         case token::LEFT_SHIFT:
-            return "leftShift";
+            return "__leftShift";
         case token::BITWISE_AND:
         case token::AND_EQUAL:
-            return "bitwiseAnd";
+            return "__bitwiseAnd";
         case token::BITWISE_XOR:
         case token::XOR_EQUAL:
-            return "bitwiseXor";
+            return "__bitwiseXor";
         case token::BITWISE_OR:
         case token::OR_EQUAL:
-            return "bitwiseOr";
+            return "__bitwiseOr";
         case token::LESS_THAN:
-            return "lessThan";
+            return "__lessThan";
         case token::LESS_THAN_EQUAL:
-            return "lessThanOrEqual";
+            return "__lessThanOrEqual";
         case token::GREATER_THAN:
-            return "greaterThan";
+            return "__greaterThan";
         case token::GREATER_THAN_EQUAL:
-            return "greaterThanOrEqual";
+            return "__greaterThanOrEqual";
         case token::CONDN_EQUAL:
-            return "isEqual";
+            return "__isEqual";
         case token::CONDN_NOT_EQUAL:
-            return "isNotEqual";
+            return "__isNotEqual";
         case token::IN:
-            return "in";
+            return "__in";
         default:
             ctx.console.internalBugErrorOnToken(tok);
     }

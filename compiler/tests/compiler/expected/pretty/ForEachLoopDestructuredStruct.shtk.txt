@@ -2,6 +2,27 @@
     "ForEachLoopDestructuredStruct.shtk": {
         "moduleName": "ForEachLoopDestructuredStruct.shtk",
         "functions": {
+            "_fn_ForEachLoopDestructuredStruct_shtk___subscriptItem__": {
+                "icode": [
+                        int* tempPtr71 = createPointer struct self
+                        int* tempPtr73 = addressAdd int* tempPtr71, bytes 0
+                        void* tempPtr76 = addressMultiply ulong index, bytes 4
+                        int* tempPtr77 = addressAdd int* tempPtr73, void* tempPtr76
+                        int* tempPtr79 = createPointer struct self
+                        int* tempPtr81 = addressAdd int* tempPtr79, bytes 12
+                        void* tempPtr84 = addressMultiply ulong index, bytes 4
+                        float* tempPtr85 = addressAdd float* tempPtr81, void* tempPtr84
+                        int temp88 = read int* tempPtr77
+                        pass int temp88, struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
+                        float temp91 = read float* tempPtr85
+                        pass float temp91, struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
+                        struct calleeReturnValue94 = call struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
+                        int* tempPtr97 = createPointer struct returnValue67
+                        int* tempPtr98 = createPointer struct calleeReturnValue94
+                        int* tempPtr97 = memoryCopy int* tempPtr98, autoInt 8
+                        return
+                ]
+            },
             "_fn_ForEachLoopDestructuredStruct_shtk_createPoint": {
                 "icode": [
                         int* tempPtr5 = createPointer struct p
@@ -51,27 +72,6 @@
                         return
                 ]
             },
-            "_fn_ForEachLoopDestructuredStruct_shtk_subscriptItem": {
-                "icode": [
-                        int* tempPtr71 = createPointer struct self
-                        int* tempPtr73 = addressAdd int* tempPtr71, bytes 0
-                        void* tempPtr76 = addressMultiply ulong index, bytes 4
-                        int* tempPtr77 = addressAdd int* tempPtr73, void* tempPtr76
-                        int* tempPtr79 = createPointer struct self
-                        int* tempPtr81 = addressAdd int* tempPtr79, bytes 12
-                        void* tempPtr84 = addressMultiply ulong index, bytes 4
-                        float* tempPtr85 = addressAdd float* tempPtr81, void* tempPtr84
-                        int temp88 = read int* tempPtr77
-                        pass int temp88, struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
-                        float temp91 = read float* tempPtr85
-                        pass float temp91, struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
-                        struct calleeReturnValue94 = call struct _fn_ForEachLoopDestructuredStruct_shtk_createPoint, module ForEachLoopDestructuredStruct.shtk
-                        int* tempPtr97 = createPointer struct returnValue67
-                        int* tempPtr98 = createPointer struct calleeReturnValue94
-                        int* tempPtr97 = memoryCopy int* tempPtr98, autoInt 8
-                        return
-                ]
-            },
             "main": {
                 "icode": [
                         struct calleeReturnValue103 = call struct _fn_ForEachLoopDestructuredStruct_shtk_createTestGenerator, module ForEachLoopDestructuredStruct.shtk
@@ -89,11 +89,11 @@
                         flag = lessThan autoInt temp125, autoInt temp126
                         if(not flag) goto _for_each_false_l44_c4
                         int* tempPtr129 = createPointer struct a
-                        passPointer int* tempPtr129, struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        passPointer int* tempPtr129, struct _fn_ForEachLoopDestructuredStruct_shtk___subscriptItem__, module ForEachLoopDestructuredStruct.shtk
                         autoInt temp132 = read autoInt* tempPtr113
                         ulong temp133 = cast autoInt temp132
-                        pass ulong temp133, struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
-                        struct calleeReturnValue136 = call struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        pass ulong temp133, struct _fn_ForEachLoopDestructuredStruct_shtk___subscriptItem__, module ForEachLoopDestructuredStruct.shtk
+                        struct calleeReturnValue136 = call struct _fn_ForEachLoopDestructuredStruct_shtk___subscriptItem__, module ForEachLoopDestructuredStruct.shtk
                         int* tempPtr139 = createPointer struct calleeReturnValue136
                         int* tempPtr141 = addressAdd int* tempPtr139, bytes 0
                         int* tempPtr142 = createPointer struct calleeReturnValue136
@@ -123,11 +123,11 @@
                         flag = lessThan autoInt temp167, autoInt temp168
                         if(not flag) goto _for_each_false_l48_c4
                         int* tempPtr171 = createPointer struct a
-                        passPointer int* tempPtr171, struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        passPointer int* tempPtr171, struct _fn_ForEachLoopDestructuredStruct_shtk___subscriptItem__, module ForEachLoopDestructuredStruct.shtk
                         autoInt temp174 = read autoInt* tempPtr155
                         ulong temp175 = cast autoInt temp174
-                        pass ulong temp175, struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
-                        struct calleeReturnValue178 = call struct _fn_ForEachLoopDestructuredStruct_shtk_subscriptItem, module ForEachLoopDestructuredStruct.shtk
+                        pass ulong temp175, struct _fn_ForEachLoopDestructuredStruct_shtk___subscriptItem__, module ForEachLoopDestructuredStruct.shtk
+                        struct calleeReturnValue178 = call struct _fn_ForEachLoopDestructuredStruct_shtk___subscriptItem__, module ForEachLoopDestructuredStruct.shtk
                         int* tempPtr181 = createPointer struct calleeReturnValue178
                         int* tempPtr183 = addressAdd int* tempPtr181, bytes 0
                         int* tempPtr184 = createPointer struct calleeReturnValue178

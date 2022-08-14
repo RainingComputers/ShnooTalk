@@ -3,7 +3,7 @@ struct Foo
     var bar: int
 }
 
-fn isNonZero() -> int
+fn __isNonZero__() -> int
 {
     return 0
 }

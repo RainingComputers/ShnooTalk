@@ -35,7 +35,7 @@ fn isError(self: Error) -> bool
     return not self._nil
 }
 
-fn isNonZero(self: Error) -> bool
+fn __isNonZero__(self: Error) -> bool
 {
     return not self._nil
 }
@@ -45,7 +45,7 @@ fn get(self: Error) -> E
     return self._error
 }
 
-fn isEqual(self: Error, other: E) -> bool
+fn __isEqual__(self: Error, other: E) -> bool
 {
     if self
         return self._error == other

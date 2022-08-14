@@ -3,7 +3,7 @@ struct Deconstructable
 
 }
 
-fn deconstructor(self: Deconstructable) 
+fn __deconstructor__(self: Deconstructable) 
 {
 
 }

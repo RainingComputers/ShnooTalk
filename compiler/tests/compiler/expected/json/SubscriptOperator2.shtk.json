@@ -2,7 +2,7 @@
     "SubscriptOperator2.shtk": {
         "moduleName": "SubscriptOperator2.shtk",
         "functions": {
-            "_fn_SubscriptOperator2_shtk_subscript": {
+            "_fn_SubscriptOperator2_shtk___subscript__": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "returnValue", "id": 3, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "int"}, "op2": {"type": "literal", "id": 4, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
@@ -19,10 +19,10 @@
             "main": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 23, "dtype": "struct"}, "op2": {"type": "var", "id": 19, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 23, "dtype": "struct"}, "op2": {"type": "var", "id": 24, "name": "_fn_SubscriptOperator2_shtk_subscript", "dtype": "int"}, "op3": {"type": "module", "id": 25, "name": "SubscriptOperator2.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 23, "dtype": "struct"}, "op2": {"type": "var", "id": 24, "name": "_fn_SubscriptOperator2_shtk___subscript__", "dtype": "int"}, "op3": {"type": "module", "id": 25, "name": "SubscriptOperator2.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 26, "dtype": "ulong"}, "op2": {"type": "literal", "id": 20, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 26, "dtype": "ulong"}, "op2": {"type": "var", "id": 27, "name": "_fn_SubscriptOperator2_shtk_subscript", "dtype": "int"}, "op3": {"type": "module", "id": 28, "name": "SubscriptOperator2.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 29, "dtype": "int"}, "op2": {"type": "var", "id": 30, "name": "_fn_SubscriptOperator2_shtk_subscript", "dtype": "int"}, "op3": {"type": "module", "id": 31, "name": "SubscriptOperator2.shtk"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 26, "dtype": "ulong"}, "op2": {"type": "var", "id": 27, "name": "_fn_SubscriptOperator2_shtk___subscript__", "dtype": "int"}, "op3": {"type": "module", "id": 28, "name": "SubscriptOperator2.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 29, "dtype": "int"}, "op2": {"type": "var", "id": 30, "name": "_fn_SubscriptOperator2_shtk___subscript__", "dtype": "int"}, "op3": {"type": "module", "id": 31, "name": "SubscriptOperator2.shtk"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 33, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 29, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 35, "dtype": "void"}, "op2": {"type": "literal", "id": 32, "dtype": "autoInt", "value": 2}, "op3": {"type": "bytes", "id": 34, "bytes": 4}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 36, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 33, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 35, "dtype": "void"}},

@@ -199,7 +199,7 @@
     "TestModules/Vector.shtk": {
         "moduleName": "TestModules/Vector.shtk",
         "functions": {
-            "_fn_TestModules_Vector_shtk_add": {
+            "_fn_TestModules_Vector_shtk___add__": {
                 "icode": [
                         int* tempPtr18 = createPointer struct res
                         int* tempPtr20 = addressAdd int* tempPtr18, bytes 0
@@ -227,28 +227,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_Vector_shtk_dot": {
-                "icode": [
-                        int* tempPtr138 = createPointer struct this
-                        int* tempPtr140 = addressAdd int* tempPtr138, bytes 0
-                        int* tempPtr142 = createPointer struct other
-                        int* tempPtr144 = addressAdd int* tempPtr142, bytes 0
-                        int temp146 = read int* tempPtr140
-                        int temp147 = read int* tempPtr144
-                        int temp145 = multiply int temp146, int temp147
-                        int* tempPtr149 = createPointer struct this
-                        int* tempPtr151 = addressAdd int* tempPtr149, bytes 4
-                        int* tempPtr153 = createPointer struct other
-                        int* tempPtr155 = addressAdd int* tempPtr153, bytes 4
-                        int temp157 = read int* tempPtr151
-                        int temp158 = read int* tempPtr155
-                        int temp156 = multiply int temp157, int temp158
-                        int temp159 = add int temp145, int temp156
-                        int returnValue136 = equal int temp159
-                        return
-                ]
-            },
-            "_fn_TestModules_Vector_shtk_greaterThan": {
+            "_fn_TestModules_Vector_shtk___greaterThan__": {
                 "icode": [
                         int* tempPtr59 = createPointer struct this
                         int* tempPtr61 = addressAdd int* tempPtr59, bytes 0
@@ -299,6 +278,27 @@
                         autoInt temp129 = read autoInt* tempPtr121
                         byte temp130 = cast autoInt temp129
                         byte returnValue120 = equal byte temp130
+                        return
+                ]
+            },
+            "_fn_TestModules_Vector_shtk_dot": {
+                "icode": [
+                        int* tempPtr138 = createPointer struct this
+                        int* tempPtr140 = addressAdd int* tempPtr138, bytes 0
+                        int* tempPtr142 = createPointer struct other
+                        int* tempPtr144 = addressAdd int* tempPtr142, bytes 0
+                        int temp146 = read int* tempPtr140
+                        int temp147 = read int* tempPtr144
+                        int temp145 = multiply int temp146, int temp147
+                        int* tempPtr149 = createPointer struct this
+                        int* tempPtr151 = addressAdd int* tempPtr149, bytes 4
+                        int* tempPtr153 = createPointer struct other
+                        int* tempPtr155 = addressAdd int* tempPtr153, bytes 4
+                        int temp157 = read int* tempPtr151
+                        int temp158 = read int* tempPtr155
+                        int temp156 = multiply int temp157, int temp158
+                        int temp159 = add int temp145, int temp156
+                        int returnValue136 = equal int temp159
                         return
                 ]
             },

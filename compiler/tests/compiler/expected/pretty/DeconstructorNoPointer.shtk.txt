@@ -18,7 +18,7 @@
     "TestModules/Foobar.shtk": {
         "moduleName": "TestModules/Foobar.shtk",
         "functions": {
-            "_fn_TestModules_Foobar_shtk_beforeCopy": {
+            "_fn_TestModules_Foobar_shtk___beforeCopy__": {
                 "icode": [
                         int* tempPtr13 = createPointer struct self
                         int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
@@ -30,7 +30,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_Foobar_shtk_deconstructor": {
+            "_fn_TestModules_Foobar_shtk___deconstructor__": {
                 "icode": [
                         int* tempPtr4 = createPointer struct self
                         int* tempPtr6 = addressAdd int* tempPtr4, bytes 0

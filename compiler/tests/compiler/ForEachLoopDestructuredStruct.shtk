@@ -32,7 +32,7 @@ fn length(self: TestGenerator) -> ulong
     return 3
 }
 
-fn subscriptItem(self: TestGenerator, index: ulong) -> Point
+fn __subscriptItem__(self: TestGenerator, index: ulong) -> Point
 {
     return createPoint(self.a[index], self.b[index])
 }

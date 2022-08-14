@@ -4,25 +4,29 @@
 
 Unit coerceToCharArray(generator::GeneratorContext& ctx, const Token& token, const Unit& unit)
 {
-    if (ctx.ir.finder.methodExists(unit.type(), "toCharArray"))
+    const std::string toCharArrayHook = "__toCharArray__";
+    const std::string toStringHook = "__toString__";
+
+    if (ctx.ir.finder.methodExists(unit.type(), toCharArrayHook))
     {
-        const icode::FunctionDescription charArrayFunc = ctx.ir.finder.getMethod(unit.type(), "toCharArray");
+        const icode::FunctionDescription charArrayFunc = ctx.ir.finder.getMethod(unit.type(), toCharArrayHook);
 
         if (!charArrayFunc.functionReturnType.isSingleDimCharArray())
-            ctx.console.compileErrorOnToken("Invalid return type for method 'toCharArray'", token);
+            ctx.console.compileErrorOnToken("Invalid return type for method " + toCharArrayHook, token);
 
         return createCallFunction(ctx, { token }, { unit }, charArrayFunc, token);
     }
-    else if (ctx.ir.finder.methodExists(unit.type(), "toString"))
+    else if (ctx.ir.finder.methodExists(unit.type(), toStringHook))
     {
-        const icode::FunctionDescription stringFunc = ctx.ir.finder.getMethod(unit.type(), "toString");
+        const icode::FunctionDescription stringFunc = ctx.ir.finder.getMethod(unit.type(), toStringHook);
 
         const Unit stringReturn = createCallFunction(ctx, { token }, { unit }, stringFunc, token);
 
         return coerceToCharArray(ctx, token, stringReturn);
     }
 
-    ctx.console.compileErrorOnToken("Cannot print type without 'toCharArray' or 'toString' method", token);
+    ctx.console.compileErrorOnToken("Cannot print type without " + toCharArrayHook + " or " + toStringHook + " method",
+                                    token);
 }
 
 void print(generator::GeneratorContext& ctx, const Node& root)

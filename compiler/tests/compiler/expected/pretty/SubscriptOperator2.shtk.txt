@@ -2,7 +2,7 @@
     "SubscriptOperator2.shtk": {
         "moduleName": "SubscriptOperator2.shtk",
         "functions": {
-            "_fn_SubscriptOperator2_shtk_subscript": {
+            "_fn_SubscriptOperator2_shtk___subscript__": {
                 "icode": [
                         int* tempPtr7 = createPointer int returnValue3
                         int temp8 = cast autoInt 1
@@ -19,10 +19,10 @@
             "main": {
                 "icode": [
                         struct* tempPtr23 = createPointer struct a
-                        passPointer struct* tempPtr23, int _fn_SubscriptOperator2_shtk_subscript, module SubscriptOperator2.shtk
+                        passPointer struct* tempPtr23, int _fn_SubscriptOperator2_shtk___subscript__, module SubscriptOperator2.shtk
                         ulong temp26 = cast autoInt 0
-                        pass ulong temp26, int _fn_SubscriptOperator2_shtk_subscript, module SubscriptOperator2.shtk
-                        int calleeReturnValue29 = call int _fn_SubscriptOperator2_shtk_subscript, module SubscriptOperator2.shtk
+                        pass ulong temp26, int _fn_SubscriptOperator2_shtk___subscript__, module SubscriptOperator2.shtk
+                        int calleeReturnValue29 = call int _fn_SubscriptOperator2_shtk___subscript__, module SubscriptOperator2.shtk
                         int* tempPtr33 = createPointer int calleeReturnValue29
                         void* tempPtr35 = addressMultiply autoInt 2, bytes 4
                         int* tempPtr36 = addressAdd int* tempPtr33, void* tempPtr35

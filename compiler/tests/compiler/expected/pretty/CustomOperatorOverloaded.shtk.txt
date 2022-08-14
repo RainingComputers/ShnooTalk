@@ -2,40 +2,7 @@
     "CustomOperatorOverloaded.shtk": {
         "moduleName": "CustomOperatorOverloaded.shtk",
         "functions": {
-            "_fn_CustomOperatorOverloaded_shtk_addVector": {
-                "icode": [
-                        int* tempPtr33 = createPointer struct self
-                        int* tempPtr35 = addressAdd int* tempPtr33, bytes 0
-                        int* tempPtr37 = createPointer struct other
-                        int* tempPtr39 = addressAdd int* tempPtr37, bytes 0
-                        int temp41 = read int* tempPtr35
-                        int temp42 = read int* tempPtr39
-                        int temp40 = add int temp41, int temp42
-                        int* tempPtr44 = createPointer struct self
-                        int* tempPtr46 = addressAdd int* tempPtr44, bytes 4
-                        int* tempPtr48 = createPointer struct other
-                        int* tempPtr50 = addressAdd int* tempPtr48, bytes 4
-                        int temp52 = read int* tempPtr46
-                        int temp53 = read int* tempPtr50
-                        int temp51 = add int temp52, int temp53
-                        int* tempPtr55 = createPointer struct self
-                        int* tempPtr57 = addressAdd int* tempPtr55, bytes 8
-                        int* tempPtr59 = createPointer struct other
-                        int* tempPtr61 = addressAdd int* tempPtr59, bytes 8
-                        int temp63 = read int* tempPtr57
-                        int temp64 = read int* tempPtr61
-                        int temp62 = add int temp63, int temp64
-                        pass int temp40, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
-                        pass int temp51, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
-                        pass int temp62, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
-                        struct calleeReturnValue74 = call struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
-                        int* tempPtr77 = createPointer struct returnValue28
-                        int* tempPtr78 = createPointer struct calleeReturnValue74
-                        int* tempPtr77 = memoryCopy int* tempPtr78, autoInt 12
-                        return
-                ]
-            },
-            "_fn_CustomOperatorOverloaded_shtk_addVectorArray": {
+            "_fn_CustomOperatorOverloaded_shtk___addVectorArray__": {
                 "icode": [
                         int temp88 = cast autoInt 2
                         flag = isEqual int n, int temp88
@@ -103,24 +70,40 @@
                         return
                 ]
             },
-            "_fn_CustomOperatorOverloaded_shtk_createVector": {
+            "_fn_CustomOperatorOverloaded_shtk___addVector__": {
                 "icode": [
-                        int* tempPtr5 = createPointer struct v
-                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
-                        int* tempPtr7 = write int x
-                        int* tempPtr10 = createPointer struct v
-                        int* tempPtr12 = addressAdd int* tempPtr10, bytes 4
-                        int* tempPtr12 = write int y
-                        int* tempPtr15 = createPointer struct v
-                        int* tempPtr17 = addressAdd int* tempPtr15, bytes 8
-                        int* tempPtr17 = write int z
-                        int* tempPtr21 = createPointer struct returnValue19
-                        int* tempPtr22 = createPointer struct v
-                        int* tempPtr21 = memoryCopy int* tempPtr22, autoInt 12
+                        int* tempPtr33 = createPointer struct self
+                        int* tempPtr35 = addressAdd int* tempPtr33, bytes 0
+                        int* tempPtr37 = createPointer struct other
+                        int* tempPtr39 = addressAdd int* tempPtr37, bytes 0
+                        int temp41 = read int* tempPtr35
+                        int temp42 = read int* tempPtr39
+                        int temp40 = add int temp41, int temp42
+                        int* tempPtr44 = createPointer struct self
+                        int* tempPtr46 = addressAdd int* tempPtr44, bytes 4
+                        int* tempPtr48 = createPointer struct other
+                        int* tempPtr50 = addressAdd int* tempPtr48, bytes 4
+                        int temp52 = read int* tempPtr46
+                        int temp53 = read int* tempPtr50
+                        int temp51 = add int temp52, int temp53
+                        int* tempPtr55 = createPointer struct self
+                        int* tempPtr57 = addressAdd int* tempPtr55, bytes 8
+                        int* tempPtr59 = createPointer struct other
+                        int* tempPtr61 = addressAdd int* tempPtr59, bytes 8
+                        int temp63 = read int* tempPtr57
+                        int temp64 = read int* tempPtr61
+                        int temp62 = add int temp63, int temp64
+                        pass int temp40, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
+                        pass int temp51, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
+                        pass int temp62, struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
+                        struct calleeReturnValue74 = call struct _fn_CustomOperatorOverloaded_shtk_createVector, module CustomOperatorOverloaded.shtk
+                        int* tempPtr77 = createPointer struct returnValue28
+                        int* tempPtr78 = createPointer struct calleeReturnValue74
+                        int* tempPtr77 = memoryCopy int* tempPtr78, autoInt 12
                         return
                 ]
             },
-            "_fn_CustomOperatorOverloaded_shtk_isEqualArray": {
+            "_fn_CustomOperatorOverloaded_shtk___isEqualArray__": {
                 "icode": [
                         int temp208 = cast autoInt 2
                         flag = isEqual int n, int temp208
@@ -201,6 +184,23 @@
                         return
                 ]
             },
+            "_fn_CustomOperatorOverloaded_shtk_createVector": {
+                "icode": [
+                        int* tempPtr5 = createPointer struct v
+                        int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
+                        int* tempPtr7 = write int x
+                        int* tempPtr10 = createPointer struct v
+                        int* tempPtr12 = addressAdd int* tempPtr10, bytes 4
+                        int* tempPtr12 = write int y
+                        int* tempPtr15 = createPointer struct v
+                        int* tempPtr17 = addressAdd int* tempPtr15, bytes 8
+                        int* tempPtr17 = write int z
+                        int* tempPtr21 = createPointer struct returnValue19
+                        int* tempPtr22 = createPointer struct v
+                        int* tempPtr21 = memoryCopy int* tempPtr22, autoInt 12
+                        return
+                ]
+            },
             "_fn_CustomOperatorOverloaded_shtk_printVector": {
                 "icode": [
                         int* tempPtr310 = createPointer struct v
@@ -244,7 +244,7 @@
                         int* tempPtr375 = createPointer struct calleeReturnValue371
                         int* tempPtr374 = memoryCopy int* tempPtr375, autoInt 12
                         int* tempPtr385 = createPointer struct a
-                        passPointer int* tempPtr385, struct _fn_CustomOperatorOverloaded_shtk_addVectorArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr385, struct _fn_CustomOperatorOverloaded_shtk___addVectorArray__, module CustomOperatorOverloaded.shtk
                         int* tempPtr388 = allocArrayPointer bytes 12
                         int temp390 = cast autoInt 1
                         int* tempPtr388 = write int temp390
@@ -254,10 +254,10 @@
                         int* tempPtr395 = addressAdd int* tempPtr392, bytes 4
                         int temp396 = cast autoInt 1
                         int* tempPtr395 = write int temp396
-                        passPointer int* tempPtr388, struct _fn_CustomOperatorOverloaded_shtk_addVectorArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr388, struct _fn_CustomOperatorOverloaded_shtk___addVectorArray__, module CustomOperatorOverloaded.shtk
                         int temp399 = cast autoInt 3
-                        pass int temp399, struct _fn_CustomOperatorOverloaded_shtk_addVectorArray, module CustomOperatorOverloaded.shtk
-                        struct calleeReturnValue402 = call struct _fn_CustomOperatorOverloaded_shtk_addVectorArray, module CustomOperatorOverloaded.shtk
+                        pass int temp399, struct _fn_CustomOperatorOverloaded_shtk___addVectorArray__, module CustomOperatorOverloaded.shtk
+                        struct calleeReturnValue402 = call struct _fn_CustomOperatorOverloaded_shtk___addVectorArray__, module CustomOperatorOverloaded.shtk
                         int* tempPtr405 = createPointer struct a
                         int* tempPtr406 = createPointer struct calleeReturnValue402
                         int* tempPtr405 = memoryCopy int* tempPtr406, autoInt 12
@@ -266,7 +266,7 @@
                         void calleeReturnValue414 = call void _fn_CustomOperatorOverloaded_shtk_printVector, module CustomOperatorOverloaded.shtk
                         autoInt* tempPtr417 = allocPointer 
                         int* tempPtr429 = createPointer struct a
-                        passPointer int* tempPtr429, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr429, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         int* tempPtr432 = allocArrayPointer bytes 12
                         int temp434 = cast autoInt 2
                         int* tempPtr432 = write int temp434
@@ -276,10 +276,10 @@
                         int* tempPtr439 = addressAdd int* tempPtr436, bytes 4
                         int temp440 = cast autoInt 4
                         int* tempPtr439 = write int temp440
-                        passPointer int* tempPtr432, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr432, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         int temp443 = cast autoInt 3
-                        pass int temp443, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
-                        byte calleeReturnValue446 = call byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        pass int temp443, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
+                        byte calleeReturnValue446 = call byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         byte temp450 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue446, byte temp450
                         if(not flag) goto _condn_exp_false_l57_c12
@@ -292,10 +292,10 @@
                         print autoInt temp453
                         newLine
                         int* tempPtr458 = createPointer struct a
-                        passPointer int* tempPtr458, struct _fn_CustomOperatorOverloaded_shtk_addVector, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr458, struct _fn_CustomOperatorOverloaded_shtk___addVector__, module CustomOperatorOverloaded.shtk
                         int* tempPtr461 = createPointer struct b
-                        passPointer int* tempPtr461, struct _fn_CustomOperatorOverloaded_shtk_addVector, module CustomOperatorOverloaded.shtk
-                        struct calleeReturnValue464 = call struct _fn_CustomOperatorOverloaded_shtk_addVector, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr461, struct _fn_CustomOperatorOverloaded_shtk___addVector__, module CustomOperatorOverloaded.shtk
+                        struct calleeReturnValue464 = call struct _fn_CustomOperatorOverloaded_shtk___addVector__, module CustomOperatorOverloaded.shtk
                         int* tempPtr467 = createPointer struct a
                         int* tempPtr468 = createPointer struct calleeReturnValue464
                         int* tempPtr467 = memoryCopy int* tempPtr468, autoInt 12
@@ -304,7 +304,7 @@
                         void calleeReturnValue476 = call void _fn_CustomOperatorOverloaded_shtk_printVector, module CustomOperatorOverloaded.shtk
                         autoInt* tempPtr479 = allocPointer 
                         int* tempPtr491 = createPointer struct a
-                        passPointer int* tempPtr491, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr491, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         int* tempPtr494 = allocArrayPointer bytes 12
                         int temp496 = cast autoInt 5
                         int* tempPtr494 = write int temp496
@@ -314,10 +314,10 @@
                         int* tempPtr501 = addressAdd int* tempPtr498, bytes 4
                         int temp502 = cast autoInt 5
                         int* tempPtr501 = write int temp502
-                        passPointer int* tempPtr494, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr494, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         int temp505 = cast autoInt 3
-                        pass int temp505, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
-                        byte calleeReturnValue508 = call byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        pass int temp505, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
+                        byte calleeReturnValue508 = call byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         byte temp512 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue508, byte temp512
                         if(not flag) goto _condn_exp_false_l62_c12
@@ -341,17 +341,17 @@
                         int* tempPtr538 = memoryCopy int* tempPtr539, autoInt 12
                         autoInt* tempPtr541 = allocPointer 
                         int* tempPtr552 = createPointer struct b
-                        passPointer int* tempPtr552, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr552, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         int* tempPtr555 = allocArrayPointer bytes 8
                         int temp557 = cast autoInt 1
                         int* tempPtr555 = write int temp557
                         int* tempPtr559 = addressAdd int* tempPtr555, bytes 4
                         int temp560 = cast autoInt 1
                         int* tempPtr559 = write int temp560
-                        passPointer int* tempPtr555, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr555, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         int temp563 = cast autoInt 2
-                        pass int temp563, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
-                        byte calleeReturnValue566 = call byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        pass int temp563, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
+                        byte calleeReturnValue566 = call byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         byte temp570 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue566, byte temp570
                         if(not flag) goto _condn_exp_false_l65_c12
@@ -365,17 +365,17 @@
                         newLine
                         autoInt* tempPtr574 = allocPointer 
                         int* tempPtr585 = createPointer struct b
-                        passPointer int* tempPtr585, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr585, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         int* tempPtr588 = allocArrayPointer bytes 8
                         int temp590 = cast autoInt 4
                         int* tempPtr588 = write int temp590
                         int* tempPtr592 = addressAdd int* tempPtr588, bytes 4
                         int temp593 = cast autoInt 3
                         int* tempPtr592 = write int temp593
-                        passPointer int* tempPtr588, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        passPointer int* tempPtr588, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         int temp596 = cast autoInt 2
-                        pass int temp596, byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
-                        byte calleeReturnValue599 = call byte _fn_CustomOperatorOverloaded_shtk_isEqualArray, module CustomOperatorOverloaded.shtk
+                        pass int temp596, byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
+                        byte calleeReturnValue599 = call byte _fn_CustomOperatorOverloaded_shtk___isEqualArray__, module CustomOperatorOverloaded.shtk
                         byte temp603 = cast autoInt 0
                         flag = greaterThan byte calleeReturnValue599, byte temp603
                         if(not flag) goto _condn_exp_false_l66_c12

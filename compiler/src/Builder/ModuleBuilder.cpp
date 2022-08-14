@@ -258,7 +258,7 @@ void ModuleBuilder::createFunction(const Token& nameToken,
     icode::FunctionDescription function =
         createFunctionDescription(returnType, paramNames, paramTypes, rootModule.name, mangledFunctionName);
 
-    if (functionName == "deconstructor")
+    if (functionName == "__deconstructor__")
     {
         if (!isValidDeconstructor(function))
             console.compileErrorOnToken("Invalid deconstructor function", nameToken);

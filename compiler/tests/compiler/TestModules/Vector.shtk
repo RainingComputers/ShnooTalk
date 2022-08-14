@@ -11,7 +11,7 @@ fn setVec(mut this:Vec, x:int, y:int)
     this.y = y
 }
 
-fn add(this:Vec, other:Vec) -> Vec
+fn __add__(this:Vec, other:Vec) -> Vec
 {    
     var res:Vec
 
@@ -21,7 +21,7 @@ fn add(this:Vec, other:Vec) -> Vec
     return res
 }
 
-fn greaterThan(this: Vec, other: Vec) -> bool
+fn __greaterThan__(this: Vec, other: Vec) -> bool
 {
     var thisLen: float = sqrtf(float`(this.x*this.x + this.y*this.y))
     var otherLen: float = sqrtf(float`(other.x*other.x + other.y*other.y))

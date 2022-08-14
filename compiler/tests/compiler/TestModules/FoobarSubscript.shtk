@@ -3,7 +3,7 @@ struct Foobar
 
 }
 
-fn subscript(self: Foobar, index: float) -> bool
+fn __subscript__(self: Foobar, index: float) -> bool
 {
     if index == 3.14
         return true
@@ -11,7 +11,7 @@ fn subscript(self: Foobar, index: float) -> bool
     return false
 }
 
-fn subscriptArray(self: Foobar, a: int[], n: int) -> int
+fn __subscriptArray__(self: Foobar, a: int[], n: int) -> int
 {
     if n == 2 
         if a[0] == 1 and a[1] == 2
@@ -20,7 +20,7 @@ fn subscriptArray(self: Foobar, a: int[], n: int) -> int
     return n
 }
 
-fn subscriptTesting(self: Foobar, mut b: int) -> bool
+fn __subscriptTesting__(self: Foobar, mut b: int) -> bool
 {
     return false
 }

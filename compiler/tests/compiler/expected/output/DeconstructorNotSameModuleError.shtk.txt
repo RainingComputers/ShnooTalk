@@ -1,7 +1,7 @@
 MODULE DeconstructorNotSameModuleError.shtk
 ERROR in Line 3 Col 4
 
-fn deconstructor(self: Foobar)
+fn __deconstructor__(self: Foobar)
    ^
 Invalid deconstructor function
 

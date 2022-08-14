@@ -34,13 +34,13 @@ fn expand(mut self: SharedPointer, capacity: ulong)
     self._slice.expand(capacity)
 }
 
-fn deconstructor(mut self: SharedPointer)
+fn __deconstructor__(mut self: SharedPointer)
 {
     if not self._count.isZero() return void
     self._slice.free()
 }
 
-fn subscriptItem(self: SharedPointer, index: ulong) -> T
+fn __subscriptItem__(self: SharedPointer, index: ulong) -> T
 {
     return self._slice[index]
 }

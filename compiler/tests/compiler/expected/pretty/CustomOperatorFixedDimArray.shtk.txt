@@ -2,16 +2,7 @@
     "CustomOperatorFixedDimArray.shtk": {
         "moduleName": "CustomOperatorFixedDimArray.shtk",
         "functions": {
-            "_fn_CustomOperatorFixedDimArray_shtk_subscriptArray": {
-                "icode": [
-                        printString stringData _str_CustomOperatorFixedDimArray_shtk__l20_c12
-                        newLine
-                        int temp20 = cast autoInt 0
-                        int returnValue18 = equal int temp20
-                        return
-                ]
-            },
-            "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayFixed": {
+            "_fn_CustomOperatorFixedDimArray_shtk___subscriptArrayFixed__": {
                 "icode": [
                         printString stringData _str_CustomOperatorFixedDimArray_shtk__l13_c12
                         newLine
@@ -20,7 +11,7 @@
                         return
                 ]
             },
-            "_fn_CustomOperatorFixedDimArray_shtk_subscriptArrayTrueFlex": {
+            "_fn_CustomOperatorFixedDimArray_shtk___subscriptArrayTrueFlex__": {
                 "icode": [
                         printString stringData _str_CustomOperatorFixedDimArray_shtk__l6_c12
                         newLine
@@ -29,10 +20,19 @@
                         return
                 ]
             },
+            "_fn_CustomOperatorFixedDimArray_shtk___subscriptArray__": {
+                "icode": [
+                        printString stringData _str_CustomOperatorFixedDimArray_shtk__l20_c12
+                        newLine
+                        int temp20 = cast autoInt 0
+                        int returnValue18 = equal int temp20
+                        return
+                ]
+            },
             "main": {
                 "icode": [
                         struct* tempPtr34 = createPointer struct foo
-                        passPointer struct* tempPtr34, int _fn_CustomOperatorFixedDimArray_shtk_subscriptArray, module CustomOperatorFixedDimArray.shtk
+                        passPointer struct* tempPtr34, int _fn_CustomOperatorFixedDimArray_shtk___subscriptArray__, module CustomOperatorFixedDimArray.shtk
                         int* tempPtr37 = allocArrayPointer bytes 16
                         int temp39 = cast autoInt 1
                         int* tempPtr37 = write int temp39
@@ -45,21 +45,21 @@
                         int* tempPtr47 = addressAdd int* tempPtr44, bytes 4
                         int temp48 = cast autoInt 4
                         int* tempPtr47 = write int temp48
-                        passPointer int* tempPtr37, int _fn_CustomOperatorFixedDimArray_shtk_subscriptArray, module CustomOperatorFixedDimArray.shtk
+                        passPointer int* tempPtr37, int _fn_CustomOperatorFixedDimArray_shtk___subscriptArray__, module CustomOperatorFixedDimArray.shtk
                         long temp51 = cast autoInt 4
-                        pass long temp51, int _fn_CustomOperatorFixedDimArray_shtk_subscriptArray, module CustomOperatorFixedDimArray.shtk
-                        int calleeReturnValue54 = call int _fn_CustomOperatorFixedDimArray_shtk_subscriptArray, module CustomOperatorFixedDimArray.shtk
+                        pass long temp51, int _fn_CustomOperatorFixedDimArray_shtk___subscriptArray__, module CustomOperatorFixedDimArray.shtk
+                        int calleeReturnValue54 = call int _fn_CustomOperatorFixedDimArray_shtk___subscriptArray__, module CustomOperatorFixedDimArray.shtk
                         int a = equal int calleeReturnValue54
                         struct* tempPtr64 = createPointer struct foo
-                        passPointer struct* tempPtr64, int _fn_CustomOperatorFixedDimArray_shtk_subscriptArrayFixed, module CustomOperatorFixedDimArray.shtk
+                        passPointer struct* tempPtr64, int _fn_CustomOperatorFixedDimArray_shtk___subscriptArrayFixed__, module CustomOperatorFixedDimArray.shtk
                         int* tempPtr67 = allocArrayPointer bytes 8
                         int temp69 = cast autoInt 2
                         int* tempPtr67 = write int temp69
                         int* tempPtr71 = addressAdd int* tempPtr67, bytes 4
                         int temp72 = cast autoInt 3
                         int* tempPtr71 = write int temp72
-                        passPointer int* tempPtr67, int _fn_CustomOperatorFixedDimArray_shtk_subscriptArrayFixed, module CustomOperatorFixedDimArray.shtk
-                        int calleeReturnValue75 = call int _fn_CustomOperatorFixedDimArray_shtk_subscriptArrayFixed, module CustomOperatorFixedDimArray.shtk
+                        passPointer int* tempPtr67, int _fn_CustomOperatorFixedDimArray_shtk___subscriptArrayFixed__, module CustomOperatorFixedDimArray.shtk
+                        int calleeReturnValue75 = call int _fn_CustomOperatorFixedDimArray_shtk___subscriptArrayFixed__, module CustomOperatorFixedDimArray.shtk
                         int b = equal int calleeReturnValue75
                         int* tempPtr82 = createPointer int c
                         int temp83 = cast autoInt 1
@@ -71,9 +71,9 @@
                         int* d = pointerAssign int* tempPtr89
                         int* d = pointerAssign int c
                         struct* tempPtr95 = createPointer struct foo
-                        passPointer struct* tempPtr95, int _fn_CustomOperatorFixedDimArray_shtk_subscriptArrayTrueFlex, module CustomOperatorFixedDimArray.shtk
-                        passPointer int* d, int _fn_CustomOperatorFixedDimArray_shtk_subscriptArrayTrueFlex, module CustomOperatorFixedDimArray.shtk
-                        int calleeReturnValue100 = call int _fn_CustomOperatorFixedDimArray_shtk_subscriptArrayTrueFlex, module CustomOperatorFixedDimArray.shtk
+                        passPointer struct* tempPtr95, int _fn_CustomOperatorFixedDimArray_shtk___subscriptArrayTrueFlex__, module CustomOperatorFixedDimArray.shtk
+                        passPointer int* d, int _fn_CustomOperatorFixedDimArray_shtk___subscriptArrayTrueFlex__, module CustomOperatorFixedDimArray.shtk
+                        int calleeReturnValue100 = call int _fn_CustomOperatorFixedDimArray_shtk___subscriptArrayTrueFlex__, module CustomOperatorFixedDimArray.shtk
                         int e = equal int calleeReturnValue100
                         int temp106 = cast autoInt 0
                         int returnValue104 = equal int temp106

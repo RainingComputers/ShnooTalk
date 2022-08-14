@@ -3,6 +3,6 @@ ERROR in Line 8 Col 13
 
     println(a)
             ^
-Cannot print type without 'toCharArray' or 'toString' method
+Cannot print type without __toCharArray__ or __toString__ method
 
 PrintStructError.shtk:8:12

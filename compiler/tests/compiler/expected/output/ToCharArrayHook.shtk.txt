@@ -1,2 +1,8 @@
-Hello world
-Hello world
+MODULE ToCharArrayHook.shtk
+ERROR in Line 21 Col 13
+
+    println(b)
+            ^
+Cannot print type without __toCharArray__ or __toString__ method
+
+ToCharArrayHook.shtk:21:12

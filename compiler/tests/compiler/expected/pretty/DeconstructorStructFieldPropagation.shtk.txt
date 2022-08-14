@@ -2,7 +2,7 @@
     "DeconstructorStructFieldPropagation.shtk": {
         "moduleName": "DeconstructorStructFieldPropagation.shtk",
         "functions": {
-            "_fn_DeconstructorStructFieldPropagation_shtk_deconstructor": {
+            "_fn_DeconstructorStructFieldPropagation_shtk___deconstructor__": {
                 "icode": [
                         int* tempPtr4 = createPointer struct self
                         int* tempPtr6 = addressAdd int* tempPtr4, bytes 0
@@ -35,11 +35,11 @@
                         int* tempPtr38 = createPointer struct* tempPtr37
                         int* tempPtr40 = addressAdd int* tempPtr38, bytes 0
                         int* tempPtr42 = createPointer struct* tempPtr37
-                        passPointer int* tempPtr42, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue45 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        passPointer int* tempPtr42, void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
+                        void calleeReturnValue45 = call void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
                         int* tempPtr49 = createPointer struct barbar
-                        passPointer int* tempPtr49, void _fn_DeconstructorStructFieldPropagation_shtk_deconstructor, module DeconstructorStructFieldPropagation.shtk
-                        void calleeReturnValue52 = call void _fn_DeconstructorStructFieldPropagation_shtk_deconstructor, module DeconstructorStructFieldPropagation.shtk
+                        passPointer int* tempPtr49, void _fn_DeconstructorStructFieldPropagation_shtk___deconstructor__, module DeconstructorStructFieldPropagation.shtk
+                        void calleeReturnValue52 = call void _fn_DeconstructorStructFieldPropagation_shtk___deconstructor__, module DeconstructorStructFieldPropagation.shtk
                         return
                 ]
             }
@@ -48,7 +48,7 @@
     "TestModules/Foobar.shtk": {
         "moduleName": "TestModules/Foobar.shtk",
         "functions": {
-            "_fn_TestModules_Foobar_shtk_beforeCopy": {
+            "_fn_TestModules_Foobar_shtk___beforeCopy__": {
                 "icode": [
                         int* tempPtr13 = createPointer struct self
                         int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
@@ -60,7 +60,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_Foobar_shtk_deconstructor": {
+            "_fn_TestModules_Foobar_shtk___deconstructor__": {
                 "icode": [
                         int* tempPtr4 = createPointer struct self
                         int* tempPtr6 = addressAdd int* tempPtr4, bytes 0

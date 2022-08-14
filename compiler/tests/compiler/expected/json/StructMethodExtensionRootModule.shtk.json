@@ -24,21 +24,7 @@
     "TestModules/FoobarSubscript.shtk": {
         "moduleName": "TestModules/FoobarSubscript.shtk",
         "functions": {
-            "_fn_TestModules_FoobarSubscript_shtk_subscript": {
-                "icode": [
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "float"}, "op2": {"type": "literal", "id": 7, "dtype": "autoFloat", "value": 3.14}, "op3": {"type": "none"}},
-                    {"opcode": "isEqual", "op1": {"type": "var", "id": 6, "name": "index", "dtype": "float"}, "op2": {"type": "temp", "id": 8, "dtype": "float"}, "op3": {"type": "none"}},
-                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "byte"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "byte"}, "op2": {"type": "temp", "id": 11, "dtype": "byte"}, "op3": {"type": "none"}},
-                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
-                    {"opcode": "cast", "op1": {"type": "temp", "id": 14, "dtype": "byte"}, "op2": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "byte"}, "op2": {"type": "temp", "id": 14, "dtype": "byte"}, "op3": {"type": "none"}},
-                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-                ]
-            },
-            "_fn_TestModules_FoobarSubscript_shtk_subscriptArray": {
+            "_fn_TestModules_FoobarSubscript_shtk___subscriptArray__": {
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 23, "dtype": "int"}, "op2": {"type": "literal", "id": 22, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
                     {"opcode": "isEqual", "op1": {"type": "var", "id": 21, "name": "n", "dtype": "int"}, "op2": {"type": "temp", "id": 23, "dtype": "int"}, "op3": {"type": "none"}},
@@ -65,10 +51,24 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_TestModules_FoobarSubscript_shtk_subscriptTesting": {
+            "_fn_TestModules_FoobarSubscript_shtk___subscriptTesting__": {
                 "icode": [
                     {"opcode": "cast", "op1": {"type": "temp", "id": 56, "dtype": "byte"}, "op2": {"type": "literal", "id": 55, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 54, "dtype": "byte"}, "op2": {"type": "temp", "id": 56, "dtype": "byte"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
+            "_fn_TestModules_FoobarSubscript_shtk___subscript__": {
+                "icode": [
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 8, "dtype": "float"}, "op2": {"type": "literal", "id": 7, "dtype": "autoFloat", "value": 3.14}, "op3": {"type": "none"}},
+                    {"opcode": "isEqual", "op1": {"type": "var", "id": 6, "name": "index", "dtype": "float"}, "op2": {"type": "temp", "id": 8, "dtype": "float"}, "op3": {"type": "none"}},
+                    {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 11, "dtype": "byte"}, "op2": {"type": "literal", "id": 10, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 9, "dtype": "byte"}, "op2": {"type": "temp", "id": 11, "dtype": "byte"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "createLabel", "op1": {"type": "label", "id": 5, "name": "_if_false_l8_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
+                    {"opcode": "cast", "op1": {"type": "temp", "id": 14, "dtype": "byte"}, "op2": {"type": "literal", "id": 13, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 12, "dtype": "byte"}, "op2": {"type": "temp", "id": 14, "dtype": "byte"}, "op3": {"type": "none"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

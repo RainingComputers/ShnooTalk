@@ -252,7 +252,7 @@ bool isSameParamsType(const FunctionDescription& function, const std::vector<Uni
 
 FunctionDescription Finder::getFunctionByParamTypes(const Token& token,
                                                     const TypeDescription& type,
-                                                    const std::vector<Unit>& params)
+                                                    const std::vector<Unit>& params) // TODO
 {
     for (auto functionName : workingModule->definedFunctions)
     {

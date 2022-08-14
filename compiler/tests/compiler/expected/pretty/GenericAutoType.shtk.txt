@@ -67,10 +67,10 @@
                         pass int temp109, struct _fn_TestModules_Pair_shtk[int][int]_pair, module TestModules/Pair.shtk[int][int]
                         struct calleeReturnValue112 = call struct _fn_TestModules_Pair_shtk[int][int]_pair, module TestModules/Pair.shtk[int][int]
                         int* tempPtr117 = createPointer struct calleeReturnValue97
-                        passPointer int* tempPtr117, struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
+                        passPointer int* tempPtr117, struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
                         int* tempPtr120 = createPointer struct calleeReturnValue112
-                        passPointer int* tempPtr120, struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
-                        struct calleeReturnValue123 = call struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
+                        passPointer int* tempPtr120, struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
+                        struct calleeReturnValue123 = call struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
                         int* tempPtr127 = createPointer struct b
                         int* tempPtr128 = createPointer struct calleeReturnValue123
                         int* tempPtr127 = memoryCopy int* tempPtr128, autoInt 8
@@ -122,10 +122,10 @@
                         pass int temp246, struct _fn_TestModules_Pair_shtk[int][int]_pair, module TestModules/Pair.shtk[int][int]
                         struct calleeReturnValue249 = call struct _fn_TestModules_Pair_shtk[int][int]_pair, module TestModules/Pair.shtk[int][int]
                         int* tempPtr254 = createPointer struct b
-                        passPointer int* tempPtr254, struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
+                        passPointer int* tempPtr254, struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
                         int* tempPtr257 = createPointer struct calleeReturnValue249
-                        passPointer int* tempPtr257, struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
-                        struct calleeReturnValue260 = call struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
+                        passPointer int* tempPtr257, struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
+                        struct calleeReturnValue260 = call struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
                         int* tempPtr264 = createPointer struct calleeReturnValue260
                         passPointer int* tempPtr264, void _fn_GenericAutoType_shtk_printPair, module GenericAutoType.shtk
                         void calleeReturnValue267 = call void _fn_GenericAutoType_shtk_printPair, module GenericAutoType.shtk
@@ -135,10 +135,10 @@
                         pass int temp283, struct _fn_TestModules_Pair_shtk[int][int]_pair, module TestModules/Pair.shtk[int][int]
                         struct calleeReturnValue286 = call struct _fn_TestModules_Pair_shtk[int][int]_pair, module TestModules/Pair.shtk[int][int]
                         int* tempPtr291 = createPointer struct b
-                        passPointer int* tempPtr291, struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
+                        passPointer int* tempPtr291, struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
                         int* tempPtr294 = createPointer struct calleeReturnValue286
-                        passPointer int* tempPtr294, struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
-                        struct calleeReturnValue297 = call struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
+                        passPointer int* tempPtr294, struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
+                        struct calleeReturnValue297 = call struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
                         int* tempPtr301 = createPointer struct calleeReturnValue297
                         passPointer int* tempPtr301, void _fn_GenericAutoType_shtk_printPair, module GenericAutoType.shtk
                         void calleeReturnValue304 = call void _fn_GenericAutoType_shtk_printPair, module GenericAutoType.shtk
@@ -148,10 +148,10 @@
                         pass int temp320, struct _fn_TestModules_Pair_shtk[int][int]_pair, module TestModules/Pair.shtk[int][int]
                         struct calleeReturnValue323 = call struct _fn_TestModules_Pair_shtk[int][int]_pair, module TestModules/Pair.shtk[int][int]
                         int* tempPtr328 = createPointer struct b
-                        passPointer int* tempPtr328, struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
+                        passPointer int* tempPtr328, struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
                         int* tempPtr331 = createPointer struct calleeReturnValue323
-                        passPointer int* tempPtr331, struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
-                        struct calleeReturnValue334 = call struct _fn_TestModules_Pair_shtk[int][int]_add, module TestModules/Pair.shtk[int][int]
+                        passPointer int* tempPtr331, struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
+                        struct calleeReturnValue334 = call struct _fn_TestModules_Pair_shtk[int][int]___add__, module TestModules/Pair.shtk[int][int]
                         int* tempPtr338 = createPointer struct calleeReturnValue334
                         passPointer int* tempPtr338, void _fn_GenericAutoType_shtk_printPair, module GenericAutoType.shtk
                         void calleeReturnValue341 = call void _fn_GenericAutoType_shtk_printPair, module GenericAutoType.shtk
@@ -184,7 +184,7 @@
     "TestModules/Pair.shtk[int][int]": {
         "moduleName": "TestModules/Pair.shtk[int][int]",
         "functions": {
-            "_fn_TestModules_Pair_shtk[int][int]_add": {
+            "_fn_TestModules_Pair_shtk[int][int]___add__": {
                 "icode": [
                         int* tempPtr5 = createPointer struct result
                         int* tempPtr7 = addressAdd int* tempPtr5, bytes 0

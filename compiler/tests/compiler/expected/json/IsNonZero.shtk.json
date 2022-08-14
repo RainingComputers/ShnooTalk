@@ -2,7 +2,7 @@
     "IsNonZero.shtk": {
         "moduleName": "IsNonZero.shtk",
         "functions": {
-            "_fn_IsNonZero_shtk_isNonZero": {
+            "_fn_IsNonZero_shtk___isNonZero__": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
@@ -18,8 +18,8 @@
                     {"opcode": "cast", "op1": {"type": "temp", "id": 18, "dtype": "int"}, "op2": {"type": "literal", "id": 17, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 16, "dtype": "int"}, "op2": {"type": "temp", "id": 18, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 25, "dtype": "int"}, "op2": {"type": "var", "id": 22, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 25, "dtype": "int"}, "op2": {"type": "var", "id": 26, "name": "_fn_IsNonZero_shtk_isNonZero", "dtype": "int"}, "op3": {"type": "module", "id": 27, "name": "IsNonZero.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 28, "dtype": "int"}, "op2": {"type": "var", "id": 29, "name": "_fn_IsNonZero_shtk_isNonZero", "dtype": "int"}, "op3": {"type": "module", "id": 30, "name": "IsNonZero.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 25, "dtype": "int"}, "op2": {"type": "var", "id": 26, "name": "_fn_IsNonZero_shtk___isNonZero__", "dtype": "int"}, "op3": {"type": "module", "id": 27, "name": "IsNonZero.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 28, "dtype": "int"}, "op2": {"type": "var", "id": 29, "name": "_fn_IsNonZero_shtk___isNonZero__", "dtype": "int"}, "op3": {"type": "module", "id": 30, "name": "IsNonZero.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 31, "dtype": "int"}, "op2": {"type": "literal", "id": 23, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "greaterThan", "op1": {"type": "calleeReturnValue", "id": 28, "dtype": "int"}, "op2": {"type": "temp", "id": 31, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 21, "name": "_if_false_l16_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
@@ -31,8 +31,8 @@
                     {"opcode": "cast", "op1": {"type": "temp", "id": 38, "dtype": "int"}, "op2": {"type": "literal", "id": 37, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 36, "dtype": "int"}, "op2": {"type": "temp", "id": 38, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op2": {"type": "var", "id": 42, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op2": {"type": "var", "id": 46, "name": "_fn_IsNonZero_shtk_isNonZero", "dtype": "int"}, "op3": {"type": "module", "id": 47, "name": "IsNonZero.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 48, "dtype": "int"}, "op2": {"type": "var", "id": 49, "name": "_fn_IsNonZero_shtk_isNonZero", "dtype": "int"}, "op3": {"type": "module", "id": 50, "name": "IsNonZero.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 45, "dtype": "int"}, "op2": {"type": "var", "id": 46, "name": "_fn_IsNonZero_shtk___isNonZero__", "dtype": "int"}, "op3": {"type": "module", "id": 47, "name": "IsNonZero.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 48, "dtype": "int"}, "op2": {"type": "var", "id": 49, "name": "_fn_IsNonZero_shtk___isNonZero__", "dtype": "int"}, "op3": {"type": "module", "id": 50, "name": "IsNonZero.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 51, "dtype": "int"}, "op2": {"type": "literal", "id": 43, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "greaterThan", "op1": {"type": "calleeReturnValue", "id": 48, "dtype": "int"}, "op2": {"type": "temp", "id": 51, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 41, "name": "_if_false_l19_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

@@ -10,8 +10,8 @@ fn main() -> int
     a.setVec(1, 2)
     b.setVec(5, 10)
 
-    c = vec::add(a, b)
-    d = c.add(a)
+    c = vec::__add__(a, b)
+    d = c.__add__(a)
 
     a.printVec()
     b.printVec()

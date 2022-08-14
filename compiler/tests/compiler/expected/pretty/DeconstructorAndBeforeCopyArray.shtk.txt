@@ -2,7 +2,7 @@
     "DeconstructorAndBeforeCopyArray.shtk": {
         "moduleName": "DeconstructorAndBeforeCopyArray.shtk",
         "functions": {
-            "_fn_DeconstructorAndBeforeCopyArray_shtk_beforeCopy": {
+            "_fn_DeconstructorAndBeforeCopyArray_shtk___beforeCopy__": {
                 "icode": [
                         printString stringData _str_DeconstructorAndBeforeCopyArray_shtk__l8_c12
                         space
@@ -14,7 +14,7 @@
                         return
                 ]
             },
-            "_fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor": {
+            "_fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__": {
                 "icode": [
                         printString stringData _str_DeconstructorAndBeforeCopyArray_shtk__l13_c12
                         space
@@ -76,13 +76,13 @@
                         int* tempPtr95 = createPointer int* tempPtr89
                         int* tempPtr97 = addressAdd int* tempPtr95, bytes 0
                         int* tempPtr99 = createPointer int* tempPtr89
-                        passPointer int* tempPtr99, void _fn_DeconstructorAndBeforeCopyArray_shtk_beforeCopy, module DeconstructorAndBeforeCopyArray.shtk
-                        void calleeReturnValue102 = call void _fn_DeconstructorAndBeforeCopyArray_shtk_beforeCopy, module DeconstructorAndBeforeCopyArray.shtk
+                        passPointer int* tempPtr99, void _fn_DeconstructorAndBeforeCopyArray_shtk___beforeCopy__, module DeconstructorAndBeforeCopyArray.shtk
+                        void calleeReturnValue102 = call void _fn_DeconstructorAndBeforeCopyArray_shtk___beforeCopy__, module DeconstructorAndBeforeCopyArray.shtk
                         int* tempPtr105 = createPointer int* tempPtr94
                         int* tempPtr107 = addressAdd int* tempPtr105, bytes 0
                         int* tempPtr109 = createPointer int* tempPtr94
-                        passPointer int* tempPtr109, void _fn_DeconstructorAndBeforeCopyArray_shtk_beforeCopy, module DeconstructorAndBeforeCopyArray.shtk
-                        void calleeReturnValue112 = call void _fn_DeconstructorAndBeforeCopyArray_shtk_beforeCopy, module DeconstructorAndBeforeCopyArray.shtk
+                        passPointer int* tempPtr109, void _fn_DeconstructorAndBeforeCopyArray_shtk___beforeCopy__, module DeconstructorAndBeforeCopyArray.shtk
+                        void calleeReturnValue112 = call void _fn_DeconstructorAndBeforeCopyArray_shtk___beforeCopy__, module DeconstructorAndBeforeCopyArray.shtk
                         int* tempPtr116 = createPointer struct a
                         void* tempPtr118 = addressMultiply autoInt 0, bytes 4
                         int* tempPtr119 = addressAdd int* tempPtr116, void* tempPtr118
@@ -92,13 +92,13 @@
                         int* tempPtr125 = createPointer int* tempPtr119
                         int* tempPtr127 = addressAdd int* tempPtr125, bytes 0
                         int* tempPtr129 = createPointer int* tempPtr119
-                        passPointer int* tempPtr129, void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
-                        void calleeReturnValue132 = call void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
+                        passPointer int* tempPtr129, void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
+                        void calleeReturnValue132 = call void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
                         int* tempPtr135 = createPointer int* tempPtr124
                         int* tempPtr137 = addressAdd int* tempPtr135, bytes 0
                         int* tempPtr139 = createPointer int* tempPtr124
-                        passPointer int* tempPtr139, void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
-                        void calleeReturnValue142 = call void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
+                        passPointer int* tempPtr139, void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
+                        void calleeReturnValue142 = call void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
                         int* tempPtr145 = createPointer struct a
                         int* tempPtr146 = createPointer struct calleeReturnValue82
                         int* tempPtr145 = memoryCopy int* tempPtr146, autoInt 8
@@ -113,23 +113,23 @@
                         int* tempPtr162 = createPointer int* tempPtr156
                         int* tempPtr164 = addressAdd int* tempPtr162, bytes 0
                         int* tempPtr166 = createPointer int* tempPtr156
-                        passPointer int* tempPtr166, void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
-                        void calleeReturnValue169 = call void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
+                        passPointer int* tempPtr166, void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
+                        void calleeReturnValue169 = call void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
                         int* tempPtr172 = createPointer int* tempPtr161
                         int* tempPtr174 = addressAdd int* tempPtr172, bytes 0
                         int* tempPtr176 = createPointer int* tempPtr161
-                        passPointer int* tempPtr176, void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
-                        void calleeReturnValue179 = call void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
+                        passPointer int* tempPtr176, void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
+                        void calleeReturnValue179 = call void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
                         int* tempPtr183 = createPointer struct f
                         int* tempPtr185 = addressAdd int* tempPtr183, bytes 0
                         int* tempPtr187 = createPointer struct f
-                        passPointer int* tempPtr187, void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
-                        void calleeReturnValue190 = call void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
+                        passPointer int* tempPtr187, void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
+                        void calleeReturnValue190 = call void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
                         int* tempPtr194 = createPointer struct g
                         int* tempPtr196 = addressAdd int* tempPtr194, bytes 0
                         int* tempPtr198 = createPointer struct g
-                        passPointer int* tempPtr198, void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
-                        void calleeReturnValue201 = call void _fn_DeconstructorAndBeforeCopyArray_shtk_deconstructor, module DeconstructorAndBeforeCopyArray.shtk
+                        passPointer int* tempPtr198, void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
+                        void calleeReturnValue201 = call void _fn_DeconstructorAndBeforeCopyArray_shtk___deconstructor__, module DeconstructorAndBeforeCopyArray.shtk
                         return
                 ]
             }

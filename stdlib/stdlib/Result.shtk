@@ -35,12 +35,12 @@ fn failFrom(error: Error[E]) -> Result
 
 fn hasValue(self: Result) -> bool
 {
-    return not self.error.isNonZero()
+    return not self.error.__isNonZero__()
 }
 
 fn isFail(self: Result) -> bool
 {
-    return self.error.isNonZero()
+    return self.error.__isNonZero__()
 }
 
 fn expect(self: Result) -> T
@@ -50,14 +50,14 @@ fn expect(self: Result) -> T
     return self.item
 }
 
-fn bitwiseOrItem(self: Result, other: T) -> T
+fn __bitwiseOrItem__(self: Result, other: T) -> T
 {
     if not self.error return self.item
 
     return other
 }
 
-fn bitwiseOrResult(self: Result, other: Result) -> Result
+fn __bitwiseOrResult__(self: Result, other: Result) -> Result
 {
     if not other.error return other
     return self

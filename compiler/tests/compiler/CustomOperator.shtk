@@ -18,67 +18,67 @@ fn printFoo(foo: Foobar)
     println("x="; foo.x, "y="; foo.y)
 }
 
-fn multiply(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __multiply__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x*RHS.x, LHS.y*RHS.y)
 }
 
-fn divide(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __divide__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x/RHS.x, LHS.y/RHS.y)
 }
 
-fn mod(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __mod__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x%RHS.x, LHS.y%RHS.y)
 }
 
-fn add(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __add__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x+RHS.x, LHS.y+RHS.y)
 }
 
-fn subtract(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __subtract__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x-RHS.x, LHS.y-RHS.y)
 }
 
-fn rightShift(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __rightShift__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x>>RHS.x, LHS.y-RHS.y)
 }
 
-fn leftShift(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __leftShift__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x<<RHS.x, LHS.y+RHS.y)
 }
 
-fn bitwiseAnd(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __bitwiseAnd__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x&RHS.x, LHS.y-RHS.y)
 }
 
-fn bitwiseOr(LHS: Foobar, RHS: Foobar) -> Foobar
+fn __bitwiseOr__(LHS: Foobar, RHS: Foobar) -> Foobar
 {
     return createFoo(LHS.x|RHS.x, LHS.y+RHS.y)
 }
 
-fn bitwiseOrInteger(LHS: Foobar, RHS: int) -> Foobar
+fn __bitwiseOrInteger__(LHS: Foobar, RHS: int) -> Foobar
 {
     return createFoo(LHS.x|RHS, LHS.y+float`RHS)
 }
 
-fn isEqual(LHS: Foobar, RHS: Foobar) -> bool
+fn __isEqual__(LHS: Foobar, RHS: Foobar) -> bool
 {
     return LHS.x == RHS.x and LHS.y == RHS.y
 }
 
-fn isNotEqual(LHS: Foobar, RHS: Foobar) -> bool
+fn __isNotEqual__(LHS: Foobar, RHS: Foobar) -> bool
 {
     return LHS.x != RHS.x or LHS.y != RHS.y
 }
 
-fn greaterThan(LHS: Foobar, RHS: Foobar) -> bool
+fn __greaterThan__(LHS: Foobar, RHS: Foobar) -> bool
 {
     var LHSLen: float = sqrtf(float`(LHS.x*LHS.x) + LHS.y*LHS.y)
     var RHSLen: float = sqrtf(float`(RHS.x*RHS.x) + RHS.y*RHS.y)
@@ -86,12 +86,12 @@ fn greaterThan(LHS: Foobar, RHS: Foobar) -> bool
     return LHSLen > RHSLen
 }
 
-fn greaterThanOrEqual(LHS: Foobar, RHS: Foobar) -> bool
+fn __greaterThanOrEqual__(LHS: Foobar, RHS: Foobar) -> bool
 {
-    return isEqual(LHS, RHS) or greaterThan(LHS, RHS)
+    return LHS == RHS or LHS > RHS
 }
 
-fn lessThan(LHS: Foobar, RHS: Foobar) -> bool
+fn __lessThan__(LHS: Foobar, RHS: Foobar) -> bool
 {
     var LHSLen: float = sqrtf(float`(LHS.x*LHS.x) + LHS.y*LHS.y)
     var RHSLen: float = sqrtf(float`(RHS.x*RHS.x) + RHS.y*RHS.y)
@@ -99,9 +99,9 @@ fn lessThan(LHS: Foobar, RHS: Foobar) -> bool
     return LHSLen < RHSLen
 }
 
-fn lessThanOrEqual(LHS: Foobar, RHS: Foobar) -> bool
+fn __lessThanOrEqual__(LHS: Foobar, RHS: Foobar) -> bool
 {
-    return not greaterThan(LHS, RHS)
+    return not (LHS > RHS)
 }
 
 fn main() -> int

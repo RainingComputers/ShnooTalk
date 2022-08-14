@@ -1,6 +1,6 @@
 struct Foo {}
 
-fn toCharArray(self: Foo) -> char[20]
+fn __toCharArray__(self: Foo) -> char[20]
 {
     return "Hello world"
 }

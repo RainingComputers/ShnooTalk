@@ -15,7 +15,7 @@ fn length(self: TestGenerator) -> ulong
     return 3
 }
 
-fn subscriptItem(self: TestGenerator, index: ulong) -> int
+fn __subscriptItem__(self: TestGenerator, index: ulong) -> int
 {
     return self.a[index]
 }

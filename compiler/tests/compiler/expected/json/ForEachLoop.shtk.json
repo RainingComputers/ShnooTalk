@@ -2,6 +2,17 @@
     "ForEachLoop.shtk": {
         "moduleName": "ForEachLoop.shtk",
         "functions": {
+            "_fn_ForEachLoop_shtk___subscriptItem__": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op2": {"type": "var", "id": 34, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op3": {"type": "bytes", "id": 36, "bytes": 0}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 40, "dtype": "void"}, "op2": {"type": "var", "id": 38, "name": "index", "dtype": "ulong"}, "op3": {"type": "bytes", "id": 39, "bytes": 4}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 41, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 40, "dtype": "void"}},
+                    {"opcode": "read", "op1": {"type": "temp", "id": 42, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 41, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 33, "dtype": "int"}, "op2": {"type": "temp", "id": 42, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
             "_fn_ForEachLoop_shtk_createTestGenerator": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "g", "dtype": "struct"}, "op3": {"type": "none"}},
@@ -27,17 +38,6 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_ForEachLoop_shtk_subscriptItem": {
-                "icode": [
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op2": {"type": "var", "id": 34, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 35, "dtype": "int"}, "op3": {"type": "bytes", "id": 36, "bytes": 0}},
-                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 40, "dtype": "void"}, "op2": {"type": "var", "id": 38, "name": "index", "dtype": "ulong"}, "op3": {"type": "bytes", "id": 39, "bytes": 4}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 41, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 37, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 40, "dtype": "void"}},
-                    {"opcode": "read", "op1": {"type": "temp", "id": 42, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 41, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "equal", "op1": {"type": "returnValue", "id": 33, "dtype": "int"}, "op2": {"type": "temp", "id": 42, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-                ]
-            },
             "main": {
                 "icode": [
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 46, "dtype": "struct"}, "op2": {"type": "var", "id": 47, "name": "_fn_ForEachLoop_shtk_createTestGenerator", "dtype": "struct"}, "op3": {"type": "module", "id": 48, "name": "ForEachLoop.shtk"}},
@@ -55,11 +55,11 @@
                     {"opcode": "lessThan", "op1": {"type": "temp", "id": 67, "dtype": "autoInt"}, "op2": {"type": "temp", "id": 68, "dtype": "autoInt"}, "op3": {"type": "none"}},
                     {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 58, "name": "_for_each_false_l27_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op2": {"type": "var", "id": 53, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op2": {"type": "var", "id": 72, "name": "_fn_ForEachLoop_shtk_subscriptItem", "dtype": "int"}, "op3": {"type": "module", "id": 73, "name": "ForEachLoop.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 71, "dtype": "int"}, "op2": {"type": "var", "id": 72, "name": "_fn_ForEachLoop_shtk___subscriptItem__", "dtype": "int"}, "op3": {"type": "module", "id": 73, "name": "ForEachLoop.shtk"}},
                     {"opcode": "read", "op1": {"type": "temp", "id": 74, "dtype": "autoInt"}, "op2": {"type": "tempPtr", "id": 55, "dtype": "autoInt"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 75, "dtype": "ulong"}, "op2": {"type": "temp", "id": 74, "dtype": "autoInt"}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 75, "dtype": "ulong"}, "op2": {"type": "var", "id": 76, "name": "_fn_ForEachLoop_shtk_subscriptItem", "dtype": "int"}, "op3": {"type": "module", "id": 77, "name": "ForEachLoop.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 78, "dtype": "int"}, "op2": {"type": "var", "id": 79, "name": "_fn_ForEachLoop_shtk_subscriptItem", "dtype": "int"}, "op3": {"type": "module", "id": 80, "name": "ForEachLoop.shtk"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 75, "dtype": "ulong"}, "op2": {"type": "var", "id": 76, "name": "_fn_ForEachLoop_shtk___subscriptItem__", "dtype": "int"}, "op3": {"type": "module", "id": 77, "name": "ForEachLoop.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 78, "dtype": "int"}, "op2": {"type": "var", "id": 79, "name": "_fn_ForEachLoop_shtk___subscriptItem__", "dtype": "int"}, "op3": {"type": "module", "id": 80, "name": "ForEachLoop.shtk"}},
                     {"opcode": "equal", "op1": {"type": "var", "id": 54, "name": "x", "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 78, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "print", "op1": {"type": "var", "id": 81, "name": "x", "dtype": "int"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

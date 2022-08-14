@@ -1,21 +1,21 @@
 struct Foobar
 {}
 
-fn subscriptArrayTrueFlex(self: Foobar, a: int[]) -> int
+fn __subscriptArrayTrueFlex__(self: Foobar, a: int[]) -> int
 {
     println("trueflex")
 
     return 0
 }
 
-fn subscriptArrayFixed(self: Foobar, a: int[2]) -> int
+fn __subscriptArrayFixed__(self: Foobar, a: int[2]) -> int
 {
     println("fixed")
 
     return 0
 }
 
-fn subscriptArray(self: Foobar, a: int[], size: long) -> int
+fn __subscriptArray__(self: Foobar, a: int[], size: long) -> int
 {
     println("flex")
 

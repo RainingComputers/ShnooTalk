@@ -67,7 +67,7 @@ fn _validateLength(self: Slice, length: ulong)
         panic(OUT_OF_CAPACITY, 1)
 }
 
-fn subscriptItem(self: Slice, index: ulong) -> T
+fn __subscriptItem__(self: Slice, index: ulong) -> T
 {
     self._validateIndex(index)
 
@@ -106,10 +106,10 @@ fn pointer(self: Slice) -> T[]
 fn _deconstructor(self: Slice)
 {
     for var i: ulong = 0; i < self._capacity; i += 1 
-        self._ptr[i].deconstructor()
+        self._ptr[i].__deconstructor__()
 }
 
-fn deconstructor(self: Slice)
+fn __deconstructor__(self: Slice)
 {
     if not addr(self._ptr) 
         return void

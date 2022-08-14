@@ -3,6 +3,6 @@ ERROR in Line 15 Col 8
 
     if a println("non zero")
        ^
-Invalid return type for isNonZero function
+Invalid return type for __isNonZero__ function
 
 IsNonZeroReturnTypeError.shtk:15:7

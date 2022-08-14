@@ -24,21 +24,7 @@
     "TestModules/FoobarSubscript.shtk": {
         "moduleName": "TestModules/FoobarSubscript.shtk",
         "functions": {
-            "_fn_TestModules_FoobarSubscript_shtk_subscript": {
-                "icode": [
-                        float temp8 = cast autoFloat 3.140000
-                        flag = isEqual float index, float temp8
-                        if(not flag) goto _if_false_l8_c4
-                        byte temp11 = cast autoInt 1
-                        byte returnValue9 = equal byte temp11
-                        return
-                    _if_false_l8_c4:
-                        byte temp14 = cast autoInt 0
-                        byte returnValue12 = equal byte temp14
-                        return
-                ]
-            },
-            "_fn_TestModules_FoobarSubscript_shtk_subscriptArray": {
+            "_fn_TestModules_FoobarSubscript_shtk___subscriptArray__": {
                 "icode": [
                         int temp23 = cast autoInt 2
                         flag = isEqual int n, int temp23
@@ -65,10 +51,24 @@
                         return
                 ]
             },
-            "_fn_TestModules_FoobarSubscript_shtk_subscriptTesting": {
+            "_fn_TestModules_FoobarSubscript_shtk___subscriptTesting__": {
                 "icode": [
                         byte temp56 = cast autoInt 0
                         byte returnValue54 = equal byte temp56
+                        return
+                ]
+            },
+            "_fn_TestModules_FoobarSubscript_shtk___subscript__": {
+                "icode": [
+                        float temp8 = cast autoFloat 3.140000
+                        flag = isEqual float index, float temp8
+                        if(not flag) goto _if_false_l8_c4
+                        byte temp11 = cast autoInt 1
+                        byte returnValue9 = equal byte temp11
+                        return
+                    _if_false_l8_c4:
+                        byte temp14 = cast autoInt 0
+                        byte returnValue12 = equal byte temp14
                         return
                 ]
             }

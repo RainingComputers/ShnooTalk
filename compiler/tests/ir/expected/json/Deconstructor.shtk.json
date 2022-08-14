@@ -32,7 +32,7 @@
                 },
                 "size": 0,
                 "moduleName": "TestModules/Deconstrutable.shtk",
-                "deconstructor": "_fn_TestModules_Deconstrutable_shtk_deconstructor"
+                "deconstructor": "_fn_TestModules_Deconstrutable_shtk___deconstructor__"
             }
         },
         "externFunctions": {
@@ -53,8 +53,8 @@
                     {"opcode": "cast", "op1": {"type": "temp", "id": 6, "dtype": "int"}, "op2": {"type": "literal", "id": 5, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 4, "dtype": "int"}, "op2": {"type": "temp", "id": 6, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 9, "dtype": "struct"}, "op2": {"type": "var", "id": 7, "name": "d", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 9, "dtype": "struct"}, "op2": {"type": "var", "id": 10, "name": "_fn_TestModules_Deconstrutable_shtk_deconstructor", "dtype": "void"}, "op3": {"type": "module", "id": 11, "name": "TestModules/Deconstrutable.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 12, "dtype": "void"}, "op2": {"type": "var", "id": 13, "name": "_fn_TestModules_Deconstrutable_shtk_deconstructor", "dtype": "void"}, "op3": {"type": "module", "id": 14, "name": "TestModules/Deconstrutable.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 9, "dtype": "struct"}, "op2": {"type": "var", "id": 10, "name": "_fn_TestModules_Deconstrutable_shtk___deconstructor__", "dtype": "void"}, "op3": {"type": "module", "id": 11, "name": "TestModules/Deconstrutable.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 12, "dtype": "void"}, "op2": {"type": "var", "id": 13, "name": "_fn_TestModules_Deconstrutable_shtk___deconstructor__", "dtype": "void"}, "op3": {"type": "module", "id": 14, "name": "TestModules/Deconstrutable.shtk"}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }
@@ -94,19 +94,19 @@
                 },
                 "size": 0,
                 "moduleName": "TestModules/Deconstrutable.shtk",
-                "deconstructor": "_fn_TestModules_Deconstrutable_shtk_deconstructor"
+                "deconstructor": "_fn_TestModules_Deconstrutable_shtk___deconstructor__"
             }
         },
         "externFunctions": {
         },
-        "definedFunctions": ["_fn_TestModules_Deconstrutable_shtk_deconstructor"],
+        "definedFunctions": ["_fn_TestModules_Deconstrutable_shtk___deconstructor__"],
         "incompleteFunctions": {
         },
         "functions": {
-            "_fn_TestModules_Deconstrutable_shtk_deconstructor": {
+            "_fn_TestModules_Deconstrutable_shtk___deconstructor__": {
                 "moduleName": "TestModules/Deconstrutable.shtk",
                 "parameters": ["self"],
-                "absoluteName": "_fn_TestModules_Deconstrutable_shtk_deconstructor",
+                "absoluteName": "_fn_TestModules_Deconstrutable_shtk___deconstructor__",
                 "functionReturnType": {"dtype": "void", "dtypeName": "void", "dtypeSize": 0, "size": 0, "moduleName": "TestModules/Deconstrutable.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
                 "symbols": {
                     "self": {"dtype": "struct", "dtypeName": "Deconstructable", "dtypeSize": 0, "size": 0, "moduleName": "TestModules/Deconstrutable.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}

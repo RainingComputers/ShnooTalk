@@ -1,5 +1,5 @@
 use "TestModules/Pair.shtk" as pair
-from "TestModules/Pair.shtk" use Pair, pair, add
+from "TestModules/Pair.shtk" use Pair, pair, __add__
 
 fn foobar() -> Pair[int, int]
 {
@@ -32,9 +32,9 @@ fn main() -> int
     printPair(c[0])
     printPair(c[1])
 
-    printPair(pair::add(b, pair(2, 3)))
-    printPair(add(b, pair(2, 3)))
-    printPair(b.add(pair(2, 3)))
+    printPair(pair::__add__(b, pair(2, 3)))
+    printPair(__add__(b, pair(2, 3)))
+    printPair(b.__add__(pair(2, 3)))
 
     printPairArray([pair(1, 2), pair(1, 2)])
 

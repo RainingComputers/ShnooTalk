@@ -78,7 +78,7 @@
     "TestModules/Pair.shtk[int][float]": {
         "moduleName": "TestModules/Pair.shtk[int][float]",
         "functions": {
-            "_fn_TestModules_Pair_shtk[int][float]_add": {
+            "_fn_TestModules_Pair_shtk[int][float]___add__": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "result", "dtype": "struct"}, "op3": {"type": "none"}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},

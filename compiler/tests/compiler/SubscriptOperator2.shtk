@@ -1,6 +1,6 @@
 struct Foobar{}
 
-fn subscript(self: Foobar, index: ulong) -> int[3]
+fn __subscript__(self: Foobar, index: ulong) -> int[3]
 {
     return [1, 2, 3]
 }

@@ -2,7 +2,7 @@
     "IsNonZero.shtk": {
         "moduleName": "IsNonZero.shtk",
         "functions": {
-            "_fn_IsNonZero_shtk_isNonZero": {
+            "_fn_IsNonZero_shtk___isNonZero__": {
                 "icode": [
                         int* tempPtr5 = createPointer struct self
                         int* tempPtr7 = addressAdd int* tempPtr5, bytes 0
@@ -18,8 +18,8 @@
                         int temp18 = cast autoInt 1
                         int* tempPtr16 = write int temp18
                         int* tempPtr25 = createPointer struct a
-                        passPointer int* tempPtr25, int _fn_IsNonZero_shtk_isNonZero, module IsNonZero.shtk
-                        int calleeReturnValue28 = call int _fn_IsNonZero_shtk_isNonZero, module IsNonZero.shtk
+                        passPointer int* tempPtr25, int _fn_IsNonZero_shtk___isNonZero__, module IsNonZero.shtk
+                        int calleeReturnValue28 = call int _fn_IsNonZero_shtk___isNonZero__, module IsNonZero.shtk
                         int temp31 = cast autoInt 0
                         flag = greaterThan int calleeReturnValue28, int temp31
                         if(not flag) goto _if_false_l16_c4
@@ -31,8 +31,8 @@
                         int temp38 = cast autoInt 0
                         int* tempPtr36 = write int temp38
                         int* tempPtr45 = createPointer struct a
-                        passPointer int* tempPtr45, int _fn_IsNonZero_shtk_isNonZero, module IsNonZero.shtk
-                        int calleeReturnValue48 = call int _fn_IsNonZero_shtk_isNonZero, module IsNonZero.shtk
+                        passPointer int* tempPtr45, int _fn_IsNonZero_shtk___isNonZero__, module IsNonZero.shtk
+                        int calleeReturnValue48 = call int _fn_IsNonZero_shtk___isNonZero__, module IsNonZero.shtk
                         int temp51 = cast autoInt 0
                         flag = greaterThan int calleeReturnValue48, int temp51
                         if(not flag) goto _if_false_l19_c4

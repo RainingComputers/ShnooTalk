@@ -1,6 +1,6 @@
 struct Foobar{}
 
-fn add(self: Foobar, a: int*) -> Foobar 
+fn __add__(self: Foobar, a: int*) -> Foobar 
 {
     var c: Foobar
     return c

@@ -206,10 +206,10 @@ void FunctionBuilder::unitListCopy(const Unit& dest, const Unit& src)
 void FunctionBuilder::unitCopy(const Unit& dest, const Unit& src)
 {
     if (dest.isLocalOrGlobalAndNotParam() || (dest.isReturnValue() && src.isLocalOrGlobalAndNotParam()))
-        callResourceMgmtHook(src, "beforeCopy");
+        callResourceMgmtHook(src, "__beforeCopy__");
 
     if (dest.isLocalOrGlobalAndNotParam())
-        callResourceMgmtHook(dest, "deconstructor");
+        callResourceMgmtHook(dest, "__deconstructor__");
 
     if (src.isList())
         unitListCopy(dest, src);
@@ -776,7 +776,7 @@ void FunctionBuilder::callDeconstructorOnDeclaredSymbols()
 
         const Unit symbol = unitBuilder.unitFromTypeDescription(symbolType, symbolName);
 
-        callResourceMgmtHook(symbol, "deconstructor");
+        callResourceMgmtHook(symbol, "__deconstructor__");
     }
 }
 

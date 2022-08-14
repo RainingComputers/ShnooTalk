@@ -40,7 +40,7 @@ fn stringFromPreAllocated(charArray: char[], bufferLength: ulong, length: ulong)
     return self
 }
 
-fn coerceCharArray(charArray: char[], lengthIncNull: ulong) -> String
+fn __coerceCharArray__(charArray: char[], lengthIncNull: ulong) -> String
 {
     return string(charArray, lengthIncNull)
 }
@@ -50,7 +50,7 @@ fn length(self: String) -> ulong
     return self._length
 }
 
-fn subscriptItem(self: String, index: ulong) -> char
+fn __subscriptItem__(self: String, index: ulong) -> char
 {
     return self._sp[index]
 }
@@ -58,6 +58,11 @@ fn subscriptItem(self: String, index: ulong) -> char
 fn toCharArray(self: String) -> char[]
 {
     return self._sp.pointer()
+}
+
+fn __toCharArray__(self: String) -> char[]
+{
+    return self.toCharArray()
 }
 
 fn toCharArrayOffset(self: String, offset: ulong) -> char[]
@@ -236,7 +241,7 @@ fn subString(self: String, range: ulong[2]) -> String
     return string(self.toCharArrayOffset(range[0]), lengthIncNull)
 }
 
-fn subscriptSubString(self: String, range: ulong[2]) -> String
+fn __subscriptSubString__(self: String, range: ulong[2]) -> String
 {
     return self.subString(range)
 }
@@ -289,37 +294,37 @@ fn parseDouble(self: String) -> Optional[double]
     return some(libc::atof(self.toCharArray()))
 }
 
-fn isEqual(self: String, other: String) -> bool
+fn __isEqual__(self: String, other: String) -> bool
 {
     return libc::strcmp(self.toCharArray(), other.toCharArray()) == 0
 }
 
-fn lessThan(self: String, other: String) -> bool
+fn __lessThan__(self: String, other: String) -> bool
 {
     return libc::strcmp(self.toCharArray(), other.toCharArray()) < 0
 }
 
-fn lessThanOrEqual(LHS: String, RHS: String) -> bool
+fn __lessThanOrEqual__(LHS: String, RHS: String) -> bool
 {
     return LHS < RHS or LHS == RHS
 }
 
-fn greaterThan(self: String, other: String) -> bool
+fn __greaterThan__(self: String, other: String) -> bool
 {
     return libc::strcmp(self.toCharArray(), other.toCharArray()) > 0
 }
 
-fn greaterThanOrEqual(LHS: String, RHS: String) -> bool
+fn __greaterThanOrEqual__(LHS: String, RHS: String) -> bool
 {
     return LHS > RHS or LHS == RHS
 }
 
-fn isNotEqual(LHS: String, RHS: String) -> bool
+fn __isNotEqual__(LHS: String, RHS: String) -> bool
 {
     return not (LHS == RHS)
 }
 
-fn add(self: String, other: String) -> String
+fn __add__(self: String, other: String) -> String
 {
     var new := self.clone()
     

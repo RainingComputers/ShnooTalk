@@ -2,7 +2,7 @@
     "CharArrayCoersion.shtk": {
         "moduleName": "CharArrayCoersion.shtk",
         "functions": {
-            "_fn_CharArrayCoersion_shtk_coerceCharArray": {
+            "_fn_CharArrayCoersion_shtk___coerceCharArray__": {
                 "icode": [
                         ulong* tempPtr5 = createPointer struct self
                         ulong* tempPtr7 = addressAdd ulong* tempPtr5, bytes 0
@@ -26,10 +26,10 @@
             "main": {
                 "icode": [
                         ubyte* tempPtr32 = createPointer stringData _str_CharArrayCoersion_shtk__l20_c20
-                        passPointer ubyte* tempPtr32, struct _fn_CharArrayCoersion_shtk_coerceCharArray, module CharArrayCoersion.shtk
+                        passPointer ubyte* tempPtr32, struct _fn_CharArrayCoersion_shtk___coerceCharArray__, module CharArrayCoersion.shtk
                         ulong temp35 = cast autoInt 6
-                        pass ulong temp35, struct _fn_CharArrayCoersion_shtk_coerceCharArray, module CharArrayCoersion.shtk
-                        struct calleeReturnValue38 = call struct _fn_CharArrayCoersion_shtk_coerceCharArray, module CharArrayCoersion.shtk
+                        pass ulong temp35, struct _fn_CharArrayCoersion_shtk___coerceCharArray__, module CharArrayCoersion.shtk
+                        struct calleeReturnValue38 = call struct _fn_CharArrayCoersion_shtk___coerceCharArray__, module CharArrayCoersion.shtk
                         ulong* tempPtr41 = createPointer struct calleeReturnValue38
                         passPointer ulong* tempPtr41, void _fn_CharArrayCoersion_shtk_testArgCoercion, module CharArrayCoersion.shtk
                         void calleeReturnValue44 = call void _fn_CharArrayCoersion_shtk_testArgCoercion, module CharArrayCoersion.shtk

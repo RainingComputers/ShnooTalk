@@ -10,11 +10,11 @@ fn main() -> int
 
     println(a.count())
 
-    b.deconstructor()
+    b.__deconstructor__()
 
     println(a.count())
 
-    a.deconstructor()
+    a.__deconstructor__()
 
     println(a.count())
     println(a.isZero())

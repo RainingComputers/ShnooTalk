@@ -199,10 +199,12 @@ Unit coerceStringTypes(generator::GeneratorContext& ctx,
                        const Unit& formalParam)
 {
     /* Coerce single dim char arrays (c style strings) if hook is present */
+    const std::string coerceArrayHook = "__coerceCharArray__";
+
     if (actualParam.isSingleDimCharArray() && formalParam.isStruct() &&
-        ctx.ir.finder.functionExists(formalParam.type(), "coerceCharArray"))
+        ctx.ir.finder.functionExists(formalParam.type(), coerceArrayHook))
     {
-        const FunctionDescription stringFunc = ctx.ir.finder.getMethod(formalParam.type(), "coerceCharArray");
+        const FunctionDescription stringFunc = ctx.ir.finder.getMethod(formalParam.type(), coerceArrayHook);
         const Unit lengthParam = ctx.ir.unitBuilder.unitFromIntLiteral(actualParam.numElements());
         return createCallFunction(ctx, { token, token }, { actualParam, lengthParam }, stringFunc, token);
     }
@@ -254,7 +256,7 @@ Unit methodCall(generator::GeneratorContext& ctx, const Node& root)
 
     ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(firstActualParam));
 
-    if (calleeNameToken.toString() == "deconstructor")
+    if (calleeNameToken.toString() == "__deconstructor__")
         if (!ctx.ir.finder.deconstructorExists(firstActualParam.type()))
             return firstActualParam;
 
@@ -622,6 +624,8 @@ void truthyOperator(generator::GeneratorContext& ctx,
                     const icode::Operand& falseLabel,
                     bool trueFall)
 {
+    const std::string isNonZeroHook = "__isNonZero__";
+
     Unit RHS = ctx.ir.unitBuilder.unitFromIntLiteral(0);
 
     if (LHS.isArray() || (!LHS.isIntegerType() && !LHS.isStruct()))
@@ -630,13 +634,13 @@ void truthyOperator(generator::GeneratorContext& ctx,
     if (LHS.isStruct())
     {
         const icode::FunctionDescription isNonZeroFunc =
-            ctx.ir.finder.getMethodFromUnit(LHS, "isNonZero", expressionToken);
+            ctx.ir.finder.getMethodFromUnit(LHS, isNonZeroHook, expressionToken);
 
         const Unit isNonZeroFuncRetVal =
             createCallFunction(ctx, { expressionToken }, { LHS }, isNonZeroFunc, expressionToken);
 
         if (!isNonZeroFuncRetVal.isIntegerType() || isNonZeroFuncRetVal.isArray())
-            ctx.console.compileErrorOnToken("Invalid return type for isNonZero function", expressionToken);
+            ctx.console.compileErrorOnToken("Invalid return type for " + isNonZeroHook + " function", expressionToken);
 
         ctx.ir.functionBuilder.compareOperator(icode::GT, isNonZeroFuncRetVal, RHS);
     }
@@ -658,6 +662,24 @@ void truthyExpression(generator::GeneratorContext& ctx,
     truthyOperator(ctx, LHS, root.tok, trueLabel, falseLabel, trueFall);
 }
 
+void createQuestionMarkReturn(generator::GeneratorContext& ctx,
+                              const Unit& term,
+                              const FunctionDescription& errorFunc,
+                              const FunctionDescription& constructorFunc,
+                              const Token& errorToken)
+{
+    const Unit errorFuncRet = createCallFunctionMust(ctx, { errorToken }, { term }, errorFunc);
+
+    Unit constructorFuncRet;
+
+    if (constructorFunc.numParameters() == 0)
+        constructorFuncRet = createCallFunctionMust(ctx, {}, {}, constructorFunc);
+    else
+        constructorFuncRet = createCallFunctionMust(ctx, { errorToken }, { errorFuncRet }, constructorFunc);
+
+    createReturn(ctx, constructorFuncRet, errorToken);
+}
+
 Unit questionMarkOperator(generator::GeneratorContext& ctx, const Node& root)
 {
     const Unit term = expression(ctx, root.children[0]);
@@ -669,46 +691,26 @@ Unit questionMarkOperator(generator::GeneratorContext& ctx, const Node& root)
     const std::string errorHook = "__questionMarkError__";
     const std::string constructorHook = "__questionMarkConstruct__";
 
-    if (!ctx.ir.finder.methodExists(term.type(), continueHook))
-        ctx.console.compileErrorOnToken("Cannot use ? operator on type without " + continueHook + " method", root.tok);
-
-    if (!ctx.ir.finder.methodExists(term.type(), unwrapHook))
-        ctx.console.compileErrorOnToken("Cannot use ? operator on type without " + unwrapHook + " method", root.tok);
-
-    if (!ctx.ir.finder.methodExists(term.type(), errorHook))
-        ctx.console.compileErrorOnToken("Cannot use ? operator on type without " + errorHook + " method", root.tok);
-
     if (!ctx.ir.finder.functionExists(returnType, constructorHook))
         ctx.console.compileErrorOnToken("Cannot use ? operator without " + constructorHook +
                                             " function for return type",
                                         root.tok);
 
-    const FunctionDescription continueFunc = ctx.ir.finder.getMethod(term.type(), continueHook);
-    const Unit continueFuncRet = createCallFunctionMust(ctx, { expressionToken }, { term }, continueFunc);
+    const FunctionDescription continueFunc = ctx.ir.finder.getMethodFromUnit(term, continueHook, root.tok);
+    const FunctionDescription errorFunc = ctx.ir.finder.getMethodFromUnit(term, errorHook, root.tok);
+    const FunctionDescription constructorFunc = ctx.ir.finder.getMethod(returnType, constructorHook);
+    const FunctionDescription unwrapFunc = ctx.ir.finder.getMethodFromUnit(term, unwrapHook, root.tok);
 
     const icode::Operand falseLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "question_op");
     const icode::Operand trueLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "question_op");
 
+    const Unit continueFuncRet = createCallFunctionMust(ctx, { expressionToken }, { term }, continueFunc);
     truthyOperator(ctx, continueFuncRet, root.tok, trueLabel, falseLabel, false);
 
-    ctx.ir.functionBuilder.insertLabel(falseLabel);
-
-    const FunctionDescription errorFunc = ctx.ir.finder.getMethod(term.type(), errorHook);
-    const Unit errorFuncRet = createCallFunctionMust(ctx, { expressionToken }, { term }, errorFunc);
-
-    const FunctionDescription constructorFunc = ctx.ir.finder.getMethod(returnType, constructorHook);
-    Unit constructorFuncRet;
-
-    if (constructorFunc.numParameters() == 0)
-        constructorFuncRet = createCallFunctionMust(ctx, {}, {}, constructorFunc);
-    else
-        constructorFuncRet = createCallFunctionMust(ctx, { expressionToken }, { errorFuncRet }, constructorFunc);
-
-    createReturn(ctx, constructorFuncRet, expressionToken);
+    createQuestionMarkReturn(ctx, term, errorFunc, constructorFunc, expressionToken);
 
     ctx.ir.functionBuilder.insertLabel(trueLabel);
 
-    const FunctionDescription unwrapFunc = ctx.ir.finder.getMethod(term.type(), unwrapHook);
     return createCallFunctionMust(ctx, { expressionToken }, { term }, unwrapFunc);
 }
 

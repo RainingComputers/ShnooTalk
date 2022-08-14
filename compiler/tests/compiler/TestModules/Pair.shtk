@@ -5,7 +5,7 @@ struct Pair
     var first: K, second: V
 }
 
-fn add(a: Pair, b: Pair) -> Pair
+fn __add__(a: Pair, b: Pair) -> Pair
 {
     var result: Pair
 

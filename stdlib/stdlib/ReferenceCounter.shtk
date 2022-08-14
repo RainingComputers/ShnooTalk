@@ -15,13 +15,13 @@ fn createCounter() -> ReferenceCounter
     return self
 }
 
-fn beforeCopy(mut self: ReferenceCounter)
+fn __beforeCopy__(mut self: ReferenceCounter)
 {
     if not addr(self._count) return void
     self._count += 1
 }
 
-fn deconstructor(mut self: ReferenceCounter)
+fn __deconstructor__(mut self: ReferenceCounter)
 {
     if not addr(self._count) return void
     self._count -= 1

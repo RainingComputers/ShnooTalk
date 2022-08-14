@@ -2,6 +2,17 @@
     "ForEachLoop.shtk": {
         "moduleName": "ForEachLoop.shtk",
         "functions": {
+            "_fn_ForEachLoop_shtk___subscriptItem__": {
+                "icode": [
+                        int* tempPtr35 = createPointer struct self
+                        int* tempPtr37 = addressAdd int* tempPtr35, bytes 0
+                        void* tempPtr40 = addressMultiply ulong index, bytes 4
+                        int* tempPtr41 = addressAdd int* tempPtr37, void* tempPtr40
+                        int temp42 = read int* tempPtr41
+                        int returnValue33 = equal int temp42
+                        return
+                ]
+            },
             "_fn_ForEachLoop_shtk_createTestGenerator": {
                 "icode": [
                         int* tempPtr5 = createPointer struct g
@@ -27,17 +38,6 @@
                         return
                 ]
             },
-            "_fn_ForEachLoop_shtk_subscriptItem": {
-                "icode": [
-                        int* tempPtr35 = createPointer struct self
-                        int* tempPtr37 = addressAdd int* tempPtr35, bytes 0
-                        void* tempPtr40 = addressMultiply ulong index, bytes 4
-                        int* tempPtr41 = addressAdd int* tempPtr37, void* tempPtr40
-                        int temp42 = read int* tempPtr41
-                        int returnValue33 = equal int temp42
-                        return
-                ]
-            },
             "main": {
                 "icode": [
                         struct calleeReturnValue46 = call struct _fn_ForEachLoop_shtk_createTestGenerator, module ForEachLoop.shtk
@@ -55,11 +55,11 @@
                         flag = lessThan autoInt temp67, autoInt temp68
                         if(not flag) goto _for_each_false_l27_c4
                         int* tempPtr71 = createPointer struct a
-                        passPointer int* tempPtr71, int _fn_ForEachLoop_shtk_subscriptItem, module ForEachLoop.shtk
+                        passPointer int* tempPtr71, int _fn_ForEachLoop_shtk___subscriptItem__, module ForEachLoop.shtk
                         autoInt temp74 = read autoInt* tempPtr55
                         ulong temp75 = cast autoInt temp74
-                        pass ulong temp75, int _fn_ForEachLoop_shtk_subscriptItem, module ForEachLoop.shtk
-                        int calleeReturnValue78 = call int _fn_ForEachLoop_shtk_subscriptItem, module ForEachLoop.shtk
+                        pass ulong temp75, int _fn_ForEachLoop_shtk___subscriptItem__, module ForEachLoop.shtk
+                        int calleeReturnValue78 = call int _fn_ForEachLoop_shtk___subscriptItem__, module ForEachLoop.shtk
                         int x = equal int calleeReturnValue78
                         print int x
                         newLine

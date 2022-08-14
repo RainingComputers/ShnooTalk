@@ -6,7 +6,7 @@ struct BarBar
     var t: Foobar
 }
 
-fn deconstructor(self: BarBar) 
+fn __deconstructor__(self: BarBar) 
 {
     println(self.i)
     println("deconstruct")

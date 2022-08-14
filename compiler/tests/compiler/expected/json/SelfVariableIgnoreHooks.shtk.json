@@ -2,7 +2,7 @@
     "SelfVariableIgnoreHooks.shtk": {
         "moduleName": "SelfVariableIgnoreHooks.shtk",
         "functions": {
-            "_fn_SelfVariableIgnoreHooks_shtk_beforeCopy": {
+            "_fn_SelfVariableIgnoreHooks_shtk___beforeCopy__": {
                 "icode": [
                     {"opcode": "printString", "op1": {"type": "stringData", "id": 3, "name": "_str_SelfVariableIgnoreHooks_shtk__l8_c12", "size": 11}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
@@ -14,7 +14,7 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_SelfVariableIgnoreHooks_shtk_deconstructor": {
+            "_fn_SelfVariableIgnoreHooks_shtk___deconstructor__": {
                 "icode": [
                     {"opcode": "printString", "op1": {"type": "stringData", "id": 12, "name": "_str_SelfVariableIgnoreHooks_shtk__l13_c12", "size": 14}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "space", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},

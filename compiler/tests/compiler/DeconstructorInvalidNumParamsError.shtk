@@ -1,6 +1,6 @@
 struct Foobar {}
 
-fn deconstructor(self: Foobar, a: int)
+fn __deconstructor__(self: Foobar, a: int)
 {
     
 }

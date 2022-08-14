@@ -3,7 +3,7 @@ struct Foo
     var bar: int
 }
 
-fn isNonZero(mut self: Foo) -> int
+fn __isNonZero__(mut self: Foo) -> int
 {
     return 0
 }

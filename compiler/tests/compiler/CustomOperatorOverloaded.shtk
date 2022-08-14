@@ -14,12 +14,12 @@ fn createVector(x: int, y: int, z: int) -> Vector
     return v
 }
 
-fn addVector(self: Vector, other: Vector) -> Vector
+fn __addVector__(self: Vector, other: Vector) -> Vector
 {
     return createVector(self.x+other.x, self.y+other.y, self.z+other.z)
 }
 
-fn addVectorArray(self: Vector, arr: int[], n: int) -> Vector
+fn __addVectorArray__(self: Vector, arr: int[], n: int) -> Vector
 {
     if n == 2
         return createVector(self.x+arr[0], self.y+arr[1], 0)
@@ -30,7 +30,7 @@ fn addVectorArray(self: Vector, arr: int[], n: int) -> Vector
     return self
 }
 
-fn isEqualArray(self: Vector, arr: int[], n: int) -> bool 
+fn __isEqualArray__(self: Vector, arr: int[], n: int) -> bool 
 {
     if n == 2
         return self.x == arr[0] and self.y == arr[1] and self.z == 0

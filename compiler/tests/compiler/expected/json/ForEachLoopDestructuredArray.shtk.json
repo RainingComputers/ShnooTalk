@@ -2,6 +2,17 @@
     "ForEachLoopDestructuredArray.shtk": {
         "moduleName": "ForEachLoopDestructuredArray.shtk",
         "functions": {
+            "_fn_ForEachLoopDestructuredArray_shtk___subscriptItem__": {
+                "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 59, "dtype": "int"}, "op2": {"type": "var", "id": 58, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 59, "dtype": "int"}, "op3": {"type": "bytes", "id": 60, "bytes": 0}},
+                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 64, "dtype": "void"}, "op2": {"type": "var", "id": 62, "name": "index", "dtype": "ulong"}, "op3": {"type": "bytes", "id": 63, "bytes": 12}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 65, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 64, "dtype": "void"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op2": {"type": "returnValue", "id": 57, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 65, "dtype": "int"}, "op3": {"type": "literal", "id": 67, "dtype": "autoInt", "value": 12}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            },
             "_fn_ForEachLoopDestructuredArray_shtk_createTestGenerator": {
                 "icode": [
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "g", "dtype": "struct"}, "op3": {"type": "none"}},
@@ -45,17 +56,6 @@
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             },
-            "_fn_ForEachLoopDestructuredArray_shtk_subscriptItem": {
-                "icode": [
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 59, "dtype": "int"}, "op2": {"type": "var", "id": 58, "name": "self", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 59, "dtype": "int"}, "op3": {"type": "bytes", "id": 60, "bytes": 0}},
-                    {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 64, "dtype": "void"}, "op2": {"type": "var", "id": 62, "name": "index", "dtype": "ulong"}, "op3": {"type": "bytes", "id": 63, "bytes": 12}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 65, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 64, "dtype": "void"}},
-                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op2": {"type": "returnValue", "id": 57, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "memoryCopy", "op1": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 65, "dtype": "int"}, "op3": {"type": "literal", "id": 67, "dtype": "autoInt", "value": 12}},
-                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
-                ]
-            },
             "main": {
                 "icode": [
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 71, "dtype": "struct"}, "op2": {"type": "var", "id": 72, "name": "_fn_ForEachLoopDestructuredArray_shtk_createTestGenerator", "dtype": "struct"}, "op3": {"type": "module", "id": 73, "name": "ForEachLoopDestructuredArray.shtk"}},
@@ -73,11 +73,11 @@
                     {"opcode": "lessThan", "op1": {"type": "temp", "id": 94, "dtype": "autoInt"}, "op2": {"type": "temp", "id": 95, "dtype": "autoInt"}, "op3": {"type": "none"}},
                     {"opcode": "gotoIfFalse", "op1": {"type": "label", "id": 85, "name": "_for_each_false_l27_c4"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 98, "dtype": "int"}, "op2": {"type": "var", "id": 78, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
-                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 98, "dtype": "int"}, "op2": {"type": "var", "id": 99, "name": "_fn_ForEachLoopDestructuredArray_shtk_subscriptItem", "dtype": "int"}, "op3": {"type": "module", "id": 100, "name": "ForEachLoopDestructuredArray.shtk"}},
+                    {"opcode": "passPointer", "op1": {"type": "tempPtr", "id": 98, "dtype": "int"}, "op2": {"type": "var", "id": 99, "name": "_fn_ForEachLoopDestructuredArray_shtk___subscriptItem__", "dtype": "int"}, "op3": {"type": "module", "id": 100, "name": "ForEachLoopDestructuredArray.shtk"}},
                     {"opcode": "read", "op1": {"type": "temp", "id": 101, "dtype": "autoInt"}, "op2": {"type": "tempPtr", "id": 82, "dtype": "autoInt"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 102, "dtype": "ulong"}, "op2": {"type": "temp", "id": 101, "dtype": "autoInt"}, "op3": {"type": "none"}},
-                    {"opcode": "pass", "op1": {"type": "temp", "id": 102, "dtype": "ulong"}, "op2": {"type": "var", "id": 103, "name": "_fn_ForEachLoopDestructuredArray_shtk_subscriptItem", "dtype": "int"}, "op3": {"type": "module", "id": 104, "name": "ForEachLoopDestructuredArray.shtk"}},
-                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 105, "dtype": "int"}, "op2": {"type": "var", "id": 106, "name": "_fn_ForEachLoopDestructuredArray_shtk_subscriptItem", "dtype": "int"}, "op3": {"type": "module", "id": 107, "name": "ForEachLoopDestructuredArray.shtk"}},
+                    {"opcode": "pass", "op1": {"type": "temp", "id": 102, "dtype": "ulong"}, "op2": {"type": "var", "id": 103, "name": "_fn_ForEachLoopDestructuredArray_shtk___subscriptItem__", "dtype": "int"}, "op3": {"type": "module", "id": 104, "name": "ForEachLoopDestructuredArray.shtk"}},
+                    {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 105, "dtype": "int"}, "op2": {"type": "var", "id": 106, "name": "_fn_ForEachLoopDestructuredArray_shtk___subscriptItem__", "dtype": "int"}, "op3": {"type": "module", "id": 107, "name": "ForEachLoopDestructuredArray.shtk"}},
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 109, "dtype": "int"}, "op2": {"type": "calleeReturnValue", "id": 105, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "addressMultiply", "op1": {"type": "tempPtr", "id": 111, "dtype": "void"}, "op2": {"type": "literal", "id": 108, "dtype": "autoInt", "value": 0}, "op3": {"type": "bytes", "id": 110, "bytes": 4}},
                     {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 112, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 109, "dtype": "int"}, "op3": {"type": "tempPtr", "id": 111, "dtype": "void"}},

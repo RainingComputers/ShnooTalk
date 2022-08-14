@@ -2,7 +2,7 @@
     "SelfVariableIgnoreHooks.shtk": {
         "moduleName": "SelfVariableIgnoreHooks.shtk",
         "functions": {
-            "_fn_SelfVariableIgnoreHooks_shtk_beforeCopy": {
+            "_fn_SelfVariableIgnoreHooks_shtk___beforeCopy__": {
                 "icode": [
                         printString stringData _str_SelfVariableIgnoreHooks_shtk__l8_c12
                         space
@@ -14,7 +14,7 @@
                         return
                 ]
             },
-            "_fn_SelfVariableIgnoreHooks_shtk_deconstructor": {
+            "_fn_SelfVariableIgnoreHooks_shtk___deconstructor__": {
                 "icode": [
                         printString stringData _str_SelfVariableIgnoreHooks_shtk__l13_c12
                         space

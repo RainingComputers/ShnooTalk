@@ -2,7 +2,7 @@ struct foobar {
     var x: int, y: int
 }
 
-fn add(self: foobar, mut other: foobar) -> foobar
+fn __add__(self: foobar, mut other: foobar) -> foobar
 {
     var t: foobar
     return t

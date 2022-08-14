@@ -3,6 +3,6 @@ ERROR in Line 3 Col 4
 
 fn deconstructor(self: Foobar) -> int
    ^
-Invalid deconstructor function
+Missing return for function
 
 DeconstructorNonVoidReturnError.shtk:3:3

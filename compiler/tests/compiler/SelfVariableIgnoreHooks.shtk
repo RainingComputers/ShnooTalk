@@ -3,12 +3,12 @@ struct Foo
     var x: int
 }
 
-fn beforeCopy(self: Foo) 
+fn __beforeCopy__(self: Foo) 
 {
     println("beforeCopy", self.x)
 }
 
-fn deconstructor(self: Foo)
+fn __deconstructor__(self: Foo)
 {
     println("deconstructor", self.x)
 }

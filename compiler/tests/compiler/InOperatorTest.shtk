@@ -27,7 +27,7 @@ fn createPoint(x: int, y: int) -> Point
     return p
 }
 
-fn inArray(self: Rect, arr: int[], n: int) -> bool
+fn __inArray__(self: Rect, arr: int[], n: int) -> bool
 {
     if n != 2
         return false
@@ -35,7 +35,7 @@ fn inArray(self: Rect, arr: int[], n: int) -> bool
     return arr[0] > self.x1 and arr[0] < self.x2 and arr[1] > self.y1 and arr[1] < self.y2 
 }
 
-fn inPoint(self: Rect, p: Point) -> bool
+fn __inPoint__(self: Rect, p: Point) -> bool
 {
     return [p.x, p.y] in self
 }

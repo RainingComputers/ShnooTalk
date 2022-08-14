@@ -57,13 +57,13 @@
                         int* tempPtr88 = createPointer int* tempPtr82
                         int* tempPtr90 = addressAdd int* tempPtr88, bytes 0
                         int* tempPtr92 = createPointer int* tempPtr82
-                        passPointer int* tempPtr92, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue95 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        passPointer int* tempPtr92, void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
+                        void calleeReturnValue95 = call void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
                         int* tempPtr98 = createPointer int* tempPtr87
                         int* tempPtr100 = addressAdd int* tempPtr98, bytes 0
                         int* tempPtr102 = createPointer int* tempPtr87
-                        passPointer int* tempPtr102, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue105 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        passPointer int* tempPtr102, void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
+                        void calleeReturnValue105 = call void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
                         int* tempPtr109 = createPointer int* tempPtr77
                         void* tempPtr111 = addressMultiply autoInt 0, bytes 4
                         int* tempPtr112 = addressAdd int* tempPtr109, void* tempPtr111
@@ -73,13 +73,13 @@
                         int* tempPtr118 = createPointer int* tempPtr112
                         int* tempPtr120 = addressAdd int* tempPtr118, bytes 0
                         int* tempPtr122 = createPointer int* tempPtr112
-                        passPointer int* tempPtr122, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue125 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        passPointer int* tempPtr122, void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
+                        void calleeReturnValue125 = call void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
                         int* tempPtr128 = createPointer int* tempPtr117
                         int* tempPtr130 = addressAdd int* tempPtr128, bytes 0
                         int* tempPtr132 = createPointer int* tempPtr117
-                        passPointer int* tempPtr132, void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
-                        void calleeReturnValue135 = call void _fn_TestModules_Foobar_shtk_deconstructor, module TestModules/Foobar.shtk
+                        passPointer int* tempPtr132, void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
+                        void calleeReturnValue135 = call void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
                         return
                 ]
             }
@@ -88,7 +88,7 @@
     "TestModules/Foobar.shtk": {
         "moduleName": "TestModules/Foobar.shtk",
         "functions": {
-            "_fn_TestModules_Foobar_shtk_beforeCopy": {
+            "_fn_TestModules_Foobar_shtk___beforeCopy__": {
                 "icode": [
                         int* tempPtr13 = createPointer struct self
                         int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
@@ -100,7 +100,7 @@
                         return
                 ]
             },
-            "_fn_TestModules_Foobar_shtk_deconstructor": {
+            "_fn_TestModules_Foobar_shtk___deconstructor__": {
                 "icode": [
                         int* tempPtr4 = createPointer struct self
                         int* tempPtr6 = addressAdd int* tempPtr4, bytes 0

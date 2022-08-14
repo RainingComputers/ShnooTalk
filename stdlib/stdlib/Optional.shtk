@@ -42,14 +42,14 @@ fn expect(self: Optional) -> T
     return self.item
 }
 
-fn bitwiseOrItem(self: Optional, other: T) -> T
+fn __bitwiseOrItem__(self: Optional, other: T) -> T
 {
     if not self.none return self.item
 
     return other
 }
 
-fn bitwiseOrOptional(self: Optional, other: Optional) -> Optional
+fn __bitwiseOrOptional__(self: Optional, other: Optional) -> Optional
 {
     if not other.none return other
     return self

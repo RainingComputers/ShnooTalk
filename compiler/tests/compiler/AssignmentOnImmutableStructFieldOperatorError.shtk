@@ -4,7 +4,7 @@ struct FooSlice
     var a: int[]
 }
 
-fn subscript(self: FooSlice, index: long) -> int
+fn __subscript__(self: FooSlice, index: long) -> int
 {
     return self.a[index]
 }

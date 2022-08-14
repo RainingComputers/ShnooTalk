@@ -247,7 +247,8 @@ void forEachLoop(generator::GeneratorContext& ctx, const Node& root)
 
     /* Get generator methods */
     FunctionDescription lenFunc = ctx.ir.finder.getMethodFromUnit(generator, "length", expressionToken);
-    FunctionDescription subscriptFunc = ctx.ir.finder.getMethodFromUnit(generator, "subscriptItem", expressionToken);
+    FunctionDescription subscriptFunc =
+        ctx.ir.finder.getMethodFromUnit(generator, "__subscriptItem__", expressionToken);
 
     /* Declare for each element as local  */
     std::vector<Unit> item = forEachLoopInitItem(ctx, root, subscriptFunc);
@@ -268,7 +269,7 @@ void forEachLoop(generator::GeneratorContext& ctx, const Node& root)
     ctx.ir.functionBuilder.compareOperator(icode::LT, counter, len);
     createJumps(ctx, loopLabel, breakLabel, true);
 
-    /* Loop item x = generator.subscriptItem(counter) */
+    /* Loop item x = generator.__subscriptItem__(counter) */
     const Unit nextItem =
         createCallFunction(ctx, { expressionToken, itemToken }, { generator, counter }, subscriptFunc, expressionToken);
     forEachLoopNextItem(ctx, root, item, nextItem);

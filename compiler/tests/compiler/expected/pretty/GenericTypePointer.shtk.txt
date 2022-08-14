@@ -39,7 +39,7 @@
     "TestModules/Pair.shtk[int][float]": {
         "moduleName": "TestModules/Pair.shtk[int][float]",
         "functions": {
-            "_fn_TestModules_Pair_shtk[int][float]_add": {
+            "_fn_TestModules_Pair_shtk[int][float]___add__": {
                 "icode": [
                         int* tempPtr5 = createPointer struct result
                         int* tempPtr7 = addressAdd int* tempPtr5, bytes 0

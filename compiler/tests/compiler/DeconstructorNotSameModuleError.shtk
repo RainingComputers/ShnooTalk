@@ -1,5 +1,5 @@
 from "TestModules/Foobar.shtk" use Foobar
 
-fn deconstructor(self: Foobar)
+fn __deconstructor__(self: Foobar)
 {
 }

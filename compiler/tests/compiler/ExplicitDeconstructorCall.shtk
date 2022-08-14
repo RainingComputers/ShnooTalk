@@ -9,7 +9,7 @@ fn funcToTestType(f: Foobar) {}
 fn main() -> int
 {
     var a: Foobar
-    var b := a.deconstructor()
+    var b := a.__deconstructor__()
 
     funcToTestType(b)
 
