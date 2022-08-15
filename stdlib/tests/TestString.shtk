@@ -119,6 +119,13 @@ fn main() -> int
     println("12f3.45".string().parseFloat().hasValue())
     println("123..45".string().parseDouble().hasValue())
 
+    println("string in operator")
+    println("bcd" in "abcdef".string())
+    println('f' in "abcdef".string())
+    println("def" in "abcdef".string())
+    println("bcv" in "abcdef".string())
+    println('r' in "abcdef".string())
+    println("defg" in "abcdef".string())
 
     return 0
 }

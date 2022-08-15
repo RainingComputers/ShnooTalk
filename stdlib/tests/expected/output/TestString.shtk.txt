@@ -85,3 +85,10 @@ string parsing errors
 0
 0
 0
+string in operator
+1
+1
+1
+0
+0
+0

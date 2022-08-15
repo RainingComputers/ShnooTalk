@@ -228,6 +228,30 @@ fn find(self: String, other: String) -> Optional[ulong]
     return none()
 }
 
+
+fn __inString__(self: String, other: String) -> bool
+{
+    for var i: ulong = 0; i <= (self.length() - other.length()); i += 1
+        if self._startsWithOffset(other, i)
+            return true
+
+    return false
+}
+
+fn __inCharArray__(self: String, other: char[], n: ulong) -> bool
+{
+    return __coerceCharArray__(other, n) in self
+}
+
+fn __inChar__(self: String, other: char) -> bool
+{
+    for var i: ulong = 0; i < self.length(); i += 1
+        if self[i] == other
+            return true
+
+    return false
+}
+
 fn subString(self: String, range: ulong[2]) -> String
 {
     if range[0] > range[1]
