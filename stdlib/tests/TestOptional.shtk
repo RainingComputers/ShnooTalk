@@ -1,5 +1,14 @@
 from "../stdlib/Optional.shtk" use Optional, some, none
 
+fn testQuestionMark(a: Optional[int]) -> Optional[int]
+{
+    const b := a?
+
+    println(b)
+
+    return some(b)
+}
+
 fn main() -> int
 {
     const a := some[int](10)
@@ -27,6 +36,9 @@ fn main() -> int
     const e := d | b
     const [itemE, errE] := e
     println(errE)
+
+    println(testQuestionMark(a).isNone())
+    println(testQuestionMark(b).isNone())
 
     return 0
 }

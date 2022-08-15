@@ -54,3 +54,23 @@ fn __bitwiseOrOptional__(self: Optional, other: Optional) -> Optional
     if not other.none return other
     return self
 }
+
+fn __questionMarkContinue__(self: Optional) -> bool
+{
+    return self.hasValue()
+}
+
+fn __questionMarkUnwrap__(self: Optional) -> T
+{
+    return self.item
+}
+
+fn __questionMarkError__(self: Optional) -> bool
+{
+    return self.none
+}
+
+fn __questionMarkConstruct__() -> Optional
+{
+    return none()
+}

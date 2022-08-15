@@ -1,6 +1,25 @@
 from "../stdlib/Result.shtk" use Result, ok, fail
+from "../stdlib/Optional.shtk" use Optional, some
 
 enum TestErrorEnum {TEST_ERROR_0, TEST_ERROR_1}
+
+fn testQuestionMark(a: Result[int, TestErrorEnum]) -> Result[int, TestErrorEnum]
+{
+    const b := a?
+
+    println(b)
+
+    return ok(b)
+}
+
+fn testQuestionMarkOptional(a: Result[int, TestErrorEnum]) -> Optional[int]
+{
+    const b := a?
+
+    println(b)
+
+    return some(b)
+}
 
 fn main() -> int
 {
@@ -29,6 +48,12 @@ fn main() -> int
     const e := d | b
     const [itemE, errE] := e
     println(errE.get() == TEST_ERROR_0)
+
+    println(testQuestionMark(a).isFail())
+    println(testQuestionMark(b).isFail())
+
+    println(testQuestionMarkOptional(a).isNone())
+    println(testQuestionMarkOptional(b).isNone())
 
     return 0
 }

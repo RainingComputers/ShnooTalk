@@ -1,0 +1,13 @@
+from "../stdlib/Result.shtk" use Result, ok, fail
+from "../stdlib/Optional.shtk" use Optional, some
+
+enum TestErrorEnum {TEST_ERROR_0, TEST_ERROR_1}
+
+fn testQuestionMarkOptional(a: Optional[int]) -> Result[int, TestErrorEnum]
+{
+    const b := a?
+
+    println(b)
+
+    return ok(b)
+}
