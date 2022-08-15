@@ -1,0 +1,35 @@
+struct Foobar 
+{
+    var hasValue: bool
+}
+
+fn __questionMarkContinue__(self: Foobar) -> bool
+{
+    return self.hasValue
+}
+
+fn __questionMarkUnwrap__(self: Foobar) -> int
+{
+    return 100
+}
+
+fn __questionMarkConstruct__(hasValue: bool) -> bool
+{
+    return hasValue
+}
+
+
+fn testError(f: Foobar) -> bool
+{
+    const val := f?
+
+    println(val)
+
+    return false
+}
+
+
+fn main() -> int
+{
+    return 0
+}

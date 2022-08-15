@@ -1,0 +1,8 @@
+MODULE QuestionMarkMissingHookError3.shtk
+ERROR in Line 24 Col 19
+
+    const val := f?
+                  ^
+Method __questionMarkContinue__ does not exist
+
+QuestionMarkMissingHookError3.shtk:24:18

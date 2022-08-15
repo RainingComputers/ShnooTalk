@@ -668,14 +668,14 @@ void createQuestionMarkReturn(generator::GeneratorContext& ctx,
                               const FunctionDescription& constructorFunc,
                               const Token& errorToken)
 {
-    const Unit errorFuncRet = createCallFunctionMust(ctx, { errorToken }, { term }, errorFunc);
+    const Unit errorFuncRet = createCallFunction(ctx, { errorToken }, { term }, errorFunc, errorToken);
 
     Unit constructorFuncRet;
 
     if (constructorFunc.numParameters() == 0)
-        constructorFuncRet = createCallFunctionMust(ctx, {}, {}, constructorFunc);
+        constructorFuncRet = createCallFunction(ctx, {}, {}, constructorFunc, errorToken);
     else
-        constructorFuncRet = createCallFunctionMust(ctx, { errorToken }, { errorFuncRet }, constructorFunc);
+        constructorFuncRet = createCallFunction(ctx, { errorToken }, { errorFuncRet }, constructorFunc, errorToken);
 
     createReturn(ctx, constructorFuncRet, errorToken);
 }
@@ -704,14 +704,14 @@ Unit questionMarkOperator(generator::GeneratorContext& ctx, const Node& root)
     const icode::Operand falseLabel = ctx.ir.functionBuilder.createLabel(root.tok, false, "question_op");
     const icode::Operand trueLabel = ctx.ir.functionBuilder.createLabel(root.tok, true, "question_op");
 
-    const Unit continueFuncRet = createCallFunctionMust(ctx, { expressionToken }, { term }, continueFunc);
+    const Unit continueFuncRet = createCallFunction(ctx, { expressionToken }, { term }, continueFunc, expressionToken);
     truthyOperator(ctx, continueFuncRet, root.tok, trueLabel, falseLabel, false);
 
     createQuestionMarkReturn(ctx, term, errorFunc, constructorFunc, expressionToken);
 
     ctx.ir.functionBuilder.insertLabel(trueLabel);
 
-    return createCallFunctionMust(ctx, { expressionToken }, { term }, unwrapFunc);
+    return createCallFunction(ctx, { expressionToken }, { term }, unwrapFunc, expressionToken);
 }
 
 void relationalExpression(generator::GeneratorContext& ctx,

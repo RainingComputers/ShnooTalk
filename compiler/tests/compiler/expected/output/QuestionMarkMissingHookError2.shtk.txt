@@ -1,0 +1,8 @@
+MODULE QuestionMarkMissingHookError2.shtk
+ERROR in Line 24 Col 19
+
+    const val := f?
+                  ^
+Method __questionMarkUnwrap__ does not exist
+
+QuestionMarkMissingHookError2.shtk:24:18

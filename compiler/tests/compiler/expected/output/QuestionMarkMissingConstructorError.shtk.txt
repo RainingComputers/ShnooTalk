@@ -1,0 +1,8 @@
+MODULE QuestionMarkMissingConstructorError.shtk
+ERROR in Line 24 Col 19
+
+    const val := f?
+                  ^
+Cannot use ? operator without __questionMarkConstruct__ function for return type
+
+QuestionMarkMissingConstructorError.shtk:24:18

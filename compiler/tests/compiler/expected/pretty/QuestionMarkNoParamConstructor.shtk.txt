@@ -1,0 +1,154 @@
+{
+    "QuestionMarkNoParamConstructor.shtk": {
+        "moduleName": "QuestionMarkNoParamConstructor.shtk",
+        "functions": {
+            "_fn_QuestionMarkNoParamConstructor_shtk___questionMarkConstruct__": {
+                "icode": [
+                        byte temp39 = cast autoInt 1
+                        byte returnValue37 = equal byte temp39
+                        return
+                ]
+            },
+            "_fn_QuestionMarkNoParamConstructor_shtk___questionMarkContinue__": {
+                "icode": [
+                        byte* tempPtr5 = createPointer struct self
+                        byte* tempPtr7 = addressAdd byte* tempPtr5, bytes 0
+                        byte temp8 = read byte* tempPtr7
+                        byte returnValue3 = equal byte temp8
+                        return
+                ]
+            },
+            "_fn_QuestionMarkNoParamConstructor_shtk___questionMarkError__": {
+                "icode": [
+                        autoInt* tempPtr19 = allocPointer 
+                        byte* tempPtr24 = createPointer struct self
+                        byte* tempPtr26 = addressAdd byte* tempPtr24, bytes 0
+                        byte temp28 = read byte* tempPtr26
+                        byte temp29 = cast autoInt 0
+                        flag = greaterThan byte temp28, byte temp29
+                        if(flag) goto _condn_exp_false_l18_c11
+                        autoInt* tempPtr19 = write autoInt 1
+                        goto _condn_exp_end_false_l18_c11
+                    _condn_exp_false_l18_c11:
+                        autoInt* tempPtr19 = write autoInt 0
+                    _condn_exp_end_false_l18_c11:
+                        autoInt temp32 = read autoInt* tempPtr19
+                        byte temp33 = cast autoInt temp32
+                        byte returnValue18 = equal byte temp33
+                        return
+                ]
+            },
+            "_fn_QuestionMarkNoParamConstructor_shtk___questionMarkUnwrap__": {
+                "icode": [
+                        int temp14 = cast autoInt 100
+                        int returnValue12 = equal int temp14
+                        return
+                ]
+            },
+            "_fn_QuestionMarkNoParamConstructor_shtk_chain1": {
+                "icode": [
+                        byte* tempPtr85 = createPointer struct f
+                        byte* tempPtr87 = addressAdd byte* tempPtr85, bytes 0
+                        byte temp89 = cast autoInt 1
+                        byte* tempPtr87 = write byte temp89
+                        byte* tempPtr92 = createPointer struct returnValue90
+                        byte* tempPtr93 = createPointer struct f
+                        byte* tempPtr92 = memoryCopy byte* tempPtr93, autoInt 1
+                        return
+                ]
+            },
+            "_fn_QuestionMarkNoParamConstructor_shtk_chain2": {
+                "icode": [
+                        int returnValue99 = equal int n
+                        return
+                ]
+            },
+            "_fn_QuestionMarkNoParamConstructor_shtk_testError": {
+                "icode": [
+                        byte* tempPtr48 = createPointer struct f
+                        passPointer byte* tempPtr48, byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkContinue__, module QuestionMarkNoParamConstructor.shtk
+                        byte calleeReturnValue51 = call byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkContinue__, module QuestionMarkNoParamConstructor.shtk
+                        byte temp55 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue51, byte temp55
+                        if(flag) goto _question_op_true_l28_c18
+                        byte* tempPtr57 = createPointer struct f
+                        passPointer byte* tempPtr57, byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkError__, module QuestionMarkNoParamConstructor.shtk
+                        byte calleeReturnValue60 = call byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkError__, module QuestionMarkNoParamConstructor.shtk
+                        byte calleeReturnValue63 = call byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkConstruct__, module QuestionMarkNoParamConstructor.shtk
+                        byte returnValue66 = equal byte calleeReturnValue63
+                        return
+                    _question_op_true_l28_c18:
+                        byte* tempPtr68 = createPointer struct f
+                        passPointer byte* tempPtr68, int _fn_QuestionMarkNoParamConstructor_shtk___questionMarkUnwrap__, module QuestionMarkNoParamConstructor.shtk
+                        int calleeReturnValue71 = call int _fn_QuestionMarkNoParamConstructor_shtk___questionMarkUnwrap__, module QuestionMarkNoParamConstructor.shtk
+                        int val = equal int calleeReturnValue71
+                        print int val
+                        newLine
+                        byte temp78 = cast autoInt 0
+                        byte returnValue76 = equal byte temp78
+                        return
+                ]
+            },
+            "_fn_QuestionMarkNoParamConstructor_shtk_testErrorChain": {
+                "icode": [
+                        struct calleeReturnValue104 = call struct _fn_QuestionMarkNoParamConstructor_shtk_chain1, module QuestionMarkNoParamConstructor.shtk
+                        byte* tempPtr111 = createPointer struct calleeReturnValue104
+                        passPointer byte* tempPtr111, byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkContinue__, module QuestionMarkNoParamConstructor.shtk
+                        byte calleeReturnValue114 = call byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkContinue__, module QuestionMarkNoParamConstructor.shtk
+                        byte temp118 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue114, byte temp118
+                        if(flag) goto _question_op_true_l49_c20
+                        byte* tempPtr120 = createPointer struct calleeReturnValue104
+                        passPointer byte* tempPtr120, byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkError__, module QuestionMarkNoParamConstructor.shtk
+                        byte calleeReturnValue123 = call byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkError__, module QuestionMarkNoParamConstructor.shtk
+                        byte calleeReturnValue126 = call byte _fn_QuestionMarkNoParamConstructor_shtk___questionMarkConstruct__, module QuestionMarkNoParamConstructor.shtk
+                        byte returnValue129 = equal byte calleeReturnValue126
+                        return
+                    _question_op_true_l49_c20:
+                        byte* tempPtr131 = createPointer struct calleeReturnValue104
+                        passPointer byte* tempPtr131, int _fn_QuestionMarkNoParamConstructor_shtk___questionMarkUnwrap__, module QuestionMarkNoParamConstructor.shtk
+                        int calleeReturnValue134 = call int _fn_QuestionMarkNoParamConstructor_shtk___questionMarkUnwrap__, module QuestionMarkNoParamConstructor.shtk
+                        pass int calleeReturnValue134, int _fn_QuestionMarkNoParamConstructor_shtk_chain2, module QuestionMarkNoParamConstructor.shtk
+                        int calleeReturnValue141 = call int _fn_QuestionMarkNoParamConstructor_shtk_chain2, module QuestionMarkNoParamConstructor.shtk
+                        print int calleeReturnValue141
+                        newLine
+                        byte temp146 = cast autoInt 0
+                        byte returnValue144 = equal byte temp146
+                        return
+                ]
+            },
+            "main": {
+                "icode": [
+                        byte* tempPtr152 = createPointer struct f
+                        byte* tempPtr154 = addressAdd byte* tempPtr152, bytes 0
+                        byte temp156 = cast autoInt 0
+                        byte* tempPtr154 = write byte temp156
+                        printString stringData _str_QuestionMarkNoParamConstructor_shtk__l60_c12
+                        newLine
+                        byte* tempPtr161 = createPointer struct f
+                        passPointer byte* tempPtr161, byte _fn_QuestionMarkNoParamConstructor_shtk_testError, module QuestionMarkNoParamConstructor.shtk
+                        byte calleeReturnValue164 = call byte _fn_QuestionMarkNoParamConstructor_shtk_testError, module QuestionMarkNoParamConstructor.shtk
+                        print byte calleeReturnValue164
+                        newLine
+                        byte* tempPtr168 = createPointer struct f
+                        byte* tempPtr170 = addressAdd byte* tempPtr168, bytes 0
+                        byte temp172 = cast autoInt 1
+                        byte* tempPtr170 = write byte temp172
+                        printString stringData _str_QuestionMarkNoParamConstructor_shtk__l64_c12
+                        newLine
+                        byte* tempPtr177 = createPointer struct f
+                        passPointer byte* tempPtr177, byte _fn_QuestionMarkNoParamConstructor_shtk_testError, module QuestionMarkNoParamConstructor.shtk
+                        byte calleeReturnValue180 = call byte _fn_QuestionMarkNoParamConstructor_shtk_testError, module QuestionMarkNoParamConstructor.shtk
+                        print byte calleeReturnValue180
+                        newLine
+                        byte calleeReturnValue183 = call byte _fn_QuestionMarkNoParamConstructor_shtk_testErrorChain, module QuestionMarkNoParamConstructor.shtk
+                        print byte calleeReturnValue183
+                        newLine
+                        int temp188 = cast autoInt 0
+                        int returnValue186 = equal int temp188
+                        return
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+struct Foobar 
+{
+    var hasValue: bool
+}
+
+fn __questionMarkContinue__(self: Foobar) -> bool
+{
+    return self.hasValue
+}
+
+fn __questionMarkUnwrap__(self: Foobar) -> int
+{
+    return 100
+}
+
+fn __questionMarkError__(self: Foobar) -> bool
+{
+    return not self.hasValue
+}
+
+fn __questionMarkConstruct__() -> bool
+{
+    return true
+}
+
+fn testError(f: Foobar) -> bool
+{
+    const val := f?
+
+    println(val)
+
+    return false
+}
+
+fn chain1() -> Foobar
+{
+    var f: Foobar
+    f.hasValue = true
+    return f
+}
+
+fn chain2(n: int) -> int
+{
+    return n
+}
+
+fn testErrorChain() -> bool
+{
+    println(chain1()?.chain2())
+
+    return false
+}
+
+
+fn main() -> int
+{
+    var f: Foobar
+
+    f.hasValue = false
+    println("false")
+    println(testError(f))
+
+    f.hasValue = true
+    println("true")
+    println(testError(f))
+
+    println(testErrorChain())
+
+    return 0
+}
