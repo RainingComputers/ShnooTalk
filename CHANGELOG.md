@@ -1,3 +1,16 @@
+# 0.3.0-alpha
+
+- Bootstrap stdlib
+- Object files are now generated in separate `_obj` folder
+- Added `__isNonZero__` custom operator
+- Changed custom operator and resource management hooks to have `__` as prefix and suffix
+- Added CLI option to generate shared objects
+- Ignore `__beforeCopy__` and `__deconstructor__` hooks for variable named `self`
+- Fix bugs in importing enums
+- Autofill type parameters for generic function call
+- Added `___toCharArray__` and `__coerceCharArray__` hooks
+- Added `?` operator
+
 # 0.2.0-alpha
 
 - Support for incomplete types
