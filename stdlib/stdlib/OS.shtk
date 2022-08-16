@@ -29,13 +29,13 @@ fn panic(message: String, status: int)
 
 fn _popen(command: String) -> Result[File, StdlibError]
 {
-    var file: File
-    file.libcFile <- libc::popen(command.toCharArray(), "r")
+    var self: File
+    self.libcFile <- libc::popen(command.toCharArray(), "r")
 
-    if not addr(file.libcFile)
+    if not addr(self.libcFile)
         return fail(OSError)
 
-    return ok(file)
+    return ok(self)
 }
 
 fn system(command: String) -> Result[Pair[String, int], StdlibError]

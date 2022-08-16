@@ -93,3 +93,7 @@ fn close(self: File) -> Error[StdlibError]
     return _intToError(libc::fclose(self.libcFile))
 }
 
+fn __deconstructor__(self: File)
+{
+    libc::fclose(self.libcFile)
+}
