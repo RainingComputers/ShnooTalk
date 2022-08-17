@@ -97,3 +97,8 @@ fn __deconstructor__(self: File)
 {
     libc::fclose(self.libcFile)
 }
+
+fn readStringFromFile(path: String) -> Result[String, StdlibError]
+{
+    return open(path, "r")?.read()
+}

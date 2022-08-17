@@ -31,8 +31,7 @@ fn main() -> int
 
     file3.close()
 
-    const fileOptional4 := file::open("foobar", "r")   
-    println(fileOptional4.expect().read().expect())
+    println(file::readStringFromFile("foobar").expect())
 
     println(os::rm("foobar").__isNonZero__())
 
