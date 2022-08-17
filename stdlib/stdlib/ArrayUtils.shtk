@@ -2,26 +2,71 @@ generic T
 
 from "../stdlib/Optional.shtk" use Optional, some, none
 
+fn _quickSortPartition(arr: T[], lo: ulong, hi: ulong) -> ulong
+{
+    # TODO add unsafe keyword, immutable pointer is being force casted to mutable pointer
+    var a: T[] <- arr  
+
+    var pivot := a[(hi + lo)/2]
+    var left := lo - 1
+    var right := hi + 1
+
+    loop 
+    {
+        do left = left + 1 while a[left] < pivot
+        do right = right - 1 while a[right] > pivot
+
+        if left >= right return right
+
+        # TODO swap function
+        const temp := a[left]
+        a[left] = a[right]
+        a[right] = temp
+    }
+
+    return 0
+}
+
+fn _quickSort(arr: T[], lo: ulong, hi: ulong)
+{
+    if not (lo >= 0 and hi >= 0 and lo < hi)
+        return void
+    
+    const p := _quickSortPartition(arr, lo, hi)
+    _quickSort(arr, lo, p)
+    _quickSort(arr, p + 1, hi)
+}
+
+
 fn sortInPlace(a: T[], n: ulong)
 {
-    # TODO
+    _quickSort(a, 0, n - 1)
 }
 
-fn reverseInPlace(a: T[], n: ulong)
+fn reverseInPlace(arr: T[], n: ulong)
 {
-    # TODO
+    # TODO add unsafe keyword, immutable pointer is being force casted to mutable pointer
+    var a: T[] <- arr  
+
+    for var i: ulong = 0; i < (n/2); i += 1 
+    {
+        # TODO swap function
+        const temp := a[i]
+        a[i] = a[n-i-1]
+        a[n-i-1] = temp
+    }
 }
 
-fn search(a: T[], n: ulong, item: T) -> Optional[ulong]
+fn search(arr: T[], n: ulong, item: T) -> Optional[ulong]
 {
     for var i: ulong = 0; i < n; i += 1 
-        if(a[i] == item)
+        if(arr[i] == item)
             return some(i)
 
     return none()
 }
 
-fn binarySearch(a: T[], n: ulong, item: T) -> Optional[ulong]
+fn binarySearch(arr: T[], n: ulong, item: T) -> Optional[ulong]
 {
     var left: ulong = 0
     var right: ulong = n - 1
@@ -30,9 +75,9 @@ fn binarySearch(a: T[], n: ulong, item: T) -> Optional[ulong]
     {
         const mid := (left + right)/2
         
-        if a[mid] == item
+        if arr[mid] == item
             return some(mid)
-        elif a[mid] < item
+        elif arr[mid] < item
             left = mid + 1
         else
             right = mid - 1
@@ -41,12 +86,12 @@ fn binarySearch(a: T[], n: ulong, item: T) -> Optional[ulong]
     return none()
 }
 
-fn count(a: T[], n: ulong, item: T) -> ulong
+fn count(arr: T[], n: ulong, item: T) -> ulong
 {
     var count: ulong = 0
 
     for var i: ulong = 0; i < n; i += 1
-        if a[i] == item
+        if arr[i] == item
             count += 1
 
     return count

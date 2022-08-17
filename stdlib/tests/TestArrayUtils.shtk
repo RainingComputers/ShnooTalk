@@ -36,5 +36,23 @@ fn main() -> int
     println(array::isEqual[int](a, 5, b, 5))
     println(array::isEqual[int](a, 5, a, 5))
 
+    println("sort")
+
+    var d := [23, 64, 78, 34, 56, 87, 45, 67, 34, 879, 342, 674, 23, 6457, 23, 45, 45, 645, 54, 6]
+    array::sortInPlace[int](d, 20)
+
+    for var i: ulong = 0; i < 20; i += 1
+        print(d[i]; ", ")
+
+    println("")
+    
+    println("reverse")
+
+    var e := [1, 2, 3, 4, 5]
+    array::reverseInPlace[int](e, 5)
+
+    for i = 0; i < 5; i += 1
+        print(e[i]; ", ")
+
     return 0
 }
