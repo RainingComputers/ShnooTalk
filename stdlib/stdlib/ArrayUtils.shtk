@@ -1,1 +1,65 @@
-# TODO
+generic T
+
+from "../stdlib/Optional.shtk" use Optional, some, none
+
+fn sortInPlace(a: T[], n: ulong)
+{
+    # TODO
+}
+
+fn reverseInPlace(a: T[], n: ulong)
+{
+    # TODO
+}
+
+fn search(a: T[], n: ulong, item: T) -> Optional[ulong]
+{
+    for var i: ulong = 0; i < n; i += 1 
+        if(a[i] == item)
+            return some(i)
+
+    return none()
+}
+
+fn binarySearch(a: T[], n: ulong, item: T) -> Optional[ulong]
+{
+    var left: ulong = 0
+    var right: ulong = n - 1
+
+    while left <= right
+    {
+        const mid := (left + right)/2
+        
+        if a[mid] == item
+            return some(mid)
+        elif a[mid] < item
+            left = mid + 1
+        else
+            right = mid - 1
+    }
+
+    return none()
+}
+
+fn count(a: T[], n: ulong, item: T) -> ulong
+{
+    var count: ulong = 0
+
+    for var i: ulong = 0; i < n; i += 1
+        if a[i] == item
+            count += 1
+
+    return count
+}
+
+fn isEqual(a: T[], n: ulong, b: T[], p: ulong) -> bool
+{
+    if n != p
+        return false
+
+    for var i: ulong = 0; i < n; i += 1
+        if a[i] != b[i]
+            return false
+
+    return true
+}

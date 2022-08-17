@@ -308,6 +308,7 @@ void term(parser::ParserContext& ctx)
         else if (ctx.matchedBracketPeek(token::OPEN_SQUARE, token::CLOSE_SQUARE, token::LPAREN))
         {
             genericFunctionCall(ctx);
+            methodCall(ctx);
         }
         else if (ctx.peek(token::CAST))
         {

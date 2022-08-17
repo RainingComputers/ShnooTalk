@@ -2,7 +2,7 @@ generic T
 
 from "../stdlib/Panic.shtk" use panic
 
-def EXPECT_ON_ERROR_RESULT "Called expect on a none optional"
+def EXPECT_ON_NONE_OPTIONAL "Called expect on a none optional"
 
 struct Optional
 {
@@ -37,7 +37,7 @@ fn isNone(self: Optional) -> bool
 
 fn expect(self: Optional) -> T
 {
-    if self.none panic(EXPECT_ON_ERROR_RESULT, 1)
+    if self.none panic(EXPECT_ON_NONE_OPTIONAL, 1)
 
     return self.item
 }
