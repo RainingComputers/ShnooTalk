@@ -1,0 +1,20 @@
+fn main() -> int
+{
+    var a := [5, 3, 4, 1, 2]
+
+    println(a[0])
+    println(a[1])
+    println(a[2])
+    println(a[3])
+    println(a[4])
+
+    var b: int[] <- a
+    
+    println(b[0])
+    println(b[1])
+    println(b[2])
+    println(b[3])
+    println(b[4])
+
+    return 0
+}

@@ -1,0 +1,87 @@
+{
+    "TestArrayTypeDecay.shtk": {
+        "moduleName": "TestArrayTypeDecay.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        int* tempPtr9 = createPointer int a
+                        int temp10 = cast autoInt 5
+                        int* tempPtr9 = write int temp10
+                        int* tempPtr12 = addressAdd int* tempPtr9, bytes 4
+                        int temp13 = cast autoInt 3
+                        int* tempPtr12 = write int temp13
+                        int* tempPtr15 = addressAdd int* tempPtr12, bytes 4
+                        int temp16 = cast autoInt 4
+                        int* tempPtr15 = write int temp16
+                        int* tempPtr18 = addressAdd int* tempPtr15, bytes 4
+                        int temp19 = cast autoInt 1
+                        int* tempPtr18 = write int temp19
+                        int* tempPtr21 = addressAdd int* tempPtr18, bytes 4
+                        int temp22 = cast autoInt 2
+                        int* tempPtr21 = write int temp22
+                        int* tempPtr25 = createPointer int a
+                        void* tempPtr27 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr28 = addressAdd int* tempPtr25, void* tempPtr27
+                        int temp29 = read int* tempPtr28
+                        print int temp29
+                        newLine
+                        int* tempPtr32 = createPointer int a
+                        void* tempPtr34 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr35 = addressAdd int* tempPtr32, void* tempPtr34
+                        int temp36 = read int* tempPtr35
+                        print int temp36
+                        newLine
+                        int* tempPtr39 = createPointer int a
+                        void* tempPtr41 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr42 = addressAdd int* tempPtr39, void* tempPtr41
+                        int temp43 = read int* tempPtr42
+                        print int temp43
+                        newLine
+                        int* tempPtr46 = createPointer int a
+                        void* tempPtr48 = addressMultiply autoInt 3, bytes 4
+                        int* tempPtr49 = addressAdd int* tempPtr46, void* tempPtr48
+                        int temp50 = read int* tempPtr49
+                        print int temp50
+                        newLine
+                        int* tempPtr53 = createPointer int a
+                        void* tempPtr55 = addressMultiply autoInt 4, bytes 4
+                        int* tempPtr56 = addressAdd int* tempPtr53, void* tempPtr55
+                        int temp57 = read int* tempPtr56
+                        print int temp57
+                        newLine
+                        int* tempPtr60 = pointerCast autoInt 0
+                        int* b = pointerAssign int* tempPtr60
+                        int* b = pointerAssign int a
+                        void* tempPtr65 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr66 = addressAdd int* b, void* tempPtr65
+                        int temp67 = read int* tempPtr66
+                        print int temp67
+                        newLine
+                        void* tempPtr71 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr72 = addressAdd int* b, void* tempPtr71
+                        int temp73 = read int* tempPtr72
+                        print int temp73
+                        newLine
+                        void* tempPtr77 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr78 = addressAdd int* b, void* tempPtr77
+                        int temp79 = read int* tempPtr78
+                        print int temp79
+                        newLine
+                        void* tempPtr83 = addressMultiply autoInt 3, bytes 4
+                        int* tempPtr84 = addressAdd int* b, void* tempPtr83
+                        int temp85 = read int* tempPtr84
+                        print int temp85
+                        newLine
+                        void* tempPtr89 = addressMultiply autoInt 4, bytes 4
+                        int* tempPtr90 = addressAdd int* b, void* tempPtr89
+                        int temp91 = read int* tempPtr90
+                        print int temp91
+                        newLine
+                        int temp94 = cast autoInt 0
+                        int returnValue92 = equal int temp94
+                        return
+                ]
+            }
+        }
+    }
+}
