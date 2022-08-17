@@ -64,7 +64,7 @@
                     {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 82, "dtype": "int"}, "op2": {"type": "var", "id": 81, "name": "c", "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 83, "dtype": "int"}, "op2": {"type": "literal", "id": 79, "dtype": "autoInt", "value": 1}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 82, "dtype": "int"}, "op2": {"type": "temp", "id": 83, "dtype": "int"}, "op3": {"type": "none"}},
-                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 85, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 82, "dtype": "int"}, "op3": {"type": "bytes", "id": 84, "bytes": 8}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 85, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 82, "dtype": "int"}, "op3": {"type": "bytes", "id": 84, "bytes": 4}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 86, "dtype": "int"}, "op2": {"type": "literal", "id": 80, "dtype": "autoInt", "value": 2}, "op3": {"type": "none"}},
                     {"opcode": "write", "op1": {"type": "tempPtr", "id": 85, "dtype": "int"}, "op2": {"type": "temp", "id": 86, "dtype": "int"}, "op3": {"type": "none"}},
                     {"opcode": "pointerCast", "op1": {"type": "tempPtr", "id": 89, "dtype": "int"}, "op2": {"type": "literal", "id": 88, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},

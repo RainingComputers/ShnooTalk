@@ -223,13 +223,13 @@
                         int* tempPtr8 = createPointer int a
                         int temp9 = cast ubyte 97
                         int* tempPtr8 = write int temp9
-                        int* tempPtr11 = addressAdd int* tempPtr8, bytes 8
+                        int* tempPtr11 = addressAdd int* tempPtr8, bytes 4
                         int temp12 = cast ubyte 98
                         int* tempPtr11 = write int temp12
-                        int* tempPtr14 = addressAdd int* tempPtr11, bytes 8
+                        int* tempPtr14 = addressAdd int* tempPtr11, bytes 4
                         int temp15 = cast ubyte 100
                         int* tempPtr14 = write int temp15
-                        int* tempPtr17 = addressAdd int* tempPtr14, bytes 8
+                        int* tempPtr17 = addressAdd int* tempPtr14, bytes 4
                         int temp18 = cast ubyte 101
                         int* tempPtr17 = write int temp18
                         ubyte* tempPtr20 = pointerCast int a

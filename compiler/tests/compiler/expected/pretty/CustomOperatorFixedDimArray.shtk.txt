@@ -64,7 +64,7 @@
                         int* tempPtr82 = createPointer int c
                         int temp83 = cast autoInt 1
                         int* tempPtr82 = write int temp83
-                        int* tempPtr85 = addressAdd int* tempPtr82, bytes 8
+                        int* tempPtr85 = addressAdd int* tempPtr82, bytes 4
                         int temp86 = cast autoInt 2
                         int* tempPtr85 = write int temp86
                         int* tempPtr89 = pointerCast autoInt 0
