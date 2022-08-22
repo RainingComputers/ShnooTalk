@@ -16,11 +16,11 @@ fn main() -> int
 
     var b := [1, 10, 23, 45, 67, 100]
 
-    println(array::search[int](b, 6, 1).expect())
-    println(array::search[int](b, 6, 45).expect())
-    println(array::search[int](b, 6, 23).expect())
-    println(array::search[int](b, 6, 100).expect())
-    println(array::search[int](b, 6, 1223).isNone()) 
+    println(array::binarySearch[int](b, 6, 1).expect())
+    println(array::binarySearch[int](b, 6, 45).expect())
+    println(array::binarySearch[int](b, 6, 23).expect())
+    println(array::binarySearch[int](b, 6, 100).expect())
+    println(array::binarySearch[int](b, 6, 1223).isNone()) 
 
     println("count")
 
