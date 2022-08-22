@@ -145,6 +145,7 @@ Unit switchModuleAndCallTerm(generator::GeneratorContext& ctx, const Node& root,
     Unit result = termWithHint(ctx, root.children[nodeCounter], typeHint);
 
     ctx.ir.popWorkingModule();
+    ctx.mm.resetWorkingModule();
 
     return result;
 }
