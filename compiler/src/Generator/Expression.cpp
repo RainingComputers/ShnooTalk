@@ -268,10 +268,14 @@ Unit methodCall(generator::GeneratorContext& ctx, const Node& root)
     std::vector<Token> actualParamTokens = { root.children[0].tok };
     std::vector<Unit> actualParams = { firstActualParam };
 
-    for (size_t i = 1; i < root.children.size(); i++)
+    for (size_t i = 1; i < root.children.size(); i++) // TODO extract this into a function
     {
         actualParamTokens.push_back(root.children[i].tok);
-        actualParams.push_back(expressionWithHint(ctx, root.children[i], formalParameters[i].type()));
+
+        if (i < formalParameters.size())
+            actualParams.push_back(expressionWithHint(ctx, root.children[i], formalParameters[i].type()));
+        else
+            actualParams.push_back(expression(ctx, root.children[i]));
     }
 
     if (firstActualParam.isArrayWithFixedDim() && formalParameters.size() == 2 && actualParams.size() == 1)
@@ -301,7 +305,11 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
     for (size_t i = 0; i < root.children.size(); i++)
     {
         actualParamTokens.push_back(root.children[i].tok);
-        actualParams.push_back(expressionWithHint(ctx, root.children[i], formalParameters[i].type()));
+
+        if (i < formalParameters.size())
+            actualParams.push_back(expressionWithHint(ctx, root.children[i], formalParameters.at(i).type()));
+        else
+            actualParams.push_back(expression(ctx, root.children[i]));
     }
 
     ctx.ir.popWorkingModule();
@@ -360,6 +368,9 @@ Unit functionCallWithHint(generator::GeneratorContext& ctx, const Node& root, co
 {
     if (!typeHint.isVoid() && !typeHint.isPointer() && ctx.mm.genericExists(root.tok))
         return genericFunctionCallWithHint(ctx, root, typeHint);
+
+    if (ctx.mm.getWorkingModule() != "") // TODO test this
+        ctx.console.compileErrorOnToken("Function does not exist", root.tok);
 
     return functionCall(ctx, root);
 }

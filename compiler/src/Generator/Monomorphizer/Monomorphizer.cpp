@@ -164,6 +164,11 @@ void Monomorphizer::setWorkingModuleFromAlias(const Token& aliasToken)
     workingModule = getGenericModuleNameFromAlias(aliasToken);
 }
 
+std::string Monomorphizer::getWorkingModule()
+{
+    return workingModule;
+}
+
 std::string Monomorphizer::getGenericModuleFromToken(const Token& token)
 {
     if (workingModule.size() == 0)

@@ -53,6 +53,8 @@ namespace monomorphizer
 
         void setWorkingModuleFromAlias(const Token& aliasToken);
 
+        std::string getWorkingModule();
+
         std::string getGenericModuleFromToken(const Token& token);
 
         bool genericExists(const Token& token);
