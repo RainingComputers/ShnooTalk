@@ -16,6 +16,14 @@ Unit createCallFunction(generator::GeneratorContext& ctx,
                         const icode::FunctionDescription& callee,
                         const Token& errorToken);
 
+Unit createOperatorFunctionCall(generator::GeneratorContext& ctx,
+                                const std::string& customOperatorName,
+                                const Token& LHSToken,
+                                const Token& RHSToken,
+                                const Unit& LHS,
+                                const Unit& RHS,
+                                const Token& errorToken);
+
 Unit termWithHint(generator::GeneratorContext& ctx, const Node& root, const icode::TypeDescription& typeHint);
 
 Unit term(generator::GeneratorContext& ctx, const Node& root);

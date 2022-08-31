@@ -4,14 +4,14 @@
         "functions": {
             "main": {
                 "icode": [
-                        int temp5 = cast autoInt 100
-                        pass int temp5, void _fn_TestModules_GlobalInGeneric_shtk[int]_init, module TestModules/GlobalInGeneric.shtk[int]
-                        void calleeReturnValue8 = call void _fn_TestModules_GlobalInGeneric_shtk[int]_init, module TestModules/GlobalInGeneric.shtk[int]
-                        int calleeReturnValue11 = call int _fn_TestModules_GlobalInGeneric_shtk[int]_get, module TestModules/GlobalInGeneric.shtk[int]
-                        print int calleeReturnValue11
+                        int temp6 = cast autoInt 100
+                        pass int temp6, void _fn_TestModules_GlobalInGeneric_shtk[int]_init, module TestModules/GlobalInGeneric.shtk[int]
+                        void calleeReturnValue9 = call void _fn_TestModules_GlobalInGeneric_shtk[int]_init, module TestModules/GlobalInGeneric.shtk[int]
+                        int calleeReturnValue12 = call int _fn_TestModules_GlobalInGeneric_shtk[int]_get, module TestModules/GlobalInGeneric.shtk[int]
+                        print int calleeReturnValue12
                         newLine
-                        int temp16 = cast autoInt 0
-                        int returnValue14 = equal int temp16
+                        int temp17 = cast autoInt 0
+                        int returnValue15 = equal int temp17
                         return
                 ]
             }

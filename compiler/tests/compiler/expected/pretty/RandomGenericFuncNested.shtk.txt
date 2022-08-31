@@ -4,15 +4,15 @@
         "functions": {
             "main": {
                 "icode": [
-                        int temp9 = cast autoInt 1
-                        pass int temp9, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
-                        float temp12 = cast autoFloat 2.300000
-                        pass float temp12, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
-                        double temp15 = cast autoFloat 2.300000
-                        pass double temp15, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
-                        void calleeReturnValue18 = call void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
-                        int temp23 = cast autoInt 0
-                        int returnValue21 = equal int temp23
+                        int temp12 = cast autoInt 1
+                        pass int temp12, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
+                        float temp15 = cast autoFloat 2.300000
+                        pass float temp15, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
+                        double temp18 = cast autoFloat 2.300000
+                        pass double temp18, void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
+                        void calleeReturnValue21 = call void _fn_TestModules_RandomGenericFuncNested_shtk[int][float][double]_randomFuncNested, module TestModules/RandomGenericFuncNested.shtk[int][float][double]
+                        int temp26 = cast autoInt 0
+                        int returnValue24 = equal int temp26
                         return
                 ]
             }
@@ -82,16 +82,16 @@
                         byte* tempPtr332 = memoryCopy byte* tempPtr333, autoInt 5
                         return
                     _if_false_l79_c4:
-                        int* tempPtr337 = createPointer struct self
-                        int** tempPtrPtr339 = addressAdd int* tempPtr337, bytes 0
-                        void* tempPtr342 = addressMultiply int index, bytes 4
-                        int* tempPtr343 = addressAdd int** tempPtrPtr339, void* tempPtr342
-                        int temp345 = read int* tempPtr343
-                        pass int temp345, struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
-                        struct calleeReturnValue348 = call struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
-                        byte* tempPtr351 = createPointer struct returnValue335
-                        byte* tempPtr352 = createPointer struct calleeReturnValue348
-                        byte* tempPtr351 = memoryCopy byte* tempPtr352, autoInt 5
+                        int* tempPtr338 = createPointer struct self
+                        int** tempPtrPtr340 = addressAdd int* tempPtr338, bytes 0
+                        void* tempPtr343 = addressMultiply int index, bytes 4
+                        int* tempPtr344 = addressAdd int** tempPtrPtr340, void* tempPtr343
+                        int temp346 = read int* tempPtr344
+                        pass int temp346, struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
+                        struct calleeReturnValue349 = call struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
+                        byte* tempPtr352 = createPointer struct returnValue335
+                        byte* tempPtr353 = createPointer struct calleeReturnValue349
+                        byte* tempPtr352 = memoryCopy byte* tempPtr353, autoInt 5
                         return
                 ]
             },
@@ -287,7 +287,7 @@
                         pass int a, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
                         pass float b, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
                         pass double c, void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
-                        void calleeReturnValue15 = call void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
+                        void calleeReturnValue18 = call void _fn_TestModules_RandomGenericFunc_shtk[int][float][double]_randomFunc, module TestModules/RandomGenericFunc.shtk[int][float][double]
                         print autoInt 40
                         newLine
                         return

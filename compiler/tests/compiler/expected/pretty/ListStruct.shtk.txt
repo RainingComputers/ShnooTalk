@@ -202,17 +202,17 @@
                         byte* tempPtr343 = memoryCopy byte* tempPtr344, autoInt 9
                         return
                     _if_false_l79_c4:
-                        int* tempPtr348 = createPointer struct self
-                        int** tempPtrPtr350 = addressAdd int* tempPtr348, bytes 0
-                        int* tempPtr352 = createPointer struct** tempPtrPtr350
-                        void* tempPtr354 = addressMultiply int index, bytes 8
-                        int* tempPtr355 = addressAdd int* tempPtr352, void* tempPtr354
-                        int* tempPtr357 = createPointer int* tempPtr355
-                        passPointer int* tempPtr357, struct _fn_TestModules_ResultGeneric_shtk[TestModules_Vector_shtk@Vec]_success, module TestModules/ResultGeneric.shtk[TestModules/Vector.shtk@Vec]
-                        struct calleeReturnValue360 = call struct _fn_TestModules_ResultGeneric_shtk[TestModules_Vector_shtk@Vec]_success, module TestModules/ResultGeneric.shtk[TestModules/Vector.shtk@Vec]
-                        byte* tempPtr363 = createPointer struct returnValue346
-                        byte* tempPtr364 = createPointer struct calleeReturnValue360
-                        byte* tempPtr363 = memoryCopy byte* tempPtr364, autoInt 9
+                        int* tempPtr349 = createPointer struct self
+                        int** tempPtrPtr351 = addressAdd int* tempPtr349, bytes 0
+                        int* tempPtr353 = createPointer struct** tempPtrPtr351
+                        void* tempPtr355 = addressMultiply int index, bytes 8
+                        int* tempPtr356 = addressAdd int* tempPtr353, void* tempPtr355
+                        int* tempPtr358 = createPointer int* tempPtr356
+                        passPointer int* tempPtr358, struct _fn_TestModules_ResultGeneric_shtk[TestModules_Vector_shtk@Vec]_success, module TestModules/ResultGeneric.shtk[TestModules/Vector.shtk@Vec]
+                        struct calleeReturnValue361 = call struct _fn_TestModules_ResultGeneric_shtk[TestModules_Vector_shtk@Vec]_success, module TestModules/ResultGeneric.shtk[TestModules/Vector.shtk@Vec]
+                        byte* tempPtr364 = createPointer struct returnValue346
+                        byte* tempPtr365 = createPointer struct calleeReturnValue361
+                        byte* tempPtr364 = memoryCopy byte* tempPtr365, autoInt 9
                         return
                 ]
             },

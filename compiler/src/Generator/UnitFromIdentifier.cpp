@@ -56,29 +56,18 @@ std::pair<Unit, size_t> subscriptOperator(generator::GeneratorContext& ctx,
     const Token indexExpressionToken = child.children[0].tok;
     const Unit indexExpression = expression(ctx, child.children[0]);
 
-    ctx.ir.pushWorkingModule();
-
-    ctx.ir.setWorkingModule(ctx.ir.finder.getModuleFromUnit(unit));
-    std::vector<Token> paramTokens = { root.tok, indexExpressionToken };
-    std::vector<Unit> params = { unit, indexExpression };
-
-    if (indexExpression.isArrayWithFixedDim())
-    {
-        paramTokens.push_back(indexExpressionToken);
-        params.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(indexExpression.numElements()));
-    }
-
-    const icode::FunctionDescription subscriptFunction =
-        ctx.ir.finder.getCustomOperatorFunction("__subscript", params, child.tok);
-
-    const Unit result = createCallFunctionMust(ctx, paramTokens, params, subscriptFunction);
+    const Unit result = createOperatorFunctionCall(ctx,
+                                                   "__subscript",
+                                                   root.tok,
+                                                   indexExpressionToken,
+                                                   unit,
+                                                   indexExpression,
+                                                   child.tok);
 
     nodeCounter++;
 
     if (root.isNthChild(node::SUBSCRIPT, nodeCounter))
         return subscript(ctx, root, result, nodeCounter);
-
-    ctx.ir.popWorkingModule();
 
     return std::pair<Unit, size_t>(result, nodeCounter);
 }

@@ -247,6 +247,23 @@ Unit createCallFunction(generator::GeneratorContext& ctx,
     return createCallFunctionMust(ctx, actualParamTokens, actualParams, callee);
 }
 
+void appendActualParamInPlace(generator::GeneratorContext& ctx,
+                              const Node& root,
+                              std::vector<Token>& actualParamTokens,
+                              std::vector<Unit>& actualParams,
+                              size_t index,
+                              const std::vector<Unit>& formalParameters)
+{
+    const Token paramToken = root.children[index].tok;
+
+    const Unit actualParam = (index < formalParameters.size())
+                                 ? expressionWithHint(ctx, root.children[index], formalParameters[index].type())
+                                 : expression(ctx, root.children[index]);
+
+    actualParamTokens.push_back(paramToken);
+    actualParams.push_back(actualParam);
+}
+
 Unit methodCall(generator::GeneratorContext& ctx, const Node& root)
 {
     ctx.ir.pushWorkingModule();
@@ -269,15 +286,8 @@ Unit methodCall(generator::GeneratorContext& ctx, const Node& root)
     std::vector<Token> actualParamTokens = { root.children[0].tok };
     std::vector<Unit> actualParams = { firstActualParam };
 
-    for (size_t i = 1; i < root.children.size(); i++) // TODO extract this into a function
-    {
-        actualParamTokens.push_back(root.children[i].tok);
-
-        if (i < formalParameters.size())
-            actualParams.push_back(expressionWithHint(ctx, root.children[i], formalParameters[i].type()));
-        else
-            actualParams.push_back(expression(ctx, root.children[i]));
-    }
+    for (size_t i = 1; i < root.children.size(); i++)
+        appendActualParamInPlace(ctx, root, actualParamTokens, actualParams, i, formalParameters);
 
     if (firstActualParam.isArrayWithFixedDim() && formalParameters.size() == 2 && actualParams.size() == 1)
     {
@@ -304,14 +314,7 @@ Unit functionCall(generator::GeneratorContext& ctx, const Node& root)
     std::vector<Unit> actualParams;
 
     for (size_t i = 0; i < root.children.size(); i++)
-    {
-        actualParamTokens.push_back(root.children[i].tok);
-
-        if (i < formalParameters.size())
-            actualParams.push_back(expressionWithHint(ctx, root.children[i], formalParameters.at(i).type()));
-        else
-            actualParams.push_back(expression(ctx, root.children[i]));
-    }
+        appendActualParamInPlace(ctx, root, actualParamTokens, actualParams, i, formalParameters);
 
     ctx.ir.popWorkingModule();
 
@@ -335,20 +338,19 @@ Unit genericFunctionCall(generator::GeneratorContext& ctx, const Node& root)
         instantiationTypes.push_back(typeDescriptionFromNode(ctx, root.children[nodeCounter]));
     }
 
-    std::vector<Token> actualParamTokens;
-    std::vector<Unit> actualParams;
-
-    for (; nodeCounter < root.children.size(); nodeCounter++)
-    {
-        actualParamTokens.push_back(root.children[nodeCounter].tok);
-        actualParams.push_back(expression(ctx, root.children[nodeCounter]));
-    }
-
     const FunctionDescription callee = instantiateGenericAndGetFunction(ctx,
                                                                         genericModuleName,
                                                                         calleeNameToken,
                                                                         instantiationTypes,
                                                                         instantiationTypeNodes);
+
+    const std::vector<Unit> formalParameters = ctx.ir.finder.getFormalParameters(callee);
+
+    std::vector<Token> actualParamTokens;
+    std::vector<Unit> actualParams;
+
+    for (; nodeCounter < root.children.size(); nodeCounter++)
+        appendActualParamInPlace(ctx, root, actualParamTokens, actualParams, nodeCounter, formalParameters);
 
     return createCallFunction(ctx, actualParamTokens, actualParams, callee, calleeNameToken);
 }
@@ -390,7 +392,7 @@ Unit createMake(generator::GeneratorContext& ctx,
 
     ctx.ir.popWorkingModule();
 
-    return createCallFunctionMust(ctx, actualParamTokens, actualParams, constructor);
+    return createCallFunction(ctx, actualParamTokens, actualParams, constructor, errorToken);
 }
 
 Unit make(generator::GeneratorContext& ctx, const Node& root)
@@ -419,12 +421,13 @@ Unit make(generator::GeneratorContext& ctx, const Node& root)
     return createMake(ctx, actualParamTokens, actualParams, type, root.tok);
 }
 
-Unit customOperator(generator::GeneratorContext& ctx,
-                    const Token& binaryOperator,
-                    const Token& LHSToken,
-                    const Token& RHSToken,
-                    const Unit& LHS,
-                    const Unit& RHS)
+Unit createOperatorFunctionCall(generator::GeneratorContext& ctx,
+                                const std::string& customOperatorName,
+                                const Token& LHSToken,
+                                const Token& RHSToken,
+                                const Unit& LHS,
+                                const Unit& RHS,
+                                const Token& errorToken)
 {
     ctx.ir.pushWorkingModule();
 
@@ -439,12 +442,22 @@ Unit customOperator(generator::GeneratorContext& ctx,
         params.push_back(ctx.ir.unitBuilder.unitFromIntLiteral(RHS.numElements()));
     }
 
-    const std::string customOperatorName = tokenToCustomOperatorString(ctx, binaryOperator);
-    FunctionDescription callee = ctx.ir.finder.getCustomOperatorFunction(customOperatorName, params, binaryOperator);
+    FunctionDescription callee = ctx.ir.finder.getCustomOperatorFunction(customOperatorName, params, errorToken);
 
     ctx.ir.popWorkingModule();
 
     return createCallFunctionMust(ctx, paramTokens, params, callee);
+}
+
+Unit customOperator(generator::GeneratorContext& ctx,
+                    const Token& binaryOperator,
+                    const Token& LHSToken,
+                    const Token& RHSToken,
+                    const Unit& LHS,
+                    const Unit& RHS)
+{
+    const std::string customOperatorName = tokenToCustomOperatorString(ctx, binaryOperator);
+    return createOperatorFunctionCall(ctx, customOperatorName, LHSToken, RHSToken, LHS, RHS, binaryOperator);
 }
 
 Unit binaryOperator(generator::GeneratorContext& ctx,

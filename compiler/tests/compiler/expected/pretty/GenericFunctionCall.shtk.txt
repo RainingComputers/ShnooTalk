@@ -13,23 +13,23 @@
                         byte temp14 = read byte* tempPtr13
                         print byte temp14
                         newLine
-                        int temp17 = cast autoInt 2
-                        pass int temp17, struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
-                        struct calleeReturnValue20 = call struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
-                        byte* tempPtr23 = createPointer struct calleeReturnValue20
-                        byte* tempPtr25 = addressAdd byte* tempPtr23, bytes 0
-                        byte* tempPtr26 = createPointer struct calleeReturnValue20
-                        byte* tempPtr28 = addressAdd byte* tempPtr26, bytes 1
-                        int temp30 = read int* tempPtr28
-                        int item = equal int temp30
-                        byte temp32 = read byte* tempPtr25
-                        byte error = equal byte temp32
+                        int temp18 = cast autoInt 2
+                        pass int temp18, struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
+                        struct calleeReturnValue21 = call struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
+                        byte* tempPtr24 = createPointer struct calleeReturnValue21
+                        byte* tempPtr26 = addressAdd byte* tempPtr24, bytes 0
+                        byte* tempPtr27 = createPointer struct calleeReturnValue21
+                        byte* tempPtr29 = addressAdd byte* tempPtr27, bytes 1
+                        int temp31 = read int* tempPtr29
+                        int item = equal int temp31
+                        byte temp33 = read byte* tempPtr26
+                        byte error = equal byte temp33
                         print int item
                         space
                         print byte error
                         newLine
-                        int temp37 = cast autoInt 0
-                        int returnValue35 = equal int temp37
+                        int temp38 = cast autoInt 0
+                        int returnValue36 = equal int temp38
                         return
                 ]
             }

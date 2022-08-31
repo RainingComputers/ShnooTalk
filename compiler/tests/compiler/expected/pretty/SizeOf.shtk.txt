@@ -83,16 +83,16 @@
                         byte* tempPtr332 = memoryCopy byte* tempPtr333, autoInt 5
                         return
                     _if_false_l79_c4:
-                        int* tempPtr337 = createPointer struct self
-                        int** tempPtrPtr339 = addressAdd int* tempPtr337, bytes 0
-                        void* tempPtr342 = addressMultiply int index, bytes 4
-                        float* tempPtr343 = addressAdd float** tempPtrPtr339, void* tempPtr342
-                        float temp345 = read float* tempPtr343
-                        pass float temp345, struct _fn_TestModules_ResultGeneric_shtk[float]_success, module TestModules/ResultGeneric.shtk[float]
-                        struct calleeReturnValue348 = call struct _fn_TestModules_ResultGeneric_shtk[float]_success, module TestModules/ResultGeneric.shtk[float]
-                        byte* tempPtr351 = createPointer struct returnValue335
-                        byte* tempPtr352 = createPointer struct calleeReturnValue348
-                        byte* tempPtr351 = memoryCopy byte* tempPtr352, autoInt 5
+                        int* tempPtr338 = createPointer struct self
+                        int** tempPtrPtr340 = addressAdd int* tempPtr338, bytes 0
+                        void* tempPtr343 = addressMultiply int index, bytes 4
+                        float* tempPtr344 = addressAdd float** tempPtrPtr340, void* tempPtr343
+                        float temp346 = read float* tempPtr344
+                        pass float temp346, struct _fn_TestModules_ResultGeneric_shtk[float]_success, module TestModules/ResultGeneric.shtk[float]
+                        struct calleeReturnValue349 = call struct _fn_TestModules_ResultGeneric_shtk[float]_success, module TestModules/ResultGeneric.shtk[float]
+                        byte* tempPtr352 = createPointer struct returnValue335
+                        byte* tempPtr353 = createPointer struct calleeReturnValue349
+                        byte* tempPtr352 = memoryCopy byte* tempPtr353, autoInt 5
                         return
                 ]
             },
