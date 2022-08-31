@@ -1,0 +1,6 @@
+use "TestModules/Pair.shtk" as pair
+
+fn main() -> int
+{
+    pair::foo()
+}

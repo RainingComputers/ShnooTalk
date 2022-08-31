@@ -372,7 +372,7 @@ Unit functionCallWithHint(generator::GeneratorContext& ctx, const Node& root, co
     if (!typeHint.isVoid() && !typeHint.isPointer() && ctx.mm.genericExists(root.tok))
         return genericFunctionCallWithHint(ctx, root, typeHint);
 
-    if (ctx.mm.getWorkingModule() != "") // TODO test this
+    if (ctx.mm.getWorkingModule() != "")
         ctx.console.compileErrorOnToken("Function does not exist", root.tok);
 
     return functionCall(ctx, root);

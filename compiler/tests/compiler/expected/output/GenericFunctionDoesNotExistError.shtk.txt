@@ -1,0 +1,8 @@
+MODULE GenericFunctionDoesNotExistError.shtk
+ERROR in Line 5 Col 11
+
+    pair::foo()
+          ^
+Function does not exist
+
+GenericFunctionDoesNotExistError.shtk:5:10
