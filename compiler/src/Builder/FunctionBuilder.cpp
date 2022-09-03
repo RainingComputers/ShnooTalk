@@ -593,6 +593,8 @@ Unit FunctionBuilder::createLocal(const Token nameToken, TypeDescription& typeDe
         console.compileErrorOnToken("Symbol already defined", nameToken);
 
     typeDescription.setProperty(IS_LOCAL);
+    typeDescription.clearProperty(IS_PARAM);
+    typeDescription.clearProperty(IS_GLOBAL);
 
     workingFunction->symbols[nameToken.toString()] = typeDescription;
 

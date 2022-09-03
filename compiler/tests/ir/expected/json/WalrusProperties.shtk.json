@@ -1,0 +1,55 @@
+{
+    "WalrusProperties.shtk": {
+        "moduleName": "WalrusProperties.shtk",
+        "uses": [],
+        "aliases": {
+        },
+        "definedEnumsTypes": {
+        },
+        "enums": {
+        },
+        "intDefines": {
+            "NULL": 0,
+            "false": 0,
+            "true": 1
+        },
+        "floatDefines": {
+            "infinity": "INFINITY",
+            "nan": "NAN"
+        },
+        "incompleteTypes": {
+        },
+        "stringDefines": {
+        },
+        "stringsDataCharCounts": {
+        },
+        "globals": {
+            "_fn_WalrusProperties_shtk_foo": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "WalrusProperties.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isGlobal"]}
+        },
+        "structures": {
+        },
+        "externFunctions": {
+        },
+        "definedFunctions": ["_fn_WalrusProperties_shtk_test"],
+        "incompleteFunctions": {
+        },
+        "functions": {
+            "_fn_WalrusProperties_shtk_test": {
+                "moduleName": "WalrusProperties.shtk",
+                "parameters": ["bar"],
+                "absoluteName": "_fn_WalrusProperties_shtk_test",
+                "functionReturnType": {"dtype": "void", "dtypeName": "void", "dtypeSize": 0, "size": 0, "moduleName": "WalrusProperties.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": []},
+                "symbols": {
+                    "a": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "WalrusProperties.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isLocal"]},
+                    "b": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "WalrusProperties.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isLocal"]},
+                    "bar": {"dtype": "int", "dtypeName": "int", "dtypeSize": 4, "size": 4, "moduleName": "WalrusProperties.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isParameter", "isLocal"]}
+                },
+                "icode": [
+                    {"opcode": "equal", "op1": {"type": "var", "id": 4, "name": "a", "dtype": "int"}, "op2": {"type": "globalVar", "id": 3, "name": "_fn_WalrusProperties_shtk_foo", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "equal", "op1": {"type": "var", "id": 6, "name": "b", "dtype": "int"}, "op2": {"type": "var", "id": 5, "name": "bar", "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
+                ]
+            }
+        }
+    }
+}

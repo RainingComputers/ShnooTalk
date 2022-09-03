@@ -1,0 +1,7 @@
+var foo: int
+
+fn test(bar: int) 
+{
+    const a := foo
+    const b := bar
+}
