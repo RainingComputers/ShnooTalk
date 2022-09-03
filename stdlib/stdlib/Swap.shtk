@@ -1,0 +1,8 @@
+generic T
+
+fn swap(mut a: T, mut b: T) 
+{
+    const temp := a 
+    a = b
+    b = temp
+}
