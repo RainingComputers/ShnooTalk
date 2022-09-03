@@ -18,10 +18,6 @@ static std::map<std::string, translator::Platform> platformMap = {
     { "-macos-arm64", translator::MACOS_ARM64 },
     { "-wasm32", translator::WASM32 },
     { "-wasm64", translator::WASM64 },
-    { "-linux-x86_64-dyn", translator::LINUX_x86_64_DYN },
-    { "-linux-arm64-dyn", translator::LINUX_ARM64_DYN },
-    { "-macos-x86_64-dyn", translator::MACOS_x86_64_DYN },
-    { "-macos-arm64-dyn", translator::MACOS_ARM64_DYN },
 };
 
 void printCLIUsage()

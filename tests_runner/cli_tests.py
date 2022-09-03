@@ -23,13 +23,9 @@ Available options:
 
 Cross compilation options for release executable:
     -linux-arm64
-    -linux-arm64-dyn
     -linux-x86_64
-    -linux-x86_64-dyn
     -macos-arm64
-    -macos-arm64-dyn
     -macos-x86_64
-    -macos-x86_64-dyn
     -wasm32
     -wasm64
 

@@ -28,10 +28,6 @@ std::string getTargetTriple(translator::Platform platform)
         { translator::MACOS_ARM64, "arm64-apple-darwin" },
         { translator::WASM32, "wasm32" },
         { translator::WASM64, "wasm64" },
-        { translator::LINUX_x86_64_DYN, "x86_64-linux-gnu" },
-        { translator::LINUX_ARM64_DYN, "arm64-linux-gnu" },
-        { translator::MACOS_x86_64_DYN, "x86_64-apple-darwin" },
-        { translator::MACOS_ARM64_DYN, "arm64-apple-darwin" },
     };
 
     return platformTripleMap.at(platform);
@@ -40,17 +36,10 @@ std::string getTargetTriple(translator::Platform platform)
 Reloc::Model getRelocModel(translator::Platform platform)
 {
     std::map<translator::Platform, Reloc::Model> platformRelocMap = {
-        { translator::DEFAULT, Reloc::Model::PIC_ },
-        { translator::LINUX_x86_64, Reloc::Model::PIC_ },
-        { translator::LINUX_ARM64, Reloc::Model::PIC_ },
-        { translator::MACOS_x86_64, Reloc::Model::PIC_ },
-        { translator::MACOS_ARM64, Reloc::Model::PIC_ },
-        { translator::WASM32, Reloc::Model::PIC_ },
+        { translator::DEFAULT, Reloc::Model::PIC_ },     { translator::LINUX_x86_64, Reloc::Model::PIC_ },
+        { translator::LINUX_ARM64, Reloc::Model::PIC_ }, { translator::MACOS_x86_64, Reloc::Model::PIC_ },
+        { translator::MACOS_ARM64, Reloc::Model::PIC_ }, { translator::WASM32, Reloc::Model::PIC_ },
         { translator::WASM64, Reloc::Model::PIC_ },
-        { translator::LINUX_x86_64_DYN, Reloc::Model::DynamicNoPIC },
-        { translator::LINUX_ARM64_DYN, Reloc::Model::DynamicNoPIC },
-        { translator::MACOS_x86_64_DYN, Reloc::Model::DynamicNoPIC },
-        { translator::MACOS_ARM64_DYN, Reloc::Model::DynamicNoPIC },
     };
 
     return platformRelocMap.at(platform);
@@ -100,17 +89,6 @@ std::string createDirsAndGetOutputObjNameStatic(const std::string& moduleName)
     return objPath.string();
 }
 
-std::string createDirsAndGetOutputObjName(const std::string& moduleName, translator::Platform platform)
-{
-    if (platform == translator::MACOS_ARM64_DYN || platform == translator::MACOS_x86_64_DYN)
-        return moduleName + ".dylib";
-
-    if (platform == translator::LINUX_ARM64_DYN || platform == translator::LINUX_x86_64_DYN)
-        return moduleName + ".so";
-
-    return createDirsAndGetOutputObjNameStatic(moduleName);
-}
-
 void setupPassManagerAndCreateObject(ModuleContext& ctx, translator::Platform platform)
 {
     Reloc::Model relocModel = getRelocModel(platform);
@@ -118,7 +96,7 @@ void setupPassManagerAndCreateObject(ModuleContext& ctx, translator::Platform pl
 
     TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple, relocModel);
 
-    std::string filename = createDirsAndGetOutputObjName(ctx.moduleDescription.name, platform);
+    std::string filename = createDirsAndGetOutputObjNameStatic(ctx.moduleDescription.name);
 
     std::error_code EC;
     raw_fd_ostream dest(filename, EC, sys::fs::OF_None);
@@ -127,7 +105,7 @@ void setupPassManagerAndCreateObject(ModuleContext& ctx, translator::Platform pl
         ctx.console.internalBugErrorMessage("LLVM ERROR: Could not open file: " + EC.message());
 
     legacy::PassManager pass;
-    auto FileType = CGFT_ObjectFile;
+    llvm::CodeGenFileType FileType = CGFT_ObjectFile;
 
     if (targetMachine->addPassesToEmitFile(pass, dest, nullptr, FileType))
         ctx.console.internalBugErrorMessage("LLVM ERROR: LLVM target machine can't emit a file of this type");
