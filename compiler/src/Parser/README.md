@@ -101,7 +101,7 @@ functionCall = identifier actualParameterList
 
 genericFunctionCall = identifier genericParams actualParameterList
 
-methodCall = {"." identifier actualParameterList}
+methodCall = {"." ("?" | (identifier actualParameterList)) }
 
 sizeof = "sizeof" "(" typeDefinition ")"
 
@@ -127,6 +127,7 @@ term = sizeof
      | "(" baseExpression ")"
      | unaryOperator term
      | literal
+     | term "?"
 
 baseExpression = term {binaryOperator term}
 
