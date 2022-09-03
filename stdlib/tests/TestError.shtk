@@ -1,6 +1,16 @@
 from "../stdlib/Error.shtk" use Error, error, nil
+from "../stdlib/Result.shtk" use Result, ok
 
 enum TestErrorEnum {TEST_ERROR_0, TEST_ERROR_1}
+
+fn testQuestionMark() -> Result[int, TestErrorEnum]
+{
+    const v := error[TestErrorEnum](TEST_ERROR_1)
+    
+    const c := v?
+
+    return ok(100)
+}
 
 fn main() -> int
 {
@@ -10,6 +20,8 @@ fn main() -> int
     const b := error[TestErrorEnum](TEST_ERROR_1)
     println(b.get() == TEST_ERROR_1)
     if b println("This should be printed")
+
+    println(testQuestionMark().isFail())
 
     return 0
 }

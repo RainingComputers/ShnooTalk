@@ -58,3 +58,18 @@ fn expect(self: Error)
     if self
         panic(EXPECT_ON_NON_NIL_ERROR, 1)
 }
+
+fn __questionMarkContinue__(self: Error) -> bool
+{
+    return not self
+}
+
+fn __questionMarkUnwrap__(self: Error) -> bool
+{
+    return false
+}
+
+fn __questionMarkError__(self: Error) -> Error
+{
+    return self
+}
