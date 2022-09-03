@@ -3,15 +3,15 @@ use "../stdlib/OS.shtk" as os
 
 fn main() -> int
 {
-    const fileOptional1 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
-    const file1 := fileOptional1.expect()
+    var fileOptional1 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
+    var file1 := fileOptional1.expect()
 
     println(file1.readLine().expect())
 
     println("close", file1.close().isError())
 
-    const fileOptional2 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
-    const file2 := fileOptional2.expect()
+    var fileOptional2 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
+    var file2 := fileOptional2.expect()
 
     println("read", file2.read().expect())
 
@@ -24,8 +24,8 @@ fn main() -> int
     file2.close()
 
     os::rm("foobar")
-    const fileOptional3 := file::open("foobar", "w")
-    const file3 := fileOptional3.expect()
+    var fileOptional3 := file::open("foobar", "w")
+    var file3 := fileOptional3.expect()
 
     file3.write("this works")
 

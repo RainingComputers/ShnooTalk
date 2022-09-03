@@ -19,13 +19,22 @@ struct File
 
 fn open(path: String, mode: String) -> Result[File, StdlibError]
 {
-    var libcFile: libc::FILE* <- libc::fopen(path.toCharArray(), mode.toCharArray())
+    var self: File
+    self.libcFile <- libc::fopen(path.toCharArray(), mode.toCharArray())
 
-    if not addr(libcFile)
+    if not addr( self.libcFile)
        return fail(OSError)
 
+    return ok(self)
+}
+
+fn popen(command: String) -> Result[File, StdlibError]
+{
     var self: File
-    self.libcFile <- libcFile
+    self.libcFile <- libc::popen(command.toCharArray(), "r")
+
+    if not addr(self.libcFile)
+        return fail(OSError)
 
     return ok(self)
 }
@@ -88,14 +97,31 @@ fn write(self: File, content: String) -> Error[StdlibError]
     return _intToError(libc::fputs(content.toCharArray(), self.libcFile))
 }
 
-fn close(self: File) -> Error[StdlibError]
+fn close(mut self: File) -> Error[StdlibError]
 {
-    return _intToError(libc::fclose(self.libcFile))
+    const err := _intToError(libc::fclose(self.libcFile))
+    self.libcFile <- libc::FILE*`NULL  # TODO Fix bug in instantiator that prevents using RawPointerUtils.shtk
+
+    return err
+}
+
+fn pclose(mut self: File) -> Result[int, StdlibError]
+{
+    const pcloseRet := libc::pclose(self.libcFile)
+    self.libcFile <- libc::FILE*`NULL
+
+    if pcloseRet < 0
+        return fail(OSError)
+
+    const exitCode := (pcloseRet & 0xff00) >> 8
+
+    return ok(exitCode)
 }
 
 fn __deconstructor__(self: File)
 {
-    libc::fclose(self.libcFile)
+    if (addr(self.libcFile))
+        libc::fclose(self.libcFile)
 }
 
 fn readStringFromFile(path: String) -> Result[String, StdlibError]
