@@ -22,7 +22,7 @@ fn memcpyOffset(dest: T[], src: T[], length: ulong, offset: ulong)
 
 fn malloc(length: ulong) -> T[]
 {
-    const ptr: T[] <- T[]`libc::malloc(sizeof(T)*length)
+    const ptr: T[] <- T[]`libc::malloc(length*sizeof(T))
 
     if not addr(ptr)
         panic(UNABLE_TO_MALLOC, 1)
@@ -32,7 +32,7 @@ fn malloc(length: ulong) -> T[]
 
 fn realloc(ptr: T[], size: ulong) -> T[]
 {
-    const newPtr: T[] <- T[]`libc::realloc(ubyte[]`ptr, size)
+    const newPtr: T[] <- T[]`libc::realloc(ubyte[]`ptr, size*sizeof(T))
 
     if not addr(newPtr)
         panic(UNABLE_TO_MALLOC, 1)

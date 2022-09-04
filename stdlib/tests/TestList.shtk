@@ -1,6 +1,12 @@
 from "../stdlib/List.shtk" use List
 from "../stdlib/Slice.shtk" use Slice
 
+fn printIntList(l: List[int])
+{
+    for i in l print(i; ", ")
+    println("")
+}
+
 fn main() -> int
 {
     const a := make(List[int], [1, 2, 3, 4])
@@ -23,6 +29,15 @@ fn main() -> int
     var e := make(List[int], d)
     e.setItem(3, 3)
     println("listFromSlice", e[3], d[3])
+
+    var f := make(List[int], [1, 2, 3])
+    printIntList(f)
+    f += [4, 5, 6]
+    printIntList(f)
+    f += make(Slice[int], [7, 8, 9])
+    printIntList(f)
+    f += make(List[int], [10, 11, 12])
+    printIntList(f)
 
     return 0
 }

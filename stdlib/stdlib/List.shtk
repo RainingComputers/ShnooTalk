@@ -28,12 +28,17 @@ fn listFromSlice(items: Slice[T]) -> List
 
 fn clone(self: List) -> List
 {
-    return list(self.slice().pointer(), self.length())
+    return list(self.pointer(), self.length())
 }
 
 fn slice(self: List) -> Slice[T]
 {
     return self._sp.slice()
+}
+
+fn pointer(self: List) -> T[]
+{
+    return self._sp.pointer()
 }
 
 fn append(self: List, iterm: T)
@@ -88,19 +93,22 @@ fn __subscriptRange__(self: List, range: ulong[2]) -> List
 
 fn __addList__(self: List, other: List) -> List
 {
-    # TODO
-    return self
+    var new := self.clone()
+
+    new._sp.expand((new.length() + other.length())*2)
+    new._sp.copyOffset(other.pointer(), other.length(), new.length())
+    new._length += other.length()
+
+    return new
 }
 
 fn __addArray__(self: List, other: T[], otherLength: ulong) -> List
 {
-    # TODO
-    return self
+    return self + list(other, otherLength)
 }
 
 fn __addSlice__(self: List, other: Slice[T]) -> List
 {
-    # TODO
-    return self
+    return self + listFromSlice(other)
 }
 
