@@ -1,0 +1,28 @@
+from "../stdlib/List.shtk" use List
+from "../stdlib/Slice.shtk" use Slice
+
+fn main() -> int
+{
+    const a := make(List[int], [1, 2, 3, 4])
+
+    println("length", a.length())
+    println("get", a.get(2).expect())
+    println("get fail", a.get(10).isNone())
+    println("subscriptItem", a[3])
+
+    var b := a.slice()
+
+    b.setItem(2, 100)
+    println("slice", b[2], a[2])
+
+    var c := a.clone()
+    c.setItem(3, 100)
+    println("clone", c[3], a[3])
+
+    const d := make(Slice[int], [10, 20, 30, 40, 50])
+    var e := make(List[int], d)
+    e.setItem(3, 3)
+    println("listFromSlice", e[3], d[3])
+
+    return 0
+}

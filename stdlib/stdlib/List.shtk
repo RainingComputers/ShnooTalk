@@ -1,1 +1,106 @@
-# TODO
+generic T
+
+from "../stdlib/Sharedpointer.shtk" use SharedPointer, allocateHeap
+from "../stdlib/Slice.shtk" use Slice
+from "../stdlib/Optional.shtk" use Optional, some, none
+
+struct List
+{
+    var _sp: SharedPointer[T]
+    var _length: ulong
+}
+
+fn list(items: T[], length: ulong) -> List
+{
+    var self: List
+
+    self._sp = allocateHeap(length*2)
+    self._sp.copy(items, length)
+    self._length = length
+
+    return self
+}
+
+fn listFromSlice(items: Slice[T]) -> List
+{
+    return list(items.pointer(), items.capacity())
+}
+
+fn clone(self: List) -> List
+{
+    return list(self.slice().pointer(), self.length())
+}
+
+fn slice(self: List) -> Slice[T]
+{
+    return self._sp.slice()
+}
+
+fn append(self: List, iterm: T)
+{
+    # TODO
+}
+
+fn clear(self: List)
+{
+    # TODO
+}
+
+fn pop(self: List) -> T
+{
+    # TODO
+    return self[0]
+}
+
+fn length(self: List) -> ulong
+{
+    return self._length
+}
+
+fn capacity(self: List) -> ulong
+{
+    return self._sp.capacity()
+}
+
+fn get(self: List, index: ulong) -> Optional[T]
+{
+    if index < self.length()
+        return some(self._sp[index])
+
+    return none()
+}
+
+fn setItem(mut self: List, index: ulong, item: T)
+{
+    self._sp.setItem(index, item)
+}
+
+fn __subscriptItem__(self: List, index: ulong) -> T
+{
+    return self._sp[index]
+}
+
+fn __subscriptRange__(self: List, range: ulong[2]) -> List
+{
+    # TODO
+    return self
+}
+
+fn __addList__(self: List, other: List) -> List
+{
+    # TODO
+    return self
+}
+
+fn __addArray__(self: List, other: T[], otherLength: ulong) -> List
+{
+    # TODO
+    return self
+}
+
+fn __addSlice__(self: List, other: Slice[T]) -> List
+{
+    # TODO
+    return self
+}
+
