@@ -3,6 +3,10 @@ generic T
 from "../stdlib/Sharedpointer.shtk" use SharedPointer, allocateHeap
 from "../stdlib/Slice.shtk" use Slice
 from "../stdlib/Optional.shtk" use Optional, some, none
+from "../stdlib/RawPointerUtils.shtk" use addOffset
+from "../stdlib/Panic.shtk" use panic
+
+def INVALID_RANGE "Invalid range for list range"
 
 struct List
 {
@@ -41,20 +45,25 @@ fn pointer(self: List) -> T[]
     return self._sp.pointer()
 }
 
-fn append(self: List, iterm: T)
+fn append(mut self: List, item: T)
 {
-    # TODO
+    if self.length() == self.capacity()
+        self._sp.expand(self.length()*2)
+
+    self.setItem(self.length(), item)
+    self._length += 1
+    
 }
 
-fn clear(self: List)
+fn clear(mut self: List)
 {
-    # TODO
+    self._length = 0
 }
 
-fn pop(self: List) -> T
+fn pop(mut self: List) -> T
 {
-    # TODO
-    return self[0]
+    self._length -= 1
+    return self[self._length]
 }
 
 fn length(self: List) -> ulong
@@ -87,8 +96,13 @@ fn __subscriptItem__(self: List, index: ulong) -> T
 
 fn __subscriptRange__(self: List, range: ulong[2]) -> List
 {
-    # TODO
-    return self
+    if range[0] > range[1]
+        panic(INVALID_RANGE, 1)
+
+    if range[1] > self.length()
+        panic(INVALID_RANGE, 1)
+
+    return list(addOffset[T](self.pointer(), range[0]), range[1] - range[0])
 }
 
 fn __addList__(self: List, other: List) -> List

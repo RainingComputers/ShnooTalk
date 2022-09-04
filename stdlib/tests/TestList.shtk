@@ -39,5 +39,23 @@ fn main() -> int
     f += make(List[int], [10, 11, 12])
     printIntList(f)
 
+    print("list range ")
+    const g := make(List[int], [0, 1, 2, 3, 4, 5, 6, 7, 8])
+    printIntList(g[[3, 7]])
+
+    println("list append")
+    var h := make(List[int], [0, 1, 2, 3])
+    printIntList(h)
+    h.append(4) h.append(5) h.append(6) h.append(7) h.append(8) h.append(9) h.append(10)
+    printIntList(h)
+
+    println("list pop")
+    println(h.pop())
+    printIntList(h)
+
+    println("clear")
+    h.clear()
+    printIntList(h) 
+
     return 0
 }
