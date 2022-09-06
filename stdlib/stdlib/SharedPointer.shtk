@@ -1,12 +1,19 @@
 generic T
 
+use "../stdlib/LibC.shtk" as libc
+from "../stdlib/Panic.shtk" use panic
+from "../stdlib/RawPointerUtils.shtk" use malloc, realloc, free, addOffset, memcpy, memcpyOffset, nullptrArray
 from "../stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
-from "../stdlib/Slice.shtk" use Slice, slice, allocateHeap
+
+def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
+def NULL_POINTER_ERROR "Null pointer dereference error"
+def OUT_OF_CAPACITY "SharedPointer out of capacity error"
 
 struct SharedPointer
 {
     var _count: ReferenceCounter
-    var _slice: Slice[T]
+    var _ptr: T[]
+    var _capacity: ulong
 }
 
 fn allocateHeap(capacity: ulong) -> SharedPointer
@@ -14,7 +21,8 @@ fn allocateHeap(capacity: ulong) -> SharedPointer
     var self: SharedPointer
 
     self._count = createCounter()
-    self._slice = allocateHeap(capacity)
+    self._ptr <- malloc[T](capacity)
+    self._capacity = capacity
 
     return self
 }
@@ -24,53 +32,87 @@ fn fromPreAllocated(buffer: T[], bufferLength: ulong) -> SharedPointer
     var self: SharedPointer
 
     self._count = createCounter()
-    self._slice = slice(buffer, bufferLength)
+    self._ptr <- buffer
+    self._capacity = bufferLength
 
     return self
 }
 
 fn expand(mut self: SharedPointer, capacity: ulong)
 {
-    self._slice.expand(capacity)
+    self._ptr <- realloc[T](self._ptr, capacity)
+    self._capacity = capacity
+}
+
+fn _free(mut self: SharedPointer)
+{
+    if not addr(self._ptr) 
+        return void
+
+    for var i: ulong = 0; i < self._capacity; i += 1 
+        self._ptr[i].__deconstructor__()
+
+    free[T](self._ptr)
+    self._ptr <- nullptrArray[T]()
 }
 
 fn __deconstructor__(mut self: SharedPointer)
 {
     if not self._count.isZero() return void
-    self._slice.free()
+    self._free()
 }
+
+fn _validateIndex(self: SharedPointer, index: ulong) 
+{
+    if not addr(self._ptr)
+        panic(NULL_POINTER_ERROR, 1)
+    
+    if index >= self._capacity
+        panic(OUT_OF_BOUNDS_ERROR, 1)
+}
+
+fn _validateLength(self: SharedPointer, length: ulong)
+{
+    if not addr(self._ptr)
+        panic(NULL_POINTER_ERROR, 1)
+    
+    if length > self._capacity
+        panic(OUT_OF_CAPACITY, 1)
+}
+
 
 fn __subscriptItem__(self: SharedPointer, index: ulong) -> T
 {
-    return self._slice[index]
+    self._validateIndex(index)
+
+    return self._ptr[index]
 }
 
 fn setItem(mut self: SharedPointer, index: ulong, item: T)
 {
-    self._slice.setItem(index, item)
+    self._validateIndex(index)
+
+    self._ptr[index] = item
 }
 
 fn capacity(self: SharedPointer) -> ulong
 {
-    return self._slice.capacity()
-}
-
-fn slice(self: SharedPointer) -> Slice[T]
-{
-    return self._slice
+    return self._capacity
 }
 
 fn copy(mut self: SharedPointer, items: T[], length: ulong)
 {
-    self._slice.copy(items, length)
+    self._validateLength(length)
+    memcpy[T](self._ptr, items, length)
 }
 
 fn copyOffset(mut self: SharedPointer, items: T[], length: ulong, offset: ulong)
 {
-    self._slice.copyOffset(items, length, offset)
+    self._validateLength(length+offset)
+    memcpyOffset[T](self._ptr, items, length, offset)
 }
 
 fn pointer(self: SharedPointer) -> T[]
 {
-    return self._slice.pointer()
+    return self._ptr
 }

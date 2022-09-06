@@ -1,7 +1,6 @@
 use "../stdlib/LibC.shtk" as libc
 use "../stdlib/Char.shtk" as char
 from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap, fromPreAllocated
-from "../stdlib/Slice.shtk" use Slice
 from "../stdlib/Optional.shtk" use Optional, some, none
 from "../stdlib/Panic.shtk" use panic
 from "../stdlib/RawPointerUtils.shtk" use addOffset
@@ -68,11 +67,6 @@ fn __toCharArray__(self: String) -> char[]
 fn toCharArrayOffset(self: String, offset: ulong) -> char[]
 {
     return addOffset[char](self.toCharArray(), offset)
-}
-
-fn slice(self: String) -> Slice[char]
-{
-    return self._sp.slice()
 }
 
 fn clone(self: String) -> String

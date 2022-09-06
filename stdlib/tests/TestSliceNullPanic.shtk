@@ -1,9 +1,0 @@
-from "../stdlib/Slice.shtk" use Slice, allocateHeap
-
-fn main() -> int
-{
-    var a: Slice[int]
-    println(a[100])
-
-    return 0
-}

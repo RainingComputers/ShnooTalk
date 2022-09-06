@@ -1,7 +1,6 @@
 generic T
 
 from "../stdlib/Sharedpointer.shtk" use SharedPointer, allocateHeap
-from "../stdlib/Slice.shtk" use Slice
 from "../stdlib/Optional.shtk" use Optional, some, none
 from "../stdlib/RawPointerUtils.shtk" use addOffset
 from "../stdlib/Panic.shtk" use panic
@@ -25,19 +24,9 @@ fn list(items: T[], length: ulong) -> List
     return self
 }
 
-fn listFromSlice(items: Slice[T]) -> List
-{
-    return list(items.pointer(), items.capacity())
-}
-
 fn clone(self: List) -> List
 {
     return list(self.pointer(), self.length())
-}
-
-fn slice(self: List) -> Slice[T]
-{
-    return self._sp.slice()
 }
 
 fn pointer(self: List) -> T[]
@@ -119,10 +108,5 @@ fn __addList__(self: List, other: List) -> List
 fn __addArray__(self: List, other: T[], otherLength: ulong) -> List
 {
     return self + list(other, otherLength)
-}
-
-fn __addSlice__(self: List, other: Slice[T]) -> List
-{
-    return self + listFromSlice(other)
 }
 

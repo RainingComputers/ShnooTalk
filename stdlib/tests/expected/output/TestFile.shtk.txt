@@ -1,7 +1,7 @@
-from "../stdlib/Slice.shtk" use Slice, allocateHeap
+from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
 
 close 0
-read from "../stdlib/Slice.shtk" use Slice, allocateHeap
+read from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
 
 fn main() -> int
 {
@@ -10,7 +10,7 @@ fn main() -> int
 
     return 0
 }
-tell 142
+tell 158
 seek read return 0
 }
 this works

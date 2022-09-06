@@ -3,14 +3,14 @@ use "../stdlib/OS.shtk" as os
 
 fn main() -> int
 {
-    var fileOptional1 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
+    var fileOptional1 := file::open("TestSharedPointerCopyCapacityPanic.shtk", "r")
     var file1 := fileOptional1.expect()
 
     println(file1.readLine().expect())
 
     println("close", file1.close().isError())
 
-    var fileOptional2 := file::open("TestSliceCopyCapacityPanic.shtk", "r")
+    var fileOptional2 := file::open("TestSharedPointerCopyCapacityPanic.shtk", "r")
     var file2 := fileOptional2.expect()
 
     println("read", file2.read().expect())
