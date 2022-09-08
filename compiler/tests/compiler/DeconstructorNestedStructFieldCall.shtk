@@ -1,0 +1,14 @@
+from "TestModules/Foobar.shtk" use Foobar
+
+struct Bar
+{
+    var foo: Foobar
+}
+
+fn main() -> int
+{
+    var b: Bar
+    b.foo.a = 100
+
+    return 0
+}

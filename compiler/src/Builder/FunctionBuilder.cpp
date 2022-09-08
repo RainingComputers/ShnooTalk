@@ -755,7 +755,7 @@ void FunctionBuilder::callResourceMgmtHook(const Unit& symbol, const std::string
             callResourceMgmtHook(getStructFieldFromString(fieldName, symbol), hook);
     }
 
-    if (!finder.methodExists(symbol.type(), hook)) // TODO test this
+    if (!finder.methodExists(symbol.type(), hook))
         return;
 
     if (symbol.isArray())

@@ -351,7 +351,7 @@ fn __addArray__(self: String, other: char[], lengthIncNull: ulong) -> String
     var new := self.clone()
 
     new._list._length -= 1
-    new._list.appendArray(other, lengthIncNull) # TODO other.toCharArray() passes does not throw a compile error for some reason
+    new._list.appendArray(other, lengthIncNull)
 
     return new
 }

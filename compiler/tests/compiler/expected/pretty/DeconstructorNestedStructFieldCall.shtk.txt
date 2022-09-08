@@ -1,0 +1,56 @@
+{
+    "DeconstructorNestedStructFieldCall.shtk": {
+        "moduleName": "DeconstructorNestedStructFieldCall.shtk",
+        "functions": {
+            "main": {
+                "icode": [
+                        struct* tempPtr5 = createPointer struct b
+                        struct* tempPtr7 = addressAdd struct* tempPtr5, bytes 0
+                        int* tempPtr8 = createPointer struct* tempPtr7
+                        int* tempPtr10 = addressAdd int* tempPtr8, bytes 0
+                        int temp12 = cast autoInt 100
+                        int* tempPtr10 = write int temp12
+                        int temp15 = cast autoInt 0
+                        int returnValue13 = equal int temp15
+                        struct* tempPtr17 = createPointer struct b
+                        struct* tempPtr19 = addressAdd struct* tempPtr17, bytes 0
+                        int* tempPtr20 = createPointer struct* tempPtr19
+                        int* tempPtr22 = addressAdd int* tempPtr20, bytes 0
+                        int* tempPtr24 = createPointer struct* tempPtr19
+                        passPointer int* tempPtr24, void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
+                        void calleeReturnValue27 = call void _fn_TestModules_Foobar_shtk___deconstructor__, module TestModules/Foobar.shtk
+                        return
+                ]
+            }
+        }
+    },
+    "TestModules/Foobar.shtk": {
+        "moduleName": "TestModules/Foobar.shtk",
+        "functions": {
+            "_fn_TestModules_Foobar_shtk___beforeCopy__": {
+                "icode": [
+                        int* tempPtr13 = createPointer struct self
+                        int* tempPtr15 = addressAdd int* tempPtr13, bytes 0
+                        int temp16 = read int* tempPtr15
+                        print int temp16
+                        newLine
+                        printString stringData _str_TestModules_Foobar_shtk__l15_c12
+                        newLine
+                        return
+                ]
+            },
+            "_fn_TestModules_Foobar_shtk___deconstructor__": {
+                "icode": [
+                        int* tempPtr4 = createPointer struct self
+                        int* tempPtr6 = addressAdd int* tempPtr4, bytes 0
+                        int temp7 = read int* tempPtr6
+                        print int temp7
+                        newLine
+                        printString stringData _str_TestModules_Foobar_shtk__l9_c12
+                        newLine
+                        return
+                ]
+            }
+        }
+    }
+}
