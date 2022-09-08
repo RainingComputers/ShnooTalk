@@ -1,24 +1,53 @@
 generic T
 
-from "../stdlib/Sharedpointer.shtk" use SharedPointer, allocateHeap
 from "../stdlib/Optional.shtk" use Optional, some, none
-from "../stdlib/RawPointerUtils.shtk" use addOffset
 from "../stdlib/Panic.shtk" use panic
+from "../stdlib/RawPointerUtils.shtk" use malloc, realloc, free, addOffset, memcpy, memcpyOffset, nullptrArray
+from "../stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
 
 def INVALID_RANGE "Invalid range for list range"
+def NULL_POINTER_ERROR "Null pointer dereference error"
+def OUT_OF_BOUNDS_ERROR "Index out of bounds error"
 
 struct List
 {
-    var _sp: SharedPointer[T]
+    var _count: ReferenceCounter
+    var _ptr: T[]
+    var _capacity: ulong
     var _length: ulong
+}
+
+fn allocateHeap(length: ulong) -> List
+{
+    const capacity := length*2
+
+    var self: List
+
+    self._count = createCounter()
+    self._ptr <- malloc[T](capacity)
+    self._capacity = capacity
+    self._length = 0
+
+    return self
 }
 
 fn list(items: T[], length: ulong) -> List
 {
+    var self: List = allocateHeap(length)
+    
+    memcpy[T](self._ptr, items, length)
+    self._length = length
+
+    return self
+}
+
+fn fromPreAllocated(buffer: T[], capacity: ulong, length: ulong) -> List
+{
     var self: List
 
-    self._sp = allocateHeap(length*2)
-    self._sp.copy(items, length)
+    self._count = createCounter()
+    self._ptr <- buffer
+    self._capacity = capacity
     self._length = length
 
     return self
@@ -26,22 +55,39 @@ fn list(items: T[], length: ulong) -> List
 
 fn clone(self: List) -> List
 {
-    return list(self.pointer(), self.length())
+    return list(self._ptr, self._length)
 }
 
 fn pointer(self: List) -> T[]
 {
-    return self._sp.pointer()
+    return self._ptr
+}
+
+fn expand(mut self: List, capacity: ulong)
+{
+    self._ptr <- realloc[T](self._ptr, capacity)
+    self._capacity = capacity
 }
 
 fn append(mut self: List, item: T)
 {
-    if self.length() == self.capacity()
-        self._sp.expand(self.length()*2)
+    if self._length == self._capacity
+        self.expand(self._length*2)
 
-    self.setItem(self.length(), item)
     self._length += 1
+    self.setItem(self._length-1 , item)
+}
+
+fn appendArray(mut self: List, items: T[], length: ulong)
+{
+    const newLength := self._length + length
+
+    if newLength >= self._capacity
+        self.expand(newLength*2)
+
+    memcpyOffset[T](self._ptr, items, length, self._length)
     
+    self._length = newLength
 }
 
 fn clear(mut self: List)
@@ -51,8 +97,9 @@ fn clear(mut self: List)
 
 fn pop(mut self: List) -> T
 {
+    const item := self[self._length-1]
     self._length -= 1
-    return self[self._length]
+    return item
 }
 
 fn length(self: List) -> ulong
@@ -62,25 +109,36 @@ fn length(self: List) -> ulong
 
 fn capacity(self: List) -> ulong
 {
-    return self._sp.capacity()
+    return self._capacity
 }
 
 fn get(self: List, index: ulong) -> Optional[T]
 {
-    if index < self.length()
-        return some(self._sp[index])
+    if index < self._length
+        return some(self._ptr[index])
 
     return none()
 }
 
+fn _validateIndex(self: List, index: ulong) 
+{
+    if not addr(self._ptr)
+        panic(NULL_POINTER_ERROR, 1)
+    
+    if index >= self._length
+        panic(OUT_OF_BOUNDS_ERROR, 1)
+}
+
 fn setItem(mut self: List, index: ulong, item: T)
 {
-    self._sp.setItem(index, item)
+    self._validateIndex(index)
+    self._ptr[index] = item
 }
 
 fn __subscriptItem__(self: List, index: ulong) -> T
 {
-    return self._sp[index]
+    self._validateIndex(index)
+    return self._ptr[index]
 }
 
 fn __subscriptRange__(self: List, range: ulong[2]) -> List
@@ -88,25 +146,42 @@ fn __subscriptRange__(self: List, range: ulong[2]) -> List
     if range[0] > range[1]
         panic(INVALID_RANGE, 1)
 
-    if range[1] > self.length()
+    if range[1] > self._length
         panic(INVALID_RANGE, 1)
 
     return list(addOffset[T](self.pointer(), range[0]), range[1] - range[0])
 }
 
-fn __addList__(self: List, other: List) -> List
+fn __addArray__(self: List, other: T[], otherLength: ulong) -> List
 {
     var new := self.clone()
-
-    new._sp.expand((new.length() + other.length())*2)
-    new._sp.copyOffset(other.pointer(), other.length(), new.length())
-    new._length += other.length()
-
+    new.appendArray(other, otherLength)
     return new
 }
 
-fn __addArray__(self: List, other: T[], otherLength: ulong) -> List
+fn __add__(self: List, other: List) -> List
 {
-    return self + list(other, otherLength)
+    var new := self.clone()
+    new.appendArray(other.pointer(), other.length())
+    return new
+}
+
+fn _free(mut self: List)
+{
+    if not addr(self._ptr) 
+        return void
+
+    for var i: ulong = 0; i < self._capacity; i += 1 
+        self._ptr[i].__deconstructor__()
+
+    free[T](self._ptr)
+    self._ptr <- nullptrArray[T]()
+}
+
+fn __deconstructor__(mut self: List)
+{
+    if not self._count.isZero() return void
+
+    self._free()
 }
 

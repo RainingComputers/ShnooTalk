@@ -1,8 +1,5 @@
 from "../stdlib/List.shtk" use List, allocateHeap
 
-close 0
-read from "../stdlib/List.shtk" use List, allocateHeap
-
 fn main() -> int
 {
     var b: List[int]
@@ -11,10 +8,3 @@ fn main() -> int
 
     return 0
 }
-
-tell 116
-seek read eturn 0
-}
-
-this works
-0

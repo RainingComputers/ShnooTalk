@@ -1,0 +1,27 @@
+from "../stdlib/List.shtk" use List, allocateHeap
+
+struct Foobar {}
+
+fn __deconstructor__(self: Foobar) 
+{
+    println("Deconstructor for foobar")
+}
+
+fn createFoobar() -> Foobar 
+{
+    var self: Foobar
+    return self
+}
+
+fn main() -> int
+{
+
+    var b := allocateHeap[Foobar](2)
+    b.appendArray([createFoobar(), createFoobar()], 2)
+
+    var c := allocateHeap[Foobar](2)
+    c.appendArray([createFoobar(), createFoobar()], 2)
+    c._free()
+
+    return 0
+}

@@ -1,9 +1,0 @@
-from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
-
-fn main() -> int
-{
-    var c : SharedPointer[int]
-    c.copy([1, 2, 3, 4, 5], 5)
-
-    return 0
-}

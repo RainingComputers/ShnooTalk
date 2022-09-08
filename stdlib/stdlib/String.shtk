@@ -1,30 +1,25 @@
 use "../stdlib/LibC.shtk" as libc
 use "../stdlib/Char.shtk" as char
-from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap, fromPreAllocated
+from "../stdlib/List.shtk" use List, allocateHeap, fromPreAllocated
+from "../stdlib/RawPointerUtils.shtk" use addOffset
 from "../stdlib/Optional.shtk" use Optional, some, none
 from "../stdlib/Panic.shtk" use panic
-from "../stdlib/RawPointerUtils.shtk" use addOffset
 
 
 def INVALID_RANGE "Invalid range for subString"
 
 struct String
 {
-    var _sp: SharedPointer[char]
-    var _length: ulong
+    var _list: List[char]
 }
 
 fn string(charArray: char[], lengthIncNull: ulong) -> String
 {
     var self: String
 
-    const length := lengthIncNull - 1
-    const capacity := lengthIncNull * 2 
-
-    self._length = length
-    self._sp = allocateHeap(capacity)
-    self._sp.copy(charArray, lengthIncNull)
-    self._sp.setItem(length, '\0')
+    self._list = allocateHeap(lengthIncNull)
+    self._list.appendArray(charArray, lengthIncNull)
+    self._list._ptr[lengthIncNull-1] = '\0'
 
     return self
 }
@@ -33,8 +28,7 @@ fn stringFromPreAllocated(charArray: char[], bufferLength: ulong, length: ulong)
 {
     var self: String
 
-    self._length = length
-    self._sp = fromPreAllocated(charArray, bufferLength)
+    self._list = fromPreAllocated(charArray, bufferLength, length+1)
     
     return self
 }
@@ -46,17 +40,17 @@ fn __coerceCharArray__(charArray: char[], lengthIncNull: ulong) -> String
 
 fn length(self: String) -> ulong
 {
-    return self._length
+    return self._list.length() - 1
 }
 
 fn __subscriptItem__(self: String, index: ulong) -> char
 {
-    return self._sp[index]
+    return self._list[index]
 }
 
 fn toCharArray(self: String) -> char[]
 {
-    return self._sp.pointer()
+    return self._list.pointer()
 }
 
 fn __toCharArray__(self: String) -> char[]
@@ -154,7 +148,7 @@ fn lower(self: String) -> String
     var new := self.clone()
 
     for var i: ulong = 0; i < self.length(); i += 1
-        new._sp.setItem(i, char::lower(new[i]))
+        new._list.setItem(i, char::lower(new[i]))
 
     return new
 }
@@ -164,7 +158,7 @@ fn upper(self: String) -> String
     var new := self.clone()
 
     for var i: ulong = 0; i < self.length(); i += 1
-        new._sp.setItem(i, char::upper(new[i]))
+        new._list.setItem(i, char::upper(new[i]))
 
     return new
 }
@@ -346,9 +340,18 @@ fn __add__(self: String, other: String) -> String
 {
     var new := self.clone()
     
-    new._sp.expand(self.length() + other.length() + 1)
-    new._sp.copyOffset(other._sp.pointer(), other.length() + 1, self.length())
-    new._length += other.length()
+    new._list._length -= 1
+    new._list += other._list
+
+    return new
+}
+
+fn __addArray__(self: String, other: char[], lengthIncNull: ulong) -> String
+{
+    var new := self.clone()
+
+    new._list._length -= 1
+    new._list.appendArray(other, lengthIncNull) # TODO other.toCharArray() passes does not throw a compile error for some reason
 
     return new
 }

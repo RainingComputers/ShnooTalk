@@ -92,6 +92,7 @@ fn main() -> int
     var hello2 := "hello".string()
     hello2 += " world".string()
     println(hello2)
+    println("hello".string() + " world")
 
     println("relational operators")
     println("abcdef".string() > "bcdef".string())
