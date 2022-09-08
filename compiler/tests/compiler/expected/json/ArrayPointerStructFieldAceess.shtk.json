@@ -108,6 +108,8 @@
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 151, "dtype": "int"}, "op2": {"type": "literal", "id": 150, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 149, "dtype": "int"}, "op2": {"type": "temp", "id": 151, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 154, "dtype": "int"}, "op2": {"type": "var", "id": 153, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtrPtr", "id": 156, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 154, "dtype": "int"}, "op3": {"type": "bytes", "id": 155, "bytes": 0}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

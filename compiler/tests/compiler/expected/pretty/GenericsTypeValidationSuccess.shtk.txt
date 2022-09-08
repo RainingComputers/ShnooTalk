@@ -166,6 +166,26 @@
                         newLine
                         int temp236 = cast autoInt 0
                         int returnValue234 = equal int temp236
+                        int* tempPtr238 = createPointer struct a
+                        int* tempPtr240 = addressAdd int* tempPtr238, bytes 0
+                        int* tempPtr242 = createPointer struct b
+                        int** tempPtrPtr244 = addressAdd int* tempPtr242, bytes 0
+                        int* tempPtr246 = createPointer struct c
+                        int** tempPtrPtr248 = addressAdd int* tempPtr246, bytes 0
+                        int* tempPtr250 = createPointer struct d
+                        int* tempPtr252 = addressAdd int* tempPtr250, bytes 0
+                        int* tempPtr254 = createPointer struct e
+                        int* tempPtr256 = addressAdd int* tempPtr254, bytes 0
+                        int* tempPtr258 = createPointer struct f
+                        int** tempPtrPtr260 = addressAdd int* tempPtr258, bytes 0
+                        int* tempPtr262 = createPointer struct g
+                        int** tempPtrPtr264 = addressAdd int* tempPtr262, bytes 0
+                        int* tempPtr266 = createPointer struct h
+                        int* tempPtr268 = addressAdd int* tempPtr266, bytes 0
+                        int* tempPtr270 = createPointer struct i
+                        int* tempPtr272 = addressAdd int* tempPtr270, bytes 0
+                        int* tempPtr274 = createPointer struct j
+                        int* tempPtr276 = addressAdd int* tempPtr274, bytes 0
                         return
                 ]
             }

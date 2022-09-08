@@ -45,6 +45,10 @@
                         newLine
                         int temp64 = cast autoInt 0
                         int returnValue62 = equal int temp64
+                        int* tempPtr67 = createPointer struct foobar
+                        int* tempPtr69 = addressAdd int* tempPtr67, bytes 0
+                        int* tempPtr70 = createPointer struct foobar
+                        int** tempPtrPtr72 = addressAdd int* tempPtr70, bytes 4
                         return
                 ]
             }

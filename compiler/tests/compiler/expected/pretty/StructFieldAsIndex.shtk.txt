@@ -16,43 +16,45 @@
                         int* tempPtr19 = addressAdd int* tempPtr15, void* tempPtr17
                         int temp21 = cast autoInt 10
                         int* tempPtr19 = write int temp21
+                        int* tempPtr23 = createPointer struct position
+                        int* tempPtr25 = addressAdd int* tempPtr23, bytes 0
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        int* tempPtr30 = createPointer int arr
-                        int temp31 = cast autoInt 1
-                        int* tempPtr30 = write int temp31
-                        int* tempPtr33 = addressAdd int* tempPtr30, bytes 4
-                        int temp34 = cast autoInt 2
+                        int* tempPtr33 = createPointer int arr
+                        int temp34 = cast autoInt 1
                         int* tempPtr33 = write int temp34
                         int* tempPtr36 = addressAdd int* tempPtr33, bytes 4
-                        int temp37 = cast autoInt 3
+                        int temp37 = cast autoInt 2
                         int* tempPtr36 = write int temp37
-                        int* tempPtr41 = createPointer int arr
-                        passPointer int* tempPtr41, void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
-                        void calleeReturnValue44 = call void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
-                        int* tempPtr49 = createPointer int arr
-                        void* tempPtr51 = addressMultiply autoInt 0, bytes 4
-                        int* tempPtr52 = addressAdd int* tempPtr49, void* tempPtr51
-                        int temp53 = read int* tempPtr52
-                        print int temp53
+                        int* tempPtr39 = addressAdd int* tempPtr36, bytes 4
+                        int temp40 = cast autoInt 3
+                        int* tempPtr39 = write int temp40
+                        int* tempPtr44 = createPointer int arr
+                        passPointer int* tempPtr44, void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
+                        void calleeReturnValue47 = call void _fn_StructFieldAsIndex_shtk_changeArr, module StructFieldAsIndex.shtk
+                        int* tempPtr52 = createPointer int arr
+                        void* tempPtr54 = addressMultiply autoInt 0, bytes 4
+                        int* tempPtr55 = addressAdd int* tempPtr52, void* tempPtr54
+                        int temp56 = read int* tempPtr55
+                        print int temp56
                         newLine
-                        int* tempPtr56 = createPointer int arr
-                        void* tempPtr58 = addressMultiply autoInt 1, bytes 4
-                        int* tempPtr59 = addressAdd int* tempPtr56, void* tempPtr58
-                        int temp60 = read int* tempPtr59
-                        print int temp60
+                        int* tempPtr59 = createPointer int arr
+                        void* tempPtr61 = addressMultiply autoInt 1, bytes 4
+                        int* tempPtr62 = addressAdd int* tempPtr59, void* tempPtr61
+                        int temp63 = read int* tempPtr62
+                        print int temp63
                         newLine
-                        int* tempPtr63 = createPointer int arr
-                        void* tempPtr65 = addressMultiply autoInt 2, bytes 4
-                        int* tempPtr66 = addressAdd int* tempPtr63, void* tempPtr65
-                        int temp67 = read int* tempPtr66
-                        print int temp67
+                        int* tempPtr66 = createPointer int arr
+                        void* tempPtr68 = addressMultiply autoInt 2, bytes 4
+                        int* tempPtr69 = addressAdd int* tempPtr66, void* tempPtr68
+                        int temp70 = read int* tempPtr69
+                        print int temp70
                         newLine
-                        int temp70 = cast autoInt 0
-                        int returnValue68 = equal int temp70
+                        int temp73 = cast autoInt 0
+                        int returnValue71 = equal int temp73
                         return
                 ]
             }

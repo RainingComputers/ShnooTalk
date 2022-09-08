@@ -108,6 +108,8 @@
                         newLine
                         int temp151 = cast autoInt 0
                         int returnValue149 = equal int temp151
+                        int* tempPtr154 = createPointer struct foo
+                        int** tempPtrPtr156 = addressAdd int* tempPtr154, bytes 0
                         return
                 ]
             }

@@ -9,14 +9,30 @@
             },
             "main": {
                 "icode": [
-                        int* tempPtr9 = createPointer struct b
-                        int* tempPtr10 = createPointer struct a
-                        int* tempPtr9 = memoryCopy int* tempPtr10, autoInt 8
+                        int* tempPtr9 = createPointer struct a
+                        int* tempPtr11 = addressAdd int* tempPtr9, bytes 0
+                        int* tempPtr12 = createPointer struct a
+                        int* tempPtr14 = addressAdd int* tempPtr12, bytes 4
                         int* tempPtr15 = createPointer struct b
-                        passPointer int* tempPtr15, void _fn_ExplicitDeconstructorCall_shtk_funcToTestType, module ExplicitDeconstructorCall.shtk
-                        void calleeReturnValue18 = call void _fn_ExplicitDeconstructorCall_shtk_funcToTestType, module ExplicitDeconstructorCall.shtk
-                        int temp23 = cast autoInt 0
-                        int returnValue21 = equal int temp23
+                        int* tempPtr17 = addressAdd int* tempPtr15, bytes 0
+                        int* tempPtr18 = createPointer struct b
+                        int* tempPtr20 = addressAdd int* tempPtr18, bytes 4
+                        int* tempPtr21 = createPointer struct b
+                        int* tempPtr22 = createPointer struct a
+                        int* tempPtr21 = memoryCopy int* tempPtr22, autoInt 8
+                        int* tempPtr27 = createPointer struct b
+                        passPointer int* tempPtr27, void _fn_ExplicitDeconstructorCall_shtk_funcToTestType, module ExplicitDeconstructorCall.shtk
+                        void calleeReturnValue30 = call void _fn_ExplicitDeconstructorCall_shtk_funcToTestType, module ExplicitDeconstructorCall.shtk
+                        int temp35 = cast autoInt 0
+                        int returnValue33 = equal int temp35
+                        int* tempPtr37 = createPointer struct a
+                        int* tempPtr39 = addressAdd int* tempPtr37, bytes 0
+                        int* tempPtr40 = createPointer struct a
+                        int* tempPtr42 = addressAdd int* tempPtr40, bytes 4
+                        int* tempPtr44 = createPointer struct b
+                        int* tempPtr46 = addressAdd int* tempPtr44, bytes 0
+                        int* tempPtr47 = createPointer struct b
+                        int* tempPtr49 = addressAdd int* tempPtr47, bytes 4
                         return
                 ]
             }

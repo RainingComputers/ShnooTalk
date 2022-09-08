@@ -50,15 +50,19 @@
                         byte* tempPtr89 = addressAdd byte* tempPtr87, bytes 0
                         byte temp91 = cast autoInt 1
                         byte* tempPtr89 = write byte temp91
-                        byte* tempPtr94 = createPointer struct returnValue92
-                        byte* tempPtr95 = createPointer struct f
-                        byte* tempPtr94 = memoryCopy byte* tempPtr95, autoInt 1
+                        byte* tempPtr94 = createPointer struct f
+                        byte* tempPtr96 = addressAdd byte* tempPtr94, bytes 0
+                        byte* tempPtr97 = createPointer struct returnValue92
+                        byte* tempPtr98 = createPointer struct f
+                        byte* tempPtr97 = memoryCopy byte* tempPtr98, autoInt 1
+                        byte* tempPtr101 = createPointer struct f
+                        byte* tempPtr103 = addressAdd byte* tempPtr101, bytes 0
                         return
                 ]
             },
             "_fn_QuestionMarkOperator_shtk_chain2": {
                 "icode": [
-                        int returnValue101 = equal int n
+                        int returnValue107 = equal int n
                         return
                 ]
             },
@@ -91,62 +95,64 @@
             },
             "_fn_QuestionMarkOperator_shtk_testErrorChain": {
                 "icode": [
-                        struct calleeReturnValue106 = call struct _fn_QuestionMarkOperator_shtk_chain1, module QuestionMarkOperator.shtk
-                        byte* tempPtr113 = createPointer struct calleeReturnValue106
-                        passPointer byte* tempPtr113, byte _fn_QuestionMarkOperator_shtk___questionMarkContinue__, module QuestionMarkOperator.shtk
-                        byte calleeReturnValue116 = call byte _fn_QuestionMarkOperator_shtk___questionMarkContinue__, module QuestionMarkOperator.shtk
-                        byte temp120 = cast autoInt 0
-                        flag = greaterThan byte calleeReturnValue116, byte temp120
+                        struct calleeReturnValue112 = call struct _fn_QuestionMarkOperator_shtk_chain1, module QuestionMarkOperator.shtk
+                        byte* tempPtr119 = createPointer struct calleeReturnValue112
+                        passPointer byte* tempPtr119, byte _fn_QuestionMarkOperator_shtk___questionMarkContinue__, module QuestionMarkOperator.shtk
+                        byte calleeReturnValue122 = call byte _fn_QuestionMarkOperator_shtk___questionMarkContinue__, module QuestionMarkOperator.shtk
+                        byte temp126 = cast autoInt 0
+                        flag = greaterThan byte calleeReturnValue122, byte temp126
                         if(flag) goto _question_op_true_l49_c20
-                        byte* tempPtr122 = createPointer struct calleeReturnValue106
-                        passPointer byte* tempPtr122, byte _fn_QuestionMarkOperator_shtk___questionMarkError__, module QuestionMarkOperator.shtk
-                        byte calleeReturnValue125 = call byte _fn_QuestionMarkOperator_shtk___questionMarkError__, module QuestionMarkOperator.shtk
-                        pass byte calleeReturnValue125, byte _fn_QuestionMarkOperator_shtk___questionMarkConstruct__, module QuestionMarkOperator.shtk
-                        byte calleeReturnValue131 = call byte _fn_QuestionMarkOperator_shtk___questionMarkConstruct__, module QuestionMarkOperator.shtk
-                        byte returnValue134 = equal byte calleeReturnValue131
+                        byte* tempPtr128 = createPointer struct calleeReturnValue112
+                        passPointer byte* tempPtr128, byte _fn_QuestionMarkOperator_shtk___questionMarkError__, module QuestionMarkOperator.shtk
+                        byte calleeReturnValue131 = call byte _fn_QuestionMarkOperator_shtk___questionMarkError__, module QuestionMarkOperator.shtk
+                        pass byte calleeReturnValue131, byte _fn_QuestionMarkOperator_shtk___questionMarkConstruct__, module QuestionMarkOperator.shtk
+                        byte calleeReturnValue137 = call byte _fn_QuestionMarkOperator_shtk___questionMarkConstruct__, module QuestionMarkOperator.shtk
+                        byte returnValue140 = equal byte calleeReturnValue137
                         return
                     _question_op_true_l49_c20:
-                        byte* tempPtr136 = createPointer struct calleeReturnValue106
-                        passPointer byte* tempPtr136, int _fn_QuestionMarkOperator_shtk___questionMarkUnwrap__, module QuestionMarkOperator.shtk
-                        int calleeReturnValue139 = call int _fn_QuestionMarkOperator_shtk___questionMarkUnwrap__, module QuestionMarkOperator.shtk
-                        pass int calleeReturnValue139, int _fn_QuestionMarkOperator_shtk_chain2, module QuestionMarkOperator.shtk
-                        int calleeReturnValue146 = call int _fn_QuestionMarkOperator_shtk_chain2, module QuestionMarkOperator.shtk
-                        print int calleeReturnValue146
+                        byte* tempPtr142 = createPointer struct calleeReturnValue112
+                        passPointer byte* tempPtr142, int _fn_QuestionMarkOperator_shtk___questionMarkUnwrap__, module QuestionMarkOperator.shtk
+                        int calleeReturnValue145 = call int _fn_QuestionMarkOperator_shtk___questionMarkUnwrap__, module QuestionMarkOperator.shtk
+                        pass int calleeReturnValue145, int _fn_QuestionMarkOperator_shtk_chain2, module QuestionMarkOperator.shtk
+                        int calleeReturnValue152 = call int _fn_QuestionMarkOperator_shtk_chain2, module QuestionMarkOperator.shtk
+                        print int calleeReturnValue152
                         newLine
-                        byte temp151 = cast autoInt 0
-                        byte returnValue149 = equal byte temp151
+                        byte temp157 = cast autoInt 0
+                        byte returnValue155 = equal byte temp157
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        byte* tempPtr157 = createPointer struct f
-                        byte* tempPtr159 = addressAdd byte* tempPtr157, bytes 0
-                        byte temp161 = cast autoInt 0
-                        byte* tempPtr159 = write byte temp161
+                        byte* tempPtr163 = createPointer struct f
+                        byte* tempPtr165 = addressAdd byte* tempPtr163, bytes 0
+                        byte temp167 = cast autoInt 0
+                        byte* tempPtr165 = write byte temp167
                         printString stringData _str_QuestionMarkOperator_shtk__l60_c12
                         newLine
-                        byte* tempPtr166 = createPointer struct f
-                        passPointer byte* tempPtr166, byte _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
-                        byte calleeReturnValue169 = call byte _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
-                        print byte calleeReturnValue169
+                        byte* tempPtr172 = createPointer struct f
+                        passPointer byte* tempPtr172, byte _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
+                        byte calleeReturnValue175 = call byte _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
+                        print byte calleeReturnValue175
                         newLine
-                        byte* tempPtr173 = createPointer struct f
-                        byte* tempPtr175 = addressAdd byte* tempPtr173, bytes 0
-                        byte temp177 = cast autoInt 1
-                        byte* tempPtr175 = write byte temp177
+                        byte* tempPtr179 = createPointer struct f
+                        byte* tempPtr181 = addressAdd byte* tempPtr179, bytes 0
+                        byte temp183 = cast autoInt 1
+                        byte* tempPtr181 = write byte temp183
                         printString stringData _str_QuestionMarkOperator_shtk__l64_c12
                         newLine
-                        byte* tempPtr182 = createPointer struct f
-                        passPointer byte* tempPtr182, byte _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
-                        byte calleeReturnValue185 = call byte _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
-                        print byte calleeReturnValue185
+                        byte* tempPtr188 = createPointer struct f
+                        passPointer byte* tempPtr188, byte _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
+                        byte calleeReturnValue191 = call byte _fn_QuestionMarkOperator_shtk_testError, module QuestionMarkOperator.shtk
+                        print byte calleeReturnValue191
                         newLine
-                        byte calleeReturnValue188 = call byte _fn_QuestionMarkOperator_shtk_testErrorChain, module QuestionMarkOperator.shtk
-                        print byte calleeReturnValue188
+                        byte calleeReturnValue194 = call byte _fn_QuestionMarkOperator_shtk_testErrorChain, module QuestionMarkOperator.shtk
+                        print byte calleeReturnValue194
                         newLine
-                        int temp193 = cast autoInt 0
-                        int returnValue191 = equal int temp193
+                        int temp199 = cast autoInt 0
+                        int returnValue197 = equal int temp199
+                        byte* tempPtr201 = createPointer struct f
+                        byte* tempPtr203 = addressAdd byte* tempPtr201, bytes 0
                         return
                 ]
             }

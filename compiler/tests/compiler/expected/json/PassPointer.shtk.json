@@ -42,6 +42,10 @@
                     {"opcode": "call", "op1": {"type": "calleeReturnValue", "id": 50, "dtype": "void"}, "op2": {"type": "var", "id": 51, "name": "_fn_PassPointer_shtk_printVector", "dtype": "void"}, "op3": {"type": "module", "id": 52, "name": "PassPointer.shtk"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "literal", "id": 54, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 53, "dtype": "int"}, "op2": {"type": "temp", "id": 55, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 57, "dtype": "int"}, "op2": {"type": "var", "id": 56, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 59, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 57, "dtype": "int"}, "op3": {"type": "bytes", "id": 58, "bytes": 0}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 60, "dtype": "int"}, "op2": {"type": "var", "id": 56, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 62, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 60, "dtype": "int"}, "op3": {"type": "bytes", "id": 61, "bytes": 4}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

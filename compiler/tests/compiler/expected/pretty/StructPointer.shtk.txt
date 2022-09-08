@@ -25,6 +25,10 @@
                         newLine
                         int temp31 = cast autoInt 0
                         int returnValue29 = equal int temp31
+                        int* tempPtr34 = createPointer struct lol
+                        int** tempPtrPtr36 = addressAdd int* tempPtr34, bytes 0
+                        int* tempPtr37 = createPointer struct lol
+                        int* tempPtr39 = addressAdd int* tempPtr37, bytes 8
                         return
                 ]
             }

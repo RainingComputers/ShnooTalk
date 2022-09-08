@@ -44,6 +44,8 @@
                         void calleeReturnValue96 = call void _fn_TestModules_LinkedList_shtk[int]_printList, module TestModules/LinkedList.shtk[int]
                         int temp101 = cast autoInt 0
                         int returnValue99 = equal int temp101
+                        struct* tempPtr103 = createPointer struct list
+                        struct** tempPtrPtr105 = addressAdd struct* tempPtr103, bytes 0
                         return
                 ]
             }
@@ -66,67 +68,75 @@
                         int* tempPtr18 = createPointer struct node
                         int** tempPtrPtr20 = addressAdd int* tempPtr18, bytes 4
                         struct** tempPtrPtr20 = pointerAssign struct* next
-                        int* tempPtr24 = createPointer struct returnValue22
-                        int* tempPtr25 = createPointer struct node
-                        int* tempPtr24 = memoryCopy int* tempPtr25, autoInt 12
+                        int* tempPtr24 = createPointer struct node
+                        int* tempPtr26 = addressAdd int* tempPtr24, bytes 0
+                        int* tempPtr27 = createPointer struct node
+                        int** tempPtrPtr29 = addressAdd int* tempPtr27, bytes 4
+                        int* tempPtr30 = createPointer struct returnValue22
+                        int* tempPtr31 = createPointer struct node
+                        int* tempPtr30 = memoryCopy int* tempPtr31, autoInt 12
+                        int* tempPtr34 = createPointer struct node
+                        int* tempPtr36 = addressAdd int* tempPtr34, bytes 0
+                        int* tempPtr37 = createPointer struct node
+                        int** tempPtrPtr39 = addressAdd int* tempPtr37, bytes 4
                         return
                 ]
             },
             "_fn_TestModules_LinkedList_shtk[int]_init": {
                 "icode": [
-                        struct* tempPtr32 = createPointer struct self
-                        struct** tempPtrPtr34 = addressAdd struct* tempPtr32, bytes 0
-                        struct* tempPtr36 = pointerCast autoInt 0
-                        struct** tempPtrPtr34 = pointerAssign struct* tempPtr36
+                        struct* tempPtr44 = createPointer struct self
+                        struct** tempPtrPtr46 = addressAdd struct* tempPtr44, bytes 0
+                        struct* tempPtr48 = pointerCast autoInt 0
+                        struct** tempPtrPtr46 = pointerAssign struct* tempPtr48
                         return
                 ]
             },
             "_fn_TestModules_LinkedList_shtk[int]_pop": {
                 "icode": [
-                        struct* tempPtr97 = pointerCast autoInt 0
-                        struct* newTop = pointerAssign struct* tempPtr97
-                        struct* tempPtr99 = createPointer struct self
-                        struct** tempPtrPtr101 = addressAdd struct* tempPtr99, bytes 0
-                        int* tempPtr102 = createPointer struct** tempPtrPtr101
-                        int** tempPtrPtr104 = addressAdd int* tempPtr102, bytes 4
-                        struct* newTop = pointerAssign struct** tempPtrPtr104
-                        struct* tempPtr107 = createPointer struct self
-                        struct** tempPtrPtr109 = addressAdd struct* tempPtr107, bytes 0
-                        int* tempPtr110 = createPointer struct** tempPtrPtr109
-                        int* tempPtr112 = addressAdd int* tempPtr110, bytes 0
-                        int temp113 = read int* tempPtr112
-                        int poppedData = equal int temp113
-                        struct* tempPtr116 = createPointer struct self
-                        struct** tempPtrPtr118 = addressAdd struct* tempPtr116, bytes 0
-                        ubyte* tempPtr119 = pointerCast struct** tempPtrPtr118
-                        passPointer ubyte* tempPtr119, void free, module TestModules/LinkedList.shtk[int]
-                        void calleeReturnValue123 = call void free, module TestModules/LinkedList.shtk[int]
-                        struct* tempPtr127 = createPointer struct self
-                        struct** tempPtrPtr129 = addressAdd struct* tempPtr127, bytes 0
-                        struct** tempPtrPtr129 = pointerAssign struct* newTop
-                        int returnValue131 = equal int poppedData
+                        struct* tempPtr133 = pointerCast autoInt 0
+                        struct* newTop = pointerAssign struct* tempPtr133
+                        struct* tempPtr135 = createPointer struct self
+                        struct** tempPtrPtr137 = addressAdd struct* tempPtr135, bytes 0
+                        int* tempPtr138 = createPointer struct** tempPtrPtr137
+                        int** tempPtrPtr140 = addressAdd int* tempPtr138, bytes 4
+                        struct* newTop = pointerAssign struct** tempPtrPtr140
+                        struct* tempPtr143 = createPointer struct self
+                        struct** tempPtrPtr145 = addressAdd struct* tempPtr143, bytes 0
+                        int* tempPtr146 = createPointer struct** tempPtrPtr145
+                        int* tempPtr148 = addressAdd int* tempPtr146, bytes 0
+                        int temp149 = read int* tempPtr148
+                        int poppedData = equal int temp149
+                        struct* tempPtr152 = createPointer struct self
+                        struct** tempPtrPtr154 = addressAdd struct* tempPtr152, bytes 0
+                        ubyte* tempPtr155 = pointerCast struct** tempPtrPtr154
+                        passPointer ubyte* tempPtr155, void free, module TestModules/LinkedList.shtk[int]
+                        void calleeReturnValue159 = call void free, module TestModules/LinkedList.shtk[int]
+                        struct* tempPtr163 = createPointer struct self
+                        struct** tempPtrPtr165 = addressAdd struct* tempPtr163, bytes 0
+                        struct** tempPtrPtr165 = pointerAssign struct* newTop
+                        int returnValue167 = equal int poppedData
                         return
                 ]
             },
             "_fn_TestModules_LinkedList_shtk[int]_printList": {
                 "icode": [
-                        struct* tempPtr140 = pointerCast autoInt 0
-                        struct* current = pointerAssign struct* tempPtr140
-                        struct* tempPtr142 = createPointer struct self
-                        struct** tempPtrPtr144 = addressAdd struct* tempPtr142, bytes 0
-                        struct* current = pointerAssign struct** tempPtrPtr144
+                        struct* tempPtr176 = pointerCast autoInt 0
+                        struct* current = pointerAssign struct* tempPtr176
+                        struct* tempPtr178 = createPointer struct self
+                        struct** tempPtrPtr180 = addressAdd struct* tempPtr178, bytes 0
+                        struct* current = pointerAssign struct** tempPtrPtr180
                     _while_true_l56_c4:
-                        autoInt temp148 = addr struct* current
-                        flag = greaterThan autoInt temp148, autoInt 0
+                        autoInt temp184 = addr struct* current
+                        flag = greaterThan autoInt temp184, autoInt 0
                         if(not flag) goto _while_false_l56_c4
-                        int* tempPtr151 = createPointer struct* current
-                        int* tempPtr153 = addressAdd int* tempPtr151, bytes 0
-                        int temp154 = read int* tempPtr153
-                        print int temp154
+                        int* tempPtr187 = createPointer struct* current
+                        int* tempPtr189 = addressAdd int* tempPtr187, bytes 0
+                        int temp190 = read int* tempPtr189
+                        print int temp190
                         newLine
-                        int* tempPtr157 = createPointer struct* current
-                        int** tempPtrPtr159 = addressAdd int* tempPtr157, bytes 4
-                        struct* current = pointerAssign struct** tempPtrPtr159
+                        int* tempPtr193 = createPointer struct* current
+                        int** tempPtrPtr195 = addressAdd int* tempPtr193, bytes 4
+                        struct* current = pointerAssign struct** tempPtrPtr195
                         goto _while_true_l56_c4
                     _while_false_l56_c4:
                         return
@@ -134,33 +144,49 @@
             },
             "_fn_TestModules_LinkedList_shtk[int]_push": {
                 "icode": [
-                        int* tempPtr41 = createPointer struct newNode
-                        int* tempPtr43 = addressAdd int* tempPtr41, bytes 0
-                        int* tempPtr44 = createPointer struct newNode
-                        int** tempPtrPtr46 = addressAdd int* tempPtr44, bytes 4
-                        struct* tempPtr48 = pointerCast autoInt 0
-                        struct** tempPtrPtr46 = pointerAssign struct* tempPtr48
-                        struct* tempPtr53 = createPointer struct self
-                        struct** tempPtrPtr55 = addressAdd struct* tempPtr53, bytes 0
+                        int* tempPtr53 = createPointer struct newNode
+                        int* tempPtr55 = addressAdd int* tempPtr53, bytes 0
+                        int* tempPtr56 = createPointer struct newNode
+                        int** tempPtrPtr58 = addressAdd int* tempPtr56, bytes 4
+                        struct* tempPtr60 = pointerCast autoInt 0
+                        struct** tempPtrPtr58 = pointerAssign struct* tempPtr60
+                        struct* tempPtr65 = createPointer struct self
+                        struct** tempPtrPtr67 = addressAdd struct* tempPtr65, bytes 0
                         pass int data, struct _fn_TestModules_LinkedList_shtk[int]_createNode, module TestModules/LinkedList.shtk[int]
-                        int* tempPtr60 = createPointer struct** tempPtrPtr55
-                        passPointer int* tempPtr60, struct _fn_TestModules_LinkedList_shtk[int]_createNode, module TestModules/LinkedList.shtk[int]
-                        struct calleeReturnValue63 = call struct _fn_TestModules_LinkedList_shtk[int]_createNode, module TestModules/LinkedList.shtk[int]
-                        int* tempPtr66 = createPointer struct newNode
-                        int* tempPtr67 = createPointer struct calleeReturnValue63
-                        int* tempPtr66 = memoryCopy int* tempPtr67, autoInt 12
-                        struct* tempPtr70 = createPointer struct self
-                        struct** tempPtrPtr72 = addressAdd struct* tempPtr70, bytes 0
-                        int temp76 = cast autoInt 12
-                        pass int temp76, ubyte malloc, module TestModules/LinkedList.shtk[int]
-                        ubyte* calleeReturnPointer79 = call ubyte malloc, module TestModules/LinkedList.shtk[int]
-                        struct* tempPtr82 = pointerCast ubyte* calleeReturnPointer79
-                        struct** tempPtrPtr72 = pointerAssign struct* tempPtr82
-                        struct* tempPtr84 = createPointer struct self
-                        struct** tempPtrPtr86 = addressAdd struct* tempPtr84, bytes 0
-                        int* tempPtr88 = createPointer struct** tempPtrPtr86
-                        int* tempPtr89 = createPointer struct newNode
-                        int* tempPtr88 = memoryCopy int* tempPtr89, autoInt 12
+                        int* tempPtr72 = createPointer struct** tempPtrPtr67
+                        passPointer int* tempPtr72, struct _fn_TestModules_LinkedList_shtk[int]_createNode, module TestModules/LinkedList.shtk[int]
+                        struct calleeReturnValue75 = call struct _fn_TestModules_LinkedList_shtk[int]_createNode, module TestModules/LinkedList.shtk[int]
+                        int* tempPtr78 = createPointer struct calleeReturnValue75
+                        int* tempPtr80 = addressAdd int* tempPtr78, bytes 0
+                        int* tempPtr81 = createPointer struct calleeReturnValue75
+                        int** tempPtrPtr83 = addressAdd int* tempPtr81, bytes 4
+                        int* tempPtr84 = createPointer struct newNode
+                        int* tempPtr86 = addressAdd int* tempPtr84, bytes 0
+                        int* tempPtr87 = createPointer struct newNode
+                        int** tempPtrPtr89 = addressAdd int* tempPtr87, bytes 4
+                        int* tempPtr90 = createPointer struct newNode
+                        int* tempPtr91 = createPointer struct calleeReturnValue75
+                        int* tempPtr90 = memoryCopy int* tempPtr91, autoInt 12
+                        struct* tempPtr94 = createPointer struct self
+                        struct** tempPtrPtr96 = addressAdd struct* tempPtr94, bytes 0
+                        int temp100 = cast autoInt 12
+                        pass int temp100, ubyte malloc, module TestModules/LinkedList.shtk[int]
+                        ubyte* calleeReturnPointer103 = call ubyte malloc, module TestModules/LinkedList.shtk[int]
+                        struct* tempPtr106 = pointerCast ubyte* calleeReturnPointer103
+                        struct** tempPtrPtr96 = pointerAssign struct* tempPtr106
+                        struct* tempPtr108 = createPointer struct self
+                        struct** tempPtrPtr110 = addressAdd struct* tempPtr108, bytes 0
+                        int* tempPtr112 = createPointer struct newNode
+                        int* tempPtr114 = addressAdd int* tempPtr112, bytes 0
+                        int* tempPtr115 = createPointer struct newNode
+                        int** tempPtrPtr117 = addressAdd int* tempPtr115, bytes 4
+                        int* tempPtr118 = createPointer struct** tempPtrPtr110
+                        int* tempPtr119 = createPointer struct newNode
+                        int* tempPtr118 = memoryCopy int* tempPtr119, autoInt 12
+                        int* tempPtr122 = createPointer struct newNode
+                        int* tempPtr124 = addressAdd int* tempPtr122, bytes 0
+                        int* tempPtr125 = createPointer struct newNode
+                        int** tempPtrPtr127 = addressAdd int* tempPtr125, bytes 4
                         return
                 ]
             }

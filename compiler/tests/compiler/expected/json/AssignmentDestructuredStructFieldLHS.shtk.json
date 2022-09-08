@@ -112,6 +112,10 @@
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 133, "dtype": "int"}, "op2": {"type": "literal", "id": 132, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 131, "dtype": "int"}, "op2": {"type": "temp", "id": 133, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 136, "dtype": "int"}, "op2": {"type": "var", "id": 135, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 138, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 136, "dtype": "int"}, "op3": {"type": "bytes", "id": 137, "bytes": 0}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 139, "dtype": "int"}, "op2": {"type": "var", "id": 135, "name": "b", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 141, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 139, "dtype": "int"}, "op3": {"type": "bytes", "id": 140, "bytes": 4}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

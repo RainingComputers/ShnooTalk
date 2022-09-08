@@ -60,6 +60,14 @@
                         newLine
                         int temp81 = cast autoInt 0
                         int returnValue79 = equal int temp81
+                        int* tempPtr83 = createPointer struct a
+                        int* tempPtr85 = addressAdd int* tempPtr83, bytes 0
+                        int* tempPtr86 = createPointer struct a
+                        int* tempPtr88 = addressAdd int* tempPtr86, bytes 4
+                        int* tempPtr91 = createPointer struct b
+                        int* tempPtr93 = addressAdd int* tempPtr91, bytes 0
+                        int* tempPtr94 = createPointer struct b
+                        int* tempPtr96 = addressAdd int* tempPtr94, bytes 4
                         return
                 ]
             }
@@ -90,23 +98,31 @@
                         float temp33 = read float* tempPtr30
                         float temp31 = add float temp32, float temp33
                         float* tempPtr22 = write float temp31
-                        int* tempPtr36 = createPointer struct returnValue34
-                        int* tempPtr37 = createPointer struct result
-                        int* tempPtr36 = memoryCopy int* tempPtr37, autoInt 8
+                        int* tempPtr36 = createPointer struct result
+                        int* tempPtr38 = addressAdd int* tempPtr36, bytes 0
+                        int* tempPtr39 = createPointer struct result
+                        int* tempPtr41 = addressAdd int* tempPtr39, bytes 4
+                        int* tempPtr42 = createPointer struct returnValue34
+                        int* tempPtr43 = createPointer struct result
+                        int* tempPtr42 = memoryCopy int* tempPtr43, autoInt 8
+                        int* tempPtr46 = createPointer struct result
+                        int* tempPtr48 = addressAdd int* tempPtr46, bytes 0
+                        int* tempPtr49 = createPointer struct result
+                        int* tempPtr51 = addressAdd int* tempPtr49, bytes 4
                         return
                 ]
             },
             "_fn_TestModules_Pair_shtk[int][float]_pair": {
                 "icode": [
-                        int* tempPtr45 = createPointer struct self
-                        int* tempPtr47 = addressAdd int* tempPtr45, bytes 0
-                        int* tempPtr47 = write int first
-                        int* tempPtr50 = createPointer struct self
-                        int* tempPtr52 = addressAdd int* tempPtr50, bytes 4
-                        float* tempPtr52 = write float second
-                        int* tempPtr56 = createPointer struct returnValue54
                         int* tempPtr57 = createPointer struct self
-                        int* tempPtr56 = memoryCopy int* tempPtr57, autoInt 8
+                        int* tempPtr59 = addressAdd int* tempPtr57, bytes 0
+                        int* tempPtr59 = write int first
+                        int* tempPtr62 = createPointer struct self
+                        int* tempPtr64 = addressAdd int* tempPtr62, bytes 4
+                        float* tempPtr64 = write float second
+                        int* tempPtr68 = createPointer struct returnValue66
+                        int* tempPtr69 = createPointer struct self
+                        int* tempPtr68 = memoryCopy int* tempPtr69, autoInt 8
                         return
                 ]
             }

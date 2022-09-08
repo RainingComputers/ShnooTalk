@@ -41,6 +41,8 @@
                     _if_false_l19_c4:
                         int temp55 = cast autoInt 0
                         int returnValue53 = equal int temp55
+                        int* tempPtr57 = createPointer struct a
+                        int* tempPtr59 = addressAdd int* tempPtr57, bytes 0
                         return
                 ]
             }

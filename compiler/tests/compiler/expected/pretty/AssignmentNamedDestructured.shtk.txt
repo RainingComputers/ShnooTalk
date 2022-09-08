@@ -72,6 +72,12 @@
                         newLine
                         int temp87 = cast autoInt 0
                         int returnValue85 = equal int temp87
+                        int* tempPtr91 = createPointer struct test
+                        int* tempPtr93 = addressAdd int* tempPtr91, bytes 0
+                        int* tempPtr94 = createPointer struct test
+                        int* tempPtr96 = addressAdd int* tempPtr94, bytes 4
+                        int* tempPtr97 = createPointer struct test
+                        int* tempPtr99 = addressAdd int* tempPtr97, bytes 8
                         return
                 ]
             }

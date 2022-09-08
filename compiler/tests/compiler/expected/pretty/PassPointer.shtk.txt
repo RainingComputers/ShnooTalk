@@ -42,6 +42,10 @@
                         void calleeReturnValue50 = call void _fn_PassPointer_shtk_printVector, module PassPointer.shtk
                         int temp55 = cast autoInt 0
                         int returnValue53 = equal int temp55
+                        int* tempPtr57 = createPointer struct a
+                        int* tempPtr59 = addressAdd int* tempPtr57, bytes 0
+                        int* tempPtr60 = createPointer struct a
+                        int* tempPtr62 = addressAdd int* tempPtr60, bytes 4
                         return
                 ]
             }

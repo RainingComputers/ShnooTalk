@@ -16,70 +16,118 @@
                         int* tempPtr40 = addressAdd int* tempPtr38, bytes 8
                         double temp42 = cast autoFloat 3.500000
                         double* tempPtr40 = write double temp42
-                        int* tempPtr45 = createPointer struct returnValue43
-                        int* tempPtr46 = createPointer struct f
-                        int* tempPtr45 = memoryCopy int* tempPtr46, autoInt 16
+                        int* tempPtr45 = createPointer struct f
+                        int* tempPtr47 = addressAdd int* tempPtr45, bytes 0
+                        int* tempPtr48 = createPointer struct f
+                        int* tempPtr50 = addressAdd int* tempPtr48, bytes 4
+                        int* tempPtr51 = createPointer struct f
+                        int* tempPtr53 = addressAdd int* tempPtr51, bytes 8
+                        int* tempPtr54 = createPointer struct returnValue43
+                        int* tempPtr55 = createPointer struct f
+                        int* tempPtr54 = memoryCopy int* tempPtr55, autoInt 16
+                        int* tempPtr58 = createPointer struct f
+                        int* tempPtr60 = addressAdd int* tempPtr58, bytes 0
+                        int* tempPtr61 = createPointer struct f
+                        int* tempPtr63 = addressAdd int* tempPtr61, bytes 4
+                        int* tempPtr64 = createPointer struct f
+                        int* tempPtr66 = addressAdd int* tempPtr64, bytes 8
                         return
                 ]
             },
             "_fn_MakeParamsTest_shtk_create2": {
                 "icode": [
-                        int* tempPtr54 = createPointer struct f
-                        int* tempPtr56 = addressAdd int* tempPtr54, bytes 0
-                        int* tempPtr56 = write int x
-                        int* tempPtr59 = createPointer struct f
-                        int* tempPtr61 = addressAdd int* tempPtr59, bytes 4
-                        float temp63 = cast autoFloat 2.000000
-                        float* tempPtr61 = write float temp63
-                        int* tempPtr65 = createPointer struct f
-                        int* tempPtr67 = addressAdd int* tempPtr65, bytes 8
-                        double* tempPtr67 = write double z
-                        int* tempPtr71 = createPointer struct returnValue69
                         int* tempPtr72 = createPointer struct f
-                        int* tempPtr71 = memoryCopy int* tempPtr72, autoInt 16
+                        int* tempPtr74 = addressAdd int* tempPtr72, bytes 0
+                        int* tempPtr74 = write int x
+                        int* tempPtr77 = createPointer struct f
+                        int* tempPtr79 = addressAdd int* tempPtr77, bytes 4
+                        float temp81 = cast autoFloat 2.000000
+                        float* tempPtr79 = write float temp81
+                        int* tempPtr83 = createPointer struct f
+                        int* tempPtr85 = addressAdd int* tempPtr83, bytes 8
+                        double* tempPtr85 = write double z
+                        int* tempPtr89 = createPointer struct f
+                        int* tempPtr91 = addressAdd int* tempPtr89, bytes 0
+                        int* tempPtr92 = createPointer struct f
+                        int* tempPtr94 = addressAdd int* tempPtr92, bytes 4
+                        int* tempPtr95 = createPointer struct f
+                        int* tempPtr97 = addressAdd int* tempPtr95, bytes 8
+                        int* tempPtr98 = createPointer struct returnValue87
+                        int* tempPtr99 = createPointer struct f
+                        int* tempPtr98 = memoryCopy int* tempPtr99, autoInt 16
+                        int* tempPtr102 = createPointer struct f
+                        int* tempPtr104 = addressAdd int* tempPtr102, bytes 0
+                        int* tempPtr105 = createPointer struct f
+                        int* tempPtr107 = addressAdd int* tempPtr105, bytes 4
+                        int* tempPtr108 = createPointer struct f
+                        int* tempPtr110 = addressAdd int* tempPtr108, bytes 8
                         return
                 ]
             },
             "_fn_MakeParamsTest_shtk_create3": {
                 "icode": [
-                        int* tempPtr80 = createPointer struct f
-                        int* tempPtr82 = addressAdd int* tempPtr80, bytes 0
-                        int* tempPtr84 = createPointer struct g
-                        int* tempPtr86 = addressAdd int* tempPtr84, bytes 0
-                        int temp87 = read int* tempPtr86
-                        int* tempPtr82 = write int temp87
-                        int* tempPtr89 = createPointer struct f
-                        int* tempPtr91 = addressAdd int* tempPtr89, bytes 4
-                        int* tempPtr93 = createPointer struct g
-                        int* tempPtr95 = addressAdd int* tempPtr93, bytes 4
-                        float temp96 = read float* tempPtr95
-                        float* tempPtr91 = write float temp96
-                        int* tempPtr98 = createPointer struct f
-                        int* tempPtr100 = addressAdd int* tempPtr98, bytes 8
-                        double* tempPtr100 = write double z
-                        int* tempPtr104 = createPointer struct returnValue102
-                        int* tempPtr105 = createPointer struct f
-                        int* tempPtr104 = memoryCopy int* tempPtr105, autoInt 16
+                        int* tempPtr116 = createPointer struct f
+                        int* tempPtr118 = addressAdd int* tempPtr116, bytes 0
+                        int* tempPtr120 = createPointer struct g
+                        int* tempPtr122 = addressAdd int* tempPtr120, bytes 0
+                        int temp123 = read int* tempPtr122
+                        int* tempPtr118 = write int temp123
+                        int* tempPtr125 = createPointer struct f
+                        int* tempPtr127 = addressAdd int* tempPtr125, bytes 4
+                        int* tempPtr129 = createPointer struct g
+                        int* tempPtr131 = addressAdd int* tempPtr129, bytes 4
+                        float temp132 = read float* tempPtr131
+                        float* tempPtr127 = write float temp132
+                        int* tempPtr134 = createPointer struct f
+                        int* tempPtr136 = addressAdd int* tempPtr134, bytes 8
+                        double* tempPtr136 = write double z
+                        int* tempPtr140 = createPointer struct f
+                        int* tempPtr142 = addressAdd int* tempPtr140, bytes 0
+                        int* tempPtr143 = createPointer struct f
+                        int* tempPtr145 = addressAdd int* tempPtr143, bytes 4
+                        int* tempPtr146 = createPointer struct f
+                        int* tempPtr148 = addressAdd int* tempPtr146, bytes 8
+                        int* tempPtr149 = createPointer struct returnValue138
+                        int* tempPtr150 = createPointer struct f
+                        int* tempPtr149 = memoryCopy int* tempPtr150, autoInt 16
+                        int* tempPtr153 = createPointer struct f
+                        int* tempPtr155 = addressAdd int* tempPtr153, bytes 0
+                        int* tempPtr156 = createPointer struct f
+                        int* tempPtr158 = addressAdd int* tempPtr156, bytes 4
+                        int* tempPtr159 = createPointer struct f
+                        int* tempPtr161 = addressAdd int* tempPtr159, bytes 8
                         return
                 ]
             },
             "_fn_MakeParamsTest_shtk_create4": {
                 "icode": [
-                        int* tempPtr113 = createPointer struct f
-                        int* tempPtr115 = addressAdd int* tempPtr113, bytes 0
-                        int* tempPtr115 = write int x
-                        int* tempPtr118 = createPointer struct f
-                        int* tempPtr120 = addressAdd int* tempPtr118, bytes 4
-                        int* tempPtr122 = createPointer struct g
-                        int* tempPtr124 = addressAdd int* tempPtr122, bytes 4
-                        float temp125 = read float* tempPtr124
-                        float* tempPtr120 = write float temp125
-                        int* tempPtr127 = createPointer struct f
-                        int* tempPtr129 = addressAdd int* tempPtr127, bytes 8
-                        double* tempPtr129 = write double z
-                        int* tempPtr133 = createPointer struct returnValue131
-                        int* tempPtr134 = createPointer struct f
-                        int* tempPtr133 = memoryCopy int* tempPtr134, autoInt 16
+                        int* tempPtr167 = createPointer struct f
+                        int* tempPtr169 = addressAdd int* tempPtr167, bytes 0
+                        int* tempPtr169 = write int x
+                        int* tempPtr172 = createPointer struct f
+                        int* tempPtr174 = addressAdd int* tempPtr172, bytes 4
+                        int* tempPtr176 = createPointer struct g
+                        int* tempPtr178 = addressAdd int* tempPtr176, bytes 4
+                        float temp179 = read float* tempPtr178
+                        float* tempPtr174 = write float temp179
+                        int* tempPtr181 = createPointer struct f
+                        int* tempPtr183 = addressAdd int* tempPtr181, bytes 8
+                        double* tempPtr183 = write double z
+                        int* tempPtr187 = createPointer struct f
+                        int* tempPtr189 = addressAdd int* tempPtr187, bytes 0
+                        int* tempPtr190 = createPointer struct f
+                        int* tempPtr192 = addressAdd int* tempPtr190, bytes 4
+                        int* tempPtr193 = createPointer struct f
+                        int* tempPtr195 = addressAdd int* tempPtr193, bytes 8
+                        int* tempPtr196 = createPointer struct returnValue185
+                        int* tempPtr197 = createPointer struct f
+                        int* tempPtr196 = memoryCopy int* tempPtr197, autoInt 16
+                        int* tempPtr200 = createPointer struct f
+                        int* tempPtr202 = addressAdd int* tempPtr200, bytes 0
+                        int* tempPtr203 = createPointer struct f
+                        int* tempPtr205 = addressAdd int* tempPtr203, bytes 4
+                        int* tempPtr206 = createPointer struct f
+                        int* tempPtr208 = addressAdd int* tempPtr206, bytes 8
                         return
                 ]
             },
@@ -108,50 +156,122 @@
             },
             "main": {
                 "icode": [
-                        struct calleeReturnValue141 = call struct _fn_MakeParamsTest_shtk_create1, module MakeParamsTest.shtk
-                        int* tempPtr144 = createPointer struct a
-                        int* tempPtr145 = createPointer struct calleeReturnValue141
-                        int* tempPtr144 = memoryCopy int* tempPtr145, autoInt 16
-                        int* tempPtr150 = createPointer struct a
-                        passPointer int* tempPtr150, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        void calleeReturnValue153 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        int temp161 = cast autoInt 10
-                        pass int temp161, struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
-                        double temp164 = cast autoFloat 20.000000
-                        pass double temp164, struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
-                        struct calleeReturnValue167 = call struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
-                        int* tempPtr170 = createPointer struct b
-                        int* tempPtr171 = createPointer struct calleeReturnValue167
-                        int* tempPtr170 = memoryCopy int* tempPtr171, autoInt 16
-                        int* tempPtr176 = createPointer struct b
-                        passPointer int* tempPtr176, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        void calleeReturnValue179 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        int* tempPtr187 = createPointer struct b
-                        passPointer int* tempPtr187, struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
-                        double temp190 = cast autoFloat 2.500000
-                        pass double temp190, struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
-                        struct calleeReturnValue193 = call struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
-                        int* tempPtr196 = createPointer struct c
-                        int* tempPtr197 = createPointer struct calleeReturnValue193
-                        int* tempPtr196 = memoryCopy int* tempPtr197, autoInt 16
-                        int* tempPtr202 = createPointer struct c
-                        passPointer int* tempPtr202, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        void calleeReturnValue205 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        int temp215 = cast autoInt 50
-                        pass int temp215, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
-                        int* tempPtr218 = createPointer struct c
-                        passPointer int* tempPtr218, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
-                        double temp221 = cast autoFloat 60.500000
-                        pass double temp221, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
-                        struct calleeReturnValue224 = call struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
-                        int* tempPtr227 = createPointer struct d
-                        int* tempPtr228 = createPointer struct calleeReturnValue224
-                        int* tempPtr227 = memoryCopy int* tempPtr228, autoInt 16
-                        int* tempPtr233 = createPointer struct d
-                        passPointer int* tempPtr233, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        void calleeReturnValue236 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
-                        int temp241 = cast autoInt 0
-                        int returnValue239 = equal int temp241
+                        struct calleeReturnValue213 = call struct _fn_MakeParamsTest_shtk_create1, module MakeParamsTest.shtk
+                        int* tempPtr216 = createPointer struct calleeReturnValue213
+                        int* tempPtr218 = addressAdd int* tempPtr216, bytes 0
+                        int* tempPtr219 = createPointer struct calleeReturnValue213
+                        int* tempPtr221 = addressAdd int* tempPtr219, bytes 4
+                        int* tempPtr222 = createPointer struct calleeReturnValue213
+                        int* tempPtr224 = addressAdd int* tempPtr222, bytes 8
+                        int* tempPtr225 = createPointer struct a
+                        int* tempPtr227 = addressAdd int* tempPtr225, bytes 0
+                        int* tempPtr228 = createPointer struct a
+                        int* tempPtr230 = addressAdd int* tempPtr228, bytes 4
+                        int* tempPtr231 = createPointer struct a
+                        int* tempPtr233 = addressAdd int* tempPtr231, bytes 8
+                        int* tempPtr234 = createPointer struct a
+                        int* tempPtr235 = createPointer struct calleeReturnValue213
+                        int* tempPtr234 = memoryCopy int* tempPtr235, autoInt 16
+                        int* tempPtr240 = createPointer struct a
+                        passPointer int* tempPtr240, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        void calleeReturnValue243 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        int temp251 = cast autoInt 10
+                        pass int temp251, struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
+                        double temp254 = cast autoFloat 20.000000
+                        pass double temp254, struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
+                        struct calleeReturnValue257 = call struct _fn_MakeParamsTest_shtk_create2, module MakeParamsTest.shtk
+                        int* tempPtr260 = createPointer struct calleeReturnValue257
+                        int* tempPtr262 = addressAdd int* tempPtr260, bytes 0
+                        int* tempPtr263 = createPointer struct calleeReturnValue257
+                        int* tempPtr265 = addressAdd int* tempPtr263, bytes 4
+                        int* tempPtr266 = createPointer struct calleeReturnValue257
+                        int* tempPtr268 = addressAdd int* tempPtr266, bytes 8
+                        int* tempPtr269 = createPointer struct b
+                        int* tempPtr271 = addressAdd int* tempPtr269, bytes 0
+                        int* tempPtr272 = createPointer struct b
+                        int* tempPtr274 = addressAdd int* tempPtr272, bytes 4
+                        int* tempPtr275 = createPointer struct b
+                        int* tempPtr277 = addressAdd int* tempPtr275, bytes 8
+                        int* tempPtr278 = createPointer struct b
+                        int* tempPtr279 = createPointer struct calleeReturnValue257
+                        int* tempPtr278 = memoryCopy int* tempPtr279, autoInt 16
+                        int* tempPtr284 = createPointer struct b
+                        passPointer int* tempPtr284, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        void calleeReturnValue287 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        int* tempPtr295 = createPointer struct b
+                        passPointer int* tempPtr295, struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
+                        double temp298 = cast autoFloat 2.500000
+                        pass double temp298, struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
+                        struct calleeReturnValue301 = call struct _fn_MakeParamsTest_shtk_create3, module MakeParamsTest.shtk
+                        int* tempPtr304 = createPointer struct calleeReturnValue301
+                        int* tempPtr306 = addressAdd int* tempPtr304, bytes 0
+                        int* tempPtr307 = createPointer struct calleeReturnValue301
+                        int* tempPtr309 = addressAdd int* tempPtr307, bytes 4
+                        int* tempPtr310 = createPointer struct calleeReturnValue301
+                        int* tempPtr312 = addressAdd int* tempPtr310, bytes 8
+                        int* tempPtr313 = createPointer struct c
+                        int* tempPtr315 = addressAdd int* tempPtr313, bytes 0
+                        int* tempPtr316 = createPointer struct c
+                        int* tempPtr318 = addressAdd int* tempPtr316, bytes 4
+                        int* tempPtr319 = createPointer struct c
+                        int* tempPtr321 = addressAdd int* tempPtr319, bytes 8
+                        int* tempPtr322 = createPointer struct c
+                        int* tempPtr323 = createPointer struct calleeReturnValue301
+                        int* tempPtr322 = memoryCopy int* tempPtr323, autoInt 16
+                        int* tempPtr328 = createPointer struct c
+                        passPointer int* tempPtr328, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        void calleeReturnValue331 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        int temp341 = cast autoInt 50
+                        pass int temp341, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
+                        int* tempPtr344 = createPointer struct c
+                        passPointer int* tempPtr344, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
+                        double temp347 = cast autoFloat 60.500000
+                        pass double temp347, struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
+                        struct calleeReturnValue350 = call struct _fn_MakeParamsTest_shtk_create4, module MakeParamsTest.shtk
+                        int* tempPtr353 = createPointer struct calleeReturnValue350
+                        int* tempPtr355 = addressAdd int* tempPtr353, bytes 0
+                        int* tempPtr356 = createPointer struct calleeReturnValue350
+                        int* tempPtr358 = addressAdd int* tempPtr356, bytes 4
+                        int* tempPtr359 = createPointer struct calleeReturnValue350
+                        int* tempPtr361 = addressAdd int* tempPtr359, bytes 8
+                        int* tempPtr362 = createPointer struct d
+                        int* tempPtr364 = addressAdd int* tempPtr362, bytes 0
+                        int* tempPtr365 = createPointer struct d
+                        int* tempPtr367 = addressAdd int* tempPtr365, bytes 4
+                        int* tempPtr368 = createPointer struct d
+                        int* tempPtr370 = addressAdd int* tempPtr368, bytes 8
+                        int* tempPtr371 = createPointer struct d
+                        int* tempPtr372 = createPointer struct calleeReturnValue350
+                        int* tempPtr371 = memoryCopy int* tempPtr372, autoInt 16
+                        int* tempPtr377 = createPointer struct d
+                        passPointer int* tempPtr377, void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        void calleeReturnValue380 = call void _fn_MakeParamsTest_shtk_printFoobar, module MakeParamsTest.shtk
+                        int temp385 = cast autoInt 0
+                        int returnValue383 = equal int temp385
+                        int* tempPtr387 = createPointer struct a
+                        int* tempPtr389 = addressAdd int* tempPtr387, bytes 0
+                        int* tempPtr390 = createPointer struct a
+                        int* tempPtr392 = addressAdd int* tempPtr390, bytes 4
+                        int* tempPtr393 = createPointer struct a
+                        int* tempPtr395 = addressAdd int* tempPtr393, bytes 8
+                        int* tempPtr397 = createPointer struct b
+                        int* tempPtr399 = addressAdd int* tempPtr397, bytes 0
+                        int* tempPtr400 = createPointer struct b
+                        int* tempPtr402 = addressAdd int* tempPtr400, bytes 4
+                        int* tempPtr403 = createPointer struct b
+                        int* tempPtr405 = addressAdd int* tempPtr403, bytes 8
+                        int* tempPtr407 = createPointer struct c
+                        int* tempPtr409 = addressAdd int* tempPtr407, bytes 0
+                        int* tempPtr410 = createPointer struct c
+                        int* tempPtr412 = addressAdd int* tempPtr410, bytes 4
+                        int* tempPtr413 = createPointer struct c
+                        int* tempPtr415 = addressAdd int* tempPtr413, bytes 8
+                        int* tempPtr417 = createPointer struct d
+                        int* tempPtr419 = addressAdd int* tempPtr417, bytes 0
+                        int* tempPtr420 = createPointer struct d
+                        int* tempPtr422 = addressAdd int* tempPtr420, bytes 4
+                        int* tempPtr423 = createPointer struct d
+                        int* tempPtr425 = addressAdd int* tempPtr423, bytes 8
                         return
                 ]
             }

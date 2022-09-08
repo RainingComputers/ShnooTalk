@@ -46,6 +46,14 @@
                     {"opcode": "newLine", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}},
                     {"opcode": "cast", "op1": {"type": "temp", "id": 55, "dtype": "int"}, "op2": {"type": "literal", "id": 54, "dtype": "autoInt", "value": 0}, "op3": {"type": "none"}},
                     {"opcode": "equal", "op1": {"type": "returnValue", "id": 53, "dtype": "int"}, "op2": {"type": "temp", "id": 55, "dtype": "int"}, "op3": {"type": "none"}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op2": {"type": "var", "id": 60, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 63, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 61, "dtype": "int"}, "op3": {"type": "bytes", "id": 62, "bytes": 0}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 64, "dtype": "int"}, "op2": {"type": "var", "id": 60, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 66, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 64, "dtype": "int"}, "op3": {"type": "bytes", "id": 65, "bytes": 4}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op2": {"type": "var", "id": 60, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 69, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 67, "dtype": "int"}, "op3": {"type": "bytes", "id": 68, "bytes": 8}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 70, "dtype": "int"}, "op2": {"type": "var", "id": 60, "name": "foo", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 72, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 70, "dtype": "int"}, "op3": {"type": "bytes", "id": 71, "bytes": 12}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

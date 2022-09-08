@@ -43,6 +43,10 @@
                     "a": {"dtype": "struct", "dtypeName": "Point", "dtypeSize": 8, "size": 8, "moduleName": "TestModules/Random.shtk", "offset": 0, "dimensions": [], "dimTypes": [], "properties": ["isMutable", "isLocal"]}
                 },
                 "icode": [
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 7, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 5, "dtype": "int"}, "op3": {"type": "bytes", "id": 6, "bytes": 0}},
+                    {"opcode": "createPointer", "op1": {"type": "tempPtr", "id": 8, "dtype": "int"}, "op2": {"type": "var", "id": 4, "name": "a", "dtype": "struct"}, "op3": {"type": "none"}},
+                    {"opcode": "addressAdd", "op1": {"type": "tempPtr", "id": 10, "dtype": "int"}, "op2": {"type": "tempPtr", "id": 8, "dtype": "int"}, "op3": {"type": "bytes", "id": 9, "bytes": 4}},
                     {"opcode": "return", "op1": {"type": "none"}, "op2": {"type": "none"}, "op3": {"type": "none"}}
                 ]
             }

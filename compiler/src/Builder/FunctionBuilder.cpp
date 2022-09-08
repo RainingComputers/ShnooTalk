@@ -729,7 +729,7 @@ bool FunctionBuilder::shouldCallResourceMgmtHook(const Unit& unit, const std::st
     if (unit.isSelf())
         return false;
 
-    return finder.methodExists(unit.type(), hook);
+    return true;
 }
 
 void FunctionBuilder::callResourceMgmtHookSingle(const Unit& symbol, const std::string& hook)
@@ -749,18 +749,21 @@ void FunctionBuilder::callResourceMgmtHook(const Unit& symbol, const std::string
     if (!shouldCallResourceMgmtHook(symbol, hook))
         return;
 
+    if (symbol.isStruct() && !symbol.isArray())
+    {
+        for (const std::string& fieldName : finder.getFieldNames(symbol.type()))
+            callResourceMgmtHook(getStructFieldFromString(fieldName, symbol), hook);
+    }
+
+    if (!finder.methodExists(symbol.type(), hook)) // TODO test this
+        return;
+
     if (symbol.isArray())
     {
         for (const Unit& element : destructureArray(symbol))
             callResourceMgmtHook(element, hook);
 
         return;
-    }
-
-    if (symbol.isStruct())
-    {
-        for (const std::string& fieldName : finder.getFieldNames(symbol.type()))
-            callResourceMgmtHook(getStructFieldFromString(fieldName, symbol), hook);
     }
 
     callResourceMgmtHookSingle(symbol, hook);

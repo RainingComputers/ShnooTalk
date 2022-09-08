@@ -5,31 +5,43 @@
             "main": {
                 "icode": [
                         struct calleeReturnValue3 = call struct _fn_TestModules_ResultGeneric_shtk[int]_error, module TestModules/ResultGeneric.shtk[int]
-                        byte* tempPtr7 = createPointer struct a
-                        byte* tempPtr8 = createPointer struct calleeReturnValue3
-                        byte* tempPtr7 = memoryCopy byte* tempPtr8, autoInt 5
-                        byte* tempPtr11 = createPointer struct a
-                        byte* tempPtr13 = addressAdd byte* tempPtr11, bytes 0
-                        byte temp14 = read byte* tempPtr13
-                        print byte temp14
+                        byte* tempPtr7 = createPointer struct calleeReturnValue3
+                        byte* tempPtr9 = addressAdd byte* tempPtr7, bytes 0
+                        byte* tempPtr10 = createPointer struct calleeReturnValue3
+                        byte* tempPtr12 = addressAdd byte* tempPtr10, bytes 1
+                        byte* tempPtr13 = createPointer struct a
+                        byte* tempPtr15 = addressAdd byte* tempPtr13, bytes 0
+                        byte* tempPtr16 = createPointer struct a
+                        byte* tempPtr18 = addressAdd byte* tempPtr16, bytes 1
+                        byte* tempPtr19 = createPointer struct a
+                        byte* tempPtr20 = createPointer struct calleeReturnValue3
+                        byte* tempPtr19 = memoryCopy byte* tempPtr20, autoInt 5
+                        byte* tempPtr23 = createPointer struct a
+                        byte* tempPtr25 = addressAdd byte* tempPtr23, bytes 0
+                        byte temp26 = read byte* tempPtr25
+                        print byte temp26
                         newLine
-                        int temp18 = cast autoInt 2
-                        pass int temp18, struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
-                        struct calleeReturnValue21 = call struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
-                        byte* tempPtr24 = createPointer struct calleeReturnValue21
-                        byte* tempPtr26 = addressAdd byte* tempPtr24, bytes 0
-                        byte* tempPtr27 = createPointer struct calleeReturnValue21
-                        byte* tempPtr29 = addressAdd byte* tempPtr27, bytes 1
-                        int temp31 = read int* tempPtr29
-                        int item = equal int temp31
-                        byte temp33 = read byte* tempPtr26
-                        byte error = equal byte temp33
+                        int temp30 = cast autoInt 2
+                        pass int temp30, struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
+                        struct calleeReturnValue33 = call struct _fn_TestModules_ResultGeneric_shtk[int]_success, module TestModules/ResultGeneric.shtk[int]
+                        byte* tempPtr36 = createPointer struct calleeReturnValue33
+                        byte* tempPtr38 = addressAdd byte* tempPtr36, bytes 0
+                        byte* tempPtr39 = createPointer struct calleeReturnValue33
+                        byte* tempPtr41 = addressAdd byte* tempPtr39, bytes 1
+                        int temp43 = read int* tempPtr41
+                        int item = equal int temp43
+                        byte temp45 = read byte* tempPtr38
+                        byte error = equal byte temp45
                         print int item
                         space
                         print byte error
                         newLine
-                        int temp38 = cast autoInt 0
-                        int returnValue36 = equal int temp38
+                        int temp50 = cast autoInt 0
+                        int returnValue48 = equal int temp50
+                        byte* tempPtr52 = createPointer struct a
+                        byte* tempPtr54 = addressAdd byte* tempPtr52, bytes 0
+                        byte* tempPtr55 = createPointer struct a
+                        byte* tempPtr57 = addressAdd byte* tempPtr55, bytes 1
                         return
                 ]
             }
@@ -44,24 +56,40 @@
                         byte* tempPtr7 = addressAdd byte* tempPtr5, bytes 0
                         byte temp9 = cast autoInt 1
                         byte* tempPtr7 = write byte temp9
-                        byte* tempPtr12 = createPointer struct returnValue10
-                        byte* tempPtr13 = createPointer struct r
-                        byte* tempPtr12 = memoryCopy byte* tempPtr13, autoInt 5
+                        byte* tempPtr12 = createPointer struct r
+                        byte* tempPtr14 = addressAdd byte* tempPtr12, bytes 0
+                        byte* tempPtr15 = createPointer struct r
+                        byte* tempPtr17 = addressAdd byte* tempPtr15, bytes 1
+                        byte* tempPtr18 = createPointer struct returnValue10
+                        byte* tempPtr19 = createPointer struct r
+                        byte* tempPtr18 = memoryCopy byte* tempPtr19, autoInt 5
+                        byte* tempPtr22 = createPointer struct r
+                        byte* tempPtr24 = addressAdd byte* tempPtr22, bytes 0
+                        byte* tempPtr25 = createPointer struct r
+                        byte* tempPtr27 = addressAdd byte* tempPtr25, bytes 1
                         return
                 ]
             },
             "_fn_TestModules_ResultGeneric_shtk[int]_success": {
                 "icode": [
-                        byte* tempPtr21 = createPointer struct r
-                        byte* tempPtr23 = addressAdd byte* tempPtr21, bytes 0
-                        byte temp25 = cast autoInt 0
-                        byte* tempPtr23 = write byte temp25
-                        byte* tempPtr27 = createPointer struct r
-                        byte* tempPtr29 = addressAdd byte* tempPtr27, bytes 1
-                        int* tempPtr29 = write int item
-                        byte* tempPtr33 = createPointer struct returnValue31
-                        byte* tempPtr34 = createPointer struct r
-                        byte* tempPtr33 = memoryCopy byte* tempPtr34, autoInt 5
+                        byte* tempPtr33 = createPointer struct r
+                        byte* tempPtr35 = addressAdd byte* tempPtr33, bytes 0
+                        byte temp37 = cast autoInt 0
+                        byte* tempPtr35 = write byte temp37
+                        byte* tempPtr39 = createPointer struct r
+                        byte* tempPtr41 = addressAdd byte* tempPtr39, bytes 1
+                        int* tempPtr41 = write int item
+                        byte* tempPtr45 = createPointer struct r
+                        byte* tempPtr47 = addressAdd byte* tempPtr45, bytes 0
+                        byte* tempPtr48 = createPointer struct r
+                        byte* tempPtr50 = addressAdd byte* tempPtr48, bytes 1
+                        byte* tempPtr51 = createPointer struct returnValue43
+                        byte* tempPtr52 = createPointer struct r
+                        byte* tempPtr51 = memoryCopy byte* tempPtr52, autoInt 5
+                        byte* tempPtr55 = createPointer struct r
+                        byte* tempPtr57 = addressAdd byte* tempPtr55, bytes 0
+                        byte* tempPtr58 = createPointer struct r
+                        byte* tempPtr60 = addressAdd byte* tempPtr58, bytes 1
                         return
                 ]
             }
