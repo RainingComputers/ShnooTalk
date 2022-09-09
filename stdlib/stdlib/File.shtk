@@ -120,8 +120,10 @@ fn pclose(mut self: File) -> Result[int, StdlibError]
 
 fn __deconstructor__(self: File)
 {
-    if (addr(self.libcFile))
-        libc::fclose(self.libcFile)
+    # TODO Fix bugs in resource management hooks
+
+    # if (addr(self.libcFile))
+    #     libc::fclose(self.libcFile)
 }
 
 fn readStringFromFile(path: String) -> Result[String, StdlibError]
