@@ -4,6 +4,8 @@ use "../stdlib/ArrayUtils.shtk" as array
 from "../stdlib/List.shtk" use List
 from "../stdlib/Optional.shtk" use Optional
 
+# TODO add non inplace sort and reverse
+
 fn sortInPlace(mut l: List[T])
 {
     array::sortInPlace[T](l.pointer(), l.length())

@@ -19,7 +19,7 @@ struct List
 
 fn allocateHeap(length: ulong) -> List
 {
-    const capacity := length*2
+    const capacity := length*2 + 1
 
     var self: List
 
@@ -137,6 +137,7 @@ fn setItem(mut self: List, index: ulong, item: T)
 
 fn __subscriptItem__(self: List, index: ulong) -> T
 {
+    # TODO support negetive indices
     self._validateIndex(index)
     return self._ptr[index]
 }
@@ -171,7 +172,7 @@ fn _free(mut self: List)
     if not addr(self._ptr) 
         return void
 
-    for var i: ulong = 0; i < self._capacity; i += 1 
+    for var i: ulong = 0; i < self._length; i += 1 
         self._ptr[i].__deconstructor__()
 
     free[T](self._ptr)
