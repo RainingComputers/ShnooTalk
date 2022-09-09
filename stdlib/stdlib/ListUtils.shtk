@@ -1,1 +1,35 @@
-# TODO
+generic T
+
+use "../stdlib/ArrayUtils.shtk" as array
+from "../stdlib/List.shtk" use List
+from "../stdlib/Optional.shtk" use Optional
+
+fn sortInPlace(mut l: List[T])
+{
+    array::sortInPlace[T](l.pointer(), l.length())
+}
+
+fn reverseInPlace(mut l: List[T])
+{
+    array::reverseInPlace[T](l.pointer(), l.length())
+}
+
+fn search(l: List[T], item: T) -> Optional[ulong]
+{
+    return array::search[T](l.pointer(), l.length(), item)
+}
+
+fn binarySearch(l: List[T], item: T) -> Optional[ulong]
+{
+    return array::binarySearch[T](l.pointer(), l.length(), item)
+}
+
+fn count(l: List[T], item: T) -> ulong
+{
+    return array::count[T](l.pointer(), l.length(), item)
+}
+
+fn isEqual(a: List[T], b: List[T]) -> bool
+{
+    return array::isEqual[T](a.pointer(), a.length(), b.pointer(), b.length())
+}

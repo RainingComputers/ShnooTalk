@@ -1,0 +1,59 @@
+use "../stdlib/ListUtils.shtk" as list
+from "../stdlib/List.shtk" use List
+
+fn main() -> int
+{
+    println("search")
+
+    var a := make(List[int], [5, 3, 4, 1, 2])
+
+    println(list::search[int](a, 5).expect())
+    println(list::search[int](a, 1).expect())
+    println(list::search[int](a, 4).expect())
+    println(list::search[int](a, 2).expect())
+    println(list::search[int](a, 10).isNone())
+
+    println("binarySearch")
+
+    var b := make(List[int], [1, 10, 23, 45, 67, 100])
+
+    println(list::binarySearch[int](b, 1).expect())
+    println(list::binarySearch[int](b, 45).expect())
+    println(list::binarySearch[int](b, 23).expect())
+    println(list::binarySearch[int](b, 100).expect())
+    println(list::binarySearch[int](b, 1223).isNone()) 
+
+    println("count")
+
+    var c := make(List[int], [1, 23, 45, 32, 34, 32, 32, 54, 32, 45])
+
+    println(list::count[int](c, 32))
+    println(list::count[int](c, 45))
+    println(list::count[int](c, 100))
+    println(list::count[int](c, 23))
+
+    println("isEqual")
+
+    println(list::isEqual[int](a, b))
+    println(list::isEqual[int](a, a))
+
+    println("sort")
+
+    var d := make(List[int], [23, 64, 78, 34, 56, 87, 45, 67, 34, 879, 342, 674, 23, 6457, 23, 45, 45, 645, 54, 6])
+    list::sortInPlace[int](d)
+
+    for var i: ulong = 0; i < 20; i += 1
+        print(d[i]; ", ")
+
+    println("")
+    
+    println("reverse")
+
+    var e := make(List[int], [1, 2, 3, 4, 5])
+    list::reverseInPlace[int](e)
+
+    for i = 0; i < 5; i += 1
+        print(e[i]; ", ")
+
+    return 0
+}

@@ -6,6 +6,7 @@ from "../stdlib/Optional.shtk" use Optional, some, none
 fn _quickSortPartition(arr: T[], lo: ulong, hi: ulong) -> ulong
 {
     # TODO add unsafe keyword, immutable pointer is being force casted to mutable pointer
+    # TODO add ref keyword
     var a: T[] <- arr  
 
     var pivot := a[(hi + lo)/2]
@@ -44,6 +45,7 @@ fn sortInPlace(a: T[], n: ulong)
 fn reverseInPlace(arr: T[], n: ulong)
 {
     # TODO add unsafe keyword, immutable pointer is being force casted to mutable pointer
+    # TODO add ref keyword
     var a: T[] <- arr  
 
     for var i: ulong = 0; i < (n/2); i += 1 
