@@ -27,6 +27,12 @@ list remove
 100
 0, 1, 2, 3, 4, 5, 6, 
 7
-list last
+list swapRemove
+0, 1, 2, 3, 4, 5, 6, 
+7
+2
+0, 1, 6, 3, 4, 5, 
 6
+list last
+5
 1

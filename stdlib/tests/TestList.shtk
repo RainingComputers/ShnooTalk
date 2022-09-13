@@ -61,6 +61,13 @@ fn main() -> int
     printIntList(i)
     println(i.length())
 
+    println("list swapRemove")
+    printIntList(i)
+    println(i.length())
+    println(i.swapRemove(2))
+    printIntList(i)
+    println(i.length())
+
     println("list last")
     println(i.last().expect())
     i.clear()

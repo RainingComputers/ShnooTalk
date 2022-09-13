@@ -111,6 +111,18 @@ fn remove(mut self: List, index: ulong) -> T
     return item
 }
 
+fn swapRemove(mut self: List, index: ulong) -> T
+{
+    self._validateIndex(index)
+
+    const item := self._ptr[index]
+    
+    self._ptr[index] = self._ptr[self._length - 1]
+    self._length -= 1
+
+    return item
+}
+
 fn last(self: List) -> Optional[T]
 {
     if self._length <= 0
