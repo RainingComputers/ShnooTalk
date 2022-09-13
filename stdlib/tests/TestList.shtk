@@ -39,12 +39,32 @@ fn main() -> int
     printIntList(h)
 
     println("list pop")
-    println(h.pop())
+    println(h.pop().expect())
     printIntList(h)
 
     println("clear")
     h.clear()
     printIntList(h) 
+
+    println("list insert")
+    var i := make(List[int], [0, 1, 2, 3, 4, 5, 6])
+    printIntList(i)
+    println(i.length())
+    i.insert(2, 100)
+    printIntList(i)
+    println(i.length())
+
+    println("list remove")
+    printIntList(i)
+    println(i.length())
+    println(i.remove(2))
+    printIntList(i)
+    println(i.length())
+
+    println("list last")
+    println(i.last().expect())
+    i.clear()
+    println(i.last().isNone())
 
     return 0
 }

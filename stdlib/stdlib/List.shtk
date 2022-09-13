@@ -69,12 +69,17 @@ fn expand(mut self: List, capacity: ulong)
     self._capacity = capacity
 }
 
-fn append(mut self: List, item: T)
+fn _incrementLength(mut self: List)
 {
     if self._length == self._capacity
         self.expand(self._length*2)
 
     self._length += 1
+}
+
+fn append(mut self: List, item: T)
+{
+    self._incrementLength()
     self.setItem(self._length-1 , item)
 }
 
@@ -90,21 +95,53 @@ fn appendArray(mut self: List, items: T[], length: ulong)
     self._length = newLength
 }
 
+fn remove(mut self: List, index: ulong) -> T
+{
+    self._validateIndex(index)
+    
+    const item := self._ptr[index]
+
+    self._length -= 1
+
+    const src: T[] <- addOffset[T](self._ptr, index+1)  # TODO test type hint
+    const srcLength := self._length - index
+    
+    memcpyOffset[T](self._ptr, src, srcLength, index)
+
+    return item
+}
+
+fn last(self: List) -> Optional[T]
+{
+    if self._length <= 0
+        return none()
+
+    return some(self._ptr[self._length-1])
+}
+
 fn clear(mut self: List)
 {
     self._length = 0
 }
 
-fn pop(mut self: List) -> T
+fn pop(mut self: List) -> Optional[T]
 {
+    if self._length == 0
+        return none()
+
     const item := self[self._length-1]
     self._length -= 1
-    return item
+    return some(item)
 }
 
 fn length(self: List) -> ulong
 {
     return self._length
+}
+
+fn isEmpty(self: List) -> bool
+{
+    return self._length == 0
 }
 
 fn capacity(self: List) -> ulong
@@ -135,9 +172,22 @@ fn setItem(mut self: List, index: ulong, item: T)
     self._ptr[index] = item
 }
 
+fn insert(mut self: List, index: ulong, item: T)
+{
+    self._validateIndex(index)
+    self._incrementLength()
+    
+    const src: T[] <- addOffset[T](self._ptr, index)
+    const srcLength := self._length - index - 1
+    
+    memcpyOffset[T](self._ptr, src, srcLength, index+1)
+    self._ptr[index] = item
+}
+
 fn __subscriptItem__(self: List, index: ulong) -> T
 {
-    # TODO support negetive indices
+    # TODO support negetive indices?
+
     self._validateIndex(index)
     return self._ptr[index]
 }
@@ -186,3 +236,4 @@ fn __deconstructor__(mut self: List)
     self._free()
 }
 
+# TODO add in operator
