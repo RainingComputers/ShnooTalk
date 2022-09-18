@@ -93,3 +93,10 @@ string in operator
 0
 0
 0
+string split
+"foobar", 
+"foo", "bar", 
+"foo", "", "", "", "bar", 
+"", "", "", "foo", "", "bar", "", "", 
+"", 
+"", "", 

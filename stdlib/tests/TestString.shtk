@@ -1,8 +1,15 @@
 from "../stdlib/String.shtk" use string, String
+from "../stdlib/List.shtk" use List
 
 fn testStringArgCoercion(str: String)
 {
     println(str)
+}
+
+fn printStringList(list: List[String])
+{
+    for s in list print('\"'; s; '\"'; ", ")
+    println("")
 }
 
 fn main() -> int
@@ -127,6 +134,14 @@ fn main() -> int
     println("bcv" in "abcdef".string())
     println('r' in "abcdef".string())
     println("defg" in "abcdef".string())
+
+    println("string split")
+    printStringList("foobar".string().split(' '))
+    printStringList("foo bar".string().split(' '))
+    printStringList("foo    bar".string().split(' '))
+    printStringList("   foo  bar  ".string().split(' '))
+    printStringList("".string().split(' '))
+    printStringList(" ".string().split(' '))
 
     return 0
 }

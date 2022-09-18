@@ -166,7 +166,21 @@ fn upper(self: String) -> String
 
 fn split(self: String, delimeter: char) -> List[String]
 {
-    return make(List[String])
+    var splits := make(List[String])
+
+    var lastSplit: ulong = 0
+    for var i: ulong = 0; i < self.length(); i += 1
+    {
+        if self[i] == delimeter 
+        {
+            splits.append(self[[lastSplit, i]])
+            lastSplit = i + 1
+        }
+    }
+
+    splits.append(self[[lastSplit, self.length()]])
+
+    return splits
 }
 
 fn startsWith(self: String, other: String) -> bool
