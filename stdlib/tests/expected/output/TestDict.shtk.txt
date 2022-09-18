@@ -1,0 +1,44 @@
+dict length 3
+dict isEmpty 0
+dict get 300
+dict get fail 1
+dict getList
+3
+100
+400
+1
+dict insert new
+1
+1000
+dict insert existing
+400
+2000
+dict remove non existing
+1
+dict remove existing
+1000
+1
+keyExists 1 1
+dict keys
+Hello
+World
+Goodbye
+dict values
+100
+2000
+300
+dict subscript
+2000
+dict subscript array
+100
+2000
+300
+dict items
+Hello 100
+World 2000
+Goodbye 300
+dict clone and clear
+0
+1
+3
+100

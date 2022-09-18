@@ -1,0 +1,79 @@
+from "../stdlib/Dict.shtk" use Dict
+from "../stdlib/String.shtk" use String
+from "../stdlib/Pair.shtk" use pair
+from "../stdlib/List.shtk" use List
+from "../stdlib/String.shtk" use string
+
+fn main() -> int
+{
+    var a := make(Dict[String, int], [
+        pair[String, int]("Hello", 100),
+        pair[String, int]("World", 200),
+        pair[String, int]("Goodbye", 300),
+        pair[String, int]("World", 400)
+    ])
+
+    println("dict length", a.length())
+    println("dict isEmpty", a.isEmpty())
+
+    println("dict get", a.get("Goodbye").expect())
+    println("dict get fail", a.get("Foobar").isNone())
+
+    println("dict getList")
+    const b := a.getList(
+        make(List[String], ["Hello".string(), "World".string(), "Foobar".string()])
+    )
+
+    println(b.length())
+    println(b[0].expect())
+    println(b[1].expect())
+    println(b[2].isNone())    
+
+    println("dict insert new")
+
+    const c := a.insert("Foobar", 1000)
+    println(c.isNone())
+    println(a.get("Foobar").expect())
+
+    println("dict insert existing")
+
+    const d := a.insert("World", 2000)
+    println(d.expect())
+    println(a.get("World").expect())
+
+    println("dict remove non existing")
+    println(a.remove("doesNotExist").isNone())
+    
+    println("dict remove existing")
+    println(a.remove("Foobar").expect())
+    println(a.get("Foobar").isNone())
+
+    println("keyExists", a.keyExists("World"), "World".string() in a)
+
+    println("dict keys")
+    for k in a.keys() println(k)
+
+    println("dict values")
+    for v in a.values() println(v)
+
+    println("dict subscript")
+    println(a["World".string()])
+
+    println("dict subscript array")
+    for x in a[["Hello".string(), "World".string(), "Goodbye".string()]]
+        println(x)
+
+    println("dict items")
+    for i in a.items()
+        println(i.first, i.second)
+
+    println("dict clone and clear")
+    const e := a.clone()
+    a.clear()
+    println(a.length())
+    println(a.get("Hello").isNone())
+    println(e.length())
+    println(e.get("Hello").expect())
+
+    return 0
+}

@@ -1,0 +1,19 @@
+from "../stdlib/Dict.shtk" use Dict
+from "../stdlib/Pair.shtk" use pair
+from "../stdlib/String.shtk" use String, string
+
+fn main() -> int
+{
+    var a := make(Dict[String, int], [
+        pair[String, int]("Hello", 100),
+        pair[String, int]("World", 200),
+        pair[String, int]("Goodbye", 300),
+        pair[String, int]("World", 400)
+    ])
+
+    const b := a[["Hello".string(), "DoesNotExist".string()]]
+
+    for item in b println(item)
+
+    return 0
+}

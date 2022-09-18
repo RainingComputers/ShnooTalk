@@ -1,4 +1,4 @@
 enum StdlibError {
     OSError,
-    EOF
+    EOF,
 }

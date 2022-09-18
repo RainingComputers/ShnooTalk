@@ -1,1 +1,165 @@
-# TODO
+generic K, V
+
+from "../stdlib/ListUtils.shtk" use search
+from "../stdlib/List.shtk" use List, list
+from "../stdlib/Pair.shtk" use Pair, pair
+from "../stdlib/Optional.shtk" use Optional, some, none
+from "../stdlib/Panic.shtk" use panic
+
+def KEY_DOES_NOT_EXIST "Key does not exist for dict"
+
+struct Dict
+{
+    var _items: List[Pair[K, V]]
+}
+
+fn dict(items: Pair[K, V][], length: ulong) -> Dict
+{
+    var self: Dict
+    self._items = make(List[Pair[K, V]], 10)
+
+    for var i: ulong = 0; i < length; i += 1
+        self.insert(items[i].first, items[i].second)
+
+    return self
+}
+
+fn items(self: Dict) -> List[Pair[K, V]]
+{
+    return self._items
+}
+
+fn clear(mut self: Dict)
+{
+    self._items.clear()
+}
+
+fn clone(self: Dict) -> Dict
+{
+    return dict(self._items.pointer(), self._items.length())
+}
+
+fn length(self: Dict) -> ulong
+{
+    return self._items.length()
+}
+
+fn isEmpty(self: Dict) -> bool
+{
+    return self._items.length() == 0
+}
+
+fn capacity(self: Dict) -> ulong
+{
+    return self._items.capacity()
+}
+
+fn get(self: Dict, key: K) -> Optional[V]
+{
+    for item in self._items
+        if item.first == key
+            return some(item.second)
+
+    return none()
+}
+
+fn getList(self: Dict, keys: List[K]) -> List[Optional[V]]
+{
+    var valuesList := make(List[Optional[V]], 10)  # TODO add empty constructors for all container types
+
+    for k in keys 
+        valuesList.append(self.get(k))
+
+    return valuesList
+}
+
+fn _getIndex(self: Dict, key: K) -> Optional[ulong]
+{
+    for var i: ulong = 0; i < self._items.length(); i += 1
+        if self._items._ptr[i].first == key
+            return some(i)
+
+    return none()
+}
+
+fn insert(mut self: Dict, key: K, item: V) -> Optional[V]
+{
+    const [index, err] := self._getIndex(key)
+
+    if err {
+        self._items.append(pair(key, item))
+        return none()
+    }
+        
+    const prevItem := self._items._ptr[index]
+    self._items._ptr[index].second = item
+
+    return some(prevItem.second)
+}
+
+fn remove(mut self: Dict, key: K) -> Optional[V]
+{
+    const [index, err] := self._getIndex(key)
+
+    if err return none()
+
+    const item := self._items._ptr[index]
+    self._items.swapRemove(index)
+
+    return some(item.second)
+}
+
+fn keyExists(self: Dict, key: K) -> bool
+{
+    return self._getIndex(key).hasValue()
+}
+
+fn keys(self: Dict) -> List[K]
+{
+    var keys := make(List[K], 10)
+
+    for item in self._items
+        keys.append(item.first)
+
+    return keys
+}
+
+fn values(self: Dict) -> List[V]
+{
+    var values := make(List[V], 10)
+
+    for item in self._items
+        values.append(item.second)
+    
+    return values
+}
+
+fn __subscriptItem__(self: Dict, key: K) -> V
+{
+    const [item, err] := self.get(key)
+
+    if err 
+        panic(KEY_DOES_NOT_EXIST, 1)
+
+    return item
+}
+
+fn __subscriptKeyArray__(self: Dict, keys: K[], length: ulong) -> List[V]
+{
+    var valuesList := make(List[V], 10)
+
+    for var i: ulong = 0; i < length; i += 1 
+        valuesList.append(self[keys[i]])    
+
+    return valuesList
+}
+
+fn __subscriptKeyList__(self: Dict, keys: List[K]) -> List[V]
+{
+    return self.__subscriptKeyArray__(keys.pointer(), keys.length())
+}
+
+fn __in__(self: Dict, key: K) -> bool
+{
+    return self.keyExists(key)
+}
