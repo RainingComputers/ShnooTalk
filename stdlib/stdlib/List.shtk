@@ -41,6 +41,11 @@ fn list(items: T[], length: ulong) -> List
     return self
 }
 
+fn empptyList() -> List
+{
+    return allocateHeap(10)
+}
+
 fn fromPreAllocated(buffer: T[], capacity: ulong, length: ulong) -> List
 {
     var self: List

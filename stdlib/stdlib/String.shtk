@@ -163,11 +163,11 @@ fn upper(self: String) -> String
     return new
 }
 
-# TODO
-# fn split(self: String, delimeter: char) -> List[String]
-# {
-#     return make(List[String], "")
-# }
+
+fn split(self: String, delimeter: char) -> List[String]
+{
+    return make(List[String])
+}
 
 fn startsWith(self: String, other: String) -> bool
 {

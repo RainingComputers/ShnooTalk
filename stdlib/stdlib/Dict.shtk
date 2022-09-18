@@ -16,12 +16,19 @@ struct Dict
 fn dict(items: Pair[K, V][], length: ulong) -> Dict
 {
     var self: Dict
-    self._items = make(List[Pair[K, V]], 10)
+    self._items = make(List[Pair[K, V]])
 
     for var i: ulong = 0; i < length; i += 1
         self.insert(items[i].first, items[i].second)
 
     return self
+}
+
+fn emptyDict() -> Dict
+{
+    var self: Dict
+    self._items = make(List[Pair[K, V]])
+    return self   
 }
 
 fn items(self: Dict) -> List[Pair[K, V]]
@@ -65,7 +72,7 @@ fn get(self: Dict, key: K) -> Optional[V]
 
 fn getList(self: Dict, keys: List[K]) -> List[Optional[V]]
 {
-    var valuesList := make(List[Optional[V]], 10)  # TODO add empty constructors for all container types
+    var valuesList := make(List[Optional[V]])  # TODO add empty constructors for all container types
 
     for k in keys 
         valuesList.append(self.get(k))
@@ -116,7 +123,7 @@ fn keyExists(self: Dict, key: K) -> bool
 
 fn keys(self: Dict) -> List[K]
 {
-    var keys := make(List[K], 10)
+    var keys := make(List[K])
 
     for item in self._items
         keys.append(item.first)
@@ -126,7 +133,7 @@ fn keys(self: Dict) -> List[K]
 
 fn values(self: Dict) -> List[V]
 {
-    var values := make(List[V], 10)
+    var values := make(List[V])
 
     for item in self._items
         values.append(item.second)
@@ -146,7 +153,7 @@ fn __subscriptItem__(self: Dict, key: K) -> V
 
 fn __subscriptKeyArray__(self: Dict, keys: K[], length: ulong) -> List[V]
 {
-    var valuesList := make(List[V], 10)
+    var valuesList := make(List[V])
 
     for var i: ulong = 0; i < length; i += 1 
         valuesList.append(self[keys[i]])    
