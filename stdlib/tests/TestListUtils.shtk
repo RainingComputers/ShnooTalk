@@ -1,6 +1,12 @@
 use "../stdlib/ListUtils.shtk" as list
 from "../stdlib/List.shtk" use List
 
+fn printIntList(l: List[int])
+{
+    for i in l print(i; ", ")
+    println("")
+}
+
 fn main() -> int
 {
     println("search")
@@ -37,23 +43,31 @@ fn main() -> int
     println(list::isEqual[int](a, b))
     println(list::isEqual[int](a, a))
 
-    println("sort")
+    println("sortInPlace")
 
     var d := make(List[int], [23, 64, 78, 34, 56, 87, 45, 67, 34, 879, 342, 674, 23, 6457, 23, 45, 45, 645, 54, 6])
     list::sortInPlace[int](d)
-
-    for var i: ulong = 0; i < 20; i += 1
-        print(d[i]; ", ")
-
-    println("")
+    printIntList(d)
     
-    println("reverse")
+    println("reverseInPlace")
 
     var e := make(List[int], [1, 2, 3, 4, 5])
     list::reverseInPlace[int](e)
+    printIntList(e)
 
-    for i = 0; i < 5; i += 1
-        print(e[i]; ", ")
+    println("sort")
+    var f := make(List[int], [4, 23, 5, 3, 2])
+    const g := list::sort[int](f)
+    printIntList(f)
+    f.clear()
+    printIntList(g)
+
+    println("reverse")
+    var h := make(List[int], [1, 2, 3, 4, 5])
+    const i := list::reverse[int](h)
+    printIntList(h)
+    h.clear()
+    printIntList(i)
 
     return 0
 }
