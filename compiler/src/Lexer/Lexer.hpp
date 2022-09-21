@@ -29,7 +29,7 @@ namespace lexer
         void consume(std::ifstream& file);
 
     public:
-        Lexer(std::ifstream& file, Console& console);
+        Lexer(Console& console);
         Token getToken();
         Token peekToken();
         Token doublePeekToken();

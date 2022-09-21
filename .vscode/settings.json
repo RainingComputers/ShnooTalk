@@ -98,7 +98,10 @@
         "set": "cpp",
         "unordered_set": "cpp",
         "filesystem": "cpp",
-        "__availability": "cpp"
+        "__availability": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "variant": "cpp"
     },
     "cSpell.words": [
         "aarch",

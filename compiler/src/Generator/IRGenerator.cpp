@@ -17,7 +17,7 @@ using namespace icode;
 
 Node generator::generateAST(Console& console)
 {
-    lexer::Lexer lex(*console.getStream(), console);
+    lexer::Lexer lex(console);
     return parser::generateAST(lex, console);
 }
 

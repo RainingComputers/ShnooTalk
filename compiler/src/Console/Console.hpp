@@ -28,7 +28,6 @@ class Console
     void printModuleStackLine(int lineNo, int colNo);
     void printModuleStack();
 
-
 public:
     [[noreturn]] void compileErrorOnToken(const std::string& message, const Token& tok);
 
@@ -54,7 +53,11 @@ public:
 
     std::string getFileName();
 
-    void pushModule(const std::string& fileName);
+    void pushRootModule(const std::string& path);
+
+    void pushModuleString(const std::string& path, const Token& errorToken);
+
+    void pushModuleToken(const Token& pathToken);
 
     void popModule();
 };

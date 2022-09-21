@@ -49,7 +49,7 @@ std::string generateIRUsingMonomorphizer(generator::GeneratorContext& ctx,
 
     if (!ctx.moduleExists(instantiatedModuleName))
     {
-        ctx.console.pushModule(genericModuleName);
+        ctx.console.pushModuleString(genericModuleName, genericNameToken);
 
         Node ast =
             ctx.mm.instantiateGeneric(genericModuleName, genericNameToken, instantiationTypes, instantiationTypeNodes);

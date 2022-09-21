@@ -1,4 +1,5 @@
 #include "../Utils/KeyExistsInMap.hpp"
+#include "ModuleSearch.hpp"
 
 #include "Console.hpp"
 
@@ -99,19 +100,46 @@ std::string Console::getFileName()
     return fileName;
 }
 
-void Console::pushModule(const std::string& moduleName)
+void Console::pushRootModule(const std::string& path)
 {
-    if (!keyExistsInMap(streamsMap, moduleName))
+    if (!keyExistsInMap(streamsMap, path))
     {
-        streamsMap[moduleName].exceptions(std::ifstream::failbit | std::ifstream::badbit);
-        streamsMap[moduleName].open(moduleName);
+        streamsMap[path].exceptions(std::ifstream::failbit | std::ifstream::badbit);
+        streamsMap[path].open(path);
     }
 
-    fileName = moduleName;
-    file = &streamsMap[moduleName];
+    fileName = path;
+    file = &streamsMap[path];
 
-    fileNameStack.push_back(moduleName);
-    fileStack.push_back(&streamsMap[moduleName]);
+    fileNameStack.push_back(path);
+    fileStack.push_back(&streamsMap[path]);
+}
+
+bool invalidModuleName(const std::string& path)
+{
+    for (const char c : path)
+        if (std::string("[]@:~*").find(c) != std::string::npos)
+            return true;
+
+    return false;
+}
+
+void Console::pushModuleString(const std::string& path, const Token& errorToken)
+{
+    if (invalidModuleName(path))
+        compileErrorOnToken("Invalid module name", errorToken);
+
+    const std::string absolutePath = getAbsoluteModulePath(path);
+
+    if (absolutePath == "")
+        compileErrorOnToken("File does not exist", errorToken);
+
+    pushRootModule(absolutePath);
+}
+
+void Console::pushModuleToken(const Token& pathToken)
+{
+    pushModuleString(pathToken.toUnescapedString(), pathToken);
 }
 
 void Console::popModule()

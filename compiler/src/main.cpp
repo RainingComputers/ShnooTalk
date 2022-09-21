@@ -9,7 +9,7 @@
 #include "Translator/LLVMTranslator.hpp"
 #include "Utils/KeyExistsInMap.hpp"
 
-#include "version.hpp"
+#include "config.hpp"
 
 static std::map<std::string, translator::Platform> platformMap = {
     { "-linux-x86_64", translator::LINUX_x86_64 },
@@ -57,7 +57,7 @@ translator::Platform getPlatformFromString(const std::string& platformString)
 
 int phaseDriver(const std::string& moduleName, const std::string& option, Console& console)
 {
-    console.pushModule(moduleName);
+    console.pushRootModule(moduleName);
 
     if (option == "-ast")
     {
@@ -76,95 +76,50 @@ int phaseDriver(const std::string& moduleName, const std::string& option, Consol
     generator::generateIR(console, moduleName, modulesMap, genericsMap);
 
     if (option == "-ir")
-    {
         pp::printModule(modulesMap[moduleName], false);
-        return 0;
-    }
-
-    if (option == "-icode")
-    {
+    else if (option == "-icode")
         pp::printModuleIcodeOnly(modulesMap[moduleName], false);
-        return 0;
-    }
-
-    if (option == "-ir-all")
-    {
+    else if (option == "-ir-all")
         pp::printModulesMap(modulesMap, false);
-        return 0;
-    }
-
-    if (option == "-icode-all")
-    {
+    else if (option == "-icode-all")
         pp::printModulesMapIcodeOnly(modulesMap, false);
-        return 0;
-    }
-
-    if (option == "-json-ir")
-    {
+    else if (option == "-json-ir")
         pp::printModule(modulesMap[moduleName], true);
-        return 0;
-    }
-
-    if (option == "-json-icode")
-    {
+    else if (option == "-json-icode")
         pp::printModuleIcodeOnly(modulesMap[moduleName], true);
-        return 0;
-    }
-
-    if (option == "-json-ir-all")
-    {
+    else if (option == "-json-ir-all")
         pp::printModulesMap(modulesMap, true);
-        return 0;
-    }
-
-    if (option == "-json-icode-all")
-    {
+    else if (option == "-json-icode-all")
         pp::printModulesMapIcodeOnly(modulesMap, true);
-        return 0;
-    }
-
-    if (option == "-llvm")
-    {
+    else if (option == "-llvm")
         pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, false, console));
-        return 0;
-    }
-
-    if (option == "-llvm-release")
-    {
+    else if (option == "-llvm-release")
         pp::println(translator::generateLLVMModuleString(modulesMap[moduleName], modulesMap, true, console));
-        return 0;
-    }
-
-    if (option == "-c")
-    {
+    else if (option == "-c")
         for (auto stringModulePair : modulesMap)
             translator::generateObject(stringModulePair.second, modulesMap, translator::DEFAULT, false, console);
-
-        return 0;
-    }
-
-    if (option == "-release")
-    {
+    else if (option == "-release")
         for (auto stringModulePair : modulesMap)
             translator::generateObject(stringModulePair.second, modulesMap, translator::DEFAULT, true, console);
-
-        return 0;
-    }
-
-    if (isValidPlatformString(option))
+    else if (isValidPlatformString(option))
     {
         for (auto stringModulePair : modulesMap)
+        {
             translator::generateObject(stringModulePair.second,
                                        modulesMap,
                                        getPlatformFromString(option),
                                        true,
                                        console);
-
-        return 0;
+        }
+    }
+    else
+    {
+        printCLIUsage();
+        return EXIT_FAILURE;
     }
 
-    printCLIUsage();
-    return EXIT_FAILURE;
+    console.popModule();
+    return 0;
 }
 
 int main(int argc, char* argv[])
@@ -209,18 +164,19 @@ int main(int argc, char* argv[])
     {
         pp::println("Pretty print error");
         pp::println("REPORT THIS BUG");
+        return EXIT_FAILURE;
     }
     catch (const std::ifstream::failure& error)
     {
         pp::println("File I/O error");
         return EXIT_FAILURE;
     }
-    // catch (...)
-    // {
-    //     pp::println("Unknown error or an internal compiler error,");
-    //     pp::println("REPORT THIS BUG");
-    //     return EXIT_FAILURE;
-    // }
+    catch (...)
+    {
+        pp::println("Unknown error or an internal compiler error,");
+        pp::println("REPORT THIS BUG");
+        return EXIT_FAILURE;
+    }
 
     return 0;
 }

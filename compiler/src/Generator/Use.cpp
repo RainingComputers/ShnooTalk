@@ -9,15 +9,6 @@ namespace generator
     Node generateAST(Console& console);
 }
 
-bool invalidModuleName(const std::string& path)
-{
-    for (const char c : path)
-        if (std::string("[]@:~*").find(c) != std::string::npos)
-            return true;
-
-    return false;
-}
-
 bool generateIROrMonomorphizedASTFromName(generator::GeneratorContext& ctx, const Token& pathToken)
 {
     const std::string path = pathToken.toUnescapedString();
@@ -28,13 +19,7 @@ bool generateIROrMonomorphizedASTFromName(generator::GeneratorContext& ctx, cons
     if (ctx.genericModuleExists(path))
         return true;
 
-    if (!std::filesystem::exists(path))
-        ctx.console.compileErrorOnToken("File does not exist", pathToken);
-
-    if (invalidModuleName(path))
-        ctx.console.compileErrorOnToken("Invalid module name", pathToken);
-
-    ctx.console.pushModule(path);
+    ctx.console.pushModuleToken(pathToken);
 
     Node ast = generator::generateAST(ctx.console);
 

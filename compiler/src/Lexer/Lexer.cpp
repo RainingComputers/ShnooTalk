@@ -21,11 +21,11 @@ namespace lexer
         }
     }
 
-    Lexer::Lexer(std::ifstream& file, Console& console)
+    Lexer::Lexer(Console& console)
         : console(console)
     {
         fileName = console.getFileName();
-        consume(file);
+        consume(*console.getStream());
         getTokenIndex = 0;
     }
 
