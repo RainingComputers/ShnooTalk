@@ -147,6 +147,9 @@ void Console::popModule()
     fileNameStack.pop_back();
     fileStack.pop_back();
 
+    if (fileNameStack.size() == 0)
+        return;
+
     fileName = fileNameStack.back();
     file = fileStack.back();
 }
