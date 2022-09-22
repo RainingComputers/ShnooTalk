@@ -1,4 +1,4 @@
-use "../stdlib/LibC.shtk" as libc
+use "stdlib/LibC.shtk" as libc
 
 fn randomInt(start: int, end: int) -> int
 {

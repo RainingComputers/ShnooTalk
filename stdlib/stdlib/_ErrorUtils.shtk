@@ -1,5 +1,5 @@
-from "../stdlib/Error.shtk" use Error, error, nil
-from "../stdlib/ErrorTypes.shtk" use StdlibError, OSError
+from "stdlib/Error.shtk" use Error, error, nil
+from "stdlib/ErrorTypes.shtk" use StdlibError, OSError
 
 fn _intToError(n: int) -> Error[StdlibError]
 {

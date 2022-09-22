@@ -1,8 +1,8 @@
 generic T
 
-use "../stdlib/ArrayUtils.shtk" as array
-from "../stdlib/List.shtk" use List
-from "../stdlib/Optional.shtk" use Optional
+use "stdlib/ArrayUtils.shtk" as array
+from "stdlib/List.shtk" use List
+from "stdlib/Optional.shtk" use Optional
 
 fn sortInPlace(mut l: List[T])
 {

@@ -1,4 +1,4 @@
-from "../stdlib/List.shtk" use List, allocateHeap
+from "stdlib/List.shtk" use List, allocateHeap
 
 fn main() -> int
 {

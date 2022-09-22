@@ -1,4 +1,4 @@
-from "../stdlib/String.shtk" use string, String
+from "stdlib/String.shtk" use string, String
 
 fn testStringArgCoercion(str: String)
 {

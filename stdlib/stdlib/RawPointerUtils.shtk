@@ -1,7 +1,7 @@
 generic T
 
-use "../stdlib/LibC.shtk" as libc
-from "../stdlib/Panic.shtk" use panic
+use "stdlib/LibC.shtk" as libc
+from "stdlib/Panic.shtk" use panic
 
 def UNABLE_TO_MALLOC "Unable to allocate memory"
 

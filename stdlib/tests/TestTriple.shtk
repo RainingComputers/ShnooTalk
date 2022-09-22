@@ -1,4 +1,4 @@
-from "../stdlib/Triple.shtk" use triple
+from "stdlib/Triple.shtk" use triple
 
 fn main() -> int
 {

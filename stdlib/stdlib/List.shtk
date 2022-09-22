@@ -1,9 +1,9 @@
 generic T
 
-from "../stdlib/Optional.shtk" use Optional, some, none
-from "../stdlib/Panic.shtk" use panic
-from "../stdlib/RawPointerUtils.shtk" use malloc, realloc, free, addOffset, memcpy, memcpyOffset, nullptrArray
-from "../stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
+from "stdlib/Optional.shtk" use Optional, some, none
+from "stdlib/Panic.shtk" use panic
+from "stdlib/RawPointerUtils.shtk" use malloc, realloc, free, addOffset, memcpy, memcpyOffset, nullptrArray
+from "stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
 
 def INVALID_RANGE "Invalid range for list range"
 def NULL_POINTER_ERROR "Null pointer dereference error"

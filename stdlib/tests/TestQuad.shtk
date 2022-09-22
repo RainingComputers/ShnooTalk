@@ -1,4 +1,4 @@
-from "../stdlib/Quad.shtk" use quad
+from "stdlib/Quad.shtk" use quad
 
 fn main() -> int
 {

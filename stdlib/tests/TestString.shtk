@@ -1,5 +1,5 @@
-from "../stdlib/String.shtk" use string, String
-from "../stdlib/List.shtk" use List
+from "stdlib/String.shtk" use string, String
+from "stdlib/List.shtk" use List
 
 fn testStringArgCoercion(str: String)
 {

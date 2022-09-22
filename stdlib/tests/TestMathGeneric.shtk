@@ -1,4 +1,4 @@
-from "../stdlib/MathGeneric.shtk" use min, max
+from "stdlib/MathGeneric.shtk" use min, max
 
 fn main() -> int
 {

@@ -1,5 +1,5 @@
-use "../stdlib/OS.shtk" as os
-from "../stdlib/String.shtk" use string
+use "stdlib/OS.shtk" as os
+from "stdlib/String.shtk" use string
 
 fn main(argc: int, argv: ulong[]) -> int
 {

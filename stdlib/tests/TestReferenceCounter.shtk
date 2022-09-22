@@ -1,4 +1,4 @@
-from "../stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
+from "stdlib/ReferenceCounter.shtk" use ReferenceCounter, createCounter
 
 fn main() -> int
 {

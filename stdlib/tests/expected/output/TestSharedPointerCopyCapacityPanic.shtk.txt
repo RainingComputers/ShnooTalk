@@ -1,7 +1,7 @@
 MODULE TestSharedPointerCopyCapacityPanic.shtk
 ERROR in Line 1 Col 6
 
-from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
+from "stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
      ^
 File does not exist
 

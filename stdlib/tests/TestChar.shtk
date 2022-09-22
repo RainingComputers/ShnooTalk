@@ -1,4 +1,4 @@
-from "../stdlib/Char.shtk" use isUpper, isLower, isDigit, isAlphaNumeric, lower, upper
+from "stdlib/Char.shtk" use isUpper, isLower, isDigit, isAlphaNumeric, lower, upper
 
 fn main() -> int
 {

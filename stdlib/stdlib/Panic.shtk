@@ -1,4 +1,4 @@
-use "../stdlib/LibC.shtk" as libc
+use "stdlib/LibC.shtk" as libc
 
 fn panic(message: char[], status: int)
 {

@@ -1,4 +1,4 @@
-use "../stdlib/ArrayUtils.shtk" as array
+use "stdlib/ArrayUtils.shtk" as array
 
 fn main() -> int
 {

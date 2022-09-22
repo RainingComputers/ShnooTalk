@@ -1,4 +1,4 @@
-from "../stdlib/Pair.shtk" use pair
+from "stdlib/Pair.shtk" use pair
 
 fn main() -> int
 {

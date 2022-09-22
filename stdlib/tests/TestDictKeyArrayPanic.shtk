@@ -1,6 +1,6 @@
-from "../stdlib/Dict.shtk" use Dict
-from "../stdlib/Pair.shtk" use pair
-from "../stdlib/String.shtk" use String, string
+from "stdlib/Dict.shtk" use Dict
+from "stdlib/Pair.shtk" use pair
+from "stdlib/String.shtk" use String, string
 
 fn main() -> int
 {

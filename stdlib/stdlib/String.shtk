@@ -1,9 +1,9 @@
-use "../stdlib/LibC.shtk" as libc
-use "../stdlib/Char.shtk" as char
-from "../stdlib/List.shtk" use List, allocateHeap, fromPreAllocated
-from "../stdlib/RawPointerUtils.shtk" use addOffset
-from "../stdlib/Optional.shtk" use Optional, some, none
-from "../stdlib/Panic.shtk" use panic
+use "stdlib/LibC.shtk" as libc
+use "stdlib/Char.shtk" as char
+from "stdlib/List.shtk" use List, allocateHeap, fromPreAllocated
+from "stdlib/RawPointerUtils.shtk" use addOffset
+from "stdlib/Optional.shtk" use Optional, some, none
+from "stdlib/Panic.shtk" use panic
 
 
 def INVALID_RANGE "Invalid range for subString"

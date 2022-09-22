@@ -1,5 +1,5 @@
-use "../stdlib/ListUtils.shtk" as list
-from "../stdlib/List.shtk" use List
+use "stdlib/ListUtils.shtk" as list
+from "stdlib/List.shtk" use List
 
 fn printIntList(l: List[int])
 {

@@ -1,7 +1,7 @@
-from "../stdlib/List.shtk" use List, allocateHeap
+from "stdlib/List.shtk" use List, allocateHeap
 
 close 0
-read from "../stdlib/List.shtk" use List, allocateHeap
+read from "stdlib/List.shtk" use List, allocateHeap
 
 fn main() -> int
 {
@@ -12,7 +12,7 @@ fn main() -> int
     return 0
 }
 
-tell 116
+tell 113
 seek read eturn 0
 }
 

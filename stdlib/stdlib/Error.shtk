@@ -1,6 +1,6 @@
 generic E
 
-from "../stdlib/Panic.shtk" use panic
+from "stdlib/Panic.shtk" use panic
 
 def EXPECT_ON_NON_NIL_ERROR "Called expect on error that is not nil"
 

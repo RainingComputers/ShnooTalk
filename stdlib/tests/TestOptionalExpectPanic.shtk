@@ -1,4 +1,4 @@
-from "../stdlib/Optional.shtk" use none
+from "stdlib/Optional.shtk" use none
 
 fn main() -> int
 {

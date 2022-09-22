@@ -3,6 +3,6 @@ ERROR in Line 8 Col 17
 
     const b := a?
                 ^
-Type error, did not expect bool, expected ../stdlib/Error.shtk::Error[TestOptionalToResultQuestionMarkError.shtk::TestErrorEnum]
+Type error, did not expect bool, expected stdlib/Error.shtk::Error[TestOptionalToResultQuestionMarkError.shtk::TestErrorEnum]
 
 TestOptionalToResultQuestionMarkError.shtk:8:16

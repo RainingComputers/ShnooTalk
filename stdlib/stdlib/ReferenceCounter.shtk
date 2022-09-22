@@ -1,4 +1,4 @@
-from "../stdlib/RawPointerUtils.shtk" use malloc, free
+from "stdlib/RawPointerUtils.shtk" use malloc, free
 
 struct ReferenceCounter
 {

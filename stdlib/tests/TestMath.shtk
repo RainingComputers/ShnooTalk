@@ -1,4 +1,4 @@
-use "../stdlib/Math.shtk" as math
+use "stdlib/Math.shtk" as math
 
 fn main() -> int
 {

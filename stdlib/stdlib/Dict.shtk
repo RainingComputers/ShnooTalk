@@ -1,10 +1,10 @@
 generic K, V
 
-from "../stdlib/ListUtils.shtk" use search
-from "../stdlib/List.shtk" use List, list
-from "../stdlib/Pair.shtk" use Pair, pair
-from "../stdlib/Optional.shtk" use Optional, some, none
-from "../stdlib/Panic.shtk" use panic
+from "stdlib/ListUtils.shtk" use search
+from "stdlib/List.shtk" use List, list
+from "stdlib/Pair.shtk" use Pair, pair
+from "stdlib/Optional.shtk" use Optional, some, none
+from "stdlib/Panic.shtk" use panic
 
 def KEY_DOES_NOT_EXIST "Key does not exist for dict"
 

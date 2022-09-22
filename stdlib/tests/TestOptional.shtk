@@ -1,4 +1,4 @@
-from "../stdlib/Optional.shtk" use Optional, some, none
+from "stdlib/Optional.shtk" use Optional, some, none
 
 fn testQuestionMark(a: Optional[int]) -> Optional[int]
 {

@@ -1,5 +1,5 @@
-from "../stdlib/Error.shtk" use Error, error, nil
-from "../stdlib/Result.shtk" use Result, ok
+from "stdlib/Error.shtk" use Error, error, nil
+from "stdlib/Result.shtk" use Result, ok
 
 enum TestErrorEnum {TEST_ERROR_0, TEST_ERROR_1}
 

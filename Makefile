@@ -140,13 +140,13 @@ format-dry-run:
 	clang-format -i $(SOURCES) --dry-run --Werror
 
 test:
-	LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner test $(FILTERS)
+	SHNOOTALK_PATH=`pwd`/stdlib LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner test $(FILTERS)
 
 coverage:
-	LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner coverage $(FILTERS)
+	SHNOOTALK_PATH=`pwd`/stdlib LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner coverage $(FILTERS)
 
 gen:
-	LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner gen $(FILTERS)
+	SHNOOTALK_PATH=`pwd`/stdlib LLC_BIN=$(LLVM_LLC_BIN) python3 -m tests_runner gen $(FILTERS)
 
 tidy:
 	clang-tidy $(SOURCES) -- $(CXXFLAGS) -Wextra

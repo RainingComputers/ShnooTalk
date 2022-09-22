@@ -1,4 +1,4 @@
-from "../stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
+from "stdlib/SharedPointer.shtk" use SharedPointer, allocateHeap
 
 fn main() -> int
 {

@@ -1,7 +1,7 @@
 generic T
 
-from "../stdlib/Swap.shtk" use swap
-from "../stdlib/Optional.shtk" use Optional, some, none
+from "stdlib/Swap.shtk" use swap
+from "stdlib/Optional.shtk" use Optional, some, none
 
 fn _quickSortPartition(arr: T[], lo: ulong, hi: ulong) -> ulong
 {

@@ -1,4 +1,4 @@
-from "../stdlib/List.shtk" use List
+from "stdlib/List.shtk" use List
 
 fn printIntList(l: List[int])
 {

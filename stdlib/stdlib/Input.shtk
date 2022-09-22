@@ -1,8 +1,8 @@
-use "../stdlib/Libc.shtk" as libc
-from "../stdlib/String.shtk" use String, stringFromPreAllocated
-from "../stdlib/RawPointerUtils.shtk" use malloc, realloc, free
-from "../stdlib/Result.shtk" use Result, ok, fail
-from "../stdlib/ErrorTypes.shtk" use StdlibError, OSError
+use "stdlib/Libc.shtk" as libc
+from "stdlib/String.shtk" use String, stringFromPreAllocated
+from "stdlib/RawPointerUtils.shtk" use malloc, realloc, free
+from "stdlib/Result.shtk" use Result, ok, fail
+from "stdlib/ErrorTypes.shtk" use StdlibError, OSError
 
 fn input() -> Result[String, StdlibError]
 {

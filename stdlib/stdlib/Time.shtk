@@ -1,8 +1,8 @@
-use "../stdlib/LibC.shtk" as libc
-from "../stdlib/RawPointerUtils.shtk" use nullptr
-from "../stdlib/Error.shtk" use Error
-from "../stdlib/ErrorTypes.shtk" use StdlibError
-from "../stdlib/_ErrorUtils.shtk" use _intToError
+use "stdlib/LibC.shtk" as libc
+from "stdlib/RawPointerUtils.shtk" use nullptr
+from "stdlib/Error.shtk" use Error
+from "stdlib/ErrorTypes.shtk" use StdlibError
+from "stdlib/_ErrorUtils.shtk" use _intToError
 
 fn sleep(microseconds: int) -> Error[StdlibError]
 {

@@ -1,5 +1,5 @@
-use "../stdlib/File.shtk" as file
-use "../stdlib/OS.shtk" as os
+use "stdlib/File.shtk" as file
+use "stdlib/OS.shtk" as os
 
 fn main() -> int
 {

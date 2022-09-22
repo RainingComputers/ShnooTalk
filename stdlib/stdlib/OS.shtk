@@ -1,15 +1,15 @@
-use "../stdlib/LibC.shtk" as libc
-use "../stdlib/Panic.shtk" as panic
-from "../stdlib/File.shtk" use File, popen
-from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
-from "../stdlib/Pair.shtk" use Pair, pair
-from "../stdlib/Triple.shtk" use Triple, triple
-from "../stdlib/Result.shtk" use Result, fail, failFrom, ok
-from "../stdlib/Optional.shtk" use Optional, none, some
-from "../stdlib/RawPointerUtils.shtk" use nullptrArray
-from "../stdlib/Error.shtk" use Error
-from "../stdlib/ErrorTypes.shtk" use StdlibError, OSError
-from "../stdlib/_ErrorUtils.shtk" use _intToError
+use "stdlib/LibC.shtk" as libc
+use "stdlib/Panic.shtk" as panic
+from "stdlib/File.shtk" use File, popen
+from "stdlib/String.shtk" use String, string, stringFromPreAllocated
+from "stdlib/Pair.shtk" use Pair, pair
+from "stdlib/Triple.shtk" use Triple, triple
+from "stdlib/Result.shtk" use Result, fail, failFrom, ok
+from "stdlib/Optional.shtk" use Optional, none, some
+from "stdlib/RawPointerUtils.shtk" use nullptrArray
+from "stdlib/Error.shtk" use Error
+from "stdlib/ErrorTypes.shtk" use StdlibError, OSError
+from "stdlib/_ErrorUtils.shtk" use _intToError
 
 fn getArg(argc: int, argv: ulong[], idx: int) -> Optional[String]
 {

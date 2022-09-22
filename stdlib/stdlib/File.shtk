@@ -1,10 +1,10 @@
-use "../stdlib/LibC.shtk" as libc
-from "../stdlib/Result.shtk" use Result, ok, fail
-from "../stdlib/String.shtk" use String, string, stringFromPreAllocated
-from "../stdlib/RawPointerUtils.shtk" use nullptrArray
-from "../stdlib/ErrorTypes.shtk" use StdlibError, EOF, OSError
-from "../stdlib/Error.shtk" use Error
-from "../stdlib/_ErrorUtils.shtk" use _intToError
+use "stdlib/LibC.shtk" as libc
+from "stdlib/Result.shtk" use Result, ok, fail
+from "stdlib/String.shtk" use String, string, stringFromPreAllocated
+from "stdlib/RawPointerUtils.shtk" use nullptrArray
+from "stdlib/ErrorTypes.shtk" use StdlibError, EOF, OSError
+from "stdlib/Error.shtk" use Error
+from "stdlib/_ErrorUtils.shtk" use _intToError
 
 enum SeekType {
     SEEK_SET,

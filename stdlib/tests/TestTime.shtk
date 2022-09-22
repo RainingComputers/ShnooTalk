@@ -1,4 +1,4 @@
-from "../stdlib/Time.shtk" use sleep, time
+from "stdlib/Time.shtk" use sleep, time
 
 fn main() -> int
 {

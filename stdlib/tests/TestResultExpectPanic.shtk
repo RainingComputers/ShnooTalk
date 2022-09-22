@@ -1,4 +1,4 @@
-from "../stdlib/Result.shtk" use Result, ok, fail
+from "stdlib/Result.shtk" use Result, ok, fail
 
 enum TestErrorEnum {TEST_ERROR_0, TEST_ERROR_1}
 
