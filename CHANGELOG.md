@@ -10,6 +10,7 @@
 - Autofill type parameters for generic function call
 - Added `___toCharArray__` and `__coerceCharArray__` hooks
 - Added `?` operator
+- Fix bugs related to `:=` operator
 
 # 0.2.0-alpha
 
