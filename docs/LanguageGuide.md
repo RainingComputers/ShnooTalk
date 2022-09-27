@@ -225,6 +225,7 @@ fn main() -> int
 ```
 
 🦄 There will be a better syntax to initialize all struct fields in the future.
+
 🦄 The compiler does not pad struct for alignment yet. This feature might be added in the future. Currently struct types are packed without any padding.
 
 ### Enums
@@ -467,7 +468,7 @@ fn main() -> int
 
 ### Named destructuring
 
-When right hand side of destructuring assignment or initialization is a struct and left hand side contains identifiers whose names are present as a field in the struct, ShnooTalk will perform a named destructuring. It will unpack the field into the variable with same name as the field.
+When right hand side of destructuring assignment or initialization is a struct and left hand side contains only identifiers whose names are present as a field in the struct, ShnooTalk will perform a named destructuring. It will unpack the field into the variable with same name as the field.
 
 ShnooTalk will try to perform named destructuring first and fallbacks on ordered destructuring if it is not possible.
 
@@ -695,7 +696,7 @@ fn main() -> int
 }
 ```
 
-If there is only one statement inside the block, `{` and `}` can be ignored. This applies for all conditional statements for all control statements.
+If there is only one statement inside the block, `{` and `}` can be ignored. This applies for all control statements.
 
 ```
 fn main() -> int
@@ -724,6 +725,17 @@ fn main() -> int
 }
 ```
 
+If statements and other control statements can also accept an expression that results in any integer value instead of just 0 or 1, and anything not equal to zero will be treated as `true`
+
+```
+fn main() -> int
+{
+    if 2 println("Hello")   # prints hello
+
+    return 0
+}
+```
+
 ### Infinite loop
 
 Executes a set of statements continuously forever until a `break` is encountered.
@@ -742,7 +754,7 @@ fn main() -> int
 
 ### `while` loop
 
-While loop is used to execute a set of statements repeatably while a condition remains true.
+While loop is used to execute a set of statements repeatedly while a condition remains true.
 
 ```
 fn main() -> int
@@ -859,6 +871,17 @@ fn main() -> int
     - `sizeof`
     - `addr`
 - Standard library
+    - List
+    - Dict
+    - Error handling
+        - Optional
+        - Result
+        - `?` operator
+    - OS
+    - Time
+    - Math
+    - Files
+    - Random
 - `make` builtin
 - Module system
   - `::` expression
