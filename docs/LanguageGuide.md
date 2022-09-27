@@ -58,7 +58,7 @@ String literals are enclosed within double quotes (`"`). Internally string liter
 
 Long string literals can be split up into multiple parts to improved readability. The parts or concatenated into one single string without any delimiter.
 
-Bellow three statements are all equivalent
+Below three statements are all equivalent
 
 ```
 const a := "Hello world"
@@ -70,9 +70,9 @@ const c :=
     " World"
 ```
 
-#### The `def` keyword
+### The `def` keyword
 
-If a literal is used in multiple places, it can be aliased or given a name to improve readability. Multiline string literals cannot be user with `def`.
+If a literal is used in multiple places, it can be aliased or given a name to improve readability. Multiline string literals cannot be used with `def`.
 
 ```
 def PI 3.14
@@ -84,7 +84,7 @@ println(HELLO_WORLD)    # equivalent to println("Hello world")
 println(ZERO)           # equivalent to println(ZERO)
 ```
 
-#### Builtin literals
+### Builtin literals
 
 The following literal are already pre-defined in ShnooTalk
 
@@ -153,7 +153,7 @@ fn main() -> int
 
 ### Pointers
 
-Pointer types store memory addresses instead of a value, hence pointers can *reference* or *point to* another variable and any modification made to the pointer will also reflect on the variable. The `<-` operator is user to make or change what variable the pointer is pointing.
+Pointer types store memory addresses instead of a value, hence pointers can *reference* or *point to* another variable and any modification made to the pointer will also reflect on the variable. The `<-` operator is used to make or change what variable the pointer is pointing.
 
 Pointers are declared using the `*` syntax.
 
@@ -225,6 +225,7 @@ fn main() -> int
 ```
 
 🦄 There will be a better syntax to initialize all struct fields in the future.
+🦄 The compiler does not pad struct for alignment yet. This feature might be added in the future. Currently struct types are packed without any padding.
 
 ### Enums
 
@@ -281,11 +282,9 @@ fn main() -> int
 
 🦄 There might be syntax for declaring an init function for a file to initialize global variables that will be automatically called before the program starts in the future.
 
-🦄 The compiler does not pad struct for alignment yet. This feature might be added in the future. Currently struct types are packed without any padding.
-
 ### Local variables
 
-Local variables are declared inside a block enclosed with `{` and `}` and are only accessible inside the same block they are declared are withing a nested block. They cannot be accessed in the parent block.
+Local variables are declared inside a block enclosed with `{` and `}` and are only accessible inside the same block they are declared or withing a nested block. They cannot be accessed in the parent block.
 
 ```
 fn main() -> int
@@ -386,7 +385,7 @@ The destructuring syntax allows unpacking arrays and struct into variables in as
 
 ### Ordered destructuring
 
-Unpack values from struct or array in order and assign it to a variable.
+Unpack values from struct or array in order and assign it to a variables.
 
 ```
 fn main() -> int
@@ -409,7 +408,7 @@ fn main() -> int
 }
 ```
 
-It is also possible to unpack struct into variables.
+It is also possible to unpack a struct into variables.
 
 ```
 struct Point
@@ -557,7 +556,7 @@ ShnooTalk has the following unary operators
 
 ### Conditional expressions
 
-You can use conditional expression in ShnooTalk to evaluate and check conditions. Conditional expression result to an integer that is either 0 or 1. The result of a conditional expression can be assigned any integer type but it is recommended to use the `bool` type.
+You can use conditional expression in ShnooTalk to evaluate and check conditions. Conditional expression result to an integer that is either 0 or 1. The result of a conditional expression can be assigned to any integer type but it is recommended to use the `bool` type.
 
 ```
 fn main() -> int
@@ -673,7 +672,7 @@ Control flow statements can change the flow of the program. Control flow stateme
 
 ### `if` statement
 
-If statements have a compulsary starting `if` branch, then subsequent optionally `else if` branch and then final optional `else` branch.
+If statements have a compulsory starting `if` branch, then subsequent optional multiple `else if` branch and then final optional `else` branch.
 ```
 fn main() -> int
 {
@@ -696,7 +695,7 @@ fn main() -> int
 }
 ```
 
-If there is only one statement inside the block, `{` and `}` can be ignored. This applies for all conditional statements.
+If there is only one statement inside the block, `{` and `}` can be ignored. This applies for all conditional statements for all control statements.
 
 ```
 fn main() -> int
@@ -781,7 +780,7 @@ fn main() -> int
 
 ### `for` loop
 
-A for loop is very similar to the while loop except it also lets a declare or assign a variable and provide an update statement.
+A for loop is very similar to the while loop except it also lets you declare or assign a variable and provide an update statement.
 
 ```
 fn main() -> int
@@ -814,7 +813,7 @@ fn main() -> int
 
 ### `break` and `continue`
 
-The `break keyword is used to exit or abort a loop prematurely.
+The `break` keyword is used to exit or abort a loop prematurely.
 
 ```
 fn main() -> int
