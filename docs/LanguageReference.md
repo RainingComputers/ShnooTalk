@@ -1,8 +1,5 @@
-# ShnooTalk core language reference
+# ShnooTalk language guide
 
-This document is reference for core syntax and low level features of ShnooTalk and its internals. It does not cover the standard library.
-
-It is better to read the language guide first and get to know the language first before reading the language reference.
 
 🦄 Emoji in the document indicates notes about missing features and something that might change in the future.
 
