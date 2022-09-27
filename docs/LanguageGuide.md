@@ -1045,11 +1045,48 @@ fn main() -> int
 }
 ```
 
+## Builtin functions
+
+### `sizeof` builtin
+
+Size of is a special function that accepts a type as a parameter and prints the total size that type occupies in memory in bytes. This function is run at compile time.
+
+```
+struct Point
+{
+    var x: int, y: int
+}
+
+fn main() -> int
+{
+    println(sizeof(int))        # prints 4
+    println(sizeof(Point))      # prints 8
+
+    return 0
+}
+```
+
+### `addr` builtin
+
+The `addr` function return the address that a pointer is holding. The function is very useful in checking if a pointer is null.
+
+```
+fn main() -> int
+{
+    var a := 1
+    var ptr: int* <- a
+
+    println(addr(ptr))  # print address of a
+
+    if addr(ptr)
+        println("ptr is not null")
+
+    return 0
+}
+```
+
 ## TODO
 
-- Builtin functions
-    - `sizeof`
-    - `addr`
 - Standard library
     - List
     - Dict
