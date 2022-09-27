@@ -1007,12 +1007,46 @@ externC fn add(a: int, b: int) -> int
 }
 ```
 
+## Print statements
+
+You can use the `print` and `println` keywords to print to console or terminal. `println` will add newline (`\n`) character at the end.
+
+```
+fn main() -> int
+{
+    print("Hello world\n")
+    println("Hello world")  # no need for \n
+    
+    return 0
+}
+```
+
+You can pass multiple values to the print statement, each value will be printed separated by a space character.
+
+```
+fn main() -> int
+{
+    # prints 1 2 Hello world
+    println(1, 2, "Hello", "world")
+    
+    return 0
+}
+```
+
+If you don't want the space between each value, you can use `;` instead of `,`
+
+```
+fn main() -> int
+{
+    # prints 12 Helloworld
+    println(1; 2, "Hello"; "world")
+    
+    return 0
+}
+```
+
 ## TODO
 
-- Print statement
-  - `print` and `println`
-  - `__toCharArray__` and `__toString__` hook
-  - `,` and `;`
 - Builtin functions
     - `sizeof`
     - `addr`
@@ -1028,11 +1062,17 @@ externC fn add(a: int, b: int) -> int
     - Math
     - Files
     - Random
+- Naming conventions
 - `make` builtin
 - Module system
   - `::` expression
   - `from` and `use`
   - `SHNOOTALK_PATH` and default `/usr/local/lib`
+- Mutability and pointer rules
+  - Assignment
+  - Function parameters
+  - Local variables
+  - Return statement
 - Operator hooks
     - `__multiply` hook
     - `__divide` hook
@@ -1052,6 +1092,8 @@ externC fn add(a: int, b: int) -> int
     - `__in` hook
     - `__isNonZero` hook
     - `__subscript` hook
+- Print hooks
+    - `__toCharArray__` and `__toString__` hook
 - Loop hooks
     - `for x in y` loop
     - Destructured `for x in y` loop
@@ -1060,11 +1102,6 @@ externC fn add(a: int, b: int) -> int
     - `__questionMarkUnwrap__` hook
     - `__questionMarkError__` hook
     - `__questionMarkConstruct__` hook
-- Mutability and pointer rules
-  - Assignment
-  - Function parameters
-  - Local variables
-  - Return statement
 - Resource management hooks
   - `__beforeCopy__` hook
   - `__deconstructor__` hook
@@ -1075,7 +1112,6 @@ externC fn add(a: int, b: int) -> int
   - Type hint
   - Generic function call
   - Same name existence
-- Naming convention
 - Compiler internals
     - Parser
     - Intermediate representation
