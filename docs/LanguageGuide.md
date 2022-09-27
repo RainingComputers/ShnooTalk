@@ -544,7 +544,7 @@ ShnooTalk has the following binary operators
 | >>     | Right shift
 | &      | Bitwise and
 | ^      | Bitwise xor
-| |      | Bitwise or
+| \|      | Bitwise or
 
 ### Unary operators
 
@@ -855,14 +855,160 @@ fn main() -> int
 }
 ```
 
+## Functions
+
+### Basic functions
+
+Functions in ShnooTalk can be declared with the `fn` keyword
+
+```
+fn sayHello()
+{
+    println("Hello")
+}
+
+fn main() -> int
+{
+    sayHello()
+    return 0
+}
+```
+
+The `return` statement can be used to return values from the function. The `->` token is used to mark the return type. Functions can also accept parameters.
+
+```
+fn add(a: int, b: int) -> int
+{
+    return a + b
+}
+
+fn main() -> int
+{
+    const a := add(1, 2)
+
+    println(a)
+
+    return 0
+}
+```
+
+By default functions cannot modify the parameters passed to them, if you would like to do so, the parameter has to marked mutable with the `mut` token. If a parameter is marked `mut`, `const` variables cannot be passed as an argument.
+
+```
+fn modifyInPlace(mut a: int)
+{
+    a += 1
+}
+
+fn main() -> int
+{
+    var a := 1      # hs to be var, const won't work
+
+    modifyInPlace(a)
+
+    println(a)      # prints 2
+
+    return 0
+}
+```
+
+### Functions as constructors
+
+Function can be used as constructors for `struct` type. The convention is the type's name is in *PascalCase* and the constructor function name is the same name as the type but in *camelCase*
+
+```
+struct Point
+{
+    var x: int, y: int
+}
+
+fn point(x: int, y: int) -> Point
+{
+    var p: Point
+    p.x = x
+    p.y = y
+    return p
+}
+
+fn main() -> int
+{
+    const p := point(1, 2)
+
+    return 0
+}
+```
+
+### Methods
+
+Functions whose first parameter is a `struct` type, will also become a method associated with the struct. Methods are almost just syntax sugar for calling a normal function in ShnooTalk. The first parameter is always named `self`.
+
+```
+struct Point
+{
+    var x: int, y: int
+}
+
+fn point(x: int, y: int) -> Point
+{
+    var p: Point
+    p.x = x
+    p.y = y
+    return p
+}
+
+fn printPoint(self: Point)
+{
+    println(self.x, self.y)
+}
+
+fn add(self: Point, other: Point) -> Point
+{
+    return point(self.x + other.x, self.y + other.y)
+}
+
+fn main() -> int
+{
+    const p := point(1, 2)
+    const q := point(3, 4)
+
+    # Both statements are equivalent
+    const a := p.add(q)
+    const b := add(p, q)
+    
+    a.printPoint()  # prints 4 6
+    b.printPoint()  # prints 4 6 also
+
+    return 0
+}
+```
+
+### `extfn` functions
+
+If you want to use function from C libraries, you will have to declare them using the `extfn` keyword
+
+```
+extfn exit(status: int)
+
+fn main() -> int
+{
+    exit(1)
+    return 0
+}
+```
+
+### `externC` functions
+
+If you want to use ShnooTalk functions in C or export it from WASM module compiled from ShnooTalk or use it in other languages with C interoperability, the function has to be marked with the `externC` keyword. This will tell ShnooTalk not to name mangle the function. Using this keyword can also lead to linker errors if they are declared more than once in different modules with the same name unlike normal functions.
+
+```
+externC fn add(a: int, b: int) -> int
+{
+    return a + b
+}
+```
+
 ## TODO
 
-- Functions and methods
-    - Function call
-    - Method call
-    - `return` statement
-    - `externC` functions
-    - `extfn` function
 - Print statement
   - `print` and `println`
   - `__toCharArray__` and `__toString__` hook
