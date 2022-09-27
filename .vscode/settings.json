@@ -108,12 +108,14 @@
         "aggs",
         "armv",
         "binfmt",
+        "bitcast",
         "buildx",
         "ccache",
         "CGAM",
         "CGSCC",
         "chdir",
         "CONDN",
+        "deconstructor",
         "deconstructors",
         "dirctx",
         "distro",
@@ -181,6 +183,7 @@
         "ubyte",
         "uhll",
         "uhllc",
+        "upto",
         "WASI"
     ],
     
