@@ -443,9 +443,9 @@ struct Point
 fn main() -> int
 {
     var p: Point
-    .[p.x, p.y] := [1, 2]   # unpack array elements into struct fields of p
+    .[p.x, p.y] = [1, 2]   # unpack array elements into struct fields of p
 
-    println(p.x, p.y)       # prints 1 2
+    println(p.x, p.y)      # prints 1 2
 
     return 0
 }
