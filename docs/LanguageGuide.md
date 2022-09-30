@@ -1255,22 +1255,22 @@ fn main() -> int
 
 Here are the list of operations you can do on a List
 
-- `fn clone(self: List) -> List`
-- `fn append(mut self: List, item: T)`
-- `fn appendArray(mut self: List, items: T[], length: ulong)`
-- `fn remove(mut self: List, index: ulong) -> T`
-- `fn swapRemove(mut self: List, index: ulong) -> T`
-- `fn last(self: List) -> Optional[T]`
-- `fn clear(mut self: List)`
-- `fn pop(mut self: List) -> Optional[T]`
-- `fn length(self: List) -> ulong`
-- `fn isEmpty(self: List) -> bool`
-- `fn capacity(self: List) -> ulong`
-- `fn get(self: List, index: ulong) -> Optional[T]`
-- `fn setItem(mut self: List, index: ulong, item: T)`
-- `fn insert(mut self: List, index: ulong, item: T)`
-- `fn reverseInPlace(mut l: List)`
-- `fn reverse(l: List) -> List`
+- `fn clone(self: List[T]) -> List[T]`
+- `fn append(mut self: List[T], item: T)`
+- `fn appendArray(mut self: List[T], items: T[], length: ulong)`
+- `fn remove(mut self: List[T], index: ulong) -> T`
+- `fn swapRemove(mut self: List[T], index: ulong) -> T`
+- `fn last(self: List[T]) -> Optional[T]`
+- `fn clear(mut self: List[T])`
+- `fn pop(mut self: List[T]) -> Optional[T]`
+- `fn length(self: List[T]) -> ulong`
+- `fn isEmpty(self: List[T]) -> bool`
+- `fn capacity(self: List[T]) -> ulong`
+- `fn get(self: List[T], index: ulong) -> Optional[T]`
+- `fn setItem(mut self: List[T], index: ulong, item: T)`
+- `fn insert(mut self: List[T], index: ulong, item: T)`
+- `fn reverseInPlace(mut l: List[T])`
+- `fn reverse(l: List[T]) -> List[T]`
 - Operators `+` and `[]`
 - `[[start, end]]` to copy range of elements into a new list 
 
@@ -1279,7 +1279,7 @@ Here are the list of operations you can do on a List
 
 ### List utilities
 
-For types that have the `<` and `==` operator defined, ShnooTalk provides extra utility operation functions for List
+For types that have the `<` and `==` operator defined, ShnooTalk provides extra utility operation functions for List. Since these are generic functions, you need to use `foo[type](x, y, z)` function call syntax.
 
 ```
 from "stdlib/List.shtk" use List, list
