@@ -902,7 +902,7 @@ fn modifyInPlace(mut a: int)
 
 fn main() -> int
 {
-    var a := 1      # hs to be var, const won't work
+    var a := 1      # has to be var, const won't work
 
     modifyInPlace(a)
 
@@ -1117,7 +1117,7 @@ fn main() -> int
 }
 ```
 
-If you have used C++ you can thing of the two types as `std::string` and C strings or if you have used rust, `String::from` and string slice.
+If you have used C++ you can thing of the two types as `std::string` and C strings or if you have used rust, `String::from` and string slice. String are always allocated on the heap and are resizable.
 
 Here are some operations you can perform on the String type
 
@@ -1128,28 +1128,31 @@ fn main() -> int
 {
     var message := "Hello".string()
 
-    message += " World"     # append string
-    println(message)
+    message += " World"         # append string
+    println(message)            # prints Hello World
     
-    println(message.length())
+    println(message.length())   # prints 11
 
-    println(message[6])     # indexing
+    println(message[6])         # indexing, prints W
 
-    println(message[[4, 8]])    # substring
+    println(message[[4, 8]])    # substring, prints "o Wo"
 
     const number := "1234".parseInt().expect()  # parse to int
-    println(number)
+    println(number)                             # prints 1234
 
-    println("ello" in message)  # check if substring exits
+    println("ello" in message)  # check if substring exits, prints 1
+
+    message.setChar(4, '$')     # set 4th character
+    println(message)            # prints "Hell$ World"
  
     return 0
 }
-
 ```
 
 Here are list of operations you can do on the String type
 
 - `fn length(self: String) -> ulong`
+- `fn clone(self: String) -> String`
 - `fn isAlphaNumeric(self: String) -> bool`
 - `fn isSpace(self: String) -> bool`
 - `fn isUpper(self: String) -> bool`
@@ -1171,7 +1174,106 @@ Here are list of operations you can do on the String type
 - Operators `+`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `in`, `[]`, 
 - `[[start, end]]` for substring
 
+All String and other collection types in the standard library are copied by reference in ShnooTalk
+
+```
+from "stdlib/String.shtk" use string, parseInt
+
+fn main() -> int
+{
+    var a := "abcd".string()
+    var b := a
+
+    b.setChar(2, '#')   # also modifies a
+
+    println(a)          # prints "ab#d"
+
+    return 0
+}
+```
+
+If you don't want that behavior, you will have to use the `clone` method and explicitly copy
+
+```
+from "stdlib/String.shtk" use string, parseInt
+
+fn main() -> int
+{
+    var a := "abcd".string()
+    var b := a.clone()
+
+    b.setChar(2, '#')   # does NOT modifies a
+
+    println(a)          # prints "abcd"
+
+    return 0
+}
+```
+
 ### List
+
+List are similar to [arrays](#arrays) but they are allocated on the heap, have bounds checking and are resizable.
+
+```
+from "stdlib/List.shtk" use List, list
+
+fn printList(list: List[int])  
+{
+    for x in list       # iterate over list
+        print(x; ", ")
+    
+    println("")
+}
+
+fn main() -> int
+{
+    var a := make(List[int], [1, 2, 3, 4, 5])
+    println(a.length())             # prints 5
+    printList(a)                    # prints 1, 2, 3, 4, 5
+
+    println(a[2])                   # prints 3
+    println(a.get(2).expect())      # same as a[2] prints 3
+    printList(a[[1, 3]])            # prints 2, 3
+
+    a.append(6)
+    printList(a)                    # prints 1, 2, 3, 4, 5, 6
+
+    a += [7, 8, 9]
+    printList(a)                    # prints 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+    a.remove(2)                     # remove 3 from list
+    printList(a)                    # prints 1, 2, 4, 5, 6, 7, 8, 9, 
+
+    println(a.pop().expect())       # remove last element and returns it, prints 9
+
+    a.setItem(1, 100)               # set first element to 100
+    printList(a)                    # 1, 100, 4, 5, 6, 7, 8, 
+
+    return 0
+}
+```
+
+Here are the list of operations you can do on a List
+
+- `fn clone(self: List) -> List`
+- `fn append(mut self: List, item: T)`
+- `fn appendArray(mut self: List, items: T[], length: ulong)`
+- `fn remove(mut self: List, index: ulong) -> T`
+- `fn swapRemove(mut self: List, index: ulong) -> T`
+- `fn last(self: List) -> Optional[T]`
+- `fn clear(mut self: List)`
+- `fn pop(mut self: List) -> Optional[T]`
+- `fn length(self: List) -> ulong`
+- `fn isEmpty(self: List) -> bool`
+- `fn capacity(self: List) -> ulong`
+- `fn get(self: List, index: ulong) -> Optional[T]`
+- `fn setItem(mut self: List, index: ulong, item: T)`
+- `fn insert(mut self: List, index: ulong, item: T)`
+- Operators `+` and `[]`
+- `[[start, end]]` to copy range of elements into a new list 
+
+🦄 ShnooTalk will be able to print arrays and lists by default in the future
+
 
 ### List utilities
 
