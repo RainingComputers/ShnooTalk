@@ -1158,6 +1158,7 @@ Here are list of operations you can do on the String type
 - `fn isNumber(self: String) -> bool`
 - `fn lower(self: String) -> String`
 - `fn upper(self: String) -> String`
+- `fn subString(self: String, range: ulong[2]) -> Optional[String]`
 - `fn split(self: String, delimeter: char) -> List[String]`
 - `fn startsWith(self: String, other: String) -> bool`
 - `fn endsWith(self: String, other: String) -> bool`

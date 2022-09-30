@@ -254,24 +254,27 @@ fn __inChar__(self: String, other: char) -> bool
     return false
 }
 
-fn subString(self: String, range: ulong[2]) -> String
+fn subString(self: String, range: ulong[2]) -> Optional[String]
 {
-    # TODO return optional?
-
     if range[0] > range[1]
-        panic(INVALID_RANGE, 1)
+        return none()
 
     if range[1] > self.length()
-        panic(INVALID_RANGE, 1)
+        return none()
 
     const lengthIncNull := range[1] - range[0] + 1
     
-    return string(self.toCharArrayOffset(range[0]), lengthIncNull)
+    return some(string(self.toCharArrayOffset(range[0]), lengthIncNull))
 }
 
 fn __subscriptSubString__(self: String, range: ulong[2]) -> String
 {
-    return self.subString(range)
+    const [subString, err] := self.subString(range)
+
+    if err 
+        panic(INVALID_RANGE, 1)
+
+    return subString
 }
 
 fn strip(self: String) -> String

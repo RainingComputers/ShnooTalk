@@ -78,7 +78,7 @@ fn main() -> int
     println("abcdef".string().find("abc").expect())
 
     println("subString test")
-    println("abcdef".string().subString([1, 4]))
+    println("abcdef".string().subString([1, 4]).expect())
     const test := "abcdef".string()
     println(test[[1, 5]])
 
