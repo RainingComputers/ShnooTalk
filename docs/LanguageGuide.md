@@ -1269,6 +1269,8 @@ Here are the list of operations you can do on a List
 - `fn get(self: List, index: ulong) -> Optional[T]`
 - `fn setItem(mut self: List, index: ulong, item: T)`
 - `fn insert(mut self: List, index: ulong, item: T)`
+- `fn reverseInPlace(mut l: List)`
+- `fn reverse(l: List) -> List`
 - Operators `+` and `[]`
 - `[[start, end]]` to copy range of elements into a new list 
 
@@ -1276,6 +1278,39 @@ Here are the list of operations you can do on a List
 
 
 ### List utilities
+
+For types that have the `<` and `==` operator defined, ShnooTalk provides extra utility operation functions for List
+
+```
+from "stdlib/List.shtk" use List, list
+from "stdlib/ListUtils.shtk" use sort
+
+fn printList(list: List[int])  
+{
+    for x in list       # iterate over list
+        print(x; ", ")
+    
+    println("")
+}
+
+fn main() -> int
+{
+    var a := make(List[int], [5, 3, 7, 4, 1])
+
+    printList(sort[int](a))
+
+    return 0
+}
+```
+
+Here is the list of all utility function you can import
+
+- `fn sortInPlace(mut l: List[T])`
+- `fn sort(l: List[T]) -> List[T]`
+- `fn search(l: List[T], item: T) -> Optional[ulong]`
+- `fn binarySearch(l: List[T], item: T) -> Optional[ulong]`
+- `fn count(l: List[T], item: T) -> ulong`
+- `fn isEqual(a: List[T], b: List[T]) -> bool`
 
 ### Dict
 
