@@ -256,6 +256,8 @@ fn __inChar__(self: String, other: char) -> bool
 
 fn subString(self: String, range: ulong[2]) -> String
 {
+    # TODO return optional?
+
     if range[0] > range[1]
         panic(INVALID_RANGE, 1)
 

@@ -1049,7 +1049,7 @@ fn main() -> int
 
 ### `sizeof` builtin
 
-Size of is a special function that accepts a type as a parameter and prints the total size that type occupies in memory in bytes. This function is run at compile time.
+This is a special function that accepts a type as a parameter and prints the total size that type occupies in memory in bytes. This function is run at compile time.
 
 ```
 struct Point
@@ -1085,20 +1085,126 @@ fn main() -> int
 }
 ```
 
+## Standard library
+
+The guide has covered most of ShnooTalk's low level core syntax, but the language by itself does not have lot of features that a modern programing language would provide such as lists, dictionaries or maps, reading and writing files, generating random numbers etc. 
+
+So ShnooTalk comes with a standard library written in low level ShnooTalk syntax using C functions from [libc](https://en.wikipedia.org/wiki/C_standard_library).
+
+### String
+
+Without the standard library strings are represented as null terminated char arrays.
+
+```
+fn main() -> int
+{
+    const message := "Hello world"
+    println(message)
+
+    return 0
+}
+```
+
+Char arrays are not resizable and you cannot perform any string operations on them. Char arrays also don't have any bounds checking because they are [arrays](#arrays). So the standard library provides a String type.
+
+```
+fn main() -> int
+{
+    const message := "Hello world".string()
+    println(message)
+
+    return 0    
+}
+```
+
+If you have used C++ you can thing of the two types as `std::string` and C strings or if you have used rust, `String::from` and string slice.
+
+Here are some operations you can perform on the String type
+
+```
+from "stdlib/String.shtk" use string, parseInt
+
+fn main() -> int
+{
+    var message := "Hello".string()
+
+    message += " World"     # append string
+    println(message)
+    
+    println(message.length())
+
+    println(message[6])     # indexing
+
+    println(message[[4, 8]])    # substring
+
+    const number := "1234".parseInt().expect()  # parse to int
+    println(number)
+
+    println("ello" in message)  # check if substring exits
+ 
+    return 0
+}
+
+```
+
+Here are list of operations you can do on the String type
+
+- `fn length(self: String) -> ulong`
+- `fn isAlphaNumeric(self: String) -> bool`
+- `fn isSpace(self: String) -> bool`
+- `fn isUpper(self: String) -> bool`
+- `fn isLower(self: String) -> bool`
+- `fn isInteger(self: String) -> bool`
+- `fn isNumber(self: String) -> bool`
+- `fn lower(self: String) -> String`
+- `fn upper(self: String) -> String`
+- `fn split(self: String, delimeter: char) -> List[String]`
+- `fn startsWith(self: String, other: String) -> bool`
+- `fn endsWith(self: String, other: String) -> bool`
+- `fn find(self: String, other: String) -> Optional[ulong]`
+- `fn strip(self: String) -> String`
+- `fn parseInt(self: String) -> Optional[int]`
+- `fn parseLong(self: String) -> Optional[long]`
+- `fn parseFloat(self: String) -> Optional[float]`
+- `fn parseDouble(self: String) -> Optional[double]`
+- Operators `+`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `in`, `[]`, 
+- `[[start, end]]` for substring
+
+### List
+
+### List utilities
+
+### Dict
+
+### Error handling
+
+#### Result
+
+#### Optional
+
+#### Question mark operator
+
+### Time
+
+### Random
+
+### Panic
+
+### Returning multiple values
+
+### Math
+
+### Files
+
+### Running subprocess
+
+### OS
+- env variable
+- cli args
+
+
 ## TODO
 
-- Standard library
-    - List
-    - Dict
-    - Error handling
-        - Optional
-        - Result
-        - `?` operator
-    - OS
-    - Time
-    - Math
-    - Files
-    - Random
 - Naming conventions
 - `make` builtin
 - Module system

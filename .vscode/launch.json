@@ -16,7 +16,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -31,7 +31,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -46,7 +46,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -61,7 +61,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -76,7 +76,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -91,7 +91,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -106,7 +106,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -121,7 +121,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -136,7 +136,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -151,7 +151,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -166,7 +166,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -181,7 +181,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -196,7 +196,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -211,7 +211,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false
         },
         {
@@ -226,7 +226,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -249,7 +249,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -272,7 +272,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -295,7 +295,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -318,7 +318,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -341,7 +341,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -364,7 +364,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -387,7 +387,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -410,7 +410,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -433,7 +433,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -456,7 +456,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -479,7 +479,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -502,7 +502,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -525,7 +525,7 @@
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
