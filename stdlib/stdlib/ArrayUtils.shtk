@@ -16,7 +16,7 @@ fn _quickSortPartition(arr: T[], lo: ulong, hi: ulong) -> ulong
     loop 
     {
         do left = left + 1 while a[left] < pivot
-        do right = right - 1 while a[right] > pivot
+        do right = right - 1  while pivot < a[right]
 
         if left >= right return right
 
@@ -98,7 +98,7 @@ fn isEqual(a: T[], n: ulong, b: T[], p: ulong) -> bool
         return false
 
     for var i: ulong = 0; i < n; i += 1
-        if a[i] != b[i]
+        if not (a[i] == b[i])
             return false
 
     return true
