@@ -143,5 +143,9 @@ fn main() -> int
     printStringList("".string().split(' '))
     printStringList(" ".string().split(' '))
 
+    var b := "Foo".string()
+    b.setChar(1, 'Z')
+    println(b)
+
     return 0
 }

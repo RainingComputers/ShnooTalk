@@ -48,6 +48,11 @@ fn __subscriptItem__(self: String, index: ulong) -> char
     return self._list[index]
 }
 
+fn setChar(mut self: String, index: ulong, c: char)
+{
+    self._list.setItem(index, c)
+}
+
 fn toCharArray(self: String) -> char[]
 {
     return self._list.pointer()
