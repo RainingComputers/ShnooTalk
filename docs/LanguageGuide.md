@@ -191,7 +191,7 @@ fn main() -> int
     var a: int[3] = [1, 2, 3]
     var b: int[] <- a
 
-    b[1] = 200  # this will modify a
+    b[1] = 200                  # this will modify a
 
     println(a[0], a[1], a[2])   # prints 1 200 3
 
@@ -245,7 +245,7 @@ fn main() -> int
 
     println(a)  # prints 2
 
-    a = 3   # compile error, this results in type error
+    a = 3       # compile error, this results in type error
 
     return 0
 }
@@ -274,9 +274,9 @@ fn bar()
 
 fn main() -> int
 {
-    a = 10  # initialize global variable
+    a = 10      # initialize global variable
     foo()
-    bar()   # prints 11
+    bar()       # prints 11
     return 0
 }
 ```
@@ -293,13 +293,13 @@ fn main() -> int
     var a: int = 1
 
     if a == 1 {
-        println(a)  # a is accessible inside nested blocks
+        println(a)      # a is accessible inside nested blocks
 
         var b: int = 2
-        println(b)  # b is accessible inside the same block it is declared in
+        println(b)      # b is accessible inside the same block it is declared in
     }
 
-    println(b)  # compile error, b is not accessible in the parent block
+    println(b)          # compile error, b is not accessible in the parent block
 
     return 0
 }
@@ -311,13 +311,13 @@ Local variables can be initialized either using `var` or the `const` keyword. Va
 fn main() -> int
 {
     var a: int
-    a = 1   # can be initialized later
+    a = 1               # can be initialized later
     const b: int = 1
 
     a += 1
-    println(a)  # prints 2
+    println(a)          # prints 2
 
-    b += 1  # compile error, b cannot be modified
+    b += 1              # compile error, b cannot be modified
 
     return 0
 }
@@ -359,8 +359,8 @@ fn main() -> int
 {
     var a := 1
     println(a)
-    a = 2   # change to 2
-    println(a)  # prints 2
+    a = 2           # change to 2
+    println(a)      # prints 2
     return 0
 }
 ```
@@ -374,8 +374,8 @@ fn main() -> int
 {
     var a := 1
     println(a)
-    a += 1  # equivalent to a = a + 1
-    println(a)  # prints 0
+    a += 1          # equivalent to a = a + 1
+    println(a)      # prints 0
     return 0
 }
 ```
@@ -391,10 +391,10 @@ Unpack values from struct or array in order and assign it to a variables.
 ```
 fn main() -> int
 {
-    var [a, b] := [1, 2]  # declare a and b and unpack this array into a and b
+    var [a, b] := [1, 2]    # declare a and b and unpack this array into a and b
 
-    println(a)  # prints 1
-    println(b)  # prints 2
+    println(a)              # prints 1
+    println(b)              # prints 2
 
     .[a, b] = [3, 4]   
     # The preceding dot is purely syntactic
@@ -402,8 +402,8 @@ fn main() -> int
     #   the dot can be ignored in some cases but 
     #   it is recommended to have it anyways
 
-    println(a)  # prints 3
-    println(b)  # prints 4
+    println(a)              # prints 3
+    println(b)              # prints 4
 
     return 0
 }
@@ -445,7 +445,7 @@ fn main() -> int
     var p: Point
     .[p.x, p.y] := [1, 2]   # unpack array elements into struct fields of p
 
-    println(p.x, p.y)  # prints 1 2
+    println(p.x, p.y)       # prints 1 2
 
     return 0
 }
@@ -486,8 +486,8 @@ fn main() -> int
 
     const [y, x] := p   # performs named structuring
 
-    println(x)  # prints 1  (would have been 2 if ordered destructuring)
-    println(y)  # prints 2  (would have been 1 if ordered destructuring)
+    println(x)          # prints 1  (would have been 2 if ordered destructuring)
+    println(y)          # prints 2  (would have been 1 if ordered destructuring)
 
     return 0
 }
@@ -509,7 +509,7 @@ fn main() -> int
 
     const [y] := p   # performs named structuring
 
-    println(y)  # prints 2
+    println(y)       # prints 2
 
     return 0
 }
@@ -523,7 +523,7 @@ You can use expressions in ShnooTalk to do computations and calculations.
 fn main() -> int
 {
     const a := 1 + 2
-    println(a)  # prints 3
+    println(a)      # prints 3
 
     return 0
 }
@@ -637,7 +637,7 @@ fn main() -> int
     const ptrA: int* <- a
     const ptrB: char* <- char*`ptrA     # bitcast int* to char*
 
-    println(ptrB)   # prints A which is 65 in ascii
+    println(ptrB)                       # prints A which is 65 in ascii
 
     return 0
 }
