@@ -1,5 +1,6 @@
 generic T
 
+use "stdlib/ArrayUtils.shtk" as array
 from "stdlib/Optional.shtk" use Optional, some, none
 from "stdlib/Panic.shtk" use panic
 from "stdlib/RawPointerUtils.shtk" use malloc, realloc, free, addOffset, memcpy, memcpyOffset, nullptrArray
@@ -232,6 +233,18 @@ fn __add__(self: List, other: List) -> List
     var new := self.clone()
     new.appendArray(other.pointer(), other.length())
     return new
+}
+
+fn reverseInPlace(mut l: List)
+{
+    array::reverseInPlace[T](l.pointer(), l.length())
+}
+
+fn reverse(l: List) -> List
+{
+    var clone := l.clone()
+    reverseInPlace(clone)
+    return clone
 }
 
 fn _free(mut self: List)

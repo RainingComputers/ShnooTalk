@@ -73,5 +73,19 @@ fn main() -> int
     i.clear()
     println(i.last().isNone())
 
+    println("reverseInPlace")
+
+    var j := make(List[int], [1, 2, 3, 4, 5])
+    j.reverseInPlace()
+    printIntList(j)
+
+    println("reverse")
+    var k := make(List[int], [1, 2, 3, 4, 5])
+    const l := k.reverse()
+    printIntList(k)
+    k.clear()
+    printIntList(l)
+
+
     return 0
 }

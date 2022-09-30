@@ -36,3 +36,8 @@ list swapRemove
 list last
 5
 1
+reverseInPlace
+5, 4, 3, 2, 1, 
+reverse
+1, 2, 3, 4, 5, 
+5, 4, 3, 2, 1, 
