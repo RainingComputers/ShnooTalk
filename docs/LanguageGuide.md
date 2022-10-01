@@ -1271,7 +1271,7 @@ Here are the list of operations you can do on a List
 - `fn insert(mut self: List, index: ulong, item: T)`
 - `fn reverseInPlace(mut l: List)`
 - `fn reverse(l: List) -> List`
-- Operators `+` and `[]`
+- Operators `+` and `[index]`
 - `[[start, end]]` to copy range of elements into a new list 
 
 🦄 ShnooTalk will be able to print arrays and lists by default in the future
@@ -1303,7 +1303,7 @@ fn main() -> int
 }
 ```
 
-Here is the list of all utility function you can import
+Here is the list of all utility functions you can import
 
 - `fn sortInPlace(mut l: List[T])`
 - `fn sort(l: List[T]) -> List[T]`
@@ -1313,6 +1313,56 @@ Here is the list of all utility function you can import
 - `fn isEqual(a: List[T], b: List[T]) -> bool`
 
 ### Dict
+
+The Dict type is a map that stores mapping from one type to another. You can think of it as a List but the index can be any type and does not have to be sorted. The type you pass for the key should implement `==` and `<` operator.
+
+```
+from "stdlib/Dict.shtk" use Dict, dict
+from "stdlib/Pair.shtk" use Pair, pair
+from "stdlib/String.shtk" use String, string
+
+fn main() -> int
+{
+    var qty := make(Dict[String, int], [
+        pair[String, int]("apple".string(), 10),
+        pair[String, int]("orange".string(), 4),
+        pair[String, int]("banana".string(), 12)
+    ])
+
+    println(qty["banana".string()])             # get value corresponding to banana, prints 12
+    println(qty.get("banana").expect())         # same as qty["banana".string()], prints 12
+
+    println("banana".string() in qty)           # check if a key exists, prints 1
+
+    for val in qty[["apple".string(), "banana".string()]]   # get multiple values
+        println(val)                                        # prints 10 and 12
+
+    println(qty.remove("orange").expect())      # remove or delete a key, return corresponding value , prints 4
+    println("orange".string() in qty)                    # prints 0 because key was removed
+
+
+    return 0
+}
+```
+
+Here are list of all operation you can do on Dict
+
+- `fn items(self: Dict) -> List[Pair[K, V]]`
+- `fn clear(mut self: Dict)`
+- `fn clone(self: Dict) -> Dict`
+- `fn length(self: Dict) -> ulong`
+- `fn isEmpty(self: Dict) -> bool`
+- `fn capacity(self: Dict) -> ulong`
+- `fn get(self: Dict, key: K) -> Optional[V]`
+- `fn getList(self: Dict, keys: List[K]) -> List[Optional[V]]`
+- `fn insert(mut self: Dict, key: K, item: V) -> Optional[V]`
+- `fn remove(mut self: Dict, key: K) -> Optional[V]` 
+- `fn keyExists(self: Dict, key: K) -> bool`
+- `fn keys(self: Dict) -> List[K]`
+- `fn values(self: Dict) -> List[V]`
+- `[key]` operator for retrieving one value
+- `[[key1, key2, key3]]` for retrieving multiple values as a list from arrays
+- `[List[K]]` also for retrieving multiple values as a list from List
 
 ### Error handling
 
