@@ -1091,6 +1091,38 @@ The guide has covered most of ShnooTalk's low level core syntax, but the languag
 
 So ShnooTalk comes with a standard library written in low level ShnooTalk syntax using C functions from [libc](https://en.wikipedia.org/wiki/C_standard_library).
 
+### Returning multiple values
+
+ShnooTalk by itself does not technically support returning multiple values, but it has destructuring. The standard library takes advantage of this and provides some types to make returning multiple values possible.
+
+These types are `Pair`, `Triple` and `Quad`. You can think of them as `std::pair` from C++ or somewhat like tuples from rust (maybe not exactly tuples but you get the idea).
+
+```
+from "stdlib/Pair.shtk" use Pair, pair
+
+fn foobar() -> Pair[int, double]
+{
+    return pair(1, 2.35)
+}
+
+fn main() -> int
+{
+    const [x, y] := foobar()
+
+    println(x)              # prints 1
+    println(y)              # prints 2.35
+
+    const pair := foobar()
+
+    println(pair.first)     # prints 1
+    println(pair.second)    # prints 2.35
+
+    return 0
+}
+```
+
+The other two types Triple and Quad are used to return three and four values.
+
 ### String
 
 Without the standard library strings are represented as null terminated char arrays.
@@ -1377,8 +1409,6 @@ Here are list of all operation you can do on Dict
 ### Random
 
 ### Panic
-
-### Returning multiple values
 
 ### Math
 
