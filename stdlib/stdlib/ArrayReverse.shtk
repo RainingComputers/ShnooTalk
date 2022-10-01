@@ -1,0 +1,15 @@
+generic T
+
+from "stdlib/Swap.shtk" use swap
+
+# TODO make this part of array utils after we have better generics
+
+fn reverseInPlace(arr: T[], n: ulong)
+{
+    # TODO add unsafe keyword, immutable pointer is being force casted to mutable pointer
+    # TODO add ref keyword
+    var a: T[] <- arr  
+
+    for var i: ulong = 0; i < (n/2); i += 1 
+        swap[T](a[i], a[n-i-1])
+}

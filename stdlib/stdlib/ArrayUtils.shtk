@@ -42,16 +42,6 @@ fn sortInPlace(a: T[], n: ulong)
     _quickSort(a, 0, n - 1)
 }
 
-fn reverseInPlace(arr: T[], n: ulong)
-{
-    # TODO add unsafe keyword, immutable pointer is being force casted to mutable pointer
-    # TODO add ref keyword
-    var a: T[] <- arr  
-
-    for var i: ulong = 0; i < (n/2); i += 1 
-        swap[T](a[i], a[n-i-1])
-}
-
 fn search(arr: T[], n: ulong, item: T) -> Optional[ulong]
 {
     for var i: ulong = 0; i < n; i += 1 

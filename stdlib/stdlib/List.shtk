@@ -1,6 +1,6 @@
 generic T
 
-use "stdlib/ArrayUtils.shtk" as array
+use "stdlib/ArrayReverse.shtk" as array
 from "stdlib/Optional.shtk" use Optional, some, none
 from "stdlib/Panic.shtk" use panic
 from "stdlib/RawPointerUtils.shtk" use malloc, realloc, free, addOffset, memcpy, memcpyOffset, nullptrArray

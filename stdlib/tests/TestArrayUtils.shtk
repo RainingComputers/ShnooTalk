@@ -1,4 +1,5 @@
 use "stdlib/ArrayUtils.shtk" as array
+use "stdlib/ArrayReverse.shtk" as arrayReverse
 
 fn main() -> int
 {
@@ -49,7 +50,7 @@ fn main() -> int
     println("reverse")
 
     var e := [1, 2, 3, 4, 5]
-    array::reverseInPlace[int](e, 5)
+    arrayReverse::reverseInPlace[int](e, 5)
 
     for i = 0; i < 5; i += 1
         print(e[i]; ", ")
