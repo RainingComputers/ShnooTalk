@@ -1,6 +1,5 @@
 # ShnooTalk language guide
 
-
 🦄 Emoji in the document indicates notes about missing features and something that might change in the future.
 
 ## Comments
@@ -37,7 +36,7 @@ Floating point literals are made up of numbers with `.` in the middle.
 
 ### Character literals
 
-Character literals store a single character and are inclosed within single quotes (`'`). 
+Character literals store a single character and are inclosed within single quotes (`'`).
 
 ```
 'c'
@@ -86,15 +85,15 @@ println(ZERO)           # equivalent to println(ZERO)
 
 ### Builtin literals
 
-The following literal are already pre-defined in ShnooTalk
+The following literals are already pre-defined in ShnooTalk
 
-| Name     | Value    | Type |
-|----------|----------|------|
-| false    | 0        | integer
-| true     | 1        | integer
-| NULL     | 0        | integer
-| NAN      | nan      | floating point
-| INFINITY | infinity | floating point
+| Name     | Value    | Type           |
+| -------- | -------- | -------------- |
+| false    | 0        | integer        |
+| true     | 1        | integer        |
+| NULL     | 0        | integer        |
+| NAN      | nan      | floating point |
+| INFINITY | infinity | floating point |
 
 ## Program entry point
 
@@ -114,20 +113,19 @@ fn main() -> int
 
 ShnooTalk has the following primitive types
 
-| Name               | Description |
-|--------------------|-------------|
-| `byte`             | Signed 8-bit integer.
-| `ubyte` or `char`  | Unsigned 8-bit integer.
-| `short`            | Signed 16-bit integer.
-| `ushort`           | Unsigned 16-bit integer.
-| `int`              | Signed 32-bit integer. This is the default integer type.
-| `uint`             | Unsigned 32-bit integer.
-| `long`             | Signed 64-bit integer.
-| `ulong`            | Unsigned 64-bit integer. This is used to represent sizes in ShnooTalk 🦄.
-| `float`            | 32-bit floating point number.
-| `double`           | 64-but floating point number. This is the default for floating point number.
-| `bool`             | Alias for `byte`
-
+| Name              | Description                                                                  |
+| ----------------- | ---------------------------------------------------------------------------- |
+| `byte`            | Signed 8-bit integer.                                                        |
+| `ubyte` or `char` | Unsigned 8-bit integer.                                                      |
+| `short`           | Signed 16-bit integer.                                                       |
+| `ushort`          | Unsigned 16-bit integer.                                                     |
+| `int`             | Signed 32-bit integer. This is the default integer type.                     |
+| `uint`            | Unsigned 32-bit integer.                                                     |
+| `long`            | Signed 64-bit integer.                                                       |
+| `ulong`           | Unsigned 64-bit integer. This is used to represent sizes in ShnooTalk 🦄.    |
+| `float`           | 32-bit floating point number.                                                |
+| `double`          | 64-but floating point number. This is the default for floating point number. |
+| `bool`            | Alias for `byte`                                                             |
 
 🦄 This will change to a new primitive type called `usize` in the future.
 
@@ -150,10 +148,9 @@ fn main() -> int
 
 🦄 Users are encouraged to use `List` from the standard library instead of arrays, which has bounds checking, but this allocates values on the heap.
 
-
 ### Pointers
 
-Pointer types store memory addresses instead of a value, hence pointers can *reference* or *point to* another variable and any modification made to the pointer will also reflect on the variable. The `<-` operator is used to make or change what variable the pointer is pointing.
+Pointer types store memory addresses instead of a value, hence pointers can _reference_ or _point to_ another variable and any modification made to the pointer will also reflect on the variable. The `<-` operator is used to make or change what variable the pointer is pointing.
 
 Pointers are declared using the `*` syntax.
 
@@ -168,7 +165,7 @@ fn main() -> int
     println(a)      # will print 4
 
     var b: int = 10
-    
+
     ptr <- b        # ptr now points to b instead of a
 
     println(ptr)    # prints 10 which is the value of b
@@ -177,7 +174,7 @@ fn main() -> int
 }
 ```
 
- 🦄 Pointers and arrays are very unsafe in ShnooTalk and must be used minimally and only if required. Users are encouraged to use types from the standard library instead. Operations on pointers maybe only permitted inside `unsafe` blocks in the future.
+🦄 Pointers and arrays are very unsafe in ShnooTalk and must be used minimally and only if required. Users are encouraged to use types from the standard library instead. Operations on pointers maybe only permitted inside `unsafe` blocks in the future.
 
 ### Array pointers
 
@@ -262,7 +259,7 @@ Global variables can only be initialized inside a function and cannot be `const`
 ```
 var a: int
 
-fn foo() 
+fn foo()
 {
     a += 1
 }
@@ -323,7 +320,7 @@ fn main() -> int
 }
 ```
 
-The type can be ignored by using `:=` operator instead of `=`. Using `const` and `:=` is preferred over `var` and `=` in ShnooTalk. 
+The type can be ignored by using `:=` operator instead of `=`. Using `const` and `:=` is preferred over `var` and `=` in ShnooTalk.
 
 ```
 fn main() -> int
@@ -347,7 +344,7 @@ fn main() -> int
     println(ptr)    # prints 1
 
     return 0
-} 
+}
 ```
 
 ## Assignments
@@ -396,10 +393,10 @@ fn main() -> int
     println(a)              # prints 1
     println(b)              # prints 2
 
-    .[a, b] = [3, 4]   
+    .[a, b] = [3, 4]
     # The preceding dot is purely syntactic
     #   and is there to make grammar parsable
-    #   the dot can be ignored in some cases but 
+    #   the dot can be ignored in some cases but
     #   it is recommended to have it anyways
 
     println(a)              # prints 3
@@ -420,7 +417,7 @@ struct Point
 fn main() -> int
 {
     var p: Point
-    p.x = 1     
+    p.x = 1
     p.y = 2
 
     const [a, b] := p
@@ -460,7 +457,7 @@ fn main() -> int
 
     .[a, b] = [b, a]
 
-    print(a, b)     # print 2 2 and NOT 2 1     
+    print(a, b)     # print 2 2 and NOT 2 1
 
     return 0
 }
@@ -481,7 +478,7 @@ struct Point
 fn main() -> int
 {
     var p: Point
-    p.x = 1     
+    p.x = 1
     p.y = 2
 
     const [y, x] := p   # performs named structuring
@@ -504,7 +501,7 @@ struct Point
 fn main() -> int
 {
     var p: Point
-    p.x = 1     
+    p.x = 1
     p.y = 2
 
     const [y] := p   # performs named structuring
@@ -533,27 +530,27 @@ fn main() -> int
 
 ShnooTalk has the following binary operators
 
-| Symbol | Name |
-|--------|------|
-| *      | Multiply
-| /      | Divide
-| %      | Remainder or modulo
-| +      | Add
-| -      | Subtract
-| <<     | Left shift
-| >>     | Right shift
-| &      | Bitwise and
-| ^      | Bitwise xor
-| \|      | Bitwise or
+| Symbol | Name                |
+| ------ | ------------------- |
+| \*     | Multiply            |
+| /      | Divide              |
+| %      | Remainder or modulo |
+| +      | Add                 |
+| -      | Subtract            |
+| <<     | Left shift          |
+| >>     | Right shift         |
+| &      | Bitwise and         |
+| ^      | Bitwise xor         |
+| \|     | Bitwise or          |
 
 ### Unary operators
 
 ShnooTalk has the following unary operators
 
-| Symbol | Name |
-|--------|------|
-| -      | Minus
-| ~      | Bitwise not
+| Symbol | Name        |
+| ------ | ----------- |
+| -      | Minus       |
+| ~      | Bitwise not |
 
 ### Conditional expressions
 
@@ -576,28 +573,28 @@ fn main() -> int
 
 ShnooTalk has the following relational operators
 
-| Symbol | Name |
-|--------|------|
-| <      | Less than
-| <=     | Less than or equal to
-| >      | Greater than
-| >=     | Greater than or equal to
-| ==     | Equal
-| !=     | Not equal
+| Symbol | Name                     |
+| ------ | ------------------------ |
+| <      | Less than                |
+| <=     | Less than or equal to    |
+| >      | Greater than             |
+| >=     | Greater than or equal to |
+| ==     | Equal                    |
+| !=     | Not equal                |
 
 ### Logical operators
 
 ShnooTalk has the following logical operators
 
 | Symbol       | Name |
-|--------------|------|
-| `not` or `!` | Not
-| `and`        | And
-| `or`         | Or 
+| ------------ | ---- |
+| `not` or `!` | Not  |
+| `and`        | And  |
+| `or`         | Or   |
 
 ### Type casting
 
-ShnooTalk does not allow binary operator or relational operators between two different primitive types. 
+ShnooTalk does not allow binary operator or relational operators between two different primitive types.
 
 ```
 fn main() -> int
@@ -627,7 +624,7 @@ fn main() -> int
 
 ### Pointer type casting
 
-You can use the <code>*\`</code> and <code>[]`</code> operator to bitcast pointers from one type to another. This operator is very unsafe as it overrides ShnooTalk's type checking. This operator is useful to interface with C functions.
+You can use the <code>\*\`</code> and <code>[]`</code> operator to bitcast pointers from one type to another. This operator is very unsafe as it overrides ShnooTalk's type checking. This operator is useful to interface with C functions.
 
 ```
 fn main() -> int
@@ -674,6 +671,7 @@ Control flow statements can change the flow of the program. Control flow stateme
 ### `if` statement
 
 If statements have a compulsory starting `if` branch, then subsequent optional multiple `else if` branch and then final optional `else` branch.
+
 ```
 fn main() -> int
 {
@@ -682,12 +680,12 @@ fn main() -> int
     if a > 5
     {
         println("A is greater than 5")
-    } 
+    }
     else if a > 3
     {
         println("A is greater than 3")
     }
-    else 
+    else
     {
         println("A is less than or equal to 2")
     }
@@ -703,9 +701,9 @@ fn main() -> int
 {
     const a := 4
 
-    if a > 2 
+    if a > 2
         println("A is greater than 2")
-    else 
+    else
         println("A is less than or equal to 2")
 
     return 0
@@ -743,7 +741,7 @@ Executes a set of statements continuously forever until a `break` is encountered
 ```
 fn main() -> int
 {
-    loop 
+    loop
     {
         println("Hello world")  # prints Hello world forever
     }
@@ -782,7 +780,7 @@ fn main() -> int
 
     do
     {
-        a += 1      
+        a += 1
         println(a)  # prints 5, while loop would not print anything
     } while a < 4
 
@@ -806,7 +804,7 @@ fn main() -> int
 }
 ```
 
-This is equivalent to 
+This is equivalent to
 
 ```
 fn main() -> int
@@ -832,7 +830,7 @@ fn main() -> int
 {
     for var i := 1; i <= 10; i += 1
     {
-        if i == 5 break     
+        if i == 5 break
         println(i)      # prints upto 4 and not 10
     }
 
@@ -847,7 +845,7 @@ fn main() -> int
 {
     for var i := 1; i <= 10; i += 1
     {
-        if i == 5 or i == 7 continue     
+        if i == 5 or i == 7 continue
         println(i)      # prints upto 10 but skips 5 and 7
     }
 
@@ -914,7 +912,7 @@ fn main() -> int
 
 ### Functions as constructors
 
-Function can be used as constructors for `struct` type. The convention is the type's name is in *PascalCase* and the constructor function name is the same name as the type but in *camelCase*
+Function can be used as constructors for `struct` type. The convention is the type's name is in _PascalCase_ and the constructor function name is the same name as the type but in _camelCase_
 
 ```
 struct Point
@@ -974,7 +972,7 @@ fn main() -> int
     # Both statements are equivalent
     const a := p.add(q)
     const b := add(p, q)
-    
+
     a.printPoint()  # prints 4 6
     b.printPoint()  # prints 4 6 also
 
@@ -1016,7 +1014,7 @@ fn main() -> int
 {
     print("Hello world\n")
     println("Hello world")  # no need for \n
-    
+
     return 0
 }
 ```
@@ -1028,7 +1026,7 @@ fn main() -> int
 {
     # prints 1 2 Hello world
     println(1, 2, "Hello", "world")
-    
+
     return 0
 }
 ```
@@ -1040,7 +1038,7 @@ fn main() -> int
 {
     # prints 12 Helloworld
     println(1; 2, "Hello"; "world")
-    
+
     return 0
 }
 ```
@@ -1087,7 +1085,7 @@ fn main() -> int
 
 ## Standard library
 
-The guide has covered most of ShnooTalk's low level core syntax, but the language by itself does not have lot of features that a modern programing language would provide such as lists, dictionaries or maps, reading and writing files, generating random numbers etc. 
+The guide has covered most of ShnooTalk's low level core syntax, but the language by itself does not have lot of features that a modern programing language would provide such as lists, dictionaries or maps, reading and writing files, generating random numbers etc.
 
 So ShnooTalk comes with a standard library written in low level ShnooTalk syntax using C functions from [libc](https://en.wikipedia.org/wiki/C_standard_library).
 
@@ -1123,6 +1121,118 @@ fn main() -> int
 
 The other two types Triple and Quad are used to return three and four values.
 
+### Error handling
+
+#### Panic
+
+When the error is unrecoverable and you want to abort the program, panic can be used.
+
+```
+from "stdlib/Panic.shtk" use panic
+
+fn main() -> int
+{
+    panic("Abort the program!", 1)          # aborts the program with exit code 1
+
+    println("This will not be printed")     # will not be printed
+
+    return 0
+}
+```
+
+### Random
+
+TODO
+
+#### Result
+
+When the error is recoverable you don't want a function to abort the entire program, instead you want to indicate that an error has occurred so it can be handled by the caller, otherwise you would like to return the result.
+For this ShnooTalk has the `Result[T, E]` type. `T` and `E` are generic parameters, where `T` is the type that will be returned on success and `E` is the type that will be returned when an error has occurred. This type is similar to the `Result<T, E>` enum from rust.
+
+The error type `E` is usually an enum indicating the type of error.
+
+Here is a simple example
+
+```
+from "stdlib/Result.shtk" use Result, ok, fail
+from "stdlib/Random.shtk" use randomInt
+
+enum LicenseError {
+    TooYoung,
+    TooOld
+}
+
+fn getDrivingLicense(age: int) -> Result[int, LicenseError]
+{
+    if age < 18
+        return fail(TooYoung)
+
+    if age > 80
+        return fail(TooOld)
+
+    const id := randomInt(0, 1000)
+    return ok(id)
+}
+
+fn main() -> int
+{
+    const [id, err] := getDrivingLicense(32)   # Try different values
+
+    if err
+    {
+        if err.get() == TooYoung
+            println("Too young to get license")
+        else if err.get() == TooOld
+            println("Too old to get license")
+
+        return 0
+    }
+
+    println("Got license with id", id)
+
+    return 0
+}
+```
+
+The standard library defined all the possible errors it can return in one common enum `StdlibError`, in `stdlib/ErrorTypes.shtk`.
+
+The convention is that every library will have a one common enum defined in `ErrorTypes.shtk` with all the types of error that can happen and is used across the library.
+
+#### Optional
+
+The `Optional` type can be used used to represent a value that may not exist. It is similar to the `Option<T>` fro rust or `std::optional` from C++ or `Optional[T]` from Python.
+
+Here is a simple example
+
+```
+from "stdlib/Optional.shtk" use Optional, none, some
+from "stdlib/Random.shtk" use randomInt
+
+fn divide(numerator: float, denominator: float) -> Optional[float]
+{
+    if denominator == 0.0
+        return none()
+
+    return some(numerator/denominator)
+}
+
+fn main() -> int
+{
+    const [answer, err] := divide(5.0, 0.0)
+
+    if err
+        println("Cannot divide")
+    else
+        println(answer)
+
+    return 0
+}
+```
+
+#### Question mark operator
+
+TODO
+
 ### String
 
 Without the standard library strings are represented as null terminated char arrays.
@@ -1145,7 +1255,7 @@ fn main() -> int
     const message := "Hello world".string()
     println(message)
 
-    return 0    
+    return 0
 }
 ```
 
@@ -1162,7 +1272,7 @@ fn main() -> int
 
     message += " World"         # append string
     println(message)            # prints Hello World
-    
+
     println(message.length())   # prints 11
 
     println(message[6])         # indexing, prints W
@@ -1176,35 +1286,35 @@ fn main() -> int
 
     message.setChar(4, '$')     # set 4th character
     println(message)            # prints "Hell$ World"
- 
+
     return 0
 }
 ```
 
 Here are list of operations you can do on the String type
 
-- `fn length(self: String) -> ulong`
-- `fn clone(self: String) -> String`
-- `fn isAlphaNumeric(self: String) -> bool`
-- `fn isSpace(self: String) -> bool`
-- `fn isUpper(self: String) -> bool`
-- `fn isLower(self: String) -> bool`
-- `fn isInteger(self: String) -> bool`
-- `fn isNumber(self: String) -> bool`
-- `fn lower(self: String) -> String`
-- `fn upper(self: String) -> String`
-- `fn subString(self: String, range: ulong[2]) -> Optional[String]`
-- `fn split(self: String, delimeter: char) -> List[String]`
-- `fn startsWith(self: String, other: String) -> bool`
-- `fn endsWith(self: String, other: String) -> bool`
-- `fn find(self: String, other: String) -> Optional[ulong]`
-- `fn strip(self: String) -> String`
-- `fn parseInt(self: String) -> Optional[int]`
-- `fn parseLong(self: String) -> Optional[long]`
-- `fn parseFloat(self: String) -> Optional[float]`
-- `fn parseDouble(self: String) -> Optional[double]`
-- Operators `+`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `in`, `[]`, 
-- `[[start, end]]` for substring
+-   `fn length(self: String) -> ulong`
+-   `fn clone(self: String) -> String`
+-   `fn isAlphaNumeric(self: String) -> bool`
+-   `fn isSpace(self: String) -> bool`
+-   `fn isUpper(self: String) -> bool`
+-   `fn isLower(self: String) -> bool`
+-   `fn isInteger(self: String) -> bool`
+-   `fn isNumber(self: String) -> bool`
+-   `fn lower(self: String) -> String`
+-   `fn upper(self: String) -> String`
+-   `fn subString(self: String, range: ulong[2]) -> Optional[String]`
+-   `fn split(self: String, delimeter: char) -> List[String]`
+-   `fn startsWith(self: String, other: String) -> bool`
+-   `fn endsWith(self: String, other: String) -> bool`
+-   `fn find(self: String, other: String) -> Optional[ulong]`
+-   `fn strip(self: String) -> String`
+-   `fn parseInt(self: String) -> Optional[int]`
+-   `fn parseLong(self: String) -> Optional[long]`
+-   `fn parseFloat(self: String) -> Optional[float]`
+-   `fn parseDouble(self: String) -> Optional[double]`
+-   Operators `+`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `in`, `[]`,
+-   `[[start, end]]` for substring
 
 All String and other collection types in the standard library are copied by reference in ShnooTalk
 
@@ -1249,11 +1359,11 @@ List are similar to [arrays](#arrays) but they are allocated on the heap, have b
 ```
 from "stdlib/List.shtk" use List, list
 
-fn printList(list: List[int])  
+fn printList(list: List[int])
 {
     for x in list       # iterate over list
         print(x; ", ")
-    
+
     println("")
 }
 
@@ -1274,12 +1384,12 @@ fn main() -> int
     printList(a)                    # prints 1, 2, 3, 4, 5, 6, 7, 8, 9
 
     a.remove(2)                     # remove 3 from list
-    printList(a)                    # prints 1, 2, 4, 5, 6, 7, 8, 9, 
+    printList(a)                    # prints 1, 2, 4, 5, 6, 7, 8, 9,
 
     println(a.pop().expect())       # remove last element and returns it, prints 9
 
     a.setItem(1, 100)               # set first element to 100
-    printList(a)                    # 1, 100, 4, 5, 6, 7, 8, 
+    printList(a)                    # 1, 100, 4, 5, 6, 7, 8,
 
     return 0
 }
@@ -1287,27 +1397,26 @@ fn main() -> int
 
 Here are the list of operations you can do on a List
 
-- `fn clone(self: List) -> List`
-- `fn append(mut self: List, item: T)`
-- `fn appendArray(mut self: List, items: T[], length: ulong)`
-- `fn remove(mut self: List, index: ulong) -> T`
-- `fn swapRemove(mut self: List, index: ulong) -> T`
-- `fn last(self: List) -> Optional[T]`
-- `fn clear(mut self: List)`
-- `fn pop(mut self: List) -> Optional[T]`
-- `fn length(self: List) -> ulong`
-- `fn isEmpty(self: List) -> bool`
-- `fn capacity(self: List) -> ulong`
-- `fn get(self: List, index: ulong) -> Optional[T]`
-- `fn setItem(mut self: List, index: ulong, item: T)`
-- `fn insert(mut self: List, index: ulong, item: T)`
-- `fn reverseInPlace(mut l: List)`
-- `fn reverse(l: List) -> List`
-- Operators `+` and `[index]`
-- `[[start, end]]` to copy range of elements into a new list 
+-   `fn clone(self: List) -> List`
+-   `fn append(mut self: List, item: T)`
+-   `fn appendArray(mut self: List, items: T[], length: ulong)`
+-   `fn remove(mut self: List, index: ulong) -> T`
+-   `fn swapRemove(mut self: List, index: ulong) -> T`
+-   `fn last(self: List) -> Optional[T]`
+-   `fn clear(mut self: List)`
+-   `fn pop(mut self: List) -> Optional[T]`
+-   `fn length(self: List) -> ulong`
+-   `fn isEmpty(self: List) -> bool`
+-   `fn capacity(self: List) -> ulong`
+-   `fn get(self: List, index: ulong) -> Optional[T]`
+-   `fn setItem(mut self: List, index: ulong, item: T)`
+-   `fn insert(mut self: List, index: ulong, item: T)`
+-   `fn reverseInPlace(mut l: List)`
+-   `fn reverse(l: List) -> List`
+-   Operators `+` and `[index]`
+-   `[[start, end]]` to copy range of elements into a new list
 
 🦄 ShnooTalk will be able to print arrays and lists by default in the future
-
 
 ### List utilities
 
@@ -1317,11 +1426,11 @@ For types that have the `<` and `==` operator defined, ShnooTalk provides extra 
 from "stdlib/List.shtk" use List, list
 from "stdlib/ListUtils.shtk" use sort
 
-fn printList(list: List[int])  
+fn printList(list: List[int])
 {
     for x in list       # iterate over list
         print(x; ", ")
-    
+
     println("")
 }
 
@@ -1337,12 +1446,12 @@ fn main() -> int
 
 Here is the list of all utility functions you can import
 
-- `fn sortInPlace(mut l: List[T])`
-- `fn sort(l: List[T]) -> List[T]`
-- `fn search(l: List[T], item: T) -> Optional[ulong]`
-- `fn binarySearch(l: List[T], item: T) -> Optional[ulong]`
-- `fn count(l: List[T], item: T) -> ulong`
-- `fn isEqual(a: List[T], b: List[T]) -> bool`
+-   `fn sortInPlace(mut l: List[T])`
+-   `fn sort(l: List[T]) -> List[T]`
+-   `fn search(l: List[T], item: T) -> Optional[ulong]`
+-   `fn binarySearch(l: List[T], item: T) -> Optional[ulong]`
+-   `fn count(l: List[T], item: T) -> ulong`
+-   `fn isEqual(a: List[T], b: List[T]) -> bool`
 
 ### Dict
 
@@ -1379,36 +1488,24 @@ fn main() -> int
 
 Here are list of all operation you can do on Dict
 
-- `fn items(self: Dict) -> List[Pair[K, V]]`
-- `fn clear(mut self: Dict)`
-- `fn clone(self: Dict) -> Dict`
-- `fn length(self: Dict) -> ulong`
-- `fn isEmpty(self: Dict) -> bool`
-- `fn capacity(self: Dict) -> ulong`
-- `fn get(self: Dict, key: K) -> Optional[V]`
-- `fn getList(self: Dict, keys: List[K]) -> List[Optional[V]]`
-- `fn insert(mut self: Dict, key: K, item: V) -> Optional[V]`
-- `fn remove(mut self: Dict, key: K) -> Optional[V]` 
-- `fn keyExists(self: Dict, key: K) -> bool`
-- `fn keys(self: Dict) -> List[K]`
-- `fn values(self: Dict) -> List[V]`
-- `[key]` operator for retrieving one value
-- `[[key1, key2, key3]]` for retrieving multiple values as a list from arrays
-- `[List[K]]` also for retrieving multiple values as a list from List
-
-### Error handling
-
-#### Result
-
-#### Optional
-
-#### Question mark operator
+-   `fn items(self: Dict) -> List[Pair[K, V]]`
+-   `fn clear(mut self: Dict)`
+-   `fn clone(self: Dict) -> Dict`
+-   `fn length(self: Dict) -> ulong`
+-   `fn isEmpty(self: Dict) -> bool`
+-   `fn capacity(self: Dict) -> ulong`
+-   `fn get(self: Dict, key: K) -> Optional[V]`
+-   `fn getList(self: Dict, keys: List[K]) -> List[Optional[V]]`
+-   `fn insert(mut self: Dict, key: K, item: V) -> Optional[V]`
+-   `fn remove(mut self: Dict, key: K) -> Optional[V]`
+-   `fn keyExists(self: Dict, key: K) -> bool`
+-   `fn keys(self: Dict) -> List[K]`
+-   `fn values(self: Dict) -> List[V]`
+-   `[key]` operator for retrieving one value
+-   `[[key1, key2, key3]]` for retrieving multiple values as a list from arrays
+-   `[List[K]]` also for retrieving multiple values as a list from List
 
 ### Time
-
-### Random
-
-### Panic
 
 ### Math
 
@@ -1417,63 +1514,63 @@ Here are list of all operation you can do on Dict
 ### Running subprocess
 
 ### OS
-- env variable
-- cli args
 
+-   env variable
+-   cli args
 
 ## TODO
 
-- Naming conventions
-- `make` builtin
-- Module system
-  - `::` expression
-  - `from` and `use`
-  - `SHNOOTALK_PATH` and default `/usr/local/lib`
-- Mutability and pointer rules
-  - Assignment
-  - Function parameters
-  - Local variables
-  - Return statement
-- Operator hooks
-    - `__multiply` hook
-    - `__divide` hook
-    - `__mod` hook
-    - `__add` hook
-    - `__subtract` hook
-    - `__rightShift` hook
-    - `__leftShift` hook
-    - `__bitwiseAnd` hook
-    - `__bitwiseXor` hook
-    - `__bitwiseOr` hook
-    - `__lessThan` hook
-    - `__lessThanOrEqual` hook
-    - `__greaterThan` hook
-    - `__isEqual` hook
-    - `__isNotEqual` hook
-    - `__in` hook
-    - `__isNonZero` hook
-    - `__subscript` hook
-- Print hooks
-    - `__toCharArray__` and `__toString__` hook
-- Loop hooks
-    - `for x in y` loop
-    - Destructured `for x in y` loop
-- Question mark operator hooks
-    - `__questionMarkContinue__` hook
-    - `__questionMarkUnwrap__` hook
-    - `__questionMarkError__` hook
-    - `__questionMarkConstruct__` hook
-- Resource management hooks
-  - `__beforeCopy__` hook
-  - `__deconstructor__` hook
-- Hooks for string and char types
-    <!-- TODO remove this feature? -->
-    - `__coerceCharArray__` hook     
-- Generics
-  - Type hint
-  - Generic function call
-  - Same name existence
-- Compiler internals
-    - Parser
-    - Intermediate representation
-    - LLVM
+-   Naming conventions
+-   `make` builtin
+-   Module system
+    -   `::` expression
+    -   `from` and `use`
+    -   `SHNOOTALK_PATH` and default `/usr/local/lib`
+-   Mutability and pointer rules
+    -   Assignment
+    -   Function parameters
+    -   Local variables
+    -   Return statement
+-   Operator hooks
+    -   `__multiply` hook
+    -   `__divide` hook
+    -   `__mod` hook
+    -   `__add` hook
+    -   `__subtract` hook
+    -   `__rightShift` hook
+    -   `__leftShift` hook
+    -   `__bitwiseAnd` hook
+    -   `__bitwiseXor` hook
+    -   `__bitwiseOr` hook
+    -   `__lessThan` hook
+    -   `__lessThanOrEqual` hook
+    -   `__greaterThan` hook
+    -   `__isEqual` hook
+    -   `__isNotEqual` hook
+    -   `__in` hook
+    -   `__isNonZero` hook
+    -   `__subscript` hook
+-   Print hooks
+    -   `__toCharArray__` and `__toString__` hook
+-   Loop hooks
+    -   `for x in y` loop
+    -   Destructured `for x in y` loop
+-   Question mark operator hooks
+    -   `__questionMarkContinue__` hook
+    -   `__questionMarkUnwrap__` hook
+    -   `__questionMarkError__` hook
+    -   `__questionMarkConstruct__` hook
+-   Resource management hooks
+    -   `__beforeCopy__` hook
+    -   `__deconstructor__` hook
+-   Hooks for string and char types
+      <!-- TODO remove this feature? -->
+    -   `__coerceCharArray__` hook
+-   Generics
+    -   Type hint
+    -   Generic function call
+    -   Same name existence
+-   Compiler internals
+    -   Parser
+    -   Intermediate representation
+    -   LLVM
