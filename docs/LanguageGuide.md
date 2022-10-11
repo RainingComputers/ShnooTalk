@@ -1121,6 +1121,14 @@ fn main() -> int
 
 The other two types Triple and Quad are used to return three and four values.
 
+### Random
+
+The random module contains helper function to generate random numbers. Generated number be in range `start` and upto but not equal to `end`.
+
+-   `fn randomInt(start: int, end: int) -> int`
+-   `fn randomLong(start: long, end: long) -> long`
+-   `fn random(start: double, end: double) -> double`
+
 ### Error handling
 
 #### Panic
@@ -1139,10 +1147,6 @@ fn main() -> int
     return 0
 }
 ```
-
-### Random
-
-TODO
 
 #### Result
 
