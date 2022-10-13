@@ -1652,7 +1652,78 @@ Here are list of all operation you can do on Dict
 
 ### Time
 
+Provides time related utilities.
+
+```
+from "stdlib/Time.shtk" use sleep, time
+
+fn main() -> int
+{
+    sleep(1000)     # sleep for 1000 microseconds
+    println(time()) # get current timestamp
+
+    return 0
+}
+```
+
+Here is the reference
+
+-   `fn sleep(microseconds: int) -> Error[StdlibError]`
+-   `fn time() -> long`
+
 ### Math
+
+Provides basic math functions, defined in `stdlib/Math.shtk`
+
+-   `PI` literal
+-   `E` literal
+-   `fn abs(x: double) -> double`
+-   `fn absInt(x: int) -> int`
+-   `fn absLong(x: long) -> long`
+-   `fn ceil(x: double) -> double`
+-   `fn ceilInt(x: double) -> int`
+-   `fn ceilLong(x: double) -> long`
+-   `fn floor(x: double) -> double`
+-   `fn floorInt(x: double) -> int`
+-   `fn floorLong(x: double) -> long`
+-   `fn exp(x: double) -> double`
+-   `fn log(x: double) -> double`
+-   `fn sqrt(x: double) -> double`
+-   `fn pow(base: double, to: double) -> double`
+-   `fn degrees(angleRadians: double) -> double`
+-   `fn radians(angleDegrees: double) -> double`
+-   `fn cos(x: double) -> double`
+-   `fn sin(x: double) -> double`
+-   `fn tan(x: double) -> double`
+-   `fn acos(x: double) -> double`
+-   `fn asin(x: double) -> double`
+-   `fn atan(x: double) -> double`
+
+### Math generic
+
+Defined in `stdlib/MathGeneric.shtk`. Provides utility function for types that have `>` and `<` operators defined.
+
+```
+from "stdlib/MathGeneric.shtk" use min, max
+
+fn main() -> int
+{
+    const [a, b] := [1, 2]
+
+    println(max[int](a, b))     # prints 2
+
+    const [x, y] := [1.23, 4.5]
+
+    println(min[double](x, y))  # prints 1.23
+
+    return 0
+}
+```
+
+Here is the reference
+
+-   `fn max(a: T, b: T) -> T`
+-   `fn min(a: T, b: T) -> T`
 
 ### Files
 
