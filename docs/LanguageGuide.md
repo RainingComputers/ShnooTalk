@@ -1,5 +1,7 @@
 # ShnooTalk language guide
 
+This doc goes over syntax and features of the ShnooTalk programming language.
+
 🦄 Emoji in the document indicates notes about missing features and something that might change in the future.
 
 ## Comments
@@ -252,7 +254,7 @@ fn main() -> int
 
 ### Global variables
 
-Global variable are declared outside all functions, they are accessible to all the functions declared in the same file.
+Global variables are declared outside all functions, they are accessible to all the functions declared in the same file.
 
 Global variables can only be initialized inside a function and cannot be `const`.
 
@@ -1123,7 +1125,7 @@ The other two types Triple and Quad are used to return three and four values.
 
 ### Random
 
-The random module contains helper function to generate random numbers. Generated number be in range `start` and upto but not equal to `end`.
+The random module contains helper functions to generate random numbers. Generated number be in range `start` and upto but not equal to `end`.
 
 -   `fn randomInt(start: int, end: int) -> int`
 -   `fn randomLong(start: long, end: long) -> long`
@@ -1198,7 +1200,7 @@ fn main() -> int
 }
 ```
 
-The standard library defined all the possible errors it can return in one common enum `StdlibError`, in `stdlib/ErrorTypes.shtk`.
+The standard library defines all the possible errors it can return in one common enum `StdlibError`, in `stdlib/ErrorTypes.shtk`.
 
 The convention is that every library will have a one common enum defined in `ErrorTypes.shtk` with all the types of error that can happen and is used across the library.
 
@@ -1233,9 +1235,99 @@ fn main() -> int
 }
 ```
 
+#### Expect method
+
+The `expect` method is called on a failed `Result` or an none `Optional`, the program will panic and abort otherwise it will return the value.
+This is very similar to the expect method from rust.
+This can be useful for prototyping and testing code.
+
+The below example will fail
+
+```
+from "stdlib/Optional.shtk" use Optional, none
+
+fn main() -> int
+{
+    const a := none[int]().expect()
+
+    println(a)
+
+    return 0
+}
+```
+
+But the below example will print '4'
+
+```
+from "stdlib/Optional.shtk" use Optional, some
+
+fn main() -> int
+{
+    const a := some[int](4).expect()
+
+    println(a)    # prints 4
+
+    return 0
+}
+```
+
+#### OR operator
+
+The OR operator can be use of `Result` or an `Optional` type to provode default value if the no value is present.
+
+```
+from "stdlib/Optional.shtk" use Optional, some, none
+
+fn main() -> int
+{
+    const a := none[int]() | 2
+    println(a)                    # prints 2
+
+    const b := some[int](4) | 2
+    println(b)                    # prints 4
+
+    return 0
+}
+```
+
+The operator can also be used between two `Optional` or `Result` types
+
+```
+from "stdlib/Optional.shtk" use Optional, some, none
+
+fn main() -> int
+{
+    const cOptional := none[int]() | some[int](2)
+
+    const c := cOptional.expect()
+
+    println(c)                    # prints 2
+
+    return 0
+}
+```
+
 #### Question mark operator
 
-TODO
+#### Result and Optional reference
+
+Here are the list of operations you can perform on the `Result` and the `Optional` types
+
+**Result**
+
+-   `fn ok(item: T) -> Result`
+-   `fn fail(error: E) -> Result`
+-   `fn hasValue(self: Result) -> bool`
+-   `fn isFail(self: Result) -> bool`
+-   `fn expect(self: Result) -> T`
+
+**Optional**
+
+-   `fn some(item: T) -> Optional`
+-   `fn none() -> Optional`
+-   `fn hasValue(self: Optional) -> bool`
+-   `fn isNone(self: Optional) -> bool`
+-   `fn expect(self: Optional) -> T`
 
 ### String
 
@@ -1263,7 +1355,7 @@ fn main() -> int
 }
 ```
 
-If you have used C++ you can thing of the two types as `std::string` and C strings or if you have used rust, `String::from` and string slice. String are always allocated on the heap and are resizable.
+If you have used C++ you can think of the two types as `std::string` and C strings or if you have used rust, `String::from` and string slice. String type is always allocated on the heap and are resizable.
 
 Here are some operations you can perform on the String type
 
