@@ -1206,7 +1206,7 @@ The convention is that every library will have a one common enum defined in `Err
 
 #### Optional
 
-The `Optional` type can be used used to represent a value that may not exist. It is similar to the `Option<T>` fro rust or `std::optional` from C++ or `Optional[T]` from Python.
+The `Optional` type can be used used to represent a value that may not exist. It is similar to the `Option<T>` from rust or `std::optional` from C++ or `Optional[T]` from Python.
 
 Here is a simple example
 
@@ -1237,7 +1237,7 @@ fn main() -> int
 
 #### Expect method
 
-The `expect` method is called on a failed `Result` or an none `Optional`, the program will panic and abort otherwise it will return the value.
+When the `expect` method is called on a failed `Result` or an none `Optional`, the program will panic and abort otherwise it will return the value.
 This is very similar to the expect method from rust.
 This can be useful for prototyping and testing code.
 
@@ -1273,7 +1273,7 @@ fn main() -> int
 
 #### OR operator
 
-The OR operator can be use of `Result` or an `Optional` type to provode default value if the no value is present.
+The OR operator can be use on `Result` or an `Optional` type to provode default value if the no value is present.
 
 ```
 from "stdlib/Optional.shtk" use Optional, some, none
@@ -1308,6 +1308,53 @@ fn main() -> int
 ```
 
 #### Question mark operator
+
+While propagating errors to the caller, your code might get cluttered with `if` statements,
+
+```
+from "stdlib/Optional.shtk" use Optional, some, none
+
+fn foo() -> Optional[int]
+{
+    const [a, err] := some[int](2)
+
+    if err
+        return none()
+
+    return some(a + 2)
+}
+
+fn main() -> int
+{
+    const b := foo().expect()
+
+    println(b)    # prints 4
+
+    return 0
+}
+```
+
+Instead you can use the `?` operator to make the code concise and readable. You can avoid a lot of `if err return x` statements.
+
+```
+from "stdlib/Optional.shtk" use Optional, some, none
+
+fn foo() -> Optional[int]
+{
+    const a := some[int](2)?
+
+    return some(a + 2)
+}
+
+fn main() -> int
+{
+    const b := foo().expect()
+
+    println(b)    # prints 2
+
+    return 0
+}
+```
 
 #### Result and Optional reference
 
