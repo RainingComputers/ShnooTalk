@@ -2,7 +2,7 @@
 
 This doc goes over syntax and features of the ShnooTalk programming language.
 
-🦄 Emoji in the document indicates notes about missing features and something that might change in the future.
+🦄 Emoji in the document indicates notes about missing features and things that might change in the future.
 
 ## Comments
 
@@ -374,7 +374,7 @@ fn main() -> int
     var a := 1
     println(a)
     a += 1          # equivalent to a = a + 1
-    println(a)      # prints 0
+    println(a)      # prints 2
     return 0
 }
 ```
@@ -604,7 +604,7 @@ fn main() -> int
     const a := 2
     const b := 2.3
 
-    println(a+b)    # compile error
+    println(a + b)    # compile error
 
     return 0
 }
@@ -618,7 +618,7 @@ fn main() -> int
     const a := 2
     const b := 2.3
 
-    println(double`a+b)     # cast a from int to double, prints 4.3
+    println(double`a + b)     # cast a from int to double, prints 4.3
 
     return 0
 }
@@ -1125,7 +1125,7 @@ The other two types Triple and Quad are used to return three and four values.
 
 ### Random
 
-The random module contains helper functions to generate random numbers. Generated number be in range `start` and upto but not equal to `end`.
+The random module contains helper functions to generate random numbers. Generated number be in range from `start` and upto but not equal to `end`.
 
 -   `fn randomInt(start: int, end: int) -> int`
 -   `fn randomLong(start: long, end: long) -> long`
@@ -1237,7 +1237,7 @@ fn main() -> int
 
 #### Expect method
 
-When the `expect` method is called on a failed `Result` or an none `Optional`, the program will panic and abort otherwise it will return the value.
+When the `expect` method is called on a _failed_ `Result` or an _none_ `Optional`, the program will panic and abort otherwise it will return the value.
 This is very similar to the expect method from rust.
 This can be useful for prototyping and testing code.
 
@@ -1273,7 +1273,7 @@ fn main() -> int
 
 #### OR operator
 
-The OR operator can be use on `Result` or an `Optional` type to provode default value if the no value is present.
+The OR operator can be use on `Result` or an `Optional` type to provide default value if the no value is present.
 
 ```
 from "stdlib/Optional.shtk" use Optional, some, none
@@ -1309,7 +1309,7 @@ fn main() -> int
 
 #### Question mark operator
 
-While propagating errors to the caller, your code might get cluttered with `if` statements,
+While propagating errors to the caller, your code might get cluttered with `if` statements
 
 ```
 from "stdlib/Optional.shtk" use Optional, some, none
@@ -1350,7 +1350,7 @@ fn main() -> int
 {
     const b := foo().expect()
 
-    println(b)    # prints 2
+    println(b)    # prints 4
 
     return 0
 }
@@ -1367,6 +1367,7 @@ Here are the list of operations you can perform on the `Result` and the `Optiona
 -   `fn hasValue(self: Result) -> bool`
 -   `fn isFail(self: Result) -> bool`
 -   `fn expect(self: Result) -> T`
+-   `?` operator
 
 **Optional**
 
@@ -1375,6 +1376,7 @@ Here are the list of operations you can perform on the `Result` and the `Optiona
 -   `fn hasValue(self: Optional) -> bool`
 -   `fn isNone(self: Optional) -> bool`
 -   `fn expect(self: Optional) -> T`
+-   `?` operator
 
 ### String
 
