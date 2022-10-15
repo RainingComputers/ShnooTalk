@@ -1802,12 +1802,19 @@ Here is the reference
 
 ### Files
 
-### Running subprocess
-
 ### OS
 
--   env variable
--   cli args
+Provides utility function to interact with the operating system, defined in `stdlib/OS.shtk`
+
+- `fn getArg(argc: int, argv: ulong[], idx: int) -> Optional[String]`
+- `fn panic(message: String, status: int)`
+- `fn system(command: String) -> Result[Pair[String, int], StdlibError]`
+- `fn getEnv(key: String) -> Optional[String]`
+- `fn getcwd() -> Optional[String]`
+- `fn chdir(path: String) -> Error[StdlibError]`
+- `fn mkdir(path: String) -> Error[StdlibError]`
+- `fn rmdir(path: String) -> Error[StdlibError]`
+- `fn rm(path: String) -> Error[StdlibError]`
 
 ## `make` builtin
 
@@ -1869,13 +1876,8 @@ TODO
     -   `__beforeCopy__` hook
     -   `__deconstructor__` hook
 -   Hooks for string and char types
-      <!-- TODO remove this feature? -->
     -   `__coerceCharArray__` hook
 -   Generics
     -   Type hint
     -   Generic function call
     -   Same name existence
--   Compiler internals
-    -   Parser
-    -   Intermediate representation
-    -   LLVM
