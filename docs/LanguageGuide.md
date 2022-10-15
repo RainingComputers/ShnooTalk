@@ -1802,6 +1802,8 @@ Here is the reference
 
 ### Files
 
+TODO
+
 ### OS
 
 Provides utility function to interact with the operating system, defined in `stdlib/OS.shtk`
@@ -1834,7 +1836,7 @@ TODO
 - Variable names are `camelCase`
 - Struct or class names are `PascalCase`
 - Enums are `PascalCase`
-- Module aliases should be all lowercase but `camelCase` can also be use
+- Module aliases should be all `lowercase` but `camelCase` can also be used
 - File and directory names are `PascalCase`
 
 ## TODO
