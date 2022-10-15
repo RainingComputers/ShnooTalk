@@ -1809,14 +1809,28 @@ Here is the reference
 -   env variable
 -   cli args
 
-## TODO
+## `make` builtin
 
--   Naming conventions
--   `make` builtin
--   Module system
-    -   `::` expression
-    -   `from` and `use`
-    -   `SHNOOTALK_PATH` and default `/usr/local/lib`
+TODO
+
+## Module system
+
+TODO
+
+-   `::` expression
+-   `from` and `use`
+-   `SHNOOTALK_PATH` and default `/usr/local/lib`
+
+## Naming conventions
+
+- Function names are `camelCase`
+- Variable names are `camelCase`
+- Struct or class names are `PascalCase`
+- Enums are `PascalCase`
+- Module aliases should be all lowercase but `camelCase` can also be use
+- File and directory names are `PascalCase`
+
+## TODO
 -   Mutability and pointer rules
     -   Assignment
     -   Function parameters
