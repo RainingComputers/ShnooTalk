@@ -1436,6 +1436,44 @@ fn main() -> int
 }
 ```
 
+String literals (null terminated char arrays) are coerced into `String` type when passed as a parameter to a function,
+
+```
+from "stdlib/String.shtk" use String, string
+
+fn printMessage(msg: String) 
+{
+    println(msg)
+} 
+
+fn main() -> int
+{
+    printMessage("Hello world".string())
+    printMessage("Hello world")             # Will also work without .string
+
+    return 0
+}
+```
+
+However the coercion does not work on Arrays
+
+```
+from "stdlib/String.shtk" use String, string
+
+fn printMessage(msg: String[2]) 
+{
+    println(msg[0], msg[1])
+} 
+
+fn main() -> int
+{
+    printMessage(["Hello".string(),  "world".string()])
+    printMessage(["Hello", "world"])             # compile error
+
+    return 0
+}
+```
+
 Here are list of operations you can do on the String type
 
 -   `fn length(self: String) -> ulong`
@@ -1610,9 +1648,9 @@ from "stdlib/String.shtk" use String, string
 fn main() -> int
 {
     var qty := make(Dict[String, int], [
-        pair[String, int]("apple".string(), 10),
-        pair[String, int]("orange".string(), 4),
-        pair[String, int]("banana".string(), 12)
+        pair[String, int]("apple", 10),
+        pair[String, int]("orange", 4),
+        pair[String, int]("banana", 12)
     ])
 
     println(qty["banana".string()])             # get value corresponding to banana, prints 12
@@ -1624,7 +1662,7 @@ fn main() -> int
         println(val)                                        # prints 10 and 12
 
     println(qty.remove("orange").expect())      # remove or delete a key, return corresponding value , prints 4
-    println("orange".string() in qty)                    # prints 0 because key was removed
+    println("orange".string() in qty)           # prints 0 because key was removed
 
 
     return 0
