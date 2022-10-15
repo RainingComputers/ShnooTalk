@@ -42,7 +42,7 @@ fn list(items: T[], length: ulong) -> List
     return self
 }
 
-fn empptyList() -> List
+fn emptyList() -> List
 {
     return allocateHeap(10)
 }
