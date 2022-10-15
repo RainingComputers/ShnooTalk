@@ -73,15 +73,6 @@ void ifStatement(parser::ParserContext& ctx)
     block(ctx);
     ctx.popNode();
 
-    while (ctx.accept(token::ELSEIF))
-    {
-        ctx.pushNode();
-        ctx.addNodeMakeCurrent(node::ELSEIF);
-        expression(ctx);
-        block(ctx);
-        ctx.popNode();
-    }
-
     if (ctx.accept(token::ELSE))
     {
         ctx.pushNode();

@@ -1,8 +1,8 @@
 fn foo(a: int)
 {
     if a == 1 println("Hello")
-    elif a == 2 println("Lol")
-    elif a == 3 println("Hola")
+    else if a == 2 println("Lol")
+    else if a == 3 println("Hola")
     else println("idk")    
 }
 

@@ -62,7 +62,7 @@ fn binarySearch(arr: T[], n: ulong, item: T) -> Optional[ulong]
         
         if arr[mid] == item
             return some(mid)
-        elif arr[mid] < item
+        else if arr[mid] < item
             left = mid + 1
         else
             right = mid - 1

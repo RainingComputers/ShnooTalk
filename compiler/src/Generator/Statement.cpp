@@ -27,7 +27,7 @@ void ifStatement(generator::GeneratorContext& ctx,
         Operand ifTrueLabel = ctx.ir.functionBuilder.createLabel(child.tok, true, "if");
         Operand ifFalseLabel = ctx.ir.functionBuilder.createLabel(child.tok, false, "if");
 
-        if (child.type != node::ELSE)
+        if (child.type == node::IF)
         {
             conditionalExpression(ctx, child.children[0], ifTrueLabel, ifFalseLabel, true);
 

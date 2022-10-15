@@ -29,7 +29,6 @@ namespace node
         DESTRUCTURE_VAR,
         DESTRUCTURE_CONST,
         IF,
-        ELSEIF,
         ELSE,
         WHILE,
         DO_WHILE,

@@ -8,14 +8,14 @@ fn test()
     else println("Mars")
 
     if (a == 5) println("Earth")
-    elif (a == 2) {
+    else if (a == 2) {
         println("Hello")
         println("Mars")
     }
 
     if a == 3 {
         println("Uranus")
-    } elif a == 4 {
+    } else if a == 4 {
         println("Napetune")
     } else {
         println("Venus")

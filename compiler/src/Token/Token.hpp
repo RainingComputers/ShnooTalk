@@ -33,7 +33,6 @@ namespace token
         BIN_LITERAL,
         FLOAT_LITERAL,
         IF,
-        ELSEIF,
         ELSE,
         WHILE,
         DO,
