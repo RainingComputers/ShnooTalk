@@ -1235,6 +1235,43 @@ fn main() -> int
 }
 ```
 
+#### Error 
+
+The `Error[E]` is a generic type used to indicate weather an error has occurred or not, but there is no output result. Example may include connecting to a database, deleting a file etc. The `Result[T, E]` used this type to enclose the error.
+
+```
+from "stdlib/Error.shtk" use Error, error, nil
+from "stdlib/String.shtk" use String, string
+
+enum DoorError {
+    WrongUsername,
+    WrongPassword
+}
+
+fn openDoor(username: String, password: String) -> Error[DoorError]
+{
+    if username != "Alice".string()
+        return error(WrongUsername)
+    
+    if password != "1234".string()
+        return error(WrongPassword)
+
+    return nil()
+}
+
+fn main() -> int
+{
+    const err := openDoor("Alice", "1234")    # Try different values
+
+    if err 
+        println(err.get())
+    else
+        println("Door open")
+
+    return 0
+}
+```
+
 #### Expect method
 
 When the `expect` method is called on a _failed_ `Result` or an _none_ `Optional`, the program will panic and abort otherwise it will return the value.
@@ -1356,7 +1393,7 @@ fn main() -> int
 }
 ```
 
-#### Result and Optional reference
+#### Result, Optional and Error reference
 
 Here are the list of operations you can perform on the `Result` and the `Optional` types
 
