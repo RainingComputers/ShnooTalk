@@ -933,9 +933,12 @@ fn point(x: int, y: int) -> Point
 fn main() -> int
 {
     const p := point(1, 2)
+    
+    println(p.x, p.y)
 
     return 0
 }
+
 ```
 
 ### Methods
@@ -1432,6 +1435,8 @@ fn main() -> int
 Char arrays are not resizable and you cannot perform any string operations on them. Char arrays also don't have any bounds checking because they are [arrays](#arrays). So the standard library provides a String type.
 
 ```
+from "stdlib/String.shtk" use string
+
 fn main() -> int
 {
     const message := "Hello world".string()
