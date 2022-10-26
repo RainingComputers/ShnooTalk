@@ -1916,13 +1916,13 @@ fn pointFrom2dArray(a: int[2]) -> Point
 
 fn pointFromAnyDimArray(a: int[], numElements: ulong) -> Point
 {
-    if numElements == 0 
+    if numElements == 0
         return zeroPoint()
     if numElements == 1
         return point(a[0], 0, 0)
     if numElements == 2
         return point(a[0], a[1], 0)
-    
+
     return point(a[0], a[1], a[2])
 }
 
@@ -1968,13 +1968,30 @@ TODO
 -   Module aliases should be all `lowercase` but `camelCase` can also be used
 -   File and directory names are `PascalCase`
 
+## Mutability and pointer rules
+
+All mutability errors in ShnooTalk are based on the following rules
+
+-   Mutable pointer
+    -   Can mutate pointer itself to point to another variable
+    -   Can mutate variable it is pointing to
+-   Immutable pointer
+    -   Cannot mutate the pointer to point to another variable
+    -   Cannot mutate variable it is pointing to directly
+    -   Can mutate variable it is pointing indirectly by using `<-` assignment to another mutable pointer
+-   Mutable variable
+    -   Can mutate value
+    -   Can be `<-` assigned to pointers
+-   Immutable variable
+    -   Cannot be mutated
+    -   Cannot be `<-` assigned to a pointer
+-   Immutable variable of `struct` type containing a pointer (🦄 not enforced yet)
+    -   Cannot mutate value
+    -   Cannot be `<-` assigned to a pointer
+    -   Cannot be assigned to mutable value
+
 ## TODO
 
--   Mutability and pointer rules
-    -   Assignment
-    -   Function parameters
-    -   Local variables
-    -   Return statement
 -   Operator hooks
     -   `__multiply` hook
     -   `__divide` hook
@@ -2013,3 +2030,8 @@ TODO
     -   Type hint
     -   Generic function call
     -   Same name existence
+-   Using the compiler
+    -   CLI args
+    -   \_obj folder
+    -   Linking
+-   WASM support
