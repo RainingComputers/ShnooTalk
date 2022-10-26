@@ -1849,7 +1849,7 @@ Here is the reference, defined in `stdlib/File.shtk`
 **Functions**
 
 -   `fn open(path: String, mode: String) -> Result[File, StdlibError]`
-    -   See open method from [python docs](https://docs.python.org/3/library/functions.html#open) for modes
+    -   See `fopen` method from [C reference](https://en.cppreference.com/w/c/io/fopen) for modes
 -   `fn readLine(self: File) -> Result[String, StdlibError]`
 -   `fn read(self: File) -> Result[String, StdlibError]`
 -   `fn seek(self: File, offset: long, whence: SeekType) -> Error[StdlibError]`
@@ -1886,7 +1886,70 @@ Provides utility function to interact with the operating system, defined in `std
 
 ## `make` builtin
 
-TODO
+This is a special function that accepts a type as its first argument, and then accepts any number of arguments of any type, then finds the first matching suitable constructor method for that type.
+
+Here is an example,
+
+```
+struct Point
+{
+    var x: int, y: int, z: int
+}
+
+fn point(x: int, y: int, z: int) -> Point
+{
+    var self: Point
+    .[self.x, self.y, self.z] = [x, y, z]
+
+    return self
+}
+
+fn zeroPoint() -> Point
+{
+    return point(0, 0, 0)
+}
+
+fn pointFrom2dArray(a: int[2]) -> Point
+{
+    return point(a[0], a[1], 0)
+}
+
+fn pointFromAnyDimArray(a: int[], numElements: ulong) -> Point
+{
+    if numElements == 0 
+        return zeroPoint()
+    if numElements == 1
+        return point(a[0], 0, 0)
+    if numElements == 2
+        return point(a[0], a[1], 0)
+    
+    return point(a[0], a[1], a[2])
+}
+
+fn printPoint(self: Point)
+{
+    println("x="; self.x, "y="; self.y, "z="; self.z)
+}
+
+fn main() -> int
+{
+    const p1 := make(Point)                 # calls zeroPoint
+    const p2 := make(Point, 1, 2, 3)        # calls point
+    const p3 := make(Point, [1, 2])         # calls pointFrom2dArray
+    const p4 := make(Point, [1, 2, 3])      # calls pointFromAnyDimArray
+    const p5 := make(Point, [1, 2, 3, 4])   # calls pointFromAnyDimArray
+
+    printPoint(p1)  # prints x=0 y=0 z=0
+    printPoint(p2)  # prints x=1 y=2 z=3
+    printPoint(p3)  # prints x=1 y=2 z=0
+    printPoint(p4)  # prints x=1 y=2 z=3
+    printPoint(p5)  # prints x=1 y=2 z=3
+
+    return 0
+}
+```
+
+The `pointFromAnyDimArray` constructor has to appear after `pointFrom2dArray` constructor, otherwise `pointFromAnyDimArray` constructor will always be used because it can also accept 2d arrays and make looks for the first matching constructor.
 
 ## Module system
 
