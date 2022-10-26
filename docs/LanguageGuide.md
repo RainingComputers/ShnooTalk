@@ -933,7 +933,7 @@ fn point(x: int, y: int) -> Point
 fn main() -> int
 {
     const p := point(1, 2)
-    
+
     println(p.x, p.y)
 
     return 0
@@ -1238,7 +1238,7 @@ fn main() -> int
 }
 ```
 
-#### Error 
+#### Error
 
 The `Error[E]` is a generic type used to indicate weather an error has occurred or not, but there is no output result. Example may include connecting to a database, deleting a file etc. The `Result[T, E]` used this type to enclose the error.
 
@@ -1255,7 +1255,7 @@ fn openDoor(username: String, password: String) -> Error[DoorError]
 {
     if username != "Alice".string()
         return error(WrongUsername)
-    
+
     if password != "1234".string()
         return error(WrongPassword)
 
@@ -1266,7 +1266,7 @@ fn main() -> int
 {
     const err := openDoor("Alice", "1234")    # Try different values
 
-    if err 
+    if err
         println(err.get())
     else
         println("Door open")
@@ -1483,10 +1483,10 @@ String literals (null terminated char arrays) are coerced into `String` type whe
 ```
 from "stdlib/String.shtk" use String, string
 
-fn printMessage(msg: String) 
+fn printMessage(msg: String)
 {
     println(msg)
-} 
+}
 
 fn main() -> int
 {
@@ -1502,10 +1502,10 @@ However the coercion does not work on Arrays
 ```
 from "stdlib/String.shtk" use String, string
 
-fn printMessage(msg: String[2]) 
+fn printMessage(msg: String[2])
 {
     println(msg[0], msg[1])
-} 
+}
 
 fn main() -> int
 {
@@ -1807,21 +1807,82 @@ Here is the reference
 
 ### Files
 
-TODO
+Provides functions to read and write files, here is a little example to read a file line by line
+
+```
+from "stdlib/File.shtk" use open
+
+fn main() -> int
+{
+
+    var file := open("todo.md", "r").expect()
+
+    loop {
+        const [line, err] := file.readLine()
+        if err break
+
+        print(line)
+    }
+
+    return 0
+}
+```
+
+You can also read an entire file into a string using a single function call,
+
+```
+from "stdlib/File.shtk" use readStringFromFile
+
+fn main() -> int
+{
+
+    const contents := readStringFromFile("todo.md").expect()
+
+    println(contents)
+
+    return 0
+}
+```
+
+Here is the reference, defined in `stdlib/File.shtk`
+
+**Functions**
+
+-   `fn open(path: String, mode: String) -> Result[File, StdlibError]`
+    -   See open method from [python docs](https://docs.python.org/3/library/functions.html#open) for modes
+-   `fn readLine(self: File) -> Result[String, StdlibError]`
+-   `fn read(self: File) -> Result[String, StdlibError]`
+-   `fn seek(self: File, offset: long, whence: SeekType) -> Error[StdlibError]`
+-   `fn tell(self: File) -> Result[long, StdlibError]`
+-   `fn write(self: File, content: String) -> Error[StdlibError]`
+-   `fn close(mut self: File) -> Error[StdlibError]`
+-   `fn readStringFromFile(path: String) -> Result[String, StdlibError]`
+
+**Enums**
+
+See [C reference](https://en.cppreference.com/w/c/io/fseek) for more info on seek types
+
+```
+enum SeekType {
+    SEEK_SET,
+    SEEK_CUR,
+    SEEK_END
+}
+```
 
 ### OS
 
 Provides utility function to interact with the operating system, defined in `stdlib/OS.shtk`
 
-- `fn getArg(argc: int, argv: ulong[], idx: int) -> Optional[String]`
-- `fn panic(message: String, status: int)`
-- `fn system(command: String) -> Result[Pair[String, int], StdlibError]`
-- `fn getEnv(key: String) -> Optional[String]`
-- `fn getcwd() -> Optional[String]`
-- `fn chdir(path: String) -> Error[StdlibError]`
-- `fn mkdir(path: String) -> Error[StdlibError]`
-- `fn rmdir(path: String) -> Error[StdlibError]`
-- `fn rm(path: String) -> Error[StdlibError]`
+-   `fn getArg(argc: int, argv: ulong[], idx: int) -> Optional[String]`
+-   `fn panic(message: String, status: int)`
+-   `fn system(command: String) -> Result[Pair[String, int], StdlibError]`
+-   `fn getEnv(key: String) -> Optional[String]`
+-   `fn getcwd() -> Optional[String]`
+-   `fn chdir(path: String) -> Error[StdlibError]`
+-   `fn mkdir(path: String) -> Error[StdlibError]`
+-   `fn rmdir(path: String) -> Error[StdlibError]`
+-   `fn rm(path: String) -> Error[StdlibError]`
 
 ## `make` builtin
 
@@ -1837,14 +1898,15 @@ TODO
 
 ## Naming conventions
 
-- Function names are `camelCase`
-- Variable names are `camelCase`
-- Struct or class names are `PascalCase`
-- Enums are `PascalCase`
-- Module aliases should be all `lowercase` but `camelCase` can also be used
-- File and directory names are `PascalCase`
+-   Function names are `camelCase`
+-   Variable names are `camelCase`
+-   Struct or class names are `PascalCase`
+-   Enums are `PascalCase`
+-   Module aliases should be all `lowercase` but `camelCase` can also be used
+-   File and directory names are `PascalCase`
 
 ## TODO
+
 -   Mutability and pointer rules
     -   Assignment
     -   Function parameters
