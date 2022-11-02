@@ -4,6 +4,90 @@ This doc goes over syntax and features of the ShnooTalk programming language.
 
 🦄 Emoji in the document indicates notes about missing features and things that might change in the future.
 
+# Table of Contents
+
+-   [Using the compiler](#using-the-compiler)
+-   [Comments](#comments)
+-   [Literals](#literals)
+    -   [Integer literals](#integer-literals)
+    -   [Float literals](#float-literals)
+    -   [Character literals](#character-literals)
+    -   [String literals](#string-literals)
+    -   [Multiline string literals](#multiline-string-literals)
+    -   [The def keyword](#the-def-keyword)
+    -   [Builtin literals](#builtin-literals)
+-   [Program entry point](#program-entry-point)
+-   [Types](#types)
+    -   [Primitive types](#primitive-types)
+    -   [Arrays](#arrays)
+    -   [Pointers](#pointers)
+    -   [Array pointers](#array-pointers)
+    -   [Structs](#structs)
+    -   [Enums](#enums)
+-   [Variables](#variables)
+    -   [Global variables](#global-variables)
+    -   [Local variables](#local-variables)
+-   [Assignments](#assignments)
+-   [Destructuring](#destructuring)
+    -   [Ordered destructuring](#ordered-destructuring)
+    -   [Named destructuring](#named-destructuring)
+-   [Expressions](#expressions)
+    -   [Binary operators](#binary-operators)
+    -   [Unary operators](#unary-operators)
+    -   [Conditional expressions](#conditional-expressions)
+    -   [Relational operators](#relational-operators)
+    -   [Logical operators](#logical-operators)
+    -   [Type casting](#type-casting)
+    -   [Pointer type casting](#pointer-type-casting)
+-   [Control statements](#control-statements)
+    -   [Infinite loop](#infinite-loop)
+-   [Functions](#functions)
+    -   [Basic functions](#basic-functions)
+    -   [Functions as constructors](#functions-as-constructors)
+    -   [Methods](#methods)
+-   [Print statements](#print-statements)
+-   [Builtin functions](#builtin-functions)
+-   [Standard library](#standard-library)
+    -   [Returning multiple values](#returning-multiple-values)
+    -   [Random](#random)
+    -   [Error handling](#error-handling)
+        -   [Panic](#panic)
+        -   [Result](#result)
+        -   [Optional](#optional)
+        -   [Error](#error)
+        -   [Expect method](#expect-method)
+        -   [OR operator](#or-operator)
+        -   [Question mark operator](#question-mark-operator)
+        -   [Result, Optional and Error reference](#result-optional-and-error-reference)
+    -   [String](#string)
+    -   [List](#list)
+    -   [List utilities](#list-utilities)
+    -   [Dict](#dict)
+    -   [Time](#time)
+    -   [Math](#math)
+    -   [Math generic](#math-generic)
+    -   [Files](#files)
+    -   [OS](#os)
+-   [Module system](#module-system)
+-   [Naming conventions](#naming-conventions)
+-   [Mutability and pointer rules](#mutability-and-pointer-rules)
+-   [Hooks](#hooks)
+    -   [Operator hooks](#operator-hooks)
+    -   [Print hooks](#print-hooks)
+    -   [Loop hooks](#loop-hooks)
+    -   [Resource management hooks](#resource-management-hooks)
+    -   [Hook for coercing char array](#hook-for-coercing-char-array)
+-   [Generics](#generics)
+-   [WebAssembly support](#webassembly-support)
+
+## Using the compiler
+
+TODO
+
+-   CLI args
+-   \_obj folder
+-   Linking
+
 ## Comments
 
 Comments in ShnooTalk start with `#` character.
@@ -2051,48 +2135,77 @@ All mutability errors in ShnooTalk are based on the following rules
     -   Cannot be `<-` assigned to a pointer
     -   Cannot be assigned to mutable value
 
-## TODO
+## Hooks
 
--   Operator hooks
-    -   `__multiply` hook
-    -   `__divide` hook
-    -   `__mod` hook
-    -   `__add` hook
-    -   `__subtract` hook
-    -   `__rightShift` hook
-    -   `__leftShift` hook
-    -   `__bitwiseAnd` hook
-    -   `__bitwiseXor` hook
-    -   `__bitwiseOr` hook
-    -   `__lessThan` hook
-    -   `__lessThanOrEqual` hook
-    -   `__greaterThan` hook
-    -   `__isEqual` hook
-    -   `__isNotEqual` hook
-    -   `__in` hook
-    -   `__isNonZero` hook
-    -   `__subscript` hook
--   Print hooks
-    -   `__toCharArray__` and `__toString__` hook
--   Loop hooks
-    -   `for x in y` loop
-    -   Destructured `for x in y` loop
--   Question mark operator hooks
-    -   `__questionMarkContinue__` hook
-    -   `__questionMarkUnwrap__` hook
-    -   `__questionMarkError__` hook
-    -   `__questionMarkConstruct__` hook
--   Resource management hooks
-    -   `__beforeCopy__` hook
-    -   `__deconstructor__` hook
--   Hooks for string and char types
-    -   `__coerceCharArray__` hook
--   Generics
-    -   Type hint
-    -   Generic function call
-    -   Same name existence
--   Using the compiler
-    -   CLI args
-    -   \_obj folder
-    -   Linking
--   WASM support
+TODO
+
+### Operator hooks
+
+TODO
+
+-   `__multiply` hook
+-   `__divide` hook
+-   `__mod` hook
+-   `__add` hook
+-   `__subtract` hook
+-   `__rightShift` hook
+-   `__leftShift` hook
+-   `__bitwiseAnd` hook
+-   `__bitwiseXor` hook
+-   `__bitwiseOr` hook
+-   `__lessThan` hook
+-   `__lessThanOrEqual` hook
+-   `__greaterThan` hook
+-   `__isEqual` hook
+-   `__isNotEqual` hook
+-   `__in` hook
+-   `__isNonZero` hook
+-   `__subscript` hook
+
+### Print hooks
+
+TODO
+
+-   `__toCharArray__`
+-   `__toString__` hook
+
+### Loop hooks
+
+TODO
+
+-   `for x in y` loop
+-   Destructured `for x in y` loop
+
+### `?` operator hooks
+
+TODO
+
+-   `__questionMarkContinue__` hook
+-   `__questionMarkUnwrap__` hook
+-   `__questionMarkError__` hook
+-   `__questionMarkConstruct__` hook
+
+### Resource management hooks
+
+TODO
+
+-   `__beforeCopy__` hook
+-   `__deconstructor__` hook
+
+### Hook for coercing char array
+
+TODO
+
+-   `__coerceCharArray__` hook
+
+## Generics
+
+TODO
+
+-   Type hint
+-   Generic function call
+-   Same name existence
+
+## WebAssembly support
+
+TODO
