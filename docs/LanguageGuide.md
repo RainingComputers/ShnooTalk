@@ -1953,11 +1953,72 @@ The `pointFromAnyDimArray` constructor has to appear after `pointFrom2dArray` co
 
 ## Module system
 
-TODO
+You can use the `from` statement to import types, functions and literals from other files
 
--   `::` expression
--   `from` and `use`
--   `SHNOOTALK_PATH` and default `/usr/local/lib`
+_hello.shtk_
+
+```
+fn sayHello()
+{
+    println("Hello!")
+}
+```
+
+_main.shtk_
+
+```
+from "hello.shtk" use sayHello
+
+fn main() -> int
+{
+    sayHello()
+    return 0
+}
+```
+
+If there are two different files and both files have a function with the same name, there would be a name conflict, in that case you would use aliasing and the `::` syntax
+
+_hello1.shtk_
+
+```
+fn sayHello()
+{
+    println("Hello ONE!")
+}
+```
+
+_hello2.shtk_
+
+```
+fn sayHello()
+{
+    println("Hello TWO!")
+}
+```
+
+_main.shtk_
+
+```
+use "hello1.shtk" as hello1
+use "hello2.shtk" as hello2
+
+fn main() -> int
+{
+    hello1::sayHello()  # prints Hello ONE
+    hello2::sayHello()  # prints Hello TWO
+
+    return 0
+}
+```
+
+One you put a path say `foo/bar.shtk` in a use statement, ShnooTalk will check in the following places,
+
+-   The current directory compiler is running
+    `./foo/bar.shtk`
+-   In $SHNOOTALK_PATH environment variable
+    `$SHNOOTALK_PATH/foo/bar.shtk`
+-   In `/usr/local/lib`
+    `/usr/local/lib/shnootalk-<version>/foo/bar.shtk`
 
 ## Naming conventions
 
