@@ -6,6 +6,9 @@ This doc goes over syntax and features of the ShnooTalk programming language.
 
 # Table of Contents
 
+<table>
+    <tr><td width=50% valign=top>
+
 -   [Using the compiler](#using-the-compiler)
 -   [Comments](#comments)
 -   [Literals](#literals)
@@ -39,12 +42,14 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Logical operators](#logical-operators)
     -   [Type casting](#type-casting)
     -   [Pointer type casting](#pointer-type-casting)
--   [Control statements](#control-statements)
-    -   [Infinite loop](#infinite-loop)
+-   [Control statements](#control-statements) - [Infinite loop](#infinite-loop)
 -   [Functions](#functions)
     -   [Basic functions](#basic-functions)
     -   [Functions as constructors](#functions-as-constructors)
     -   [Methods](#methods)
+
+</td><td valign=top>
+
 -   [Print statements](#print-statements)
 -   [Builtin functions](#builtin-functions)
 -   [Standard library](#standard-library)
@@ -79,6 +84,9 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Hook for coercing char array](#hook-for-coercing-char-array)
 -   [Generics](#generics)
 -   [WebAssembly support](#webassembly-support)
+
+</td></tr>
+</table>
 
 ## Using the compiler
 
