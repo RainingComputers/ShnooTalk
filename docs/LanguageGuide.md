@@ -4,10 +4,11 @@ This doc goes over syntax and features of the ShnooTalk programming language.
 
 🦄 Emoji in the document indicates notes about missing features and things that might change in the future.
 
-# Table of Contents
+**Contents**
 
 <table>
-    <tr><td width=50% valign=top>
+<tr>
+<td width=50% valign=top>
 
 -   [Using the compiler](#using-the-compiler)
 -   [Comments](#comments)
@@ -48,7 +49,8 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Functions as constructors](#functions-as-constructors)
     -   [Methods](#methods)
 
-</td><td valign=top>
+</td>
+<td valign=top>
 
 -   [Print statements](#print-statements)
 -   [Builtin functions](#builtin-functions)
@@ -85,7 +87,8 @@ This doc goes over syntax and features of the ShnooTalk programming language.
 -   [Generics](#generics)
 -   [WebAssembly support](#webassembly-support)
 
-</td></tr>
+</td>
+</tr>
 </table>
 
 ## Using the compiler
