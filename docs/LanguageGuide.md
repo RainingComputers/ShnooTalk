@@ -2014,11 +2014,11 @@ fn main() -> int
 One you put a path say `foo/bar.shtk` in a use statement, ShnooTalk will check in the following places,
 
 -   The current directory compiler is running
-    `./foo/bar.shtk`
+    -   `./foo/bar.shtk`
 -   In $SHNOOTALK_PATH environment variable
-    `$SHNOOTALK_PATH/foo/bar.shtk`
+    -   `$SHNOOTALK_PATH/foo/bar.shtk`
 -   In `/usr/local/lib`
-    `/usr/local/lib/shnootalk-<version>/foo/bar.shtk`
+    -   `/usr/local/lib/shnootalk-<version>/foo/bar.shtk`
 
 ## Naming conventions
 
