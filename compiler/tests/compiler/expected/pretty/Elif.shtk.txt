@@ -11,42 +11,44 @@
                         newLine
                         goto _ifend_false_l3_c4
                     _if_false_l3_c4:
-                        int temp14 = cast autoInt 2
-                        flag = isEqual int a, int temp14
-                        if(not flag) goto _if_false_l4_c4
-                        printString stringData _str_Elif_shtk__l4_c24
+                        int temp17 = cast autoInt 2
+                        flag = isEqual int a, int temp17
+                        if(not flag) goto _if_false_l4_c9
+                        printString stringData _str_Elif_shtk__l4_c27
                         newLine
-                        goto _ifend_false_l3_c4
-                    _if_false_l4_c4:
-                        int temp20 = cast autoInt 3
-                        flag = isEqual int a, int temp20
-                        if(not flag) goto _if_false_l5_c4
-                        printString stringData _str_Elif_shtk__l5_c24
+                        goto _ifend_false_l4_c9
+                    _if_false_l4_c9:
+                        int temp26 = cast autoInt 3
+                        flag = isEqual int a, int temp26
+                        if(not flag) goto _if_false_l5_c9
+                        printString stringData _str_Elif_shtk__l5_c27
                         newLine
-                        goto _ifend_false_l3_c4
-                    _if_false_l5_c4:
+                        goto _ifend_false_l5_c9
+                    _if_false_l5_c9:
                         printString stringData _str_Elif_shtk__l6_c17
                         newLine
+                    _ifend_false_l5_c9:
+                    _ifend_false_l4_c9:
                     _ifend_false_l3_c4:
                         return
                 ]
             },
             "main": {
                 "icode": [
-                        int temp31 = cast autoInt 1
-                        pass int temp31, void _fn_Elif_shtk_foo, module Elif.shtk
-                        void calleeReturnValue34 = call void _fn_Elif_shtk_foo, module Elif.shtk
-                        int temp40 = cast autoInt 2
-                        pass int temp40, void _fn_Elif_shtk_foo, module Elif.shtk
-                        void calleeReturnValue43 = call void _fn_Elif_shtk_foo, module Elif.shtk
-                        int temp49 = cast autoInt 3
-                        pass int temp49, void _fn_Elif_shtk_foo, module Elif.shtk
-                        void calleeReturnValue52 = call void _fn_Elif_shtk_foo, module Elif.shtk
-                        int temp58 = cast autoInt 4
-                        pass int temp58, void _fn_Elif_shtk_foo, module Elif.shtk
-                        void calleeReturnValue61 = call void _fn_Elif_shtk_foo, module Elif.shtk
-                        int temp66 = cast autoInt 0
-                        int returnValue64 = equal int temp66
+                        int temp37 = cast autoInt 1
+                        pass int temp37, void _fn_Elif_shtk_foo, module Elif.shtk
+                        void calleeReturnValue40 = call void _fn_Elif_shtk_foo, module Elif.shtk
+                        int temp46 = cast autoInt 2
+                        pass int temp46, void _fn_Elif_shtk_foo, module Elif.shtk
+                        void calleeReturnValue49 = call void _fn_Elif_shtk_foo, module Elif.shtk
+                        int temp55 = cast autoInt 3
+                        pass int temp55, void _fn_Elif_shtk_foo, module Elif.shtk
+                        void calleeReturnValue58 = call void _fn_Elif_shtk_foo, module Elif.shtk
+                        int temp64 = cast autoInt 4
+                        pass int temp64, void _fn_Elif_shtk_foo, module Elif.shtk
+                        void calleeReturnValue67 = call void _fn_Elif_shtk_foo, module Elif.shtk
+                        int temp72 = cast autoInt 0
+                        int returnValue70 = equal int temp72
                         return
                 ]
             }

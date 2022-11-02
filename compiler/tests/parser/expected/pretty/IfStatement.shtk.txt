@@ -66,28 +66,31 @@
               │     │                       └───> nodeType=TERM, string=""Earth"", tokenType=STR_LITERAL, line=10, col=24
               │     │                             └───> nodeType=MULTILINE_STR_LITERAL, string=""Earth"", tokenType=STR_LITERAL, line=10, col=24
               │     │                                   └───> nodeType=STR_LITERAL, string=""Earth"", tokenType=STR_LITERAL, line=10, col=24
-              │     └───> nodeType=ELSEIF, string="elif", tokenType=ELSEIF, line=11, col=4
-              │           ├───> nodeType=EXPRESSION, string="(", tokenType=LPAREN, line=11, col=9
-              │           │     └───> nodeType=TERM, string="(", tokenType=LPAREN, line=11, col=9
-              │           │           └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=11, col=10
-              │           │                 ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=11, col=10
-              │           │                 │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=11, col=10
-              │           │                 │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=11, col=10
-              │           │                 ├───> nodeType=OPERATOR, string="==", tokenType=CONDN_EQUAL, line=11, col=12
-              │           │                 └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=11, col=15
-              │           │                       └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=11, col=15
-              │           │                             └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=11, col=15
-              │           └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=11, col=18
-              │                 ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=12, col=8
-              │                 │     └───> nodeType=EXPRESSION, string=""Hello"", tokenType=STR_LITERAL, line=12, col=16
-              │                 │           └───> nodeType=TERM, string=""Hello"", tokenType=STR_LITERAL, line=12, col=16
-              │                 │                 └───> nodeType=MULTILINE_STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=12, col=16
-              │                 │                       └───> nodeType=STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=12, col=16
-              │                 └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=13, col=8
-              │                       └───> nodeType=EXPRESSION, string=""Mars"", tokenType=STR_LITERAL, line=13, col=16
-              │                             └───> nodeType=TERM, string=""Mars"", tokenType=STR_LITERAL, line=13, col=16
-              │                                   └───> nodeType=MULTILINE_STR_LITERAL, string=""Mars"", tokenType=STR_LITERAL, line=13, col=16
-              │                                         └───> nodeType=STR_LITERAL, string=""Mars"", tokenType=STR_LITERAL, line=13, col=16
+              │     └───> nodeType=ELSE, string="else", tokenType=ELSE, line=11, col=4
+              │           └───> nodeType=BLOCK, string="if", tokenType=IF, line=11, col=9
+              │                 └───> nodeType=IF, string="if", tokenType=IF, line=11, col=9
+              │                       └───> nodeType=IF, string="if", tokenType=IF, line=11, col=9
+              │                             ├───> nodeType=EXPRESSION, string="(", tokenType=LPAREN, line=11, col=12
+              │                             │     └───> nodeType=TERM, string="(", tokenType=LPAREN, line=11, col=12
+              │                             │           └───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=11, col=13
+              │                             │                 ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=11, col=13
+              │                             │                 │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=11, col=13
+              │                             │                 │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=11, col=13
+              │                             │                 ├───> nodeType=OPERATOR, string="==", tokenType=CONDN_EQUAL, line=11, col=15
+              │                             │                 └───> nodeType=EXPRESSION, string="2", tokenType=INT_LITERAL, line=11, col=18
+              │                             │                       └───> nodeType=TERM, string="2", tokenType=INT_LITERAL, line=11, col=18
+              │                             │                             └───> nodeType=LITERAL, string="2", tokenType=INT_LITERAL, line=11, col=18
+              │                             └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=11, col=21
+              │                                   ├───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=12, col=8
+              │                                   │     └───> nodeType=EXPRESSION, string=""Hello"", tokenType=STR_LITERAL, line=12, col=16
+              │                                   │           └───> nodeType=TERM, string=""Hello"", tokenType=STR_LITERAL, line=12, col=16
+              │                                   │                 └───> nodeType=MULTILINE_STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=12, col=16
+              │                                   │                       └───> nodeType=STR_LITERAL, string=""Hello"", tokenType=STR_LITERAL, line=12, col=16
+              │                                   └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=13, col=8
+              │                                         └───> nodeType=EXPRESSION, string=""Mars"", tokenType=STR_LITERAL, line=13, col=16
+              │                                               └───> nodeType=TERM, string=""Mars"", tokenType=STR_LITERAL, line=13, col=16
+              │                                                     └───> nodeType=MULTILINE_STR_LITERAL, string=""Mars"", tokenType=STR_LITERAL, line=13, col=16
+              │                                                           └───> nodeType=STR_LITERAL, string=""Mars"", tokenType=STR_LITERAL, line=13, col=16
               └───> nodeType=IF, string="if", tokenType=IF, line=16, col=4
                     ├───> nodeType=IF, string="if", tokenType=IF, line=16, col=4
                     │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=16, col=7
@@ -104,25 +107,28 @@
                     │                       └───> nodeType=TERM, string=""Uranus"", tokenType=STR_LITERAL, line=17, col=16
                     │                             └───> nodeType=MULTILINE_STR_LITERAL, string=""Uranus"", tokenType=STR_LITERAL, line=17, col=16
                     │                                   └───> nodeType=STR_LITERAL, string=""Uranus"", tokenType=STR_LITERAL, line=17, col=16
-                    ├───> nodeType=ELSEIF, string="elif", tokenType=ELSEIF, line=18, col=6
-                    │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=18, col=11
-                    │     │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=18, col=11
-                    │     │     │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=18, col=11
-                    │     │     │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=18, col=11
-                    │     │     ├───> nodeType=OPERATOR, string="==", tokenType=CONDN_EQUAL, line=18, col=13
-                    │     │     └───> nodeType=EXPRESSION, string="4", tokenType=INT_LITERAL, line=18, col=16
-                    │     │           └───> nodeType=TERM, string="4", tokenType=INT_LITERAL, line=18, col=16
-                    │     │                 └───> nodeType=LITERAL, string="4", tokenType=INT_LITERAL, line=18, col=16
-                    │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=18, col=18
-                    │           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=19, col=8
-                    │                 └───> nodeType=EXPRESSION, string=""Napetune"", tokenType=STR_LITERAL, line=19, col=16
-                    │                       └───> nodeType=TERM, string=""Napetune"", tokenType=STR_LITERAL, line=19, col=16
-                    │                             └───> nodeType=MULTILINE_STR_LITERAL, string=""Napetune"", tokenType=STR_LITERAL, line=19, col=16
-                    │                                   └───> nodeType=STR_LITERAL, string=""Napetune"", tokenType=STR_LITERAL, line=19, col=16
-                    └───> nodeType=ELSE, string="else", tokenType=ELSE, line=20, col=6
-                          └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=20, col=11
-                                └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=21, col=8
-                                      └───> nodeType=EXPRESSION, string=""Venus"", tokenType=STR_LITERAL, line=21, col=16
-                                            └───> nodeType=TERM, string=""Venus"", tokenType=STR_LITERAL, line=21, col=16
-                                                  └───> nodeType=MULTILINE_STR_LITERAL, string=""Venus"", tokenType=STR_LITERAL, line=21, col=16
-                                                        └───> nodeType=STR_LITERAL, string=""Venus"", tokenType=STR_LITERAL, line=21, col=16
+                    └───> nodeType=ELSE, string="else", tokenType=ELSE, line=18, col=6
+                          └───> nodeType=BLOCK, string="if", tokenType=IF, line=18, col=11
+                                └───> nodeType=IF, string="if", tokenType=IF, line=18, col=11
+                                      ├───> nodeType=IF, string="if", tokenType=IF, line=18, col=11
+                                      │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=18, col=14
+                                      │     │     ├───> nodeType=EXPRESSION, string="a", tokenType=IDENTIFIER, line=18, col=14
+                                      │     │     │     └───> nodeType=TERM, string="a", tokenType=IDENTIFIER, line=18, col=14
+                                      │     │     │           └───> nodeType=IDENTIFIER, string="a", tokenType=IDENTIFIER, line=18, col=14
+                                      │     │     ├───> nodeType=OPERATOR, string="==", tokenType=CONDN_EQUAL, line=18, col=16
+                                      │     │     └───> nodeType=EXPRESSION, string="4", tokenType=INT_LITERAL, line=18, col=19
+                                      │     │           └───> nodeType=TERM, string="4", tokenType=INT_LITERAL, line=18, col=19
+                                      │     │                 └───> nodeType=LITERAL, string="4", tokenType=INT_LITERAL, line=18, col=19
+                                      │     └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=18, col=21
+                                      │           └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=19, col=8
+                                      │                 └───> nodeType=EXPRESSION, string=""Napetune"", tokenType=STR_LITERAL, line=19, col=16
+                                      │                       └───> nodeType=TERM, string=""Napetune"", tokenType=STR_LITERAL, line=19, col=16
+                                      │                             └───> nodeType=MULTILINE_STR_LITERAL, string=""Napetune"", tokenType=STR_LITERAL, line=19, col=16
+                                      │                                   └───> nodeType=STR_LITERAL, string=""Napetune"", tokenType=STR_LITERAL, line=19, col=16
+                                      └───> nodeType=ELSE, string="else", tokenType=ELSE, line=20, col=6
+                                            └───> nodeType=BLOCK, string="{", tokenType=OPEN_BRACE, line=20, col=11
+                                                  └───> nodeType=PRINTLN, string="println", tokenType=PRINTLN, line=21, col=8
+                                                        └───> nodeType=EXPRESSION, string=""Venus"", tokenType=STR_LITERAL, line=21, col=16
+                                                              └───> nodeType=TERM, string=""Venus"", tokenType=STR_LITERAL, line=21, col=16
+                                                                    └───> nodeType=MULTILINE_STR_LITERAL, string=""Venus"", tokenType=STR_LITERAL, line=21, col=16
+                                                                          └───> nodeType=STR_LITERAL, string=""Venus"", tokenType=STR_LITERAL, line=21, col=16

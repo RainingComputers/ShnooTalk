@@ -417,128 +417,146 @@
                   ]
                 },
                 {
-                  "type": "ELSEIF",
-                  "token": {"string": "elif", "tokenType": "ELSEIF", "line": 11, "col": 4, "file": "IfStatement.shtk"},
+                  "type": "ELSE",
+                  "token": {"string": "else", "tokenType": "ELSE", "line": 11, "col": 4, "file": "IfStatement.shtk"},
                   "children": [
                     {
-                      "type": "EXPRESSION",
-                      "token": {"string": "(", "tokenType": "LPAREN", "line": 11, "col": 9, "file": "IfStatement.shtk"},
-                      "children": [
-                        {
-                          "type": "TERM",
-                          "token": {"string": "(", "tokenType": "LPAREN", "line": 11, "col": 9, "file": "IfStatement.shtk"},
-                          "children": [
-                            {
-                              "type": "EXPRESSION",
-                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "IfStatement.shtk"},
-                              "children": [
-                                {
-                                  "type": "EXPRESSION",
-                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "IfStatement.shtk"},
-                                  "children": [
-                                    {
-                                      "type": "TERM",
-                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "IfStatement.shtk"},
-                                      "children": [
-                                        {
-                                          "type": "IDENTIFIER",
-                                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 10, "file": "IfStatement.shtk"},
-                                          "children": [
-                                            
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "OPERATOR",
-                                  "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 11, "col": 12, "file": "IfStatement.shtk"},
-                                  "children": [
-                                    
-                                  ]
-                                },
-                                {
-                                  "type": "EXPRESSION",
-                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 15, "file": "IfStatement.shtk"},
-                                  "children": [
-                                    {
-                                      "type": "TERM",
-                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 15, "file": "IfStatement.shtk"},
-                                      "children": [
-                                        {
-                                          "type": "LITERAL",
-                                          "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 15, "file": "IfStatement.shtk"},
-                                          "children": [
-                                            
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
                       "type": "BLOCK",
-                      "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 11, "col": 18, "file": "IfStatement.shtk"},
+                      "token": {"string": "if", "tokenType": "IF", "line": 11, "col": 9, "file": "IfStatement.shtk"},
                       "children": [
                         {
-                          "type": "PRINTLN",
-                          "token": {"string": "println", "tokenType": "PRINTLN", "line": 12, "col": 8, "file": "IfStatement.shtk"},
+                          "type": "IF",
+                          "token": {"string": "if", "tokenType": "IF", "line": 11, "col": 9, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "EXPRESSION",
-                              "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
+                              "type": "IF",
+                              "token": {"string": "if", "tokenType": "IF", "line": 11, "col": 9, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "TERM",
-                                  "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
+                                  "type": "EXPRESSION",
+                                  "token": {"string": "(", "tokenType": "LPAREN", "line": 11, "col": 12, "file": "IfStatement.shtk"},
                                   "children": [
                                     {
-                                      "type": "MULTILINE_STR_LITERAL",
-                                      "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
+                                      "type": "TERM",
+                                      "token": {"string": "(", "tokenType": "LPAREN", "line": 11, "col": 12, "file": "IfStatement.shtk"},
                                       "children": [
                                         {
-                                          "type": "STR_LITERAL",
+                                          "type": "EXPRESSION",
+                                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 13, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            {
+                                              "type": "EXPRESSION",
+                                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 13, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "TERM",
+                                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 13, "file": "IfStatement.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "type": "IDENTIFIER",
+                                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 11, "col": 13, "file": "IfStatement.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "type": "OPERATOR",
+                                              "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 11, "col": 15, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            },
+                                            {
+                                              "type": "EXPRESSION",
+                                              "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 18, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "TERM",
+                                                  "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 18, "file": "IfStatement.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "type": "LITERAL",
+                                                      "token": {"string": "2", "tokenType": "INT_LITERAL", "line": 11, "col": 18, "file": "IfStatement.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BLOCK",
+                                  "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 11, "col": 21, "file": "IfStatement.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "PRINTLN",
+                                      "token": {"string": "println", "tokenType": "PRINTLN", "line": 12, "col": 8, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "EXPRESSION",
                                           "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
                                           "children": [
-                                            
+                                            {
+                                              "type": "TERM",
+                                              "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "MULTILINE_STR_LITERAL",
+                                                  "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "type": "STR_LITERAL",
+                                                      "token": {"string": "\"Hello\"", "tokenType": "STR_LITERAL", "line": 12, "col": 16, "file": "IfStatement.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
                                           ]
                                         }
                                       ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "PRINTLN",
-                          "token": {"string": "println", "tokenType": "PRINTLN", "line": 13, "col": 8, "file": "IfStatement.shtk"},
-                          "children": [
-                            {
-                              "type": "EXPRESSION",
-                              "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
-                              "children": [
-                                {
-                                  "type": "TERM",
-                                  "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
-                                  "children": [
+                                    },
                                     {
-                                      "type": "MULTILINE_STR_LITERAL",
-                                      "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
+                                      "type": "PRINTLN",
+                                      "token": {"string": "println", "tokenType": "PRINTLN", "line": 13, "col": 8, "file": "IfStatement.shtk"},
                                       "children": [
                                         {
-                                          "type": "STR_LITERAL",
+                                          "type": "EXPRESSION",
                                           "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
                                           "children": [
-                                            
+                                            {
+                                              "type": "TERM",
+                                              "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "MULTILINE_STR_LITERAL",
+                                                  "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "type": "STR_LITERAL",
+                                                      "token": {"string": "\"Mars\"", "tokenType": "STR_LITERAL", "line": 13, "col": 16, "file": "IfStatement.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
                                           ]
                                         }
                                       ]
@@ -654,85 +672,103 @@
                   ]
                 },
                 {
-                  "type": "ELSEIF",
-                  "token": {"string": "elif", "tokenType": "ELSEIF", "line": 18, "col": 6, "file": "IfStatement.shtk"},
+                  "type": "ELSE",
+                  "token": {"string": "else", "tokenType": "ELSE", "line": 18, "col": 6, "file": "IfStatement.shtk"},
                   "children": [
                     {
-                      "type": "EXPRESSION",
-                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 11, "file": "IfStatement.shtk"},
-                      "children": [
-                        {
-                          "type": "EXPRESSION",
-                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 11, "file": "IfStatement.shtk"},
-                          "children": [
-                            {
-                              "type": "TERM",
-                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 11, "file": "IfStatement.shtk"},
-                              "children": [
-                                {
-                                  "type": "IDENTIFIER",
-                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 11, "file": "IfStatement.shtk"},
-                                  "children": [
-                                    
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "OPERATOR",
-                          "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 18, "col": 13, "file": "IfStatement.shtk"},
-                          "children": [
-                            
-                          ]
-                        },
-                        {
-                          "type": "EXPRESSION",
-                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 18, "col": 16, "file": "IfStatement.shtk"},
-                          "children": [
-                            {
-                              "type": "TERM",
-                              "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 18, "col": 16, "file": "IfStatement.shtk"},
-                              "children": [
-                                {
-                                  "type": "LITERAL",
-                                  "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 18, "col": 16, "file": "IfStatement.shtk"},
-                                  "children": [
-                                    
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
                       "type": "BLOCK",
-                      "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 18, "col": 18, "file": "IfStatement.shtk"},
+                      "token": {"string": "if", "tokenType": "IF", "line": 18, "col": 11, "file": "IfStatement.shtk"},
                       "children": [
                         {
-                          "type": "PRINTLN",
-                          "token": {"string": "println", "tokenType": "PRINTLN", "line": 19, "col": 8, "file": "IfStatement.shtk"},
+                          "type": "IF",
+                          "token": {"string": "if", "tokenType": "IF", "line": 18, "col": 11, "file": "IfStatement.shtk"},
                           "children": [
                             {
-                              "type": "EXPRESSION",
-                              "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
+                              "type": "IF",
+                              "token": {"string": "if", "tokenType": "IF", "line": 18, "col": 11, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "TERM",
-                                  "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
+                                  "type": "EXPRESSION",
+                                  "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 14, "file": "IfStatement.shtk"},
                                   "children": [
                                     {
-                                      "type": "MULTILINE_STR_LITERAL",
-                                      "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
+                                      "type": "EXPRESSION",
+                                      "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 14, "file": "IfStatement.shtk"},
                                       "children": [
                                         {
-                                          "type": "STR_LITERAL",
+                                          "type": "TERM",
+                                          "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 14, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            {
+                                              "type": "IDENTIFIER",
+                                              "token": {"string": "a", "tokenType": "IDENTIFIER", "line": 18, "col": 14, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "OPERATOR",
+                                      "token": {"string": "==", "tokenType": "CONDN_EQUAL", "line": 18, "col": 16, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        
+                                      ]
+                                    },
+                                    {
+                                      "type": "EXPRESSION",
+                                      "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 18, "col": 19, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "TERM",
+                                          "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 18, "col": 19, "file": "IfStatement.shtk"},
+                                          "children": [
+                                            {
+                                              "type": "LITERAL",
+                                              "token": {"string": "4", "tokenType": "INT_LITERAL", "line": 18, "col": 19, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BLOCK",
+                                  "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 18, "col": 21, "file": "IfStatement.shtk"},
+                                  "children": [
+                                    {
+                                      "type": "PRINTLN",
+                                      "token": {"string": "println", "tokenType": "PRINTLN", "line": 19, "col": 8, "file": "IfStatement.shtk"},
+                                      "children": [
+                                        {
+                                          "type": "EXPRESSION",
                                           "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
                                           "children": [
-                                            
+                                            {
+                                              "type": "TERM",
+                                              "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "MULTILINE_STR_LITERAL",
+                                                  "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "type": "STR_LITERAL",
+                                                      "token": {"string": "\"Napetune\"", "tokenType": "STR_LITERAL", "line": 19, "col": 16, "file": "IfStatement.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
                                           ]
                                         }
                                       ]
@@ -740,42 +776,42 @@
                                   ]
                                 }
                               ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "ELSE",
-                  "token": {"string": "else", "tokenType": "ELSE", "line": 20, "col": 6, "file": "IfStatement.shtk"},
-                  "children": [
-                    {
-                      "type": "BLOCK",
-                      "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 20, "col": 11, "file": "IfStatement.shtk"},
-                      "children": [
-                        {
-                          "type": "PRINTLN",
-                          "token": {"string": "println", "tokenType": "PRINTLN", "line": 21, "col": 8, "file": "IfStatement.shtk"},
-                          "children": [
+                            },
                             {
-                              "type": "EXPRESSION",
-                              "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
+                              "type": "ELSE",
+                              "token": {"string": "else", "tokenType": "ELSE", "line": 20, "col": 6, "file": "IfStatement.shtk"},
                               "children": [
                                 {
-                                  "type": "TERM",
-                                  "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
+                                  "type": "BLOCK",
+                                  "token": {"string": "{", "tokenType": "OPEN_BRACE", "line": 20, "col": 11, "file": "IfStatement.shtk"},
                                   "children": [
                                     {
-                                      "type": "MULTILINE_STR_LITERAL",
-                                      "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
+                                      "type": "PRINTLN",
+                                      "token": {"string": "println", "tokenType": "PRINTLN", "line": 21, "col": 8, "file": "IfStatement.shtk"},
                                       "children": [
                                         {
-                                          "type": "STR_LITERAL",
+                                          "type": "EXPRESSION",
                                           "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
                                           "children": [
-                                            
+                                            {
+                                              "type": "TERM",
+                                              "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
+                                              "children": [
+                                                {
+                                                  "type": "MULTILINE_STR_LITERAL",
+                                                  "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
+                                                  "children": [
+                                                    {
+                                                      "type": "STR_LITERAL",
+                                                      "token": {"string": "\"Venus\"", "tokenType": "STR_LITERAL", "line": 21, "col": 16, "file": "IfStatement.shtk"},
+                                                      "children": [
+                                                        
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
                                           ]
                                         }
                                       ]
