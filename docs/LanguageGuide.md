@@ -98,6 +98,8 @@ This doc goes over syntax and features of the ShnooTalk programming language.
 
 ## Using the compiler
 
+TODO
+
 All executable programs must have a function called `main`. When a program starts, this is the first function that will be called, and it must return a `int` primitive type.
 
 ```
@@ -2190,12 +2192,31 @@ TODO
 
 ### `?` operator hooks
 
-TODO
+You can implement the `?` operator for any type by implementing the below methods
 
--   `__questionMarkContinue__` hook
--   `__questionMarkUnwrap__` hook
--   `__questionMarkError__` hook
--   `__questionMarkConstruct__` hook
+-   `__questionMarkContinue__(self: T) -> bool`
+
+    This is the first function that is called when `?` operator is used, the compiler will pass the value on which the `?` operator is used to this function, if it returns `false`, it will abort the function otherwise it will continue.
+
+-   `__questionMarkUnwrap__(self: T) -> V`
+
+    Called if `__questionMarkContinue__` returns `true`. Should return a value for success case. Can also return `true`.
+
+-   `__questionMarkError__(self: T) -> E`
+
+    Called if `__questionMarkContinue__` returns `false`. This function should construct and return an error type E.
+
+-   `__questionMarkConstruct__(error: E) -> T` or `__questionMarkConstruct__() -> T`
+
+    It is a constructor method that may or may not take the return value from `__questionMarkError__` as the first argument.
+
+The following set of procedures happen when the `?` operator is used
+
+1. Call `__questionMarkContinue__` function
+2. If `__questionMarkContinue__` returns `false`, call `__questionMarkConstruct__` function and abort the function with its result as `return` value.
+3. If `__questionMarkContinue__` returns `true`, call `__questionMarkUnwrap__` function, use its result in the expression and continue execution.
+
+This hooks allows you to use the `?` operator even if the return type and the type on which the `?` operator is called are different. For example, you can use the `?` operator on a `Result` type inside a function returning an `Optional`.
 
 ### Resource management hooks
 
