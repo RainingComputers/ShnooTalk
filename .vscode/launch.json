@@ -10,13 +10,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-ast"
-            ],
+            "args": ["${fileBasename}", "-ast"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -25,13 +22,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-ast"
-            ],
+            "args": ["${fileBasename}", "-json-ast"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -40,13 +34,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-ir"
-            ],
+            "args": ["${fileBasename}", "-ir"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -55,13 +46,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-ir"
-            ],
+            "args": ["${fileBasename}", "-json-ir"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -70,13 +58,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-icode"
-            ],
+            "args": ["${fileBasename}", "-icode"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -85,13 +70,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-icode"
-            ],
+            "args": ["${fileBasename}", "-json-icode"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -100,13 +82,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-ir-all"
-            ],
+            "args": ["${fileBasename}", "-ir-all"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -115,13 +94,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-ir-all"
-            ],
+            "args": ["${fileBasename}", "-json-ir-all"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -130,13 +106,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-icode-all"
-            ],
+            "args": ["${fileBasename}", "-icode-all"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -145,13 +118,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-icode-all"
-            ],
+            "args": ["${fileBasename}", "-json-icode-all"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -160,13 +130,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-llvm"
-            ],
+            "args": ["${fileBasename}", "-llvm"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -175,13 +142,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-llvm-release"
-            ],
+            "args": ["${fileBasename}", "-llvm-release"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -190,13 +154,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-c"
-            ],
+            "args": ["${fileBasename}", "-wasm32"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -205,13 +166,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-release"
-            ],
+            "args": ["${fileBasename}", "-release"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false
         },
         {
@@ -220,13 +178,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-ast"
-            ],
+            "args": ["${fileBasename}", "-ast"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -243,13 +198,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-ast"
-            ],
+            "args": ["${fileBasename}", "-json-ast"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -266,13 +218,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-ir"
-            ],
+            "args": ["${fileBasename}", "-ir"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -289,13 +238,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-ir"
-            ],
+            "args": ["${fileBasename}", "-json-ir"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -312,13 +258,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-icode"
-            ],
+            "args": ["${fileBasename}", "-icode"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -335,13 +278,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-icode"
-            ],
+            "args": ["${fileBasename}", "-json-icode"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -358,13 +298,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-ir-all"
-            ],
+            "args": ["${fileBasename}", "-ir-all"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -381,13 +318,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-ir-all"
-            ],
+            "args": ["${fileBasename}", "-json-ir-all"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -404,13 +338,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-icode-all"
-            ],
+            "args": ["${fileBasename}", "-icode-all"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -427,13 +358,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-json-icode-all"
-            ],
+            "args": ["${fileBasename}", "-json-icode-all"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -450,13 +378,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-llvm"
-            ],
+            "args": ["${fileBasename}", "-llvm"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -473,13 +398,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-llvm-release"
-            ],
+            "args": ["${fileBasename}", "-llvm-release"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -496,13 +418,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-c"
-            ],
+            "args": ["${fileBasename}", "-c"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -519,13 +438,10 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": [
-                "${fileBasename}",
-                "-release"
-            ],
+            "args": ["${fileBasename}", "-release"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "env": {"SHNOOTALK_PATH": "${workspaceFolder}/stdlib/"},
+            "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -542,9 +458,7 @@
             "request": "launch",
             "module": "tests_runner",
             "console": "integratedTerminal",
-            "args": [
-                "--test"
-            ],
+            "args": ["--test"]
         }
     ]
 }

@@ -2351,4 +2351,45 @@ This detection can happen on `return` or on `=` assignment if the type on the le
 
 ## WebAssembly support
 
-TODO
+ShnooTalk has support for compiling to WASM modules that can be run in the browser or in node, but there is a limitation, you can't use the standard library, which means no `List`, `String` etc.
+
+Here is a very simple example, let's create an add function and use it from node.js
+
+_add.shtk_
+
+```
+externC fn add(a: int, b: int) -> int
+{
+    return a + b
+}
+```
+
+The `externC` keyword is important. It tells the ShnooTalk compiler not to name mangle the function.
+Then compile `add.shtk` to wasm object files
+
+```
+shtkc add.shtk -wasm32
+```
+
+You should say a directory called `_obj` generated. Now we can link all the object files in `_obj` into a wasm binary called `add.wasm`
+
+```
+wasm-ld _obj/*.o -o add.wasm --no-entry --export-all
+```
+
+Not Let's use this in nodejs,
+
+_test.js_
+
+```js
+const fs = require("fs")
+
+const wasmBuffer = fs.readFileSync("test.wasm")
+WebAssembly.instantiate(wasmBuffer).then((wasmModule) => {
+    const { add } = wasmModule.instance.exports
+    const sum = add(5, 6)
+    console.log(sum) // prints 11
+})
+```
+
+If you run `node test.js`, it will print 11. You have called a ShnooTalk function from nodejs.
