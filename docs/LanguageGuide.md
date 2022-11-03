@@ -2351,9 +2351,9 @@ This detection can happen on `return` or on `=` assignment if the type on the le
 
 ## WebAssembly support
 
-ShnooTalk has support for compiling to WASM modules that can be run in the browser or in node, but there is a limitation, you can't use the standard library, which means no `List`, `String` etc.
+ShnooTalk has support for compiling to WASM modules that can be run in a web browser or in Node.js, but there is a limitation, you can't use the standard library, which means no `List`, `String` etc.
 
-Here is a very simple example, let's create an add function and use it from node.js
+Here is a very simple example, let's create an add function and use it from Node.js
 
 _add.shtk_
 
@@ -2377,14 +2377,14 @@ You should say a directory called `_obj` generated. Now we can link all the obje
 wasm-ld _obj/*.o -o add.wasm --no-entry --export-all
 ```
 
-Not Let's use this in nodejs,
+Not Let's use this in Node.js,
 
 _test.js_
 
 ```js
 const fs = require("fs")
 
-const wasmBuffer = fs.readFileSync("test.wasm")
+const wasmBuffer = fs.readFileSync("add.wasm")
 WebAssembly.instantiate(wasmBuffer).then((wasmModule) => {
     const { add } = wasmModule.instance.exports
     const sum = add(5, 6)
