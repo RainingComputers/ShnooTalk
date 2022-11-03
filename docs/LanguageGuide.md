@@ -42,15 +42,21 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Logical operators](#logical-operators)
     -   [Type casting](#type-casting)
     -   [Pointer type casting](#pointer-type-casting)
--   [Control statements](#control-statements) - [Infinite loop](#infinite-loop)
--   [Functions](#functions)
-    -   [Basic functions](#basic-functions)
-    -   [Functions as constructors](#functions-as-constructors)
-    -   [Methods](#methods)
+-   [Control statements](#control-statements)
+    -   [`if` statement](#if-statement)
+    -   [Infinite loop](#infinite-loop)
+    -   [`while` loop](#while-loop)
+    -   [`do while` loop](#do-while-loop)
+    -   [`for` loop](#for-loop)
+    -   [`break` and `continue`](#break-and-continue)
 
 </td>
 <td valign=top>
 
+-   [Functions](#functions)
+    -   [Basic functions](#basic-functions)
+    -   [Functions as constructors](#functions-as-constructors)
+    -   [Methods](#methods)
 -   [Print statements](#print-statements)
 -   [Builtin functions](#builtin-functions)
 -   [Standard library](#standard-library)
