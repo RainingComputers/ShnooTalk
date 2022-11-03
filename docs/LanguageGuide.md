@@ -49,16 +49,20 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [`do while` loop](#do-while-loop)
     -   [`for` loop](#for-loop)
     -   [`break` and `continue`](#break-and-continue)
-
-</td>
-<td valign=top>
-
 -   [Functions](#functions)
     -   [Basic functions](#basic-functions)
     -   [Functions as constructors](#functions-as-constructors)
     -   [Methods](#methods)
+    -   [`extfn` functions](#extfn-functions)
+    -   [`externC` functions](#externc-functions)
+
+</td>
+<td valign=top>
+
 -   [Print statements](#print-statements)
 -   [Builtin functions](#builtin-functions)
+    -   [`sizeof` builtin](#sizeof-builtin)
+    -   [`addr` builtin](#addr-builtin)
 -   [Standard library](#standard-library)
     -   [Returning multiple values](#returning-multiple-values)
     -   [Random](#random)
@@ -80,6 +84,7 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Math generic](#math-generic)
     -   [Files](#files)
     -   [OS](#os)
+-   [`make` builtin](#make-builtin)
 -   [Module system](#module-system)
 -   [Naming conventions](#naming-conventions)
 -   [Mutability and pointer rules](#mutability-and-pointer-rules)
@@ -87,6 +92,7 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Operator hooks](#operator-hooks)
     -   [Print hooks](#print-hooks)
     -   [Loop hooks](#loop-hooks)
+    -   [Question mark operator hooks](#question-mark-operator-hooks)
     -   [Resource management hooks](#resource-management-hooks)
     -   [Hook for coercing char array](#hook-for-coercing-char-array)
 -   [Generics](#generics)
@@ -2190,7 +2196,7 @@ TODO
 -   `for x in y` loop
 -   Destructured `for x in y` loop
 
-### `?` operator hooks
+### Question mark operator hooks
 
 You can implement the `?` operator for any type by implementing the below methods
 
