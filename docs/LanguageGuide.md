@@ -2325,7 +2325,7 @@ fn divide(numerator: float, denominator: float) -> Optional[float]
 }
 ```
 
-This detection can happen on `return` on on `=` assignment if the types on the left hand side is known.
+This detection can happen on `return` or on `=` assignment if the type on the left hand side is known.
 
 ## WebAssembly support
 
