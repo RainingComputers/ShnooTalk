@@ -2392,4 +2392,4 @@ WebAssembly.instantiate(wasmBuffer).then((wasmModule) => {
 })
 ```
 
-If you run `node test.js`, it will print 11. You have called a ShnooTalk function from nodejs.
+If you run `node test.js`, it will print 11. You have called a ShnooTalk function from Node.js.
