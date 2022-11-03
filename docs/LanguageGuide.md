@@ -2211,11 +2211,121 @@ TODO
 
 ## Generics
 
-TODO
+You can define Generic types in ShnooTalk, which can take other types as input. Generics in ShnooTalk are similar to templates in C++.
 
--   Type hint
--   Generic function call
--   Same name existence
+Here is a very simple example of a generic,
+
+_max.shtk_
+
+```
+generic T
+
+fn max(a: T, b: T) -> T
+{
+    if a > b return a
+
+    return b
+}
+```
+
+_main.shtk_
+
+```
+from "max.shtk" use max
+
+fn main() -> int
+{
+    var a: int = 2, b: int = 3
+    println(max[int](a, b))     # prints 3
+
+    var c: double = 2.5, d: double = 3.5
+    println(max[double](c, d))  # prints 3.5
+
+    return 0
+}
+```
+
+Here the file `max.shtk` becomes a template because of the `generic` keyword, when you call the function `max[int](a, b)`, the compiler substitutes the type `int` for `T` in `max.shtk`, compiles that and uses the max function from that. Same applies to `max[double](c, d)` function call. So generics allows you to write code that can applied and reused for multiple types. Without generics the max function would have to be rewritten for each type, something like `maxInt(a: int, b: int) -> int` and `maxDouble(a: double, b: double) -> double`.
+
+Generics can also be used with `struct`,
+
+_point.shtk_
+
+```
+generic T
+
+from "stdlib/List.shtk" use List
+
+struct Point
+{
+    var x: T, y: T
+}
+
+fn point(x: int, y: int) -> Point
+{
+    var self: Point
+    self.x = x
+    self.y = y
+    return self
+}
+
+fn sum(points: List[Point]) -> Point
+{
+    var s := point(0, 0)
+
+    for p in points {
+        s.x += p.x
+        s.y += p.y
+    }
+
+    return s
+}
+
+fn printPoint(self: Point)
+{
+    println(self.x, self.y)
+}
+```
+
+_main.shtk_
+
+```
+from "stdlib/List.shtk" use List
+from "point.shtk" use Point, point, sum, printPoint
+
+fn main() -> int
+{
+    var x := point[int](1, 2)
+    var y := make(Point[int], 1, 1)
+
+    var z := make(List[Point[int]], [x, y])
+
+    var sum := sum[int](z)
+
+    printPoint[int](sum)    # prints 2 3
+
+    return 0
+}
+```
+
+Things to note from this example,
+
+-   You don't need the `[T]` syntax for referring to a generic defined in the same file.
+-   In `point.shtk` you can see we use `Point` instead of `Point[T]` - You can use the `make` syntax to construct generics.
+
+Sometimes, ShnooTalk can also automatically detect the type without the `[T]` syntax. You have already seen this happening with the `Result` and `Optional` types.
+
+```
+fn divide(numerator: float, denominator: float) -> Optional[float]
+{
+    if denominator == 0.0
+        return none()   # same as none[float]()
+
+    return some(numerator/denominator)  # same as some[int](numerator/denominator)
+}
+```
+
+This detection can happen on `return` on on `=` assignment if the types on the left hand side is known.
 
 ## WebAssembly support
 
