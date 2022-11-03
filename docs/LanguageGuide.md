@@ -20,7 +20,6 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Multiline string literals](#multiline-string-literals)
     -   [The def keyword](#the-def-keyword)
     -   [Builtin literals](#builtin-literals)
--   [Program entry point](#program-entry-point)
 -   [Types](#types)
     -   [Primitive types](#primitive-types)
     -   [Arrays](#arrays)
@@ -93,7 +92,15 @@ This doc goes over syntax and features of the ShnooTalk programming language.
 
 ## Using the compiler
 
-TODO
+All executable programs must have a function called `main`. When a program starts, this is the first function that will be called, and it must return a `int` primitive type.
+
+```
+fn main() -> int
+{
+    println("Hello world")
+    return 0
+}
+```
 
 -   CLI args
 -   \_obj folder
@@ -191,18 +198,6 @@ The following literals are already pre-defined in ShnooTalk
 | NULL     | 0        | integer        |
 | NAN      | nan      | floating point |
 | INFINITY | infinity | floating point |
-
-## Program entry point
-
-All executable programs must have a function called `main`. When a program starts, this is the first function that will be called, and it must return a `int` primitive type.
-
-```
-fn main() -> int
-{
-    println("Hello world")
-    return 0
-}
-```
 
 ## Types
 
