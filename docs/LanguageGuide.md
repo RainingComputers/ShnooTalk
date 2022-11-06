@@ -95,7 +95,7 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Loop hooks](#loop-hooks)
     -   [Question mark operator hooks](#question-mark-operator-hooks)
     -   [Memory management hooks](#memory-management-hooks)
-    -   [Hook for coercing char array](#hook-for-coercing-char-array)
+    -   [`__coerceCharArray__`](#__coercechararray__-hook)
 -   [Generics](#generics)
 -   [WebAssembly support](#webassembly-support)
 
@@ -2308,9 +2308,13 @@ These hooks are implicitly called by the compiler if present and are used to imp
 -   `__deconstructor__(self: T)`
     Called when a type is destroyed, for eg. when the type goes out of scope or gets overwritten.
 
-### Hook for coercing char array
+### `__coerceCharArray__` hook
 
-When a function accepts a `char[]` type as argument by it is called with a different type, the compiler will call `__coerceCharArray__(self: T) -> char[]` hook if present to coerce the type being passed into `char[]`. The hook is of course expected to return `char[]` type.
+This hook has the signature `__coerceCharArray__(charArray: char[], lengthIncNull: ulong) -> T`.
+
+When a function accepts a particular type `T` as argument but it is called with `char[]` type, the compiler will call `__coerceCharArray__` hook if present to coerce the `char[]` type being passed into `T`.
+
+This is used by the `String` type from the standard library to avoid `.string()` whenever you call a function that accepts a `String`.
 
 ## Generics
 
