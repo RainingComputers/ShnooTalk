@@ -108,7 +108,7 @@ jobs:
     steps:
       - name: Set release file
         id: set_file
-        run: echo "##[set-output name=files;]$(stdlib-`cat version`.tar.gz)"
+        run: echo "##[set-output name=files;]$(shnootalk-stdlib-`cat version`.tar.gz)"
       - name: Crate stdlib tar.gz
         run: tar cvzf ${{ steps.set_file.outputs.files }} --strip-components=1 stdlib/stdlib
       - name: Set release tag
