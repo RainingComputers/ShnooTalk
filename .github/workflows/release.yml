@@ -103,13 +103,15 @@ jobs:
           files: ${{ steps.set_file.outputs.files }}
           tag_name: ${{ steps.set_tag.outputs.tag }}
   stdlib:
-    name: Release stdlib
+    name: Standard library
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(shnootalk-stdlib-`cat version`.tar.gz)"
-      - name: Crate stdlib tar.gz
+      - name: Create stdlib tar.gz
         run: tar cvzf ${{ steps.set_file.outputs.files }} --strip-components=1 stdlib/stdlib
       - name: Set release tag
         id: set_tag
