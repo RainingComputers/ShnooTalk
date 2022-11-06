@@ -90,6 +90,7 @@ This doc goes over syntax and features of the ShnooTalk programming language.
 -   [Mutability and pointer rules](#mutability-and-pointer-rules)
 -   [Hooks](#hooks)
     -   [Operator hooks](#operator-hooks)
+    -   [`__isNonZero__` hook](#__isnonzero__-hook)
     -   [Print hooks](#print-hooks)
     -   [Loop hooks](#loop-hooks)
     -   [Question mark operator hooks](#question-mark-operator-hooks)
@@ -2231,11 +2232,30 @@ Here are the list of prefix for all operators in ShnooTalk
 | `__isEqual`            | ==       |
 | `__isNotEqual`         | !=       |
 | `__in`                 | in       |
+| `__subscript`          | [ ]      |
 
-### Other operator hooks
+### `__isNonZero__` hook
 
--   `__isNonZero` hook
--   `__subscript` hook
+The `__isNonZero__` hook is used to tell if a type is truthy or falsy and used by conditional statements.
+
+```
+struct Foo{}
+
+fn __isNonZero__(self: Foo) -> bool
+{
+    return true
+}
+
+fn main() -> int
+{
+    var a: Foo
+
+    if a                    # calls __isNonZero__
+        println("Truthy")   # prints Truthy
+
+    return 0
+}
+```
 
 ### Print hooks
 
