@@ -2253,17 +2253,22 @@ All the error handling types like `Optional`, `Result` and `Error` make use of t
 
 ### Print hooks
 
-TODO
+This hooks are used if you want the type to be printable by `print` and `println`.
 
 -   `__toCharArray__`
+    If the type has this hook, `print` or `println` will call this hook and the hook is expected to return a `char[]` type.
+
 -   `__toString__` hook
+    If the type has this hook, `print` or `println` will call this hook and the hook is expected to return another type which implements the `__toCharArray__` hook.
 
 ### Loop hooks
 
-TODO
+A type can be made to be "iterable" by a `for x in y` syntax by implementing the following hooks
 
--   `for x in y` loop
--   Destructured `for x in y` loop
+-   `__subscriptItem__(self: T, index: ulong) -> V`
+-   `length(self: T) -> ulong`
+
+The `for x in y` syntax will call the `__subscriptItem__` hook with index starting from zero assigning the return value to x until index has become equal to (not including) `length`.
 
 ### Question mark operator hooks
 
