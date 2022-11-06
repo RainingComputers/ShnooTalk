@@ -154,7 +154,7 @@
             "request": "launch",
             "preLaunchTask": "debugbuild",
             "program": "${workspaceFolder}/bin/debug/shtkc",
-            "args": ["${fileBasename}", "-wasm32"],
+            "args": ["${fileBasename}", "-c"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "env": { "SHNOOTALK_PATH": "${workspaceFolder}/stdlib/" },

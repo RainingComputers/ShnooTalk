@@ -1257,6 +1257,8 @@ fn main() -> int
 }
 ```
 
+🦄 There will be a proper panic function that prints the trace and line numbers in the future
+
 #### Result
 
 When the error is recoverable you don't want a function to abort the entire program, instead you want to indicate that an error has occurred so it can be handled by the caller, otherwise you would like to return the result.
@@ -2161,24 +2163,77 @@ TODO
 
 ### Operator hooks
 
-TODO
+ShnooTalk will let you define operators like `+` or `-` and others between different types by defining a function. It works similar to have the [`make` builtin](#make-builtin) does, it finds a suitable method starting with the prefix for that operator.
 
--   `__multiply` hook
--   `__divide` hook
--   `__mod` hook
--   `__add` hook
--   `__subtract` hook
--   `__rightShift` hook
--   `__leftShift` hook
--   `__bitwiseAnd` hook
--   `__bitwiseXor` hook
--   `__bitwiseOr` hook
--   `__lessThan` hook
--   `__lessThanOrEqual` hook
--   `__greaterThan` hook
--   `__isEqual` hook
--   `__isNotEqual` hook
--   `__in` hook
+Here is an example
+
+```
+struct Point
+{
+    var x: int, y: int
+}
+
+fn point(x: int, y: int) -> Point
+{
+    var self: Point
+    self.x = x
+    self.y = y
+    return self
+}
+
+fn printPoint(self: Point)
+{
+    println("x:"; self.x, "y:"; self.y)
+}
+
+fn __addPoint__(self: Point, other: Point) -> Point
+{
+    return point(self.x + other.x, self.y + other.y)
+}
+
+fn __addArray__(self: Point, other: int[2]) -> Point
+{
+    return point(self.x + other[0], self.y + other[1])
+}
+
+fn main() -> int
+{
+    const a := point(1, 1)
+    const b := point(2, 2)
+
+    printPoint(a + b)   # calls __addPoint__ and prints x:3 y:3
+    printPoint(a + [4, 4])  # call __addArray__ and prints x:5 y:5
+
+    return 0
+}
+```
+
+The trailing `__` is not required, it is a convention to have it anyways.
+
+Here are the list of prefix for all operators in ShnooTalk
+
+| Prefix                 | Operator |
+| ---------------------- | -------- |
+| `__multiply`           | \*       |
+| `__divide`             | /        |
+| `__mod`                | %        |
+| `__add`                | +        |
+| `__subtract`           | -        |
+| `__rightShift`         | >>       |
+| `__leftShift`          | <<       |
+| `__bitwiseAnd`         | &        |
+| `__bitwiseXor`         | ^        |
+| `__bitwiseOr`          | \|       |
+| `__lessThan`           | <        |
+| `__lessThanOrEqual`    | <=       |
+| `__greaterThan`        | >        |
+| `__greaterThanOrEqual` | >=       |
+| `__isEqual`            | ==       |
+| `__isNotEqual`         | !=       |
+| `__in`                 | in       |
+
+### Other operator hooks
+
 -   `__isNonZero` hook
 -   `__subscript` hook
 
