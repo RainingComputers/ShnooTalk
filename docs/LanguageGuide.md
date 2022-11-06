@@ -1267,8 +1267,6 @@ For this ShnooTalk has the `Result[T, E]` type. `T` and `E` are generic paramete
 
 The error type `E` is usually an enum indicating the type of error.
 
-Here is a simple example
-
 ```
 from "stdlib/Result.shtk" use Result, ok, fail
 from "stdlib/Random.shtk" use randomInt
@@ -1317,8 +1315,6 @@ The convention is that every library will have a one common enum defined in `Err
 #### Optional
 
 The `Optional` type can be used used to represent a value that may not exist. It is similar to the `Option<T>` from rust or `std::optional` from C++ or `Optional[T]` from Python.
-
-Here is a simple example
 
 ```
 from "stdlib/Optional.shtk" use Optional, none, some
@@ -1995,8 +1991,6 @@ Provides utility function to interact with the operating system, defined in `std
 
 This is a special function that accepts a type as its first argument, and then accepts any number of arguments of any type, then finds the first matching suitable constructor method for that type.
 
-Here is an example,
-
 ```
 struct Point
 {
@@ -2165,8 +2159,6 @@ TODO
 ### Operator hooks
 
 ShnooTalk will let you define operators like `+` or `-` and others between different types by defining a function. It works similar to have the [`make` builtin](#make-builtin) does, it finds a suitable method starting with the prefix for that operator.
-
-Here is an example
 
 ```
 struct Point
