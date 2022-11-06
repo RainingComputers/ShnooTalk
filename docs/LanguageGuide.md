@@ -94,7 +94,7 @@ This doc goes over syntax and features of the ShnooTalk programming language.
     -   [Print hooks](#print-hooks)
     -   [Loop hooks](#loop-hooks)
     -   [Question mark operator hooks](#question-mark-operator-hooks)
-    -   [Resource management hooks](#resource-management-hooks)
+    -   [Memory management hooks](#memory-management-hooks)
     -   [Hook for coercing char array](#hook-for-coercing-char-array)
 -   [Generics](#generics)
 -   [WebAssembly support](#webassembly-support)
@@ -2298,18 +2298,19 @@ The following set of procedures happen when the `?` operator is used
 
 This hooks allows you to use the `?` operator even if the return type and the type on which the `?` operator is called are different. For example, you can use the `?` operator on a `Result` type inside a function returning an `Optional`.
 
-### Resource management hooks
+### Memory management hooks
 
-TODO
+These hooks are implicitly called by the compiler if present and are used to implement memory management strategies like Automatic Reference Counting and Smart Pointers.
 
--   `__beforeCopy__` hook
--   `__deconstructor__` hook
+-   `__beforeCopy__(self: T)`
+    Called before a type is copied, for eg. in the `=` sign.
+
+-   `__deconstructor__(self: T)`
+    Called when a type is destroyed, for eg. when the type goes out of scope or gets overwritten.
 
 ### Hook for coercing char array
 
-TODO
-
--   `__coerceCharArray__` hook
+When a function accepts a `char[]` type as argument by it is called with a different type, the compiler will call `__coerceCharArray__(self: T) -> char[]` hook if present to coerce the type being passed into `char[]`. The hook is of course expected to return `char[]` type.
 
 ## Generics
 
