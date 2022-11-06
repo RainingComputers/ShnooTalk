@@ -2154,7 +2154,7 @@ All mutability errors in ShnooTalk are based on the following rules
 
 ## Hooks
 
-TODO
+Hooks are methods that are called by the compiler and allow you to make extensions to the language's syntax and make your libraries and abstractions feel as if they were part of the language.
 
 ### Operator hooks
 
