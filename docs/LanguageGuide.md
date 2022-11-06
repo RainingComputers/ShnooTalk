@@ -2272,7 +2272,7 @@ All the error handling types like `Optional`, `Result` and `Error` make use of t
 
 ### Print hooks
 
-This hooks are used if you want the type to be printable by `print` and `println`.
+These hooks are used if you want the type to be printable by `print` and `println`.
 
 -   `__toCharArray__`
     If the type has this hook, `print` or `println` will call this hook and the hook is expected to return a `char[]` type.
