@@ -2274,7 +2274,7 @@ This hooks are used if you want the type to be printable by `print` and `println
     If the type has this hook, `print` or `println` will call this hook and the hook is expected to return a `char[]` type.
 
 -   `__toString__` hook
-    If the type has this hook, `print` or `println` will call this hook and the hook is expected to return another type which implements the `__toCharArray__` hook.
+    If the type has this hook, `print` or `println` will call this hook and the hook is expected to return another type which implements the `__toCharArray__` hook, which is usually the `String` type from the standard library.
 
 ### Loop hooks
 
