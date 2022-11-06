@@ -105,7 +105,11 @@ This doc goes over syntax and features of the ShnooTalk programming language.
 
 ## Using the compiler
 
+In ShnooTalk all source files have the `.shtk` extension.
+
 All executable programs must have a function called `main`. When a program starts, this is the first function that will be called, and it must return a `int` primitive type.
+
+_hello.shtk_
 
 ```
 fn main() -> int
