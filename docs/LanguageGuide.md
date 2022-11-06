@@ -2249,6 +2249,8 @@ fn main() -> int
 }
 ```
 
+All the error handling types like `Optional`, `Result` and `Error` make use of this hook.
+
 ### Print hooks
 
 TODO
