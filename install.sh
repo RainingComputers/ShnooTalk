@@ -18,7 +18,6 @@ ASSET_NAME=`echo "$BIN_DIR_NAME.tar.gz"`
 
 echo "🤖 Downloading $ASSET_NAME"
 RELEASE_LINK="github.com/rainingcomputers/shnootalk/releases/latest/download/$ASSET_NAME"
-
 curl -OL $RELEASE_LINK
 
 echo "🤖 Extracting $ASSET_NAME"

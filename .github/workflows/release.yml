@@ -28,7 +28,7 @@ jobs:
         id: set_tag
         run: echo "##[set-output name=tag;]$(cat version)"
       - name: Release
-        uses: softprops/action-gh-release@v1        
+        uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.set_file.outputs.files }}
           tag_name: ${{ steps.set_tag.outputs.tag }}
@@ -66,14 +66,14 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.set_file.outputs.files }}
-          tag_name: ${{ steps.set_tag.outputs.tag }}     
+          tag_name: ${{ steps.set_tag.outputs.tag }}
   raspberry-pi-build:
     name: RaspberryPi
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        arch: 
+        arch:
           - docker: linux/arm/v7
             llvm: clang+llvm-12.0.1-armv7a-linux-gnueabihf.tar.xz
           - docker: linux/arm64
@@ -88,7 +88,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build docker build environment
         run: docker buildx build --platform $ARCH -f ci/Linux/debian/Dockerfile . -t shnootalk-build-env
-      - name: Build 
+      - name: Build
         run: |
           docker run -v `pwd`:/home/ -w /home/ shnootalk-build-env:latest sh /home/ci/Linux/build.sh llvmorg-12.0.1/$LLVM_ZIP
       - name: Set release file
@@ -98,7 +98,24 @@ jobs:
         id: set_tag
         run: echo "##[set-output name=tag;]$(cat version)"
       - name: Release
-        uses: softprops/action-gh-release@v1        
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ steps.set_file.outputs.files }}
+          tag_name: ${{ steps.set_tag.outputs.tag }}
+  stdlib:
+    name: Release stdlib
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set release file
+        id: set_file
+        run: echo "##[set-output name=files;]$(stdlib-`cat version`.tar.gz)"
+      - name: Crate stdlib tar.gz
+        run: tar cvzf ${{ steps.set_file.outputs.files }} --strip-components=1 stdlib/stdlib
+      - name: Set release tag
+        id: set_tag
+        run: echo "##[set-output name=tag;]$(cat version)"
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.set_file.outputs.files }}
           tag_name: ${{ steps.set_tag.outputs.tag }}
