@@ -98,6 +98,7 @@ This doc goes over syntax and features of the ShnooTalk programming language. Yo
     -   [`__coerceCharArray__`](#__coercechararray__-hook)
 -   [Generics](#generics)
 -   [WebAssembly support](#webassembly-support)
+-   [Limitations](#limitations)
 
 </td>
 </tr>
@@ -2457,6 +2458,8 @@ fn divide(numerator: float, denominator: float) -> Optional[float]
 
 This detection can happen on `return` or on `=` assignment if the type on the left hand side is known.
 
+🦄 There is a limitation with generics in that you can have generic code and non generic code in the same file. You also can't have two generics that require different number of parameters in the same file.
+
 ## WebAssembly support
 
 ShnooTalk has support for compiling to WASM modules that can be run in a web browser or in Node.js, but there is a limitation, you can't use the standard library, which means no `List`, `String` etc.
@@ -2501,3 +2504,14 @@ WebAssembly.instantiate(wasmBuffer).then((wasmModule) => {
 ```
 
 If you run `node test.js`, it will print 11. You have called a ShnooTalk function from Node.js.
+
+## Limitations
+
+-   There is no support for closures or function pointers.
+-   There is no support for interfaces or some sort of dynamic dispatch.
+-   A backend to transpile to C/C++/JS would open up the language more platforms like Arduino.
+-   There is no storage class to say that the pointer itself won't change but the value it is pointing to will change. Mostly needed for function parameters only, maybe can introduce the `ref` keyword.
+-   No compile time reflection or macros.
+-   No `comptime` or `constexpr`.
+-   No iterator types.
+-   No unions.
