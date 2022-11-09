@@ -139,7 +139,8 @@ install:
 	cp -r stdlib/stdlib/ $(STDLIB_INSTALL_DEST)
 
 uninstall:
-	rm /usr/local/bin/$(EXEC_NAME)
+	rm -f $(COMPILER_INSTALL_DEST) $(COMPILER_SYMLINK_DEST)
+	rm -rf $(STDLIB_INSTALL_DEST)
 
 format:
 	clang-format -i $(SOURCES)
