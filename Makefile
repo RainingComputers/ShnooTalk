@@ -48,6 +48,11 @@ else
 	PLATFORM = $(shell uname -s)-$(shell uname -m)
 endif
 
+# Set install destination
+COMPILER_INSTALL_DEST = /usr/local/bin/shtkc-$(VERSION_STRING)
+COMPILER_SYMLINK_DEST = /usr/local/bin/shtkc
+STDLIB_INSTALL_DEST = /usr/local/lib/shnootalk-$(VERSION_STRING)/stdlib
+
 # Set C++ compiler flags, build type and build path
 DEBUG ?= 0
 GPROF ?= 0
@@ -128,9 +133,10 @@ bin/$(BUILD_TYPE)/$(EXEC_NAME): $(OBJECTS)
 build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME)
 
 install:
-	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
-	mkdir -p /usr/local/lib/shnootalk-$(VERSION_STRING)/stdlib
-	cp -r stdlib/stdlib/ /usr/local/lib/shnootalk-$(VERSION_STRING)/stdlib
+	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) $(COMPILER_INSTALL_DEST)
+	ln -s $(COMPILER_INSTALL_DEST) $(COMPILER_SYMLINK_DEST)
+	mkdir -p $(STDLIB_INSTALL_DEST)
+	cp -r stdlib/stdlib/ $(STDLIB_INSTALL_DEST)
 
 uninstall:
 	rm /usr/local/bin/$(EXEC_NAME)
