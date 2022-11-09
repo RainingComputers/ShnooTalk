@@ -1,5 +1,7 @@
 ![](logo.png)
 
+![](https://img.shields.io/github/v/tag/rainingcomputers/shnootalk?include_prereleases&label=version)
+
 **[Language guide](docs/LanguageGuide.md) | [Try now in browser](https://rainingcomputers.github.io/shnootalk-playground/) | [Install](#install)**
 
 # ShnooTalk
