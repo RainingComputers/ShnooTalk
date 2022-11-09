@@ -51,7 +51,7 @@ endif
 # Set install destination
 COMPILER_INSTALL_DEST = /usr/local/bin/shtkc-$(VERSION_STRING)
 COMPILER_SYMLINK_DEST = /usr/local/bin/shtkc
-STDLIB_INSTALL_DEST = /usr/local/lib/shnootalk-$(VERSION_STRING)/stdlib
+STDLIB_INSTALL_DEST = /usr/local/lib/shnootalk-$(VERSION_STRING)
 
 # Set C++ compiler flags, build type and build path
 DEBUG ?= 0
@@ -135,8 +135,8 @@ build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME)
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) $(COMPILER_INSTALL_DEST)
 	ln -s $(COMPILER_INSTALL_DEST) $(COMPILER_SYMLINK_DEST)
-	mkdir -p $(STDLIB_INSTALL_DEST)
-	cp -r stdlib/stdlib/ $(STDLIB_INSTALL_DEST)
+	mkdir -p $(STDLIB_INSTALL_DEST)/stdlib/
+	cp -r stdlib/stdlib/ $(STDLIB_INSTALL_DEST)/stdlib
 
 uninstall:
 	rm -f $(COMPILER_INSTALL_DEST) $(COMPILER_SYMLINK_DEST)
