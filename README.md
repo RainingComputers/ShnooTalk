@@ -1,6 +1,6 @@
 ![](logo.png)
 
-**[Docs](docs/LanguageGuide.md) | [Try now in browser](https://rainingcomputers.github.io/shnootalk-playground/) | [Install](#install)**
+**[Language guide](docs/LanguageGuide.md) | [Try now in browser](https://rainingcomputers.github.io/shnootalk-playground/) | [Install](#install)**
 
 # ShnooTalk
 
