@@ -72,10 +72,10 @@ fn main() -> int
     println("abcdef".string().endsWith("abc"))
 
     println("find test")
-    println("abcdef".string().find("bcd").expect())
-    println("abcdef".string().find("def").expect())
-    println("abcdef".string().find("abh").isNone())
-    println("abcdef".string().find("abc").expect())
+    println("abcdef".string().find("bcd", 0).expect())
+    println("abcdef".string().find("def", 0).expect())
+    println("abcdef".string().find("abh", 0).isNone())
+    println("abcdef".string().find("abc", 0).expect())
 
     println("subString test")
     println("abcdef".string().subString([1, 4]).expect())
@@ -146,6 +146,12 @@ fn main() -> int
     var b := "Foo".string()
     b.setChar(1, 'Z')
     println(b)
+
+    println("foobar".string().replace("foo", "FOO"))
+    println("foobar".string().replace("oo", "OO"))
+    println("foobar".string().replace("bar", "BAR"))
+    println("This is a thing that is cool".string().replace("thing", "something"))
+    println("testing multiple, testing multiple occurrences".string().replace("testing", "seeing"))
 
     return 0
 }

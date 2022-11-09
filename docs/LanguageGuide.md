@@ -1655,8 +1655,9 @@ Here are list of operations you can do on the String type
 -   `fn split(self: String, delimeter: char) -> List[String]`
 -   `fn startsWith(self: String, other: String) -> bool`
 -   `fn endsWith(self: String, other: String) -> bool`
--   `fn find(self: String, other: String) -> Optional[ulong]`
+-   `fn find(self: String, other: String, start: ulong) -> Optional[ulong]`
 -   `fn strip(self: String) -> String`
+-   `fn replace(self: String, old: String, new: String) -> String`
 -   `fn parseInt(self: String) -> Optional[int]`
 -   `fn parseLong(self: String) -> Optional[long]`
 -   `fn parseFloat(self: String) -> Optional[float]`

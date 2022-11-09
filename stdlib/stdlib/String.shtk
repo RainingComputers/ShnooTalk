@@ -223,12 +223,12 @@ fn _startsWithOffset(self: String, other: String, offset: ulong) -> bool
     return true
 }
 
-fn find(self: String, other: String) -> Optional[ulong]
+fn find(self: String, other: String, start: ulong) -> Optional[ulong]
 {
     if self.length() < other.length()
         return none()
     
-    for var i: ulong = 0; i <= (self.length() - other.length()); i += 1
+    for var i: ulong = start; i <= (self.length() - other.length()); i += 1
         if self._startsWithOffset(other, i)
             return some(i)
 
@@ -296,6 +296,31 @@ fn strip(self: String) -> String
         end -= 1 
 
     return self[[start, end+1]]
+}
+
+fn replace(self: String, old: String, new: String) -> String
+{
+    var result := "".string()
+    var previous: ulong = 0
+
+    loop 
+    {
+        const [index, err] := self.find(old, previous)
+
+        if err {
+            result += self[[previous, self.length()]]
+            break
+        }
+
+        if previous != index
+            result += self[[previous, index]]
+        
+        result += new
+
+        previous = index + old.length()
+    }
+
+    return result
 }
 
 fn parseInt(self: String) -> Optional[int]

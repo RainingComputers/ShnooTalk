@@ -101,3 +101,8 @@ string split
 "", 
 "", "", 
 FZo
+FOObar
+fOObar
+fooBAR
+This is a something that is cool
+seeing multiple, seeing multiple occurrences
