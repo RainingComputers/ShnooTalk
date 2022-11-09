@@ -25,8 +25,7 @@ curl -sf -L https://raw.githubusercontent.com/RainingComputers/ShnooTalk/main/in
 ### MacOS
 
 ```
-brew tap rainingcomputers/shnootalk
-brew install shtkc
+curl -sf -L https://raw.githubusercontent.com/RainingComputers/ShnooTalk/main/install.sh | sh
 ```
 
 ### Linux x86_64 AppImage
@@ -56,6 +55,16 @@ sudo make install
 ### VS Code syntax highlight extension
 
 Install the extension from [here](https://marketplace.visualstudio.com/items?itemName=RainingComputers.shnootalk-vscode)
+
+## Uninstall
+
+Uninstallation is straightforward and easy
+
+```
+rm -f /usr/local/bin/shtkc
+rm -f /usr/local/bin/shtkc-<version>
+rm -rf /usr/local/lib/shnootalk-<version>
+```
 
 ## Getting started
 

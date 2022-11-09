@@ -2,9 +2,7 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": true,
-    "python.linting.pycodestyleArgs": [
-        "--max-line-length=120"
-    ],
+    "python.linting.pycodestyleArgs": ["--max-line-length=120"],
     "python.linting.pylintCategorySeverity.convention": "Error",
     "python.linting.mypyEnabled": true,
     "C_Cpp.formatting": "clangFormat",
@@ -183,10 +181,11 @@
         "ubyte",
         "uhll",
         "uhllc",
+        "Uninstallation",
         "upto",
         "WASI"
     ],
-    
+
     "files.exclude": {
         "llvm": true
     }
