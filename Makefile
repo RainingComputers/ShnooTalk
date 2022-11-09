@@ -129,6 +129,8 @@ build: dirs bin/$(BUILD_TYPE)/$(EXEC_NAME)
 
 install:
 	cp bin/$(BUILD_TYPE)/$(EXEC_NAME) /usr/local/bin
+	mkdir -p /usr/local/lib/shnootalk-$(VERSION_STRING)/stdlib
+	cp -r stdlib/stdlib/ /usr/local/lib/shnootalk-$(VERSION_STRING)/stdlib
 
 uninstall:
 	rm /usr/local/bin/$(EXEC_NAME)
