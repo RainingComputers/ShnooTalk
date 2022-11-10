@@ -1,6 +1,6 @@
 # ShnooTalk language guide
 
-This doc goes over syntax and features of the ShnooTalk programming language. You can try the examples in this doc in you browser on [ShnooTalk playground](https://github.com/RainingComputers/shnootalk-playground)!
+This doc goes over syntax and features of the ShnooTalk programming language. You can try the examples in this doc in your browser on [ShnooTalk playground](https://github.com/RainingComputers/shnootalk-playground)!
 
 🦄 Emoji in the document indicates notes about missing features and things that might change in the future.
 
