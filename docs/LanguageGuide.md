@@ -84,6 +84,7 @@ This doc goes over syntax and features of the ShnooTalk programming language. Yo
     -   [Math generic](#math-generic)
     -   [Files](#files)
     -   [OS](#os)
+    -   [Input](#input)
 -   [`make` builtin](#make-builtin)
 -   [Module system](#module-system)
 -   [Naming conventions](#naming-conventions)
@@ -1523,7 +1524,7 @@ fn main() -> int
 
 #### Result, Optional and Error reference
 
-Here are the list of operations you can perform on the `Result` and the `Optional` types
+Here are the list of operations you can perform on the `Result`, `Optional` and the `Error` types
 
 **Result**
 
@@ -1542,6 +1543,15 @@ Here are the list of operations you can perform on the `Result` and the `Optiona
 -   `fn isNone(self: Optional) -> bool`
 -   `fn expect(self: Optional) -> T`
 -   `?` operator
+
+**Error**
+
+-   `fn nil() -> Error`
+-   `fn error(error: E) -> Error`
+-   `fn isNil(self: Error) -> bool`
+-   `fn isError(self: Error) -> bool`
+-   `fn get(self: Error) -> E`
+-   `fn expect(self: Error)`
 
 ### String
 
@@ -2009,6 +2019,23 @@ Provides utility function to interact with the operating system, defined in `std
 -   `fn mkdir(path: String) -> Error[StdlibError]`
 -   `fn rmdir(path: String) -> Error[StdlibError]`
 -   `fn rm(path: String) -> Error[StdlibError]`
+
+### Input
+
+You can get input from the user using the `fn input() -> Result[String, StdlibError]` function.
+
+```
+from "stdlib/Input.shtk" use input
+
+fn main() -> int
+{
+    println("Enter a number:")
+    const a: int = input().expect().parseInt().expect()
+    println("You entered:", a)
+
+    return 0
+}
+```
 
 ## `make` builtin
 
