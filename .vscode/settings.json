@@ -122,6 +122,7 @@
         "dtype",
         "dylib",
         "dylibs",
+        "eabi",
         "extfn",
         "gcov",
         "GENERATORIR",

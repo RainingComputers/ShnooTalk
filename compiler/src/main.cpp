@@ -18,6 +18,7 @@ static std::map<std::string, translator::Platform> platformMap = {
     { "-macos-arm64", translator::MACOS_ARM64 },
     { "-wasm32", translator::WASM32 },
     { "-wasm64", translator::WASM64 },
+    { "-eabi-arm", translator::EABI_ARM },
 };
 
 void printCLIUsage()
@@ -171,12 +172,12 @@ int main(int argc, char* argv[])
         pp::println("File I/O error");
         return EXIT_FAILURE;
     }
-    catch (...)
-    {
-        pp::println("Unknown error or an internal compiler error,");
-        pp::println("REPORT THIS BUG");
-        return EXIT_FAILURE;
-    }
+    // catch (...)
+    // {
+    //     pp::println("Unknown error or an internal compiler error,");
+    //     pp::println("REPORT THIS BUG");
+    //     return EXIT_FAILURE;
+    // }
 
     return 0;
 }

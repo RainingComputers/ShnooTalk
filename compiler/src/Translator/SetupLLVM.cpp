@@ -28,21 +28,10 @@ std::string getTargetTriple(translator::Platform platform)
         { translator::MACOS_ARM64, "arm64-apple-darwin" },
         { translator::WASM32, "wasm32" },
         { translator::WASM64, "wasm64" },
+        { translator::EABI_ARM, "arm-none-eabi" }
     };
 
     return platformTripleMap.at(platform);
-}
-
-Reloc::Model getRelocModel(translator::Platform platform)
-{
-    std::map<translator::Platform, Reloc::Model> platformRelocMap = {
-        { translator::DEFAULT, Reloc::Model::PIC_ },     { translator::LINUX_x86_64, Reloc::Model::PIC_ },
-        { translator::LINUX_ARM64, Reloc::Model::PIC_ }, { translator::MACOS_x86_64, Reloc::Model::PIC_ },
-        { translator::MACOS_ARM64, Reloc::Model::PIC_ }, { translator::WASM32, Reloc::Model::PIC_ },
-        { translator::WASM64, Reloc::Model::PIC_ },
-    };
-
-    return platformRelocMap.at(platform);
 }
 
 void initializeTargetRegistry()
@@ -91,10 +80,9 @@ std::string createDirsAndGetOutputObjNameStatic(const std::string& moduleName)
 
 void setupPassManagerAndCreateObject(ModuleContext& ctx, translator::Platform platform)
 {
-    Reloc::Model relocModel = getRelocModel(platform);
     std::string targetTriple = getTargetTriple(platform);
 
-    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple, relocModel);
+    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple, Reloc::Model::PIC_);
 
     std::string filename = createDirsAndGetOutputObjNameStatic(ctx.moduleDescription.name);
 
