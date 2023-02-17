@@ -22,6 +22,7 @@ Available options:
     -json-icode      Print ShnooTalk IR in JSON, but only the icode
 
 Cross compilation options for release executable:
+    -arm-cortex_m4-hardfloat
     -linux-arm64
     -linux-x86_64
     -macos-arm64
