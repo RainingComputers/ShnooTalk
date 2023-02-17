@@ -1,4 +1,4 @@
-name: Code formatting quality and testing 
+name: Code formatting quality and testing
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
 
 jobs:
   Format:
-    runs-on: ubuntu-22.04 # TODO change back to latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -41,9 +41,9 @@ jobs:
         run: sudo apt install llvm-12 llvm-12-dev lcov
       - name: Build debug executable
         run: make build GCOV=1
-      - name: Run tests_runner 
+      - name: Run tests_runner
         run: make coverage
-      - name: 'Upload coverage report'
+      - name: "Upload coverage report"
         uses: actions/upload-artifact@v2
         with:
           name: coverage-report
