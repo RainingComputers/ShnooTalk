@@ -40,7 +40,7 @@ jobs:
       - name: Install LLVM and LCOV
         run: sudo apt install llvm-12 llvm-12-dev lcov
       - name: Build debug executable
-        run: make build GCOV=1
+        run: CXX=clang++ make build GCOV=1
       - name: Run tests_runner
         run: make coverage
       - name: "Upload coverage report"
