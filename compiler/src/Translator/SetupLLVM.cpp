@@ -28,7 +28,7 @@ std::string getTargetTriple(translator::Platform platform)
         { translator::MACOS_ARM64, "arm64-apple-darwin" },
         { translator::WASM32, "wasm32" },
         { translator::WASM64, "wasm64" },
-        { translator::EABI_ARM, "arm-none-eabi" }
+        { translator::ARM_CORTEX_M4_HARD_FLOAT, "arm-none-eabi" }
     };
 
     return platformTripleMap.at(platform);
@@ -43,9 +43,28 @@ void initializeTargetRegistry()
     InitializeAllAsmPrinters();
 }
 
+std::string getCPU(translator::Platform platform)
+{
+    if (platform == translator::ARM_CORTEX_M4_HARD_FLOAT)
+        return "cortex-m4";
+
+    return "";
+}
+
+TargetOptions getTargetOptions(translator::Platform platform)
+{
+    TargetOptions opt;
+
+    if (platform == translator::ARM_CORTEX_M4_HARD_FLOAT)
+        opt.FloatABIType = llvm::FloatABI::Hard;
+
+    return opt;
+}
+
 TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx,
                                               const std::string& targetTriple,
-                                              llvm::Reloc::Model relocModel)
+                                              llvm::Reloc::Model relocModel,
+                                              translator::Platform platform)
 {
     std::string error;
     auto Target = TargetRegistry::lookupTarget(targetTriple, error);
@@ -53,10 +72,10 @@ TargetMachine* setupTargetTripleAndDataLayout(const ModuleContext& ctx,
     if (!Target)
         ctx.console.internalBugErrorMessage("LLVM ERROR: " + error);
 
-    std::string CPU = "generic";
+    std::string CPU = getCPU(platform);
     std::string features = "";
+    TargetOptions opt = getTargetOptions(platform);
 
-    TargetOptions opt;
     auto RM = Optional<Reloc::Model>(relocModel);
     auto targetMachine = Target->createTargetMachine(targetTriple, CPU, features, opt, RM);
 
@@ -82,7 +101,7 @@ void setupPassManagerAndCreateObject(ModuleContext& ctx, translator::Platform pl
 {
     std::string targetTriple = getTargetTriple(platform);
 
-    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple, Reloc::Model::PIC_);
+    TargetMachine* targetMachine = setupTargetTripleAndDataLayout(ctx, targetTriple, Reloc::Model::PIC_, platform);
 
     std::string filename = createDirsAndGetOutputObjNameStatic(ctx.moduleDescription.name);
 

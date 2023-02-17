@@ -18,7 +18,7 @@ static std::map<std::string, translator::Platform> platformMap = {
     { "-macos-arm64", translator::MACOS_ARM64 },
     { "-wasm32", translator::WASM32 },
     { "-wasm64", translator::WASM64 },
-    { "-eabi-arm", translator::EABI_ARM },
+    { "-arm-cortex_m4-hardfloat", translator::ARM_CORTEX_M4_HARD_FLOAT },
 };
 
 void printCLIUsage()

@@ -12,7 +12,7 @@ namespace translator
         MACOS_ARM64,
         WASM32,
         WASM64,
-        EABI_ARM,
+        ARM_CORTEX_M4_HARD_FLOAT,
     };
 }
 

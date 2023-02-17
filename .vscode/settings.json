@@ -129,6 +129,7 @@
         "gmon",
         "gnueabihf",
         "gprof",
+        "hardfloat",
         "ibuild",
         "icode",
         "ifend",
