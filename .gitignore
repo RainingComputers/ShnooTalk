@@ -82,3 +82,6 @@ build-name.txt
 
 # temporary scripts
 gh-md-toc
+
+# direnv
+.direnv/

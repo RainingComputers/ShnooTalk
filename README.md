@@ -37,8 +37,7 @@ Download app image from [releases](https://github.com/RainingComputers/ShnooTalk
 Download the source from latest [release](https://github.com/RainingComputers/ShnooTalk/releases)
 
 ```
-sudo apt install llvm-12 llvm-12-dev
-make build
+./ci/Linux/build.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
 sudo make install
 ```
 
