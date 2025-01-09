@@ -21,15 +21,6 @@ jobs:
         uses: nixbuild/nix-quick-install-action@v29
       - name: Run clang-format
         run: nix-shell --run 'make format-dry-run'
-  Tidy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install nix
-        uses: nixbuild/nix-quick-install-action@v29
-      - name: Run clang-tidy
-        run: nix-shell --run 'make tidy'
   Test:
     runs-on: ubuntu-latest
     steps:

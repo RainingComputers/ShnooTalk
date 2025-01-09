@@ -83,7 +83,7 @@ jobs:
       LLVM_ZIP: ${{ matrix.arch.llvm }}
     steps:
       - name: Install qemu
-        run: sudo apt install qemu binfmt-support qemu-user qemu-user-static
+        run: sudo apt install qemu-system binfmt-support qemu-user qemu-user-static
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build docker build environment
