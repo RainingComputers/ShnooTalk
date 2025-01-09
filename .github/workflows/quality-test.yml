@@ -17,32 +17,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install clang-format
-        run: sudo apt install clang-format
+      - name: Install nix
+        run: sudo sh <(curl -L https://nixos.org/nix/install) --daemon --yes
       - name: Run clang-format
-        run: make format-dry-run
+        run: nix-shell --run 'make format-dry-run'
   Tidy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install LLVM
-        run: sudo apt install llvm-12 llvm-12-dev
-      - name: Install clang-tidy
-        run: sudo apt install clang-tidy
+      - name: Install nix
+        run: sudo sh <(curl -L https://nixos.org/nix/install) --daemon --yes
       - name: Run clang-tidy
-        run: make tidy
+        run: nix-shell --run 'make tidy'
   Test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install LLVM and LCOV
-        run: sudo apt install llvm-12 llvm-12-dev lcov
+      - name: Install nix
+        run: sudo sh <(curl -L https://nixos.org/nix/install) --daemon --yes
       - name: Build debug executable
-        run: CXX=clang++ make build GCOV=1
+        run: nix-shell --run 'CXX=clang++ make build GCOV=1'
       - name: Run tests_runner
-        run: make coverage
+        run: nix-shell --run 'make coverage'
       - name: "Upload coverage report"
         uses: actions/upload-artifact@v2
         with:
