@@ -51,7 +51,7 @@ jobs:
           sudo chmod +x /usr/local/bin/appimagetool
           sudo pip3 install appimage-builder
       - name: Build AppImage
-        run: appimage-builder --recipe ci/Linux/appimage/appimage-x86_64.yml --skip-test
+        run: sudo appimage-builder --recipe ci/Linux/appimage/appimage-x86_64.yml --skip-test
       - name: Set release file
         id: set_file
         run: echo "##[set-output name=files;]$(find . -name '*.AppImage')"
