@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install nix
-        run: sudo sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+        uses: nixbuild/nix-quick-install-action@v29
       - name: Run clang-format
         run: nix-shell --run 'make format-dry-run'
   Tidy:
@@ -27,7 +27,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install nix
-        run: sudo sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+        uses: nixbuild/nix-quick-install-action@v29
       - name: Run clang-tidy
         run: nix-shell --run 'make tidy'
   Test:
@@ -36,7 +36,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install nix
-        run: sudo sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+        uses: nixbuild/nix-quick-install-action@v29
       - name: Build debug executable
         run: nix-shell --run 'CXX=clang++ make build GCOV=1'
       - name: Run tests_runner
