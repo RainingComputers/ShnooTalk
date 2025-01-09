@@ -50,10 +50,6 @@ jobs:
           sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
           sudo chmod +x /usr/local/bin/appimagetool
           sudo pip3 install appimage-builder
-      - name: Install LLVM
-        run: sudo apt install llvm-12 llvm-12-dev
-      - name: Build Compiler
-        run: make build -j 2
       - name: Build AppImage
         run: appimage-builder --recipe ci/Linux/appimage/appimage-x86_64.yml --skip-test
       - name: Set release file

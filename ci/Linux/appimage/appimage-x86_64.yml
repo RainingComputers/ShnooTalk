@@ -21,7 +21,6 @@ AppDir:
       - zlib1g:amd64
   files:
     include:
-      - /lib/x86_64-linux-gnu/libLLVM-12.so.1
       - /lib/x86_64-linux-gnu/libbsd.so.0
       - /lib/x86_64-linux-gnu/libedit.so.2
       - /lib/x86_64-linux-gnu/libffi.so.7
@@ -61,7 +60,7 @@ script: |
   rm -rf AppDir
 
   # compile and install binaries into AppDir
-  make build -j 2
+  sh ci/Linux/build.sh llvmorg-12.0.1/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
   mkdir -p AppDir/usr/bin/
   mkdir -p AppDir/usr/share/icons/
   cp logo.svg AppDir/usr/share/icons/shnootalk.svg
