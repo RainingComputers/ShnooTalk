@@ -1,0 +1,53 @@
+# appimage-builder recipe see https://appimage-builder.readthedocs.io for details
+version: 1
+AppDir:
+  path: ./AppDir
+  app_info:
+    id: shnootalk-compiler
+    name: shtkc
+    icon: shnootalk
+    version: 0.3.2-alpha
+    exec: usr/bin/shtkc
+    exec_args: $@
+  apt:
+    arch:
+      - i386
+    allow_unauthenticated: true
+    sources:
+      - sourceline: deb http://archive.ubuntu.com/ubuntu focal main
+    include:
+      - libgcc-s1
+      - libtinfo6
+      - zlib1g-dev
+      - zlib1g
+  files:
+    include:
+      - /lib/i686-linux-gnu/libLLVM-13.so.1
+      - /lib/i686-linux-gnu/libbsd.so.0
+      - /lib/i686-linux-gnu/libedit.so.2
+      - /lib/i686-linux-gnu/libffi.so.7
+      - /lib/i686-linux-gnu/libstdc++.so.6
+    exclude:
+      - usr/share/man
+      - usr/share/doc/*/README.*
+      - usr/share/doc/*/changelog.*
+      - usr/share/doc/*/NEWS.*
+      - usr/share/doc/*/TODO.*
+  test:
+    debian-stable:
+      image: appimagecrafters/tests-env:debian-stable
+      command: ./AppRun -version
+      use_host_x: true
+AppImage:
+  arch: i686
+  update-information: guess
+script: |
+  # remove any existent binaries
+  rm -rf AppDir
+
+  # compile and install binaries into AppDir
+  make build
+  mkdir -p AppDir/usr/bin/
+  mkdir -p AppDir/usr/share/icons/
+  cp logo.svg AppDir/usr/share/icons/shnootalk.svg
+  cp bin/`cat build-name.txt`/shtkc AppDir/usr/bin/shtkc
